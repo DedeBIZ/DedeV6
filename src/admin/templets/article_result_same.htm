@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>重复文档检测</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -55,7 +55,7 @@
 				<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 				<input type="hidden" name="maintable" value="<?php echo $maintable;?>">
 				<input type="hidden" name="titles" value="">
-				<tr bgcolor="#fbfce2" align="center">
+				<tr bgcolor="#e9ecef" align="center">
 					<td width="10%">选择</td>
 					<td width="10%">重复数量</td>
 					<td width="80%">文档标题</td>
@@ -65,7 +65,7 @@
 				{
 				   if ($row['dd']==1 ) break;
 				?>
-				<tr align="center" onMouseMove="javascript:this.bgColor='#EFEFEF';" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center" onMouseMove="javascript:this.bgColor='#EFEFEF';" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><input type="checkbox" name="arcTitles" id="arcTitle" value="<?php echo urlencode($row['title'])?>"></td>
 					<td>
 						<?php

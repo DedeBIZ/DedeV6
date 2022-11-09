@@ -1,65 +1,65 @@
 {dede:config.pagesize value='30'/}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>广告管理</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-</head>
-<body>
-  <form action="ad_main.php" method="get" name="form3" id="form3">
-    <input type="hidden" name="dopost" value="listArchives">
-    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-      <tr bgcolor="#f5f5f5">
-        <td width="180" align="center">
-          <select name="clsid" id="clsid" class="biz-input-sm">
-            <option value="0">默认分类</option>
-            <?php echo $option;?>
-          </select>
-        </td>
-        <td width="270"><input type="text" name="keyword" placeholder="请输入关键词" class="biz-input-md"></td>
-        <td>
-          <button type="submit" class="btn btn-success btn-sm">搜索</button>
-          <a href="ad_add.php" class="btn btn-success btn-sm">增加一个新广告</a>
-          <a href="adtype_main.php" class="btn btn-success btn-sm">广告分类管理</a>
-        </td>
-      </tr>
-    </table>
-  </form>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
-    <tr>
-      <td bgcolor="#f5f5f5" colspan="7">广告管理</td>
-    </tr>
-    <tr bgcolor="#fbfce2" align="center">
-      <td width="6%">id</td>
-      <td width="20%">分类</td>
-      <td width="20%">广告名称</td>
-      <td width="12%">投放范围</td>
-      <td width="11%">是否限时</td>
-      <td width="11%">结束时间</td>
-      <td>管理</td>
-    </tr>
-    {dede:datalist empty='<tr><td colspan="7"><center>暂无文档</center></td></tr>'}
-    <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td>{dede:field.aid/}</td>
-      <td>{dede:field.clsname function='TestType(@me,1)'/}</td>
-      <td>{dede:field.adname/}</td>
-      <td>{dede:field.typename function='TestType(@me)'/}</td>
-      <td>{dede:field.timeset function='TimeSetValue(@me)'/}</td>
-      <td>{dede:field.endtime function='GetDateMk(@me)'/}</td>
-      <td>
-        <a href="ad_edit.php?aid={dede:field.aid/}&dopost=gettag" class="btn btn-success btn-sm">代码</a>
-        <a href="ad_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
-        <a href="ad_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
-      </td>
-    </tr>
-    {/dede:datalist}
-    <tr bgcolor="#f5f5f5" align="center" class="py-2">
-      <td colspan="7">{dede:pagelist listsize='6'/}</td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>广告管理</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+	</head>
+	<body>
+		<form action="ad_main.php" method="get" name="form3" id="form3">
+			<input type="hidden" name="dopost" value="listArchives">
+			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+				<tr bgcolor="#f5f5f5">
+					<td width="180" align="center">
+						<select name="clsid" id="clsid" class="biz-input-sm">
+							<option value="0">默认分类</option>
+							<?php echo $option;?>
+						</select>
+					</td>
+					<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" class="biz-input-md"></td>
+					<td>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<a href="ad_add.php" class="btn btn-success btn-sm">增加一个新广告</a>
+						<a href="adtype_main.php" class="btn btn-success btn-sm">广告分类管理</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="7">广告管理</td>
+			</tr>
+			<tr bgcolor="#e9ecef" align="center">
+				<td width="6%">id</td>
+				<td width="20%">分类</td>
+				<td width="20%">广告名称</td>
+				<td width="12%">投放范围</td>
+				<td width="11%">是否限时</td>
+				<td width="11%">结束时间</td>
+				<td>管理</td>
+			</tr>
+			{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
+			<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';"onmouseout="javascript:this.bgColor='#ffffff';">
+				<td>{dede:field.aid/}</td>
+				<td>{dede:field.clsname function='TestType(@me,1)'/}</td>
+				<td>{dede:field.adname/}</td>
+				<td>{dede:field.typename function='TestType(@me)'/}</td>
+				<td>{dede:field.timeset function='TimeSetValue(@me)'/}</td>
+				<td>{dede:field.endtime function='GetDateMk(@me)'/}</td>
+				<td>
+					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=gettag" class="btn btn-success btn-sm">代码</a>
+					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
+					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
+				</td>
+			</tr>
+			{/dede:datalist}
+			<tr bgcolor="#f5f5f5" align="center" class="py-2">
+				<td colspan="7">{dede:pagelist listsize='6'/}</td>
+			</tr>
+		</table>
+	</body>
 </html>

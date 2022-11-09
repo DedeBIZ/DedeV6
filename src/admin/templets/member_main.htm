@@ -1,114 +1,115 @@
 {dede:config.pagesize value='30'/}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>注册会员列表</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="js/ieemu.js"></script>
-  <script src="js/user.js"></script>
-</head>
-<body>
-  <form action="member_main.php" name="form1" method="get">
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-      <tr bgcolor="#f5f5f5">
-        <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="biz-input-md"></td>
-        <td width="170">
-          <select name="sortkey" id="sortkey" class="biz-input-sm">
-            {dede:global name='sortform'/}
-            <option value="mid">mid/注册时间</option>
-            <option value="logintime">登录时间</option>
-            <option value="rank">会员等级</option>
-            <option value="money">会员金币</option>
-            <option value="scores">会员积分</option>
-          </select>
-        </td>
-        <td width="170">
-          <select name="sex" id="sex" class="biz-input-sm">
-            {dede:global name='sexform'/}
-            <option value="男">男</option>
-            <option value="女">女</option>
-            <option value="保密">保密</option>
-          </select>
-        </td>
-        <td width="170">
-          <select name="spacesta" id="spacesta" class="biz-input-sm">
-            <option value="-10">会员状态</option>
-            <?php
-            foreach($staArr as $k=>$v)
-            {
-              if ($spacesta==$k) echo "<option value='$k' selected>$v</option>";
-              else echo "<option value='$k'>$v</option>";
-            }
-            ?>
-          </select>
-        </td>
-        <td>
-          <button type="submit" class="btn btn-success btn-sm">搜索</button>
-          <a href="member_main.php" class="btn btn-success btn-sm">所有会员</a>
-          <a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">被禁言用户</a>
-          <a href="member_main.php?matt=1" class="btn btn-success btn-sm">被推荐</a>
-          <a href="member_main.php?matt=0" class="btn btn-success btn-sm">普通</a>
-        </td>
-      </tr>
-    </table>
-  </form>
-  <form name="form2">
-    <table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mb-3">
-      <tr>
-        <td bgcolor="#f5f5f5" colspan="9">注册会员列表</td>
-      </tr>
-      <tr bgcolor="#fbfce2" align="center">
-        <td width="6%">选择</td>
-        <td width="6%">mid</td>
-        <td width="16%">用户</td>
-        <td width="18%">名称邮箱</td>
-        <td width="6%">性别</td>
-        <td width="6%">会员等级</td>
-        <td width="14%">会员属性</td>
-        <td width="14%">地址时间</td>
-        <td>操作</td>
-      </tr>
-      {dede:datalist empty='<tr><td colspan="9"><center>暂无文档</center></td></tr>'}
-      <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
-        <td>{dede:field.mid/}</td>
-        <td align="left">
-          <?php
-          if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};
-          echo ''.$fields['userid'].'';
-          if ($fields['spacesta']==-2) echo " <span class='text-danger'>[禁言]</span>";
-          if ($fields['spacesta']==-1) echo " <span class='text-danger'>[未审核]</span>";
-          ?>
-          {dede:field.matt function="GetMAtt(@me)"/}
-        </td>
-        <td>{dede:field.uname/}丨{dede:field.email/}</td>
-        <td>{dede:field.sex/}</td>
-        <td><a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a></td>
-        <td>{dede:field.mtype/}用户丨金币{dede:field.money/}丨积分{dede:field.scores/}</td>
-        <td>{dede:field.loginip/}丨{dede:field.logintime function="MyDate('y-m-d H:i',@me)"/}</td>
-        <td align="center">
-          <a href="member_view.php?id={dede:field.mid/}" class="btn btn-success btn-sm">修改</a>
-          <a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-danger btn-sm">删除</a>
-          <a href="content_list.php?mid={dede:field.mid/}" target="_self" class="btn btn-success btn-sm">文档</a>
-          <a href="member_toadmin.php?id={dede:field.mid/}" target="_self" class="btn btn-success btn-sm">提升</a>
-        </td>
-      </tr>
-      {/dede:datalist}
-      <tr>
-        <td colspan="9">
-          <button type="button" onClick="selAll();" class="btn btn-success btn-sm">全选</button>
-          <button type="button" onClick="noSelAll();" class="btn btn-success btn-sm">取消</button>
-          <button type="button" onClick="delArc(0);" class="btn btn-danger btn-sm">删除</button>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="9" bgcolor="f8f8f8" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
-      </tr>
-    </table>
-  </form>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>注册会员列表</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="js/ieemu.js"></script>
+		<script src="js/user.js"></script>
+	</head>
+	<body>
+		<form action="member_main.php" name="form1" method="get">
+			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+				<tr bgcolor="#f5f5f5">
+					<td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="biz-input-md"></td>
+					<td width="170">
+						<select name="sortkey" id="sortkey" class="biz-input-sm">
+							{dede:global name='sortform'/}
+							<option value="mid">mid/注册时间</option>
+							<option value="logintime">登录时间</option>
+							<option value="rank">会员等级</option>
+							<option value="money">会员金币</option>
+							<option value="scores">会员积分</option>
+						</select>
+					</td>
+					<td width="170">
+						<select name="sex" id="sex" class="biz-input-sm">
+							{dede:global name='sexform'/}
+							<option value="男">男</option>
+							<option value="女">女</option>
+							<option value="保密">保密</option>
+						</select>
+					</td>
+					<td width="170">
+						<select name="spacesta" id="spacesta" class="biz-input-sm">
+							<option value="-10">会员状态</option>
+							<?php
+							foreach($staArr as $k=>$v)
+							{
+								if ($spacesta==$k) echo "<option value='$k' selected>$v</option>";
+								else echo "<option value='$k'>$v</option>";
+							}
+							?>
+						</select>
+					</td>
+					<td>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<a href="member_main.php" class="btn btn-success btn-sm">所有会员</a>
+						<a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">被禁言用户</a>
+						<a href="member_main.php?matt=1" class="btn btn-success btn-sm">被推荐</a>
+						<a href="member_main.php?matt=0" class="btn btn-success btn-sm">普通</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<form name="form2">
+			<table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="9">注册会员列表</td>
+				</tr>
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">选择</td>
+					<td width="6%">mid</td>
+					<td width="16%">用户</td>
+					<td width="18%">名称邮箱</td>
+					<td width="6%">性别</td>
+					<td width="6%">会员等级</td>
+					<td width="14%">会员属性</td>
+					<td width="14%">地址时间</td>
+					<td>操作</td>
+				</tr>
+				{dede:datalist empty='<tr><td colspan="9" align="center">暂无文档</td></tr>'}
+				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';"
+					onmouseout="javascript:this.bgColor='#ffffff';">
+					<td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
+					<td>{dede:field.mid/}</td>
+					<td align="left">
+						<?php
+						if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};
+						echo ''.$fields['userid'].'';
+						if ($fields['spacesta']==-2) echo " <span class='text-danger'>[禁言]</span>";
+						if ($fields['spacesta']==-1) echo " <span class='text-danger'>[未审核]</span>";
+						?>
+						{dede:field.matt function="GetMAtt(@me)"/}
+					</td>
+					<td>{dede:field.uname/}丨{dede:field.email/}</td>
+					<td>{dede:field.sex/}</td>
+					<td><a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a></td>
+					<td>{dede:field.mtype/}用户丨金币{dede:field.money/}丨积分{dede:field.scores/}</td>
+					<td>{dede:field.loginip/}丨{dede:field.logintime function="MyDate('y-m-d H:i',@me)"/}</td>
+					<td align="center">
+						<a href="member_view.php?id={dede:field.mid/}" class="btn btn-success btn-sm">修改</a>
+						<a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-danger btn-sm">删除</a>
+						<a href="content_list.php?mid={dede:field.mid/}" target="_self" class="btn btn-success btn-sm">文档</a>
+						<a href="member_toadmin.php?id={dede:field.mid/}" target="_self" class="btn btn-success btn-sm">提升</a>
+					</td>
+				</tr>
+				{/dede:datalist}
+				<tr>
+					<td colspan="9">
+						<button type="button" onClick="selAll();" class="btn btn-success btn-sm">全选</button>
+						<button type="button" onClick="noSelAll();" class="btn btn-success btn-sm">取消</button>
+						<button type="button" onClick="delArc(0);" class="btn btn-danger btn-sm">删除</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="9" bgcolor="#f5f5f5" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
+	</body>
 </html>

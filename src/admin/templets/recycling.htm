@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>文档回收站</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -72,7 +72,7 @@
 				<td bgcolor="#f5f5f5" colspan="7">文档回收站</td>
 			</tr>
 			<form name="form2">
-				<tr bgcolor="#fbfce2" align="center">
+				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">id</td>
 					<td width="6%">选择</td>
 					<td width="28%">文档标题</td>
@@ -81,7 +81,7 @@
 					<td width="6%">点击</td>
 					<td>操作</td>
 				</tr>
-				{dede:datalist empty='<tr><td colspan="7"><center>暂无文档</center></td></tr>'}
+				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
 				<tr align="center" onMouseOut="javascript:this.bgColor='#ffffff';">
 					<td>{dede:field.id/}</td>
 					<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>

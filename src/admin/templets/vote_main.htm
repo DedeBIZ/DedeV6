@@ -1,49 +1,49 @@
 {dede:config.pagesize value='20'/}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>投票管理</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-</head>
-<body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-    <tr>
-      <td bgcolor="#f5f5f5" colspan="7">投票管理</td>
-    </tr>
-    <tr bgcolor="#fbfce2" align="center">
-      <td width="6%">id</td>
-      <td width="22%">投票名称</td>
-      <td width="15%">开始时间</td>
-      <td width="15%">结束时间</td>
-      <td width="10%">投票总数</td>
-      <td width="10%">状态</td>
-      <td>管理</td>
-    </tr>
-    {dede:datalist empty='<tr><td colspan="7"><center>暂无文档</center></td></tr>'}
-    <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td>{dede:field.aid/}</td>
-      <td><a href="{dede:global name='cfg_phpurl'/}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank"> {dede:field.votename/}</a></td>
-      <td>{dede:field.starttime function="GetDateMk(@me)"/}</td>
-      <td>{dede:field.endtime function="GetDateMk(@me)"/}</td>
-      <td>{dede:field.totalcount/}</td>
-      <td><?php if ($fields['isenable'] == 1){echo "<span class='text-danger'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
-      <td>
-        <a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-success btn-sm">代码</a>
-        <a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
-        <a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
-      </td>
-    </tr>
-    {/dede:datalist}
-    <tr>
-      <td colspan="7"><a href="vote_add.php" class="btn btn-success btn-sm">增加一组投票</a></td>
-    </tr>
-    <tr bgcolor="#f5f5f5" align="center" class="py-2">
-      <td colspan="7">{dede:pagelist listsize='6'/}</td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>投票管理</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+	</head>
+	<body>
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="7">投票管理</td>
+			</tr>
+			<tr bgcolor="#e9ecef" align="center">
+				<td width="6%">id</td>
+				<td width="22%">投票名称</td>
+				<td width="15%">开始时间</td>
+				<td width="15%">结束时间</td>
+				<td width="10%">投票总数</td>
+				<td width="10%">状态</td>
+				<td>管理</td>
+			</tr>
+			{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
+			<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<td>{dede:field.aid/}</td>
+				<td><a href="{dede:global name='cfg_phpurl'/}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank"> {dede:field.votename/}</a></td>
+				<td>{dede:field.starttime function="GetDateMk(@me)"/}</td>
+				<td>{dede:field.endtime function="GetDateMk(@me)"/}</td>
+				<td>{dede:field.totalcount/}</td>
+				<td><?php if ($fields['isenable'] == 1){echo "<span class='text-danger'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
+				<td>
+					<a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-success btn-sm">代码</a>
+					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
+					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
+				</td>
+			</tr>
+			{/dede:datalist}
+			<tr>
+				<td colspan="7"><a href="vote_add.php" class="btn btn-success btn-sm">增加一组投票</a></td>
+			</tr>
+			<tr bgcolor="#f5f5f5" align="center" class="py-2">
+				<td colspan="7">{dede:pagelist listsize='6'/}</td>
+			</tr>
+		</table>
+	</body>
 </html>

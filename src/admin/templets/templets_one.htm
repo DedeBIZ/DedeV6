@@ -1,76 +1,76 @@
 {dede:config.pagesize value='30'/}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>文档单页管理</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-</head>
-<body>
-   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-      <tr bgcolor="#f5f5f5">
-         <form action="templets_one.php" name="sss">
-            <td width="170" align="center"><input type="text" name="keyword" value="<?php if (!empty($keyword)) $keyword = '';?>" placeholder="请输入关键词" class="biz-input-md"></td>
-            <td width="170">
-               <?php
-                 $likeid = (!isset($likeid) ? '' : $likeid);
-                 echo "<select name='likeid' id='likeid' class='biz-input-sm'>";
-                 $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
-                 echo "<option value=''>不限</option>";
-                 while($arr = $dsql->GetArray('s'))
-                 {
-                    if ($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
-                    else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
-                 }
-                 echo "</select>";
-               ?>
-            </td>
-            <td>
-               <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button>
-               <a href="templets_one_add.php" class="btn btn-success btn-sm">增加一个页面</a>
-               <a href="javascript:;" onClick="document.form1.submit();" class="btn btn-success btn-sm">更新选中页面</a>
-               <a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm">更新所有页面</a>
-            </td>
-         </form>
-      </tr>
-   </table>
-   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
-      <tr>
-         <td bgcolor="#f5f5f5" colspan="7">文档单页管理</td>
-      </tr>
-      <tr bgcolor="#fbfce2" align="center">
-         <td width="6%">选择</td>
-         <td width="6%">id</td>
-         <td width="30%">页面名称</td>
-         <td width="11%">需编译</td>
-         <td width="10%">标识</td>
-         <td width="12%">修改时间</td>
-         <td width="21%">管理</td>
-      </tr>
-      <form name="form1" action="templets_one_edit.php">
-         <input type="hidden" name="dopost" value="mksel">
-         {dede:datalist empty='<tr><td colspan="7"><center>暂无文档</center></td></tr>'}
-         <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-            <td><input type="checkbox" name="ids[]" value="{dede:field.aid/}"></td>
-            <td>{dede:field.aid/}</td>
-            <td><a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit">{dede:field.title/}</a></td>
-            <td>{dede:field.ismake function='GetIsMake(@me)'/}</td>
-            <td>{dede:field.likeid/}</td>
-            <td>{dede:field.uptime function='GetDateMk(@me)'/}</td>
-            <td>
-               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
-               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=view" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 预览</a>
-               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
-            </td>
-         </tr>
-         {/dede:datalist}
-      </form>
-      <tr bgcolor="#f5f5f5" align="center" class="py-2">
-         <td colspan="7">{dede:pagelist listsize='6'/}</td>
-      </tr>
-   </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>文档单页管理</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+	</head>
+	<body>
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<tr bgcolor="#f5f5f5">
+				<form action="templets_one.php" name="sss">
+					<td width="170" align="center"><input type="text" name="keyword" value="<?php if (!empty($keyword)) $keyword = '';?>" placeholder="请输入关键词" class="biz-input-md"></td>
+					<td width="170">
+						<?php
+						$likeid = (!isset($likeid) ? '' : $likeid);
+						echo "<select name='likeid' id='likeid' class='biz-input-sm'>";
+						$dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
+						echo "<option value=''>不限</option>";
+						while($arr = $dsql->GetArray('s'))
+						{
+							if ($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
+							else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+						}
+						echo "</select>";
+						?>
+					</td>
+					<td>
+						<button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button>
+						<a href="templets_one_add.php" class="btn btn-success btn-sm">增加一个页面</a>
+						<a href="javascript:;" onClick="document.form1.submit();" class="btn btn-success btn-sm">更新选中页面</a>
+						<a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm">更新所有页面</a>
+					</td>
+				</form>
+			</tr>
+		</table>
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="7">文档单页管理</td>
+			</tr>
+			<tr bgcolor="#e9ecef" align="center">
+				<td width="6%">选择</td>
+				<td width="6%">id</td>
+				<td width="30%">页面名称</td>
+				<td width="11%">需编译</td>
+				<td width="10%">标识</td>
+				<td width="12%">修改时间</td>
+				<td width="21%">管理</td>
+			</tr>
+			<form name="form1" action="templets_one_edit.php">
+				<input type="hidden" name="dopost" value="mksel">
+				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
+				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+					<td><input type="checkbox" name="ids[]" value="{dede:field.aid/}"></td>
+					<td>{dede:field.aid/}</td>
+					<td><a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit">{dede:field.title/}</a></td>
+					<td>{dede:field.ismake function='GetIsMake(@me)'/}</td>
+					<td>{dede:field.likeid/}</td>
+					<td>{dede:field.uptime function='GetDateMk(@me)'/}</td>
+					<td>
+						<a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+						<a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=view" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 预览</a>
+						<a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
+					</td>
+				</tr>
+				{/dede:datalist}
+			</form>
+			<tr bgcolor="#f5f5f5" align="center" class="py-2">
+				<td colspan="7">{dede:pagelist listsize='6'/}</td>
+			</tr>
+		</table>
+	</body>
 </html>

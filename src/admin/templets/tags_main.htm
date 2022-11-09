@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>标签管理</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -91,7 +91,7 @@
 				<td colspan="8" bgcolor="#f5f5f5">标签管理</td>
 			</tr>
 			<form name="form3" action="tags_main.php?action=delete" method="post">
-				<tr align="center" bgcolor="#fbfce2">
+				<tr align="center" bgcolor="#e9ecef">
 					<td width="6%"><input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)"> 反选</td>
 					<td width="6%">id</td>
 					<td width="30%">标签</td>
@@ -101,13 +101,13 @@
 					<td width="10%">更新时间</td>
 					<td>操作</td>
 				</tr>
-				{dede:datalist empty='<tr><td colspan="8"><center>暂无文档</center></td></tr>'}
+				{dede:datalist empty='<tr><td colspan="8" align="center">暂无文档</td></tr>'}
 				<?php
 				$fields['addtime'] = GetDateMk($fields['addtime']);
 				$fields['uptime'] = GetDateMk($fields['uptime']);
 				$fields['tag'] = dede_htmlspecialchars($fields['tag']);
 				?>
-				<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id'];?>"></td>
 					<td>{dede:field.id/}</td>
 					<td><a href="../apps/tags.php?/<?php echo $fields['id'];?>/" target="_blank">{dede:field.tag/}</a></td>

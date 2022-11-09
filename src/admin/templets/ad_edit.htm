@@ -1,123 +1,122 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>修改广告</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script src="../static/web/js/moment.min.js"></script>
-  <script src="../static/web/js/daterangepicker.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('.datepicker').daterangepicker({
-        "singleDatePicker": true,
-        "autoApply": true,
-        "showDropdowns": true,
-        "linkedCalendars": false,
-        "timePicker": true,
-        "timePicker24Hour": true,
-        //"timePickerSeconds": true,
-        "showCustomRangeLabel": false,
-        ranges: {
-          '今日': [moment(), moment()],
-          '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          '本月': [moment().startOf('month'), moment().startOf('month')],
-          '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
-        },
-        "locale": {
-          format: 'YYYY-MM-DD HH:mm',
-          applyLabel: '确定',
-          cancelLabel: '取消',
-          daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
-          monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
-            '七月', '八月', '九月', '十月', '十一月', '十二月'],
-          firstDay: 1
-        }
-      }, function (start) {
-        $(this).val(start.format("YYYY-MM-DD HH:mm"));
-      });
-
-    })
-  </script>
-</head>
-<body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-    <tr>
-      <td bgcolor="#f5f5f5"><a href="ad_main.php">广告管理</a> &gt; 修改广告</td>
-    </tr>
-    <tr>
-      <td>
-        <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
-          <form action="ad_edit.php" method="post" enctype="multipart/form-data" name="form1">
-            <input type="hidden" name="aid" value="<?php echo $aid?>">
-            <input type="hidden" name="dopost" value="saveedit">
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-            <tr>
-              <td>广告位标识：</td>
-              <td colspan="2"><?php echo $row['tagname'];?></td>
-            </tr>
-            <tr>
-              <td>广告分类：</td>
-              <td colspan="2">
-                <select name="clsid" id="clsid" class="biz-input-sm">
-                  <option value="0">默认分类</option>
-                  <?php echo $option;?>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>广告投放范围：</td>
-              <td colspan="2">
-                <?php
-               	$tl = new TypeLink(0);
-               	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
-                echo "<select name='typeid' class='biz-input-md'>";
-                echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>";
-                echo $typeOptions;
-                echo "</select>";
-          			?>（如果在所选栏目找不到指定标识的广告文档，系统会自动搜索父栏目）
-              </td>
-            </tr>
-            <tr>
-              <td>广告位名称：</td>
-              <td colspan="2"><input type="text" name="adname" id="adname" value="<?php echo $row['adname']?>" class="biz-input-md"></td>
-            </tr>
-            <tr>
-              <td>时间限制：</td>
-              <td colspan="2">
-                <label><input type="radio" name="timeset" value="0" <?php if ($row['timeset']==0) echo "checked='1'";?>> 永不过期</label>
-                <label><input type="radio" name="timeset" value="1" <?php if ($row['timeset']==1) echo "checked='1'";?>> 在设内时间内有效</label>
-              </td>
-            </tr>
-            <tr>
-              <td>投放时间：</td>
-              <td colspan="2">
-                从：<input type="text" name="starttime" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" class="biz-input-sm">
-                到：<input type="text" name="endtime" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" class="biz-input-sm">
-              </td>
-            </tr>
-            <tr>
-              <td>正常显示文档：</td>
-              <td width="70%"><textarea name="normbody" id="normbody" class="biz-textarea-xl"><?php echo dede_htmlspecialchars(stripslashes($row['normbody']))?></textarea>
-              </td>
-              <td width="10%"></td>
-            </tr>
-            <tr>
-              <td>过期显示文档：</td>
-              <td><textarea name="expbody" id="expbody" class="biz-textarea-xl"><?php echo dede_htmlspecialchars($row['expbody'])?></textarea></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td colspan="3" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-            </tr>
-          </form>
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>修改广告</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/moment.min.js"></script>
+		<script src="../static/web/js/daterangepicker.js"></script>
+		<script>
+			$(document).ready(function () {
+				$('.datepicker').daterangepicker({
+					"singleDatePicker": true,
+					"autoApply": true,
+					"showDropdowns": true,
+					"linkedCalendars": false,
+					"timePicker": true,
+					"timePicker24Hour": true,
+					//"timePickerSeconds": true,
+					"showCustomRangeLabel": false,
+					ranges: {
+						'今日': [moment(), moment()],
+						'昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+						'本月': [moment().startOf('month'), moment().startOf('month')],
+						'上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+					},
+					"locale": {
+						format: 'YYYY-MM-DD HH:mm',
+						applyLabel: '确定',
+						cancelLabel: '取消',
+						daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月'],
+						firstDay: 1
+					}
+				}, function (start) {
+					$(this).val(start.format("YYYY-MM-DD HH:mm"));
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<tr>
+				<td bgcolor="#f5f5f5"><a href="ad_main.php">广告管理</a> &gt; 修改广告</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
+						<form action="ad_edit.php" method="post" enctype="multipart/form-data" name="form1">
+							<input type="hidden" name="aid" value="<?php echo $aid?>">
+							<input type="hidden" name="dopost" value="saveedit">
+							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+							<tr>
+								<td>广告位标识：</td>
+								<td colspan="2"><?php echo $row['tagname'];?></td>
+							</tr>
+							<tr>
+								<td>广告分类：</td>
+								<td colspan="2">
+									<select name="clsid" id="clsid" class="biz-input-sm">
+										<option value="0">默认分类</option>
+										<?php echo $option;?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>广告投放范围：</td>
+								<td colspan="2">
+									<?php
+									$tl = new TypeLink(0);
+									$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
+									echo "<select name='typeid' class='biz-input-md'>";
+									echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>";
+									echo $typeOptions;
+									echo "</select>";
+									?>（如果在所选栏目找不到指定标识的广告文档，系统会自动搜索父栏目）
+								</td>
+							</tr>
+							<tr>
+								<td>广告位名称：</td>
+								<td colspan="2"><input type="text" name="adname" id="adname" value="<?php echo $row['adname']?>" class="biz-input-md"></td>
+							</tr>
+							<tr>
+								<td>时间限制：</td>
+								<td colspan="2">
+									<label><input type="radio" name="timeset" value="0" <?php if ($row['timeset']==0) echo "checked='1'";?>> 永不过期</label>
+									<label><input type="radio" name="timeset" value="1" <?php if ($row['timeset']==1) echo "checked='1'";?>> 在设内时间内有效</label>
+								</td>
+							</tr>
+							<tr>
+								<td>投放时间：</td>
+								<td colspan="2">
+									从：<input type="text" name="starttime" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" class="biz-input-sm">
+									到：<input type="text" name="endtime" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" class="biz-input-sm">
+								</td>
+							</tr>
+							<tr>
+								<td>正常显示文档：</td>
+								<td width="70%"><textarea name="normbody" id="normbody" class="biz-textarea-xl"><?php echo dede_htmlspecialchars(stripslashes($row['normbody']))?></textarea>
+								</td>
+								<td width="10%"></td>
+							</tr>
+							<tr>
+								<td>过期显示文档：</td>
+								<td><textarea name="expbody" id="expbody" class="biz-textarea-xl"><?php echo dede_htmlspecialchars($row['expbody'])?></textarea>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+							</tr>
+						</form>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>

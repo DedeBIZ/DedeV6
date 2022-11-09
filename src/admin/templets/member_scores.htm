@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>会员管理-积分头衔设置</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    function CheckAll(form, prefix, checkall) {
-      var checkall = checkall ? checkall : 'chkall';
-      for (var i = 0; i < form.elements.length; i++) {
-        var e = form.elements[i];
-        if (e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix)))) {
-          e.checked = form.elements[checkall].checked;
-        }
-      }
-    }
-  </script>
-</head>
-<body>
-  <form action="member_scores.php" method="post">
-    <input name="action" type="hidden" value="save">
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-      <tr>
-        <td colspan="5" bgcolor="#f5f5f5">积分头衔设置</td>
-      </tr>
-      <tr>
-        <td width="6%" align="center" bgcolor="#fbfce2"><input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)"> 反选</td>
-        <td width="23%" align="center" bgcolor="#fbfce2">积分大于</td>
-        <td width="30%" align="center" bgcolor="#fbfce2">星星数</td>
-        <td width="23%" align="center" bgcolor="#fbfce2">级别头衔</td>
-        <td width="30%" align="center" bgcolor="#fbfce2">是否默认</td>
-      </tr>
-      <?php foreach($Scores as $v){?>
-      <tr onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td align="center"><input type="checkbox" name="Ids-<?php echo $v['id']?>" id="Ids-<?php echo $v['id']?>" value="1"></td>
-        <td align="center"><input type="text" name="integral-<?php echo $v['id']?>" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" class="biz-input-sm"></td>
-        <td align="center"><input type="text" name="icon-<?php echo $v['id']?>" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" class="biz-input-sm"></td>
-        <td align="center"><input type="text" name="titles-<?php echo $v['id']?>" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" class="biz-input-sm"></td>
-        <td align="center">
-          <select name="isdefault-<?php echo $v['id']?>" id="isdefault-<?php echo $v['id']?>">
-            <option value="1" <?php if ($v['isdefault']) echo " selected='selected'";?>>是</option>
-            <option value="0" <?php if (!$v['isdefault']) echo " selected='selected'";?>>否</option>
-          </select>
-        </td>
-      </tr>
-      <?php }?>
-      <tr>
-        <td>新增：</td>
-        <td align="center"><input type="text" name="add_integral" id="add_integral" class="biz-input-sm"></td>
-        <td align="center"><input type="text" name="add_icon" id="add_icon" class="biz-input-sm"></td>
-        <td align="center"><input type="text" name="add_titles" id="add_titles" class="biz-input-sm"></td>
-        <td align="center">
-          <select name="add_isdefault" id="add_isdefault">
-            <option value="1">是</option>
-            <option value="0">否</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="5" bgcolor="#f5f5f5" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">提交</button></td>
-      </tr>
-    </table>
-  </form>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>会员管理-积分头衔设置</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			function CheckAll(form, prefix, checkall) {
+				var checkall = checkall ? checkall : 'chkall';
+				for (var i = 0; i < form.elements.length; i++) {
+					var e = form.elements[i];
+					if (e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix)))) {
+						e.checked = form.elements[checkall].checked;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form action="member_scores.php" method="post">
+			<input name="action" type="hidden" value="save">
+			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+				<tr>
+					<td colspan="5" bgcolor="#f5f5f5">积分头衔设置</td>
+				</tr>
+				<tr>
+					<td width="6%" align="center" bgcolor="#e9ecef"><input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)"> 反选</td>
+					<td width="23%" align="center" bgcolor="#e9ecef">积分大于</td>
+					<td width="30%" align="center" bgcolor="#e9ecef">星星数</td>
+					<td width="23%" align="center" bgcolor="#e9ecef">级别头衔</td>
+					<td width="30%" align="center" bgcolor="#e9ecef">是否默认</td>
+				</tr>
+				<?php foreach($Scores as $v){?>
+				<tr onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+					<td align="center"><input type="checkbox" name="Ids-<?php echo $v['id']?>" id="Ids-<?php echo $v['id']?>" value="1"></td>
+					<td align="center"><input type="text" name="integral-<?php echo $v['id']?>" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" class="biz-input-sm"></td>
+					<td align="center"><input type="text" name="icon-<?php echo $v['id']?>" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" class="biz-input-sm"></td>
+					<td align="center"><input type="text" name="titles-<?php echo $v['id']?>" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" class="biz-input-sm">
+					</td>
+					<td align="center">
+						<select name="isdefault-<?php echo $v['id']?>" id="isdefault-<?php echo $v['id']?>">
+							<option value="1" <?php if ($v['isdefault']) echo " selected='selected'";?>>是</option>
+							<option value="0" <?php if (!$v['isdefault']) echo " selected='selected'";?>>否</option>
+						</select>
+					</td>
+				</tr>
+				<?php }?>
+				<tr>
+					<td>新增：</td>
+					<td align="center"><input type="text" name="add_integral" id="add_integral" class="biz-input-sm"></td>
+					<td align="center"><input type="text" name="add_icon" id="add_icon" class="biz-input-sm"></td>
+					<td align="center"><input type="text" name="add_titles" id="add_titles" class="biz-input-sm"></td>
+					<td align="center">
+						<select name="add_isdefault" id="add_isdefault">
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5" bgcolor="#f5f5f5" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">提交</button></td>
+				</tr>
+			</table>
+		</form>
+	</body>
 </html>

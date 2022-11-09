@@ -1,83 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>新增自定义表单</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/diy.js"></script>
-  <script>
-    function checkSubmit() {
-      if (document.form1.name.value == '') {
-        ShowMsg("自定义表单名称不能为空");
-        return false;
-      }
-      return true;
-    }
-  </script>
-</head>
-<body>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-    <form name="form1" action="diy_add.php?action=add" method="post" onSubmit="return checkSubmit();">
-      <tr>
-        <td bgcolor="#f5f5f5" colspan="2"><a href="diy_main.php">自定义表单管理</a> &gt; 新增自定义表单</td>
-      </tr>
-      <tr>
-        <td width="260">diyid：<span id="help1">数字，创建后不可修改，并具有唯一性推荐使用默认值</span></td>
-        <td>
-          <input type="text" name="diyid" id="diyid" value="<?php echo $newdiyid?>" class="biz-input-sm"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help1')"></i> 
-        </td>
-      </tr>
-      <tr>
-        <td>自定义表单名称：<br>
-          <span id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
-        <td>
-          <input type="text" name="name" id="name" value="自定义表单<?php echo $newdiyid;?>" class="biz-input-sm"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')"></i> 
-        </td>
-      </tr>
-      <tr>
-        <td>数据表：<br>
-          <span id="help5">必须由英文、数字、下划线组成，用于保存自定义表单数据，不能和已有表名重复，创建后不可修改表名</span></td>
-        <td>
-          <input type="text" name="table" id="table" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>" class="biz-input-sm"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')"></i> 
-        </td>
-      </tr>
-      <tr>
-        <td>字段配置：</td>
-        <td><span class="style1">建立自定义表单后在“修改”自定义表单的地方添加字段即可</span></td>
-      </tr>
-      <tr>
-        <td>列表模板：</td>
-        <td><input type="text" name="listtemplate" id="listtemplate" value="list_diyform<?php echo $newdiyid;?>.htm" class="biz-input-sm"></td>
-      </tr>
-      <tr>
-        <td>文档模板：</td>
-        <td><input type="text" name="viewtemplate" id="viewtemplate" value="view_diyform<?php echo $newdiyid;?>.htm" class="biz-input-sm"></td>
-      </tr>
-      <tr>
-        <td>发布模板：</td>
-        <td><input type="text" name="posttemplate" id="posttemplate" value="post_diyform<?php echo $newdiyid;?>.htm" class="biz-input-sm"></td>
-      </tr>
-      <tr>
-        <td>前台列表和文档页公开：</td>
-        <td>
-          <label><input type="radio" name="public" value="2"> 完全公开</label>
-          <label><input type="radio" name="public" value="1" checked="1"> 公开审核过的</label>
-          <label><input type="radio" name="public" value="0"> 不公开</label>
-        </td>
-      </tr>
-      <tr>
-        <td bgcolor="#f5f5f5" colspan="2" align="center" class="py-2">
-          <button type="submit" name="button" id="button" class="btn btn-success btn-sm">保存</button>
-          <button type="button" class="btn btn-success btn-sm" id="button2" onclick="location='diy_main.php';">返回</button>
-        </td>
-      </tr>
-    </form>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>新增自定义表单</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/diy.js"></script>
+		<script>
+			function checkSubmit() {
+				if (document.form1.name.value == '') {
+					ShowMsg("自定义表单名称不能为空");
+					return false;
+				}
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+			<form name="form1" action="diy_add.php?action=add" method="post" onSubmit="return checkSubmit();">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="diy_main.php">自定义表单管理</a> &gt; 新增自定义表单</td>
+				</tr>
+				<tr>
+					<td width="260">diyid：<span id="help1">数字，创建后不可修改，并具有唯一性推荐使用默认值</span></td>
+					<td><input type="text" name="diyid" id="diyid" value="<?php echo $newdiyid?>" class="biz-input-sm"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help1')"></i></td>
+				</tr>
+				<tr>
+					<td>自定义表单名称：<span id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
+					<td><input type="text" name="name" id="name" value="自定义表单<?php echo $newdiyid;?>" class="biz-input-sm"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')"></i></td>
+				</tr>
+				<tr>
+					<td>数据表：<span id="help5">必须由英文、数字、下划线组成，用于保存自定义表单数据，不能和已有表名重复，创建后不可修改表名</span></td>
+					<td><input type="text" name="table" id="table" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>" class="biz-input-sm"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')"></i></td>
+				</tr>
+				<tr>
+					<td>字段配置：</td>
+					<td><span class="style1">建立自定义表单后在“修改”自定义表单的地方添加字段即可</span></td>
+				</tr>
+				<tr>
+					<td>列表模板：</td>
+					<td><input type="text" name="listtemplate" id="listtemplate" value="list_diyform<?php echo $newdiyid;?>.htm" class="biz-input-sm"></td>
+				</tr>
+				<tr>
+					<td>文档模板：</td>
+					<td><input type="text" name="viewtemplate" id="viewtemplate" value="view_diyform<?php echo $newdiyid;?>.htm" class="biz-input-sm"></td>
+				</tr>
+				<tr>
+					<td>发布模板：</td>
+					<td><input type="text" name="posttemplate" id="posttemplate" value="post_diyform<?php echo $newdiyid;?>.htm" class="biz-input-sm"></td>
+				</tr>
+				<tr>
+					<td>前台列表和文档页公开：</td>
+					<td>
+						<label><input type="radio" name="public" value="2"> 完全公开</label>
+						<label><input type="radio" name="public" value="1" checked="1"> 公开审核过的</label>
+						<label><input type="radio" name="public" value="0"> 不公开</label>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center" class="py-2">
+						<button type="submit" name="button" id="button" class="btn btn-success btn-sm">保存</button>
+						<button type="button" class="btn btn-success btn-sm" id="button2" onclick="location='diy_main.php';">返回</button>
+					</td>
+				</tr>
+			</form>
+		</table>
+	</body>
 </html>

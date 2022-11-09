@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>标签源码碎片管理</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-</head>
-<body>
-  <table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable my-3">
-    <tr align="center">
-      <td width="25%" bgcolor="#f5f5f5">标签文件名</td>
-      <td width="33%" bgcolor="#f5f5f5" align="left">标签说明</td>
-      <td width="22%" bgcolor="#f5f5f5">修改时间</td>
-      <td width="20%" bgcolor="#f5f5f5">操作</td>
-    </tr>
-    <tr>
-      <td colspan="4"><div class="alert alert-danger mb-0">修改系统标签有风险，请小心操作，文件存放在 ../system/taglib文件夹</div></td>
-    </tr>
-    <?php
-     $dh = dir($libdir);
-     while($filename=$dh->read())
-     {
-   	  if (!preg_match("#\.php$#", $filename)) continue;
-   	  $filetime = filemtime($libdir.'/'.$filename);
-      $filetime = MyDate("Y-m-d H:i",$filetime);
-      $fileinfo = GetHelpInfo(str_replace('.lib.php','',$filename));
-    ?>
-    <tr onMouseMove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td><img src="../static/web/img/htm.gif"><?php echo $filename;?></td>
-      <td><?php echo $fileinfo;?></td>
-      <td align="center"><?php echo $filetime;?></td>
-      <td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a></td>
-    </tr>
-    <?php }?>
-    <tr>
-      <td colspan="4"><a href="tpl.php?action=addnewtag" class="btn btn-success btn-sm">增加一个新的标签</a></td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>标签源码碎片管理</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+	</head>
+	<body>
+		<table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable my-3">
+			<tr bgcolor="#f5f5f5" align="center">
+				<td width="25%">标签文件名</td>
+				<td width="33%" align="left">标签说明</td>
+				<td width="22%">修改时间</td>
+				<td width="20%">操作</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div class="alert alert-danger mb-0">修改系统标签有风险，请小心操作，文件存放在 ../system/taglib文件夹</div>
+				</td>
+			</tr>
+			<?php
+			$dh = dir($libdir);
+			while($filename=$dh->read())
+			{
+				if (!preg_match("#\.php$#", $filename)) continue;
+				$filetime = filemtime($libdir.'/'.$filename);
+				$filetime = MyDate("Y-m-d H:i",$filetime);
+				$fileinfo = GetHelpInfo(str_replace('.lib.php','',$filename));
+			?>
+			<tr onMouseMove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<td><img src="../static/web/img/htm.gif"><?php echo $filename;?></td>
+				<td><?php echo $fileinfo;?></td>
+				<td align="center"><?php echo $filetime;?></td>
+				<td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a></td>
+			</tr>
+			<?php }?>
+			<tr>
+				<td colspan="4"><a href="tpl.php?action=addnewtag" class="btn btn-success btn-sm">增加一个新的标签</a></td>
+			</tr>
+		</table>
+	</body>
 </html>

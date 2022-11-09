@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>系统菜单</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -16,29 +16,29 @@
 			?>
 		</ul>
 		<script>
-		$(function() {
-			var menu = function(el, multiple) {
-				this.el = el || {};
-				this.multiple = multiple || false;
-				var links = this.el.find('.link');
-				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-			}
-			menu.prototype.dropdown = function(e) {
-				var $el = e.data.el;
-					$this = $(this),
-					$next = $this.next();
-					$next.slideToggle();
-					$this.parent().toggleClass('open');
-				if (!e.data.multiple) {
-					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-				};
-			}	
-			var menu = new menu($('#menu'), false);
-			$(".submenu li a").click(function(e){
-				$(".submenu li").removeClass('active');
-				$(this).parent().addClass('active');
-			})
-		});
+			$(function() {
+				var menu = function(el, multiple) {
+					this.el = el || {};
+					this.multiple = multiple || false;
+					var links = this.el.find('.link');
+					links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+				}
+				menu.prototype.dropdown = function(e) {
+					var $el = e.data.el;
+						$this = $(this),
+						$next = $this.next();
+						$next.slideToggle();
+						$this.parent().toggleClass('open');
+					if (!e.data.multiple) {
+						$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+					};
+				}	
+				var menu = new menu($('#menu'), false);
+				$(".submenu li a").click(function(e) {
+					$(".submenu li").removeClass('active');
+					$(this).parent().addClass('active');
+				})
+			});
 		</script>
 	</body>
 </html>

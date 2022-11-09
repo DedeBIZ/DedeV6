@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>全局标记测试</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -32,13 +32,9 @@
 					<td bgcolor="#f5f5f5" colspan="2">全局标记测试</td>
 				</tr>
 				<tr>
-					<td colspan="2"><div class="alert alert-info mb-0">全局标记指的是应用在网站主页、单独页面、封面栏目使用的单独的模板标记，在列表或文档模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文档或列表所在的栏目，如果您要测试的标记是在列表或文档中使用，请指定环境变量（栏目id）各标记的具体含义和用途，请在<a href="https://www.dedebiz.com/help" target="_blank">模板标记参考</a>一章查阅</div></td>
-				</tr>
-				<tr>
-					<td colspan="2">输入要测试的局部代码：</td>
-				</tr>
-				<tr>
-					<td colspan="2"><textarea name="partcode" id="partcode" class="biz-textarea-xl"></textarea></td>
+					<td colspan="2">
+						<div class="alert alert-info mb-0">全局标记指的是应用在网站主页、单独页面、封面栏目使用的单独的模板标记，在列表或文档模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文档或列表所在的栏目，如果您要测试的标记是在列表或文档中使用，请指定环境变量（栏目id）各标记的具体含义和用途，请在<a href="https://www.dedebiz.com/help" target="_blank">模板标记参考</a>一章查阅</div>
+					</td>
 				</tr>
 				<tr>
 					<td>环境变量：</td>
@@ -48,14 +44,17 @@
 						$tl = new TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
 						echo "<select name='typeid' class='biz-input-md'>";
-						if ($cid=="0") echo "<option value='0' selected>不使用环境ID</option>";
+						if ($cid=="0") echo "<option value='0' selected>不使用环境</option>";
 						echo $typeOptions;
 						echo "</select>";
 						?>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#fbfce2" colspan="2" align="center"><button type="submit" onClick="DoSubmit('gettag')" class="btn btn-success btn-sm">提交测试</button></td>
+					<td colspan="2"><textarea name="partcode" id="partcode" class="biz-textarea-xl"></textarea></td>
+				</tr>
+				<tr>
+					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="submit" onClick="DoSubmit('gettag')" class="btn btn-success btn-sm">提交测试</button></td>
 				</tr>
 			</form>
 			<tr>

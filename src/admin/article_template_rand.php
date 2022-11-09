@@ -87,7 +87,7 @@ function DoRand(jobname)
     });
 }
 </script>
-<div id='loaddiv' style='display:none'><center><img src='../static/web/img/loadinglit.gif'></center></div>
+<div id='loaddiv' class='text-center py-2' style='display:none'><img src='../static/web/img/loadinglit.gif'></div>
 <table width='100%' align='center'>
 <tr>
     <td>

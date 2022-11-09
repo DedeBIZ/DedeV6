@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>增加自定义页面</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    function checkSubmit() {
-      if (document.form1.title.value == "") {
-        ShowMsg("页面名称不能为空");
-        document.form1.title.focus();
-        return false;
-      }
-      if (document.form1.nfilename.value == "") {
-        ShowMsg("文件名不能为空");
-        document.form1.nfilename.focus();
-        return false;
-      }
-    }
-  </script>
-</head>
-<body>
-  <form action="templets_one_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
-    <input type="hidden" name="dopost" value="save">
-    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-      <tr>
-        <td bgcolor="#f5f5f5" colspan="2"><a href="templets_one.php">文档单页管理</a> &gt; 增加自定义页面</td>
-      </tr>
-      <tr>
-        <td colspan="2"><div class="alert alert-warning mb-0">文档单页管理仅适用于页面较少的情况（建议小于500个页面）大量文档的用文档模型进行管理，文档模板里用“{dede:field name='body'/}”来获得</div></td>
-      </tr>
-      <tr>
-        <td width="260">页面标题：</td>
-        <td><input type="text" name="title" id="title" class="biz-input-md"></td>
-      </tr>
-      <tr>
-        <td>页面关键词：</td>
-        <td><input type="text" name="keywords" id="keywords" class="biz-input-md"></td>
-      </tr>
-      <tr>
-        <td>页面摘要信息：</td>
-        <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
-      </tr>
-      <tr>
-        <td>关联标识：</td>
-        <td>
-          <input type="text" name="likeid" id="likeid" value="" class="biz-input-md">
-          <?php
-        	echo "<select name='likeidsel' id='likeidsel' class='biz-input-sm'>";
-        	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
-        	echo "<option value='default'>default</option>";
-        	while($arr = $dsql->GetArray('s'))
-        	{
-        		echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
-        	}
-        	echo "</select>";
-        	?>（通过这个标识来识别类同页面，模板中用“{dede:likesgpage id='标识'/}”调用有相同标识的页面）
-        </td>
-      </tr>
-      <tr>
-        <td>保存位置：</td>
-        <td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/diy.html';?>" class="biz-input-md">（填写路径文件夹）</td>
-      </tr>
-      <tr>
-        <td>模板文件名：</td>
-        <td><input type="text" name="template" id="template" value="{style}/index_article.htm" class="biz-input-md">（填写模板名称）</td>
-      </tr>
-      <tr>
-        <td>是否编译文档：</td>
-        <td>
-          <?php if (!DEDEBIZ_SAFE_MODE) {?><label><input type="radio" name="ismake" value="1"> 含模板标记，要编译</label><?php }?>
-          <label><input type="radio" name="ismake" value="0" checked> 不含模板标记，不需要编译</label>
-        </td>
-      </tr>
-      <tr> 
-        <td colspan="2"><?php GetEditor("body","","400","Default","print","false");?></td>
-      </tr>
-      <tr>
-        <td colspan="2" bgcolor="#f5f5f5" align="center" class="py-2">
-          <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
-          <button type="button" onClick="document.form1.reset();" class="btn btn-success btn-sm">重置</button>
-        </td>
-      </tr>
-    </table>
-  </form>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>增加自定义页面</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("页面名称不能为空");
+					document.form1.title.focus();
+					return false;
+				}
+				if (document.form1.nfilename.value == "") {
+					ShowMsg("文件名不能为空");
+					document.form1.nfilename.focus();
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form action="templets_one_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
+			<input type="hidden" name="dopost" value="save">
+			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="templets_one.php">文档单页管理</a> &gt; 增加自定义页面</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="alert alert-warning mb-0">文档单页管理仅适用于页面较少的情况（建议小于500个页面）大量文档的用文档模型进行管理，文档模板里用“{dede:field name='body'/}”来获得</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="260">页面标题：</td>
+					<td><input type="text" name="title" id="title" class="biz-input-md"></td>
+				</tr>
+				<tr>
+					<td>页面关键词：</td>
+					<td><input type="text" name="keywords" id="keywords" class="biz-input-md"></td>
+				</tr>
+				<tr>
+					<td>页面摘要信息：</td>
+					<td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
+				</tr>
+				<tr>
+					<td>关联标识：</td>
+					<td>
+						<input type="text" name="likeid" id="likeid" value="" class="biz-input-md">
+						<?php
+						echo "<select name='likeidsel' id='likeidsel' class='biz-input-sm'>";
+						$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
+						echo "<option value='default'>default</option>";
+						while($arr = $dsql->GetArray('s'))
+						{
+							echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+						}
+						echo "</select>";
+						?>（通过这个标识来识别类同页面，模板中用“{dede:likesgpage id='标识'/}”调用有相同标识的页面）
+					</td>
+				</tr>
+				<tr>
+					<td>保存位置：</td>
+					<td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/diy.html';?>" class="biz-input-md">（填写路径文件夹）</td>
+				</tr>
+				<tr>
+					<td>模板文件名：</td>
+					<td><input type="text" name="template" id="template" value="{style}/index_article.htm" class="biz-input-md">（填写模板名称）</td>
+				</tr>
+				<tr>
+					<td>是否编译文档：</td>
+					<td>
+						<?php if (!DEDEBIZ_SAFE_MODE) {?><label><input type="radio" name="ismake" value="1"> 含模板标记，要编译</label><?php }?>
+						<label><input type="radio" name="ismake" value="0" checked> 不含模板标记，不需要编译</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><?php GetEditor("body","","400","Default","print","false");?></td>
+				</tr>
+				<tr>
+					<td colspan="2" bgcolor="#f5f5f5" align="center" class="py-2">
+						<button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
+						<button type="button" onClick="document.form1.reset();" class="btn btn-success btn-sm">重置</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
 </html>

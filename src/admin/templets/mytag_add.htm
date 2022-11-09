@@ -1,120 +1,122 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>增加自定义标记</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
-  <script src="../static/web/js/moment.min.js"></script>
-  <script src="../static/web/js/daterangepicker.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    function checkSubmit() {
-      if (document.form1.tagname.value == "") {
-        ShowMsg("标记名称不能为空");
-        document.form1.tagname.focus();
-        return false;
-      }
-    }
-    $(document).ready(function () {
-      $('.datepicker').daterangepicker({
-        "singleDatePicker": true,
-        "autoApply": true,
-        "showDropdowns": true,
-        "linkedCalendars": false,
-        "timePicker": true,
-        "timePicker24Hour": true,
-        //"timePickerSeconds": true,
-        "showCustomRangeLabel": false,
-        ranges: {
-          '今日': [moment(), moment()],
-          '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          '本月': [moment().startOf('month'), moment().startOf('month')],
-          '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
-        },
-        "locale": {
-          format: 'YYYY-MM-DD HH:mm',
-          applyLabel: '确定',
-          cancelLabel: '取消',
-          daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
-          monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
-            '七月', '八月', '九月', '十月', '十一月', '十二月'],
-          firstDay: 1
-        }
-      }, function (start) {
-        $(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
-      });
-    })
-  </script>
-</head>
-<body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-    <tr>
-      <td bgcolor="#f5f5f5"><a href="mytag_main.php">自定义宏标记</a> &gt; 增加新标记</td>
-    </tr>
-    <tr>
-      <td>
-        <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
-          <form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
-            <input type="hidden" name="dopost" value="save">
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-            <tr>
-              <td colspan="3"><div class="alert alert-info mb-0">自定义标记的调用方法：{dede:mytag name='标记名称' ismake='是否含板块代码（yes或no）' typeid='栏目id'/} 1、name 标记名称，该项是必须的属性，以下2、3是可选属性；2、ismake 默认是no表示设定的纯网页代码，yes表示含板块标记的代码；3、typeid表示所属栏目的id，默认为0，表示所有栏目通用的显示文档，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</div></td>
-            </tr>
-            <tr>
-              <td width="15%" align="center">所属栏目：</td>
-              <td colspan="2">
-                <?php
-               	$tl = new TypeLink(0);
-               	$typeOptions = $tl->GetOptionArray(0,0,0);
-                echo "<select name='typeid' class='biz-input-md'>";
-                echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
-                echo $typeOptions;
-                echo "</select>";
-    			      ?>
-              </td>
-            </tr>
-            <tr>
-              <td align="center">标记名称：</td>
-              <td colspan="2"><input type="text" name="tagname" id="tagname"></td>
-            </tr>
-            <tr>
-              <td align="center">时间限制：</td>
-              <td colspan="2">
-                <label><input type="radio" name="timeset" value="0" checked="1"> 永不过期</label>
-                <label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
-              </td>
-            </tr>
-            <tr>
-              <td align="center">开始时间：</td>
-              <td colspan="2"><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker"></td>
-            </tr>
-            <tr>
-              <td align="center">结束时间：</td>
-              <td colspan="2"><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker"></td>
-            </tr>
-            <tr>
-              <td align="center">正常显示文档：</td>
-              <td width="70%"><textarea name="normbody" id="normbody" class="biz-textarea-xl"></textarea></td>
-              <td width="9%"></td>
-            </tr>
-            <tr>
-              <td align="center">过期显示文档：</td>
-              <td><textarea name="expbody" id="expbody" class="biz-textarea-xl"></textarea></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td colspan="3" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-            </tr>
-          </form>
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>增加自定义标记</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="../static/web/js/moment.min.js"></script>
+		<script src="../static/web/js/daterangepicker.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			function checkSubmit() {
+				if (document.form1.tagname.value == "") {
+					ShowMsg("标记名称不能为空");
+					document.form1.tagname.focus();
+					return false;
+				}
+			}
+			$(document).ready(function () {
+				$('.datepicker').daterangepicker({
+					"singleDatePicker": true,
+					"autoApply": true,
+					"showDropdowns": true,
+					"linkedCalendars": false,
+					"timePicker": true,
+					"timePicker24Hour": true,
+					//"timePickerSeconds": true,
+					"showCustomRangeLabel": false,
+					ranges: {
+						'今日': [moment(), moment()],
+						'昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+						'本月': [moment().startOf('month'), moment().startOf('month')],
+						'上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+					},
+					"locale": {
+						format: 'YYYY-MM-DD HH:mm',
+						applyLabel: '确定',
+						cancelLabel: '取消',
+						daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月'],
+						firstDay: 1
+					}
+				}, function (start) {
+					$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<tr>
+				<td bgcolor="#f5f5f5"><a href="mytag_main.php">自定义宏标记</a> &gt; 增加新标记</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
+						<form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1"
+							onSubmit="return checkSubmit()">
+							<input type="hidden" name="dopost" value="save">
+							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+							<tr>
+								<td colspan="3">
+									<div class="alert alert-info mb-0">自定义标记的调用方法：{dede:mytag name='标记名称' ismake='是否含板块代码（yes或no）' typeid='栏目id'/} 1、name标记名称，该项是必须的属性，以下2、3是可选属性；2、ismake默认是no表示设定的纯网页代码，yes表示含板块标记的代码；3、typeid表示所属栏目的id，默认为0，表示所有栏目通用的显示文档，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="15%" align="center">所属栏目：</td>
+								<td colspan="2">
+									<?php
+									$tl = new TypeLink(0);
+									$typeOptions = $tl->GetOptionArray(0,0,0);
+									echo "<select name='typeid' class='biz-input-md'>";
+									echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
+									echo $typeOptions;
+									echo "</select>";
+									?>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">标记名称：</td>
+								<td colspan="2"><input type="text" name="tagname" id="tagname"></td>
+							</tr>
+							<tr>
+								<td align="center">时间限制：</td>
+								<td colspan="2">
+									<label><input type="radio" name="timeset" value="0" checked="1"> 永不过期</label>
+									<label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">开始时间：</td>
+								<td colspan="2"><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker"></td>
+							</tr>
+							<tr>
+								<td align="center">结束时间：</td>
+								<td colspan="2"><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker"></td>
+							</tr>
+							<tr>
+								<td align="center">正常显示文档：</td>
+								<td width="70%"><textarea name="normbody" id="normbody" class="biz-textarea-xl"></textarea></td>
+								<td width="9%"></td>
+							</tr>
+							<tr>
+								<td align="center">过期显示文档：</td>
+								<td><textarea name="expbody" id="expbody" class="biz-textarea-xl"></textarea></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+							</tr>
+						</form>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>

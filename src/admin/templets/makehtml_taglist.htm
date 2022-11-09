@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>更新标签</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -24,7 +24,9 @@
 					<td bgcolor="#f5f5f5" colspan="2">更新标签</td>
 				</tr>
 				<tr>
-					<td colspan="2"><div class="alert alert-info mb-0">标签说明：生成静态文件后，访问动态文件则直接跳转到静态文件，如果需要动态访问，删除对应文件即可。标签首页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm 标签列表页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/taglist.htm</div></td>
+					<td colspan="2">
+						<div class="alert alert-info mb-0">标签说明：生成静态文件后，访问动态文件则直接跳转到静态文件，如果需要动态访问，删除对应文件即可。标签首页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm 标签列表页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/taglist.htm</div>
+					</td>
 				</tr>
 				<?php
 				if ($tagid > 0) {
@@ -55,7 +57,7 @@
 					<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" class="biz-input-sm"> 个文件</td>
 				</tr>
 				<tr>
-					<td bgcolor="#fbfce2" colspan="2" align="center"><button type="button" name="b112" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">生成标签</button></td>
+					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="button" name="b112" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">生成标签</button></td>
 				</tr>
 			</form>
 			<tr>

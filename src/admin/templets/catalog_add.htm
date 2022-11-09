@@ -1,473 +1,473 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>添加栏目</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-  var channelArray = new Array();
-  <?php
-  $i = 0;
-  foreach($channelArray as $k=> $arr)
-    {
-      echo "channelArray[$k] = \"{$arr['nid']}\";";
-    }
-  ?>
-  function Nav() {
-    if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-    else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-    else return "OT";
-  }
-  function SelectTemplets(fname) {
-    var pos = GetWinPos(800,600);
-    window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-  }
-  function ShowHide(objname) {
-    var obj = document.getElementById(objname);
-    if (obj.style.display != "none")
-    obj.style.display = "none";
-    else {
-      if (Nav() == 'IE') obj.style.display = "block";
-      else obj.style.display = "table-row";
-    }
-  }
-  function ShowObj(objname) {
-    var obj = document.getElementById(objname);
-    if (Nav() == 'IE') obj.style.display = "block";
-    else obj.style.display = "table";
-  }
-  function HideObj(objname) {
-    var obj = document.getElementById(objname);
-    obj.style.display = "none";
-  }
-  function ShowItem1() {
-    ShowObj('head1'); ShowObj('needset');
-    HideObj('head2'); HideObj('adset');
-    HideObj('head3'); HideObj('ctset');
-  }
-  function ShowItem2() {
-    ShowObj('head2'); ShowObj('adset');
-    HideObj('head1'); HideObj('needset');
-    HideObj('head3'); HideObj('ctset');
-  }
-  function ShowItem3() {
-    ShowObj('head3'); ShowObj('ctset');
-    HideObj('head1'); HideObj('needset');
-    HideObj('head2'); HideObj('adset');
-  }
-  function CheckTypeDir() {
-    var upinyin = document.getElementById('upinyin');
-    var tpobj = document.getElementById('typedir');
-    if (upinyin.checked) tpobj.style.display = "none";
-    else tpobj.style.display = "block";
-  }
-  function ParTemplet(obj) {
-    var sevvalue = channelArray[obj.value];
-    var tobj = document.getElementById('smclass');
-    var tempindex = document.getElementsByName('tempindex');
-    var templist = document.getElementsByName('templist');
-    var temparticle = document.getElementsByName('temparticle');
-    var dfstyle = document.getElementsByName('dfstyle');
-    var dfstyleValue = dfstyle[0].value;
-    tempindex[0].value = dfstyleValue + "/index_" + sevvalue + ".htm";
-    templist[0].value = dfstyleValue + "/list_" + sevvalue + ".htm";
-    temparticle[0].value = dfstyleValue + "/article_" + sevvalue + ".htm";
-    if (obj.value < 0) {
-      if (Nav() == 'IE') tobj.style.display = "block";
-      else tobj.style.display = "table-row";
-    } else {
-      tobj.style.display = "none";
-    }
-  }
-  function checkSubmit() {
-    if (document.form1.typename.value == "") {
-      alert("栏目名称不能为空");
-      document.form1.typename.focus();
-      return false;
-    }
-    return true;
-  }
-  function CheckPathSet() {
-    var surl = document.getElementById("siteurl");
-    var sreid = document.getElementById("reid");
-    var mysel = document.getElementById("truepath3");
-    if (surl.value != "") {
-      if (sreid.value == "0" || sreid.value == "") {
-        mysel.checked = true;
-      }
-    }
-  }
-  function CheckCross() {
-    var cross2 = document.getElementById('cross2');
-    var crossid = document.getElementById('crossid');
-    if (cross2.checked) crossid.style.display = 'block';
-    else crossid.style.display = 'none';
-  }
-  </script>
-</head>
-<body>
-  <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
-    <tr>
-      <form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
-        <input type="hidden" name="dopost" value="save">
-        <input type="hidden" name="reid" id="reid" value="<?php echo $id;?>">
-        <input type="hidden" name="topid" id="topid" value="<?php echo $topid;?>">
-        <?php
-        if ($id>0)
-        {
-          echo " <input type='hidden' name='moresite' value='{$myrow['moresite']}'>";
-          echo " <input type='hidden' name='siteurl' value='{$myrow['siteurl']}'>";
-          echo " <input type='hidden' name='sitepath' value='{$myrow['sitepath']}'>";
-        }
-        ?>
-        <td align="center" bgcolor="#fff">
-          <table width="100%" cellspacing="0" id="head1" cellpadding="0">
-            <tr>
-              <td colspan="2" bgcolor="#fff" align="left">
-                <table cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="80" height="28" align="center" class="biz-itemnote1">常规选项</td>
-                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
-                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-          <table width="100%" cellspacing="0" id="head2" cellpadding="0" style="display:none">
-            <tr>
-              <td colspan="2" bgcolor="#fff">
-                <table  cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
-                    <td width="80" height="28" align="center" class="biz-itemnote1">高级选项</td>
-                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-          <table width="100%" cellspacing="0" id="head3" cellpadding="0" style="display:none">
-            <tr>
-              <td colspan="2" bgcolor="#fff">
-                <table  cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
-                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
-                    <td width="80" height="28" align="center" class="biz-itemnote1">栏目文档</td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table biz-border">
-            <tr>
-              <td width="260" class="biz-td">是否支持投稿：</td>
-              <td class="biz-td">
-                <label><input type="radio" name="issend" value="1" <?php if ($issend==1) echo " checked='checked' ";?>> 支持</label>
-                <label><input type="radio" name="issend" value="0" <?php if ($issend==0) echo " checked='checked' ";?>> 不支持</label>
-              </td>
-            </tr>
-            <tr>
-              <td width="260" class="biz-td">是否隐藏栏目：</td>
-              <td class="biz-td">
-                <label><input type="radio" name="ishidden" value="0" checked="checked"> 显示</label>
-                <label><input type="radio" name="ishidden" value="1"> 隐藏</label>
-              </td>
-            </tr>
-            <tr>
-              <td class="biz-td">文档模型：</td>
-              <td class="biz-td">
-                <select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="biz-input-sm">
-                  <?php
-                  foreach($channelArray as $k=>$arr)
-                  {
-                    if ($k==$channelid) {
-                      $nid = $arr['nid'];
-                      echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
-                    } else {
-                      echo " <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
-                    }
-                  }
-                  ?>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="biz-td">中文名称：</td>
-              <td class="biz-td"><input type="text" name="typename" class="biz-input-md"></td>
-            </tr>
-            <tr>
-              <td class="biz-td">中文概述：</td>
-              <td class="biz-td"><input type="text" name="cnoverview" class="biz-input-md"></td>
-            </tr>
-            <tr>
-              <td class="biz-td">英文名称：</td>
-              <td class="biz-td"><input type="text" name="enname" class="biz-input-md"></td>
-            </tr>
-            <tr>
-              <td class="biz-td">英文概述：</td>
-              <td class="biz-td"><input type="text" name="enoverview" class="biz-input-md"></td>
-            </tr>
-            <tr>
-              <td class="biz-td">栏目大图：</td>
-              <td>
-                <input type="text" name="bigpic" class="biz-input-md">
-                <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
-              </td>
-            </tr>
-            <tr>
-              <td class="biz-td">栏目小图：</td>
-              <td>
-                <input type="text" name="litimg" class="biz-input-md">
-                <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
-              </td>
-            </tr>
-            <tr>
-              <td class="biz-td">排列顺序：</td>
-              <td class="biz-td"><input type="text" name="sortrank" class="biz-input-sm">（由低 &gt; 高）</td>
-            </tr>
-            <tr>
-              <td class="biz-td">浏览权限：</td>
-              <td class="biz-td">
-                <select name="corank" id="corank" class="biz-input-sm">
-                  <?php
-                  $dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0");
-                  $dsql->Execute('cc');
-                  while($row = $dsql->GetObject('cc')){
-                    if ($corank==$row->rank) echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
-                    else {
-                      if ($corank==0){
-                        echo "<option value='".$row->rank."'>".$row->membername."</option>";
-                      }
-                    }
-                  }
-                  ?>
-                </select>
-                （仅限制栏目里的文档浏览权限）
-              </td>
-            </tr>
-            <tr>
-              <td class="biz-td">上级目录：</td>
-              <td class="biz-td">
-                <?php
-                $pardir = '{cmspath}'.$cfg_arcdir;
-                if (!empty($typedir)) $pardir = $typedir.'/';
-                $pardir = preg_replace("#\/{1,}#", '/', $pardir);
-                echo $pardir;
-                ?>
-                <input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir?>">
-              </td>
-            </tr>
-            <tr>
-              <td>文件保存目录：</td>
-              <td class="p-0">
-                <table cellspacing="1" cellpadding="1" class="table-borderless">
-                  <tr>
-                    <td><input type="text" name="typedir" id="typedir" class="biz-input-md"></td>
-                    <td><label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onClick="CheckTypeDir()"> 拼音</label></td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td class="biz-td">目录相对位置：</td>
-              <td class="biz-td">
-                <label><input type="radio" name="referpath" value="parent" checked="chekced"> 上级目录</label>
-                <?php
-                if ($moresite==0){
-                ?>
-                <label><input type="radio" name="referpath" value="cmspath"> 系统根目录</label>
-                <label><input type="radio" name="referpath" value="basepath"> 站点根目录</label>
-                <?php }?>
-              </td>
-            </tr>
-            <tr>
-              <td>栏目列表选项：</td>
-              <td>
-                <label><input type="radio" name="isdefault" value="1" checked="checked"> 链接到默认页</label>
-                <label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
-                <label><input type="radio" name="isdefault" value="-1"> 使用动态页</label>
-              </td>
-            </tr>
-            <tr>
-              <td class="biz-td">默认页的名称：</td>
-              <td class="biz-td"><input type="text" name="defaultname" value="index.html" class="biz-input-md"></td>
-            </tr>
-            <tr>
-              <td class="biz-td">栏目属性：</td>
-              <td class="biz-td">
-                <label><input type="radio" name="ispart" value="0" checked="checked"> 列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                <label><input type="radio" name="ispart" value="1"> 封面栏目（栏目本身不允许发布文档）</label> <br>
-                <label><input type="radio" name="ispart" id="ispart2" value="2"> 外部栏目（在"文件保存目录"处填写网址）</label>
-              </td>
-            </tr>
-            <tr>
-              <td>栏目交叉：<i onClick="ShowHide('helpvarco')" class="fa fa-question-circle" title="帮助"></i> 仅适用列表栏目</td>
-              <td>
-                <label><input type="radio" name="cross" id="cross0" value="0" onClick="CheckCross()" checked="1"> 不交叉</label>
-                <label><input type="radio" name="cross" id="cross1" value="1" onClick="CheckCross()"> 自动获取同名栏目文档</label>
-                <label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()"> 手工指定交叉栏目id（用英文逗号）</label>
-                <br>
-                <textarea name="crossid" id="crossid" style="display:none"></textarea>
-              </td>
-            </tr>
-            <tr id="helpvarco" style="display:none">
-              <td bgcolor="#f5f5f5">栏目交叉说明：</td>
-              <td bgcolor="#f5f5f5">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</td>
-            </tr>
-            <tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
-              <td class="biz-td">绑定小分类：仅适用分类模型</td>
-              <td class="biz-td">
-                <select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
-                  <?php
-                  $sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
-                  $dsql->Execute('s',$sql);
-                  while($arr = $dsql->GetArray('s'))
-                  {
-                    if ($arr['evalue']%500==0) {
-                      echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
-                    }
-                    else if (preg_match("#\.#", $arr['evalue']))
-                    {
-                      echo "<option value='{$arr['evalue']}'>└── {$arr['ename']}</option>";
-                    } else {
-                      echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
-                    }
-                  }
-                  ?>
-                </select>
-                （按Ctrl多选，不选系统将调用全部分类，在<a href="stepselect_main.php">“联动类别管理”</a>中管理）
-              </td>
-            </tr>
-          </table>
-          <table width="100%" cellspacing="0" cellpadding="0" id="adset" class="table biz-border" style="display:none">
-            <?php if ($id==0){?>
-            <tr>
-              <td width="260" class="biz-td">多站点支持：</td>
-              <td class="biz-td">
-                <label><input type="radio" name="moresite" value="1"> 启用</label>
-                <label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>
-                （如果需要绑定二级域名，必须在“系统参数”中设定“支持多站点”）
-              </td>
-            </tr>
-            <tr>
-              <td class="biz-td">绑定域名：</td>
-              <td class="biz-td"><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="biz-input-md">（需要加http开头的链接）</td>
-            </tr>
-            <?php }?>
-            <tr>
-              <td>封面模板：</td>
-              <td>
-                <input type="text" name="tempindex" value="{style}/index_<?php echo $nid?>.htm" class="biz-input-md">
-                <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
-                <i onClick="ShowHide('helpvar1')" class="fa fa-question-circle" title="帮助"></i> 
-              </td>
-            </tr>
-            <tr id="helpvar1" style="display:none">
-              <td bgcolor="#f5f5f5">支持变量：</td>
-              <td bgcolor="#f5f5f5">
-                {tid}表示栏目id，<br>
-                {cid}表示栏目模型的名字id（
-                <?php
-                foreach($channelArray as $k=>$arr)
-                {
-                  echo "{$arr['typename']}({$arr['nid']})、";
-                }
-                ?>）<br>
-                模板文件的默认位置是放在模板目录"cms安装目录<?php echo $cfg_templets_dir ?>"内
-                <input type="hidden" value="{style}" name="dfstyle">
-              </td>
-            </tr>
-            <tr>
-              <td>列表模板：</td>
-              <td>
-                <input type="text" name="templist" value="{style}/list_<?php echo $nid?>.htm" class="biz-input-md">
-                <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
-              </td>
-            </tr>
-            <tr>
-              <td>文档模板：</td>
-              <td>
-                <input type="text" name="temparticle" value="{style}/article_<?php echo $nid?>.htm" class="biz-input-md">
-                <button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
-              </td>
-            </tr>
-            <tr>
-              <td>文档命名规则：</td>
-              <td>
-                <input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule;?>" class="biz-input-md">
-                <i onClick="ShowHide('helpvar2')" class="fa fa-question-circle"  title="帮助"></i> 
-              </td>
-            </tr>
-            <tr id="helpvar2" style="display:none">
-              <td bgcolor="#f5f5f5">支持变量：</td>
-              <td bgcolor="#f5f5f5">
-                {Y}、{M}、{D} 年月日<br>
-                {timestamp} INT类型的UNIX时间戳<br>
-                {aid} 文档id<br>
-                {pinyin} 拼音+文档id<br>
-                {py} 拼音部首+文档id<br>
-                {typedir} 栏目目录<br>
-                {cc} 日期+ID混编后用转换为适合的字母<br>
-                Nginx伪静态默认规则<br>
-                rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
-                rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
-              </td>
-            </tr>
-            <tr>
-              <td>列表命名规则：</td>
-              <td>
-                <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="biz-input-md">
-                <i onClick="ShowHide('helpvar3')" class="fa fa-question-circle"  title="帮助"></i> 
-              </td>
-            </tr>
-            <tr id="helpvar3" style="display:none">
-              <td bgcolor="#f5f5f5">支持变量：</td>
-              <td bgcolor="#f5f5f5">
-                {page} 列表的页码<br>
-                Nginx伪静态默认规则<br>
-                rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
-                rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
-              </td>
-            </tr>
-            <tr>
-              <td>SEO标题：</td>
-              <td><input type="text" name="seotitle" id="seotitle" class="biz-input-md">（标签“{dede:field.seotitle/}”标签调用）</td>
-            </tr>
-            <tr>
-              <td>关键词：</td>
-              <td><textarea name="keywords" id="keywords" class="biz-textarea-sm"></textarea>（标签“{dede:field.keywords/}”标签调用）</td>
-            </tr>
-            <tr>
-              <td>栏目描述：</td>
-              <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea>（标签“{dede:field.description/}”标签调用）</td>
-            </tr>
-          </table>
-          <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
-            <tr>
-              <td><div class="alert alert-info mb-0">说明：栏目文档是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div></td>
-            </tr>
-            <tr>
-              <td><?php GetEditor("content","","400","Default","print","false");?></td>
-            </tr>
-          </table>
-          <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f5f5" class="biz-border border-top-0 mb-3">
-            <tr>
-              <td align="center" class="py-2">
-                <button type="submit" class="btn btn-success btn-sm">保存</button>
-                <a href="catalog_main.php" class="btn btn-success btn-sm">返回</a>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </form>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>添加栏目</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			var channelArray = new Array();
+			<?php
+			$i = 0;
+			foreach($channelArray as $k=> $arr)
+			{
+				echo "channelArray[$k] = \"{$arr['nid']}\";";
+			}
+			?>
+			function Nav() {
+				if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
+				else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+				else return "OT";
+			}
+			function SelectTemplets(fname) {
+				var pos = GetWinPos(800,600);
+				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+			}
+			function ShowHide(objname) {
+				var obj = document.getElementById(objname);
+				if (obj.style.display != "none")
+				obj.style.display = "none";
+				else {
+					if (Nav() == 'IE') obj.style.display = "block";
+					else obj.style.display = "table-row";
+				}
+			}
+			function ShowObj(objname) {
+				var obj = document.getElementById(objname);
+				if (Nav() == 'IE') obj.style.display = "block";
+				else obj.style.display = "table";
+			}
+			function HideObj(objname) {
+				var obj = document.getElementById(objname);
+				obj.style.display = "none";
+			}
+			function ShowItem1() {
+				ShowObj('head1'); ShowObj('needset');
+				HideObj('head2'); HideObj('adset');
+				HideObj('head3'); HideObj('ctset');
+			}
+			function ShowItem2() {
+				ShowObj('head2'); ShowObj('adset');
+				HideObj('head1'); HideObj('needset');
+				HideObj('head3'); HideObj('ctset');
+			}
+			function ShowItem3() {
+				ShowObj('head3'); ShowObj('ctset');
+				HideObj('head1'); HideObj('needset');
+				HideObj('head2'); HideObj('adset');
+			}
+			function CheckTypeDir() {
+				var upinyin = document.getElementById('upinyin');
+				var tpobj = document.getElementById('typedir');
+				if (upinyin.checked) tpobj.style.display = "none";
+				else tpobj.style.display = "block";
+			}
+			function ParTemplet(obj) {
+				var sevvalue = channelArray[obj.value];
+				var tobj = document.getElementById('smclass');
+				var tempindex = document.getElementsByName('tempindex');
+				var templist = document.getElementsByName('templist');
+				var temparticle = document.getElementsByName('temparticle');
+				var dfstyle = document.getElementsByName('dfstyle');
+				var dfstyleValue = dfstyle[0].value;
+				tempindex[0].value = dfstyleValue + "/index_" + sevvalue + ".htm";
+				templist[0].value = dfstyleValue + "/list_" + sevvalue + ".htm";
+				temparticle[0].value = dfstyleValue + "/article_" + sevvalue + ".htm";
+				if (obj.value < 0) {
+					if (Nav() == 'IE') tobj.style.display = "block";
+					else tobj.style.display = "table-row";
+				} else {
+					tobj.style.display = "none";
+				}
+			}
+			function checkSubmit() {
+				if (document.form1.typename.value == "") {
+					alert("栏目名称不能为空");
+					document.form1.typename.focus();
+					return false;
+				}
+				return true;
+			}
+			function CheckPathSet() {
+				var surl = document.getElementById("siteurl");
+				var sreid = document.getElementById("reid");
+				var mysel = document.getElementById("truepath3");
+				if (surl.value != "") {
+					if (sreid.value == "0" || sreid.value == "") {
+						mysel.checked = true;
+					}
+				}
+			}
+			function CheckCross() {
+				var cross2 = document.getElementById('cross2');
+				var crossid = document.getElementById('crossid');
+				if (cross2.checked) crossid.style.display = 'block';
+				else crossid.style.display = 'none';
+			}
+		</script>
+	</head>
+	<body>
+		<table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
+			<tr>
+				<form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
+					<input type="hidden" name="dopost" value="save">
+					<input type="hidden" name="reid" id="reid" value="<?php echo $id;?>">
+					<input type="hidden" name="topid" id="topid" value="<?php echo $topid;?>">
+					<?php
+					if ($id>0)
+					{
+						echo " <input type='hidden' name='moresite' value='{$myrow['moresite']}'>";
+						echo " <input type='hidden' name='siteurl' value='{$myrow['siteurl']}'>";
+						echo " <input type='hidden' name='sitepath' value='{$myrow['sitepath']}'>";
+					}
+					?>
+					<td align="center" bgcolor="#fff">
+						<table width="100%" cellspacing="0" id="head1" cellpadding="0">
+							<tr>
+								<td colspan="2" bgcolor="#fff" align="left">
+									<table cellpadding="0" cellspacing="0">
+										<tr>
+											<td width="80" height="28" align="center" class="biz-itemnote1">常规选项</td>
+											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
+											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<table width="100%" cellspacing="0" id="head2" cellpadding="0" style="display:none">
+							<tr>
+								<td colspan="2" bgcolor="#fff">
+									<table cellpadding="0" cellspacing="0">
+										<tr>
+											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
+											<td width="80" height="28" align="center" class="biz-itemnote1">高级选项</td>
+											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<table width="100%" cellspacing="0" id="head3" cellpadding="0" style="display:none">
+							<tr>
+								<td colspan="2" bgcolor="#fff">
+									<table cellpadding="0" cellspacing="0">
+										<tr>
+											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
+											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
+											<td width="80" height="28" align="center" class="biz-itemnote1">栏目文档</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table biz-border">
+							<tr>
+								<td width="260" class="biz-td">是否支持投稿：</td>
+								<td class="biz-td">
+									<label><input type="radio" name="issend" value="1" <?php if ($issend==1) echo " checked='checked' ";?>> 支持</label>
+									<label><input type="radio" name="issend" value="0" <?php if ($issend==0) echo " checked='checked' ";?>> 不支持</label>
+								</td>
+							</tr>
+							<tr>
+								<td width="260" class="biz-td">是否隐藏栏目：</td>
+								<td class="biz-td">
+									<label><input type="radio" name="ishidden" value="0" checked="checked"> 显示</label>
+									<label><input type="radio" name="ishidden" value="1"> 隐藏</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">文档模型：</td>
+								<td class="biz-td">
+									<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="biz-input-sm">
+										<?php
+										foreach($channelArray as $k=>$arr)
+										{
+											if ($k==$channelid) {
+												$nid = $arr['nid'];
+												echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
+											} else {
+												echo " <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
+											}
+										}
+										?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">中文名称：</td>
+								<td class="biz-td"><input type="text" name="typename" class="biz-input-md"></td>
+							</tr>
+							<tr>
+								<td class="biz-td">中文概述：</td>
+								<td class="biz-td"><input type="text" name="cnoverview" class="biz-input-md"></td>
+							</tr>
+							<tr>
+								<td class="biz-td">英文名称：</td>
+								<td class="biz-td"><input type="text" name="enname" class="biz-input-md"></td>
+							</tr>
+							<tr>
+								<td class="biz-td">英文概述：</td>
+								<td class="biz-td"><input type="text" name="enoverview" class="biz-input-md"></td>
+							</tr>
+							<tr>
+								<td class="biz-td">栏目大图：</td>
+								<td>
+									<input type="text" name="bigpic" class="biz-input-md">
+									<input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">栏目小图：</td>
+								<td>
+									<input type="text" name="litimg" class="biz-input-md">
+									<input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">排列顺序：</td>
+								<td class="biz-td"><input type="text" name="sortrank" class="biz-input-sm">（由低 &gt; 高）
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">浏览权限：</td>
+								<td class="biz-td">
+									<select name="corank" id="corank" class="biz-input-sm">
+										<?php
+										$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0");
+										$dsql->Execute('cc');
+										while($row = $dsql->GetObject('cc')){
+											if ($corank==$row->rank) echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
+											else {
+												if ($corank==0){
+													echo "<option value='".$row->rank."'>".$row->membername."</option>";
+												}
+											}
+										}
+										?>
+									</select>（仅限制栏目里的文档浏览权限）
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">上级目录：</td>
+								<td class="biz-td">
+									<?php
+									$pardir = '{cmspath}'.$cfg_arcdir;
+									if (!empty($typedir)) $pardir = $typedir.'/';
+									$pardir = preg_replace("#\/{1,}#", '/', $pardir);
+									echo $pardir;
+									?>
+									<input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir?>">
+								</td>
+							</tr>
+							<tr>
+								<td>文件保存目录：</td>
+								<td class="p-0">
+									<table cellspacing="1" cellpadding="1" class="table-borderless">
+										<tr>
+											<td><input type="text" name="typedir" id="typedir" class="biz-input-md">
+											</td>
+											<td><label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin"
+														value="1" onClick="CheckTypeDir()"> 拼音</label></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">目录相对位置：</td>
+								<td class="biz-td">
+									<label><input type="radio" name="referpath" value="parent" checked="chekced"> 上级目录</label>
+									<?php if ($moresite==0) {?>
+									<label><input type="radio" name="referpath" value="cmspath"> 系统根目录</label>
+									<label><input type="radio" name="referpath" value="basepath"> 站点根目录</label>
+									<?php }?>
+								</td>
+							</tr>
+							<tr>
+								<td>栏目列表选项：</td>
+								<td>
+									<label><input type="radio" name="isdefault" value="1" checked="checked"> 链接到默认页</label>
+									<label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
+									<label><input type="radio" name="isdefault" value="-1"> 使用动态页</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">默认页的名称：</td>
+								<td class="biz-td"><input type="text" name="defaultname" value="index.html" class="biz-input-md"></td>
+							</tr>
+							<tr>
+								<td class="biz-td">栏目属性：</td>
+								<td class="biz-td">
+									<label><input type="radio" name="ispart" value="0" checked="checked"> 列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+									<label><input type="radio" name="ispart" value="1"> 封面栏目（栏目本身不允许发布文档）</label> <br>
+									<label><input type="radio" name="ispart" id="ispart2" value="2"> 外部栏目（在"文件保存目录"处填写网址）</label>
+								</td>
+							</tr>
+							<tr>
+								<td>栏目交叉：<i onClick="ShowHide('helpvarco')" class="fa fa-question-circle" title="帮助"></i> 仅适用列表栏目</td>
+								<td>
+									<label><input type="radio" name="cross" id="cross0" value="0" onClick="CheckCross()" checked="1"> 不交叉</label>
+									<label><input type="radio" name="cross" id="cross1" value="1" onClick="CheckCross()"> 自动获取同名栏目文档</label>
+									<label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()"> 手工指定交叉栏目id（用英文逗号）</label>
+									<br>
+									<textarea name="crossid" id="crossid" style="display:none"></textarea>
+								</td>
+							</tr>
+							<tr id="helpvarco" style="display:none">
+								<td bgcolor="#f5f5f5">栏目交叉说明：</td>
+								<td bgcolor="#f5f5f5">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</td>
+							</tr>
+							<tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
+								<td class="biz-td">绑定小分类：仅适用分类模型</td>
+								<td class="biz-td">
+									<select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
+										<?php
+										$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
+										$dsql->Execute('s',$sql);
+										while($arr = $dsql->GetArray('s'))
+										{
+											if ($arr['evalue']%500==0) {
+												echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
+											}
+											else if (preg_match("#\.#", $arr['evalue']))
+											{
+												echo "<option value='{$arr['evalue']}'>└── {$arr['ename']}</option>";
+											} else {
+												echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
+											}
+										}
+										?>
+									</select>（按Ctrl多选，不选系统将调用全部分类，在<a href="stepselect_main.php">“联动类别管理”</a>中管理）
+								</td>
+							</tr>
+						</table>
+						<table width="100%" cellspacing="0" cellpadding="0" id="adset" class="table biz-border"	style="display:none">
+							<?php if ($id==0) {?>
+							<tr>
+								<td width="260" class="biz-td">多站点支持：</td>
+								<td class="biz-td">
+									<label><input type="radio" name="moresite" value="1"> 启用</label>
+									<label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>（如果需要绑定二级域名，必须在“系统参数”中设定“支持多站点”）
+								</td>
+							</tr>
+							<tr>
+								<td class="biz-td">绑定域名：</td>
+								<td class="biz-td"><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="biz-input-md">（需要加http开头的链接）</td>
+							</tr>
+							<?php }?>
+							<tr>
+								<td>封面模板：</td>
+								<td>
+									<input type="text" name="tempindex" value="{style}/index_<?php echo $nid?>.htm" class="biz-input-md">
+									<button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
+									<i onClick="ShowHide('helpvar1')" class="fa fa-question-circle" title="帮助"></i>
+								</td>
+							</tr>
+							<tr id="helpvar1" style="display:none">
+								<td bgcolor="#f5f5f5">支持变量：</td>
+								<td bgcolor="#f5f5f5">
+									{tid}表示栏目id，<br>
+									{cid}表示栏目模型的名字id（
+									<?php
+									foreach($channelArray as $k=>$arr)
+									{
+									  echo "{$arr['typename']}({$arr['nid']})、";
+									}
+									?>）<br>
+									模板文件的默认位置是放在模板目录"cms安装目录<?php echo $cfg_templets_dir ?>"内
+									<input type="hidden" value="{style}" name="dfstyle">
+								</td>
+							</tr>
+							<tr>
+								<td>列表模板：</td>
+								<td>
+									<input type="text" name="templist" value="{style}/list_<?php echo $nid?>.htm" class="biz-input-md">
+									<button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
+								</td>
+							</tr>
+							<tr>
+								<td>文档模板：</td>
+								<td>
+									<input type="text" name="temparticle" value="{style}/article_<?php echo $nid?>.htm" class="biz-input-md">
+									<button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
+								</td>
+							</tr>
+							<tr>
+								<td>文档命名规则：</td>
+								<td>
+									<input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule;?>" class="biz-input-md">
+									<i onClick="ShowHide('helpvar2')" class="fa fa-question-circle" title="帮助"></i>
+								</td>
+							</tr>
+							<tr id="helpvar2" style="display:none">
+								<td bgcolor="#f5f5f5">支持变量：</td>
+								<td bgcolor="#f5f5f5">
+									{Y}、{M}、{D} 年月日<br>
+									{timestamp} INT类型的UNIX时间戳<br>
+									{aid} 文档id<br>
+									{pinyin} 拼音+文档id<br>
+									{py} 拼音部首+文档id<br>
+									{typedir} 栏目目录<br>
+									{cc} 日期+ID混编后用转换为适合的字母<br>
+									Nginx伪静态默认规则<br>
+									rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
+									rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
+								</td>
+							</tr>
+							<tr>
+								<td>列表命名规则：</td>
+								<td>
+									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="biz-input-md">
+									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
+								</td>
+							</tr>
+							<tr id="helpvar3" style="display:none">
+								<td bgcolor="#f5f5f5">支持变量：</td>
+								<td bgcolor="#f5f5f5">
+									{page} 列表的页码<br>
+									Nginx伪静态默认规则<br>
+									rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
+									rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+								</td>
+							</tr>
+							<tr>
+								<td>SEO标题：</td>
+								<td><input type="text" name="seotitle" id="seotitle" class="biz-input-md">（标签“{dede:field.seotitle/}”标签调用）</td>
+							</tr>
+							<tr>
+								<td>关键词：</td>
+								<td><textarea name="keywords" id="keywords" class="biz-textarea-sm"></textarea>（标签“{dede:field.keywords/}”标签调用）</td>
+							</tr>
+							<tr>
+								<td>栏目描述：</td>
+								<td><textarea name="description" id="description" class="biz-textarea-sm"></textarea>（标签“{dede:field.description/}”标签调用）</td>
+							</tr>
+						</table>
+						<table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
+							<tr>
+								<td>
+									<div class="alert alert-info mb-0">说明：栏目文档是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div>
+								</td>
+							</tr>
+							<tr>
+								<td><?php GetEditor("content","","400","Default","print","false");?></td>
+							</tr>
+						</table>
+						<table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f5f5" class="biz-border border-top-0 mb-3">
+							<tr>
+								<td align="center" class="py-2">
+									<button type="submit" class="btn btn-success btn-sm">保存</button>
+									<a href="catalog_main.php" class="btn btn-success btn-sm">返回</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</form>
+			</tr>
+		</table>
+	</body>
 </html>

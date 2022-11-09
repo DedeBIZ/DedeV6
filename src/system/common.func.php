@@ -30,6 +30,7 @@ function DedeAlert($content, $type = ALERT_PRIMARY)
 }
 /**
  * 系统核心函数存放文件
+ * 
  * @version        $id:common.func.php 4 16:39 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
@@ -443,7 +444,7 @@ function face($mid)
     }
     return $face;
 }
-//Tag数量标签[field:id function='GetMyTags(@me,2)'/]2表示输出2个文档
+//调用标签[field:id function='GetMyTags(@me,2)'/]2表示输出2个文档
 if (!function_exists('GetMyTags')) {
     function GetMyTags($aid, $num=3) {
         global $dsql,$cfg_cmspath;
@@ -457,7 +458,7 @@ if (!function_exists('GetMyTags')) {
         return $tags;
     }
 }
-/*调用前台主题模板<?php pasterTempletDiy('header.htm');?>*/
+/*调用主题模板<?php pasterTempletDiy('header.htm');?>*/
 if (!function_exists('pasterTempletDiy')) {
     function pasterTempletDiy($path) {
         global $cfg_basedir,$cfg_templets_dir,$cfg_df_style;
@@ -563,9 +564,8 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
     }
     echo $dede_addonfields;
 }
-
 /**
- * 用于检测Dede版本
+ * 用于检测系统版本
  *
  * @return string
  */

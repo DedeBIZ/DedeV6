@@ -1,113 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>会员消费记录</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script>
-    //获得选中项
-    function getCheckboxItem() {
-      var allSel = "";
-      if (document.form1.aids.value) return document.form1.aids.value;
-      for (i = 0; i < document.form1.aids.length; i++) {
-        if (document.form1.aids[i].checked) {
-          if (allSel == "")
-            allSel = document.form1.aids[i].value;
-          else
-            allSel = allSel + "`" + document.form1.aids[i].value;
-        }
-      }
-      return allSel;
-    }
-    function ReSel() {
-      for (i = 0; i < document.form1.aids.length; i++) {
-        if (document.form1.aids[i].checked) document.form1.aids[i].checked = false;
-        else document.form1.aids[i].checked = true;
-      }
-    }
-    function DelSel() {
-      var nid = getCheckboxItem();
-      if (nid == "") {
-        alert("请选择要删除的业务记录");
-        return;
-      }
-      location.href = "member_do.php?dopost=deoperations&nid=" + nid;
-    }
-    function UpSel() {
-      var nid = getCheckboxItem();
-      if (nid == "") {
-        alert("请选择要修改的业务记录");
-        return;
-      }
-      location.href = "member_do.php?dopost=upoperations&nid=" + nid;
-    }
-    function OkSel() {
-      var nid = getCheckboxItem();
-      if (nid == "") {
-        alert("请选择要修改的业务记录");
-        return;
-      }
-      location.href = "member_do.php?dopost=okoperations&nid=" + nid;
-    }
-  </script>
-</head>
-<body>
-  <form name="form2" method="get" action="member_operations.php">
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-      <tr bgcolor="#f5f5f5">
-        <td width="280" align="center"><input type="text" name="buyid" id="buyid" placeholder="请输入订单号" class="biz-input-md"></td>
-        <td>
-          <button type="submit" class="btn btn-success btn-sm">搜索</button>
-          <button type="button" onClick="location='member_operations.php?sta=0';" class="btn btn-success btn-sm">未付款</button>
-          <button type="button" onClick="location='member_operations.php?sta=1';" class="btn btn-success btn-sm">已付款</button>
-          <button type="button" onClick="location='member_operations.php?sta=2';" class="btn btn-success btn-sm">已完成</button>
-          <button type="button" onClick="location='member_operations.php';" class="btn btn-success btn-sm">全部</button>
-        </td>
-      </tr>
-    </table>
-  </form>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
-    <tr>
-      <td bgcolor="f8f8f8" colspan="8">会员消费记录</td>
-    </tr>
-    <tr bgcolor="#fbfce2">
-      <td width="6%" align="center">选择</td>
-      <td width="20%" align="center">订单号</td>
-      <td align="center">产品名称</td>
-      <td width="10%" align="center">产品类型</td>
-      <td width="22%" align="center">生成日期</td>
-      <td width="6%" align="center">金额</td>
-      <td width="6%" align="center">状态</td>
-      <td align="center">会员</td>
-    </tr>
-    <form name="form1">
-      {dede:datalist empty='<tr><td colspan="8"><center>暂无文档</center></td></tr>'}
-      <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td align="center"><input type="checkbox" name="aids" value="<?php echo $fields['aid']?>"></td>
-        <td align="center"><?php echo $fields['buyid']?></td>
-        <td align="center"><?php echo $fields['pname'].'('.$fields['oldinfo'].')';?></td>
-        <td align="center"><?php echo GetPType($fields['product'])?></td>
-        <td align="center"><?php echo GetDateTimeMk($fields['mtime'])?>（{dede:field.mtime function="floorTime(time()-@me,@me)"/}）</td>
-        <td align="center"><?php echo $fields['money']?></td>
-        <td align="center"><?php echo GetSta($fields['sta'])?></td>
-        <td align="center"><?php echo GetMemberID($fields['mid'])?></td>
-      </tr>
-      {/dede:datalist}
-    </form>
-    <tr>
-      <td colspan="8">
-        <button type="button" onClick="ReSel();" class="btn btn-success btn-sm">反选</button>
-        <button type="button" onClick="DelSel();" class="btn btn-danger btn-sm">删除</button>
-        <button type="button" onClick="UpSel();" class="btn btn-success btn-sm">设为已付款状态</button>
-        <button type="button" onClick="OkSel();" class="btn btn-success btn-sm">设为已完成状态</button>
-      </td>
-    </tr>
-    <tr>
-      <td bgcolor="#f5f5f5" class="py-2" colspan="8" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>会员消费记录</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script>
+			//获得选中项
+			function getCheckboxItem() {
+				var allSel = "";
+				if (document.form1.aids.value) return document.form1.aids.value;
+				for (i = 0; i < document.form1.aids.length; i++) {
+					if (document.form1.aids[i].checked) {
+						if (allSel == "")
+							allSel = document.form1.aids[i].value;
+						else
+							allSel = allSel + "`" + document.form1.aids[i].value;
+					}
+				}
+				return allSel;
+			}
+			function ReSel() {
+				for (i = 0; i < document.form1.aids.length; i++) {
+					if (document.form1.aids[i].checked) document.form1.aids[i].checked = false;
+					else document.form1.aids[i].checked = true;
+				}
+			}
+			function DelSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择要删除的业务记录");
+					return;
+				}
+				location.href = "member_do.php?dopost=deoperations&nid=" + nid;
+			}
+			function UpSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择要修改的业务记录");
+					return;
+				}
+				location.href = "member_do.php?dopost=upoperations&nid=" + nid;
+			}
+			function OkSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择要修改的业务记录");
+					return;
+				}
+				location.href = "member_do.php?dopost=okoperations&nid=" + nid;
+			}
+		</script>
+	</head>
+	<body>
+		<form name="form2" method="get" action="member_operations.php">
+			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+				<tr bgcolor="#f5f5f5">
+					<td width="280" align="center"><input type="text" name="buyid" id="buyid" placeholder="请输入订单号" class="biz-input-md"></td>
+					<td>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<button type="button" onClick="location='member_operations.php?sta=0';" class="btn btn-success btn-sm">未付款</button>
+						<button type="button" onClick="location='member_operations.php?sta=1';" class="btn btn-success btn-sm">已付款</button>
+						<button type="button" onClick="location='member_operations.php?sta=2';" class="btn btn-success btn-sm">已完成</button>
+						<button type="button" onClick="location='member_operations.php';" class="btn btn-success btn-sm">全部</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="8">会员消费记录</td>
+			</tr>
+			<tr bgcolor="#e9ecef">
+				<td width="6%" align="center">选择</td>
+				<td width="20%" align="center">订单号</td>
+				<td align="center">产品名称</td>
+				<td width="10%" align="center">产品类型</td>
+				<td width="22%" align="center">生成日期</td>
+				<td width="6%" align="center">金额</td>
+				<td width="6%" align="center">状态</td>
+				<td align="center">会员</td>
+			</tr>
+			<form name="form1">
+				{dede:datalist empty='<tr><td colspan="8" align="center">暂无文档</td></tr>'}
+				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+					<td align="center"><input type="checkbox" name="aids" value="<?php echo $fields['aid']?>"></td>
+					<td align="center"><?php echo $fields['buyid']?></td>
+					<td align="center"><?php echo $fields['pname'].'('.$fields['oldinfo'].')';?></td>
+					<td align="center"><?php echo GetPType($fields['product'])?></td>
+					<td align="center"><?php echo GetDateTimeMk($fields['mtime'])?>（{dede:field.mtime function="floorTime(time()-@me,@me)"/}）</td>
+					<td align="center"><?php echo $fields['money']?></td>
+					<td align="center"><?php echo GetSta($fields['sta'])?></td>
+					<td align="center"><?php echo GetMemberID($fields['mid'])?></td>
+				</tr>
+				{/dede:datalist}
+			</form>
+			<tr>
+				<td colspan="8">
+					<button type="button" onClick="ReSel();" class="btn btn-success btn-sm">反选</button>
+					<button type="button" onClick="DelSel();" class="btn btn-danger btn-sm">删除</button>
+					<button type="button" onClick="UpSel();" class="btn btn-success btn-sm">设为已付款状态</button>
+					<button type="button" onClick="OkSel();" class="btn btn-success btn-sm">设为已完成状态</button>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#f5f5f5" class="py-2" colspan="8" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
+			</tr>
+		</table>
+	</body>
 </html>

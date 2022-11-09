@@ -96,7 +96,7 @@ else if ($dopost == 'search') {
     $configstr = <<<EOT
 <table width="100%" cellspacing="1" cellpadding="1" id="tdSearch">
     <tbody>
-        <tr bgcolor="#fbfce2" align="center">
+        <tr bgcolor="#e9ecef" align="center">
             <td width="300">参数说明</td>
             <td>参数值</td>
             <td width="220">变量名</td>

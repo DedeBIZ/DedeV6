@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo $diy->name;?></title>
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="../static/web/js/webajax.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-  function SelectTemplets(fname){
-    var pos = GetWinPos(800,600);
-    window.open("dialog/select_templets.php?f="+fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+", top="+pos.top);
-  }
-  </script>
-</head>
-<body>
-<form name="form1" action="diy_list.php" method="post">
-<input type="hidden" name="action" value="post">
-<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
-<input type="hidden" name="do" value="2">
-<table width="98%" align="center" cellpadding="3" cellspacing="1">
-<tr>
-<td><?phpecho $postform;?></td>
-</tr>
-</table>
-<table width="98%" align="center" cellpadding="3" cellspacing="1">
-  <tr>
-    <td bgcolor="#f5f5f5" align="center" class="py-2">
-      <input type="submit" name="submit" value="提交" class="btn btn-success btn-sm">
-      <input type="reset" name="reset" value="重置" class="btn btn-success btn-sm">
-    </td>
-  </tr>
-</table>
-</form>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title><?php echo $diy->name;?></title>
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/webajax.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			function SelectTemplets(fname){
+				var pos = GetWinPos(800,600);
+				window.open("dialog/select_templets.php?f="+fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+", top="+pos.top);
+			}
+		</script>
+	</head>
+	<body>
+		<form name="form1" action="diy_list.php" method="post">
+			<input type="hidden" name="action" value="post">
+			<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
+			<input type="hidden" name="do" value="2">
+			<table width="98%" align="center" cellpadding="3" cellspacing="1">
+				<tr>
+					<td><?phpecho $postform;?></td>
+				</tr>
+			</table>
+			<table width="98%" align="center" cellpadding="3" cellspacing="1">
+				<tr>
+					<td bgcolor="#f5f5f5" align="center" class="py-2">
+						<input type="submit" name="submit" value="提交" class="btn btn-success btn-sm">
+						<input type="reset" name="reset" value="重置" class="btn btn-success btn-sm">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
 </html>

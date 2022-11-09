@@ -297,8 +297,8 @@ body.hidemenu .body-right {
 	padding:0 10px 0 50px;
 	color:#fff
 }
-.submenu .active{
-	background-color: #1eb867;
+.submenu .active {
+	background:#1eb867
 }
 .submenu-right {
 	float:right!important;
@@ -361,7 +361,7 @@ body.hidemenu .body-right {
 	text-align:right
 }
 .wsselect {
-	padding:.5rem 0;
+	padding:.65rem 0;
 	background:#fff;
 	overflow:auto
 }
@@ -372,7 +372,7 @@ body.hidemenu .body-right {
 	z-index:8888
 }
 .pubdlg .title {
-	padding-left:.5rem;
+	padding-left:.65rem;
 	line-height:30px;
 	font-weight:600;
 	color:#545b62;
@@ -399,7 +399,7 @@ body.hidemenu .body-right {
 	z-index:10005
 }
 .quickselfoot {
-	padding:.5rem 0;
+	padding:.65rem 0;
 	border-top:1px solid #dee2e6
 }
 .quickselItem {
@@ -408,7 +408,7 @@ body.hidemenu .body-right {
 }
 .quickselItem .topcat {
 	padding:0 10px;
-	background:#f8fcf2;
+	background:#e9ecef;
 	clear:both
 }
 .quickselItem .soncat {
@@ -425,7 +425,7 @@ body.hidemenu .body-right {
 	z-index:10001
 }
 .dlgws div {
-	padding:.5rem;
+	padding:.65rem;
 	width:100%
 }
 #uploadfield {
@@ -435,7 +435,7 @@ body.hidemenu .body-right {
 	z-index:19999
 }
 .option1 {
-	background:#fbfce2
+	background:#e9ecef
 }
 .option2 {
 	background:#f2f2f2
@@ -505,7 +505,7 @@ span.page-link {
 	height:360px
 }
 .biz-itemnote1 {
-	background:#fbfce2;
+	background:#e9ecef;
 	border-radius:.2rem .2rem 0 0
 }
 .biz-itemnote2 {

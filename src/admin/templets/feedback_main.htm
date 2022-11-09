@@ -1,123 +1,122 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="<?php echo $cfg_soft_lang;?>">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	<title>评论管理</title>
-	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../static/web/css/admin.css">
-	<script src="../static/web/js/jquery.min.js"></script>
-	<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-	<script src="js/main.js"></script>
-	<script>
-		//获得选中文件的文件名
-		function getCheckboxItem() {
-			var allSel = "";
-			if (document.feedback.fid.value) return document.feedback.fid.value;
-			for (i = 0; i < document.feedback.fid.length; i++) {
-				if (document.feedback.fid[i].checked) {
-					if (allSel == "")
-						allSel = document.feedback.fid[i].value;
-					else
-						allSel = allSel + "," + document.feedback.fid[i].value;
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>评论管理</title>
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			//获得选中文件的文件名
+			function getCheckboxItem() {
+				var allSel = "";
+				if (document.feedback.fid.value) return document.feedback.fid.value;
+				for (i = 0; i < document.feedback.fid.length; i++) {
+					if (document.feedback.fid[i].checked) {
+						if (allSel == "")
+							allSel = document.feedback.fid[i].value;
+						else
+							allSel = allSel + "," + document.feedback.fid[i].value;
+					}
+				}
+				return allSel;
+			}
+			function selAll() {
+				for (i = 0; i < document.feedback.fid.length; i++) {
+					document.feedback.fid[i].checked = true;
 				}
 			}
-			return allSel;
-		}
-		function selAll() {
-			for (i = 0; i < document.feedback.fid.length; i++) {
-				document.feedback.fid[i].checked = true;
-			}
-		}
-		function selNone() {
-			for (i = 0; i < document.feedback.fid.length; i++) {
-				document.feedback.fid[i].checked = false;
-			}
-		}
-		function selNor() {
-			for (i = 0; i < document.feedback.fid.length; i++) {
-				if (document.feedback.fid[i].checked == false)
-					document.feedback.fid[i].checked = true;
-				else
+			function selNone() {
+				for (i = 0; i < document.feedback.fid.length; i++) {
 					document.feedback.fid[i].checked = false;
-
+				}
 			}
-		}
-		function delFeedback() {
-			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何文档");
-			else if (window.confirm('您确定要删除这些评论吗')) location.href = "feedback_main.php?job=del&fid=" + qstr;
-		}
-		function delFeedbackIP() {
-			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何文档");
-			else if (window.confirm('您确定要删除这些评论吗')) location.href = "feedback_main.php?job=delall&fid=" + qstr;
-		}
-		function checkFeedback() {
-			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何文档");
-			else location.href = "feedback_main.php?job=check&fid=" + qstr;
-		}
-		function editFeedback() {
-			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何文档");
-			else location.href = "feedback_edit.php?job=edit&fid=" + qstr;
-		}
-	</script>
-</head>
-<body>
-	<form name="form1">
-		<table width="98%" cellpadding="3" align="center" cellspacing="1" class="table maintable my-3">
-			<tr bgcolor="#f5f5f5">
-				<td width="180"><input type="text" name="keyword" placeholder="请输入关键词" class="biz-input-md"></td>
-				<td width="170">
-					<select name="typeid" class="biz-input-sm">
-						<option value="0">请选择</option>
-						{dede:global.openarray/}
-					</select>
-				</td>
-				<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
-			</tr>
-		</table>
-	</form>
-	<form name="feedback">
-		<table width="98%" cellpadding="0" cellspacing="0" align="center" class="table maintable mb-3">
-			<tr>
-				<td colspan="6" bgcolor="#f5f5f5">评论管理</td>
-			</tr>
-			{dede:datalist empty='<tr><td colspan="6"><center>暂无文档</center></td></tr>'}
-			<tr>
-				<td width="6%">选择 <input type="checkbox" name="fid" id="fid" value="{dede:field.id/}"></td>
-				<td width="10%">用户：{dede:field.username/} {dede:field.ischeck function="IsCheck(@me)"/}</td>
-				<td width="30%">
-					<span>文档：<a href='feedback_main.php?aid={dede:field.aid/}'>{dede:field.arctitle function="RemoveXSS(@me)"/}</a></span>
-					<span>评论：{dede:field.msg function='cn_substr(Text2Html(@me),280)'/}</span>
-					<a href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives" target="_blank" class="btn btn-outline-success btn-sm">浏览</a>
-					<?php if ($fields['replycount'] > 0) {?><a href='feedback_main.php?fid={dede:field.id/}'>{dede:field.replycount/}条回复</a><?php }?>
-				</td>
-				<td width="12%" align="center">地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
-				<td width="12%">时间：{dede:field.dtime function="GetDateTimeMK(@me)"/}</td>
-				<td align="center">
-					<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'>编辑评论</a>
-					<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新评论</a>
-				</td>
-			</tr>
-			{/dede:datalist}
-			<tr>
-				<td colspan="6">
-					<button type="button" name="kk1" onClick="selAll()" class="btn btn-success btn-sm">全选</button>
-					<button type="button" name="kk2" onClick="selNone()" class="btn btn-success btn-sm">取消</button>
-					<button type="button" name="kk3" onClick="selNor()" class="btn btn-success btn-sm">反选</button>
-					<button type="button" name="db" onClick="delFeedbackIP()" class="btn btn-danger btn-sm">删除所有相同地址评论</button>
-					<button type="button" name="db" onClick="delFeedback()" class="btn btn-danger btn-sm">删除评论</button>
-					<button type="button" name="db2" onClick="checkFeedback()" class="btn btn-success btn-sm">审核评论</button>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="6" bgcolor="#f5f5f5" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
-	</form>
-</body>
+			function selNor() {
+				for (i = 0; i < document.feedback.fid.length; i++) {
+					if (document.feedback.fid[i].checked == false)
+						document.feedback.fid[i].checked = true;
+					else
+						document.feedback.fid[i].checked = false;
+				}
+			}
+			function delFeedback() {
+				var qstr = getCheckboxItem();
+				if (qstr == "") ShowMsg("您没选中任何文档");
+				else if (window.confirm('您确定要删除这些评论吗')) location.href = "feedback_main.php?job=del&fid=" + qstr;
+			}
+			function delFeedbackIP() {
+				var qstr = getCheckboxItem();
+				if (qstr == "") ShowMsg("您没选中任何文档");
+				else if (window.confirm('您确定要删除这些评论吗')) location.href = "feedback_main.php?job=delall&fid=" + qstr;
+			}
+			function checkFeedback() {
+				var qstr = getCheckboxItem();
+				if (qstr == "") ShowMsg("您没选中任何文档");
+				else location.href = "feedback_main.php?job=check&fid=" + qstr;
+			}
+			function editFeedback() {
+				var qstr = getCheckboxItem();
+				if (qstr == "") ShowMsg("您没选中任何文档");
+				else location.href = "feedback_edit.php?job=edit&fid=" + qstr;
+			}
+		</script>
+	</head>
+	<body>
+		<form name="form1">
+			<table width="98%" cellpadding="3" align="center" cellspacing="1" class="table maintable my-3">
+				<tr bgcolor="#f5f5f5">
+					<td width="180"><input type="text" name="keyword" placeholder="请输入关键词" class="biz-input-md"></td>
+					<td width="170">
+						<select name="typeid" class="biz-input-sm">
+							<option value="0">请选择</option>
+							{dede:global.openarray/}
+						</select>
+					</td>
+					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
+				</tr>
+			</table>
+		</form>
+		<form name="feedback">
+			<table width="98%" cellpadding="0" cellspacing="0" align="center" class="table maintable mb-3">
+				<tr>
+					<td colspan="6" bgcolor="#f5f5f5">评论管理</td>
+				</tr>
+				{dede:datalist empty='<tr><td colspan="6" align="center">暂无文档</td></tr>'}
+				<tr>
+					<td width="6%">选择 <input type="checkbox" name="fid" id="fid" value="{dede:field.id/}"></td>
+					<td width="10%">用户：{dede:field.username/} {dede:field.ischeck function="IsCheck(@me)"/}</td>
+					<td width="30%">
+						<span>文档：<a href='feedback_main.php?aid={dede:field.aid/}'>{dede:field.arctitle function="RemoveXSS(@me)"/}</a></span>
+						<span>评论：{dede:field.msg function='cn_substr(Text2Html(@me),280)'/}</span>
+						<a href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives" target="_blank" class="btn btn-outline-success btn-sm">浏览</a>
+						<?php if ($fields['replycount'] > 0) {?><a href='feedback_main.php?fid={dede:field.id/}'>{dede:field.replycount/}条回复</a><?php }?>
+					</td>
+					<td width="12%" align="center">地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
+					<td width="12%">时间：{dede:field.dtime function="GetDateTimeMK(@me)"/}</td>
+					<td align="center">
+						<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'>编辑评论</a>
+						<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新评论</a>
+					</td>
+				</tr>
+				{/dede:datalist}
+				<tr>
+					<td colspan="6">
+						<button type="button" name="kk1" onClick="selAll()" class="btn btn-success btn-sm">全选</button>
+						<button type="button" name="kk2" onClick="selNone()" class="btn btn-success btn-sm">取消</button>
+						<button type="button" name="kk3" onClick="selNor()" class="btn btn-success btn-sm">反选</button>
+						<button type="button" name="db" onClick="delFeedbackIP()" class="btn btn-danger btn-sm">删除所有相同地址评论</button>
+						<button type="button" name="db" onClick="delFeedback()" class="btn btn-danger btn-sm">删除评论</button>
+						<button type="button" name="db2" onClick="checkFeedback()" class="btn btn-success btn-sm">审核评论</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="6" bgcolor="#f5f5f5" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
+	</body>
 </html>

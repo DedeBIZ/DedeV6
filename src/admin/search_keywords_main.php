@@ -64,7 +64,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     <tr>
         <td colspan='8' bgcolor='#f5f5f5'>搜索关键词维护</td>
     </tr>
-    <tr align='center' bgcolor='#fbfce2'>
+    <tr align='center' bgcolor='#e9ecef'>
       <td width='6%'>选择</td>
       <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('aid')\">id</a></td>
       <td width='20%'>关键词</td>
@@ -80,7 +80,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $dsql->SetQuery("SELECT * FROM `#@__search_keywords` ORDER BY $orderby LIMIT $start,$pagesize ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
-        $line = "<tr align='center' onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
+        $line = "<tr align='center' onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
       <td><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
       <td>{$row['aid']}</td>
       <td><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>

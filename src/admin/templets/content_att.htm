@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>文档自定义属性</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-</head>
-<body>
-  <table width="98%" cellpadding="0" cellspacing="1" align="center" class="table maintable my-3">
-    <form name="form1" action="content_att.php" method="post">
-      <input type="hidden" name="dopost" value="save">
-      <tr>
-        <td bgcolor="#f5f5f5" colspan="3">文档自定义属性</td>
-      </tr>
-      <tr>
-        <td colspan="3"><div class="alert alert-info mb-0">自定义属性的意义和使用说明：在以往的版本中，网站主页、封面栏目的设计，都只能单调的用arclist标记把某栏目最新或按特定排序方式的文档无选择的读出来，这样做法存在很大的不足，例如，我希望在最顶部的地方显示我想要的文档，在以往的版本中是无法做到的，但使用自定义属性之后，只要给arclist标记加上att='自定义属性的id'的属性，然后在发布的时候对适合的文档选择专门的属性，那么使用arclist的地方就会按您的意愿显示指定的文档。注意事项：这个版本中att对应的字段是SET类型字段,因此为了数据安全起见不允许用户增加其它类型，但调用时允许使用组合条件，如:att='c,p'表示推荐图片新闻</div></td>
-      </tr>
-      <tr bgcolor="#fbfce2">
-        <td width="15%" align="center">id</td>
-        <td width="15%">排序</td>
-        <td width="70%">属性名称</td>
-      </tr>
-      <?php
-    	$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
-    	$dsql->Execute();
-    	$k=0;
-    	while($row = $dsql->GetObject())
-    	{
-    	  $k++;
-    	?>
-      <input type="hidden" name="att_<?php echo $k?>" value="<?php echo $row->att?>">
-      <tr>
-        <td align="center"><?php echo $row->att;?></td>
-        <td><input type="text" name="sortid_<?php echo $k?>" value="<?php echo $row->sortid;?>" id="sortid_<?php echo $k?>" style="width:50%"></td>
-        <td><input type="text" name="attname_<?php echo $k?>" value="<?php echo $row->attname;?>" id="attname_<?php echo $k?>" size="30"></td>
-      </tr>
-      <?php }?>
-      <input type="hidden" name="idend" value="<?php echo $k?>">
-      <tr>
-        <td colspan="3" bgcolor="#f5f5f5" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-      </tr>
-    </form>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>文档自定义属性</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+	</head>
+	<body>
+		<table width="98%" cellpadding="0" cellspacing="1" align="center" class="table maintable my-3">
+			<form name="form1" action="content_att.php" method="post">
+				<input type="hidden" name="dopost" value="save">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="3">文档自定义属性</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<div class="alert alert-info mb-0">自定义属性的意义和使用说明：在以往的版本中，网站主页、封面栏目的设计，都只能单调的用arclist标记把某栏目最新或按特定排序方式的文档无选择的读出来，这样做法存在很大的不足，例如，我希望在最顶部的地方显示我想要的文档，在以往的版本中是无法做到的，但使用自定义属性之后，只要给arclist标记加上att='自定义属性的id'的属性，然后在发布的时候对适合的文档选择专门的属性，那么使用arclist的地方就会按您的意愿显示指定的文档。注意事项：这个版本中att对应的字段是SET类型字段,因此为了数据安全起见不允许用户增加其它类型，但调用时允许使用组合条件，如:att='c,p'表示推荐图片新闻</div>
+					</td>
+				</tr>
+				<tr bgcolor="#e9ecef">
+					<td width="15%" align="center">id</td>
+					<td width="15%">排序</td>
+					<td width="70%">属性名称</td>
+				</tr>
+				<?php
+				$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
+				$dsql->Execute();
+				$k=0;
+				while($row = $dsql->GetObject())
+				{
+					$k++;
+				?>
+				<input type="hidden" name="att_<?php echo $k?>" value="<?php echo $row->att?>">
+				<tr>
+					<td align="center"><?php echo $row->att;?></td>
+					<td><input type="text" name="sortid_<?php echo $k?>" value="<?php echo $row->sortid;?>"  id="sortid_<?php echo $k?>" style="width:50%"></td>
+					<td><input type="text" name="attname_<?php echo $k?>" value="<?php echo $row->attname;?>" id="attname_<?php echo $k?>" size="30"></td>
+				</tr>
+				<?php }?>
+				<input type="hidden" name="idend" value="<?php echo $k?>">
+				<tr>
+					<td colspan="3" bgcolor="#f5f5f5" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+				</tr>
+			</form>
+		</table>
+	</body>
 </html>

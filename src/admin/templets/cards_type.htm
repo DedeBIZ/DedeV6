@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>点卡产品分类</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-</head>
-<body>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-    <form name="form1" action="cards_type.php" method="post">
-      <input type="hidden" name="dopost" value="save">
-      <tr>
-        <td bgcolor="f8f8f8" colspan="4">点卡产品分类</td>
-      </tr>
-      <tr bgcolor="#fbfce2">
-        <td width="30%" align="center">产品名称</td>
-        <td width="27%" align="center">点数（金币数）</td>
-        <td width="30%" align="center">价格</td>
-        <td width="17%" align="center">状态</td>
-      </tr>
-      <?php
-    	$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
-    	$dsql->Execute();
-    	$k=0;
-    	while($row = $dsql->GetObject())
-    	{
-    	  $k++;
-    	?>
-      <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
-      <tr align="center">
-        <td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" style="width:90%"></td>
-        <td><input type="text" name="num_<?php echo $k?>" value="<?php echo $row->num?>" id="num_<?php echo $k?>" style="width:80%"></td>
-        <td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" style="width:80%">（元）</td>
-        <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> 保留</td>
-      </tr>
-      <?php }?>
-      <input type="hidden" name="idend" value="<?php echo $k?>">
-      <tr bgcolor="#fbfce2">
-        <td colspan="4" bgcolor="#f5f5f5">新增一个点卡产品类型：</td>
-      </tr>
-      <tr align="center">
-        <td><input type="text" name="pname_new" id="pname_new" style="width:90%"></td>
-        <td><input type="text" name="num_new" id="num_new" style="width:80%" value="100"></td>
-        <td><input type="text" name="money_new" id="money_new" style="width:80%" value="30">（元）</td>
-        <td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> 新增</td>
-      </tr>
-      <tr>
-        <td colspan="4" align="center" bgcolor="#f5f5f5" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-      </tr>
-    </form>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>点卡产品分类</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+	</head>
+	<body>
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+			<form name="form1" action="cards_type.php" method="post">
+				<input type="hidden" name="dopost" value="save">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="4">点卡产品分类</td>
+				</tr>
+				<tr bgcolor="#e9ecef">
+					<td width="30%" align="center">产品名称</td>
+					<td width="27%" align="center">点数（金币数）</td>
+					<td width="30%" align="center">价格</td>
+					<td width="17%" align="center">状态</td>
+				</tr>
+				<?php
+				$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
+				$dsql->Execute();
+				$k=0;
+				while($row = $dsql->GetObject())
+				{
+					$k++;
+				?>
+				<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
+				<tr align="center">
+					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" style="width:90%"></td>
+					<td><input type="text" name="num_<?php echo $k?>" value="<?php echo $row->num?>" id="num_<?php echo $k?>" style="width:80%"></td>
+					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" style="width:80%">（元）</td>
+					<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> 保留</td>
+				</tr>
+				<?php }?>
+				<input type="hidden" name="idend" value="<?php echo $k?>">
+				<tr bgcolor="#e9ecef">
+					<td colspan="4" bgcolor="#f5f5f5">新增一个点卡产品类型：</td>
+				</tr>
+				<tr align="center">
+					<td><input type="text" name="pname_new" id="pname_new" style="width:90%"></td>
+					<td><input type="text" name="num_new" id="num_new" style="width:80%" value="100"></td>
+					<td><input type="text" name="money_new" id="money_new" style="width:80%" value="30">（元）</td>
+					<td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> 新增</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="center" bgcolor="#f5f5f5" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+				</tr>
+			</form>
+		</table>
+	</body>
 </html>

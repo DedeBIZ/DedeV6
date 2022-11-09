@@ -61,7 +61,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
         <tr>
             <td colspan='6' bgcolor='#f5f5f5'>自由列表管理</td>
         </tr>
-        <tr align='center' bgcolor='#fbfce2'>
+        <tr align='center' bgcolor='#e9ecef'>
             <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('aid')\">id</a></td>
             <td width='20%'>列表名称</td>
             <td width='20%'>模板文件</td>
@@ -75,7 +75,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     while($row = $dsql->GetArray())
     {
         $listurl = GetFreeListUrl($row['aid'],$row['namerule'],$row['listdir'],$row['defaultpage'],$row['nodefault']);
-        $line = "<tr align='center' onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
+        $line = "<tr align='center' onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
         <td>{$row['aid']}</td>
         <td><a href='$listurl' target='_blank'>{$row['title']}</a></td>
         <td>{$row['templet']}</td>

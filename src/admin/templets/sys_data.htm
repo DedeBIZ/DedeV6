@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>数据备份还原</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -92,7 +92,7 @@
 				<tr>
 					<td colspan="8">系统默认表：</td>
 				</tr>
-				<tr bgcolor="#fbfce2" align="center">
+				<tr bgcolor="#e9ecef" align="center">
 					<td width="5%">选择</td>
 					<td width="20%">表名</td>
 					<td width="6%">记录数</td>
@@ -139,7 +139,7 @@
 				<tr>
 					<td colspan="8">其它数据表：</td>
 				</tr>
-				<tr bgcolor="#fbfce2" align="center">
+				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="20%">表名</td>
 					<td width="6%">记录数</td>
@@ -184,7 +184,7 @@
 				}
 				?>
 				<tr>
-					<td bgcolor="#fbfce2" colspan="8">
+					<td bgcolor="#e9ecef" colspan="8">
 						分卷大小：<input name="fsize" type="text" id="fsize" value="2048" class="biz-input-sm"> K
 						<label><input type="checkbox" name="isstruct" id="isstruct" value="1" checked="1"> 备份结构</label>
 						<?php if (@function_exists('gzcompress') && false) {?>

@@ -1,149 +1,146 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>文档批量维护</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script src="../static/web/js/moment.min.js"></script>
-  <script src="../static/web/js/daterangepicker.js"></script>
-  <script>
-    function ShowHideTime() {
-      var selBox = document.getElementById('seltime');
-      var obj = document.getElementById('seltimeField');
-      if (selBox.checked) obj.style.display = "block";
-      else obj.style.display = "none";
-    }
-    function ShowHideMove() {
-      var selBox = document.getElementById('moveradio');
-      var obj = document.querySelectorAll('.moveField').forEach(v=>{
-        if (selBox.checked) v.style.display = "block";
-        else v.style.display = "none";
-      })
-    }
-    $(document).ready(function () {
-      $('.datepicker').daterangepicker({
-        "singleDatePicker": true,
-        "autoApply": true,
-        "showDropdowns": true,
-        "linkedCalendars": false,
-        "timePicker": true,
-        "timePicker24Hour": true,
-        "timePickerSeconds": true,
-        "showCustomRangeLabel": false,
-        ranges: {
-          '今日': [moment(), moment()],
-          '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          '本月': [moment().startOf('month'), moment().startOf('month')],
-          '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
-        },
-        "locale": {
-          format: 'YYYY-MM-DD HH:mm:ss',
-          applyLabel: '确定',
-          cancelLabel: '取消',
-          daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
-          monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
-            '七月', '八月', '九月', '十月', '十一月', '十二月'],
-          firstDay: 1
-        }
-      }, function (start) {
-        $(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
-      });
-    })
-  </script>
-</head>
-<body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-    <form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
-      <input type="hidden" name="dopost" value="go">
-      <tr>
-        <td bgcolor="#f5f5f5" colspan="2">文档批量维护</td>
-      </tr>
-      <tr>
-        <td width="260">选定栏目：</td>
-        <td>
-          <?php
-          $tl = new TypeLink(0);
-          $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-          echo "<select name='typeid' class='biz-input-sm'>";
-          echo "<option value='0' selected>不限栏目</option>";
-          echo $typeOptions;
-          echo "</select>";
-    		  ?>
-        </td>
-      </tr>
-      <tr>
-        <td>起始id：</td>
-        <td>
-          开始：<input name="startid" type="text" id="startid" class="biz-input-xs">
-          结束：<input name="endid" type="text" id="endid" class="biz-input-xs">
-        </td>
-      </tr>
-      <tr>
-        <td>文档发布时间：</td>
-        <td>
-          <table cellspacing="0" cellpadding="0" class="table table-borderless">
-            <tr>
-              <td colspan="2">
-                <label><input type="checkbox" name="seltime" id="seltime" value="1" onClick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
-              </td>
-            </tr>
-            <tr id="seltimeField" style="display:none">
-              <td width="260">开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?>
-                <input name="starttime" value="<?php echo $nowtime;?>" type="text" id="starttime" class="datepicker">
-              </td>
-              <td width="260">结束：<?php $nowtime = GetDateTimeMk(time());?>
-                <input name="endtime" value="<?php echo $nowtime;?>" type="text" id="endtime" class="datepicker">
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td>用户的登录id：</td>
-        <td><input name="userid" type="text" id="userid" class="biz-input-xs">（网址uid=后面跟的id）</td>
-      </tr>
-      <tr>
-        <td>操作：</td>
-        <td>
-          <label><input type="radio" name="action" value="check" onClick="ShowHideMove()" checked="1"> 审核文档</label>
-          <label><input type="radio" name="action" value="makehtml" onClick="ShowHideMove()"> 更新网页</label>
-          <label><input type="radio" name="action" value="move" onClick="ShowHideMove()"> 移动文档</label>
-          <label><input type="radio" name="action" value="del" onClick="ShowHideMove()"> 删除文档</label>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" bgcolor="#fbfce2" align="center">
-          <button type="button" name="b112" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button>
-        </td>
-      </tr>
-    </form>
-    <form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
-      <input type="hidden" name="dopost" value="go">
-      <tr>
-        <td>操作：</td>
-        <td>
-          <label><input type="radio" value="delnulltitle" name="action"> 删除空标题的文档</label>
-          <label><input type="radio" value="delnullbody" name="action"> 删除文档为空的文档</label>
-          <label><input type="radio" value="modddpic" name="action"> 更正缩图错误</label>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" bgcolor="#fbfce2" align="center"><button type="button" name="b112" onClick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button></td>
-      </tr>
-    </form>
-    <tr>
-      <td colspan="2">结果：</td>
-    </tr>
-    <tr>
-      <td colspan="2" id="mtd">
-        <div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-      </td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>文档批量维护</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/moment.min.js"></script>
+		<script src="../static/web/js/daterangepicker.js"></script>
+		<script>
+			function ShowHideTime() {
+				var selBox = document.getElementById('seltime');
+				var obj = document.getElementById('seltimeField');
+				if (selBox.checked) obj.style.display = "block";
+				else obj.style.display = "none";
+			}
+			function ShowHideMove() {
+				var selBox = document.getElementById('moveradio');
+				var obj = document.querySelectorAll('.moveField').forEach(v=>{
+					if (selBox.checked) v.style.display = "block";
+					else v.style.display = "none";
+				})
+			}
+			$(document).ready(function () {
+				$('.datepicker').daterangepicker({
+					"singleDatePicker": true,
+					"autoApply": true,
+					"showDropdowns": true,
+					"linkedCalendars": false,
+					"timePicker": true,
+					"timePicker24Hour": true,
+					"timePickerSeconds": true,
+					"showCustomRangeLabel": false,
+					ranges: {
+						'今日': [moment(), moment()],
+						'昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+						'本月': [moment().startOf('month'), moment().startOf('month')],
+						'上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+					},
+					"locale": {
+						format: 'YYYY-MM-DD HH:mm:ss',
+						applyLabel: '确定',
+						cancelLabel: '取消',
+						daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月'],
+						firstDay: 1
+					}
+				}, function (start) {
+					$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
+				<input type="hidden" name="dopost" value="go">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2">文档批量维护</td>
+				</tr>
+				<tr>
+					<td width="260">选定栏目：</td>
+					<td>
+						<?php
+						$tl = new TypeLink(0);
+						$typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
+						echo "<select name='typeid' class='biz-input-sm'>";
+						echo "<option value='0' selected>不限栏目</option>";
+						echo $typeOptions;
+						echo "</select>";
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td>起始id：</td>
+					<td>
+						开始：<input name="startid" type="text" id="startid" class="biz-input-xs">
+						结束：<input name="endid" type="text" id="endid" class="biz-input-xs">
+					</td>
+				</tr>
+				<tr>
+					<td>文档发布时间：</td>
+					<td class="p-0">
+						<table cellspacing="0" cellpadding="0" class="table table-borderless">
+							<tr>
+								<td colspan="2">
+									<label><input type="checkbox" name="seltime" id="seltime" value="1" onClick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
+								</td>
+							</tr>
+							<tr id="seltimeField" style="display:none">
+								<td width="260">开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?>
+									<input name="starttime" value="<?php echo $nowtime;?>" type="text" id="starttime" class="datepicker">
+								</td>
+								<td width="260">结束：<?php $nowtime = GetDateTimeMk(time());?>
+									<input name="endtime" value="<?php echo $nowtime;?>" type="text" id="endtime" class="datepicker">
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>用户的登录id：</td>
+					<td><input name="userid" type="text" id="userid" class="biz-input-xs">（网址uid=后面跟的id）</td>
+				</tr>
+				<tr>
+					<td>操作：</td>
+					<td>
+						<label><input type="radio" name="action" value="check" onClick="ShowHideMove()" checked="1"> 审核文档</label>
+						<label><input type="radio" name="action" value="makehtml" onClick="ShowHideMove()"> 更新网页</label>
+						<label><input type="radio" name="action" value="move" onClick="ShowHideMove()"> 移动文档</label>
+						<label><input type="radio" name="action" value="del" onClick="ShowHideMove()"> 删除文档</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button></td>
+				</tr>
+			</form>
+			<form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
+				<input type="hidden" name="dopost" value="go">
+				<tr>
+					<td>操作：</td>
+					<td>
+						<label><input type="radio" value="delnulltitle" name="action"> 删除空标题的文档</label>
+						<label><input type="radio" value="delnullbody" name="action"> 删除文档为空的文档</label>
+						<label><input type="radio" value="modddpic" name="action"> 更正缩图错误</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onClick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button></td>
+				</tr>
+			</form>
+			<tr>
+				<td colspan="2">结果：</td>
+			</tr>
+			<tr>
+				<td colspan="2" id="mtd">
+					<div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>

@@ -53,7 +53,7 @@ if (!empty($iseditor)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="<?php echo $cfg_soft_lang;?>">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>选择图片</title>
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
@@ -147,7 +147,7 @@ html{background:#f5f5f5}
                     <input type="hidden" name="job" value="upload">
                     上传：<input type="file" name="imgfile" class="w-50">
                     <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?> /> 水印 </label>
-                    <label><input type="checkbox" name="resize" value="1" class="np"> 缩小 </label>
+                    <label><input type="checkbox" name="resize" value="1"> 缩小 </label>
                     宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="biz-input-xs">
                     高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="biz-input-xs">
                     <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>

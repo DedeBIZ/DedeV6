@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>病毒文件扫描</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script src="../static/web/js/webajax.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    function LoadCtTest() {
-      var filetype = $Obj('filetype').value;
-      var info = $Obj('info').value;
-      $Obj('loaddiv').style.display = 'block';
-      fetch('sys_safetest.php?action=test&filetype=' + filetype + "&info=" + info).then(resp=>{
-		    if (resp.ok) {
-			   return resp.text()
-		    }
-		    throw new Error('系统错误，无法获取数据');
-		  }).then((d)=>{
-			  $DE('messagetd').innerHTML = d;
-			  $Obj('loaddiv').style.display = 'none';
-		  }).catch((error) => {
-			  console.log(error);
-		  });
-    }
-    function LoadCtClear() {
-      $Obj('loaddiv').style.display = 'block';
-      fetch('sys_safetest.php?action=clear').then(resp=>{
-			  if (resp.ok) {
-				  return resp.text()
-			  }
-			  throw new Error('系统错误，无法获取数据');
-		  }).then((d)=>{
-			  $DE('messagetd').innerHTML = d;
-			  $Obj('loaddiv').style.display = 'none';
-		  }).catch((error) => {
-			  $DE('messagetd').innerHTML = errMsg;
-		  });
-    }
-  </script>
-</head>
-<body>
-  <div id="loaddiv" style="display:none"><center><img src="../static/web/img/loadinglit.gif"></center></div>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-    <tr>
-      <td bgcolor="#f5f5f5">病毒文件扫描</td>
-    </tr>
-    <tr>
-      <td><?php echo $alter;?></td>
-    </tr>
-    <tr>
-      <td>
-        <span>文件类型：<input type="text" name="filetype" id="filetype" value="php|inc" class="biz-input-lg"></span>
-        <span>代码特征：<input type="text" name="info" id="info" value="eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode" class="biz-input-lg"></span>
-      </td>
-    </tr>
-    <tr>
-      <td>检测结果：结果仅供参考，请务必查看源码后才删除非法文件<br>
-      安全建议：1、有条件的用户把data、system、theme修改为不可对外访问，static、a目录设置为不允许执行脚本，其它目录禁止写入，系统将更安全；2、本检测程以开发模式为标准，如果您的网站目录包含其它系统，此检测程序可能会产生错误判断；3、检测程序会跳过对模板缓存目录的检测，为了安全起见，检测完成后建议清空模板缓存</td>
-    </tr>
-    <tr>
-      <td align="center" bgcolor="#fbfce2" class="py-2">
-        <button type="button" name="bt1" class="btn btn-success btn-sm" onclick="LoadCtTest();">开始检测</button>
-        <button type="button" name="bt2" class="btn btn-success btn-sm" onclick="LoadCtClear();">清空模板缓存</button>
-      </td>
-    </tr>
-    <tr>
-      <td id="messagetd" valign="top"></td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>病毒文件扫描</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/webajax.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			function LoadCtTest() {
+				var filetype = $Obj('filetype').value;
+				var info = $Obj('info').value;
+				$Obj('loaddiv').style.display = 'block';
+				fetch('sys_safetest.php?action=test&filetype=' + filetype + "&info=" + info).then(resp=>{
+					if (resp.ok) {
+					   return resp.text()
+					}
+					throw new Error('系统错误，无法获取数据');
+				}).then((d)=>{
+					$DE('messagetd').innerHTML = d;
+					$Obj('loaddiv').style.display = 'none';
+				}).catch((error) => {
+					console.log(error);
+				});
+			}
+			function LoadCtClear() {
+				$Obj('loaddiv').style.display = 'block';
+				fetch('sys_safetest.php?action=clear').then(resp=>{
+					if (resp.ok) {
+						return resp.text()
+					}
+					throw new Error('系统错误，无法获取数据');
+				}).then((d)=>{
+					$DE('messagetd').innerHTML = d;
+					$Obj('loaddiv').style.display = 'none';
+				}).catch((error) => {
+					$DE('messagetd').innerHTML = errMsg;
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="loaddiv" class="text-center py-2" style="display:none"><img src="../static/web/img/loadinglit.gif"></div>
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+			<tr>
+				<td bgcolor="#f5f5f5">病毒文件扫描</td>
+			</tr>
+			<tr>
+				<td><?php echo $alter;?></td>
+			</tr>
+			<tr>
+				<td>
+					<span>文件类型：<input type="text" name="filetype" id="filetype" value="php|inc" class="biz-input-lg"></span>
+					<span>代码特征：<input type="text" name="info" id="info" value="eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode" class="biz-input-lg"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>检测结果：结果仅供参考，请务必查看源码后才删除非法文件<br>
+					安全建议：1、有条件的用户把data、system、theme修改为不可对外访问，static、a目录设置为不允许执行脚本，其它目录禁止写入，系统将更安全；2、本检测程以开发模式为标准，如果您的网站目录包含其它系统，此检测程序可能会产生错误判断；3、检测程序会跳过对模板缓存目录的检测，为了安全起见，检测完成后建议清空模板缓存</td>
+			</tr>
+			<tr>
+				<td align="center" bgcolor="#e9ecef" class="py-2">
+					<button type="button" name="bt1" class="btn btn-success btn-sm" onclick="LoadCtTest();">开始检测</button>
+					<button type="button" name="bt2" class="btn btn-success btn-sm" onclick="LoadCtClear();">清空模板缓存</button>
+				</td>
+			</tr>
+			<tr>
+				<td id="messagetd" valign="top"></td>
+			</tr>
+		</table>
+	</body>
 </html>

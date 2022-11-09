@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta name="robots" content="noindex,nofollow">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -62,20 +62,20 @@
 			<div class="main"><iframe name="main" src="index_body.php"></iframe></div>
 		</div>
 		<script>
-		$(function () {
-			LeftMenuToggle();
-		});
-		function LeftMenuToggle() {
-			$("#togglemenu").click(function () {
-				if ($("body").attr("class") == "showmenu") {
-					$("body").attr("class", "hidemenu");
-					$(this).html('<i class="fa fa-indent"></i> ');
-				} else {
-					$("body").attr("class", "showmenu");
-					$(this).html('<i class="fa fa-dedent"></i> ');
-				}
+			$(function() {
+				LeftMenuToggle();
 			});
-		}
+			function LeftMenuToggle() {
+				$("#togglemenu").click(function() {
+					if ($("body").attr("class") == "showmenu") {
+						$("body").attr("class", "hidemenu");
+						$(this).html('<i class="fa fa-indent"></i>');
+					} else {
+						$("body").attr("class", "showmenu");
+						$(this).html('<i class="fa fa-dedent"></i>');
+					}
+				});
+			}
 		</script>
 	</body>
 </html>

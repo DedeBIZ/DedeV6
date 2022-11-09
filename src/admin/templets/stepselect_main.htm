@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="<?php echo $cfg_soft_lang;?>">
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>联动类别管理</title>
     <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -12,8 +12,9 @@
     <script src="../static/web/js/jquery.min.js"></script>
     <script src="../static/web/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+	<style>.abt{width:90%;border:1px solid #fff}#edsta{display:none;padding:10px;position:absolute;top:70px;left:70px;width:450px;height:auto;background:#f5f5f5;border:1px solid #dedede}</style>
     <script>
-        var loadhtml = "<center><img src='../static/web/img/loadinglit.gif'></center>";
+        var loadhtml = "<img src='../static/web/img/loadinglit.gif'>";
         function updateItem(aid) {
             var upenumf = document.getElementById('upenumf');
             upenumf.ename.value = $DE('ename' + aid).value;
@@ -133,13 +134,9 @@
             }
         }
     </script>
-    <style>
-.abt{width:90%;border:1px solid #fff}
-#edsta{display:none;position:absolute;top:70px;left:110px;width:280px;height:200px;background:#f5f5f5;border:1px solid #dedede}
-    </style>
 </head>
 <body>
-    <div id="edsta"><center><img src="../static/web/img/loadinglit.gif"></center></div>
+    <div id="edsta" class="py-2"><img src="../static/web/img/loadinglit.gif"></div>
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
         <tr bgcolor="#f5f5f5">
             <td width="170">
@@ -228,7 +225,7 @@
                 <span class="float-left"><a href="stepselect_main.php">联动类别管理</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> &gt; 子分类列表</span>
             </td>
         </tr>
-        <tr bgcolor="#fbfce2" align="center">
+        <tr bgcolor="#e9ecef" align="center">
             <td width="6%">选择</td>
             <td width="6%">id</td>
             <td width="20%">枚举名</td>
@@ -246,8 +243,8 @@
         </form>
         <form name="form1" action="stepselect_main.php" method="post">
             <input type="hidden" name="action" value="delenumAllSel">
-            {dede:datalist empty='<tr><td colspan="8"><center>暂无文档</center></td></tr>'}
-            <tr align="center" onMouseMove="javascript:this.bgColor='#fbfce2';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+            {dede:datalist empty='<tr><td colspan="8" align="center">暂无文档</td></tr>'}
+            <tr align="center" onMouseMove="javascript:this.bgColor='#e9ecef';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
                 <td><input type="checkbox" name="ids[]" value="{dede:field.id/}"></td>
                 <td>{dede:field.id/}</td>
                 <td>
@@ -310,7 +307,7 @@
                 <span class="float-left"><a href="stepselect_main.php">联动类别管理</a></span>
             </td>
         </tr>
-        <tr bgcolor="#fbfce2" align="center">
+        <tr bgcolor="#e9ecef" align="center">
             <td width="6%">选择</td>
             <td width="6%">id</td>
             <td width="28%">组类别名</td>
@@ -320,7 +317,7 @@
             <td>操作</td>
         </tr>
         {dede:datalist}
-        <tr align="center" onMouseMove="javascript:this.bgColor='#fbfce2';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <tr align="center" onMouseMove="javascript:this.bgColor='#e9ecef';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
             <td><input type="checkbox" name="ids[]" value="{dede:field.id/}"></td>
             <td>{dede:field.id/}</td>
             <td><a href="stepselect_main.php?egroup={dede:field.egroup/}">{dede:field.itemname/}</a></td>
@@ -343,12 +340,12 @@
             <td>{dede:field.egroup/}</td>
             <td>
                 <a href="stepselect_main.php?action=upallcache&egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-refresh"></i> 更新缓存</a>
-                <a href="stepselect_main.php?egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-bars-ul"></i> 查看子分类</a>
+                <a href="stepselect_main.php?egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-search"></i> 查看分类</a>
             </td>
         </tr>
         {/dede:datalist}
-        <tr bgcolor="#f5f5f5" align="center" class="py-2">
-            <td colspan="7">{dede:pagelist listsize='6'/}</td>
+        <tr>
+            <td bgcolor="#f5f5f5" colspan="7" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
         </tr>
     </table>
     <?php }?>

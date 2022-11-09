@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>绩效统计</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="../static/web/js/webajax.js"></script>
-	<script>
-	function LoadUser(uid)
-	{
-		var loadhtml = $DE('loaddiv').innerHTML;
-		var ajaxdiv = $DE('userct'+uid);
-		fetch('sys_admin_user_tj.php?dopost=getone&uid='+uid).then(resp=>{
-			if (resp.ok) {
-				return resp.text()
-			}
-			throw new Error('载入失败');
-		}).then((d)=>{
-			ajaxdiv.innerHTML = d;
-		}).catch((error) => {
-			ajaxdiv.innerHTML = errMsg;
-		});
-	}
-	</script>
-</head>
-<body>
-	<div id="loaddiv" style="display:none"><center><img src="../static/web/img/loadinglit.gif"></center></div>
-	<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-	  <tr>
-	    <td bgcolor="#f5f5f5"><a href="sys_admin_user.php">管理员帐号</a> &gt; 绩效统计</td>
-	  </tr>
-	  <tr>
-	    <td class="p-0 border-top-0">
-	    <?php
-	    $dsql->Execute('me', 'SELECT * FROM `#@__admin` ORDER BY id ASC');
-	    while( $arr = $dsql->GetArray('me') )
-	    {
-	  	  echo "<div id='userct{$arr['id']}'></div><script>LoadUser({$arr['id']});</script>";
-	    }
-	    ?>
-	    </td>
-	  </tr>
-	</table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>绩效统计</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/webajax.js"></script>
+		<script>
+		function LoadUser(uid)
+		{
+			var loadhtml = $DE('loaddiv').innerHTML;
+			var ajaxdiv = $DE('userct'+uid);
+			fetch('sys_admin_user_tj.php?dopost=getone&uid='+uid).then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('载入失败');
+			}).then((d)=>{
+				ajaxdiv.innerHTML = d;
+			}).catch((error) => {
+				ajaxdiv.innerHTML = errMsg;
+			});
+		}
+		</script>
+	</head>
+	<body>
+		<div id="loaddiv" class="text-center py-2" style="display:none"><img src="../static/web/img/loadinglit.gif"></div>
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<tr>
+				<td bgcolor="#f5f5f5"><a href="sys_admin_user.php">管理员帐号</a> &gt; 绩效统计</td>
+			</tr>
+			<tr>
+				<td class="p-0 border-top-0">
+					<?php
+					$dsql->Execute('me', 'SELECT * FROM `#@__admin` ORDER BY id ASC');
+					while( $arr = $dsql->GetArray('me') )
+					{
+					  echo "<div id='userct{$arr['id']}'></div><script>LoadUser({$arr['id']});</script>";
+					}
+					?>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>

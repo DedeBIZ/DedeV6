@@ -1,100 +1,100 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>关键词管理</title>
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script>
-  //获得选中文件的文件名
-  function SelKw(kw)
-  {
-  	if (document.form2.keywords.value)
-  	{
-  		document.form2.keywords.value += ","+kw;
-  	} else {
-  		document.form2.keywords.value = kw;
-  	}
-  }
-  function ReturnValue()
-  {
-  	if (window.opener.document.<?php echo $f?>.value)
-  	{
-  		window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
-  	} else {
-  		window.opener.document.<?php echo $f?>.value = document.form2.keywords.value;
-  	}
-  	//window.opener=true; //firefox出错
-  	window.close();
-  }
-  function showHide(objname)
-  {
-  	var obj = document.getElementById(objname);
-  	if (obj.style.display=="none") obj.style.display = "block";
-  	else obj.style.display="none";
-  }
-  function AddNewKw()
-  {
-  	showHide("addnew");
-  }
-  </script>
-</head>
-<body>
-<div class="main">
-  <table width="100%" align="center" cellpadding="1" cellspacing="1" class="table maintable my-3">
-    <form name="form1" action="article_keywords_main.php">
-      <input type="hidden" name="dopost" value="add">
-      <tr id="addnew" style="display:none">
-        <td align="center" colspan="2" class="border-top-0">
-          <table cellspacing="0" cellpadding="0" class="table table-borderless">
-            <tr>
-              <td width="170"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="biz-input-md"></td>
-              <td width="170"><input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="biz-input-sm"></td>
-              <td width="170"><input type="text" name="rank" id="rank" placeholder="请输入频率" class="biz-input-sm"></td>
-              <td><input type="submit" name="Submit" value="保存" class="btn btn-success btn-sm"></td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </form>
-    <form name="form2">
-      <tr>
-        <td width="100%" bgcolor="#f5f5f5" colspan="2">
-          <table width="100%" cellpadding="0" cellspacing="0" class="table table-borderless">
-            <tr>
-              <td width="30%">选择关键词</td>
-              <td width="70%" align="right">
-                <button type="button" class="btn btn-success btn-sm" name="kwa" onClick="AddNewKw()">新增关键词</button>
-                <button type="button"class="btn btn-success btn-sm" name="kwm" onClick="location='article_keywords_main.php';">关键词管理</button>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-      	  {dede:datalist empty='<center>暂无文档</center>'}
-      	  <a href="javascript:SelKw('{dede:field.keyword/}')">{dede:field.keyword/}</a>
-          {/dede:datalist}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <table cellspacing="0" cellpadding="0" class="table table-borderless">
-            <tr>
-              <td width="270"><input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" class="biz-input-md"></td>
-              <td><button type="button" class="btn btn-success btn-sm" name="Submit" onClick="ReturnValue()">选用</button></td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr align="center">
-        <td bgcolor="#f5f5f5" class="py-2" colspan="2">{dede:pagelist listsize='6'/}</td>
-      </tr>
-    </form>
-  </table>
-</div>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>关键词管理</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script>
+			//获得选中文件的文件名
+			function SelKw(kw)
+			{
+				if (document.form2.keywords.value)
+				{
+					document.form2.keywords.value += ","+kw;
+				} else {
+					document.form2.keywords.value = kw;
+				}
+			}
+			function ReturnValue()
+			{
+				if (window.opener.document.<?php echo $f?>.value)
+				{
+				  window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
+				} else {
+				  window.opener.document.<?php echo $f?>.value = document.form2.keywords.value;
+				}
+				//window.opener=true; //firefox出错
+				window.close();
+			}
+			function showHide(objname)
+			{
+				var obj = document.getElementById(objname);
+				if (obj.style.display=="none") obj.style.display = "block";
+				else obj.style.display="none";
+			}
+			function AddNewKw()
+			{
+				showHide("addnew");
+			}
+		</script>
+	</head>
+	<body>
+		<div class="main">
+			<table width="100%" align="center" cellpadding="1" cellspacing="1" class="table maintable my-3">
+				<form name="form1" action="article_keywords_main.php">
+					<input type="hidden" name="dopost" value="add">
+					<tr id="addnew" style="display:none">
+						<td align="center" colspan="2" class="border-top-0">
+							<table cellspacing="0" cellpadding="0" class="table table-borderless">
+								<tr>
+									<td width="170"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="biz-input-md"></td>
+									<td width="170"><input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="biz-input-sm"></td>
+									<td width="170"><input type="text" name="rank" id="rank" placeholder="请输入频率" class="biz-input-sm"></td>
+									<td><input type="submit" name="Submit" value="保存" class="btn btn-success btn-sm"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</form>
+				<form name="form2">
+					<tr>
+						<td width="100%" bgcolor="#f5f5f5" colspan="2">
+							<table width="100%" cellpadding="0" cellspacing="0" class="table table-borderless">
+								<tr>
+									<td width="30%">选择关键词</td>
+									<td width="70%" align="right">
+										<button type="button" class="btn btn-success btn-sm" name="kwa" onClick="AddNewKw()">新增关键词</button>
+										<button type="button" class="btn btn-success btn-sm" name="kwm" onClick="location='article_keywords_main.php';">关键词管理</button>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							{dede:datalist empty='<div class="text-center py-2">暂无文档</div>'}
+							<a href="javascript:SelKw('{dede:field.keyword/}')">{dede:field.keyword/}</a>
+							{/dede:datalist}
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<table cellspacing="0" cellpadding="0" class="table table-borderless">
+								<tr>
+									<td width="270"><input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" class="biz-input-md"></td>
+									<td><button type="button" class="btn btn-success btn-sm" name="Submit" onClick="ReturnValue()">选用</button></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr align="center">
+						<td bgcolor="#f5f5f5" class="py-2" colspan="2">{dede:pagelist listsize='6'/}</td>
+					</tr>
+				</form>
+			</table>
+		</div>
+	</body>
 </html>

@@ -1,208 +1,206 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="<?php echo $cfg_soft_lang;?>">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	<title>文档管理</title>
-	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../static/web/css/admin.css">
-	<script src="../static/web/js/jquery.min.js"></script>
-	<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-	<script src="../static/web/js/webajax.js"></script>
-	<script src="js/ieemu.js"></script>
-	<script src="js/main.js"></script>
-	<script>
-		if (moz) {
-			extendEventObject();
-			extendElementModel();
-			emulateAttachEvent();
-		}
-		function viewArc(aid) {
-			if (aid == 0) aid = getOneItem();
-			window.open("archives_do.php?aid=" + aid + "&dopost=viewArchives");
-		}
-		function editArc(aid) {
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=editArchives";
-		}
-		function checkArc(aid) {
-			var qstr = getCheckboxItem();
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=checkArchives&qstr=" + qstr;
-		}
-		function updateArc(aid) {
-			var qstr = getCheckboxItem();
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=makeArchives&qstr=" + qstr;
-		}
-		function moveArc(aid) {
-			var qstr = getCheckboxItem();
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=moveArchives&qstr=" + qstr;
-		}
-		function delArc(aid) {
-			var qstr = getCheckboxItem();
-			if (qstr == '') {
-				ShowMsg('必须选择一个或多个文档');
-				return;
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>文档管理</title>
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="../static/web/js/webajax.js"></script>
+		<script src="js/ieemu.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			if (moz) {
+				extendEventObject();
+				extendElementModel();
+				emulateAttachEvent();
 			}
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?qstr=" + qstr + "&aid=" + aid + "&dopost=delArchives";
-		}
-		function adArc(aid) {
-			var qstr = getCheckboxItem();
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=commendArchives&qstr=" + qstr;
-		}
-		function moveArc(e, obj, cid) {
-			var qstr = getCheckboxItem();
-			if (qstr == '') {
-				ShowMsg('必须选择一个或多个文档');
-				return;
+			function viewArc(aid) {
+				if (aid == 0) aid = getOneItem();
+				window.open("archives_do.php?aid=" + aid + "&dopost=viewArchives");
 			}
-			LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr=' + qstr + '&channelid=' + cid + '&rnd=' + Math.random(), 'moveArchives', '480px', '180px');
-			ChangeFullDiv('show');
-		}
-		//获得选中文件的文件名
-		function getCheckboxItem() {
-			var allSel = "";
-			if (document.form2.arcID.value) return document.form2.arcID.value;
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (document.form2.arcID[i].checked) {
-					if (allSel == "")
+			function editArc(aid) {
+				if (aid == 0) aid = getOneItem();
+				location = "archives_do.php?aid=" + aid + "&dopost=editArchives";
+			}
+			function checkArc(aid) {
+				var qstr = getCheckboxItem();
+				if (aid == 0) aid = getOneItem();
+				location = "archives_do.php?aid=" + aid + "&dopost=checkArchives&qstr=" + qstr;
+			}
+			function updateArc(aid) {
+				var qstr = getCheckboxItem();
+				if (aid == 0) aid = getOneItem();
+				location = "archives_do.php?aid=" + aid + "&dopost=makeArchives&qstr=" + qstr;
+			}
+			function moveArc(aid) {
+				var qstr = getCheckboxItem();
+				if (aid == 0) aid = getOneItem();
+				location = "archives_do.php?aid=" + aid + "&dopost=moveArchives&qstr=" + qstr;
+			}
+			function delArc(aid) {
+				var qstr = getCheckboxItem();
+				if (qstr == '') {
+					ShowMsg('必须选择一个或多个文档');
+					return;
+				}
+				if (aid == 0) aid = getOneItem();
+				location = "archives_do.php?qstr=" + qstr + "&aid=" + aid + "&dopost=delArchives";
+			}
+			function adArc(aid) {
+				var qstr = getCheckboxItem();
+				if (aid == 0) aid = getOneItem();
+				location = "archives_do.php?aid=" + aid + "&dopost=commendArchives&qstr=" + qstr;
+			}
+			function moveArc(e, obj, cid) {
+				var qstr = getCheckboxItem();
+				if (qstr == '') {
+					ShowMsg('必须选择一个或多个文档');
+					return;
+				}
+				LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr=' + qstr + '&channelid=' + cid + '&rnd=' + Math.random(), 'moveArchives', '480px', '180px');
+				ChangeFullDiv('show');
+			}
+			//获得选中文件的文件名
+			function getCheckboxItem() {
+				var allSel = "";
+				if (document.form2.arcID.value) return document.form2.arcID.value;
+				for (i = 0; i < document.form2.arcID.length; i++) {
+					if (document.form2.arcID[i].checked) {
+						if (allSel == "")
+							allSel = document.form2.arcID[i].value;
+						else
+							allSel = allSel + "`" + document.form2.arcID[i].value;
+					}
+				}
+				return allSel;
+			}
+			function getCheckboxItem2() {
+				var allSel = "";
+				if (document.form2.arcID.value) return document.form2.arcID.value;
+				for (i = 0; i < document.form2.arcID.length; i++) {
+					if (document.form2.arcID[i].checked) {
+						if (allSel == "")
+							allSel = document.form2.arcID[i].value;
+						else
+							allSel = allSel + "," + document.form2.arcID[i].value;
+					}
+				}
+				return allSel;
+			}
+			//获得选中其中一个的id
+			function getOneItem() {
+				var allSel = "";
+				if (document.form2.arcID.value) return document.form2.arcID.value;
+				for (i = 0; i < document.form2.arcID.length; i++) {
+					if (document.form2.arcID[i].checked) {
 						allSel = document.form2.arcID[i].value;
-					else
-						allSel = allSel + "`" + document.form2.arcID[i].value;
+						break;
+					}
+				}
+				return allSel;
+			}
+			function selAll() {
+				for (i = 0; i < document.form2.arcID.length; i++) {
+					if (!document.form2.arcID[i].checked) {
+						document.form2.arcID[i].checked = true;
+					}
 				}
 			}
-			return allSel;
-		}
-		function getCheckboxItem2() {
-			var allSel = "";
-			if (document.form2.arcID.value) return document.form2.arcID.value;
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (document.form2.arcID[i].checked) {
-					if (allSel == "")
-						allSel = document.form2.arcID[i].value;
-					else
-						allSel = allSel + "," + document.form2.arcID[i].value;
+			function noSelAll() {
+				for (i = 0; i < document.form2.arcID.length; i++) {
+					if (document.form2.arcID[i].checked) {
+						document.form2.arcID[i].checked = false;
+					}
 				}
 			}
-			return allSel;
-		}
-		//获得选中其中一个的id
-		function getOneItem() {
-			var allSel = "";
-			if (document.form2.arcID.value) return document.form2.arcID.value;
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (document.form2.arcID[i].checked) {
-					allSel = document.form2.arcID[i].value;
-					break;
-				}
-			}
-			return allSel;
-		}
-		function selAll() {
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (!document.form2.arcID[i].checked) {
-					document.form2.arcID[i].checked = true;
-				}
-			}
-		}
-		function noSelAll() {
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (document.form2.arcID[i].checked) {
-					document.form2.arcID[i].checked = false;
-				}
-			}
-		}
-	</script>
-</head>
-<body>
-	<table width="98%" align="center" cellspacing="0" cellpadding="0" class="table maintable my-3">
-		<tr>
-			<td>
-				<button type='button' class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
-				{dede:if $adminid==$mid }
-				<button type='button' class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=0';">全部文档</button>
-				{else}
-				<button type='button' class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID();?>';">我的文档</button>
-				{/dede:if}
-				<button type='button' class="btn btn-success btn-sm" onClick="location='catalog_main.php';">栏目管理</button>
-				<button type='button' class="btn btn-success btn-sm" name='bb1' onClick="location='makehtml_list.php?cid={dede:global.cid/}';">更新列表</button>
-				<button type='button' class="btn btn-success btn-sm" name='bb2' onClick="location='makehtml_archives.php?cid={dede:global.cid/}';">更新文档</button>
-				<?php echo $CheckUserSend;?>
-			</td>
-		</tr>
-	</table>
-	<form name="form3" action="content_sg_list.php" method="get">
-		<input type="hidden" name="dopost" value="listArchives">
-		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<tr bgcolor="#f5f5f5">
-				<td width="180" align="center">
-					<select name="cid" class="biz-input-sm">
-						<option value="0">选择分类</option>
-						{dede:global.optionarr/}
-					</select>
+		</script>
+	</head>
+	<body>
+		<table width="98%" align="center" cellspacing="0" cellpadding="0" class="table maintable my-3">
+			<tr>
+				<td>
+					<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
+					{dede:if $adminid==$mid }
+					<button type="button" class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=0';">全部文档</button>
+					{else}
+					<button type="button" class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID();?>';">我的文档</button>
+					{/dede:if}
+					<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_main.php';">栏目管理</button>
+					<button type="button" class="btn btn-success btn-sm" name="bb1" onClick="location='makehtml_list.php?cid={dede:global.cid/}';">更新列表</button>
+					<button type="button" class="btn btn-success btn-sm" name="bb2" onClick="location='makehtml_archives.php?cid={dede:global.cid/}';">更新文档</button>
+					<?php echo $CheckUserSend;?>
 				</td>
-				<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" value="{dede:global.keyword/}" class="biz-input-md"></td>
-				<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 			</tr>
 		</table>
-	</form>
-	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
-		<tr>
-			<td bgcolor="#f5f5f5" colspan="9">{dede:global.positionname/}文档列表</td>
-		</tr>
-		<form name="form2">
-			<tr bgcolor="#fbfce2" align="center">
-				<td width="6%">id</td>
-				<td width="6%">选择</td>
-				<td width="30%">文档标题</td>
-				<td width="10%">更新时间</td>
-				<td width="14%">类目</td>
-				<td width="9%">点击</td>
-				<td width="9%">权限</td>
-				<td width="6%">发布人</td>
-				<td width="10%">操作</td>
-			</tr>
-			{dede:datalist empty='<tr><td colspan="9"><center>暂无文档</center></td></tr>'}
-			<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-				<td>{dede:field.id/}</td>
-				<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.aid/}"></td>
-				<td align="left"><a href="archives_do.php?aid={dede:field.aid/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a></td>
-				<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
-				<td>{dede:field.typename/}</td>
-				<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
-				<td>{dede:field.click/}</td>
-				<td>{dede:field.mid function=GetMemberName(@me)/}</td>
-				<td>
-					<a href="javascript:editArc({dede:field.aid/})" class="btn btn-success btn-sm" title="编辑"><i class="fa fa-pencil-square-o"></i></a>
-					<a href="javascript:viewArc({dede:field.aid/})" class="btn btn-success btn-sm" title="预览"><i class="fa fa-globe"></i></a>
-				</td>
-			</tr>
-			{/dede:datalist}
-			<tr>
-				<td colspan="9" class="py-2">
-					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
-					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-					<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
-					<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
-					<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
-					<a href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>)" class="btn btn-success btn-sm">移动</a>
-					<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
-					<?php
-					if (!empty($f)) {
-					?>
-					<a href="javascript:ReturnValue()" class="btn btn-success btn-sm">把选定值加到列表</a>
-					<?php }?>
-				</td>
-			</tr>
+		<form name="form3" action="content_sg_list.php" method="get">
+			<input type="hidden" name="dopost" value="listArchives">
+			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+				<tr bgcolor="#f5f5f5">
+					<td width="180" align="center">
+						<select name="cid" class="biz-input-sm">
+							<option value="0">选择分类</option>
+							{dede:global.optionarr/}
+						</select>
+					</td>
+					<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" value="{dede:global.keyword/}" class="biz-input-md"></td>
+					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
+				</tr>
+			</table>
 		</form>
-		<tr>
-			<td bgcolor="#f5f5f5" class="py-2" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
-		</tr>
-	</table>
-</body>
+		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="9">{dede:global.positionname/}文档列表</td>
+			</tr>
+			<form name="form2">
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">id</td>
+					<td width="6%">选择</td>
+					<td width="30%">文档标题</td>
+					<td width="10%">更新时间</td>
+					<td width="14%">类目</td>
+					<td width="9%">点击</td>
+					<td width="9%">权限</td>
+					<td width="6%">发布人</td>
+					<td width="10%">操作</td>
+				</tr>
+				{dede:datalist empty='<tr><td colspan="9" align="center">暂无文档</td></tr>'}
+				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+					<td>{dede:field.id/}</td>
+					<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.aid/}"></td>
+					<td align="left"><a href="archives_do.php?aid={dede:field.aid/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a></td>
+					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
+					<td>{dede:field.typename/}</td>
+					<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
+					<td>{dede:field.click/}</td>
+					<td>{dede:field.mid function=GetMemberName(@me)/}</td>
+					<td>
+						<a href="javascript:editArc({dede:field.aid/})" class="btn btn-success btn-sm" title="编辑"><i class="fa fa-pencil-square-o"></i></a>
+						<a href="javascript:viewArc({dede:field.aid/})" class="btn btn-success btn-sm" title="预览"><i class="fa fa-globe"></i></a>
+					</td>
+				</tr>
+				{/dede:datalist}
+				<tr>
+					<td colspan="9">
+						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
+						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
+						<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
+						<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
+						<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
+						<a href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>)" class="btn btn-success btn-sm">移动</a>
+						<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
+						<?php if (!empty($f)) {?>
+						<a href="javascript:ReturnValue()" class="btn btn-success btn-sm">把选定值加到列表</a>
+						<?php }?>
+					</td>
+				</tr>
+			</form>
+			<tr>
+				<td bgcolor="#f5f5f5" class="py-2" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+			</tr>
+		</table>
+	</body>
 </html>

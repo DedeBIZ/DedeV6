@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>文档模型管理</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -25,7 +25,7 @@
 					</table>
 				</td>
 			</tr>
-			<tr bgcolor="#fbfce2" align="center">
+			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">id</td>
 				<td width="16%">栏目名称</td>
 				<td width="12%">识别id</td>
@@ -34,12 +34,8 @@
 				<td width="6%">模型</td>
 				<td>管理</td>
 			</tr>
-			{dede:datalist empty='<tr>
-				<td colspan="7">
-					<center>暂无文档</center>
-				</td>
-			</tr>'}
-			<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+			{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
+			<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><a href="mychannel_edit.php?id={dede:field.id/}&dopost=edit">{dede:field.typename/}</a></td>
 				<td>{dede:field.nid/}</td>

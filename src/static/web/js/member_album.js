@@ -46,7 +46,7 @@ function MakeUpload(mnum)
 			dplay = "display:none";
 		}
 		fhtml = '';
-		fhtml += "<table width='100%'><tr><td><label><input type='checkbox' name='isokcheck"+startNum+"' id='isokcheck"+startNum+"' value='1' class='np' "+dsel+" onClick='CheckSelTable("+startNum+")' />显示图片 "+startNum+" 的上传框</label></td></tr></table>";
+		fhtml += "<table width='100%'><tr><td><label><input type='checkbox' name='isokcheck"+startNum+"' id='isokcheck"+startNum+"' value='1' "+dsel+" onClick='CheckSelTable("+startNum+")' />显示图片 "+startNum+" 的上传框</label></td></tr></table>";
 		fhtml += "<table width='100%' border=\"0\" id=\"seltb"+startNum+"\" cellpadding=\"1\" cellspacing=\"1\" bgcolor=\"white\" style=\"margin-bottom:6px;margin-left:10px;"+dplay+"\"><tobdy>";
 		fhtml += "<tr bgcolor=\"#F7F7F7\">\r\n";
 		fhtml += "<td height=\"25\" colspan=\"2\"> <strong>图片"+startNum+"：</strong></td>";
