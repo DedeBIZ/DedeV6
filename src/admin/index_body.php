@@ -74,7 +74,7 @@ else if ($dopost == 'setskin') {
     if (empty($cfg_auth_code)) {
         echo json_encode(array(
             "code" => -1002,
-            "msg" => "无法启动商业版组件<a href='https://www.dedebiz.com/auth'>《商业版授权》</a>",
+            "msg" => "您的站点已授权社区版，获取官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>。",
             "result" => null,
         ));
         exit;

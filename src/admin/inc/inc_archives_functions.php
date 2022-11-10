@@ -17,7 +17,7 @@ if (!isset($_NOT_ARCHIVES)) {
     require_once(DEDEINC.'/customfields.func.php');
 }
 /**
- * 获得HTML里的外部资源，针对图集
+ * 获得HTML里的外部资源，针对图片
  *
  * @access    public
  * @param     string  $body  文档文档
@@ -629,7 +629,7 @@ function Replace_Links(&$body, $allow_urls = array())
     return $body;
 }
 /**
- *  图集里大图的小图
+ *  图片里大图的小图
  *
  * @access    public
  * @param     string  $filename  图片名称
@@ -762,8 +762,8 @@ function GetUpdateTest()
         if ($cfg_make_andcat == 'Y') $dolist .= empty($dolist) ? 'makeparenttype' : ',makeparenttype';
         $dolists = explode(',', $dolist);
         $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=".preg_replace("#".$dolists[0]."[,]{0,1}#", '', $dolist);
-        $revalue = "<table width='80%' style='border:1px dashed #cdcdcd;margin-left:20px;margin-bottom:15px' id='tgtable' align='left'><tr><td bgcolor='#EBF5C9'>正在进行相关文档更新，请完成前不要进行其它操作：\r\n</td></tr>\r\n";
-        $revalue .= "<tr><td>\r\n<iframe name='stafrm' frameborder='0' id='stafrm' width='100%' height='200px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
+        $revalue = "<table id='tgtable' class='maintable my-3'><tr><td bgcolor='#f8f8f8'>正在进行相关文档更新，请完成前不要进行其它操作：\r\n</td></tr>\r\n";
+        $revalue .= "<tr><td>\r\n<iframe name='stafrm' id='stafrm' frameborder='0' width='100%' height='200px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
         $revalue .= "</table>";
     } else {
         $revalue = '';

@@ -1,6 +1,6 @@
 <?php
 /**
- * 图集编辑
+ * 图片编辑
  * 
  * @version        $id:album_edit.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
@@ -15,7 +15,7 @@ if ($cfg_mb_lit == 'Y') {
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("对不起，由于系统关闭了图集功能，您访问的功能不可用", "-1");
+    ShowMsg("对不起，由于系统关闭了图片功能，您访问的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -128,12 +128,12 @@ else if ($dopost == 'save') {
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success'>发布新图集</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success'>修改图集</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看图集</a><a href='content_list.php?channelid=$channelid' class='btn btn-success'>管理图集</a> ";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success'>发布新图片</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success'>修改图片</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看图片</a><a href='content_list.php?channelid=$channelid' class='btn btn-success'>管理图片</a> ";
     //提交后返回提交页面
-    $wintitle = "成功修改图集";
-    $wecome_info = "图集管理::修改图集";
+    $wintitle = "成功修改图片";
+    $wecome_info = "图片管理::修改图片";
     $win = new OxWindow();
-    $win->AddTitle("成功修改图集");
+    $win->AddTitle("成功修改图片");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

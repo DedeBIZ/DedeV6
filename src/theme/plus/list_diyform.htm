@@ -35,11 +35,11 @@
 								if ($fields[$field]=='') continue;
 								if ($fielddata[1]=='img')
 								{
-									$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif'> 图片附件</a>";
+									$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/icon_addon.png'> 图片附件</a>";
 								}
 								else if ($fielddata[1]=='addon')
 								{
-									$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif'> 其它附件</a>";
+									$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/icon_addon.png'> 其它附件</a>";
 								} else {
 									if ($fielddata[1]=='htmltext') $fields[$field] = html2text($fields[$field]);
 									else $fields[$field] = dede_htmlspecialchars($fields[$field]);

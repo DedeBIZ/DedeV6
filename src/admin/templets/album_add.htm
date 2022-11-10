@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>发布图集</title>
+		<title>发布图片</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -75,7 +75,7 @@
 					<td class="biz-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">图集标题：</td>
+								<td width="90">图片标题：</td>
 								<td width="400"><input type="text" name="title" id="title" value="" class="biz-input-lg"></td>
 								<td width="90">简略标题：</td>
 								<td><input type="text" name="shorttitle" id="shorttitle" class="biz-input-sm"></td>
@@ -138,9 +138,9 @@
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-sm btn-success delete">清空</button>
-									<label><input type="checkbox" name="ddisfirst" value="1"> 使用图集的第一幅图</label>
+									<label><input type="checkbox" name="ddisfirst" value="1"> 使用图片的第一幅图</label>
 								</td>
-								<td><img id="litPic" src="../static/web/img/thumbnail.jpg" class="thumbnail"></td>
+								<td><img id="litPic" src="../static/web/img/thumbnail.jpg" class="thumbnail-md"></td>
 							</tr>
 						</table>
 					</td>
@@ -332,7 +332,7 @@
 				</tr>
 				<tr id="handfield">
 					<td class="biz-td">
-						<table width="100%">
+						<table>
 							<tr>
 								<td>
 									<div id="divFileProgressContainer"></div>
@@ -346,7 +346,7 @@
 					<td class="biz-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">图集文档：</td>
+								<td width="90">图片文档：</td>
 								<td><?php GetEditor("body","",400,"Diy");?></td>
 							</tr>
 						</table>
@@ -374,7 +374,7 @@
 					<td class="biz-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">图集排序：</td>
+								<td width="90">图片排序：</td>
 								<td width="260"> <select name="sortup" id="sortup" class="biz-input-sm">
 										<option value="0" selected>默认排序</option>
 										<option value="7">置顶一周</option>

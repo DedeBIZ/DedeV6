@@ -9,82 +9,76 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable my-3">
+		<table cellpadding="2" cellspacing="1" align="center" class="table maintable my-3">
 			<form name="form1" action="sys_group_edit.php" method="post">
 				<input type="hidden" name="dopost" value="save">
 				<tr>
-					<td bgcolor="#f5f5f5" align="left"><a href="sys_group.php">用户组设定</a> &gt; 修改用户组</td>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="sys_group.php">用户组设定</a> &gt; 修改用户组</td>
 				</tr>
 				<tr>
-					<td align="center">
-						<table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
-							<tr>
-								<td width="260">组名称：</td>
-								<td><input type="text" name="typename" id="typename" value="<?php echo $groupSet['typename']?>" class="biz-input-sm"></td>
-							</tr>
-							<tr>
-								<td>级别值：</td>
-								<td><input type="hidden" name="rank" id="rank" value="<?php echo $groupSet['rank']?>" class="biz-input-sm"> <?php echo $groupSet['rank']?></td>
-							</tr>
-							<?php
-							$start = 0;
-							$k = 0;
-							$gouplists = file(DEDEADMIN.'/inc/grouplist.txt');
-							foreach($gouplists as $line)
-							{
-								$line = trim($line);
-								if ($line=="") continue;
-								if (preg_match("#^>>#", $line))
-								{
-									if ($start>0) echo "</td></tr>";
-									$line = str_replace('>>','',$line);
-									$ls = explode('>',$line);
-									if (DEDEBIZ_SAFE_MODE && $ls[1]==="unsafe") {
-										continue;
-									}
-									$start++;
-									$lhead = "<tr> <td colspan='2'>{$start}、".$ls[0]."</td></tr><tr><td colspan='2'>";
-									echo  $lhead;
-								}
-								else if (preg_match("#^>#", $line))
-								{
-									$ls = explode('>',$line);
-									if (DEDEBIZ_SAFE_MODE && $ls[3]==="unsafe") {
-										continue;
-									}
-									$tag = $ls[1];
-									$tagname = str_replace('[br]','<br>',$ls[2]);
-									if (!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";
-									else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
-									echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label> ";
-									$k++;
-									}
-								}
-								$start++;
-							?>
-							<tr>
-								<td colspan="2"><?php echo $start?>插件权限</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<?php
-									$l = 0;
-									$dsql->SetQuery('SELECT plusname FROM `#@__plus`');
-									$dsql->Execute();
-									while($row=$dsql->GetObject()){
-										echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'".CRank("plus_{$row->plusname}")."> {$row->plusname}</label> ";
-										$k++;
-										$l++;
-										if ($l % 6 == 0) echo "<br>";
-									}
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-							</tr>
-						</table>
+					<td width="260">组名称：</td>
+					<td><input type="text" name="typename" id="typename" value="<?php echo $groupSet['typename']?>" class="biz-input-sm"></td>
+				</tr>
+				<tr>
+					<td>级别值：</td>
+					<td><input type="hidden" name="rank" id="rank" value="<?php echo $groupSet['rank']?>" class="biz-input-sm"> <?php echo $groupSet['rank']?></td>
+				</tr>
+				<?php
+				$start = 0;
+				$k = 0;
+				$gouplists = file(DEDEADMIN.'/inc/grouplist.txt');
+				foreach($gouplists as $line)
+				{
+					$line = trim($line);
+					if ($line=="") continue;
+					if (preg_match("#^>>#", $line))
+					{
+						if ($start>0) echo "</td></tr>";
+						$line = str_replace('>>','',$line);
+						$ls = explode('>',$line);
+						if (DEDEBIZ_SAFE_MODE && $ls[1]==="unsafe") {
+							continue;
+						}
+						$start++;
+						$lhead = "<tr> <td colspan='2'>{$start}、".$ls[0]."</td></tr><tr><td colspan='2'>";
+						echo  $lhead;
+					}
+					else if (preg_match("#^>#", $line))
+					{
+						$ls = explode('>',$line);
+						if (DEDEBIZ_SAFE_MODE && $ls[3]==="unsafe") {
+							continue;
+						}
+						$tag = $ls[1];
+						$tagname = str_replace('[br]','<br>',$ls[2]);
+						if (!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";
+						else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
+						echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label> ";
+						$k++;
+						}
+					}
+					$start++;
+				?>
+				<tr>
+					<td colspan="2"><?php echo $start?>插件权限</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<?php
+						$l = 0;
+						$dsql->SetQuery('SELECT plusname FROM `#@__plus`');
+						$dsql->Execute();
+						while($row=$dsql->GetObject()){
+							echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'".CRank("plus_{$row->plusname}")."> {$row->plusname}</label> ";
+							$k++;
+							$l++;
+							if ($l % 6 == 0) echo "<br>";
+						}
+						?>
 					</td>
+				</tr>
+				<tr>
+					<td colspan="2" bgcolor="#f5f5f5" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
 			</form>
 		</table>

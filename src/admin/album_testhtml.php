@@ -1,6 +1,6 @@
 <?php
 /**
- * 图集测试
+ * 图片测试
  *
  * @version        $id:album_testhtml.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

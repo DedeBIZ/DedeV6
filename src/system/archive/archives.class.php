@@ -193,7 +193,7 @@ class Archives
             $this->Fields['body'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['body']);
             $this->Fields['body'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['body']);
             $this->Fields['body'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\" ",$this->Fields['body']);
-            //图集图片注释替换为标题，利于优化
+            //图片注释替换为标题，利于优化
             $this->Fields['imgurls'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['imgurls']);
             $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
             $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
@@ -709,7 +709,7 @@ class Archives
                 $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$preRow['title']}\"/></a> ";
             } else {
                 $this->PreNext['pre'] = "上一篇：没有了 ";
-                $this->PreNext['preimg'] = "<img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有上一图集了\"/>";
+                $this->PreNext['preimg'] = "<img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有上一图片了\"/>";
             }
             if (is_array($nextRow)) {
                 $mlink = GetFileUrl(
@@ -738,7 +738,7 @@ class Archives
                 $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\"/></a> ";
             } else {
                 $this->PreNext['next'] = "下一篇：没有了 ";
-                $this->PreNext['nextimg'] = "<a href='javascript:void(0)' alt=\"\"><img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有下一图集了\"/></a>";
+                $this->PreNext['nextimg'] = "<a href='javascript:void(0)' alt=\"\"><img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有下一图片了\"/></a>";
             }
         }
         //二次开发上一篇下一篇

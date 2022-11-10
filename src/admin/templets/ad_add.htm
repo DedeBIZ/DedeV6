@@ -11,7 +11,7 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
-		<style>.typetab{text-align:left}.typetab ul{list-style:none}.typetab ul li{float:left;width:64px;height:28px;line-height:28px;background:#f5f5f5;text-align:center;cursor:pointer}.typetab ul .act{background:#e9ecef}.i_table{border:1px solid #eee}</style>
+		<style>.typetab{text-align:left}.typetab ul{list-style:none}.typetab ul li{float:left;width:64px;height:28px;line-height:28px;background:#f5f5f5;text-align:center;cursor:pointer}.typetab ul .act{background:#e9ecef}.i_table w-100{border:1px solid #eee}</style>
 		<script>
 			function checkSubmit() {
 				if (document.form1.tagname.value == "") {
@@ -52,13 +52,13 @@
 	</head>
 	<body>
 		<form action="ad_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
-			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5"><a href="ad_main.php">广告管理</a> &gt; 增加广告位置</td>
 				</tr>
 				<tr>
 					<td>
-						<table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
+						<table cellspacing="4" cellpadding="4" class="table table-borderless">
 							<input type="hidden" name="normbody[style]" value="code" id="adstyle">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="save">
@@ -140,7 +140,7 @@
 		</form>
 		<div id="formtxt" style="display:none">
 			<div class="content" id="code" style="display:none">
-				<table width="80%" cellpadding="3" cellspacing="1" class="i_table">
+				<table cellpadding="3" cellspacing="1" class="i_table w-100">
 					<tr>
 						<td width="260">广告代码：请填写广告代码，支持网页代码</td>
 						<td><textarea name="normbody[htmlcode]" class="biz-textarea-xl"></textarea></td>
@@ -148,7 +148,7 @@
 				</table>
 			</div>
 			<div class="content" id="txt" style="display:none">
-				<table width="80%" cellpadding="3" cellspacing="1" class="i_table">
+				<table cellpadding="3" cellspacing="1" class="i_table w-100">
 					<tr>
 						<td width="260">文字文档 *</td>
 						<td><input type="text" name="normbody[title]" value="" class="biz-input-md"></td>
@@ -168,7 +168,7 @@
 				</table>
 			</div>
 			<div class="content" id="img" style="display:none">
-				<table width="80%" cellpadding="3" cellspacing="1" class="i_table">
+				<table cellpadding="3" cellspacing="1" class="i_table w-100">
 					<tr>
 						<td width="260">图片地址 *</td>
 						<td><input type="text" name="normbody[url]" value="" class="biz-input-md"></td>
@@ -192,7 +192,7 @@
 				</table>
 			</div>
 			<div class="content" id="flash" style="display:none">
-				<table width="80%" cellpadding="3" cellspacing="1" class="i_table">
+				<table width="80%" cellpadding="3" cellspacing="1" class="i_table w-100">
 					<tr>
 						<td width="260">flash链接</td>
 						<td><input type="text" name="normbody[link]" value="" class="biz-input-md"></td>

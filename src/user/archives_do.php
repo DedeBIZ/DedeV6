@@ -93,17 +93,17 @@ else if ($dopost == "delArc") {
     CheckRank(0, 0);
     include_once(DEDEMEMBER."/inc/inc_batchup.php");
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'content_list.php?channelid=' : $_COOKIE['ENV_GOBACK_URL'];
-    $equery = "SELECT arc.channel,arc.senddate,arc.arcrank,ch.maintable,ch.addtable,ch.issystem,ch.arcsta FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
+    $equery = "SELECT arc.channel,arc.senddate,arc.arcrank,ch.biz-table,ch.addtable,ch.issystem,ch.arcsta FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $row = $dsql->GetOne($equery);
     if (!is_array($row)) {
         ShowMsg("您没有权限删除这篇文档", "-1");
         exit();
     }
-    if (trim($row['maintable']) == '') $row['maintable'] = '#@__archives';
+    if (trim($row['biz-table']) == '') $row['biz-table'] = '#@__archives';
     if ($row['issystem'] == -1) {
         $equery = "SELECT mid FROM `{$row['addtable']}` WHERE aid='$aid' AND mid='".$cfg_ml->M_ID."' ";
     } else {
-        $equery = "SELECT mid,litpic from `{$row['maintable']}` WHERE id='$aid' AND mid='".$cfg_ml->M_ID."' ";
+        $equery = "SELECT mid,litpic from `{$row['biz-table']}` WHERE id='$aid' AND mid='".$cfg_ml->M_ID."' ";
     }
     $arr = $dsql->GetOne($equery);
     if (!is_array($arr)) {

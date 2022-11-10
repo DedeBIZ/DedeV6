@@ -5,7 +5,7 @@ heightsearch.htm,高级搜索
 list_diyform.htm,自定义表单文档列表
 post_diyform.htm,自定义表单发送文档
 recommend.htm,文档推荐
-showphoto.htm,图集图片展示页
+showphoto.htm,图片展示页
 view_diyform.htm,自定义表单文档查看
 view_msg.htm,权限文档提示信息
 vote.htm,投票模板

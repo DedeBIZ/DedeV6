@@ -100,7 +100,7 @@ html{background:#f5f5f5}
                     if ($activepath == "") continue;
                     $tmp = preg_replace("#[\/][^\/]*$#", "", $activepath);
                     $line = "<tr>
-                    <td class='biz-td'><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
+                    <td class='biz-td'><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
                     <td colspan='2' class='biz-td'>当前目录：$activepath</td>
                     </tr>\r\n";
                       echo $line;
@@ -108,7 +108,7 @@ html{background:#f5f5f5}
                     if (preg_match("#^_(.*)$#i", $file)) continue;
                     if (preg_match("#^\.(.*)$#i", $file)) continue;
                     $line = "<tr>
-                    <td class='biz-td'><a href=select_templets.php?f=$f&activepath=".urlencode("$activepath/$file")."><img src='../../static/web/img/dir.gif'>$file</a></td>
+                    <td class='biz-td'><a href=select_templets.php?f=$f&activepath=".urlencode("$activepath/$file")."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
                     <td class='biz-td'></td>
                     <td class='biz-td'></td>
                     </tr>";
@@ -121,7 +121,7 @@ html{background:#f5f5f5}
                     $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                     $line = "<tr>
                     <td class='biz-td'>
-                        <img src='../../static/web/img/htm.gif'>
+                        <img src='../../static/web/img/icon_htm.png'>
                         <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                     </td>
                     <td class='biz-td'>$filesize KB</td>
@@ -136,7 +136,7 @@ html{background:#f5f5f5}
                     $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
                     $line = "<tr>
                     <td class='biz-td'>
-                        <img src='../../static/web/img/css.gif'>
+                        <img src='../../static/web/img/icon_css.png'>
                         <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                     </td>
                     <td class='biz-td'>$filesize KB</td>
@@ -151,7 +151,7 @@ html{background:#f5f5f5}
                     $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                     $line = "<tr>
                     <td class='biz-td'>
-                        <img src='../../static/web/img/js.gif'>
+                        <img src='../../static/web/img/icon_js.png'>
                         <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                     </td>
                     <td class='biz-td'>$filesize KB</td>
@@ -196,7 +196,7 @@ html{background:#f5f5f5}
                     $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                     $line = "<tr>
                     <td class='biz-td'>
-                        <img src='../../static/web/img/txt.gif'>
+                        <img src='../../static/web/img/icon_text.png'>
                         <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                     </td>
                     <td class='biz-td'>$filesize KB</td>

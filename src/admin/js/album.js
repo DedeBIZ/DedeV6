@@ -35,7 +35,7 @@ function checkMuList(psid, cmid) {
 		$Obj('spagelist').style.display = 'none';
 	}
 }
-//图集，显示与隐藏zip文件选项
+//图片显示与隐藏zip文件选项
 function showZipField(formitem, zipid, upid) {
 	if (formitem.checked) {
 		$Obj(zipid).style.display = 'block';
@@ -45,7 +45,7 @@ function showZipField(formitem, zipid, upid) {
 		$Obj(zipid).style.display = 'none';
 	}
 }
-//图集，显示与隐藏Html编辑框
+//图片显示与隐藏Html编辑框
 function showHtmlField(formitem, htmlid, upid) {
 	if ($Nav() != "IE") {
 		alert("该方法不适用于非IE浏览器");

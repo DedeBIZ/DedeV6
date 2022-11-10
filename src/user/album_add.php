@@ -1,6 +1,6 @@
 <?php
 /**
- * 图集发布
+ * 图片发布
  * 
  * @version        $id:album_add.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
@@ -9,14 +9,14 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//考虑安全原因不管是否开启游客投稿功能，都不允许用户对图集投稿
+//考虑安全原因不管是否开启游客投稿功能，都不允许用户对图片投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
     ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用", "-1");
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("对不起，由于系统关闭了图集功能，您访问的功能不可用", "-1");
+    ShowMsg("对不起，由于系统关闭了图片功能，您访问的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -155,11 +155,11 @@ else if ($dopost == 'save') {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success'>继续发布图集</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看图集</a><a href='album_edit.php?aid=".$arcID."&channelid=$channelid' class='btn btn-success'>修改图集</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success'>已发布图集管理</a>";
-    $wintitle = "成功发布图集";
-    $wecome_info = "图集管理::发布图集";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success'>继续发布图片</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看图片</a><a href='album_edit.php?aid=".$arcID."&channelid=$channelid' class='btn btn-success'>修改图片</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success'>已发布图片管理</a>";
+    $wintitle = "成功发布图片";
+    $wecome_info = "图片管理::发布图片";
     $win = new OxWindow();
-    $win->AddTitle("成功发布图集");
+    $win->AddTitle("成功发布图片");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

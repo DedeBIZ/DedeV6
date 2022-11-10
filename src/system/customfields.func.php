@@ -102,7 +102,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         $innertext = "<textarea name='$fieldname' id='$fieldname' class='form-control biz-textarea-sm'></textarea>";
     } else if ($fieldType == "datetime") {
         $nowtime = GetDateTimeMk(time());
-        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:260px\" class=\"form-control datepicker\"/>";
+        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" class=\"form-control biz-input-md\" />";
     } else if ($fieldType == 'img' || $fieldType == 'imgfile') {
         if ($admintype == 'diy') {
             $innertext = "<input type='file' name='$fieldname' id='$fieldname' class='biz-input-md' />";

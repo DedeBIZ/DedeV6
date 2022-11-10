@@ -1,6 +1,6 @@
 <?php
 /**
- * 图集编辑
+ * 图片编辑
  *
  * @version        $id:album_edit.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -330,11 +330,11 @@ else if ($dopost == 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图集</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改图集</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>预览图集</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理已发布图集</a>$backurl";
-    $wintitle = "成功修改图集";
-    $wecome_info = "文档管理::修改图集";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>预览图片</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理已发布图片</a>$backurl";
+    $wintitle = "成功修改图片";
+    $wecome_info = "文档管理::修改图片";
     $win = new OxWindow();
-    $win->AddTitle("成功修改一个图集");
+    $win->AddTitle("成功修改一个图片");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();

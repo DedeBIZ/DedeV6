@@ -184,7 +184,7 @@ else if ($dopost == 'ddimg') {
     exit();
 }
 /************************
-//删除指定的图片(编辑图集时用)
+//删除指定的图片(编辑图片时用)
 *************************/
 else if ($dopost == 'delold') {
     $imgfile = $cfg_basedir.$picfile;

@@ -114,7 +114,7 @@ html{background:#f5f5f5}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td class='biz-td'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
+                <td class='biz-td'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
                 <td colspan='2' class='biz-td'>当前目录：$activepath</td>
                 </tr>";
                 echo $line;
@@ -122,7 +122,7 @@ html{background:#f5f5f5}
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td class='biz-td'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/dir.gif'>$file</a></td>
+                <td class='biz-td'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
                 <td class='biz-td'></td>
                 <td class='biz-td'></td>
                 </tr>";
@@ -135,7 +135,7 @@ html{background:#f5f5f5}
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='biz-td'>
-                    <img src='../../static/web/img/flash.gif'>
+                    <img src='../../static/web/img/icon_flash.png'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
                 <td class='biz-td'>$filesize KB</td>
@@ -150,7 +150,7 @@ html{background:#f5f5f5}
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='biz-td'>
-                    <img src='../../static/web/img/wmv.gif'>
+                    <img src='../../static/web/img/icon_video.png'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
                 <td class='biz-td'>$filesize KB</td>
@@ -165,7 +165,7 @@ html{background:#f5f5f5}
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='biz-td'>
-                    <img src='../../static/web/img/rm.gif'>
+                    <img src='../../static/web/img/icon_rm.png'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
                 <td class='biz-td'>$filesize KB</td>
@@ -180,7 +180,7 @@ html{background:#f5f5f5}
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='biz-td'>
-                    <img src='../../static/web/img/mp3.gif'>
+                    <img src='../../static/web/img/icon_music.png'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
                 <td class='biz-td'>$filesize KB</td>

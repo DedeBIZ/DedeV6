@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<form action="member_main.php" name="form1" method="get">
-			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
 					<td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="biz-input-md"></td>
 					<td width="170">
@@ -57,24 +57,24 @@
 			</table>
 		</form>
 		<form name="form2">
-			<table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mb-3">
+			<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="9">注册会员列表</td>
+					<td bgcolor="#f5f5f5" colspan="10">注册会员列表</td>
 				</tr>
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">mid</td>
 					<td width="16%">用户</td>
-					<td width="18%">名称邮箱</td>
+					<td width="8%">名称</td>
+					<td width="8%">邮箱</td>
 					<td width="6%">性别</td>
 					<td width="6%">会员等级</td>
 					<td width="14%">会员属性</td>
 					<td width="14%">地址时间</td>
 					<td>操作</td>
 				</tr>
-				{dede:datalist empty='<tr><td colspan="9" align="center">暂无文档</td></tr>'}
-				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';"
-					onmouseout="javascript:this.bgColor='#ffffff';">
+				{dede:datalist empty='<tr><td colspan="10" align="center">暂无文档</td></tr>'}
+				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
 					<td>{dede:field.mid/}</td>
 					<td align="left">
@@ -86,7 +86,8 @@
 						?>
 						{dede:field.matt function="GetMAtt(@me)"/}
 					</td>
-					<td>{dede:field.uname/}丨{dede:field.email/}</td>
+					<td>{dede:field.uname/}</td>
+					<td>{dede:field.email/}</td>
 					<td>{dede:field.sex/}</td>
 					<td><a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a></td>
 					<td>{dede:field.mtype/}用户丨金币{dede:field.money/}丨积分{dede:field.scores/}</td>
@@ -100,14 +101,14 @@
 				</tr>
 				{/dede:datalist}
 				<tr>
-					<td colspan="9">
+					<td colspan="10">
 						<button type="button" onClick="selAll();" class="btn btn-success btn-sm">全选</button>
 						<button type="button" onClick="noSelAll();" class="btn btn-success btn-sm">取消</button>
 						<button type="button" onClick="delArc(0);" class="btn btn-danger btn-sm">删除</button>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="9" bgcolor="#f5f5f5" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
+					<td colspan="10" bgcolor="#f5f5f5" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>

@@ -1,7 +1,7 @@
 function checkSubmit()
 {
 	if(document.form1.title.value=='') {
-		alert("图集标题不能为空");
+		alert("图片标题不能为空");
 		document.form1.title.focus();
 		return false;
 	}
@@ -116,7 +116,7 @@ function checkMuList(psid,cmid)
 		document.getElementById('spagelist').style.display = 'none';
 	}
 }
-//图集，显示与隐藏zip文件选项
+//图片，显示与隐藏zip文件选项
 function ShowZipField(formitem,zipid,upid)
 {
 	if(formitem.checked){
@@ -128,7 +128,7 @@ function ShowZipField(formitem,zipid,upid)
 		document.getElementById(zipid).style.display = 'none';
 	}
 }
-//图集，显示与隐藏Html编辑框
+//图片，显示与隐藏Html编辑框
 function ShowHtmlField(formitem,htmlid,upid)
 {
 	if($Nav()!="IE"){

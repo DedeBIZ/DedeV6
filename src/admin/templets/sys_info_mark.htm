@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 			<form action="sys_info_mark.php" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="action" value="save">
 				<input type="hidden" name="get_photo_markimg" value="<?php echo $photo_markimg?>">
@@ -77,7 +77,7 @@
 					<td>水印位置：</td>
 					<td>
 						<label><input type="radio" name="get_photo_waterpos" value="0" <?php if ($photo_waterpos==0) echo ' checked';?>> 随机位置</label>
-						<table width="260" border="1" cellspacing="0" cellpadding="0" class="table maintable">
+						<table border="1" cellspacing="0" cellpadding="0" class="table maintable w-50">
 							<tr>
 								<td width="33%">
 									<label><input type="radio" name="get_photo_waterpos" value="1" <?php if ($photo_waterpos==1) echo ' checked';?>> 顶部居左</label>

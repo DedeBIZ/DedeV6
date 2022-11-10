@@ -9,22 +9,21 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 			<form action="article_test_same.php" name="form1" target="stafrm">
 				<input type="hidden" name="dopost" value="analyse">
 				<tr>
 					<td bgcolor="#f5f5f5">重复文档检测</td>
 				</tr>
 				<tr>
-					<td align="center">
-						<table width="98%" align="center" cellpadding="0" cellspacing="0" class="table table-borderless">
+					<td>
+						<table cellpadding="0" cellspacing="0" class="table table-borderless w-100">
 							<tr>
-								<td width="20%" align="left">栏目类型：</td>
-								<td align="left">
+								<td width="20%">栏目类型：</td>
+								<td>
 									<select name="channelid" class="biz-input-sm">
 										<?php
-										if (!empty($channelinfos))
-										{
+										if (!empty($channelinfos)) {
 											foreach($channelinfos as $rs)
 											{
 												echo "<option value=".$rs['id'].">".$rs['typename']."</option>";
@@ -35,15 +34,15 @@
 								</td>
 							</tr>
 							<tr>
-								<td width="20%" align="left">删除选项：</td>
-								<td align="left">
+								<td>删除选项：</td>
+								<td>
 									<label><input type="radio" name="deltype" value="delnew" checked='1'> 保留最旧的一条</label>
 									<label><input type="radio" name="deltype" value="delold"> 保留最新的一条</label>
 								</td>
 							</tr>
 							<tr>
-								<td align="left">每排列出记录：</td>
-								<td align="left"><input type="text" name="pagesize" id="pagesize" value="100" class="biz-input-sm"> 条</td>
+								<td>每排列出记录：</td>
+								<td><input type="text" name="pagesize" id="pagesize" value="100" class="biz-input-sm"> 条</td>
 							</tr>
 						</table>
 					</td>

@@ -47,32 +47,26 @@ function copyFn(){
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
     document.execCommand ("Copy");
-    alert("成功复制软件配置信息");
+    alert("环境配置信息已复制");
 }
 //Dedebiz info
 var dedebizInfo;
 function ViewDedeBIZ() {
     console.log(dedebizInfo);
     ShowMsg(`
-    <table width="100%" class="table table-borderless">
-        <tbody>
-            <tr>
-                <td width="160">版本号：</td>
-                <td>V${dedebizInfo.result.server_version}</td>
-            </tr>
-            <tr>
-                <td width="160">运行时间：</td>
-                <td>${dedebizInfo.result.server_run_time}</td>
-            </tr>
-            <tr>
-                <td width="160">服务器系统：</td>
-                <td>${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}）</td>
-            </tr>
-            <tr>
-                <td width="160">内存占用：</td>
-                <td>${dedebizInfo.result.server_memory_usage}%</td>
-            </tr>
-        </tbody>
+    <table class="table table-borderless w-100">
+        <tr>
+            <td width="90">版本号：</td>
+            <td>V${dedebizInfo.result.server_version}</td>
+            <td width="90">服务器系统：</td>
+            <td>${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}）</td>
+        </tr>
+        <tr>
+            <td>运行时间：</td>
+            <td>${dedebizInfo.result.server_run_time}</td>
+            <td>内存占用：</td>
+            <td>${dedebizInfo.result.server_memory_usage}%</td>
+        </tr>
     </table>
     `);
 }
@@ -80,62 +74,109 @@ function LoadServer() {
     $.get("index_body.php?dopost=system_info", function (data) {
         let rsp = JSON.parse(data);
         if (rsp.code === 200) {
-            let infoStr = `<table class="table table-borderless"><tbody>`;
+            let infoStr = `<table class="table table-borderless w-100">`;
             if (typeof rsp.result.domain !== "undefined") {
                 infoStr += `
                 <tr>
-                    <td width="160">授权域名：</td>
+                    <td width="90">授权域名：</td>
                     <td>${rsp.result.domain}</td>
-                </tr>
-                `;
-            }
-            if (typeof rsp.result.title !== "undefined") {
-                infoStr += `
-                <tr>
-                    <td width="160">站点名称：</td>
-                    <td><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}">${rsp.result.title}（${rsp.result.stype}）</a></td>
-                </tr>
-                `;
-            }
-            if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined") {
-                infoStr += `
-                <tr>
-                    <td width="160">授权版本：</td>
+                    <td width="90">授权版本：</td>
                     <td>${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
                 </tr>
                 `;
             }
+
+            /*多余代码*/
+            if (typeof rsp.result.title !== "undefined") {
+                infoStr += `
+                `;
+            }
+            /*多余代码*/
+
+            if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined") {
+                infoStr += `
+                <tr>
+                    <td>站点名称：</td>
+                    <td>${rsp.result.title}（${rsp.result.stype}）</td>
+                    <td>证书组件：</td>
+                    <td>
+                        <a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank" class="btn btn-success btn-sm">授权证书</a>
+                        <a href="javascript:ViewDedeBIZ()" class="btn btn-primary btn-sm">组件信息</a>
+                    </td>
+                </tr>
+                `;
+            }
+
+            /*多余代码*/
             if (rsp.result.core === null || rsp.result.core.code != 200) {
                 //下面是DedeBIZ Core组件信息
                 infoStr += `
-                <tr>
-                    <td width="160">版本组件：</td>
-                    <td><a href="${cfg_biz_dedebizUrl}/start?code=-1008" target="_blank" class="btn btn-warning btn-sm">启动组件</a></td>
-                </tr>
+
                 `;
             } else {
                 dedebizInfo = JSON.parse(rsp.result.core.data);
                 infoStr += `
-                <tr>
-                    <td width="160">版本组件：</td>
-                    <td><a href="javascript:ViewDedeBIZ()" class="btn btn-success btn-sm">组件信息</a></td>
-                </tr>
                 `;
             }
-            infoStr += "</tbody></table>";
+            /*多余代码*/
+
+
+            infoStr += "</table>";
             $("#system-info").html(infoStr);
         } else {
             $("#system-info").html(`
-            <table width="100%" class="table table-borderless">
-                <tbody>
-                    <tr>
-                        <td>当前站点为社区版，${rsp.msg}</td>
-                    </tr>
-                    <tr>
-                        <td>如果您已购买商业版授权，可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系。</td>
-                    </tr>
-                </tbody>
+            <table class="table table-borderless w-100">
+                <tr>
+                    <td>${rsp.msg}</td>
+                </tr>
+                <tr>
+                    <td>如果您已购买商业版授权，可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系。</td>
+                </tr>
             </table>
+
+            <!--最新软件该提示-->
+            <table class="table table-borderless w-100">
+                <tr>
+                    <td>您的后台已是最新软件版本</td>
+                </tr>
+            </table>
+            <!--最新软件该提示-->
+
+
+            <!--正常新版本升级该提示，然后回到最新软件该提示-->
+            <table class="table table-borderless w-100">
+                <tr>
+                    <td colspan="2">本更新提供了重要的安全性更新，建议所有用户升级，软件更新将覆盖以下文件，请做好备份。<a href="" class="btn btn-success btn-sm">下一步</a></td>
+                </tr>
+                <tr>
+                    <td width="90">文件1：</td>
+                    <td>/system/database/dedesqlite.class.php</td>
+                </tr>
+                <tr>
+                    <td>文件2：</td>
+                    <td>/system/database/dedesqlite.class.php</td>
+                </tr>
+                <tr>
+                    <td>文件3：</td>
+                    <td>/system/database/dedesqlite.class.php</td>
+                </tr>
+            </table>
+            <!--正常新版本升级该提示-->
+
+
+            <!--用户换后台该提示，然后回到正常新版本升级该提示，做后回到最新软件该提示-->
+            <table class="table table-borderless w-100">
+                <tr>
+                    <td>更新诊断出数据结构有问题，可能无法正常使用后台，是否尝试修复数据？</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="" class="btn btn-success btn-sm">修复</a>
+                        <a href="" class="btn btn-secondary btn-sm">取消</a>
+                    </td>
+                </tr>
+            </table>
+            <!--用户换后台该提示-->
             `);
         }
     });

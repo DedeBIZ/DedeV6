@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>修改图集</title>
+		<title>修改图片</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -74,7 +74,7 @@
 					<td class="biz-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">图集标题：</td>
+								<td width="90">图片标题：</td>
 								<td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="biz-input-lg"></td>
 								<td width="90">简略标题：</td>
 								<td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="biz-input-sm"></td>
@@ -140,7 +140,7 @@
 									<button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
 								</td>
-								<td><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail"></td>
+								<td><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
 							</tr>
 						</table>
 					</td>
@@ -343,9 +343,9 @@
 														$fhtml .= "<div class='albCt albEdit' id='albold{$j}'>";
 														$fhtml .= "<input type='hidden' name='imgurl{$j}' value='{$bigimg}'>";
 														$fhtml .= "<input type='hidden' name='imgddurl{$j}' value='{$litimg}'>";
-														$fhtml .= "<img src='{$litimg}'><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a>";
-														$fhtml .= "<div class='mt-1'>名称：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' class='biz-input-sm'></div>";
-														$fhtml .= "<div class='mt-1'>更换：<input type='file' name='imgfile{$j}' class='biz-input-sm'></div>";
+														$fhtml .= "<img src='{$litimg}'><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm mt-2\">删除</a>";
+														$fhtml .= "<div class='mt-2'>名称：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' class='biz-input-sm'></div>";
+														$fhtml .= "<div class='mt-2'>更换：<input type='file' name='imgfile{$j}' class='biz-input-sm'></div>";
 														$fhtml .= "</div>";
 														echo $fhtml;
 														$j++;
@@ -387,7 +387,7 @@
 					<td class="biz-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">图集文档：</td>
+								<td width="90">图片文档：</td>
 								<td><?php GetEditor("body",$body,400,"Diy");?></td>
 							</tr>
 						</table>

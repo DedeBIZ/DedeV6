@@ -1,6 +1,6 @@
 <?php
 /**
- * 图集发布
+ * 图片发布
  *
  * @version        $id:album_add.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -292,12 +292,12 @@ else if ($dopost == 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图集</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图集</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>预览图集</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布图集管理</a>$backurl";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>预览图片</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布图片管理</a>$backurl";
     $msg = "<div>{$msg}</div>".GetUpdateTest();
-    $wintitle = "成功发布一个图集";
-    $wecome_info = "文档管理::发布图集";
+    $wintitle = "成功发布一个图片";
+    $wecome_info = "文档管理::发布图片";
     $win = new OxWindow();
-    $win->AddTitle("成功发布一个图集");
+    $win->AddTitle("成功发布一个图片");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
     $win->Display();

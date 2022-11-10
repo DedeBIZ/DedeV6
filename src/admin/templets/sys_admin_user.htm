@@ -10,10 +10,10 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable my-3">
+		<table cellpadding="2" cellspacing="1" align="center" class="table maintable my-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="5">
-					<table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
+				<td bgcolor="#f5f5f5" colspan="6">
+					<table cellspacing="1" cellpadding="1" class="table table-borderless w-100">
 						<tr>
 							<td width="30%">系统用户管理</td>
 							<td width="70%" align="right">
@@ -26,21 +26,23 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="5">
+				<td colspan="6">
 					<div class="alert alert-info mb-0">为了防止错误操作，系统不允许在管理界面删除超级管理员，如果确定要删除，请自行在数据表biz_admin中删除</div>
 				</td>
 			</tr>
 			<tr bgcolor="#e9ecef">
 				<td width="6%" align="center">id</td>
-				<td width="20%" align="center">名称</td>
-				<td width="30%" align="center">地址时间</td>
-				<td width="20%" align="center">栏目</td>
-				<td align="center">管理项</td>
+				<td width="30%" align="center">名称</td>
+				<td width="8%" align="center">等级</td>
+				<td width="14%" align="center">地址时间</td>
+				<td width="14%" align="center">类目</td>
+				<td align="center">操作</td>
 			</tr>
-			{dede:datalist empty='<tr><td colspan="5" align="center">暂无文档</td></tr>'}
+			{dede:datalist empty='<tr><td colspan="6" align="center">暂无文档</td></tr>'}
 			<tr align="center">
 				<td>{dede:field.userid/}</td>
-				<td>{dede:field.uname/}{dede:field.usertype function="GetUserType(@me)"/}</td>
+				<td>{dede:field.uname/}</td>
+				<td>{dede:field.usertype function="GetUserType(@me)"/}</td>
 				<td>{dede:field.loginip/}丨{dede:field.logintime function="GetDateTimeMk(@me)"/}</td>
 				<td>{dede:field.typename function="GetChannel(@me)"/}</td>
 				<td>
@@ -51,7 +53,7 @@
 			</tr>
 			{/dede:datalist}
 			<tr>
-				<td colspan="5" bgcolor="#f5f5f5" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
+				<td colspan="6" bgcolor="#f5f5f5" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</body>

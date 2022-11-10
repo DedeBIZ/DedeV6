@@ -75,7 +75,7 @@ html{background:#f5f5f5}
 </head>
 <body class="bg">
     <div id="floater" class="napisdiv">
-        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/picviewnone.gif" id="picview" title="关闭预览"></a>
+        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
     </div>
     <script src="../js/float.js"></script>
     <script>
@@ -188,7 +188,7 @@ html{background:#f5f5f5}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td colspan='2' class='biz-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
+                <td colspan='2' class='biz-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
                 <td colspan='2' class='biz-td'>当前目录：$activepath</td>
                 </tr>";
                 echo $line;
@@ -196,7 +196,7 @@ html{background:#f5f5f5}
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td colspan='2' class='biz-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/dir.gif'>$file</a></td>
+                <td colspan='2' class='biz-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
                 <td class='biz-td'></td>
                 <td class='biz-td'></td>
                 </tr>";

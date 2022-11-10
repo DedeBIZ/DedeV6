@@ -85,7 +85,7 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable my-3">
+		<table cellspacing="0" cellpadding="0" align="center" class="table maintable my-3">
 			<tr>
 				<td>
 					<button type="button" class="btn btn-success btn-sm" onClick="location='spec_add.php';">添加专题</button>
@@ -97,7 +97,7 @@
 		</table>
 		<form name="form3" action="content_s_list.php" method="get">
 			<input type="hidden" name="dopost" value="listArchives">
-			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
 					<td width="180" align="center">
 						<select name="cid" class="biz-input-sm">
@@ -110,26 +110,26 @@
 				</tr>
 			</table>
 		</form>
-		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
+		<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
 			<tr>
 				<td colspan="9" bgcolor="#f5f5f5">文档列表</td>
 			</tr>
 			<form name="form2">
 				<tr bgcolor="#e9ecef" align="center">
-					<td width="6%">id</td>
 					<td width="6%">选择</td>
+					<td width="6%">id</td>
 					<td width="30%">文档标题</td>
 					<td width="10%">更新时间</td>
-					<td width="10%">类目</td>
-					<td width="10%">点击</td>
-					<td width="10%">网页</td>
-					<td width="10%">权限</td>
-					<td width="10%">属性</td>
+					<td width="14%">类目</td>
+					<td width="6%">点击</td>
+					<td width="6%">网页</td>
+					<td width="6%">权限</td>
+					<td>属性</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="9" align="center">暂无文档</td></tr>'}
 				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
-					<td>{dede:field.id/}</td>
 					<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
+					<td>{dede:field.id/}</td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
 					<td><?php echo MyDate("Y-m-d H:i",$fields['senddate'])?></td>
 					<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
