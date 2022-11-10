@@ -102,3 +102,5 @@ DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_disable_funs'
 DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_disable_tags';
 DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_vdcode_member';
 
+-- 6.2.0
+ALTER TABLE `#@__arctype` CHANGE COLUMN `iscross` `cross` tinyint(1) NOT NULL DEFAULT 0 AFTER `ishidden`;

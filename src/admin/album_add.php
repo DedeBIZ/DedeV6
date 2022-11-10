@@ -121,59 +121,10 @@ else if ($dopost == 'save') {
     处理从ZIP中解压的图片
     ---------------------*/
     if ($formzip == 1) {
-        include_once(DEDEINC."/libraries/zip.class.php");
         include_once(DEDEADMIN."/file_class.php");
         $zipfile = $cfg_basedir.str_replace($cfg_mainsite, '', $zipfile);
         $tmpzipdir = DEDEDATA.'/ziptmp/'.cn_substr(md5(ExecTime()), 16);
         $ntime = time();
-        if (file_exists($zipfile)) {
-            @mkdir($tmpzipdir, $GLOBALS['cfg_dir_purview']);
-            @chmod($tmpzipdir, $GLOBALS['cfg_dir_purview']);
-            $z = new zip();
-            $z->ExtractAll($zipfile, $tmpzipdir);
-            $fm = new FileManagement();
-            $imgs = array();
-            $fm->GetMatchFiles($tmpzipdir, "jpg|png|gif", $imgs);
-            $i = 0;
-            foreach ($imgs as $imgold) {
-                $i++;
-                $savepath = $cfg_image_dir."/".MyDate("Y-m", $ntime);
-                CreateDir($savepath);
-                $iurl = $savepath."/".MyDate("d", $ntime).dd2char(MyDate("His", $ntime).'-'.$adminid."-{$i}".mt_rand(1000, 9999));
-                $iurl = $iurl.substr($imgold, -4, 4);
-                $imgfile = $cfg_basedir.$iurl;
-                copy($imgold, $imgfile);
-                unlink($imgold);
-                if (is_file($imgfile)) {
-                    $litpicname = $pagestyle > 2 ? GetImageMapDD($iurl, $cfg_ddimg_width) : $iurl;
-                    //指定了提取第一张为缩略图的情况强制使用第一张缩略图
-                    if ($i == '1') {
-                        if (!$hasone && $ddisfirst == 1 && $litpic == '' && empty($litpicname)) {
-                            $litpicname = GetImageMapDD($iurl, $cfg_ddimg_width);
-                        }
-                    }
-                    $info = '';
-                    $imginfos = GetImageSize($imgfile, $info);
-                    $imgurls .= "{dede:img ddimg='$litpicname' text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
-                    //把图片信息保存到媒体文档管理文档中
-                    $inquery = "INSERT INTO `#@__uploads` (title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('{$title}','{$iurl}','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".$ntime."','$adminid');";
-                    $dsql->ExecuteNoneQuery($inquery);
-                    $fid = $dsql->GetLastID();
-                    AddMyAddon($fid, $iurl);
-                    WaterImg($imgfile, 'up');
-                    if (!$hasone && $ddisfirst == 1 && $litpic == '') {
-                        if (empty($litpicname)) {
-                            $litpicname = $iurl;
-                            $litpicname = GetImageMapDD($iurl, $cfg_ddimg_width);
-                        }
-                        $litpic = $litpicname;
-                        $hasone = TRUE;
-                    }
-                }
-            }
-            if ($delzip == 1) unlink($zipfile);
-            $fm->RmDirFiles($tmpzipdir);
-        }
     }
     if ($albums !== "") {
         $albumsArr  = json_decode(stripslashes($albums), true);

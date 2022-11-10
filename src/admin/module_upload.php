@@ -25,31 +25,6 @@ if ($action == 'upload') {
         include_once(DEDEINC."/libraries/zip.class.php");
         $tmpfilename = $mdir.'/'.ExecTime().mt_rand(10000, 50000).'.tmp';
         move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到{$tmpfilename}时失败，请检查{$mdir}目录是否有写入权限");
-        //ZIP格式的文件
-        if ($filetype == 1) {
-            $z = new zip();
-            $files = $z->get_List($tmpfilename);
-            $dedefileindex = -1;
-            //为了节省资源，系统仅以.xml作为扩展名识别ZIP包里了模块格式文件
-            if (is_array($files)) {
-                for ($i = 0; $i < count($files); $i++) {
-                    if (preg_match("#\.xml#i", $files[$i]['filename'])) {
-                        $dedefile = $files[$i]['filename'];
-                        $dedefileindex = $i;
-                        break;
-                    }
-                }
-            }
-            if ($dedefileindex == -1) {
-                unlink($tmpfilename);
-                ShowMsg("对不起，您上传的压缩包中不存在模块文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
-                exit();
-            }
-            $ziptmp = $mdir.'/ziptmp';
-            $z->Extract($tmpfilename, $ziptmp, $dedefileindex);
-            unlink($tmpfilename);
-            $tmpfilename = $mdir."/ziptmp/".$dedefile;
-        }
         $dm = new DedeModule($mdir);
         $infos = $dm->GetModuleInfo($tmpfilename, 'file');
         if (empty($infos['hash'])) {
@@ -87,7 +62,6 @@ if ($action == 'upload') {
     <td width='260'>文件格式：</td>
     <td>
       <label><input type='radio' name='filetype' value='0' checked='checked'> 正常的模块包</label>
-      <label><input type='radio' name='filetype' value='1'> 经过zip压缩的模块包</label>
     </td>
   </tr>
   <tr>

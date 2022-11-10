@@ -58,7 +58,7 @@ class SplitWord
     //粗分后的数组（通常是截取句子等用途）
     var $simpleResult = array();
     //最终结果(用空格分开的词汇列表)
-    var $finallyResult = '';
+    var $finallyResult = array();
     //是否已经载入词典
     var $isLoadDic = FALSE;
     //系统识别或合并的新词
@@ -126,7 +126,7 @@ class SplitWord
             $this->mainDicHand = fopen($this->mainDicFile, 'r');
         }
         $p = 0;
-        $keynum = $this->_get_index( $key );
+        $keynum = (int)$this->_get_index( $key );
         if ( isset($this->mainDicInfos[ $keynum ]) )
         {
             $data = $this->mainDicInfos[ $keynum ];
@@ -217,8 +217,6 @@ class SplitWord
         //加载主词典（只打开）
         if ($this->isUnpacked){
         	$this->mainDicHand = fopen($dicWords, 'r');
-        } else {
-        	$this->InportDict($this->mainDicFileZip);
         }
         //载入副词典
         $hw = '';
@@ -1032,18 +1030,4 @@ class SplitWord
         fclose( $fp );
         return TRUE;
      }
-	function InportDict( $targetfile )
-    {
-     	if (!ini_set('memory_limit', '128M'))
-			exit('设置内存错误，请到官网下载解压版的base_dic_full.dic!');
-     	require_once(DEDEINC.'/libraries/zip.class.php');
-     	$zip = new zip();
-     	//echo $targetfile;
-     	$unpackagefile = array_keys($zip->Extract($targetfile,DEDEINC.'/data/'));
-     	//exit();
-     	$this->MakeDict(DEDEINC.'/data/'.$unpackagefile[0]);
-     	unlink(DEDEINC.'/data/'.$unpackagefile[0]);
-     	return true;
-    }
 }
-?>
