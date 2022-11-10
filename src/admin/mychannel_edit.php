@@ -346,7 +346,7 @@ else if ($dopost == "delete") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确定要删除 (".$row['typename'].") 这个栏目");
+        $win->AddTitle("您确定要删除：".$row['typename']." 栏目吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
