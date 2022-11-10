@@ -117,7 +117,7 @@ button+button{margin-left:10px}
         if (!e.dataTransfer.files){return false;}
         var dropfiles = e.dataTransfer.files;
         if (!(dropfiles.length>0)){return false;}
-        var exts=axupimgs.axupimgs_filetype.replace(/(\s)+/g,'').toLowerCase().split(',');
+        var exts='.png,.gif,.jpg,.jpeg'.replace(/(\s)+/g,'').toLowerCase().split(',');
         var files=[];
         for ( let file of dropfiles ) {
             ext = file.name.split('.');
