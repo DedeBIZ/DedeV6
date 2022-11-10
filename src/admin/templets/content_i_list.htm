@@ -9,9 +9,8 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script src="js/main.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
-		<script src="js/ieemu.js"></script>
+		<script src="js/main.js"></script>
 		<script src="js/list.js"></script>
 	</head>
 	<body>
@@ -59,10 +58,11 @@
 		</form>
 		<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
 			<tr>
-				<td colspan="9" bgcolor="#f5f5f5">{dede:global.positionname/}文档列表</td>
+				<td colspan="10" bgcolor="#f5f5f5">{dede:global.positionname/}文档列表</td>
 			</tr>
 			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">选择</td>
+				<td width="6%">id</td>
 				<td width="30%">文档属性</td>
 				<td width="10%">时间</td>
 				<td width="14%">类目</td>
@@ -78,6 +78,7 @@
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
 				<tr  align="center">
 					<td width="6%"><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
+					<td width="6%">{dede:field.id/}</td>
 					<td width="30%" align="left">
 						<img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm">
 						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a>
@@ -101,8 +102,6 @@
 				<td>
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-					<a href="javascript:viewArc(0)" class="btn btn-success btn-sm">查看</a>
-					<a href="javascript:editArc(0)" class="btn btn-success btn-sm">修改</a>
 					<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
 					<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
 					<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>

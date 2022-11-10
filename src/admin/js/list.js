@@ -1,8 +1,3 @@
-if (moz) {
-	extendEventObject();
-	extendElementModel();
-	emulateAttachEvent();
-}
 function viewArc(aid){
 	if (aid==0) aid = getOneItem();
 	window.open("archives_do.php?aid="+aid+"&dopost=viewArchives");
@@ -12,7 +7,7 @@ function kwArc(aid){
 	if (aid==0) aid = getOneItem();
 	if (qstr=='')
 	{
-		ShowMsg('必须选择一个或多个文档');
+		ShowMsg('需要选择一个或多个文档');
 		return;
 	}
 	location="archives_do.php?aid="+aid+"&dopost=makekw&qstr="+qstr;
@@ -35,7 +30,7 @@ function moveArc(e, obj, cid){
 	var qstr=getCheckboxItem();
 	if (qstr=='')
 	{
-		ShowMsg('必须选择一个或多个文档');
+		ShowMsg('需要选择一个或多个文档');
 		return;
 	}
 	LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr='+qstr+'&channelid='+cid+'&rnd='+Math.random(), 'moveArchives', '480px', '180px');
@@ -52,7 +47,7 @@ function cAtts(jname, e, obj)
     var screeheight = document.body.clientHeight + 20;
 	if (qstr=='')
 	{
-		ShowMsg('必须选择一个或多个文档');
+		ShowMsg('需要选择一个或多个文档');
 		return;
 	}
 	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr='+qstr+'&dojob='+jname+'&rnd='+Math.random(), 'attsDlg', '480px', '180px');

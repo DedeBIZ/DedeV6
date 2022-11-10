@@ -7,10 +7,8 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="js/global.js"></script>
-		<script src="js/ieemu.js"></script>
-		<script src="js/dialog.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
+		<script src="js/global.js"></script>
 		<script>
 			function LoadSuns(ctid, tid) {
 				if ($DE(ctid).innerHTML.length < 10) {
@@ -30,11 +28,6 @@
 					$DE('img' + tid).className = 'fa fa-plus-square-o';
 					$DE(objname).style.display = "none";
 				}
-			}
-			if (moz) {
-				extendEventObject();
-				extendElementModel();
-				emulateAttachEvent();
 			}
 		</script>
 	</head>

@@ -20,7 +20,7 @@ function DedeCopyToClipboard(text) {
     } else {
         var textarea = document.createElement('textarea');
         document.body.appendChild(textarea);
-        // 隐藏此输入框
+        //隐藏此输入框
         textarea.style.position = 'fixed';
         textarea.style.clip = 'rect(0 0 0 0)';
         textarea.style.top = '10px';
@@ -83,18 +83,6 @@ function LoadServer() {
                     <td width="90">授权版本：</td>
                     <td>${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
                 </tr>
-                `;
-            }
-
-            /*多余代码*/
-            if (typeof rsp.result.title !== "undefined") {
-                infoStr += `
-                `;
-            }
-            /*多余代码*/
-
-            if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined") {
-                infoStr += `
                 <tr>
                     <td>站点名称：</td>
                     <td>${rsp.result.title}（${rsp.result.stype}）</td>
@@ -106,21 +94,6 @@ function LoadServer() {
                 </tr>
                 `;
             }
-
-            /*多余代码*/
-            if (rsp.result.core === null || rsp.result.core.code != 200) {
-                //下面是DedeBIZ Core组件信息
-                infoStr += `
-
-                `;
-            } else {
-                dedebizInfo = JSON.parse(rsp.result.core.data);
-                infoStr += `
-                `;
-            }
-            /*多余代码*/
-
-
             infoStr += "</table>";
             $("#system-info").html(infoStr);
         } else {
@@ -134,16 +107,11 @@ function LoadServer() {
                 </tr>
             </table>
 
-            <!--最新软件该提示-->
             <table class="table table-borderless w-100">
                 <tr>
                     <td>您的后台已是最新软件版本</td>
                 </tr>
             </table>
-            <!--最新软件该提示-->
-
-
-            <!--正常新版本升级该提示，然后回到最新软件该提示-->
             <table class="table table-borderless w-100">
                 <tr>
                     <td colspan="2">本更新提供了重要的安全性更新，建议所有用户升级，软件更新将覆盖以下文件，请做好备份。<a href="" class="btn btn-success btn-sm">下一步</a></td>
@@ -161,10 +129,6 @@ function LoadServer() {
                     <td>/system/database/dedesqlite.class.php</td>
                 </tr>
             </table>
-            <!--正常新版本升级该提示-->
-
-
-            <!--用户换后台该提示，然后回到正常新版本升级该提示，做后回到最新软件该提示-->
             <table class="table table-borderless w-100">
                 <tr>
                     <td>更新诊断出数据结构有问题，可能无法正常使用后台，是否尝试修复数据？</td>
@@ -176,7 +140,6 @@ function LoadServer() {
                     </td>
                 </tr>
             </table>
-            <!--用户换后台该提示-->
             `);
         }
     });
