@@ -1,15 +1,15 @@
 function checkSubmit()
 {
-	if(document.form1.title.value=='') {
+	if (document.form1.title.value=='') {
 		alert("图片标题不能为空");
 		document.form1.title.focus();
 		return false;
 	}
-	if(document.form1.typeid.value==0) {
+	if (document.form1.typeid.value==0) {
 		alert("所属栏目必须选择");
 		return false;
 	}
-	if(document.form1.typeid.options[document.form1.typeid.selectedIndex].className!='option3')
+	if (document.form1.typeid.options[document.form1.typeid.selectedIndex].className!='option3')
 	{
 		alert("所属栏目必须选择白色背景的项目");
 		return false;
@@ -21,7 +21,7 @@ function checkSubmit()
 function CheckSelTable(nnum){
 	var cbox = document.getElementById('isokcheck'+nnum);
 	var seltb = document.getElementById('seltb'+nnum);
-	if(!cbox.checked) seltb.style.display = 'none';
+	if (!cbox.checked) seltb.style.display = 'none';
 	else seltb.style.display = 'block';
 }
 var startNum = 1;
@@ -33,12 +33,12 @@ function MakeUpload(mnum)
 	var fhtml = "";
 	var dsel = " checked='checked' ";
 	var dplay = "display:none";
-	if(mnum==0) endNum = startNum + Number(pnumObj.value);
+	if (mnum==0) endNum = startNum + Number(pnumObj.value);
 	else endNum = mnum;
-	if(endNum>120) endNum = 120;
-	for(startNum;startNum < endNum;startNum++)
+	if (endNum>120) endNum = 120;
+	for (startNum;startNum < endNum;startNum++)
 	{
-		if(startNum==1){
+		if (startNum==1){
 			dsel = " checked='checked' ";
 			dplay = "block";
 		} else {
@@ -74,12 +74,12 @@ function LoadTestDiv()
 	var newobj = document.getElementById('_myhtml');
 	document.getElementById('imagebody').value = document.getElementById('copyhtml').innerHTML;
 	var dfstr = '粘贴到这里...';
-	if(document.getElementById('imagebody').value.length <= dfstr.length)
+	if (document.getElementById('imagebody').value.length <= dfstr.length)
 	{
 		alert('您还没有粘贴任何东西在编辑框');
 		return;
 	}
-	if(!newobj){
+	if (!newobj){
 		newobj = document.createElement("DIV");
 		newobj.id = '_myhtml';
 		newobj.style.position='absolute';
@@ -105,21 +105,21 @@ function LoadTestDiv()
 }
 function checkMuList(psid,cmid)
 {
-	if(document.getElementById('pagestyle3').checked)
+	if (document.getElementById('pagestyle3').checked)
 	{
 		document.getElementById('spagelist').style.display = 'none';
 	}
-	else if(document.getElementById('pagestyle1').checked)
+	else if (document.getElementById('pagestyle1').checked)
 	{
 		document.getElementById('spagelist').style.display = 'block';
 	} else {
 		document.getElementById('spagelist').style.display = 'none';
 	}
 }
-//图片，显示与隐藏zip文件选项
+//图片显示与隐藏zip文件选项
 function ShowZipField(formitem,zipid,upid)
 {
-	if(formitem.checked){
+	if (formitem.checked){
 		document.getElementById(zipid).style.display = 'block';
 		document.getElementById(upid).style.display = 'none';
 		document.getElementById('formhtml').checked = false;
@@ -128,14 +128,14 @@ function ShowZipField(formitem,zipid,upid)
 		document.getElementById(zipid).style.display = 'none';
 	}
 }
-//图片，显示与隐藏Html编辑框
+//图片显示与隐藏Html编辑框
 function ShowHtmlField(formitem,htmlid,upid)
 {
-	if($Nav()!="IE"){
+	if ($Nav()!="IE"){
 		alert("该方法不适用于非IE浏览器");
 		return ;
 	}
-	if(formitem.checked){
+	if (formitem.checked){
 		document.getElementById(htmlid).style.display = 'block';
 	} else {
 		document.getElementById(htmlid).style.display = 'none';

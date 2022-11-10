@@ -81,7 +81,7 @@ button+button{margin-left:10px}
     function addList(files){
         var files_sum = files.length;
         var vDom = document.createDocumentFragment();
-        for(let i=0;i<files_sum;i++){
+        for (let i=0;i<files_sum;i++) {
             let file = files[i];
             if (!isFileImage(file)) {
                 alert("选择非图片文件无法上传")
@@ -119,10 +119,10 @@ button+button{margin-left:10px}
         if (!(dropfiles.length>0)){return false;}
         var exts=axupimgs.axupimgs_filetype.replace(/(\s)+/g,'').toLowerCase().split(',');
         var files=[];
-        for( let file of dropfiles ){
+        for ( let file of dropfiles ) {
             ext = file.name.split('.');
             ext = '.'+ext[ext.length-1];
-            for(let s of exts){
+            for (let s of exts) {
                 if (s==ext){
                     files.push(file);
                     break;

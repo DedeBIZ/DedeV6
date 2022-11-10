@@ -8,8 +8,7 @@ function selNext(oj, v)
         oj.remove(0);
     }
     clear(oj);
-    if(selv==0)
-    {
+    if (selv==0) {
         aOption = document.createElement('OPTION');
         aOption.text = '具体地区';
         aOption.value = '0';
@@ -22,9 +21,8 @@ function selNext(oj, v)
         oj.options.add(aOption);
     }
     var str = '';
-    for(i=selv+1; i < maxv; i++)
-    {
-        if(!em_nativeplaces[i]) continue;
+    for (i=selv+1; i < maxv; i++) {
+        if (!em_nativeplaces[i]) continue;
         aOption = document.createElement('OPTION');
         aOption.text = em_nativeplaces[i];
         aOption.value = i;
@@ -36,8 +34,7 @@ function ChangeSon()
 {
     //由于支持3级联动,所以这里需要对自己改变进行重构
     var emname = this.name.replace('_son', '');
-    if( document.getElementById(emname+'_sec') )
-    {
+    if ( document.getElementById(emname+'_sec') ) {
         var oj = document.getElementById(emname + '_sec');
     } else {
         var oj  = document.createElement('select');
@@ -55,8 +52,7 @@ function ChangeSon()
     i = 0;
     while(newobj && newobj.length > 0) oj.remove(0);
     clear(oj);
-    if(selv == 0)
-    {
+    if (selv == 0) {
         aOption = document.createElement('OPTION');
         aOption.text = '请选择..';
         aOption.value = '0';
@@ -70,16 +66,15 @@ function ChangeSon()
     }
     var str = '';
     var j=0;
-    for(i = selv + 0.001; i < maxv; i = FloatAdd(i, 0.001))
-    {
-        if(!selarr[i]) continue;
+    for (i = selv + 0.001; i < maxv; i = FloatAdd(i, 0.001)) {
+        if (!selarr[i]) continue;
         aOption = document.createElement('OPTION');
         aOption.text = selarr[i];
         aOption.value = i;
         oj.options.add(aOption);
         j++;
     }
-    if(j > 0) document.getElementById('span_'+emname+'_sec').appendChild(oj);
+    if (j > 0) document.getElementById('span_'+emname+'_sec').appendChild(oj);
     else document.getElementById('span_'+emname+'_sec').innerHTML = "";
 }
 //改变第三级的事件
@@ -87,7 +82,7 @@ function ChangeSec()
 {
     var emname = this.name.replace('_sec', '');
     var topSelObj = document.getElementById(emname+'_top');
-    if(this.options[this.selectedIndex].value==0) {
+    if (this.options[this.selectedIndex].value==0) {
         document.getElementById('hidden_'+emname).value = topSelObj.options[topSelObj.selectedIndex].value;
     } else {
         document.getElementById('hidden_'+emname).value = this.options[this.selectedIndex].value;
@@ -97,8 +92,7 @@ function ChangeSec()
 function selNextSon()
 {
     var emname = this.name.replace('_top', '');
-    if( document.getElementById(emname+'_son') )
-    {
+    if ( document.getElementById(emname+'_son') ) {
         var oj = document.getElementById(emname + '_son');
     } else {
         var oj  = document.createElement('select');
@@ -115,8 +109,7 @@ function selNextSon()
     var maxv = parseInt(v) + 500;
     while(newobj && newobj.length > 0) oj.remove(0);
     clear(oj);
-    if(selv==0)
-    {
+    if (selv==0) {
         aOption = document.createElement('OPTION');
         aOption.text = '请选择..';
         aOption.value = '0';
@@ -129,9 +122,8 @@ function selNextSon()
         oj.options.add(aOption);
     }
     var str = '';
-    for(i=selv+1; i < maxv; i++)
-    {
-        if(!selarr[i]) continue;
+    for (i=selv+1; i < maxv; i++) {
+        if (!selarr[i]) continue;
         aOption = document.createElement('OPTION');
         aOption.text = selarr[i];
         aOption.value = i;
@@ -157,12 +149,11 @@ function MakeTopSelect(emname, selvalue)
     aOption.text = '请选择..';
     aOption.value = 0;
     selObj.options.add(aOption);
-    if(selvalue % 500 == 0 ) 
-    {
+    if (selvalue % 500 == 0 ) {
         topvalue = selvalue;
     }
     //如果是小数,则依次取出顶级数值,二级数值以及三级数值
-    else if(!!(selvalue % 1))
+    else if (!!(selvalue % 1))
     {
         secvalue = selvalue;
         sonvalue = Math.floor(selvalue);
@@ -172,11 +163,10 @@ function MakeTopSelect(emname, selvalue)
         sonvalue = selvalue;
         topvalue = selvalue - (selvalue % 500);
     }
-    for(i = 500; i <= selarr.length; i += 500)
-    {
-        if(!selarr[i]) continue;
+    for (i = 500; i <= selarr.length; i += 500) {
+        if (!selarr[i]) continue;
         aOption = document.createElement('OPTION');
-        if(i == topvalue) {
+        if (i == topvalue) {
             aOption = document.createElement('OPTION');
             aOption.text = selarr[i];
             aOption.value = i;
@@ -201,15 +191,14 @@ function MakeTopSelect(emname, selvalue)
     aOption.value = 0;
     selObj.options.add(aOption);
     //当大类有值输出子类
-    if(topvalue > 0)
+    if (topvalue > 0)
     {
         var selv = topvalue;
         var maxv = parseInt(topvalue) + 500;
-        for(i = selv + 1; i < maxv; i++)
-        {
-            if(!selarr[i]) continue;
+        for (i = selv + 1; i < maxv; i++) {
+            if (!selarr[i]) continue;
             aOption = document.createElement('OPTION');
-            if(i == sonvalue) {
+            if (i == sonvalue) {
                 aOption = document.createElement('OPTION');
                 aOption.text = selarr[i];
                 aOption.value = i;
@@ -225,8 +214,7 @@ function MakeTopSelect(emname, selvalue)
     }
     document.getElementById('span_'+emname+'_son').appendChild(selObj);
     //若存在第三级则创建
-    if(secvalue > 0)
-    {
+    if (secvalue > 0) {
         selObj = document.createElement("select");
         selObj.name = emname + '_sec';
         selObj.id   = emname + '_sec';
@@ -239,11 +227,10 @@ function MakeTopSelect(emname, selvalue)
         var selv = sonvalue;
         var maxv = parseInt(sonvalue) + 0.5;
         i = 0;
-        for(i = selv + 0.001; i < maxv; i = FloatAdd(i, 0.001))
-        {
-            if(!selarr[i]) continue;
+        for (i = selv + 0.001; i < maxv; i = FloatAdd(i, 0.001)) {
+            if (!selarr[i]) continue;
             aOption = document.createElement('OPTION');
-            if(i == secvalue) {
+            if (i == secvalue) {
                 aOption = document.createElement('OPTION');
                 aOption.text = selarr[i];
                 aOption.value = i;
@@ -272,7 +259,7 @@ function FloatAdd(arg1, arg2)
 function clear(o)
 {
     l=o.length;
-    for (i = 0; i< l; i++){
+    for (i = 0; i< l; i++) {
         o.options[1]=null;
     }
 }

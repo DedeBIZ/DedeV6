@@ -5,8 +5,7 @@ function viewArc(aid){
 function kwArc(aid){
 	var qstr=getCheckboxItem();
 	if (aid==0) aid = getOneItem();
-	if (qstr=='')
-	{
+	if (qstr=='') {
 		ShowMsg('需要选择一个或多个文档');
 		return;
 	}
@@ -28,8 +27,7 @@ function checkArc(aid){
 }
 function moveArc(e, obj, cid){
 	var qstr=getCheckboxItem();
-	if (qstr=='')
-	{
+	if (qstr=='') {
 		ShowMsg('需要选择一个或多个文档');
 		return;
 	}
@@ -45,8 +43,7 @@ function cAtts(jname, e, obj)
 {
 	var qstr=getCheckboxItem();
     var screeheight = document.body.clientHeight + 20;
-	if (qstr=='')
-	{
+	if (qstr=='') {
 		ShowMsg('需要选择一个或多个文档');
 		return;
 	}
@@ -68,7 +65,7 @@ function getCheckboxItem()
 {
 	var allSel="";
 	if (document.form2.arcID.value) return document.form2.arcID.value;
-	for(i=0;i<document.form2.arcID.length;i++)
+	for (i=0;i<document.form2.arcID.length;i++)
 	{
 		if (document.form2.arcID[i].checked)
 		{
@@ -85,12 +82,11 @@ function getOneItem()
 {
 	var allSel="";
 	if (document.form2.arcID.value) return document.form2.arcID.value;
-	for(i=0;i<document.form2.arcID.length;i++)
+	for (i=0;i<document.form2.arcID.length;i++)
 	{
-		if (document.form2.arcID[i].checked)
-		{
-				allSel = document.form2.arcID[i].value;
-				break;
+		if (document.form2.arcID[i].checked) {
+			allSel = document.form2.arcID[i].value;
+			break;
 		}
 	}
 	return allSel;
@@ -100,10 +96,8 @@ function selAll()
 	if (typeof document.form2.arcID.length === "undefined") {
 		document.form2.arcID.checked = true;
 	}
-	for(i=0;i<document.form2.arcID.length;i++)
-	{
-		if (!document.form2.arcID[i].checked)
-		{
+	for (i=0;i<document.form2.arcID.length;i++) {
+		if (!document.form2.arcID[i].checked) {
 			document.form2.arcID[i].checked=true;
 		}
 	}
@@ -113,10 +107,8 @@ function noSelAll()
 	if (typeof document.form2.arcID.length === "undefined") {
 		document.form2.arcID.checked = false;
 	}
-	for(i=0;i<document.form2.arcID.length;i++)
-	{
-		if (document.form2.arcID[i].checked)
-		{
+	for (i=0;i<document.form2.arcID.length;i++) {
+		if (document.form2.arcID[i].checked) {
 			document.form2.arcID[i].checked=false;
 		}
 	}

@@ -74,7 +74,7 @@
 					<td colspan="4">发现的备份文件：<?php if (count($filelists)==0) echo " 没找到任何备份文件 ";?></td>
 				</tr>
 				<?php
-				for($i=0;$i<count($filelists);$i++)
+				for ($i=0;$i<count($filelists);$i++)
 				{
 					echo "<tr align='center'>";
 				$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='1'></td><td width='40%'>{$filelists[$i]}</td>";

@@ -16,8 +16,8 @@
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script src="js/main.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
+		<script src="js/main.js"></script>
 		<style>table{border-collapse:inherit}</style>
 		<script>
 			function checkSubmit() {
@@ -283,7 +283,7 @@
 							<?php
 							$speclisttmp = GetSysTemplets("spec_arclist.htm");
 							$nodename = $nodeid = '';
-							for($i=1;$i<=$cfg_specnote;$i++)
+							for ($i=1;$i<=$cfg_specnote;$i++)
 							{
 								if ($i==1) {
 									$nodename = '默认节点';

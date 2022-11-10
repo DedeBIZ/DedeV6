@@ -31,7 +31,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $len = count($frame);
             foreach ($frame as &$frameLine) {
                 
-                for($i=0; $i<$len; $i++) {
+                for ($i=0; $i<$len; $i++) {
                     $frameLine[$i] = (ord($frameLine[$i])&1)?'1':'0';
                 }
             }
@@ -116,8 +116,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
         public static function dumpMask($frame) 
         {
             $width = count($frame);
-            for($y=0;$y<$width;$y++) {
-                for($x=0;$x<$width;$x++) {
+            for ($y=0;$y<$width;$y++) {
+                for ($x=0;$x<$width;$x++) {
                     echo ord($frame[$y][$x]).',';
                 }
             }

@@ -31,7 +31,7 @@
 					$dsql->SetQuery("SELECT * FROM `#@__flink` WHERE ischeck>0 ORDER BY sortrank ASC");
 					$dsql->Execute();
 					$revalue = "";
-					for($i=1;$i<=$row;$i++)
+					for ($i=1;$i<=$row;$i++)
 					{
 						if ($dbrow=$dsql->GetObject())
 						{

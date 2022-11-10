@@ -29,14 +29,13 @@ if ($tagid !='')
         $dtp2->LoadString($row['innertext']);
         $GLOBALS['autoindex'] = 0;
         $ids = array();
-        for($i=0; $i<$line; $i++)
+        for ($i=0; $i<$line; $i++)
         {
             if ($col>1) $artlist .= "<tr>\r\n";
-            for($j=0; $j<$col; $j++)
+            for ($j=0; $j<$col; $j++)
             {
-                if ($col>1) $artlist .= "    <td width='$colWidth'>\r\n";
-                if ($row = $dsql->GetArray("al"))
-                {
+                if ($col>1) $artlist .= "<td width='$colWidth'>\r\n";
+                if ($row = $dsql->GetArray("al")) {
                     $ids[] = $row['id'];
                     //处理一些特殊字段
                     $row['info'] = $row['infos'] = cn_substr($row['description'],$infolen);

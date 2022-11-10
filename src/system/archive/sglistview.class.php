@@ -715,7 +715,7 @@ class SgListView
         $optionlen = strlen($totalpage);
         $optionlen = $optionlen*10+18;
         $optionlist = "<li><select name='sldd' style='width:{$optionlen}px' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
-        for($mjj=1;$mjj<=$totalpage;$mjj++)
+        for ($mjj=1;$mjj<=$totalpage;$mjj++)
         {
             if ($mjj==$this->PageNo)
             {

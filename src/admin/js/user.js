@@ -1,5 +1,4 @@
-if (moz == null) 
-{
+if (moz == null) {
 	var ie = document.all != null;
 	var moz = !ie && document.getElementById != null && document.layers == null;
 }
@@ -13,10 +12,9 @@ function getCheckboxItem()
 {
 	var allSel="";
 	if (document.form2.mid.value) return document.form2.mid.value;
-	for(i=0;i<document.form2.mid.length;i++)
+	for (i=0;i<document.form2.mid.length;i++)
 	{
-		if (document.form2.mid[i].checked)
-		{
+		if (document.form2.mid[i].checked) {
 			if (allSel=="")
 				allSel=document.form2.mid[i].value;
 			else
@@ -30,10 +28,8 @@ function getOneItem()
 {
 	var allSel="";
 	if (document.form2.mid.value) return document.form2.mid.value;
-	for(i=0;i<document.form2.mid.length;i++)
-	{
-		if (document.form2.mid[i].checked)
-		{
+	for (i=0;i<document.form2.mid.length;i++) {
+		if (document.form2.mid[i].checked) {
 			allSel = document.form2.mid[i].value;
 			break;
 		}
@@ -42,20 +38,22 @@ function getOneItem()
 }
 function selAll()
 {
-	for(i=0;i<document.form2.mid.length;i++)
-	{
-		if (!document.form2.mid[i].checked)
-		{
+	if (typeof document.form2.mid.length === "undefined") {
+		document.form2.mid.checked = true;
+	}
+	for (i=0;i<document.form2.mid.length;i++) {
+		if (!document.form2.mid[i].checked) {
 			document.form2.mid[i].checked=true;
 		}
 	}
 }
 function noSelAll()
 {
-	for(i=0;i<document.form2.mid.length;i++)
-	{
-		if (document.form2.mid[i].checked)
-		{
+	if (typeof document.form2.mid.length === "undefined") {
+		document.form2.mid.checked = false;
+	}
+	for (i=0;i<document.form2.mid.length;i++) {
+		if (document.form2.mid[i].checked) {
 			document.form2.mid[i].checked=false;
 		}
 	}
