@@ -20,7 +20,7 @@ if (!isset($_NOT_ARCHIVES)) {
  * 获得HTML里的外部资源，针对图片
  *
  * @access    public
- * @param     string  $body  文档文档
+ * @param     string  $body  文档
  * @param     string  $rfurl  来源地址
  * @param     string  $firstdd  开始标记
  * @return    string
@@ -90,7 +90,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
  * 获得文档body里的外部资源
  *
  * @access    public
- * @param     string  $body  文档文档
+ * @param     string  $body  文档
  * @return    string
  */
 function GetCurContent($body)
@@ -322,7 +322,7 @@ function MakeArt($aid, $mkindex = FALSE, $ismakesign = FALSE, $isremote = 0)
  *  取第一个图片为缩略图
  *
  * @access    public
- * @param     string  $body  文档文档
+ * @param     string  $body  文档
  * @return    string
  */
 function GetDDImgFromBody(&$body)

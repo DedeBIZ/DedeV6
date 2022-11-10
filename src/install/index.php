@@ -78,7 +78,7 @@ if ($step==1)
     $rnd_cookieEncode='';
     $length = rand(28,32);
     $max = strlen($chars) - 1;
-    for($i = 0; $i < $length; $i++) {
+    for ($i = 0; $i < $length; $i++) {
         $rnd_cookieEncode .= $chars[mt_rand(0, $max)];
     }
     $module_local = DEDEDATA.'/module/';

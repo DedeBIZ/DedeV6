@@ -262,7 +262,7 @@ function MakeArt($aid, $ismakesign = FALSE)
  *  处理网页文本、自动摘要、自动获取缩略图等
  *
  * @access    public
- * @param     string  $body  文档文档
+ * @param     string  $body  文档
  * @param     string  $description  描述
  * @param     string  $dtype  类型
  * @return    string

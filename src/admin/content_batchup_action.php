@@ -95,7 +95,7 @@ else if ($action == 'delnulltitle') {
     ShowMsg("成功删除 $tdd 条记录", "javascript:;");
     exit();
 }
-//删除空文档文档
+//删除空文档
 else if ($action == 'delnullbody') {
     $dsql->SetQuery("SELECT aid FROM `#@__addonarticle` WHERE LENGTH(body) < 10 ");
     $dsql->Execute('x');

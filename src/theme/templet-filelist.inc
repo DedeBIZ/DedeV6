@@ -1,7 +1,7 @@
 advancedsearch.htm,高级搜索模板
-article_article.htm,文档文档模板
-article_default.htm,自定义文档文档模板
-article_default_sg.htm,自定义表单文档文档模板
+article_article.htm,文档模板
+article_default.htm,自定义文档模板
+article_default_sg.htm,自定义表单文档模板
 article_image.htm,图片集文档模板
 article_infos.htm,分类信息文档模板
 article_shop.htm,商品文档模板
