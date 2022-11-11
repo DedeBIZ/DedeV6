@@ -12,11 +12,11 @@
 		<link rel="stylesheet" href="../static/web/css/cropper.min.css">
 		<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/main.js"></script>
-		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
 		<style>table{border-collapse:inherit}</style>
 		<script>
@@ -36,7 +36,7 @@
 				<td>
 					<table cellpadding="0" cellspacing="0">
 						<tr>
-							<td width="80" height="28" align="center" class="biz-itemnote1">常规文档</td>
+							<td width="80" height="28" align="center" class="admin-itemnote1">常规文档</td>
 						</tr>
 					</table>
 				</td>
@@ -47,19 +47,19 @@
 			<input type="hidden" name="id" value="<?php echo $aid;?>">
 			<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate'];?>">
 			<input type="hidden" name="dopost" value="save">
-			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
+			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="admin-border">
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90"><?php echo $cInfos['titlename'];?>：</td>
-								<td><input type="text" name="title" id="title" value="<?php echo $addRow['title'];?>" class="biz-input-lg"></td>
+								<td><input type="text" name="title" id="title" value="<?php echo $addRow['title'];?>" class="admin-input-lg"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">自定义属性：</td>
@@ -81,12 +81,12 @@
 					</td>
 				</tr>
 				<tr id="pictable" style="<?php if ($cInfos['needpic']==0) echo 'display:none';?>">
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">缩略图：</td>
 								<td width="620">
-									<input type="text" name="picname" id="picname" class="biz-input-md" value="<?php echo $addRow['litpic']?>">
+									<input type="text" name="picname" id="picname" class="admin-input-md" value="<?php echo $addRow['litpic']?>">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
@@ -103,14 +103,14 @@
 				} else {
 				?>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">发布栏目：</td>
 								<td>
 									<?php
 									$typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
-									echo "<select name='typeid' id='typeid' class='biz-input-sm'>";
+									echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
 									if ($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
 									echo $typeOptions;
 									echo "</select>";
@@ -122,12 +122,12 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">浏览权限：</td>
 								<td>
-									<select name="arcrank" id="arcrank" class="biz-input-sm">
+									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<option value='<?php echo $addRow["arcrank"];?>'><?php echo $addRow["rankname"];?></option>
 										<?php
 										$urank = $cuserLogin->getUserRank();
@@ -148,7 +148,7 @@
 					<td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
 				</tr>
 			</table>
-			<table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f5f5f5" class="biz-border border-top-0 mb-3">
+			<table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f5f5f5" class="admin-border border-top-0 mb-3">
 				<tr>
 					<td align="center" class="py-2">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>

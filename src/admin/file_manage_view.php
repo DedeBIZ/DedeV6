@@ -100,7 +100,7 @@ else if ($fmdo == "edit") {
         fclose($fp);
         $content = dede_htmlspecialchars($content);
     }
-    $contentView = "<textarea name='str' id='str' class='biz-textarea-xl'>$content</textarea>\r\n";
+    $contentView = "<textarea name='str' id='str' class='admin-textarea-xl'>$content</textarea>\r\n";
     $GLOBALS['filename'] = $filename;
     $path_parts  = pathinfo($filename);
     if ($path_parts['extension'] == 'php') {
@@ -121,7 +121,7 @@ else if ($fmdo == "newfile") {
     $content = "";
     $GLOBALS['filename'] = "newfile.txt";
     $GLOBALS['extension'] = 'text/html';
-    $contentView = "<textarea id='str' name='str' class='biz-textarea-xl'></textarea>\r\n";
+    $contentView = "<textarea id='str' name='str' class='admin-textarea-xl'></textarea>\r\n";
     $GLOBALS['token'] = make_hash();
     $ctp = new DedeTagParse();
     $ctp->LoadTemplate(DEDEADMIN."/templets/file_edit.htm");

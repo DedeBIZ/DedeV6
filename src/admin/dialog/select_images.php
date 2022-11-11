@@ -148,20 +148,20 @@ html{background:#f5f5f5}
                     上传：<input type="file" name="imgfile" class="w-50">
                     <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?> /> 水印 </label>
                     <label><input type="checkbox" name="resize" value="1"> 缩小 </label>
-                    宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="biz-input-xs">
-                    高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="biz-input-xs">
+                    宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs">
+                    高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="admin-input-xs">
                     <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
                 </form>
             </td>
         </tr>
         <tr>
-            <td class="biz-td" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
+            <td class="admin-td" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
         </tr>
         <tr>
-            <td width="6%" class="biz-td">预览</td>
-            <td width="42%" class="biz-td">选择图片</td>
-            <td width="20%" class="biz-td">文件大小</td>
-            <td class="biz-td">修改时间</td>
+            <td width="6%" class="admin-td">预览</td>
+            <td width="42%" class="admin-td">选择图片</td>
+            <td width="20%" class="admin-td">文件大小</td>
+            <td class="admin-td">修改时间</td>
         </tr>
         <?php
         $dh = scandir($inpath);
@@ -188,17 +188,17 @@ html{background:#f5f5f5}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td colspan='2' class='biz-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
-                <td colspan='2' class='biz-td'>当前目录：$activepath</td>
+                <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                <td colspan='2' class='admin-td'>当前目录：$activepath</td>
                 </tr>";
                 echo $line;
             } else if (is_dir("$inpath/$file")) {
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td colspan='2' class='biz-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                <td class='biz-td'></td>
-                <td class='biz-td'></td>
+                <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                <td class='admin-td'></td>
+                <td class='admin-td'></td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
@@ -208,12 +208,12 @@ html{background:#f5f5f5}
                 if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td colspan='2' class='biz-td'>
+                <td colspan='2' class='admin-td'>
                     <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
                     <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='biz-td'>$filesize KB</td>
-                <td class='biz-td'>$filetime</td>
+                <td class='admin-td'>$filesize KB</td>
+                <td class='admin-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(jpg)#i", $file)) {
@@ -223,12 +223,12 @@ html{background:#f5f5f5}
                 if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td colspan='2' class='biz-td'>
+                <td colspan='2' class='admin-td'>
                     <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
                     <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='biz-td'>$filesize KB</td>
-                <td class='biz-td'>$filetime</td>
+                <td class='admin-td'>$filesize KB</td>
+                <td class='admin-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             }

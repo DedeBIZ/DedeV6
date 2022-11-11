@@ -73,8 +73,8 @@ $wecome_info = "随机模板设置";
 make_hash();
 $msg = "
 <link rel='stylesheet' href='../static/web/css/admin.css'>
-<script src='js/main.js'></script>
 <script src='../static/web/js/webajax.js'></script>
+<script src='js/main.js'></script>
 <script>
 function DoRand(jobname)
 {
@@ -98,7 +98,7 @@ function DoRand(jobname)
     </td>
 </tr>
 <tr>
-    <td><textarea name='templates' id='templates' class='biz-textarea-xl'>$templates</textarea></td>
+    <td><textarea name='templates' id='templates' class='admin-textarea-xl'>$templates</textarea></td>
 </tr>
 </table>";
 $win = new OxWindow();

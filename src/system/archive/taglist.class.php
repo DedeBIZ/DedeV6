@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * Tag列表类
+ * 标签列表
  *
  * @version        $id:taglist.class.php 18:17 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
@@ -13,7 +13,7 @@ require_once(DEDEINC.'/channelunit.class.php');
 require_once(DEDEINC.'/typelink/typelink.class.php');
 @set_time_limit(0);
 /**
- * Tag列表类
+ * 标签列表
  *
  * @package          TagList
  * @subpackage       DedeBIZ.Libraries
@@ -79,7 +79,7 @@ class TagList
         //初始化模板
         $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style'].'/'.$this->Templet;
         if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "模板文件不存在，无法解析文档";
+            echo "主题模板文件不存在，无法发布文档";
             exit();
         }
         $this->dtp->LoadTemplate($tempfile);

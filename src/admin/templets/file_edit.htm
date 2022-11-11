@@ -10,7 +10,6 @@
 		<link rel="stylesheet" href="css/codemirror.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script src="js/main.js"></script>
 		<script src="js/codemirror.js"></script>
 		<script src="js/mode/xml/xml.js"></script>
 		<script src="js/mode/javascript/javascript.js"></script>
@@ -18,6 +17,7 @@
 		<script src="js/mode/php/php.js"></script>
 		<script src="js/mode/clike/clike.js"></script>
 		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="js/main.js"></script>
 		<script>
 			function Post() {
 				if (document.form1.filename.value == "") {
@@ -39,11 +39,11 @@
 				</tr>
 				<tr>
 					<td>工作目录</td>
-					<td><input name="activepath" value="{dede:global name='activepath'/}" class="biz-input-md">（空白表示根目录，不允许用“..”形式的路径）</td>
+					<td><input name="activepath" value="{dede:global name='activepath'/}" class="admin-input-md">（空白表示根目录，不允许用“..”形式的路径）</td>
 				</tr>
 				<tr>
 					<td>文件名称</td>
-					<td><input name="filename" value="{dede:global name='filename'/}" class="biz-input-md">（不允许用“..”形式的路径）</td>
+					<td><input name="filename" value="{dede:global name='filename'/}" class="admin-input-md">（不允许用“..”形式的路径）</td>
 				</tr>
 				<tr class="table">
 					<td colspan="2" class="p-0">{dede:global name='contentView'/}</td>

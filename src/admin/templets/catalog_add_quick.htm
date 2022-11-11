@@ -90,23 +90,23 @@
 								<td colspan="2">
 									<table width="80" cellpadding="0" cellspacing="0">
 										<tr>
-											<td width="80" height="28" align="center" class="biz-itemnote1">常规选项</td>
+											<td width="80" height="28" align="center" class="admin-itemnote1">常规选项</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 						</table>
-						<table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table biz-border">
+						<table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table admin-border">
 							<tr>
-								<td width="260" class="biz-td">是否支持投稿：</td>
-								<td class="biz-td">
+								<td width="260" class="admin-td">是否支持投稿：</td>
+								<td class="admin-td">
 									<label><input type="radio" name="issend" value="1" checked="1"> 支持</label>
 									<label><input type="radio" name="issend" value="0"> 不支持</label>
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">目录保存位置：</td>
-								<td class="biz-td">
+								<td class="admin-td">目录保存位置：</td>
+								<td class="admin-td">
 									<label><input type="radio" name="referpath" value="parent" checked="1"> 默认网页目录（
 										<?php
 										$pardir = '{cmspath}'.$cfg_arcdir;
@@ -120,17 +120,17 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">所属栏目：</td>
-								<td class="biz-td">
-									<select name="reid" onchange="showSeltype(this)" class="biz-input-sm">
+								<td class="admin-td">所属栏目：</td>
+								<td class="admin-td">
+									<select name="reid" onchange="showSeltype(this)" class="admin-input-sm">
 										<option value="0">选择所属目录</option>
 										<?php echo $typeOptions;?>
 									</select>（默认为顶级栏目）
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">文档模型：</td>
-								<td class="biz-td"><select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="biz-input-sm">
+								<td class="admin-td">文档模型：</td>
+								<td class="admin-td"><select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
 										<?php
 										foreach($channelArray as $k=>$arr)
 										{
@@ -142,16 +142,16 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">栏目列表选项：</td>
-								<td class="biz-td">
+								<td class="admin-td">栏目列表选项：</td>
+								<td class="admin-td">
 									<label><input type="radio" name="isdefault" value="1" checked="1"> 链接到默认页</label>
 									<label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
 									<label><input type="radio" name="isdefault" value="-1"> 使用动态页</label>
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">默认页的名称：</td>
-								<td class="biz-td"><input type="text" name="defaultname" value="index.html" class="biz-input-md"></td>
+								<td class="admin-td">默认页的名称：</td>
+								<td class="admin-td"><input type="text" name="defaultname" value="index.html" class="admin-input-md"></td>
 							</tr>
 							<tr id="helpvar2" style="display:none">
 								<td bgcolor="#f5f5f5">支持变量：</td>
@@ -165,9 +165,9 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">文档命名规则：</td>
-								<td class="biz-td">
-									<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="biz-input-md">
+								<td class="admin-td">文档命名规则：</td>
+								<td class="admin-td">
+									<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-md">
 									<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')"></i>
 								</td>
 							</tr>
@@ -178,7 +178,7 @@
 							<tr>
 								<td>列表命名规则：</td>
 								<td>
-									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="biz-input-md">
+									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-md">
 									<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')"></i>
 								</td>
 							</tr>
@@ -195,9 +195,9 @@
 											<tr align="center">
 												<td class="rank">
 													<input type="hidden" name="posttype" value="">
-													<input type="text" name="rank" id="rank" value="1" class="biz-input-sm">
+													<input type="text" name="rank" id="rank" value="1" class="admin-input-sm">
 												</td>
-												<td align="center"><input type="text" name="toptype" id="toptype" class="biz-input-sm"></td>
+												<td align="center"><input type="text" name="toptype" id="toptype" class="admin-input-sm"></td>
 												<td><input type="text" name="sontype" id="sontype" style="width:100%">
 												</td>
 												<td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
@@ -206,9 +206,9 @@
 											<tr class="repeat" align="center">
 												<td class="rank">
 													<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-													<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="biz-input-sm">
+													<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="admin-input-sm">
 												</td>
-												<td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="biz-input-sm"></td>
+												<td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="admin-input-sm"></td>
 												<td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" style="width:100%"></td>
 												<td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
 											</tr>
@@ -226,9 +226,9 @@
 											<tr align="center">
 												<td class="rank">
 													<input type="hidden" name="posttype" value="">
-													<input type="text" name="rank" id="rank" value="1" class="biz-input-sm">
+													<input type="text" name="rank" id="rank" value="1" class="admin-input-sm">
 												</td>
-												<td><input type="text" name="reltype" id="reltype" class="biz-input-sm">
+												<td><input type="text" name="reltype" id="reltype" class="admin-input-sm">
 												</td>
 												<td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
 											</tr>
@@ -236,9 +236,9 @@
 											<tr class="repeat" align="center">
 												<td class="rank">
 													<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-													<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="biz-input-sm">
+													<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="admin-input-sm">
 												</td>
-												<td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="biz-input-sm"></td>
+												<td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="admin-input-sm"></td>
 												<td align="center"><button type="button" id="add" class="btn btn-danger btn-sm">删除</button></td>
 											</tr>
 											<?php }?>
@@ -247,7 +247,7 @@
 								</td>
 							</tr>
 						</table>
-						<table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f5f5" class="biz-border border-top-0 mb-3">
+						<table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f5f5" class="admin-border border-top-0 mb-3">
 							<tr>
 								<td align="center" class="py-2">
 									<button type="submit" class="btn btn-success btn-sm">保存</button>

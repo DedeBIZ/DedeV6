@@ -1,12 +1,12 @@
-$(function(){
+$(function() {
 	//文本框Style
-	$(".txt").mouseover(function(){
+	$(".txt").mouseover(function() {
 		$(this).addClass("txt_o");
-	}).mouseout(function(){
+	}).mouseout(function() {
 		$(this).removeClass("txt_o");
-	}).focus(function(){
+	}).focus(function() {
 		$(this).addClass("txt_s");
-	}).blur(function(){
+	}).blur(function() {
 		$(this).removeClass("txt_s");
 	});
 	//表格折叠
@@ -18,7 +18,7 @@ $(function(){
 			$(this).append(" <button type=\"button\" class=\"tbody_down\"></button>");
 		}
 		//折叠动作
-		$(this).click(function(){
+		$(this).click(function() {
 			if ($(this).find("button[class^='tbody_']").attr("class")=="tbody_up"){
 				$(this).find("button[class^='tbody_']").attr("class","tbody_down");
 				$(this).parent("tr").parent("tbody").find("tr").not($(this).parent("tr")).hide();
@@ -26,22 +26,22 @@ $(function(){
 				$(this).find("button[class^='tbody_']").attr("class","tbody_up");
 				$(this).parent("tr").parent("tbody").find("tr").not($(this).parent("tr")).show();
 			}
-		}).mouseover(function(){
+		}).mouseover(function() {
 			$(this).addClass("mouseon");
-		}).mouseout(function(){
+		}).mouseout(function() {
 			$(this).removeClass("mouseon");
 		}).click();			
 	});
 	//列表行高亮
-	$("table[_dlist*='light']").children("tbody").children("tr").mouseover(function(){
+	$("table[_dlist*='light']").children("tbody").children("tr").mouseover(function() {
 		if ($(this).attr("_nolight")!="yes")$(this).addClass("t_on");
-	}).mouseout(function(){
+	}).mouseout(function() {
 		$(this).removeClass("t_on");
 	});
 	//列表行整行选择
-	$("table[_dlist*='check']").each(function(){
+	$("table[_dlist*='check']").each(function() {
 		//处理行点击
-		$(this).find("tbody tr").click(function(){
+		$(this).find("tbody tr").click(function() {
 			checkbox = $(this).find("td input[type='checkbox']");
 			tr = $(this);
 			if (checkbox.attr("checked")===false){
@@ -53,7 +53,7 @@ $(function(){
 			}
 		});
 		//处理checkbox点击
-		$(this).find("td input[type='checkbox']").click(function(){
+		$(this).find("td input[type='checkbox']").click(function() {
 			tr = $(this).parent("td").parent("tr");
 			if ($(this).attr("checked")===false){
 				$(this).attr("checked","checked");
@@ -64,7 +64,7 @@ $(function(){
 			}
 		});
 		//排除链接及按钮点击
-		$(this).find("tbody tr td a,tbody tr td button,tbody tr td table").click(function(){
+		$(this).find("tbody tr td a,tbody tr td button,tbody tr td table").click(function() {
 			tr = $(this).parent("td").parent("tr");
 			checkbox = tr.find("td input[type='checkbox']");
 			if (checkbox.attr("checked")===false){
@@ -79,21 +79,21 @@ $(function(){
 	//高亮初始化
 	setChecklight();
 	//全选按钮
-	$("button[_click='allSelect']").click(function(){
+	$("button[_click='allSelect']").click(function() {
 		ckbox = $(this).parent("td").parent("tr").parent("tbody").find("td input[type='checkbox']");
 		ckbox.attr("checked","checked");
 		setChecklight();
 	});
 	//反选按钮
-	$("button[_click='unSelect']").click(function(){
+	$("button[_click='unSelect']").click(function() {
 		ckbox = $(this).parent("td").parent("tr").parent("tbody").find("td input[type='checkbox']");
-		ckbox.each(function(){
+		ckbox.each(function() {
 			$(this).attr("checked") === false ? $(this).attr("checked","checked") : $(this).removeAttr("checked");
 		});
 		setChecklight();
 	});
 	//自定义提交
-	$("button[_submit]").click(function(){
+	$("button[_submit]").click(function() {
 		url = $(this).attr("_submit");
 		if (/\[new\].*/.test(url)){
 			url = url.replace(/\[new\]/,"");
@@ -104,7 +104,7 @@ $(function(){
 	});
 });
 //高亮初始化
-function setChecklight(){
+function setChecklight() {
 	$(".tlist[_dlist*='check']").find("tbody tr td input[type='checkbox']").each(function(i){
 		tr = $(this).parent("td").parent("tr");
 		if ($(this).attr("checked")){
@@ -115,7 +115,7 @@ function setChecklight(){
 	});
 }
 //栏目跳转
-function AC(mid){
+function AC(mid) {
 	f = $(window.parent.document);
 	mlink = f.find("a[id='"+mid+"']");
 	if (mlink.size()>0){
@@ -135,5 +135,4 @@ function AC(mid){
 			window.open(mlink.attr("_open"));
 		}
 	}
-
 }

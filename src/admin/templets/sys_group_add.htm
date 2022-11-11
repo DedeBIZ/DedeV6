@@ -17,11 +17,11 @@
 				</tr>
 				<tr>
 					<td width="90">组名称：</td>
-					<td><input type="text" name="groupname" id="groupname" class="biz-input-sm"></td>
+					<td><input type="text" name="groupname" id="groupname" class="admin-input-sm"></td>
 				</tr>
 				<tr>
 					<td>级别值：</td>
-					<td><input type="text" name="rankid" id="rankid" class="biz-input-sm">（数字，系统已占用的级别值：<?php $dsql->SetQuery("Select `rank` From `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo '<span class="text-danger">'.$row->rank.'</span>';?>，级别值必须小于10，超过或等于10所有权限设置将无效，如果10个组不能完全满足您的要求，允许使用小数）
+					<td><input type="text" name="rankid" id="rankid" class="admin-input-sm">（数字，系统已占用的级别值：<?php $dsql->SetQuery("Select `rank` From `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo '<span class="text-danger">'.$row->rank.'</span>';?>，级别值必须小于10，超过或等于10所有权限设置将无效，如果10个组不能完全满足您的要求，允许使用小数）
 					</td>
 				</tr>
 				<?php

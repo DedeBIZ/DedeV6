@@ -16,8 +16,8 @@
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
-		<script src="../static/web/js/cropper.min.js"></script>
 		<script src="js/main.js"></script>
+		<script src="../static/web/js/cropper.min.js"></script>
 		<style>table{border-collapse:inherit}</style>
 		<script>
 			function checkSubmit()
@@ -39,7 +39,7 @@
 				<td>
 					<table cellpadding="0" cellspacing="0">
 						<tr>
-							<td width="80" height="28" align="center" class="biz-itemnote1">常规文档</td>
+							<td width="80" height="28" align="center" class="admin-itemnote1">常规文档</td>
 						</tr>
 					</table>
 				</td>
@@ -49,19 +49,19 @@
 			<input type="hidden" name="channelid" value="<?php echo $channelid?>">
 			<input type="hidden" name="cid" value="<?php echo $cid?>">
 			<input type="hidden" name="dopost" value="save">
-			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
+			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="admin-border">
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90"><?php echo $cInfos['titlename'];?>：</td>
-								<td><input type="text" name="title" id="title" value="" class="biz-input-lg"></td>
+								<td><input type="text" name="title" id="title" value="" class="admin-input-lg"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">自定义属性：</td>
@@ -80,12 +80,12 @@
 					</td>
 				</tr>
 				<tr id="pictable" style="<?php if ($cInfos['needpic']==0) echo 'display:none';?>">
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">缩略图：</td>
 								<td width="620">
-									<input type="text" name="picname" id="picname" class="biz-input-md">
+									<input type="text" name="picname" id="picname" class="admin-input-md">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
@@ -102,7 +102,7 @@
 				} else {
 				?>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">发布栏目：</td>
@@ -110,7 +110,7 @@
 									<span id="typeidct">
 										<?php
 										$typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
-										echo "<select name='typeid' id='typeid' class='biz-input-sm'>";
+										echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
 										echo "<option value='0'>请选择栏目</option>";
 										echo $typeOptions;
 										echo "</select>";
@@ -124,12 +124,12 @@
 				</tr>
 				<?php }?>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">浏览权限：</td>
 								<td>
-									<select name="arcrank" id="arcrank" class="biz-input-sm">
+									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<?php
 										$urank = $cuserLogin->getUserRank();
 										$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank'");
@@ -149,7 +149,7 @@
 					<td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?></td>
 				</tr>
 			</table>
-			<table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f5f5f5" class="biz-border border-top-0 mb-3">
+			<table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f5f5f5" class="admin-border border-top-0 mb-3">
 				<tr>
 					<td align="center" class="py-2">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>

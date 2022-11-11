@@ -12,11 +12,11 @@
 		<link rel="stylesheet" href="../static/web/css/cropper.min.css">
 		<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
 		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
+		<script src="js/main.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
 		<style>table{border-collapse:inherit}</style>
 		<script>
@@ -35,7 +35,7 @@
 				<td>
 					<table cellpadding="0" cellspacing="0">
 						<tr>
-							<td width="80" height="28" align="center" class="biz-itemnote1">常规文档</td>
+							<td width="80" height="28" align="center" class="admin-itemnote1">常规文档</td>
 						</tr>
 					</table>
 				</td>
@@ -46,21 +46,21 @@
 			<input type="hidden" name="channelid" value="<?php echo $channelid?>">
 			<input type="hidden" name="id" value="<?php echo $aid?>">
 			<input type="hidden" name="dopost" value="save">
-			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
+			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="admin-border">
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90"><?php echo $cInfos['titlename'];?>：</td>
-								<td width="400"><input name="title" type="text" id="title" value="<?php echo $arcRow['title'];?>" class="biz-input-lg"></td>
+								<td width="400"><input name="title" type="text" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
 								<td width="90">简略标题：</td>
-								<td><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="biz-input-sm"></td>
+								<td><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-sm"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">自定义属性：</td>
@@ -84,34 +84,34 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
+					<td class="admin-td" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">跳转网址：</td>
-								<td><input name="redirecturl" type="text" id="redirecturl" value="<?php echo $addRow['redirecturl'];?>" class="biz-input-md"></td>
+								<td><input name="redirecturl" type="text" id="redirecturl" value="<?php echo $addRow['redirecturl'];?>" class="admin-input-md"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">标签：</td>
-								<td><input name="tags" type="text" id="tags" value="<?php echo $tags;?>" class="biz-input-md">（英文逗号分开，如“天涯,叙述”）</td>
+								<td><input name="tags" type="text" id="tags" value="<?php echo $tags;?>" class="admin-input-md">（英文逗号分开，如“天涯,叙述”）</td>
 								<td width="60">权重：</td>
-								<td><input name="weight" type="text" id="weight" value="<?php echo $arcRow['weight'];?>" class="biz-input-sm">（越小越靠前）</td>
+								<td><input name="weight" type="text" id="weight" value="<?php echo $arcRow['weight'];?>" class="admin-input-sm">（越小越靠前）</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr id="pictable" style='<?php if ($cInfos['needpic']==0) echo 'display:none';?>'>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">缩略图：</td>
 								<td width="620">
-									<input name="picname" type="text" id="picname" value="<?php echo $arcRow['litpic']?>" class="biz-input-md">
+									<input name="picname" type="text" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-md">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
@@ -123,17 +123,17 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">来源：</td>
 								<td width="260">
-									<input name="source" type="text" id="source" value="<?php echo $arcRow['source']?>" class="biz-input-sm">
+									<input name="source" type="text" id="source" value="<?php echo $arcRow['source']?>" class="admin-input-sm">
 									<button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
 								</td>
 								<td width="60">作者：</td>
 								<td>
-									<input name="writer" type="text" id="writer" value="<?php echo $arcRow['writer']?>" class="biz-input-sm">
+									<input name="writer" type="text" id="writer" value="<?php echo $arcRow['writer']?>" class="admin-input-sm">
 									<button class="btn btn-success btn-sm" name="selwriter" type="button" id="selwriter">选择</button>
 								</td>
 							</tr>
@@ -150,14 +150,14 @@
 				} else {
 				?>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">发布栏目：</td>
 								<td width="360">
 									<?php
 									$typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
-									echo "<select name='typeid' id='typeid' class='biz-input-sm'>";
+									echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
 									if ($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
 									echo $typeOptions;
 									echo "</select>";
@@ -165,20 +165,20 @@
 									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择" style="cursor:pointer"></i>
 								</td>
 								<td width="90">消费金币：</td>
-								<td><input name="money" type="text" id="money" value="<?php echo $arcRow['money']?>" class="biz-input-sm"></td>
+								<td><input name="money" type="text" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<?php if ($cfg_need_typeid2=='Y') {?>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">副栏目：</td>
 								<td>
 									<span id="typeid2ct"></span>
-									<input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" class="biz-input-sm">
+									<input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" class="admin-input-sm">
 									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目" style="cursor:pointer"></i>
 								</td>
 							</tr>
@@ -186,31 +186,31 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">关键词：</td>
-								<td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']?>" class="biz-input-md"></td>
+								<td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']?>" class="admin-input-md"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">描述：</td>
-								<td><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $arcRow['description']?></textarea></td>
+								<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $arcRow['description']?></textarea></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<?php }}?>
 				<tr>
-					<td class="biz-td"><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow);?></td>
+					<td class="admin-td"><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow);?></td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">附加选项：</td>
@@ -223,7 +223,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90" width="260"> 评论选项：</td>
@@ -241,11 +241,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">文档排序：</td>
-								<td width="260"><select name="sortup" id="sortup" class="biz-input-sm">
+								<td width="260"><select name="sortup" id="sortup" class="admin-input-sm">
 										<?php
 										$subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
 										echo "<option value='0'>正常排序</option>";
@@ -260,7 +260,7 @@
 								</td>
 								<td width="90">标题颜色：</td>
 								<td>
-									<input name="color" type="text" id="color" value="<?php echo $arcRow['color']?>" class="biz-input-sm">
+									<input name="color" type="text" id="color" value="<?php echo $arcRow['color']?>" class="admin-input-sm">
 									<button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
 								</td>
 							</tr>
@@ -268,11 +268,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">阅读权限：</td>
-								<td width="260"><select name="arcrank" id="arcrank" class="biz-input-sm">
+								<td width="260"><select name="arcrank" id="arcrank" class="admin-input-sm">
 										<option value='<?php echo $arcRow["arcrank"]?>'><?php echo $arcRow["rankname"]?>
 										</option>
 										<?php
@@ -286,30 +286,30 @@
 									</select>
 								</td>
 								<td width="90">文件名称：</td>
-								<td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="biz-input-sm">（不包括后缀名如.html等）</td>
+								<td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="admin-input-sm">（不包括后缀名如.html等）</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="biz-td">
+					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">更新时间：</td>
 								<td width="260">
 									<?php
 									$nowtime = GetDateTimeMk(time());
-									echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker' class='biz-input-sm'>";
+									echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker' class='admin-input-sm'>";
 									?>
 								</td>
 								<td width="90">浏览次数：</td>
-								<td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" class="biz-input-sm"></td>
+								<td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" class="admin-input-sm"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 			</table>
-			<table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f5f5f5" class="biz-border border-top-0 mb-3">
+			<table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f5f5f5" class="admin-border border-top-0 mb-3">
 				<tr>
 					<td align="center" class="py-2">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>

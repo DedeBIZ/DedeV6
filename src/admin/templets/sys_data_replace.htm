@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/main.js"></script>
-		<script src='../static/web/js/webajax.js'></script>
 		<script>
 			function ShowFields() {
 				var exptable = $DE('exptable').options[$DE('exptable').selectedIndex].value;
@@ -70,7 +70,7 @@
 													echo "<span class='text-danger'>找不到您所指定的数据库 $dbname</span><br>";
 													echo $qbutton;
 												}
-												echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='biz-input-md'>";
+												echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='admin-input-md'>";
 												while($row = $dsql->GetArray('t',MYSQL_BOTH)){
 													echo "<option value='{$row[0]}'>{$row[0]}</option>";
 												}
@@ -83,7 +83,7 @@
 											<td id="fields"></td>
 										</tr>
 										<tr>
-											<td><input type="text" name="rpfield" id="rpfield" class="biz-input-md">（选择替换字段）</td>
+											<td><input type="text" name="rpfield" id="rpfield" class="admin-input-md">（选择替换字段）</td>
 										</tr>
 									</table>
 								</td>
@@ -98,20 +98,20 @@
 							</tr>
 							<tr>
 								<td>被替换文档：</td>
-								<td><textarea name="rpstring" id="rpstring" class="biz-textarea-xl"></textarea></td>
+								<td><textarea name="rpstring" id="rpstring" class="admin-textarea-xl"></textarea></td>
 							</tr>
 							<tr>
 								<td>替换为：</td>
-								<td><textarea name="tostring" id="tostring" class="biz-textarea-xl"></textarea></td>
+								<td><textarea name="tostring" id="tostring" class="admin-textarea-xl"></textarea></td>
 							</tr>
 							<tr>
 								<td>替换条件：</td>
-								<td><input type="text" name="condition" id="condition" class="biz-input-sm">（空完全替换）</td>
+								<td><input type="text" name="condition" id="condition" class="admin-input-sm">（空完全替换）</td>
 							</tr>
 							<tr>
 								<td>安全确认码：</td>
 								<td>
-									<input type="text" name="validate" class="biz-input-sm text-uppercase">
+									<input type="text" name="validate" class="admin-input-sm text-uppercase">
 									<img src="../apps/vdimgck.php" onClick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 								</td>
 							</tr>
@@ -129,7 +129,7 @@
 			</tr>
 			<tr>
 				<td id="mtd">
-					<div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

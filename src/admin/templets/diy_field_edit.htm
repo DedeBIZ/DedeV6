@@ -73,7 +73,7 @@
 				<tr>
 					<td>数据类型：</td>
 					<td>
-						<select name="dtype" id="type" class="biz-input-md">
+						<select name="dtype" id="type" class="admin-input-md">
 							<?php 
 							$dtype = $ctag->GetAtt('type');
 							if ($dtype!='' && isset($fieldtypes[$dtype]))
@@ -113,7 +113,7 @@
 				</tr>
 				<tr>
 					<td>默认值：如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（英文逗号分开，如“天涯,叙述”）如果为联动选框，这里填写联动选框项目名称</td>
-					<td><textarea name="vdefault" id="vdefault" class="biz-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea></td>
+					<td><textarea name="vdefault" id="vdefault" class="admin-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea></td>
 				</tr>
 				<tr>
 					<td>最大长度：文本数据必须填写，大于255为text类型</td>
@@ -125,7 +125,7 @@
 				</tr>
 				<tr>
 					<td align="center"></td>
-					<td><textarea name="vinnertext" id="vinnertext" class="biz-textarea-xl"><?php echo $ctag->GetInnerText();?></textarea></td>
+					<td><textarea name="vinnertext" id="vinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText();?></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2" bgcolor="#f5f5f5" align="center" class="py-2">

@@ -489,7 +489,7 @@ span.page-link {
 	margin-right:10px;
 	width:360px
 }
-.biz-updates {
+.admin-updates {
 	display:inline-block;
 	position:absolute;
 	top:12px;
@@ -499,48 +499,48 @@ span.page-link {
 	background:#dc3545;
 	border-radius:50%
 }
-.biz-win {
+.admin-win {
 	background:#f5f5f5;
 	border:1px solid #dee2e6
 }
-.biz-win-iframe {
+.admin-win-iframe {
 	width:100%;
 	height:360px
 }
-.biz-itemnote1 {
+.admin-itemnote1 {
 	background:#e9ecef;
 	border-radius:.2rem .2rem 0 0
 }
-.biz-itemnote2 {
+.admin-itemnote2 {
 	background:#f5f5f5;
 	border-radius:.2rem .2rem 0 0
 }
-.biz-border {
+.admin-border {
 	border:1px solid #dee2e6
 }
-.biz-td,.nbiz-td {
+.admin-td,.nadmin-td {
 	padding:.65rem;
 	vertical-align:middle;
 	border-bottom:1px solid #dee2e6
 }
-.biz-textarea-xl {
+.admin-textarea-xl {
 	width:100%;
 	height:90px
 }
-.biz-textarea-sm {
+.admin-textarea-sm {
 	width:360px;
 	height:50px
 }
-.biz-input-lg {
+.admin-input-lg {
 	width:380px
 }
-.biz-input-md {
+.admin-input-md {
 	width:360px
 }
-.biz-input-sm {
+.admin-input-sm {
 	width:160px
 }
-.biz-input-xs {
+.admin-input-xs {
 	width:60px
 }
 .user-img {

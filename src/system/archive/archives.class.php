@@ -513,7 +513,7 @@ class Archives
             $tempfile = $this->GetTempletFile();
             if (!file_exists($tempfile) || !is_file($tempfile)) {
                 echo "文档id：{$this->Fields['id']} - {$this->TypeLink->TypeInfos['typename']} - {$this->Fields['title']}<br>";
-                echo "模板文件不存在，无法解析文档";
+                echo "主题模板文件不存在，无法发布文档";
                 exit();
             }
             $this->dtp->LoadTemplate($tempfile);

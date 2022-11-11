@@ -10,12 +10,12 @@
 		<link rel="stylesheet" href="css/codemirror.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script src="js/main.js"></script>
 		<script src="js/codemirror.js"></script>
 		<script src="js/mode/xml/xml.js"></script>
 		<script src="js/mode/javascript/javascript.js"></script>
 		<script src="js/mode/css/css.js"></script>
 		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="js/main.js"></script>
 	</head>
 	<body>
 		<div id="list1" style="display:none">
@@ -81,33 +81,33 @@
 										</tr>
 										<tr>
 											<td width="260">自由列表标题：</td>
-											<td><input type="text" name="title" id="title" class="biz-input-md"></td>
+											<td><input type="text" name="title" id="title" class="admin-input-md"></td>
 										</tr>
 										<tr>
 											<td>列表HTML存放目录：</td>
-											<td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" class="biz-input-md"> {listdir}变量的值</td>
+											<td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" class="admin-input-md"> {listdir}变量的值</td>
 										</tr>
 										<tr>
 											<td>目录默认页名称：</td>
 											<td>
-												<input type="text" name="defaultpage" id="defaultpage" value="index.html" class="biz-input-md">
+												<input type="text" name="defaultpage" id="defaultpage" value="index.html" class="admin-input-md">
 												<label><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认主页</label>
 											</td>
 										</tr>
 										<tr>
 											<td>命名规则：</td>
-											<td><input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" class="biz-input-md"></td>
+											<td><input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" class="admin-input-md"></td>
 										</tr>
 										<tr>
 											<td>列表模板：</td>
 											<td>
-												<input type="text" name="templet" id="templet" value="{style}/list_free.htm" class="biz-input-md">
+												<input type="text" name="templet" id="templet" value="{style}/list_free.htm" class="admin-input-md">
 												<button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
 											</td>
 										</tr>
 										<tr>
 											<td>最大列出页数：</td>
-											<td><input type="text" name="maxpage" id="maxpage" value="100" class="biz-input-sm"></td>
+											<td><input type="text" name="maxpage" id="maxpage" value="100" class="admin-input-sm"></td>
 										</tr>
 										<tr>
 											<td></td>
@@ -115,11 +115,11 @@
 										</tr>
 										<tr>
 											<td>关键词：</td>
-											<td><input type="text" name="keywords" id="keywords" class="biz-input-md"></td>
+											<td><input type="text" name="keywords" id="keywords" class="admin-input-md"></td>
 										</tr>
 										<tr>
 											<td>列表描述：</td>
-											<td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
+											<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea></td>
 										</tr>
 									</table>
 								</td>
@@ -150,7 +150,7 @@
 							<tr>
 								<td>限定栏目：
 									<?php
-									echo "<select name='typeid' class='biz-input-sm'>";
+									echo "<select name='typeid' class='admin-input-sm'>";
 									echo "<option value='0'>不限栏目</option>";
 									$dsql->SetQuery("Select ID,typename, channeltype From `#@__arctype`");
 									$dsql->Execute();
@@ -168,7 +168,7 @@
 							<tr>
 								<td>限定栏目：
 									<?php
-									echo "<select name='channel' class='biz-input-sm'>";
+									echo "<select name='channel' class='admin-input-sm'>";
 									echo "<option value='0' selected>不限</option>";
 									$dsql->SetQuery("Select ID,typename From `#@__channeltype` where ID>0");
 										$dsql->Execute();
@@ -183,7 +183,7 @@
 							<tr>
 								<td>附加属性：
 									<?php
-									echo "<select name='att' class='biz-input-sm'>";
+									echo "<select name='att' class='admin-input-sm'>";
 									echo "<option value='0' selected>不限</option>";
 									$dsql->SetQuery("SELECT * FROM `#@__arcatt`");
 									$dsql->Execute();
@@ -193,14 +193,14 @@
 									}
 									echo "</select>";
 									?>
-									文档发布时间：<input type="text" name="subday" id="subday2" value="0" class="biz-input-sm"> 天以内（0表示不限）
+									文档发布时间：<input type="text" name="subday" id="subday2" value="0" class="admin-input-sm"> 天以内（0表示不限）
 								</td>
 							</tr>
 							<tr>
 								<td>
-									每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" class="biz-input-sm">
-									显示列数： <input type="text" name="col" id="col3" value="1" class="biz-input-sm">
-									标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="biz-input-sm">（1字节 = 0.5个中文字）
+									每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" class="admin-input-sm">
+									显示列数： <input type="text" name="col" id="col3" value="1" class="admin-input-sm">
+									标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="admin-input-sm">（1字节 = 0.5个中文字）
 								</td>
 							</tr>
 							<tr>
@@ -213,7 +213,7 @@
 							</tr>
 							<tr>
 								<td>排列顺序：
-									<select name="orderby" id="orderby" class="biz-input-sm">
+									<select name="orderby" id="orderby" class="admin-input-sm">
 										<option value="sortrank">置顶权限值</option>
 										<option value="pubdate" selected>发布时间</option>
 										<option value="senddate">录入时间</option>
@@ -234,7 +234,7 @@
 							</tr>
 							<tr>
 								<td>
-									<textarea name="innertext" id="myinnertext" class="biz-textarea-xl"></textarea>
+									<textarea name="innertext" id="myinnertext" class="admin-textarea-xl"></textarea>
 									<script>
 										document.form1.innertext.value = document.getElementById("list4").innerHTML.toLowerCase();
 									</script>

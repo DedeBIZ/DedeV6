@@ -14,9 +14,9 @@
 		<form action="member_main.php" name="form1" method="get">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="biz-input-md"></td>
+					<td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="admin-input-md"></td>
 					<td width="170">
-						<select name="sortkey" id="sortkey" class="biz-input-sm">
+						<select name="sortkey" id="sortkey" class="admin-input-sm">
 							{dede:global name='sortform'/}
 							<option value="mid">mid/注册时间</option>
 							<option value="logintime">登录时间</option>
@@ -26,7 +26,7 @@
 						</select>
 					</td>
 					<td width="170">
-						<select name="sex" id="sex" class="biz-input-sm">
+						<select name="sex" id="sex" class="admin-input-sm">
 							{dede:global name='sexform'/}
 							<option value="男">男</option>
 							<option value="女">女</option>
@@ -34,7 +34,7 @@
 						</select>
 					</td>
 					<td width="170">
-						<select name="spacesta" id="spacesta" class="biz-input-sm">
+						<select name="spacesta" id="spacesta" class="admin-input-sm">
 							<option value="-10">会员状态</option>
 							<?php
 							foreach($staArr as $k=>$v)

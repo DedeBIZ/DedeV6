@@ -43,7 +43,7 @@ $(function () {
         }
     });
 });
-function copyFn(){
+function copyFn() {
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
     document.execCommand ("Copy");

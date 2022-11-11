@@ -67,7 +67,7 @@ class SpecView
         $this->CountRecord();
         $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/list_spec.htm";
         if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "模板文件不存在，无法解析文档";
+            echo "主题模板文件不存在，无法发布文档";
             exit();
         }
         $this->dtp->LoadTemplate($tempfile);

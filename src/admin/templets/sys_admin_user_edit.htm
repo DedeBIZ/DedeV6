@@ -28,21 +28,21 @@
 						<input type="hidden" name="id" value="<?php echo $row['id']?>">
 						<table cellspacing="1" cellpadding="1" class="table table-borderless w-100">
 							<tr>
-								<td width="260" class="biz-td">用户登录id：</td>
+								<td width="260" class="admin-td">用户登录id：</td>
 								<td><?php echo $row['userid']?></td>
 							</tr>
 							<tr>
-								<td class="biz-td">用户名称：</td>
-								<td class="biz-td"><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="biz-input-sm">（发布文档后显示责任编辑的名字）</td>
+								<td class="admin-td">用户名称：</td>
+								<td class="admin-td"><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="admin-input-sm">（发布文档后显示责任编辑的名字）</td>
 							</tr>
 							<tr>
-								<td class="biz-td">用户密码：</td>
-								<td class="biz-td"><input type="text" name="pwd" id="pwd" class="biz-input-md">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
+								<td class="admin-td">用户密码：</td>
+								<td class="admin-td"><input type="text" name="pwd" id="pwd" class="admin-input-md">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 							</tr>
 							<tr>
-								<td class="biz-td">用户类型：</td>
-								<td class="biz-td">
-									<select name="usertype" class="biz-input-sm">
+								<td class="admin-td">用户类型：</td>
+								<td class="admin-td">
+									<select name="usertype" class="admin-input-sm">
 										<?php
 										$dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
 										$dsql->Execute("ut");
@@ -56,26 +56,26 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">负责栏目：</td>
-								<td class="biz-td">
-									<select name="typeids[]" id="typeid" multiple="true" class="biz-input-md" style="height:200px">
+								<td class="admin-td">负责栏目：</td>
+								<td class="admin-td">
+									<select name="typeids[]" id="typeid" multiple="true" class="admin-input-md" style="height:200px">
 										<option value="0" class="alltype">所有栏目</option>
 										<?php echo $typeOptions?>
 									</select>（按Ctrl可以进行多选）
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">真实姓名：</td>
-								<td class="biz-td"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" class="biz-input-md"></td>
+								<td class="admin-td">真实姓名：</td>
+								<td class="admin-td"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="biz-td">电子邮箱：</td>
-								<td class="biz-td"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" class="biz-input-md"></td>
+								<td class="admin-td">电子邮箱：</td>
+								<td class="admin-td"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="biz-td">验证安全码：</td>
-								<td class="biz-td">
-									<input type="text" name="safecode" id="safecode" class="biz-input-md">
+								<td class="admin-td">验证安全码：</td>
+								<td class="admin-td">
+									<input type="text" name="safecode" id="safecode" class="admin-input-md">
 									<input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class="text-success"><?php echo $safecode;?></span>）
 								</td>
 							</tr>

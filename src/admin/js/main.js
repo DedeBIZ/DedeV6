@@ -413,7 +413,7 @@ function copyToClipboard(txt) {
 		try {
 			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
 		} catch (e) {
-			alert("被浏览器拒绝\n请在浏览器地址栏输入'about:config'并回车\n然后将'signed.applets.codebase_principal_support'设置为'true'");
+			alert("被浏览器拒绝，请在浏览器地址栏输入about:config并回车\n然后将signed.applets.codebase_principal_support设置为true");
 		}
 		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
 		if (!clip) return;
@@ -713,8 +713,7 @@ $(document).ready(function () {
 				applyLabel: '确定',
 				cancelLabel: '取消',
 				daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
-				monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
-					'七月', '八月', '九月', '十月', '十一月', '十二月'],
+				monthNames: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月'],
 				firstDay: 1
 			}
 		}, function (start) {

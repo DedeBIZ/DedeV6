@@ -68,7 +68,7 @@
 						<?php
 						$tl = new TypeLink(0);
 						$typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-						echo "<select name='typeid' class='biz-input-sm'>";
+						echo "<select name='typeid' class='admin-input-sm'>";
 						echo "<option value='0' selected>不限栏目</option>";
 						echo $typeOptions;
 						echo "</select>";
@@ -78,8 +78,8 @@
 				<tr>
 					<td>起始id：</td>
 					<td>
-						开始：<input name="startid" type="text" id="startid" class="biz-input-xs">
-						结束：<input name="endid" type="text" id="endid" class="biz-input-xs">
+						开始：<input name="startid" type="text" id="startid" class="admin-input-xs">
+						结束：<input name="endid" type="text" id="endid" class="admin-input-xs">
 					</td>
 				</tr>
 				<tr>
@@ -104,7 +104,7 @@
 				</tr>
 				<tr>
 					<td>用户的登录id：</td>
-					<td><input name="userid" type="text" id="userid" class="biz-input-xs">（网址uid=后面跟的id）</td>
+					<td><input name="userid" type="text" id="userid" class="admin-input-xs">（网址uid=后面跟的id）</td>
 				</tr>
 				<tr>
 					<td>操作：</td>
@@ -138,7 +138,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" id="mtd">
-					<div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

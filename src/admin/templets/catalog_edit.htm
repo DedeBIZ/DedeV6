@@ -112,9 +112,9 @@
 								<td colspan="2" bgcolor="#fff" align="left">
 									<table cellpadding="0" cellspacing="0">
 										<tr>
-											<td width="80" height="28" align="center" class="biz-itemnote1">常规选项</td>
-											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
-											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
+											<td width="80" height="28" align="center" class="admin-itemnote1">常规选项</td>
+											<td width="80" height="28" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
+											<td width="80" height="28" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
 										</tr>
 									</table>
 								</td>
@@ -125,9 +125,9 @@
 								<td colspan="2" bgcolor="#fff">
 									<table cellpadding="0" cellspacing="0">
 										<tr>
-											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
-											<td width="80" height="28" align="center" class="biz-itemnote1">高级选项</td>
-											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
+											<td width="80" height="28" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
+											<td width="80" height="28" align="center" class="admin-itemnote1">高级选项</td>
+											<td width="80" height="28" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
 										</tr>
 									</table>
 								</td>
@@ -138,34 +138,34 @@
 								<td colspan="2" bgcolor="#fff">
 									<table cellpadding="0" cellspacing="0">
 										<tr>
-											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
-											<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
-											<td width="80" height="28" align="center" class="biz-itemnote1">栏目文档</td>
+											<td width="80" height="28" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
+											<td width="80" height="28" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
+											<td width="80" height="28" align="center" class="admin-itemnote1">栏目文档</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 						</table>
-						<table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table biz-border">
+						<table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table admin-border">
 							<tr>
-								<td width="260" class="biz-td">是否支持投稿：</td>
-								<td class="biz-td">
+								<td width="260" class="admin-td">是否支持投稿：</td>
+								<td class="admin-td">
 									<label><input type="radio" name="issend" value="1" <?php if ($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
 									<label><input type="radio" name="issend" value="0" <?php if ($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
 								</td>
 							</tr>
 							<tr>
-								<td width="260" class="biz-td">是否隐藏栏目：</td>
-								<td class="biz-td">
+								<td width="260" class="admin-td">是否隐藏栏目：</td>
+								<td class="admin-td">
 									<label><input type="radio" name="ishidden" value="0" <?php if ($myrow['ishidden']=="0") echo "checked='1'";?>> 显示</label>
 									<label><input type="radio" name="ishidden" value="1" <?php if ($myrow['ishidden']=="1") echo "checked='1'";?>> 隐藏</label>
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">文档模型：</td>
-								<td class="biz-td">
+								<td class="admin-td">文档模型：</td>
+								<td class="admin-td">
 									<select name="channeltype" id="channeltype" onChange="ParTemplet(this)"
-										class="biz-input-sm">
+										class="admin-input-sm">
 										<?php    
 										foreach($channelArray as $k=>$arr)
 										{
@@ -177,43 +177,43 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">中文名称：</td>
-								<td class="biz-td"><input type="text" name="typename" value="<?php echo $myrow['typename']?>" class="biz-input-md"></td>
+								<td class="admin-td">中文名称：</td>
+								<td class="admin-td"><input type="text" name="typename" value="<?php echo $myrow['typename']?>" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="biz-td">中文概述：</td>
-								<td class="biz-td"><input type="text" name="cnoverview" value="<?php echo $myrow['cnoverview']?>" class="biz-input-md"></td>
+								<td class="admin-td">中文概述：</td>
+								<td class="admin-td"><input type="text" name="cnoverview" value="<?php echo $myrow['cnoverview']?>" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="biz-td">英文名称：</td>
-								<td class="biz-td"><input type="text" name="enname" value="<?php echo $myrow['enname']?>" class="biz-input-md"></td>
+								<td class="admin-td">英文名称：</td>
+								<td class="admin-td"><input type="text" name="enname" value="<?php echo $myrow['enname']?>" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="biz-td">英文概述：</td>
-								<td class="biz-td"><input type="text" name="enoverview" value="<?php echo $myrow['enoverview']?>" class="biz-input-md"></td>
+								<td class="admin-td">英文概述：</td>
+								<td class="admin-td"><input type="text" name="enoverview" value="<?php echo $myrow['enoverview']?>" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="biz-td">栏目大图：</td>
+								<td class="admin-td">栏目大图：</td>
 								<td>
-									<input type="text" name="bigpic" value="<?php echo $myrow['bigpic']?>" class="biz-input-md">
+									<input type="text" name="bigpic" value="<?php echo $myrow['bigpic']?>" class="admin-input-md">
 									<input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">栏目小图：</td>
+								<td class="admin-td">栏目小图：</td>
 								<td>
-									<input type="text" name="litimg" value="<?php echo $myrow['litimg']?>" class="biz-input-md">
+									<input type="text" name="litimg" value="<?php echo $myrow['litimg']?>" class="admin-input-md">
 									<input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">排列顺序：</td>
-								<td class="biz-td"><input type="text" name="sortrank" value="<?php echo $myrow['sortrank']?>" class="biz-input-sm">（由低 &gt; 高）</td>
+								<td class="admin-td">排列顺序：</td>
+								<td class="admin-td"><input type="text" name="sortrank" value="<?php echo $myrow['sortrank']?>" class="admin-input-sm">（由低 &gt; 高）</td>
 							</tr>
 							<tr>
-								<td class="biz-td">浏览权限：</td>
-								<td class="biz-td">
-									<select name="corank" id="corank" class="biz-input-sm">
+								<td class="admin-td">浏览权限：</td>
+								<td class="admin-td">
+									<select name="corank" id="corank" class="admin-input-sm">
 										<?php
 										$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0");
 										$dsql->Execute('cc');
@@ -229,8 +229,8 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">文件保存目录：</td>
-								<td class="biz-td"><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="biz-input-md">（标签“{cmspath}”必填，请勿删除）</td>
+								<td class="admin-td">文件保存目录：</td>
+								<td class="admin-td"><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-md">（标签“{cmspath}”必填，请勿删除）</td>
 							</tr>
 							<tr>
 								<td>栏目列表选项：</td>
@@ -241,12 +241,12 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">默认页的名称：</td>
-								<td class="biz-td"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="biz-input-md"></td>
+								<td class="admin-td">默认页的名称：</td>
+								<td class="admin-td"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="biz-td">栏目属性：</td>
-								<td class="biz-td">
+								<td class="admin-td">栏目属性：</td>
+								<td class="admin-td">
 									<label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo "checked='1'";?>> 列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
 									<label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo "checked='1'";?>> 封面栏目（栏目本身不允许发布文档）</label><br>
 									<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo "checked='1'";?>> 外部栏目（在"文件保存目录"处填写网址）</label>
@@ -254,7 +254,7 @@
 							</tr>
 							<tr>
 								<td>栏目交叉：<i onClick="ShowHide('helpvarco')" class="fa fa-question-circle" title="帮助"></i> 仅适用列表栏目</td>
-								<td class="biz-td">
+								<td class="admin-td">
 									<label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
 									<label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目文档</label>
 									<label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
@@ -267,8 +267,8 @@
 								<td bgcolor="#f5f5f5">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</td>
 							</tr>
 							<tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
-								<td class="biz-td">绑定小分类：仅适用分类模型</td>
-								<td class="biz-td">
+								<td class="admin-td">绑定小分类：仅适用分类模型</td>
+								<td class="admin-td">
 									<select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
 										<?php
 										$smtypes = explode(',',trim($myrow['smalltypes']));
@@ -296,22 +296,22 @@
 								</td>
 							</tr>
 						</table>
-						<table width="100%" cellspacing="0" cellpadding="0" id="adset" class="table biz-border" style="display:none">
+						<table width="100%" cellspacing="0" cellpadding="0" id="adset" class="table admin-border" style="display:none">
 							<tr>
-								<td width="260" class="biz-td">多站点支持：</td>
-								<td class="biz-td">
+								<td width="260" class="admin-td">多站点支持：</td>
+								<td class="admin-td">
 									<label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo "checked='1'";?>> 启用</label>
 									<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>（绑名绑定仅需要在顶级栏目设定，子级栏目修改无效）
 								</td>
 							</tr>
 							<tr>
-								<td class="biz-td">绑定域名：</td>
-								<td class="biz-td"><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="biz-input-md">（需要加http开头的链接）</td>
+								<td class="admin-td">绑定域名：</td>
+								<td class="admin-td"><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-md">（需要加http开头的链接）</td>
 							</tr>
 							<tr>
 								<td>封面模板：</td>
 								<td>
-									<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="biz-input-md">
+									<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-md">
 									<button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
 									<i onClick="ShowHide('helpvar1')" class="fa fa-question-circle" title="帮助"></i>
 								</td>
@@ -334,21 +334,21 @@
 							<tr>
 								<td>列表模板：</td>
 								<td>
-									<input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="biz-input-md">
+									<input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="admin-input-md">
 									<button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
 								</td>
 							</tr>
 							<tr>
 								<td>文档模板：</td>
 								<td>
-									<input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" class="biz-input-md">
+									<input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" class="admin-input-md">
 									<button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
 								</td>
 							</tr>
 							<tr>
 								<td>文档命名规则：</td>
 								<td>
-									<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="biz-input-md">
+									<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="admin-input-md">
 									<i onClick="ShowHide('helpvar2')" class="fa fa-question-circle" title="帮助"></i>
 								</td>
 							</tr>
@@ -370,7 +370,7 @@
 							<tr>
 								<td>列表命名规则：</td>
 								<td>
-									<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="biz-input-md">
+									<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-md">
 									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
 								</td>
 							</tr>
@@ -385,16 +385,16 @@
 							</tr>
 							<tr>
 								<td>SEO标题：</td>
-								<td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="biz-input-md">（标签“{dede:field.seotitle/}”标签调用）</td>
+								<td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="admin-input-md">（标签“{dede:field.seotitle/}”标签调用）</td>
 							</tr>
 							<tr>
 								<td>关键词：</td>
-								<td><textarea name="keywords" cid="keywords" class="biz-textarea-sm"><?php echo $myrow['keywords']?></textarea>（标签“{dede:field.keywords/}”标签调用）
+								<td><textarea name="keywords" cid="keywords" class="admin-textarea-sm"><?php echo $myrow['keywords']?></textarea>（标签“{dede:field.keywords/}”标签调用）
 								</td>
 							</tr>
 							<tr>
 								<td>栏目描述：</td>
-								<td><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $myrow['description']?></textarea>（标签“{dede:field.description/}”标签调用）
+								<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $myrow['description']?></textarea>（标签“{dede:field.description/}”标签调用）
 								</td>
 							</tr>
 							<tr>
@@ -404,7 +404,7 @@
 								</td>
 							</tr>
 						</table>
-						<table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
+						<table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table admin-border" style="display:none">
 							<tr>
 								<td>
 									<div class="alert alert-info mb-0">说明：栏目文档是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div>
@@ -414,7 +414,7 @@
 								<td><?php GetEditor("content",$myrow['content'],"400","Default","print","false");?></td>
 							</tr>
 						</table>
-						<table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f5f5" class="biz-border border-top-0 mb-3">
+						<table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f5f5" class="admin-border border-top-0 mb-3">
 							<tr>
 								<td align="center" class="py-2">
 									<button type="submit" class="btn btn-success btn-sm">保存</button>

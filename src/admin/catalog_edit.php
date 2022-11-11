@@ -115,15 +115,15 @@ if ($dopost == 'time') {
     <input type="hidden" name="moresite" value="<?php echo $myrow['moresite'];?>">
     <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
-            <td width="160" class="biz-td" align="center">是否支持投稿：</td>
-            <td class="biz-td">
+            <td width="160" class="admin-td" align="center">是否支持投稿：</td>
+            <td class="admin-td">
                 <label><input type="radio" name="issend" value="1" <?php if ($myrow['issend'] == "1") echo "checked='1'";?>> 支持</label>
                 <label><input type="radio" name="issend" value="0" <?php if ($myrow['issend'] == "0") echo "checked='1'";?>> 不支持</label>
             </td>
         </tr>
         <tr>
-            <td class="biz-td" align="center">文档模型：</td>
-            <td class="biz-td">
+            <td class="admin-td" align="center">文档模型：</td>
+            <td class="admin-td">
                 <?php
                 foreach ($channelArray as $k => $arr) {
                     if ($k == $channelid) echo "{$arr['typename']} | {$arr['nid']}";
@@ -133,17 +133,17 @@ if ($dopost == 'time') {
             </td>
         </tr>
         <tr>
-            <td class="biz-td" align="center">栏目名称：</td>
-            <td class="biz-td"><input type="text" name="typename" value="<?php echo $myrow['typename'] ?>" class="biz-input-md"></td>
+            <td class="admin-td" align="center">栏目名称：</td>
+            <td class="admin-td"><input type="text" name="typename" value="<?php echo $myrow['typename'] ?>" class="admin-input-md"></td>
         </tr>
         <tr>
-            <td class="biz-td" align="center"> 排列顺序：</td>
-            <td class="biz-td"> <input type="text" name="sortrank" value="<?php echo $myrow['sortrank'] ?>" class="biz-input-sm">（由低 &gt; 高）</td>
+            <td class="admin-td" align="center"> 排列顺序：</td>
+            <td class="admin-td"> <input type="text" name="sortrank" value="<?php echo $myrow['sortrank'] ?>" class="admin-input-sm">（由低 &gt; 高）</td>
         </tr>
         <tr>
-            <td class="biz-td" align="center">浏览权限：</td>
-            <td class="biz-td">
-                <select name="corank" id="corank" class="biz-input-sm">
+            <td class="admin-td" align="center">浏览权限：</td>
+            <td class="admin-td">
+                <select name="corank" id="corank" class="admin-input-sm">
                 <?php
                 $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0");
                 $dsql->Execute();
@@ -158,24 +158,24 @@ if ($dopost == 'time') {
             </td>
         </tr>
         <tr>
-            <td class="biz-td" align="center">文件保存目录：</td>
-            <td class="biz-td"><input type="text" name="typedir" value="<?php echo $myrow['typedir'] ?>" class="biz-input-md"></td>
+            <td class="admin-td" align="center">文件保存目录：</td>
+            <td class="admin-td"><input type="text" name="typedir" value="<?php echo $myrow['typedir'] ?>" class="admin-input-md"></td>
         </tr>
         <tr>
-            <td align="center" class="biz-td">栏目列表选项：</td>
-            <td class="biz-td">
+            <td align="center" class="admin-td">栏目列表选项：</td>
+            <td class="admin-td">
                 <label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault'] == 1) echo "checked='1'";?>> 链接到默认页</label>
                 <label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault'] == 0) echo "checked='1'";?>> 链接到列表第一页</label>
                 <label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault'] == -1) echo "checked='1'";?>> 使用动态页</label>
             </td>
         </tr>
         <tr>
-            <td class="biz-td" align="center">默认页的名称：</td>
-            <td class="biz-td"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname'] ?>" class="biz-input-md"></td>
+            <td class="admin-td" align="center">默认页的名称：</td>
+            <td class="admin-td"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname'] ?>" class="admin-input-md"></td>
         </tr>
         <tr>
-            <td class="biz-td" align="center">栏目属性：</td>
-            <td class="biz-td">
+            <td class="admin-td" align="center">栏目属性：</td>
+            <td class="admin-td">
                 <label><input name="ispart" type="radio" value="0" <?php if ($myrow['ispart'] == 0) echo "checked='1'";?>> 列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
                 <label><input name="ispart" type="radio" value="1" <?php if ($myrow['ispart'] == 1) echo "checked='1'";?>> 封面栏目（栏目本身不允许发布文档）</label><br>
                 <label><input name="ispart" type="radio" value="2" <?php if ($myrow['ispart'] == 2) echo "checked='1'";?>> 外部栏目（在"文件保存目录"处填写网址）</label>

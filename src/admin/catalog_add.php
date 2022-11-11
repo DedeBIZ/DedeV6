@@ -171,7 +171,7 @@ else if ($dopost == 'save') {
         $true_typedir = str_replace("{cmspath}", $cfg_cmspath, $typedir);
         $true_typedir = preg_replace("#\/{1,}#", "/", $true_typedir);
         if (!CreateDir($true_typedir)) {
-            ShowMsg("创建目录 {$true_typedir} 失败，请检查您的路径是否存在问题", "-1");
+            ShowMsg("创建目录{$true_typedir}失败，请检查您的路径是否存在问题", "-1");
             exit();
         }
     }

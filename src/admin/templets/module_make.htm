@@ -43,7 +43,7 @@
 				</tr>
 				<tr>
 					<td width="260">模块名称：</td>
-					<td><input type="text" name="modulname" id="modulname" class="biz-input-sm"></td>
+					<td><input type="text" name="modulname" id="modulname" class="admin-input-sm"></td>
 				</tr>
 				<tr>
 					<td>语言编码：</td>
@@ -60,11 +60,11 @@
 				</tr>
 				<tr>
 					<td>开发者id：</td>
-					<td><input type="text" name="dev_id" id="dev_id" class="biz-input-sm"> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
+					<td><input type="text" name="dev_id" id="dev_id" class="admin-input-sm"> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
 				</tr>
 				<tr>
 					<td>发布时间：</td>
-					<td><input type="text" name="mtime" id="mtime" class="biz-input-sm" value="<?php echo GetDateMk(time());?>"></td>
+					<td><input type="text" name="mtime" id="mtime" class="admin-input-sm" value="<?php echo GetDateMk(time());?>"></td>
 				</tr>
 				<tr>
 					<td>是否涉及会员系统：</td>
@@ -72,29 +72,29 @@
 						<label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')"> 涉及</label>
 						<label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked"> 不涉及</label>
 						<div id="rboxct" style="display:none">
-							导航使用名称：<input type="text" name="indexname" id="indexname" class="biz-input-sm" value=""><br>
-							导航使用网址：<input type="text" name="indexurl" id="indexurl" class="biz-input-sm" value="">（用相对于会员中心的网址，如：../ask）
+							导航使用名称：<input type="text" name="indexname" id="indexname" class="admin-input-sm" value=""><br>
+							导航使用网址：<input type="text" name="indexurl" id="indexurl" class="admin-input-sm" value="">（用相对于会员中心的网址，如：../ask）
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>后台管理菜单：</td>
 					<td>普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php<br>
-						<textarea name="menustring" id="menustring" class="biz-textarea-xl"></textarea>
+						<textarea name="menustring" id="menustring" class="admin-textarea-xl"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td>使用说明文件：</td>
 					<td>
 						<label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')"> 直接填写</label><br>
-						<div style="display:block" id="autoreadmeinput"><input name="readme" type="file" id="readme" class="biz-input-md"></div>
+						<div style="display:block" id="autoreadmeinput"><input name="readme" type="file" id="readme" class="admin-input-md"></div>
 						<div style="display:none" id="autoreadmect">
 							<table width="100%" cellpadding="5" cellspacing="1">
 								<tr>
 									<td bgcolor="#e9ecef">填写使用协议或说明：如果需要带网页格式，请编译后点击修改时使用网页</td>
 								</tr>
 								<tr>
-									<td><textarea name="readmetxt" id="readmetxt" class="biz-textarea-xl"></textarea></td>
+									<td><textarea name="readmetxt" id="readmetxt" class="admin-textarea-xl"></textarea></td>
 								</tr>
 							</table>
 						</div>
@@ -104,7 +104,7 @@
 					<td>程序安装：</td>
 					<td>
 						<label><input type="checkbox" name="autosetup" value='1' id="autosetup" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"> 自动生成（由系统自动处理安装）</label><br>
-						<div style="display:block" id="autosetupinput"><input name="setup" type="file" id="setup" class="biz-input-md"></div>
+						<div style="display:block" id="autosetupinput"><input name="setup" type="file" id="setup" class="admin-input-md"></div>
 						<div style="display:none" id="autosetupct">
 							<table width="100%" cellpadding="5" cellspacing="1">
 								<tr>
@@ -115,7 +115,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td><textarea name="setupsql40" id="setupsql40" class="biz-textarea-xl"></textarea></td>
+									<td><textarea name="setupsql40" id="setupsql40" class="admin-textarea-xl"></textarea></td>
 								</tr>
 							</table>
 						</div>
@@ -125,14 +125,14 @@
 					<td>删除程序：</td>
 					<td>
 						<label><input type="checkbox" name="autodel" value='1' id="autodel" onclick="ShowHideField('autodel','autodelinput','autodelct')"> 自动生成（由系统自动处理卸载）</label><br>
-						<div style="display:block" id="autodelinput"><input name="uninstall" type="file" id="uninstall" class="biz-input-md"></div>
+						<div style="display:block" id="autodelinput"><input name="uninstall" type="file" id="uninstall" class="admin-input-md"></div>
 						<div style="display:none" id="autodelct">
 							<table width="100%" cellpadding="5" cellspacing="1">
 								<tr>
 									<td bgcolor="#e9ecef">卸载时执行的SQL语句（SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）</td>
 								</tr>
 								<tr>
-									<td><textarea name="delsql" id="delsql" class="biz-textarea-xl"></textarea></td>
+									<td><textarea name="delsql" id="delsql" class="admin-textarea-xl"></textarea></td>
 								</tr>
 							</table>
 						</div>
@@ -145,14 +145,14 @@
 							每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
 							如：如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录<br>
 							对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中<br>
-							<textarea name="filelist" id="filelist" class="biz-textarea-xl"></textarea>
+							<textarea name="filelist" id="filelist" class="admin-textarea-xl"></textarea>
 						</p>
 					</td>
 				</tr>
 				<tr>
 					<td>开发者私钥：</td>
 					<td>开发者认证后获取的私钥<br>
-						<textarea name="priv" id="priv" class="biz-textarea-xl"></textarea>
+						<textarea name="priv" id="priv" class="admin-textarea-xl"></textarea>
 					</td>
 				</tr>
 				<tr>

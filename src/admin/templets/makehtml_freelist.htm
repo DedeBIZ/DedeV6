@@ -16,15 +16,15 @@
 				</tr>
 				<tr>
 					<td>起始id：</td>
-					<td><input type="text" name="startid" id="startid" class="biz-input-sm" <?php if (!empty($aid)) echo " value='$aid'";?>>（空或0表示从头开始）</td>
+					<td><input type="text" name="startid" id="startid" class="admin-input-sm" <?php if (!empty($aid)) echo " value='$aid'";?>>（空或0表示从头开始）</td>
 				</tr>
 				<tr>
 					<td>结束id：</td>
-					<td><input type="text" name="endid" id="endid" class="biz-input-sm" <?php if (!empty($aid)) echo " value='$aid'";?>>（空或0表示直到结束id）</td>
+					<td><input type="text" name="endid" id="endid" class="admin-input-sm" <?php if (!empty($aid)) echo " value='$aid'";?>>（空或0表示直到结束id）</td>
 				</tr>
 				<tr>
 					<td>每批生成：</td>
-					<td><input type="text" name="pagesize" id="pagesize" value="100" class="biz-input-sm"> 个文件</td>
+					<td><input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-sm"> 个文件</td>
 				</tr>
 				<tr>
 					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="button" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始更新</button></td>
@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" id="mtd">
-					<div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

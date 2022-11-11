@@ -1,8 +1,8 @@
-function viewArc(aid){
+function viewArc(aid) {
 	if (aid==0) aid = getOneItem();
 	window.open("archives_do.php?aid="+aid+"&dopost=viewArchives");
 }
-function kwArc(aid){
+function kwArc(aid) {
 	var qstr=getCheckboxItem();
 	if (aid==0) aid = getOneItem();
 	if (qstr=='') {
@@ -11,16 +11,16 @@ function kwArc(aid){
 	}
 	location="archives_do.php?aid="+aid+"&dopost=makekw&qstr="+qstr;
 }
-function editArc(aid){
+function editArc(aid) {
 	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=editArchives";
 }
-function updateArc(aid){
+function updateArc(aid) {
 	var qstr=getCheckboxItem();
 	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=makeArchives&qstr="+qstr;
 }
-function checkArc(aid){
+function checkArc(aid) {
 	var qstr=getCheckboxItem();
 	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=checkArchives&qstr="+qstr;
@@ -34,7 +34,7 @@ function moveArc(e, obj, cid){
 	LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr='+qstr+'&channelid='+cid+'&rnd='+Math.random(), 'moveArchives', '480px', '180px');
 	ChangeFullDiv('show');
 }
-function adArc(aid){
+function adArc(aid) {
 	var qstr=getCheckboxItem();
 	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=commendArchives&qstr="+qstr;
@@ -50,7 +50,7 @@ function cAtts(jname, e, obj)
 	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr='+qstr+'&dojob='+jname+'&rnd='+Math.random(), 'attsDlg', '480px', '180px');
 	ChangeFullDiv('show', screeheight);
 }
-function delArc(aid){
+function delArc(aid) {
 	var qstr=getCheckboxItem();
 	if (aid==0) aid = getOneItem();
 	location="archives_do.php?qstr="+qstr+"&aid="+aid+"&dopost=delArchives";

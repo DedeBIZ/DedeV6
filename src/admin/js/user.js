@@ -2,7 +2,7 @@ if (moz == null) {
 	var ie = document.all != null;
 	var moz = !ie && document.getElementById != null && document.layers == null;
 }
-function delArc(mid){
+function delArc(mid) {
 	var qstr=getCheckboxItem();
 	if (mid==0) mid = getOneItem();
 	location="member_do.php?id="+qstr+"&dopost=delmembers";

@@ -269,7 +269,7 @@ else if ($dopost == 'moveArchives') {
         $channelid = empty($channelid) ? 0 : $channelid;
         $tl = new TypeLink($aid);
         $typeOptions = $tl->GetOptionArray(0, $admin_catalogs, $channelid);
-        $typeOptions = "<select name='totype' class='biz-input-sm'>
+        $typeOptions = "<select name='totype' class='admin-input-sm'>
         <option value='0'>请选择移动位置</option>
         $typeOptions
         </select>";
@@ -282,13 +282,13 @@ else if ($dopost == 'moveArchives') {
         echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
         ?>
         <tr>
-            <td width="90" class="biz-td">目标栏目：</td>
-            <td class="biz-td"><?php echo $typeOptions;?></td>
+            <td width="90" class="admin-td">目标栏目：</td>
+            <td class="admin-td"><?php echo $typeOptions;?></td>
         </tr>
         <tr>
-            <td width="90" class="biz-td">文档id：</td>
-            <td class="biz-td">
-                <input type="text" name="tmpids" class="biz-input-md" value="<?php echo $qstr;?>"><br>
+            <td width="90" class="admin-td">文档id：</td>
+            <td class="admin-td">
+                <input type="text" name="tmpids" class="admin-input-md" value="<?php echo $qstr;?>"><br>
                 移动到目标栏目必须和选定文档栏目类型一致，否则程序会自动勿略不符合文档
             </td>
         </tr>
@@ -521,11 +521,11 @@ else if ($dopost == 'quickEdit') {
     echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
     ?>
     <tr>
-        <td width="90" class="biz-td">所属栏目：</td>
-        <td class="biz-td">
+        <td width="90" class="admin-td">所属栏目：</td>
+        <td class="admin-td">
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
-            echo "<select name='typeid' class='biz-input-sm'>";
+            echo "<select name='typeid' class='admin-input-sm'>";
             if ($arcRow["typeid"] == "0") echo "<option value='0' selected>请选择栏目</option>";
             echo $typeOptions;
             echo "</select>";
@@ -533,8 +533,8 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="biz-td">属性：</td>
-        <td class="biz-td">
+        <td width="90" class="admin-td">属性：</td>
+        <td class="admin-td">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -550,17 +550,17 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="biz-td">标题：</td>
-        <td class="biz-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="biz-input-md"></td>
+        <td width="90" class="admin-td">标题：</td>
+        <td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-md"></td>
     </tr>
     <tr>
-        <td width="90" class="biz-td">简略标题：</td>
-        <td class="biz-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="biz-input-md"></td>
+        <td width="90" class="admin-td">简略标题：</td>
+        <td class="admin-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-md"></td>
     </tr>
     <tr>
-        <td width="90" class="biz-td">阅读权限：</td>
-        <td class="biz-td">
-            <select name="arcrank" id="arcrank" class="biz-input-sm">
+        <td width="90" class="admin-td">阅读权限：</td>
+        <td class="admin-td">
+            <select name="arcrank" id="arcrank" class="admin-input-sm">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>
                 <?php echo $arcRow["rankname"] ?> </option>
                 <?php
@@ -572,12 +572,12 @@ else if ($dopost == 'quickEdit') {
                 }
                 ?>
             </select>
-            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="biz-input-xs">
+            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-xs">
         </td>
     </tr>
     <tr>
-        <td width="90" class="biz-td">关键词：</td>
-        <td class="biz-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="biz-input-md"></td>
+        <td width="90" class="admin-td">关键词：</td>
+        <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-md"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">
@@ -820,8 +820,8 @@ else if ($dopost == 'attsDlg') {
     echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
 ?>
     <tr>
-        <td width="90" class="biz-td">属性：</td>
-        <td class="biz-td">
+        <td width="90" class="admin-td">属性：</td>
+        <td class="admin-td">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -834,8 +834,8 @@ else if ($dopost == 'attsDlg') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="biz-td">文档id：</td>
-        <td class="biz-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
+        <td width="90" class="admin-td">文档id：</td>
+        <td class="admin-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">

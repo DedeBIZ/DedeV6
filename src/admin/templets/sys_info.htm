@@ -7,8 +7,8 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/main.js"></script>
 		<script>
 			var searchconfig = false;
@@ -63,7 +63,7 @@
 		<table cellpadding="2" cellspacing="1" align="center" class="table maintable my-3">
 			<tr bgcolor="#f5f5f5">
 				<td width="180">
-					<input type="text" name="keywds" id="keywds" placeholder="请输入配置" class="biz-input-sm">
+					<input type="text" name="keywds" id="keywds" placeholder="请输入配置" class="admin-input-sm">
 				</td>
 				<td>
 					<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a><?php
@@ -92,9 +92,9 @@
 						<table width="100%" cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90" class="border-top-0">变量说明</td>
-								<td width="270" class="border-top-0"><input type="text" name="varmsg" id="varmsg" class="npvar" class="biz-input-md"></td>
+								<td width="270" class="border-top-0"><input type="text" name="varmsg" id="varmsg" class="npvar" class="admin-input-md"></td>
 								<td width="90" class="border-top-0">变量值</td>
-								<td width="270" class="border-top-0"><input type="text" name="nvarvalue" id="nvarvalue" class="npvar" class="biz-input-md"></td>
+								<td width="270" class="border-top-0"><input type="text" name="nvarvalue" id="nvarvalue" class="npvar" class="admin-input-md"></td>
 							</tr>
 							<tr>
 								<td width="90">变量类型</td>
@@ -108,11 +108,11 @@
 							</tr>
 							<tr>
 								<td width="90">变量名称</td>
-								<td width="270"><input type="text" name="nvarname" id="nvarname" class="npvar" class="biz-input-md"></td>
+								<td width="270"><input type="text" name="nvarname" id="nvarname" class="npvar" class="admin-input-md"></td>
 								<td width="90">所属组</td>
 								<td width="170">
 									<?php
-									echo "<select name='vargroup' class='biz-input-sm'>";
+									echo "<select name='vargroup' class='admin-input-sm'>";
 									foreach($ds as $dl){
 										$dl = trim($dl);
 										if (empty($dl)) continue;

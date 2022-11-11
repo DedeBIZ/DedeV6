@@ -84,9 +84,9 @@ html{background:#f5f5f5}
             </td>
         </tr>
         <tr>
-            <td width="50%" align="center" class="biz-td">点击名称选择文件</td>
-            <td width="20%" align="center" class="biz-td">文件大小</td>
-            <td align="center" class="biz-td">最后修改时间</td>
+            <td width="50%" align="center" class="admin-td">点击名称选择文件</td>
+            <td width="20%" align="center" class="admin-td">文件大小</td>
+            <td align="center" class="admin-td">最后修改时间</td>
         </tr>
         <?php
         $dh = scandir($inpath);
@@ -114,17 +114,17 @@ html{background:#f5f5f5}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td class='biz-td'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
-                <td colspan='2' class='biz-td'>当前目录：$activepath</td>
+                <td class='admin-td'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                <td colspan='2' class='admin-td'>当前目录：$activepath</td>
                 </tr>";
                 echo $line;
             } else if (is_dir("$inpath/$file")) {
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td class='biz-td'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                <td class='biz-td'></td>
-                <td class='biz-td'></td>
+                <td class='admin-td'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                <td class='admin-td'></td>
+                <td class='admin-td'></td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {
@@ -134,12 +134,12 @@ html{background:#f5f5f5}
                 if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='biz-td'>
+                <td class='admin-td'>
                     <img src='../../static/web/img/icon_flash.png'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='biz-td'>$filesize KB</td>
-                <td align='center' class='biz-td'>$filetime</td>
+                <td class='admin-td'>$filesize KB</td>
+                <td align='center' class='admin-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(wmv|avi)#i", $file)) {
@@ -149,12 +149,12 @@ html{background:#f5f5f5}
                 if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='biz-td'>
+                <td class='admin-td'>
                     <img src='../../static/web/img/icon_video.png'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='biz-td'>$filesize KB</td>
-                <td align='center' class='biz-td'>$filetime</td>
+                <td class='admin-td'>$filesize KB</td>
+                <td align='center' class='admin-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(rm|rmvb|mp3|mp4)#i", $file)) {
@@ -164,12 +164,12 @@ html{background:#f5f5f5}
                 if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='biz-td'>
+                <td class='admin-td'>
                     <img src='../../static/web/img/icon_rm.png'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='biz-td'>$filesize KB</td>
-                <td class='biz-td' align='center'>$filetime</td>
+                <td class='admin-td'>$filesize KB</td>
+                <td class='admin-td' align='center'>$filetime</td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(mp3|wma)#", $file)) {
@@ -179,12 +179,12 @@ html{background:#f5f5f5}
                 if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='biz-td'>
+                <td class='admin-td'>
                     <img src='../../static/web/img/icon_music.png'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='biz-td'>$filesize KB</td>
-                <td align='center' class='biz-td'>$filetime</td>
+                <td class='admin-td'>$filesize KB</td>
+                <td align='center' class='admin-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             }

@@ -12,10 +12,10 @@
 		<form action="member_pm.php" name="form1" method="get">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="biz-input-md"></td>
-					<td width="270"><input type="text" name="username" id="username" placeholder="请输入用户名" class="biz-input-md"></td>
+					<td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-md"></td>
+					<td width="270"><input type="text" name="username" id="username" placeholder="请输入用户名" class="admin-input-md"></td>
 					<td width="170">
-						<select name="folder" id="folder" class="biz-input-sm">
+						<select name="folder" id="folder" class="admin-input-sm">
 							<option value="inbox">收件箱</option>
 							<option value="outbox">发件箱</option>
 						</select>
@@ -39,15 +39,15 @@
 						<table width="100%" cellpadding="1" cellspacing="1">
 							<tr>
 								<td width="260">发送到：</td>
-								<td><input type="text" name="msgtoid" value="<?php echo empty($touid)? '' : $touid?>" class="biz-input-md"> 填写用户登录的id（网址uid=后面跟着的id）</td>
+								<td><input type="text" name="msgtoid" value="<?php echo empty($touid)? '' : $touid?>" class="admin-input-md"> 填写用户登录的id（网址uid=后面跟着的id）</td>
 							</tr>
 							<tr>
 								<td>标题：</td>
-								<td><input type="text" name="subject" id="subject" class="biz-input-md">（标题少于70个字符内）</td>
+								<td><input type="text" name="subject" id="subject" class="admin-input-md">（标题少于70个字符内）</td>
 							</tr>
 							<tr>
 								<td><label for="pm_textarea">文档：</label></td>
-								<td><textarea name="message" id="message" class="biz-textarea-xl"></textarea>（1000个字符以内）</td>
+								<td><textarea name="message" id="message" class="admin-textarea-xl"></textarea>（1000个字符以内）</td>
 							</tr>
 							<tr>
 								<td colspan="2" align="center" class="py-2"><input type="submit" value="提交" class="btn btn-success btn-sm"></td>

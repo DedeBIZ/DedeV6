@@ -331,7 +331,7 @@ ul.items > li .source {
 .spec .card-body {
 	padding:.25rem
 }
-.biz-title::before {
+.title::before {
 	content:" ";
 	background:#1eb867;
 	padding:6px;

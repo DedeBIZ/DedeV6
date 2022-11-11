@@ -24,8 +24,8 @@
 					<td colspan="2">
 						<table cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="80" height="28" align="center" class="biz-itemnote1">基本设置</td>
-								<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">字段管理</a></td>
+								<td width="80" height="28" align="center" class="admin-itemnote1">基本设置</td>
+								<td width="80" height="28" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem2()">字段管理</a></td>
 							</tr>
 						</table>
 					</td>
@@ -36,8 +36,8 @@
 					<td colspan="2">
 						<table cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">基本设置</a></td>
-								<td width="80" height="28" align="center" class="biz-itemnote1">字段管理</td>
+								<td width="80" height="28" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem1()">基本设置</a></td>
+								<td width="80" height="28" align="center" class="admin-itemnote1">字段管理</td>
 							</tr>
 						</table>
 					</td>
@@ -87,7 +87,7 @@
 				<tr>
 					<td>会员许可投稿级别：</td>
 					<td>
-						<select name="sendrank" id="sendrank" class="biz-input-sm">
+						<select name="sendrank" id="sendrank" class="admin-input-sm">
 							<option value="0">游客</option>
 							<?php
 							$urank = $cuserLogin->getUserRank();
@@ -172,7 +172,7 @@
 				</tr>
 				<tr>
 					<td>默认栏目id：<span id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span></td>
-					<td><input type="text" name="dfcid" id="dfcid" value="<?php echo $row['dfcid'];?>" class="biz-input-sm"></td>
+					<td><input type="text" name="dfcid" id="dfcid" value="<?php echo $row['dfcid'];?>" class="admin-input-sm"></td>
 				</tr>
 				<tr>
 					<td>投稿具有唯一性：<span id="help9">如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单</span></td>
@@ -272,7 +272,7 @@
 				</tr>
 				<tr>
 					<td width="30%">模型字段配置（文本模式）修改配置文本可调整字段顺序，但不会修改字段属性</td>
-					<td width="70%"><textarea name="fieldset" id="fieldset" class="biz-textarea-xl"><?php echo stripslashes($row['fieldset']);?></textarea></td>
+					<td width="70%"><textarea name="fieldset" id="fieldset" class="admin-textarea-xl"><?php echo stripslashes($row['fieldset']);?></textarea></td>
 				</tr>
 			</table>
 			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">

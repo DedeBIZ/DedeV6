@@ -38,9 +38,9 @@
 				<?php foreach($Scores as $v){?>
 				<tr onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td align="center"><input type="checkbox" name="Ids-<?php echo $v['id']?>" id="Ids-<?php echo $v['id']?>" value="1"></td>
-					<td align="center"><input type="text" name="integral-<?php echo $v['id']?>" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" class="biz-input-sm"></td>
-					<td align="center"><input type="text" name="icon-<?php echo $v['id']?>" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" class="biz-input-sm"></td>
-					<td align="center"><input type="text" name="titles-<?php echo $v['id']?>" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" class="biz-input-sm">
+					<td align="center"><input type="text" name="integral-<?php echo $v['id']?>" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" class="admin-input-sm"></td>
+					<td align="center"><input type="text" name="icon-<?php echo $v['id']?>" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" class="admin-input-sm"></td>
+					<td align="center"><input type="text" name="titles-<?php echo $v['id']?>" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" class="admin-input-sm">
 					</td>
 					<td align="center">
 						<select name="isdefault-<?php echo $v['id']?>" id="isdefault-<?php echo $v['id']?>">
@@ -52,9 +52,9 @@
 				<?php }?>
 				<tr>
 					<td>新增：</td>
-					<td align="center"><input type="text" name="add_integral" id="add_integral" class="biz-input-sm"></td>
-					<td align="center"><input type="text" name="add_icon" id="add_icon" class="biz-input-sm"></td>
-					<td align="center"><input type="text" name="add_titles" id="add_titles" class="biz-input-sm"></td>
+					<td align="center"><input type="text" name="add_integral" id="add_integral" class="admin-input-sm"></td>
+					<td align="center"><input type="text" name="add_icon" id="add_icon" class="admin-input-sm"></td>
+					<td align="center"><input type="text" name="add_titles" id="add_titles" class="admin-input-sm"></td>
 					<td align="center">
 						<select name="add_isdefault" id="add_isdefault">
 							<option value="1">是</option>

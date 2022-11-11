@@ -67,12 +67,12 @@
 							</tr>
 							<tr>
 								<td>广告位标识：</td>
-								<td colspan="2"><input type="text" name="tagname" id="tagname" class="biz-input-md">（使用英文或数字表示的简洁标识）</td>
+								<td colspan="2"><input type="text" name="tagname" id="tagname" class="admin-input-md">（使用英文或数字表示的简洁标识）</td>
 							</tr>
 							<tr>
 								<td>广告分类：</td>
 								<td colspan="2">
-									<select name="clsid" id="clsid" class="biz-input-sm">
+									<select name="clsid" id="clsid" class="admin-input-sm">
 										<option value="0">默认分类</option>
 										<?php echo $option;?>
 									</select>
@@ -84,7 +84,7 @@
 									<?php
 									$tl = new TypeLink(0);
 									$typeOptions = $tl->GetOptionArray(0,0,0);
-									echo "<select name='typeid' class='biz-input-sm'>";
+									echo "<select name='typeid' class='admin-input-sm'>";
 									echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>";
 									echo $typeOptions;
 									echo "</select>";
@@ -93,7 +93,7 @@
 							</tr>
 							<tr>
 								<td>广告位名称：</td>
-								<td colspan="2"><input type="text" name="adname" id="adname" class="biz-input-md"></td>
+								<td colspan="2"><input type="text" name="adname" id="adname" class="admin-input-md"></td>
 							</tr>
 							<tr>
 								<td>时间限制：</td>
@@ -105,8 +105,8 @@
 							<tr>
 								<td>投放时间：</td>
 								<td colspan="2">
-									从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="biz-input-sm">
-									到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="biz-input-sm">
+									从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="admin-input-sm">
+									到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="admin-input-sm">
 								</td>
 							</tr>
 							<tr>
@@ -127,7 +127,7 @@
 							</tr>
 							<tr>
 								<td>过期显示文档：</td>
-								<td><textarea name="expbody" id="expbody" class="biz-textarea-xl"></textarea></td>
+								<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"></textarea></td>
 								<td></td>
 							</tr>
 							<tr>
@@ -143,7 +143,7 @@
 				<table cellpadding="3" cellspacing="1" class="i_table w-100">
 					<tr>
 						<td width="260">广告代码：请填写广告代码，支持网页代码</td>
-						<td><textarea name="normbody[htmlcode]" class="biz-textarea-xl"></textarea></td>
+						<td><textarea name="normbody[htmlcode]" class="admin-textarea-xl"></textarea></td>
 					</tr>
 				</table>
 			</div>
@@ -151,19 +151,19 @@
 				<table cellpadding="3" cellspacing="1" class="i_table w-100">
 					<tr>
 						<td width="260">文字文档 *</td>
-						<td><input type="text" name="normbody[title]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[title]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>文字链接 *</td>
-						<td><input type="text" name="normbody[link]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[link]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>文字颜色</td>
-						<td><input type="text" name="normbody[color]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[color]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>文字大小</td>
-						<td><input type="text" name="normbody[size]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[size]" value="" class="admin-input-md"></td>
 					</tr>
 				</table>
 			</div>
@@ -171,23 +171,23 @@
 				<table cellpadding="3" cellspacing="1" class="i_table w-100">
 					<tr>
 						<td width="260">图片地址 *</td>
-						<td><input type="text" name="normbody[url]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[url]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>图片链接 *</td>
-						<td><input type="text" name="normbody[link]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[link]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>图片宽度</td>
-						<td><input type="text" name="normbody[width]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[width]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>图片高度</td>
-						<td><input type="text" name="normbody[height]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[height]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>图片描述</td>
-						<td><input type="text" name="normbody[descrip]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[descrip]" value="" class="admin-input-md"></td>
 					</tr>
 				</table>
 			</div>
@@ -195,15 +195,15 @@
 				<table width="80%" cellpadding="3" cellspacing="1" class="i_table w-100">
 					<tr>
 						<td width="260">flash链接</td>
-						<td><input type="text" name="normbody[link]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[link]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>flash宽度</td>
-						<td><input type="text" name="normbody[width]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[width]" value="" class="admin-input-md"></td>
 					</tr>
 					<tr>
 						<td>flash高度</td>
-						<td><input type="text" name="normbody[height]" value="" class="biz-input-md"></td>
+						<td><input type="text" name="normbody[height]" value="" class="admin-input-md"></td>
 					</tr>
 				</table>
 			</div>

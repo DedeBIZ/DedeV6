@@ -67,7 +67,7 @@
 				<tr>
 					<td>下载默认等级：</td>
 					<td>
-						<select name="dfrank" id="dfrank" class="biz-input-sm">
+						<select name="dfrank" id="dfrank" class="admin-input-sm">
 							<?php
 							$urank = $cuserLogin->getUserRank();
 							$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank`>=0 ");
@@ -84,7 +84,7 @@
 				</tr>
 				<tr>
 					<td>下载默认金币：</td>
-					<td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy'];?>" class="biz-input-xs">
+					<td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy'];?>" class="admin-input-xs">
 					</td>
 				</tr>
 				<tr>
@@ -104,7 +104,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea name="sites" id="sites" class="biz-textarea-xl"><?php echo $row['sites'];?></textarea></td>
+					<td colspan="2"><textarea name="sites" id="sites" class="admin-textarea-xl"><?php echo $row['sites'];?></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2">下载说明：</td>

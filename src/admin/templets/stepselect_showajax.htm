@@ -10,8 +10,8 @@ if ($action=='edit') {
 <form action="stepselect_main.php" method="post" <?php echo $sbjs;?>>
 	<input type="hidden" name="action" value="edit_save">
 	<input type="hidden" name="id" value="<?php echo $arr['id'];?>">
-	<div class="py-2">类别名：<input type="text" name="itemname" value="<?php echo $arr['itemname'];?>" class="biz-input-md"></div>
-	<div class="py-2">缓存组名：<input type="text" name="egroup" value="<?php echo $arr['egroup'];?>" class="biz-input-md"></div>
+	<div class="py-2">类别名：<input type="text" name="itemname" value="<?php echo $arr['itemname'];?>" class="admin-input-md"></div>
+	<div class="py-2">缓存组名：<input type="text" name="egroup" value="<?php echo $arr['egroup'];?>" class="admin-input-md"></div>
 	<div class="py-2">缓存组名必须为英文或数字组合</div>
 	<div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
@@ -23,8 +23,8 @@ if ($action=='edit') {
 <br style="clear:both">
 <form action="stepselect_main.php" method="post">
 	<input type="hidden" name="action" value="addnew_save">
-	<div class="py-2">类别名：<input type="text" name="itemname" class="biz-input-md"></div>
-	<div class="py-2">缓存组名：<input type="text" name="egroup" class="biz-input-md"></div>
+	<div class="py-2">类别名：<input type="text" name="itemname" class="admin-input-md"></div>
+	<div class="py-2">缓存组名：<input type="text" name="egroup" class="admin-input-md"></div>
 	<div class="py-2">缓存组名必须为英文或数字组合</div>
 	<div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
@@ -46,13 +46,13 @@ if ($action=='edit') {
 	<input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
 	<input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
 	<div class="py-2">
-		隶属枚举：<select name="topvalue" class="biz-input-md">
+		隶属枚举：<select name="topvalue" class="admin-input-md">
 			<option value="0">保存一级枚举</option>
 			<?php echo $options;?>
 		</select>
 	</div>
-	<div class="py-2">枚举名：<input type="text" name="ename" class="biz-input-md"></div>
-	<div class="py-2">排序值：<input type="text" name="disorder" class="biz-input-md"></div>
+	<div class="py-2">枚举名：<input type="text" name="ename" class="admin-input-md"></div>
+	<div class="py-2">排序值：<input type="text" name="disorder" class="admin-input-md"></div>
 	<div class="py-2">如果不指定，默认以枚举添加先后来排序</div>
 	<div><input type="submit" value="保存" class="btn btn-success btn-sm"></div>
 </form>
@@ -76,7 +76,7 @@ if ($action=='edit') {
 <br style="clear:both">
 <div class="py-2">
 	类别关系：
-	<select name="topvalue" class="biz-input-md">
+	<select name="topvalue" class="admin-input-md">
 		<option value="0">请选择</option>
 		<?php echo $options;?>
 	</select>

@@ -20,7 +20,7 @@
 							<input type="hidden" name="showsource" value="no">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<tr>
-								<td><textarea name="partcode" id="partcode" class="biz-textarea-xl">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
+								<td><textarea name="partcode" id="partcode" class="admin-textarea-xl">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
 								<td rowspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
 							</tr>
 							<tr>
@@ -31,11 +31,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td><textarea name="htmlf" id="htmlf" class="biz-textarea-xl"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
+				<td><textarea name="htmlf" id="htmlf" class="admin-textarea-xl"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
 			</tr>
 			<tr>
 				<td>
-					<textarea name="htmlf" id="htmlf" class="biz-textarea-xl">
+					<textarea name="htmlf" id="htmlf" class="admin-textarea-xl">
 					<?php
 					$vt = new DedeVote($aid);
 					echo $vt->GetVoteForm();

@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script src="js/main.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
+		<script src="js/main.js"></script>
 		<script>
 			var posLeft = 200;
 			var posTop = 150;
@@ -185,7 +185,7 @@
 				?>
 				<tr>
 					<td bgcolor="#e9ecef" colspan="8">
-						分卷大小：<input name="fsize" type="text" id="fsize" value="2048" class="biz-input-sm"> K
+						分卷大小：<input name="fsize" type="text" id="fsize" value="2048" class="admin-input-sm"> K
 						<label><input type="checkbox" name="isstruct" id="isstruct" value="1" checked="1"> 备份结构</label>
 						<?php if (@function_exists('gzcompress') && false) {?>
 						<label><input type="checkbox" name="iszip" id="iszip" value="1" checked="1"> 完成后压缩成ZIP</label>
@@ -202,7 +202,7 @@
 			</tr>
 			<tr>
 				<td colspan="8">
-					<div class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

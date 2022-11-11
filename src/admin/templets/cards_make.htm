@@ -31,7 +31,7 @@
 							<tr>
 								<td width="90">点卡类型：</td>
 								<td>
-									<select name="cardtype" class="biz-input-sm">
+									<select name="cardtype" class="admin-input-sm">
 										<?php
 										$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
 										$dsql->Execute();
@@ -43,13 +43,13 @@
 									</select>
 								</td>
 								<td width="90">生成数量：</td>
-								<td><input name="mnum" type="text" id="mnum" class="biz-input-sm" value="100"></td>
+								<td><input name="mnum" type="text" id="mnum" class="admin-input-sm" value="100"></td>
 							</tr>
 							<tr>
 								<td>点卡前缀：</td>
-								<td><input name="snprefix" type="text" id="snprefix" class="biz-input-sm" value="SN"></td>
+								<td><input name="snprefix" type="text" id="snprefix" class="admin-input-sm" value="SN"></td>
 								<td>密码长度：</td>
-								<td><input name="pwdlen" type="text" id="pwdlen" class="biz-input-sm" value="4"></td>
+								<td><input name="pwdlen" type="text" id="pwdlen" class="admin-input-sm" value="4"></td>
 							</tr>
 							<tr>
 								<td>密码类型：</td>
@@ -58,7 +58,7 @@
 									<label><input type="radio" name="ctype" value="2" checked="1"> 大写字母</label>
 								</td>
 								<td>密码组数：</td>
-								<td><input name="pwdgr" type="text" id="pwdgr" class="biz-input-sm" value="3"></td>
+								<td><input name="pwdgr" type="text" id="pwdgr" class="admin-input-sm" value="3"></td>
 							</tr>
 						</table>
 					</td>
@@ -72,7 +72,7 @@
 			</tr>
 			<tr>
 				<td id="mtd">
-					<div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>
