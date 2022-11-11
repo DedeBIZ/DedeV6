@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/member_album.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/member.album.js"></script>
 	</head>
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
@@ -77,7 +77,7 @@
 							</div>
 							<div class="form-group">
 								<label>手工上传</label>
-								图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control d-inline-block w-25">
+								<span>图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control d-inline-block w-25"></span>
 								<button type="button" name="kkkup" id="kkkup2" class="btn btn-success" onclick="MakeUpload(0);">增加</button>（最大60幅）
 							</div>
 							<div id="uploadfield"></div>
@@ -88,27 +88,15 @@
 								foreach($dtp->CTags as $ctag){
 									if ($ctag->GetName()=="img"){
 							?>
-							<table width="98%" align="center">
-								<tr>
-									<td><input type="checkbox" name="isokcheck<?php echo $j;?>" id="isokcheck<?php echo $j;?>" value="1" onclick="CheckSelTable(<?php echo $j;?>)" checked="1"> 显示隐藏图片[<?php echo $j;?>]的选框</td>
-								</tr>
-							</table>
-							<table width="100%" id="seltb<?php echo $j;?>" align="center">
-								<tr>
-									<td colspan="2">图片</td>
-								</tr>
-								<tr>
-									<td>本地上传：<input type="text" name="imgfile<?php echo $j;?>" style="width:200px" maxlength="100"></td>
-									<td rowspan="3" align="center">
-										<div id="divpicview<?php echo $j;?>" class="divpre"></div>
-										<img src="<?php echo trim($ctag->GetInnerText());?>" id="picview<?php echo $j;?>" name="picview<?php echo $j;?>" style="width:128px;height:128px">
-									</td>
-								</tr>
-								<input type="hidden" name="imgurl<?php echo $j;?>" value="<?php echo trim($ctag->GetInnerText())?>">
-								<tr>
-									<td height="56">简介：<textarea name="imgmsg<?php echo $j;?>" style="height:46px;width:200px"><?php echo trim($ctag->GetAtt('text'))?></textarea></td>
-								</tr>
-							</table>
+							<div><label><input type="checkbox" name="isokcheck<?php echo $j;?>" id="isokcheck<?php echo $j;?>" value="1" onclick="CheckSelTable(<?php echo $j;?>)" checked="1"> 显示隐藏图片<?php echo $j;?>选框</label></div>
+							<div id="seltb<?php echo $j;?>">
+								<p>本地上传：<input type="text" name="imgfile<?php echo $j;?>" class="form-control"></p>
+								<p>
+									<div id="divpicview<?php echo $j;?>" class="divpre"></div>
+									<img src="<?php echo trim($ctag->GetInnerText());?>" id="picview<?php echo $j;?>" name="picview<?php echo $j;?>">
+								</p>
+								<p>简介：<textarea name="imgmsg<?php echo $j;?>" class="form-control"><?php echo trim($ctag->GetAtt('text'))?></textarea></p>
+							</div>
 							<?php
 							$j++;
 							}
@@ -116,9 +104,8 @@
 							}
 							$dtp->Clear();
 							?>
-							</p>
 							<script>
-								startNum = "<? php echo $j;?>";
+								startNum = <? php echo $j;?>;
 							</script>
 							<div class="text-center">
 								<button type="submit" class="btn btn-success">提交</button>

@@ -18,10 +18,8 @@
 				morelinkobj.style.display = "block";
 				if (endNum > 12) endNum = 12;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<label>软件地址" + startNum + "：</label><input type='text' name='softurl" + startNum +
-						"' value='http://' maxlength='100' class='form-control'> ";
-					upfield.innerHTML += " ";
-					upfield.innerHTML += "服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'>";
+					upfield.innerHTML += "<p>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' maxlength='100' class='form-control'></p>";
+					upfield.innerHTML += "<p>服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'></p>";
 				}
 			}
 			function ShowHideAddr() {
@@ -196,7 +194,7 @@
 							<div id="morelink">
 								<?php
 								echo $nForm;
-								echo "<span id='uploadfield'></span>";
+								echo "<div id='uploadfield'></div>";
 								?>
 							</div>
 							<div class="text-center">

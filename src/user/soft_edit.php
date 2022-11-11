@@ -53,9 +53,8 @@ if (empty($dopost)) {
         if (is_array($dtp->CTags)) {
             foreach ($dtp->CTags as $ctag) {
                 if ($ctag->GetName() == 'link') {
-                    $nForm .= "软件地址".$newRowStart."：<input class='form-control' type='text' name='softurl".$newRowStart."' value='".trim($ctag->GetInnerText())."' />
-            服务器名称：<input class='form-control' type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."' />
-            <br>";
+                    $nForm .= "<p>软件地址".$newRowStart."：<input type='text' name='softurl".$newRowStart."' value='".trim($ctag->GetInnerText())."' class='form-control'></p>
+                    <p>服务器名称：<input type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."' class='form-control'></p>";
                     $newRowStart++;
                 }
             }
@@ -176,7 +175,7 @@ else if ($dopost == 'save') {
     $win = new OxWindow();
     $win->AddTitle("成功修改软件");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
-    $win->Display();
+    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
 ?>

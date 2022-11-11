@@ -38,7 +38,7 @@ function MakeUpload(mnum)
 	if (endNum>120) endNum = 120;
 	for (startNum;startNum < endNum;startNum++)
 	{
-		if (startNum==1){
+		if (startNum==1) {
 			dsel = " checked='checked' ";
 			dplay = "block";
 		} else {
@@ -46,20 +46,11 @@ function MakeUpload(mnum)
 			dplay = "display:none";
 		}
 		fhtml = '';
-		fhtml += "<table width='100%'><tr><td><label><input type='checkbox' name='isokcheck"+startNum+"' id='isokcheck"+startNum+"' value='1' "+dsel+" onClick='CheckSelTable("+startNum+")' />显示图片 "+startNum+" 的上传框</label></td></tr></table>";
-		fhtml += "<table width='100%' border=\"0\" id=\"seltb"+startNum+"\" cellpadding=\"1\" cellspacing=\"1\" bgcolor=\"white\" style=\"margin-bottom:6px;margin-left:10px;"+dplay+"\"><tobdy>";
-		fhtml += "<tr bgcolor=\"#F7F7F7\">\r\n";
-		fhtml += "<td height=\"25\" colspan=\"2\"> <strong>图片"+startNum+"：</strong></td>";
-		fhtml += "</tr>";
-		fhtml += "<tr bgcolor=\"#ffffff\"> ";
-		fhtml += "<td height=\"25\"> 　图片地址：";
-		fhtml += "<input type=\"text\" name='imgfile"+startNum+"' style=\"width:330px\" class=\"intxt\"/> <nobr>填写远程网址</nobr></td>";
-		fhtml += "<td rowspan=\"2\" align=\"center\"><div id='divpicview"+startNum+"' class='divpre'></div></td>";
-		fhtml += "</tr>";
-		fhtml += "<tr bgcolor=\"#ffffff\"> ";
-		fhtml += "<td height=\"56\" valign=\"top\"> 图片简介：";
-		fhtml += "<textarea name='imgmsg"+startNum+"' style=\"height:46px;width:330px\"></textarea></td>";
-		fhtml += "</tr></tobdy></table>\r\n";
+		fhtml += "<div><label><input type='checkbox' name='isokcheck"+startNum+"' id='isokcheck"+startNum+"' value='1' "+dsel+" onClick='CheckSelTable("+startNum+")'> 显示图片"+startNum+"上传框</label></div>";
+		fhtml += "<div id=\"seltb"+startNum+"\" style=\""+dplay+"\">";
+		fhtml += "<p>图片"+startNum+"：<input type='text' name='imgfile"+startNum+"' class='form-control' placeholder='请输入网址'></p>";
+		fhtml += "<p>图片简介：<textarea name='imgmsg"+startNum+"' class='form-control'></textarea></p>";
+		fhtml += "</div>";
 		upfield.innerHTML += fhtml;
 	}
 }

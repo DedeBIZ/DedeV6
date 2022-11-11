@@ -18,10 +18,8 @@
 				morelinkobj.style.display = "block";
 				if (endNum > 12) endNum = 12;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<label>软件地址" + startNum + "：</label><input type='text' name='softurl" + startNum +
-						"' value='http://' maxlength='100' class='form-control'> ";
-					upfield.innerHTML += " ";
-					upfield.innerHTML += "服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'>";
+					upfield.innerHTML += "<p>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='form-control'></p>";
+					upfield.innerHTML += "<p>服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'></p>";
 				}
 			}
 			function ShowHideAddr() {
@@ -181,7 +179,7 @@
 								<button type="button" name="Submit3" id="btsh3" onclick="ShowHideAddr();" class="btn btn-success">隐藏地址</button>（最多为12个链接）
 							</div>										
 							<div id="morelink" style="display:none">
-								<?php echo "<span id='uploadfield'></span>";?>
+								<?php echo "<div id='uploadfield'></div>";?>
 							</div>
 							<?php
 							//游客强制加验证码

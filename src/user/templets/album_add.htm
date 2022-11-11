@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/member_album.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/member.album.js"></script>
 	</head>
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
@@ -74,7 +74,7 @@
 							</div>
 							<div class="form-group">
 								<label>手工上传</label>
-								图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control d-inline-block w-25">
+								<span>图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control d-inline-block w-25"></span>
 								<button type="button" name="kkkup" id="kkkup2" class="btn btn-success" onclick="MakeUpload(0);">增加</button>（最大60幅）
 							</div>
 							<div id="uploadfield"></div>
