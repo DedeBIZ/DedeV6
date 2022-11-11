@@ -212,7 +212,7 @@ function LoadNewDiv(e, surl, oname) {
 	if ($Nav() == 'IE') {
 		var posLeft = window.event.clientX - 20;
 		var posTop = window.event.clientY - 30;
-		// IE下scrollTop的兼容性问题
+		//IE下scrollTop的兼容性问题
 		var scrollTop = document.documentElement.scrollTop || window.pageYOffset;
 		if (typeof (scrollTop) == 'undefined') scrollTop = document.body.scrollTop;
 		posTop += scrollTop;
