@@ -315,7 +315,7 @@ class SearchView
             }
             //这里不区分大小写进行关键词替换
             $fstr = str_ireplace($k, "<span class='text-primary'>$k</span>", $fstr);
-            //速度更快,效率更高
+            //速度更快，效率更高
             //$fstr = str_replace($k, "<span class='text-primary'>$k</span>", $fstr);
         }
         return $fstr;
