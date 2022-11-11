@@ -504,20 +504,20 @@ function getElementTop(element) {
 //Copyright 2020 The MuEMS Authors. All rights reserved.
 //license that can be found in the LICENSE file.
 //-----msgbox-------------------------------------
-//生成一个随机ID
+//生成一个随机id
 function guid() {
 	function S4() {
 		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 	}
 	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-//函数会返回一个modalID，通过这个ID可自已定义一些方法，这里用到了一个展开语法https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+//函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
 	size = "";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
-	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
+	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">ok</button>`;
 	var noClose = false;
 	if (args.length == 1) {
 		//存在args参数
@@ -618,19 +618,19 @@ function uploadImage(litpicImgSrc) {
 		method: 'POST',
 		body: formData
 	})
-		.then(r => {
-			if (r.ok) {
-				return r.json()
-			}
-			throw new Error(errMsg);
-		})
-		.then(d => {
-			if (d.code == 200) {
-				$("#picname").val(d.data.image_url);
-			}
-		}).catch((error) => {
-			alert("上传缩略图错误");
-		});
+	.then(r => {
+		if (r.ok) {
+			return r.json()
+		}
+		throw new Error(errMsg);
+	})
+	.then(d => {
+		if (d.code == 200) {
+			$("#picname").val(d.data.image_url);
+		}
+	}).catch((error) => {
+		alert("上传缩略图错误");
+	});
 }
 $(document).ready(function () {
 	$("#btnClearAll").click(function (event) {
@@ -679,7 +679,7 @@ $(document).ready(function () {
 			  </select>
 			</p>`;
 		mdlCropperID = ShowMsg(
-			'<div class="float-left" style="width:320px;"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden;"></div>', {
+			'<div class="float-left" style="width:320px"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden"></div>', {
 			footer: footer,
 			noClose: false,
 			title: '缩略图裁剪',
