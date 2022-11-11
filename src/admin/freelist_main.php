@@ -82,9 +82,9 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
         <td>{$row['click']}</td>
         <td>".MyDate("y-m-d",$row['edtime'])."</td>
         <td>
-            <a href='javascript:;' onclick='EditNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> 修改</a>
-            <a href='javascript:;' onclick='CreateNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> 更新</a>
-            <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i> 删除</a>
+            <a href='javascript:;' onclick='EditNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-pencil-square-o\"></i> 修改</a>
+            <a href='javascript:;' onclick='CreateNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-refresh\"></i> 更新</a>
+            <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-trash\"></i> 删除</a>
         </td>
     </tr>";
         echo $line;

@@ -80,7 +80,7 @@ $ttime = number_format(($ttime / 60), 2);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
 $tjsta = "<div style='width:260px;height:16px;text-align:left;border:1px solid #1eb867;border-radius:.2rem'><div style='max-width:260px;width:$tjlen%;height:16px;background:#1eb867'></div></div>";
-$tjsta .= "<br>到达位置".($startdd + $pagesize)."，用时{$ttime}分钟<br>完成更新文档总数$tjlen%";
+$tjsta .= "<br>到达位置<span class='text-primary'>".($startdd + $pagesize)."</span>，用时<span class='text-primary'>{$ttime}</span>分钟<br>完成更新文档总数<span class='text-primary'>$tjlen</span>%";
 //速度测试
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";
@@ -90,10 +90,10 @@ if ($tjnum < $totalnum) {
     exit();
 } else {
     if ($typeid != '') {
-        ShowMsg("更新文档$totalnum，用时{$ttime}分钟，开始更新栏目", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
+        ShowMsg("更新文档<span class='text-primary'>$totalnum</span>，用时<span class='text-primary'>{$ttime}</span>分钟，开始更新栏目", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
     } else {
         if ($uptype == '') {
-            ShowMsg("更新文档$totalnum，用时{$ttime}分钟，完成所有文档更新", "javascript:;");
+            ShowMsg("更新文档<span class='text-primary'>$totalnum</span>，用时<span class='text-primary'>{$ttime}</span>分钟，完成所有文档更新", "javascript:;");
         } else {
             ShowMsg("完成所有文档更新，开始更新主页", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
         }

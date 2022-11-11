@@ -161,7 +161,7 @@ if (!function_exists('MemberUploads')) {
                 ShowMsg("仅支持媒体文件及应用程序上传", -1);
                 exit;
             }
-            move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到 {$filename} 失败");
+            move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到<span class='text-primary'>{$filename}</span>失败");
             @unlink($GLOBALS[$upname]);
             if (@filesize($cfg_basedir.$filename) > $GLOBALS['cfg_mb_upload_size'] * 1024) {
                 @unlink($cfg_basedir.$filename);

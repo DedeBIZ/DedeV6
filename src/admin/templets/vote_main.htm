@@ -30,7 +30,7 @@
 				<td>{dede:field.starttime function="GetDateMk(@me)"/}</td>
 				<td>{dede:field.endtime function="GetDateMk(@me)"/}</td>
 				<td>{dede:field.totalcount/}</td>
-				<td><?php if ($fields['isenable'] == 1){echo "<span class='text-danger'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
+				<td><?php if ($fields['isenable'] == 1){echo "<span class='text-primary'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
 				<td>
 					<a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-success btn-sm">代码</a>
 					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>

@@ -17,11 +17,11 @@ $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "vote_main.php" : $_COOKIE
 if ($dopost == "delete") {
     if ($dsql->ExecuteNoneQuery("DELETE FROM `#@__vote` WHERE aid='$aid'")) {
         if ($dsql->ExecuteNoneQuery("DELETE FROM `#@__vote_member` WHERE voteid='$aid'")) {
-            ShowMsg('成功删除一组投票!', $ENV_GOBACK_URL);
+            ShowMsg('成功删除一组投票', $ENV_GOBACK_URL);
             exit;
         }
     } else {
-        ShowMsg('指定删除投票不存在!', $ENV_GOBACK_URL);
+        ShowMsg('指定删除投票不存在', $ENV_GOBACK_URL);
         exit;
     }
 } else if ($dopost == "saveedit") {
@@ -46,9 +46,9 @@ if ($dopost == "delete") {
         $vote_content = preg_replace(array("#/#", "#([\r\n])[\s]+#"), array("\/", " "), $vote_content);        //取出文档中的空白字符并进行转义
         $vote_content = 'document.write("'.$vote_content.'");';
         file_put_contents($vote_file, $vote_content);
-        ShowMsg('成功修改一组投票!', $ENV_GOBACK_URL);
+        ShowMsg('成功修改一组投票', $ENV_GOBACK_URL);
     } else {
-        ShowMsg('修改一组投票失败!', $ENV_GOBACK_URL);
+        ShowMsg('修改一组投票失败', $ENV_GOBACK_URL);
     }
 } else {
     $row = $dsql->GetOne("SELECT * FROM `#@__vote` WHERE aid='$aid'");

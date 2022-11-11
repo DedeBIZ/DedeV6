@@ -110,7 +110,7 @@ class DedeSqli
                 mysqli_real_connect($this->linkID, $dbhost, $this->dbUser, $this->dbPwd, false, $dbport);
                 mysqli_errno($this->linkID) != 0 && $this->DisplayError('链接('.$this->pconnect.') 到MySQL发生错误');
             } catch (Exception $e) {
-                $this->DisplayError("<span class='text-danger'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+                $this->DisplayError("<span class='text-primary'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
                 exit;
             }
             
@@ -119,7 +119,7 @@ class DedeSqli
         }
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("<span class='text-danger'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+            $this->DisplayError("<span class='text-primary'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
             exit();
         }
         $this->isInit = TRUE;
@@ -307,7 +307,7 @@ class DedeSqli
             }
         }
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError(mysqli_error($this->linkID)." <br>Error sql: <span class='text-danger'>".$this->queryString."</span>");
+            $this->DisplayError(mysqli_error($this->linkID)." <br>Error sql:<span class='text-primary'>".$this->queryString."</span>");
         }
     }
     function Query($id = "me", $sql = '')

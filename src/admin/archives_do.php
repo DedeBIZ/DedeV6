@@ -223,7 +223,7 @@ else if ($dopost == "makeArchives") {
         $i++;
         $pageurl = MakeArt($aid, false);
     }
-    ShowMsg("成功更新指定 $i 个文件", $ENV_GOBACK_URL);
+    ShowMsg("成功更新指定<span class='text-primary'>$i</span>个文件", $ENV_GOBACK_URL);
     exit();
 }
 /*--------------------------
@@ -342,7 +342,7 @@ else if ($dopost == 'moveArchives') {
             $arc = new Archives($aid);
             $arc->MakeHtml();
         }
-        ShowMsg("成功移动 $j 个文档", $ENV_GOBACK_URL);
+        ShowMsg("成功移动<span class='text-primary'>$j</span>个文档", $ENV_GOBACK_URL);
         exit();
     }
 }
@@ -404,7 +404,7 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("您确定删除，序号 $qstr 文档");
+        $win->AddTitle("您确定删除，序号<span class='text-primary'>$qstr</span>文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -458,7 +458,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("回收站将清空 $num 篇文档<br>您确定删除，序号 $qstr 文档");
+        $win->AddTitle("回收站将清空<span class='text-primary'>$num</span>篇文档<br>您确定删除，序号<span class='text-primary'>$qstr</span>文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -499,7 +499,7 @@ else if ($dopost == 'del') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确要删除，序号 $qstr 文档");
+        $win->AddTitle("您确要删除，序号<span class='text-primary'>$qstr</span>文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -599,7 +599,7 @@ else if ($dopost == 'quickEditSave') {
     //权限检测
     if (!TestPurview('a_Edit')) {
         if (TestPurview('a_AccEdit')) {
-            CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 文档权限");
+            CheckCatalog($typeid, "对不起，您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
         } else {
             CheckArcAdmin($aid, $cuserLogin->getUserID());
         }

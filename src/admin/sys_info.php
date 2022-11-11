@@ -81,7 +81,7 @@ else if ($dopost == 'add') {
         exit();
     }
     if (!is_writeable($configfile)) {
-        ShowMsg("成功保存变量，但由于 $configfile 无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功保存变量，但由于<span class='text-primary'>$configfile</span>无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
         exit();
     } else {
         ReWriteConfig();
@@ -108,8 +108,8 @@ EOT;
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
             $bgcolor = ($i++ % 2 == 0) ? "#f5f5f5" : "#ffffff";
-            $row['info'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['info']);
-            $row['varname'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['varname']);
+            $row['info'] = preg_replace("#{$keywords}#", '<span class="text-primary">'.$keywords.'</span>', $row['info']);
+            $row['varname'] = preg_replace("#{$keywords}#", '<span class="text-primary">'.$keywords.'</span>', $row['varname']);
     ?>
     <tr align="center" bgcolor="<?php echo $bgcolor ?>">
         <td width="300"><?php echo $row['info'];?>：</td>

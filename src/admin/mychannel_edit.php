@@ -55,7 +55,7 @@ else if ($dopost == "copystart") {
     $wecome_info = "<a href='mychannel_main.php'>栏目管理</a>::模型复制";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
-    $win->AddTitle("被复制栏目：[<span class='text-danger'>".$row['typename']."</span>]");
+    $win->AddTitle("被复制栏目<span class='text-primary'>".$row['typename']."</span>");
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
@@ -111,7 +111,7 @@ else if ($dopost == "export") {
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::导出文档模型规则";
     $win = new OxWindow();
     $win->Init();
-    $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友");
+    $win->AddTitle("以下为规则<span class='text-primary'>{$row['typename']}</span>模型规则，您可以共享给您的朋友");
     $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:98%;height:300px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
@@ -168,27 +168,13 @@ else if ($dopost == "exportinok") {
 
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE nid='{$fields['nid']}' ");
     if (is_array($row)) {
-        GotoStaMsg("系统中已经存在相同标识 {$fields['nid']} 的规则");
+        GotoStaMsg("系统中已经存在相同标识<span class='text-primary'>{$fields['nid']}</span>规则");
     }
     //创建表
     if ($fields['issystem'] != -1) {
-        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}`(
-                  `aid` int(11) NOT NULL default '0',
-                `typeid` int(11) NOT NULL default '0',
-                `redirecturl` varchar(255) NOT NULL default '',
-                `templet` varchar(30) NOT NULL default '',
-                `userip` char(46) NOT NULL default '',";
+        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}` (`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`redirecturl` varchar(255) NOT NULL default '',`templet` varchar(30) NOT NULL default '',`userip` char(46) NOT NULL default '',";
     } else {
-        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}`(
-                  `aid` int(11) NOT NULL default '0',
-                `typeid` int(11) NOT NULL default '0',
-                `channel` SMALLINT NOT NULL DEFAULT '0',
-                `arcrank` SMALLINT NOT NULL DEFAULT '0',
-                `mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
-                `click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',
-                `title` varchar(255) NOT NULL default '',
-                `senddate` int(11) NOT NULL default '0',
-                `flag` set('c','h','p','f','s','j','a','b') default NULL,";
+        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}`(`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',`click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL default '',`senddate` int(11) NOT NULL default '0',`flag` set('c','h','p','f','s','j','a','b') default NULL,";
     }
     if ($mysql_version < 4.1) {
         $tabsql .= "    PRIMARY KEY  (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM; ";
@@ -346,7 +332,7 @@ else if ($dopost == "delete") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确定要删除：".$row['typename']." 栏目吗");
+        $win->AddTitle("您确定要删除<span class='text-primary'>".$row['typename']."</span>栏目吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

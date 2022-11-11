@@ -28,8 +28,8 @@ if ($fmdo == 'sendMail') {
     $url = $proto.preg_replace("#\/\/#i", '/', $url);
     $mailtitle = "{$cfg_webname}--会员邮件验证通知";
     $mailbody = '';
-    $mailbody .= "尊敬的用户[{$cfg_ml->fields['uname']}]，您好：\r\n";
-    $mailbody .= "欢迎注册成为[{$cfg_webname}]的会员\r\n";
+    $mailbody .= "尊敬的用户<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，您好：\r\n";
+    $mailbody .= "欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
     $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏访问这地址：\r\n\r\n";
     $mailbody .= "{$url}\r\n\r\n";
     $mailbody .= "Powered by DedeBIZ开发团队\r\n";
@@ -116,7 +116,7 @@ else if ($fmdo == 'user') {
                 if (!is_array($row)) {
                     $msg = "<span class='text-dark'>√可以使用</span>";
                 } else {
-                    $msg = "<span class='text-danger'>×Email已经被另一个帐号占用</span>";
+                    $msg = "<span class='text-primary'>×Email已经被另一个帐号占用</span>";
                 }
             }
         }

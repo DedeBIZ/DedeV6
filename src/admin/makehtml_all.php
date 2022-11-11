@@ -94,7 +94,7 @@ else if ($step == 4) {
                 }
             }
         }
-        $fp = fopen($mkcachefile, 'w') or die("无法写入缓存文件：{$mkcachefile} 所以无法更新栏目");
+        $fp = fopen($mkcachefile, 'w') or die("无法写入缓存文件<span class='text-primary'>{$mkcachefile}</span>所以无法更新栏目");
         if (count($typeidsok) > 0) {
             fwrite($fp, "<"."?php\r\n");
             $i = -1;

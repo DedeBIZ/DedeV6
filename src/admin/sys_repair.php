@@ -99,7 +99,7 @@ else if ($dopost == 2) {
     } else {
         $sql = "TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
-        $msg .= "<span class='text-danger'>两者记录不一致，尝试进行简单修正</span><br>";
+        $msg .= "<span class='text-primary'>两者记录不一致，尝试进行简单修正</span><br>";
         //导入普通模型微数据
         $sql = "INSERT INTO `#@__arctiny` (id,typeid,typeid2,arcrank,channel,senddate,sortrank,mid) SELECT id,typeid,typeid2,arcrank,channel,senddate,sortrank,mid FROM `#@__archives` ";
         $dsql->ExecuteNoneQuery($sql);
@@ -113,7 +113,7 @@ else if ($dopost == 2) {
         if ($row['dd'] == $allarcnum) {
             $msg .= "<span class='text-dark'>修正记录成功</span><br>";
         } else {
-            $msg .= "<span class='text-danger'>修正记录失败，建议进行高级综合检测</span><br>";
+            $msg .= "<span class='text-primary'>修正记录失败，建议进行高级综合检测</span><br>";
             $errall = "<a href='sys_repair.php?dopost=3' class='btn btn-danger btn-sm'>结合性检测</a> ";
         }
     }

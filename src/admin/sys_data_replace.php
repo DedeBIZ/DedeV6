@@ -26,7 +26,7 @@ else if ($action == 'getfields') {
     AjaxHead();
     $dsql->GetTableFields($exptable);
     echo "<div class='alert alert-warning mb-0'>";
-    echo "表(".$exptable.")含有的字段：<br>";
+    echo "表<span class='text-primary'>".$exptable."</span>含有的字段：<br>";
     while ($row = $dsql->GetFieldObject()) {
         echo "<a href=\"javascript:pf('{$row->name}')\">".$row->name."</a>\r\n";
     }
@@ -85,7 +85,7 @@ else if ($action == 'apply') {
             }
         }
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
-        ShowMsg("共找到 $tt 条记录，成功替换了 $oo 条", "javascript:;");
+        ShowMsg("共找到<span class='text-primary'>$tt</span>条记录，成功替换了<span class='text-primary'>$oo</span>条", "javascript:;");
         exit();
     }
 }

@@ -87,7 +87,7 @@ if ($dopost == "upload") {
             $dsql->ExecuteNoneQuery($inquery);
         }
     }
-    ShowMsg("成功上传 {$okdd} 个文件", "media_main.php");
+    ShowMsg("成功上传<span class='text-primary'>{$okdd}</span>个文件", "media_main.php");
     exit();
 }
 include DedeInclude('templets/media_add.htm');

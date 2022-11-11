@@ -27,7 +27,7 @@ else $pv = new PartView();
 $pv->SetTemplet($partcode, "string");
 if ($showsource == "" || $showsource == "yes") {
     echo "模板代码:";
-    echo "<span class='text-danger'><pre>".dede_htmlspecialchars($partcode)."</pre></span>";
+    echo "<span class='text-primary'><pre>".dede_htmlspecialchars($partcode)."</pre></span>";
     echo "结果:<hr size='1' width='100%'>";
 }
 $pv->Display();

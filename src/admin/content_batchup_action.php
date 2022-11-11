@@ -81,7 +81,7 @@ else if ($action == 'del') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg("成功删除 $tdd 条记录", "javascript:;");
+    ShowMsg("成功删除<span class='text-primary'>$tdd</span>条记录", "javascript:;");
     exit();
 }
 //删除空标题文档
@@ -92,7 +92,7 @@ else if ($action == 'delnulltitle') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg("成功删除 $tdd 条记录", "javascript:;");
+    ShowMsg("成功删除<span class='text-primary'>$tdd</span>条记录", "javascript:;");
     exit();
 }
 //删除空文档
@@ -103,7 +103,7 @@ else if ($action == 'delnullbody') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->aid)) $tdd++;
     }
-    ShowMsg("成功删除 $tdd 条记录", "javascript:;");
+    ShowMsg("成功删除<span class='text-primary'>$tdd</span>条记录", "javascript:;");
     exit();
 }
 //修正缩略图错误
@@ -166,7 +166,7 @@ else if ($action == 'delnulltitle') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg("成功删除 $tdd 条记录", "javascript:;");
+    ShowMsg("成功删除<span class='text-primary'>$tdd</span>条记录", "javascript:;");
     exit();
 }
 //修正缩略图错误

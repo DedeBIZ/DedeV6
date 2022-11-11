@@ -50,6 +50,6 @@ elseif ($dopost == 'make') {
         $dsql->ExecuteNoneQuery($inquery);
         echo "成功生成点卡：{$cardid}<br>";
     }
-    echo "成功生成 {$mnum} 个点卡";
+    echo "成功生成<span class='text-primary'>{$mnum}</span>个点卡";
 }
 ?>

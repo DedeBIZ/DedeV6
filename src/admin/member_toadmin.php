@@ -74,7 +74,7 @@ if ($dopost == "toadmin") {
     $floginid = $cuserLogin->getUserName();
     $fromid = $cuserLogin->getUserID();
     $subject = "恭喜您已经成功提升为管理员";
-    $message = "亲爱的会员{$userid}，您已经成功提升为{$row['typename']}，具体操作权限请同网站超级管理员联系";
+    $message = "亲爱的会员<span class='text-primary'>{$userid}</span>，您已经成功提升为<span class='text-primary'>{$row['typename']}</span>，具体操作权限请同网站超级管理员联系";
     $sendtime = $writetime = time();
     $inquery = "INSERT INTO `#@__member_pms` (`floginid`,`fromid`,`toid`,`tologinid`,`folder`,`subject`,`sendtime`,`writetime`,`hasview`,`isadmin`,`message`) VALUES ('$floginid','$fromid','$id','$userid','inbox','$subject','$sendtime','$writetime','0','0','$message'); ";
     $dsql->ExecuteNoneQuery($inquery);

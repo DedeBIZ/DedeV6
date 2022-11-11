@@ -17,11 +17,11 @@ if (empty($action)) $action = '';
 if ($action == 'add') {
     //检查输入
     if (empty($id) || preg_match("#[^0-9-]#", $id)) {
-        ShowMsg("<span class='text-danger'>'栏目id'</span>必须为数字", "-1");
+        ShowMsg("<span class='text-primary'>栏目id</span>必须为数字", "-1");
         exit();
     }
     if (preg_match("#[^a-z0-9]#i", $nid) || $nid == "") {
-        ShowMsg("<span class='text-danger'>'栏目名字标识'</span>必须为英文字母或与数字混合字符串", "-1");
+        ShowMsg("<span class='text-primary'>栏目名字标识</span>必须为英文字母或与数字混合字符串", "-1");
         exit();
     }
     if ($addtable == "") {
@@ -33,7 +33,7 @@ if ($action == 'add') {
     //检查id是否重复
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' OR nid LIKE '$nid' OR addtable LIKE '$addtable'");
     if (is_array($row)) {
-        ShowMsg("可能‘栏目id’、‘栏目名称标识’、‘附加表名称’在数据库已存在，不能重复使用", "-1");
+        ShowMsg("可能栏目id、栏目名称标识、附加表名称在数据库已存在，不能重复使用", "-1");
         exit();
     }
     $mysql_version = $dsql->GetVersion();
@@ -44,30 +44,9 @@ if ($action == 'add') {
             //是否需要摘要字段
             $dsql->ExecuteNoneQuery("DROP TABLE IF EXISTS `{$trueTable2}`;");
             if ($issystem != -1) {
-                $tabsql = "CREATE TABLE `$trueTable2`(
-                    `aid` int(11) NOT NULL default '0',
-                    `typeid` int(11) NOT NULL default '0',
-                    `redirecturl` varchar(255) NOT NULL default '',
-                    `templet` varchar(30) NOT NULL default '',
-                    `userip` char(48) NOT NULL default '',
-           ";
+                $tabsql = "CREATE TABLE `$trueTable2` (`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`redirecturl` varchar(255) NOT NULL default '',`templet` varchar(30) NOT NULL default '',`userip` char(48) NOT NULL default '',";
             } else {
-                $tabsql = "CREATE TABLE `$trueTable2`(
-                      `aid` int(11) NOT NULL default '0',
-                    `typeid` int(11) NOT NULL default '0',
-                    `channel` SMALLINT NOT NULL DEFAULT '0',
-                    `arcrank` SMALLINT NOT NULL DEFAULT '0',
-                    `mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
-                    `click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',
-                    `title` varchar(255) NOT NULL default '',
-                    `senddate` int(11) NOT NULL default '0',
-                    `flag` set('c','h','p','f','s','j','a','b') default NULL,
-                    `litpic` varchar(60) NOT NULL default '',
-                    `userip` char(48) NOT NULL default '',
-                    `lastpost` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',
-                    `scores` MEDIUMINT( 8 ) NOT NULL DEFAULT '0',
-                    `goodpost` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
-                    `badpost` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
+                $tabsql = "CREATE TABLE `$trueTable2` (`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',`click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL default '',`senddate` int(11) NOT NULL default '0',`flag` set('c','h','p','f','s','j','a','b') default NULL,`litpic` varchar(60) NOT NULL default '',`userip` char(48) NOT NULL default '',`lastpost` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`scores` MEDIUMINT( 8 ) NOT NULL DEFAULT '0',`goodpost` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',`badpost` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
             ";
             }
             if ($mysql_version < 4.1) {
@@ -77,7 +56,7 @@ if ($action == 'add') {
             }
             $rs = $dsql->ExecuteNoneQuery($tabsql);
             if (!$rs) {
-                ShowMsg("创建附加表失败!".$dsql->GetError(), "javascript:;");
+                ShowMsg("创建附加表失败".$dsql->GetError(), "javascript:;");
                 exit();
             }
         }

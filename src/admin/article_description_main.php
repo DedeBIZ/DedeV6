@@ -80,7 +80,7 @@ if ($dojob == '') {
             }
             $dvlen = $tjlen * 1;
             $tjsta = "<div style='width:260px;height:16px;text-align:left;border:1px solid #1eb867;border-radius:.2rem'><div style='max-width:260px;width:$dvlen%;height:16px;background:#1eb867'></div></div>";  
-            $tjsta .= "<br>完成处理文档总数$tjlen%";
+            $tjsta .= "<br>完成处理文档总数<span class='text-primary'>$tjlen</span>%";
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd={$startdd}&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
             exit();
@@ -140,7 +140,7 @@ if ($dojob == '') {
         }
         $dvlen = $tjlen * 1;
         $tjsta = "<div style='width:260px;height:16px;text-align:left;border:1px solid #1eb867;border-radius:.2rem'><div style='max-width:260px;width:$dvlen%;height:16px;background:#1eb867'></div></div>";
-        $tjsta .= "<br>完成处理文档总数$tjlen%";
+        $tjsta .= "<br>完成处理文档总数<span>$tjlen</span>%";
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);

@@ -67,8 +67,8 @@ if ($dopost == 'saveedit') {
         $win->AddHidden("safecode", $safecode);
         $win->AddHidden("id", $id);
         $win->AddTitle("系统提示");
-        $win->AddMsgItem("您确定要删除id：$userid 用户吗", "50");
-        $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-md'>（安全码：<span class='text-success'>$safecode</span>）", "30");
+        $win->AddMsgItem("您确定要删除id<span class='text-primary'>$userid</span>用户吗", "50");
+        $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-md'>（安全码：<span class='text-primary'>$safecode</span>）", "30");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

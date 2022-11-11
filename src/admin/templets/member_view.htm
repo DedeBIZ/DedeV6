@@ -124,7 +124,7 @@
 								<td class="admin-td">会员天数：</td>
 								<td class="admin-td"><input type="text" name="exptime" value="<?php echo $row['exptime']?>" id="exptime" class="admin-input-sm">（如果您要升级会员，会员天数必须大于0）</td>
 							</tr>
-							<?php if ($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span class="text-danger">该会员已经到期</span>';?>
+							<?php if ($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span class="text-primary">该会员已经到期</span>';?>
 							<tr>
 								<td class="admin-td">会员剩余天数：</td>
 								<td class="admin-td"><?php echo $mhasDay;?></td>

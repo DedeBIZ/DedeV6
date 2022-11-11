@@ -93,7 +93,7 @@ else if ($dopost == 'save') {
     }
     if (!TestPurview('a_Edit')) {
         if (TestPurview('a_AccEdit')) {
-            CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的文档权限");
+            CheckCatalog($typeid, "对不起，您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
         } else {
             CheckArcAdmin($id, $cuserLogin->getUserID());
         }

@@ -39,11 +39,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` where `rank`='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要".$row['membername']."才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("对不起，需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要".$cInfos['usertype']."帐号才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("对不起，需要<span class='text-primary'>".$cInfos['usertype']."</span>帐号才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     include(DEDEMEMBER."/templets/soft_add.htm");
@@ -146,7 +146,7 @@ else if ($dopost == 'save') {
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
+        ShowMsg("没找到当前模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
         exit();
     }
     $inQuery = "INSERT INTO `$addtable` (aid,typeid,filetype,language,softtype,accredit,os,softrank,officialUrl,officialDemo,softsize,softlinks,introduce,userip,templet,redirecturl,daccess,needmoney{$inadd_f}) VALUES ('$arcID','$typeid','$filetype','$language','$softtype','$accredit','$os','$softrank','$officialUrl','$officialDemo','$softsize','$urls','$body','$userip','','','0','$needmoney'{$inadd_v});";

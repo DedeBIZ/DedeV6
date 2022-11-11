@@ -217,7 +217,7 @@ class OxWindow
     {
         global $cfg_templets_dir, $wecome_info, $cfg_basedir;
         if (empty($wecome_info)) {
-            $wecome_info = "通用对话框：";
+            $wecome_info = "通用对话框";
         }
         $ctp = new DedeTagParse();
         if ($modfile == '') {
@@ -247,7 +247,7 @@ function ShowMsgWin($msg, $title)
 {
     $win = new OxWindow();
     $win->Init();
-    $win->mainTitle = "系统提示：";
+    $win->mainTitle = "系统提示";
     $win->AddTitle($title);
     $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("hand");

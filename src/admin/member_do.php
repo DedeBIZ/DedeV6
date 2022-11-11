@@ -51,7 +51,7 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE mid='$id' ");
                 $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET mid='0' WHERE mid='$id'");
             } else {
-                ShowMsg("无法删除此会员，如果这个会员是[管理员]，<br>必须先删除这个[管理员]才能删除此帐号", $ENV_GOBACK_URL, 0, 5000);
+                ShowMsg("无法删除此会员，如果这个会员是管理员，<br>必须先删除这个管理员才能删除此帐号", $ENV_GOBACK_URL, 0, 5000);
                 exit();
             }
         }
@@ -69,8 +69,8 @@ if ($dopost == "delmember") {
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("您确定要删除为id：".$id." 会员吗");
-    $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-md'>（安全码：<span class='text-success'>$safecode</span>）", "30");
+    $win->AddTitle("您确定要删除id<span class='text-primary'>".$id."</span>会员吗");
+    $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-md'>（安全码：<span class='text-primary'>$safecode</span>）", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 } else if ($dopost == "delmembers") {
@@ -116,8 +116,8 @@ if ($dopost == "delmember") {
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("您确定要删除为id：".$id." 会员吗");
-    $win->AddMsgItem(" 验证安全码：<input name='safecode' type='text' id='safecode' size='16' class='admin-input-md' /> (安全码：<span class='text-success'>$safecode</span>)", "30");
+    $win->AddTitle("您确定要删除id<span class='text-primary'>".$id."</span>会员吗");
+    $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' size='16' class='admin-input-md' /> (安全码：<span class='text-primary'>$safecode</span>)", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
