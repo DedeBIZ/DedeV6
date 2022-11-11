@@ -450,7 +450,7 @@ function getSelCat(targetId) {
 	var selBox = document.quicksel.seltypeid;
 	var targetObj = $Obj(targetId);
 	var selvalue = '';
-	//副栏目（多选）
+	//副栏目多选
 	if (targetId == 'typeid2') {
 		var j = 0;
 		for (var i = 0; i < selBox.length; i++) {
@@ -462,7 +462,7 @@ function getSelCat(targetId) {
 		}
 		if (targetObj) targetObj.value = selvalue;
 	}
-	//主栏目（单选）
+	//主栏目单选
 	else {
 		if (selBox) {
 			for (var i = 0; i < selBox.length; i++) {
@@ -511,9 +511,7 @@ function guid() {
 	}
 	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-// 函数会返回一个modalID，通过这个id可自已定义一些方法
-// 这里用到了一个展开语法
-// https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+//函数会返回一个modalID，通过这个ID可自已定义一些方法，这里用到了一个展开语法https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
 	size = "";
@@ -522,7 +520,7 @@ function ShowMsg(content, ...args) {
 	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
 	var noClose = false;
 	if (args.length == 1) {
-		// 存在args参数
+		//存在args参数
 		if (typeof args[0].title !== 'undefined' && args[0].title != "") {
 			title = args[0].title;
 		}
@@ -539,9 +537,8 @@ function ShowMsg(content, ...args) {
 	footer = footer.replaceAll("~modalID~", modalID);
 	content = content.replaceAll("~modalID~", modalID);
 	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}">
-<div class="modal-dialog ${size}" role="document">
-<div class="modal-content"><div class="modal-header">
-<h5 class="modal-title" id="GKModalLabel${modalID}">${title}</h5>`;
+<div class="modal-dialog ${size}" role="document"><div class="modal-content">
+<div class="modal-header"><h5 class="modal-title" id="GKModalLabel${modalID}">${title}</h5>`;
 	if (!noClose) {
 		modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		<span>&times;</span>
@@ -670,19 +667,19 @@ $(document).ready(function () {
 	//截取缩略图
 	function SetThumb(srcURL) {
 		var footer =
-			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a> <a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
-		var optButton = `<p><div class="form-group">
+			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a><a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
+		var optButton = `<p>
 			  <label for="aspectRatio">比例</label>
-			  <select class="form-control" id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)">
+			  <select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)">
 				<option>16:9</option>
 				<option selected>4:3</option>
 				<option>1:1</option>
 				<option>2:3</option>
 				<option>自定义</option>
 			  </select>
-			</div></p>`;
+			</p>`;
 		mdlCropperID = ShowMsg(
-			'<div><div class="float-left" style="width:300px"><img id="cropImg~modalID~" src="' + srcURL + '"><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:150px;height:100px;overflow:hidden"></div></div>', {
+			'<div class="float-left" style="width:320px;"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden;"></div>', {
 			footer: footer,
 			noClose: false,
 			title: '缩略图裁剪',
@@ -713,7 +710,7 @@ $(document).ready(function () {
 				applyLabel: '确定',
 				cancelLabel: '取消',
 				daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
-				monthNames: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月'],
+				monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
 				firstDay: 1
 			}
 		}, function (start) {
