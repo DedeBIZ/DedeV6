@@ -518,7 +518,7 @@ span.page-link {
 .admin-border {
 	border:1px solid #dee2e6
 }
-.admin-td,.nadmin-td {
+.admin-td {
 	padding:.65rem;
 	vertical-align:middle;
 	border-bottom:1px solid #dee2e6
