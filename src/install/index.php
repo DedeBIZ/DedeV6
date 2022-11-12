@@ -21,7 +21,6 @@ define('DEDEDATA',dirname(__FILE__).'/../data');
 define('DEDEROOT',preg_replace("#[\\\\\/]install#", '', dirname(__FILE__)));
 header("Content-Type: text/html; charset=utf-8");
 require_once(DEDEROOT.'/install/install.inc.php');
-require_once(DEDEINC.'/libraries/zip.class.php');
 foreach(Array('_GET','_POST','_COOKIE') as $_request)
 {
     foreach($$_request as $_k => $_v) ${$_k} = RunMagicQuotes($_v);
