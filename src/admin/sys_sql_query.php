@@ -90,14 +90,15 @@ else if ($dopost == "query") {
         echo "删除数据表或数据库的语句不允许在这里执行";
         exit();
     }
+    echo '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">';
     //运行查询语句
     if (preg_match("#^select #i", $sqlquery)) {
         $dsql->SetQuery($sqlquery);
         $dsql->Execute();
         if ($dsql->GetTotalRow() <= 0) {
-            echo "运行SQL<span class='text-primary'>{$sqlquery}</span>，无返回记录<br>";
+            echo "运行SQL：<span class='text-primary'>{$sqlquery}</span>，无返回记录<br>";
         } else {
-            echo "运行SQL<span class='text-primary'>{$sqlquery}</span>，共有<span class='text-primary'>".$dsql->GetTotalRow()."</span>条记录，最大返回100条<br>";
+            echo "运行SQL：<span class='text-primary'>{$sqlquery}</span>，共有<span class='text-primary'>".$dsql->GetTotalRow()."</span>条记录，最大返回100条<br>";
         }
         $j = 0;
         while ($row = $dsql->GetArray()) {
@@ -106,10 +107,10 @@ else if ($dopost == "query") {
                 break;
             }
             echo "<hr size=1 width='100%'/>";
-            echo "记录<span class='text-primary'>$j</span>";
+            echo "记录：<span class='text-primary'>$j</span>";
             echo "<hr size=1 width='100%'/>";
             foreach ($row as $k => $v) {
-                echo "<span class='text-primary'>{$k}</span>{$v}<br>\r\n";
+                echo "<span class='text-primary'>{$k}：</span>{$v}<br>\r\n";
             }
         }
         exit();

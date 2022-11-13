@@ -20,17 +20,17 @@ function GetOptionList($selid = 0, $channeltype = 0)
 {
     global $OptionArrayList, $channels, $dsql;
     $dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` ");
-    $dsql->Execute();
+    $dsql->Execute('opt');
     $channels = array();
-    while ($row = $dsql->GetObject()) {
+    while ($row = $dsql->GetObject('opt')) {
         $channels[$row->id] = $row->typename;
     }
     $OptionArrayList = "";
     $query = "SELECT id,typename,ispart,channeltype,issend FROM `#@__arctype` WHERE ispart<2 AND reid=0 ORDER BY sortrank ASC";
     $dsql->SetQuery($query);
-    $dsql->Execute();
+    $dsql->Execute('arr');
     $selected = '';
-    while ($row = $dsql->GetObject()) {
+    while ($row = $dsql->GetObject('arr')) {
         if ($selid == $row->id) {
             $selected = " selected='$selected'";
         }

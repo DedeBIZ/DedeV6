@@ -37,8 +37,8 @@ function lib_flink(&$ctag, &$refObj)
     if (trim($ctag->GetInnerText()) == '') $innertext = "[field:link/] ";
     else $innertext = $ctag->GetInnerText();
     $dsql->SetQuery($equery);
-    $dsql->Execute();
-    while ($dbrow = $dsql->GetObject()) {
+    $dsql->Execute('fl');
+    while ($dbrow = $dsql->GetObject('fl')) {
         if ($type == 'text' || $type == 'textall') {
             $link = "<a href='".$dbrow->url."' target='_blank'>".cn_substr($dbrow->webname, $titlelen)."</a> ";
         } else if ($type == 'image') {

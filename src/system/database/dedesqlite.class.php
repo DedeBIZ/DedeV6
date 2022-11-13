@@ -161,7 +161,7 @@ class DedeSqlite
     function ExecuteNoneQuery($sql = '')
     {
         global $dsqlite;
-        if (!$dsqlite->isInit) {
+        if (!@$dsqlite->isInit) {
             $this->Init($this->pconnect);
         }
         if ($dsqlite->isClose) {
@@ -235,7 +235,7 @@ class DedeSqlite
     function Execute($id = "me", $sql = '')
     {
         global $dsqlite;
-        if (!$dsqlite->isInit) {
+        if (!@$dsqlite->isInit) {
             $this->Init($this->pconnect);
         }
         if ($dsqlite->isClose) {
@@ -275,7 +275,7 @@ class DedeSqlite
     function GetOne($sql = '', $acctype = SQLITE3_ASSOC)
     {
         global $dsqlite;
-        if (!$dsqlite->isInit) {
+        if (!@$dsqlite->isInit) {
             $this->Init($this->pconnect);
         }
         if ($dsqlite->isClose) {
