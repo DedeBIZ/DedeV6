@@ -404,7 +404,7 @@ CREATE TABLE `#@__feedback_goodbad` (
 	`fgid` INT(11) NOT NULL AUTO_INCREMENT,
 	`mid` INT(11) NOT NULL DEFAULT '0',
 	`fid` INT(11) NOT NULL DEFAULT '0',
-	`fgtype` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '0:good 1:bad',
+	`fgtype` TINYINT(4) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`fgid`)
 ) TYPE=MyISAM;
 
@@ -882,11 +882,11 @@ CREATE TABLE `#@__softconfig` (
 DROP TABLE IF EXISTS `#@__statistics`;
 CREATE TABLE `#@__statistics` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `sdate` int DEFAULT NULL COMMENT '记录日期',
-  `pv` int DEFAULT NULL COMMENT 'PV',
-  `uv` int DEFAULT NULL COMMENT 'UV',
-  `ip` int DEFAULT NULL COMMENT 'IP',
-  `vv` int DEFAULT NULL COMMENT 'vv',
+  `sdate` int DEFAULT NULL,
+  `pv` int DEFAULT NULL,
+  `uv` int DEFAULT NULL,
+  `ip` int DEFAULT NULL,
+  `vv` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
 
