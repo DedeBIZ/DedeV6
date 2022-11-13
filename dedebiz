@@ -308,7 +308,9 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     $dbpwd = "";
     $dbprefix = "dede_";
     $dblang = "utf8";
-	mkdir($workDir.'/data/tplcache', 0777);
+	if (!is_dir($workDir.'/data/tplcache')) {
+		mkdir($workDir.'/data/tplcache', 0777);
+	}
     //common.inc.php
     $configStr1 = str_replace("~dbtype~",$dbtype,$configStr1);
     $configStr1 = str_replace("~dbhost~",$dbhost,$configStr1);
@@ -415,23 +417,28 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     $adminuser = "admin";
     $adminpwd = "admin";
     //增加管理员帐号
-    $adminquery = "INSERT INTO `{$dbprefix}admin` VALUES (1, 10, '$adminuser', '".substr(md5($adminpwd),5,20)."', 'admin', '', '', 0, '".time()."', '127.0.0.1');";
+    $pfd = "pwd";
+    $apwd = substr(md5($adminpwd),5,20);
+    $upwd = md5($adminpwd);
+    if (function_exists('password_hash')) {
+        $pfd = "pwd_new";
+        $apwd = password_hash($adminpwd, PASSWORD_BCRYPT);
+        $upwd = password_hash($adminpwd, PASSWORD_BCRYPT);
+    }
+    //增加管理员帐号
+    $adminquery = "INSERT INTO `{$dbprefix}admin` (`id`,`usertype`,`userid`,`$pfd`,`uname`,`tname`,`email`,`typeid`,`logintime`,`loginip`) VALUES (1,10,'$adminuser','".$apwd."','admin','','',0,'".time()."','127.0.0.1');";
+    $db->exec($adminquery);
+    //关连前台会员帐号
+    $adminquery = "INSERT INTO `{$dbprefix}member` (`mid`,`mtype`,`userid`,`{$pfd}`,`uname`,`sex`,`rank`,`money`,`email`,`scores`,`matt`,`face`,`safequestion`,`safeanswer`,`jointime`,`joinip`,`logintime`,`loginip`) VALUES ('1','个人','$adminuser','".$upwd."','$adminuser','男','100','0','','10000','10','','0','','".time()."','','0',''); ";
+    $db->exec($adminquery);
+    $adminquery = "INSERT INTO `{$dbprefix}member_person` (`mid`,`onlynet`,`sex`,`uname`,`qq`,`msn`,`tel`,`mobile`,`place`,`oldplace`,`birthday`,`star`,`income`,`education`,`height`,`bodytype`,`blood`,`vocation`,`smoke`,`marital`,`house`,`drink`,`datingtype`,`language`,`nature`,`lovemsg`,`address`,`uptime`) VALUES ('1','1','男','{$adminuser}','','','','','0','0','1980-01-01','1','0','0','160','0','0','0','0','0','0','0','0','','','','','0'); ";
+    $db->exec($adminquery);
+    $adminquery = "INSERT INTO `{$dbprefix}member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('1','0','0','0','0','0','0','0','0'); ";
+    $db->exec($adminquery);
+    $adminquery = "INSERT INTO `{$dbprefix}member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`) VALUES ('1','10','0','{$adminuser}的空间','','person','',''); ";
     $db->exec($adminquery);
     DedeCli::write("admin user:admin");
     DedeCli::write("admin password:admin");
-    //关连前台会员帐号
-    $adminquery = "INSERT INTO `{$dbprefix}member` (`mid`,`mtype`,`userid`,`pwd`,`uname`,`sex`,`rank`,`money`,`email`,`scores` ,`matt` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
-        VALUES ('1','个人','$adminuser','".md5($adminpwd)."','$adminuser','男','100','0','','10000','10','','0','','".time()."','','0',''); ";
-    $db->exec($adminquery);
-    $adminquery = "INSERT INTO `{$dbprefix}member_person` (`mid`,`onlynet`,`sex`,`uname`,`qq`,`msn`,`tel`,`mobile`,`place`,`oldplace`,`birthday`,`star`,`income`,`education`,`height`,`bodytype`,`blood`,`vocation`,`smoke`,`marital`,`house` ,`drink`,`datingtype`,`language`,`nature`,`lovemsg`,`address`,`uptime`)
-        VALUES ('1', '1', '男', '{$adminuser}', '', '', '', '', '0', '0','1980-01-01', '1', '0', '0', '160', '0', '0', '0', '0', '0', '0','0', '0', '', '', '', '','0'); ";
-    $db->exec($adminquery);
-    $adminquery = "INSERT INTO `{$dbprefix}member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`)
-        VALUES ('1','0','0','0','0','0','0','0','0'); ";
-    $db->exec($adminquery);
-    $adminquery = "Insert Into `{$dbprefix}member_space`(`mid` ,`pagesize` ,`matt` ,`spacename` ,`spacelogo` ,`spacestyle`, `sign` ,`spacenews`)
-        Values('1','10','0','{$adminuser}的空间','','person','',''); ";
-    $db->exec($adminquery);
 	if (phpversion() < "5.4") {
 		die("DedeBIZ:command web server not support\n\n");
 	}
