@@ -38,7 +38,7 @@ if ($dopost == "save") {
         $query = "INSERT INTO `#@__member_type` (`rank`,pname,money,exptime) VALUES ('{$rank_new}','{$pname_new}','{$money_new}','{$exptime_new}');";
         $dsql->ExecuteNoneQuery($query);
     }
-    header("Content-Type: text/html; charset={$cfg_soft_lang}");
+    header("charset={$cfg_soft_lang}");
     echo "<script> alert('成功更新会员产品分类表'); </script>";
 }
 $arcranks = array();

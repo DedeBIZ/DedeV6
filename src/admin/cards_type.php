@@ -42,7 +42,7 @@ if ($dopost == "save") {
         $query = "INSERT INTO `#@__moneycard_type` (num,pname,money) VALUES ('{$num_new}','{$pname_new}','{$money_new}');";
         $dsql->ExecuteNoneQuery($query);
     }
-    header("Content-Type: text/html; charset={$cfg_soft_lang}");
+    header("charset={$cfg_soft_lang}");
     echo "<script>alert('成功更新点卡产品分类表');</script>";
 }
 require_once(DEDEADMIN."/templets/cards_type.htm");

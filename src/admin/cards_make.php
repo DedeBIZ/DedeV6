@@ -24,7 +24,7 @@ elseif ($dopost == 'make') {
     $ctid = $cardtype;
     $startid++;
     $endid = $startid + $mnum;
-    header("Content-Type: text/html; charset={$cfg_soft_lang}");
+    header("charset={$cfg_soft_lang}");
     for (; $startid < $endid; $startid++) {
         $cardid = $snprefix.$startid.'-';
         for ($p = 0; $p < $pwdgr; $p++) {

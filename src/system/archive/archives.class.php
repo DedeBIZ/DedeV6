@@ -488,7 +488,7 @@ class Archives
         $this->Fields['flag'] = empty($this->Fields['flag']) ? "" : $this->Fields['flag'];
         if (preg_match("#j#", $this->Fields['flag']) && $this->Fields['redirecturl'] != '') {
             if ($GLOBALS['cfg_jump_once'] == 'N') {
-                $pageHtml = "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$GLOBALS['cfg_soft_lang']."\">\r\n<title>".$this->Fields['title']."</title>\r\n";
+                $pageHtml = "<html>\r\n<head>\r\n<meta charset=".$GLOBALS['cfg_soft_lang']."\">\r\n<title>".$this->Fields['title']."</title>\r\n";
                 $pageHtml .= "<meta http-equiv=\"refresh\" content=\"3;URL=".$this->Fields['redirecturl']."\">\r\n</head>\r\n<body>\r\n";
                 $pageHtml .= "现在正在转向：".$this->Fields['title']."，请稍候<br><br>\r\n转向文档简介：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
                 echo $pageHtml;

@@ -30,7 +30,7 @@ if ($action == 'get_qrcode') {
     $qrcode = new DedeQrcode;
     $qrcode->generate($params);
 } else {
-    header("Content-Type: text/html; charset={$cfg_soft_lang}");
+    header("charset={$cfg_soft_lang}");
     $dtp = new DedeTemplate();
     $tplfile = DEDETEMPLATE.'/plus/qrcode.htm';
     $dtp->LoadTemplate($tplfile);
