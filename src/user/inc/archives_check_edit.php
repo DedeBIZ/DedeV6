@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档编辑验证
+ * 文档修改验证
  * 
  * @version        $id:archives_check_edit.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User

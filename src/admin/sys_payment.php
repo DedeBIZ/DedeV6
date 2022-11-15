@@ -55,7 +55,7 @@ class Array2form
     {
         switch ($formtype) {
             case 'text':
-                //生成文本编辑框
+                //生成文本修改框
                 $valstr = (empty($formarry['value'])) ? "value=''" : "value='{$formarry['value']}'";
                 $reval_form = "<input type='text' name='{$key}' id='{$key}' class='admin-input-md' {$valstr}>";
                 break;

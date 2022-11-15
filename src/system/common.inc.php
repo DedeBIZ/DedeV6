@@ -189,7 +189,7 @@ $cfg_version = 'V6';
 $cfg_version_detail = '6.2.0'; //详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
-$cfg_softname = '织梦内容管理系统';
+$cfg_softname = '得得系统';
 $cfg_soft_enname = 'DedeV6';
 $cfg_soft_devteam = 'DedeBIZ';
 //文档的默认命名规则

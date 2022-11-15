@@ -45,7 +45,7 @@ function showZipField(formitem, zipid, upid) {
 		$Obj(zipid).style.display = 'none';
 	}
 }
-//图片显示与隐藏Html编辑框
+//图片显示与隐藏修改框
 function showHtmlField(formitem, htmlid, upid) {
 	if ($Nav() != "IE") {
 		alert("该方法不适用于非IE浏览器");
@@ -103,7 +103,7 @@ function delAlbPic(pid) {
 		$Obj('thumbnails').removeChild(tgobj);
 	});
 }
-//删除已经上传的图片，编辑时用
+//删除已经上传的图片修改时用
 function delAlbPicOld(picfile, pid) {
 	var tgobj = $Obj('albold' + pid);
 	fetch('swfupload.php?dopost=delold&picfile=' + picfile).then(resp=>resp.text()).then((d)=>{

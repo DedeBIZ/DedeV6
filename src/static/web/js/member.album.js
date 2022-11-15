@@ -67,7 +67,7 @@ function LoadTestDiv()
 	var dfstr = '粘贴到这里...';
 	if (document.getElementById('imagebody').value.length <= dfstr.length)
 	{
-		alert('您还没有粘贴任何东西在编辑框');
+		alert('您还没有粘贴任何东西在修改框');
 		return;
 	}
 	if (!newobj){
@@ -119,7 +119,7 @@ function ShowZipField(formitem,zipid,upid)
 		document.getElementById(zipid).style.display = 'none';
 	}
 }
-//图片显示与隐藏Html编辑框
+//图片显示与隐藏Html修改框
 function ShowHtmlField(formitem,htmlid,upid)
 {
 	if ($Nav()!="IE"){

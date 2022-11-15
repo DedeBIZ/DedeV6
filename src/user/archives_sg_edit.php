@@ -1,6 +1,6 @@
 <?php
 /**
- * 单表模型编辑器
+ * 单表模型修改器
  * 
  * @version        $id:archives_sg_add.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User

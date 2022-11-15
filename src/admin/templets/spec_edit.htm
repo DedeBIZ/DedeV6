@@ -111,9 +111,9 @@
 									{
 										if ($trow->att=='j') continue;
 										if (preg_match("#".$trow->att."#", $arcRow['flag']))
-											echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}[{$trow->att}]</label>";
 										else
-											echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
 									}
 									?>
 								</td>
@@ -142,7 +142,7 @@
 					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">责任编辑：</td>
+								<td width="90">作者：</td>
 								<td><input type="text" name="writer" id="writer" value="<?php echo $arcRow['writer']?>" class="admin-input-sm"></td>
 							</tr>
 						</table>

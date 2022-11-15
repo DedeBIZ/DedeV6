@@ -161,7 +161,7 @@ function GetFieldValueA($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
     return GetFieldValue($dvalue, $dtype, $aid, $job, $addvar, 'member');
 }
 /**
- *  获得带值的表单(编辑时用)
+ *  获得带值的表单修改时用
  *
  * @param     object  $ctag
  * @param     string  $fvalue  默认值
@@ -172,7 +172,7 @@ function GetFormItemValueA($ctag, $fvalue)
     return GetFormItemValue($ctag, $fvalue, 'member');
 }
 /**
- *  载入自定义表单(用于发布)
+ *  载入自定义表单用于发布
  *
  * @access    public
  * @param     string  $fieldset
@@ -202,7 +202,7 @@ function PrintAutoFieldsAdd(&$fieldset, $loadtype = 'all', $isprint = TRUE)
     return $addonfieldsname;
 }
 /**
- *  载入自定义表单(用于编辑)
+ *  载入自定义表单用于修改
  *
  * @param     string  $fieldset
  * @param     string  $fieldValues

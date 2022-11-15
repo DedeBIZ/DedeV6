@@ -1,6 +1,6 @@
 <?php
 /**
- * 编辑自定义表单字段
+ * 修改自定义表单字段
  *
  * @version        $id:diy_field_edit.php 18:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

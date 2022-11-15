@@ -20,7 +20,7 @@ if (empty($dopost)) {
 }
 $aid = isset($aid) ? preg_replace("#[^0-9]#", '', $aid) : '';
 /*--------------------------
-//编辑文档
+//修改文档
 function editArchives(){ }
 ---------------------------*/
 if ($dopost == 'editArchives') {
@@ -505,7 +505,7 @@ else if ($dopost == 'del') {
     }
 }
 /*-----------------------------
-//快速编辑
+//快速修改
 function quickEdit(){ }
 ------------------------------*/
 else if ($dopost == 'quickEdit') {
@@ -514,7 +514,7 @@ else if ($dopost == 'quickEdit') {
     $query = "SELECT ch.typename as channelname,ch.addtable,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($query);
     $divname = 'quickEdit';
-    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">快速属性编辑</div>";
+    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">快速属性修改</div>";
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
@@ -542,9 +542,9 @@ else if ($dopost == 'quickEdit') {
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
                 if (preg_match("#".$trow->att."#", $arcRow['flag']))
-                echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}]</label>";
+                echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}]</label>";
                 else
-                echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+                echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
             }
             ?>
         </td>
@@ -591,7 +591,7 @@ else if ($dopost == 'quickEdit') {
 //AJAX窗体结束
 }
 /*-----------------------------
-//保存快速编辑文档
+//保存快速修改文档
 function quickEditSave(){ }
 ------------------------------*/
 else if ($dopost == 'quickEditSave') {
@@ -828,7 +828,7 @@ else if ($dopost == 'attsDlg') {
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
-                echo "<label class='mr-1'><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+                echo "<label class='mr-2'><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
             }
             ?>
         </td>

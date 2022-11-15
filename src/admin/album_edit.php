@@ -1,6 +1,6 @@
 <?php
 /**
- * 图片编辑
+ * 图片修改
  *
  * @version        $id:album_edit.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

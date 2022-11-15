@@ -10,10 +10,13 @@
 	</head>
 	<body>
 		<table cellspacing="1" cellpadding="0" align="center" class="table maintable my-3">
-			<tr bgcolor="#f5f5f5" align="center">
+			<tr>
+				<td colspan="4" bgcolor="#f5f5f5">标签源码碎片管理</td>
+			</tr>
+			<tr bgColor="#e9ecef" align="center">
 				<td width="25%">标签文件名</td>
-				<td width="33%" align="left">标签说明</td>
-				<td width="22%">修改时间</td>
+				<td width="30%" align="left">标签说明</td>
+				<td width="25%">修改时间</td>
 				<td width="20%">操作</td>
 			</tr>
 			<tr>
@@ -34,7 +37,7 @@
 				<td><img src="../static/web/img/icon_htm.png"><?php echo $filename;?></td>
 				<td><?php echo $fileinfo;?></td>
 				<td align="center"><?php echo $filetime;?></td>
-				<td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a></td>
+				<td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a></td>
 			</tr>
 			<?php }?>
 			<tr>

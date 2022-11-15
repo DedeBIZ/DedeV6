@@ -41,7 +41,7 @@
 							{dede:global.optionarr/}
 						</select>
 					</td>
-					<td width="270"><input type="text" name="keyword" placeholder="请输入关键词"	value="{dede:global.keyword/}" class="admin-input-md"></td>
+					<td width="380"><input type="text" name="keyword" placeholder="请输入关键词"	value="{dede:global.keyword/}" class="admin-input-md"></td>
 					<td width="170">
 						<select name="orderby" class="admin-input-sm">
 							<option value="id">选择排序</option>
@@ -92,7 +92,7 @@
 					<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 					<td>
 						<a href="javascript:;" title="属性" class="btn btn-success btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-cogs"></i></a>
-						<a href="javascript:;" title="编辑" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i></a>
+						<a href="javascript:;" title="修改" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i></a>
 						<a href="javascript:;" title="预览" class="btn btn-success btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-globe"></i></a>
 					</td>
 				</tr>

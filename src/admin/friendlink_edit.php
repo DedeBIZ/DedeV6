@@ -1,6 +1,6 @@
 <?php
 /**
- * 友情链接编辑
+ * 友情链接修改
  *
  * @version        $id:friendlink_edit.php 10:59 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

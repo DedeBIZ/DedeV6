@@ -1,6 +1,6 @@
 <?php
 /**
- * 编辑自由列表
+ * 修改自由列表
  *
  * @version        $id:freelist_edit.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

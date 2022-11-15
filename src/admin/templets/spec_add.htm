@@ -113,7 +113,7 @@
 									while($trow = $dsql->GetObject())
 									{
 										if ($trow->att!='j') {
-											echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
 										}
 									}
 									?>
@@ -143,7 +143,7 @@
 					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">责任编辑：</td>
+								<td width="90">作者：</td>
 								<td><input type="text" name="writer" id="writer" class="admin-input-sm"></td>
 							</tr>
 						</table>

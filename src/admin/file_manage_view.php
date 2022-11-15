@@ -85,7 +85,7 @@ else if ($fmdo == "del") {
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
-//编辑文件
+//修改文件
 else if ($fmdo == "edit") {
     if (!isset($backurl)) {
         $backurl = "";

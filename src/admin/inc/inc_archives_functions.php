@@ -121,7 +121,6 @@ function GetCurContent($body)
             continue;
         }
         $htd->OpenUrl($value);
-
         $itype = $htd->GetHead("content-type");
         $isImage = true;
         if ($itype == 'image/gif') {
@@ -441,7 +440,7 @@ function GetFieldValueA($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
     return GetFieldValue($dvalue, $dtype, $aid, $job, $addvar, 'admin');
 }
 /**
- *  获得带值的表单(编辑时用)
+ *  获得带值的表单修改时用
  *
  * @access    public
  * @param     object  $ctag  ctag
@@ -453,7 +452,7 @@ function GetFormItemValueA($ctag, $fvalue)
     return GetFormItemValue($ctag, $fvalue, 'admin');
 }
 /**
- *  载入自定义表单(用于发布)
+ *  载入自定义表单用于发布
  *
  * @access    public
  * @param     string  $fieldset  字段列表
@@ -479,7 +478,7 @@ function PrintAutoFieldsAdd($fieldset, $loadtype = 'all')
     echo "<input type='hidden' name='dede_addonfields' value=\"".$dede_addonfields."\">\r\n";
 }
 /**
- *  载入自定义表单(用于编辑)
+ *  载入自定义表单用于修改
  *
  * @access    public
  * @param     string  $fieldset  字段列表

@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统权限组编辑
+ * 系统权限组修改
  *
  * @version        $id:sys_group_edit.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

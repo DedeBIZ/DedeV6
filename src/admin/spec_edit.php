@@ -1,6 +1,6 @@
 <?php
 /**
- * 专题编辑
+ * 专题修改
  *
  * @version        $id:spec_edit.php 16:22 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

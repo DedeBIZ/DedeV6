@@ -19,21 +19,11 @@
 		<table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable my-3">
 			<tr>
 				<td colspan="4" bgcolor="#f5f5f5">
-					<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
-						<tr>
-							<td width="30%">
-								<?php
-								if ($acdir=='plus') echo '插件模板';
-								else if ($acdir=='system') echo '底层模板';
-								else echo '核心模板 &gt; '.$acdir;
-								?>
-							</td>
-							<td width="70%" align="right">
-								<a class="btn btn-success btn-sm" href="templets_main.php">默认模板目录</a>
-								<a class="btn btn-success btn-sm" href="templets_main.php?acdir=plus">插件模板目录</a>
-							</td>
-						</tr>
-					</table>
+					<?php
+					if ($acdir=='plus') echo '插件模板';
+					else if ($acdir=='system') echo '底层模板';
+					else echo '核心模板 &gt; '.$acdir;
+					?>
 				</td>
 			</tr>
 			<tr bgColor="#e9ecef" align="center">
@@ -55,7 +45,7 @@
 				<td><?php echo $fileinfo;?></td>
 				<td align="center"><?php echo $filetime;?></td>
 				<td align="center">
-					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a>
+					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
 					<?php if (!isset($fileinfos[$filename])){?>
 					<a href="javascript:;" onClick="javascript:DelTpl('<?php echo $filename;?>');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 					<?php }?>
@@ -64,6 +54,8 @@
 			<?php }?>
 			<tr>
 				<td bgcolor="#f5f5f5" align="center" colspan="4" class="py-2">
+					<a class="btn btn-success btn-sm" href="templets_main.php">默认模板</a>
+					<a class="btn btn-success btn-sm" href="templets_main.php?acdir=plus">插件模板</a>
 					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir;?>">新建模板</a>
 					<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir;?>">上传模板</a>
 				</td>

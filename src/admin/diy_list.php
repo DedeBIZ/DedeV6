@@ -128,9 +128,9 @@ if ($action == 'post') {
         $query = "UPDATE `$diy->table` SET $addsql WHERE id=$id";
         if ($dsql->ExecuteNoneQuery($query)) {
             $goto = "diy_list.php?action=list&diyid={$diy->diyid}";
-            showmsg('编辑成功', $goto);
+            showmsg('修改成功', $goto);
         } else {
-            showmsg('编辑成功', '-1');
+            showmsg('修改成功', '-1');
         }
     }
 } elseif ($action == 'check') {

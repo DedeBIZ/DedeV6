@@ -48,7 +48,7 @@ function __delfile();
 else if ($fmdo == "del") {
     $fmm->DeleteFile($filename);
 }
-//文件编辑
+//文件修改
 /*---------------
 function __saveEdit();
 ----------------*/
@@ -72,7 +72,7 @@ else if ($fmdo == "edit") {
     exit();
 }
 /*
-文件编辑，可视化模式
+文件修改，可视化模式
 function __saveEditView();
 else if ($fmdo=="editview")
 {

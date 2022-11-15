@@ -204,7 +204,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
 }
 
 /**
- * 获得带值的表单(编辑时用)
+ * 获得带值的表单修改时用
  *
  * @access    public
  * @param     object  $ctag  ctag
@@ -263,7 +263,6 @@ function GetFormItemValue($ctag, $fvalue)
             return $formitem;
         }
     }
-
     //文本数据的特殊处理
     if ($ctag->GetAtt("type") == "textdata") {
         if (is_file($GLOBALS['cfg_basedir'].$fvalue)) {

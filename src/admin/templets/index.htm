@@ -21,7 +21,7 @@
 		<div class="head">			
 			<div class="top-logo">
 				<span class="top-name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
-				<span class="top-version">V<?php echo $cfg_version_detail;?></span>
+				<span class="top-version"><?php echo $cfg_version_detail;?></span>
 				<?php if (DEDEBIZ_SAFE_MODE){?>
 				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs btn-version">安全</a>
 				<?php } else {?>

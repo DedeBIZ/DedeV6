@@ -69,7 +69,7 @@
 		<form name="form1">
 			<table cellpadding="3" align="center" cellspacing="1" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="180"><input type="text" name="keyword" placeholder="请输入关键词" class="admin-input-md"></td>
+					<td width="380"><input type="text" name="keyword" placeholder="请输入关键词" class="admin-input-md"></td>
 					<td width="170">
 						<select name="typeid" class="admin-input-sm">
 							<option value="0">请选择</option>
@@ -98,7 +98,7 @@
 					<td width="12%" align="center">地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
 					<td width="12%">时间：{dede:field.dtime function="GetDateTimeMK(@me)"/}</td>
 					<td align="center">
-						<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'>编辑评论</a>
+						<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'>修改评论</a>
 						<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新评论</a>
 					</td>
 				</tr>

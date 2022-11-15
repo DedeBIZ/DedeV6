@@ -86,9 +86,9 @@
 										if ($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
 										else $jumpclick = '';
 										if (preg_match("#".$trow->att."#",$arcRow['flag']))
-											echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label>";
 										else
-											echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label>";
 									}
 									?>
 								</td>

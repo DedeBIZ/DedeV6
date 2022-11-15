@@ -176,7 +176,7 @@ body.hidemenu .body-right {
 }
 .top-version {
 	float:left;
-	margin-top:20px;
+	margin-top:18px;
 	margin-left:5px;
 	color:#fff
 }
@@ -486,8 +486,7 @@ span.page-link {
 }
 .form-control {
 	display:inline-block;
-	margin-right:10px;
-	width:360px
+	margin-right:10px
 }
 .admin-updates {
 	display:inline-block;
@@ -591,6 +590,6 @@ span.page-link {
 }
 @media (min-width:480px) {
 	.modal-dialog {
-	max-width:520px
+	max-width:500px
 }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * 插件编辑
+ * 插件修改
  *
  * @version        $id:plus_edit.php 15:46 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

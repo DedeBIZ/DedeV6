@@ -111,12 +111,12 @@ if (!function_exists('GetIP')) {
     }
 }
 /**
- *  获取编辑器
+ *  获取修改器
  *
  * @param     string  $fname  表单名称
  * @param     string  $fvalue 如果表单中有默认值,则填入默认值
  * @param     string  $nheight 高度
- * @param     string  $etype   编辑器类型
+ * @param     string  $etype   修改器类型
  * @param     string  $gtype   获取类型
  * @param     string  $isfullpage   是否全屏
  * @return    string

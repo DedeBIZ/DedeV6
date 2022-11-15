@@ -34,7 +34,7 @@ function lib_flinktype(&$ctag, &$refObj)
     }
     $DedeBIZ = new stdClass;
     $DedeBIZ->id = 999;
-    $DedeBIZ->typename = '织梦链';
+    $DedeBIZ->typename = 'Dede链';
     if ($type == 'DedeBIZ') $row[] = $DedeBIZ;
     foreach ($row as $key => $value) {
         if (is_array($dtp->CTags)) {

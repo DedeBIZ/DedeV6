@@ -287,7 +287,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
     }
 }
 /**
- *  获得带值的表单(编辑时用)
+ *  获得带值的表单修改时用
  *
  * @access    public
  * @param     object  $ctag  标签

@@ -26,11 +26,11 @@ if (preg_match("#\.#", $acdir)) {
 }
 /*
 function edit_new_tpl() { }
-编辑模板
+修改模板
 */
 if ($action == 'edit' || $action == 'newfile') {
     if ($filename == '' && $action == 'edit') {
-        ShowMsg('未指定要编辑的文件', '-1');
+        ShowMsg('未指定要修改的文件', '-1');
         exit();
     }
     if (!file_exists($templetdird.'/'.$filename)  && $action == 'edit') {
@@ -74,12 +74,12 @@ if ($action == 'edit' || $action == 'newfile') {
 }
 /*---------------------------
 function save_tpl() { }
-保存编辑模板
+保存修改模板
 --------------------------*/
 else if ($action == 'saveedit') {
     CheckCSRF();
     if ($filename == '') {
-        ShowMsg('未指定要编辑的文件或文件名不合法', '-1');
+        ShowMsg('未指定要修改的文件或文件名不合法', '-1');
         exit();
     }
     if (!preg_match("#\.htm$#", $filename)) {
@@ -196,7 +196,7 @@ function lib_demotag(&\$ctag,&\$refObj)
         $title = "新建标签";
     } else {
         if (!preg_match("#^[a-z0-9_-]{1,}\.lib\.php$#i", $filename)) {
-            ShowMsg('文件不是标准的标签碎片文件，不允许在此编辑', '-1');
+            ShowMsg('文件不是标准的标签碎片文件，不允许在此修改', '-1');
             exit();
         }
         $fp = fopen(DEDEINC.'/taglib/'.$filename, 'r');

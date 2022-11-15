@@ -126,13 +126,13 @@ function jsScript($js)
     return $out;
 }
 /**
- *  获取编辑器
+ *  获取修改器
  *
  * @access    public
  * @param     string  $fname 表单名称
  * @param     string  $fvalue 表单值
  * @param     string  $nheight 文档高度
- * @param     string  $etype 编辑器类型
+ * @param     string  $etype 修改器类型
  * @param     string  $gtype 获取值类型
  * @param     string  $isfullpage 是否全屏
  * @return    string

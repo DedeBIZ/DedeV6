@@ -1,6 +1,6 @@
 <?php
 /**
- * 投票模块编辑
+ * 投票模块修改
  *
  * @version        $id:vote_edit.php 23:54 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

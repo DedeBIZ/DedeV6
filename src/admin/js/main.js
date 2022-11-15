@@ -313,7 +313,7 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	}
 	if (posTop > 500) posTop = 500;
 	if (posLeft < 50) posLeft = 50;
-	newobj.style.minWidth = "480px";
+	newobj.style.minWidth = "500px";
 	newobj.style.top = posTop + "px";
 	newobj.style.left = posLeft + "px";
 	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
