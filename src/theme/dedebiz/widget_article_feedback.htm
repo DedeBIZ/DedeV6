@@ -105,7 +105,7 @@
 				<button class="btn btn-success btnSend" type="button" onClick='SendReplyFeedback(${fid})'>回复</button>
 			</div>
 		</div>`;
-        $.get("{dede:global.cfg_cmsurl/}/user/ajax_loginsta.php?format=json", function(data) {
+        $.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(data) {
             let result = JSON.parse(data);
             if (result.code !== 200) {
 				$(`._feedback_reply`).html("");

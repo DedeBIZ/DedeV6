@@ -106,10 +106,10 @@ function CheckCatalog($cid, $msg)
  */
 function AddMyAddon($fid, $filename)
 {
-    $cacheFile = DEDEDATA.'/cache/addon-'.session_id().'.inc';
+    $cacheFile = DEDEDATA . '/cache/addon-' . session_id() . '.inc';
     if (!file_exists($cacheFile)) {
         $fp = fopen($cacheFile, 'w');
-        fwrite($fp, '<'.'?php'."\r\n");
+        fwrite($fp, '<' . '?php' . "\r\n");
         fwrite($fp, "\$myaddons = array();\r\n");
         fwrite($fp, "\$maNum = 0;\r\n");
         fclose($fp);
@@ -133,7 +133,7 @@ function AddMyAddon($fid, $filename)
 function ClearMyAddon($aid = 0, $title = '')
 {
     global $dsql;
-    $cacheFile = DEDEDATA.'/cache/addon-'.session_id().'.inc';
+    $cacheFile = DEDEDATA . '/cache/addon-' . session_id() . '.inc';
     $_SESSION['bigfile_info'] = array();
     $_SESSION['file_info'] = array();
     if (!file_exists($cacheFile)) {
@@ -212,16 +212,18 @@ class userLogin
         $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
         $this->userPwd = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userpwd);
         $pwd = substr(md5($this->userPwd), 5, 20);
-        $dsql->SetQuery("SELECT admin.*,atype.purviews FROM `#@__admin` admin LEFT JOIN `#@__admintype` atype ON atype.`rank`=admin.usertype WHERE admin.userid LIKE '".$this->userName."' LIMIT 0,1");
+        $dsql->SetQuery("SELECT admin.*,atype.purviews FROM `#@__admin` admin LEFT JOIN `#@__admintype` atype ON atype.`rank`=admin.usertype WHERE admin.userid LIKE '" . $this->userName . "' LIMIT 0,1");
         $dsql->Execute();
         $row = $dsql->GetObject();
         if (!isset($row->pwd)) {
             return -1;
         } else if (!empty($row->pwd_new) && !password_verify($this->userPwd, $row->pwd_new)) {
+            $this->loginError($row->id);
             return -2;
         } else if (!empty($row->pwd) && $pwd != $row->pwd) {
+            $this->loginError($row->id);
             return -2;
-        }else {
+        } else {
             $upsql = "";
             if (empty($row->pwd_new) && function_exists('password_hash')) {
                 //升级密码
@@ -234,12 +236,57 @@ class userLogin
             $this->userChannel = $row->typeid;
             $this->userName = $row->uname;
             $this->userPurview = $row->purviews;
-            $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='".time()."'{$upsql} WHERE id='".$row->id."'";
+            $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='" . time() . "'{$upsql},loginerr=0 WHERE id='" . $row->id . "'";
             $dsql->ExecuteNoneQuery($inquery);
-            $sql = "UPDATE `#@__member` SET logintime=".time().", loginip='$loginip' WHERE mid=".$row->id;
+            $sql = "UPDATE `#@__member` SET logintime=" . time() . ", loginip='$loginip' WHERE mid=" . $row->id;
             $dsql->ExecuteNoneQuery($sql);
             return 1;
         }
+    }
+
+    
+    /**
+     * 是否需要验证码
+     *
+     * @param  mixed $username
+     * @return bool
+     */
+    function isNeedCheckCode($username)
+    {
+        $num = $this->getLoginError($username);
+        return $num >= 3 ? true : false;
+    }
+    
+    /**
+     * 1分钟以内登录错误的次数
+     *
+     * @param  mixed $username
+     * @return int 登录错误次数
+     */
+    function getLoginError($username)
+    {
+        global $dsql;
+        $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
+        $row = $dsql->GetOne("SELECT loginerr,logintime FROM `#@__admin` WHERE userid LIKE '$this->userName'");
+        if (is_array($row)) {
+            //1分钟内如果输错3次则需要验证码
+            return (time() - (int)$row['logintime']) < 60 ?  (int)$row['loginerr'] : 0;
+        } else {
+            return -1;
+        }
+    }
+
+    /**
+     * 记录登录错误
+     *
+     * @return void
+     */
+    function loginError($adminid)
+    {
+        global $dsql;
+        $loginip = GetIP();
+        $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='" . time() . "',loginerr=loginerr+1 WHERE id='" . $adminid . "'";
+        $dsql->ExecuteNoneQuery($inquery);
     }
     /**
      *  保持用户的会话状态
@@ -281,7 +328,7 @@ class userLogin
     function ReWriteAdminChannel()
     {
         //$this->userChannel
-        $cacheFile = DEDEDATA.'/cache/admincat_'.$this->userID.'.inc';
+        $cacheFile = DEDEDATA . '/cache/admincat_' . $this->userID . '.inc';
         //管理员管理的栏目列表
         $typeid = trim($this->userChannel);
         if (empty($typeid) || $this->getUserType() >= 10) {
@@ -296,7 +343,7 @@ class userLogin
             $typeids = explode(',', $typeid);
             $typeid = '';
             foreach ($typeids as $tid) {
-                $typeid .= ($typeid == '' ? GetSonIdsUL($tid) : ','.GetSonIdsUL($tid));
+                $typeid .= ($typeid == '' ? GetSonIdsUL($tid) : ',' . GetSonIdsUL($tid));
             }
             $typeids = explode(',', $typeid);
             $typeidsnew = array_unique($typeids);
@@ -443,4 +490,3 @@ function GetSonIdsLogicUL($id, $sArr, $channel = 0, $addthis = FALSE)
         }
     }
 }
-?>

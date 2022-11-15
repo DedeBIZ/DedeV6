@@ -391,8 +391,10 @@ class MemberLogin
         $row = $dsql->GetOne("SELECT mid,matt,pwd,pwd_new,logintime FROM `#@__member` WHERE userid LIKE '$loginuser' ");
         if (is_array($row)) {
             if (!empty($row['pwd_new']) && !password_verify($loginpwd, $row['pwd_new'])) {
+                $this->loginError($loginuser);
                 return -1;
-            }else if (!empty($row['pwd']) && $this->GetShortPwd($row['pwd']) != $this->GetEncodePwd($loginpwd)) {
+            } else if (!empty($row['pwd']) && $this->GetShortPwd($row['pwd']) != $this->GetEncodePwd($loginpwd)) {
+                $this->loginError($loginuser);
                 return -1;
             } else {
                 if (empty($row['pwd_new']) && function_exists('password_hash')) {
@@ -413,6 +415,58 @@ class MemberLogin
             return 0;
         }
     }
+
+    /**
+     * 是否需要验证码
+     *
+     * @param  mixed $loginuser
+     * @return bool
+     */
+    function isNeedCheckCode($loginuser)
+    {
+        $num = $this->getLoginError($loginuser);
+        return $num >= 3 ? true : false;
+    }
+    
+    /**
+     * 1分钟以内登录错误的次数
+     *
+     * @param  mixed $loginuser
+     * @return int 登录错误次数
+     */
+    function getLoginError($loginuser)
+    {
+        global $dsql;
+        $rs = CheckUserID($loginuser, '用户名', FALSE);
+        //用户名不正确时返回验证错误，原登录名通过引用返回错误提示信息
+        if ($rs != 'ok') {
+            return -1;
+        }
+        $row = $dsql->GetOne("SELECT loginerr,logintime FROM `#@__member` WHERE userid LIKE '$loginuser'");
+        if (is_array($row)) {
+            //1分钟内如果输错3次则需要验证码
+            return (time() - (int)$row['logintime']) < 60 ?  (int)$row['loginerr'] : 0;
+        } else {
+            return -1;
+        }
+    }
+    /**
+     * 记录登录错误
+     *
+     * @return void
+     */
+    function loginError($loginuser)
+    {
+        global $dsql;
+        $rs = CheckUserID($loginuser, '用户名', FALSE);
+        //用户名不正确时返回验证错误，原登录名通过引用返回错误提示信息
+        if ($rs != 'ok') {
+            return;
+        }
+        $loginip = GetIP();
+        $inquery = "UPDATE `#@__member` SET loginip='$loginip',logintime='" . time() . "',loginerr=loginerr+1 WHERE userid='" . $loginuser . "'";
+        $dsql->ExecuteNoneQuery($inquery);
+    }
     /**
      *  保存用户cookie
      *
@@ -431,7 +485,7 @@ class MemberLogin
         $this->M_ID = $uid;
         $this->M_LoginTime = time();
         $loginip = GetIP();
-        $inquery = "UPDATE `#@__member` SET loginip='$loginip',logintime='".$this->M_LoginTime."' WHERE mid='".$uid."'";
+        $inquery = "UPDATE `#@__member` SET loginip='$loginip',logintime='".$this->M_LoginTime."',loginerr=0 WHERE mid='".$uid."'";
         $dsql->ExecuteNoneQuery($inquery);
         if ($this->M_KeepTime > 0) {
             PutCookie('DedeUserID', $uid, $this->M_KeepTime);
@@ -445,7 +499,7 @@ class MemberLogin
      *  获得会员目前的状态
      *
      * @access    public
-     * @param     string  $dsql  数据库连接
+     * @param     object  $dsql  数据库连接
      * @return    string
      */
     function GetSta($dsql)

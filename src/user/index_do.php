@@ -180,6 +180,15 @@ else if ($fmdo == 'login') {
             ShowMsg("密码不能为空", "-1", 0, 2000);
             exit();
         }
+        $isNeed = $cfg_ml->isNeedCheckCode($userid);
+        if ($isNeed) {
+            $svali = GetCkVdValue();
+            if (strtolower($vdcode) != $svali || $svali == '') {
+                ResetVdValue();
+                ShowMsg('验证码错误', 'index.php');
+                exit();
+            }
+        }
         //检查帐号
         $rs = $cfg_ml->CheckUser($userid, $pwd);
         if ($rs == 0) {

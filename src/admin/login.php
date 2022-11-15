@@ -38,10 +38,19 @@ if (preg_match('/admin\/login/i', $cururl)) {
 $admindirs = explode('/', str_replace("\\", '/', dirname(__FILE__)));
 $admindir = $admindirs[count($admindirs) - 1];
 if ($dopost == 'login') {
-    $validate = empty($validate) ? '' : strtolower(trim($validate));
-    $svali = strtolower(GetCkVdValue());
     $cuserLogin = new userLogin($admindir);
     if (!empty($userid) && !empty($pwd)) {
+        $isNeed = $cuserLogin->isNeedCheckCode($userid);
+        if ($isNeed) {
+            $validate = empty($validate) ? '' : strtolower(trim($validate));
+            $svali = strtolower(GetCkVdValue());
+            if ($validate == '' || $validate != $svali) {
+                ResetVdValue();
+                ShowMsg('验证码不正确', 'login.php', 0, 1000);
+                exit;
+            }
+        }
+
         $res = $cuserLogin->checkUser($userid, $pwd);
         if ($res == 1) {
             $cuserLogin->keepUser();
