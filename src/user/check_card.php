@@ -9,7 +9,7 @@
 require_once(dirname(__FILE__)."/config.php");
 $svali = GetCkVdValue();
 if (strtolower($vdcode) != $svali || $svali == "") {
-    ShowMsg("验证码错误", "-1");
+    ShowMsg("验证码不正确", "-1");
     exit();
 }
 $cardid = preg_replace("#[^0-9A-Za-z-]#", "", $cardid);

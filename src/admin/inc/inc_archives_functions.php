@@ -17,7 +17,7 @@ if (!isset($_NOT_ARCHIVES)) {
     require_once(DEDEINC.'/customfields.func.php');
 }
 /**
- * 获得HTML里的外部资源，针对图片
+ * 获得网页里的外部资源，针对图片
  *
  * @access    public
  * @param     string  $body  文档

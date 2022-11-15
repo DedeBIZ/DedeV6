@@ -68,28 +68,5 @@
 			</div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>
-		<script>
-			function checkSubmit() {
-				if (document.addcontent.title.value == "") {
-					ShowMsg("名称不能为空");
-					document.addcontent.title.focus();
-					return false;
-				}
-				if (document.addcontent.typeid.value == 0) {
-					ShowMsg("所属栏目必须选择");
-					return false;
-				}
-				if (document.addcontent.typeid.options && document.addcontent.typeid.options[document.addcontent.typeid
-						.selectedIndex].className != 'option3') {
-					ShowMsg("所属栏目必须选择白色背景的项目");
-					return false;
-				}
-				if (document.addcontent.vdcode.value == "") {
-					document.addcontent.vdcode.focus();
-					ShowMsg("验证码不能为空");
-					return false;
-				}
-			}
-		</script>
 	</body>
 </html>

@@ -40,42 +40,31 @@ $admindir = $admindirs[count($admindirs) - 1];
 if ($dopost == 'login') {
     $validate = empty($validate) ? '' : strtolower(trim($validate));
     $svali = strtolower(GetCkVdValue());
-    if ($validate == '' || $validate != $svali) {
-        ResetVdValue();
-        ShowMsg('验证码不正确', 'login.php', 0, 1000);
-        exit;
-    } else {
-        $cuserLogin = new userLogin($admindir);
-        if (!empty($userid) && !empty($pwd)) {
-            $res = $cuserLogin->checkUser($userid, $pwd);
-            //success
-            if ($res == 1) {
-                $cuserLogin->keepUser();
-                if (!empty($gotopage)) {
-                    ShowMsg('成功登录，正在转向管理管理主页', $gotopage);
-                    exit();
-                } else {
-                    ShowMsg('成功登录，正在转向管理管理主页', 'index.php');
-                    exit();
-                }
-            }
-            //error
-            else if ($res == -1) {
-                ResetVdValue();
-                ShowMsg('您的用户名不存在', 'login.php', 0, 1000);
-                exit;
+    $cuserLogin = new userLogin($admindir);
+    if (!empty($userid) && !empty($pwd)) {
+        $res = $cuserLogin->checkUser($userid, $pwd);
+        if ($res == 1) {
+            $cuserLogin->keepUser();
+            if (!empty($gotopage)) {
+                ShowMsg('成功登录，正在转向管理管理主页', $gotopage);
+                exit();
             } else {
-                ResetVdValue();
-                ShowMsg('您的密码错误', 'login.php', 0, 1000);
-                exit;
+                ShowMsg('成功登录，正在转向管理管理主页', 'index.php');
+                exit();
             }
-        }
-        //password empty
-        else {
+        } else if ($res == -1) {
             ResetVdValue();
-            ShowMsg('用户和密码没填写完整', 'login.php', 0, 1000);
+            ShowMsg('您的账号不存在', 'login.php', 0, 1000);
+            exit;
+        } else {
+            ResetVdValue();
+            ShowMsg('您的密码错误', 'login.php', 0, 1000);
             exit;
         }
+    } else {
+        ResetVdValue();
+        ShowMsg('用户和密码没填写完整', 'login.php', 0, 1000);
+        exit;
     }
 }
 include('templets/login.htm');

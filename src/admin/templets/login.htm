@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="css/login.min.css">
 	</head>
 	<body>
-		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){?>
+		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
 		<div id="browsehappy">
 			<span>您正在使用一个过时的浏览器，请您<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，以提高您对后台体验</span>
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
@@ -37,19 +37,12 @@
 								<input type="hidden" name="dopost" value="login">
 								<input type="hidden" name="adminstyle" value="newDedeBIZ">
 								<div class="form-group">
-									<label for="iptUserid">用户名</label>
+									<label for="iptUserid">账号</label>
 									<input type="text" name="userid" id="iptUserid" class="form-control">
 								</div>
 								<div class="form-group">
 									<label for="iptPassword">密码</label>
 									<input type="password" name="pwd" id="iptPassword" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="iptValidate">验证码</label>
-									<div class="input-group">
-										<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase">
-										<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
-									</div>
 								</div>
 								<div><button type="submit" class="btn btn-success w-100">登录</button></div>
 								<div class="login-power"><?php echo $cfg_powerby;?></div>

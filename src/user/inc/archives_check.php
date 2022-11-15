@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEMEMBER')) exit('dedebiz');
 /**
  * 文档验证
  * 
@@ -8,17 +9,13 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!defined('DEDEMEMBER'))    exit('dedebiz');
 include_once(DEDEINC.'/image.func.php');
 include_once(DEDEINC.'/libraries/oxwindow.class.php');
-//游客需要校验验证码
-if ($cfg_ml->M_ID === 0) {
-    $svali = GetCkVdValue();
-    if (strtolower($vdcode) != $svali || $svali == '') {
-        ResetVdValue();
-        ShowMsg('验证码错误', '-1');
-        exit();
-    }
+$svali = GetCkVdValue();
+if (strtolower($vdcode) != $svali || $svali == '') {
+    ResetVdValue();
+    ShowMsg('验证码不正确', '-1');
+    exit();
 }
 //校验CSRF
 CheckCSRF();
@@ -26,7 +23,7 @@ $flag = '';
 $autokey = $remote = $dellink = $autolitpic = 0;
 $userip = GetIP();
 if ($typeid == 0) {
-    ShowMsg('请指定文档所属栏目', '-1');
+    ShowMsg('您还没选择栏目，请选择发布文档栏目', '-1');
     exit();
 }
 $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend as cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$typeid' ";

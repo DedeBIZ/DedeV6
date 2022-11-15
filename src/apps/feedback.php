@@ -106,7 +106,7 @@ else if ($action == 'send') {
             //ResetVdValue();
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "验证码错误",
+                "msg" => "验证码不正确",
                 "data" => null,
             ));
             exit();

@@ -55,7 +55,7 @@ else if ($dopost == 'save') {
         $svali = GetCkVdValue();
         if (strtolower($vdcode) != $svali || $svali == '') {
             ResetVdValue();
-            ShowMsg('验证码错误', '-1');
+            ShowMsg('验证码不正确', '-1');
             exit();
         }
     }
@@ -65,7 +65,7 @@ else if ($dopost == 'save') {
     $autokey = $remote = $dellink = $autolitpic = 0;
     $userip = GetIP();
     if ($typeid == 0) {
-        ShowMsg('请指定文档所属栏目', '-1');
+        ShowMsg('您还没选择栏目，请选择发布文档栏目', '-1');
         exit();
     }
     $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend AS cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id='$typeid' ";

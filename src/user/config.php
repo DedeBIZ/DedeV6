@@ -80,7 +80,7 @@ function CheckCSRF()
             && is_string($_POST['_csrf_token']) && is_string($cc_csrf_token_check)
             && hash_equals($_POST['_csrf_token'], $cc_csrf_token_check))
     ) {
-        ShowMsg('CSRF校验失败，请刷新页面重新提交', '-1');
+        ShowMsg('刷新页面重新提交，请不要发布重复文档', '-1');
         exit();
     }
     DropCookie("dede_csrf_token");
@@ -108,13 +108,13 @@ $s_scriptName = $dedeNowurls[0];
 $menutype = '';
 $menutype_son = '';
 $gourl = empty($gourl) ? "" : RemoveXSS($gourl);
-//检查是否开放会员功能
+//检查是否开放用户功能
 if ($cfg_mb_open == 'N') {
     if (defined('AJAXLOGIN')) {
         if ($format === 'json') {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "系统关闭了会员功能，因此您无法访问此页面",
+                "msg" => "系统关闭了用户功能，因此您无法访问此页面",
                 "data" => null,
             ));
             exit;
@@ -122,7 +122,7 @@ if ($cfg_mb_open == 'N') {
             die('');
         }
     } else {
-        ShowMsg("系统关闭了会员功能，因此您无法访问此页面", "javascript:;");
+        ShowMsg("系统关闭了用户功能，因此您无法访问此页面", "javascript:;");
         exit();
     }
 }
@@ -199,10 +199,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "普通会员";
                 }
             }
-            ShowMsg("对不起，需要：<span class='text-primary'>$needname</span> 才能访问本页面<br>您目前的等级是：<span class='text-primary'>$myname</span> ", "-1", 0, 5000);
+            ShowMsg("对不起，需要<span class='text-primary'>$needname</span>才能访问本页面<br>您目前的等级是：<span class='text-primary'>$myname</span>", "-1", 0, 5000);
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("对不起，需要花费金币：<span class='text-primary'>$money</span> 才能访问本页面<br>您目前拥有的金币是：<span class='text-primary'>".$cfg_ml->M_Money."</span>  ", "-1", 0, 5000);
+            ShowMsg("对不起，需要花费金币<span class='text-primary'>$money</span>才能访问本页面<br>您目前拥有的金币是：<span class='text-primary'>".$cfg_ml->M_Money."</span>", "-1", 0, 5000);
             exit();
         }
     }
@@ -248,7 +248,7 @@ $safequestions[7] = '您最喜欢的歌曲是什么';
 function GetSafequestion($selid=0,$formname='safequestion')
 {
 	global $safequestions;
-	$safequestions_form = "<select class='form-control' name='$formname' id='$formname'>";
+	$safequestions_form = "<select name='$formname' id='$formname' class='form-control'>";
 	foreach($safequestions as $k=>$v)
 	{
 	 	if ($k==$selid) $safequestions_form .= "<option value='$k' selected>$v</option>\r\n";

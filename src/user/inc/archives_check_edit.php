@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEMEMBER')) exit('dedebiz');
 /**
  * 文档修改验证
  * 
@@ -8,14 +9,13 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!defined('DEDEMEMBER')) exit('dedebiz');
 require_once(DEDEINC."/image.func.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
 $flag = '';
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $userip = GetIP();
 if ($typeid == 0) {
-    ShowMsg('请指定文档所属栏目', '-1');
+    ShowMsg('您还没选择栏目，请选择发布文档栏目', '-1');
     exit();
 }
 //校验CSRF

@@ -26,12 +26,12 @@ if ($fmdo == 'sendMail') {
     $url = preg_replace("#http:\/\/#i", '', $url);
     $proto = IsSSL()? "https://" : "http://";
     $url = $proto.preg_replace("#\/\/#i", '/', $url);
-    $mailtitle = "{$cfg_webname}--会员邮件验证通知";
+    $mailtitle = "{$cfg_webname}，会员邮件验证通知";
     $mailbody = '';
     $mailbody .= "尊敬的用户<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，您好：\r\n";
     $mailbody .= "欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
-    $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏访问这地址：\r\n\r\n";
-    $mailbody .= "{$url}\r\n\r\n";
+    $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏访问这地址：\r\n";
+    $mailbody .= "{$url}\r\n";
     $mailbody .= "Powered by DedeBIZ开发团队\r\n";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
@@ -105,7 +105,6 @@ else if ($fmdo == 'user') {
     //检查email是否存在
     else  if ($dopost == "checkmail") {
         AjaxHead();
-
         if ($cfg_md_mailtest == 'N') {
             $msg = "<span class='text-dark'>√可以使用</span>";
         } else {
@@ -171,15 +170,9 @@ else if ($fmdo == 'login') {
         if (!isset($vdcode)) {
             $vdcode = '';
         }
-        $svali = GetCkVdValue();
-        if (strtolower($vdcode) != $svali || $svali == '') {
-            ResetVdValue();
-            ShowMsg('验证码错误', 'index.php');
-            exit();
-        }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();
-            ShowMsg("您输入的用户名 {$userid} 不合法", "index.php");
+            ShowMsg("您输入的用户名<span class='text-primary'>{$userid}</span>不合法", "index.php");
             exit();
         }
         if ($pwd == '') {
@@ -205,7 +198,7 @@ else if ($fmdo == 'login') {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg("成功登录，5秒钟后转向系统主页", "index.php", 0, 2000);
+                ShowMsg("成功登录，正在转向用户主页", "index.php", 0, 2000);
             } else {
                 $gourl = str_replace('^', '&', $gourl);
                 ShowMsg("成功登录，现在转向指定页面", $gourl, 0, 2000);

@@ -46,7 +46,7 @@
 				<td align="center"><?php echo $filetime;?></td>
 				<td align="center">
 					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
-					<?php if (!isset($fileinfos[$filename])){?>
+					<?php if (!isset($fileinfos[$filename])) {?>
 					<a href="javascript:;" onClick="javascript:DelTpl('<?php echo $filename;?>');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 					<?php }?>
 				</td>

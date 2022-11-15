@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文档处理函数
  * 
@@ -8,13 +9,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!defined('DEDEMEMBER')) exit('dedebiz');
 require_once(DEDEINC.'/image.func.php');
 require_once(DEDEINC."/userlogin.class.php");
 //检查用户是否被禁言
 CheckNotAllow();
 /**
- *  获得HTML里的外部资源，针对图片
+ *  获得网页里的外部资源，针对图片
  *
  * @param     string  $body  文档
  * @param     string  $rfurl  地址

@@ -22,7 +22,7 @@ if ($step == 1) {
         $svali = GetCkVdValue();
         if (strtolower($vdcode) != $svali || $svali == '') {
             ResetVdValue();
-            ShowMsg('验证码错误', '-1');
+            ShowMsg('验证码不正确', '-1');
             exit();
         }
         $userid = $uname = trim($userid);

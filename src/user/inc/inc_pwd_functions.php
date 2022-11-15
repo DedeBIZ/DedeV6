@@ -83,7 +83,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
     $mailbody = "您好".$userid."：\r\n感谢您使用".$cfg_webname."网\r\n".$cfg_webname."应您的要求，重新设置密码（如果您没有提出申请，请检查您的信息是否泄漏）\r\n本次临时登录密码为：".$randval." 请于三天内登录下面网址确认修改\r\n".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
     if ($type == 'INSERT') {
         $key = md5($randval);
-        $sql = "INSERT INTO `#@__pwd_tmp` (`mid` ,`membername` ,`pwd` ,`mailtime`)VALUES ('$mid', '$userid',  '$key', '$mailtime');";
+        $sql = "INSERT INTO `#@__pwd_tmp` (`mid` ,`membername` ,`pwd` ,`mailtime`) VALUES ('$mid', '$userid',  '$key', '$mailtime');";
         if ($db->ExecuteNoneQuery($sql)) {
             if ($send == 'Y') {
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
@@ -138,7 +138,7 @@ function sn($mid, $userid, $mailto, $send = 'Y')
     global $db;
     $tptim = (60 * 10);
     $dtime = time();
-    $sql = "SELECT * FROM #@__pwd_tmp WHERE mid = '$mid'";
+    $sql = "SELECT * FROM `#@__pwd_tmp` WHERE mid = '$mid'";
     $row = $db->GetOne($sql);
     if (!is_array($row)) {
         //发送新邮件；

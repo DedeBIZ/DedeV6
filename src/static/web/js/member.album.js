@@ -119,7 +119,7 @@ function ShowZipField(formitem,zipid,upid)
 		document.getElementById(zipid).style.display = 'none';
 	}
 }
-//图片显示与隐藏Html修改框
+//图片显示与隐藏修改框
 function ShowHtmlField(formitem,htmlid,upid)
 {
 	if ($Nav()!="IE"){
