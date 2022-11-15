@@ -10,13 +10,13 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
-	<body>
+	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
-		<div class="login-bg">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="login-area shadow-sm rounded">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="login-area d-inline-block">
+						<div class="login-box shadow-sm rounded text-left">
 							<h2 class="text-center mb-3">会员注册</h2>
 							<form method="post" action="reg_new.php" id="regUser" name="form2" onsubmit="return CheckSubmit();">
 								<input type="hidden" value="regbase" name="dopost">

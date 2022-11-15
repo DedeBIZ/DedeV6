@@ -10,13 +10,13 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 	</head>
-	<body>
+	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
-		<div class="login-bg">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="login-area shadow-sm rounded">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="login-area d-inline-block">
+						<div class="login-box shadow-sm rounded text-left">
 							<h2 class="text-center mb-3">欢迎登录</h2>
 							<form name='form1' method='POST' action='<?php echo $cfg_memberurl;?>/index_do.php'>
 								<input type="hidden" name="fmdo" value="login">
