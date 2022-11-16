@@ -47,17 +47,12 @@
 						</li>
 						{/dede:list}
 					</ul>
-					<nav>
-						<ul class="pagination justify-content-center py-3">
-							{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
-						</ul>
-					</nav>
+					<ul class="pagination justify-content-center py-3">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 				</div>
 				<div class="col-md-3">
 					{dede:include comment='栏目列表' filename='widget_channels.htm'/}
 					{dede:include comment='推荐文档' filename='widget_recommend_sg.htm'/}
 					{dede:include comment='热点文档' filename='widget_hot_sg.htm'/}
-					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
 				</div>
 			</div>
 		</main>

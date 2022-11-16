@@ -151,7 +151,7 @@ else if ($fmdo == 'user') {
         $litmitscores = $cfg_ml->fields['scores'] - $needscores;
         //保存记录
         $mtime = time();
-        $inquery = "INSERT INTO `#@__member_operation` (`buyid`,`pname`,`product`,`money`,`mtime`,`pid`,`mid`,`sta` ,`oldinfo`) VALUES ('ScoresToMoney','积分换金币操作','stc' ,'0' ,'$mtime' ,'0' ,'{$cfg_ml->M_ID}','0' ,'用 {$needscores} 积分兑了换金币：{$money} 个'); ";
+        $inquery = "INSERT INTO `#@__member_operation` (`buyid`,`pname`,`product`,`money`,`mtime`,`pid`,`mid`,`sta` ,`oldinfo`) VALUES ('ScoresToMoney','积分换金币操作','stc' ,'0' ,'$mtime' ,'0' ,'{$cfg_ml->M_ID}','0' ,'用{$needscores}积分兑了换金币{$money}个'); ";
         $dsql->ExecuteNoneQuery($inquery);
         //修改积分与金币值
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=$litmitscores, money= money + $money WHERE mid='".$cfg_ml->M_ID."' ");
@@ -185,7 +185,7 @@ else if ($fmdo == 'login') {
             $svali = GetCkVdValue();
             if (strtolower($vdcode) != $svali || $svali == '') {
                 ResetVdValue();
-                ShowMsg('验证码错误', 'index.php');
+                ShowMsg('验证码不正确', 'index.php');
                 exit();
             }
         }
@@ -193,11 +193,11 @@ else if ($fmdo == 'login') {
         $rs = $cfg_ml->CheckUser($userid, $pwd);
         if ($rs == 0) {
             ResetVdValue();
-            ShowMsg("用户名不存在", "index.php", 0, 2000);
+            ShowMsg("您的账号不存在", "index.php", 0, 2000);
             exit();
         } else if ($rs == -1) {
             ResetVdValue();
-            ShowMsg("密码错误", "index.php", 0, 2000);
+            ShowMsg("您的密码错误", "index.php", 0, 2000);
             exit();
         } else if ($rs == -2) {
             ResetVdValue();
@@ -207,10 +207,10 @@ else if ($fmdo == 'login') {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg("成功登录，正在转向用户主页", "index.php", 0, 2000);
+                ShowMsg("成功登录，正在跳转用户主页", "index.php", 0, 2000);
             } else {
                 $gourl = str_replace('^', '&', $gourl);
-                ShowMsg("成功登录，现在转向指定页面", $gourl, 0, 2000);
+                ShowMsg("成功登录，正在跳转指定页面", $gourl, 0, 2000);
             }
             exit();
         }

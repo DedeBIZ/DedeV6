@@ -30,79 +30,90 @@
 						<?php
 						$canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);
 						?>
-						<span>用积分兑换金币（<?php echo "兑换价格：{$cfg_money_scores}积分/个，您目前可兑换金币数量：{$canCav}个";?>）</span>
-						<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
-							<table width="100%" cellpadding="0" cellspacing="0" class="table">
-								<tbody>
-									<tr>
-										<td width="20%" align="right">兑换数量：</td>
-										<td width="270"><input name="money" type="text" id="money" class="form-control" value="<?php echo $canCav;?>"></td>
-										<td align="left"><button class="btn btn-success" type="submit">兑换</button></td>
-									</tr>
-								</tbody>
-							</table>
-						</form>
+						<div class="py-3">
+							<p>用积分兑换金币（<?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币数量{$canCav}个";?>）</p>
+							<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
+								<table width="100%" cellpadding="0" cellspacing="0" class="table">
+									<tbody>
+										<tr>
+											<td width="20%" align="right">兑换数量：</td>
+											<td><input type="text" name="money" id="money" class="form-control w-25" value="<?php echo $canCav;?>"></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td align="left"><button type="submit" class="btn btn-success">兑换</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
 						<?php }?>
-						<h4 class="py-3">用点卡充值</h4>
-						<form name="formrank" action="check_card.php" method="post">
-							<table width="100%" cellpadding="0" cellspacing="0" class="table">
-								<tbody>
+						<div class="py-3">
+							<h4 class="mb-3">用点卡充值</h4>
+							<form name="formrank" action="check_card.php" method="post">
+								<table width="100%" cellpadding="0" cellspacing="0" class="table">
+									<tbody>
+										<tr>
+											<td width="20%" align="right">点卡密码：</td>
+											<td><input type="text" name="cardid" id="cardid" class="form-control w-25"></td>
+										</tr>
+										<tr>
+											<td align="right">验证码</td>
+											<td>
+												<input type="text" name="vdcode" id="vdcode" class="form-control text-uppercase d-inline-block w-25">
+												<img src="../apps/vdimgck.php" title="验证码" onclick="this.src=this.src+'?'">
+											</td>
+										</tr>
+										<tr>
+											<td align="right"></td>
+											<td><button type="submit" class="btn btn-success">充值</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+						<div class="py-3">
+							<h4 class="mb-3">购买新点卡</h4>
+							<form name="f1" action="buy_action.php" method="post">
+								<input type="hidden" name="product" value="card">
+								<table width="100%" cellpadding="0" cellspacing="0" class="table">
 									<tr>
-										<td width="20%" align="right">点卡密码：</td>
-										<td><input name="cardid" type="text" id="cardid" class="form-control"></td>
+										<th width="10%">选择</th>
+										<th>点卡类型</th>
+										<th width="16%">金币数量</th>
+										<th width="12%">购买价格</th>
 									</tr>
+									<tbody>
+										<?php echo $moneycards;?>
+									</tbody>
+								</table>
+								<div class="text-center"><button type="submit" class="btn btn-success">购买</button></div>
+							</form>
+						</div>
+						<div class="py-3">
+							<h4 class="mb-3">会员升级</h4>
+							<form name="f1" action="buy_action.php" method="post">
+								<input type="hidden" name="product" value="member">
+								<table width="100%" cellpadding="0" cellspacing="0" class="table">
+									<thead>
+										<tr>
+											<th colspan="5">会员升级</th>
+										</tr>
+									</thead>
 									<tr>
-										<td align="right">验证码</td>
-										<td width="270">
-											<input name="vdcode" type="text" id="vdcode" class="form-control text-uppercase d-inline-block w-25">
-											<img src="../apps/vdimgck.php" title="验证码" onclick="this.src=this.src+'?'">
-										</td>
+										<th width="10%">选择</th>
+										<th>产品名称</th>
+										<th width="12%">会员类型</th>
+										<th width="16%">时限（天）</th>
+										<th width="12%">价格</th>
 									</tr>
-									<tr>
-										<td align="right"></td>
-										<td><button class="btn btn-success" type="submit">充值</button></td>
-									</tr>
-								</tbody>
-							</table>
-						</form>
-						<h4 class="py-3">购买新点卡</h4>
-						<form name="f1" action="buy_action.php" method="post">
-							<input type="hidden" name="product" value="card">
-							<table width="100%" cellpadding="0" cellspacing="0" class="table">
-								<tr style="background:#e9ecef">
-									<th width="10%">选择</th>
-									<th>点卡类型</th>
-									<th width="16%">金币数量</th>
-									<th width="12%">购买价格</th>
-								</tr>
-								<tbody>
-									<?php echo $moneycards;?>
-								</tbody>
-							</table>
-							<button class="btn btn-success" type="submit">购买</button>
-						</form>
-						<h4 class="py-3">会员升级</h4>
-						<form name="f1" action="buy_action.php" method="post">
-							<input type="hidden" name="product" value="member">
-							<table width="100%" cellpadding="0" cellspacing="0" class="table">
-								<thead>
-									<tr>
-										<th colspan="5" style="text-align:left;padding-left:10px">会员升级</th>
-									</tr>
-								</thead>
-								<tr style="background:#e9ecef">
-									<th width="10%">选择</th>
-									<th>产品名称</th>
-									<th width="12%">会员类型</th>
-									<th width="16%">时限（天）</th>
-									<th width="12%">价格</th>
-								</tr>
-								<tbody>
-									<?php echo $membertypes?>
-								</tbody>
-							</table>
-							<button class="btn btn-success" type="submit">购买</button>
-						</form>
+									<tbody>
+										<?php echo $membertypes?>
+									</tbody>
+								</table>
+								<div class="text-center"><button type="submit" class="btn btn-success">购买</button></div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -51,15 +51,15 @@
 							<input type="hidden" name="sortrank" value="<?php echo $row['sortrank'];?>">		
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label"><?php echo $cInfos['typename'];?>名称</label>
-								<div class="col-sm-10"><input name="title" type="text" id="title" value="<?php echo $row['title']?>" class="form-control" placeholder="请输入标题"></div>
+								<div class="col-sm-10"><input type="text" name="title" id="title" class="form-control" value="<?php echo $row['title']?>"></div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">标签</label>
-								<div class="col-sm-10"><input name="tags" type="text" value="<?php echo GetTags($row['id']);?>" id="tags" class="form-control"></div>
+								<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">作者</label>
-								<div class="col-sm-10"><input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control"></div>
+								<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">发布栏目</label>
@@ -164,7 +164,7 @@
 								</div>
 								<div class="form-group col-md-6">
 									<label for="source">软件来源</label>
-									<input name="source" type="text" id="source" value="<?php echo $row['source'] ?>" maxlength="100" class="form-control">
+									<input type="text" name="source" id="source" value="<?php echo $row['source'] ?>" maxlength="100" class="form-control">
 								</div>
 							</div>
 							<?php
@@ -182,13 +182,13 @@
 							</div>
 							<div class="form-group">
 								<label>下载地址：</label>
-								<input name="softurl1" type="text" id="softurl1" class="form-control">
-								服务器名称：<input name="servermsg1" type="text" id="servermsg1" value="下载" class="form-control">
+								<input type="text" name="softurl1" id="softurl1" class="form-control">
+								服务器名称：<input type="text" name="servermsg1" id="servermsg1" class="form-control" value="下载">
 							</div>
 							<div class="form-group">
 								<label>其它地址：</label>
-								<input name="picnum" type="text" id="picnum" value="5" size="8" class="form-control d-inline-block w-25">
-								<button name='kkkup' type='button' id='kkkup2' onclick="MakeUpload();" class="btn btn-success">增加地址</button>
+								<input type="text" name="picnum" id="picnum" value="5" class="form-control d-inline-block w-25">
+								<button type="button" name="kkkup" id="kkkup2" onclick="MakeUpload();" class="btn btn-success">增加地址</button>
 								<button type="button" name="Submit3" id="btsh3" onclick="ShowHideAddr();" class="btn btn-success">隐藏地址</button> (最多为12个链接）
 							</div>
 							<div id="morelink">

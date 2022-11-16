@@ -553,7 +553,7 @@ class SgListView
             $t1 = ExecTime();
             $ids = array();
             $nordersql = str_replace('.aid', '.id', $ordersql);
-            $query = "SELECT id From `#@__arctiny` arc WHERE {$this->addSql} $nordersql LIMIT $limitstart,$row";
+            $query = "SELECT id FROM `#@__arctiny` arc WHERE {$this->addSql} $nordersql LIMIT $limitstart,$row";
             $this->dsql->SetQuery($query);
             $this->dsql->Execute();
             while ($arr = $this->dsql->GetArray()) {

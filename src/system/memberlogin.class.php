@@ -46,7 +46,7 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
             }
         } else {
             if (preg_match("/[^0-9a-z@\.-]/i", $ck_uid[$i])) {
-                return $msgtitle.'不能含有 [@]、[.]、[-]以外的特殊符号';
+                return $msgtitle.'不能含有[@]、[.]、[-]以外的特殊符号';
             }
         }
     }
@@ -415,7 +415,6 @@ class MemberLogin
             return 0;
         }
     }
-
     /**
      * 是否需要验证码
      *
@@ -427,7 +426,6 @@ class MemberLogin
         $num = $this->getLoginError($loginuser);
         return $num >= 3 ? true : false;
     }
-    
     /**
      * 1分钟以内登录错误的次数
      *
@@ -464,7 +462,7 @@ class MemberLogin
             return;
         }
         $loginip = GetIP();
-        $inquery = "UPDATE `#@__member` SET loginip='$loginip',logintime='" . time() . "',loginerr=loginerr+1 WHERE userid='" . $loginuser . "'";
+        $inquery = "UPDATE `#@__member` SET loginip='$loginip',logintime='".time()."',loginerr=loginerr+1 WHERE userid='".$loginuser."'";
         $dsql->ExecuteNoneQuery($inquery);
     }
     /**
@@ -508,15 +506,15 @@ class MemberLogin
         if ($this->M_Rank == 0) {
             $sta .= "您目前的身份是：普通会员";
         } else {
-            $row = $dsql->GetOne("Select membername From `#@__arcrank` where `rank`='".$this->M_Rank."'");
+            $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$this->M_Rank."'");
             $sta .= "您目前的身份是：".$row['membername'];
-            $rs = $dsql->GetOne("Select id From `#@__admin` where userid='".$this->M_LoginID."'");
+            $rs = $dsql->GetOne("SELECT id FROM `#@__admin` WHERE userid='".$this->M_LoginID."'");
             if (!is_array($rs)) {
-                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余天数：<span class='text-primary'>".$this->M_HasDay."</span>天";
-                elseif ($this->M_Rank > 10) $sta .= "<span class='text-primary'>会员升级已经到期</span> ";
+                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余<span class='text-primary'>".$this->M_HasDay."</span>天";
+                elseif ($this->M_Rank > 10) $sta .= "<span class='text-danger'>会员已到期</span>";
             }
         }
-        $sta .= " 拥有金币：{$this->M_Money} 个，积分：{$this->M_Scores}分";
+        $sta .= " 积分<span class='text-primary'>{$this->M_Scores}</span>分，金币<span class='text-primary'>{$this->M_Money}</span>个";
         return $sta;
     }
     //获取能够发布文档的栏目

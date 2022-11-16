@@ -57,10 +57,10 @@
 						<div class="col-md-8">
 							<div class="row actbox">
 								<ul>
-									<li><i class="fa fa-star-o"></i><a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
-									<li><i class="fa fa-bug"></i><a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a></li>
-									<li><i class="fa fa-thumbs-o-up"></i><a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
-									<li><i class="fa fa-print"></i><a href="javascript:;" onClick="window.print();">打印</a></li>
+									<li><i class="fa fa-star-o mr-2"></i><a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
+									<li><i class="fa fa-bug mr-2"></i><a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a></li>
+									<li><i class="fa fa-thumbs-o-up mr-2"></i><a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
+									<li><i class="fa fa-print mr-2"></i><a href="javascript:;" onClick="window.print();">打印</a></li>
 								</ul>
 							</div>
 						</div>
@@ -69,9 +69,17 @@
 					{dede:include comment='文档评论模块' file='widget_article_feedback.htm'/}
 				</div>
 				<div class="col-md-3">
+					<div class="pb-3">
+	                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
+	                        <input type="hidden" name="kwtype" value="0">
+	                        <div class="input-group">
+		                        <input name="q" type="text" class="form-control" placeholder="请输入...">
+		                        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+		                    </div>
+	                    </form>
+                    </div>
 					{dede:include comment='推荐文档' filename='widget_recommend.htm'/}
 					{dede:include comment='热点文档' filename='widget_hot.htm'/}
-					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
 				</div>
 			</div>
 		</main>

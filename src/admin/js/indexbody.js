@@ -118,15 +118,15 @@ function LoadServer() {
                 </tr>
                 <tr>
                     <td width="90">文件1：</td>
-                    <td>/system/database/dedesqlite.class.php</td>
+                    <td>.../system/database/1.php</td>
                 </tr>
                 <tr>
                     <td>文件2：</td>
-                    <td>/system/database/dedesqlite.class.php</td>
+                    <td>.../system/database/2.php</td>
                 </tr>
                 <tr>
                     <td>文件3：</td>
-                    <td>/system/database/dedesqlite.class.php</td>
+                    <td>.../system/database/3.php</td>
                 </tr>
             </table>
             <table class="table table-borderless w-100">

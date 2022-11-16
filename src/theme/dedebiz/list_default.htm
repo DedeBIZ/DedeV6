@@ -47,17 +47,21 @@
 						</li>
 						{/dede:list}
 					</ul>
-					<nav>
-						<ul class="pagination justify-content-center py-3">
-							{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
-						</ul>
-					</nav>
+					<ul class="pagination justify-content-center py-3">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 				</div>
 				<div class="col-md-3">
-					{dede:include comment='栏目列表' filename='widget_channels.htm'/}
+					<div class="pb-3">
+	                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
+	                        <input type="hidden" name="kwtype" value="0">
+	                        <div class="input-group">
+		                        <input name="q" type="text" class="form-control" placeholder="请输入...">
+		                        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+		                    </div>
+	                    </form>
+                    </div>
+                    {dede:include comment='栏目列表' filename='widget_channels.htm'/}
 					{dede:include comment='推荐文档' filename='widget_recommend.htm'/}
 					{dede:include comment='热点文档' filename='widget_hot.htm'/}
-					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
 				</div>
 			</div>
 		</main>

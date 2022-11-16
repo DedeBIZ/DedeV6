@@ -44,7 +44,7 @@ if ($needMoney > 0 || $needRank > 1) {
         }
         $memberTypes[0] = "游客或没权限会员";
         $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-        $moremsg = "这篇文档需要<span class='text-primary'>".$memberTypes[$needRank]."</span> 才能访问，您目前是：<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>";
+        $moremsg = "文档需要<span class='text-primary'>".$memberTypes[$needRank]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>";
         include_once(DEDETEMPLATE.'/plus/view_msg.htm');
         exit();
     }
@@ -56,7 +56,7 @@ if ($needMoney > 0 || $needRank > 1) {
         if (!is_array($row)) {
             if ($cfg_ml->M_Money == '' || $needMoney > $cfg_ml->M_Money) {
                 $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-                $moremsg = "这篇文档需要<span class='text-primary'>".$needMoney." 金币</span> 才能访问，您目前拥有金币：<span class='text-primary'>".$cfg_ml->M_Money." 个</span>";
+                $moremsg = "文档需要<span class='text-primary'>".$needMoney."金币</span>才能浏览，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."个</span>";
                 include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                 $arc->Close();
                 exit();
@@ -69,7 +69,7 @@ if ($needMoney > 0 || $needRank > 1) {
                             showmsg('购买失败, 请返回', -1);
                             exit;
                         }
-                        showmsg('购买成功，购买扣点不会重扣金币，谢谢', '/plus/view.php?aid='.$aid);
+                        showmsg('购买成功，购买扣点不会重扣金币', '/plus/view.php?aid='.$aid);
                         exit;
                     } else {
                         showmsg('购买失败，请返回', -1);
@@ -77,7 +77,7 @@ if ($needMoney > 0 || $needRank > 1) {
                     }
                 }
                 $msgtitle = "扣金币购买阅读";
-                $moremsg = "阅读该文档需要付费<br>这篇文档需要<span class='text-primary'>".$needMoney." 金币</span> 才能访问，您目前拥有金币<span class='text-primary'>".$cfg_ml->M_Money." </span>个<br>确认阅读请点 [<a href='/plus/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>]";
+                $moremsg = "浏览该文档需要付费<br>文档需要<span class='text-primary'>".$needMoney."金币</span>才能浏览，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>个<br><a href='/plus/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>";
                 include_once($cfg_basedir.$cfg_templets_dir."/plus/view_msg.htm");
                 $arc->Close();
                 exit();

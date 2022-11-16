@@ -32,11 +32,11 @@
 								</div>
 								{/dede:arclist}
 							</div>
-							<a class="carousel-control-prev" href="#carouselIndex" role="button" data-slide="prev">
+							<a href="#carouselIndex" class="carousel-control-prev" role="button" data-slide="prev">
 								<span class="carousel-control-prev-icon"></span>
 								<span class="sr-only">上一个</span>
 							</a>
-							<a class="carousel-control-next" href="#carouselIndex" role="button" data-slide="next">
+							<a href="#carouselIndex" class="carousel-control-next" role="button" data-slide="next">
 								<span class="carousel-control-next-icon"></span>
 								<span class="sr-only">下一个</span>
 							</a>
@@ -67,7 +67,7 @@
 		</div>
 		<div class="container py-3">
 			<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-9 mb-3">
 					<div class="row spec">
 						<div class="col-md-12 mb-3">
 							<h4 class="title">图文资讯</h4>
@@ -109,6 +109,15 @@
 					</div>
 				</div>
 				<div class="col-md-3">
+					<div class="pb-3">
+	                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
+	                        <input type="hidden" name="kwtype" value="0">
+	                        <div class="input-group">
+		                        <input name="q" type="text" class="form-control" placeholder="请输入...">
+		                        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+		                    </div>
+	                    </form>
+                    </div>
 					{dede:include comment='推荐文档' filename='widget_recommend.htm'/}
 					{dede:include comment='热点文档' filename='widget_hot.htm'/}
 					{dede:include comment='投票' filename='widget_vote.htm'/}

@@ -47,7 +47,7 @@
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 			<form name="forms" method="post" action="media_main.php">
 				<tr bgcolor="#f5f5f5">
-					<td width="380" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词"  value="<?php echo $keyword?>" class="admin-input-md"></td>
+					<td width="380" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" class="admin-input-md"></td>
 					<td width="170">
 						<select name="mediatype" class="admin-input-sm">
 							<option value="0">文件类型</option>
@@ -86,8 +86,7 @@
 			</tr>
 			<form name="form1">
 				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
-				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';"
-					onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}"></td>
 					<td><a href="{dede:field.url/}" title="{dede:field.url/}" target="_blank">{dede:field.title/}</a>
 					</td>

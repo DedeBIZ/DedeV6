@@ -86,7 +86,6 @@ class DedeVote
      *  获得项目的投票表单
      *
      * @access    public
-     * @param     int   $lineheight  行高
      * @param     string   $tablewidth  表格宽度
      * @param     string   $titlebgcolor  标题颜色
      * @param     string   $titlebackgroup  标题背景
@@ -94,12 +93,9 @@ class DedeVote
      * @param     string   $itembgcolor  项目背景
      * @return    string
      */
-    function GetVoteForm($lineheight = 30, $tablewidth = "100%", $titlebgcolor = "#edede2", $titlebackgroup = "", $tablebg = "#ffffff", $itembgcolor = "#ffffff")
+    function GetVoteForm($tablewidth = "100%", $titlebgcolor = "#edede2", $titlebackgroup = "", $tablebg = "#ffffff", $itembgcolor = "#ffffff")
     {
         //省略参数
-        if ($lineheight == "") {
-            $lineheight = 26;
-        }
         if ($tablewidth == "") {
             $tablewidth = "100%";
         }
@@ -115,23 +111,23 @@ class DedeVote
         if ($itembgcolor == "") {
             $itembgcolor = "#ffffff";
         }
-        $items = "<table width='$tablewidth' cellspacing='1' class='table' cellpadding='1' id='voteitem'>\r\n";
+        $items = "<table width='$tablewidth' cellspacing='1' cellpadding='1' id='voteitem' class='table'>\r\n";
         $items .= "<form name='voteform' method='post' action='".$GLOBALS['cfg_phpurl']."/vote.php' target='_blank'>\r\n";
         $items .= "<input type='hidden' name='dopost' value='send' />\r\n";
         $items .= "<input type='hidden' name='aid' value='".$this->VoteID."' />\r\n";
         $items .= "<input type='hidden' name='ismore' value='".$this->VoteInfos['ismore']."' />\r\n";
-        $items .= "<tr align='center'><td height='$lineheight' id='votetitle' style='border-bottom:1px dashed #999999;color:#3F7652' $titlebackgroup>".$this->VoteInfos['votename']."</td></tr>\r\n";
+        $items .= "<tr align='center'><td id='votetitle' $titlebackgroup>".$this->VoteInfos['votename']."</td></tr>\r\n";
         if ($this->VoteCount > 0) {
             foreach ($this->VoteNotes as $k => $arr) {
                 if ($this->VoteInfos['ismore'] == 0) {
-                    $items .= "<tr><td height='$lineheight' bgcolor='$itembgcolor'><label><input type='radio' name='voteitem' value='$k'> ".$arr['name']."</label></td></tr>\r\n";
+                    $items .= "<tr><td bgcolor='$itembgcolor'><label class='mb-0'><input type='radio' name='voteitem' value='$k'> ".$arr['name']."</label></td></tr>\r\n";
                 } else {
-                    $items .= "<tr><td height='$lineheight' bgcolor='$itembgcolor'><label><input type=checkbox name='voteitem[]' value='$k'> ".$arr['name']."</label></td></tr>\r\n";
+                    $items .= "<tr><td bgcolor='$itembgcolor'><label class='mb-0'><input type=checkbox name='voteitem[]' value='$k'> ".$arr['name']."</label></td></tr>\r\n";
                 }
             }
-            $items .= "<tr><td height='$lineheight'>\r\n";
-            $items .= "<input type='submit' class='btn btn-success' name='vbt1' value='投票'>\r\n";
-            $items .= "<input type='button' class='btn btn-success' name='vbt2' value='查看结果' onClick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."');>";
+            $items .= "<tr><td>\r\n";
+            $items .= "<input type='submit' name='vbt1' class='btn btn-success' value='投票'>\r\n";
+            $items .= "<input type='button' name='vbt2' class='btn btn-success' value='查看结果' onClick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."');>";
             $items .= "</td></tr>\r\n";
         }
         $items .= "</form>\r\n</table>\r\n";
@@ -227,23 +223,21 @@ class DedeVote
      *
      * @access    public
      * @param     string   $tablewidth  表格宽度
-     * @param     string   $lineheight  行高
      * @param     string   $tablesplit  表格分隔
      * @return    string
      */
-    function GetVoteResult($tablewidth = "600", $lineheight = "24", $tablesplit = "40%")
+    function GetVoteResult($tablewidth = "600", $tablesplit = "40%")
     {
         $totalcount = $this->VoteInfos['totalcount'];
         if ($totalcount == 0) {
             $totalcount = 1;
         }
-        $res = "<table width='$tablewidth' class='table' cellspacing='1' cellpadding='1'>\r\n";
-        $res .= "<tr height='8'><td width='$tablesplit'></td><td></td></tr>\r\n";
+        $res = "<table width='$tablewidth' cellspacing='1' cellpadding='1' class='table'>\r\n";
         $i = 1;
         foreach ($this->VoteNotes as $k => $arr) {
-            $res .= "<tr height='$lineheight'><td style='border-bottom:1px solid'>".$i."、".$arr['name']."</td>";
+            $res .= "<tr><td width='260'>".$i."、".$arr['name']."</td>";
             $c = $arr['count'];
-            $res .= "<td style='border-bottom:1px solid'><div class='progress'><div class='progress-bar' role='progressbar' style='width: ".(($c / $totalcount) * 100)."%' aria-valuenow='".(($c / $totalcount) * 100)."' aria-valuemin='0' aria-valuemax='100'></div></div></td></tr>\r\n";
+            $res .= "<td><div class='progress'><div class='progress-bar' role='progressbar' style='width: ".(($c / $totalcount) * 100)."%' aria-valuenow='".(($c / $totalcount) * 100)."' aria-valuemin='0' aria-valuemax='100'></div></div></td></tr>\r\n";
             $i++;
         }
         $res .= "<tr><td></td><td></td></tr>\r\n";

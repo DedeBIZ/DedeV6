@@ -490,7 +490,7 @@ class Archives
             if ($GLOBALS['cfg_jump_once'] == 'N') {
                 $pageHtml = "<html>\r\n<head>\r\n<meta charset=".$GLOBALS['cfg_soft_lang']."\">\r\n<title>".$this->Fields['title']."</title>\r\n";
                 $pageHtml .= "<meta http-equiv=\"refresh\" content=\"3;URL=".$this->Fields['redirecturl']."\">\r\n</head>\r\n<body>\r\n";
-                $pageHtml .= "现在正在转向：".$this->Fields['title']."，请稍候<br><br>\r\n转向文档简介：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
+                $pageHtml .= "现在正在跳转：".$this->Fields['title']."，请稍候<br><br>\r\n跳转文档简介：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
                 echo $pageHtml;
             } else {
                 header("location:{$this->Fields['redirecturl']}");
@@ -666,8 +666,7 @@ class Archives
      *  获取上一篇，下一篇链接
      *
      * @access    public
-     * @param     string  $gtype  获取类型
-     *                    pre:上一篇  preimg:上一篇图片  next:下一篇  nextimg:下一篇图片
+     * @param     string  $gtype  pre为上一篇 preimg为上一篇图片 next为下一篇 nextimg为下一篇图片
      * @return    string
      */
     function GetPreNext($gtype = '')
@@ -675,10 +674,10 @@ class Archives
         $rs = '';
         if (count($this->PreNext) < 2) {
             $aid = $this->ArcID;
-            $preR =  $this->dsql->GetOne("Select id From `#@__arctiny` where id<$aid And arcrank>-1 And typeid='{$this->Fields['typeid']}' order by id desc");
-            $nextR = $this->dsql->GetOne("Select id From `#@__arctiny` where id>$aid And arcrank>-1 And typeid='{$this->Fields['typeid']}' order by id asc");
-            $next = (is_array($nextR) ? " where arc.id={$nextR['id']} " : ' where 1>2 ');
-            $pre = (is_array($preR) ? " where arc.id={$preR['id']} " : ' where 1>2 ');
+            $preR =  $this->dsql->GetOne("SELECT id FROM `#@__arctiny` WHERE id<$aid And arcrank>-1 And typeid='{$this->Fields['typeid']}' ORDER BY id DESC");
+            $nextR = $this->dsql->GetOne("SELECT id FROM `#@__arctiny` WHERE id>$aid And arcrank>-1 And typeid='{$this->Fields['typeid']}' ORDER BY id ASC");
+            $next = (is_array($nextR) ? " WHERE arc.id={$nextR['id']} " : ' WHERE 1>2 ');
+            $pre = (is_array($preR) ? " WHERE arc.id={$preR['id']} " : ' WHERE 1>2 ');
             $query = "SELECT arc.id,arc.title,arc.shorttitle,arc.typeid,arc.ismake,arc.senddate,arc.arcrank,arc.money,arc.filename,arc.litpic,t.typedir,t.typename,t.namerule,t.namerule2,t.ispart,t.moresite,t.siteurl,t.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` t on arc.typeid=t.id ";
             $nextRow = $this->dsql->GetOne($query.$next);
             $preRow = $this->dsql->GetOne($query.$pre);
@@ -899,12 +898,12 @@ class Archives
             $revalue = "";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<a href='view.php?aid=$aid&pageno=$i'>$v</a> \r\n";
+                    $revalue .= "<a href='view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
                 } else {
                     if ($pageNo == $i) {
                         $revalue .= " $v \r\n";
                     } else {
-                        $revalue .= "<a href='view.php?aid=$aid&pageno=$i'>$v</a> \r\n";
+                        $revalue .= "<a href='view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
                     }
                 }
                 $i++;
@@ -948,12 +947,12 @@ class Archives
             $revalue = "";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<a href='".$this->NameFirst.".".$this->ShortName."'>$v</a> \r\n";
+                    $revalue .= "<a href='".$this->NameFirst.".".$this->ShortName."'>$v</a>\r\n";
                 } else {
                     if ($pageNo == $i) {
                         $revalue .= " $v \r\n";
                     } else {
-                        $revalue .= "<a href='".$this->NameFirst."_".$i.".".$this->ShortName."'>$v</a> \r\n";
+                        $revalue .= "<a href='".$this->NameFirst."_".$i.".".$this->ShortName."'>$v</a>\r\n";
                     }
                 }
                 $i++;

@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/login.min.css">
 		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="js/login.js"></script>
+		<script src="../static/web/js/login.js"></script>
 	</head>
 	<body>
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
@@ -33,23 +33,23 @@
 					<div class="login-from">
 						<?php echo $redmsg;?>
 						<div class="login-area shadow-sm">
-							<h2 class="text-center mb-3">后台登录</h2>
+							<h2 class="text-center mb-3">管理登录</h2>
 							<form name="form1" method="post" action="login.php">
 								<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
 								<input type="hidden" name="dopost" value="login">
 								<input type="hidden" name="adminstyle" value="newDedeBIZ">
 								<div class="form-group">
 									<label for="iptUserid">账号</label>
-									<input type="text" name="userid" id="iptUserid" class="form-control">
+									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入管理员账号">
 								</div>
 								<div class="form-group">
 									<label for="iptPassword">密码</label>
-									<input type="password" name="pwd" id="iptPassword" class="form-control">
+									<input type="password" name="pwd" id="iptPassword" class="form-control" placeholder="请输入管理员密码">
 								</div>
-								<div id="vdimgck" class="form-group" style="display: none;">
+								<div id="vdimgck" class="form-group" style="display:none">
 									<label for="iptValidate">验证码</label>
 									<div class="input-group">
-										<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase">
+										<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
 										<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
 									</div>
 								</div>

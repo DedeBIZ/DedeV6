@@ -29,8 +29,8 @@ if (is_dir(dirname(__FILE__).'/../install')) {
 }
 //检测后台目录是否更名
 $cururl = GetCurUrl();
-if (preg_match('/admin\/login/i', $cururl)) {
-    $redmsg = '<div class="alert alert-warning">您的管理目录的名称中包含默认名称admin，建议把它修改为其它名称，那样会更安全</div>';
+if (preg_match('/admin/', $cururl)) {
+    $redmsg = '<div class="alert alert-warning">安全提示：后台管理目录名称中包含默认名称admin，建议把它修改为其它名称</div>';
 } else {
     $redmsg = '';
 }
@@ -50,29 +50,28 @@ if ($dopost == 'login') {
                 exit;
             }
         }
-
         $res = $cuserLogin->checkUser($userid, $pwd);
         if ($res == 1) {
             $cuserLogin->keepUser();
             if (!empty($gotopage)) {
-                ShowMsg('成功登录，正在转向管理管理主页', $gotopage);
+                ShowMsg('成功登录，正在跳转管理管理主页', $gotopage);
                 exit();
             } else {
-                ShowMsg('成功登录，正在转向管理管理主页', 'index.php');
+                ShowMsg('成功登录，正在跳转管理管理主页', 'index.php');
                 exit();
             }
         } else if ($res == -1) {
             ResetVdValue();
-            ShowMsg('您的账号不存在', 'login.php', 0, 1000);
+            ShowMsg('管理员账号不存在', 'login.php', 0, 1000);
             exit;
         } else {
             ResetVdValue();
-            ShowMsg('您的密码错误', 'login.php', 0, 1000);
+            ShowMsg('管理员密码错误', 'login.php', 0, 1000);
             exit;
         }
     } else {
         ResetVdValue();
-        ShowMsg('用户和密码没填写完整', 'login.php', 0, 1000);
+        ShowMsg('管理员账号和密码没填完整', 'login.php', 0, 1000);
         exit;
     }
 }

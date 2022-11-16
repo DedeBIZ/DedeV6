@@ -74,7 +74,7 @@ if ($action == 'post') {
             if ($diy->public == 2)
             {
                 $goto = "diy.php?action=list&diyid={$diy->diyid}";
-                $bkmsg = '发布成功，现在转向表单列表页';
+                $bkmsg = '发布成功，现在跳转表单列表页';
             } else {
                 $goto = !empty($cfg_cmspath) ? $cfg_cmspath : '/';
                 $bkmsg = '发布成功，请等待管理员处理';

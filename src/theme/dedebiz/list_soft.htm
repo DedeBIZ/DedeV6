@@ -38,26 +38,31 @@
 							<a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" class="mr-3"></a>
 							<div class="media-body row">
 								<div class="col-md-12 title">
-									<a href="[field:arcurl/]"><h4 class="title">[field:title/]</h4></a>
+									<a href="[field:arcurl/]"><h4>[field:title/]</h4></a>
 								</div>
 								<div class="col-md-12 description">
 									<a href="[field:arcurl/]">[field:description/]...</a>
 								</div>
-								<div class="col-md-12 addinfo">上传日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 推荐级别：[field:softrank
-									function='GetRankStar(@me)'/] 软件语言：[field:language/]</div>
+								<div class="col-md-12 addinfo">上传日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 推荐级别：[field:softrank function='GetRankStar(@me)'/] 软件语言：[field:language/]</div>
 							</div>
 						</li>
 						{/dede:list}
 					</ul>
-					<ul class="pagination justify-content-center py-3">
-						{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
-					</ul>
+					<ul class="pagination justify-content-center py-3">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 				</div>
 				<div class="col-md-3">
-					{dede:include comment='栏目列表' filename='widget_channels.htm'/}
+					<div class="pb-3">
+	                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
+	                        <input type="hidden" name="kwtype" value="0">
+	                        <div class="input-group">
+		                        <input name="q" type="text" class="form-control" placeholder="请输入...">
+		                        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+		                    </div>
+	                    </form>
+                    </div>
+                    {dede:include comment='栏目列表' filename='widget_channels.htm'/}
 					{dede:include comment='推荐文档' filename='widget_recommend.htm'/}
 					{dede:include comment='热点文档' filename='widget_hot.htm'/}
-					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
 				</div>
 			</div>
 		</main>

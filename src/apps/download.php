@@ -152,7 +152,7 @@ else if ($open == 2) {
     //读取文档信息，判断权限
     $arcRow = GetOneArchive($id);
     if ($arcRow['aid'] == '') {
-        ShowMsg('无法获取未知文档的信息!', '-1');
+        ShowMsg('无法获取未知文档的信息', '-1');
         exit();
     }
     extract($arcRow, EXTR_SKIP);
@@ -172,7 +172,7 @@ else if ($open == 2) {
             }
             $memberTypes[0] = "游客";
             $msgtitle = "您没有权限下载软件：{$arctitle}";
-            $moremsg = "这个软件需要<span class='text-primary'>".$memberTypes[$needRank]."</span> 才能下载，您目前是：<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span> ";
+            $moremsg = "这个软件需要<span class='text-primary'>".$memberTypes[$needRank]."</span>才能下载，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>";
             include_once(DEDETEMPLATE.'/plus/view_msg.htm');
             exit();
         }
@@ -186,7 +186,7 @@ else if ($open == 2) {
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {
                     $msgtitle = "您没有权限下载软件：{$arctitle}";
-                    $moremsg = "这个软件需要<span class='text-primary'>".$needMoney." 金币</span> 才能下载，您目前拥有金币：<span class='text-primary'>".$cfg_ml->M_Money." 个</span> ";
+                    $moremsg = "这个软件需要<span class='text-primary'>".$needMoney."金币</span>才能下载，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."个</span>";
                     include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                     exit(0);
                 }

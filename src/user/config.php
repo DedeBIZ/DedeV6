@@ -174,10 +174,10 @@ function CheckRank($rank = 0, $money = 0)
             //如果启用注册邮件验证
             if ($cfg_ml->fields['spacesta'] == '-10') {
                 if (empty($cfg_ml->fields['email'])) {
-                    ShowMsg("邮箱地址为空，请设置一个可用的邮箱地址", "edit_email.php", 0, 5000);
+                    ShowMsg("邮箱地址为空，请设置一个邮箱地址", "edit_email.php", 0, 5000);
                     exit;
                 }
-                $msg = "您尚未进行邮件验证，请到邮箱查阅</br>重新发送邮件验证 <a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail'><span class='text-primary'>点击此处</span></a>";
+                $msg = "您未进行邮件验证，请到验证邮箱</br>重新发送邮件验证<a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail' class='text-primary'>点击此处</a>";
                 ShowMsg($msg, "-1", 0, 5000);
                 exit;
             }
@@ -199,10 +199,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "普通会员";
                 }
             }
-            ShowMsg("对不起，需要<span class='text-primary'>$needname</span>才能访问本页面<br>您目前的等级是：<span class='text-primary'>$myname</span>", "-1", 0, 5000);
+            ShowMsg("对不起，需要<span class='text-primary'>$needname</span>才能浏览本页面<br>您目前等级是<span class='text-primary'>$myname</span>", "-1", 0, 5000);
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("对不起，需要花费金币<span class='text-primary'>$money</span>才能访问本页面<br>您目前拥有的金币是：<span class='text-primary'>".$cfg_ml->M_Money."</span>", "-1", 0, 5000);
+            ShowMsg("对不起，需要<span class='text-primary'>$money</span>金币才能浏览本页面<br>您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>个", "-1", 0, 5000);
             exit();
         }
     }

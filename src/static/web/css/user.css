@@ -1,16 +1,10 @@
 .login-area {
-	margin:8rem 0
+	margin:6rem 0
 }
 .login-box {
-	padding:1rem;
+	padding:1.25rem;
 	width:500px;
 	background:#fff
-}
-.login-box small.des {
-	color:#b5b5b5
-}
-.login-box .licence a {
-	color:#1eb867
 }
 #validateimg {
 	border-radius:0 .2rem .2rem 0
