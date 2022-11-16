@@ -80,8 +80,8 @@
 						<?php
 						if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};
 						echo ''.$fields['userid'].'';
-						if ($fields['spacesta']==-2) echo "<span class='text-primary'>[禁言]</span>";
-						if ($fields['spacesta']==-1) echo " <span class='text-danger'>[未审核]</span>";
+						if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";
+						if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";
 						?>
 						{dede:field.matt function="GetMAtt(@me)"/}
 					</td>

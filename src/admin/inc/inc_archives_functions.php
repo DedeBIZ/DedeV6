@@ -237,8 +237,8 @@ function CheckChannel($typeid, $channelid)
  *  检测文档权限
  *
  * @access    public
- * @param     int  $aid  文档AID
- * @param     int  $adminid  管理员ID
+ * @param     int  $aid  文档aid
+ * @param     int  $adminid  管理员id
  * @return    bool
  */
 function CheckArcAdmin($aid, $adminid)

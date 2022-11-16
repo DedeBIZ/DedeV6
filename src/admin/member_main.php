@@ -21,7 +21,7 @@ else $keyword = trim(FilterSearch($keyword));
 $mtypeform = empty($mtype) ? "<option value=''>类型</option>\r\n" : "<option value='$mtype'>$mtype</option>\r\n";
 $sexform = empty($sex) ? "<option value=''>性别</option>\r\n" : "<option value='$sex'>$sex</option>\r\n";
 $sortkey = empty($sortkey) ? 'mid' : preg_replace("#[^a-z]#i", '', $sortkey);
-$staArr = array(-2 => '限制用户(禁言)', -1 => '未通过审核', 0 => '审核通过，提示填写完整信息', 1 => '没填写详细资料', 2 => '正常使用状态');
+$staArr = array(-2 => '限制禁言用户', -1 => '未通过审核', 0 => '审核通过需要填写信息', 1 => '待补充完善信息', 2 => '正常使用');
 $staArrmatt = array(1 => '被推荐', 0 => '非普通 ');
 $MemberTypes = array();
 $dsql->SetQuery("SELECT `rank`,membername From `#@__arcrank` where `rank`>0 ");
@@ -72,7 +72,7 @@ function GetMemberName($rank, $mt)
 {
     global $MemberTypes;
     if (isset($MemberTypes[$rank])) {
-        if ($mt == 'ut') return "<span class='text-primary'>待升级".$MemberTypes[$rank]."</span>";
+        if ($mt == 'ut') return " <span class='btn btn-outline-warning btn-sm'>待升级".$MemberTypes[$rank]."</span>";
         else return $MemberTypes[$rank];
     } else {
         if ($mt == 'ut') return '';
@@ -82,7 +82,7 @@ function GetMemberName($rank, $mt)
 function GetMAtt($m)
 {
     if ($m < 1) return '';
-    else if ($m == 10) return "<span class='text-primary'>[管理员]</span>";
-    else return "<span class='text-primary'>[荐]</span>";
+    else if ($m == 10) return " <span class='btn btn-outline-success btn-sm'>管理员</span>";
+    else return " <span class='btn btn-outline-success btn-sm'>推荐</span>";
 }
 ?>
