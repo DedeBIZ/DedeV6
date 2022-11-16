@@ -118,12 +118,7 @@ else if ($dopost == 'save') {
                     }
                 }
             }
-            $notelist .= "{dede:specnote imgheight=\\'$imgheight\\' imgwidth=\\'$imgwidth\\'
-                infolen=\\'$infolen\\' titlelen=\\'$titlelen\\' col=\\'$col\\' idlist=\\'$okids\\'
-                name=\\'$notename\\' noteid=\\'$noteid\\' isauto=\'$isauto\' rownum=\\'$rownum\\'
-                keywords=\\'$keywords\\' typeid=\\'$typeid\\'}
-                $listtmp
-                {/dede:specnote}\r\n";
+            $notelist .= "{dede:specnote imgheight=\\'$imgheight\\' imgwidth=\\'$imgwidth\\' infolen=\\'$infolen\\' titlelen=\\'$titlelen\\' col=\\'$col\\' idlist=\\'$okids\\' name=\\'$notename\\' noteid=\\'$noteid\\' isauto=\'$isauto\' rownum=\\'$rownum\\' keywords=\\'$keywords\\' typeid=\\'$typeid\\'} $listtmp {/dede:specnote}\r\n";
         }
     }
     //分析处理附加表数据

@@ -10,11 +10,11 @@
     </head>
     <body>
         <table cellspacing="1" cellpadding="2" align="center" class="table maintable icon my-3">
-            <tr align="center">
-                <td width="36%" bgcolor="#f5f5f5">文件名称</td>
-                <td width="12%" bgcolor="#f5f5f5">文件大小</td>
-                <td width="20%" bgcolor="#f5f5f5">修改时间</td>
-                <td width="30%" bgcolor="#f5f5f5">操作</td>
+            <tr bgcolor="#f5f5f5" align="center">
+                <td width="36%">文件名称</td>
+                <td width="12%">文件大小</td>
+                <td width="20%">修改时间</td>
+                <td width="30%">操作</td>
             </tr>
             <?php
             $dh = scandir($inpath);
@@ -281,7 +281,7 @@
             }
             ?>
             <tr>
-              <td colspan="4" bgcolor="#f5f5f5">
+              <td bgcolor="#f5f5f5" colspan="4">
                 <?php if (!DEDEBIZ_SAFE_MODE) {?><a href="file_manage_main.php" class="btn btn-success btn-sm">根目录</a><?php }?>
                 <a href="file_manage_view.php?fmdo=newfile&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">新建文件</a>
                 <a href="file_manage_view.php?fmdo=newdir&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">新建目录</a>

@@ -17,8 +17,8 @@
 					sm = new difflib.SequenceMatcher(base, newtxt),
 					opcodes = sm.get_opcodes(),
 					diffoutputdiv = $("#diffoutput");
-				diffoutputdiv.html("")
-				diffoutputdiv.html(diffview.buildView({
+					diffoutputdiv.html("")
+					diffoutputdiv.html(diffview.buildView({
 					baseTextLines: base,
 					newTextLines: newtxt,
 					opcodes: opcodes,

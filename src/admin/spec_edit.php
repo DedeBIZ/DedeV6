@@ -165,12 +165,7 @@ else if ($dopost == 'save') {
                     }
                 }
             }
-            $notelist .= "{dede:specnote imgheight=\\'$imgheight\\' imgwidth=\\'$imgwidth\\'
-                infolen=\\'$infolen\\' titlelen=\\'$titlelen\\' col=\\'$col\\' idlist=\\'$okids\\'
-               name=\\'$notename\\' noteid=\\'$noteid\\' isauto=\'$isauto\' rownum=\\'$rownum\\'
-                keywords=\\'$keywords\\' typeid=\\'$ttypeid\\'}
-                $listtmp
-                {/dede:specnote}\r\n";
+            $notelist .= "{dede:specnote imgheight=\\'$imgheight\\' imgwidth=\\'$imgwidth\\' infolen=\\'$infolen\\' titlelen=\\'$titlelen\\' col=\\'$col\\' idlist=\\'$okids\\' name=\\'$notename\\' noteid=\\'$noteid\\' isauto=\'$isauto\' rownum=\\'$rownum\\' keywords=\\'$keywords\\' typeid=\\'$ttypeid\\'} $listtmp {/dede:specnote}\r\n";
         }
     }
     //更新附加表

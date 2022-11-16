@@ -228,8 +228,8 @@ else if ($action == 'savetagfile') {
     $msg = "
     <form name='form1' action='tag_test_action.php' target='blank' method='post'>
       <input type='hidden' name='dopost' value='make' />
-        测试标签：(需要使用环境变量的不能在此测试)<br>
-        <textarea name='partcode' cols='150' rows='6' style='width:90%;'>{dede:{$tagname} }{/dede:{$tagname}}</textarea><br>
+        标签测试（环境变量标签不能测试）<br>
+        <textarea name='partcode' cols='150' rows='6' style='width:90%;'>{dede:{$tagname}}{/dede:{$tagname}}</textarea><br>
         <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
     </form>
     ";
