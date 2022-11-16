@@ -11,75 +11,69 @@
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 			<tr>
-				<td bgcolor="#f5f5f5"><a href="friendlink_main.php">友情链接管理</a> &gt; 链接修改</td>
+				<td bgcolor="#f5f5f5" colspan="2"><a href="friendlink_main.php">友情链接管理</a> &gt; 链接修改</td>
 			</tr>
-			<tr>
-				<td>
-					<form action="friendlink_edit.php" method="post" enctype="multipart/form-data" name="form1">
-						<input type="hidden" name="id" value="<?php echo $myLink['id']?>">
-						<input type="hidden" name="dopost" value="saveedit">
-						<table cellspacing="1" cellpadding="3" class="table table-borderless w-100">
-							<tr>
-								<td width="260">网址：</td>
-								<td><input type="text" name="url" id="url" value="<?php echo $myLink['url']?>" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td width="260">排列位置：</td>
-								<td><input type="text" name="sortrank" id="sortrank" value="<?php echo $myLink['sortrank']?>" class="admin-input-sm">（由小到大排列）</td>
-							</tr>
-							<tr>
-								<td>网站名称：</td>
-								<td><input type="text" name="webname" id="webname" value="<?php echo $myLink['webname']?>" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td>网站Logo：</td>
-								<td><input type="text" name="logo" id="logo" value="<?php echo $myLink['logo']?>" class="admin-input-md">（88*31 gif或jpg）</td>
-							</tr>
-							<tr>
-								<td>上传Logo：</td>
-								<td><input type="text" name="logoimg" type="file" id="logoimg" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td>网站简况：</td>
-								<td><textarea name="msg" id="msg" class="admin-textarea-sm"><?php echo dede_htmlspecialchars($myLink['msg'])?></textarea></td>
-							</tr>
-							<tr>
-								<td>站长Email：</td>
-								<td><input type="text" name="email" id="email" value="<?php echo $myLink['email']?>" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td>链接位置：</td>
-								<td>
-									<label><input type="radio" name="ischeck" value="0" <?php if ($myLink['ischeck']==0) echo "checked='1'"?>> 未审核</label>
-									<label><input type="radio" name="ischeck" value="1" <?php if ($myLink['ischeck']==1) echo "checked='1'"?>> 内页</label>
-									<label><input type="radio" name="ischeck" value="2" <?php if ($myLink['ischeck']==2) echo "checked='1'"?>> 首页</label>
-								</td>
-							</tr>
-							<tr>
-								<td>网站类型：</td>
-								<td>
-									<select name="typeid" id="typeid" class="admin-input-sm">
-										<?php
-										echo " <option value='".$myLink['typeid']."'>".$myLink['typename']."</option>";
-										$dsql->SetQuery("SELECT * FROM `#@__flinktype` where id<>'".$myLink['typeid']."'");
-										$dsql->Execute();
-										while($row=$dsql->GetObject()){
-											echo " <option value='".$row->id."'>".$row->typename."</option>";
-										}
-										?>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center" class="py-2">
-									<button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
-									<button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';" class="btn btn-success btn-sm">返回</button>
-								</td>
-							</tr>
-						</table>
-					</form>
-				</td>
-			</tr>
+			<form action="friendlink_edit.php" method="post" enctype="multipart/form-data" name="form1">
+				<input type="hidden" name="id" value="<?php echo $myLink['id']?>">
+				<input type="hidden" name="dopost" value="saveedit">
+				<tr>
+					<td width="260">网址：</td>
+					<td><input type="text" name="url" id="url" value="<?php echo $myLink['url']?>" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td width="260">排列位置：</td>
+					<td><input type="text" name="sortrank" id="sortrank" value="<?php echo $myLink['sortrank']?>" class="admin-input-sm">（由小到大排列）</td>
+				</tr>
+				<tr>
+					<td>网站名称：</td>
+					<td><input type="text" name="webname" id="webname" value="<?php echo $myLink['webname']?>" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>网站Logo：</td>
+					<td><input type="text" name="logo" id="logo" value="<?php echo $myLink['logo']?>" class="admin-input-md">（88*31 gif或jpg）</td>
+				</tr>
+				<tr>
+					<td>上传Logo：</td>
+					<td><input type="text" name="logoimg" type="file" id="logoimg" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>网站简况：</td>
+					<td><textarea name="msg" id="msg" class="admin-textarea-sm"><?php echo dede_htmlspecialchars($myLink['msg'])?></textarea></td>
+				</tr>
+				<tr>
+					<td>站长Email：</td>
+					<td><input type="text" name="email" id="email" value="<?php echo $myLink['email']?>" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>链接位置：</td>
+					<td>
+						<label><input type="radio" name="ischeck" value="0" <?php if ($myLink['ischeck']==0) echo "checked='1'"?>> 未审核</label>
+						<label><input type="radio" name="ischeck" value="1" <?php if ($myLink['ischeck']==1) echo "checked='1'"?>> 内页</label>
+						<label><input type="radio" name="ischeck" value="2" <?php if ($myLink['ischeck']==2) echo "checked='1'"?>> 首页</label>
+					</td>
+				</tr>
+				<tr>
+					<td>网站类型：</td>
+					<td>
+						<select name="typeid" id="typeid" class="admin-input-sm">
+							<?php
+							echo " <option value='".$myLink['typeid']."'>".$myLink['typename']."</option>";
+							$dsql->SetQuery("SELECT * FROM `#@__flinktype` where id<>'".$myLink['typeid']."'");
+							$dsql->Execute();
+							while($row=$dsql->GetObject()){
+								echo " <option value='".$row->id."'>".$row->typename."</option>";
+							}
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center" class="py-2">
+						<button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
+						<button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';" class="btn btn-success btn-sm">返回</button>
+					</td>
+				</tr>
+			</form>
 		</table>
 	</body>
 </html>

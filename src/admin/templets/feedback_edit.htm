@@ -13,54 +13,48 @@
 			<tr>
 				<td width="100%" bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">评论管理</a> &gt; 修改评论</td>
 			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<form name="form1" method="post" action="feedback_edit.php">
-						<input type="hidden" name="dopost" value="edit">
-						<input type="hidden" name="id" value="<?php echo $row['id'];?>">
-						<table cellpadding="3" cellspacing="1" class="table table-borderless w-100">
-							<tr>
-								<td width="260">评论所属文档：</td>
-								<td><?php echo RemoveXSS($row['arctitle']);?></td>
-							</tr>
-							<tr>
-								<td>评论人：</td>
-								<td><input type="text" name="username" id="username" size="20" value="<?php echo $row['username'];?>"></td>
-							</tr>
-							<tr>
-								<td>评论发布时间：</td>
-								<td><?php echo GetDateTimeMK($row['dtime']);?></td>
-							</tr>
-							<tr>
-								<td>ip地址：</td>
-								<td><?php echo $row['ip'];?></td>
-							</tr>
-							<tr>
-								<td>评论文档：</td>
-								<td>修改的评论文档网页代码不会被屏蔽，可用语法修改</td>
-							</tr>
-							<tr>
-								<td height="62" align="center"></td>
-								<td height="62"><textarea name="msg" cols="60" rows="5" id="msg"><?php echo cn_substr(Text2Html($row['msg']), 250);?></textarea></td>
-							</tr>
-							<tr>
-								<td>管理员回复：</td>
-								<td>回复文档的网页代码会被屏蔽</td>
-							</tr>
-							<tr>
-								<td align="center"></td>
-								<td><textarea name="adminmsg" cols="60" rows="5" id="adminmsg"></textarea></td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center" class="py-2">
-									<button type="submit" class="btn btn-success btn-sm">保存</button>
-									<button type="button" onClick="location='<?php echo $ENV_GOBACK_URL;?>';" class="btn btn-success btn-sm">返回</button>
-								</td>
-							</tr>
-						</table>
-					</form>
-				</td>
-			</tr>
+			<form name="form1" method="post" action="feedback_edit.php">
+				<input type="hidden" name="dopost" value="edit">
+				<input type="hidden" name="id" value="<?php echo $row['id'];?>">
+				<tr>
+					<td width="260">评论所属文档：</td>
+					<td><?php echo RemoveXSS($row['arctitle']);?></td>
+				</tr>
+				<tr>
+					<td>评论人：</td>
+					<td><input type="text" name="username" id="username" size="20" value="<?php echo $row['username'];?>"></td>
+				</tr>
+				<tr>
+					<td>评论发布时间：</td>
+					<td><?php echo GetDateTimeMK($row['dtime']);?></td>
+				</tr>
+				<tr>
+					<td>ip地址：</td>
+					<td><?php echo $row['ip'];?></td>
+				</tr>
+				<tr>
+					<td>评论文档：</td>
+					<td>修改的评论文档网页代码不会被屏蔽，可用语法修改</td>
+				</tr>
+				<tr>
+					<td height="62" align="center"></td>
+					<td height="62"><textarea name="msg" cols="60" rows="5" id="msg"><?php echo cn_substr(Text2Html($row['msg']), 250);?></textarea></td>
+				</tr>
+				<tr>
+					<td>管理员回复：</td>
+					<td>回复文档的网页代码会被屏蔽</td>
+				</tr>
+				<tr>
+					<td align="center"></td>
+					<td><textarea name="adminmsg" cols="60" rows="5" id="adminmsg"></textarea></td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center" class="py-2">
+						<button type="submit" class="btn btn-success btn-sm">保存</button>
+						<button type="button" onClick="location='<?php echo $ENV_GOBACK_URL;?>';" class="btn btn-success btn-sm">返回</button>
+					</td>
+				</tr>
+			</form>
 		</table>
 	</body>
 </html>

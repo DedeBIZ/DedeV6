@@ -11,7 +11,7 @@
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 			<tr>
-				<td bgcolor="#f5f5f5">
+				<td bgcolor="#f5f5f5" colspan="2">
 					<table cellspacing="1" cellpadding="1" class="table table-borderless w-100">
 						<tr>
 							<td width="30%">修改帐号</td>
@@ -20,75 +20,69 @@
 					</table>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<form name="form1" action="sys_admin_user_edit.php" method="post">
-						<input type="hidden" name="dopost" value="saveedit">
-						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-						<input type="hidden" name="id" value="<?php echo $row['id']?>">
-						<table cellspacing="1" cellpadding="1" class="table table-borderless w-100">
-							<tr>
-								<td width="260" class="admin-td">用户登录id：</td>
-								<td><?php echo $row['userid']?></td>
-							</tr>
-							<tr>
-								<td class="admin-td">用户名称：</td>
-								<td class="admin-td"><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="admin-input-sm">（发布文档后显示作者的名字）</td>
-							</tr>
-							<tr>
-								<td class="admin-td">用户密码：</td>
-								<td class="admin-td"><input type="text" name="pwd" id="pwd" class="admin-input-md">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
-							</tr>
-							<tr>
-								<td class="admin-td">用户类型：</td>
-								<td class="admin-td">
-									<select name="usertype" class="admin-input-sm">
-										<?php
-										$dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
-										$dsql->Execute("ut");
-										while($myrow = $dsql->GetObject("ut"))
-										{
-											if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
-											else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
-										}
-										?>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td class="admin-td">负责栏目：</td>
-								<td class="admin-td">
-									<select name="typeids[]" id="typeid" multiple="true" class="admin-input-md" style="height:200px">
-										<option value="0" class="alltype">所有栏目</option>
-										<?php echo $typeOptions?>
-									</select>（按Ctrl可以进行多选）
-								</td>
-							</tr>
-							<tr>
-								<td class="admin-td">真实姓名：</td>
-								<td class="admin-td"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td class="admin-td">电子邮箱：</td>
-								<td class="admin-td"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td class="admin-td">验证安全码：</td>
-								<td class="admin-td">
-									<input type="text" name="safecode" id="safecode" class="admin-input-md">
-									<input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class="text-primary"><?php echo $safecode;?></span>）
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center" class="py-2">
-									<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
-									<button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm">返回</button>
-								</td>
-							</tr>
-						</table>
-					</form>
-				</td>
-			</tr>
+			<form name="form1" action="sys_admin_user_edit.php" method="post">
+				<input type="hidden" name="dopost" value="saveedit">
+				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+				<input type="hidden" name="id" value="<?php echo $row['id']?>">
+				<tr>
+					<td width="260" class="admin-td">用户登录id：</td>
+					<td><?php echo $row['userid']?></td>
+				</tr>
+				<tr>
+					<td class="admin-td">用户名称：</td>
+					<td class="admin-td"><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="admin-input-sm">（发布文档后显示作者的名字）</td>
+				</tr>
+				<tr>
+					<td class="admin-td">用户密码：</td>
+					<td class="admin-td"><input type="text" name="pwd" id="pwd" class="admin-input-md">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
+				</tr>
+				<tr>
+					<td class="admin-td">用户类型：</td>
+					<td class="admin-td">
+						<select name="usertype" class="admin-input-sm">
+							<?php
+							$dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
+							$dsql->Execute("ut");
+							while($myrow = $dsql->GetObject("ut"))
+							{
+								if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+								else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
+							}
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">负责栏目：</td>
+					<td class="admin-td">
+						<select name="typeids[]" id="typeid" multiple="true" class="admin-input-md" style="height:200px">
+							<option value="0" class="alltype">所有栏目</option>
+							<?php echo $typeOptions?>
+						</select>（按Ctrl可以进行多选）
+					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">真实姓名：</td>
+					<td class="admin-td"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td class="admin-td">电子邮箱：</td>
+					<td class="admin-td"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td class="admin-td">验证安全码：</td>
+					<td class="admin-td">
+						<input type="text" name="safecode" id="safecode" class="admin-input-md">
+						<input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class="text-primary"><?php echo $safecode;?></span>）
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center" class="py-2">
+						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
+						<button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm">返回</button>
+					</td>
+				</tr>
+			</form>
 		</table>
 	</body>
 </html>

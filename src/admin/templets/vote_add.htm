@@ -71,82 +71,76 @@
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 			<tr>
-				<td bgcolor="#f5f5f5"><a href='vote_main.php'>投票管理</a> &gt; 增加投票</td>
-			</tr>
-			<tr>
-				<td>
-					<table cellspacing="4" cellpadding="4" class="table table-borderless w-100">
-						<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
-							<input type="hidden" name="dopost" value="save">
-							<input type="hidden" name="isarc" value="<?php echo $isarc;?>">
-							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-							<tr>
-								<td width="260">投票名称：</td>
-								<td><input type="text" name="votename" id="votename" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td>开始时间：</td>
-								<td><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="dateico datepicker1" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td>结束时间：</td>
-								<td><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="dateico datepicker1" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td>是否允许游客投票：</td>
-								<td>
-									<label><input type="radio" name="isallow" value="0"> 是</label>
-									<label><input type="radio" name="isallow" value="1" checked> 否</label>
-								</td>
-							</tr>
-							<tr>
-								<td>是否允许查看投票：</td>
-								<td>
-									<label><input type="radio" name="view" value="0"> 是</label>
-									<label><input type="radio" name="view" value="1" checked> 否</label>
-								</td>
-							</tr>
-							<tr>
-								<td>投票时间间隔：</td>
-								<td><input type="text" name="spec" value="" class="admin-input-md">（N天后可再次投票，0表示此ip地址只能投一次）</td>
-							</tr>
-							<tr>
-								<td>是否多选：</td>
-								<td>
-									<label><input type="radio" name="ismore" value="0" checked> 单选</label>
-									<label><input type="radio" name="ismore" value="1"> 多选</label>
-								</td>
-							</tr>
-							<tr>
-								<td>投票项：</td>
-								<td>
-									<button type="button" name="bbb" class="btn btn-success btn-sm" onClick="AddItem();">增加投票选项</button>
-									<button type="button" name="bbb2" class="btn btn-success btn-sm" onClick="ResetItem();">重置投票选项</button>
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>
-									<div id="voteitem">选项1：<input type="text" name="voteitem1" size="30" id="voteitem1"></div>
-								</td>
-							</tr>
-							<tr>
-								<td>是否启用：</td>
-								<td>
-									<label><input type="radio" name="isenable" value="0" checked> 是</label>
-									<label><input type="radio" name="isenable" value="1"> 否</label>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center" class="py-2">
-									<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
-									<button type="button" onclick="history.back()" name="Submit" class="btn btn-success btn-sm">返回</button>
-								</td>
-							</tr>
-						</form>
-					</table>
-				</td>
-			</tr>
+				<td bgcolor="#f5f5f5" colspan="2"><a href='vote_main.php'>投票管理</a> &gt; 增加投票</td>
+			</tr>		
+			<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
+				<input type="hidden" name="dopost" value="save">
+				<input type="hidden" name="isarc" value="<?php echo $isarc;?>">
+				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+				<tr>
+					<td width="260">投票名称：</td>
+					<td><input type="text" name="votename" id="votename" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>开始时间：</td>
+					<td><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="dateico datepicker1" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>结束时间：</td>
+					<td><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="dateico datepicker1" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>是否允许游客投票：</td>
+					<td>
+						<label><input type="radio" name="isallow" value="0"> 是</label>
+						<label><input type="radio" name="isallow" value="1" checked> 否</label>
+					</td>
+				</tr>
+				<tr>
+					<td>是否允许查看投票：</td>
+					<td>
+						<label><input type="radio" name="view" value="0"> 是</label>
+						<label><input type="radio" name="view" value="1" checked> 否</label>
+					</td>
+				</tr>
+				<tr>
+					<td>投票时间间隔：</td>
+					<td><input type="text" name="spec" value="" class="admin-input-md">（N天后可再次投票，0表示此ip地址只能投一次）</td>
+				</tr>
+				<tr>
+					<td>是否多选：</td>
+					<td>
+						<label><input type="radio" name="ismore" value="0" checked> 单选</label>
+						<label><input type="radio" name="ismore" value="1"> 多选</label>
+					</td>
+				</tr>
+				<tr>
+					<td>投票项：</td>
+					<td>
+						<button type="button" name="bbb" class="btn btn-success btn-sm" onClick="AddItem();">增加投票选项</button>
+						<button type="button" name="bbb2" class="btn btn-success btn-sm" onClick="ResetItem();">重置投票选项</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<div id="voteitem">选项1：<input type="text" name="voteitem1" size="30" id="voteitem1"></div>
+					</td>
+				</tr>
+				<tr>
+					<td>是否启用：</td>
+					<td>
+						<label><input type="radio" name="isenable" value="0" checked> 是</label>
+						<label><input type="radio" name="isenable" value="1"> 否</label>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center" class="py-2">
+						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
+						<button type="button" onclick="history.back()" name="Submit" class="btn btn-success btn-sm">返回</button>
+					</td>
+				</tr>
+			</form>
 		</table>
 	</body>
 </html>
