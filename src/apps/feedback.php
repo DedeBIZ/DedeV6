@@ -232,13 +232,13 @@ else if ($action == 'send') {
     if ($ischeck == 0) {
         echo json_encode(array(
             "code" => 200,
-            "msg" => "成功发表评论，但需审核后才会显示您的评论",
+            "msg" => "成功发表评论，审核后才会显示您的评论",
             "data" => "ok",
         ));
     } else {
         echo json_encode(array(
             "code" => 200,
-            "msg" => "成功发表评论，现在转到评论页面",
+            "msg" => "成功发表评论，现在跳转评论页面",
             "data" => "ok",
         ));
     }

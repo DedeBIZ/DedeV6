@@ -117,7 +117,7 @@ class DedeHttpDown
         $this->PrivateStartSession($requestType);
     }
     /**
-     *  转到303重定向网址
+     *  跳转303重定向网址
      *
      * @access    public
      * @param     string   $url   地址

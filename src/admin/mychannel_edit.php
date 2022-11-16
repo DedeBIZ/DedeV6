@@ -252,7 +252,7 @@ else if ($dopost == "copysave") {
     }
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if ($rs) {
-        ShowMsg("成功复制模型，现转到详细参数页 ", "mychannel_edit.php?id={$newid}&dopost=edit");
+        ShowMsg("成功复制模型，现跳转详细参数页 ", "mychannel_edit.php?id={$newid}&dopost=edit");
         exit();
     } else {
         $errv = $dsql->GetError();

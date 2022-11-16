@@ -13,11 +13,11 @@ CheckPurview('sys_plus');
 $aid = preg_replace("#[^0-9]#", "", $aid);
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=1 WHERE aid='$aid';");
-    ShowMsg("成功启用一个插件，请刷新导航菜单", "plus_main.php");
+    ShowMsg("启用一个插件，请刷侧边导航", "plus_main.php");
     exit();
 } else if ($dopost == "hide") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=0 WHERE aid='$aid';");
-    ShowMsg("成功禁用一个插件，请刷新导航菜单", "plus_main.php");
+    ShowMsg("禁用一个插件，请刷侧边导航", "plus_main.php");
     exit();
 } else if ($dopost == "delete") {
     if (empty($job)) $job = "";
@@ -32,21 +32,21 @@ if ($dopost == "show") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("aid", $aid);
         $win->AddTitle("您确定要删除<span class='text-primary'>".$title."</span>插件吗");
-        $win->AddMsgItem("警告：在这里删除仅仅删除菜单项，要干净删除请在模块管理处删除<br><br><a href='module_main.php?moduletype=plus'>模块管理&gt;</a>");
+        $win->AddMsgItem("提示：这里仅删除插件导航项，要干净删除请在模块管理处卸载删除，<a href='module_main.php?moduletype=plus'>模块管理</a>");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
     } else if ($job == "yes") //操作
     {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__plus` WHERE aid='$aid';");
-        ShowMsg("成功删除一个插件，请刷侧边菜单", "plus_main.php");
+        ShowMsg("删除一个插件，请刷侧边导航", "plus_main.php");
         exit();
     }
 } else if ($dopost == "saveedit") //保存修改
 {
     $inquery = "UPDATE `#@__plus` SET plusname='$plusname',menustring='$menustring',filelist='$filelist' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功修改插件的配置", "plus_main.php");
+    ShowMsg("完成修改插件配置", "plus_main.php");
     exit();
 }
 $row = $dsql->GetOne("SELECT * FROM `#@__plus` WHERE aid='$aid'");

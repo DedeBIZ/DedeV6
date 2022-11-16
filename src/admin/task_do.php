@@ -104,7 +104,7 @@ if ($dopost == 'makeindex') {
         exit();
     } else {
         $jumpurl = GetNextUrl();
-        ShowMsg("完成主页更新 现在跳转到其它更新任务", $jumpurl, 0, 500);
+        ShowMsg("完成主页更新 现在跳转其它更新任务", $jumpurl, 0, 500);
         exit();
     }
 }
