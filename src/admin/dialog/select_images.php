@@ -155,7 +155,7 @@ html{background:#f5f5f5}
             </td>
         </tr>
         <tr>
-            <td class="admin-td" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
+            <td class="admin-td" colspan="4">点击图片预览，再点击图片关闭预览，点击文件名选择图片</td>
         </tr>
         <tr>
             <td width="6%" class="admin-td">预览</td>
