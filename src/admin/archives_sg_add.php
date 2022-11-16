@@ -50,7 +50,7 @@ else if ($dopost == 'save') {
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg("您所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
+        ShowMsg("您所选择的栏目与当前模型不相符，请重新选择", "-1");
         exit();
     }
     if (!TestPurview('a_New')) {

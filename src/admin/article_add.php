@@ -60,7 +60,7 @@ else if ($dopost == 'save') {
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(50, 200) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(200, 1000) : $cfg_arc_click);
     if (empty($typeid)) {
         ShowMsg("请指定文档的栏目", "-1");
         exit();
@@ -70,7 +70,7 @@ else if ($dopost == 'save') {
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg("您所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
+        ShowMsg("您所选择的栏目与当前模型不相符，请重新选择", "-1");
         exit();
     }
     if (!TestPurview('a_New')) {

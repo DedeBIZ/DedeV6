@@ -76,15 +76,11 @@ else if ($dopost == 'save') {
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg("您所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
+        ShowMsg("您所选择的栏目与当前模型不相符，请重新选择", "-1");
         exit();
     }
     if (!TestPurview('a_Edit')) {
-        if (TestPurview('a_AccEdit')) {
-            CheckCatalog($typeid, "对不起，您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
-        } else {
-            CheckArcAdmin($id, $cuserLogin->getUserID());
-        }
+        CheckCatalog($typeid, "对不起，您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
     }
     //对保存的文档进行处理
     $pubdate = GetMkTime($pubdate);
