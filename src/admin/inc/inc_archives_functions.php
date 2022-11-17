@@ -120,7 +120,8 @@ function GetCurContent($body)
         if (!preg_match("#^(http|https):\/\/#i", $value)) {
             continue;
         }
-        $htd->OpenUrl($value);
+        $v = str_replace('&amp;','&',$value);
+        $htd->OpenUrl($v);
         $itype = $htd->GetHead("content-type");
         $isImage = true;
         if ($itype == 'image/gif') {
