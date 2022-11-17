@@ -11,7 +11,7 @@ if ($action=='edit') {
 	<input type="hidden" name="action" value="edit_save">
 	<input type="hidden" name="id" value="<?php echo $arr['id'];?>">
 	<div class="py-2">类别名：<input type="text" name="itemname" value="<?php echo $arr['itemname'];?>" class="admin-input-md"></div>
-	<div class="py-2">缓存组名：<input type="text" name="egroup" value="<?php echo $arr['egroup'];?>" class="admin-input-md"></div>
+	<div class="py-2">缓存名：<input type="text" name="egroup" value="<?php echo $arr['egroup'];?>" class="admin-input-md"></div>
 	<div class="py-2">缓存组名必须为英文或数字组合</div>
 	<div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
@@ -24,7 +24,7 @@ if ($action=='edit') {
 <form action="stepselect_main.php" method="post">
 	<input type="hidden" name="action" value="addnew_save">
 	<div class="py-2">类别名：<input type="text" name="itemname" class="admin-input-md"></div>
-	<div class="py-2">缓存组名：<input type="text" name="egroup" class="admin-input-md"></div>
+	<div class="py-2">缓存名：<input type="text" name="egroup" class="admin-input-md"></div>
 	<div class="py-2">缓存组名必须为英文或数字组合</div>
 	<div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>

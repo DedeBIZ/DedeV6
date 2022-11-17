@@ -12,50 +12,29 @@
 				<td bgcolor="#f5f5f5" colspan="2">文档信息统计</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
-					<table width="98%" cellspacing="0" cellpadding="0">
-						<tr>
-							<td>综合信息统计：</td>
-							<td>
-								<table width="300" cellpadding="1" cellspacing="1">
-									<tr>
-										<td width="140">文档总数：</td>
-										<td width="260">[<?php echo $row1['dd']?>]</td>
-									</tr>
-									<tr>
-										<td>评论总数：</td>
-										<td>[<?php echo $row2['dd']?>]</td>
-									</tr>
-									<tr>
-										<td>会员总数：</td>
-										<td>[<?php echo $row3['dd']?>]</td>
-									</tr>
-								</table>
-							</td>
+				<td width="260">综合信息统计：</td>
+				<td>文档总数：<?php echo $row1['dd']?> 评论总数：<?php echo $row2['dd']?> 会员总数：<?php echo $row3['dd']?></td>
+			</tr>
+			<tr>
+				<td>栏目信息统计：</td>
+				<td>
+					<table width="300" cellpadding="1" cellspacing="1">
+						<tr align="center">
+							<td width="140">栏目名称</td>
+							<td>文档总数</td>
 						</tr>
-						<tr>
-							<td width="16%">栏目信息统计：</td>
-							<td width="84%">
-								<table width="300" cellpadding="1" cellspacing="1">
-									<tr align="center">
-										<td width="140">栏目名称</td>
-										<td>文档总数</td>
-									</tr>
-									<?php
-									$arcs = array();
-									$dsql->Execute("aaa","Select channel,count(channel) as dd From `#@__archives`  group by channel");
-									while($row = $dsql->GetArray("aaa")) $arcs[$row['channel']] = $row['dd'];
-									$dsql->Execute("me","Select id,typename From `#@__channeltype`");
-									while($row = $dsql->GetObject()){
-									?>
-									<tr align="center">
-										<td><?php echo $row->typename?></td>
-										<td>[<?php echo (isset($arcs[$row->id]) ? $arcs[$row->id] : 0 );?>]</td>
-									</tr>
-									<?php }?>
-								</table>
-							</td>
+						<?php
+						$arcs = array();
+						$dsql->Execute("aaa","Select channel,count(channel) as dd From `#@__archives`  group by channel");
+						while($row = $dsql->GetArray("aaa")) $arcs[$row['channel']] = $row['dd'];
+						$dsql->Execute("me","Select id,typename From `#@__channeltype`");
+						while($row = $dsql->GetObject()){
+						?>
+						<tr align="center">
+							<td><?php echo $row->typename?></td>
+							<td>[<?php echo (isset($arcs[$row->id]) ? $arcs[$row->id] : 0 );?>]</td>
 						</tr>
+						<?php }?>
 					</table>
 				</td>
 			</tr>

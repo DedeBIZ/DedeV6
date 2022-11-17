@@ -190,7 +190,7 @@ class OxWindow
             if ($wintype != "hand") {
                 $this->myWin .= "
 <tr>
-<td colspan='2' align='center' class='py-2'>
+<td colspan='2' align='center'>
 <button type='submit' class='btn btn-success btn-sm'>$tt</button>
 <button type='button' class='btn btn-success btn-sm' onClick='history.go(-1);'>返回</button>
 </td>

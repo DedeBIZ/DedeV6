@@ -1,4 +1,4 @@
-.login-area {
+.login-from {
 	margin:6rem 0
 }
 .login-box {
@@ -63,7 +63,7 @@
 	line-height:36px
 }
 @media (max-width:480px) {
-	.login-area,.login-box {
+	.login-from,.login-box {
 	width:100%
 }
 }

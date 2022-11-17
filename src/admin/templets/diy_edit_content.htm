@@ -16,9 +16,8 @@
 				<td width="100%" bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">表单管理</a> &gt; 修改评论</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
-					<form name="form1" method="post" enctype="multipart/form-data"
-						action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
+				<td colspan="2">
+					<form name="form1" method="post" enctype="multipart/form-data" action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
 						<input type="hidden" name="dopost" value="edit">
 						<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 						<table width="100%" cellpadding="3" cellspacing="1">
@@ -47,7 +46,7 @@
 							echo "<input type='hidden' name='dede_fields' value='".$formfields."'>";
 							?>
 							<tr>
-								<td colspan="2" align="center" class="py-2">
+								<td colspan="2" align="center">
 									<button type="submit" name="Submit1" class="btn btn-success btn-sm">保存</button>
 									<button type="button" name="Submit2" class="btn btn-success btn-sm"
 										onClick="location='<?php echo $ENV_GOBACK_URL;?>';">返回</button>

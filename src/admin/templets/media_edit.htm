@@ -23,7 +23,7 @@
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 			<tr>
-				<td bgcolor="#f5f5f5">
+				<td bgcolor="#f5f5f5" colspan="2">
 					<table cellpadding="0" cellspacing="0" class="table table-borderless w-100">
 						<tr>
 							<td width="30%">修改媒体</td>
@@ -33,76 +33,70 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<div class="alert alert-info mb-0">图片类型仅支持jpg、png、gif、wbmp格式，flash为.swf格式，视音频和附件为限定扩展名的类型（可在系统参数中修改）</div>
 				</td>
 			</tr>
-			<tr>
-				<td align="center">
-					<table width="100%" cellpadding="0" cellspacing="0">
-						<form enctype="multipart/form-data" name="form1" action="media_edit.php" method="POST" onSubmit="return CheckSubmit();">
-							<input type="hidden" name="dopost" value="save">
-							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-							<input type="hidden" name="aid" value="<?php echo $aid?>">
-							<tr>
-								<td width="15%" align="left" class="admin-td">媒体类型：</td>
-								<td width="85%" align="left" class="admin-td">
-									<label><input type="radio" name="mediatype" value="1" <?php if ($myrow['mediatype']==1) echo "checked";?>> 图片</label>
-									<label><input type="radio" name="mediatype" value="2" <?php if ($myrow['mediatype']==2) echo "checked";?>> FLASH</label>
-									<label><input type="radio" name="mediatype" value="3" <?php if ($myrow['mediatype']==3) echo "checked";?>> 视频音频</label>
-									<label><input type="radio" name="mediatype" value="4" <?php if ($myrow['mediatype']==4) echo "checked";?>> 附件其它</label>
-								</td>
-							</tr>
-							<tr>
-								<td class="admin-td">说明标题：</td>
-								<td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $myrow['title']?>" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td class="admin-td">参数说明：</td>
-								<td class="admin-td" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
-							</tr>
-							<tr>
-								<td class="admin-td">附加参数：</td>
-								<td class="admin-td">
-									宽：<input type="text" name="mediawidth" id="mediawidth" value="<?php echo $myrow['width']?>" class="admin-input-sm">（像素）
-									高：<input type="text" name="mediaheight" id="mediaheight" value="<?php echo $myrow['height']?>" class="admin-input-sm">（像素）
-									播放时间：<input type="text" name="playtime" id="playtime" value="<?php echo $myrow['playtime']?>" class="admin-input-sm">（分钟）
-								</td>
-							</tr>
-							<tr>
-								<td class="admin-td">原文件：</td>
-								<td class="admin-td">
-									<input type="text" name="filename" id="filename" value="<?php echo $myrow['url']?>" class="admin-input-md">
-									<a href="<?php echo $myrow['url']?>" target="_blank">[查看]</a>
-								</td>
-							</tr>
-							<?php
-							if ($myrow['mediatype']==1)
-							{
-								$fullfilename = $cfg_basedir.$myrow['url'];
-								if (file_exists($fullfilename)){
-									$info = "";
-									$sizes = getimagesize($fullfilename,$info);
-									if (is_array($sizes)){
-										if ($sizes[0]>200) $w=200;
-										else $w = $sizes[0];
-							?>
-							<tr>
-								<td class="admin-td">预览：</td>
-								<td class="admin-td"><a href="<?php echo $myrow['url']?>" target="_blank"><img src="<?php echo $myrow['url'].'?q='.time()?>" width="<?php echo $w?>" id="picview"></a></td>
-							</tr>
-							<?php }}}?>
-							<tr>
-								<td class="admin-td">修改文件：</td>
-								<td class="admin-td"><input name="upfile" type="file" id="upfile" class="admin-input-md"></td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-							</tr>
-						</form>
-					</table>
-				</td>
-			</tr>
+			<form enctype="multipart/form-data" name="form1" action="media_edit.php" method="POST" onSubmit="return CheckSubmit();">
+				<input type="hidden" name="dopost" value="save">
+				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+				<input type="hidden" name="aid" value="<?php echo $aid?>">
+				<tr>
+					<td width="260" class="admin-td">媒体类型：</td>
+					<td class="admin-td">
+						<label><input type="radio" name="mediatype" value="1" <?php if ($myrow['mediatype']==1) echo "checked";?>> 图片</label>
+						<label><input type="radio" name="mediatype" value="2" <?php if ($myrow['mediatype']==2) echo "checked";?>> FLASH</label>
+						<label><input type="radio" name="mediatype" value="3" <?php if ($myrow['mediatype']==3) echo "checked";?>> 视频音频</label>
+						<label><input type="radio" name="mediatype" value="4" <?php if ($myrow['mediatype']==4) echo "checked";?>> 附件其它</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">说明标题：</td>
+					<td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $myrow['title']?>" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td class="admin-td">参数说明：</td>
+					<td class="admin-td" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
+				</tr>
+				<tr>
+					<td class="admin-td">附加参数：</td>
+					<td class="admin-td">
+						宽：<input type="text" name="mediawidth" id="mediawidth" value="<?php echo $myrow['width']?>" class="admin-input-sm">（像素）
+						高：<input type="text" name="mediaheight" id="mediaheight" value="<?php echo $myrow['height']?>" class="admin-input-sm">（像素）
+						播放时间：<input type="text" name="playtime" id="playtime" value="<?php echo $myrow['playtime']?>" class="admin-input-sm">（分钟）
+					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">原文件：</td>
+					<td class="admin-td">
+						<input type="text" name="filename" id="filename" value="<?php echo $myrow['url']?>" class="admin-input-md">
+						<a href="<?php echo $myrow['url']?>" target="_blank" class="btn btn-success btn-sm">查看</a>
+					</td>
+				</tr>
+				<?php
+				if ($myrow['mediatype']==1)
+				{
+					$fullfilename = $cfg_basedir.$myrow['url'];
+					if (file_exists($fullfilename)){
+						$info = "";
+						$sizes = getimagesize($fullfilename,$info);
+						if (is_array($sizes)){
+							if ($sizes[0]>200) $w=200;
+							else $w = $sizes[0];
+				?>
+				<tr>
+					<td class="admin-td">预览：</td>
+					<td class="admin-td"><a href="<?php echo $myrow['url']?>" target="_blank"><img src="<?php echo $myrow['url'].'?q='.time()?>" width="<?php echo $w?>" id="picview"></a></td>
+				</tr>
+				<?php }}}?>
+				<tr>
+					<td class="admin-td">修改文件：</td>
+					<td class="admin-td"><input name="upfile" type="file" id="upfile" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+				</tr>
+			</form>
 		</table>
 	</body>
 </html>

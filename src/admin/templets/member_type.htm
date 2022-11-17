@@ -53,7 +53,7 @@
 							?>
 						</select>
 					</td>
-					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" class="admin-input-md">（元）</td>
+					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" class="admin-input-sm">（元）</td>
 					<td>
 						<select name="exptime_<?php echo $k?>" id="exptime_<?php echo $k?>" class="admin-input-md">
 							<?php
@@ -68,9 +68,6 @@
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k?>">
-				<tr>
-					<td colspan="5">新增一个会员产品类型：</td>
-				</tr>
 				<tr align="center">
 					<td><input type="text" name="pname_new" id="pname_new" class="admin-input-md"></td>
 					<td>
@@ -82,7 +79,7 @@
 							?>
 						</select>
 					</td>
-					<td><input type="text" name="money_new" id="money_new" class="admin-input-md" value="100">（元）</td>
+					<td><input type="text" name="money_new" id="money_new" class="admin-input-sm" value="100">（元）</td>
 					<td>
 						<select name="exptime_new" id="exptime_new" class="admin-input-md">
 							<?php
@@ -95,10 +92,7 @@
 					<td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> 新增</td>
 				</tr>
 				<tr>
-					<td colspan="5"></td>
-				</tr>
-				<tr>
-					<td bgcolor="#f5f5f5" colspan="5" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+					<td bgcolor="#f5f5f5" colspan="5" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
 			</form>
 		</table>

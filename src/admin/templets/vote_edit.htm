@@ -53,7 +53,6 @@
 				<input type="hidden" name="dopost" value="saveedit">
 				<input type="hidden" name="aid" value="<?php echo $aid?>">
 				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-
 				<tr>
 					<td width="260">投票名称：</td>
 					<td><input type="text" name="votename" id="votename" value="<?php echo $row['votename']?>"></td>
@@ -107,7 +106,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center" class="py-2">
+					<td bgcolor="#f5f5f5" colspan="2" align="center">
 						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" onclick="history.back()" name="Submit" class="btn btn-success btn-sm">返回</button>
 					</td>

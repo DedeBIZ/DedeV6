@@ -28,17 +28,12 @@
 						<div class="alert alert-info mb-0">标签说明：生成静态文件后，访问动态文件则直接跳转静态文件，如果需要动态访问，删除对应文件即可。标签首页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm 标签列表页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/taglist.htm</div>
 					</td>
 				</tr>
-				<?php
-				if ($tagid > 0) {
-					$row = $dsql->GetOne("Select tag From `#@__tagindex` where id = '$tagid' ");
-				?>
+				<?php if ($tagid > 0) {$row = $dsql->GetOne("SELECT tag FROM `#@__tagindex` WHERE id = '$tagid' ");?>
 				<tr>
 					<td width="260">输入标签：</td>
 					<td><input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-primary" href="makehtml_taglist.php">重新选择</a></td>
 				</tr>
-				<?php
-				} else {
-				?>
+				<?php } else {?>
 				<tr>
 					<td width="260">起始id：</td>
 					<td><input type="text" name="startid" id="startid" class="admin-input-sm">（空或0表示从头开始）</td>

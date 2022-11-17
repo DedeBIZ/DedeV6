@@ -66,185 +66,173 @@
 			<form action="freelist_add.php" method="post" name="form1" onSubmit="return CheckSubmit();">
 				<input type="hidden" name="dopost" value="save">
 				<tr>
-					<td bgcolor="#f5f5f5"><a href="freelist_main.php">自由列表管理</a> &gt; 增加一个列表</td>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="freelist_main.php">自由列表管理</a> &gt; 增加一个列表</td>
 				</tr>
 				<tr>
-					<td class="p-0">
-						<table cellpadding="0" cellspacing="1" class="table-borderless w-100">
+					<td colspan="2">
+						<div class="alert alert-info mb-0">自由列表标记的说明：自由列表标记（freelist）的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成按自定义排序规则的文档列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成网页或访问速度</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="260">自由列表标题：</td>
+					<td><input type="text" name="title" id="title" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>列表网页存放目录：</td>
+					<td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" class="admin-input-md"> {listdir}变量的值</td>
+				</tr>
+				<tr>
+					<td>目录默认页名称：</td>
+					<td>
+						<input type="text" name="defaultpage" id="defaultpage" value="index.html" class="admin-input-md">
+						<label><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认主页</label>
+					</td>
+				</tr>
+				<tr>
+					<td>命名规则：</td>
+					<td><input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>列表模板：</td>
+					<td>
+						<input type="text" name="templet" id="templet" value="{style}/list_free.htm" class="admin-input-md">
+						<button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
+					</td>
+				</tr>
+				<tr>
+					<td>最大列出页数：</td>
+					<td><input type="text" name="maxpage" id="maxpage" value="100" class="admin-input-sm"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>以下选项用于模板里的 &lt;meta name=&quot;keywords|description&quot; content=&quot;&quot;&gt; 描述</td>
+				</tr>
+				<tr>
+					<td>关键词：</td>
+					<td><input type="text" name="keywords" id="keywords" class="admin-input-md"></td>
+				</tr>
+				<tr>
+					<td>列表描述：</td>
+					<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea></td>
+				</tr>
+				<tr>
+					<td bgcolor="#e9ecef" colspan="2">列表样式：这里是定义自由列表模板里的{dede:freelist/}标记的样式和属性</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<table width="98%" cellspacing="0" cellpadding="0">
 							<tr>
-								<td class="p-0">
-									<table width="100%" cellspacing="1" cellpadding="0">
-										<tr>
-											<td colspan="2">
-												<div class="alert alert-info mb-0">自由列表标记的说明：自由列表标记（freelist）的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成按自定义排序规则的文档列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成网页或访问速度</div>
-											</td>
-										</tr>
-										<tr>
-											<td width="260">自由列表标题：</td>
-											<td><input type="text" name="title" id="title" class="admin-input-md"></td>
-										</tr>
-										<tr>
-											<td>列表网页存放目录：</td>
-											<td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" class="admin-input-md"> {listdir}变量的值</td>
-										</tr>
-										<tr>
-											<td>目录默认页名称：</td>
-											<td>
-												<input type="text" name="defaultpage" id="defaultpage" value="index.html" class="admin-input-md">
-												<label><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认主页</label>
-											</td>
-										</tr>
-										<tr>
-											<td>命名规则：</td>
-											<td><input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" class="admin-input-md"></td>
-										</tr>
-										<tr>
-											<td>列表模板：</td>
-											<td>
-												<input type="text" name="templet" id="templet" value="{style}/list_free.htm" class="admin-input-md">
-												<button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
-											</td>
-										</tr>
-										<tr>
-											<td>最大列出页数：</td>
-											<td><input type="text" name="maxpage" id="maxpage" value="100" class="admin-input-sm"></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td>以下选项用于模板里的 &lt;meta name=&quot;keywords|description&quot; content=&quot;&quot;&gt; 描述</td>
-										</tr>
-										<tr>
-											<td>关键词：</td>
-											<td><input type="text" name="keywords" id="keywords" class="admin-input-md"></td>
-										</tr>
-										<tr>
-											<td>列表描述：</td>
-											<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea></td>
-										</tr>
-									</table>
+								<td width="25%" height="126">
+									<label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="1"></label>
 								</td>
-							</tr>
-							<tr>
-								<td bgcolor="#e9ecef">列表样式：这里是定义自由列表模板里的{dede:freelist/}标记的样式和属性</td>
-							</tr>
-							<tr>
+								<td width="25%">
+									<label><img src="../static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="2"></label>
+								</td>
+								<td width="25%">
+									<label><img src="../static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="3"></label>
+								</td>
 								<td>
-									<table width="98%" cellspacing="0" cellpadding="0">
-										<tr>
-											<td width="25%" height="126">
-												<label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="1"></label>
-											</td>
-											<td width="25%">
-												<label><img src="../static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="2"></label>
-											</td>
-											<td width="25%">
-												<label><img src="../static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="3"></label>
-											</td>
-											<td>
-												<label><img src="../static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="4" checked></label>
-											</td>
-										</tr>
-									</table>
+									<label><img src="../static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="4" checked></label>
 								</td>
-							</tr>
-							<tr>
-								<td>限定栏目：
-									<?php
-									echo "<select name='typeid' class='admin-input-sm'>";
-									echo "<option value='0'>不限栏目</option>";
-									$dsql->SetQuery("Select ID,typename, channeltype From `#@__arctype`");
-									$dsql->Execute();
-									while($lrow = $dsql->GetObject()){
-										$disable = '';
-										if ($lrow->channeltype < -1) {
-											$disable = 'disabled';
-										}
-											echo "<option value='{$lrow->ID}' $disable>{$lrow->typename}</option>";
-										}
-										echo "</select>";
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td>限定栏目：
-									<?php
-									echo "<select name='channel' class='admin-input-sm'>";
-									echo "<option value='0' selected>不限</option>";
-									$dsql->SetQuery("Select ID,typename From `#@__channeltype` where ID>0");
-										$dsql->Execute();
-										while($row = $dsql->GetObject())
-										{
-											echo "<option value='{$row->ID}'>{$row->typename}</option>";
-										}
-										echo "</select>";
-									?>（如果限定了栏目文档模型，则允许使用附加表指定的列表字段作为底层变量）
-								</td>
-							</tr>
-							<tr>
-								<td>附加属性：
-									<?php
-									echo "<select name='att' class='admin-input-sm'>";
-									echo "<option value='0' selected>不限</option>";
-									$dsql->SetQuery("SELECT * FROM `#@__arcatt`");
-									$dsql->Execute();
-									while($row = $dsql->GetObject())
-									{
-										echo "<option value='{$row->att}'>{$row->attname}</option>";
-									}
-									echo "</select>";
-									?>
-									文档发布时间：<input type="text" name="subday" id="subday2" value="0" class="admin-input-sm"> 天以内（0表示不限）
-								</td>
-							</tr>
-							<tr>
-								<td>
-									每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" class="admin-input-sm">
-									显示列数： <input type="text" name="col" id="col3" value="1" class="admin-input-sm">
-									标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="admin-input-sm">（1字节 = 0.5个中文字）
-								</td>
-							</tr>
-							<tr>
-								<td>高级筛选：
-									<label><input type="checkbox" name="types[]" id="type1" value="image"> 带缩略图</label>
-									<label><input type="checkbox" name="types[]" id="type2" value="commend"> 推荐</label>
-									<label><input type="checkbox" name="types[]" id="type3" value="spec"> 专题</label>
-									关键词：<input type="text" name="keywordarc" id="keywordarc">（英文逗号分开）
-								</td>
-							</tr>
-							<tr>
-								<td>排列顺序：
-									<select name="orderby" id="orderby" class="admin-input-sm">
-										<option value="sortrank">置顶权限值</option>
-										<option value="pubdate" selected>发布时间</option>
-										<option value="senddate">录入时间</option>
-										<option value="click">点击量</option>
-										<option value="id">文档id</option>
-										<option value="lastpost">最后评论时间</option>
-										<option value="postnum">评论总数</option>
-									</select>
-									<label><input type="radio" name="order" value="desc" checked> 由高到低</label>
-									<label><input type="radio" name="order" value="asc"> 由低到高</label>
-								</td>
-							</tr>
-							<tr>
-								<td>循环内的单行记录样式(InnerText)：<a href='javascript:ShowHide("innervar");'><i class="fa fa-question-circle" title="帮助"></i> 底层变量field参考</a></td>
-							</tr>
-							<tr>
-								<td id="innervar" style="display:none"><span><i class="fa fa-question-circle" title="帮助"></i> 支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,<br>stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示<br>·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</span></td>
-							</tr>
-							<tr>
-								<td>
-									<textarea name="innertext" id="myinnertext" class="admin-textarea-xl"></textarea>
-									<script>
-										document.form1.innertext.value = document.getElementById("list4").innerHTML.toLowerCase();
-									</script>
-								</td>
-							</tr>
-							<tr>
-								<td align="center" class="py-2"><button name="Submit2" type="submit" id="Submit2" class="btn btn-success btn-sm">保存</button></td>
 							</tr>
 						</table>
 					</td>
+				</tr>
+				<tr>
+					<td colspan="2">限定栏目：
+						<?php
+						echo "<select name='typeid' class='admin-input-sm'>";
+						echo "<option value='0'>不限栏目</option>";
+						$dsql->SetQuery("Select ID,typename, channeltype From `#@__arctype`");
+						$dsql->Execute();
+						while($lrow = $dsql->GetObject()){
+							$disable = '';
+							if ($lrow->channeltype < -1) {
+								$disable = 'disabled';
+							}
+								echo "<option value='{$lrow->ID}' $disable>{$lrow->typename}</option>";
+							}
+							echo "</select>";
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">限定栏目：
+						<?php
+						echo "<select name='channel' class='admin-input-sm'>";
+						echo "<option value='0' selected>不限</option>";
+						$dsql->SetQuery("Select ID,typename From `#@__channeltype` where ID>0");
+							$dsql->Execute();
+							while($row = $dsql->GetObject())
+							{
+								echo "<option value='{$row->ID}'>{$row->typename}</option>";
+							}
+							echo "</select>";
+						?>（如果限定了栏目文档模型，则允许使用附加表指定的列表字段作为底层变量）
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">附加属性：
+						<?php
+						echo "<select name='att' class='admin-input-sm'>";
+						echo "<option value='0' selected>不限</option>";
+						$dsql->SetQuery("SELECT * FROM `#@__arcatt`");
+						$dsql->Execute();
+						while($row = $dsql->GetObject())
+						{
+							echo "<option value='{$row->att}'>{$row->attname}</option>";
+						}
+						echo "</select>";
+						?>
+						文档发布时间：<input type="text" name="subday" id="subday2" value="0" class="admin-input-sm"> 天以内（0表示不限）
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" class="admin-input-sm">
+						显示列数： <input type="text" name="col" id="col3" value="1" class="admin-input-sm">
+						标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="admin-input-sm">（1字节 = 0.5个中文字）
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						高级筛选：<label><input type="checkbox" name="types[]" id="type1" value="image"> 带缩略图</label>
+						<label><input type="checkbox" name="types[]" id="type2" value="commend"> 推荐</label>
+						<label><input type="checkbox" name="types[]" id="type3" value="spec"> 专题</label>
+						关键词：<input type="text" name="keywordarc" id="keywordarc">（英文逗号分开）
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						排列顺序：<select name="orderby" id="orderby" class="admin-input-sm">
+							<option value="sortrank">置顶权限值</option>
+							<option value="pubdate" selected>发布时间</option>
+							<option value="senddate">录入时间</option>
+							<option value="click">点击量</option>
+							<option value="id">文档id</option>
+							<option value="lastpost">最后评论时间</option>
+							<option value="postnum">评论总数</option>
+						</select>
+						<label><input type="radio" name="order" value="desc" checked> 由高到低</label>
+						<label><input type="radio" name="order" value="asc"> 由低到高</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">循环内的单行记录样式(InnerText)：<a href='javascript:ShowHide("innervar");'><i class="fa fa-question-circle" title="帮助"></i> 底层变量field参考</a></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="innervar" style="display:none"><span><i class="fa fa-question-circle" title="帮助"></i> 支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,<br>stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示<br>·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</span></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="p-0">
+						<textarea name="innertext" id="myinnertext" class="admin-textarea-xl"></textarea>
+						<script>
+							document.form1.innertext.value = document.getElementById("list4").innerHTML.toLowerCase();
+						</script>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" bgcolor="#f5f5f5" align="center"><button name="Submit2" type="submit" id="Submit2" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
 			</form>
 		</table>

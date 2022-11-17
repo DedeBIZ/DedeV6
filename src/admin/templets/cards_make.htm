@@ -13,7 +13,7 @@
 			<form action="cards_make.php" name="form1" target="stafrm">
 				<input type="hidden" name="dopost" value="make">
 				<tr>
-					<td bgcolor="#f5f5f5">
+					<td bgcolor="#f5f5f5" colspan="4">
 						<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
 							<tr>
 								<td width="30%">点卡生成向导</td>
@@ -26,52 +26,46 @@
 					</td>
 				</tr>
 				<tr>
+					<td width="260">点卡类型：</td>
 					<td>
-						<table cellpadding="2" cellspacing="2" class="table table-borderless w-100">
-							<tr>
-								<td width="90">点卡类型：</td>
-								<td>
-									<select name="cardtype" class="admin-input-sm">
-										<?php
-										$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
-										$dsql->Execute();
-										while($row=$dsql->GetArray()){
-											echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";
-										}
-										$dsql->Close();
-										?>
-									</select>
-								</td>
-								<td width="90">生成数量：</td>
-								<td><input name="mnum" type="text" id="mnum" class="admin-input-sm" value="100"></td>
-							</tr>
-							<tr>
-								<td>点卡前缀：</td>
-								<td><input name="snprefix" type="text" id="snprefix" class="admin-input-sm" value="SN"></td>
-								<td>密码长度：</td>
-								<td><input name="pwdlen" type="text" id="pwdlen" class="admin-input-sm" value="4"></td>
-							</tr>
-							<tr>
-								<td>密码类型：</td>
-								<td>
-									<label><input type="radio" name="ctype" value="1"> 纯数字</label>
-									<label><input type="radio" name="ctype" value="2" checked="1"> 大写字母</label>
-								</td>
-								<td>密码组数：</td>
-								<td><input name="pwdgr" type="text" id="pwdgr" class="admin-input-sm" value="3"></td>
-							</tr>
-						</table>
+						<select name="cardtype" class="admin-input-sm">
+							<?php
+							$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
+							$dsql->Execute();
+							while($row=$dsql->GetArray()){
+								echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";
+							}
+							$dsql->Close();
+							?>
+						</select>
 					</td>
+					<td width="90">生成数量：</td>
+					<td><input name="mnum" type="text" id="mnum" class="admin-input-sm" value="100"></td>
 				</tr>
 				<tr>
-					<td bgcolor="#e9ecef" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">生成点卡</button></td>
+					<td>点卡前缀：</td>
+					<td><input name="snprefix" type="text" id="snprefix" class="admin-input-sm" value="SN"></td>
+					<td>密码长度：</td>
+					<td><input name="pwdlen" type="text" id="pwdlen" class="admin-input-sm" value="4"></td>
+				</tr>
+				<tr>
+					<td>密码类型：</td>
+					<td>
+						<label><input type="radio" name="ctype" value="1"> 纯数字</label>
+						<label><input type="radio" name="ctype" value="2" checked="1"> 大写字母</label>
+					</td>
+					<td>密码组数：</td>
+					<td><input name="pwdgr" type="text" id="pwdgr" class="admin-input-sm" value="3"></td>
+				</tr>
+				<tr>
+					<td colspan="4" bgcolor="#f5f5f5" align="center" align="py-2"><button type="submit" name="Submit" class="btn btn-success btn-sm">生成点卡</button></td>
 				</tr>
 			</form>
 			<tr>
-				<td>结果：</td>
+				<td colspan="4">结果：</td>
 			</tr>
 			<tr>
-				<td id="mtd">
+				<td colspan="4" id="mtd">
 					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
