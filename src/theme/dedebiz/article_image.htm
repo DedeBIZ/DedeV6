@@ -15,14 +15,10 @@
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 		<script>
 			var shortname = "{dede:global.art_shortname/}";
-			var npage = {
-				dede: field name = 'nowpage' /
-			};
-			var totalpage = {
-				dede: field name = 'totalpage' /
-			};
-			var namehand = '{dede:field name='namehand'/}';
-			var displaytype = '{dede:field name='displaytype'/}';
+			var npage = parseInt("{dede:field name = 'nowpage'/}");
+			var totalpage = parseInt("{dede:field name = 'totalpage'/}");
+			var namehand = "{dede:field name='namehand'/}";
+			var displaytype = "{dede:field name='displaytype'/}";
 			var gtimer = null;
 			//大图
 			function dPlayBig() {
