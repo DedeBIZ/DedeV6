@@ -38,7 +38,7 @@ function GetOptionList($selid = 0, $channeltype = 0)
             if ($row->ispart == 0) {
                 $OptionArrayList .= "<option value='".$row->id."' {$selected}>└─ ".$row->typename."</option>\r\n";
             } else if ($row->ispart == 1) {
-                $OptionArrayList .= "<option value='".$row->id."' {$selected}>└──".$row->typename."</option>\r\n";
+                $OptionArrayList .= "<option disabled value='".$row->id."' {$selected}>└──".$row->typename."</option>\r\n";
             }
         }
         $selected = '';
@@ -70,7 +70,7 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
             if ($row->ispart == 0) {
                 $OptionArrayList .= "<option value='".$row->id."' {$selected}>└─$step ".$row->typename."</option>\r\n";
             } else if ($row->ispart == 1) {
-                $OptionArrayList .= "<option value='".$row->id."' {$selected}>└─$step ".$row->typename."</option>\r\n";
+                $OptionArrayList .= "<option disabled value='".$row->id."' {$selected}>└─$step ".$row->typename."</option>\r\n";
             }
         }
         $selected = '';

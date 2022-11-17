@@ -208,21 +208,6 @@ CREATE TABLE `#@__archives` (
   KEY `lastpost` (`lastpost`,`scores`,`goodpost`,`badpost`,`notpost`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__arcmulti`;
-CREATE TABLE `#@__arcmulti` (
-  `id` mediumint(8) unsigned NOT NULL auto_increment,
-  `tagid` char(60) NOT NULL default '',
-  `uptime` int(11) NOT NULL default '0',
-  `innertext` varchar(255) NOT NULL default '',
-  `pagesize` int(11) NOT NULL default '0',
-  `arcids` text NOT NULL,
-  `ordersql` varchar(255) default NULL,
-  `addfieldsSql` varchar(255) default NULL,
-  `addfieldsSqlJoin` varchar(255) default NULL,
-  `attstr` text,
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__arcrank`;
 CREATE TABLE `#@__arcrank` (
   `id` smallint(5) unsigned NOT NULL auto_increment,

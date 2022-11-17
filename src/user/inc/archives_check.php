@@ -11,12 +11,6 @@ if (!defined('DEDEMEMBER')) exit('dedebiz');
  */
 include_once(DEDEINC.'/image.func.php');
 include_once(DEDEINC.'/libraries/oxwindow.class.php');
-$svali = GetCkVdValue();
-if (strtolower($vdcode) != $svali || $svali == '') {
-    ResetVdValue();
-    ShowMsg('验证码不正确', '-1');
-    exit();
-}
 //校验CSRF
 CheckCSRF();
 $flag = '';

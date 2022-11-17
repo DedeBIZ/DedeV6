@@ -421,22 +421,6 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     if ($col > 1) $artlist .= "    </table>\r\n";
     $dsql->FreeResult("al");
     $idsstr = join(',', $ids);
-    //分页特殊处理
-    if ($pagesize > 0) {
-        $artlist .= "    </div>\r\n";
-        $row = $dsql->GetOne("SELECT tagid FROM `#@__arcmulti` WHERE tagid='$tagid'");
-        $uptime = time();
-        $attstr = addslashes(serialize($attarray));
-        $innertext = addslashes($innertext);
-        if (!is_array($row)) {
-            $query = "INSERT INTO `#@__arcmulti` (tagid,uptime,innertext,pagesize,arcids,ordersql,addfieldsSql,addfieldsSqlJoin,attstr) VALUES ('$tagid','$uptime','$innertext','$pagesize','$idsstr','$ordersql','$addfieldsSql','$addfieldsSqlJoin','$attstr');
-        ";
-            $dsql->ExecuteNoneQuery($query);
-        } else {
-            $query = "UPDATE `#@__arcmulti` SET uptime='$uptime', innertext='$innertext', pagesize='$pagesize', arcids='$idsstr', ordersql='$ordersql', addfieldsSql='$addfieldsSql', addfieldsSqlJoin='$addfieldsSqlJoin', attstr='$attstr' WHERE tagid='$tagid'";
-            $dsql->ExecuteNoneQuery($query);
-        }
-    }
     //保存ID缓存
     if ($needSaveCache) {
         if ($idsstr == '') $idsstr = '0';
