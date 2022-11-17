@@ -52,14 +52,13 @@
 			<tr bgcolor="#e9ecef">
 				<form name="form3" action="content_select_list.php" method="get">
 					<input type="hidden" name="f" value="<?php echo $f?>">
-					<td width="180" align="center">
+					<td width="380" align="center"><input type="text" name="keyword" value="<?php echo $keyword?>" class="admin-input-md"></td>
+					<td width="170">
 						<select name="cid" class="admin-input-sm">
 							<option value="0">选择分类</option>
 							<?php echo $optionarr?>
 						</select>
 					</td>
-					<td width="90">关键词：</td>
-					<td width="170"><input type="text" name="keyword" value="<?php echo $keyword?>" class="admin-input-sm"></td>
 					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 				</form>
 			</tr>
