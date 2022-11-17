@@ -86,7 +86,6 @@ else if ($dopost == 'save') {
     $filename = trim(cn_substrR($filename, 40));
     $userip = GetIP();
     $isremote  = 0;
-    $voteid = (empty($voteid) ? 0 : $voteid);
     $serviterm = empty($serviterm) ? "" : $serviterm;
     if (!TestPurview('a_Check,a_AccCheck,a_MyCheck')) {
         $arcrank = -1;
@@ -132,7 +131,7 @@ else if ($dopost == 'save') {
     //跳转网址的文档强制为动态
     if (preg_match("#j#", $flag)) $ismake = -1;
     //保存到主表
-    $query = "INSERT INTO `#@__archives` (id,typeid,typeid2,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywords,filename,dutyadmin,weight) VALUES ('$arcID','$typeid','$typeid2','$sortrank','$flag','$ismake','$channelid','$arcrank','$click','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$adminid','$voteid','$notpost','$description','$keywords','$filename','$adminid','$weight');";
+    $query = "INSERT INTO `#@__archives` (id,typeid,typeid2,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,notpost,description,keywords,filename,dutyadmin,weight) VALUES ('$arcID','$typeid','$typeid2','$sortrank','$flag','$ismake','$channelid','$arcrank','$click','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$adminid','$notpost','$description','$keywords','$filename','$adminid','$weight');";
     if (!$dsql->ExecuteNoneQuery($query)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
