@@ -18,12 +18,12 @@ if ($dopost == 'save') {
     CheckCSRF();
     if (function_exists('password_hash') && !empty($row['pwd_new'])) {
         if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
-            ShowMsg('您输入的旧密码错误或没填写，不允许修改资料', '-1');
+            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', '-1');
             exit();
         }
     } else {
         if (!is_array($row) || $row['pwd'] != md5($oldpwd)) {
-            ShowMsg('您输入的旧密码错误或没填写，不允许修改资料', '-1');
+            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', '-1');
             exit();
         }
     }
@@ -56,16 +56,16 @@ if ($dopost == 'save') {
             $pwd2 = substr(md5($userpwd), 5, 20);
         }
     }
-    //修改安全问题或Email
+    //修改安全问题或邮箱
     if ($email != $row['email'] || ($newsafequestion != 0 && $newsafeanswer != '')) {
         if ($row['safequestion'] != 0 && ($row['safequestion'] != $safequestion || $row['safeanswer'] != $safeanswer)) {
-            ShowMsg('您的旧安全问题及答案不正确，不能修改Email或安全问题', '-1');
+            ShowMsg('您的旧安全问题及答案不正确，不能修改邮箱或安全问题', '-1');
             exit();
         }
-        //修改Email
+        //修改邮箱
         if ($email != $row['email']) {
             if (!CheckEmail($email)) {
-                ShowMsg('Email格式不正确', '-1');
+                ShowMsg('邮箱格式不正确', '-1');
                 exit();
             } else {
                 $addupquery .= ",email='$email'";

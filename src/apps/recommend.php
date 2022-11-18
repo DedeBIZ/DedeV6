@@ -32,7 +32,7 @@ if ($action == '') {
 //发送推荐信息
 else if ($action == 'send') {
     if (!CheckEmail($email)) {
-        ShowMsg("Email格式不正确", -1);
+        ShowMsg("邮箱格式不正确", -1);
         exit();
     }
     $mailbody = '';

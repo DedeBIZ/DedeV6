@@ -102,20 +102,20 @@ else if ($fmdo == 'user') {
         echo $msg;
         exit();
     }
-    //检查email是否存在
+    //检查邮箱是否存在
     else  if ($dopost == "checkmail") {
         AjaxHead();
         if ($cfg_md_mailtest == 'N') {
             $msg = "<span class='text-dark'>√可以使用</span>";
         } else {
             if (!CheckEmail($email)) {
-                $msg = "<span class='text-dark'>×Email格式有误</span>";
+                $msg = "<span class='text-dark'>×邮箱格式有误</span>";
             } else {
                 $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE email LIKE '$email' LIMIT 1");
                 if (!is_array($row)) {
                     $msg = "<span class='text-dark'>√可以使用</span>";
                 } else {
-                    $msg = "<span class='text-primary'>×Email已经被另一个帐号占用</span>";
+                    $msg = "<span class='text-primary'>×邮箱已经被另一个帐号占用</span>";
                 }
             }
         }

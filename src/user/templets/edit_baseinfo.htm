@@ -38,22 +38,22 @@
 								<div class="col-sm-10"><?php echo $cfg_ml->M_LoginID;?></div>
 							</div>
 							<div class="form-group row">
-								<label for="iptUname" class="col-sm-2 col-form-label">昵称/公司名称</label>
-								<div class="col-sm-10"><input name="uname" type="text" class="form-control" id="iptUname" value="<?php echo $row['uname'];?>"></div>
+								<label for="iptUname" class="col-sm-2 col-form-label">昵称/公司名</label>
+								<div class="col-sm-10"><input type="text" name="uname" class="form-control" id="iptUname" value="<?php echo $row['uname'];?>"></div>
 								<small class="offset-md-2 col-sm-8 text-muted">个人会员该项为昵称，企业会员填写公司名称</small>
 							</div>
 							<div class="form-group row">
 								<label for="iptOldpwd" class="col-sm-2 col-form-label">原登录密码</label>
-								<div class="col-sm-10"><input name="oldpwd" type="password" class="form-control" id="iptOldpwd"></div>
+								<div class="col-sm-10"><input type="password" name="oldpwd" class="form-control" id="iptOldpwd"></div>
 							</div>
 							<div class="form-group row">
 								<label for="iptUserpwd" class="col-sm-2 col-form-label">新密码</label>
-								<div class="col-sm-10"><input name="userpwd" type="password" class="form-control" id="iptUserpwd"></div>
+								<div class="col-sm-10"><input type="password" name="userpwd" class="form-control" id="iptUserpwd"></div>
 								<small class="offset-md-2 col-sm-8 text-muted">不修改密码请保留此项为空</small>
 							</div>
 							<div class="form-group row">
 								<label for="iptUserpwdok" class="col-sm-2 col-form-label">确认新密码</label>
-								<div class="col-sm-10"><input name="userpwdok" type="password" class="form-control" id="iptUserpwdok"></div>
+								<div class="col-sm-10"><input type="password" name="userpwdok" class="form-control" id="iptUserpwdok"></div>
 								<small class="offset-md-2 col-sm-8 text-muted">不修改密码请保留此项为空</small>
 							</div>
 							<div class="form-group row">
@@ -106,7 +106,7 @@
 			function checkSubmit() {
 				if (document.form2.oldpwd.value == '') {
 					document.form2.oldpwd.focus();
-					ShowMsg("旧密码必须填写");
+					ShowMsg("请您填写旧密码");
 					return false;
 				}
 				if (document.form2.userpwdok.value != document.form2.userpwd.value) {
@@ -116,17 +116,17 @@
 				}
 				if (document.form2.email.value == "") {
 					document.form2.email.focus();
-					ShowMsg("Email不能为空");
+					ShowMsg("请您填写邮箱");
 					return false;
 				}
 				if (document.form2.uname.value == "") {
 					document.form2.uname.focus();
-					ShowMsg("用户昵称不能为空");
+					ShowMsg("请您填写昵称");
 					return false;
 				}
 				if (document.form2.vdcode.value == "") {
 					document.form2.vdcode.focus();
-					ShowMsg("验证码不能为空");
+					ShowMsg("请您填写验证码");
 					return false;
 				}
 			}

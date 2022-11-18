@@ -45,7 +45,7 @@
 								<div class="col-sm-10">
 									<?php
 									$typeOptions = GetOptionList(0,$channelid);
-									echo "<select class='form-control' name='typeid' size='1'>";
+									echo "<select name='typeid'  class='form-control'>";
 									echo "<option value='0' selected>请选择栏目</option>";
 									echo $typeOptions;
 									echo "</select>";
@@ -57,10 +57,7 @@
 								<label class="col-sm-2 col-form-label">描述</label>
 								<div class="col-sm-10"><textarea name="description" id="description" class="form-control"></textarea></div>
 							</div>
-							<?php
-							//自定义字段
-							PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');
-							?>										
+							<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>										
 							<input name="maxwidth" type="hidden" id="maxwidth" value="<?php echo $cfg_album_width;?>">
 							<input name="prow" type="hidden" value="<?php echo $cfg_album_row;?>">
 							<input name="pcol" type="hidden" value="<?php echo $cfg_album_col;?>">

@@ -14,13 +14,13 @@ if (!isset($backurl)) {
 }
 if ($dopost == 'save') {
     if (!empty($cfg_ml->fields['email']) || $cfg_ml->fields['checkmail'] != -1) {
-        ShowMsg('Email已经设置，无需重复提交', '-1');
+        ShowMsg('邮箱已经设置，无需重复提交', '-1');
         exit();
     }
     //校验CSRF
     CheckCSRF();
     if (!CheckEmail($email)) {
-        ShowMsg('Email格式不正确', '-1');
+        ShowMsg('邮箱格式不正确', '-1');
         exit();
     }
     $email = HtmlReplace($email, -1);

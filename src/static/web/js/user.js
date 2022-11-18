@@ -5,7 +5,7 @@ function checkSubmit(t) {
         return false;
     }
     if (document.addcontent.typeid.value == 0) {
-        ShowMsg("隶属栏目必须选择");
+        ShowMsg("请您选择文档所属栏目");
         return false;
     }
 }

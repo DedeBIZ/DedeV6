@@ -153,17 +153,6 @@
 								<td class="admin-td">默认页的名称：</td>
 								<td class="admin-td"><input type="text" name="defaultname" value="index.html" class="admin-input-md"></td>
 							</tr>
-							<tr id="helpvar2" style="display:none">
-								<td bgcolor="#f5f5f5">支持变量：</td>
-								<td bgcolor="#f5f5f5"> {Y}、{M}、{D} 年月日<br>
-									{timestamp} INT类型的UNIX时间戳<br>
-									{aid} 文档id<br>
-									{pinyin} 拼音+文档id<br>
-									{py} 拼音部首+文档id<br>
-									{typedir} 栏目目录 <br>
-									{cc} 日期+ID混编后用转换为适合的字母 <br>
-								</td>
-							</tr>
 							<tr>
 								<td class="admin-td">文档命名规则：</td>
 								<td class="admin-td">
@@ -171,15 +160,35 @@
 									<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')"></i>
 								</td>
 							</tr>
-							<tr id="helpvar3" style="display:none">
+							<tr id="helpvar2" style="display:none">
 								<td bgcolor="#f5f5f5">支持变量：</td>
-								<td bgcolor="#f5f5f5">{page} 列表的页码</td>
+								<td bgcolor="#f5f5f5">
+									{Y}、{M}、{D} 年月日<br>
+									{timestamp} INT类型的UNIX时间戳<br>
+									{aid} 文档id<br>
+									{pinyin} 拼音+文档id<br>
+									{py} 拼音部首+文档id<br>
+									{typedir} 栏目目录<br>
+									{cc} 日期+ID混编后用转换为适合的字母<br>
+									Nginx伪静态默认规则<br>
+									rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
+									rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
+								</td>
 							</tr>
 							<tr>
 								<td>列表命名规则：</td>
 								<td>
 									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-md">
 									<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')"></i>
+								</td>
+							</tr>
+							<tr id="helpvar3" style="display:none">
+								<td bgcolor="#f5f5f5">支持变量：</td>
+								<td bgcolor="#f5f5f5">
+									{page} 列表的页码<br>
+									Nginx伪静态默认规则<br>
+									rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
+									rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
 								</td>
 							</tr>
 							<tr>
@@ -192,54 +201,51 @@
 												<td>子栏目（用&quot;目录名称1,目录名称2&quot;这样表示多个栏目）</td>
 												<td width="60" align="center"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
 											</tr>
-											<tr align="center">
+											<tr>
 												<td class="rank">
 													<input type="hidden" name="posttype" value="">
 													<input type="text" name="rank" id="rank" value="1" class="admin-input-sm">
 												</td>
-												<td align="center"><input type="text" name="toptype" id="toptype" class="admin-input-sm"></td>
-												<td><input type="text" name="sontype" id="sontype" style="width:100%">
-												</td>
-												<td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
+												<td><input type="text" name="toptype" id="toptype" class="admin-input-sm"></td>
+												<td><input type="text" name="sontype" id="sontype" class="w-100"></td>
+												<td align="center"><button type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
 											</tr>
 											<?php for ($i=2;$i<=10;$i++) {?>
-											<tr class="repeat" align="center">
+											<tr class="repeat">
 												<td class="rank">
 													<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
 													<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="admin-input-sm">
 												</td>
 												<td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="admin-input-sm"></td>
-												<td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" style="width:100%"></td>
-												<td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
+												<td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" class="w-100"></td>
+												<td align="center"><button type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
 											</tr>
 											<?php }?>
 										</tbody>
 									</table>
-									<table id="addQuickRel" width="302" cellpadding="3" cellspacing="1"
-										style="display:none">
+									<table id="addQuickRel" width="360" cellpadding="3" cellspacing="1" style="display:none">
 										<tbody>
 											<tr bgcolor="#e9ecef" align="center">
 												<td width="60">排序</td>
 												<td width="170">栏目名称</td>
 												<td align="center"><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
 											</tr>
-											<tr align="center">
+											<tr>
 												<td class="rank">
 													<input type="hidden" name="posttype" value="">
 													<input type="text" name="rank" id="rank" value="1" class="admin-input-sm">
 												</td>
-												<td><input type="text" name="reltype" id="reltype" class="admin-input-sm">
-												</td>
-												<td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
+												<td><input type="text" name="reltype" id="reltype" class="admin-input-sm"></td>
+												<td align="center"><button type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
 											</tr>
 											<?php for ($i=2;$i<=10;$i++) {?>
-											<tr class="repeat" align="center">
+											<tr class="repeat">
 												<td class="rank">
 													<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
 													<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="admin-input-sm">
 												</td>
 												<td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="admin-input-sm"></td>
-												<td align="center"><button type="button" id="add" class="btn btn-danger btn-sm">删除</button></td>
+												<td align="center"><button type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
 											</tr>
 											<?php }?>
 										</tbody>
