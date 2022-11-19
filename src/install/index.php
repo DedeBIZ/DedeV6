@@ -93,8 +93,9 @@ else if ($step==2)
     $dbtype = empty($dbtype)? "mysql" : $dbtype;
     $dblang = "utf8";
     if (!in_array($dbtype,array("mysql", "sqlite"))) {
-        die("当前数据库类型不支持");
+        die(DedeAlert("当前数据库类型不支持", ALERT_DANGER));
     }
+    
     if (!empty($_SERVER['HTTP_HOST']))
         $dfbaseurl = $proto.$_SERVER['HTTP_HOST'];
     else

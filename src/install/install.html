@@ -39,7 +39,7 @@
 					<h4 class="text-center my-0">欢迎使用DedeV<?php echo $cfg_version_detail;?></h4>
 				</div>
 				<div class="card-body">
-					<form action="index.php" method="post" name="form1">
+					<form action="../install/index.php" method="post" name="form1">
 						<input type="hidden" name="step" value="2" />
 						<input type="hidden" name="cookieencode" value="<?php echo $rnd_cookieEncode; ?>">
 						<input type="hidden" name="adminmail" value="admin@dedebiz.com">
@@ -49,19 +49,19 @@
 							<label for="dbtype" class="form-label">数据库类型</label>
 							<select id="dbtype" name="dbtype" class="form-control form-select">
 								<option value="mysql" selected>MySQL</option>
-								<option value="sqlite">SQLite</option>
+								<?php if(extension_loaded("sqlite3")) {;?><option value="sqlite">SQLite</option><?php } ?>
 							</select>
 							<div class="form-text text-danger">数据库类型一般为MySQL，SQLite仅用于开发调试，不建议生产中使用。</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group server">
 							<label for="dbhost" class="form-label">数据库主机</label>
 							<input type="text" name="dbhost" id="dbhost" class="form-control" placeholder="localhost">
 						</div>
-						<div class="form-group">
+						<div class="form-group server">
 							<label for="dbuser" class="form-label">数据库用户</label>
 							<input type="text" name="dbuser" id="dbuser" class="form-control" placeholder="root">
 						</div>
-						<div class="form-group">
+						<div class="form-group server">
 							<label for="exampleInputPassword1" class="form-label">数据库密码</label>
 							<input type="text" name="dbpwd" id="dbpwd" class="form-control">
 						</div>
@@ -127,6 +127,13 @@
 				ShowAlert("#alertConnect", result.data, "danger", 5000);
 			}
 		})
+	})
+	$("#dbtype").change(function () {
+		if ($(this).val() === 'sqlite') {
+			$(".form-group.server").hide();
+		} else {
+			$(".form-group.server").show();
+		}
 	})
 	</script>
 </body>
