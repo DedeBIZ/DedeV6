@@ -1,137 +1,272 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>系统主页</title>
-		<base target="_self">
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>const cfg_biz_dedebizUrl = '<?php echo $cfg_biz_dedebizUrl;?>';const cfg_webname = '<?php echo $cfg_webname;?>';</script>
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
-		<script src="../static/web/js/chart.min.js"></script>
-		<script src="js/indexbody.js"></script>
-		<script src="js/main.js"></script>
-	</head>
-	<body>
-		<div class="container-fluid">
-			<div class="row">
-				<div id="body-tips" class="col-md-12"></div>
-				<div class="col-md-12 my-3">
-					<div class="card">
-						<div class="card-header">
-							<a href="#statChart" title="查看流量统计图"><i class="fa fa-bar-chart"></i> 流量统计表</a>
-						</div>
-						<div class="card-body">
-							<table class="table">
-								<tbody>
-									<tr class="title">
-										<td width="20%" class="border-top-0"></td>
-										<td width="20%" class="border-top-0">浏览次数(PV)</td>
-										<td width="20%" class="border-top-0">独立访客(UV)</td>
-										<td width="20%" class="border-top-0">独立地址(IP)</td>
-										<td width="20%" class="border-top-0">访问次数(VV)</td>
-									</tr>
-									<tr class="bg-white">
-										<td class="today">今日</td>
-										<td class="today" id="today_pv">0</td>
-										<td class="today" id="today_uv">0</td>
-										<td class="today" id="today_ip">0</td>
-										<td class="today" id="today_vv">0</td>
-									</tr>
-									<tr class="bg-white">
-										<td>昨日</td>
-										<td id="yestoday_pv">0</td>
-										<td id="yestoday_uv">0</td>
-										<td id="yestoday_ip">0</td>
-										<td id="yestoday_vv">0</td>
-									</tr>
-									<tr class="bg-white">
-										<td>历史累计</td>
-										<td id="total_pv">0</td>
-										<td id="total_uv">0</td>
-										<td id="total_ip">0</td>
-										<td id="total_vv">0</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<title>系统主页</title>
+	<base target="_self">
+	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/web/css/admin.css">
+	<script>const cfg_biz_dedebizUrl = '<?php echo $cfg_biz_dedebizUrl;?>'; const cfg_webname = '<?php echo $cfg_webname;?>';</script>
+	<script src="../static/web/js/jquery.min.js"></script>
+	<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+	<script src="../static/web/js/webajax.js"></script>
+	<script src="../static/web/js/chart.min.js"></script>
+	<script src="js/indexbody.js"></script>
+	<script src="js/main.js"></script>
+	<style>
+		#btnUpdate,
+		#latestVersion {
+			display: none;
+		}
+
+		#btnUpdate {
+			cursor: pointer;
+		}
+
+		#_fileList{
+			height: 200px;
+			overflow-y: scroll;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div id="body-tips" class="col-md-12"></div>
+			<div class="col-md-12 my-3">
+				<div class="card">
+					<div class="card-header">
+						<a href="#statChart" title="查看流量统计图"><i class="fa fa-bar-chart"></i> 流量统计表</a>
 					</div>
-				</div>
-				<div class="col-md-6 my-3">
-					<div class="card">
-						<div class="card-header"><a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a>
-							<span id="text">软件：<?php echo $cfg_version_detail;?>|操作系统：<?php echo PHP_OS;?>|Web服务器：<?php echo $_SERVER['SERVER_SOFTWARE'];?>|PHP：<?php echo @phpversion();?>|数据库：<?php echo $dsql->GetVersion();?></span>
-						</div>
-						<div class="card-body">
-							<table class="table table-borderless">
-								<tr>
-									<td>
-										<div class="web-info">
-											<p>操作系统</p>
-											<span><?php echo PHP_OS;?></span>
-										</div>
-									</td>
-									<td>
-										<div class="web-info">
-											<p>Web服务器</p>
-											<span><?php echo $_SERVER['SERVER_SOFTWARE'];?></span>
-										</div>
-									</td>
-									<td>
-										<div class="web-info">
-											<p>服务器IP</p>
-											<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
-										</div>
-									</td>
-									<td>
-										<div class="web-info">
-											<p>PHP版本</p>
-											<span><?php echo @phpversion();?></span>
-										</div>
-									</td>
-									<td>
-										<div class="web-info">
-											<p>数据库版本</p>
-											<span><?php echo $dsql->GetVersion();?></span>
-										</div>
-									</td>
+					<div class="card-body">
+						<table class="table">
+							<tbody>
+								<tr class="title">
+									<td width="20%" class="border-top-0"></td>
+									<td width="20%" class="border-top-0">浏览次数(PV)</td>
+									<td width="20%" class="border-top-0">独立访客(UV)</td>
+									<td width="20%" class="border-top-0">独立地址(IP)</td>
+									<td width="20%" class="border-top-0">访问次数(VV)</td>
 								</tr>
-							</table>
-						</div>
+								<tr class="bg-white">
+									<td class="today">今日</td>
+									<td class="today" id="today_pv">0</td>
+									<td class="today" id="today_uv">0</td>
+									<td class="today" id="today_ip">0</td>
+									<td class="today" id="today_vv">0</td>
+								</tr>
+								<tr class="bg-white">
+									<td>昨日</td>
+									<td id="yestoday_pv">0</td>
+									<td id="yestoday_uv">0</td>
+									<td id="yestoday_ip">0</td>
+									<td id="yestoday_vv">0</td>
+								</tr>
+								<tr class="bg-white">
+									<td>历史累计</td>
+									<td id="total_pv">0</td>
+									<td id="total_uv">0</td>
+									<td id="total_ip">0</td>
+									<td id="total_vv">0</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-				<div class="col-md-6 my-3">
-					<div class="card">
-						<div class="card-header">
-							<span><i class="fa fa-database"></i> 版本授权</span>
-							<a href="" class="float-right">软件更新<span class="admin-updates"></span></a>
-						</div>
-						<div class="card-body" id="system-info">正在加载</div>
+			</div>
+			<div class="col-md-6 my-3">
+				<div class="card">
+					<div class="card-header"><a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a>
+						<span id="text">软件：
+							<?php echo $cfg_version_detail;?>|操作系统：
+							<?php echo PHP_OS;?>|Web服务器：
+							<?php echo $_SERVER['SERVER_SOFTWARE'];?>|PHP：
+							<?php echo @phpversion();?>|数据库：
+							<?php echo $dsql->GetVersion();?>
+						</span>
+					</div>
+					<div class="card-body">
+						<table class="table table-borderless">
+							<tr>
+								<td>
+									<div class="web-info">
+										<p>操作系统</p>
+										<span>
+											<?php echo PHP_OS;?>
+										</span>
+									</div>
+								</td>
+								<td>
+									<div class="web-info">
+										<p>Web服务器</p>
+										<span>
+											<?php echo $_SERVER['SERVER_SOFTWARE'];?>
+										</span>
+									</div>
+								</td>
+								<td>
+									<div class="web-info">
+										<p>服务器IP</p>
+										<span>
+											<?php echo gethostbyname($_SERVER['SERVER_NAME']);?>
+										</span>
+									</div>
+								</td>
+								<td>
+									<div class="web-info">
+										<p>PHP版本</p>
+										<span>
+											<?php echo @phpversion();?>
+										</span>
+									</div>
+								</td>
+								<td>
+									<div class="web-info">
+										<p>数据库版本</p>
+										<span>
+											<?php echo $dsql->GetVersion();?>
+										</span>
+									</div>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
-				<div class="col-md-6 my-3">
-					<div class="card">
-						<div class="card-header">
-							<a name="statChart"><i class="fa fa-line-chart"></i> 流量统计图</a>
-						</div>
-						<div class="card-body">
-							<canvas id="statChart"></canvas>
-						</div>
+			</div>
+			<div class="col-md-6 my-3">
+				<div class="card">
+					<div class="card-header">
+						<span><i class="fa fa-database"></i> 版本授权</span>
+						<a class="float-right" id="btnUpdate">软件更新<span class="admin-updates"></span></a>
+						<span id="latestVersion" class="float-right">已是最新软件版本</span>
+					</div>
+					<div class="card-body" id="system-info">正在加载</div>
+				</div>
+			</div>
+			<div class="col-md-6 my-3">
+				<div class="card">
+					<div class="card-header">
+						<a name="statChart"><i class="fa fa-line-chart"></i> 流量统计图</a>
+					</div>
+					<div class="card-body">
+						<canvas id="statChart"></canvas>
 					</div>
 				</div>
-				<div class="col-md-6 my-3">
-					<div class="card">
-						<div class="card-header">
-							<span><i class="fa fa-file-word-o"></i> 最新文档</span>
-						</div>
-						<div class="card-body" id="system-word">正在加载</div>
+			</div>
+			<div class="col-md-6 my-3">
+				<div class="card">
+					<div class="card-header">
+						<span><i class="fa fa-file-word-o"></i> 最新文档</span>
+					</div>
+					<div class="card-body" id="system-word">正在加载</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="mdlUpdate" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">软件更新</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table id="stepArea1" class="table table-borderless w-100 stepArea">
+						<tr>
+							<td>
+								<div class="text-center text-success">
+									<div class="spinner-border" role="status">
+										<span class="sr-only">Loading...</span>
+									</div>
+								</div>
+								<p id="step1Msg">正在比对系统更改的文件……</p>
+							</td>
+						</tr>
+					</table>
+					<table id="stepArea2" class="table table-borderless w-100 stepArea">
+						<tr>
+							<td colspan="2">本更新提供了重要的安全性更新，建议所有用户升级，软件更新将覆盖以下文件，请做好备份。</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div id="_fileList">...</div>
+							</td>
+						</tr>
+					</table>
+					<table id="stepArea3" class="table table-borderless w-100 stepArea">
+						<tr>
+							<td>更新诊断出数据结构有问题，可能无法正常使用后台，是否尝试修复数据？</td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<div id="btnStep1" class="btnStep">
+					</div>
+					<div id="btnStep2" class="btnStep">
+						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-outline-success">备份</button>
+						<button type="button" class="btn btn-success">下一步</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</body>
+	</div>
+	<script>
+		$(document).ready(function () {
+			var currentStep = 1; //步骤
+			//显示步骤区域
+			function showStepArea(step) {
+				$(".stepArea").hide();
+				$(".btnStep").hide();
+				$("#stepArea"+step).show();
+				$("#btnStep"+step).show();
+			}
+			$.get("api.php?action=has_new_version", function (data) {
+				let rs = JSON.parse(data);
+				if (rs.code === 0) {
+					if (rs.result.HasNew === true) {
+						$("#btnUpdate").show();
+						$("#latestVersion").hide();
+					} else {
+						$("#btnUpdate").hide();
+						$("#latestVersion").show();
+					}
+				}
+				console.log(rs);
+			})
+			$("#btnCancel").click(function () {
+				currentStep = 1;
+				$("#_fileList").html(``);
+			})
+			$("#btnUpdate").click(function () {
+				$('#mdlUpdate').modal('show');
+				showStepArea(currentStep);
+				currentStep++;
+				$.get("api.php?action=get_changed_files", function (data) {
+				let rs = JSON.parse(data);
+				if (rs.code === 0) {
+					let fstr = '<ul class="list-group list-group-flush">';
+					let i = 1;
+					rs.data.files.forEach(file => {
+						console.log(file);
+						fstr += `<li class='list-group-item'>第${i}个文件：..\\${file['filename']}</li>`;
+						i++;
+					});
+					fstr += '</ul>';
+					$("#_fileList").html(fstr);
+					showStepArea(currentStep);
+				}
+				
+			})
+			})
+		})
+	</script>
+</body>
+
 </html>

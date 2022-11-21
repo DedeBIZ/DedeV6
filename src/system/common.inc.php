@@ -37,7 +37,8 @@ define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
 define('DEDESTATIC', DEDEROOT.'/static');
 define('DEDEMEMBER', DEDEROOT.'/user');
 define('DEDETEMPLATE', DEDEROOT.'/theme');
-define('DEDEBIZURL', "https://www.dedebiz.com");//DedeBiz商业支持
+define('DEDEBIZURL', "http://127.0.0.1:8898");//DedeBiz商业支持
+define('DEDEBIZCDN', "https://cdn.dedebiz.com");//DedeBizCDN镜像
 define('DEDEVER', 6);//当前系统大版本
 define('DEDEPUB', '
 -----BEGIN PUBLIC KEY-----
@@ -186,7 +187,7 @@ $cfg_soft_dir = $cfg_medias_dir.'/soft';
 $cfg_other_medias = $cfg_medias_dir.'/media';
 //软件摘要信息，请不要删除，否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
-$cfg_version_detail = '6.2.0'; //详细版本号
+$cfg_version_detail = '6.0.0'; //详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 $cfg_softname = '得得系统';

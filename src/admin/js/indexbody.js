@@ -29,7 +29,7 @@ function DedeCopyToClipboard(text) {
         textarea.select();
         document.execCommand('copy', true);
         document.body.removeChild(textarea);
-    } 
+    }
 }
 $(function () {
     $.get("index_testenv.php", function (data) {
@@ -46,7 +46,7 @@ $(function () {
 function copyFn() {
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
-    document.execCommand ("Copy");
+    document.execCommand("Copy");
     alert("环境配置信息已复制");
 }
 //Dedebiz info
@@ -106,40 +106,6 @@ function LoadServer() {
                     <td>如果您已购买商业版授权，可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系。</td>
                 </tr>
             </table>
-
-            <table class="table table-borderless w-100">
-                <tr>
-                    <td>您的后台已是最新软件版本</td>
-                </tr>
-            </table>
-            <table class="table table-borderless w-100">
-                <tr>
-                    <td colspan="2">本更新提供了重要的安全性更新，建议所有用户升级，软件更新将覆盖以下文件，请做好备份。<a href="" class="btn btn-success btn-sm">下一步</a></td>
-                </tr>
-                <tr>
-                    <td width="90">文件1：</td>
-                    <td>.../system/database/1.php</td>
-                </tr>
-                <tr>
-                    <td>文件2：</td>
-                    <td>.../system/database/2.php</td>
-                </tr>
-                <tr>
-                    <td>文件3：</td>
-                    <td>.../system/database/3.php</td>
-                </tr>
-            </table>
-            <table class="table table-borderless w-100">
-                <tr>
-                    <td>更新诊断出数据结构有问题，可能无法正常使用后台，是否尝试修复数据？</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="" class="btn btn-success btn-sm">修复</a>
-                        <a href="" class="btn btn-secondary btn-sm">取消</a>
-                    </td>
-                </tr>
-            </table>
             `);
         }
     });
@@ -161,25 +127,29 @@ Date.prototype.Format = function (fmt) { //author: meizz
 }
 function LoadStat() {
     $.get("index_body.php?dopost=get_statistics", function (data) {
-        let rsp = JSON.parse(data);
-        if (rsp.code == 200) {
-            var tpv = parseInt(rsp.result.pv);
-            var tuv = parseInt(rsp.result.uv);
-            var tip = parseInt(rsp.result.ip);
-            var tvv = parseInt(rsp.result.vv);
-            $("#today_pv").html(tpv);
-            $("#today_uv").html(tuv);
-            $("#today_ip").html(tip);
-            $("#today_vv").html(tvv);
-            $.get("index_body.php?dopost=get_statistics&sdate=-1", function (data) {
-                let rsp = JSON.parse(data);
-                if (rsp.code == 200) {
-                    $("#total_pv").html(parseInt(rsp.result.pv) + tpv);
-                    $("#total_uv").html(parseInt(rsp.result.uv) + tuv);
-                    $("#total_ip").html(parseInt(rsp.result.ip) + tip);
-                    $("#total_vv").html(parseInt(rsp.result.vv) + tvv);
-                }
-            });
+        try {
+            let rsp = JSON.parse(data);
+            if (rsp.code == 200) {
+                var tpv = parseInt(rsp.result.pv);
+                var tuv = parseInt(rsp.result.uv);
+                var tip = parseInt(rsp.result.ip);
+                var tvv = parseInt(rsp.result.vv);
+                $("#today_pv").html(tpv);
+                $("#today_uv").html(tuv);
+                $("#today_ip").html(tip);
+                $("#today_vv").html(tvv);
+                $.get("index_body.php?dopost=get_statistics&sdate=-1", function (data) {
+                    let rsp = JSON.parse(data);
+                    if (rsp.code == 200) {
+                        $("#total_pv").html(parseInt(rsp.result.pv) + tpv);
+                        $("#total_uv").html(parseInt(rsp.result.uv) + tuv);
+                        $("#total_ip").html(parseInt(rsp.result.ip) + tip);
+                        $("#total_vv").html(parseInt(rsp.result.vv) + tvv);
+                    }
+                });
+            }
+        } catch (error) {
+            console.log(error)
         }
     });
     var d = new Date();
@@ -187,12 +157,16 @@ function LoadStat() {
     var s = d.Format("yyyy-MM-dd");
     s = s.replaceAll("-", "");
     $.get("index_body.php?dopost=get_statistics&sdate=" + s, function (data) {
-        let rsp = JSON.parse(data);
-        if (rsp.code == 200) {
-            $("#yestoday_pv").html(rsp.result.pv);
-            $("#yestoday_uv").html(rsp.result.uv);
-            $("#yestoday_ip").html(rsp.result.ip);
-            $("#yestoday_vv").html(rsp.result.vv);
+        try {
+            let rsp = JSON.parse(data);
+            if (rsp.code == 200) {
+                $("#yestoday_pv").html(rsp.result.pv);
+                $("#yestoday_uv").html(rsp.result.uv);
+                $("#yestoday_ip").html(rsp.result.ip);
+                $("#yestoday_vv").html(rsp.result.vv);
+            }
+        } catch (error) {
+            console.log(error)
         }
     });
 }

@@ -182,6 +182,9 @@ class DedeSqlite
         if ($this->safeCheck) CheckSql($this->queryString, 'update');
         $t1 = ExecTime();
         $rs = $this->linkID->exec($this->queryString);
+        if ($rs === false) {
+            var_dump_cli("Error in fetch ".$this->linkID->lastErrorMsg().",SQL:{$this->queryString}");
+        }
         //查询性能测试
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
