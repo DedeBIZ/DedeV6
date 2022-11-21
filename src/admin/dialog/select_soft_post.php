@@ -58,6 +58,10 @@ if (!empty($newname)) {
     }
     $filename = $filename.'.'.$fs[count($fs) - 1];
 }
+if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)[^a-zA-Z0-9]+$#i', trim($filename))) {
+    ShowMsg("你指定的文件名被系统禁止",'javascript:;');
+    exit();
+}
 $fullfilename = $cfg_basedir.$activepath.'/'.$filename;
 $fullfileurl = $activepath.'/'.$filename;
 $mime = get_mime_type($uploadfile);

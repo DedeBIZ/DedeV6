@@ -155,7 +155,7 @@ else if ($dopost == 'save') {
     $softurl1 = stripslashes($softurl1);
     $nsoftsize = '';
     if ($softurl1 != '') {
-        $urls .= "{dede:link islocal='1' text='{$servermsg1}'} $softurl1 {/dede:link}\r\n";
+        if (preg_match("#}(.*?){/dede:link}{dede:#sim", $servermsg1) != 1) { $urls .= "{dede:link islocal='1' text='{$servermsg1}'} $softurl1 {/dede:link}\r\n"; }
         $autosize = empty($autosize) ? FALSE : TRUE;
         if ($autosize && empty($softsize)) {
             $nsoftsize = @filesize($cfg_basedir.$softurl1);

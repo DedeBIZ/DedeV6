@@ -53,7 +53,8 @@ if (empty($typeid)) {
         }
     }
 }
-$keyword = addslashes(cn_substr($keyword, 30));
+$typeid = intval($typeid);
+$keyword = addslashes(cn_substr($keyword,30));
 $typeid = intval($typeid);
 if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $keyword)) {
     ShowMsg("您的搜索关键词中存在非法文档，被系统禁止", "-1");
