@@ -49,7 +49,7 @@ if ($dopost != 'save') {
                     $islocal = $ctag->GetAtt('islocal');
                     if ($islocal != 1) $needmsg = "<label><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
                     else $needmsg = '<button name="sel1" class="btn btn-success btn-sm" type="button" id="sel1" onClick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选取</button>';
-                    $nForm .= "<div>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-md'> 服务器名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'>
+                    $nForm .= "<div class='py-2'>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-md'> 服务器名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'>
                     <input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'>
                     $needmsg
                     </div>\r\n";

@@ -55,7 +55,7 @@ if ($action == 'upload') {
     $win->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data");
     $win->mainTitle = "模块管理";
     $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块";
-    $win->AddTitle('请选择要上传的文件：');
+    $win->AddTitle('请选择要上传的文件');
     $win->AddHidden("action", 'upload');
     $msg = "<table width='900' cellspacing='0' cellpadding='0'>
   <tr>
@@ -73,7 +73,7 @@ if ($action == 'upload') {
     <td><input name='upfile' type='file' id='upfile' class='admin-input-lg'></td>
   </tr>
  </table>";
-    $win->AddMsgItem("<div>$msg</div>");
+    $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('ok', '');
     $win->Display();
     exit();

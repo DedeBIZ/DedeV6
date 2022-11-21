@@ -60,25 +60,25 @@ else if ($dopost == "copystart") {
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
     $msg = "
-        <table width='460' cellspacing='0' cellpadding='0'>
+        <table cellspacing='0' cellpadding='0'>
         <tr>
-        <td width='170' align='center'>新栏目id：</td>
-        <td width='230'><input name='newid' type='text' id='newid' size='6' value='{$newid}' /></td>
+        <td width='260'>新栏目id：</td>
+        <td><input name='newid' type='text' id='newid' size='6' value='{$newid}' /></td>
         </tr>
         <tr>
-        <td align='center'>新栏目名称：</td>
+        <td>新栏目名称：</td>
         <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' class='admin-input-md' /></td>
         </tr>
         <tr>
-        <td align='center'>新栏目标识：</td>
+        <td>新栏目标识：</td>
         <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' class='admin-input-md' /></td>
         </tr>
         <tr>
-        <td align='center'>新附加表：</td>
+        <td>新附加表：</td>
         <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' class='admin-input-md' /></td>
         </tr>
         <tr>
-        <td align='center'>复制模板：</td>
+        <td>复制模板：</td>
         <td>
         <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked='checked'> 复制</label>
         <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>
@@ -86,7 +86,7 @@ else if ($dopost == "copystart") {
         </tr>
         </table>
         ";
-    $win->AddMsgItem("<div>$msg</div>");
+    $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     exit();
@@ -278,7 +278,7 @@ else if ($dopost == "save") {
     }
     $trueTable = str_replace("#@__", $cfg_dbprefix, $addtable);
     if (!$dsql->IsTable($trueTable)) {
-        ShowMsg("系统找不到您所指定的表`$trueTable`，请手工创建这个表", "-1");
+        ShowMsg("系统找不到您所指定的表`$trueTable`，请您创建这个表", "-1");
         exit();
     }
     $dsql->ExecuteNoneQuery($query);
@@ -295,7 +295,7 @@ else if ($dopost == "gettemplets") {
     $wecome_info = "<a href='mychannel_main.php'>栏目管理</a>::查看模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
-    $win->AddTitle("栏目[".$row['typename']."]默认模板文件说明");
+    $win->AddTitle("栏目<span class='text-primary'>".$row['typename']."</span>默认模板文件说明");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "
         文档模板：{$defaulttemplate}/article_{$row['nid']}.htm
@@ -306,7 +306,7 @@ else if ($dopost == "gettemplets") {
         封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm
         <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm'>[修改]</a>
     ";
-    $win->AddMsgItem("<div>$msg</div>");
+    $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("hand", "");
     $win->Display();
     exit();

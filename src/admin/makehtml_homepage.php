@@ -63,7 +63,7 @@ if ($dopost == "view") {
     $remotepos = empty($remotepos) ? '/index.html' : $remotepos;
     $serviterm = empty($serviterm) ? "" : $serviterm;
     if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($position))) {
-        ShowMsg("您指定的文件名被系统禁止", "javascript:;");
+        ShowMsg("指定的文件名已被系统禁止", "javascript:;");
         exit();
     }
     $homeFile = DEDEADMIN."/".$position;
