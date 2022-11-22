@@ -4,7 +4,7 @@ define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
 require_once(DEDEADMIN.'/../system/common.inc.php');
 require_once(DEDEINC.'/userlogin.class.php');
 AjaxHead();
-$action = isset($action) && in_array($action, array('is_need_check_code','has_new_version','get_changed_files'))? $action  : '';
+$action = isset($action) && in_array($action, array('is_need_check_code','has_new_version','get_changed_files','update_backup','get_update_versions'))? $action  : '';
 /**
  * 登录鉴权
  *
@@ -65,6 +65,46 @@ if ($action === 'is_need_check_code') {
             "files" => $changedFiles,
         ),
     ));
+    exit;
+} else if($action === 'update_backup'){
+    require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
+    checkLogin();
+    // 获取本地更改过的文件
+    $hashUrl = DEDEBIZCDN.'/release/'.$cfg_version_detail.'.json';
+    $dhd = new DedeHttpDown();
+    $dhd->OpenUrl($hashUrl);
+    $data = $dhd->GetJSON();
+    $changedFiles = array();
+    $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
+    $backupPath = DEDEDATA."/backupfile_{$enkey}";
+    RmRecurse($backupPath);
+    mkdir($backupPath);
+    foreach ($data as $file) {
+        $realFile = DEDEROOT. str_replace("\\", '/', $file->filename);
+        if ( file_exists($realFile) && md5_file($realFile) !== $file->hash) {
+            // 备份文件
+            $dstFile = $backupPath.'/'.str_replace("\\", '/', $file->filename);
+            @MkdirAll(dirname($dstFile),777);
+            copy($realFile, $dstFile);
+        }
+    }
+    echo json_encode(array(
+        "code" => 0,
+        "msg" => "",
+        "data" => array(
+            "backupdir" => "data/backupfile_{$enkey}",
+        ),
+    ));
+    exit;
+} else if($action === 'get_update_versions'){
+    require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
+    checkLogin();
+    // 获取本地更改过的文件
+    $offUrl = DEDEBIZURL."/versions?version={$cfg_version_detail}";
+    $dhd = new DedeHttpDown();
+    $dhd->OpenUrl($offUrl);
+    $data = $dhd->GetHtml();
+    echo $data;
     exit;
 }
 ?>

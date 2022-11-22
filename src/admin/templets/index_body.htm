@@ -26,9 +26,19 @@
 			cursor: pointer;
 		}
 
-		#_fileList{
+		#_fileList,#_verList {
 			height: 200px;
 			overflow-y: scroll;
+		}
+
+		#_msgInfo {
+			display: none;
+		}
+
+		@media (min-width:480px) {
+			.modal-dialog {
+				max-width: 55%;
+			}
 		}
 	</style>
 </head>
@@ -201,31 +211,48 @@
 					</table>
 					<table id="stepArea3" class="table table-borderless w-100 stepArea">
 						<tr>
-							<td>更新诊断出数据结构有问题，可能无法正常使用后台，是否尝试修复数据？</td>
+							<td>软件发下以下版本的更新文件。</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div id="_verList">...</div>
+							</td>
 						</tr>
 					</table>
+					<div id="_msgInfo">
+					</div>
 				</div>
 				<div class="modal-footer">
 					<div id="btnStep1" class="btnStep">
 					</div>
 					<div id="btnStep2" class="btnStep">
 						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-						<button type="button" class="btn btn-outline-success">备份</button>
-						<button type="button" class="btn btn-success">下一步</button>
+						<button id="btnBackup" type="button" class="btn btn-outline-success">备份</button>
+						<button id="btnGoStep3" type="button" class="btn btn-success">下一步</button>
+					</div>
+					<div id="btnStep3" class="btnStep">
+						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+						<button id="btnGoStep3" type="button" class="btn btn-success">下载更新</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script>
+		function dedeAlter(msg, t = 'info', loading = false) {
+			let loadingStr = loading ? '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>' : '';
+			return `<div class="alert alert-${t}">${loadingStr}
+				${msg}
+			</div>`;
+		}
 		$(document).ready(function () {
 			var currentStep = 1; //步骤
 			//显示步骤区域
 			function showStepArea(step) {
 				$(".stepArea").hide();
 				$(".btnStep").hide();
-				$("#stepArea"+step).show();
-				$("#btnStep"+step).show();
+				$("#stepArea" + step).show();
+				$("#btnStep" + step).show();
 			}
 			$.get("api.php?action=has_new_version", function (data) {
 				let rs = JSON.parse(data);
@@ -238,32 +265,63 @@
 						$("#latestVersion").show();
 					}
 				}
-				console.log(rs);
 			})
 			$("#btnCancel").click(function () {
 				currentStep = 1;
 				$("#_fileList").html(``);
+			})
+			$("#btnBackup").click(function () {
+				let alertMsg = dedeAlter("系统正在备份差异文件", 'info', true);
+				$("#_msgInfo").html(alertMsg);
+				$("#_msgInfo").show();
+				$.get("api.php?action=update_backup", function (data) {
+					let rs = JSON.parse(data);
+					if (rs.code === 0) {
+						alertMsg = dedeAlter(`文件备份成功，备份文件夹：${rs.data.backupdir}`, 'success');
+						$("#_msgInfo").html(alertMsg);
+					}
+				})
 			})
 			$("#btnUpdate").click(function () {
 				$('#mdlUpdate').modal('show');
 				showStepArea(currentStep);
 				currentStep++;
 				$.get("api.php?action=get_changed_files", function (data) {
-				let rs = JSON.parse(data);
-				if (rs.code === 0) {
-					let fstr = '<ul class="list-group list-group-flush">';
-					let i = 1;
-					rs.data.files.forEach(file => {
-						console.log(file);
-						fstr += `<li class='list-group-item'>第${i}个文件：..\\${file['filename']}</li>`;
-						i++;
-					});
-					fstr += '</ul>';
-					$("#_fileList").html(fstr);
-					showStepArea(currentStep);
-				}
-				
+					let rs = JSON.parse(data);
+					if (rs.code === 0) {
+						let fstr = '<ul class="list-group list-group-flush">';
+						let i = 1;
+						rs.data.files.forEach(file => {
+							fstr += `<li class='list-group-item'>第${i}个文件：..\\${file['filename']}</li>`;
+							i++;
+						});
+						fstr += '</ul>';
+						$("#_fileList").html(fstr);
+						showStepArea(currentStep);
+					}
+				})
 			})
+			$('#mdlUpdate').on('hidden.bs.modal', function (event) {
+				currentStep = 1;
+				$("#_msgInfo").html('');
+				$("#_msgInfo").hide();
+			})
+			$("#btnGoStep3").click(function () {
+				currentStep++
+				showStepArea(currentStep);
+				$.get("api.php?action=get_update_versions", function (data) {
+					let rs = JSON.parse(data);
+					if (rs.code === 0) {
+						let fstr = '<ul class="list-group list-group-flush">';
+						let i = 1;
+						rs.result.Versions.forEach(ver => {
+							fstr += `<li class='list-group-item'>版本号：${ver.ver}，发布日期：${ver.r} <a href='https://www.zhelixie.com/DedeBIZ/DedeCMSV6/commits/tag/${ver.ver}' class='btn btn-outline-success float-right' target='_blank'>更新记录</a></li>`;
+							i++;
+						});
+						fstr += '</ul>';
+						$("#_verList").html(fstr);
+					}
+				})
 			})
 		})
 	</script>
