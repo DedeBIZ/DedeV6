@@ -26,7 +26,8 @@
 			cursor: pointer;
 		}
 
-		#_fileList,#_verList {
+		#_fileList,
+		#_verList {
 			height: 200px;
 			overflow-y: scroll;
 		}
@@ -255,15 +256,19 @@
 				$("#btnStep" + step).show();
 			}
 			$.get("api.php?action=has_new_version", function (data) {
-				let rs = JSON.parse(data);
-				if (rs.code === 0) {
-					if (rs.result.HasNew === true) {
-						$("#btnUpdate").show();
-						$("#latestVersion").hide();
-					} else {
-						$("#btnUpdate").hide();
-						$("#latestVersion").show();
+				try {
+					let rs = JSON.parse(data);
+					if (rs.code === 0) {
+						if (rs.result.HasNew === true) {
+							$("#btnUpdate").show();
+							$("#latestVersion").hide();
+						} else {
+							$("#btnUpdate").hide();
+							$("#latestVersion").show();
+						}
 					}
+				} catch (error) {
+					console.log("获取DedeV6版本信息失败")
 				}
 			})
 			$("#btnCancel").click(function () {

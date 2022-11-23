@@ -149,7 +149,7 @@ function LoadStat() {
                 });
             }
         } catch (error) {
-            console.log(error)
+            console.log("加载统计信息失败")
         }
     });
     var d = new Date();
@@ -166,7 +166,7 @@ function LoadStat() {
                 $("#yestoday_vv").html(rsp.result.vv);
             }
         } catch (error) {
-            console.log(error)
+            console.log("加载统计信息失败")
         }
     });
 }
