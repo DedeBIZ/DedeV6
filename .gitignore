@@ -51,3 +51,4 @@ src/static/flink/*.png
 src/static/rss/*.xml
 src/a/baidunews.xml
 src/data/backupfile*
+src/data/updatefile*

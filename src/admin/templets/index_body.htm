@@ -212,11 +212,35 @@
 					</table>
 					<table id="stepArea3" class="table table-borderless w-100 stepArea">
 						<tr>
-							<td>软件发下以下版本的更新文件。</td>
+							<td>软件发下以下版本的更新文件：</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<div id="_verList">...</div>
+							</td>
+						</tr>
+					</table>
+					<table id="stepArea4" class="table table-borderless w-100 stepArea">
+						<tr>
+							<td>
+								<div class="text-center text-success">
+									<div class="spinner-border" role="status">
+										<span class="sr-only">Loading...</span>
+									</div>
+								</div>
+								软件正在进行如下操作，请您耐心等待
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div id="_updateMsg">...</div>
+							</td>
+						</tr>
+					</table>
+					<table id="stepArea5" class="table table-borderless w-100 stepArea">
+						<tr>
+							<td>
+								完成升级，恭喜您当前系统已是最新版本
 							</td>
 						</tr>
 					</table>
@@ -233,28 +257,50 @@
 					</div>
 					<div id="btnStep3" class="btnStep">
 						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-						<button id="btnGoStep3" type="button" class="btn btn-success">下载更新</button>
+						<button id="btnGoStep4" type="button" class="btn btn-success">下载更新</button>
+					</div>
+					<div id="btnStep5" class="btnStep">
+						<button id="btnOK" type="button" class="btn btn-success" data-dismiss="modal">完成</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script>
+		var currentStep = 1; //步骤
+
 		function dedeAlter(msg, t = 'info', loading = false) {
 			let loadingStr = loading ? '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>' : '';
 			return `<div class="alert alert-${t}">${loadingStr}
 				${msg}
 			</div>`;
 		}
+		//显示步骤区域
+		function showStepArea(step) {
+			$(".stepArea").hide();
+			$(".btnStep").hide();
+			$("#stepArea" + step).show();
+			$("#btnStep" + step).show();
+		}
+		function update() {
+			$.get("api.php?action=update", function (data) {
+				let rs = JSON.parse(data);
+				if (rs.code === 0) {
+					$("#_updateMsg").html(rs.msg);
+					if (rs.data.finish === false) {
+						setTimeout(() => {
+							update();
+						}, 500);
+					} else {
+						currentStep++
+						$("#_msgInfo").html('');
+						$("#_msgInfo").hide();
+						showStepArea(currentStep);
+					}
+				}
+			})
+		}
 		$(document).ready(function () {
-			var currentStep = 1; //步骤
-			//显示步骤区域
-			function showStepArea(step) {
-				$(".stepArea").hide();
-				$(".btnStep").hide();
-				$("#stepArea" + step).show();
-				$("#btnStep" + step).show();
-			}
 			$.get("api.php?action=has_new_version", function (data) {
 				try {
 					let rs = JSON.parse(data);
@@ -313,6 +359,8 @@
 			})
 			$("#btnGoStep3").click(function () {
 				currentStep++
+				$("#_msgInfo").html('');
+				$("#_msgInfo").hide();
 				showStepArea(currentStep);
 				$.get("api.php?action=get_update_versions", function (data) {
 					let rs = JSON.parse(data);
@@ -327,6 +375,16 @@
 						$("#_verList").html(fstr);
 					}
 				})
+			})
+			$("#btnGoStep4").click(function () {
+				currentStep++
+				$("#_msgInfo").html('');
+				$("#_msgInfo").hide();
+				showStepArea(currentStep);
+				update();
+			})
+			$("#btnOK").click(function () {
+				location.reload();
 			})
 		})
 	</script>
