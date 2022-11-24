@@ -26,6 +26,10 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 2;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $menutype = 'content';
 if (empty($formhtml)) $formhtml = 0;
+if ($cfg_ml->IsSendLimited()) {
+    ShowMsg("对不起，当前用户已经超出投稿限制，投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
+    exit();
+}
 /*-------------
 function _ShowForm(){  }
 --------------*/

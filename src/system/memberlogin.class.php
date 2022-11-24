@@ -113,6 +113,7 @@ class MemberLogin
     var $M_HasDay;
     var $M_JoinTime;
     var $M_Honor = '';
+    var $M_SendMax = 0;
     var $memberCache = 'memberlogin';
     //php5构造函数
     function __construct($kptime = -1, $cache = FALSE)
@@ -164,6 +165,7 @@ class MemberLogin
                 if ($this->fields['matt'] == 10) $this->isAdmin = TRUE;
                 $this->M_UpTime = $this->fields['uptime'];
                 $this->M_ExpTime = $this->fields['exptime'];
+                $this->M_SendMax = $this->fields['send_max'];
                 $this->M_JoinTime = MyDate('Y-m-d', $this->fields['jointime']);
                 if ($this->M_Rank > 10 && $this->M_UpTime > 0) {
                     $this->M_HasDay = $this->Judgemember();
@@ -340,6 +342,29 @@ class MemberLogin
             default:
                 return md5($pwd);
         }
+    }    
+    /**
+     * 投稿是否被限制
+     *
+     * @return bool
+     */
+    function IsSendLimited()
+    {
+        global $dsql;
+        $arr = $dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__arctiny` WHERE mid='{$this->M_ID}'");
+        if ($this->isAdmin === true ) {
+            return false;
+        }
+        if (is_array($arr)) {
+            if ($arr['dd'] >= $this->M_SendMax) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+
     }
     /**
      *  把数据库密码转为特定长度

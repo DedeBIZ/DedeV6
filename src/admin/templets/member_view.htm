@@ -135,6 +135,12 @@
 					</td>
 				</tr>
 				<tr>
+					<td class="admin-td">投稿限制：</td>
+					<td class="admin-td">
+						<input name="send_max" type="text" value="<?php echo $row['send_max']?>" class="admin-input-sm">（0为不能投稿）
+					</td>
+				</tr>
+				<tr>
 					<td class="admin-td">资料状况：</td>
 					<td class="admin-td">
 						<select name="spacesta" class="admin-input-sm">
@@ -168,7 +174,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2" align="center">
 						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm">返回</button>
+						<button type="button" onclick="javascript:history.go(-1);" class="btn btn-outline-success btn-sm">返回</button>
 					</td>
 				</tr>
 			</form>

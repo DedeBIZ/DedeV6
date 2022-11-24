@@ -490,6 +490,7 @@ CREATE TABLE `#@__member` (
   `loginip` char(46) NOT NULL default '',
   `checkmail` smallint(6) NOT NULL default '-1',
   `loginerr` tinyint NULL DEFAULT 0,
+  `send_max` int DEFAULT '0',
   PRIMARY KEY  (`mid`),
   KEY `userid` (`userid`,`sex`),
   KEY `logintime` (`logintime`)

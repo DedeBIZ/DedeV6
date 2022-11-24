@@ -106,3 +106,4 @@ DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_vdcode_member
 ALTER TABLE `#@__arctype` CHANGE COLUMN `iscross` `cross` tinyint(1) NOT NULL DEFAULT 0 AFTER `ishidden`;
 ALTER TABLE `#@__admin` ADD COLUMN `loginerr` tinyint NULL DEFAULT 0 AFTER `loginip`;
 ALTER TABLE `#@__member` ADD COLUMN `loginerr` tinyint NULL DEFAULT 0 AFTER `checkmail`;
+ALTER TABLE `#@__member` ADD COLUMN `send_max` int NULL DEFAULT 0 AFTER `loginerr`;
