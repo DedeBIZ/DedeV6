@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 用于后台的api接口
  *
@@ -15,6 +16,7 @@ require_once(DEDEINC . '/userlogin.class.php');
 AjaxHead();
 helper('cache');
 $action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update')) ? $action  : '';
+$curDir = dirname(GetCurUrl()); //当前目录
 /**
  * 登录鉴权
  *
@@ -130,11 +132,14 @@ if ($action === 'is_need_check_code') {
     }
     $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
     $backupPath = DEDEDATA . "/updatefile_{$enkey}";
-    mkdir($backupPath);
+    @mkdir($backupPath);
     foreach ($row as $k => $ver) {
         if ($ver->isdownload !== true) {
-            //TODO 从远程服务器下载
-            $fileList = json_decode(file_get_contents(dirname(__FILE__) . '/../../../tools/patch-6.1.9/files.txt'));
+            $filesUrl = DEDEBIZCDN . '/update/' . $ver->ver . '/files.txt';
+            $dhd = new DedeHttpDown();
+            $dhd->OpenUrl($filesUrl);
+            $fileList = $dhd->GetJSON();
+            $dhd->Close();
             $backupVerPath = $backupPath . '/' . $ver->ver;
             RmRecurse($backupVerPath);
             mkdir($backupVerPath);
@@ -143,21 +148,32 @@ if ($action === 'is_need_check_code') {
                     //忽略src之外的目录
                     continue;
                 }
-                $fData = file_get_contents(dirname(__FILE__) . '/../../../tools/patch-6.1.9/src' . $f->filename);
+                $fileUrl = DEDEBIZCDN . '/update/' . $ver->ver . '/src'.$f->filename;
+                $dhd = new DedeHttpDown();
+                $dhd->OpenUrl($fileUrl);
+                $fData = $dhd->GetHtml();
+                $dhd->Close();
+                $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
                 $realFile = $backupVerPath . $f->filename;
                 @mkdir(dirname($realFile), 0777, true);
                 file_put_contents($realFile, $fData);
             }
-            $fData = file_get_contents(dirname(__FILE__) . '/../../../tools/patch-6.1.9/update.sql');
+            $sqlUrl = DEDEBIZCDN . '/update/' . $ver->ver . '/update.sql';
+            $dhd = new DedeHttpDown();
+            $dhd->OpenUrl($sqlUrl);
+            $fData = $dhd->GetHtml();
+            $dhd->Close();
             $realFile = $backupVerPath . '/update.sql';
             file_put_contents($realFile, $fData);
+            $realFile = $backupVerPath . '/files.txt';
+            file_put_contents($realFile, json_encode($fileList));
             $row[$k]->isdownload = true;
             SetCache('update', 'vers', $row);
             echo json_encode(array(
                 "code" => 0,
                 "msg" => "正在下载{$ver->ver}的版本更新文件",
                 "data" => array(
-                    "finish"=>false,
+                    "finish" => false,
                 ),
             ));
             exit;
@@ -165,14 +181,43 @@ if ($action === 'is_need_check_code') {
     }
     foreach ($row as $k => $ver) {
         if ($ver->ispatched !== true) {
-            //TODO 补丁应用
+            $backupVerPath = $backupPath . '/' . $ver->ver;
+            //执行更新SQL文件
+            $sql = file_get_contents($backupVerPath . '/update.sql');
+            if (!empty($sql)) {
+                $sql = preg_replace('#ENGINE=MyISAM#i', 'TYPE=MyISAM', $sql);
+                $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET=' . $cfg_db_language;
+                $sql = preg_replace('#TYPE=MyISAM#i', $sql41tmp, $sql);
+                $sqls = explode(";\r\n", $sql);
+                foreach ($sqls as $sql) {
+                    if (trim($sql) != '') {
+                        $dsql->ExecuteNoneQuery(trim($sql));
+                    }
+                }
+            }
+            //复制文件
+            $fileList = json_decode(file_get_contents($backupVerPath . '/files.txt'));
+            foreach ($fileList as $f) {
+                if (!preg_match("/^\//", $f->filename)) {
+                    //忽略src之外的目录
+                    continue;
+                }
+                $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
+                $srcFile = $backupVerPath . $f->filename;
+                $dstFile = str_replace(array("\\", "//"), '/', DEDEROOT . $f->filename);
+                var_dump_cli('files','srcFile',$srcFile,'dstFile',$dstFile);
+                // $rs = @copy($srcFile, $dstFile);
+                // if($rs) {
+                //     unlink($srcFile);
+                // }
+            }
             $row[$k]->ispatched = true;
             SetCache('update', 'vers', $row);
             echo json_encode(array(
                 "code" => 0,
                 "msg" => "正在应用{$ver->ver}的版本补丁文件",
                 "data" => array(
-                    "finish"=>false,
+                    "finish" => false,
                 ),
             ));
             exit;
@@ -182,9 +227,8 @@ if ($action === 'is_need_check_code') {
         "code" => 0,
         "msg" => "",
         "data" => array(
-            "finish"=>true,
+            "finish" => true,
         ),
     ));
     exit;
-
 }

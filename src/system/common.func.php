@@ -82,10 +82,10 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
     }
 }
 //一个支持在PHP Cli Server打印的方法
-function var_dump_cli($val)
+function var_dump_cli($val,...$values)
 {
     ob_start();
-    var_dump($val);
+    var_dump($val,$values);
     error_log(ob_get_clean(), 4);
 }
 function get_mime_type($filename)
@@ -585,4 +585,3 @@ function CheckDedeVer()
 if (file_exists(DEDEINC.'/extend.func.php')) {
     require_once(DEDEINC.'/extend.func.php');
 }
-?>
