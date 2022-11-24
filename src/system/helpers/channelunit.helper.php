@@ -429,9 +429,6 @@ function FillAttsDefault(&$atts, $attlist)
  */
 function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
 {
-    global $cfg_disable_tags;
-    $cfg_disable_tags = isset($cfg_disable_tags) ? $cfg_disable_tags : 'php';
-    $disable_tags = explode(',', $cfg_disable_tags);
     $alltags = array();
     $dtp->setRefObj($refObj);
     //读取自由调用tag列表
@@ -469,10 +466,6 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
             $tagname = 'flink';
         }
         if (in_array($tagname, $alltags)) {
-            if (in_array($tagname, $disable_tags)) {
-                if (DEBUG_LEVEL) echo 'DedeBIZ Error:Tag disabled:"'.$tagname.'" <a href="https://www.dedebiz.com/help/" target="_blank">more</a>!';
-                continue;
-            }
             if (DEBUG_LEVEL == TRUE) {
                 $ttt1 = ExecTime();
             }

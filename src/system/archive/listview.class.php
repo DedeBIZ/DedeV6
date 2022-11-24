@@ -130,6 +130,7 @@ class ListView
     {
         global $cfg_list_son,$cfg_need_typeid2,$cfg_cross_sectypeid;
         if (empty($cfg_need_typeid2)) $cfg_need_typeid2 = 'N';
+        $filtersql = '';
         //获得附加表的相关信息，联动单筛选
         $addtable = $this->ChannelUnit->ChannelInfos['addtable'];
         if ($addtable!="") {
