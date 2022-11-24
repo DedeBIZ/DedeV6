@@ -33,7 +33,7 @@ function _FilterAll($fk, &$svar)
             $svar = preg_replace('/'.$cfg_replacestr.'/i', "***", $svar);
         }
     }
-    return addslashes($svar);
+    return $svar;
 }
 /* 对_GET,_POST,_COOKIE进行过滤 */
 foreach (array('_GET', '_POST', '_COOKIE') as $_request) {

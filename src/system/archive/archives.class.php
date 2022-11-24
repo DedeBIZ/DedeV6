@@ -149,7 +149,7 @@ class Archives
                 $this->Fields['filename'] = '';
             }
             if (is_array($row)) {
-                foreach ($row as $k => $v) $row[strtolower($k)] = $v;
+                foreach ($row as $k => $v) $row[strtolower($k)] = stripcslashes($v);
             }
             if (is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields)) {
                 foreach ($this->ChannelUnit->ChannelFields as $k => $arr) {
