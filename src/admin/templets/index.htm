@@ -31,7 +31,7 @@
 			<div class="top-item">
 				<ul class="mb-0">
 					<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
-					<?php if ($cuserLogin->getUserType()>=10) {?>
+					<?php if ($cuserLogin->getUserType() >= 10) {?>
 					<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i></a></li>
 					<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
 					<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>

@@ -20,9 +20,8 @@
 		<script src="../static/web/js/cropper.min.js"></script>
 		<style>table{border-collapse:inherit}</style>
 		<script>
-			function checkSubmit()
-			{
-				if (document.form1.title.value=="") {
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
 					ShowMsg("<?php echo $cInfos['titlename'];?>不能为空");
 					return false;
 				}
