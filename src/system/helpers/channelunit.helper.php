@@ -309,7 +309,7 @@ if (!function_exists('IsParent')) {
     }
 }
 /**
- *  获取一个类目的顶级类目id
+ *  获取一个类目的顶级栏目id
  *
  * @param     string  $tid  栏目id
  * @return    string

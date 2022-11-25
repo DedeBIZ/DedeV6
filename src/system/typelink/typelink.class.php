@@ -66,7 +66,7 @@ class TypeLink
     function Close()
     {
     }
-    //重设类目ID
+    //重设栏目id
     function SETtypeid($typeid)
     {
         $this->TypeID = $typeid;

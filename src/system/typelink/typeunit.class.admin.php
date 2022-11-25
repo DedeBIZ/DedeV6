@@ -243,7 +243,7 @@ class TypeUnit
         }
     }
     /**
-     *  返回与某个目相关的下级目录的类目ID列表(删除类目或文档时调用)
+     *  返回与某个目相关的下级目录的栏目id列表删除类目或文档时调用
      *
      * @access    public
      * @param     int   $id  栏目id

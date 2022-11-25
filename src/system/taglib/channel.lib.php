@@ -61,7 +61,7 @@ function lib_channel(&$ctag, &$refObj)
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');
     $dtp2->LoadSource($innertext);
-    //检查是否有子栏目，并返回rel提示（用于二级菜单）
+    //检查是否有子栏目，并返回rel提示用于二级菜单
     if (preg_match('#:rel#', $innertext)) $needRel = true;
     if (empty($sql)) return '';
     $dsql->SetQuery($sql);

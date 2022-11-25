@@ -49,7 +49,7 @@ function plus_channel(&$atts, &$refObj, &$fields)
         if ($reid == 0) return $reArray;
         $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
     }
-    //检查是否有子栏目，并返回rel提示（用于二级菜单）
+    //检查是否有子栏目，并返回rel提示用于二级菜单
     $needRel = true;
     if (empty($sql)) return $reArray;
     $dsql->Execute('me', $sql);

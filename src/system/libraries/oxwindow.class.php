@@ -192,7 +192,7 @@ class OxWindow
 <tr>
 <td colspan='2' align='center'>
 <button type='submit' class='btn btn-success btn-sm'>$tt</button>
-<button type='button' class='btn btn-success btn-sm' onClick='history.go(-1);'>返回</button>
+<button type='button' class='btn btn-outline-success btn-sm' onClick='history.go(-1);'>返回</button>
 </td>
 </tr>";
             } else {
