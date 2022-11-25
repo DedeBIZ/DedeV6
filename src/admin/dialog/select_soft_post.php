@@ -19,7 +19,7 @@ $newname = (empty($newname) ? '' : preg_replace("#[\\ \"\*\?\t\r\n<>':\/|]#", ""
 $uploadfile = isset($imgfile) && empty($uploadfile) ? $imgfile : $uploadfile;
 $uploadfile_name = isset($imgfile_name) && empty($uploadfile_name) ? $imgfile_name : $uploadfile_name;
 if (!is_uploaded_file($uploadfile)) {
-    ShowMsg("您没有选择上传的文件或选择的文件大小超出限制", "-1");
+    ShowMsg("您没有选择上传的文件或上传的文件大小被限制", "-1");
     exit();
 }
 //软件类型所有支持的附件
@@ -27,7 +27,7 @@ $cfg_softtype = $cfg_softtype;
 $cfg_softtype = str_replace('||', '|', $cfg_softtype);
 $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
 if (!preg_match("#\.(".$cfg_softtype.")#i", $uploadfile_name)) {
-    ShowMsg("您所上传的<span class='text-primary'>{$uploadmbtype}</span>不在许可列表，请修改系统对扩展名限定的配置", "-1");
+    ShowMsg("您所上传的<span class='text-primary'>{$uploadmbtype}</span>不在许可列表", "-1");
     exit();
 }
 $nowtme = time();
@@ -39,7 +39,7 @@ if ($activepath == $cfg_soft_dir) {
         CloseFtp();
     }
 }
-//文件名（前为手工指定，后者自动处理）
+//文件名前为手工指定，后者自动处理
 if (!empty($newname)) {
     $filename = $newname;
     if (!preg_match("#\.#", $filename)) $fs = explode('.', $uploadfile_name);
@@ -53,7 +53,7 @@ if (!empty($newname)) {
     $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', $nowtme));
     $fs = explode('.', $uploadfile_name);
     if (preg_match("#".$cfg_not_allowall."#", $fs[count($fs) - 1])) {
-        ShowMsg("您上传了某些可能存在不安全因素的文件，系统拒绝操作", "-1");
+        ShowMsg("您上传的文件可能存在不安全因素，系统拒绝操作", "-1");
         exit();
     }
     $filename = $filename.'.'.$fs[count($fs) - 1];
