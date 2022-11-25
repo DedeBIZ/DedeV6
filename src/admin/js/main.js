@@ -575,9 +575,11 @@ var optCropper = {
 	crop: function (e) {
 		$("#cropWidth").text(Math.round(e.detail.height));
 		$("#cropHeight").text(Math.round(e.detail.width));
-		var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
-		litpicImg = dataUrl;
-		$("#litPic").attr("src", litpicImg);
+		if ($(this).cropper("getCroppedCanvas")) {
+			var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
+			litpicImg = dataUrl;
+			$("#litPic").attr("src", litpicImg);	
+		}
 	},
 	aspectRatio: 4 / 3,
 	//拖动截取缩略图后，截取的缩略图更新到imageItems中
