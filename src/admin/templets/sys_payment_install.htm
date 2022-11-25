@@ -19,11 +19,11 @@
 				<input type="hidden" name="dopost" value="config">
 				<tr>
 					<td width="260">支付名称：</td>
-					<td><input type="text" name="pay_name" id="pay_name" value="<?php echo $row['name'];?>" size="30"></td>
+					<td><input type="text" name="pay_name" id="pay_name" class="admin-textarea-xl" value="<?php echo $row['name'];?>"></td>
 				</tr>
 				<tr>
 					<td>支付描述：</td>
-					<td><textarea name="pay_desc" id="pay_desc"	class="admin-textarea-xl"><?php echo $row['description'];?></textarea></td>
+					<td><textarea name="pay_desc" id="pay_desc" class="admin-textarea-xl"><?php echo $row['description'];?></textarea></td>
 				</tr>
 				<?php echo $reval ?>
 				<tr>

@@ -57,7 +57,7 @@
 					<td>
 						<table cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="80" height="28" align="center" class="admin-itemnote1">常规文档</td>
+								<td width="80" align="center" class="admin-itemnote1">常规文档</td>
 							</tr>
 						</table>
 					</td>
@@ -170,9 +170,7 @@
 										echo "</select>";
 										?>
 									</span>
-									<i class='btn btn-sm fa fa-search' style='cursor:pointer'
-										onClick="ShowCatMap(event, this, <?php echo $channelid;?>, 'typeid')"
-										title='快捷选择'></i>
+									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event, this, <?php echo $channelid;?>, 'typeid')" title="快捷选择"></i>
 									<?php 
 									if ($cfg_need_typeid2=='Y') {
 										echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
@@ -349,11 +347,11 @@
 								<td>
 									<input type="text" name="softurl1" id="softurl1" class="admin-input-md">
 									<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm"
-										onClick="SelectSoft('form1.softurl1')">选取</button>
+									 onClick="SelectSoft('form1.softurl1')">选取</button>
 								</td>
 								<td width="90">服务器名称：</td>
 								<td><input type="text" name="servermsg1" id="servermsg1" value="本地下载"
-										class="admin-input-sm"></td>
+									 class="admin-input-sm"></td>
 							</tr>
 						</table>
 					</td>
@@ -375,7 +373,7 @@
 						<?php echo $sitename;?>：
 						<input type='hidden' name='forconfig<?php echo $startNum;?>' value='1'>
 						<input type='text' name='softurlfirst<?php echo $startNum;?>' class='admin-input-md' value='<?php echo $siteurl;?>'> +
-						<input type='text' name='softurl<?php echo $startNum;?>' class='admin-input-sm' value=''> =
+						<input type='text' name='softurl<?php echo $startNum;?>' class='admin-input-sm'> =
 						<input type='text' name='servermsg<?php echo $startNum;?>' class='admin-input-sm' value='<?php echo $sitename;?>'>
 						<label><input type='checkbox' name='need<?php echo $startNum;?>' value='1' checked> 启用</label>
 						<br>

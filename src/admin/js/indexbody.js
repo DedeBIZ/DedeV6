@@ -43,11 +43,11 @@ $(function () {
         }
     });
 });
-function copyFn() {
+function Copyinfo() {
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
     document.execCommand("Copy");
-    alert("环境配置信息已复制");
+    alert("成功复制环境配置信息");
 }
 //Dedebiz info
 var dedebizInfo;

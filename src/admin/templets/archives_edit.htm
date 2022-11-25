@@ -35,7 +35,7 @@
 				<td>
 					<table cellpadding="0" cellspacing="0">
 						<tr>
-							<td width="80" height="28" align="center" class="admin-itemnote1">常规文档</td>
+							<td width="80" align="center" class="admin-itemnote1">常规文档</td>
 						</tr>
 					</table>
 				</td>
@@ -104,7 +104,7 @@
 						</table>
 					</td>
 				</tr>
-				<tr id="pictable" style='<?php if ($cInfos['needpic']==0) echo 'display:none';?>'>
+				<tr id="pictable" style="<?php if ($cInfos['needpic']==0) echo 'display:none';?>">
 					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
@@ -145,7 +145,7 @@
 				<?php
 				if ($cInfos['dfcid']>0) {
 					echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}'>";
-					echo "<input type='hidden' name='typeid2' value=''>";
+					echo "<input type='hidden' name='typeid2'>";
 				} else {
 				?>
 				<tr>
@@ -161,7 +161,7 @@
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择" style="cursor:pointer"></i>
+									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择"></i>
 								</td>
 								<td width="90">需要金币：</td>
 								<td><input name="money" type="text" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
@@ -178,7 +178,7 @@
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" class="admin-input-sm">
-									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目" style="cursor:pointer"></i>
+									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目"></i>
 								</td>
 							</tr>
 						</table>

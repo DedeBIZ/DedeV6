@@ -52,7 +52,7 @@
 					<td>
 						<table cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="80" height="28" align="center" class="admin-itemnote1">常规文档</td>
+								<td width="80" align="center" class="admin-itemnote1">常规文档</td>
 							</tr>
 						</table>
 					</td>
@@ -97,7 +97,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td" id="redirecturltr"
-						style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
+					 style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90">跳转网址：</td>
@@ -126,7 +126,7 @@
 								<td width="620">
 									<input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-md">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
-									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file"	name="files[]" id="iptAddImages"></span>
+									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
 								</td>
@@ -310,7 +310,7 @@
 							<tr>
 								<td width="90">软件大小：</td>
 								<td width="310"><input name="softsize" type="text" id="softsize"
-										value="<?php echo $addRow['softsize']?>" class="admin-input-md"></td>
+									 value="<?php echo $addRow['softsize']?>" class="admin-input-md"></td>
 								<td width="90">需会员权限：</td>
 								<td>
 									<select name="daccess" id="daccess" class="admin-input-sm">

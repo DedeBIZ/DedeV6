@@ -11,8 +11,8 @@
  */
 define('AJAXLOGIN', TRUE);
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
-require_once(DEDEADMIN . '/../system/common.inc.php');
-require_once(DEDEINC . '/userlogin.class.php');
+require_once(DEDEADMIN.'/../system/common.inc.php');
+require_once(DEDEINC.'/userlogin.class.php');
 AjaxHead();
 helper('cache');
 $action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update')) ? $action  : '';
@@ -46,25 +46,25 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 } else if ($action === 'has_new_version') {
-    require_once(DEDEINC . '/libraries/dedehttpdown.class.php');
+    require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
     //是否存在更新版本
-    $offUrl = DEDEBIZURL . "/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}&json=1";
+    $offUrl = DEDEBIZURL."/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}&json=1";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($offUrl);
     $data = $dhd->GetHtml();
     echo $data;
 } else if ($action === 'get_changed_files') {
-    require_once(DEDEINC . '/libraries/dedehttpdown.class.php');
+    require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
     // 获取本地更改过的文件
-    $hashUrl = DEDEBIZCDN . '/release/' . $cfg_version_detail . '.json';
+    $hashUrl = DEDEBIZCDN.'/release/'.$cfg_version_detail.'.json';
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($hashUrl);
     $data = $dhd->GetJSON();
     $changedFiles = array();
     foreach ($data as $file) {
-        $realFile = DEDEROOT . str_replace("\\", '/', $file->filename);
+        $realFile = DEDEROOT.str_replace("\\", '/', $file->filename);
         if (file_exists($realFile) && md5_file($realFile) !== $file->hash) {
             $changedFiles[] = $file;
             continue;
@@ -79,23 +79,23 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 } else if ($action === 'update_backup') {
-    require_once(DEDEINC . '/libraries/dedehttpdown.class.php');
+    require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
     // 获取本地更改过的文件
-    $hashUrl = DEDEBIZCDN . '/release/' . $cfg_version_detail . '.json';
+    $hashUrl = DEDEBIZCDN.'/release/'.$cfg_version_detail.'.json';
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($hashUrl);
     $data = $dhd->GetJSON();
     $changedFiles = array();
     $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
-    $backupPath = DEDEDATA . "/backupfile_{$enkey}";
+    $backupPath = DEDEDATA."/backupfile_{$enkey}";
     RmRecurse($backupPath);
     mkdir($backupPath);
     foreach ($data as $file) {
-        $realFile = DEDEROOT . str_replace("\\", '/', $file->filename);
+        $realFile = DEDEROOT.str_replace("\\", '/', $file->filename);
         if (file_exists($realFile) && md5_file($realFile) !== $file->hash) {
             // 备份文件
-            $dstFile = $backupPath . '/' . str_replace("\\", '/', $file->filename);
+            $dstFile = $backupPath.'/'.str_replace("\\", '/', $file->filename);
             @mkdir(dirname($dstFile), 0777, true);
             copy($realFile, $dstFile);
         }
@@ -109,10 +109,10 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 } else if ($action === 'get_update_versions') {
-    require_once(DEDEINC . '/libraries/dedehttpdown.class.php');
+    require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
     //获取本地更改过的文件
-    $offUrl = DEDEBIZURL . "/versions?version={$cfg_version_detail}";
+    $offUrl = DEDEBIZURL."/versions?version={$cfg_version_detail}";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($offUrl);
     $data = $dhd->GetHtml();
@@ -131,16 +131,16 @@ if ($action === 'is_need_check_code') {
         exit;
     }
     $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
-    $backupPath = DEDEDATA . "/updatefile_{$enkey}";
+    $backupPath = DEDEDATA."/updatefile_{$enkey}";
     @mkdir($backupPath);
     foreach ($row as $k => $ver) {
         if ($ver->isdownload !== true) {
-            $filesUrl = DEDEBIZCDN . '/update/' . $ver->ver . '/files.txt';
+            $filesUrl = DEDEBIZCDN.'/update/'.$ver->ver.'/files.txt';
             $dhd = new DedeHttpDown();
             $dhd->OpenUrl($filesUrl);
             $fileList = $dhd->GetJSON();
             $dhd->Close();
-            $backupVerPath = $backupPath . '/' . $ver->ver;
+            $backupVerPath = $backupPath.'/'.$ver->ver;
             RmRecurse($backupVerPath);
             mkdir($backupVerPath);
             foreach ($fileList as $f) {
@@ -148,24 +148,24 @@ if ($action === 'is_need_check_code') {
                     //忽略src之外的目录
                     continue;
                 }
-                $fileUrl = DEDEBIZCDN . '/update/' . $ver->ver . '/src'.$f->filename;
+                $fileUrl = DEDEBIZCDN.'/update/'.$ver->ver.'/src'.$f->filename;
                 $dhd = new DedeHttpDown();
                 $dhd->OpenUrl($fileUrl);
                 $fData = $dhd->GetHtml();
                 $dhd->Close();
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
-                $realFile = $backupVerPath . $f->filename;
+                $realFile = $backupVerPath.$f->filename;
                 @mkdir(dirname($realFile), 0777, true);
                 file_put_contents($realFile, $fData);
             }
-            $sqlUrl = DEDEBIZCDN . '/update/' . $ver->ver . '/update.sql';
+            $sqlUrl = DEDEBIZCDN.'/update/'.$ver->ver.'/update.sql';
             $dhd = new DedeHttpDown();
             $dhd->OpenUrl($sqlUrl);
             $fData = $dhd->GetHtml();
             $dhd->Close();
-            $realFile = $backupVerPath . '/update.sql';
+            $realFile = $backupVerPath.'/update.sql';
             file_put_contents($realFile, $fData);
-            $realFile = $backupVerPath . '/files.txt';
+            $realFile = $backupVerPath.'/files.txt';
             file_put_contents($realFile, json_encode($fileList));
             $row[$k]->isdownload = true;
             SetCache('update', 'vers', $row);
@@ -181,12 +181,12 @@ if ($action === 'is_need_check_code') {
     }
     foreach ($row as $k => $ver) {
         if ($ver->ispatched !== true) {
-            $backupVerPath = $backupPath . '/' . $ver->ver;
+            $backupVerPath = $backupPath.'/'.$ver->ver;
             //执行更新SQL文件
-            $sql = file_get_contents($backupVerPath . '/update.sql');
+            $sql = file_get_contents($backupVerPath.'/update.sql');
             if (!empty($sql)) {
                 $sql = preg_replace('#ENGINE=MyISAM#i', 'TYPE=MyISAM', $sql);
-                $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET=' . $cfg_db_language;
+                $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET='.$cfg_db_language;
                 $sql = preg_replace('#TYPE=MyISAM#i', $sql41tmp, $sql);
                 $sqls = explode(";\r\n", $sql);
                 foreach ($sqls as $sql) {
@@ -196,15 +196,15 @@ if ($action === 'is_need_check_code') {
                 }
             }
             //复制文件
-            $fileList = json_decode(file_get_contents($backupVerPath . '/files.txt'));
+            $fileList = json_decode(file_get_contents($backupVerPath.'/files.txt'));
             foreach ($fileList as $f) {
                 if (!preg_match("/^\//", $f->filename)) {
                     //忽略src之外的目录
                     continue;
                 }
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
-                $srcFile = $backupVerPath . $f->filename;
-                $dstFile = str_replace(array("\\", "//"), '/', DEDEROOT . $f->filename);
+                $srcFile = $backupVerPath.$f->filename;
+                $dstFile = str_replace(array("\\", "//"), '/', DEDEROOT.$f->filename);
                 var_dump_cli('files','srcFile',$srcFile,'dstFile',$dstFile);
                 // $rs = @copy($srcFile, $dstFile);
                 // if($rs) {

@@ -234,6 +234,13 @@ body.hidemenu .body-right {
 	height:60px;
 	line-height:60px
 }
+.user-img {
+	margin-right:10px;
+	width:30px;
+	height:30px;
+	border-radius:50%;
+	border:1px solid #dee2e6
+}
 .menu-box {
 	margin:0;
 	padding:1rem 5px;
@@ -299,6 +306,142 @@ body.hidemenu .body-right {
 .submenu-right {
 	float:right!important;
 	padding:0 20px 0 10px!important
+}
+.card-body {
+	padding:.65rem
+}
+#text {
+	font-size:0
+}
+#latestVersion {
+	display:none
+}
+#_fileList,#_verList {
+	height:400px;
+	overflow-y:scroll
+}
+#_msgInfo {
+	display:none
+}
+.update-close {
+	background-color:#fff;
+	border:0
+}
+.updates-dot {
+	display:inline-block;
+	position:absolute;
+	top:12px;
+	right:8px;
+	height:6px;
+	width:6px;
+	background:#dc3545;
+	border-radius:50%
+}
+.spinner-border {
+	width:20px;
+	height:20px;
+	vertical-align:bottom
+}
+.list-group-item {
+	padding:.65rem 0
+}
+span.page-link {
+	color:#fff;
+	background:#1eb867
+}
+.fa {
+	font-size:14px!important;
+	color:inherit
+}
+.btn-xs {
+	padding:2px;
+	line-height:12px;
+	font-size:12px
+}
+.btn+.btn,.btn-text+.btn-text {
+	margin-left:1rem
+}
+.table {
+	margin-bottom:0;
+	color:#545b62
+}
+.table td,.table th {
+	padding:.65rem;
+	vertical-align:middle
+}
+.maintable {
+	width:98%!important;
+	border:1px solid #dee2e6!important
+}
+.form-control {
+	display:inline-block;
+	margin-right:10px
+}
+.admin-win {
+	background:#f5f5f5;
+	border:1px solid #dee2e6
+}
+.admin-win-iframe {
+	width:100%;
+	height:360px
+}
+.admin-itemnote1 {
+	height:30px;
+	background:#e9ecef;
+	border-radius:.2rem .2rem 0 0
+}
+.admin-itemnote2 {
+	height:30px;
+	background:#f5f5f5;
+	border-radius:.2rem .2rem 0 0
+}
+.admin-border {
+	border:1px solid #dee2e6
+}
+.admin-td {
+	padding:.65rem;
+	vertical-align:middle;
+	border-bottom:1px solid #dee2e6
+}
+.admin-textarea-xl {
+	width:100%;
+	height:90px
+}
+.admin-textarea-sm {
+	width:360px;
+	height:50px
+}
+.admin-input-lg {
+	width:380px
+}
+.admin-input-md {
+	width:360px
+}
+.admin-input-sm {
+	width:160px
+}
+.admin-input-xs {
+	width:60px
+}
+.web-info {
+	padding:10px;
+	background:#f5f5f5;
+	border-radius:.2rem;
+	text-align:center
+}
+.thumbnail-md {
+	max-width:200px;
+	max-height:120px
+}
+.thumbnail-sm {
+	max-width:60px;
+	max-height:60px
+}
+.icon img {
+	margin-right:10px;
+	width:20px;
+	height:20px;
+	border-radius:.2rem
 }
 .coolbg {
 	padding:.25rem .5rem;
@@ -452,125 +595,6 @@ body.hidemenu .body-right {
 	background:#fff;
 	border:2px solid #1eb867;
 	z-index:10005
-}
-span.page-link {
-	color:#fff;
-	background:#1eb867
-}
-.fa {
-	font-size:14px!important;
-	color:inherit
-}
-.btn-xs {
-	padding:2px;
-	line-height:12px;
-	font-size:12px
-}
-.btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
-}
-.table {
-	margin-bottom:0;
-	color:#545b62
-}
-.table td,.table th {
-	padding:.65rem;
-	vertical-align:middle
-}
-.maintable {
-	width:98%!important;
-	border:1px solid #dee2e6!important
-}
-.form-control {
-	display:inline-block;
-	margin-right:10px
-}
-.admin-updates {
-	display:inline-block;
-	position:absolute;
-	top:12px;
-	right:8px;
-	height:6px;
-	width:6px;
-	background:#dc3545;
-	border-radius:50%
-}
-.admin-win {
-	background:#f5f5f5;
-	border:1px solid #dee2e6
-}
-.admin-win-iframe {
-	width:100%;
-	height:360px
-}
-.admin-itemnote1 {
-	background:#e9ecef;
-	border-radius:.2rem .2rem 0 0
-}
-.admin-itemnote2 {
-	background:#f5f5f5;
-	border-radius:.2rem .2rem 0 0
-}
-.admin-border {
-	border:1px solid #dee2e6
-}
-.admin-td {
-	padding:.65rem;
-	vertical-align:middle;
-	border-bottom:1px solid #dee2e6
-}
-.admin-textarea-xl {
-	width:100%;
-	height:90px
-}
-.admin-textarea-sm {
-	width:360px;
-	height:50px
-}
-.admin-input-lg {
-	width:380px
-}
-.admin-input-md {
-	width:360px
-}
-.admin-input-sm {
-	width:160px
-}
-.admin-input-xs {
-	width:60px
-}
-.user-img {
-	margin-right:10px;
-	width:30px;
-	height:30px;
-	border-radius:50%;
-	border:1px solid #dee2e6
-}
-.web-info {
-	padding:10px;
-	background:#f5f5f5;
-	border-radius:.2rem;
-	text-align:center
-}
-.card-body {
-	padding:.65rem
-}
-.thumbnail-md {
-	max-width:200px;
-	max-height:120px
-}
-.thumbnail-sm {
-	max-width:60px;
-	max-height:60px
-}
-.icon img {
-	margin-right:10px;
-	width:20px;
-	height:20px;
-	border-radius:.2rem
-}
-#text {
-	font-size:0
 }
 #browsehappy {
 	padding:20px 30px;

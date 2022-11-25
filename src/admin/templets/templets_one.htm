@@ -19,7 +19,7 @@
 						$likeid = (!isset($likeid) ? '' : $likeid);
 						echo "<select name='likeid' id='likeid' class='admin-input-sm'>";
 						$dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
-						echo "<option value=''>不限</option>";
+						echo "<option>不限</option>";
 						while($arr = $dsql->GetArray('s'))
 						{
 							if ($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";

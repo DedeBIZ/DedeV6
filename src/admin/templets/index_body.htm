@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<title>系统主页</title>
-	<base target="_self">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -16,34 +14,8 @@
 	<script src="../static/web/js/chart.min.js"></script>
 	<script src="js/indexbody.js"></script>
 	<script src="js/main.js"></script>
-	<style>
-		#btnUpdate,
-		#latestVersion {
-			display: none;
-		}
-
-		#btnUpdate {
-			cursor: pointer;
-		}
-
-		#_fileList,
-		#_verList {
-			height: 200px;
-			overflow-y: scroll;
-		}
-
-		#_msgInfo {
-			display: none;
-		}
-
-		@media (min-width:480px) {
-			.modal-dialog {
-				max-width: 55%;
-			}
-		}
-	</style>
+	<base target="_self">
 </head>
-
 <body>
 	<div class="container-fluid">
 		<div class="row">
@@ -51,7 +23,7 @@
 			<div class="col-md-12 my-3">
 				<div class="card">
 					<div class="card-header">
-						<a href="#statChart" title="查看流量统计图"><i class="fa fa-bar-chart"></i> 流量统计表</a>
+						<a href="#statChart"><i class="fa fa-bar-chart"></i> 流量统计表</a>
 					</div>
 					<div class="card-body">
 						<table class="table">
@@ -91,14 +63,9 @@
 			</div>
 			<div class="col-md-6 my-3">
 				<div class="card">
-					<div class="card-header"><a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a>
-						<span id="text">软件：
-							<?php echo $cfg_version_detail;?>|操作系统：
-							<?php echo PHP_OS;?>|Web服务器：
-							<?php echo $_SERVER['SERVER_SOFTWARE'];?>|PHP：
-							<?php echo @phpversion();?>|数据库：
-							<?php echo $dsql->GetVersion();?>
-						</span>
+					<div class="card-header">
+						<a href="javascript:Copyinfo()"><i class="fa fa-gear"></i> 软件信息</a>
+						<span id="text">软件：<?php echo $cfg_version_detail;?>|操作系统：<?php echo PHP_OS;?>|Web服务器：<?php echo $_SERVER['SERVER_SOFTWARE'];?>|PHP：<?php echo @phpversion();?>|数据库：<?php echo $dsql->GetVersion();?></span>
 					</div>
 					<div class="card-body">
 						<table class="table table-borderless">
@@ -106,41 +73,31 @@
 								<td>
 									<div class="web-info">
 										<p>操作系统</p>
-										<span>
-											<?php echo PHP_OS;?>
-										</span>
+										<span><?php echo PHP_OS;?></span>
 									</div>
 								</td>
 								<td>
 									<div class="web-info">
-										<p>Web服务器</p>
-										<span>
-											<?php echo $_SERVER['SERVER_SOFTWARE'];?>
-										</span>
+										<p>WEB服务器</p>
+										<span><?php echo $_SERVER['SERVER_SOFTWARE'];?></span>
 									</div>
 								</td>
 								<td>
 									<div class="web-info">
-										<p>服务器IP</p>
-										<span>
-											<?php echo gethostbyname($_SERVER['SERVER_NAME']);?>
-										</span>
+										<p>IP地址</p>
+										<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
 									</div>
 								</td>
 								<td>
 									<div class="web-info">
 										<p>PHP版本</p>
-										<span>
-											<?php echo @phpversion();?>
-										</span>
+										<span><?php echo @phpversion();?></span>
 									</div>
 								</td>
 								<td>
 									<div class="web-info">
 										<p>数据库版本</p>
-										<span>
-											<?php echo $dsql->GetVersion();?>
-										</span>
+										<span><?php echo $dsql->GetVersion();?></span>
 									</div>
 								</td>
 							</tr>
@@ -152,8 +109,8 @@
 				<div class="card">
 					<div class="card-header">
 						<span><i class="fa fa-database"></i> 版本授权</span>
-						<a class="float-right" id="btnUpdate">软件更新<span class="admin-updates"></span></a>
-						<span id="latestVersion" class="float-right">已是最新软件版本</span>
+						<a href="javascript:;" id="systemUpdate" class="float-right">软件更新<span class="updates-dot"></span></a>
+						<span id="latestVersion" class="float-right mr-2">已是最新软件版本</span>
 					</div>
 					<div class="card-body" id="system-info">正在加载</div>
 				</div>
@@ -178,78 +135,38 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="mdlUpdate" tabindex="-1" aria-hidden="true">
+	<div id="mdlUpdate" class="modal fade" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog modal-xl">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">软件更新</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+					<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
 				</div>
 				<div class="modal-body">
-					<table id="stepArea1" class="table table-borderless w-100 stepArea">
-						<tr>
-							<td>
-								<div class="text-center text-success">
-									<div class="spinner-border" role="status">
-										<span class="sr-only">Loading...</span>
-									</div>
-								</div>
-								<p id="step1Msg">正在比对系统更改的文件……</p>
-							</td>
-						</tr>
-					</table>
-					<table id="stepArea2" class="table table-borderless w-100 stepArea">
-						<tr>
-							<td colspan="2">本更新提供了重要的安全性更新，建议所有用户升级，软件更新将覆盖以下文件，请做好备份。</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<div id="_fileList">...</div>
-							</td>
-						</tr>
-					</table>
-					<table id="stepArea3" class="table table-borderless w-100 stepArea">
-						<tr>
-							<td>软件发下以下版本的更新文件：</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<div id="_verList">...</div>
-							</td>
-						</tr>
-					</table>
-					<table id="stepArea4" class="table table-borderless w-100 stepArea">
-						<tr>
-							<td>
-								<div class="text-center text-success">
-									<div class="spinner-border" role="status">
-										<span class="sr-only">Loading...</span>
-									</div>
-								</div>
-								软件正在进行如下操作，请您耐心等待
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<div id="_updateMsg">...</div>
-							</td>
-						</tr>
-					</table>
-					<table id="stepArea5" class="table table-borderless w-100 stepArea">
-						<tr>
-							<td>
-								完成升级，恭喜您当前系统已是最新版本
-							</td>
-						</tr>
-					</table>
-					<div id="_msgInfo">
+					<div id="stepArea1" class="stepArea">
+						<span class="spinner-border text-success" role="status"></span>
+						<span id="step1Msg">对比版本更改的文件</span>
 					</div>
+					<div id="stepArea2" class="stepArea">
+						<p>本更新提供了重要的安全性更新，建议所有用户升级，软件更新将覆盖以下文件，请做好备份。</p>
+						<div id="_fileList">正在加载</div>
+					</div>
+					<div id="stepArea3" class="stepArea">
+						<p>发下以下版本的更新文件</p>
+						<div id="_verList">正在加载</div>
+					</div>
+					<div id="stepArea4" class="stepArea">
+						<p>
+							<span class="spinner-border text-success" role="status"></span>
+							<span>正在进行以下操作，耐心等待...</span>
+						</p>
+						<div id="_updateMsg">正在加载</div>
+					</div>
+					<div id="stepArea5" class="stepArea">完成升级，已是最新软件版本。</div>
+					<div id="_msgInfo" class="mt-3"></div>
 				</div>
 				<div class="modal-footer">
-					<div id="btnStep1" class="btnStep">
-					</div>
+					<div id="btnStep1" class="btnStep"></div>
 					<div id="btnStep2" class="btnStep">
 						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
 						<button id="btnBackup" type="button" class="btn btn-outline-success">备份</button>
@@ -267,8 +184,8 @@
 		</div>
 	</div>
 	<script>
-		var currentStep = 1; //步骤
-
+		var currentStep = 1;
+		//步骤
 		function dedeAlter(msg, t = 'info', loading = false) {
 			let loadingStr = loading ? '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>' : '';
 			return `<div class="alert alert-${t}">${loadingStr}
@@ -306,15 +223,15 @@
 					let rs = JSON.parse(data);
 					if (rs.code === 0) {
 						if (rs.result.HasNew === true) {
-							$("#btnUpdate").show();
+							$("#systemUpdate").show();
 							$("#latestVersion").hide();
 						} else {
-							$("#btnUpdate").hide();
+							$("#systemUpdate").hide();
 							$("#latestVersion").show();
 						}
 					}
 				} catch (error) {
-					console.log("获取DedeV6版本信息失败")
+					console.log("获取软件信息失败")
 				}
 			})
 			$("#btnCancel").click(function () {
@@ -322,18 +239,18 @@
 				$("#_fileList").html(``);
 			})
 			$("#btnBackup").click(function () {
-				let alertMsg = dedeAlter("系统正在备份差异文件", 'info', true);
+				let alertMsg = dedeAlter("正在备份差异文件", 'info', true);
 				$("#_msgInfo").html(alertMsg);
 				$("#_msgInfo").show();
 				$.get("api.php?action=update_backup", function (data) {
 					let rs = JSON.parse(data);
 					if (rs.code === 0) {
-						alertMsg = dedeAlter(`文件备份成功，备份文件夹：${rs.data.backupdir}`, 'success');
+						alertMsg = dedeAlter(`成功备份差异文件，目录：${rs.data.backupdir}`, 'success');
 						$("#_msgInfo").html(alertMsg);
 					}
 				})
 			})
-			$("#btnUpdate").click(function () {
+			$("#systemUpdate").click(function () {
 				$('#mdlUpdate').modal('show');
 				showStepArea(currentStep);
 				currentStep++;
@@ -389,5 +306,4 @@
 		})
 	</script>
 </body>
-
 </html>

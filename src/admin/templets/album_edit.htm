@@ -62,7 +62,7 @@
 					<td>
 						<table cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="80" height="28" align="center" class="admin-itemnote1">常规文档</td>
+								<td width="80" align="center" class="admin-itemnote1">常规文档</td>
 							</tr>
 						</table>
 					</td>
@@ -283,7 +283,7 @@
 									复制的源网址：<input type="text" name="copysource" value="http://" class="admin-input-md">（防盗链网站需填写您复制图片的其中一个网页网址）<br>
 									把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片
 									<input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()"><br>
-									<div id="copyhtml" style="margin:10px 0;border:solid 1px #CCCCCC;width:96%;padding:6px;height:260px;width:100%" contenteditable="true">粘贴到这里</div>
+									<div id="copyhtml" style="margin:10px 0;padding:10px;width:98%;height:200px;border:1px solid #ccc" contenteditable="true">粘贴到这里</div>
 								</td>
 							</tr>
 						</table>
@@ -430,8 +430,7 @@
 									</select>
 								</td>
 								<td width="90">文件名称：</td>
-								<td><input type="text" name="filename" id="filename"
-										value="<?php echo $arcRow['filename']?>" class="admin-input-sm">（不包括后缀名如.html等）
+								<td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="admin-input-sm">（不包括后缀名如.html等）
 								</td>
 							</tr>
 						</table>
