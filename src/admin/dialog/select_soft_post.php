@@ -45,7 +45,7 @@ if (!empty($newname)) {
     if (!preg_match("#\.#", $filename)) $fs = explode('.', $uploadfile_name);
     else $fs = explode('.', $filename);
     if (preg_match("#".$cfg_not_allowall."#", $fs[count($fs) - 1])) {
-        ShowMsg("指定的文件名已被系统禁止", 'javascript:;');
+        ShowMsg("指定的文件名已被系统禁止", "javascript:;");
         exit();
     }
     if (!preg_match("#\.#", $filename)) $filename = $filename.'.'.$fs[count($fs) - 1];
@@ -58,8 +58,8 @@ if (!empty($newname)) {
     }
     $filename = $filename.'.'.$fs[count($fs) - 1];
 }
-if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)[^a-zA-Z0-9]+$#i', trim($filename))) {
-    ShowMsg("指定的文件名已被系统禁止",'javascript:;');
+if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
+    ShowMsg("指定的文件名已被系统禁止", "javascript:;");
     exit();
 }
 $fullfilename = $cfg_basedir.$activepath.'/'.$filename;
