@@ -23,8 +23,10 @@
 			function ShowConfig(em, allgr) {
 				if (searchconfig) location.reload();
 				for (var i = 1; i <= allgr; i++) {
-					if (i == em) $Obj('td' + i).style.display = (Nav() == 'IE' ? 'block' : 'table');
-					else $Obj('td' + i).style.display = 'none';
+					if ($Obj('td' + i)) {
+						if (i == em) $Obj('td' + i).style.display = (Nav() == 'IE' ? 'block' : 'table');
+						else $Obj('td' + i).style.display = 'none';
+					}
 				}
 				$Obj('addvar').style.display = 'none';
 			}
