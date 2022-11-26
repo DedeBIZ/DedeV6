@@ -26,8 +26,8 @@ while ($row = $dsql->GetObject()) {
 }
 if (empty($candoChannel)) $candoChannel = 1;
 $dsql->SetQuery("SELECT id,typename,addcon,mancon FROM `#@__channeltype` WHERE id IN({$candoChannel}) AND id<>-1 AND isshow=1 ORDER BY id ASC");
-$dsql->Execute('mm');
-while ($row = $dsql->GetObject('mm')) {
+$dsql->Execute('im');
+while ($row = $dsql->GetObject('im')) {
     $addset .= "<m:item name='{$row->typename}' ischannel='1' link='{$row->mancon}?channelid={$row->id}' linkadd='{$row->addcon}?channelid={$row->id}' channelid='{$row->id}' rank='' target='main' />";
 }
 $helpUrl = DEDEBIZURL."/help";
