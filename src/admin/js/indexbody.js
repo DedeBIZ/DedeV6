@@ -56,9 +56,9 @@ function ViewDedeBIZ() {
     ShowMsg(`
     <table class="table table-borderless w-100">
         <tr>
-            <td width="90">版本号：</td>
+            <td width="120">版本号：</td>
             <td>V${dedebizInfo.result.server_version}</td>
-            <td width="90">服务器系统：</td>
+            <td width="120">服务器系统：</td>
             <td>${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}）</td>
         </tr>
         <tr>
@@ -74,6 +74,10 @@ function LoadServer() {
     $.get("index_body.php?dopost=system_info", function (data) {
         let rsp = JSON.parse(data);
         if (rsp.code === 200) {
+            if (rsp.result.core.code === 200) {
+                dedebizInfo = JSON.parse(rsp.result.core.data);
+            }
+            
             let infoStr = `<table class="table table-borderless w-100">`;
             if (typeof rsp.result.domain !== "undefined") {
                 infoStr += `
