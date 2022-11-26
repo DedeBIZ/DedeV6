@@ -45,10 +45,10 @@ if ($dojob == '') {
         if ($totalnum > 0) {
             $addquery  = "";
             if ($sid != 0) {
-                $addquery  .= " AND #@__archives.id>='$sid' ";
+                $addquery  .= " AND `#@__archives`.id>='$sid' ";
             }
             if ($eid != 0) {
-                $addquery  .= " AND #@__archives.id<='$eid' ";
+                $addquery  .= " AND `#@__archives`.id<='$eid' ";
             }
             $fquery = "SELECT `#@__archives`.id,`#@__archives`.title,`#@__archives`.description,{$table}.{$field} FROM `#@__archives` LEFT JOIN {$table} ON {$table}.aid=`#@__archives`.id WHERE `#@__archives`.channel='{$channel}' $addquery LIMIT $startdd,$pagesize ; ";
             $dsql->SetQuery($fquery);
