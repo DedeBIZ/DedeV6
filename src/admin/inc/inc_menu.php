@@ -19,9 +19,9 @@ if ($cfg_admin_channel = 'array' && count($admin_catalogs) > 0) {
 } else {
     $dsql->SetQuery("SELECT channeltype FROM `#@__arctype` GROUP BY channeltype ");
 }
-$dsql->Execute();
+$dsql->Execute('mc');
 $candoChannel = '';
-while ($row = $dsql->GetObject()) {
+while ($row = $dsql->GetObject('mc')) {
     $candoChannel .= ($candoChannel == '' ? $row->channeltype : ','.$row->channeltype);
 }
 if (empty($candoChannel)) $candoChannel = 1;
