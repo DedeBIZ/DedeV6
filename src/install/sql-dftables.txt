@@ -869,21 +869,21 @@ CREATE TABLE `#@__softconfig` (
 
 DROP TABLE IF EXISTS `#@__statistics`;
 CREATE TABLE `#@__statistics` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `sdate` int DEFAULT NULL,
-  `pv` int DEFAULT NULL,
-  `uv` int DEFAULT NULL,
-  `ip` int DEFAULT NULL,
-  `vv` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `sdate` int(11) DEFAULT NULL,
+  `pv` int(11) DEFAULT NULL,
+  `uv` int(11) DEFAULT NULL,
+  `ip` int(11) DEFAULT NULL,
+  `vv` int(11) DEFAULT NULL,
+  PRIMARY KEY  (`id`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__statistics_detail`;
 CREATE TABLE `#@__statistics_detail` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `t` int DEFAULT NULL,
-  `created_date` int DEFAULT NULL,
-  `created_hour` int DEFAULT NULL,
+  `id` mediumint(8) unsigned NOT NULL auto_increment,
+  `t` int(11) DEFAULT NULL,
+  `created_date` int(11) DEFAULT NULL,
+  `created_hour` int(11) DEFAULT NULL,
   `dduuid` varchar(32) DEFAULT NULL,
   `ssid` varchar(32) DEFAULT NULL,
   `ip` varchar(46) DEFAULT NULL,
@@ -892,13 +892,13 @@ CREATE TABLE `#@__statistics_detail` (
   `device_type` varchar(10) DEFAULT NULL,
   `os` varchar(20) DEFAULT NULL,
   `url_type` tinyint DEFAULT NULL,
-  `typeid` int DEFAULT NULL,
-  `aid` int DEFAULT NULL,
+  `typeid` int(11) DEFAULT NULL,
+  `aid` int(11) DEFAULT NULL,
   `value` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_created_date_dduuid` (`created_date`,`dduuid`),
-  KEY `idx_created_date_ip` (`created_date`,`ip`),
-  KEY `idx_created_date_ssid` (`created_date`,`ssid`)
+  PRIMARY KEY  (`id`),
+  KEY  `idx_created_date_dduuid` (`created_date`,`dduuid`),
+  KEY  `idx_created_date_ip` (`created_date`,`ip`),
+  KEY  `idx_created_date_ssid` (`created_date`,`ssid`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__stepselect`;
