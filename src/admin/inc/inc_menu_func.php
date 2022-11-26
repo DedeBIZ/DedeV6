@@ -37,7 +37,6 @@ function GetMenus($userrank, $topos = 'main')
                 $icon = $ctag->GetAtt('icon');
             }
             $htmp = str_replace('~icon~', $icon, $htmp);
-            $htmp = str_replace('~cc~', $m.'_'.$openitem, $htmp);
             echo $htmp;
             $dtp2->LoadSource($ctag->InnerText);
             foreach ($dtp2->CTags as $j => $ctag2) {
@@ -50,6 +49,7 @@ function GetMenus($userrank, $topos = 'main')
                         } else {
                             $addico = 'fa-plus-circle';
                         }
+                        $addalt = $ctag2->GetAtt('addalt');
                         $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='submenu-right' target='".$ctag2->GetAtt('target')."'><span class='fa $addico' title='$addalt'></span></a>";
                     } else {
                         $link .= "";
