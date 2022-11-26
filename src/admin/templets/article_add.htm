@@ -310,23 +310,7 @@
 								<td><input type="text" name="filename" id="filename" class="admin-input-sm">（不包括后缀名如.html等）</td>
 								<td>
 									<?php
-									if (isset($cfg_tamplate_rand) && $cfg_tamplate_rand==1) {
-									?>
-									随机选择模板：
-									<select name="templet" id="templet" class="admin-input-sm">
-										<?php
-										$rndsel = mt_rand(1, count($cfg_tamplate_arr)) - 1;
-										foreach($cfg_tamplate_arr as $k=>$v)
-										{
-											$v = trim($v);
-											echo ($k==$rndsel ? "<option value='$v' selected>$v</option>" : "<option value='$v'>$v</option>");
-										}
-										?>
-									</select>
-									<?php
-									} else {
-										echo "<input type='hidden' name='templet'>";
-									}
+									echo "<input type='hidden' name='templet'>";
 									?>
 								</td>
 							</tr>

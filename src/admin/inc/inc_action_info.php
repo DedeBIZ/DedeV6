@@ -369,12 +369,6 @@ $actionSearch[9] = array(
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_string_mix.php'
         ),
-        9  =>  array(
-            'title' => '随机模板设置',
-            'description' => '本设置仅适用于系统默认的文档模型，设置后发布文档时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可',
-            'purview' => 'sys_StringMix',
-            'linkurl' => 'article_template_rand.php'
-        ),
         11  =>  array(
             'title' => '数据库备份还原',
             'description' => '对数据库进行备份和还原',

@@ -121,6 +121,7 @@ if ($action === 'is_need_check_code') {
     echo $data;
     exit;
 } else if ($action === 'update') {
+    require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     $row = GetCache('update', 'vers');
     if (count($row) === 0) {
         echo json_encode(array(

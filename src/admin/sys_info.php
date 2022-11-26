@@ -27,6 +27,7 @@ function ReWriteConfig()
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         if ($row['type'] == 'number') {
+            $row['value'] = preg_replace("#[^0-9.]#","", $row['value']);
             if ($row['value'] == '') $row['value'] = 0;
             fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         } else {
@@ -63,6 +64,9 @@ else if ($dopost == 'add') {
         ShowMsg("布尔变量值必须为'Y'或'N'", "-1");
         exit();
     }
+    if ($valtype == 'number') {
+        $nvarvalue = preg_replace("[^0-9.]","", $nvarvalue);
+    }
     if (trim($nvarname) == '' || preg_match("#[^a-z_]#i", $nvarname)) {
         ShowMsg("变量名不能为空并且必须为[a-z_]组成", "-1");
         exit();
@@ -73,7 +77,8 @@ else if ($dopost == 'add') {
         exit();
     }
     $row = $dsql->GetOne("SELECT aid FROM `#@__sysconfig` ORDER BY aid DESC");
-    $aid = $row['aid'] + 1;
+    $aid = intval($row['aid']) + 1;
+    $varmsg = HtmlReplace($varmsg);
     $inquery = "INSERT INTO `#@__sysconfig` (`aid`,`varname`,`info`,`value`,`type`,`groupid`) VALUES ('$aid','$nvarname','$varmsg','$nvarvalue','$vartype','$vargroup')";
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if (!$rs) {

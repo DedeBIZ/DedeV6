@@ -52,3 +52,4 @@ src/static/rss/*.xml
 src/a/baidunews.xml
 src/data/backupfile*
 src/data/updatefile*
+src/data/checksql_*
