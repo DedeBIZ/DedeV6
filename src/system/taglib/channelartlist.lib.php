@@ -59,11 +59,13 @@ function lib_channelartlist(&$ctag, &$refObj)
         $pv = new PartView($typeids[$i]['id']);
         $pv->Fields['typeurl'] = GetOneTypeUrlA($typeids[$i]);
         //栏目高亮
-        if ($typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['id'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['reid'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['topid'] || $typeids[$i]['id'] == GetTopid($refObj->TypeLink->TypeInfos['id']) )
-        {
-            $pv->Fields['currentstyle'] = $currentstyle ? $currentstyle : 'current';
-        } else {
-            $pv->Fields['currentstyle'] = '';
+        if (isset($refObj->TypeLink->TypeInfos)) {
+            if ($typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['id'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['reid'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['topid'] || $typeids[$i]['id'] == GetTopid($refObj->TypeLink->TypeInfos['id']) )
+            {
+                $pv->Fields['currentstyle'] = $currentstyle ? $currentstyle : 'current';
+            } else {
+                $pv->Fields['currentstyle'] = '';
+            }
         }
         $pv->SetTemplet($innertext,'string');
         $artlist .= $pv->GetResult();

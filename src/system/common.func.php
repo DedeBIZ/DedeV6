@@ -409,13 +409,13 @@ function IndexActive($idx)
 //是否是HTTPS
 function IsSSL()
 {
-    if ($_SERVER['HTTPS'] && ('1' == $_SERVER['HTTPS'] || 'on' == strtolower($_SERVER['HTTPS']))) {
+    if (@$_SERVER['HTTPS'] && ('1' == $_SERVER['HTTPS'] || 'on' == strtolower($_SERVER['HTTPS']))) {
         return true;
-    } elseif ('https' == $_SERVER['REQUEST_SCHEME']) {
+    } elseif ('https' == @$_SERVER['REQUEST_SCHEME']) {
         return true;
     } elseif ('443' == $_SERVER['SERVER_PORT']) {
         return true;
-    } elseif ('https' == $_SERVER['HTTP_X_FORWARDED_PROTO']) {
+    } elseif ('https' == @$_SERVER['HTTP_X_FORWARDED_PROTO']) {
         return true;
     }
     return false;

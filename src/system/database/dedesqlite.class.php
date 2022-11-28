@@ -367,7 +367,7 @@ class DedeSqlite
     function GetVersion($isformat = TRUE)
     {
         global $dsqlite;
-        if (!$dsqlite->isInit) {
+        if (!@$dsqlite->isInit) {
             $this->Init($this->pconnect);
         }
         if ($dsqlite->isClose) {

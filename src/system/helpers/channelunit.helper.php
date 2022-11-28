@@ -476,9 +476,9 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
             if (DEBUG_LEVEL == TRUE) {
                 $queryTime = ExecTime() - $ttt1;
                 if (PHP_SAPI === 'cli') {
-                    echo '标签：'.$tagname.'载入花费时间：'.$queryTime."\r\n";
+                    echo '标签：'.$tagname.' 载入花费时间：'.$queryTime."\r\n";
                 } else {
-                    echo DedeAlert('标签：'.$tagname.'载入花费时间：'.$queryTime, ALERT_WARNING);
+                    echo DedeAlert('标签：'.$tagname.' 载入花费时间：'.$queryTime, ALERT_WARNING);
                 }
                 
             }
