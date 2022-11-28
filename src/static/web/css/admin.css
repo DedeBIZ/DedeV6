@@ -292,7 +292,7 @@ body.hidemenu .body-right {
 	transition:all .3s
 }
 .submenu li:hover {
-	background:#1eb867
+	background:#007bff
 }
 .submenu a {
 	float:left;
@@ -348,18 +348,6 @@ body.hidemenu .body-right {
 span.page-link {
 	color:#fff;
 	background:#1eb867
-}
-.fa {
-	font-size:14px!important;
-	color:inherit
-}
-.btn-xs {
-	padding:2px;
-	line-height:12px;
-	font-size:12px
-}
-.btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
 }
 .table {
 	margin-bottom:0;
@@ -442,6 +430,18 @@ span.page-link {
 	width:20px;
 	height:20px;
 	border-radius:.2rem
+}
+.fa {
+	font-size:14px!important;
+	color:inherit
+}
+.btn-xs {
+	padding:2px;
+	line-height:12px;
+	font-size:12px
+}
+.btn+.btn,.btn-text+.btn-text {
+	margin-left:1rem
 }
 .coolbg {
 	padding:.25rem .5rem;

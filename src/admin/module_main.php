@@ -161,7 +161,7 @@ else if ($action == 'setup') {
     if (($devInfo['dev_id'] == $infos['dev_id']) && !empty($devInfo['dev_id'])) {
       $s = "已认证";
     }
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 安装模块：{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 安装{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
     $msg = "<table width='98%' cellspacing='0' cellpadding='0' class='table'>
@@ -292,7 +292,7 @@ else if ($action == 'del') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 删除模块：{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 删除{$infos['name']}");
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
     $msg = "<table width='98%' cellspacing='0' cellpadding='0' class='table'>
@@ -356,7 +356,7 @@ else if ($action == 'uninstall') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 卸载模块：{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 卸载{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<table width='98%' cellspacing='0' cellpadding='0' class='table'>
@@ -496,7 +496,7 @@ else if ($action == 'view') {
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 模块详情：{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; {$infos['name']}");
     $msg = "<table width='98%' cellspacing='0' cellpadding='0'>
     <tr>
         <td width='260' class='admin-td'>模块名称：</td>

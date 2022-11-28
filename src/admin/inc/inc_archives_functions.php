@@ -660,8 +660,8 @@ function GetImageMapDD($filename, $maxwidth)
  * @access    public
  * @param     string  $upname 上传框名称
  * @param     string  $handurl 手工填写的网址
- * @param     string  $ddisremote 是否下载远程图片 0 不下, 1 下载
- * @param     string  $ntitle 注解文字 如果表单有 title 字段可不管
+ * @param     string  $ddisremote 是否下载远程图片0不下，1下载
+ * @param     string  $ntitle 注解文字，如果表单有title字段可不管
  * @return    mixed
  */
 function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')

@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">制作模块即表示您同意<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">《DedeBIZ开发者协议》</a></div>
+						<div class="alert alert-info mb-0">开发制作模块即表示您同意<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">《DedeBIZ开发者协议》</a></div>
 					</td>
 				</tr>
 				<tr>
@@ -108,11 +108,7 @@
 						<div style="display:none" id="autosetupct">
 							<table width="100%" cellpadding="5" cellspacing="1">
 								<tr>
-									<td bgcolor="#e9ecef">
-										请使用MySQL4.0版本格式的SQL语句:<br>
-										MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=*，改为TYPE=MyISAM，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束<br>
-										如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php
-									</td>
+									<td bgcolor="#e9ecef">请使用MySQL4.0版本格式的SQL语句：MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=*，改为TYPE=MyISAM，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束，如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php</td>
 								</tr>
 								<tr>
 									<td><textarea name="setupsql40" id="setupsql40" class="admin-textarea-xl"></textarea></td>
@@ -140,13 +136,8 @@
 				</tr>
 				<tr>
 					<td>文件列表：</td>
-					<td>
-						<p>
-							每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
-							如：如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录<br>
-							对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中<br>
-							<textarea name="filelist" id="filelist" class="admin-textarea-xl"></textarea>
-						</p>
+					<td>每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件，如：如果已经指定了../book则不需要再指定目录里的../book/index.php 等文件或目录，系统会自动索引整个目录，对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中<br>
+						<textarea name="filelist" id="filelist" class="admin-textarea-xl"></textarea>
 					</td>
 				</tr>
 				<tr>

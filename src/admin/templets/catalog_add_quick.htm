@@ -134,8 +134,8 @@
 										<?php
 										foreach($channelArray as $k=>$arr)
 										{
-											if ($k==$channelid) echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
-											else  echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
+											if ($k==$channelid) echo "<option value='{$k}' selected>{$arr['typename']} {$arr['nid']}</option>";
+											else  echo "<option value='{$k}'>{$arr['typename']} {$arr['nid']}</option>";
 										}
 										?>
 									</select>
