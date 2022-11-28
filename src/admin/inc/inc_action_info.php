@@ -41,7 +41,7 @@ $actionSearch[0] = array(
         ),
         4  =>  array(
             'title' => '文档回收站',
-            'description' => '如果在"系统配置变量"的"核心设置"中开启了"文档回收站是否开启功能"，后台删除的文档将会存放在此处',
+            'description' => '如果在"系统配置变量"的"核心设置"中开启了"文档回收站是否开启功能"，后台删除的文档会存放在此处',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'recycling.php'
         )

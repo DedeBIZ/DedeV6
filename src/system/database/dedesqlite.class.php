@@ -417,7 +417,7 @@ class DedeSqlite
     //获取上一步INSERT操作产生的id
     function GetLastID()
     {
-        //如果 AUTO_INCREMENT 的列的类型是 BIGINT，则 mysqli_insert_id() 返回的值将不正确
+        //如果 AUTO_INCREMENT 的列的类型是 BIGINT，则 mysqli_insert_id() 返回的值不正确
         //可以在 SQL 查询中用 MySQL 内部的 SQL 函数 LAST_INSERT_ID() 来替代
         //$rs = mysqli_query($this->linkID, "Select LAST_INSERT_ID() as lid");
         //$row = mysqli_fetch_array($rs);

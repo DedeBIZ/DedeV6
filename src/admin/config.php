@@ -14,11 +14,6 @@ require_once(DEDEINC.'/userlogin.class.php');
 header('Cache-Control:private');
 $dsql->safeCheck = FALSE;
 $dsql->SetLongLink();
-$cfg_admin_skin = 1;//后台管理风格
-if (file_exists(DEDEDATA.'/admin/skin.txt')) {
-    $skin = file_get_contents(DEDEDATA.'/admin/skin.txt');
-    $cfg_admin_skin = !in_array($skin, array(1, 2, 3, 4)) ? 1 : $skin;
-}
 //检查CSRF
 function CheckCSRF()
 {
@@ -107,7 +102,7 @@ function UpDateCatCache()
     $fp1Header = "<{$phph}php\r\nglobal \$cfg_Cs;\r\n\$cfg_Cs=array();\r\n";
     fwrite($fp1, $fp1Header);
     while ($row = $dsql->GetObject()) {
-        //将typename缓存起来
+        //typename缓存起来
         $row->typename = base64_encode($row->typename);
         fwrite($fp1, "\$cfg_Cs[{$row->id}]=array({$row->reid},{$row->channeltype},{$row->issend},'{$row->typename}');\r\n");
     }

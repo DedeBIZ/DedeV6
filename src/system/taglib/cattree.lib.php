@@ -12,9 +12,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 function lib_cattree(&$ctag, &$refObj)
 {
     global $dsql;
-    //属性处理
-    //属性showall在空或不存在时，强制用产品模型id；如果是yes刚显示整个语言区栏目树；为其它数字则是这个数字的模型的id
-    //typeid指定顶级树id，指定后，前一个属性将无效
+    //属性处理showall在空或不存在时，强制用产品模型id；如果是yes刚显示整个语言区栏目树，为其它数字则是这个数字的模型的id；typeid指定顶级树id，指定后，前一个属性无效
     $attlist = "showall|,catid|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
@@ -72,11 +70,11 @@ function cattreeListSon($id, &$revalue)
     $thisv = '';
     while ($row = $dsql->GetArray($id)) {
         $row['typelink'] = GetOneTypeUrlA($row);
-        $thisv .= "    <dl class='cattree'>\n";
-        $thisv .= "    <dt><a href='{$row['typelink']}'>{$row['typename']}</a></dt>\n";
+        $thisv .= "<dl class='cattree'>\n";
+        $thisv .= "<dt><a href='{$row['typelink']}'>{$row['typename']}</a></dt>\n";
         cattreeListSon($row['id'], $thisv);
-        $thisv .= "    </dl>\n";
+        $thisv .= "</dl>\n";
     }
-    if ($thisv != '') $revalue .= "    <dd>\n$thisv    </dd>\n";
+    if ($thisv != '') $revalue .= "<dd>\n$thisv</dd>\n";
 }
 ?>

@@ -195,7 +195,7 @@ if (!function_exists('GetPinyin')) {
     }
 }
 /**
- *  将实体网页代码转换成标准网页代码（兼容php4）
+ *  实体网页代码转换成标准网页代码（兼容php4）
  *
  * @access    public
  * @param     string  $str     字符串信息

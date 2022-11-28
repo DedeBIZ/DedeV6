@@ -404,7 +404,7 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("您确定删除，序号<span class='text-primary'>$qstr</span>文档");
+        $win->AddTitle("您确定删除，序号<span class='text-primary'>$qstr</span>文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -458,7 +458,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("回收站将清空<span class='text-primary'>$num</span>篇文档<br>您确定删除，序号<span class='text-primary'>$qstr</span>文档");
+        $win->AddTitle("清空回收站<span class='text-primary'>$num</span>篇文档<br>您确定删除，序号<span class='text-primary'>$qstr</span>文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -499,7 +499,7 @@ else if ($dopost == 'del') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确要删除，序号<span class='text-primary'>$qstr</span>文档");
+        $win->AddTitle("您确要删除，序号<span class='text-primary'>$qstr</span>文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }

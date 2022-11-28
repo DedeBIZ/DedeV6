@@ -172,7 +172,7 @@ if (empty($sql)) {
     $query = $sql;
 }
 $sql = urlencode($sql);
-//生成sql的唯一序列化字符串,并将sql语句记录到session中去
+//生成sql的唯一序列化字符串，并sql语句记录到session中去
 $sqlhash = md5($sql);
 $_SESSION[$sqlhash] = $sql;
 $dlist = new DataListCP();

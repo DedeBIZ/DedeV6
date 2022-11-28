@@ -492,7 +492,7 @@ class DedeTemplate
         $tswLen = strlen($tagStartWord);
         for ($i = 0; $i < $sourceLen; $i++) {
             $ttagName = '';
-            //如果不进行此判断，将无法识别相连的两个标记
+            //如果不进行此判断，无法识别相连的两个标记
             if ($i - 1 >= 0) {
                 $ss = $i - 1;
             } else {

@@ -62,9 +62,9 @@ function lib_arclistsg(&$ctag, &$refObj)
         if ($orderby == 'near' && $cfg_keyword_like == 'N') {
             $keyword = '';
         }
-        //时间限制(用于调用最近热门文档、热门评论之类)
+        //时间限制（用于调用最近热门文档、热门评论之类）
         if ($subday > 0) {
-            //这里的时间只能计算到天，否则缓存功能将无效
+            //这里的时间只能计算到天，否则缓存功能无效
             $ntime = gmmktime(0, 0, 0, gmdate('m'), gmdate('d'), gmdate('Y'));
             $limitday = $ntime - ($subday * 24 * 3600);
             $orwheres[] = " arc.senddate > $limitday ";

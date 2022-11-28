@@ -266,7 +266,7 @@ if (!function_exists('json_encode')) {
  *
  * @access    public
  * @param     string  $json  json数据
- * @param     string  $assoc  当该参数为 TRUE 时，将返回 array 而非 object
+ * @param     string  $assoc 当该参数为TRUE时，返回array而非object
  * @return    string
  */
 if (!function_exists('json_decode')) {

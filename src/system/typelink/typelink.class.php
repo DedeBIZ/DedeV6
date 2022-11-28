@@ -57,7 +57,7 @@ class TypeLink
         }
     }
     //对于使用默认构造函数的情况
-    //GetPositionLink()将不可用
+    //GetPositionLink()不可用
     function TypeLink($typeid)
     {
         $this->__construct($typeid);

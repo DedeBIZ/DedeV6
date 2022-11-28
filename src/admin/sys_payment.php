@@ -68,7 +68,7 @@ class Array2form
                     foreach ($items as $v) {
                         $v = trim($v);
                         if ($v == '') continue;
-                        //统一将中文冒号转为英文
+                        //统一中文冒号转为英文
                         $v = str_replace("：", ":", $v);
                         if (preg_match("/[\:]/", $v)) {
                             list($value, $name) = preg_split('#:#', $v);

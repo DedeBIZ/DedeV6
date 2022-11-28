@@ -5,70 +5,68 @@ ALTER TABLE `#@__tagindex` ADD COLUMN `title` VARCHAR(255) NULL DEFAULT NULL AFT
 ALTER TABLE `#@__tagindex` ADD COLUMN `tag_pinyin` VARCHAR(255) NULL DEFAULT NULL AFTER `title`;
 
 -- 6.0.3
-ALTER TABLE `#@__tagindex`
-  ADD COLUMN `uptime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `addtime`,
-  ADD COLUMN `mktime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `uptime`;
-ALTER TABLE `#@__feedback`
-  ADD COLUMN `fid` INT UNSIGNED NOT NULL DEFAULT 0 AFTER `aid`;
-ALTER TABLE `#@__feedback`
-  ADD COLUMN `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `dtime`;
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200');
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_auth_code', '商业版授权码', 1, 'string', '');
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_hostname', 'DedeBIZ Core地址', 1, 'string', '127.0.0.1');
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_port', 'DedeBIZ Core端口', 1, 'number', '8181');
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_appid', 'DedeBIZ Core应用ID', 1, 'string', '');
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_key', 'DedeBIZ Core通信密钥', 1, 'string', '');
+ALTER TABLE `#@__tagindex` 
+	ADD COLUMN `uptime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `addtime`,
+	ADD COLUMN `mktime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `uptime`;
+ALTER TABLE `#@__feedback` ADD COLUMN `fid` INT UNSIGNED NOT NULL DEFAULT 0 AFTER `aid`;
+ALTER TABLE `#@__feedback` ADD COLUMN `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `dtime`;
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_auth_code', '商业版授权码', 1, 'string', '');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_bizcore_hostname', 'DedeBIZ Core地址', 1, 'string', '127.0.0.1');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_bizcore_port', 'DedeBIZ Core端口', 1, 'number', '8181');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_bizcore_appid', 'DedeBIZ Core应用ID', 1, 'string', '');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_bizcore_key', 'DedeBIZ Core通信密钥', 1, 'string', '');
 CREATE TABLE `#@__feedback_goodbad` (
-  `fgid` INT(11) NOT NULL AUTO_INCREMENT,
-  `mid` INT(11) NOT NULL DEFAULT '0',
-  `fid` INT(11) NOT NULL DEFAULT '0',
-  `fgtype` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '0:good 1:bad',
-  PRIMARY KEY (`fgid`)
+	`fgid` INT(11) NOT NULL AUTO_INCREMENT,
+	`mid` INT(11) NOT NULL DEFAULT '0',
+	`fid` INT(11) NOT NULL DEFAULT '0',
+	`fgtype` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '0:good 1:bad',
+	PRIMARY KEY (`fgid`)
 ) ENGINE=MyISAM;
 CREATE TABLE `#@__search_limits` (
-  `ip` VARCHAR(200) NOT NULL,
-  `searchtime` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`ip`)
+	`ip` VARCHAR(200) NOT NULL,
+	`searchtime` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`ip`)
 ) ENGINE=MyISAM;
 
 -- 6.1.0
 ALTER TABLE `#@__arctype`
-  ADD COLUMN `namegk` varchar(255) NULL AFTER `typename`,
-  ADD COLUMN `enname` varchar(255) NULL AFTER `namegk`,
-  ADD COLUMN `ennamegk` varchar(255) NULL AFTER `enname`,
-  ADD COLUMN `litpic` varchar(255) NULL AFTER `ennamegk`,
-  ADD COLUMN `litimg` varchar(255) NULL AFTER `litpic`;
+	ADD COLUMN `namegk` varchar(255) NULL AFTER `typename`,
+	ADD COLUMN `enname` varchar(255) NULL AFTER `namegk`,
+	ADD COLUMN `ennamegk` varchar(255) NULL AFTER `enname`,
+	ADD COLUMN `litpic` varchar(255) NULL AFTER `ennamegk`,
+	ADD COLUMN `litimg` varchar(255) NULL AFTER `litpic`;
 
 -- 6.1.7
 CREATE TABLE `#@__statistics` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `sdate` int DEFAULT NULL COMMENT '记录日期',
-  `pv` int DEFAULT NULL COMMENT 'PV',
-  `uv` int DEFAULT NULL COMMENT 'UV',
-  `ip` int DEFAULT NULL COMMENT 'IP',
-  `vv` int DEFAULT NULL COMMENT 'vv',
-  PRIMARY KEY (`id`)
+	`id` int NOT NULL AUTO_INCREMENT,
+	`sdate` int DEFAULT NULL COMMENT '记录日期',
+	`pv` int DEFAULT NULL COMMENT 'PV',
+	`uv` int DEFAULT NULL COMMENT 'UV',
+	`ip` int DEFAULT NULL COMMENT 'IP',
+	`vv` int DEFAULT NULL COMMENT 'vv',
+	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM;
 CREATE TABLE `#@__statistics_detail` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `t` int DEFAULT NULL COMMENT 'unixtime',
-  `created_date` int DEFAULT NULL COMMENT '日期，20220326',
-  `created_hour` int DEFAULT NULL COMMENT '时间，12',
-  `dduuid` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'uuid',
-  `ssid` varchar(32) DEFAULT NULL COMMENT 'session_id',
-  `ip` varchar(46) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'ip地址',
-  `browser` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '浏览器',
-  `device` varchar(50) DEFAULT NULL COMMENT '设备',
-  `device_type` varchar(10) DEFAULT NULL COMMENT '设备类型',
-  `os` varchar(20) DEFAULT NULL COMMENT '操作系统',
-  `url_type` tinyint DEFAULT NULL COMMENT '访问地址类型：0:未知 1:列表 2:文档 3:搜索 4:TAG',
-  `typeid` int DEFAULT NULL COMMENT '栏目id',
-  `aid` int DEFAULT NULL COMMENT '文档ID',
-  `value` varchar(50) DEFAULT NULL COMMENT '值',
-  PRIMARY KEY (`id`),
-  KEY `idx_created_date_dduuid` (`created_date`,`dduuid`),
-  KEY `idx_created_date_ip` (`created_date`,`ip`),
-  KEY `idx_created_date_ssid` (`created_date`,`ssid`)
+	`id` int NOT NULL AUTO_INCREMENT,
+	`t` int DEFAULT NULL COMMENT 'unixtime',
+	`created_date` int DEFAULT NULL COMMENT '日期，20220326',
+	`created_hour` int DEFAULT NULL COMMENT '时间，12',
+	`dduuid` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'uuid',
+	`ssid` varchar(32) DEFAULT NULL COMMENT 'session_id',
+	`ip` varchar(46) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'ip地址',
+	`browser` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '浏览器',
+	`device` varchar(50) DEFAULT NULL COMMENT '设备',
+	`device_type` varchar(10) DEFAULT NULL COMMENT '设备类型',
+	`os` varchar(20) DEFAULT NULL COMMENT '操作系统',
+	`url_type` tinyint DEFAULT NULL COMMENT '访问地址类型：0:未知 1:列表 2:文档 3:搜索 4:TAG',
+	`typeid` int DEFAULT NULL COMMENT '栏目id',
+	`aid` int DEFAULT NULL COMMENT '文档ID',
+	`value` varchar(50) DEFAULT NULL COMMENT '值',
+	PRIMARY KEY (`id`),
+	KEY `idx_created_date_dduuid` (`created_date`,`dduuid`),
+	KEY `idx_created_date_ip` (`created_date`,`ip`),
+	KEY `idx_created_date_ssid` (`created_date`,`ssid`)
 ) ENGINE=MyISAM;
 ALTER TABLE `#@__addonarticle` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
 ALTER TABLE `#@__addonimages` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;

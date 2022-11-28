@@ -413,7 +413,7 @@ function copyToClipboard(txt) {
 		try {
 			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
 		} catch (e) {
-			alert("被浏览器拒绝，请在浏览器地址栏输入about:config并回车\n然后将signed.applets.codebase_principal_support设置为true");
+			alert("被浏览器拒绝，请在浏览器地址栏输入about:config并回车\n然后把signed.applets.codebase_principal_support设置为true");
 		}
 		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
 		if (!clip) return;

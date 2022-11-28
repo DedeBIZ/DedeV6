@@ -93,7 +93,7 @@ else if ($action == 'view_developoer') {
     }
     $authAt = date("Y-m-d", $devInfo['auth_at']);
     if (!isset($info['dev_id'])) {
-        $devInfo['dev_name'] = $info['team']."<span style='display:inline-block;margin-left:10px;padding:.25rem .5rem;line-height:1.5;font-size:12px;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem'>未认证</span>";
+        $devInfo['dev_name'] = $info['team']."<span class='btn btn-danger btn-sm'>未认证</span>";
         $authAt = "未知";
     }
     ShowMsg("<p>开发者名称：{$devInfo['dev_name']}</p><p>开发者id：{$devInfo['dev_id']}</p><span>认证于：{$authAt}</span>", "-1");
@@ -109,7 +109,7 @@ else if ($action == 'setup') {
         ShowMsg("获取模块信息错误，模块文件可能被篡改", -1);
         exit;
     }
-    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
+    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
     $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     $prvdirs = array();
@@ -164,57 +164,56 @@ else if ($action == 'setup') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 安装模块：{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
-    $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
-    <table width='98%' cellspacing='0' cellpadding='0' class='table'>
-  <tr>
-    <td width='260' class='dtb'>模块名称：</td>
-    <td class='dtb'>{$infos['name']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>语言：</td>
-    <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>文件大小：</td>
-    <td class='dtb'>{$infos['filesize']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>开发者id：</td>
-    <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a></td>
-  </tr>
-  <tr>
-    <td class='dtb'>发布时间：</td>
-    <td class='dtb'>{$infos['time']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>使用协议：</td>
-    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
-  </tr>
-  <tr>
-    <td class='dtb' colspan='2'>
-    <div class='alert alert-danger mb-0'>注意事项：安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“templets”目录也必须暂时设置可写入权限</div>
-    </td>
-  </tr>
-  <tr>
-    <td>目录权限检测：<br> ../ 为根目录 <br> ./ 表示当前目录</td>
-    <td>$prvdir</td>
-  </tr>
-  <tr>
-    <td>模块包含的所有文件列表：</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td height='160' colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
-  </tr>
-  <tr>
-    <td>对于已存在文件处理方法：</td>
-    <td>
-    <label><input type='radio' name='isreplace' value='1' checked='checked'> 覆盖</label>
-    <label><input type='radio' name='isreplace' value='3'> 覆盖，保留副本</label>
-    <label><input type='radio' name='isreplace' value='0'> 保留旧文件</label>
-   </td>
-  </tr>
-</table>";
+    $msg = "<table width='98%' cellspacing='0' cellpadding='0' class='table'>
+    <tr>
+        <td width='260' class='admin-td'>模块名称：</td>
+        <td class='admin-td'>{$infos['name']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>语言：</td>
+        <td class='admin-td'>{$infos['lang']} {$alertMsg}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>文件大小：</td>
+        <td class='admin-td'>{$infos['filesize']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>开发者id：</td>
+        <td class='admin-td'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a></td>
+    </tr>
+    <tr>
+        <td class='admin-td'>发布时间：</td>
+        <td class='admin-td'>{$infos['time']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>使用协议：</td>
+        <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
+    </tr>
+    <tr>
+        <td class='admin-td' colspan='2'>
+        <div class='alert alert-danger mb-0'>注意事项：安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“templets”目录也必须暂时设置可写入权限</div>
+        </td>
+    </tr>
+    <tr>
+        <td>目录权限检测：<br> ../ 为根目录 <br> ./ 表示当前目录</td>
+        <td>$prvdir</td>
+    </tr>
+    <tr>
+        <td>模块包含的所有文件列表：</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
+    </tr>
+    <tr>
+        <td>对于已存在文件处理方法：</td>
+        <td>
+            <label><input type='radio' name='isreplace' value='1' checked='checked'> 覆盖</label>
+            <label><input type='radio' name='isreplace' value='3'> 覆盖，保留副本</label>
+            <label><input type='radio' name='isreplace' value='0'> 保留旧文件</label>
+        </td>
+    </tr>
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
@@ -226,7 +225,7 @@ function SetupRun()
 --------------*/
 else if ($action == 'setupstart') {
     if (!is_writeable($mdir)) {
-        ShowMsg("目录 {$mdir} 不支持写入，这将导致程序安装没法正常创建", "-1");
+        ShowMsg("目录<span class='text-primary'>{$mdir}</span>不支持写入，这导致程序安装没法正常创建", "-1");
         exit();
     }
     $dm = new DedeModule($mdir);
@@ -288,7 +287,7 @@ function DelModule();
 else if ($action == 'del') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
-    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
+    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
@@ -296,36 +295,35 @@ else if ($action == 'del') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 删除模块：{$infos['name']}");
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
-    $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
-    <table width='98%' cellspacing='0' cellpadding='0' class='table'>
+    $msg = "<table width='98%' cellspacing='0' cellpadding='0' class='table'>
     <tr>
-      <td width='260' class='dtb'>模块名称：</td>
-      <td class='dtb'>{$infos['name']}</td>
+        <td width='260' class='admin-td'>模块名称：</td>
+        <td class='admin-td'>{$infos['name']}</td>
     </tr>
     <tr>
-      <td class='dtb'>语言：</td>
-      <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
+        <td class='admin-td'>语言：</td>
+        <td class='admin-td'>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-      <td class='dtb'>文件大小：</td>
-      <td class='dtb'>{$infos['filesize']}</td>
+        <td class='admin-td'>文件大小：</td>
+        <td class='admin-td'>{$infos['filesize']}</td>
     </tr>
     <tr>
-      <td class='dtb'>开发者id：</td>
-      <td class='dtb'>{$dev_id}</td>
+        <td class='admin-td'>开发者id：</td>
+        <td class='admin-td'>{$dev_id}</td>
     </tr>
     <tr>
-      <td class='dtb'>发布时间：</td>
-      <td class='dtb'>{$infos['time']}</td>
+        <td class='admin-td'>发布时间：</td>
+        <td class='admin-td'>{$infos['time']}</td>
     </tr>
     <tr>
-      <td class='dtb'>使用协议：</td>
-      <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
+        <td class='admin-td'>使用协议：</td>
+        <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-      <td colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
+        <td colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
     </tr>
-</table>";
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
@@ -334,7 +332,7 @@ else if ($action == 'del') {
     } else if ($action == 'delok') {
     $dm = new DedeModule($mdir);
     $modfile = $mdir."/".$dm->GetHashFile($hash);
-    unlink($modfile) or die("删除文件 {$modfile} 失败");
+    unlink($modfile) or die("删除文件<span class='text-primary'>{$modfile}</span>失败");
     ShowMsg("成功删除一个模块文件", "module_main.php");
     exit();
 }
@@ -345,7 +343,7 @@ else if ($action == 'uninstall') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     if ($infos['url'] == '') $infos['url'] = ' ';
-    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
+    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
     $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     foreach ($filelists as $v) {
@@ -361,49 +359,46 @@ else if ($action == 'uninstall') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 卸载模块：{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
-    $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
-    <table width='98%' cellspacing='0' cellpadding='0' class='table'>
-  <tr>
-    <td width='260' class='dtb'>模块名称：</td>
-    <td class='dtb'>{$infos['name']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>语言：</td>
-    <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>文件大小：</td>
-    <td class='dtb'>{$infos['filesize']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>开发者id：</td>
-    <td class='dtb'>{$dev_id}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>发布时间：</td>
-    <td class='dtb'>{$infos['time']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>使用协议：</td>
-    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
-  </tr>
-  <tr>
-    <td>模块包含的文件（文件路径相对于当前目录）</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea>
-    </td>
-  </tr>
-  <tr>
-    <td>对于模块的文件处理方法：</td>
-    <td>
-    <label><input type='radio' name='isreplace' value='0' checked='checked'> 手工删除文件，仅运行卸载程序</label>
-    <label><input type='radio' name='isreplace' value='2'> 删除模块的所有文件</label>
-   </td>
-  </tr>
-</table>";
+    $msg = "<table width='98%' cellspacing='0' cellpadding='0' class='table'>
+    <tr>
+        <td width='260' class='admin-td'>模块名称：</td>
+        <td class='admin-td'>{$infos['name']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>语言：</td>
+        <td class='admin-td'>{$infos['lang']} {$alertMsg}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>文件大小：</td>
+        <td class='admin-td'>{$infos['filesize']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>开发者id：</td>
+        <td class='admin-td'>{$dev_id}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>发布时间：</td>
+        <td class='admin-td'>{$infos['time']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>使用协议：</td>
+        <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
+    </tr>
+    <tr>
+        <td>模块包含的文件（文件路径相对于当前目录）</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
+    </tr>
+    <tr>
+        <td>对于模块的文件处理方法：</td>
+        <td>
+            <label><input type='radio' name='isreplace' value='0' checked='checked'> 手工删除文件，仅运行卸载程序</label>
+            <label><input type='radio' name='isreplace' value='2'> 删除模块的所有文件</label>
+        </td>
+    </tr>
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
@@ -472,7 +467,7 @@ else if ($action == 'view') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     if ($infos['url'] == '') $infos['url'] = ' ';
-    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
+    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
     $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     $setupinfo = '';
@@ -502,42 +497,39 @@ else if ($action == 'view') {
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 模块详情：{$infos['name']}");
-    $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
-    <table width='98%' cellspacing='0' cellpadding='0'>
-  <tr>
-    <td width='260' class='dtb'>模块名称：</td>
-    <td class='dtb'>{$infos['name']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>语言：</td>
-    <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>文件大小：</td>
-    <td class='dtb'>{$infos['filesize']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>开发者id：</td>
-    <td class='dtb'>{$dev_id}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>发布时间：</td>
-    <td class='dtb'>{$infos['time']}</td>
-  </tr>
-  <tr>
-    <td class='dtb'>使用协议：</td>
-    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
-  </tr>
-  <tr>
-    <td>模块包含的文件（文件路径相对于当前目录）</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea>
-    </td>
-  </tr>
-</table>";
+    $msg = "<table width='98%' cellspacing='0' cellpadding='0'>
+    <tr>
+        <td width='260' class='admin-td'>模块名称：</td>
+        <td class='admin-td'>{$infos['name']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>语言：</td>
+        <td class='admin-td'>{$infos['lang']} {$alertMsg}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>文件大小：</td>
+        <td class='admin-td'>{$infos['filesize']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>开发者id：</td>
+        <td class='admin-td'>{$dev_id}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>发布时间：</td>
+        <td class='admin-td'>{$infos['time']}</td>
+    </tr>
+    <tr>
+        <td class='admin-td'>使用协议：</td>
+        <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
+    </tr>
+    <tr>
+        <td>模块包含的文件（文件路径相对于当前目录）</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
+    </tr>
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();

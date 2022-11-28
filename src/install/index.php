@@ -28,7 +28,7 @@ foreach(Array('_GET','_POST','_COOKIE') as $_request)
 require_once(DEDEINC.'/common.func.php');
 if (file_exists(INSLOCKFILE))
 {
-    die(DedeAlert("程序已运行安装，如果您确定要重新安装，请先删除 /install/install_lock.txt",ALERT_DANGER));
+    die(DedeAlert("完成软件安装，如果您要重新安装，安装目录找到install文件夹，然后删除install_lock.txt文件",ALERT_DANGER));
 }
 if (empty($step))
 {
@@ -43,32 +43,31 @@ if ($step==1)
 {
     $arrMsg = array();
     if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-        $arrMsg[] = "PHP请升级到5.3及以上版本，低版本PHP环境将无法正常使用本系统";
+        $arrMsg[] = "PHP请升级到5.3及以上版本，低版本PHP环境无法正常使用本系统";
     }
     if (!extension_loaded("openssl")) {
-        $arrMsg[] = "OpenSSL未开启，将无法完成<a href='https://www.dedebiz.com' target='_blank'>DedeBIZ商业支持</a>";
+        $arrMsg[] = "OpenSSL未开启，无法完成<a href='https://www.dedebiz.com' target='_blank'>DedeBIZ商业支持</a>";
     }
     if (!extension_loaded("sockets")) {
-        $arrMsg[] = "Sockets未开启，将无法安装<a href='https://www.dedebiz.com/download#dedebiz' target='_blank'>DedeBIZ商业组件</a>";
+        $arrMsg[] = "Sockets未开启，无法安装<a href='https://www.dedebiz.com/download#dedebiz' target='_blank'>DedeBIZ商业组件</a>";
     }
     if (!extension_loaded("fileinfo")) {
-        $arrMsg[] = "Fileinfo未开启，将无法正常进行文件上传";
+        $arrMsg[] = "Fileinfo未开启，无法正常进行文件上传";
     }
     if (!function_exists('mysqli_connect')) {
-        $arrMsg[] = "MySQL不支持，将无法使用本系统";
+        $arrMsg[] = "MySQL不支持，无法使用本系统";
     }
     if (!extension_loaded("sqlite3")) {
-        $arrMsg[] = "SQLite3未开启，将无法正常使用SQLite数据库";
+        $arrMsg[] = "SQLite3未开启，无法正常使用SQLite数据库";
     }
     if (!extension_loaded("gd")) {
-        $arrMsg[] = "GD未开启，将无法使用验证码、二维码、图片水印等功能";
+        $arrMsg[] = "GD未开启，无法使用验证码、二维码、图片水印等功能";
     }
     if (!empty($_SERVER['REQUEST_URI']))
     $scriptName = $_SERVER['REQUEST_URI'];
     else
     $scriptName = $_SERVER['PHP_SELF'];
     $basepath = preg_replace("#\/install(.*)$#i", '', $scriptName);
-
     if (!empty($_SERVER['HTTP_HOST']))
         $baseurl = $proto.$_SERVER['HTTP_HOST'];
     else
@@ -95,7 +94,6 @@ else if ($step==2)
     if (!in_array($dbtype,array("mysql", "sqlite"))) {
         die(DedeAlert("当前数据库类型不支持", ALERT_DANGER));
     }
-    
     if (!empty($_SERVER['HTTP_HOST']))
         $dfbaseurl = $proto.$_SERVER['HTTP_HOST'];
     else
@@ -266,16 +264,16 @@ else if ($step==2)
     }
     //增加管理员帐号
     $adminquery = "INSERT INTO `{$dbprefix}admin` (`id`,`usertype`,`userid`,`$pfd`,`uname`,`tname`,`email`,`typeid`,`logintime`,`loginip`) VALUES (1,10,'$adminuser','".$apwd."','admin','','',0,'".time()."','127.0.0.1');";
-    $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
+    $dbtype == 'sqlite'? $db->exec($adminquery) : mysql_query($adminquery,$conn);
     //关连前台会员帐号
     $adminquery = "INSERT INTO `{$dbprefix}member` (`mid`,`mtype`,`userid`,`{$pfd}`,`uname`,`sex`,`rank`,`money`,`email`,`scores`,`matt`,`face`,`safequestion`,`safeanswer`,`jointime`,`joinip`,`logintime`,`loginip`) VALUES ('1','个人','$adminuser','".$upwd."','$adminuser','男','100','0','','10000','10','','0','','".time()."','','0',''); ";
-    $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
+    $dbtype == 'sqlite'? $db->exec($adminquery) : mysql_query($adminquery,$conn);
     $adminquery = "INSERT INTO `{$dbprefix}member_person` (`mid`,`onlynet`,`sex`,`uname`,`qq`,`msn`,`tel`,`mobile`,`place`,`oldplace`,`birthday`,`star`,`income`,`education`,`height`,`bodytype`,`blood`,`vocation`,`smoke`,`marital`,`house`,`drink`,`datingtype`,`language`,`nature`,`lovemsg`,`address`,`uptime`) VALUES ('1','1','男','{$adminuser}','','','','','0','0','1980-01-01','1','0','0','160','0','0','0','0','0','0','0','0','','','','','0'); ";
-    $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
+    $dbtype == 'sqlite'? $db->exec($adminquery) : mysql_query($adminquery,$conn);
     $adminquery = "INSERT INTO `{$dbprefix}member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('1','0','0','0','0','0','0','0','0'); ";
-    $dbtype == 'sqlite'?  $db->exec($adminquery): mysql_query($adminquery,$conn);
+    $dbtype == 'sqlite'? $db->exec($adminquery): mysql_query($adminquery,$conn);
     $adminquery = "INSERT INTO `{$dbprefix}member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`) VALUES ('1','10','0','{$adminuser}的空间','','person','',''); ";
-    $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
+    $dbtype == 'sqlite'? $db->exec($adminquery) : mysql_query($adminquery,$conn);
     //锁定程序安装
     $fp = fopen(INSLOCKFILE,'w');
     fwrite($fp,'ok');
@@ -299,7 +297,7 @@ else if ($step==10)
 		if (empty($dbname)){
 			$info = "信息正确";
 		} else {
-			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统将覆盖数据库": "数据库不存在，系统将自动创建";
+			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统覆盖数据库": "数据库不存在，系统自动创建";
         }
         $result = array(
             "code" => 200,
