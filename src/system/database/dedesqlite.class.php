@@ -57,6 +57,7 @@ class DedeSqlite
     var $isInit = false;
     var $pconnect = false;
     var $_fixObject;
+    var $_fieldIdx = 1; //这里最好是数组，对应id，但由于用的地方不多，暂时先这样处理
     //用外部定义的变量初始类，并连接数据库
     function __construct($pconnect = FALSE, $nconnect = FALSE)
     {
@@ -391,20 +392,27 @@ class DedeSqlite
         }
         $prefix = "#@__";
         $tbname = str_replace($prefix, $GLOBALS['cfg_dbprefix'], $tbname);
-        $query = "SELECT * FROM {$tbname} LIMIT 0,1";
+        $query = "SELECT * FROM {$tbname} LIMIT 1";
         $this->result[$id] = $this->linkID->query($query);
     }
     //获取字段详细信息
     function GetFieldObject($id = "me")
     {
         $cols = $this->result[$id]->numColumns();
-        $fields = array();
-        while ($row = $this->result[$id]->fetchArray()) {
-            for ($i = 1; $i < $cols; $i++) {
-                $fields[] =  $this->result[$id]->columnName($i);
+        if ($this->_fieldIdx >= $cols) {
+            $this->_fieldIdx = 1;
+            return false;
+        }
+        for ($i = 1; $i <= $cols; $i++) {
+            $field = new stdClass;
+            $n = $this->result[$id]->columnName($i);
+            $field->name = $n;
+            if ($this->_fieldIdx === $i) {
+                $this->_fieldIdx++;
+                return $field;
             }
         }
-        return (object)$fields;
+        return false;
     }
     //获得查询的总记录数
     function GetTotalRow($id = "me")
@@ -543,4 +551,3 @@ function CopySQLiPoint(&$ndsql)
 {
     $GLOBALS['dsqlite'] = $ndsql;
 }
-?>

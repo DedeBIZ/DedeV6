@@ -176,7 +176,7 @@ else if ($step==2)
             if ( $dbtype == 'sqlite' )
             {
                 $query = preg_replace('/character set (.*?) /i','',$query);
-                $query = str_replace('unsigned','',$query);
+                $query = preg_replace('/unsigned/i','',$query);
                 $query = str_replace('TYPE=MyISAM','',$query);
                 $query = preg_replace ('/TINYINT\(([\d]+)\)/i','INTEGER',$query);
                 $query = preg_replace ('/mediumint\(([\d]+)\)/i','INTEGER',$query);

@@ -18,6 +18,24 @@ helper('cache');
 $action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update')) ? $action  : '';
 $curDir = dirname(GetCurUrl()); //当前目录
 /**
+ * 表中是否存在某个字段
+ *
+ * @param  mixed $tablename 表名称
+ * @param  mixed $field 字段名
+ * @return void
+ */
+function TableHasField($tablename,$field)
+{
+    global $dsql;
+    $dsql->GetTableFields($tablename,"tfd");
+    while ($r = $dsql->GetFieldObject("tfd")) {
+        if ($r->name === $field) {
+            return true;
+        }
+    }
+    return false;
+}
+/**
  * 登录鉴权
  *
  * @return void
@@ -46,6 +64,33 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 } else if ($action === 'has_new_version') {
+    //判断版本更新差异sql
+    $unQueryVer = array();
+    if (!TableHasField("#@__tagindex", "keywords")) {
+        $unQueryVer[] = "6.0.2";
+    }
+    if (!TableHasField("#@__feedback", "replycount")) {
+        $unQueryVer[] = "6.0.3";
+    }
+    if (!TableHasField("#@__arctype", "litimg")) {
+        $unQueryVer[] = "6.1.0";
+    }
+    if (!$dsql->IsTable("#@__statistics")) {
+        $unQueryVer[] = "6.1.7";
+    }
+    if (TableHasField("#@__tagindex", "tag_pinyin")) {
+        $unQueryVer[] = "6.1.8";
+    }
+    if (!TableHasField("#@__admin", "pwd_new")) {
+        $unQueryVer[] = "6.1.9";
+    }
+    if (!TableHasField("#@__arctype", "cnoverview")) {
+        $unQueryVer[] = "6.1.10";
+    }
+    if (!TableHasField("#@__admin", "loginerr")) {
+        $unQueryVer[] = "6.2.0";
+    }
+
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
     //是否存在更新版本
@@ -64,7 +109,7 @@ if ($action === 'is_need_check_code') {
 } else if ($action === 'get_changed_files') {
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
-    // 获取本地更改过的文件
+    //获取本地更改过的文件
     $hashUrl = DEDEBIZCDN.'/release/'.$cfg_version_detail.'.json';
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($hashUrl);
@@ -95,7 +140,7 @@ if ($action === 'is_need_check_code') {
 } else if ($action === 'update_backup') {
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
-    // 获取本地更改过的文件
+    //获取本地更改过的文件
     $hashUrl = DEDEBIZCDN.'/release/'.$cfg_version_detail.'.json';
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($hashUrl);
@@ -115,7 +160,7 @@ if ($action === 'is_need_check_code') {
     foreach ($data as $file) {
         $realFile = DEDEROOT.str_replace("\\", '/', $file->filename);
         if (file_exists($realFile) && md5_file($realFile) !== $file->hash) {
-            // 备份文件
+            //备份文件
             $dstFile = $backupPath.'/'.str_replace("\\", '/', $file->filename);
             @mkdir(dirname($dstFile), 0777, true);
             copy($realFile, $dstFile);

@@ -974,12 +974,11 @@ CREATE TABLE `#@__sysconfig` (
 
 DROP TABLE IF EXISTS `#@__tagindex`;
 CREATE TABLE `#@__tagindex` (
-	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`id` INT(10) NOT NULL AUTO_INCREMENT,
 	`tag` CHAR(12) NOT NULL DEFAULT '',
 	`keywords` varchar(255) DEFAULT NULL,
 	`description` varchar(255) DEFAULT NULL,
 	`title` varchar(255) DEFAULT NULL,
-	`tag_pinyin` varchar(255) DEFAULT NULL,
 	`typeid` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
 	`count` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 	`total` INT(10) UNSIGNED NOT NULL DEFAULT '0',

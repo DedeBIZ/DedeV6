@@ -22,12 +22,12 @@ CREATE TABLE `#@__feedback_goodbad` (
 	`fid` INT(11) NOT NULL DEFAULT '0',
 	`fgtype` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '0:good 1:bad',
 	PRIMARY KEY (`fgid`)
-) ENGINE=MyISAM;
+) TYPE=MyISAM;
 CREATE TABLE `#@__search_limits` (
 	`ip` VARCHAR(200) NOT NULL,
 	`searchtime` INT(11) NULL DEFAULT NULL,
 	PRIMARY KEY (`ip`)
-) ENGINE=MyISAM;
+) TYPE=MyISAM;
 
 -- 6.1.0
 ALTER TABLE `#@__arctype`
@@ -46,7 +46,7 @@ CREATE TABLE `#@__statistics` (
 	`ip` int DEFAULT NULL COMMENT 'IP',
 	`vv` int DEFAULT NULL COMMENT 'vv',
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM;
+) TYPE=MyISAM;
 CREATE TABLE `#@__statistics_detail` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`t` int DEFAULT NULL COMMENT 'unixtime',
@@ -67,7 +67,7 @@ CREATE TABLE `#@__statistics_detail` (
 	KEY `idx_created_date_dduuid` (`created_date`,`dduuid`),
 	KEY `idx_created_date_ip` (`created_date`,`ip`),
 	KEY `idx_created_date_ssid` (`created_date`,`ssid`)
-) ENGINE=MyISAM;
+) TYPE=MyISAM;
 ALTER TABLE `#@__addonarticle` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
 ALTER TABLE `#@__addonimages` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
 ALTER TABLE `#@__addoninfos` MODIFY COLUMN `userip` varchar(46) NOT NULL DEFAULT '' AFTER `litpic`;
