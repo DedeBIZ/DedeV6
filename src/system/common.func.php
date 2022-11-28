@@ -571,23 +571,77 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
     }
     echo $dede_addonfields;
 }
+
 /**
- * 用于检测系统版本
+ * 获取对应版本号的更新SQL
  *
- * @return string
+ * @return array
  */
-function CheckDedeVer()
+function GetUpdateSQL()
 {
-    global $dsql;
-    $ver = '1.0.0';
-    $dsql->GetTableFields('#@__tagindex');
-    while ($fields = $dsql->GetFieldObject()) {
-        if ($fields->name === 'tag_pinyin') {
-            $ver = '6.0.2';
+    global $cfg_dbprefix,$cfg_dbtype,$cfg_db_language;
+    $result = array();
+    $query = '';
+    $sql4tmp = "ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language;
+    $fp = fopen(DEDEROOT.'/install/update.txt','r');
+    $sqls = array();
+    $current_ver = "";
+    while(!feof($fp))
+    {
+        $line = rtrim(fgets($fp,1024));
+        if (preg_match("/\-\- ([\d\.]+)/",$line,$matches)) {
+            if (count($sqls) > 0) {
+                $result[$current_ver] = $sqls;
+            }
+            $sqls = array();
+            $current_ver = $matches[1];
+        }
+        if (preg_match("#;$#", $line))
+        {
+            $query .= $line."\n";
+            $query = str_replace('#@__',$cfg_dbprefix,$query);
+            if ( $cfg_dbtype == 'sqlite' )
+            {
+                $query = preg_replace('/character set (.*?) /i','',$query);
+                $query = preg_replace('/unsigned/i','',$query);
+                $query = str_replace('TYPE=MyISAM','',$query);
+                $query = preg_replace ('/TINYINT\(([\d]+)\)/i','INTEGER',$query);
+                $query = preg_replace ('/mediumint\(([\d]+)\)/i','INTEGER',$query);
+                $query = preg_replace ('/smallint\(([\d]+)\)/i','INTEGER',$query);
+                $query = preg_replace('/int\(([\d]+)\)/i','INTEGER',$query);
+                $query = preg_replace('/auto_increment/i','PRIMARY KEY AUTOINCREMENT',$query);
+                $query = preg_replace('/,([\t\s ]+)KEY(.*?)MyISAM;/','',$query);
+                $query = preg_replace('/,([\t\s ]+)KEY(.*?);/',');',$query);
+                $query = preg_replace('/,([\t\s ]+)UNIQUE KEY(.*?);/',');',$query);
+                $query = preg_replace('/set\(([^\)]*?)\)/','varchar',$query);
+                $query = preg_replace('/enum\(([^\)]*?)\)/','varchar',$query);
+                if ( preg_match("/PRIMARY KEY AUTOINCREMENT/",$query) )
+                {
+                    $query = preg_replace('/,([\t\s ]+)PRIMARY KEY([\t\s ]+)\(`([0-9a-zA-Z]+)`\)/i','',$query);
+                }
+                $sqls[] = $query;
+                // $db->exec($query);
+            } else {
+                if (preg_match('#CREATE#i', $query))
+                {
+                    $sqls[] = preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query);
+                } else {
+                    $sqls[] = $query;
+                }
+            }
+            $query='';
+        } else if (!preg_match("#^(\/\/|--)#", $line))
+        {
+            $query .= $line;
         }
     }
-    return $ver;
+    if (count($sqls) > 0) {
+        $result[$current_ver] = $sqls;
+    }
+    fclose($fp);
+    return $result;
 }
+
 //自定义函数接口
 if (file_exists(DEDEINC.'/extend.func.php')) {
     require_once(DEDEINC.'/extend.func.php');

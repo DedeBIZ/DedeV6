@@ -194,16 +194,11 @@ else if ($step==2)
                 }
                 $db->exec($query);
             } else {
-                if ($mysqlVersion < 4.1)
+                if (preg_match('#CREATE#i', $query))
                 {
-                    $rs = mysql_query($query,$conn);
+                    $rs = mysql_query(preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query),$conn);
                 } else {
-                    if (preg_match('#CREATE#i', $query))
-                    {
-                        $rs = mysql_query(preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query),$conn);
-                    } else {
-                        $rs = mysql_query($query,$conn);
-                    }
+                    $rs = mysql_query($query,$conn);
                 }
             }
             $query='';

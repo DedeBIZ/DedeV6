@@ -90,6 +90,20 @@ if ($action === 'is_need_check_code') {
     if (!TableHasField("#@__admin", "loginerr")) {
         $unQueryVer[] = "6.2.0";
     }
+    if (count($unQueryVer) > 0) {
+        
+        $upsqls = GetUpdateSQL();
+        foreach ($unQueryVer as $vv) {
+            $ss = $upsqls[$vv];
+            foreach ($ss as $s) {
+                if (trim($s) != '') {
+                    $dsql->safeCheck = false;
+                    $dsql->ExecuteNoneQuery(trim($s));
+                    $dsql->safeCheck = true;
+                }
+            }
+        }
+    }
 
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
@@ -265,7 +279,9 @@ if ($action === 'is_need_check_code') {
                 $sqls = explode(";\r\n", $sql);
                 foreach ($sqls as $sql) {
                     if (trim($sql) != '') {
+                        $dsql->safeCheck = false;
                         $dsql->ExecuteNoneQuery(trim($sql));
+                        $dsql->safeCheck = true;
                     }
                 }
             }
