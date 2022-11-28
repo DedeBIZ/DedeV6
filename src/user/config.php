@@ -149,7 +149,7 @@ if ($cfg_ml->IsLogin()) {
     $myurl = $cfg_memberurl."/index.php?uid=".urlencode($cfg_ml->M_LoginID);
     if (!preg_match("#^http[s]?:#i", $myurl)) $myurl = $cfg_basehost.$myurl;
     if ($cfg_ml->fields['face'] == "") {
-        $cfg_ml->fields['face'] = $cfg_cmsurl."../static/web/img/avatar.png";
+        $cfg_ml->fields['face'] = $cfg_cmsurl."../static/web/img/admin.png";
     }
     PmRead();
 }

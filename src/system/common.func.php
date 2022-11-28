@@ -436,7 +436,7 @@ function face($mid)
     if ($mid <> 0) {
         $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$mid'");
         if ($row['face'] == "") {
-            $face = "/static/web/img/avatar.png";
+            $face = "/static/web/img/admin.png";
         } else {
             $face = $row['face'];
             $face = "$face";
