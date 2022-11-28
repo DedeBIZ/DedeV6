@@ -110,7 +110,6 @@
 					<div class="card-header">
 						<span><i class="fa fa-database"></i> 版本授权</span>
 						<a href="javascript:;" id="systemUpdate" class="float-right">软件更新<span class="updates-dot"></span></a>
-						<span id="latestVersion" class="float-right mr-2">已是最新软件版本</span>
 					</div>
 					<div class="card-body" id="system-info">正在加载</div>
 				</div>
@@ -139,10 +138,13 @@
 		<div class="modal-dialog modal-xl">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">软件更新</h5>
+					<h5 class="modal-title">软件更新</h5>
 					<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
 				</div>
 				<div class="modal-body">
+					<div id="stepArea0" class="stepArea">
+						<p>获取服务器版本资源失败，无法正常升级，请联系DedeBIZ官方团队。</p>
+					</div>
 					<div id="stepArea1" class="stepArea">
 						<span class="spinner-border text-success" role="status"></span>
 						<span id="step1Msg">对比版本更改的文件</span>
@@ -166,6 +168,9 @@
 					<div id="_msgInfo" class="mt-3"></div>
 				</div>
 				<div class="modal-footer">
+					<div id="btnStep0" class="btnStep">
+						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">我知道了</button>
+					</div>
 					<div id="btnStep1" class="btnStep"></div>
 					<div id="btnStep2" class="btnStep">
 						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
@@ -223,12 +228,13 @@
 					let rs = JSON.parse(data);
 					if (rs.code === 0) {
 						if (rs.result.HasNew === true) {
-							$("#systemUpdate").show();
-							$("#latestVersion").hide();
+							$(".updates-dot").show();
 						} else {
-							$("#systemUpdate").hide();
-							$("#latestVersion").show();
+							$(".updates-dot").hide();
 						}
+					} else {
+						$(".updates-dot").hide();
+						showStepArea(0);
 					}
 				} catch (error) {
 					console.log("获取软件信息失败")
@@ -266,6 +272,8 @@
 						fstr += '</ul>';
 						$("#_fileList").html(fstr);
 						showStepArea(currentStep);
+					} else {
+						showStepArea(0);
 					}
 				})
 			})
@@ -290,6 +298,8 @@
 						});
 						fstr += '</ul>';
 						$("#_verList").html(fstr);
+					} else {
+						showStepArea(0);
 					}
 				})
 			})

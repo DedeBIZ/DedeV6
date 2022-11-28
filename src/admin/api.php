@@ -53,7 +53,14 @@ if ($action === 'is_need_check_code') {
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($offUrl);
     $data = $dhd->GetHtml();
-    echo $data;
+    if (empty($data)) {
+        echo json_encode(array(
+            "code"=>-1,
+            "msg"=>'获取版本信息失败',
+        ));
+    } else {
+        echo $data;
+    }
 } else if ($action === 'get_changed_files') {
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
@@ -62,6 +69,13 @@ if ($action === 'is_need_check_code') {
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($hashUrl);
     $data = $dhd->GetJSON();
+    if (empty($data)) {
+        echo json_encode(array(
+            "code"=>-1,
+            "msg"=>'获取版本信息失败',
+        ));
+        exit();
+    }
     $changedFiles = array();
     foreach ($data as $file) {
         $realFile = DEDEROOT.str_replace("\\", '/', $file->filename);
@@ -86,6 +100,13 @@ if ($action === 'is_need_check_code') {
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($hashUrl);
     $data = $dhd->GetJSON();
+    if (empty($data)) {
+        echo json_encode(array(
+            "code"=>-1,
+            "msg"=>'获取版本信息失败',
+        ));
+        exit;
+    }
     $changedFiles = array();
     $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
     $backupPath = DEDEDATA."/backupfile_{$enkey}";
@@ -116,6 +137,13 @@ if ($action === 'is_need_check_code') {
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($offUrl);
     $data = $dhd->GetHtml();
+    if (empty($data)) {
+        echo json_encode(array(
+            "code"=>-1,
+            "msg"=>'获取版本信息失败',
+        ));
+        exit;
+    }
     $arr = json_decode($data);
     SetCache('update', 'vers', $arr->result->Versions);
     echo $data;
