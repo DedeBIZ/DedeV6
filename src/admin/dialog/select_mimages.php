@@ -56,6 +56,7 @@ button+button{margin-left:10px}
         var file = blobInfo.blob();
         formData = new FormData();
         formData.append('upload', file, file.name);
+        formData.append('format', "json");
         if (document.querySelector('#isWater').checked) {
             formData.append('needwatermark', 1);
         } else {
@@ -66,6 +67,10 @@ button+button{margin-left:10px}
             body: formData
         });
         let data = await res.json();
+        if (typeof data.msg !== 'undefined' && data.msg !== '') {
+            alert(data.msg)
+            return;
+        }
         succFun(data.url);
     };
 	var upload_base_path = axupimgs.images_upload_base_path;

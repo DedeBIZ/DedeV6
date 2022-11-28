@@ -183,15 +183,14 @@ else if ($step==2)
                 $query = preg_replace ('/smallint\(([\d]+)\)/i','INTEGER',$query);
                 $query = preg_replace('/int\(([\d]+)\)/i','INTEGER',$query);
                 $query = preg_replace('/auto_increment/i','PRIMARY KEY AUTOINCREMENT',$query);
-                $query = preg_replace('/,  KEY(.*?)MyISAM;/','',$query);
-                $query = preg_replace('/,  KEY(.*?);/',');',$query);
-                $query = preg_replace('/,  UNIQUE KEY(.*?);/',');',$query);
+                $query = preg_replace('/,([\t\s ]+)KEY(.*?)MyISAM;/','',$query);
+                $query = preg_replace('/,([\t\s ]+)KEY(.*?);/',');',$query);
+                $query = preg_replace('/,([\t\s ]+)UNIQUE KEY(.*?);/',');',$query);
                 $query = preg_replace('/set\(([^\)]*?)\)/','varchar',$query);
                 $query = preg_replace('/enum\(([^\)]*?)\)/','varchar',$query);
                 if ( preg_match("/PRIMARY KEY AUTOINCREMENT/",$query) )
                 {
-                    $query = preg_replace('/,([\t\s ]+)PRIMARY KEY  \(`([0-9a-zA-Z]+)`\)/i','',$query);
-                    $query = str_replace(',	PRIMARY KEY (`id`)','',$query);
+                    $query = preg_replace('/,([\t\s ]+)PRIMARY KEY([\t\s ]+)\(`([0-9a-zA-Z]+)`\)/i','',$query);
                 }
                 $db->exec($query);
             } else {

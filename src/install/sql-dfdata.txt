@@ -3950,7 +3950,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('13','cfg_ddimg_width','缩略图默认宽度','3','number','400'),
 ('14','cfg_ddimg_height','缩略图默认高度','3','number','300'),
 ('15','cfg_album_width','图集默认显示图片的大小','3','number','800'),
-('16','cfg_imgtype','图片浏览器文件类型','3','string','jpg|gif|png|webp|bmp'),
+('16','cfg_imgtype','图片浏览器文件类型','3','string','jpeg|jpg|gif|png|webp|bmp'),
 ('17','cfg_softtype','允许上传的软件类型','3','bstring','zip|gz|rar|iso|doc|xsl|ppt|wps'),
 ('18','cfg_mediatype','允许的多媒体文件类型','3','bstring','swf|rm|rmvb|mpg|mp3|mp4|wmv|wma|wav|mid|mov'),
 ('19','cfg_specnote','专题的最大节点数','2','number','10'),

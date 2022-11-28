@@ -323,7 +323,14 @@ $arrs2 = array();
  */
 function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
 {
-    global $cfg_soft_lang, $cfg_cmsurl;
+    if (strtolower($GLOBALS['format'])==='json') {
+        echo json_encode(array(
+            "code"=>0,
+            "msg"=>$msg,
+            "gourl"=>$gourl,
+        ));
+        return;
+    }
     if (empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
     $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>提示信息</title><base target='_self'></head>";
     $htmlhead .= "<body><center><script>";
