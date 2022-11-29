@@ -190,6 +190,7 @@
 	</div>
 	<script>
 		var currentStep = 1;
+		var hasNewVer = false;
 		//步骤
 		function dedeAlter(msg, t = 'info', loading = false) {
 			let loadingStr = loading ? '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>' : '';
@@ -228,8 +229,10 @@
 					let rs = JSON.parse(data);
 					if (rs.code === 0) {
 						if (rs.result.HasNew === true) {
+							hasNewVer = true;
 							$(".updates-dot").show();
 						} else {
+							hasNewVer = false;
 							$(".updates-dot").hide();
 						}
 					} else {
@@ -257,6 +260,12 @@
 				})
 			})
 			$("#systemUpdate").click(function () {
+				if (hasNewVer === false) {
+					currentStep = 5;
+					showStepArea(currentStep);
+					$('#mdlUpdate').modal('show');
+					return;
+				}
 				$('#mdlUpdate').modal('show');
 				showStepArea(currentStep);
 				currentStep++;
