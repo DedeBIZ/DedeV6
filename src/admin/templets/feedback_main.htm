@@ -14,6 +14,9 @@
 			//获得选中文件的文件名
 			function getCheckboxItem() {
 				var allSel = "";
+				if (typeof document.feedback.fid === "undefined") {
+					return "";
+				}
 				if (document.feedback.fid.value) return document.feedback.fid.value;
 				for (i = 0; i < document.feedback.fid.length; i++) {
 					if (document.feedback.fid[i].checked) {
@@ -26,16 +29,25 @@
 				return allSel;
 			}
 			function selAll() {
+				if (typeof document.feedback.fid === "undefined") {
+					return;
+				}
 				for (i = 0; i < document.feedback.fid.length; i++) {
 					document.feedback.fid[i].checked = true;
 				}
 			}
 			function selNone() {
+				if (typeof document.feedback.fid === "undefined") {
+					return;
+				}
 				for (i = 0; i < document.feedback.fid.length; i++) {
 					document.feedback.fid[i].checked = false;
 				}
 			}
 			function selNor() {
+				if (typeof document.feedback.fid === "undefined") {
+					return;
+				}
 				for (i = 0; i < document.feedback.fid.length; i++) {
 					if (document.feedback.fid[i].checked == false)
 						document.feedback.fid[i].checked = true;
