@@ -68,6 +68,9 @@
 			//获得选中文件的文件名
 			function GetCheckfolderItem() {
 				var allSel = '';
+				if (typeof document.form1.deleteid == "undefined") {
+					return '';
+				}
 				if (document.form1.deleteid.value) return document.form1.deleteid.value;
 				for (i = 0; i < document.form1.deleteid.length; i++) {
 					if (document.form1.deleteid[i].checked) {
@@ -82,12 +85,14 @@
 			function DoSubmit() {
 				var selid = GetCheckfolderItem();
 				if (selid == '') {
-					alert("您没选中任何信息");
+					ShowMsg("您没选中任何信息");
 					return false;
 				}
-				if (window.confirm("您确定要删除这些消息吗")) {
+				DedeConfirm("您确定要删除这些消息吗？").then((v)=>{
 					location = "mypay.php?dopost=del&ids=" + selid;
-				}
+				}).catch((e)=>{
+					console.log(e)
+				});
 			}
 		</script>
 	</body>

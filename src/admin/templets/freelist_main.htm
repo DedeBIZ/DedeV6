@@ -12,8 +12,8 @@
 		<script src="js/main.js"></script>
 		<script>
 			var pageno = 1;
-			var totalrow = <?php echo $totalRow;?>;
-			var pagesize = <?php echo $pagesize;?>;
+			var totalrow = parseInt('<?php echo $totalRow;?>');
+			var pagesize = parseInt('<?php echo $pagesize;?>');
 			var orderby = '<?php echo $orderby?>';
 			var addget = "<?php echo $addget?>";
 			//加载列表
@@ -43,24 +43,27 @@
 			}
 			//删除
 			function DelNote(nid) {
-				if (!window.confirm("您确认要删除这条记录吗")) { return false; }
-				var listArea = $Obj('rslist');
-				totalrow = totalrow - 1;
-				var pagenum = Math.ceil(totalrow / pagesize);
-				if (pagenum <= pageno) pageno = pagenum;
-				var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
-				fetch("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno).then(resp=>{
-					if (resp.ok) {
-						return resp.text()
-					}
-					throw new Error(errMsg);
-				}).then((d)=>{
-					listArea.innerHTML = d;
-				}).catch((error) => {
-					listArea.innerHTML = errMsg;
-				});
+				DedeConfirm("您确认要删除这条记录吗？").then((v)=>{
+					var listArea = $Obj('rslist');
+					totalrow = totalrow - 1;
+					var pagenum = Math.ceil(totalrow / pagesize);
+					if (pagenum <= pageno) pageno = pagenum;
+					var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
+					fetch("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno).then(resp=>{
+						if (resp.ok) {
+							return resp.text()
+						}
+						throw new Error(errMsg);
+					}).then((d)=>{
+						listArea.innerHTML = d;
+					}).catch((error) => {
+						listArea.innerHTML = errMsg;
+					});
 
-				ReloadPageNum(pageno);
+					ReloadPageNum(pageno);
+				}).catch((e)=>{
+					console.log(e)
+				});
 			}
 			//重新加载分页列表
 			function ReloadPageNum(startnum) {

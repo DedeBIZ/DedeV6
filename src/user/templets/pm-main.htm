@@ -44,15 +44,23 @@
 				}
 				return allSel;
 			}
+			//删除操作
 			function DoSubmit(myfolder) {
 				var selid = GetCheckfolderItem();
 				if (selid == '') {
 					ShowMsg("您没选中任何信息");
 					return false;
 				}
-				if (window.confirm("您确定要删除这些消息吗")) {
-					location = "pm.php?dopost=del&ids=" + selid + "&folder=" + myfolder;
-				}
+				DedeConfirm("您确定要删除这些消息吗？").then((v)=>{
+					$.get("pm.php?dopost=remove&ids=" + selid + "&folder=" + myfolder,function (data) {
+						let result = JSON.parse(data);
+						if (result.code === 200) {
+							location.reload();
+						}
+					})
+				}).catch((e)=>{
+					console.log(e)
+				});
 			}
 		</script>
 	</head>

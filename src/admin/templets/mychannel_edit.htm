@@ -300,8 +300,11 @@
 			}
 			//删除
 			function DelNote(gourl) {
-				if (!window.confirm("您确认要删除这个字段吗")) { return false; }
-				location.href = gourl;
+				DedeConfirm("您确认要删除这个字段吗？").then((v)=>{
+					location.href = gourl;
+				}).catch((e)=>{
+					console.log(e)
+				});
 			}
 			function ShowObj(objname) {
 				var obj = document.getElementById(objname);

@@ -17,7 +17,11 @@
 				location = "archives_do.php?dopost=edit&channelid=" + channelid + "&aid=" + aid;
 			}
 			function delArc(aid) {
-				if (window.confirm('您确定要删除这篇文档吗')) location = "archives_do.php?aid=" + aid + "&dopost=delArc";
+				DedeConfirm("您确定要删除这篇文档吗？").then((v)=>{
+					location = "archives_do.php?aid=" + aid + "&dopost=delArc";
+				}).catch((e)=>{
+					console.log(e)
+				});
 			}
 		</script>
 	</head>

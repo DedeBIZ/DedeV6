@@ -94,13 +94,16 @@
             });
         }
         function DelType() {
-            if (window.confirm("您确实要删除这个分类吗") == false) return false;
-            var id = GetSelType();
-            if (id == 0) {
-                ShowMsg("必须选择一个类别");
-                return false;
-            }
-            location.href = 'stepselect_main.php?action=del&id=' + id;
+            DedeConfirm("您确实要删除这个分类吗？").then((v)=>{
+                var id = GetSelType();
+                if (id == 0) {
+                    ShowMsg("必须选择一个类别");
+                    return false;
+                }
+                location.href = 'stepselect_main.php?action=del&id=' + id;
+            }).catch((e)=>{
+                console.log(e)
+            });
         }
         function CloseTWin() {
             $DE('edsta').innerHTML = loadhtml;
@@ -123,7 +126,11 @@
             }
         }
         function DelSel() {
-            if (window.confirm("您确实要删除这些分类吗")) document.form1.submit();
+            DedeConfirm("您确实要删除这些分类吗？").then((v)=>{
+                document.form1.submit();
+            }).catch((e)=>{
+                console.log(e)
+            });
         }
         function ChangePage2(sobj) {
             var nv = sobj.options[sobj.selectedIndex].value;

@@ -511,6 +511,45 @@ function guid() {
 	}
 	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
+var _DedeConfirmFuncs = {};
+var _DedeConfirmFuncsClose = {};
+function __DedeConfirmRun(modalID) {
+    _DedeConfirmFuncs[modalID]();
+}
+function __DedeConfirmRunClose(modalID) {
+    _DedeConfirmFuncsClose[modalID]();
+}
+function DedeConfirm(content="",title="确认提示") {
+    let modalID = guid();
+    return new Promise((resolve, reject) => {
+        _DedeConfirmFuncs[modalID] = ()=>{
+            resolve("success");
+            CloseModal(`DedeModal${modalID}`);
+        }
+        _DedeConfirmFuncsClose[modalID] = ()=>{
+            reject("cancel");
+            CloseModal(`DedeModal${modalID}`);
+        }
+
+        let footer = `<button type="button" class="btn btn-outline-success btn-sm" onClick="__DedeConfirmRunClose(\'${modalID}\')">取消</button> <button type="button" class="btn btn-success btn-sm" onClick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
+        let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content"><div class="modal-header">
+    <h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
+        modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span>&times;</span>
+    </button>`;
+        modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
+        $("body").append(modal)
+        $("#DedeModal" + modalID).modal({
+            backdrop: 'static',
+            show: true
+        });
+        $("#DedeModal" + modalID).on('hidden.bs.modal', function (e) {
+            $("#DedeModal" + modalID).remove();
+        })
+    })
+}
 //函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";

@@ -15,46 +15,13 @@ function noselAll()
 		}
 	}
 }
-function delkey()
-{
-	if (window.confirm("您确定要删除选定的关键字吗")) {
-		document.form3.dopost.value = 'del';
-		document.form3.submit();
-	}
-}
-function diskey()
-{
-	if (window.confirm("您确定要禁用选定的关键字吗")) {
-		document.form3.dopost.value = 'dis';
-		document.form3.submit();
-	}
-}
-function enakey()
-{
-	if (window.confirm("您确定要启用选定的关键字吗")) {
-		document.form3.dopost.value = 'ena';
-		document.form3.submit();
-	}
-}
-function urlkey()
-{
-	if (window.confirm("您确定要更新选定的关键字的网址吗")) {
-		document.form3.dopost.value = 'url';
-		document.form3.submit();
-	}
-}
-function rankey()
-{
-	if (window.confirm("您确定要改变选定的关键字的频率吗")) {
-		document.form3.dopost.value = 'ran';
-		document.form3.submit();
-	}
-}
 //批量删除搜多关键字
 function delall()
 {
-	if (window.confirm("您确定要删除选定的关键字吗")) {
+	DedeConfirm("您确定要删除选定的关键字吗？").then((v)=>{
 		document.form3.dopost.value = 'delall';
 		document.form3.submit();
-	}
+	}).catch((e)=>{
+		console.log(e)
+	});
 }
