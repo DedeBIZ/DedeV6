@@ -43,6 +43,7 @@ if (!is_dir($cfg_basedir.$activepath."/$mdir")) {
     MkdirAll($cfg_basedir.$activepath."/$mdir", $cfg_dir_purview);
     CloseFtp();
 }
+$iseditor = isset($iseditor)? intval($iseditor) : 0;
 $filename_name = $cuserLogin->getUserID().'-'.dd2char(MyDate("ymdHis", $nowtme).mt_rand(100, 999));
 $filename = $mdir.'/'.$filename_name;
 $fs = explode('.', $imgfile_name);
@@ -91,9 +92,9 @@ if ($GLOBALS['cfg_html_editor'] == 'ckeditor' && $CKUpload) {
     exit;
 }
 if (!empty($noeditor)) {
-    ShowMsg("成功上传一张图片", "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&noeditor=yes&activepath=".urlencode($activepath)."/$mdir&d=".time());
+    ShowMsg("成功上传一张图片", "select_images.php?iseditor=$iseditor&imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&noeditor=yes&activepath=".urlencode($activepath)."/$mdir&d=".time());
 } else {
-    ShowMsg("成功上传一张图片", "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."/$mdir&d=".time());
+    ShowMsg("成功上传一张图片", "select_images.php?iseditor=$iseditor&imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."/$mdir&d=".time());
 }
 exit();
 ?>

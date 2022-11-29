@@ -17,7 +17,7 @@ if (empty($imgstick)) {
     $imgstick = '';
 }
 $noeditor = isset($noeditor) ? $noeditor : '';
-$iseditor = isset($iseditor) ? $iseditor : '';
+$iseditor = isset($iseditor) ? intval($iseditor) : '';
 $activepath = str_replace('.', '', $activepath);
 $activepath = preg_replace("#\/{1,}#", '/', $activepath);
 if (strlen($activepath) < strlen($cfg_image_dir)) {
@@ -142,6 +142,7 @@ html{background:#f5f5f5}
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="v" value="<?php echo $v ?>">
+                    <input type="hidden" name="iseditor" value="<?php echo $iseditor ?>">
                     <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
                     <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
                     <input type="hidden" name="job" value="upload">
