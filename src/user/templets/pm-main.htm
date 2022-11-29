@@ -29,6 +29,32 @@
 				})
 			}
 		</script>
+		<script>
+			//获得选中文件的文件名
+			function GetCheckfolderItem() {
+				var allSel = '';
+				if (document.form1.deleteid.value) return document.form1.deleteid.value;
+				for (i = 0; i < document.form1.deleteid.length; i++) {
+					if (document.form1.deleteid[i].checked) {
+						if (allSel == '')
+							allSel = document.form1.deleteid[i].value;
+						else
+							allSel = allSel + "," + document.form1.deleteid[i].value;
+					}
+				}
+				return allSel;
+			}
+			function DoSubmit(myfolder) {
+				var selid = GetCheckfolderItem();
+				if (selid == '') {
+					ShowMsg("您没选中任何信息");
+					return false;
+				}
+				if (window.confirm("您确定要删除这些消息吗")) {
+					location = "pm.php?dopost=del&ids=" + selid + "&folder=" + myfolder;
+				}
+			}
+		</script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -107,31 +133,5 @@
 			</div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>
-		<script>
-			//获得选中文件的文件名
-			function GetCheckfolderItem() {
-				var allSel = '';
-				if (document.form1.deleteid.value) return document.form1.deleteid.value;
-				for (i = 0; i < document.form1.deleteid.length; i++) {
-					if (document.form1.deleteid[i].checked) {
-						if (allSel == '')
-							allSel = document.form1.deleteid[i].value;
-						else
-							allSel = allSel + "," + document.form1.deleteid[i].value;
-					}
-				}
-				return allSel;
-			}
-			function DoSubmit(myfolder) {
-				var selid = GetCheckfolderItem();
-				if (selid == '') {
-					ShowMsg("您没选中任何信息");
-					return false;
-				}
-				if (window.confirm("您确定要删除这些消息吗")) {
-					location = "pm.php?dopost=del&ids=" + selid + "&folder=" + myfolder;
-				}
-			}
-		</script>
 	</body>
 </html>
