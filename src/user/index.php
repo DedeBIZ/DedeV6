@@ -11,7 +11,6 @@ $uid = empty($uid) ? "" : RemoveXSS($uid);
 if (empty($action)) $action = '';
 if (empty($aid)) $aid = '';
 $menutype = 'mydede';
-//会员后台
 if ($uid == '') {
     $iscontrol = 'yes';
     if (!$cfg_ml->IsLogin()) {
@@ -26,25 +25,14 @@ if ($uid == '') {
             $ddsize = 0;
         }
         require_once(DEDEINC.'/channelunit.func.php');
-        //最新文档10条
+        //最新文档20条
         $archives = array();
-        $sql = "SELECT arc.*, category.namerule, category.typedir, category.moresite, category.siteurl, category.sitepath, mem.userid FROM `#@__archives` arc LEFT JOIN `#@__arctype` category ON category.id=arc.typeid LEFT JOIN `#@__member` mem ON mem.mid=arc.mid WHERE arc.arcrank > -1 ORDER BY arc.sortrank DESC LIMIT 10";
+        $sql = "SELECT arc.*, category.namerule, category.typedir, category.moresite, category.siteurl, category.sitepath, mem.userid FROM `#@__archives` arc LEFT JOIN `#@__arctype` category ON category.id=arc.typeid LEFT JOIN `#@__member` mem ON mem.mid=arc.mid WHERE arc.arcrank > -1 ORDER BY arc.sortrank DESC LIMIT 20";
         $dsql->SetQuery($sql);
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
             $row['htmlurl'] = GetFileUrl($row['id'], $row['typeid'], $row['senddate'], $row['title'], $row['ismake'], $row['arcrank'], $row['namerule'], $row['typedir'], $row['money'], $row['filename'], $row['moresite'], $row['siteurl'], $row['sitepath']);
             $archives[] = $row;
-        }
-        //调用访客记录
-        $_vars['mid'] = $cfg_ml->M_ID;
-        if (empty($cfg_ml->fields['face'])) {
-            $cfg_ml->fields['face'] = ($cfg_ml->fields['sex'] == '女') ? 'templets/images/dfgirl.png' : 'templets/images/dfboy.png';
-        }
-        //我的收藏
-        $favorites = array();
-        $dsql->Execute('fl', "SELECT * FROM `#@__member_stow` WHERE mid='{$cfg_ml->M_ID}'  LIMIT 5");
-        while ($arr = $dsql->GetArray('fl')) {
-            $favorites[] = $arr;
         }
         $dpl = new DedeTemplate();
         $tpl = dirname(__FILE__)."/templets/index.htm";
