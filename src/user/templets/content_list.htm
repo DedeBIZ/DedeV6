@@ -38,18 +38,18 @@
 								<li class="nav-item"><a class="nav-link<?php echo ($arcrank=='-1')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=-1">未审核</a></li>
 								<li class="nav-item"><a class="nav-link<?php echo ($arcrank=='-2')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=-2">审核失败</a></li>
 							</ul>
-							<span class="navbar-text"><a class="btn btn-success" href="archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>">发布</a></span>
+							<span class="navbar-text"><a class="btn btn-success btn-sm" href="archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>">发布</a></span>
 						</nav>
 						<div class="table-responsive">
 							<table width="100%" cellpadding="0" cellspacing="0" class="table">
 								<thead>
 									<tr>
 										<th width="20%">文档标题</th>
-										<th width="10%">类目</th>
+										<th width="10%">栏目</th>
 										<th width="12%">状态</th>
 										<th width="10%">点击</th>
 										<th width="16%">时间</th>
-										<th align="center">操作</th>
+										<th>操作</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -66,7 +66,7 @@
 										</td>
 										<td><?php echo $fields['click'];?></td>
 										<td><?php echo GetDateMk($fields['senddate']);?></td>
-										<td align="center">
+										<td>
 											<a href="javascript:viewArc(<?php echo $fields['id'];?>);" class="btn btn-success btn-sm">预览</a>
 											<?php
 											if ($fields['arcrank']<0 || $dtime - $fields['senddate'] < $maxtime)

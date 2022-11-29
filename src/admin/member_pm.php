@@ -49,7 +49,7 @@ function GetFolders($me)
 function IsReader($me)
 {
     $me = preg_replace("#[^0-1]#", "", $me);
-    if ($me) return "<span class='text-dark'>√</span>";
-    else return "<span class='text-danger'>×</span>";
+    if ($me) return "<span class='text-success'><i class='fa fa-check'></i></span>";
+    else return "<span class='text-danger'><i class='fa fa-times'></i></span>";
 }
 ?>

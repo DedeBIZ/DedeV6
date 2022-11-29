@@ -22,7 +22,7 @@
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 								<li class="breadcrumb-item">修改<?php echo $cInfos['typename'];?></li></li>
 							</ol>
-							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success">返回</a></span>
+							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
 						</nav>
 						<form name="addcontent" action="archives_edit.php?aid=<?php echo $aid;?>" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit(`<?php echo $cInfos['titlename'];?>`);">
 							<input type="hidden" name="dopost" value="save">
@@ -60,8 +60,8 @@
 							PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']), $addRow, 'autofield');
 							?>
 							<div class="text-center">
-								<button type="submit" class="btn btn-success">提交</button>
-								<button type="reset" class="btn btn-outline-success" onclick="location.reload();">重置</button>
+								<button type="submit" class="btn btn-success btn-sm">提交</button>
+								<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 							</div>
 						</form>
 					</div>

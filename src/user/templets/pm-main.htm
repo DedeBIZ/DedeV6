@@ -73,7 +73,7 @@
 								<li class="nav-item"><a class="nav-link<?php if ($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a></li>
 								<li class="nav-item"><a class="nav-link<?php if ($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a></li>
 							</ul>
-							<span class="navbar-text"><button type="button" class="btn btn-danger" onclick="DoSubmit('<?php echo $folder;?>')">删除</button></span>
+							<span class="navbar-text"><button type="button" class="btn btn-danger btn-sm" onclick="DoSubmit('<?php echo $folder;?>')">删除</button></span>
 						</nav>
 						<div class="table-responsive">
 							<form action="pm.php" method="post" name="form1">

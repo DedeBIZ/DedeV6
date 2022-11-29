@@ -9,6 +9,35 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
+		<script>
+			function checkSubmit() {
+				if (document.form2.oldpwd.value == '') {
+					document.form2.oldpwd.focus();
+					ShowMsg("请您填写旧密码");
+					return false;
+				}
+				if (document.form2.userpwdok.value != document.form2.userpwd.value) {
+					document.form2.userpwdok.focus();
+					ShowMsg("两次密码不一致");
+					return false;
+				}
+				if (document.form2.email.value == "") {
+					document.form2.email.focus();
+					ShowMsg("请您填写邮箱");
+					return false;
+				}
+				if (document.form2.uname.value == "") {
+					document.form2.uname.focus();
+					ShowMsg("请您填写昵称");
+					return false;
+				}
+				if (document.form2.vdcode.value == "") {
+					document.form2.vdcode.focus();
+					ShowMsg("请您填写验证码");
+					return false;
+				}
+			}
+		</script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -95,41 +124,12 @@
 									<label><input type="radio" name="sex" value="保密" <?php if ($row['sex']=='保密') echo " checked='checked' ";?>> 保密</label>
 								</div>
 							</div>
-							<div class="text-center"><button type="submit" class="btn btn-success">保存</button></div>
+							<div class="text-center"><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>
-		<script>
-			function checkSubmit() {
-				if (document.form2.oldpwd.value == '') {
-					document.form2.oldpwd.focus();
-					ShowMsg("请您填写旧密码");
-					return false;
-				}
-				if (document.form2.userpwdok.value != document.form2.userpwd.value) {
-					document.form2.userpwdok.focus();
-					ShowMsg("两次密码不一致");
-					return false;
-				}
-				if (document.form2.email.value == "") {
-					document.form2.email.focus();
-					ShowMsg("请您填写邮箱");
-					return false;
-				}
-				if (document.form2.uname.value == "") {
-					document.form2.uname.focus();
-					ShowMsg("请您填写昵称");
-					return false;
-				}
-				if (document.form2.vdcode.value == "") {
-					document.form2.vdcode.focus();
-					ShowMsg("请您填写验证码");
-					return false;
-				}
-			}
-		</script>
 	</body>
 </html>

@@ -22,7 +22,7 @@
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 								<li class="breadcrumb-item">发布<?php echo $cInfos['typename'];?></li></li>
 							</ol>
-							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success">返回</a></span>
+							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
 						</nav>
 						<form name="addcontent" action="album_add.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
 							<input type="hidden" name="dopost" value="save">
@@ -72,15 +72,15 @@
 							<div class="form-group">
 								<label>手工上传</label>
 								<span>图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control d-inline-block w-25"></span>
-								<button type="button" name="kkkup" id="kkkup2" class="btn btn-success" onclick="MakeUpload(0);">增加</button>（最大60幅）
+								<button type="button" name="kkkup" id="kkkup2" class="btn btn-success btn-sm" onclick="MakeUpload(0);">增加</button>（最大60幅）
 							</div>
 							<div id="uploadfield"></div>
 							<script>
 								MakeUpload(2);
 							</script>
 							<div class="text-center">
-								<button type="submit" class="btn btn-success">提交</button>
-								<button type="reset" class="btn btn-outline-success" onclick="location.reload();">重置</button>
+								<button type="submit" class="btn btn-success btn-sm">提交</button>
+								<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 							</div>
 						</form>
 					</div>

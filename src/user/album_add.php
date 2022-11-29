@@ -159,7 +159,7 @@ else if ($dopost == 'save') {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success'>继续发布图片</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看图片</a><a href='album_edit.php?aid=".$arcID."&channelid=$channelid' class='btn btn-success'>修改图片</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success'>已发布图片管理</a>";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm>继续发布图片</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看图片</a><a href='album_edit.php?aid=".$arcID."&channelid=$channelid' class='btn btn-success btn-sm'>修改图片</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>已发布图片管理</a>";
     $wintitle = "成功发布图片";
     $wecome_info = "图片管理::发布图片";
     $win = new OxWindow();

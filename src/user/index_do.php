@@ -95,9 +95,9 @@ else if ($fmdo == 'user') {
             $msg = CheckUserID($uid, $msgtitle, false);
         }
         if ($msg == 'ok') {
-            $msg = "<span class='text-dark'>√{$msgtitle}可以使用</span>";
+            $msg = "<span class='text-success'><i class='fa fa-check'></i> {$msgtitle}可以使用</span>";
         } else {
-            $msg = "<span class='text-danger'>×{$msg}</span>";
+            $msg = "<span class='text-danger'><i class='fa fa-times'></i> {$msg}</span>";
         }
         echo $msg;
         exit();
@@ -106,16 +106,16 @@ else if ($fmdo == 'user') {
     else  if ($dopost == "checkmail") {
         AjaxHead();
         if ($cfg_md_mailtest == 'N') {
-            $msg = "<span class='text-dark'>√可以使用</span>";
+            $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
         } else {
             if (!CheckEmail($email)) {
-                $msg = "<span class='text-dark'>×邮箱格式有误</span>";
+                $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱格式有误</span>";
             } else {
                 $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE email LIKE '$email' LIMIT 1");
                 if (!is_array($row)) {
-                    $msg = "<span class='text-dark'>√可以使用</span>";
+                    $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
                 } else {
-                    $msg = "<span class='text-primary'>×邮箱已经被另一个帐号占用</span>";
+                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个帐号占用</span>";
                 }
             }
         }

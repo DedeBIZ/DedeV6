@@ -172,7 +172,7 @@ else if ($dopost == 'save') {
     }
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success'>继续发布软件</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看软件</a><a href='soft_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success'>修改软件</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success'>已发布软件管理</a>";
+    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布软件</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看软件</a><a href='soft_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改软件</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>已发布软件管理</a>";
     $wintitle = "成功发布文档";
     $wecome_info = "软件管理::发布软件";
     $win = new OxWindow();
