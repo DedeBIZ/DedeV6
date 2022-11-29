@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 用于后台的api接口
  *
@@ -91,7 +90,6 @@ if ($action === 'is_need_check_code') {
         $unQueryVer[] = "6.2.0";
     }
     if (count($unQueryVer) > 0) {
-        
         $upsqls = GetUpdateSQL();
         foreach ($unQueryVer as $vv) {
             $ss = $upsqls[$vv];
@@ -104,7 +102,6 @@ if ($action === 'is_need_check_code') {
             }
         }
     }
-
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
     //是否存在更新版本
@@ -322,3 +319,4 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 }
+?>
