@@ -123,11 +123,11 @@ function SelectSoft(fname) {
 	var pos = GetWinPos(800,600);
 	window.open("./dialog/select_soft.php?f=" + fname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
-function SelectImage(fname, stype, imgsel) {
+function SelectImage(fname, stype, imgsel="") {
 	var pos = GetWinPos(800,600);
 	if (!fname) fname = 'form1.picname';
 	if (imgsel) imgsel = '&noeditor=yes';
-	if (!stype) stype = '';
+	if (!stype) stype = 'small';
 	window.open("./dialog/select_images.php?f=" + fname + "&noeditor=yes&imgstick=" + stype + imgsel, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectImageN(fname, stype, vname) {
