@@ -24,12 +24,8 @@
 							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
 						</nav>
 						<div class="alert alert-success"><?php echo $cfg_ml->GetSta($dsql);?></div>
-						<?php
-						if ($cfg_money_scores > 0) {
-						?>							
-						<?php
-						$canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);
-						?>
+						<?php if ($cfg_money_scores > 0) {?>							
+						<?php $canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);?>
 						<div class="py-3">
 							<p>用积分兑换金币（<?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币数量{$canCav}个";?>）</p>
 							<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
