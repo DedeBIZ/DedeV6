@@ -223,7 +223,7 @@
 				}
 			})
 		}
-		$(document).ready(function () {
+		function hasNewVersion() {
 			$.get("api.php?action=has_new_version", function (data) {
 				try {
 					let rs = JSON.parse(data);
@@ -243,6 +243,9 @@
 					console.log("获取软件信息失败")
 				}
 			})
+		}
+		$(document).ready(function () {
+			hasNewVersion();
 			$("#btnCancel").click(function () {
 				currentStep = 1;
 				$("#_fileList").html(``);
@@ -320,7 +323,7 @@
 				update();
 			})
 			$("#btnOK").click(function () {
-				location.reload();
+				hasNewVersion();
 			})
 		})
 	</script>

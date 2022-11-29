@@ -37,7 +37,7 @@ define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
 define('DEDESTATIC', DEDEROOT.'/static');
 define('DEDEMEMBER', DEDEROOT.'/user');
 define('DEDETEMPLATE', DEDEROOT.'/theme');
-define('DEDEBIZURL', "http://127.0.0.1:8898");//DedeBiz商业支持
+define('DEDEBIZURL', "https://www.dedebiz.com");//DedeBiz商业支持
 define('DEDEBIZCDN', "https://cdn.dedebiz.com");//DedeBizCDN镜像
 define('DEDEVER', 6);//当前系统大版本
 define('DEDEPUB', '
