@@ -48,11 +48,44 @@ if ($dopost == 'read') {
     );
     echo json_encode($result);
     exit();
-}
-/*-----------------------
-function __man(){  }
-----------------------*/ 
-else {
+} else if($dopost == 'remove'){
+    $ids = preg_replace("#[^0-9,]#", "", $ids);
+    if($folder==='inbox')
+    {
+        $boxsql="SELECT * FROM `#@__member_pms` WHERE id IN($ids) AND folder LIKE 'inbox' AND toid='{$cfg_ml->M_ID}'";
+        $dsql->SetQuery($boxsql);
+        $dsql->Execute();
+        $query='';
+        while($row = $dsql->GetArray())
+        {
+            if($row && $row['isadmin']==1)
+            {
+                $query = "UPDATE `#@__member_pms` SET writetime='0' WHERE id='{$row['id']}' AND folder='inbox' AND toid='{$cfg_ml->M_ID}' AND isadmin='1';";
+                $dsql->ExecuteNoneQuery($query);
+            }
+            else
+            {
+                $query = "DELETE FROM `#@__member_pms` WHERE id in($ids) AND toid='{$cfg_ml->M_ID}' AND folder LIKE 'inbox'";
+            }
+        }
+    }
+    else if($folder==='outbox')
+    {
+        $query = "DELETE FROM `#@__member_pms` WHERE id in($ids) AND fromid='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' ";
+    }
+    else
+    {
+        $query = "DELETE FROM `#@__member_pms` WHERE id in($ids) AND fromid='{$cfg_ml->M_ID}' Or toid='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' Or (folder LIKE 'inbox' AND hasview='0')";
+    }
+    $dsql->ExecuteNoneQuery($query);
+    $result = array(
+        "code" => 200,
+        "data" => "success",
+        "msg" => "",
+    );
+    echo json_encode($result);
+    exit;
+} else {
     if (!isset($folder)) {
         $folder = 'inbox';
     }
@@ -63,13 +96,13 @@ else {
         $tname = "发件箱";
     } elseif ($folder == 'inbox') {
         if ($state === 1) {
-            $wsql = " toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!='' and hasview=1";
+            $wsql = " toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!=0 and hasview=1";
             $tname = "收件箱";
         } else if ($state === -1) {
-            $wsql = "toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!='' and hasview=0";
+            $wsql = "toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!=0 and hasview=0";
             $tname = "收件箱";
         } else {
-            $wsql = " toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!=''";
+            $wsql = " toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!=0";
             $tname = "收件箱";
         }
     } else {
