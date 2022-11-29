@@ -63,7 +63,7 @@ else if ($dopost == 'save') {
         exit();
     }
     if (!TestPurview('a_New')) {
-        CheckCatalog($typeid, "对不起，您没有操作栏目<span class='text-primary'>{$typeid}</span>权限");
+        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>权限");
     }
     //对保存的文档进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();

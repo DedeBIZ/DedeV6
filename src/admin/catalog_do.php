@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 if (empty($dopost)) {
-    ShowMsg("对不起，请指定栏目参数", "catalog_main.php");
+    ShowMsg("请指定栏目参数", "catalog_main.php");
     exit();
 }
 $cid = empty($cid) ? 0 : intval($cid);
@@ -35,7 +35,7 @@ if ($dopost == "addArchives") {
     }
     $gurl = $row["addcon"];
     if ($gurl == "") {
-        ShowMsg("对不起，您指的栏目可能有误", "catalog_main.php");
+        ShowMsg("您指的栏目可能有误", "catalog_main.php");
         exit();
     }
 
@@ -63,7 +63,7 @@ else if ($dopost == "listArchives") {
         $typename = $row["typename"];
         $channelname = $row["channelname"];
         if ($gurl == "") {
-            ShowMsg("对不起，您指的栏目可能有误", "catalog_main.php");
+            ShowMsg("您指的栏目可能有误", "catalog_main.php");
             exit();
         }
     } else if ($channelid > 0) {

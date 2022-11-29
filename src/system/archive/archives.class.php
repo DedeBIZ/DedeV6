@@ -704,11 +704,11 @@ class Archives
                 $this->PreNext['diy']['pre']['title'] = $preRow['title'];
                 $this->PreNext['diy']['pre']['litpic'] = $preRow['litpic'];
                 $this->PreNext['diy']['pre']['pubdate'] = $preRow['senddate'];
-                $this->PreNext['pre'] = "上一篇：<a href='$mlink'>{$preRow['title']}</a> ";
-                $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$preRow['title']}\"/></a> ";
+                $this->PreNext['pre'] = "上一篇：<a href='$mlink'>{$preRow['title']}</a>";
+                $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$preRow['title']}\"></a> ";
             } else {
-                $this->PreNext['pre'] = "上一篇：没有了 ";
-                $this->PreNext['preimg'] = "<img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有上一图片了\"/>";
+                $this->PreNext['pre'] = "";
+                $this->PreNext['preimg'] = "";
             }
             if (is_array($nextRow)) {
                 $mlink = GetFileUrl(
@@ -734,10 +734,10 @@ class Archives
                 $this->PreNext['diy']['next']['litpic'] = $nextRow['litpic'];
                 $this->PreNext['diy']['next']['pubdate'] = $nextRow['senddate'];
                 $this->PreNext['next'] = "下一篇：<a href='$mlink'>{$nextRow['title']}</a> ";
-                $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\"/></a> ";
+                $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$preRow['title']}\"></a> ";
             } else {
-                $this->PreNext['next'] = "下一篇：没有了 ";
-                $this->PreNext['nextimg'] = "<a href='javascript:void(0)' alt=\"\"><img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有下一图片了\"/></a>";
+                $this->PreNext['next'] = "";
+                $this->PreNext['nextimg'] = "";
             }
         }
         //二次开发上一篇下一篇

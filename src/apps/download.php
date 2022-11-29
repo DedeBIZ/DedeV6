@@ -70,7 +70,7 @@ else if ($open == 1) {
         }
     }
     if (!in_array($linkinfo['host'], $allowed)) {
-        ShowMsg('非下载地址，禁止访问', 'javascript:;');
+        ShowMsg('非下载地址，禁止浏览', 'javascript:;');
         exit;
     }
     header("location:$link");

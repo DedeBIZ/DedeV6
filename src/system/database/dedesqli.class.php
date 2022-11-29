@@ -246,7 +246,7 @@ class DedeSqli
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
-            //echo $this->queryString."--{$queryTime}<hr />\r\n";
+            //echo $this->queryString."--{$queryTime}<hr/>\r\n";
         }
         if (DEBUG_LEVEL === TRUE) {
             $queryTime = ExecTime() - $t1;
@@ -296,7 +296,7 @@ class DedeSqli
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
-            //echo $this->queryString."--{$queryTime}<hr />\r\n";
+            //echo $this->queryString."--{$queryTime}<hr/>\r\n";
         }
         if (DEBUG_LEVEL === TRUE) {
             $queryTime = ExecTime() - $t1;

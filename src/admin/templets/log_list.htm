@@ -45,13 +45,12 @@
 		<form name="formsearch">
 			<table cellpadding="2" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="180" align="center">
+					<td width="380"><input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="admin-input-md"></td>
+					<td width="170" align="center">
 						<select name="adminid" id="adminid" class="admin-input-sm">
 							<option value="0" selected>全部</option>
 							<?php echo $adminlist?>
 						</select>
-					</td>
-					<td width="170"><input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="admin-input-sm">
 					</td>
 					<td width="170">
 						<select name="dtime" id="dtime" class="admin-input-sm">
@@ -72,23 +71,23 @@
 			</tr>
 			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">选择</td>
-				<td width="10%">管理员</td>
-				<td width="16%">访问文件</td>
-				<td width="6%">方式</td>
-				<td width="14%">访问ip</td>
-				<td width="16%">时间</td>
-				<td>Query参数</td>
+				<td width="12%">管理员</td>
+				<td width="30%">浏览文件</td>
+				<td width="6%">访问方式</td>
+				<td width="10%">地址</td>
+				<td width="10%">时间</td>
+				<td>参数</td>
 			</tr>
 			<form name="form1">
 				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
 				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><input type="checkbox" name="logs" id="logs" value="{dede:field.lid/}"></td>
 					<td>{dede:field.userid/}</td>
-					<td><input type="text" value="{dede:field.filename/}" name="t0" class="admin-input-sm"></td>
+					<td><input type="text" name="t0" value="{dede:field.filename/}" class="admin-input-md"></td>
 					<td>{dede:field.method/}</td>
 					<td>{dede:field.cip/}</td>
 					<td>{dede:field.dtime function="MyDate('y/m/d H:i:s',@me)"/}</td>
-					<td><input type="text" value="{dede:field.query/}" name="t1" class="admin-input-md"></td>
+					<td><input type="text" name="t1" value="{dede:field.query/}" class="admin-input-md"></td>
 				</tr>
 				{/dede:datalist}
 			</form>

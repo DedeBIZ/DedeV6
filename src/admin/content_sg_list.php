@@ -38,7 +38,7 @@ setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $tl = new TypeLink($cid);
 $listtable = @trim($tl->TypeInfos['addtable']);
 if (!empty($channelid) && !empty($ucid) && $tl->TypeInfos['channeltype'] != $channelid) {
-    ShowMsg('您没权限访问此页', 'javascript:;');
+    ShowMsg('您没权限浏览此页', 'javascript:;');
     exit();
 }
 if ($cid == 0) {

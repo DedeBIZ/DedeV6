@@ -114,7 +114,7 @@ function _DELETE()
 -------------------*/
 else if ($action == "delete") {
     if ($row['issystem'] == 1) {
-        ShowMsg("对不起，系统模型的字段不允许删除", "-1");
+        ShowMsg("系统模型的字段不允许删除", "-1");
         exit();
     }
     //检测旧数据类型，并替换为新配置

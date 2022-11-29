@@ -29,9 +29,9 @@ if (!is_array($cInfos)) {
     exit();
 }
 $arcsta = $cInfos['arcsta'];
-//禁止访问无权限的模型
+//禁止浏览无权限的模型
 if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-    ShowMsg('您无权限访问该部分', '-1');
+    ShowMsg('您无权限浏览该部分', '-1');
     exit();
 }
 if ($cid == 0) {

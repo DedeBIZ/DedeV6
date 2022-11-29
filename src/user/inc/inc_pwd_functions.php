@@ -92,7 +92,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
                 return ShowMsg('稍后跳转修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
             }
         } else {
-            return ShowMsg('对不起修改失败，请联系管理员', 'login.php');
+            return ShowMsg('修改失败，请联系管理员', 'login.php');
         }
     } elseif ($type == 'UPDATE') {
         $key = md5($randval);
@@ -105,7 +105,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
                 return ShowMsg('稍后跳转修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
             }
         } else {
-            ShowMsg('对不起修改失败，请与管理员联系', 'login.php');
+            ShowMsg('修改失败，请与管理员联系', 'login.php');
         }
     }
 }
@@ -121,7 +121,7 @@ function member($mail, $userid)
     global $db;
     $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE email='$mail' AND userid = '$userid'";
     $row = $db->GetOne($sql);
-    if (!is_array($row)) return ShowMsg("对不起，用户id输入错误", "-1");
+    if (!is_array($row)) return ShowMsg("用户id输入错误", "-1");
     else return $row;
 }
 /**
@@ -150,6 +150,6 @@ function sn($mid, $userid, $mailto, $send = 'Y')
     }
     //重新发送新的验证码确认邮件；
     else {
-        return ShowMsg('对不起，请10分钟后再重新申请', 'login.php');
+        return ShowMsg('请10分钟后再重新申请', 'login.php');
     }
 }

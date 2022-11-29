@@ -30,7 +30,7 @@ if ($fmdo == 'sendMail') {
     $mailbody = '';
     $mailbody .= "尊敬的用户<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，您好：\r\n";
     $mailbody .= "欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
-    $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏访问这地址：\r\n";
+    $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏浏览这地址：\r\n";
     $mailbody .= "{$url}\r\n";
     $mailbody .= "Powered by DedeBIZ开发团队\r\n";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;

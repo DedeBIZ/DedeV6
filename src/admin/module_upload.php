@@ -30,7 +30,7 @@ if ($action == 'upload') {
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("对不起，您上传的文件可能不是模块的标准格式文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的文件可能不是模块的标准格式文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -40,7 +40,7 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("对不起，您上传的模块已经存在<br>如果要覆盖请先删除原来版本或选择强制删除的选项<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的模块已经存在<br>如果要覆盖请先删除原来版本或选择强制删除的选项<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         @unlink($okfile);

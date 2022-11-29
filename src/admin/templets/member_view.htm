@@ -160,7 +160,7 @@
 						<?php
 						$nrow = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='{$row['mid']}' ");
 						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']}";
-						echo "<br>空间访问：{$nrow['homecount']} 页面访问：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']} ";
+						echo "<br>空间浏览：{$nrow['homecount']} 页面浏览：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']} ";
 						?>
 					</td>
 				</tr>

@@ -30,11 +30,11 @@ if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] 
 //检查栏目设定的投稿许可权限
 if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
     $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
-    ShowMsg("对不起，需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
+    ShowMsg("需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
     exit();
 }
 if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-    ShowMsg("对不起，需要<span class='text-primary'>".$cInfos['usertype']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
+    ShowMsg("需要<span class='text-primary'>".$cInfos['usertype']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
     exit();
 }
 //文档的默认状态
@@ -62,7 +62,7 @@ $mid = $cfg_ml->M_ID;
 if ($cfg_mb_cktitle == 'Y') {
     $row = $dsql->GetOne("SELECT * FROM `#@__archives` WHERE title LIKE '$title' ");
     if (is_array($row)) {
-        ShowMsg("对不起，请不要发布重复文档", "-1", "0", 5000);
+        ShowMsg("请不要发布重复文档", "-1", "0", 5000);
         exit();
     }
 }

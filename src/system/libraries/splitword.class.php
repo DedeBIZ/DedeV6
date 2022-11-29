@@ -593,7 +593,7 @@ class SplitWord
                     break;
                 }
             }
-            //echo '<hr />';
+            //echo '<hr/>';
             //没适合词
             if (!$isok) $tmparr[] = $nc;
         }

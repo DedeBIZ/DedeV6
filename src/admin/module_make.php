@@ -40,7 +40,7 @@ else if ($action == 'make') {
     $filelist = str_replace("\r", "\n", trim($filelist));
     $filelist = trim(preg_replace("#[\n]{1,}#", "\n", $filelist));
     if ($filelist == '') {
-        ShowMsg("对不起，您没有指定模块的文件列表，因此不能创建项目", "-1");
+        ShowMsg("您没有指定模块的文件列表，因此不能创建项目", "-1");
         exit();
     }
     if (empty($dev_id)) {
@@ -81,7 +81,7 @@ else if ($action == 'make') {
     $dm = new DedeModule($mdir);
     if ($dm->HasModule($hashcode)) {
         $dm->Clear();
-        ShowMsg("对不起，您指定同名模块已经存在，因此不能创建项目<br>如果您要更新这个模块，请先删除：module/{$hashcode}.xml", "-1");
+        ShowMsg("您指定同名模块已经存在，因此不能创建项目<br>如果您要更新这个模块，请先删除：module/{$hashcode}.xml", "-1");
         exit();
     }
     $readmef = $setupf = $uninstallf = '';
@@ -176,7 +176,7 @@ else if ($action == 'edit') {
     $filelist = str_replace("\r", "\n", trim($filelist));
     $filelist = trim(preg_replace("#[\n]{1,}#", "\n", $filelist));
     if ($filelist == "") {
-        ShowMsg("对不起，您没有指定模块的文件列表，因此不能创建项目", "-1");
+        ShowMsg("您没有指定模块的文件列表，因此不能创建项目", "-1");
         exit();
     }
     if (empty($dev_id)) {

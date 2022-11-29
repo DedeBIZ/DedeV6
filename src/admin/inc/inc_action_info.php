@@ -125,7 +125,7 @@ $actionSearch[4] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '更新缓存',
-            'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员访问历史、删除过期短信',
+            'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员浏览历史、删除过期短信',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_cache_up.php'
         ),
@@ -185,7 +185,7 @@ $actionSearch[5] = array(
         ),
         1  =>  array(
             'title' => '会员级别设置',
-            'description' => '设置会员的级别，可以通过设计不同会员的访问权限来对会员级别进行一个扩展',
+            'description' => '设置会员的级别，可以通过设计不同会员的浏览权限来对会员级别进行一个扩展',
             'purview' => 'member_Type',
             'linkurl' => 'member_rank.php'
         ),
@@ -275,7 +275,7 @@ $actionSearch[7] = array(
         ),
         5  =>  array(
             'title' => '更新缓存',
-            'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员访问历史、删除过期短信 ',
+            'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员浏览历史、删除过期短信 ',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_cache_up.php'
         ),

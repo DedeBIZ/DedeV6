@@ -34,11 +34,11 @@ if ($dopost == "ok") {
         ShowMsg("成功更新枚举缓存，准备更新调用缓存", "sys_cache_up.php?dopost=ok&step=3&uparc=$uparc");
         exit();
     }
-    //清理arclist调用缓存、过期会员访问历史、过期短信
+    //清理arclist调用缓存、过期会员浏览历史、过期短信
     else if ($step == 3) {
         echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
-        echo "\n成功更新arclist调用缓存，准备清理过期会员访问历史<hr />";
+        echo "\n成功更新arclist调用缓存，准备清理过期会员浏览历史<hr/>";
         $oldtime = time() - (90 * 24 * 3600);
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_pms` WHERE sendtime<'$oldtime' ");
         echo "成功清理过期短信，准备修正错误文档，这可能要占较长的时间";

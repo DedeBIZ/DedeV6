@@ -19,7 +19,7 @@ $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("对不起，当前用户已经超出投稿限制，投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
+    ShowMsg("文档发布失败，投稿已经超出投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
 /*-------------
@@ -38,11 +38,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要<span class='text-primary'>".$cInfos['usertype']."</span>帐号才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要<span class='text-primary'>".$cInfos['usertype']."</span>帐号才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     include(DEDEMEMBER."/templets/archives_sg_add.htm");
@@ -82,11 +82,11 @@ else if ($dopost == 'save') {
     //检查栏目设定的投稿许可权限
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("Select membername From #@__arcrank where `rank`='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要<span class='text-primary'>".$cInfos['usertype']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要<span class='text-primary'>".$cInfos['usertype']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     //文档的默认状态

@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 //考虑安全原因不管是否开启游客投稿功能，都不允许用户投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用", "-1");
+    ShowMsg("由于系统开启了会员空间精简版，您浏览的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -39,11 +39,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` where `rank`='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要<span class='text-primary'>".$cInfos['usertype']."</span>帐号才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要<span class='text-primary'>".$cInfos['usertype']."</span>帐号才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     include(DEDEMEMBER."/templets/soft_add.htm");

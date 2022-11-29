@@ -4013,7 +4013,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('76','cfg_md_mailtest','是否限制邮箱只能注册一个帐号','4','bool','Y'),
 ('77','cfg_mb_spacesta','会员使用权限开通状态（-10邮件验证、-1手工审核、0没限制）','4','number','-10'),
 ('78','cfg_mb_allowreg','是否允许新会员注册','4','bool','Y'),
-('79','cfg_mb_adminlock','是否禁止访问管理员帐号的空间','4','bool','N'),
+('79','cfg_mb_adminlock','是否禁止浏览管理员帐号的空间','4','bool','N'),
 ('81','cfg_mb_cktitle','是否检测会员投稿重复标题','5','bool','Y'),
 ('82','cfg_mb_editday','投稿多少天后不能再修改','5','number','1'),
 ('83','cfg_sendarc_scores','投稿可获取积分','5','number','10'),

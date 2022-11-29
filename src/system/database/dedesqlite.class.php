@@ -190,7 +190,7 @@ class DedeSqlite
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
-            //echo $this->queryString."--{$queryTime}<hr />\r\n";
+            //echo $this->queryString."--{$queryTime}<hr/>\r\n";
         }
         return $rs;
     }
@@ -219,7 +219,7 @@ class DedeSqlite
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
-            //echo $this->queryString."--{$queryTime}<hr />\r\n";
+            //echo $this->queryString."--{$queryTime}<hr/>\r\n";
         }
         return $this->linkID->changes();
     }
@@ -265,7 +265,7 @@ class DedeSqlite
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
-            //echo $this->queryString."--{$queryTime}<hr />\r\n";
+            //echo $this->queryString."--{$queryTime}<hr/>\r\n";
         }
         if ($this->result[$id] === FALSE) {
             $this->DisplayError($this->linkID->lastErrorMsg()." <br>Error sql:<span class='text-primary'>".$this->queryString."</span>");

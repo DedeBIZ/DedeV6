@@ -11,11 +11,11 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用", "-1");
+    ShowMsg("由于系统开启会员空间精简版，您浏览的功能不可用", "-1");
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("对不起，由于系统关闭了图片功能，您访问的功能不可用", "-1");
+    ShowMsg("由于系统关闭了图片功能，您浏览的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -27,7 +27,7 @@ $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $menutype = 'content';
 if (empty($formhtml)) $formhtml = 0;
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("对不起，当前用户已经超出投稿限制，投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
+    ShowMsg("文档发布失败，投稿已经超出投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
 /*-------------
@@ -44,7 +44,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，您不能再修改它", "-1");
+            ShowMsg("这篇文档已经锁定，暂时无法修改", "-1");
             exit();
         }
     }
@@ -108,7 +108,7 @@ else if ($dopost == 'save') {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
+            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
             exit();
         }
     }

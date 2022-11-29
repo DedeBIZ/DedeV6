@@ -19,7 +19,7 @@ $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("对不起，当前用户已经超出投稿限制，投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
+    ShowMsg("文档发布失败，投稿已经超出投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
 /*-------------
@@ -35,7 +35,7 @@ if (empty($dopost)) {
     }
     $addRow = $dsql->GetOne("SELECT * FROM `{$cInfos['addtable']}` WHERE aid='$aid'; ");
     if ($addRow['mid'] != $cfg_ml->M_ID) {
-        ShowMsg("对不起，您没权限操作此文档", "-1");
+        ShowMsg("您没权限操作此文档", "-1");
         exit();
     }
     $addRow['id'] = $addRow['aid'];
@@ -101,7 +101,7 @@ else if ($dopost == 'save') {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
+            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
             exit();
         }
     }

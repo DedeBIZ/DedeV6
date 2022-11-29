@@ -140,7 +140,7 @@ if (PHP_VERSION > '5.1') {
     @date_default_timezone_set('Etc/GMT'.$time51);
 }
 $cfg_isUrlOpen = @ini_get("allow_url_fopen");
-//用户访问的网站host
+//用户浏览的网站host
 if (PHP_SAPI === 'cli') {
     $cfg_clihost = 'https://www.dedebiz.com';
 } else {

@@ -12,11 +12,11 @@ require_once(dirname(__FILE__)."/config.php");
 //考虑安全原因不管是否开启游客投稿功能，都不允许用户对图片投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用", "-1");
+    ShowMsg("由于系统开启了会员空间精简版，您浏览的功能不可用", "-1");
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("对不起，由于系统关闭了图片功能，您访问的功能不可用", "-1");
+    ShowMsg("由于系统关闭了图片功能，您浏览的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -29,7 +29,7 @@ $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $menutype = 'content';
 if (empty($formhtml)) $formhtml = 0;
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("对不起，当前用户已经超出投稿限制，投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
+    ShowMsg("文档发布失败，投稿已经超出投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
 /*-------------
@@ -45,11 +45,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("Select membername From `#@__arcrank` where `rank`='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要<span class='text-primary'>".$row['membername']."</span>才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要<span class='text-primary'>".$cInfos['usertype']."</span>帐号才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要<span class='text-primary'>".$cInfos['usertype']."</span>帐号才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     include(DEDEMEMBER."/templets/album_add.htm");
@@ -112,7 +112,7 @@ else if ($dopost == 'save') {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
+            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
             exit();
         }
     }

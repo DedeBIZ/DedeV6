@@ -15,7 +15,7 @@ require_once(DEDEINC.'/typelink/typelink.class.php');
 require_once(DEDEINC.'/archive/archives.class.php');
 $ENV_GOBACK_URL = (empty($_COOKIE['ENV_GOBACK_URL']) ? 'content_list.php' : $_COOKIE['ENV_GOBACK_URL']);
 if (empty($dopost)) {
-    ShowMsg('对不起，您没指定运行参数', '-1');
+    ShowMsg('您没指定运行参数', '-1');
     exit();
 }
 $aid = isset($aid) ? preg_replace("#[^0-9]#", '', $aid) : '';
@@ -446,7 +446,7 @@ else if ($dopost == 'clear') {
         }
         $num = $dsql->GetTotalRow();
         if (empty($num)) {
-            ShowMsg("对不起，未发现相关文档", "recycling.php");
+            ShowMsg("未发现相关文档", "recycling.php");
             exit();
         }
         $wintitle = "文档管理-清空所有文档";
@@ -598,7 +598,7 @@ else if ($dopost == 'quickEditSave') {
     require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
     //权限检测
     if (!TestPurview('a_Edit')) {
-        CheckCatalog($typeid, "对不起，您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
+        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
     }
     $title = dede_htmlspecialchars(cn_substrR($title, $cfg_title_maxlen));
     $shorttitle = cn_substrR($shorttitle, 36);

@@ -19,7 +19,7 @@ $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("对不起，当前用户已经超出投稿限制，投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
+    ShowMsg("文档发布失败，投稿已经超出投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
 /*-------------
@@ -36,7 +36,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，您不能再修改它", "-1");
+            ShowMsg("这篇文档已经锁定，暂时无法修改", "-1");
             exit();
         }
     }

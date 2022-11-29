@@ -33,7 +33,7 @@ function TestPurview($n)
     }
     $ns = explode(',', $n);
     foreach ($ns as $n) {
-        //只要找到一个匹配的权限，即可认为用户有权访问此页面
+        //只要找到一个匹配的权限，即可认为用户有权浏览此页面
         if ($n == '') {
             continue;
         }
@@ -54,7 +54,7 @@ function TestPurview($n)
 function CheckPurview($n)
 {
     if (!TestPurview($n)) {
-        ShowMsg("对不起，您没有权限执行此操作<br><br><a href='javascript:history.go(-1);'>点击返回上一页</a>", 'javascript:;');
+        ShowMsg("您没有权限执行此操作<br><br><a href='javascript:history.go(-1);'>点击返回上一页</a>", 'javascript:;');
         exit();
     }
 }

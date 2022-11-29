@@ -62,7 +62,7 @@ if ($action == 'post') {
             $goto = "diy_list.php?action=list&diyid={$diy->diyid}";
             showmsg('发布成功', $goto);
         } else {
-            showmsg('对不起，发布不成功', '-1');
+            showmsg('发布失败', '-1');
         }
     }
 } else if ($action == 'list') {
@@ -86,7 +86,7 @@ if ($action == 'post') {
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";
         $row = $dsql->GetOne($query);
         if (!is_array($row)) {
-            showmsg("您访问的记录不存在或未经审核", '-1');
+            showmsg("您浏览的记录不存在或未经审核", '-1');
             exit();
         }
         $postform = $diy->getForm('edit', $row, 'admin');

@@ -20,15 +20,15 @@ if ($dopost == "") {
     $svali = GetCkVdValue();
     if (strtolower($vdcode) != $svali || $svali == '') {
         ResetVdValue();
-        ShowMsg("对不起，验证码输入错误", "-1");
+        ShowMsg("验证码输入错误", "-1");
         exit();
     }
     //验证邮箱，用户名
     if (empty($mail) && empty($userid)) {
-        showmsg('对不起，请输入用户名或邮箱', '-1');
+        showmsg('请输入用户名或邮箱', '-1');
         exit;
     } else if (!preg_match("#(.*)@(.*)\.(.*)#", $mail)) {
-        showmsg('对不起，请输入正确的邮箱格式', '-1');
+        showmsg('请输入正确的邮箱格式', '-1');
         exit;
     } else if (CheckUserID($userid, '', false) != 'ok') {
         ShowMsg("您输入的用户名 {$userid} 不合法", "-1");
@@ -41,13 +41,13 @@ if ($dopost == "") {
         if ($cfg_sendmail_bysmtp == "Y") {
             sn($member['mid'], $userid, $member['email']);
         } else {
-            showmsg('对不起邮件服务暂未开启，请联系管理员', 'login.php');
+            showmsg('邮件服务暂未开启，请联系管理员', 'login.php');
             exit();
         }
         //以安全问题取回密码；
     } else if ($type == 2) {
         if ($member['safequestion'] == 0) {
-            showmsg('对不起您尚未设置安全密码，请通过邮件方式重设密码', 'login.php');
+            showmsg('您尚未设置安全密码，请通过邮件方式重设密码', 'login.php');
             exit;
         }
         require_once(dirname(__FILE__)."/templets/resetpassword3.htm");
@@ -63,19 +63,19 @@ if ($dopost == "") {
         sn($mid, $row['userid'], $row['email'], 'N');
         exit();
     } else {
-        ShowMsg("对不起，您的安全问题或答案回答错误", "-1");
+        ShowMsg("您的安全问题或答案回答错误", "-1");
         exit();
     }
 } else if ($dopost == "getpasswd") {
     //修改密码
     if (empty($id)) {
-        ShowMsg("对不起，请不要非法提交", "login.php");
+        ShowMsg("请不要非法提交", "login.php");
         exit();
     }
     $mid = preg_replace("#[^0-9]#", "", $id);
     $row = $db->GetOne("SELECT * FROM `#@__pwd_tmp` WHERE mid = '$mid'");
     if (empty($row)) {
-        ShowMsg("对不起，请不要非法提交", "login.php");
+        ShowMsg("请不要非法提交", "login.php");
         exit();
     }
     if (empty($setp)) {
@@ -83,7 +83,7 @@ if ($dopost == "") {
         $dtime = time();
         if ($dtime - $tptim > $row['mailtime']) {
             $db->executenonequery("DELETE FROM `#@__pwd_tmp` WHERE `md` = '$id';");
-            ShowMsg("对不起，临时密码修改期限已过期", "login.php");
+            ShowMsg("临时密码修改期限已过期", "login.php");
             exit();
         }
         require_once(dirname(__FILE__)."/templets/resetpassword2.htm");
@@ -109,10 +109,10 @@ if ($dopost == "") {
                     }
                 }
             }
-            ShowMsg('对不起，新密码为空或填写不一致', '-1');
+            ShowMsg('新密码为空或填写不一致', '-1');
             exit;
         }
-        ShowMsg('对不起，临时密码错误', '-1');
+        ShowMsg('临时密码错误', '-1');
         exit;
     }
 }
