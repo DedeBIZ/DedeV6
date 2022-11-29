@@ -18,7 +18,7 @@
 				$_menu_stow = true;
 				?>
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
-				<div class="pannel-main col-md-9">
+				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
 						<ul class="nav nav-tabs">
 							<li class="nav-item"><a class="nav-link <?php echo $rank===''? 'active' : '';?>" href="mystow.php">我的收藏</a></li>
@@ -29,7 +29,7 @@
 								{dede:datalist}
 								<tr>
 									<td colspan="5"><a href="archives_do.php?dopost=viewArchives&aid={dede:field.aid/}" target="_blank">{dede:field.title/}</a></td>
-									<td width="25%" align="center" class="doPost">
+									<td width="25%" align="center">
 										<a href="../apps/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}" target="_blank" class="btn btn-success btn-sm">推荐</a>
 									 	<a href="archives_do.php?dopost=delStow&type={dede:field.type/}&aid={dede:field.aid/}" class="btn btn-danger btn-sm">删除</a>
 									</td>
@@ -40,7 +40,7 @@
 								{/dede:datalist}
 							</tbody>
 						</table>
-						<nav>{dede:pagelist listsize='6'/}</nav>
+						{dede:pagelist listsize='6'/}
 					</div>
 				</div>
 			</div>

@@ -707,7 +707,7 @@ class Archives
                 $this->PreNext['pre'] = "上一篇：<a href='$mlink'>{$preRow['title']}</a>";
                 $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$preRow['title']}\"></a> ";
             } else {
-                $this->PreNext['pre'] = "";
+                $this->PreNext['pre'] = "上一篇：暂无";
                 $this->PreNext['preimg'] = "";
             }
             if (is_array($nextRow)) {
@@ -736,7 +736,7 @@ class Archives
                 $this->PreNext['next'] = "下一篇：<a href='$mlink'>{$nextRow['title']}</a> ";
                 $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$preRow['title']}\"></a> ";
             } else {
-                $this->PreNext['next'] = "";
+                $this->PreNext['next'] = "下一篇：暂无";
                 $this->PreNext['nextimg'] = "";
             }
         }

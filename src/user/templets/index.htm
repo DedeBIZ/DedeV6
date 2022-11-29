@@ -18,13 +18,13 @@
 				$_menu_home = true;
 				?>
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
-				<div class="pannel-main col-md-9">
+				<div class="col-md-9">
 					<div class="pb-3">
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body row">
 								<div class="col-12 col-md-4 text-center">
-									<a href="<?php echo $cfg_memberurl;?>/"><img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="member-logo"></a>
-									<div class="member-type"><span class="badge badge-success"><?php echo $cfg_ml->M_LoginID;?></span></div>
+									<a href="<?php echo $cfg_memberurl;?>/"><img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="user-logo"></a>
+									<div class="user-type"><span class="badge badge-success"><?php echo $cfg_ml->M_LoginID;?></span></div>
 								</div>
 								<div class="col-12 col-md-8">
 									<p><?php echo $cfg_ml->M_MbType;?>积分<span class="text-primary"><?php echo $cfg_ml->M_Scores;?></span>分，金币<span class="text-primary"><?php echo $cfg_ml->M_Money;?></span>个</p>

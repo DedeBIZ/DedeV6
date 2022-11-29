@@ -39,13 +39,16 @@
 				$_menu_pmstate = $state;
 				?>
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
-				<div class="pannel-main col-md-9">
+				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<ul class="nav mt-2">
-							<li class="nav-item"><a class="nav-link<?php if ($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a></li>
-							<li class="nav-item"><a class="nav-link<?php if ($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a></li>
-							<li class="nav-item"><a class="nav-link<?php if ($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a></li>
-						</ul>
+						<nav class="navbar navbar-expand-lg mb-3 p-0">
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item"><a class="nav-link<?php if ($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a></li>
+								<li class="nav-item"><a class="nav-link<?php if ($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a></li>
+								<li class="nav-item"><a class="nav-link<?php if ($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a></li>
+							</ul>
+							<span class="navbar-text"><button type="button" class="btn btn-danger" onclick="DoSubmit('<?php echo $folder;?>')">删除</button></span>
+						</nav>
 						<div class="table-responsive">
 							<form action="pm.php" method="post" name="form1">
 								<input type="hidden" name="dopost" value="del">
@@ -53,7 +56,7 @@
 								<table class="table">
 									<thead>
 										<tr>
-											<th scope="col"></th>
+											<th scope="col">选择</th>
 											<th scope="col">标题</th>
 											<th scope="col">
 												<?php
@@ -86,7 +89,7 @@
 											<td>
 												<div class="pm-read-status" for="<?php echo $fields['id'];?>">
 												<?php
-												$readmsg = ($fields['hasview']==0 ? "<span class='text-primary'>未阅读</span>" : '已阅读');
+												$readmsg = ($fields['hasview']==0 ? "<span class='btn btn-outline-danger btn-sm'>未阅读</span>" : "<span class='btn btn-outline-success btn-sm'>已阅读</span>");
 												echo $readmsg;
 												?>
 												</div>
@@ -98,10 +101,7 @@
 								</table>
 							</form>
 						</div>
-						<nav>
-							<button type="button" onclick="DoSubmit('<?php echo $folder;?>')" class="btn btn-danger">删除</button>
-							{dede:pagelist listsize='6'/}
-						</nav>
+						{dede:pagelist listsize='6'/}
 					</div>
 				</div>
 			</div>
