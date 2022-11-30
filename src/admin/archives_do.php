@@ -279,7 +279,7 @@ else if ($dopost == 'moveArchives') {
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-        echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
+        echo "<table width='100%'>";
         ?>
         <tr>
             <td width="90" class="admin-td">目标栏目：</td>
@@ -518,7 +518,7 @@ else if ($dopost == 'quickEdit') {
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
-    echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
+    echo "<table width='100%'>";
     ?>
     <tr>
         <td width="90" class="admin-td">所属栏目：</td>
@@ -813,7 +813,7 @@ else if ($dopost == 'attsDlg') {
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-    echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
+    echo "<table width='100%'>";
 ?>
     <tr>
         <td width="90" class="admin-td">属性：</td>
