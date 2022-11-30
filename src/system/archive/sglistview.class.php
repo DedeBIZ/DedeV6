@@ -206,7 +206,7 @@ class SgListView
         $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
     }
     /**
-     *  列表创建HTML
+     *  列表创建网页
      *
      * @access    public
      * @param     string  $startpage  开始页面

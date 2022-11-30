@@ -199,7 +199,7 @@ class FreeList
         $this->TempletsFile = preg_replace("#^".$GLOBALS['cfg_basedir']."#", '', $tempfile);
     }
     /**
-     *  列表创建HTML
+     *  列表创建网页
      *
      * @access    public
      * @param     string  $startpage  开始页面

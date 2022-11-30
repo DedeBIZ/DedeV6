@@ -278,7 +278,7 @@ else if ($dopost == 'moveCatalog') {
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
-        $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建HTML");
+        $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建网页");
         $win->AddItem('您选择的栏目是：', "$typename($typeid)");
         $win->AddItem('您希望移动到那个栏目', "<select name='movetype'>\r\n<option value='0'>移动为顶级栏目</option>\r\n$typeOptions\r\n</select>");
         $win->AddItem('注意事项：', '不允许从父级移动到子级目录，只允许子级到更高级或同级或不同父级的情况');
