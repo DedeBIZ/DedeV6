@@ -10,6 +10,7 @@
  */
 define('AJAXLOGIN', TRUE);
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
+$cfg_NotPrintHead = 'Y';
 require_once(DEDEADMIN.'/../system/common.inc.php');
 require_once(DEDEINC.'/userlogin.class.php');
 AjaxHead();
