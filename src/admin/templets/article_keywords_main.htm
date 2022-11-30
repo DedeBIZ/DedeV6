@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<style>.nnpp{border-bottom:1px solid #545b62;border-top:1px solid #ffffff;border-left:1px solid #ffffff;border-right:1px solid #ffffff;filter:alpha(opacity=50)}</style>
 		<script>
 			function selAll() {
 				var celements = document.getElementsByName('aids[]');
@@ -36,8 +35,8 @@
 			</tr>
 			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">选择</td>
-				<td width="25%">关键词</td>
-				<td width="35%">链接网址</td>
+				<td width="30%">关键词</td>
+				<td width="30%">链接网址</td>
 				<td width="10%">频率</td>
 				<td>管理</td>
 			</tr>
@@ -45,13 +44,13 @@
 				<input type="hidden" name="dopost" value="saveall">
 				{dede:datalist empty='<tr><td colspan="5" align="center">暂无文档</td></tr>'}
 				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
-					<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked='1'></td>
-					<td><input type="hidden" value="{dede:field.keyword/}" name="keyword_{dede:field.aid/}"> {dede:field.keyword/}</td>
+					<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked="1"></td>
+					<td><input type="hidden" name="keyword_{dede:field.aid/}" class="admin-input-md" value="{dede:field.keyword/}">{dede:field.keyword/}</td>
 					<td>
-						<input type="hidden" value="{dede:field.rpurl/}" name="rpurlold_{dede:field.aid/}">
-						<input type="text" class="nnpp" value="{dede:field.rpurl/}" name="rpurl_{dede:field.aid/}">
+						<input type="hidden" name="rpurlold_{dede:field.aid/}" value="{dede:field.rpurl/}">
+						<input type="text" name="rpurl_{dede:field.aid/}" class="admin-input-md" value="{dede:field.rpurl/}">
 					</td>
-					<td><input type="text" class="nnpp" value="{dede:field.rank/}" name="rank_{dede:field.aid/}"></td>
+					<td><input type="text" name="rank_{dede:field.aid/}" class="admin-input-sm" value="{dede:field.rank/}"></td>
 					<td>
 						<input type="hidden" name="staold_{dede:field.aid/}" value="{dede:field.sta/}">
 						<label><input type="checkbox" name="isnouse_{dede:field.aid/}" value="1" {dede:field.sta function="GetSta(@me)"/}> 禁用</label>
