@@ -166,6 +166,11 @@ else if ($action == 'setup') {
     $win->AddHidden("action", 'setupstart');
     $msg = "<table width='98%' cellspacing='0' cellpadding='0' class='table'>
     <tr>
+        <td class='admin-td' colspan='2'>
+            <div class='alert alert-danger mb-0'>安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“templets”目录也必须暂时设置可写入权限</div>
+        </td>
+    </tr>
+    <tr>
         <td width='260' class='admin-td'>模块名称：</td>
         <td class='admin-td'>{$infos['name']}</td>
     </tr>
@@ -190,12 +195,7 @@ else if ($action == 'setup') {
         <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-        <td class='admin-td' colspan='2'>
-        <div class='alert alert-danger mb-0'>注意事项：安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“templets”目录也必须暂时设置可写入权限</div>
-        </td>
-    </tr>
-    <tr>
-        <td>目录权限检测：<br> ../ 为根目录 <br> ./ 表示当前目录</td>
+        <td>目录权限说明：<br>../为根目录<br>./表示当前目录</td>
         <td>$prvdir</td>
     </tr>
     <tr>

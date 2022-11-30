@@ -24,13 +24,13 @@ if ($action == 'upload') {
     } else {
         include_once(DEDEINC."/libraries/zip.class.php");
         $tmpfilename = $mdir.'/'.ExecTime().mt_rand(10000, 50000).'.tmp';
-        move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到{$tmpfilename}时失败，请检查{$mdir}目录是否有写入权限");
+        move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到<span class='text-primary'>{$tmpfilename}</span>时失败，请检查<span class='text-primary'>{$mdir}</span>目录是否有写入权限");
         $dm = new DedeModule($mdir);
         $infos = $dm->GetModuleInfo($tmpfilename, 'file');
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的文件可能不是模块的标准格式文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的文件可能不是模块的标准格式文件，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -40,7 +40,7 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的模块已经存在<br>如果要覆盖请先删除原来版本或选择强制删除的选项<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的模块已经存在，请删除原模块文件或强制删除同名模块上传，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         @unlink($okfile);
@@ -58,21 +58,19 @@ if ($action == 'upload') {
     $win->AddTitle('请选择要上传的文件');
     $win->AddHidden("action", 'upload');
     $msg = "<table width='900' cellspacing='0' cellpadding='0'>
-  <tr>
-    <td width='260'>文件格式：</td>
-    <td>
-      <label><input type='radio' name='filetype' value='0' checked='checked'> 正常的模块包</label>
-    </td>
-  </tr>
-  <tr>
-    <td>已有模块：</td>
-    <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 强制删除同名模块，这可能导致已经安装的模块无法卸载</label></td>
-  </tr>
-  <tr>
-    <td>请选择文件：</td>
-    <td><input name='upfile' type='file' id='upfile' class='admin-input-lg'></td>
-  </tr>
- </table>";
+    <tr>
+        <td width='260'>文件格式：</td>
+        <td><label><input type='radio' name='filetype' value='0' checked='checked'> 正常的模块包</label></td>
+    </tr>
+    <tr>
+        <td>已有模块：</td>
+        <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 强制删除同名模块，这可能导致已经安装的模块无法卸载</label></td>
+    </tr>
+    <tr>
+        <td>请选择文件：</td>
+        <td><input name='upfile' type='file' id='upfile' class='admin-input-lg'></td>
+    </tr>
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('ok', '');
     $win->Display();
