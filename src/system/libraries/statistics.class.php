@@ -20,6 +20,10 @@ class DedeStatistics {
     {
         global $envs,$cfg_cookie_encode;
         $agent = new Agent();
+        //不记录爬虫
+        if ($agent->isRobot()) {
+            return "";
+        }
         $pm = array();
         $pm['dduuid'] = GetCookie("DedeStUUID");
         if (empty($pm['dduuid'])) {
