@@ -292,7 +292,7 @@ body.hidemenu .body-right {
 	transition:all .3s
 }
 .submenu li:hover {
-	background:#007bff
+	background:#009688
 }
 .submenu a {
 	float:left;
