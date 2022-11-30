@@ -24,13 +24,13 @@ if ($action == 'upload') {
     } else {
         include_once(DEDEINC."/libraries/zip.class.php");
         $tmpfilename = $mdir.'/'.ExecTime().mt_rand(10000, 50000).'.tmp';
-        move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到<span class='text-primary'>{$tmpfilename}</span>时失败，请检查<span class='text-primary'>{$mdir}</span>目录是否有写入权限");
+        move_uploaded_file($upfile, $tmpfilename) or die("上传文件移动到<span class='text-primary'>{$tmpfilename}</span>时失败，请检查<span class='text-primary'>{$mdir}</span>目录是否有写入权限");
         $dm = new DedeModule($mdir);
         $infos = $dm->GetModuleInfo($tmpfilename, 'file');
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的文件可能不是模块的标准格式文件，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的插件不是模块格式文件，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -40,7 +40,7 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的模块已经存在，请删除原模块文件或强制删除同名模块上传，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的模块已存在，请删除原模块文件或强制删除同名模块上传，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         @unlink($okfile);
