@@ -295,7 +295,7 @@ else if ($dopost == 'moveArchives') {
         <tr>
             <td colspan="2" align="center" class="py-2">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
-                <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
+                <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
             </td>
         </tr>
         </table>
@@ -514,7 +514,7 @@ else if ($dopost == 'quickEdit') {
     $query = "SELECT ch.typename as channelname,ch.addtable,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($query);
     $divname = 'quickEdit';
-    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">快速属性修改</div>";
+    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">文档属性修改</div>";
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
@@ -582,7 +582,7 @@ else if ($dopost == 'quickEdit') {
     <tr>
         <td colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
-            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
+            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>
     </tr>
     </table>
@@ -836,7 +836,7 @@ else if ($dopost == 'attsDlg') {
     <tr>
         <td colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
-            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
+            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>
     </tr>
     </table>
@@ -852,14 +852,14 @@ else if ($dopost == 'getCatMap') {
     AjaxHead();
     //输出AJAX可移动窗体
     $divname = 'getCatMap';
-    echo "<div class='title' style='cursor:default'>栏目快速选择器</div>";
+    echo "<div class='title'>选择副栏目</div>";
     $tus = new TypeUnitSelector();
     ?>
     <form name="quicksel" action="javascript:;" method="get">
         <div class="quicksel"><?php $tus->ListAllType($channelid);?></div>
         <div align="center" class="quickselfoot">
             <button onclick="getSelCat('<?php echo $targetid;?>');" class="btn btn-success btn-sm">保存</button>
-            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
+            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </div>
     </form>
 <?php
