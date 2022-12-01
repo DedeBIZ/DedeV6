@@ -266,6 +266,9 @@ class userLogin
     function getLoginError($username)
     {
         global $dsql;
+        if (!TableHasField("#@__admin", "loginerr")) {
+            return 0;
+        }
         $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
         $row = $dsql->GetOne("SELECT loginerr,logintime FROM `#@__admin` WHERE userid LIKE '$this->userName'");
         if (is_array($row)) {

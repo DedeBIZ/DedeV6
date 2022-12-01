@@ -373,6 +373,24 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
     echo $msg;
 }
 /**
+ * 表中是否存在某个字段
+ *
+ * @param  mixed $tablename 表名称
+ * @param  mixed $field 字段名
+ * @return void
+ */
+function TableHasField($tablename,$field)
+{
+    global $dsql;
+    $dsql->GetTableFields($tablename,"tfd");
+    while ($r = $dsql->GetFieldObject("tfd")) {
+        if ($r->name === $field) {
+            return true;
+        }
+    }
+    return false;
+}
+/**
  *  获取验证码的session值
  *
  * @return    string

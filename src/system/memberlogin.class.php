@@ -465,6 +465,9 @@ class MemberLogin
         if ($rs != 'ok') {
             return -1;
         }
+        if (!TableHasField("#@__member", "loginerr")) {
+            return 0;
+        }
         $row = $dsql->GetOne("SELECT loginerr,logintime FROM `#@__member` WHERE userid LIKE '$loginuser'");
         if (is_array($row)) {
             //1分钟内如果输错3次则需要验证码

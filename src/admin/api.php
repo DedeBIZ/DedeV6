@@ -18,24 +18,6 @@ helper('cache');
 $action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update')) ? $action  : '';
 $curDir = dirname(GetCurUrl()); //当前目录
 /**
- * 表中是否存在某个字段
- *
- * @param  mixed $tablename 表名称
- * @param  mixed $field 字段名
- * @return void
- */
-function TableHasField($tablename,$field)
-{
-    global $dsql;
-    $dsql->GetTableFields($tablename,"tfd");
-    while ($r = $dsql->GetFieldObject("tfd")) {
-        if ($r->name === $field) {
-            return true;
-        }
-    }
-    return false;
-}
-/**
  * 登录鉴权
  *
  * @return void
@@ -87,7 +69,7 @@ if ($action === 'is_need_check_code') {
     if (!TableHasField("#@__arctype", "cnoverview")) {
         $unQueryVer[] = "6.1.10";
     }
-    if (!TableHasField("#@__admin", "loginerr")) {
+    if (!TableHasField("#@__admin", "loginerr") || !TableHasField("#@__member", "loginerr")) {
         $unQueryVer[] = "6.2.0";
     }
     if (count($unQueryVer) > 0) {
