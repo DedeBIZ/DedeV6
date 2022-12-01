@@ -4058,7 +4058,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('122','cfg_mb_wnameone','是否允许用户昵称重复','4','bool','N'),
 ('123','cfg_arc_dirname','是否允许用目录作为文档文件名，文档命名规则：{typedir}/{aid}/index.html','7','bool','Y'),
 ('124','cfg_puccache_time','需缓存文档全局缓存时间（秒）','6','number','36000'),
-('125','cfg_arc_click','文档默认点击数（-1表示随机50-200）','7','number','-1'),
+('125','cfg_arc_click','文档默认点击数（-1表示随机200-1000）','7','number','-1'),
 ('126','cfg_addon_savetype','附件保存形式，按data函数日期参数（y年m月d日）','3','string','ymd'),
 ('127','cfg_qk_uploadlit','异步上传缩略图，空间太不稳定用户关闭此项','3','bool','Y'),
 ('128','cfg_login_adds','登录会员中心获积分','5','number','2'),
