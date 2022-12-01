@@ -33,7 +33,7 @@ if ($dopost == "save") {
         $query = "INSERT INTO `#@__myadtype` (typename) VALUES ('{$pname_new}');";
         $dsql->ExecuteNoneQuery($query);
     }
-    header("charset={$cfg_soft_lang}");
+    header("Content-Type:text/html; charset={$cfg_soft_lang}");
     ShowMsg("成功更新广告分类列表", 'adtype_main.php');
     exit;
 }

@@ -226,7 +226,7 @@ if (isset($GLOBALS['TotalResult'])) {
 }
 if (!isset($cfg_NotPrintHead)) {
     if (PHP_SAPI != 'cli') {
-        header("Content-Type: text/html; charset={$cfg_soft_lang}");
+        header("Content-Type:text/html; charset={$cfg_soft_lang}");
     }
 }
 //自动加载类库处理

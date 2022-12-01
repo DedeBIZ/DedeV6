@@ -16,7 +16,7 @@ $ci = " aid >= $startid ";
 if (!empty($endid) && $endid >= $startid) {
     $ci .= " And aid <= $endid ";
 }
-header("charset={$cfg_soft_lang}");
+header("Content-Type:text/html; charset={$cfg_soft_lang}");
 $dsql->SetQuery("SELECT aid FROM `#@__freelist` WHERE $ci");
 $dsql->Execute();
 while ($row = $dsql->GetArray()) {
