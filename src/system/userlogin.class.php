@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 session_start();
 /**
- *  检验用户是否有权使用某功能,这个函数是一个回值函数
+ *  检验用户是否有权使用某功能，这个函数是一个回值函数
  *  CheckPurview函数只是对他回值的一个处理过程
  *
  * @access    public

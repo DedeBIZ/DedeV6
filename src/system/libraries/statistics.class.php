@@ -2,8 +2,7 @@
 if (!defined('DEDEINC')) exit('dedebiz');
 require_once(DEDEINC."/libraries/agent.class.php");
 /**
- * 流量统计
- * 一个轻量级流量统计功能
+ * 轻量级流量统计
  *
  * @version        $id:statistics.class.php 11:42 2022年03月26日 tianya $
  * @package        DedeBIZ.Libraries
@@ -15,7 +14,7 @@ class DedeStatistics {
     function __construct()
     {
     }
-    //获取统计JS
+    //获取统计js
     function GetStat()
     {
         global $envs,$cfg_cookie_encode;

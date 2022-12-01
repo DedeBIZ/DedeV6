@@ -1,13 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-//Copyright 2020 The DedeBiz Authors. All rights reserved.
-//license that can be found in the LICENSE file.
-//@copyright      Copyright (c) 2022 DedeBIZ.COM
-//@license        https://www.dedebiz.com/license
-//@link           https://www.dedebiz.com
-//本文件为DedeBIZ商业组件(www.dedebiz.com)PHP SDK，弥补系统性能和安全方面的不足，提供更多功能
+//用于DedeBIZ商业组件通信
 define("DEDEBIZ", true);
-//本文件用于和DedeBIZ商业组件进行通信，以获取更多额外的扩展功能
 class DedeBizClient
 {
     var $socket;
@@ -143,8 +137,7 @@ class DedeBizClient
         );
         return $this->request($req);
     }
-    //缓存
-    //$key:键 $val:值 $d:缓存时间
+    //缓存：$key键 $val值 $d缓存时间
     function CacheSet($key, $val, $duration)
     {
         $req = array(
@@ -157,8 +150,7 @@ class DedeBizClient
         );
         return $this->request($req);
     }
-    //获取缓存文档
-    //$key:键
+    //获取缓存文档：$key键
     function CacheGet($key)
     {
         $req = array(
@@ -169,8 +161,7 @@ class DedeBizClient
         );
         return $this->request($req);
     }
-    //删除缓存文档
-    //$key:键
+    //删除缓存文档：$key键
     function CacheDel($key)
     {
         $req = array(
@@ -181,8 +172,7 @@ class DedeBizClient
         );
         return $this->request($req);
     }
-    //获取分词结果
-    //$key:键
+    //获取分词结果：$key键
     function Spliteword($body)
     {
         $req = array(
@@ -193,8 +183,7 @@ class DedeBizClient
         );
         return $this->request($req);
     }
-    //获取分词结果
-    //$body:文档 $sep:分隔符
+    //获取分词结果：$body文档 $sep分隔符
     function Pinyin($body, $sep)
     {
         $req = array(
@@ -238,8 +227,7 @@ class DedeBizClient
             return null;
         }
     }
-    //关闭通信接口
-    //一次页面操作后一定记得要关闭连接，否则会占用系统资源
+    //关闭通信接口，一次页面操作后一定记得要关闭连接，否则会占用系统资源
     function Close()
     {
         //这里避免重复释放

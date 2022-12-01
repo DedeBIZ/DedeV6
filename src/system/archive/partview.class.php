@@ -207,32 +207,7 @@ class PartView
      * @param object $ctag
      * @return array
      */
-    function GetArcList(
-        $templets = '',
-        $typeid = 0,
-        $row = 10,
-        $col = 1,
-        $titlelen = 30,
-        $infolen = 160,
-        $imgwidth = 120,
-        $imgheight = 90,
-        $listtype = "all",
-        $orderby = "default",
-        $keyword = "",
-        $innertext = "",
-        $tablewidth = "100",
-        $arcid = 0,
-        $idlist = "",
-        $channelid = 0,
-        $limit = "",
-        $att = 0,
-        $order = 'desc',
-        $subday = 0,
-        $autopartid = -1,
-        $ismember = 0,
-        $maintable = '',
-        $ctag = ''
-    ) {
+    function GetArcList($templets='',$typeid = 0,$row = 10,$col = 1,$titlelen = 30,$infolen = 160,$imgwidth = 120,$imgheight = 90,$listtype = "all",$orderby = "default",$keyword = "",$innertext = "",$tablewidth = "100",$arcid = 0,$idlist = "",$channelid = 0,$limit = "",$att = 0,$order = 'desc',$subday = 0,$autopartid = -1,$ismember = 0,$maintable = '',$ctag = '') {
         if (empty($autopartid)) {
             $autopartid = -1;
         }
@@ -248,32 +223,7 @@ class PartView
         if (!isset($GLOBALS['__SpGetArcList'])) {
             require_once(dirname(__FILE__)."/inc/inc_fun_SpGetArcList.php");
         }
-        return SpGetArcList(
-            $this->dsql,
-            $templets,
-            $typeid,
-            $row,
-            $col,
-            $titlelen,
-            $infolen,
-            $imgwidth,
-            $imgheight,
-            $listtype,
-            $orderby,
-            $keyword,
-            $innertext,
-            $tablewidth,
-            $arcid,
-            $idlist,
-            $channelid,
-            $limit,
-            $att,
-            $order,
-            $subday,
-            $ismember,
-            $maintable,
-            $ctag
-        );
+        return SpGetArcList($this->dsql,$templets,$typeid,$row,$col,$titlelen,$infolen,$imgwidth,$imgheight,$listtype,$orderby,$keyword,$innertext,$tablewidth,$arcid,$idlist,$channelid,$limit,$att,$order,$subday,$ismember,$maintable,$ctag);
     }
     //关闭所占用的资源
     function Close()

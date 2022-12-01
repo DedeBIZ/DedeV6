@@ -42,7 +42,7 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
                 $i++;
             } else {
-                return $msgtitle.'可能含有乱码，建议您改用英文字母和数字组合';
+                return $msgtitle.'建议用英文字母和数字组合';
             }
         } else {
             if (preg_match("/[^0-9a-z@\.-]/i", $ck_uid[$i])) {
@@ -267,7 +267,7 @@ class MemberLogin
     {
         global $dsql;
         $mid = $this->M_ID;
-        $arr = $dsql->GetOne("Select * `#@__member_tj` WHERE mid='$mid' ");
+        $arr = $dsql->GetOne("SELECT * `#@__member_tj` WHERE mid='$mid' ");
         if (!is_array($arr)) {
             $arr = array('article' => 0, 'album' => 0, 'archives' => 0, 'homecount' => 0, 'pagecount' => 0, 'feedback' => 0, 'friend' => 0, 'stow' => 0);
         }

@@ -70,31 +70,31 @@
 					<div class="card-body">
 						<table class="table table-borderless">
 							<tr>
-								<td>
+								<td width="20%">
 									<div class="web-info">
 										<p>操作系统</p>
 										<span><?php echo PHP_OS;?></span>
 									</div>
 								</td>
-								<td>
+								<td width="20%">
 									<div class="web-info">
 										<p>WEB服务器</p>
 										<span><?php echo $_SERVER['SERVER_SOFTWARE'];?></span>
 									</div>
 								</td>
-								<td>
+								<td width="20%">
 									<div class="web-info">
 										<p>IP地址</p>
 										<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
 									</div>
 								</td>
-								<td>
+								<td width="20%">
 									<div class="web-info">
 										<p>PHP版本</p>
 										<span><?php echo @phpversion();?></span>
 									</div>
 								</td>
-								<td>
+								<td width="20%">
 									<div class="web-info">
 										<p>数据库版本</p>
 										<span><?php echo $dsql->GetVersion();?></span>

@@ -9,7 +9,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 /**
- *  获得一个附加表单(发布时用)
+ *  获得一个附加表单发布时用
  *
  * @access    public
  * @param     object  $ctag  标签

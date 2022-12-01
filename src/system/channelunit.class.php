@@ -2,6 +2,7 @@
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 栏目模型单元类
+ * 
  * @version        $id:channelunit.class.php 2 17:32 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
