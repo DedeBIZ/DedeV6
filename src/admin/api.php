@@ -275,14 +275,14 @@ if ($action === 'is_need_check_code') {
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
                 $srcFile = $backupVerPath.$f->filename;
                 $dstFile = str_replace(array("\\", "//"), '/', DEDEROOT.$f->filename);
-                var_dump_cli('files','srcFile',$srcFile,'dstFile',$dstFile);
-                // $rs = @copy($srcFile, $dstFile);
-                // if($rs) {
-                //     unlink($srcFile);
-                // }
+                $rs = @copy($srcFile, $dstFile);
+                if($rs) {
+                    unlink($srcFile);
+                }
             }
             $row[$k]->ispatched = true;
             SetCache('update', 'vers', $row);
+            RmRecurse($backupVerPath);
             echo json_encode(array(
                 "code" => 0,
                 "msg" => "正在应用{$ver->ver}的版本补丁文件",
