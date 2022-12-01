@@ -248,11 +248,12 @@ else if ($action == 'edit') {
     //else $setupsql41 = base64_encode(trim($setupsql41));
     if (trim($delsql) == '') $delsql = '';
     else $delsql = base64_encode(strip_tags(trim($delsql)));
+    $pub_key = base64url_encode($devInfo['pub_key']);
     $modulinfo = "<module>
 <baseinfo>
 name={$modulname}
 dev_id={$devInfo['dev_id']}
-pubkey={$devInfo['pub_key']}
+pubkey={$pub_key}
 info={$moduleInfo}
 time={$mtime}
 hash={$hashcode}
