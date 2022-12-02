@@ -474,12 +474,10 @@ function GetUpdateSQL()
             $sqls = array();
             $current_ver = $matches[1];
         }
-        if (preg_match("#;$#", $line))
-        {
+        if (preg_match("#;$#", $line)) {
             $query .= $line."\n";
             $query = str_replace('#@__',$cfg_dbprefix,$query);
-            if ( $cfg_dbtype == 'sqlite' )
-            {
+            if ($cfg_dbtype == 'sqlite') {
                 $query = preg_replace('/character set (.*?) /i','',$query);
                 $query = preg_replace('/unsigned/i','',$query);
                 $query = str_replace('TYPE=MyISAM','',$query);
@@ -493,23 +491,20 @@ function GetUpdateSQL()
                 $query = preg_replace('/,([\t\s ]+)UNIQUE KEY(.*?);/',');',$query);
                 $query = preg_replace('/set\(([^\)]*?)\)/','varchar',$query);
                 $query = preg_replace('/enum\(([^\)]*?)\)/','varchar',$query);
-                if ( preg_match("/PRIMARY KEY AUTOINCREMENT/",$query) )
-                {
+                if (preg_match("/PRIMARY KEY AUTOINCREMENT/",$query)) {
                     $query = preg_replace('/,([\t\s ]+)PRIMARY KEY([\t\s ]+)\(`([0-9a-zA-Z]+)`\)/i','',$query);
                 }
                 $sqls[] = $query;
                 // $db->exec($query);
             } else {
-                if (preg_match('#CREATE#i', $query))
-                {
+                if (preg_match('#CREATE#i', $query)) {
                     $sqls[] = preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query);
                 } else {
                     $sqls[] = $query;
                 }
             }
             $query='';
-        } else if (!preg_match("#^(\/\/|--)#", $line))
-        {
+        } else if (!preg_match("#^(\/\/|--)#", $line)) {
             $query .= $line;
         }
     }
@@ -528,7 +523,7 @@ function GetMemberInfos($fields, $mid)
     } else {
         $row=$dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}'");
         if (!is_array($row)) {
-            $revalue = "Not user";
+            $revalue = "未命名";
         } else {
             $revalue = $row[$fields];
         }
@@ -617,7 +612,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
         $tid = $toptid==0 ? $tidsq["typeid"] : $tidsq["topid"];
     }
     $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".$_REQUEST['PageNo'] : '');
-    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/plus/list.php?tid=".$tid);
+    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
     $cInfos = $dsql->GetOne("SELECT * FROM  `#@__channeltype` WHERE id='$channelid'");
     $fieldset=$cInfos['fieldset'];
     $dtp = new DedeTagParse();
@@ -656,7 +651,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
                         ';
                     break;
                     case 3:
-                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a title="全部" href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" onclick="window.location=this.value">全部</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked="checked">全部</span>');
+                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" onclick="window.location=this.value">全部</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked="checked">全部</span>');
                         $addonfields_items = explode(",",$ctag->GetAtt('default'));
                         for ($i=0; $i<count($addonfields_items); $i++)
                         {
