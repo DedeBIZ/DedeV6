@@ -278,7 +278,7 @@
 						let fstr = '<ul class="list-group list-group-flush">';
 						let i = 1;
 						rs.data.files.forEach(file => {
-							fstr += `<li class='list-group-item'>第${i}个文件：..\\${file['filename']}</li>`;
+							fstr += `<li class='list-group-item'>第${i}个文件：${file['filename']}</li>`;
 							i++;
 						});
 						fstr += '</ul>';
