@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">用户密码：</td>
-					<td class="admin-td"><input type="text" name="pwd" id="pwd" class="admin-input-md">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
+					<td class="admin-td"><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
 					<td class="admin-td">用户类型：</td>
@@ -53,7 +53,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">负责栏目：</td>
+					<td class="admin-td">授权栏目：</td>
 					<td class="admin-td">
 						<select name="typeids[]" id="typeid" multiple="true" class="admin-input-md" style="height:200px">
 							<option value="0" class="alltype">所有栏目</option>
@@ -63,16 +63,16 @@
 				</tr>
 				<tr>
 					<td class="admin-td">真实姓名：</td>
-					<td class="admin-td"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" class="admin-input-md"></td>
+					<td class="admin-td"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" class="admin-input-sm"></td>
 				</tr>
 				<tr>
 					<td class="admin-td">电子邮箱：</td>
-					<td class="admin-td"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" class="admin-input-md"></td>
+					<td class="admin-td"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" class="admin-input-sm"></td>
 				</tr>
 				<tr>
 					<td class="admin-td">验证安全码：</td>
 					<td class="admin-td">
-						<input type="text" name="safecode" id="safecode" class="admin-input-md">
+						<input type="text" name="safecode" id="safecode" class="admin-input-sm">
 						<input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class="text-primary"><?php echo $safecode;?></span>）
 					</td>
 				</tr>

@@ -48,21 +48,15 @@
 				</tr>
 				<tr>
 					<td class="admin-td">密码：</td>
-					<td><input type="text" name="pwd" id="pwd" class="admin-input-md">（不修改留空）</td>
+					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
 					<td class="admin-td">注册时间：</td>
-					<td class="admin-td">
-						<?php echo GetDateTimeMk($row['jointime'])?>
-						ip：<?php echo $row['joinip']?>
-					</td>
+					<td class="admin-td"><?php echo GetDateTimeMk($row['jointime'])?>丨<?php echo $row['joinip']?></td>
 				</tr>
 				<tr>
 					<td class="admin-td">最近登录时间：</td>
-					<td class="admin-td">
-						<?php echo GetDateTimeMk($row['logintime'])?>
-						ip：<?php echo $row['loginip']?>
-					</td>
+					<td class="admin-td"><?php echo GetDateTimeMk($row['logintime'])?>丨<?php echo $row['loginip']?></td>
 				</tr>
 				<tr>
 					<td class="admin-td">用户类型：</td>
@@ -70,11 +64,11 @@
 				</tr>
 				<tr>
 					<td class="admin-td">电子邮箱：</td>
-					<td class="admin-td"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" class="admin-input-md"></td>
+					<td class="admin-td"><input type="text" name="email" id="email" class="admin-input-sm" value="<?php echo $row['email']?>"></td>
 				</tr>
 				<tr>
 					<td class="admin-td">昵称：</td>
-					<td class="admin-td"><input type="text" name="uname" value="<?php echo $row['uname']?>" id="uname" class="admin-input-sm"></td>
+					<td class="admin-td"><input type="text" name="uname" id="uname" class="admin-input-sm" value="<?php echo $row['uname']?>"></td>
 				</tr>
 				<tr>
 					<td class="admin-td">性别：</td>
@@ -87,8 +81,8 @@
 				<tr>
 					<td class="admin-td">金币：</td>
 					<td class="admin-td">
-						<input type="text" name="money" id="money" value="<?php echo $row['money'];?>" class="admin-input-sm">
-						积分：<input type="text" name="scores" id="scores" value="<?php echo $row['scores'];?>" class="admin-input-sm">
+						<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>">
+						积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>">
 					</td>
 				</tr>
 				<tr>
@@ -115,29 +109,29 @@
 				</tr>
 				<tr>
 					<td class="admin-td">升级时间：</td>
-					<td class="admin-td"><input type="text" name="uptime" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>" id="uptime" class="admin-input-sm">（如果您要升级会员，必须设置此时间为当前时间）</td>
+					<td class="admin-td"><input type="text" name="uptime" id="uptime" class="admin-input-sm" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>">（如果您要升级会员，必须设置此时间为当前时间）</td>
 				</tr>
 				<tr>
 					<td class="admin-td">会员天数：</td>
-					<td class="admin-td"><input type="text" name="exptime" value="<?php echo $row['exptime']?>" id="exptime" class="admin-input-sm">（如果您要升级会员，会员天数必须大于0）</td>
+					<td class="admin-td"><input type="text" name="exptime" id="exptime" class="admin-input-sm" value="<?php echo $row['exptime']?>">（如果您要升级会员，会员天数必须大于0）</td>
 				</tr>
-				<?php if ($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span class="text-primary">该会员已经到期</span>';?>
+				<?php if ($mhasDay!=0) {$mhasDay=($mhasDay>0)? $mhasDay : '<tr><td colspan="2" class="admin-td"><span class="text-danger">会员已经到期</span></td></tr>';?>
 				<tr>
 					<td class="admin-td">剩余天数：</td>
 					<td class="admin-td"><?php echo $mhasDay;?></td>
 				</tr>
+				<?php }?>
 				<tr>
-					<?php }?>
 					<td class="admin-td">推荐级别：</td>
 					<td class="admin-td">
-						<input type="hidden" name="oldmatt" id="oldmatt" value="<?php echo $row['matt']?>" class="admin-input-sm">
-						<input name="matt" type="text" id="matt" value="<?php echo $row['matt']?>" class="admin-input-sm">（0为普通，1为推荐，10为管理员不能在前台登录非管理员id是严格使用10属性的，要新建管理在<a href="sys_admin_user_add.php" target="_blank">系统帐号</a>地方增加）
+						<input type="hidden" name="oldmatt" id="oldmatt" class="admin-input-sm" value="<?php echo $row['matt']?>">
+						<input name="matt" type="text" id="matt" class="admin-input-sm" value="<?php echo $row['matt']?>">（0普通、1推荐、10管理员，管理员不能在前台登录，<a href="sys_admin_user_add.php">新建管理员</a>）
 					</td>
 				</tr>
 				<tr>
 					<td class="admin-td">投稿限制：</td>
 					<td class="admin-td">
-						<input name="send_max" type="text" value="<?php echo $row['send_max']?>" class="admin-input-sm">（0为不能投稿）
+						<input type="text" name="send_max" class="admin-input-xs" value="<?php echo $row['send_max']?>">（0为不能投稿）
 					</td>
 				</tr>
 				<tr>
@@ -159,8 +153,7 @@
 					<td class="admin-td">
 						<?php
 						$nrow = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='{$row['mid']}' ");
-						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']}";
-						echo "<br>空间浏览：{$nrow['homecount']} 页面浏览：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']} ";
+						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']} 空间浏览：{$nrow['homecount']} 页面浏览：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']}";
 						?>
 					</td>
 				</tr>
@@ -168,7 +161,7 @@
 					<td class="admin-td">特殊操作：</td>
 					<td class="admin-td">
 						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>&jumpurl=../user/edit_baseinfo.php" target="_blank" class="btn btn-success btn-sm">修改资料</a>
-						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>" target="_blank" class="btn btn-success btn-sm">登录此用户面板</a>
+						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>" target="_blank" class="btn btn-success btn-sm">用户面板</a>
 					</td>
 				</tr>
 				<tr>
