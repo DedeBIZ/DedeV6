@@ -14,8 +14,8 @@ $myurl = $cfg_basehost.$cfg_member_dir.'/index.php?uid='.$cfg_ml->M_LoginID;
 $moneycards = '';
 $membertypes = '';
 $dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
-$dsql->Execute();
-while ($row = $dsql->GetObject()) {
+$dsql->Execute('mct');
+while ($row = $dsql->GetObject('mct')) {
     $row->money = sprintf("%01.2f", $row->money);
     $moneycards .= "<tr>
     <td><input type='radio' name='pid' value='{$row->tid}'></td>
@@ -26,8 +26,8 @@ while ($row = $dsql->GetObject()) {
     ";
 }
 $dsql->SetQuery("SELECT `#@__member_type`.*,`#@__arcrank`.membername,`#@__arcrank`.`money` as cm From `#@__member_type` LEFT JOIN `#@__arcrank` on `#@__arcrank`.`rank` = `#@__member_type`.`rank` ");
-$dsql->Execute();
-while ($row = $dsql->GetObject()) {
+$dsql->Execute('mt');
+while ($row = $dsql->GetObject('mt')) {
     $row->money = sprintf("%01.2f", $row->money);
     $membertypes .= "<tr>
     <td><input type='radio' name='pid' value='{$row->aid}'></td>

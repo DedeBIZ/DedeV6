@@ -43,7 +43,8 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery($query);
     }
     header("Content-Type:text/html; charset={$cfg_soft_lang}");
-    echo "<script>alert('成功更新点卡产品分类表');</script>";
+    ShowMsg("成功更新点卡产品分类表","cards_type.php");
+    exit();
 }
 require_once(DEDEADMIN."/templets/cards_type.htm");
 ?>
