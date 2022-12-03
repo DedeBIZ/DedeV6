@@ -53,7 +53,7 @@ class DedeStatistics {
         $pm['sign'] = sha1(http_build_query($pm).md5($cfg_cookie_encode));
         $pm['dopost'] = "stat";
         $url = $GLOBALS['cfg_cmspath'].'/apps/statistics.php?'.http_build_query($pm);
-        return <<<EOT
+        return "
         (function() {
             let u = '{$url}';
             var ms_ie = false;
@@ -81,8 +81,7 @@ class DedeStatistics {
             } else {
                 fetch(u);
             }
-        })();
-    EOT;
+        })();";
     }
     //统计
     function Record()
