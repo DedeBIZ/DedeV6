@@ -556,7 +556,7 @@ function ShowMsg(content, ...args) {
 	size = "";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
-	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">ok</button>`;
+	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">确定</button>`;
 	var noClose = false;
 	if (args.length == 1) {
 		//存在args参数

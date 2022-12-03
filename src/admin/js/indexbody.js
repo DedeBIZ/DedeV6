@@ -52,7 +52,10 @@ function Copyinfo() {
 //Dedebiz info
 var dedebizInfo;
 function ViewDedeBIZ() {
-    console.log(dedebizInfo);
+    if (dedebizInfo === false) {
+        ShowMsg("商业组件没有启动，无法正常连接");
+        return;
+    }
     ShowMsg(`
     <table class="table table-borderless w-100">
         <tr>
@@ -74,8 +77,10 @@ function LoadServer() {
     $.get("index_body.php?dopost=system_info", function (data) {
         let rsp = JSON.parse(data);
         if (rsp.code === 200) {
-            if (rsp.result.core.code === 200) {
+            if (rsp.result.core) {
                 dedebizInfo = JSON.parse(rsp.result.core.data);
+            } else {
+                dedebizInfo = false;
             }
             
             let infoStr = `<table class="table table-borderless w-100">`;

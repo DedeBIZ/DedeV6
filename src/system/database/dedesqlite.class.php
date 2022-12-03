@@ -398,6 +398,9 @@ class DedeSqlite
     //获取字段详细信息
     function GetFieldObject($id = "me")
     {
+        if(!$this->result[$id]) {
+            return false;
+        }
         $cols = $this->result[$id]->numColumns();
         if ($this->_fieldIdx >= $cols) {
             $this->_fieldIdx = 1;
