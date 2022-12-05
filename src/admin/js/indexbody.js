@@ -47,13 +47,13 @@ function Copyinfo() {
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
     document.execCommand("Copy");
-    alert("成功复制环境配置信息");
+    alert("复制环境配置摘要成功");
 }
 //Dedebiz info
 var dedebizInfo;
 function ViewDedeBIZ() {
     if (dedebizInfo === false) {
-        ShowMsg("商业组件没有启动，无法正常连接");
+        ShowMsg("启动商业组件失败");
         return;
     }
     ShowMsg(`
