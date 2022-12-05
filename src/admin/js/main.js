@@ -281,7 +281,7 @@ function ShowUrlTrEdit() {
 function CkRemote() {
 	document.getElementById('picname').value = '';
 }
-//载入指定宽高的AJAX窗体
+//载入指定宽高的Ajax窗体
 function LoadQuickDiv(e, surl, oname, w, h) {
 	if ($Nav() == 'IE') {
 		if (window.event) {
@@ -413,7 +413,7 @@ function copyToClipboard(txt) {
 		try {
 			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
 		} catch (e) {
-			alert("被浏览器拒绝，请在浏览器地址栏输入about:config并回车\n然后把signed.applets.codebase_principal_support设置为true");
+			alert("浏览器已拒绝，请在浏览器地址栏输入about:config并回车\n然后把signed.applets.codebase_principal_support项设置为true");
 		}
 		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
 		if (!clip) return;
@@ -501,9 +501,6 @@ function getElementTop(element) {
 	}
 	return actualTop;
 }
-//Copyright 2020 The MuEMS Authors. All rights reserved.
-//license that can be found in the LICENSE file.
-//-----msgbox-------------------------------------
 //生成一个随机id
 function guid() {
 	function S4() {
@@ -530,8 +527,7 @@ function DedeConfirm(content="",title="确认提示") {
             reject("cancel");
             CloseModal(`DedeModal${modalID}`);
         }
-
-        let footer = `<button type="button" class="btn btn-outline-success btn-sm" onClick="__DedeConfirmRunClose(\'${modalID}\')">取消</button> <button type="button" class="btn btn-success btn-sm" onClick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
+        let footer = `<button type="button" class="btn btn-outline-success btn-sm" onClick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onClick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
         let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}">
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content"><div class="modal-header">
@@ -710,20 +706,20 @@ $(document).ready(function () {
 		var footer =
 			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a><a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
 		var optButton = `<p>
-			  <label for="aspectRatio">比例</label>
-			  <select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)">
+			<label for="aspectRatio">比例</label>
+			<select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)">
 				<option>16:9</option>
 				<option selected>4:3</option>
 				<option>1:1</option>
 				<option>2:3</option>
 				<option>自定义</option>
-			  </select>
+			</select>
 			</p>`;
 		mdlCropperID = ShowMsg(
 			'<div class="float-left" style="width:320px"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden"></div>', {
 			footer: footer,
 			noClose: false,
-			title: '缩略图裁剪',
+			title: '图片裁剪',
 		});
 		setTimeout(function () {
 			$("#cropImg" + mdlCropperID).cropper(optCropper);
@@ -766,4 +762,4 @@ $(document).ready(function () {
 			picker.move();
 		})
 	}
-})
+});

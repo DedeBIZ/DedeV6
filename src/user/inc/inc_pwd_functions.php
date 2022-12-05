@@ -63,7 +63,7 @@ function sendmail($email, $mailtitle, $mailbody, $headers)
     }
 }
 /**
- *  发送邮件；type为INSERT新建验证码，UPDATE修改验证码；
+ *  发送邮件；type为INSERT新建验证码，UPDATE修改验证码
  *
  * @param     int  $mid  会员id
  * @param     int  $userid  用户id
@@ -80,14 +80,14 @@ function newmail($mid, $userid, $mailto, $type, $send)
     $mailtitle = $cfg_webname.":密码修改";
     $mailto = $mailto;
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: $cfg_adminemail";
-    $mailbody = "您好".$userid."：\r\n感谢您使用".$cfg_webname."网\r\n".$cfg_webname."应您的要求，重新设置密码（如果您没有提出申请，请检查您的信息是否泄漏）\r\n本次临时登录密码为：".$randval." 请于三天内登录下面网址确认修改\r\n".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
+    $mailbody = "尊敬的用户".$userid."，临时登录密码：".$randval."\r\n请三天内修改登录密码：".$cfg_basehost."/resetpassword.php?dopost=getpasswd&id=".$mid;
     if ($type == 'INSERT') {
         $key = md5($randval);
         $sql = "INSERT INTO `#@__pwd_tmp` (`mid` ,`membername` ,`pwd` ,`mailtime`) VALUES ('$mid', '$userid',  '$key', '$mailtime');";
         if ($db->ExecuteNoneQuery($sql)) {
             if ($send == 'Y') {
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
-                return ShowMsg('EMAIL修改验证码已经发送到原来的邮箱请查收', 'login.php', '', '5000');
+                return ShowMsg('修改验证码已经发送到原来的邮箱请查收', 'login.php', '', '5000');
             } else if ($send == 'N') {
                 return ShowMsg('稍后跳转修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
             }
@@ -100,7 +100,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
         if ($db->ExecuteNoneQuery($sql)) {
             if ($send === 'Y') {
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
-                ShowMsg('EMAIL修改验证码已经发送到原来的邮箱请查收', 'login.php');
+                ShowMsg('修改验证码已经发送到原来的邮箱请查收', 'login.php');
             } elseif ($send === 'N') {
                 return ShowMsg('稍后跳转修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
             }
@@ -110,7 +110,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
     }
 }
 /**
- *  查询会员信息mail用户输入邮箱地址；userid用户名
+ *  查询会员信息mail用户输入邮箱地址userid用户名
  *
  * @param     string  $mail  邮件
  * @param     string  $userid  用户id
@@ -141,14 +141,14 @@ function sn($mid, $userid, $mailto, $send = 'Y')
     $sql = "SELECT * FROM `#@__pwd_tmp` WHERE mid = '$mid'";
     $row = $db->GetOne($sql);
     if (!is_array($row)) {
-        //发送新邮件；
+        //发送新邮件
         newmail($mid, $userid, $mailto, 'INSERT', $send);
     }
-    //10分钟后可以再次发送新验证码；
+    //10分钟后可以再次发送新验证码
     elseif ($dtime - $tptim > $row['mailtime']) {
         newmail($mid, $userid, $mailto, 'UPDATE', $send);
     }
-    //重新发送新的验证码确认邮件；
+    //重新发送新的验证码确认邮件
     else {
         return ShowMsg('请10分钟后再重新申请', 'login.php');
     }

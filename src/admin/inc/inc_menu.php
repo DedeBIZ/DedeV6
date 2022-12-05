@@ -47,56 +47,56 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='文档单页管理' link='templets_one.php' rank='temp_One' target='main' />
     <m:item name='联动类别管理' link='stepselect_main.php' rank='c_Stepseclect' target='main' />
     <m:item name='自由列表管理' link='freelist_main.php' rank='c_List' target='main' />
-    <m:item name='自定义表单' link='diy_main.php' rank='c_List' target='main' />
+    <m:item name='自定义表单管理' link='diy_main.php' rank='c_List' target='main' />
 </m:top>";
   $adminMenu2 = "<m:top item='10_' name='支付工具' rank='sys_Data' icon='fa-credit-card'>
-    <m:item name='点卡产品分类' link='cards_type.php' rank='sys_Data' target='main' />
     <m:item name='点卡产品管理' link='cards_manage.php' rank='sys_Data' target='main' />
-    <m:item name='会员产品分类' link='member_type.php' rank='sys_Data' target='main' />
+    <m:item name='点卡产品分类' link='cards_type.php' rank='sys_Data' target='main' />
     <m:item name='会员消费记录' link='member_operations.php' rank='sys_Data' target='main' />
+    <m:item name='会员产品分类' link='member_type.php' rank='sys_Data' target='main' />
     <m:item name='支付接口设置' link='sys_payment.php' .php' rank='sys_Data' target='main' />
 </m:top>
 <m:top item='12_' name='系统设置' rank='sys_User,sys_Group,sys_Edit,sys_Log,sys_Data' icon='fa-cog'>
     <m:item name='系统配置变量' link='sys_info.php' rank='sys_Edit' target='main' />
+    <m:item name='系统日志管理' link='log_list.php' rank='sys_Log' target='main' />
     <m:item name='系统用户管理' link='sys_admin_user.php' rank='sys_User' target='main' />
     <m:item name='用户组设定' link='sys_group.php' rank='sys_Group' target='main' />
-    <m:item name='系统日志管理' link='log_list.php' rank='sys_Log' target='main' />
     <m:item name='图片水印设置' link='sys_info_mark.php' rank='sys_Edit' target='main' />
-    <m:item name='自定义文档属性' link='content_att.php' rank='sys_Att' target='main' />
-    <m:item name='软件栏目设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
+    <m:item name='软件下载设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
     <m:item name='防采集串混淆' link='article_string_mix.php' rank='sys_StringMix' target='main' />
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据备份还原' link='sys_data.php' rank='sys_Data' target='main' />")."
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='SQL命令行工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
-    <m:item name='病毒文件扫描' link='sys_safetest.php' rank='sys_verify' target='main' />
+    <m:item name='后台文件扫描' link='sys_safetest.php' rank='sys_verify' target='main' />
     <m:item name='系统错误修复' link='sys_repair.php' rank='sys_verify' target='main' />
 </m:top>";
 }
 $menusMain = "<m:top item='1_' name='常用操作' icon='fa-desktop'>
     <m:item name='网站栏目管理' link='catalog_main.php' ischannel='1' addalt='创建栏目' linkadd='catalog_add.php?listtype=all' rank='t_List,t_AccList' target='main' />
     <m:item name='所有文档列表' link='content_list.php' rank='a_List,a_AccList' target='main' />
-    <m:item name='等审核的文档' link='content_list.php?arcrank=-1' rank='a_Check,a_AccCheck' target='main' />
+    <m:item name='待审核的文档' link='content_list.php?arcrank=-1' rank='a_Check,a_AccCheck' target='main' />
     <m:item name='我发布的文档' link='content_list.php?mid=".$cuserLogin->getUserID()."' rank='a_List,a_AccList,a_MyList' target='main' />
+    <m:item name='自定义文档属性' link='content_att.php' rank='sys_Att' target='main' />
     <m:item name='评论管理' link='feedback_main.php' rank='sys_Feedback' target='main' />
     <m:item name='文档回收站' link='recycling.php' ischannel='1' addalt='清空回收站' addico='fa-minus-circle' linkadd='archives_do.php?dopost=clear&aid=no&recycle=1' rank='a_List,a_AccList,a_MyList' target='main' />
 </m:top>
 <m:top item='2_' name='文档管理' icon='fa-file-text'>
     $addset
     <m:item name='专题管理' ischannel='1' link='content_s_list.php' linkadd='spec_add.php' channelid='-1' rank='spec_New' target='main' />
+    <m:item name='标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
 </m:top>
-<m:top item='3_' name='附件管理' rank='sys_Upload,sys_MyUpload,plus_文件管理器' icon='fa-folder'>
+<m:top item='3_' name='附件管理' rank='sys_Upload,sys_MyUpload,plus_file' icon='fa-folder'>
     <m:item name='上传新文件' link='media_add.php' rank='' target='main' />
     <m:item name='附件数据管理' link='media_main.php' rank='sys_Upload,sys_MyUpload' target='main' />
-    <m:item name='文件式管理器' link='media_main.php?dopost=filemanager' rank='plus_文件管理器' target='main' />
+    <m:item name='文件式管理器' link='media_main.php?dopost=filemanager' rank='plus_file' target='main' />
 </m:top>
 $adminMenu1
 <m:top item='5_' name='批量维护' icon='fa-circle-o-notch'>
     <m:item name='文档批量维护' link='content_batch_up.php' rank='sys_ArcBatch' target='main' />
-    <m:item name='搜索关键词维护' link='search_keywords_main.php' rank='sys_Keyword' target='main' />
     <m:item name='文档关键词维护' link='article_keywords_main.php' rank='sys_Keyword' target='main' />
+    <m:item name='搜索关键词维护' link='search_keywords_main.php' rank='sys_Keyword' target='main' />
     <m:item name='重复文档检测' link='article_test_same.php' rank='sys_ArcBatch' target='main' />
     <m:item name='自动摘要分页' link='article_description_main.php' rank='sys_Keyword' target='main' />
-    <m:item name='标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
-    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据库文档替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
+    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据库字段替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
 </m:top>
 {$GLOBALS['menusMoudle']}
 <m:top item='8_' name='更新任务' rank='sys_MakeHtml' icon='fa-repeat'>
@@ -109,10 +109,10 @@ $adminMenu1
     <m:item name='更新缓存' link='sys_cache_up.php' rank='sys_ArcBatch' target='main' />
 </m:top>
 <m:top item='9_' name='会员管理' rank='member_List,member_Type' icon='fa-user-circle'>
-    <m:item name='注册会员列表' link='member_main.php' rank='member_List' target='main' />
+    <m:item name='所有会员列表' link='member_main.php' rank='member_List' target='main' />
+    <m:item name='会员短信管理' link='member_pm.php' rank='member_Type' target='main' />
     <m:item name='会员级别设置' link='member_rank.php' rank='member_Type' target='main' />
     <m:item name='积分头衔设置' link='member_scores.php' rank='member_Type' target='main' />
-    <m:item name='会员短信管理' link='member_pm.php' rank='member_Type' target='main' />
 </m:top>
 $adminMenu2
 <m:top item='12_' name='系统帮助' icon='fa-info-circle'>

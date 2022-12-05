@@ -82,7 +82,6 @@ function LoadServer() {
             } else {
                 dedebizInfo = false;
             }
-            
             let infoStr = `<table class="table table-borderless w-100">`;
             if (typeof rsp.result.domain !== "undefined") {
                 infoStr += `
@@ -158,7 +157,7 @@ function LoadStat() {
                 });
             }
         } catch (error) {
-            console.log("加载统计信息失败")
+            console.log("加载流量统计数据失败")
         }
     });
     var d = new Date();
@@ -175,7 +174,7 @@ function LoadStat() {
                 $("#yestoday_vv").html(rsp.result.vv);
             }
         } catch (error) {
-            console.log("加载统计信息失败")
+            console.log("加载流量统计数据失败")
         }
     });
 }
@@ -236,8 +235,7 @@ async function LoadStatChart() {
                     borderColor: 'rgba(255, 99, 132, 1)',
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderWidth: 1
-                }
-                , {
+                }, {
                     label: 'VV',
                     data: vvs,
                     borderColor: 'rgba(75, 192, 192, 1)',
