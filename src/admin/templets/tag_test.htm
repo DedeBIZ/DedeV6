@@ -8,20 +8,11 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<link rel="stylesheet" href="css/codemirror.css">
-		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/codemirror.js"></script>
 		<script src="js/mode/xml/xml.js"></script>
 		<script src="js/mode/javascript/javascript.js"></script>
 		<script src="js/mode/css/css.js"></script>
 		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
-		<script src="js/main.js"></script>
-		<script>
-			function SelectTemplets(fname) {
-				var pos = GetWinPos(800, 600);
-				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin",
-					"scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-			}
-		</script>
 	</head>
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
@@ -33,7 +24,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">全局标记指的是应用在网站主页、单独页面、封面栏目使用的单独的模板标记，在列表或文档模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文档或列表所在的栏目，如果您要测试的标记是在列表或文档中使用，请指定环境变量（栏目id）各标记的具体含义和用途，请在<a href="https://www.dedebiz.com/help" target="_blank">模板标记参考</a>一章查阅</div>
+						<div class="alert alert-info mb-0">全局标记应用在网站主页、单独页面、封面栏目使用的单独模板标记，在列表或文档模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文档或列表所在的栏目，如果您要测试的标记是在列表或文档中使用，请指定环境变量（栏目id）各标记的具体含义和用途</div>
 					</td>
 				</tr>
 				<tr>
@@ -43,7 +34,7 @@
 						if (empty($cid)) $cid="0";
 						$tl = new TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
-						echo "<select name='typeid' class='admin-input-md'>";
+						echo "<select name='typeid' class='admin-input-sm'>";
 						if ($cid=="0") echo "<option value='0' selected>不使用环境</option>";
 						echo $typeOptions;
 						echo "</select>";
@@ -54,7 +45,7 @@
 					<td colspan="2" class="p-0"><textarea name="partcode" id="partcode" class="admin-textarea-xl"></textarea></td>
 				</tr>
 				<tr>
-					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="submit" onClick="DoSubmit('gettag')" class="btn btn-success btn-sm">提交测试</button></td>
+					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">提交测试</button></td>
 				</tr>
 			</form>
 			<tr>
