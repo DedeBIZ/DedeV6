@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('plus_file');
+CheckPurview('plus_文件管理器');
 require_once(DEDEINC."/libraries/oxwindow.class.php");
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);

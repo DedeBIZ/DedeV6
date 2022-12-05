@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
-CheckPurview('plus_file');
+CheckPurview('plus_文件管理器');
 if (!isset($activepath)) $activepath = DEDEBIZ_SAFE_MODE? $cfg_medias_dir : $cfg_cmspath;
 $inpath = "";
 $activepath = str_replace("..", "", $activepath);

@@ -90,7 +90,7 @@ $actionSearch[2] = array(
         2  =>  array(
             'title' => '文件式管理器',
             'description' => '应用文件浏览的模式进行附件的管理',
-            'purview' => 'plus_file',
+            'purview' => 'plus_文件管理器',
             'linkurl' => 'media_main.php?dopost=filemanager'
         ),
     )

@@ -84,10 +84,10 @@ $menusMain = "<m:top item='1_' name='常用操作' icon='fa-desktop'>
     <m:item name='专题管理' ischannel='1' link='content_s_list.php' linkadd='spec_add.php' channelid='-1' rank='spec_New' target='main' />
     <m:item name='标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
 </m:top>
-<m:top item='3_' name='附件管理' rank='sys_Upload,sys_MyUpload,plus_file' icon='fa-folder'>
+<m:top item='3_' name='附件管理' rank='sys_Upload,sys_MyUpload,plus_文件管理器' icon='fa-folder'>
     <m:item name='上传新文件' link='media_add.php' rank='' target='main' />
     <m:item name='附件数据管理' link='media_main.php' rank='sys_Upload,sys_MyUpload' target='main' />
-    <m:item name='文件式管理器' link='media_main.php?dopost=filemanager' rank='plus_file' target='main' />
+    <m:item name='文件式管理器' link='media_main.php?dopost=filemanager' rank='plus_文件管理器' target='main' />
 </m:top>
 $adminMenu1
 <m:top item='5_' name='批量维护' icon='fa-circle-o-notch'>
