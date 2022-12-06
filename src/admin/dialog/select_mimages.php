@@ -41,9 +41,9 @@ button+button{margin-left:10px}
 <div id="wrap">
 	<div id="topbar">
         <label><input type="checkbox" name="isWater" id="isWater" <?php if ($photo_markup == '1') echo "checked";?>> 是否水印</label>
-        <button class="addfile">添加文件</button>
+        <button class="addfile">添加图片</button>
+        <button class="removeall">清空图片</button>
         <button class="upall">全部上传</button>
-        <button class="removeall">清空列表</button>
     </div>
 	<ul id="file_list"></ul>
 </div>

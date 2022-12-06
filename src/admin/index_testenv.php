@@ -126,23 +126,23 @@ if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
 	$safeMsg[] = '后台管理登录默认名称admin，建议您进行修改';
 }
 if (IsWritable(DEDEDATA.'/common.inc.php')) {
-	$safeMsg[] = '数据配置data/common.inc.php文件，需要以管理员权限设置禁止写入和执行';
+	$safeMsg[] = '数据库配置data/common.inc.php文件，建议您以管理员权限设置禁止写入和执行';
 }
 if (!IsSSL()) {
-	$safeMsg[] = '站点尚未启用HTTPS，建议您配置HTTPS';
+	$safeMsg[] = '网址非安全链接，建议您配置HTTPS';
 }
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	$safeMsg[] = 'PHP版本过低会无法正常使用系统，需要升级到PHP7.X';
+	$safeMsg[] = 'PHP版本过低会无法正常使用系统，建议您升级到PHP7.X';
 }
 if (!DEDEBIZ_SAFE_MODE) {
-	$safeMsg[] = '系统运行环境为：开发模式，建议启用安全模式 <a href="index_body.php?dopost=safe_mode" class="text-danger">[查看]</a>';
+	$safeMsg[] = '系统运行环境为开发模式，建议您启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-xs">查看</a>';
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
-	$linkurl = '<a href="sys_admin_user.php" class="text-danger">[修改]</span>';
+	$linkurl = '<a href="sys_admin_user.php" class="btn btn-success btn-xs">修改</a>';
 	switch ($rs) {
 		case -1:
-			$msg = "管理员默认名称admin没有修改，建议您修改 {$linkurl}";
+			$msg = "管理员默认名称没有修改，建议您修改 {$linkurl}";
 			break;
 		case -2:
 			$msg = "管理员默认名称和密码没有修改，建议您修改 {$linkurl}";
@@ -159,7 +159,7 @@ if (count($safeMsg) > 0) {
 		$i = 1;
 		foreach ($safeMsg as $key => $val) {
 		?>
-		<div><?php echo $i;?>、<?php echo $val;?></div>
+		<div class="my-1"><?php echo $i;?>、<?php echo $val;?></div>
 		<?php
 		$i++;
 		}

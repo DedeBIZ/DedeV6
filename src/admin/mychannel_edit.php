@@ -298,13 +298,12 @@ else if ($dopost == "gettemplets") {
     $win->AddTitle("栏目<span class='text-primary'>".$row['typename']."</span>默认模板文件说明");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "
-        文档模板：{$defaulttemplate}/article_{$row['nid']}.htm
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm'>[修改]</a><br>
-        列表模板：{$defaulttemplate}/list_{$row['nid']}.htm
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm'>[修改]</a>
-        <br>
-        封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm'>[修改]</a>
+        <span>文档模板：{$defaulttemplate}/article_{$row['nid']}.htm</span>
+        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a><br>
+        <span>列表模板：{$defaulttemplate}/list_{$row['nid']}.htm</span>
+        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a><br>
+        <span>封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm</span>
+        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
     ";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("hand", "");

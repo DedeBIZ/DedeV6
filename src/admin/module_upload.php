@@ -19,7 +19,7 @@ if (empty($action)) $action = '';
 $mdir = DEDEDATA.'/module';
 if ($action == 'upload') {
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("您什么都没有上传", "javascript:;");
+        ShowMsg("请选择要上传的模块文件", "javascript:;");
         exit();
     } else {
         include_once(DEDEINC."/libraries/zip.class.php");
@@ -30,7 +30,7 @@ if ($action == 'upload') {
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的插件不是模块格式文件，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的插件不是正常模块格式文件，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -40,7 +40,7 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的模块已存在，请删除原模块文件或强制删除同名模块上传，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的模块已存在，请删除原模块文件或强制同名模块上传，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         @unlink($okfile);
@@ -55,19 +55,19 @@ if ($action == 'upload') {
     $win->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data");
     $win->mainTitle = "模块管理";
     $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块";
-    $win->AddTitle('请选择要上传的文件');
+    $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'upload');
-    $msg = "<table width='900' cellspacing='0' cellpadding='0'>
+    $msg = "<table width='98%' cellspacing='0' cellpadding='0'>
     <tr>
         <td width='260'>文件格式：</td>
-        <td><label><input type='radio' name='filetype' value='0' checked='checked'> 正常的模块包</label></td>
+        <td><label><input type='radio' name='filetype' value='0' checked='checked'> 正常模块格式</label></td>
     </tr>
     <tr>
         <td>已有模块：</td>
-        <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 强制删除同名模块，这可能导致已经安装的模块无法卸载</label></td>
+        <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 是否删除同名模块可能会导致已经安装模块无法卸载</label></td>
     </tr>
     <tr>
-        <td>请选择文件：</td>
+        <td>选择文件：</td>
         <td><input name='upfile' type='file' id='upfile' class='admin-input-lg'></td>
     </tr>
     </table>";

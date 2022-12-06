@@ -82,8 +82,8 @@ html{background:#f5f5f5}
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="job" value="upload">
-                    上传：<input type="file" name="uploadfile" class="w-50">
-                    改名：<input type="text" name="newname" class="admin-input-sm">
+                    <span>选择：<input type="file" name="uploadfile" class="w-50"></span>
+                    <span>改名：<input type="text" name="newname" class="admin-input-sm"></span>
                     <button type="submit" name="sb1" class="btn btn-success btn-sm">保存</button>
                 </form>
             </td>

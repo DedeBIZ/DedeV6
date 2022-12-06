@@ -124,7 +124,7 @@ else if ($action == 'upload') {
     $win->Init("tpl.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "模块管理";
     $wecome_info = "<a href='templets_main.php'>模板管理</a> &gt; 上传模板";
-    $win->AddTitle('请选择要上传的文件');
+    $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'uploadok');
     $msg = "
     <table cellspacing='0' cellpadding='0'>
@@ -175,8 +175,7 @@ function edittag() { }
 else if ($action == 'edittag' || $action == 'addnewtag') {
     if ($action == 'addnewtag') {
         $democode = '<'."?php
-if (!defined('DEDEINC'))
-{
+if (!defined('DEDEINC')) {
     exit(\"Request Error!\");
 }
 function lib_demotag(&\$ctag,&\$refObj)
@@ -228,7 +227,7 @@ else if ($action == 'savetagfile') {
     $msg = "
     <form name='form1' action='tag_test_action.php' target='blank' method='post'>
       <input type='hidden' name='dopost' value='make' />
-        标签测试（环境变量标签不能测试）<br>
+        标签测试（环境变量标签不支持测试）<br>
         <textarea name='partcode' cols='150' rows='6' style='width:90%;'>{dede:{$tagname}}{/dede:{$tagname}}</textarea><br>
         <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
     </form>

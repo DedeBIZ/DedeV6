@@ -13,7 +13,6 @@ $cfg_softtype = $cfg_mediatype."|mp4";
 $cfg_soft_dir = $cfg_other_medias;
 $bkurl = 'select_media.php';
 $uploadmbtype = "多媒体文件类型";
-
 if (empty($activepath)) {
     $activepath = '';
     $activepath = str_replace('.', '', $activepath);
