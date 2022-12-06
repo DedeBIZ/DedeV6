@@ -141,7 +141,7 @@ function GetEnumsJs($egroup)
     $jsCode = "";
     $jsCode .= "em_{$egroup}s=new Array();\r\n";
     foreach (${'em_'.$egroup.'s'} as $k => $v) {
-        //js中3级类目存放到第二个key中去
+        //js中3级栏目存放到第二个key中去
         if (preg_match("#([0-9]{1,})\.([0-9]{1,})#", $k, $matchs)) {
             $valKey = $matchs[1] + $matchs[2] / 1000;
             $jsCode .= "em_{$egroup}s[{$valKey}]='$v';\r\n";

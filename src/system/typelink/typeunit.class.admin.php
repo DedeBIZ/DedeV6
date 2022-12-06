@@ -72,7 +72,7 @@ class TypeUnit
         }
     }
     /**
-     *  读出所有分类,在类目管理页(list_type)中使用
+     *  读出所有分类,在栏目管理页list_type中使用
      *
      * @access    public
      * @param     int   $channel  栏目id
@@ -162,7 +162,7 @@ class TypeUnit
         }
     }
     /**
-     *  获得子类目的递归调用
+     *  获得子栏目的递归调用
      *
      * @access    public
      * @param     int  $id  栏目id
@@ -243,7 +243,7 @@ class TypeUnit
         }
     }
     /**
-     *  返回与某个目相关的下级目录的栏目id列表删除类目或文档时调用
+     *  返回与某个目相关的下级目录的栏目id列表删除栏目或文档时调用
      *
      * @access    public
      * @param     int   $id  栏目id
@@ -270,7 +270,7 @@ class TypeUnit
         return $this->idArray;
     }
     /**
-     *  删除类目
+     *  删除栏目
      *
      * @access    public
      * @param     int   $id  栏目id

@@ -11,7 +11,6 @@ $cfg_NotPrintHead = 'Y';
 require_once(dirname(__FILE__)."/config.php");
 AjaxHead();
 $action = isset($action)? $action : '';
-
 if ($action === 'is_need_check_code') {
     $isNeed = $cfg_ml->isNeedCheckCode($userid);
     echo json_encode(array(
@@ -28,7 +27,7 @@ if ($action === 'is_need_check_code') {
         if ($format === 'json') {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "尚未登录",
+                "msg" => "未登录",
                 "data" => null,
             ));
         } else {
@@ -52,18 +51,5 @@ if ($action === 'is_need_check_code') {
         ));
         exit;
     }
-?>
-<div class="userinfo">
-    <div class="welcome">您好：<?php echo $cfg_ml->M_UserName;?>，欢迎登录 </div>
-    <div class="userface">
-        <a href="<?php echo $cfg_memberurl;?>/index.php"><img src="<?php echo $facepic;?>" width="52" height="52" /></a>
-    </div>
-    <div class="uclink">
-        <a href="<?php echo $cfg_memberurl;?>/index.php">会员中心</a> |
-        <a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">资料</a> |
-        <a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=login&dopost=exit">退出登录</a>
-    </div>
-</div>
-<?php
 }
 ?>

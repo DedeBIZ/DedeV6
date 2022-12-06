@@ -45,7 +45,7 @@ class TypeLink
         $this->valuePositionName = '';
         $this->typeDir = '';
         $this->OptionArrayList = '';
-        //载入类目信息
+        //载入栏目信息
         $query = "SELECT tp.*,ch.typename as ctypename,ch.addtable,ch.issystem FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$typeid' ";
         if ($typeid > 0) {
             $this->TypeInfos = $this->dsql->GetOne($query);
@@ -74,12 +74,12 @@ class TypeLink
         $this->valuePositionName = "";
         $this->typeDir = "";
         $this->OptionArrayList = "";
-        //载入类目信息
+        //载入栏目信息
         $query = "SELECT `#@__arctype`.*,`#@__channeltype`.typename as ctypename FROM `#@__arctype` LEFT JOIN `#@__channeltype` on `#@__channeltype`.id=`#@__arctype`.channeltype WHERE `#@__arctype`.id='$typeid'";
         $this->dsql->SetQuery($query);
         $this->TypeInfos = $this->dsql->GetOne();
     }
-    //获得这个类目的路径
+    //获得这个栏目的路径
     function GetTypeDir()
     {
         if (empty($this->TypeInfos['typedir'])) {
@@ -88,7 +88,7 @@ class TypeLink
             return $this->TypeInfos['typedir'];
         }
     }
-    //获得某类目的链接列表 如：类目一>>类目二>> 这样的形式
+    //获得某栏目的链接列表 如：栏目一>>栏目二>> 这样的形式
     //islink 表示返回的列表是否带连接
     function GetPositionLink($islink = true)
     {
@@ -127,7 +127,7 @@ class TypeLink
     {
         return $this->GetPositionLink(false);
     }
-    //获得某类目的链接列表，递归逻辑部分
+    //获得某栏目的链接列表，递归逻辑部分
     function LogicGetPosition($id, $islink)
     {
         $this->dsql->SetQuery("SELECT id,reid,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE id='".$id."'");
@@ -143,7 +143,7 @@ class TypeLink
             return 0;
         }
     }
-    //获得某个类目的超链接信息
+    //获得某个栏目的超链接信息
     function GetOneTypeLink($typeinfos)
     {
         $typepage = $this->GetOneTypeUrl($typeinfos);
@@ -166,9 +166,9 @@ class TypeLink
         );
     }
     //获得类别列表
-    //hid是指默认选中类目，0表示“请选择类目”或“不限类目”
-    //oper是用户允许管理的类目，0表示所有类目
-    //channeltype是指类目的文档类型，0表示不限栏目
+    //hid是指默认选中栏目，0表示“请选择栏目”或“不限栏目”
+    //oper是用户允许管理的栏目，0表示所有栏目
+    //channeltype是指栏目的文档类型，0表示不限栏目
     function GetOptionArray($hid = 0, $oper = 0, $channeltype = 0, $usersg = 0)
     {
         return $this->GetOptionList($hid, $oper, $channeltype, $usersg);
@@ -254,7 +254,7 @@ class TypeLink
         }
     }
     /**
-     *  获得与该类相关的类目，本函数应用于模板标记{dede:channel}{/dede:channel}中
+     *  获得与该类相关的栏目，本函数应用于模板标记{dede:channel}{/dede:channel}中
      *  $typetype 的值为：sun下级分类 self同级分类 top顶级分类
      *
      * @access    public

@@ -13,7 +13,7 @@
  *
  * @access    public
  * @param     string  $selid  选择id
- * @param     string  $userCatalog  用户类目
+ * @param     string  $userCatalog  用户栏目
  * @param     string  $channeltype  栏目类型
  * @return    string
  */

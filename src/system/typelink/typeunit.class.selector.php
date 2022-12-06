@@ -90,7 +90,7 @@ class TypeUnitSelector
         }
     }
     /**
-     *  获得子类目的递归调用
+     *  获得子栏目的递归调用
      *
      * @access    public
      * @param     int   $id  栏目id

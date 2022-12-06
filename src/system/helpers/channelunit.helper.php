@@ -184,7 +184,7 @@ if (!function_exists('GetFileName')) {
     }
 }
 /**
- *  获得指定类目的URL链接
+ *  获得指定栏目的URL链接
  *  对于使用封面文件和单独页面的情况，强制使用默认页名称
  *
  * @param     int  $typeid  栏目id
@@ -259,7 +259,7 @@ if (!function_exists('MagicVar')) {
     }
 }
 /**
- *  获取某个类目的所有上级栏目id
+ *  获取某个栏目的所有上级栏目id
  *
  * @param     int  $tid  栏目id
  * @return    string
@@ -309,7 +309,7 @@ if (!function_exists('IsParent')) {
     }
 }
 /**
- *  获取一个类目的顶级栏目id
+ *  获取一个栏目的顶级栏目id
  *
  * @param     string  $tid  栏目id
  * @return    string

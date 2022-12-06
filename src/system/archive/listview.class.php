@@ -261,7 +261,7 @@ class ListView
         }
         //创建封面模板文件
         if ($this->TypeLink->TypeInfos['isdefault'] == -1) {
-            echo '这个类目是动态类目';
+            echo '这个栏目是动态栏目';
             return '../apps/list.php?tid='.$this->TypeLink->TypeInfos['id'];
         }
         //单独页面
