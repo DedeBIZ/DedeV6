@@ -77,7 +77,7 @@ function LoadServer() {
     $.get("index_body.php?dopost=system_info", function (data) {
         let rsp = JSON.parse(data);
         if (rsp.code === 200) {
-            if (rsp.result.core) {
+            if (rsp.result.core.code === 200) {
                 dedebizInfo = JSON.parse(rsp.result.core.data);
             } else {
                 dedebizInfo = false;
