@@ -35,8 +35,8 @@ body,th,td {
 	line-height:1.5
 }
 th,td,div {
-	word-break:break-all;
-	word-wrap:break-word
+	white-space:normal;
+	word-break:break-all
 }
 li,dd {
 	margin:0;
@@ -51,17 +51,16 @@ label {
 	margin-bottom:0
 }
 input {
-	padding:.25rem .5rem;
+	padding:.25rem .65rem;
 	height:28px;
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
 	border-radius:.2rem;
-	vertical-align:middle;
 	transition:all .3s
 }
 input[type=button],input[type=submit],input[type=reset] {
-	padding:.25rem .5rem;
+	padding:.25rem .65rem;
 	height:auto;
 	color:#fff;
 	background:#1eb867;
@@ -79,7 +78,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	vertical-align:text-top
 }
 textarea {
-	padding:.25rem .5rem;
+	padding:.25rem .65rem;
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
@@ -87,7 +86,7 @@ textarea {
 	transition:all .3s
 }
 select {
-	padding:.25rem .5rem;
+	padding:.25rem .65rem;
 	height:28px;
 	color:#545b62;
 	background:#fff;
@@ -367,7 +366,7 @@ span.page-link {
 }
 .admin-win {
 	background:#f5f5f5;
-	border:1px solid #dee2e6!important
+	border:1px solid #dee2e6
 }
 .admin-win-iframe {
 	width:100%;
@@ -384,11 +383,10 @@ span.page-link {
 	border-radius:.2rem .2rem 0 0
 }
 .admin-border {
-	border:1px solid #dee2e6!important
+	border:1px solid #dee2e6
 }
 .admin-td {
 	padding:.65rem;
-	vertical-align:middle;
 	border-bottom:1px solid #dee2e6!important
 }
 .admin-textarea-xl {
@@ -444,7 +442,7 @@ span.page-link {
 	margin-left:1rem
 }
 .coolbg {
-	padding:.25rem .5rem;
+	padding:.25rem .65rem;
 	background:#f5f5f5;
 	border-bottom:1px solid #dee2e6;
 	border-radius:.2rem;
