@@ -37,6 +37,10 @@
 								<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control"></div>
 							</div>
 							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">缩略图</label>
+								<div class="col-sm-10"><input type="file" name="upfile1" class="w-100"></div>
+							</div>
+							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">作者</label>
 								<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
 							</div>
@@ -56,7 +60,11 @@
 								<label class="col-sm-2 col-form-label">描述</label>
 								<div class="col-sm-10"><textarea name="description" id="description" class="form-control"></textarea></div>
 							</div>
-							<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>										
+							<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">正文</label>
+								<div class="col-sm-10"><?php GetEditor("body","",400,"Member");?></div>
+							</div>
 							<input name="maxwidth" type="hidden" id="maxwidth" value="<?php echo $cfg_album_width;?>">
 							<input name="prow" type="hidden" value="<?php echo $cfg_album_row;?>">
 							<input name="pcol" type="hidden" value="<?php echo $cfg_album_col;?>">
@@ -66,10 +74,9 @@
 								<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if ($cfg_album_style==1) echo " checked='checked'";?>> 多页多图显示（适用于表情等）</label>
 								<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if ($cfg_album_style==2) echo " checked='checked'";?>> 多页单图显示（幻灯）</label>
 								<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if ($cfg_album_style==3) echo " checked='checked'";?>> 多行多列显示（缩略图）</label>
-								<div id="spagelist" style="display:none">每页图片数：<input name="pagpicnum" id="pagpicnum" size="10" value="<?php echo $cfg_album_pagesize;?>"></div>
+								<div id="spagelist" style="display:none">每页图片数：<input name="pagpicnum" id="pagpicnum" class="form-control d-inline-block w-25" value="<?php echo $cfg_album_pagesize;?>"></div>
 							</div>
 							<div class="form-group">
-								<label>手工上传</label>
 								<span>图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control d-inline-block w-25"></span>
 								<button type="button" name="kkkup" id="kkkup2" class="btn btn-success btn-sm" onclick="MakeUpload(0);">增加</button>（最大60幅）
 							</div>

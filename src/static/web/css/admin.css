@@ -34,10 +34,6 @@ form,h1,h2,h3,ul,ol,div {
 body,th,td {
 	line-height:1.5
 }
-th,td,div {
-	white-space:normal;
-	word-break:break-all
-}
 li,dd {
 	margin:0;
 	padding:0;

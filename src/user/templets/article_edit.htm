@@ -37,7 +37,14 @@
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">标签</label>
-								<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo $row['keywords'];?>"></div>
+								<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">缩略图</label>
+								<div class="col-sm-10">
+									<img src="/static/web/img/thumbnail.jpg" class="thumbnail-md">
+									<button class="btn btn-success btn-sm">更换</button>
+								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">作者</label>
@@ -58,10 +65,7 @@
 								<label class="col-sm-2 col-form-label">信息摘要</label>
 								<div class="col-sm-10"><textarea name="description" id="description" class="form-control"><?php echo $row["description"];?></textarea></div>
 							</div>
-							<?php
-							//自定义字段
-							PrintAutoFieldsEdit($row['fieldset'],$addRow,'autofield');
-							?>
+							<?php PrintAutoFieldsEdit($row['fieldset'],$addRow,'autofield');?>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">正文</label>
 								<div class="col-sm-10"><?php GetEditor("body",$addRow['body'],400,"Member");?></div>

@@ -18,7 +18,7 @@
 				morelinkobj.style.display = "block";
 				if (endNum > 12) endNum = 12;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<p>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' maxlength='100' class='form-control'></p>";
+					upfield.innerHTML += "<p>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='form-control d-inline-block w-50 mr-2'><span class='btn btn-success btn-sm'>选择</span>></p>";
 					upfield.innerHTML += "<p>服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'></p>";
 				}
 			}
@@ -56,6 +56,13 @@
 								<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
 							</div>
 							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">缩略图</label>
+								<div class="col-sm-10">
+									<img src="/static/web/img/thumbnail.jpg" class="thumbnail-md">
+									<button class="btn btn-success btn-sm">更换</button>
+								</div>
+							</div>
+							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">作者</label>
 								<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
 							</div>
@@ -74,9 +81,7 @@
 								<div class="form-group col-md-6">
 									<label for="filetype">文件类型</label>
 									<select name="filetype" id="filetype" class="form-control">
-										<?php
-										if ($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\" selected>".$addRow["filetype"]."</option>";
-										?>
+										<?php if ($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\" selected>".$addRow["filetype"]."</option>";?>
 										<option value=".exe">.exe</option>
 										<option value=".zip">.zip</option>
 										<option value=".rar">.rar</option>
@@ -88,9 +93,7 @@
 								<div class="form-group col-md-6">
 									<label for="language">界面语言</label>
 									<select name="language" id="language" class="form-control">
-										<?php
-										if ($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\" selected>".$addRow["language"]."</option>";
-										?>
+										<?php if ($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\" selected>".$addRow["language"]."</option>";?>
 										<option value="简体中文">简体中文</option>
 										<option value="英文软件">英文软件</option>
 										<option value="繁体中文">繁体中文</option>
@@ -102,9 +105,7 @@
 								<div class="form-group col-md-6">
 									<label for="softtype">软件类型</label>
 									<select name="softtype" id="softtype" class="form-control">
-										<?php
-										if ($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\" selected>".$addRow["softtype"]."</option>";
-										?>
+										<?php if ($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\" selected>".$addRow["softtype"]."</option>";?>
 										<option value="国产软件" selected="selected">国产软件</option>
 										<option value="国外软件">国外软件</option>
 										<option value="汉化补丁">汉化补丁</option>
@@ -113,9 +114,7 @@
 								<div class="form-group col-md-6">
 									<label for="accredit">授权方式</label>
 									<select name="accredit" id="accredit" class="form-control">
-										<?php
-										if ($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\" selected>".$addRow["accredit"]."</option>";
-										?>
+										<?php if ($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\" selected>".$addRow["accredit"]."</option>";?>
 										<option value="共享软件">共享软件</option>
 										<option value="免费软件">免费软件</option>
 										<option value="开源软件">开源软件</option>
@@ -128,14 +127,12 @@
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="os">运行环境</label>
-									<input type="text" id="os" name="os" value="<?php echo isset($addRow['os'])? $addRow['os'] : '';?>" maxlength="100" class='form-control'>
+									<input type="text" id="os" name="os" value="<?php echo isset($addRow['os'])? $addRow['os'] : '';?>" class="form-control">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="softrank">软件等级</label>
 									<select name="softrank" id="softrank" class="form-control">
-										<?php
-										if ($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\" selected>".$addRow["softrank"]."星</option>";
-										?>
+										<?php if ($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\" selected>".$addRow["softrank"]."星</option>";?>
 										<option value="1">一星</option>
 										<option value="2">二星</option>
 										<option value="3">三星 </option>
@@ -147,27 +144,24 @@
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="officialDemo">官方网址</label>
-									<input type="text" name="officialDemo" value="<?php echo isset($addRow['officialUrl'])? $addRow['officialUrl'] : '';?>" id="officialDemo" maxlength="100" class="form-control">
+									<input type="text" name="officialDemo" value="<?php echo isset($addRow['officialUrl'])? $addRow['officialUrl'] : '';?>" id="officialDemo" class="form-control">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="officialUrl">程序演示</label>
-									<input type="text" value="<?php echo isset($addRow['officialDemo'])? $addRow['officialDemo'] : '';?>" name="officialUrl" id="officialUrl" value="http://" maxlength="100" class="form-control">
+									<input type="text" value="<?php echo isset($addRow['officialDemo'])? $addRow['officialDemo'] : '';?>" name="officialUrl" id="officialUrl" value="http://" class="form-control">
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="softsize">软件大小</label>
-									<div class="input-group "><input type="text" name="softsize" id="softsize" value="<?php echo isset($addRow['softsize'])? $addRow['softsize'] : '';?>" maxlength="100" class="form-control"></div>
+									<div class="input-group "><input type="text" name="softsize" id="softsize" value="<?php echo isset($addRow['softsize'])? $addRow['softsize'] : '';?>" class="form-control"></div>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="source">软件来源</label>
-									<input type="text" name="source" id="source" value="<?php echo $row['source'] ?>" maxlength="100" class="form-control">
+									<input type="text" name="source" id="source" value="<?php echo $row['source'] ?>" class="form-control">
 								</div>
 							</div>
-							<?php
-							//自定义字段
-							PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');
-							?>
+							<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">正文</label>
 								<div class="col-sm-10">
@@ -178,9 +172,8 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label>下载地址：</label>
-								<input type="text" name="softurl1" id="softurl1" class="form-control">
-								服务器名称：<input type="text" name="servermsg1" id="servermsg1" class="form-control" value="下载">
+								<p>下载地址：<input type="text" name="softurl1" id="softurl1" class="form-control d-inline-block w-50 mr-2"><span class="btn btn-success btn-sm">选择</span></p>
+								<p>服务器名称：<input type="text" name="servermsg1" id="servermsg1" class="form-control" value="下载"></p>
 							</div>
 							<div class="form-group">
 								<label>其它地址：</label>

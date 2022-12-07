@@ -35,10 +35,6 @@
 .user-meter i {
 	font-size:24px !important
 }
-.pannel-main-container {
-	padding:1rem;
-	background:#fff
-}
 .list-group-item.active a {
 	color:#fff
 }
@@ -57,6 +53,14 @@
 	border-bottom:0;
 	border-left:.3em solid transparent;
 	vertical-align:.25rem
+}
+.pannel-main-container {
+	padding:1rem;
+	background:#fff
+}
+.thumbnail-md {
+	max-width:200px;
+	max-height:120px
 }
 .form-control {
 	height:36px;

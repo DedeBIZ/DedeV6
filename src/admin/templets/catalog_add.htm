@@ -30,7 +30,7 @@
 			function ShowHide(objname) {
 				var obj = document.getElementById(objname);
 				if (obj.style.display != "none")
-				obj.style.display = "none";
+					obj.style.display = "none";
 				else {
 					if (Nav() == 'IE') obj.style.display = "block";
 					else obj.style.display = "table-row";
@@ -111,24 +111,23 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
+		<table width="98%" cellpadding="0" cellspacing="0" align="center" class="mt-3">
 			<tr>
-				<form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
-					<input type="hidden" name="dopost" value="save">
-					<input type="hidden" name="reid" id="reid" value="<?php echo $id;?>">
-					<input type="hidden" name="topid" id="topid" value="<?php echo $topid;?>">
-					<?php
-					if ($id>0)
-					{
-						echo " <input type='hidden' name='moresite' value='{$myrow['moresite']}'>";
-						echo " <input type='hidden' name='siteurl' value='{$myrow['siteurl']}'>";
-						echo " <input type='hidden' name='sitepath' value='{$myrow['sitepath']}'>";
-					}
-					?>
-					<td align="center" bgcolor="#fff">
-						<table width="100%" cellspacing="0" id="head1" cellpadding="0">
+				<td>
+					<form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
+						<input type="hidden" name="dopost" value="save">
+						<input type="hidden" name="reid" id="reid" value="<?php echo $id;?>">
+						<input type="hidden" name="topid" id="topid" value="<?php echo $topid;?>">
+						<?php
+						if ($id>0) {
+							echo " <input type='hidden' name='moresite' value='{$myrow['moresite']}'>";
+							echo " <input type='hidden' name='siteurl' value='{$myrow['siteurl']}'>";
+							echo " <input type='hidden' name='sitepath' value='{$myrow['sitepath']}'>";
+						}
+						?>
+						<table width="100%" cellspacing="0" cellpadding="0" id="head1">
 							<tr>
-								<td colspan="2" bgcolor="#fff" align="left">
+								<td>
 									<table cellpadding="0" cellspacing="0">
 										<tr>
 											<td width="80" align="center" class="admin-itemnote1">常规选项</td>
@@ -139,9 +138,9 @@
 								</td>
 							</tr>
 						</table>
-						<table width="100%" cellspacing="0" id="head2" cellpadding="0" style="display:none">
+						<table width="100%" cellspacing="0" cellpadding="0" id="head2" style="display:none">
 							<tr>
-								<td colspan="2" bgcolor="#fff">
+								<td>
 									<table cellpadding="0" cellspacing="0">
 										<tr>
 											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
@@ -152,9 +151,9 @@
 								</td>
 							</tr>
 						</table>
-						<table width="100%" cellspacing="0" id="head3" cellpadding="0" style="display:none">
+						<table width="100%" cellspacing="0" cellpadding="0" id="head3" style="display:none">
 							<tr>
-								<td colspan="2" bgcolor="#fff">
+								<td>
 									<table cellpadding="0" cellspacing="0">
 										<tr>
 											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
@@ -165,24 +164,24 @@
 								</td>
 							</tr>
 						</table>
-						<table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table admin-border">
+						<table width="100%" cellspacing="0" cellpadding="0" id="needset" class="table admin-border">
 							<tr>
-								<td width="260" class="admin-td">是否支持投稿：</td>
-								<td class="admin-td">
+								<td width="260">是否支持投稿：</td>
+								<td>
 									<label><input type="radio" name="issend" value="1" <?php if ($issend==1) echo " checked='checked' ";?>> 支持</label>
 									<label><input type="radio" name="issend" value="0" <?php if ($issend==0) echo " checked='checked' ";?>> 不支持</label>
 								</td>
 							</tr>
 							<tr>
-								<td width="260" class="admin-td">是否隐藏栏目：</td>
-								<td class="admin-td">
+								<td width="260">是否隐藏栏目：</td>
+								<td>
 									<label><input type="radio" name="ishidden" value="0" checked="checked"> 显示</label>
 									<label><input type="radio" name="ishidden" value="1"> 隐藏</label>
 								</td>
 							</tr>
 							<tr>
-								<td class="admin-td">文档模型：</td>
-								<td class="admin-td">
+								<td>文档模型：</td>
+								<td>
 									<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
 										<?php
 										foreach($channelArray as $k=>$arr)
@@ -199,43 +198,42 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="admin-td">中文名称：</td>
-								<td class="admin-td"><input type="text" name="typename" class="admin-input-md"></td>
+								<td>中文名称：</td>
+								<td><input type="text" name="typename" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="admin-td">中文概述：</td>
-								<td class="admin-td"><input type="text" name="cnoverview" class="admin-input-md"></td>
+								<td>中文概述：</td>
+								<td><input type="text" name="cnoverview" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="admin-td">英文名称：</td>
-								<td class="admin-td"><input type="text" name="enname" class="admin-input-md"></td>
+								<td>英文名称：</td>
+								<td><input type="text" name="enname" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="admin-td">英文概述：</td>
-								<td class="admin-td"><input type="text" name="enoverview" class="admin-input-md"></td>
+								<td>英文概述：</td>
+								<td><input type="text" name="enoverview" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="admin-td">栏目大图：</td>
+								<td>栏目大图：</td>
 								<td>
 									<input type="text" name="bigpic" class="admin-input-md">
 									<input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
 								</td>
 							</tr>
 							<tr>
-								<td class="admin-td">栏目小图：</td>
+								<td>栏目小图：</td>
 								<td>
 									<input type="text" name="litimg" class="admin-input-md">
 									<input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
 								</td>
 							</tr>
 							<tr>
-								<td class="admin-td">排列顺序：</td>
-								<td class="admin-td"><input type="text" name="sortrank" class="admin-input-sm">（由低 &gt; 高）
-								</td>
+								<td>排列顺序：</td>
+								<td><input type="text" name="sortrank" class="admin-input-sm">（由低 &gt; 高）</td>
 							</tr>
 							<tr>
-								<td class="admin-td">浏览权限：</td>
-								<td class="admin-td">
+								<td>浏览权限：</td>
+								<td>
 									<select name="corank" id="corank" class="admin-input-sm">
 										<?php
 										$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0");
@@ -253,8 +251,8 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="admin-td">上级目录：</td>
-								<td class="admin-td">
+								<td>上级目录：</td>
+								<td>
 									<?php
 									$pardir = '{cmspath}'.$cfg_arcdir;
 									if (!empty($typedir)) $pardir = $typedir.'/';
@@ -269,16 +267,15 @@
 								<td class="p-0">
 									<table cellspacing="1" cellpadding="1" class="table-borderless">
 										<tr>
-											<td><input type="text" name="typedir" id="typedir" class="admin-input-md">
-											</td>
+											<td><input type="text" name="typedir" id="typedir" class="admin-input-md"></td>
 											<td><label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onClick="CheckTypeDir()"> 拼音</label></td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 							<tr>
-								<td class="admin-td">目录相对位置：</td>
-								<td class="admin-td">
+								<td>目录相对位置：</td>
+								<td>
 									<label><input type="radio" name="referpath" value="parent" checked="chekced"> 上级目录</label>
 									<?php if ($moresite==0) {?>
 									<label><input type="radio" name="referpath" value="cmspath"> 系统根目录</label>
@@ -295,12 +292,12 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="admin-td">默认页的名称：</td>
-								<td class="admin-td"><input type="text" name="defaultname" value="index.html" class="admin-input-md"></td>
+								<td>默认页的名称：</td>
+								<td><input type="text" name="defaultname" value="index.html" class="admin-input-md"></td>
 							</tr>
 							<tr>
-								<td class="admin-td">栏目属性：</td>
-								<td class="admin-td">
+								<td>栏目属性：</td>
+								<td>
 									<label><input type="radio" name="ispart" value="0" checked="checked"> 列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
 									<label><input type="radio" name="ispart" value="1"> 封面栏目（栏目本身不允许发布文档）</label> <br>
 									<label><input type="radio" name="ispart" id="ispart2" value="2"> 外部栏目（在"文件保存目录"处填写网址）</label>
@@ -311,8 +308,7 @@
 								<td>
 									<label><input type="radio" name="cross" id="cross0" value="0" onClick="CheckCross()" checked="1"> 不交叉</label>
 									<label><input type="radio" name="cross" id="cross1" value="1" onClick="CheckCross()"> 自动获取同名栏目文档</label>
-									<label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()"> 手工指定交叉栏目id（用英文逗号）</label>
-									<br>
+									<label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()"> 手工指定交叉栏目id（用英文逗号）</label><br>
 									<textarea name="crossid" id="crossid" style="display:none"></textarea>
 								</td>
 							</tr>
@@ -321,8 +317,8 @@
 								<td bgcolor="#f5f5f5">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</td>
 							</tr>
 							<tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
-								<td class="admin-td">绑定小分类：仅适用分类模型</td>
-								<td class="admin-td">
+								<td>绑定小分类：仅适用分类模型</td>
+								<td>
 									<select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
 										<?php
 										$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
@@ -347,15 +343,15 @@
 						<table width="100%" cellspacing="0" cellpadding="0" id="adset" class="table admin-border" style="display:none">
 							<?php if ($id==0) {?>
 							<tr>
-								<td width="260" class="admin-td">多站点支持：</td>
-								<td class="admin-td">
+								<td width="260">多站点支持：</td>
+								<td>
 									<label><input type="radio" name="moresite" value="1"> 启用</label>
 									<label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>（如果需要绑定二级域名，必须在“系统参数”中设定“支持多站点”）
 								</td>
 							</tr>
 							<tr>
-								<td class="admin-td">绑定域名：</td>
-								<td class="admin-td"><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="admin-input-md">（需要加http开头的链接）</td>
+								<td>绑定域名：</td>
+								<td><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="admin-input-md">（需要加http开头的链接）</td>
 							</tr>
 							<?php }?>
 							<tr>
@@ -405,13 +401,13 @@
 							<tr id="helpvar2" style="display:none">
 								<td bgcolor="#f5f5f5">支持变量：</td>
 								<td bgcolor="#f5f5f5">
-									{Y}、{M}、{D} 年月日<br>
+									{Y}{M}{D} 年月日<br>
 									{timestamp} INT类型的UNIX时间戳<br>
 									{aid} 文档id<br>
 									{pinyin} 拼音+文档id<br>
 									{py} 拼音部首+文档id<br>
 									{typedir} 栏目目录<br>
-									{cc} 日期+ID混编后用转换为适合的字母<br>
+									{cc} 日期+id混编后用转换为适合的字母<br>
 									Nginx伪静态默认规则<br>
 									rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
 									rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
@@ -464,8 +460,8 @@
 								</td>
 							</tr>
 						</table>
-					</td>
-				</form>
+					</form>
+				</td>
 			</tr>
 		</table>
 	</body>

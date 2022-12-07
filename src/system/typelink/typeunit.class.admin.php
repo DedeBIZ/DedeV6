@@ -121,11 +121,11 @@ class TypeUnit
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-eye'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档'><i class='btn btn-sm fa fa-bars'></i></a>";
-                echo "<a href='catalog_add.php?id={$id}' title='增加子类'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
+                echo "<a href='catalog_add.php?id={$id}' title='增加'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
-                echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
+                echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:36px;text-align:center'></td></tr></table></td></tr>";
             }
             //带封面的栏目
             else if ($ispart == 1) {
@@ -134,11 +134,11 @@ class TypeUnit
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-eye'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档'><i class='btn btn-sm fa fa-bars'></i></a>";
-                echo "<a href='catalog_add.php?id={$id}' title='增加子类'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
+                echo "<a href='catalog_add.php?id={$id}' title='增加'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
-                echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
+                echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:36px;text-align:center'></td></tr></table></td></tr>";
             }
             //独立页面
             else if ($ispart == 2) {
@@ -149,7 +149,7 @@ class TypeUnit
                 echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
-                echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
+                echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:36px;text-align:center'></td></tr></table></td></tr>";
             }
             echo "<tr><td colspan='2' id='suns".$id."' class='p-0'>";
             $lastid = GetCookie('lastCid');
@@ -204,11 +204,11 @@ class TypeUnit
                     echo "</td><td align='right'>";
                     echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-eye'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档'><i class='btn btn-sm fa fa-bars'></i></a>";
-                    echo "<a href='catalog_add.php?id={$id}' title='增加子类'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
+                    echo "<a href='catalog_add.php?id={$id}' title='增加'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                     echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
                     echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
-                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
+                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:36px;text-align:center'></td></tr></table></td></tr>";
                 }
                 //封面栏目
                 else if ($ispart == 1) {
@@ -218,11 +218,11 @@ class TypeUnit
                     echo "</td><td align='right'>";
                     echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-eye'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档'><i class='btn btn-sm fa fa-bars'></i></a>";
-                    echo "<a href='catalog_add.php?id={$id}' title='增加子类'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
+                    echo "<a href='catalog_add.php?id={$id}' title='增加'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                     echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
                     echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
-                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
+                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:36px;text-align:center'></td></tr></table></td></tr>";
                 }
                 //独立页面
                 else if ($ispart == 2) {
@@ -234,7 +234,7 @@ class TypeUnit
                     echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                     echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
                     echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
-                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
+                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:36px;text-align:center'></td></tr></table></td></tr>";
                 }
                 echo "<tr><td id='suns".$id."' style='".($GLOBALS['exallct']? "" : "display:none")."'><table width='100%' cellspacing='0' cellpadding='0'>";
                 $this->LogicListAllSunType($id, $step."　");

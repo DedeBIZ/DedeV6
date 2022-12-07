@@ -32,6 +32,17 @@
 								<div class="col-sm-10"><input type="text" name="title" id="title" class="form-control"  value="<?php echo $addRow['title']?>"></div>
 							</div>
 							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">标签</label>
+								<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">缩略图</label>
+								<div class="col-sm-10">
+									<img src="/static/web/img/thumbnail.jpg" class="thumbnail-md">
+									<button class="btn btn-success btn-sm">更换</button>
+								</div>
+							</div>
+							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">作者</label>
 								<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
 							</div>
@@ -50,10 +61,7 @@
 								<label class="col-sm-2 col-form-label">描述</label>
 								<div class="col-sm-10"><textarea name="description" id="description" class="form-control"><?php echo $row["description"];?></textarea></div>
 							</div>
-							<?php
-							//自定义字段
-							PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']), $addRow, 'autofield');
-							?>
+							<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']), $addRow, 'autofield');?>
 							<div class="text-center">
 								<button type="submit" class="btn btn-success btn-sm">提交</button>
 								<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
