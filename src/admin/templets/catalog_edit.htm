@@ -33,7 +33,7 @@
 					obj.style.display = "none";
 				else {
 					if (Nav() == 'IE') obj.style.display = "block";
-					else obj.style.display = "table-row";
+					else obj.style.display = "block";
 				}
 			}
 			function ShowObj(objname) {
@@ -174,6 +174,7 @@
 										}
 										?>
 									</select>
+									<input type="hidden" value="{style}" name="dfstyle">
 								</td>
 							</tr>
 							<tr>
@@ -253,23 +254,19 @@
 								</td>
 							</tr>
 							<tr>
-								<td>栏目交叉：<i onClick="ShowHide('helpvarco')" class="fa fa-question-circle" title="帮助"></i> 仅适用列表栏目</td>
+								<td>栏目交叉：仅适用列表栏目 <i onClick="ShowHide('helpvarco')" class="fa fa-question-circle" title="帮助"></i></td>
 								<td>
-									<label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
-									<label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目文档</label>
-									<label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
-									<br>
-									<textarea name="crossid" id="crossid" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
+									<label><input type="radio" name="cross" id="cross0" value="0" onClick="CheckCross()" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
+									<label><input type="radio" name="cross" id="cross1" value="1" onClick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目文档</label>
+									<label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label><br>
+									<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
+									<div id="helpvarco" class="alert alert-warning my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
 								</td>
-							</tr>
-							<tr id="helpvarco" style="display:none">
-								<td bgcolor="#f5f5f5">栏目交叉说明：</td>
-								<td bgcolor="#f5f5f5">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</td>
 							</tr>
 							<tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
 								<td>绑定小分类：仅适用分类模型</td>
 								<td>
-									<select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
+									<select name="smalltype[]" multiple="yes" class="admin-input-md" style="height:200px">
 										<?php
 										$smtypes = explode(',',trim($myrow['smalltypes']));
 										$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
@@ -292,7 +289,7 @@
 											}
 										}
 										?>
-									</select>（按Ctrl多选，不选系统调用全部分类，在<a href="stepselect_main.php">“联动类别管理”</a>中管理）
+									</select>（按Ctrl多选，更多分类，在<a href="stepselect_main.php">“联动类别管理”</a>中管理）
 								</td>
 							</tr>
 						</table>
@@ -314,21 +311,10 @@
 									<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-md">
 									<button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
 									<i onClick="ShowHide('helpvar1')" class="fa fa-question-circle" title="帮助"></i>
-								</td>
-							</tr>
-							<tr id="helpvar1" style="display:none">
-								<td bgcolor="#f5f5f5">支持变量：</td>
-								<td bgcolor="#f5f5f5">
-									{tid}表示栏目id，<br>
-									{cid}表示栏目模型的名字id（
-									<?php
-									foreach($channelArray as $k=>$arr)
-									{
-										echo "{$arr['typename']}({$arr['nid']})、";
-									}
-									?>）<br>
-									模板文件的默认位置是放在模板目录“安装目录<?php echo $cfg_templets_dir ?>”内
-									<input type="hidden" value="{style}" name="dfstyle">
+									<div id="helpvar1" class="alert alert-warning my-2" style="display:none">
+										{tid} 表示栏目id，<br>
+										{cid} 表示栏目模型的名字id
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -350,21 +336,18 @@
 								<td>
 									<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="admin-input-md">
 									<i onClick="ShowHide('helpvar2')" class="fa fa-question-circle" title="帮助"></i>
-								</td>
-							</tr>
-							<tr id="helpvar2" style="display:none">
-								<td bgcolor="#f5f5f5">支持变量：</td>
-								<td bgcolor="#f5f5f5">
-									{Y}{M}{D} 年月日<br>
-									{timestamp} INT类型的UNIX时间戳<br>
-									{aid} 文档id<br>
-									{pinyin} 拼音+文档id<br>
-									{py} 拼音部首+文档id<br>
-									{typedir} 栏目目录<br>
-									{cc} 日期+id混编后用转换为适合的字母<br>
-									Nginx伪静态默认规则<br>
-									rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
-									rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
+									<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
+										{Y}{M}{D} 年月日<br>
+										{timestamp} INT类型的UNIX时间戳<br>
+										{aid} 文档id<br>
+										{pinyin} 拼音+文档id<br>
+										{py} 拼音部首+文档id<br>
+										{typedir} 栏目目录<br>
+										{cc} 日期+id混编后用转换为适合的字母<br>
+										Nginx伪静态默认规则<br>
+										rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
+										rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -372,15 +355,12 @@
 								<td>
 									<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-md">
 									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
-								</td>
-							</tr>
-							<tr id="helpvar3" style="display:none">
-								<td bgcolor="#f5f5f5">支持变量：</td>
-								<td bgcolor="#f5f5f5">
-									{page} 列表的页码<br>
-									Nginx伪静态默认规则<br>
-									rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
-									rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
+										{page} 列表的页码<br>
+										Nginx伪静态默认规则<br>
+										rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
+										rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+									</div>
 								</td>
 							</tr>
 							<tr>
