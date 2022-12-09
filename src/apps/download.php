@@ -186,7 +186,7 @@ else if ($open == 2) {
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {
                     $msgtitle = "您没有权限下载软件：{$arctitle}";
-                    $moremsg = "这个软件需要<span class='text-primary'>".$needMoney."金币</span>才能下载，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."个</span>";
+                    $moremsg = "该软件需要<span class='text-primary'>".$needMoney."</span>金币才能下载，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>";
                     include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                     exit(0);
                 }

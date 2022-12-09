@@ -28,7 +28,7 @@
 						<?php if ($cfg_money_scores > 0) {?>							
 						<?php $canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);?>
 						<div class="py-3">
-							<p>用积分兑换金币（<?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币数量{$canCav}个";?>）</p>
+							<p>用积分兑换金币（<?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币{$canCav}";?>）</p>
 							<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
 								<table width="100%" cellpadding="0" cellspacing="0" class="table">
 									<tbody>
