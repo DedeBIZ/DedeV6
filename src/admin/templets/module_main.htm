@@ -30,11 +30,12 @@
 							<tr>
 								<td width="30%">模块管理</td>
 								<td width="70%" align="right">
-									<a class="btn btn-success btn-sm" href="module_main.php">全部</a>
+									<a class="btn btn-success btn-sm" href="module_upload.php">上传</a>
 									<a class="btn btn-success btn-sm" href="module_main.php?moduletype=soft">模块</a>
 									<a class="btn btn-success btn-sm" href="module_main.php?moduletype=templets">模板</a>
 									<a class="btn btn-success btn-sm" href="module_main.php?moduletype=plus">小插件</a>
 									<a class="btn btn-success btn-sm" href="module_main.php?moduletype=patch">补丁</a>
+									<a class="btn btn-success btn-sm" href="module_main.php">全部</a>
 								</td>
 							</tr>
 						</table>
@@ -42,7 +43,7 @@
 				</tr>
 				<tr>
 					<td colspan="6">
-						<div class="alert alert-info mb-0">DedeBIZ开始启动<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，为了保障系统及技术服务安全，请认准DedeBIZ商业认证开发者</div>
+						<div class="alert alert-info mb-0">为了保障模块插件开发和技术的安全隐私，增加了<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，模块插件认准DedeBIZ商业认证开发者</div>
 					</td>
 				</tr>
 				<tr bgcolor="#e9ecef" align="center">
@@ -50,7 +51,7 @@
 					<td width="10%">发布时间</td>
 					<td width="10%">编码</td>
 					<td width="10%">类型</td>
-					<td width="12%">模块状态</td>
+					<td width="10%">模块状态</td>
 					<td>管理</td>
 				</tr>
 				<?php if (count($modules) > 0) foreach($modules as $k => $v) {?>
@@ -79,7 +80,7 @@
 						?>
 					</td>
 					<td>
-						<div id='manager_<?php echo $v['hash'];?>' <?php if (!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none"'?>>
+						<div id="manager_<?php echo $v['hash'];?>" <?php if (!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo "style='display:none'"?>>
 							<a class="btn btn-success btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>">开发者</a>
 							<a class="btn btn-success btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>">详情</a>
 							<a class="btn btn-success btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>">修改</a>

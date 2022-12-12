@@ -17,11 +17,11 @@ if (empty($action)) $action = '';
 if ($action == 'add') {
     //检查输入
     if (empty($id) || preg_match("#[^0-9-]#", $id)) {
-        ShowMsg("<span class='text-primary'>栏目id</span>必须为数字", "-1");
+        ShowMsg("栏目id必须为数字", "-1");
         exit();
     }
     if (preg_match("#[^a-z0-9]#i", $nid) || $nid == "") {
-        ShowMsg("<span class='text-primary'>栏目名字标识</span>必须为英文字母或与数字混合字符串", "-1");
+        ShowMsg("栏目名字标识必须为英文字母或与数字混合字符串", "-1");
         exit();
     }
     if ($addtable == "") {
@@ -33,7 +33,7 @@ if ($action == 'add') {
     //检查id是否重复
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' OR nid LIKE '$nid' OR addtable LIKE '$addtable'");
     if (is_array($row)) {
-        ShowMsg("可能栏目id、栏目名称标识、附加表名称在数据库已存在，不能重复使用", "-1");
+        ShowMsg("栏目id和栏目名称标识及附加表名称在数据库已存在，不能重复使用", "-1");
         exit();
     }
     $mysql_version = $dsql->GetVersion();
@@ -50,9 +50,9 @@ if ($action == 'add') {
             ";
             }
             if ($mysql_version < 4.1) {
-                $tabsql .= "    PRIMARY KEY  (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM; ";
+                $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM;";
             } else {
-                $tabsql .= "    PRIMARY KEY  (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
+                $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language.";";
             }
             $rs = $dsql->ExecuteNoneQuery($tabsql);
             if (!$rs) {

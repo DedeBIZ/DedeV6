@@ -19,7 +19,7 @@ if (empty($action)) $action = '';
 $mdir = DEDEDATA.'/module';
 if ($action == 'upload') {
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("请选择要上传的模块文件", "javascript:;");
+        ShowMsg("请选择上传的模块插件文件", "javascript:;");
         exit();
     } else {
         include_once(DEDEINC."/libraries/zip.class.php");
@@ -54,13 +54,13 @@ if ($action == 'upload') {
     $win = new OxWindow();
     $win->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data");
     $win->mainTitle = "模块管理";
-    $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块";
-    $win->AddTitle('请选择要上传的模块文件');
+    $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块插件";
+    $win->AddTitle('请选择上传的模块插件文件');
     $win->AddHidden("action", 'upload');
     $msg = "<table width='98%' cellspacing='0' cellpadding='0'>
     <tr>
         <td width='260'>文件格式：</td>
-        <td><label><input type='radio' name='filetype' value='0' checked='checked'> 正常模块格式</label></td>
+        <td><label><input type='radio' name='filetype' value='0' checked='checked'> 正常模块插件格式</label></td>
     </tr>
     <tr>
         <td>已有模块：</td>

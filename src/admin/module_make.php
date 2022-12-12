@@ -95,11 +95,11 @@ else if ($action == 'make') {
         $readmef = base64_encode(trim($readmetxt));
     }
     if ($autosetup == 0) {
-        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("您没上传，或系统无法把setup文件移动到 module 目录");
+        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("您没上传，或系统无法把setup文件移动到模块目录");
         $setupf = $dm->GetEncodeFile($mdir."/{$hashcode}-s.php", TRUE);
     }
     if ($autodel == 0) {
-        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("您没上传，或系统无法把uninstall文件移动到 module 目录");
+        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("您没上传，或系统无法把uninstall文件移动到模块目录");
         $uninstallf = $dm->GetEncodeFile($mdir."/{$hashcode}-u.php", TRUE);
     }
     if (trim($setupsql40) == '') $setupsql40 = '';
@@ -230,14 +230,14 @@ else if ($action == 'edit') {
     $setupf = $uninstallf = '';
     //编译setup文件
     if (is_uploaded_file($setup)) {
-        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("您没上传，或系统无法把setup文件移动到 module 目录");
+        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("您没上传，或系统无法把setup文件移动到模块目录");
         $setupf = $dm->GetEncodeFile($mdir."/{$hashcode}-s.php", TRUE);
     } else {
         if ($autosetup == 0) $setupf = base64_encode($dm->GetSystemFile($hashcode, 'setup'));
     }
     //编译uninstall文件
     if (is_uploaded_file($uninstall)) {
-        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("您没上传，或系统无法把uninstall文件移动到 module 目录");
+        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("您没上传，或系统无法把uninstall文件移动到模块目录");
         $uninstallf = $dm->GetEncodeFile($mdir."/{$hashcode}-u.php", true);
     } else {
         if ($autodel == 0) $uninstallf = base64_encode($dm->GetSystemFile($hashcode, 'uninstall'));
