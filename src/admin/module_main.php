@@ -167,7 +167,7 @@ else if ($action == 'setup') {
     $msg = "<table width='98%' cellspacing='0' cellpadding='0' class='table'>
     <tr>
         <td class='admin-td' colspan='2'>
-            <div class='alert alert-danger mb-0'>安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“templets”目录也必须暂时设置可写入权限</div>
+            <div class='alert alert-danger mb-0'>安装时文件列表中涉及的目录前可写入权限，此外后台管理目录和主题目录也必须暂时设置可写入权限</div>
         </td>
     </tr>
     <tr>
