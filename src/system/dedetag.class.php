@@ -814,8 +814,9 @@ class DedeTagParse
             } else {
                 return $DedeFieldValue;
             }
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             //or die("<xmp>$functionname</xmp>");
+            echo DedeAlert('模板存在无法解析的标签，请检查模板标签后更新网站，错误提示：'.$e->getMessage(),ALERT_WARNING);
             return '';
         }
     }

@@ -88,6 +88,22 @@ if ($action === 'is_need_check_code') {
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
     //是否存在更新版本
+    $phpv = phpversion();
+    $sp_os = PHP_OS;
+    $mysql_ver = $dsql->GetVersion();
+    $nurl = $_SERVER['HTTP_HOST'];
+    if (preg_match("#[a-z\-]{1,}\.[a-z]{2,}#i", $nurl)) {
+        $nurl = urlencode($nurl);
+    } else {
+        $nurl = "test";
+    }
+    $add_query = '';
+    $query = "SELECT COUNT(*) AS dd FROM `#@__member` ";
+    $row1 = $dsql->GetOne($query);
+    if ($row1) $add_query .= "&mcount={$row1['dd']}";
+    $query = "SELECT COUNT(*) AS dd FROM `#@__arctiny` ";
+    $row2 = $dsql->GetOne($query);
+    if ($row2) $add_query .= "&acount={$row2['dd']}";
     $offUrl = DEDEBIZURL."/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}&json=1";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($offUrl);
