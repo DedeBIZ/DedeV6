@@ -160,7 +160,7 @@ else if ($dopost == 'save') {
 //读取文档信息
 $myrow = $dsql->GetOne("SELECT * FROM `#@__uploads` WHERE aid='".$aid."'");
 if (!is_array($myrow)) {
-    ShowMsg('错误，找不到此编号的文档', 'javascript:;');
+    ShowMsg('找不到此编号文档', 'javascript:;');
     exit();
 }
 include DedeInclude('templets/media_edit.htm');

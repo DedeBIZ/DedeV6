@@ -157,12 +157,11 @@ class FileManagement
             if ($this->allowDeleteDir == 1) {
                 $this->RmDirFiles($filename);
             } else {
-                //完善用户体验，by:sumic
-                ShowMsg("系统禁止删除<span class='text-primary'>".$t."</span>", "file_manage_main.php?activepath=".$this->activeDir);
+                ShowMsg("系统禁止删除".$t."", "file_manage_main.php?activepath=".$this->activeDir);
                 exit;
             }
         }
-        ShowMsg("成功删除一个<span class='text-primary'>".$t."</span>", "file_manage_main.php?activepath=".$this->activeDir);
+        ShowMsg("成功删除一个".$t."", "file_manage_main.php?activepath=".$this->activeDir);
         return 0;
     }
 }
