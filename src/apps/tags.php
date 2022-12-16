@@ -1,5 +1,7 @@
 <?php
 /**
+ * 标签
+ * 
  * @version        $id:tags.php 2010-06-30 11:43:09 tianya $
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM

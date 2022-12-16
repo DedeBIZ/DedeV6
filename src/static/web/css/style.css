@@ -55,14 +55,23 @@ form.search {
 	font-size:16px
 }
 .spec .card {
+	background:#f5f5f5;
 	text-align:center
 }
 .spec .card img {
-	max-width:200px;
-	margin:0 auto
+	height:160px;
+	border-radius:.25rem .25rem 0 0
 }
 .spec .card-body {
-	padding:.25rem
+	padding:.65rem
+}
+.spec .card-title {
+	margin-bottom:0;
+	font-size:14px;
+	font-weight:400;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap
 }
 .spec .border-bottom-dashed {
 	border-bottom:dashed 1px #929292
@@ -95,10 +104,6 @@ form.search {
 	background:#fff;
 	border-bottom:0
 }
-.ddcard-normal > .card-header .caption,.ddcard > .card-header .caption {
-	font-size:18px;
-	font-weight:600
-}
 .ddcard > .card-header .more a,.ddcard-normal > .card-header .more a {
 	font-size:14px;
 	color:#1eb867
@@ -119,6 +124,8 @@ form.search {
 .ddcard > .card-header .caption span {
 	display:inline-block;
 	padding:6px 12px;
+	font-size:18px;
+	font-weight:600;
 	color:#fff;
 	background:#1eb867;
 	border-radius:.2rem .2rem 0 0
@@ -132,13 +139,6 @@ form.search {
 }
 .ddcard-normal ul {
 	padding:10px
-}
-.title::before {
-	margin-right:10px;
-	padding:2px;
-	content:" ";
-	background:#1eb867;
-	border-radius:.2rem
 }
 .breadcrumb {
 	margin-bottom:0
@@ -328,5 +328,8 @@ form.search {
 @media (max-width:480px) {
 	.m-pb-2 {
 	padding-bottom:2rem
+}
+.spec .card img {
+	height:130px
 }
 }

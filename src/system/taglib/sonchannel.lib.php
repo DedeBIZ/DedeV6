@@ -20,7 +20,6 @@ function lib_sonchannel(&$ctag, &$refObj)
         return $ctag->GetAtt('nosonmsg');
     }
     $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0,$row";
-    //And id<>'$typeid'
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace("field", "[", "]");
     $dtp2->LoadSource($innertext);

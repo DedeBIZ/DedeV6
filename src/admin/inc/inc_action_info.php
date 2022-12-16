@@ -250,8 +250,8 @@ $actionSearch[7] = array(
             'linkurl' => 'makehtml_all.php'
         ),
         1  =>  array(
-            'title' => '更新主页',
-            'description' => '生成网站主页面',
+            'title' => '更新首页',
+            'description' => '生成网站首页面',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_homepage.php'
         ),

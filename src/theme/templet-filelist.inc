@@ -9,7 +9,7 @@ article_soft.htm,软件文档模板
 article_spec.htm,专题文档模板
 foot.htm,底部模板
 head.htm,头部模板
-index.htm,主页模板
+index.htm,首页模板
 index_article.htm,文档封面模板
 index_default.htm,默认封面模板
 index_default_sg.htm,默认表单封面模板

@@ -139,7 +139,7 @@ if (!function_exists('GetFileNewName')) {
 if (!function_exists('GetFileName')) {
     function GetFileName($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '', $money = 0, $filename = '')
     {
-        global $cfg_rewrite, $cfg_cmspath, $cfg_arcdir, $cfg_special, $cfg_arc_dirname;
+        global $cfg_cmspath, $cfg_arcdir, $cfg_special, $cfg_arc_dirname, $cfg_rewrite;
         //没指定栏目时用固定专题规则
         if (empty($namerule)) {
             $namerule = $cfg_special.'/{aid}.html';
@@ -149,7 +149,7 @@ if (!function_exists('GetFileName')) {
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
             if ($cfg_rewrite == 'Y') {
                 //目录版return "/article/".$aid."";
-                //网页版
+                //网页版默认，文档形式：域名/1.html、域名/2.html，分页形式：域名/1-1.html、域名/1-2.html
                 return "/".$aid.".html";
             } else {
                 return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
@@ -184,7 +184,7 @@ if (!function_exists('GetFileName')) {
     }
 }
 /**
- *  获得指定栏目的URL链接
+ *  获得指定栏目链接
  *  对于使用封面文件和单独页面的情况，强制使用默认页名称
  *
  * @param     int  $typeid  栏目id
@@ -201,15 +201,15 @@ if (!function_exists('GetFileName')) {
 if (!function_exists('GetTypeUrl')) {
     function GetTypeUrl($typeid, $typedir, $isdefault, $defaultname, $ispart, $namerule2, $moresite = 0, $siteurl = '', $sitepath = '')
     {
-        global $cfg_typedir_df,$cfg_rewrite;
+        global $cfg_typedir_df, $cfg_rewrite;
         $typedir = MfTypedir($typedir);
         $sitepath = MfTypedir($sitepath);
         //伪静态栏目
         if ($isdefault==-1) {
             //动态
             if ($cfg_rewrite == 'Y') {
-                //目录版return "/article/".$aid."";
-                //网页版
+                //网页版return $GLOBALS['cfg_cmspath']."/list-".$typeid.".html";
+                //目录版默认，栏目形式：域名/list-1、域名/list-2，分页形式：域名/list-1-1、域名/list-1-2
                 return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
             } else {
                 $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
@@ -486,7 +486,7 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
     }
 }
 /**
- *  获取某栏目的url
+ *  获取某栏目链接
  *
  * @param     array  $typeinfos  栏目信息
  * @return    string
@@ -532,9 +532,9 @@ function SetSysEnv($typeid = 0, $typename = '', $aid = 0, $title = '', $curfile 
     }
 }
 /**
- *  获得图书的URL
+ *  获得图书链接
  *
- * @param     string  $bid  书籍ID
+ * @param     string  $bid  书籍id
  * @param     string  $title  标题
  * @param     string  $gdir
  * @return    string

@@ -1,5 +1,7 @@
 <?php
 /**
+ * 首页
+ * 
  * @version        $id:index.php 9:23 2022-05-16 tianya $
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
@@ -32,3 +34,4 @@ if (isset($_GET['upcache']) || !file_exists('index.html')) {
     header('HTTP/1.1 301 Moved Permanently');
     header('Location:index.html');
 }
+?>

@@ -56,8 +56,7 @@ class TypeLink
             }
         }
     }
-    //对于使用默认构造函数的情况
-    //GetPositionLink()不可用
+    //对于使用默认构造函数的情况GetPositionLink()不可用
     function TypeLink($typeid)
     {
         $this->__construct($typeid);
@@ -88,8 +87,7 @@ class TypeLink
             return $this->TypeInfos['typedir'];
         }
     }
-    //获得某栏目的链接列表 如：栏目一>>栏目二>> 这样的形式
-    //islink 表示返回的列表是否带连接
+    //获得某栏目的链接列表：栏目一>栏目二>形式，islink表示返回的列表是否带连接
     function GetPositionLink($islink = true)
     {
         $indexpage = "<li class='breadcrumb-item'><a href='".$this->indexUrl."'>".$this->indexName."</a></li>";
@@ -150,7 +148,7 @@ class TypeLink
         $typelink = "<li class='breadcrumb-item'><a href='".$typepage."'>".$typeinfos['typename']."</a></li>";
         return $typelink;
     }
-    //获得某分类连接的URL
+    //获得某分类连接链接
     function GetOneTypeUrl($typeinfos)
     {
         return GetTypeUrl(
@@ -165,10 +163,7 @@ class TypeLink
             $typeinfos['sitepath']
         );
     }
-    //获得类别列表
-    //hid是指默认选中栏目，0表示“请选择栏目”或“不限栏目”
-    //oper是用户允许管理的栏目，0表示所有栏目
-    //channeltype是指栏目的文档类型，0表示不限栏目
+    //获得类别列表：hid是指默认选中栏目，0表示请选择栏目或不限栏目，oper是用户允许管理的栏目，0表示所有栏目，channeltype是指栏目的文档类型，0表示不限栏目
     function GetOptionArray($hid = 0, $oper = 0, $channeltype = 0, $usersg = 0)
     {
         return $this->GetOptionList($hid, $oper, $channeltype, $usersg);
@@ -254,8 +249,7 @@ class TypeLink
         }
     }
     /**
-     *  获得与该类相关的栏目，本函数应用于模板标记{dede:channel}{/dede:channel}中
-     *  $typetype 的值为：sun下级分类 self同级分类 top顶级分类
+     *  获得与该类相关的栏目，本函数应用于模板标记{dede:channel}{/dede:channel}中$typetype的值为：sun下级分类，self同级分类，top顶级分类
      *
      * @access    public
      * @param     int   $typeid   栏目id
@@ -304,7 +298,6 @@ class TypeLink
         } else if ($typetype == "self") {
             $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         }
-        //AND ID<>'$typeid'
         $dtp2 = new DedeTagParse();
         $dtp2->SetNameSpace("field", "[", "]");
         $dtp2->LoadSource($innertext);
@@ -346,20 +339,19 @@ class TypeLink
                     $likeType .= "    </td>\r\n";
                 }
                 $GLOBALS['autoindex']++;
-            } //Loop Col
+            }//Loop Col
             if ($col > 1) {
                 $i += $col - 1;
             }
             if ($col > 1) {
                 $likeType .= "    </tr>\r\n";
             }
-        } //Loop for $i
-
+        }//Loop for $i
         if ($col > 1) {
             $likeType .= "    </table>\r\n";
         }
         $this->dsql->FreeResult();
         return $likeType;
-    } //GetChannel
+    }//GetChannel
 }//End Class
 ?>

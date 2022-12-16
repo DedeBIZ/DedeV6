@@ -1,5 +1,7 @@
 User-agent: * 
 Disallow: /data
+Disallow: /static/ckeditor
+Disallow: /static/enums
 Disallow: /system
 Disallow: /theme
 Disallow: /user

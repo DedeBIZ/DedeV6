@@ -11,7 +11,7 @@
 require(dirname(__FILE__).'/config.php');
 require(DEDEINC.'/image.func.php');
 require(DEDEINC.'/dedetag.class.php');
-//默认主页
+//默认首页
 if (empty($dopost)) {
     require(DEDEINC.'/inc/inc_fun_funAdmin.php');
     $verLockFile = DEDEDATA.'/admin/ver.txt';

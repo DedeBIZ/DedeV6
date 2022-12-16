@@ -633,12 +633,10 @@ class ListView
             {
                 $nfields[$v] = $k;
             }
-            if (is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
-            {
+            if (is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields)) {
                 foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
                 {
-                    if (isset($nfields[$k]))
-                    {
+                    if (isset($nfields[$k])) {
                         if (!empty($arr['rename'])) {
                             $addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
                         }
@@ -798,7 +796,7 @@ class ListView
      */
     function GetPageListST($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $cfg_rewrite,$cfg_cmspath;
+        global $cfg_cmspath, $cfg_rewrite;
         $prepage = $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
@@ -815,7 +813,7 @@ class ListView
         $purl = $this->GetCurUrl();
         $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $tnamerule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
-        //获得上一页和主页的链接
+        //获得上一页和首页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
             $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>\r\n";
@@ -886,7 +884,7 @@ class ListView
      */
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $cfg_rewrite,$cfg_cmspath;
+        global $cfg_cmspath, $cfg_rewrite;
         $prepage = $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
@@ -959,18 +957,17 @@ class ListView
         if (preg_match('/option/i', $listitem)) $plist .= $optionlist;
         if (preg_match('/info/i', $listitem)) $plist .= $maininfo;
         //伪静态分页
-        if ($cfg_rewrite == 'Y')
-        {
+        if ($cfg_rewrite == 'Y') {
             $plist = str_replace('.php?tid=','-',$plist);
             $plist = preg_replace("/&TotalResult=(\d+)/i","",$plist);//去掉总结果数值
-            //目录版
+            //目录版默认
             $plist = preg_replace("/&PageNo=(\d+)/i",'-\\1',$plist);
             //网页版$plist = preg_replace("/&PageNo=(\d+)/i",'-\\1.html',$plist);
         }
         return $plist;
     }
     /**
-     *  获得当前的页面文件的url
+     *  获得当前的页面文件链接
      *
      * @access    public
      * @return    string

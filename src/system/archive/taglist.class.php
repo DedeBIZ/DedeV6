@@ -648,7 +648,7 @@ class TagList
         return GetFileUrl($aid, $typeid, $timetag, $title, $ismake, $rank, $namerule, $artdir, $money, $filename);
     }
     /**
-     *  获得当前的页面文件的url
+     *  获得当前的页面文件链接
      *
      * @access    private
      * @return    string

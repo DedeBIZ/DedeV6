@@ -95,7 +95,7 @@ if ($tjnum < $totalnum) {
         if ($uptype == '') {
             ShowMsg("更新文档<span class='text-primary'>$totalnum</span>，用时<span class='text-primary'>{$ttime}</span>分钟，完成所有文档更新", "javascript:;");
         } else {
-            ShowMsg("完成所有文档更新，开始更新主页", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
+            ShowMsg("完成所有文档更新，开始更新首页", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
         }
     }
 }

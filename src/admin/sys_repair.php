@@ -15,7 +15,7 @@ if (empty($dopost)) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='index_body.php'>系统主页</a> &gt; 系统错误修复";
+    $wecome_info = "<a href='index_body.php'>系统首页</a> &gt; 系统错误修复";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table>

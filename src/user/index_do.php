@@ -207,7 +207,7 @@ else if ($fmdo == 'login') {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg("成功登录，正在跳转用户主页", "index.php", 0, 2000);
+                ShowMsg("成功登录，正在跳转用户首页", "index.php", 0, 2000);
             } else {
                 $gourl = str_replace('^', '&', $gourl);
                 ShowMsg("成功登录，正在跳转指定页面", $gourl, 0, 2000);

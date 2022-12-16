@@ -172,7 +172,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         if (!empty($typeid) && $typeid != 'top') {
             //指定了多个栏目时，不再获取子类的id
             if (preg_match('#,#', $typeid)) {
-                //指定了getall属性或主页模板例外
+                //指定了getall属性或首页模板例外
                 if ($getall == 1 || empty($refObj->Fields['typeid'])) {
                     $typeids = explode(',', $typeid);
                     foreach ($typeids as $ttid) {

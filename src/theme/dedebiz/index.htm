@@ -49,8 +49,8 @@
 							<div class="card ddcard-normal">
 								<div class="card-header">
 									<div class="row">
-										<div class="col-md-12 caption">
-											<span>推荐头条</span>
+										<div class="col-md-12">
+											<h4>推荐头条</h4>
 										</div>
 									</div>
 								</div>
@@ -76,10 +76,11 @@
 							<div class="row row-cols-2 row-cols-md-4">
 								{dede:arclist row='4' orderby='pubdate' type='image.'}
 								<div class="col">
-									<div class="card border-0 image-item">
-										<a href="[field:arcurl/]" title="[field:fulltitle/]" class="text-body stretched-link"><img src="[field:litpic/]" class="card-img-top" alt="[field:fulltitle/]">
-											<div class="card-body"><h6 class="card-title">[field:title/]</h6></div>
-										</a>
+									<div class="card image-item border-0 mb-3">
+										<a href="[field:arcurl/]" class="text-body stretched-link"><img src="[field:litpic/]" class="card-img-top" alt="[field:fulltitle/]"></a>
+										<div class="card-body">
+											<h5 class="card-title"><a href="[field:arcurl/]">[field:title/]</a></h5>
+										</div>
 									</div>
 								</div>
 								{/dede:arclist}
@@ -92,10 +93,10 @@
 							<div class="card ddcard-normal">
 								<div class="card-header">
 									<div class="row">
-										<div class="col-md-6 caption">
-											<a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a>
+										<div class="col-md-6">
+											<h4>{dede:field.typename/}</h4>
 										</div>
-										<div class="col-md-6 d-flex justify-content-end more"><a href="{dede:field name='typeurl'/}">更多</a></div>
+										<div class="col-md-6 d-flex justify-content-end more"><a href="{dede:field.typeurl/}">更多</a></div>
 									</div>
 								</div>
 								<ul class="list-group list-group-flush">

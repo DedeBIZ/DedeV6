@@ -1,6 +1,6 @@
 <?php
 /**
- * 栏目列表和栏目动态页
+ * 栏目预览
  *
  * @version        $id:list.php$
  * @package        DedeBIZ.Site
