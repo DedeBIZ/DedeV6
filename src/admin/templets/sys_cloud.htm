@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<title>云服务设置</title>
+	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/web/css/admin.css">
+	<script src="../static/web/js/jquery.min.js"></script>
+	<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+	<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+		<tr>
+			<td bgcolor="#f5f5f5" colspan="4">
+				<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
+					<tr>
+						<td>云服务设置</td>
+						<!-- <td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank"
+									class="btn btn-success btn-sm">更多云服务</a></span></td> -->
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="aliyun-tab" data-toggle="tab" data-target="#aliyun"
+							type="button" role="tab" aria-controls="aliyun" aria-selected="true">阿里云</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="huaweicloud-tab" data-toggle="tab" data-target="#huaweicloud"
+							type="button" role="tab" aria-controls="huaweicloud" aria-selected="false">华为云</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="tencent-tab" data-toggle="tab" data-target="#tencent" type="button"
+							role="tab" aria-controls="tencent" aria-selected="false">腾讯云</button>
+					</li>
+				</ul>
+				<div class="tab-content py-3" id="myTabContent">
+					<div class="tab-pane fade show active" id="aliyun" role="tabpanel" aria-labelledby="aliyun-tab">
+						<div class="form-group">
+							<label for="iptAppID">描述</label>
+							<p>
+								阿里巴巴集团旗下公司，是全球领先的云计算及人工智能科技公司之一。提供免费试用、云服务器、云数据库、云安全、云企业应用等云计算服务，以及大数据、人工智能服务、精准定制基于场景的行业解决方案。免费备案，7x24小时售后支持，助企业无忧上云。
+							</p>
+						</div>
+						<div class="form-group">
+							<label for="iptAliyunAccessKeyID">AccessKey ID</label>
+							<input type="text" class="form-control" id="iptAliyunAccessKeyID">
+						</div>
+						<div class="form-group">
+							<label for="iptAliyunAccessKeySecret ">AccessKey Secret</label>
+							<input type="text" class="form-control" id="iptAliyunAccessKeySecret">
+						</div>
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" id="cloudType1">
+							<label class="form-check-label" for="cloudType1">是否启用</label>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="huaweicloud" role="tabpanel" aria-labelledby="huaweicloud-tab">
+						<div class="form-group">
+							<label for="iptAppID">描述</label>
+							<p>
+								华为云提供稳定可靠、安全可信、可持续发展的云服务，致力于让云无处不在，让智能无所不及，共建智能世界云底座。助力企业降本增效，全球300万客户的共同选择。7x24小时专业服务支持，5天内无理由退订，免费快速备案。
+							</p>
+						</div>
+						<div class="form-group">
+							<label for="iptHuaweicloudAccessKeyId">Access Key Id</label>
+							<input type="text" class="form-control" id="iptHuaweicloudAccessKeyId">
+						</div>
+						<div class="form-group">
+							<label for="iptHuaweicloudSecretAccessKey">Secret Access Key</label>
+							<input type="text" class="form-control" id="iptHuaweicloudSecretAccessKey">
+						</div>
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" id="cloudType2">
+							<label class="form-check-label" for="cloudType2">是否启用</label>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="tencent" role="tabpanel" aria-labelledby="tencent-tab">
+						<div class="form-group">
+							<label for="iptAppID">描述</label>
+							<p>
+								腾讯云为数百万的企业和开发者提供安全稳定的云计算服务，涵盖云服务器、云数据库、云存储、视频与CDN、域名注册等全方位云服务和各行业解决方案。
+							</p>
+						</div>
+						<div class="form-group">
+							<label for="iptTencentSecretId">SecretId</label>
+							<input type="text" class="form-control" id="iptTencentSecretId">
+						</div>
+						<div class="form-group">
+							<label for="iptTencentSecretKey">SecretKey</label>
+							<input type="text" class="form-control" id="iptTencentSecretKey">
+						</div>
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" id="cloudType3">
+							<label class="form-check-label" for="cloudType3">是否启用</label>
+						</div>
+					</div>
+					<button id="btnSave" type="submit" class="btn btn-success">保存</button>
+
+				</div>
+			</td>
+		</tr>
+	</table>
+	<script>
+		var cloudConfig = {
+			aliyun_enabled: false,
+			aliyun_access_key_id: '',
+			aliyun_access_key_secret: '',
+			huaweicloud_enabled: false,
+			huawei_access_key_id: '',
+			huawei_secret_access_key: '',
+			tencent_enabled: false,
+			tencent_secret_id: '',
+			tencent_secret_key: '',
+		};
+		function LoadConfig() {
+			$.get("sys_cloud.php?dopost=cloud_get", function (data) {
+				try {
+					rs = JSON.parse(data);
+					if (rs.code === 0) {
+						cloudConfig = JSON.parse(rs.data);
+						if (cloudConfig.aliyun_enabled) {
+							$("#cloudType1").prop("checked", true);
+						} else {
+							$("#cloudType1").prop("checked", false);
+						}
+						$("#iptAliyunAccessKeyID").val(cloudConfig.aliyun_access_key_id);
+						$("#iptAliyunAccessKeySecret").val(cloudConfig.aliyun_access_key_secret);
+						if (cloudConfig.huaweicloud_enabled) {
+							$("#cloudType2").prop("checked", true);
+						} else {
+							$("#cloudType2").prop("checked", false);
+						}
+						$("#iptHuaweicloudAccessKeyId").val(cloudConfig.huawei_access_key_id);
+						$("#iptHuaweicloudSecretAccessKey").val(cloudConfig.huawei_secret_access_key);
+						if (cloudConfig.tencent_enabled) {
+							$("#cloudType3").prop("checked", true);
+						} else {
+							$("#cloudType3").prop("checked", false);
+						}
+						$("#iptTencentSecretId").val(cloudConfig.tencent_secret_id);
+						$("#iptTencentSecretKey").val(cloudConfig.tencent_secret_key);
+					}
+				} catch (error) {
+					console.log("解析配置失败")
+				}
+			});
+		}
+		$(document).ready(function () {
+			$("#btnSave").click(function () {
+				if ($("#cloudType1").is(":checked")) {
+					cloudConfig.aliyun_enabled = true;
+				} else {
+					cloudConfig.aliyun_enabled = false;
+				}
+				cloudConfig.aliyun_access_key_id = $("#iptAliyunAccessKeyID").val();
+				cloudConfig.aliyun_access_key_secret = $("#iptAliyunAccessKeySecret").val();
+				if ($("#cloudType2").is(":checked")) {
+					cloudConfig.huaweicloud_enabled = true;
+				} else {
+					cloudConfig.huaweicloud_enabled = false;
+				}
+				cloudConfig.huawei_access_key_id = $("#iptHuaweicloudAccessKeyId").val();
+				cloudConfig.huawei_secret_access_key = $("#iptHuaweicloudSecretAccessKey").val();
+				if ($("#cloudType3").is(":checked")) {
+					cloudConfig.tencent_enabled = true;
+				} else {
+					cloudConfig.tencent_enabled = false;
+				}
+				cloudConfig.tencent_secret_id = $("#iptTencentSecretId").val();
+				cloudConfig.tencent_secret_key = $("#iptTencentSecretKey").val();
+				$.post("sys_cloud.php?dopost=cloud_set", cloudConfig, function (result) {
+					let data = JSON.parse(result);
+					if (data.code === 0) {
+						ShowMsg("云服务设置成功");
+						LoadConfig();
+					} else {
+						ShowMsg("设置失败，请检查服务是否正确");
+					}
+				});
+			})
+			LoadConfig();
+		})
+	</script>
+</body>
+
+</html>

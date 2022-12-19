@@ -351,6 +351,12 @@ $actionSearch[9] = array(
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info_mark.php'
         ),
+        5  =>  array(
+            'title' => '云服务设置',
+            'description' => '主流云服务平台支持',
+            'purview' => 'sys_Edit',
+            'linkurl' => 'sys_cloud.php'
+        ),
         6  =>  array(
             'title' => '软件下载设置',
             'description' => '软件下载连接显示方式，下载方式，镜像服务器等等进行配置',

@@ -42,9 +42,7 @@ else if ($action == 'send') {
     $mailbody .= "Powered by DedeBIZ";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-        $client->appid = $cfg_bizcore_appid;
-        $client->key = $cfg_bizcore_key;
+        $client = new DedeBizClient();
         $client->MailSend($email,$mailtitle,$mailtitle,$mailbody);
         $client->Close();
     } else {

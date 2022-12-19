@@ -20,9 +20,7 @@ if ($dopost == "view") {
     exit();
 } else if ($dopost == "make") {
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-        $client->appid = $cfg_bizcore_appid;
-        $client->key = $cfg_bizcore_key;
+        $client = new DedeBizClient();
         $data = $client->AdminPWDExists();
         $data = json_decode($data->data);
         if ($data) {

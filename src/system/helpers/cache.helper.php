@@ -20,14 +20,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
 if (!function_exists('GetCache')) {
     function GetCache($prefix, $key)
     {
-        global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+        global $cfg_bizcore_appid, $cfg_bizcore_key;
 
         $key = md5($key);
         //商业组件缓存
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-            $client->appid = $cfg_bizcore_appid;
-            $client->key = $cfg_bizcore_key;
+            $client = new DedeBizClient();
             $key = trim($prefix.'_'.$key);
             $data = $client->CacheGet($key);
             $result = unserialize($data->data);
@@ -60,13 +58,11 @@ if (!function_exists('GetCache')) {
 if (!function_exists('SetCache')) {
     function SetCache($prefix, $key, $value, $timeout = 3600)
     {
-        global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+        global $cfg_bizcore_appid, $cfg_bizcore_key;
         $key = md5($key);
         //商业组件缓存
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-            $client->appid = $cfg_bizcore_appid;
-            $client->key = $cfg_bizcore_key;
+            $client = new DedeBizClient();
             $key = trim($prefix.'_'.$key);
             $data = $client->CacheSet($key,serialize($value),$timeout);
             $result = unserialize($data->data);
@@ -92,13 +88,11 @@ if (!function_exists('DelCache')) {
     //删缓存
     function DelCache($prefix, $key)
     {
-        global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+        global $cfg_bizcore_appid, $cfg_bizcore_key;
         $key = md5($key);
         //商业组件缓存
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-            $client->appid = $cfg_bizcore_appid;
-            $client->key = $cfg_bizcore_key;
+            $client = new DedeBizClient();
             $key = trim($prefix.'_'.$key);
             $data = $client->CacheDel($key);
             $client->Close();
