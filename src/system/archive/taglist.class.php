@@ -61,7 +61,7 @@ class TagList
         if (!empty($this->Tag)) {
             $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` where id = '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
-                $msg = "系统无此标签，已经移除标签";
+                $msg = "网站找不到该标签";
                 ShowMsg($msg, "-1");
                 exit();
             }
