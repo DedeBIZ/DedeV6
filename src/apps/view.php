@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档预览
+ * 文档页
  *
  * @version        $id:view.php$
  * @package        DedeBIZ.Site

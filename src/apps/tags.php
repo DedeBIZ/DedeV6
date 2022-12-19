@@ -1,6 +1,6 @@
 <?php
 /**
- * 标签
+ * 标签页
  * 
  * @version        $id:tags.php 2010-06-30 11:43:09 tianya $
  * @package        DedeBIZ.Site
