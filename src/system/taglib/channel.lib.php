@@ -38,7 +38,6 @@ function lib_channel(&$ctag, &$refObj)
     //如果指定了栏目id，从数据库获取栏目信息
     else {
         $row2 = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$typeid' ");
-
         if (is_array($row2)) {
             $typeid = $row2['id'];
             $reid = $row2['reid'];
