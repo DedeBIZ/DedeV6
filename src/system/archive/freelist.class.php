@@ -50,16 +50,6 @@ class FreeList
             $this->pagesize = 30;
         }
         $channelid = $this->ListObj->GetAtt('channel');
-        /*
-        if (empty($channelid))
-        {
-            showmsg('必须指定栏目','-1');exit();
-        } else {
-            $channelid = intval($channelid);
-            $channelinfo = $this->dsql->getone("select maintable from #@__channeltype WHERE id='$channelid'");
-            $this->maintable = $channelinfo['maintable'];
-        }
-        */
         $channelid = intval($channelid);
         $this->maintable = '#@__archives';
         //全局模板解析器

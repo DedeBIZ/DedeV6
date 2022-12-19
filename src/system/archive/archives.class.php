@@ -197,9 +197,7 @@ class Archives
         unset($row);
         //处理要分页显示的字段
         $this->SplitTitles = array();
-        if ($this->SplitPageField != '' && $GLOBALS['cfg_arcsptitle'] = 'Y'
-            && isset($this->Fields[$this->SplitPageField])
-        ) {
+        if ($this->SplitPageField != '' && $GLOBALS['cfg_arcsptitle'] = 'Y' && isset($this->Fields[$this->SplitPageField])) {
             $this->SplitFields = explode("#p#", $this->Fields[$this->SplitPageField]);
             $i = 1;
             foreach ($this->SplitFields as $k => $v) {
@@ -357,7 +355,7 @@ class Archives
                 $this->dtp->SaveTo($TRUEfilename);
             }
         }
-        $this->dsql->ExecuteNoneQuery("Update `#@__archives` SET ismake=1 WHERE id='".$this->ArcID."'");
+        $this->dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET ismake=1 WHERE id='".$this->ArcID."'");
         return $this->GetTrueUrl($filename);
     }
     /**
@@ -483,7 +481,7 @@ class Archives
             if ($GLOBALS['cfg_jump_once'] == 'N') {
                 $pageHtml = "<html>\r\n<head>\r\n<meta charset=".$GLOBALS['cfg_soft_lang']."\">\r\n<title>".$this->Fields['title']."</title>\r\n";
                 $pageHtml .= "<meta http-equiv=\"refresh\" content=\"3;URL=".$this->Fields['redirecturl']."\">\r\n</head>\r\n<body>\r\n";
-                $pageHtml .= "现在正在跳转：".$this->Fields['title']."，请稍候<br><br>\r\n跳转文档简介：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
+                $pageHtml .= "正在跳转文档：".$this->Fields['title']."<br><br>\r\n文档描述：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
                 echo $pageHtml;
             } else {
                 header("location:{$this->Fields['redirecturl']}");
@@ -585,8 +583,7 @@ class Archives
                 else if ($ctag->GetName()=='prenextdiy')
                 {
                     $innertext = trim($ctag->GetInnerText());
-                    if ($innertext)
-                    {
+                    if ($innertext) {
                         $get = $ctag->GetAtt('get');
                         $diys['diy'] = $this->GetPreNext('diy');
                         $revalue = '';
@@ -597,8 +594,7 @@ class Archives
                         {
                             foreach($dtp2->CTags as $tid=>$ctag2)
                             {
-                                if (isset($row[$get][$ctag2->GetName()]))
-                                {
+                                if (isset($row[$get][$ctag2->GetName()])) {
                                     $dtp2->Assign($tid,$row[$get][$ctag2->GetName()]);
                                 }
                             }
@@ -656,10 +652,10 @@ class Archives
         $this->Fields = '';
     }
     /**
-     *  获取上一篇，下一篇链接
+     *  获取上一篇和下一篇链接
      *
      * @access    public
-     * @param     string  $gtype  pre为上一篇 preimg为上一篇图片 next为下一篇 nextimg为下一篇图片
+     * @param     string  $gtype  pre为上一篇，preimg为上一篇图片，next为下一篇，nextimg为下一篇图片
      * @return    string
      */
     function GetPreNext($gtype = '')
@@ -734,12 +730,9 @@ class Archives
             }
         }
         //二次开发上一篇下一篇
-        if ($gtype=='diy')
-        {
+        if ($gtype=='diy') {
             return $this->PreNext['diy'];
-        }
-        if ($gtype=='pre')
-        {
+        } if ($gtype=='pre') {
             $rs =  $this->PreNext['pre'];
         } else if ($gtype == 'preimg') {
             $rs =  $this->PreNext['preimg'];
@@ -997,7 +990,8 @@ class Archives
         return $body;
     }
 }//End Archives
-function _highlightkeywords($matches){
+function _highlightkeywords($matches)
+{
     return _highlight($matches[2], $GLOBALS['_dd_karr'], $GLOBALS['_dd_kaarr'], $matches[1]);
 }
 //高亮专用，替换多次是可能不能达到最多次

@@ -213,7 +213,7 @@ class SgListView
         }
         //创建封面模板文件
         if ($this->TypeLink->TypeInfos['isdefault'] == -1) {
-            echo '这个栏目是动态栏目';
+            echo '这个是动态栏目';
             return '';
         }
         //单独页面
@@ -537,11 +537,11 @@ class SgListView
             $ordersql = " ORDER BY arc.aid $orderWay";
         }
         $addField = 'arc.'.join(',arc.', $this->ListFields);
-        //如果不用默认的sortrank或id排序，使用联合查询（数据量大时非常缓慢）
+        //如果不用默认的sortrank或id排序，使用联合查询数据量大时非常缓慢
         if (preg_match('/hot|click/', $orderby) || $this->sAddTable) {
             $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,$addField FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE {$this->addSql} $ordersql LIMIT $limitstart,$row";
         }
-        //普通情况先从arctiny表查出ID，然后按ID查询（速度非常快）
+        //普通情况先从arctiny表查出id，然后按id查询速度非常快
         else {
             $t1 = ExecTime();
             $ids = array();
@@ -559,12 +559,10 @@ class SgListView
                 $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,$addField FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.aid IN($idstr) AND arc.arcrank >-1 $ordersql";
             }
             $t2 = ExecTime();
-            //echo $t2-$t1;
         }
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $t2 = ExecTime();
-        //echo $t2-$t1;
         $artlist = '';
         $this->dtp2->LoadSource($innertext);
         $GLOBALS['autoindex'] = 0;
@@ -649,14 +647,13 @@ class SgListView
                     }
                     $artlist .= $this->dtp2->GetResult();
                 } //if hasRow
-            } //Loop Col
+            }//Loop Col
             if ($col > 1) {
                 $i += $col - 1;
                 $artlist .= "</div>\r\n";
             }
-        } //Loop Line
+        }//Loop Line
         $t3 = ExecTime();
-        //echo ($t3-$t2);
         $this->dsql->FreeResult('al');
         return $artlist;
     }
@@ -704,21 +701,6 @@ class SgListView
         }
         //option链接
         $optionlist = "";
-        /*
-        $optionlen = strlen($totalpage);
-        $optionlen = $optionlen*10+18;
-        $optionlist = "<li><select name='sldd' style='width:{$optionlen}px' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
-        for ($mjj=1;$mjj<=$totalpage;$mjj++)
-        {
-            if ($mjj==$this->PageNo)
-            {
-                $optionlist .= "<option value='".str_replace("{page}",$mjj,$tnamerule)."' selected>$mjj</option>\r\n";
-            } else {
-                $optionlist .= "<option value='".str_replace("{page}",$mjj,$tnamerule)."'>$mjj</option>\r\n";
-            }
-        }
-        $optionlist .= "</select><li>";
-        */
         //获得数字链接
         $listdd = "";
         $total_list = $list_len * 2 + 1;

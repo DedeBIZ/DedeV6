@@ -169,7 +169,6 @@ class SearchView
                     }
                     $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
                     $client->Close();
-                    //var_dump($keywords);exit;
                 } else {
                     $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
                     $sp->SetSource($keyword, $cfg_soft_lang, $cfg_soft_lang);
@@ -186,7 +185,6 @@ class SearchView
                         $keywords .= ' '.$key;
                     }
                     $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
-                    //var_dump($keywords);exit();
                     unset($sp);
                 }
             } else {
@@ -296,7 +294,6 @@ class SearchView
      */
     function GetRedKeyWord($fstr)
     {
-        //echo $fstr;
         $ks = explode(' ', $this->Keywords);
         foreach ($ks as $k) {
             $k = trim($k);
@@ -308,8 +305,7 @@ class SearchView
             }
             //这里不区分大小写进行关键词替换
             $fstr = str_ireplace($k, "<span class='text-primary'>$k</span>", $fstr);
-            //速度更快，效率更高
-            //$fstr = str_replace($k, "<span class='text-primary'>$k</span>", $fstr);
+            //速度更快，效率更高$fstr = str_replace($k, "<span class='text-primary'>$k</span>", $fstr);
         }
         return $fstr;
     }

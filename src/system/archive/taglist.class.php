@@ -61,7 +61,7 @@ class TagList
         if (!empty($this->Tag)) {
             $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` where id = '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
-                $msg = "系统无此标签，可能已经移除";
+                $msg = "系统无此标签，已经移除标签";
                 ShowMsg($msg, "-1");
                 exit();
             }
@@ -165,7 +165,6 @@ class TagList
             $this->ParseDMFields($this->PageNo, 0);
         }
         $this->dtp->Display();
-        //$this->Close();
     }
     /**
      *  解析模板，对固定的标记进行初始给值
@@ -223,7 +222,6 @@ class TagList
                 if ($list_len == "") {
                     $list_len = 3;
                 }
-                //var_dump($ismake);
                 if ($ismake == 0) {
                     $this->dtp->Assign($tagid, $this->GetPageListDM($list_len, $listitem));
                 } else {
@@ -380,13 +378,13 @@ class TagList
                         }
                     }
                     $artlist .= $this->dtp2->GetResult();
-                } //if hasRow
-            } //Loop Col
+                }//if hasRow
+            }//Loop Col
             if ($col > 1) {
                 $i += $col - 1;
                 $artlist .= "</div>\r\n";
             }
-        } //Loop Line
+        }//Loop Line
         $this->dsql->FreeResult('al');
         return $artlist;
     }
@@ -452,7 +450,7 @@ class TagList
                 $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."/$j/'>".$j."</a></li>\r\n";
             }
         }
-        $plist  =  '';
+        $plist = '';
         if (preg_match('/info/i', $listitem)) {
             $plist .= $maininfo.' ';
         }

@@ -254,7 +254,7 @@ class ListView
         }
         //创建封面模板文件
         if ($this->TypeLink->TypeInfos['isdefault'] == -1) {
-            echo '这个栏目是动态栏目';
+            echo '这个是动态栏目';
             return '../apps/list.php?tid='.$this->TypeLink->TypeInfos['id'];
         }
         //单独页面
@@ -650,11 +650,11 @@ class ListView
             $addField = '';
             $addJoin = '';
         }
-        //如果不用默认的sortrank或id排序，使用联合查询（数据量大时非常缓慢）
+        //如果不用默认的sortrank或id排序，使用联合查询数据量大时非常缓慢
         if (preg_match('/hot|click|lastpost/', $orderby)) {
             $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
         }
-        //普通情况先从arctiny表查出ID，然后按ID查询（速度非常快）
+        //普通情况先从arctiny表查出id，然后按di查询速度非常快
         else {
             $t1 = ExecTime();
             $ids = array();
@@ -671,12 +671,10 @@ class ListView
                 $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $addJoin WHERE arc.id in($idstr) $ordersql ";
             }
             $t2 = ExecTime();
-            //echo $t2-$t1;
         }
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $t2 = ExecTime();
-        //echo $t2-$t1;
         $artlist = '';
         $this->dtp2->LoadSource($innertext);
         $GLOBALS['autoindex'] = 0;
@@ -775,7 +773,6 @@ class ListView
             }
         }//Loop Line
         $t3 = ExecTime();
-        //echo ($t3-$t2);
         $this->dsql->FreeResult('al');
         return $artlist;
     }
