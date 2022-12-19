@@ -109,7 +109,7 @@ function lib_channel(&$ctag, &$refObj)
         }//Loop Col
         if ($col > 1) {
             $i += $col - 1;
-            $likeType .= "    </dl>\r\n";
+            $likeType .= "</dl>\r\n";
         }
     }//Loop for $i
     $dsql->FreeResult();

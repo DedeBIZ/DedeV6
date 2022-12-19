@@ -16,13 +16,6 @@ require_once(DEDEINC."/taglib/hotwords.lib.php");
 require_once(DEDEINC."/taglib/channel.lib.php");
 @set_time_limit(0);
 @ini_set('memory_limit', '512M');
-/**
- * 搜索视图类
- *
- * @package          SearchView
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class SearchView
 {
     var $dsql;

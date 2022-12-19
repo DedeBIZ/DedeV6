@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 后台栏目管理选择框
+ * 后台栏目管理
  *
  * @version        $id:typeunit.class.menu.php 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
@@ -10,13 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
-/**
- * 后台栏目管理选择框
- *
- * @package          TypeUnit
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class TypeUnit
 {
     var $dsql;

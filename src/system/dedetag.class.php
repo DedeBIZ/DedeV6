@@ -9,14 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-/**
- * class DedeTag 标记的数据结构描述
- * function c____DedeTag();
- *
- * @package          DedeTag
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class DedeTag
 {
     var $IsReplace = FALSE; //标记是否已被替代，供解析器使用
@@ -427,7 +419,7 @@ class DedeTagParse
         return $this->GetTag($str);
     }
     /**
-     *  获得指定ID的CTag数据类
+     *  获得指定id的CTag数据类
      *
      * @access    public
      * @param     string  标签id
@@ -457,7 +449,7 @@ class DedeTagParse
         $_sys_globals[$vname] = $vvalue;
     }
     /**
-     *  分配指定ID的标记的值
+     *  分配指定id的标记的值
      *
      * @access    public
      * @param     string   $i  标签id

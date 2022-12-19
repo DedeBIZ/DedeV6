@@ -12,13 +12,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 require_once(DEDEINC.'/channelunit.class.php');
 require_once(DEDEINC.'/typelink/typelink.class.php');
 @set_time_limit(0);
-/**
- * 标签列表
- *
- * @package          TagList
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class TagList
 {
     var $dsql;
@@ -391,7 +384,7 @@ class TagList
             } //Loop Col
             if ($col > 1) {
                 $i += $col - 1;
-                $artlist .= "    </div>\r\n";
+                $artlist .= "</div>\r\n";
             }
         } //Loop Line
         $this->dsql->FreeResult('al');

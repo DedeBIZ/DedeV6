@@ -11,13 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC.'/channelunit.class.php');
 require_once(DEDEINC.'/typelink/typelink.class.php');
-/**
- * 视图类
- *
- * @package          PartView
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class PartView
 {
     var $dsql;

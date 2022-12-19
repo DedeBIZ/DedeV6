@@ -10,13 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.func.php");
-/**
- * 当前位置面包屑
- *
- * @package          TypeLink
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class TypeLink
 {
     var $typeDir;
@@ -313,7 +306,7 @@ class TypeLink
                 $likeType .= "<tr>\r\n";
             }
             for ($j = 0; $j < $col; $j++) {
-                if ($col > 1) $likeType .= "    <td width='$colWidth'>\r\n";
+                if ($col > 1) $likeType .= "<td width='$colWidth'>\r\n";
                 if ($row = $this->dsql->GetArray()) {
                     //处理当前栏目的样式
                     if ($row['id'] == "$typeid" && $myinnertext != '') {
@@ -336,7 +329,7 @@ class TypeLink
                     }
                 }
                 if ($col > 1) {
-                    $likeType .= "    </td>\r\n";
+                    $likeType .= "</td>\r\n";
                 }
                 $GLOBALS['autoindex']++;
             }//Loop Col
@@ -344,11 +337,11 @@ class TypeLink
                 $i += $col - 1;
             }
             if ($col > 1) {
-                $likeType .= "    </tr>\r\n";
+                $likeType .= "</tr>\r\n";
             }
         }//Loop for $i
         if ($col > 1) {
-            $likeType .= "    </table>\r\n";
+            $likeType .= "</table>\r\n";
         }
         $this->dsql->FreeResult();
         return $likeType;

@@ -149,7 +149,7 @@ function lib_arclistsg(&$ctag, &$refObj)
     $ids = array();
     for ($i = 0; $i < $line; $i++) {
         for ($j = 0; $j < $col; $j++) {
-            if ($col > 1) $artlist .= "    <div>\r\n";
+            if ($col > 1) $artlist .= "<div>\r\n";
             if ($row = $dsql->GetArray("al")) {
                 $ids[] = $row['aid'];
                 $row['filename'] = $row['arcurl'] = GetFileUrl(
@@ -212,7 +212,7 @@ function lib_arclistsg(&$ctag, &$refObj)
             else {
                 $artlist .= '';
             }
-            if ($col > 1) $artlist .= "    </div>\r\n";
+            if ($col > 1) $artlist .= "</div>\r\n";
         } //Loop Col
         if ($col > 1) $i += $col - 1;
     } //loop line

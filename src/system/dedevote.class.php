@@ -10,13 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/dedetag.class.php");
-/**
- * 投票类
- *
- * @package          DedeVote
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class DedeVote
 {
     var $VoteInfos;

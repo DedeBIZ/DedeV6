@@ -10,13 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.class.php");
-//这是一个用来调用文档的标签，只是提供一种方法，不建议太多地方调用，毕竟比较损耗性能
-/*
-用法：
-{dede:arccontent type='pre|next'}
-[field:body/]
-{/dede:arccontent}
-*/
+//这是一个用来调用文档的标签，只是提供一种方法，不建议太多地方调用，毕竟比较损耗性能，用法：{dede:arccontent type='pre|next'}[field:body/]{/dede:arccontent}
 function lib_arccontent(&$ctag, &$refObj)
 {
     global $dsql;
@@ -34,7 +28,7 @@ function lib_arccontent(&$ctag, &$refObj)
         $fields = $dsql->GetOne("SELECT * FROM `{$channel->ChannelInfos['addtable']}` WHERE aid = {$row['id']}");
     }
     if (!empty($aid)) {
-        //指定ID获取文档
+        //指定id获取文档
         $row =  $dsql->GetOne("SELECT id,channel FROM `#@__arctiny` WHERE id={$aid} AND arcrank>-1");
         $channel = new ChannelUnit($row['channel'], $aid);
         $fields = $dsql->GetOne("SELECT * FROM `{$channel->ChannelInfos['addtable']}` WHERE aid = {$row['id']}");

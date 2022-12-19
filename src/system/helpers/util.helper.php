@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 define('T_NEW_LINE', -1);
-
 if (!function_exists('token_get_all_nl')) {
     function token_get_all_nl($source)
     {

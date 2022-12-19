@@ -191,9 +191,9 @@ else if ($dopost == "GetSunLists") {
     PutCookie('lastCid', $cid, 3600 * 24, "/");
     $tu = new TypeUnit();
     $tu->dsql = $dsql;
-    echo "    <table width='100%' cellspacing='0' cellpadding='0'>\r\n";
+    echo "<table width='100%' cellspacing='0' cellpadding='0'>\r\n";
     $tu->LogicListAllSunType($cid, "　");
-    echo "    </table>\r\n";
+    echo "</table>\r\n";
     $tu->Close();
 }
 /*----------------

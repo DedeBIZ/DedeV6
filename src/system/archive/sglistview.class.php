@@ -11,13 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 @set_time_limit(0);
 require_once(DEDEINC."/archive/partview.class.php");
-/**
- * 单表模型列表视图类
- *
- * @package          SgListView
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class SgListView
 {
     var $dsql;
@@ -659,7 +652,7 @@ class SgListView
             } //Loop Col
             if ($col > 1) {
                 $i += $col - 1;
-                $artlist .= "    </div>\r\n";
+                $artlist .= "</div>\r\n";
             }
         } //Loop Line
         $t3 = ExecTime();

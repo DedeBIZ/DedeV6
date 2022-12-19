@@ -1,6 +1,5 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-require_once(DEDEINC."/libraries/statistics.class.php");
 /**
  * 统计标签
  *
@@ -10,6 +9,7 @@ require_once(DEDEINC."/libraries/statistics.class.php");
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+require_once(DEDEINC."/libraries/statistics.class.php");
 function lib_statistics(&$ctag, &$refObj)
 {
     global $envs;

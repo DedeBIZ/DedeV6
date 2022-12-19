@@ -1,6 +1,5 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-require_once(DEDEINC.'/channelunit.func.php');
 /**
  * 动态模板channel标签
  *
@@ -10,6 +9,7 @@ require_once(DEDEINC.'/channelunit.func.php');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+require_once(DEDEINC.'/channelunit.func.php');
 function plus_channel(&$atts, &$refObj, &$fields)
 {
     global $dsql, $_vars;

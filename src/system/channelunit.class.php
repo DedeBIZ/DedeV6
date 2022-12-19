@@ -11,9 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/channelunit.func.php");
-/*----------------------------------
-function C____ChannelUnit();
------------------------------------*/
+//function C____ChannelUnit();
 class ChannelUnit
 {
     var $ChannelInfos;
@@ -75,10 +73,10 @@ class ChannelUnit
         $this->__construct($cid, $aid);
     }
     /**
-     *  设置文档ID
+     *  设置文档id
      *
      * @access    private
-     * @param     int   $aid  文档ID
+     * @param     int   $aid  文档id
      * @return    void
      */
     function SetArcID($aid)

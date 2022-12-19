@@ -11,13 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once DEDEINC.'/dedetag.class.php';
 require_once DEDEINC.'/customfields.func.php';
-/**
- * diyform
- *
- * @package          diyform
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class diyform
 {
     var $diyid;

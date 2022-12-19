@@ -12,13 +12,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/channelunit.class.php");
 @set_time_limit(0);
-/**
- * 专题视图类
- *
- * @package          SpecView
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class SpecView
 {
     var $dsql;

@@ -11,13 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once DEDEINC.'/archive/partview.class.php';
 @set_time_limit(0);
-/**
- * 自由列表类
- *
- * @package          FreeList
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class FreeList
 {
     var $dsql;
@@ -605,14 +598,14 @@ class FreeList
                     $artlist .= "";
                 }
                 if ($col > 1) {
-                    $artlist .= "    </td>\r\n";
+                    $artlist .= "</td>\r\n";
                 }
             } //Loop Col
             if ($col > 1) {
                 $i += $col - 1;
             }
             if ($col > 1) {
-                $artlist .= "    </tr>\r\n";
+                $artlist .= "</tr>\r\n";
             }
         } //Loop Line
         if ($col > 1) {

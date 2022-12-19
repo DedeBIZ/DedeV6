@@ -10,13 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/archive/partview.class.php");
-/**
- * 单表模型列表视图类
- *
- * @package          SgListView
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class sgpage
 {
     var $dsql;
@@ -29,7 +22,7 @@ class sgpage
      *  php5构造函数
      *
      * @access    public
-     * @param     int  $aid  文档ID
+     * @param     int  $aid  文档id
      * @return    string
      */
     function __construct($aid)

@@ -13,13 +13,6 @@ require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/channelunit.class.php");
 require_once(DEDEINC."/downmix.inc.php");
 @set_time_limit(0);
-/**
- * 主文档类(Archives类)
- *
- * @package          TypeLink
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class Archives
 {
     var $TypeLink;

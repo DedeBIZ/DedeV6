@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//orderby = logintime(login new) or mid(register new)
 function lib_memberlist(&$ctag, &$refObj)
 {
     global $dsql, $sqlCt;

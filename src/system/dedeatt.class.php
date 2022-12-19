@@ -8,14 +8,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-/**
- * 属性的数据描述
- * function c____DedeAtt();
- *
- * @package          DedeAtt
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class DedeAtt
 {
     var $Count = -1;

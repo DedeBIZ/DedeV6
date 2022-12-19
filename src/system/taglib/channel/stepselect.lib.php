@@ -1,9 +1,5 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-function ch_stepselect($fvalue, &$arcTag, &$refObj, $fname = '')
-{
-    return GetEnumsValue2($fname, $fvalue);
-}
 /**
  * 获取二级枚举的值
  *
@@ -13,6 +9,10 @@ function ch_stepselect($fvalue, &$arcTag, &$refObj, $fname = '')
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+function ch_stepselect($fvalue, &$arcTag, &$refObj, $fname = '')
+{
+    return GetEnumsValue2($fname, $fvalue);
+}
 function GetEnumsValue2($egroup, $evalue = 0)
 {
     if (!isset($GLOBALS['em_'.$egroup.'s'])) {

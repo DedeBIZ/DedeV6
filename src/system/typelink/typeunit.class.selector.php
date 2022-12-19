@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 后台栏目管理选择框
+ * 后台栏目管理
  *
  * @version        $id:typeunit.class.selector.php 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
@@ -10,13 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
-/**
- * 后台栏目管理选择框
- *
- * @package          TypeUnitSelector
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class TypeUnitSelector
 {
     var $dsql;
@@ -75,8 +68,8 @@ class TypeUnitSelector
             $id = $row->id;
             $channeltype = $row->channeltype;
             $ischeck = in_array($id, $oldvalues) ? ' checked' : '';
-            $chackRadio = "<input type='radio' name='seltypeid' value='{$id}' $ischeck />";
-            if ($targetid == 'typeid2') $chackRadio = "<input type='checkbox' name='seltypeid' id='seltypeid{$id}' value='{$id}' $ischeck />";
+            $chackRadio = "<input type='radio' name='seltypeid' value='{$id}' $ischeck>";
+            if ($targetid == 'typeid2') $chackRadio = "<input type='checkbox' name='seltypeid' id='seltypeid{$id}' value='{$id}' $ischeck>";
             if ((!empty($channel) && $channeltype != $channel) || $ispart != 0) {
                 $chackRadio = '';
             }
@@ -117,8 +110,8 @@ class TypeUnitSelector
             $ispart = $row->ispart;
             $channeltype = $row->channeltype;
             $ischeck = in_array($id, $oldvalues) ? ' checked' : '';
-            $chackRadio = "<input type='radio' name='seltypeid' value='{$row->id}' $ischeck />";
-            if ($targetid == 'typeid2') $chackRadio = "<input type='checkbox' name='seltypeid' id='seltypeid{$id}' value='{$id}' $ischeck />";
+            $chackRadio = "<input type='radio' name='seltypeid' value='{$row->id}' $ischeck>";
+            if ($targetid == 'typeid2') $chackRadio = "<input type='checkbox' name='seltypeid' id='seltypeid{$id}' value='{$id}' $ischeck>";
             if ($ispart != 0) {
                 $chackRadio = '';
             }

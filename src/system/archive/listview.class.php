@@ -12,13 +12,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 require_once(DEDEINC.'/archive/partview.class.php');
 helper('cache');
 @set_time_limit(0);
-/**
- * 自由列表类
- *
- * @package          ListView
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
- */
 class ListView
 {
     var $dsql;

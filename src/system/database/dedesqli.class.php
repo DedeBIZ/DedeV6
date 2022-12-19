@@ -16,8 +16,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
-//在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql或$db进行操作
-//为了防止错误，操作完后不必关闭数据库
+//在工程所有文件中均不需要单独初始化这个类，可直接用$dsql或$db进行操作，为了防止错误，操作完后不必关闭数据库
 if (!function_exists("mysqli_init")) {
     ShowMsg("尚未发现开启mysqli模块，请在php.ini中启用`extension=mysqli`","javasctipt:;",-1) ;
     exit;

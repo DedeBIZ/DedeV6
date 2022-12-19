@@ -301,7 +301,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     $dsql->SetQuery($query);
     $dsql->Execute('al');
     $artlist = '';
-    if ($pagesize > 0)  $artlist .= "    <div id='{$tagid}'>\r\n";
+    if ($pagesize > 0)  $artlist .= "<div id='{$tagid}'>\r\n";
     if ($col > 1) $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');
@@ -312,7 +312,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     for ($i = 0; $i < $line; $i++) {
         if ($col > 1) $artlist .= "<tr>\r\n";
         for ($j = 0; $j < $col; $j++) {
-            if ($col > 1) $artlist .= "    <td width='$colWidth'>\r\n";
+            if ($col > 1) $artlist .= "<td width='$colWidth'>\r\n";
             if ($row = $dsql->GetArray("al")) {
                 $ids[] = $row['id'];
                 //处理一些特殊字段
@@ -413,12 +413,12 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                     $artlist .= $vv['arclist'];
                 }
             }
-            if ($col > 1) $artlist .= "    </td>\r\n";
+            if ($col > 1) $artlist .= "</td>\r\n";
         }//Loop Col
         if ($col > 1) $i += $col - 1;
-        if ($col > 1) $artlist .= "    </tr>\r\n";
+        if ($col > 1) $artlist .= "</tr>\r\n";
     }//loop line
-    if ($col > 1) $artlist .= "    </table>\r\n";
+    if ($col > 1) $artlist .= "</table>\r\n";
     $dsql->FreeResult("al");
     $idsstr = join(',', $ids);
     //保存ID缓存
