@@ -59,37 +59,38 @@
 								</p>
 							</div>
 							<div class="form-group">
-								<label for="iptAppID">AppID</label>
-								<input type="appid" class="form-control" id="iptAppID">
+								<label for="iptWechatAppID">AppID</label>
+								<input type="text" class="form-control" id="iptWechatAppID">
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">AppSecret</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label for="iptWechatAppSecret">AppSecret</label>
+								<input type="text" class="form-control" id="iptWechatAppSecret">
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">商户号</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label for="iptWechatMchID">商户号</label>
+								<input type="text" class="form-control" id="iptWechatMchID">
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">APIv3秘钥</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label for="iptWechatAPIV3Key">APIv3秘钥</label>
+								<input type="text" class="form-control" id="iptWechatAPIV3Key">
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">商户证书序列号</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label for="iptWechatSerialNo">商户证书序列号</label>
+								<input type="appid" class="form-control" id="iptWechatSerialNo">
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">商户证书文件</label>
+								<label>商户证书文件</label>
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
-									<label class="custom-file-label" for="validatedInputGroupCustomFile">选择商户证书文件...</label>
-								  </div>
+									<input type="file" class="custom-file-input" id="iptWechatPrivateKey">
+									<label class="custom-file-label" data-browse="选择"
+										for="iptWechatPrivateKey">选择商户证书文件...</label>
+								</div>
 							</div>
 							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">是否启用</label>
+								<input type="checkbox" class="form-check-input" id="WechatEnabled">
+								<label class="form-check-label" for="WechatEnabled">是否启用</label>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
+
 						</form>
 					</div>
 					<div class="tab-pane fade" id="alipay" role="tabpanel" aria-labelledby="alipay-tab">
@@ -101,80 +102,117 @@
 								</p>
 							</div>
 							<div class="form-group">
-								<label for="iptAppID">APPID</label>
-								<input type="appid" class="form-control" id="iptAppID">
+								<label for="iptAlipayAPPID">APPID</label>
+								<input type="text" class="form-control" id="iptAlipayAPPID">
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">应用私钥</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label for="iptAlipayPrivateKey">应用私钥</label>
+								<input type="text" class="form-control" id="iptAlipayPrivateKey">
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">应用公钥证书</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label>应用公钥证书</label>
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="iptAlipayAppCertPublicKey">
+									<label class="custom-file-label" data-browse="选择"
+										for="iptAlipayAppCertPublicKey">选择应用公钥证书文件...</label>
+								</div>
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">支付宝公钥证书</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label>支付宝公钥证书</label>
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="iptAlipayCertPublicKey">
+									<label class="custom-file-label" data-browse="选择"
+										for="iptAlipayCertPublicKey">选择支付宝公钥证书文件...</label>
+								</div>
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">支付宝根证书</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label>支付宝根证书</label>
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="iptAlipayRootCert">
+									<label class="custom-file-label" data-browse="选择"
+										for="iptAlipayRootCert">选择支付宝根证书文件...</label>
+								</div>
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">签名类型</label>
-								<input type="appid" class="form-control" id="iptAppSecret" value="RSA2" disabled>
+								<label for="iptAlipaySignType">签名类型</label>
+								<input type="text" class="form-control" id="iptAlipaySignType" value="RSA2" disabled>
 							</div>
 							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">是否启用</label>
+								<input type="checkbox" class="form-check-input" id="AlipayEnabled">
+								<label class="form-check-label" for="AlipayEnabled">是否启用</label>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
+
 						</form>
 
 					</div>
 					<div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="bank-tab">
 						<form>
 							<div class="form-group">
-								<label for="iptAppID">账户名</label>
-								<input type="appid" class="form-control" id="iptAppID">
+								<label>描述</label>
+								<p>
+									用户支付到商户指定银行卡账号，手动确认订单收款。
+								</p>
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">账号</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label for="iptBankAccountName">账户名</label>
+								<input type="appid" class="form-control" id="iptBankAccountName">
 							</div>
 							<div class="form-group">
-								<label for="iptAppSecret">开户行</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
+								<label for="iptBankAccountNO">账号</label>
+								<input type="appid" class="form-control" id="iptBankAccountNO">
+							</div>
+							<div class="form-group">
+								<label for="iptBankName">开户行</label>
+								<input type="appid" class="form-control" id="iptBankName">
 							</div>
 							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">是否启用</label>
+								<input type="checkbox" class="form-check-input" id="BankEnabled">
+								<label class="form-check-label" for="BankEnabled">是否启用</label>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
+
 						</form>
 					</div>
 					<div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
 						<form>
-							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">是否启用</label>
+							<div class="form-group">
+								<label>描述</label>
+								<p>
+									支持采用积分进行支付。
+								</p>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
+							<div class="form-group form-check">
+								<input type="checkbox" class="form-check-input" id="BalanceEnabled">
+								<label class="form-check-label" for="BalanceEnabled">是否启用</label>
+							</div>
+
 						</form>
 					</div>
 					<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
 						<form>
-							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">是否启用</label>
+							<div class="form-group">
+								<label>描述</label>
+								<p>
+									购买后直接发货，到货后再进行支付。
+								</p>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
+							<div class="form-group form-check">
+								<input type="checkbox" class="form-check-input" id="CodEnabled">
+								<label class="form-check-label" for="CodEnabled">是否启用</label>
+							</div>
+
 						</form>
 					</div>
+					<button type="submit" class="btn btn-success">保存</button>
 				</div>
 			</td>
 		</tr>
 	</table>
+	<script>
+		$('.custom-file-input').on('change', function () {
+			let fileName = $(this).val().split('\\').pop();
+			$(this).siblings('.custom-file-label').addClass("selected").html(fileName);
+		});
+	</script>
 </body>
 
 </html>
