@@ -24,16 +24,14 @@ function SpGetPinyin($str, $ishead = 0, $isclose = 1)
     if ($pinyins==null) {
         $pinyins = array();
     }
-    global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+    global $cfg_bizcore_appid, $cfg_bizcore_key;
     global $cfg_soft_lang;
     $restr = '';
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         if ($cfg_soft_lang == "utf-8") {
             $str = gb2utf8($str);
         }
-        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-        $client->appid = $cfg_bizcore_appid;
-        $client->key = $cfg_bizcore_key;
+        $client = new DedeBizClient();
         $data = $client->Pinyin($str, "");
         $restr = $data->data;
         $client->Close();

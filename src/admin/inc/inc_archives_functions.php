@@ -553,9 +553,7 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
         //采用DedeBIZ Core分词组件分词
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
             $keywords = '';
-            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-            $client->appid = $cfg_bizcore_appid;
-            $client->key = $cfg_bizcore_key;
+            $client = new DedeBizClient();
             $data = $client->Spliteword($subject.Html2Text($message));
             $keywords = $data->data;
             $client->Close();

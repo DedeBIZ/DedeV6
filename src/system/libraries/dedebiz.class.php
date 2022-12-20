@@ -8,8 +8,11 @@ class DedeBizClient
     var $appid;
     var $key;
     var $err;
-    function __construct($ipaddr, $port)
+    function __construct()
     {
+        global $cfg_bizcore_appid,$cfg_bizcore_key,$cfg_bizcore_hostname, $cfg_bizcore_port;
+        $this->appid = $cfg_bizcore_appid;
+        $this->key = $cfg_bizcore_key;
         $this->err = "";
         if (!function_exists("socket_create")) {
             $this->err = (object)array(
@@ -20,7 +23,7 @@ class DedeBizClient
             return;
         }
         $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        $rs = @socket_connect($this->socket, $ipaddr, $port);
+        $rs = @socket_connect($this->socket, $cfg_bizcore_hostname, $cfg_bizcore_port);
         if (!$rs) {
             $this->err = (object)array(
                 "code" => -1,
@@ -64,8 +67,16 @@ class DedeBizClient
         );
         return $this->request($req);
     }
+    function IsEnabled()
+    {
+        $rs = $this->Ping();
+        if ($rs->code===200 && $rs->data === "Hello www.dedebiz.com") {
+           return true;
+        }
+        return false;
+    }
     //检测是否连接
-    function Ping($i)
+    function Ping()
     {
         $req = array(
             "method" => "ping",
@@ -191,6 +202,35 @@ class DedeBizClient
             "parms" => array(
                 "body" => $body,
                 "sep" => $sep,
+            )
+        );
+        return $this->request($req);
+    }
+    //云服务设置
+    function CloudSet($config=array())
+    {
+        $req = array(
+            "method" => "cloud_set",
+            "parms" => array(
+                "aliyun_enabled" => $config['aliyun_enabled'],
+                "aliyun_access_key_id" => $config['aliyun_access_key_id'],
+                "aliyun_access_key_secret" => $config['aliyun_access_key_secret'],
+                "huaweicloud_enabled" => $config['huaweicloud_enabled'],
+                "huawei_access_key_id" => $config['huawei_access_key_id'],
+                "huawei_secret_access_key" => $config['huawei_secret_access_key'],
+                "tencent_enabled" => $config['tencent_enabled'],
+                "tencent_secret_id" => $config['tencent_secret_id'],
+                "tencent_secret_key" => $config['tencent_secret_key'],
+            )
+        );
+        return $this->request($req);
+    }
+    function CloudGet()
+    {
+        $req = array(
+            "method" => "cloud_get",
+            "parms" => array(
+                "name" => "dedebiz"
             )
         );
         return $this->request($req);

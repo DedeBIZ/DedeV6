@@ -35,9 +35,7 @@ if ($fmdo == 'sendMail') {
     $mailbody .= "Powered by DedeBIZ开发团队\r\n";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-        $client->appid = $cfg_bizcore_appid;
-        $client->key = $cfg_bizcore_key;
+        $client = new DedeBizClient();
         $client->MailSend($cfg_ml->fields['email'],$mailtitle,$mailtitle,$mailbody);
         $client->Close();
     } else {

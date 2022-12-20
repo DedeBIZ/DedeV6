@@ -645,9 +645,7 @@ else if ($dopost == "makekw") {
     $dsql->SetQuery($query);
     $dsql->Execute();
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-        $client->appid = $cfg_bizcore_appid;
-        $client->key = $cfg_bizcore_key;
+        $client = new DedeBizClient();
         while ($row = $dsql->GetArray()) {
             //跳过已经有关键词文档
             if (trim($row['keywords']) != '') continue;

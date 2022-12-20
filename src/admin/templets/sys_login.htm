@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	<title>支付接口设置</title>
+	<title>登录设置</title>
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -18,7 +18,7 @@
 			<td bgcolor="#f5f5f5" colspan="4">
 				<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
 					<tr>
-						<td>支付接口设置</td>
+						<td>用户登录设置</td>
 						<td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank"
 									class="btn btn-success btn-sm">更多接口</a></span></td>
 					</tr>
@@ -27,79 +27,52 @@
 		</tr>
 		<tr>
 			<td colspan="4">
+				<form>
+					<div class="form-group">
+						<label for="iptAppID">登录方式</label>
+						<div class="form-check form-check-inline">
+							<input name="loginType" class="form-check-input" type="checkbox" id="loginType1" value="option1" checked disabled>
+							<label class="form-check-label" for="loginType1">用户名密码</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input name="loginType" class="form-check-input" type="checkbox" id="loginType2" value="option2">
+							<label class="form-check-label" for="loginType2">手机验证码</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input name="loginType" class="form-check-input" type="checkbox" id="loginType3" value="option2">
+							<label class="form-check-label" for="loginType3">微信登录</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input name="loginType" class="form-check-input" type="checkbox" id="loginType4" value="option2">
+							<label class="form-check-label" for="loginType4">抖音登录</label>
+						</div>
+					</div>
+				</form>
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
-						<button class="nav-link active" id="wechat-tab" data-toggle="tab" data-target="#wechat"
-							type="button" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button>
-					</li>
-					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="alipay-tab" data-toggle="tab" data-target="#alipay" type="button"
-							role="tab" aria-controls="alipay" aria-selected="false">支付宝</button>
+							role="tab" aria-controls="alipay" aria-selected="false">手机验证码</button>
 					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="bank-tab" data-toggle="tab" data-target="#bank" type="button"
-							role="tab" aria-controls="bank" aria-selected="false">银行转帐</button>
+							role="tab" aria-controls="bank" aria-selected="false">微信登录</button>
 					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="balance-tab" data-toggle="tab" data-target="#balance" type="button"
-							role="tab" aria-controls="balance" aria-selected="false">余额支付</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="cod-tab" data-toggle="tab" data-target="#cod" type="button"
-							role="tab" aria-controls="cod" aria-selected="false">货到付款</button>
+							role="tab" aria-controls="balance" aria-selected="false">抖音登录</button>
 					</li>
 				</ul>
 				<div class="tab-content py-3" id="myTabContent">
 					<div class="tab-pane fade show active" id="wechat" role="tabpanel" aria-labelledby="wechat-tab">
 						<form>
-							<div class="form-group">
-								<label>描述</label>
-								<p>
-									微信支付是腾讯公司的支付业务品牌，微信支付商户平台支持线下场所、公众号、小程序、PC网站、APP、企业微信等经营场景快速接入微信支付。微信支付全面打通O2O生活消费领域，提供专业的互联网+行业解决方案，微信支付支持微信红包和微信理财通，是移动支付的首选。
-								</p>
-							</div>
-							<div class="form-group">
-								<label for="iptAppID">AppID</label>
-								<input type="appid" class="form-control" id="iptAppID">
-							</div>
-							<div class="form-group">
-								<label for="iptAppSecret">AppSecret</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
-							</div>
-							<div class="form-group">
-								<label for="iptAppSecret">商户号</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
-							</div>
-							<div class="form-group">
-								<label for="iptAppSecret">APIv3秘钥</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
-							</div>
-							<div class="form-group">
-								<label for="iptAppSecret">商户证书序列号</label>
-								<input type="appid" class="form-control" id="iptAppSecret">
-							</div>
-							<div class="form-group">
-								<label for="iptAppSecret">商户证书文件</label>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
-									<label class="custom-file-label" for="validatedInputGroupCustomFile">选择商户证书文件...</label>
-								  </div>
-							</div>
 							<div class="form-group form-check">
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">是否启用</label>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="alipay" role="tabpanel" aria-labelledby="alipay-tab">
 						<form>
-							<div class="form-group">
-								<label for="iptAppID">描述</label>
-								<p>
-									支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。
-								</p>
-							</div>
 							<div class="form-group">
 								<label for="iptAppID">APPID</label>
 								<input type="appid" class="form-control" id="iptAppID">
@@ -122,13 +95,12 @@
 							</div>
 							<div class="form-group">
 								<label for="iptAppSecret">签名类型</label>
-								<input type="appid" class="form-control" id="iptAppSecret" value="RSA2" disabled>
+								<input type="appid" class="form-control" id="iptAppSecret">
 							</div>
 							<div class="form-group form-check">
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">是否启用</label>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
 						</form>
 
 					</div>
@@ -150,7 +122,6 @@
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">是否启用</label>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
@@ -159,7 +130,6 @@
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">是否启用</label>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
@@ -168,9 +138,10 @@
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">是否启用</label>
 							</div>
-							<button type="submit" class="btn btn-success">保存</button>
 						</form>
 					</div>
+					<button type="submit" class="btn btn-success">保存</button>
+
 				</div>
 			</td>
 		</tr>

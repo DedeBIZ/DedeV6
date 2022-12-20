@@ -82,9 +82,7 @@ else if ($dopost == 'setskin') {
     openssl_public_decrypt(base64_decode($cfg_auth_code), $decotent, DEDEPUB);
     $core_info = new stdClass;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-        $client->appid = $cfg_bizcore_appid;
-        $client->key = $cfg_bizcore_key;
+        $client = new DedeBizClient();
         $core_info = $client->SystemInfo();
         $client->Close();
     }

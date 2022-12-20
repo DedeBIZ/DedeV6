@@ -62,6 +62,7 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='系统用户管理' link='sys_admin_user.php' rank='sys_User' target='main' />
     <m:item name='用户组设定' link='sys_group.php' rank='sys_Group' target='main' />
     <m:item name='图片水印设置' link='sys_info_mark.php' rank='sys_Edit' target='main' />
+    <m:item name='云服务设置' link='sys_cloud.php' rank='sys_Edit' target='main' />
     <m:item name='软件下载设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
     <m:item name='防采集串混淆' link='article_string_mix.php' rank='sys_StringMix' target='main' />
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据备份还原' link='sys_data.php' rank='sys_Data' target='main' />")."

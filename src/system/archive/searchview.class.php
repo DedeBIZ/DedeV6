@@ -152,15 +152,13 @@ class SearchView
     function GetKeywords($keyword)
     {
         global $cfg_soft_lang;
-        global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+        global $cfg_bizcore_appid, $cfg_bizcore_key;
         $keyword = cn_substr($keyword, 50);
         $row = $this->dsql->GetOne("SELECT spwords FROM `#@__search_keywords` WHERE keyword='".addslashes($keyword)."'; ");
         if (!is_array($row)) {
             if (strlen($keyword) > 7) {
                 if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-                    $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-                    $client->appid = $cfg_bizcore_appid;
-                    $client->key = $cfg_bizcore_key;
+                    $client = new DedeBizClient();
                     $data = $client->Spliteword($keyword);
                     $kvs = explode(",", $data->data);
                     $keywords = $keyword." ";
