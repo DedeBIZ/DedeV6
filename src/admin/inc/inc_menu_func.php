@@ -32,7 +32,7 @@ function GetMenus($userrank, $topos = 'main')
         if ($ctag->GetName() == 'top' && ($ctag->GetAtt('rank') == '' || TestPurview($ctag->GetAtt('rank')))) {
             if ($openitem != 999 && !preg_match("#".$openitem.'_'."#", $ctag->GetAtt('item')) && $openitem != 100) continue;
             $htmp = str_replace("~channelname~", $ctag->GetAtt("name"), $headTemplet);
-            $icon = 'fa-desktop';
+            $icon = 'fa-plug';
             if ($ctag->GetAtt('icon') != '') {
                 $icon = $ctag->GetAtt('icon');
             }
