@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成首页
+ * 更新首页
  *
  * @version        $id:makehtml_homepage.php 2 9:30 2010-11-11 tianya $
  * @package        DedeBIZ.Administrator

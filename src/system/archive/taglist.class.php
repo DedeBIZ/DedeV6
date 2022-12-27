@@ -39,7 +39,7 @@ class TagList
      */
     function __construct($keyword, $templet)
     {
-        global $dsql,$envs,$cfg_cmsurl;
+        global $dsql, $envs, $cfg_cmsurl;
         $this->Templet = $templet;
         $this->Tag = (int)$keyword;
         $this->dsql = $dsql;
@@ -151,7 +151,7 @@ class TagList
      */
     function Display()
     {
-        global $cfg_cmspath,$cfg_tags_dir;
+        global $cfg_cmspath, $cfg_tags_dir;
         $tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
         $makeDir = empty($this->Tag) ? $this->GetTruePath().$tagsDir."/index.html" : $this->GetTruePath().$tagsDir."/".$this->Tag."/index.html";
         if ($this->Tag != '') {
@@ -552,14 +552,14 @@ class TagList
     }
     function SetTagsDir($dir = '')
     {
-        global $cfg_tags_dir,$cfg_cmspath;
-        if ($dir == "") $dir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
+        global $cfg_tags_dir, $cfg_cmspath;
+        if ($dir == "") $dir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
         $this->tagsDir = $dir;
     }
     //生成静态Tag
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
-        global $cfg_dir_purview,$envs,$cfg_cmspath,$cfg_tags_dir,$cfg_cmsurl;
+        global $cfg_dir_purview, $envs, $cfg_cmspath, $cfg_tags_dir, $cfg_cmsurl;
         $envs['makeTag'] = 1;
         $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
         if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {

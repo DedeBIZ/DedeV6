@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 function lib_tag(&$ctag, &$refObj)
 {
-    global $dsql, $envs, $cfg_cmsurl,$cfg_tags_dir;
+    global $dsql, $envs, $cfg_cmsurl, $cfg_tags_dir;
     //属性处理
     $attlist = "row|30,sort|new,getall|0,typeid|0,ishtml|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);

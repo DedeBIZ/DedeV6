@@ -10,5 +10,5 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
-
 include DedeInclude("templets/sys_login.htm");
+?>

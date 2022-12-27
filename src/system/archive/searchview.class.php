@@ -151,8 +151,7 @@ class SearchView
      */
     function GetKeywords($keyword)
     {
-        global $cfg_soft_lang;
-        global $cfg_bizcore_appid, $cfg_bizcore_key;
+        global $cfg_soft_lang, $cfg_bizcore_appid, $cfg_bizcore_key;
         $keyword = cn_substr($keyword, 50);
         $row = $this->dsql->GetOne("SELECT spwords FROM `#@__search_keywords` WHERE keyword='".addslashes($keyword)."'; ");
         if (!is_array($row)) {
@@ -449,7 +448,7 @@ class SearchView
             } //End if
 
         }
-        global $keyword,  $oldkeyword;
+        global $keyword, $oldkeyword;
         if (!empty($oldkeyword)) $keyword = $oldkeyword;
         $this->dtp->Display();
     }

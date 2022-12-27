@@ -13,7 +13,6 @@ require_once(dirname(__FILE__) . "/config.php");
 CheckPurview('sys_Edit');
 $dopost = isset($dopost) ? $dopost : '';
 $client = new DedeBizClient();
-
 if ($dopost == "cloud_get") {
     $rs = $client->CloudGet();
     if ($rs->code === 200) {
@@ -56,10 +55,9 @@ if ($dopost == "cloud_get") {
     }
     exit;
 }
-
 if (!$client->IsEnabled()) {
     echo DedeAlert("商业扩展未启动或连接失败，请检查配置是否正确",ALERT_WARNING);
     exit();
 }
-
 include DedeInclude("templets/sys_cloud.htm");
+?>

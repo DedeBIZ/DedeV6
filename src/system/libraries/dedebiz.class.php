@@ -10,7 +10,7 @@ class DedeBizClient
     var $err;
     function __construct()
     {
-        global $cfg_bizcore_appid,$cfg_bizcore_key,$cfg_bizcore_hostname, $cfg_bizcore_port;
+        global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
         $this->appid = $cfg_bizcore_appid;
         $this->key = $cfg_bizcore_key;
         $this->err = "";

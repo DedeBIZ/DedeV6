@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成标签
+ * 更新标签
  *
  * @version        $id:makehtml_taglist.php 11:17 2020年8月19日 tianya $
  * @package        DedeBIZ.Administrator

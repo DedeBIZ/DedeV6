@@ -267,7 +267,7 @@ class Archives
         return '';
     }
     /**
-     *  生成静态HTML
+     *  生成静态网页
      *
      * @access    public
      * @param     int    $isremote  是否远程

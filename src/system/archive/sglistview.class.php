@@ -44,7 +44,7 @@ class SgListView
      */
     function __construct($typeid, $searchArr = array())
     {
-        global $dsql,$envs;
+        global $dsql, $envs;
         $envs['url_type'] = 1;
         $this->TypeID = $typeid;
         $this->dsql = $dsql;

@@ -20,8 +20,7 @@ if (empty($typeid)) $typeid = 0;
 if (!isset($uppage)) $uppage = 0;
 if (empty($maxpagesize)) $maxpagesize = 30;
 $adminID = $cuserLogin->getUserID();
-//检测获取所有栏目id
-//普通更新或一键更新时更新所有栏目
+//检测获取所有栏目id，普通更新或一键更新时更新所有栏目
 if ($gotype == '' || $gotype == 'mkallct') {
     if ($upnext == 1 || $typeid == 0) {
         if ($typeid > 0) {
@@ -42,7 +41,7 @@ else if ($gotype == 'mkall') {
     $idArray = array();
     if (file_exists($mkcachefile)) require_once($mkcachefile);
 }
-//当前更新栏目的id
+//当前更新栏目id
 $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
     $tid = $idArray[$pageno];
@@ -60,7 +59,7 @@ if ($pageno == 0 && $mkpage == 1) //清空缓存
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` ");
 }
 $reurl = '';
-//更新数组所记录的栏目
+//更新数组所记录栏目
 if (!empty($tid)) {
     if (!isset($cfg_Cs[$tid])) {
         ShowMsg('没有该栏目数据，可能缓存文件没有更新，请检查是否有写入权限', 'javascript:;');

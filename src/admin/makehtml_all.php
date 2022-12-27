@@ -15,12 +15,9 @@ if ($action == '') {
     require_once(DEDEADMIN."/templets/makehtml_all.htm");
     exit();
 } else if ($action == 'make') {
-    //step = 1 更新首页、step = 2 更新文档、step = 3 更新栏目
+    //step = 1更新首页，step = 2更新文档，step = 3更新栏目
     if (empty($step)) $step = 1;
     //更新文档前优化数据
-    /*-------------------
-    function _1_OptimizeData1()
-    ---------------------*/
     if ($step == 1) {
         $starttime = GetMkTime($starttime);
         $mkvalue = ($uptype == 'time' ? $starttime : $startid);
@@ -29,17 +26,11 @@ if ($action == '') {
         exit();
     }
     //更新文档
-    /*-------------------
-    function _2_MakeArchives()
-    ---------------------*/
-else if ($step == 2) {
+    else if ($step == 2) {
         include_once(DEDEADMIN."/makehtml_archives_action.php");
         exit();
     }
     //更新首页
-    /*-------------------------
-    function _3_MakeHomePage()
-    -------------------*/
     if ($step == 3) {
         include_once(DEDEINC."/archive/partview.class.php");
         $pv = new PartView();
@@ -59,10 +50,7 @@ else if ($step == 2) {
         exit();
     }
     //更新栏目
-    /*-------------------
-    function _4_MakeCatalog()
-    --------------------*/
-else if ($step == 4) {
+    else if ($step == 4) {
         $mkvalue = intval($mkvalue);
         $typeidsok = $typeids = array();
         $adminID = $cuserLogin->getUserID();
@@ -115,10 +103,7 @@ else if ($step == 4) {
         }
     }
     //成功状态
-    /*-------------------
-    function _10_MakeAllOK()
-    --------------------*/
-else if ($step == 10) {
+    else if ($step == 10) {
         $adminID = $cuserLogin->getUserID();
         $mkcachefile = DEDEDATA."/mkall_cache_{$adminID}.php";
         @unlink($mkcachefile);
@@ -126,7 +111,6 @@ else if ($step == 10) {
         ShowMsg("完成所有栏目文档更新", "javascript:;");
         exit();
     }//make step
-
 }//action=='make'
 /**
  *  优化数据

@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成文档
+ * 更新文档
  *
  * @version        $id:makehtml_archives.php 9:10 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator

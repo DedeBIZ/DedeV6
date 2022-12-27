@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成自由列表
+ * 更新自由列表
  *
  * @version        $id:makehtml_freelist.php 9:17 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator

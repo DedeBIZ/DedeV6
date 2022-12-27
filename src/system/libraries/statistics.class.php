@@ -17,7 +17,7 @@ class DedeStatistics {
     //获取统计js
     function GetStat()
     {
-        global $envs,$cfg_cookie_encode;
+        global $envs, $cfg_cookie_encode;
         $agent = new Agent();
         //不记录爬虫
         if ($agent->isRobot()) {
@@ -86,7 +86,7 @@ class DedeStatistics {
     //统计
     function Record()
     {
-        global $dsql,$cfg_cookie_encode;
+        global $dsql, $cfg_cookie_encode;
         //进行统计
         $pm = array('dduuid','ssid','browser','device','device_type','os','t','created_date','created_hour','url_type','typeid','aid','value','sign');
         $pmvalue = array();

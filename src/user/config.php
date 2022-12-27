@@ -12,7 +12,6 @@ function XSSClean($val)
     global $cfg_soft_lang;
     if ($cfg_soft_lang == 'gb2312') gb2utf8($val);
     if (is_array($val)) {
-        //while (list($key) = each($val))
         foreach ($val as $key => $value) {
             if (in_array($key, array('tags', 'body', 'dede_fields', 'dede_addonfields', 'dopost', 'introduce'))) continue;
             $val[$key] = XSSClean($val[$key]);
@@ -76,9 +75,7 @@ function CheckCSRF()
 {
     $cc_csrf_token_check = GetCookie("dede_csrf_token");
     if (
-        !(isset($_POST['_csrf_token'], $cc_csrf_token_check)
-            && is_string($_POST['_csrf_token']) && is_string($cc_csrf_token_check)
-            && hash_equals($_POST['_csrf_token'], $cc_csrf_token_check))
+        !(isset($_POST['_csrf_token'], $cc_csrf_token_check) && is_string($_POST['_csrf_token']) && is_string($cc_csrf_token_check) && hash_equals($_POST['_csrf_token'], $cc_csrf_token_check))
     ) {
         ShowMsg('刷新页面重新提交，请不要发布重复文档', '-1');
         exit();
@@ -128,10 +125,9 @@ if ($cfg_mb_open == 'N') {
 }
 $keeptime = isset($keeptime) && is_numeric($keeptime) ? $keeptime : -1;
 $cfg_ml = new MemberLogin($keeptime);
-
-// 检查收件箱
+//检查收件箱
 function PmRead(){
-    global $dsql,$cfg_ml;
+    global $dsql, $cfg_ml;
     $query = "SELECT * FROM `#@__member_pms` WHERE folder LIKE 'outbox' AND isadmin='1'";
     $dsql->SetQuery($query);
     $dsql->Execute();
@@ -232,7 +228,6 @@ function countArchives($channelid)
         return FALSE;
     }
 }
-
 //安全提示问题，这两句不要修改
 $safequestions = array();
 $safequestions[0] = '没安全提示问题';

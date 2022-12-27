@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成列表栏目
+ * 更新列表栏目
  *
  * @version        $id:makehtml_list.php 11:09 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator

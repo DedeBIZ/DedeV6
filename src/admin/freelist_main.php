@@ -55,7 +55,7 @@ if ($dopost=='') {
  */
 function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
 {
-    global $cfg_phpurl,$addsql;
+    global $cfg_phpurl, $addsql;
     $start = ($pageno-1) * $pagesize;
     $printhead ="<table width='98%' cellpadding='1' cellspacing='1' align='center' class='table maintable my-3'>
         <tr>

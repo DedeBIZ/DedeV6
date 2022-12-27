@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成专题
+ * 更新专题
  *
  * @version        $id:makehtml_spec.php 11:17 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
