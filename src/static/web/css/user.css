@@ -16,7 +16,8 @@
 .user-logo {
 	max-width:60px;
 	min-height:60px;
-	border-radius:50%
+	border-radius:50%;
+	border-bottom:1px solid #eee
 }
 .user-img {
 	margin-right:10px;
@@ -25,15 +26,8 @@
 	border-radius:50%;
 	border:1px solid #dee2e6
 }
-.user-type span {
-	position:relative;
-	padding:.3rem;
-	font-size:14px;
-	font-weight:400;
-	top:-10px
-}
 .user-meter i {
-	font-size:24px !important
+	font-size:24px!important
 }
 .list-group-item.active a {
 	color:#fff

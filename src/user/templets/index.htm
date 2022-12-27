@@ -22,13 +22,11 @@
 					<div class="pb-3">
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body row">
-								<div class="col-12 col-md-4 text-center">
+								<div class="col-12 text-center">
 									<a href="<?php echo $cfg_memberurl;?>/"><img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="user-logo"></a>
-									<div class="user-type"><span class="badge badge-success"><?php echo $cfg_ml->M_LoginID;?></span></div>
-								</div>
-								<div class="col-12 col-md-8">
-									<p><?php echo $cfg_ml->M_MbType;?>积分：<span class="text-primary"><?php echo $cfg_ml->M_Scores;?></span>，金币：<span class="text-primary"><?php echo $cfg_ml->M_Money;?></span></p>
-									<div><a href="<?php echo $cfg_memberurl;?>/buy.php" class="btn btn-success btn-sm">充值</a></div>
+									<h3 class="mb-2"><?php echo $cfg_ml->M_LoginID;?></h3>
+									<p class="mb-2"><?php echo $cfg_ml->M_MbType;?>积分：<span class="text-primary"><?php echo $cfg_ml->M_Scores;?></span></p>
+									<p class="mb-0">金币：<span class="text-primary"><?php echo $cfg_ml->M_Money;?></span></p>
 								</div>
 							</div>
 						</div>
@@ -36,36 +34,26 @@
 					<div class="py-3">
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body">
-								<ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 mb-0 list-unstyled">
-									<li class="col" data-tags="alarm clock">
-										<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1">
-											<div class="bg-light text-center user-meter rounded mb-3 p-3"><i class="fa fa-list"></i></div>
-											<div class="text-muted text-center">文档管理</div>
-										</a>
+								<ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled text-center mb-0">
+									<li class="col m-pb-1" data-tags="alarm clock">
+										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1"><i class="fa fa-list"></i></a></div>
+										<a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1">文档管理</a>
 									</li>
-									<li class="col" data-tags="alarm clock">
-										<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">
-											<div class="bg-light text-center user-meter rounded mb-3 p-3"><i class="fa fa-commenting-o"></i></div>
-											<div class="text-muted text-center">消息管理</div>
-										</a>
+									<li class="col m-pb-1" data-tags="alarm clock">
+										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox"><i class="fa fa-commenting-o"></i></a></div>
+										<a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">消息管理</a>
 									</li>
-									<li class="col" data-tags="alarm clock">
-										<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/buy.php">
-											<div class="bg-light text-center user-meter rounded mb-3 p-3"><i class="fa fa-credit-card-alt"></i></div>
-											<div class="text-muted text-center">钱包积分</div>
-										</a>
+									<li class="col m-pb-1" data-tags="alarm clock">
+										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/buy.php"><i class="fa fa-credit-card-alt"></i></a></div>
+										<a href="<?php echo $cfg_memberurl;?>/buy.php">钱包积分</a>
 									</li>
 									<li class="col" data-tags="space align distribute">
-										<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/mystow.php">
-											<div class="bg-light text-center user-meter rounded mb-3 p-3"><i class="fa fa-star"></i></div>
-											<div class="text-muted text-center">我的收藏</div>
-										</a>
+										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/mystow.php"><i class="fa fa-star"></i></a></div>
+										<a href="<?php echo $cfg_memberurl;?>/mystow.php">我的收藏</a>
 									</li>
 									<li class="col" data-tags="space align distribute">
-										<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">
-											<div class="bg-light text-center user-meter rounded mb-3 p-3"><i class="fa fa-cog"></i></div>
-											<div class="text-muted text-center">账号安全</div>
-										</a>
+										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php"><i class="fa fa-cog"></i></a></div>
+										<a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">账号安全</a>
 									</li>
 								</ul>
 							</div>

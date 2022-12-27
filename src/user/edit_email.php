@@ -7,7 +7,6 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-
 $dopost = isset($dopost) ? $dopost : "";
 if (!isset($backurl)) {
     $backurl = 'edit_email.php';

@@ -326,7 +326,10 @@ form.search {
 	background:#e77817
 }
 @media (max-width:480px) {
-	.m-pb-2 {
+	.m-pb-1 {
+	padding-bottom:1rem
+}
+.m-pb-2 {
 	padding-bottom:2rem
 }
 .spec .card img {
