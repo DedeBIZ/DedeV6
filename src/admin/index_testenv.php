@@ -155,15 +155,17 @@ if ($rs < 0) {
 if (count($safeMsg) > 0) {
 ?>
 	<div class="alert alert-danger mt-3">
-		<?php
-		$i = 1;
-		foreach ($safeMsg as $key => $val) {
-		?>
-		<div class="my-1"><?php echo $i;?>、<?php echo $val;?></div>
-		<?php
-		$i++;
-		}
-		?>
+		<ul>
+			<?php
+			$i = 1;
+			foreach ($safeMsg as $key => $val) {
+			?>
+			<li><?php echo $i;?>、<?php echo $val;?></li>
+			<?php
+			$i++;
+			}
+			?>
+		</ul>
 	</div>
 <?php
 }
