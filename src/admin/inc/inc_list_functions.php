@@ -105,7 +105,7 @@ function GetRankName($arcrank)
 function IsPicArchives($picname)
 {
     if ($picname != '') {
-        return ' <span class="btn btn-outline-warning btn-sm">图片</span>';
+        return ' <span class="btn btn-outline-success btn-sm">图片</span>';
     } else {
         return '';
     }
