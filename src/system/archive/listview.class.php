@@ -43,7 +43,7 @@ class ListView
      */
     function __construct($typeid, $uppage = 1)
     {
-        global $dsql,$envs;
+        global $dsql, $envs;
         $envs['url_type'] = 1;
         $this->TypeID = $typeid;
         $this->dsql = &$dsql;
@@ -121,7 +121,7 @@ class ListView
      */
     function CountRecord()
     {
-        global $cfg_list_son,$cfg_need_typeid2,$cfg_cross_sectypeid;
+        global $cfg_list_son, $cfg_need_typeid2, $cfg_cross_sectypeid;
         if (empty($cfg_need_typeid2)) $cfg_need_typeid2 = 'N';
         $filtersql = '';
         //获得附加表的相关信息，联动单筛选
@@ -786,7 +786,7 @@ class ListView
      */
     function GetPageListST($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $cfg_rewrite;
+        global $cfg_cmspath;
         $prepage = $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
@@ -803,6 +803,7 @@ class ListView
         $purl = $this->GetCurUrl();
         $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $tnamerule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
+        $tnamerule = preg_replace("/^(.*)\//", '', $tnamerule);
         //获得上一页和首页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
@@ -874,7 +875,7 @@ class ListView
      */
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $cfg_rewrite;
+        global $cfg_cmspath, $cfg_rewrite;
         $prepage = $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
