@@ -786,7 +786,7 @@ class ListView
      */
     function GetPageListST($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $cfg_cmspath, $cfg_rewrite;
+        global $cfg_rewrite;
         $prepage = $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
@@ -874,7 +874,7 @@ class ListView
      */
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $cfg_cmspath, $cfg_rewrite;
+        global $cfg_rewrite;
         $prepage = $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
