@@ -75,7 +75,7 @@
 								echo "<span class='btn btn-outline-danger btn-sm'>未安装</span><a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
 							}
 						} else {
-							echo "<div id=\"status_{$v['hash']}\"><a class=\"text-danger\" href=\"javascript:getmodule('download','{$v['hash']}')\">下载</a></div>";
+							echo "<div id=\"status_{$v['hash']}\"><a href=\"javascript:getmodule('download','{$v['hash']}')\" class=\"btn btn-outline-warning btn-sm\">下载</a></div>";
 						}
 						?>
 					</td>
