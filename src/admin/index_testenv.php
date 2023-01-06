@@ -78,7 +78,7 @@ if (!function_exists('PostHost')) {
 	}
 }
 if (!function_exists('TestAdminPWD')) {
-	//返回结果，1.没有修改默认管理员名称，2.没有修改默认管理员用户名和密码，3.没有发现默认账号
+	//返回结果，1没有修改默认管理员名称，2没有修改默认管理员用户名和密码，3没有发现默认账号
 	function TestAdminPWD()
 	{
 		global $dsql;
@@ -129,10 +129,10 @@ if (IsWritable(DEDEDATA.'/common.inc.php')) {
 	$safeMsg[] = '数据库配置data/common.inc.php文件，建议您以管理员权限设置禁止写入和执行';
 }
 if (!IsSSL()) {
-	$safeMsg[] = '网址非安全链接，建议您配置HTTPS';
+	$safeMsg[] = '网址非安全链接，建议您配置https';
 }
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	$safeMsg[] = 'PHP版本过低会无法正常使用系统，建议您升级到PHP7.X';
+	$safeMsg[] = 'php版本过低会无法正常使用后台，建议您升级到php7.x';
 }
 if (!DEDEBIZ_SAFE_MODE) {
 	$safeMsg[] = '系统运行环境为开发模式，建议您启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-xs">查看</a>';
@@ -154,19 +154,19 @@ if ($rs < 0) {
 <?php
 if (count($safeMsg) > 0) {
 ?>
-	<div class="alert alert-danger mt-3">
-		<ul>
-			<?php
-			$i = 1;
-			foreach ($safeMsg as $key => $val) {
-			?>
-			<li><?php echo $i;?>、<?php echo $val;?></li>
-			<?php
-			$i++;
-			}
-			?>
-		</ul>
-	</div>
+<div class="alert alert-danger mt-3">
+	<ul>
+		<?php
+		$i = 1;
+		foreach ($safeMsg as $key => $val) {
+		?>
+		<li><?php echo $i;?>、<?php echo $val;?></li>
+		<?php
+		$i++;
+		}
+		?>
+	</ul>
+</div>
 <?php
 }
 ?>
