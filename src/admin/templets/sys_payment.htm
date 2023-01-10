@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -11,7 +10,6 @@
 	<script src="../static/web/js/jquery.min.js"></script>
 	<script src="../static/web/js/bootstrap.min.js"></script>
 </head>
-
 <body>
 	<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 		<tr>
@@ -19,8 +17,7 @@
 				<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
 					<tr>
 						<td>支付接口设置</td>
-						<td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank"
-									class="btn btn-success btn-sm">更多接口</a></span></td>
+						<td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank" class="btn btn-success btn-sm">更多接口</a></span></td>
 					</tr>
 				</table>
 			</td>
@@ -29,24 +26,19 @@
 			<td colspan="4">
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
-						<button class="nav-link active" id="wechat-tab" data-toggle="tab" data-target="#wechat"
-							type="button" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button>
+						<button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab" data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="alipay-tab" data-toggle="tab" data-target="#alipay" type="button"
-							role="tab" aria-controls="alipay" aria-selected="false">支付宝</button>
+						<button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay" role="tab" aria-controls="alipay" aria-selected="false">支付宝</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="bank-tab" data-toggle="tab" data-target="#bank" type="button"
-							role="tab" aria-controls="bank" aria-selected="false">银行转帐</button>
+						<button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank" role="tab" aria-controls="bank" aria-selected="false">银行转帐</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="balance-tab" data-toggle="tab" data-target="#balance" type="button"
-							role="tab" aria-controls="balance" aria-selected="false">余额支付</button>
+						<button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance" role="tab" aria-controls="balance" aria-selected="false">余额支付</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="cod-tab" data-toggle="tab" data-target="#cod" type="button"
-							role="tab" aria-controls="cod" aria-selected="false">货到付款</button>
+						<button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod" role="tab" aria-controls="cod" aria-selected="false">货到付款</button>
 					</li>
 				</ul>
 				<div class="tab-content py-3" id="myTabContent">
@@ -54,9 +46,7 @@
 						<form>
 							<div class="form-group">
 								<label>描述</label>
-								<p>
-									微信支付是腾讯公司的支付业务品牌，微信支付商户平台支持线下场所、公众号、小程序、PC网站、APP、企业微信等经营场景快速接入微信支付。微信支付全面打通O2O生活消费领域，提供专业的互联网+行业解决方案，微信支付支持微信红包和微信理财通，是移动支付的首选。
-								</p>
+								<p>微信支付是腾讯公司的支付业务品牌，微信支付商户平台支持线下场所、公众号、小程序、PC网站、APP、企业微信等经营场景快速接入微信支付。微信支付全面打通O2O生活消费领域，提供专业的互联网+行业解决方案，微信支付支持微信红包和微信理财通，是移动支付的首选。</p>
 							</div>
 							<div class="form-group">
 								<label for="iptWechatAppID">AppID</label>
@@ -82,24 +72,20 @@
 								<label>商户证书文件</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="iptWechatPrivateKey">
-									<label class="custom-file-label" data-browse="选择"
-										for="iptWechatPrivateKey">选择商户证书文件...</label>
+									<label class="custom-file-label" data-browse="选择" for="iptWechatPrivateKey">选择商户证书文件...</label>
 								</div>
 							</div>
 							<div class="form-group form-check">
 								<input type="checkbox" class="form-check-input" id="WechatEnabled">
-								<label class="form-check-label" for="WechatEnabled">是否启用</label>
+								<label class="form-check-label" for="WechatEnabled"> 是否启用</label>
 							</div>
-
 						</form>
 					</div>
 					<div class="tab-pane fade" id="alipay" role="tabpanel" aria-labelledby="alipay-tab">
 						<form>
 							<div class="form-group">
 								<label for="iptAppID">描述</label>
-								<p>
-									支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。
-								</p>
+								<p>支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。</p>
 							</div>
 							<div class="form-group">
 								<label for="iptAlipayAPPID">APPID</label>
@@ -113,24 +99,21 @@
 								<label>应用公钥证书</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="iptAlipayAppCertPublicKey">
-									<label class="custom-file-label" data-browse="选择"
-										for="iptAlipayAppCertPublicKey">选择应用公钥证书文件...</label>
+									<label class="custom-file-label" data-browse="选择" for="iptAlipayAppCertPublicKey">选择应用公钥证书文件...</label>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>支付宝公钥证书</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="iptAlipayCertPublicKey">
-									<label class="custom-file-label" data-browse="选择"
-										for="iptAlipayCertPublicKey">选择支付宝公钥证书文件...</label>
+									<label class="custom-file-label" data-browse="选择" for="iptAlipayCertPublicKey">选择支付宝公钥证书文件...</label>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>支付宝根证书</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="iptAlipayRootCert">
-									<label class="custom-file-label" data-browse="选择"
-										for="iptAlipayRootCert">选择支付宝根证书文件...</label>
+									<label class="custom-file-label" data-browse="选择" for="iptAlipayRootCert">选择支付宝根证书文件...</label>
 								</div>
 							</div>
 							<div class="form-group">
@@ -139,19 +122,15 @@
 							</div>
 							<div class="form-group form-check">
 								<input type="checkbox" class="form-check-input" id="AlipayEnabled">
-								<label class="form-check-label" for="AlipayEnabled">是否启用</label>
+								<label class="form-check-label" for="AlipayEnabled"> 是否启用</label>
 							</div>
-
 						</form>
-
 					</div>
 					<div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="bank-tab">
 						<form>
 							<div class="form-group">
 								<label>描述</label>
-								<p>
-									用户支付到商户指定银行卡账号，手动确认订单收款。
-								</p>
+								<p>用户支付到商户指定银行卡账号，手动确认订单收款。</p>
 							</div>
 							<div class="form-group">
 								<label for="iptBankAccountName">账户名</label>
@@ -167,39 +146,32 @@
 							</div>
 							<div class="form-group form-check">
 								<input type="checkbox" class="form-check-input" id="BankEnabled">
-								<label class="form-check-label" for="BankEnabled">是否启用</label>
+								<label class="form-check-label" for="BankEnabled"> 是否启用</label>
 							</div>
-
 						</form>
 					</div>
 					<div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
 						<form>
 							<div class="form-group">
 								<label>描述</label>
-								<p>
-									支持采用积分进行支付。
-								</p>
+								<p>支持采用积分进行支付。</p>
 							</div>
 							<div class="form-group form-check">
 								<input type="checkbox" class="form-check-input" id="BalanceEnabled">
 								<label class="form-check-label" for="BalanceEnabled">是否启用</label>
 							</div>
-
 						</form>
 					</div>
 					<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
 						<form>
 							<div class="form-group">
 								<label>描述</label>
-								<p>
-									购买后直接发货，到货后再进行支付。
-								</p>
+								<p>购买后直接发货，到货后再进行支付。</p>
 							</div>
 							<div class="form-group form-check">
 								<input type="checkbox" class="form-check-input" id="CodEnabled">
-								<label class="form-check-label" for="CodEnabled">是否启用</label>
+								<label class="form-check-label" for="CodEnabled"> 是否启用</label>
 							</div>
-
 						</form>
 					</div>
 					<button type="submit" class="btn btn-success">保存</button>
@@ -214,5 +186,4 @@
 		});
 	</script>
 </body>
-
 </html>

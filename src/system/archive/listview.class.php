@@ -300,10 +300,7 @@ class ListView
         }
         if ($startpage == 1) {
             //如果列表启用封面文件，复制这个文件第一页
-            if (
-                $this->TypeLink->TypeInfos['isdefault'] == 1
-                && $this->TypeLink->TypeInfos['ispart'] == 0
-            ) {
+            if ($this->TypeLink->TypeInfos['isdefault'] == 1 && $this->TypeLink->TypeInfos['ispart'] == 0) {
                 $onlyrule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], '', $this->Fields['namerule2']);
                 $onlyrule = str_replace("{page}", "1", $onlyrule);
                 $list_1 = $this->GetTruePath().$onlyrule;
@@ -327,9 +324,7 @@ class ListView
             return;
         }
         $this->CountRecord();
-        if ((empty($this->PageNo) || $this->PageNo == 1)
-            && $this->TypeLink->TypeInfos['ispart'] == 1
-        ) {
+        if ((empty($this->PageNo) || $this->PageNo == 1) && $this->TypeLink->TypeInfos['ispart'] == 1) {
             $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
             $tempfile = str_replace("{tid}", $this->TypeID, $this->Fields['tempindex']);
             $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);

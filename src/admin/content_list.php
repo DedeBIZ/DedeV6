@@ -85,10 +85,7 @@ if ($cid == 0) {
     $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
 }
 //当选择的是单表模型栏目时，直接跳转单表模型管理区
-if (
-    empty($channelid)
-    && isset($tl->TypeInfos['channeltype'])
-) {
+if (empty($channelid) && isset($tl->TypeInfos['channeltype'])) {
     $channelid = $tl->TypeInfos['channeltype'];
 }
 if ($channelid < -1) {
