@@ -27,8 +27,7 @@ if (!isset($_NOT_ARCHIVES)) {
  */
 function GetCurContentAlbum($body, $rfurl, &$firstdd)
 {
-    global $dsql, $cfg_multi_site, $cfg_basehost, $cfg_ddimg_width;
-    global $cfg_basedir, $pagestyle, $cuserLogin, $cfg_addon_savetype;
+    global $dsql, $cfg_multi_site, $cfg_basehost, $cfg_ddimg_width, $cfg_basedir, $pagestyle, $cuserLogin, $cfg_addon_savetype;
     require_once(DEDEINC.'/dedecollection.func.php');
     if (empty($cfg_ddimg_width))    $cfg_ddimg_width = 320;
     $rsimg = '';
@@ -506,8 +505,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
     echo "<input type='hidden' name='dede_addonfields' value=\"".$dede_addonfields."\">\r\n";
 }
 /**
- * 处理网页文本
- * 删除非站外链接、自动摘要、自动获取缩略图
+ * 处理网页文本，删除非站外链接，自动摘要，自动获取缩略图
  *
  * @access    public
  * @param     string  $body  文档
@@ -519,8 +517,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
  */
 function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = '')
 {
-    global $autolitpic, $remote, $dellink, $autokey, $cfg_basehost, $cfg_auot_description, $id, $title, $cfg_soft_lang;
-    global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+    global $autolitpic, $remote, $dellink, $autokey, $cfg_basehost, $cfg_auot_description, $id, $title, $cfg_soft_lang, $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
     $autolitpic = (empty($autolitpic) ? '' : $autolitpic);
     $body = stripslashes($body);
     //远程图片本地化
@@ -714,9 +711,8 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         //水印
         @WaterImg($cfg_basedir.$fullUrl, 'up');
         $isrm_up = TRUE;
-    }
-    //远程或选择本地图片
-    else {
+    } else {
+        //远程或选择本地图片
         if ($handurl == '') {
             return '';
         }
@@ -729,8 +725,8 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
                 $filename = $ddinfos[0];
             }
             $isrm_up = TRUE;
-            //本地图片或远程不要求本地化
         } else {
+            //本地图片或远程不要求本地化
             $filename = $handurl;
         }
     }
