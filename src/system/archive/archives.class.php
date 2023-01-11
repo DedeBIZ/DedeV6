@@ -43,7 +43,7 @@ class Archives
      */
     function __construct($aid)
     {
-        global $dsql,$envs;
+        global $dsql, $envs;
         $this->IsError = FALSE;
         $this->ArcID = $aid;
         $this->PreNext = array();
@@ -579,7 +579,7 @@ class Archives
                 } else if ($ctag->GetName() == 'prenext') {
                     $this->dtp->Assign($i, $this->GetPreNext($ctag->GetAtt('get')));
                 }
-                //二次开发上一篇下一篇{dede:prenextdiy get='pre'}{/dede:prenextdiy}{dede:prenextdiy get='next'}{/dede:prenextdiy} 
+                //添加上一篇下一篇标签{dede:prenextdiy get='pre'}{/dede:prenextdiy}{dede:prenextdiy get='next'}{/dede:prenextdiy}
                 else if ($ctag->GetName()=='prenextdiy')
                 {
                     $innertext = trim($ctag->GetInnerText());
@@ -686,7 +686,6 @@ class Archives
                     $preRow['siteurl'],
                     $preRow['sitepath']
                 );
-                //二次开发上一篇属性
                 $preRow['litpic'] = (empty($preRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg' : $preRow['litpic'];
                 $this->PreNext['diy']['pre']['id'] = $preRow['id'];
                 $this->PreNext['diy']['pre']['arcurl'] = $mlink;
@@ -715,7 +714,6 @@ class Archives
                     $nextRow['siteurl'],
                     $nextRow['sitepath']
                 );
-                //二次开发下一篇属性
                 $nextRow['litpic'] = (empty($nextRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg' : $nextRow['litpic'];
                 $this->PreNext['diy']['next']['id'] = $nextRow['id'];
                 $this->PreNext['diy']['next']['arcurl'] = $mlink;
@@ -729,7 +727,6 @@ class Archives
                 $this->PreNext['nextimg'] = "";
             }
         }
-        //二次开发上一篇下一篇
         if ($gtype=='diy') {
             return $this->PreNext['diy'];
         } if ($gtype=='pre') {
