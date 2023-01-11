@@ -16,7 +16,7 @@
         $.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json",function(data) {
             let result = JSON.parse(data);
             if (result.code === 200) {
-                $("#_login").html(`<a href="{dede:global.cfg_cmsurl/}/user/edit_baseinfo.php"class="user-admin mr-3"><img src="${result.data.facepic}" alt="${result.data.username}" title="${result.data.username}">${result.data.username}</a><a href="{dede:global.cfg_cmsurl/}/user" class="btn btn-primary btn-sm"><i class="fa fa-user-circle"></i></a><a href="/user/pm.php" class="btn btn-primary btn-sm"><i class="fa fa-bullhorn"></i></a><a href="{dede:global.cfg_cmsurl/}/user/index_do.php?fmdo=login&dopost=exit" class="btn btn-success btn-sm"><i class="fa fa-sign-out"></i></a>`);
+                $("#_login").html(`<a href="{dede:global.cfg_cmsurl/}/user/edit_baseinfo.php"class="user-admin mr-3"><img src="${result.data.facepic}" alt="${result.data.username}" title="${result.data.username}">${result.data.username}</a><a href="{dede:global.cfg_cmsurl/}/user" class="btn btn-primary btn-sm rounded-md"><i class="fa fa-user-circle"></i></a><a href="/user/pm.php" class="btn btn-primary btn-sm rounded-md"><i class="fa fa-bullhorn"></i></a><a href="{dede:global.cfg_cmsurl/}/user/index_do.php?fmdo=login&dopost=exit" class="btn btn-success btn-sm rounded-md"><i class="fa fa-sign-out"></i></a>`);
                 $("#iptUsername").val(result.data.username);
                 $("#iptUsername").attr("disabled", "disabled");
                 $(".areaValidate").hide();

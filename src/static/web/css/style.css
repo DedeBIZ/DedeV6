@@ -308,6 +308,9 @@ form.search {
 .btn+.btn,.btn-text+.btn-text {
 	margin-left:1rem
 }
+.rounded-md {
+	border-radius:30px!important
+}
 #btnScrollTop {
 	display:none;
 	position:fixed;
