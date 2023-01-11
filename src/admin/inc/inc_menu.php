@@ -100,7 +100,7 @@ $adminMenu1
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据库字段替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
 </m:top>
 {$GLOBALS['menusMoudle']}
-<m:top item='8_' name='更新任务' rank='sys_MakeHtml' icon='fa-repeat'>
+<m:top item='8_' name='更新网站' rank='sys_MakeHtml' icon='fa-repeat'>
     <m:item name='更新整站' link='makehtml_all.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新首页' link='makehtml_homepage.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新栏目' link='makehtml_list.php' rank='sys_MakeHtml' target='main' />
