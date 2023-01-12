@@ -82,7 +82,7 @@
 					ShowMsg("您没选中任何信息");
 					return false;
 				}
-				DedeConfirm("您确定要删除这些消息吗？").then((v)=>{
+				DedeConfirm("您确定要删除这些消息吗").then((v)=>{
 					location = "operation.php?dopost=del&ids=" + selid;
 				}).catch((e)=>{
 					console.log(e)

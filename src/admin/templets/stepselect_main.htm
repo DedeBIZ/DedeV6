@@ -94,7 +94,7 @@
             });
         }
         function DelType() {
-            DedeConfirm("您确实要删除这个分类吗？").then((v)=>{
+            DedeConfirm("您确实要删除这个分类吗").then((v)=>{
                 var id = GetSelType();
                 if (id == 0) {
                     ShowMsg("必须选择一个类别");
@@ -126,7 +126,7 @@
             }
         }
         function DelSel() {
-            DedeConfirm("您确实要删除这些分类吗？").then((v)=>{
+            DedeConfirm("您确实要删除这些分类吗").then((v)=>{
                 document.form1.submit();
             }).catch((e)=>{
                 console.log(e)

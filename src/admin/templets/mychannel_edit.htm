@@ -300,7 +300,7 @@
 			}
 			//删除
 			function DelNote(gourl) {
-				DedeConfirm("您确认要删除这个字段吗？").then((v)=>{
+				DedeConfirm("您确认要删除这个字段吗").then((v)=>{
 					location.href = gourl;
 				}).catch((e)=>{
 					console.log(e)

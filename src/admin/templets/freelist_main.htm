@@ -43,7 +43,7 @@
 			}
 			//删除
 			function DelNote(nid) {
-				DedeConfirm("您确认要删除这条记录吗？").then((v)=>{
+				DedeConfirm("您确认要删除这条记录吗").then((v)=>{
 					var listArea = $Obj('rslist');
 					totalrow = totalrow - 1;
 					var pagenum = Math.ceil(totalrow / pagesize);

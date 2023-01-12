@@ -545,7 +545,8 @@ function face($mid)
 }
 //标签调用标签[field:id function='GetMyTags(@me,2)'/]2表示输出2个文档
 if (!function_exists('GetMyTags')) {
-    function GetMyTags($aid, $num=3) {
+    function GetMyTags($aid, $num=3)
+    {
         global $dsql,$cfg_cmspath;
         $tags = '';
         $query = "SELECT * FROM `#@__taglist` WHERE aid='$aid' LIMIT $num";
@@ -559,7 +560,8 @@ if (!function_exists('GetMyTags')) {
 }
 /*用户中心调用默认模板<?php pasterTempletDiy('head.htm');?>*/
 if (!function_exists('pasterTempletDiy')) {
-    function pasterTempletDiy($path) {
+    function pasterTempletDiy($path)
+    {
         global $cfg_basedir,$cfg_templets_dir,$cfg_df_style;
         $tmpfile = $cfg_basedir.$cfg_templets_dir.'/'.$cfg_df_style.'/'.$path;
         $dtp = new PartView();

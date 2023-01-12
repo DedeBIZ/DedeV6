@@ -51,7 +51,7 @@
 					ShowMsg("您没选中任何信息");
 					return false;
 				}
-				DedeConfirm("您确定要删除这些消息吗？").then((v)=>{
+				DedeConfirm("您确定要删除这些消息吗").then((v)=>{
 					$.get("pm.php?dopost=remove&ids=" + selid + "&folder=" + myfolder,function (data) {
 						let result = JSON.parse(data);
 						if (result.code === 200) {

@@ -18,7 +18,7 @@ function noselAll()
 //批量删除搜多关键字
 function delall()
 {
-	DedeConfirm("您确定要删除选定的关键字吗？").then((v)=>{
+	DedeConfirm("您确定要删除选定的关键字吗").then((v)=>{
 		document.form3.dopost.value = 'delall';
 		document.form3.submit();
 	}).catch((e)=>{

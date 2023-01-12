@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script>
 			function DelTpl(filename) {
-				DedeConfirm("您确实要删除这个模板吗？").then((v)=>{
+				DedeConfirm("您确实要删除这个模板吗").then((v)=>{
 					location = 'tpl.php?action=del&acdir=<?php echo $acdir;?>&filename=' +
 						filename;
 				}).catch((e)=>{

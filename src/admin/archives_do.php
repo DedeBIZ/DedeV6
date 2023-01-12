@@ -289,7 +289,7 @@ else if ($dopost == 'moveArchives') {
             <td width="90" class="admin-td">文档id：</td>
             <td class="admin-td">
                 <input type="text" name="tmpids" class="admin-input-md" value="<?php echo $qstr;?>"><br>
-                移动到目标栏目必须和选定文档栏目类型一致，否则程序会自动勿略不符合文档
+                移动栏目必须和选定文档栏目类型一致，否则自动过滤不相关文档
             </td>
         </tr>
         <tr>
@@ -301,7 +301,7 @@ else if ($dopost == 'moveArchives') {
         </table>
         </form>
         <?php
-        //AJAX窗体结束
+        //Ajax窗体结束
         } else {
         $totype = preg_replace("#[^0-9]#", '', $totype);
         $typeInfos = $dsql->GetOne("SELECT tp.channeltype,tp.ispart,tp.channeltype,ch.maintable,ch.addtable,ch.issystem FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$totype' ");
@@ -588,7 +588,7 @@ else if ($dopost == 'quickEdit') {
     </table>
     </form>
 <?php
-//AJAX窗体结束
+//Ajax窗体结束
 }
 /*-----------------------------
 //保存快速修改文档
@@ -840,7 +840,7 @@ else if ($dopost == 'attsDlg') {
     </table>
     </form>
 <?php
-//AJAX窗体结束
+//Ajax窗体结束
 }
 /*------------------------
 function getCatMap() {  }
@@ -861,6 +861,6 @@ else if ($dopost == 'getCatMap') {
         </div>
     </form>
 <?php
-//AJAX窗体结束
+//Ajax窗体结束
 }
 ?>

@@ -61,7 +61,7 @@
 					ShowMsg("您没选中任何文档");
 					return
 				};
-				DedeConfirm("您确定要删除这些评论吗？").then((v)=>{
+				DedeConfirm("您确定要删除这些评论吗").then((v)=>{
 					location.href = "feedback_main.php?job=del&fid=" + qstr
 				}).catch((e)=>{
 					console.log(e)
@@ -73,7 +73,7 @@
 					ShowMsg("您没选中任何文档");
 					return;
 				};
-				DedeConfirm("您确定要删除这些评论吗？").then((v)=>{
+				DedeConfirm("您确定要删除这些评论吗").then((v)=>{
 					location.href = "feedback_main.php?job=delall&fid=" + qstr;
 				}).catch((e)=>{
 					console.log(e)
@@ -85,7 +85,7 @@
 					ShowMsg("您没选中任何文档");
 					return;
 				};
-				DedeConfirm("您确定要删除这些评论吗？").then((v)=>{
+				DedeConfirm("您确定要删除这些评论吗").then((v)=>{
 					location.href = "feedback_main.php?job=check&fid=" + qstr;
 				}).catch((e)=>{
 					console.log(e)
@@ -97,7 +97,7 @@
 					ShowMsg("您没选中任何文档");
 					return;
 				}
-				DedeConfirm("您确定要删除这些评论吗？").then((v)=>{
+				DedeConfirm("您确定要删除这些评论吗").then((v)=>{
 					location.href = "feedback_edit.php?job=edit&fid=" + qstr;
 				}).catch((e)=>{
 					console.log(e)

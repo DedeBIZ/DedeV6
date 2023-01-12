@@ -3,8 +3,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文档列表调用标记
  *
- * 9:19 2010年7月13日:修正对isweight属性的支持
- *
  * @version        $id:arclist.lib.php 3 9:19 2010年7月13日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
@@ -74,7 +72,7 @@ function lib_arclist(&$ctag, &$refObj)
     } else {
         $flag = $ctag->GetAtt('att');
     }
-    return lib_arclistDone ($refObj, $ctag, $typeid, $ctag->GetAtt('row'), $ctag->GetAtt('col'), $titlelen, $infolen, $ctag->GetAtt('imgwidth'), $ctag->GetAtt('imgheight'), $listtype, $orderby, $ctag->GetAtt('keyword'), $innertext, $envs['aid'], $ctag->GetAtt('idlist'), $channelid, $ctag->GetAtt('limit'), $flag,$ctag->GetAtt('orderway'), $ctag->GetAtt('subday'), $ctag->GetAtt('noflag'), $tagid,$pagesize,$isweight,$ctag->GetAtt('notypeid')
+    return lib_arclistDone ($refObj, $ctag, $typeid, $ctag->GetAtt('row'), $ctag->GetAtt('col'), $titlelen, $infolen, $ctag->GetAtt('imgwidth'), $ctag->GetAtt('imgheight'), $listtype, $orderby, $ctag->GetAtt('keyword'), $innertext, $envs['aid'], $ctag->GetAtt('idlist'), $channelid, $ctag->GetAtt('limit'), $flag,$ctag->GetAtt('orderway'), $ctag->GetAtt('subday'), $ctag->GetAtt('noflag'), $tagid, $pagesize,$isweight, $ctag->GetAtt('notypeid')
     );
 }
 /**
@@ -106,7 +104,7 @@ function lib_arclist(&$ctag, &$refObj)
  * @param     string  $isweight  是否需要对检索出来的文档按照weight排序
  * @return    string
  */
-function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen=30, $infolen=160, $imgwidth=120, $imgheight=90, $listtype='all', $orderby='default', $keyword='', $innertext='', $arcid=0, $idlist='', $channelid=0, $limit='', $att='', $order='desc', $subday=0, $noflag='',$tagid='', $pagesize=0, $isweight='N',$notypeid=0)
+function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen=30, $infolen=160, $imgwidth=120, $imgheight=90, $listtype='all', $orderby='default', $keyword='', $innertext='', $arcid=0, $idlist='', $channelid=0, $limit='', $att='', $order='desc', $subday=0, $noflag='',$tagid='', $pagesize=0, $isweight='N', $notypeid=0)
 {
     global $dsql, $PubFields, $cfg_keyword_like, $cfg_index_cache, $_arclistEnv, $envs, $cfg_cache_type, $cfg_digg_update;
     $row = AttDef($row, 10);
@@ -227,8 +225,8 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             }
         }
         $orwheres[] = 'arc.arcrank > -1';
-        if (!empty($notypeid))
-        {
+        //否定指定栏目
+        if (!empty($notypeid)) {
             $orwheres[] = "and arc.typeid NOT IN (".GetSonIds($notypeid).")";
         }
         //由于这个条件会导致缓存功能失去意义，因此取消
@@ -260,7 +258,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         $orwhere = preg_replace("#^ And#is", '', $orwhere);
         $orwhere = preg_replace("#And[ ]{1,}And#is", 'And ', $orwhere);
     }
-    if ($orwhere != '') $orwhere = " WHERE $orwhere ";
+    if ($orwhere != '') $orwhere = " WHERE $orwhere and tp.ishidden != 1 ";
     //获取附加表信息
     $addfield = trim($ctag->GetAtt('addfields'));
     $addfieldsSql = '';
