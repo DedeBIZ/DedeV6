@@ -54,7 +54,7 @@
 										<td>
 											<table cellpadding="0" cellspacing="0" class="table table-borderless">
 												{dede:array.payment_list}
-												<tr onMouseMove="javascript:this.bgColor='#f5f5f5';" onMouseOut="javascript:this.bgColor='#ffffff';">
+												<tr>
 													<td width="10%" align="right">
 														{dede:if value.code=="cod" || value.code=="bank"}
 														<input type="radio" name="paytype" value="{dede:value.id/}" disabled="disabled" />

@@ -53,7 +53,7 @@
 			<form name="form1" action="templets_one_edit.php">
 				<input type="hidden" name="dopost" value="mksel">
 				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
-				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center">
 					<td><input type="checkbox" name="ids[]" value="{dede:field.aid/}"></td>
 					<td>{dede:field.aid/}</td>
 					<td><a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit">{dede:field.title/}</a></td>

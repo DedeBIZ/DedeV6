@@ -80,7 +80,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $dsql->SetQuery("SELECT * FROM `#@__search_keywords` ORDER BY $orderby LIMIT $start,$pagesize ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
-        $line = "<tr align='center' onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
+        $line = "<tr align='center'>
       <td><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
       <td>{$row['aid']}</td>
       <td><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>

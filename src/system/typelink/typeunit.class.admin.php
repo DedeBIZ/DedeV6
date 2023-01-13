@@ -109,7 +109,7 @@ class TypeUnit
             echo "<table width='100%' cellspacing='0' cellpadding='2'>";
             //普通列表
             if ($ispart == 0) {
-                echo "<tr onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">";
+                echo "<tr>";
                 echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-eye'></i></a>";
@@ -122,7 +122,7 @@ class TypeUnit
             }
             //带封面的栏目
             else if ($ispart == 1) {
-                echo "<tr onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">";
+                echo "<tr>";
                 echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-eye'></i></a>";
@@ -135,7 +135,7 @@ class TypeUnit
             }
             //独立页面
             else if ($ispart == 2) {
-                echo "<tr onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">";
+                echo "<tr>";
                 echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                 echo "</td><td align='right'>";
                 echo "<a href='{$typeDir}' target='_blank' title='预览'><i class='btn btn-sm fa fa-eye'></i></a>";
@@ -191,7 +191,7 @@ class TypeUnit
                 }
                 //普通列表
                 if ($ispart == 0) {
-                    echo "<tr onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">";
+                    echo "<tr>";
                     echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'>";
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
                     echo "</td><td align='right'>";
@@ -205,7 +205,7 @@ class TypeUnit
                 }
                 //封面栏目
                 else if ($ispart == 1) {
-                    echo "<tr onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">";
+                    echo "<tr>";
                     echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'>";
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                     echo "</td><td align='right'>";
@@ -219,7 +219,7 @@ class TypeUnit
                 }
                 //独立页面
                 else if ($ispart == 2) {
-                    echo "<tr onMouseMove=\"javascript:this.bgColor='#e9ecef';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">";
+                    echo "<tr>";
                     echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'>";
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                     echo "</td><td align='right'>";

@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="js/main.js"></script>
 		<script>
 			var channelArray = new Array();
 			<?php    
@@ -231,7 +230,7 @@
 							</tr>
 							<tr>
 								<td>文件保存目录：</td>
-								<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-md">（标签“{cmspath}”必填，请勿删除）</td>
+								<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-md">（标签“{cmspath}”请勿删除）</td>
 							</tr>
 							<tr>
 								<td>栏目列表选项：</td>
@@ -248,9 +247,9 @@
 							<tr>
 								<td>栏目属性：</td>
 								<td>
-									<label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo "checked='1'";?>> 列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-									<label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo "checked='1'";?>> 封面栏目（栏目本身不允许发布文档）</label><br>
-									<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo "checked='1'";?>> 外部栏目（在"文件保存目录"处填写网址）</label>
+									<label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo "checked='1'";?>> 列表栏目（允许发布文档）</label>
+									<label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo "checked='1'";?>> 封面栏目（不允许发布文档）</label>
+									<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo "checked='1'";?>> 外部栏目（文件保存目录处填写链接）</label>
 								</td>
 							</tr>
 							<tr>
@@ -279,13 +278,13 @@
 												$selstr = '';
 											}
 											if ($arr['evalue']%500==0) {
-												echo "<option value='{$arr['evalue']}'{$selstr}>└─ {$arr['ename']}</option>";
+												echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
 											}
 											else if (preg_match("#\.#", $arr['evalue']))
 											{
-												echo "<option value='{$arr['evalue']}'{$selstr}>└── {$arr['ename']}</option>";
-											} else {
 												echo "<option value='{$arr['evalue']}'{$selstr}>└─ {$arr['ename']}</option>";
+											} else {
+												echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
 											}
 										}
 										?>
@@ -306,6 +305,13 @@
 								<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-md">（需要加http开头的链接）</td>
 							</tr>
 							<tr>
+								<td>列表模板：</td>
+								<td>
+									<input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="admin-input-md">
+									<button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
+								</td>
+							</tr>
+							<tr>
 								<td>封面模板：</td>
 								<td>
 									<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-md">
@@ -318,17 +324,23 @@
 								</td>
 							</tr>
 							<tr>
-								<td>列表模板：</td>
-								<td>
-									<input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="admin-input-md">
-									<button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
-								</td>
-							</tr>
-							<tr>
 								<td>文档模板：</td>
 								<td>
 									<input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" class="admin-input-md">
 									<button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
+								</td>
+							</tr>
+							<tr>
+								<td>列表命名规则：</td>
+								<td>
+									<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-md">
+									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
+									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
+										{page} 列表的页码<br>
+										Nginx伪静态默认规则<br>
+										rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
+										rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -347,19 +359,6 @@
 										Nginx伪静态默认规则<br>
 										rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
 										rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>列表命名规则：</td>
-								<td>
-									<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-md">
-									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
-									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
-										{page} 列表的页码<br>
-										Nginx伪静态默认规则<br>
-										rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
-										rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
 									</div>
 								</td>
 							</tr>

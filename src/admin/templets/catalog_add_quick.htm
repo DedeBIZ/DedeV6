@@ -151,8 +151,17 @@
 								</td>
 							</tr>
 							<tr>
-								<td>默认页的名称：</td>
-								<td><input type="text" name="defaultname" value="index.html" class="admin-input-md"></td>
+								<td>列表命名规则：</td>
+								<td>
+									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-md">
+									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
+									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
+										{page} 列表的页码<br>
+										Nginx伪静态默认规则<br>
+										rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
+										rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+									</div>
+								</td>
 							</tr>
 							<tr>
 								<td>文档命名规则：</td>
@@ -174,17 +183,8 @@
 								</td>
 							</tr>
 							<tr>
-								<td>列表命名规则：</td>
-								<td>
-									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-md">
-									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
-									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
-										{page} 列表的页码<br>
-										Nginx伪静态默认规则<br>
-										rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
-										rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
-									</div>
-								</td>
+								<td>默认页的名称：</td>
+								<td><input type="text" name="defaultname" value="index.html" class="admin-input-md"></td>
 							</tr>
 							<tr>
 								<td colspan="2">

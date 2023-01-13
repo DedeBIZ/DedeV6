@@ -43,7 +43,7 @@
 			<form name="form3" action="article_keywords_main.php" method="post">
 				<input type="hidden" name="dopost" value="saveall">
 				{dede:datalist empty='<tr><td colspan="5" align="center">暂无文档</td></tr>'}
-				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center">
 					<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked="1"></td>
 					<td><input type="hidden" name="keyword_{dede:field.aid/}" class="admin-input-md" value="{dede:field.keyword/}">{dede:field.keyword/}</td>
 					<td>

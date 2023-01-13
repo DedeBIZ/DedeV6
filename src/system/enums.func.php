@@ -124,7 +124,7 @@ function getTopData($egroup)
     return $data;
 }
 /**
- *  获取数据的JS代码(二级联动)
+ *  获取数据的js二级联动代码
  *
  * @access    public
  * @param     string    $egroup   联动组

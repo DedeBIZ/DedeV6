@@ -152,7 +152,7 @@
 								$dls = explode(',',$dl);
 								$n++;
 							?>
-							<table cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table w-100" style="<?php if ($n!=$gp) echo 'display:none';?>">
+							<table cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="w-100" style="<?php if ($n!=$gp) echo 'display:none';?>">
 								<tr bgcolor="#e9ecef" align="center">
 									<td width="360" class="border-top-0">变量说明</td>
 									<td class="border-top-0">变量值</td>
@@ -163,14 +163,9 @@
 								$dsql->Execute();
 								$i = 1;
 								while($row = $dsql->GetArray()) {
-								if ($i%2==0) {
-									$bgcolor = "#e9ecef";
-								} else {
-									$bgcolor = "#ffffff";
-								}
 								$i++;
 								?>
-								<tr align="center" bgcolor="<?php echo $bgcolor?>">
+								<tr align="center">
 									<td><?php echo $row['info'];?></td>
 									<td align="left">
 										<?php

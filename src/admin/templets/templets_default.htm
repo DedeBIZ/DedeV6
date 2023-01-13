@@ -43,7 +43,7 @@
 				$filetime = MyDate("Y-m-d H:i",$filetime);
 				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 			?>
-			<tr onMouseMove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+			<tr>
 				<td><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="../static/web/img/icon_htm.png"><?php echo $filename;?></a></td>
 				<td><?php echo $fileinfo;?></td>
 				<td align="center"><?php echo $filetime;?></td>

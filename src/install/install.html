@@ -3,14 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-	<title>安装DedeV6程序</title>
+	<title>安装DedeV<?php echo $cfg_version_detail;?></title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="../static/web/img/favicon.ico">
 	<script src="../static/web/js/jquery.min.js"></script>
 	<script src="../static/web/js/bootstrap.min.js"></script>
 	<script src="../static/web/js/style.js"></script>
-	<style>*{margin:0;padding:0;letter-spacing:.6px;box-sizing:border-box}body{line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#545b62}input,select,.btn{font-size:14px!important}.install-box{margin:0 auto;width:860px}.admin-head{padding:1rem 0;background:#fff}.logo{height:36px}.admin-nav{height:36px;line-height:36px}.admin-nav-a{padding-right:30px}.admin-btn{color:#545b62}.dropdown-menu{min-width:8rem;font-size:14px}.dropdown-item{padding:0 1rem;height:36px;line-height:36px;font-size:14px;color:#545b62!important}@media (max-width:760px){.install-box{width:100%}.admin-head{padding:1rem 15px}.admin-nav-a{display:none!important}}</style>
+	<style>*{margin:0;padding:0;letter-spacing:.6px;box-sizing:border-box}body{line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#545b62}h2,legend{font-size:18px;font-weight:600}input,select,.btn{font-size:14px!important}.install-box{margin:0 auto;width:860px}.admin-head{padding:1rem 0;background:#fff}.logo{height:36px}.admin-nav{height:36px;line-height:36px}.admin-nav-a{padding-right:30px}.admin-btn{color:#545b62}.dropdown-menu{min-width:8rem;font-size:14px}.dropdown-item{padding:0 1rem;height:36px;line-height:36px;font-size:14px;color:#545b62!important}@media (max-width:760px){.install-box{width:100%}.admin-head{padding:1rem 15px}.admin-nav-a{display:none!important}}</style>
 </head>
 <body>
 	<div class="d-flex flex-md-row align-items-center shadow-sm admin-head mb-5">
@@ -36,12 +36,12 @@
 			<div class="alert alert-warning">请先阅读<a href="https://www.dedebiz.com/license?from=install" target="_blank" class="text-primary">《站点授权协议》</a></div>
 			<div class="card shadow-sm mb-3">
 				<div class="card-header bg-success text-white">
-					<h4 class="text-center my-0">欢迎使用DedeV<?php echo $cfg_version_detail;?></h4>
+					<h2 class="text-center my-0">欢迎使用DedeV<?php echo $cfg_version_detail;?></h2>
 				</div>
 				<div class="card-body">
 					<form action="../install/index.php" method="post" name="form1">
-						<input type="hidden" name="step" value="2" />
-						<input type="hidden" name="cookieencode" value="<?php echo $rnd_cookieEncode; ?>">
+						<input type="hidden" name="step" value="2">
+						<input type="hidden" name="cookieencode" value="<?php echo $rnd_cookieEncode;?>">
 						<input type="hidden" name="adminmail" value="admin@dedebiz.com">
 						<legend>数据库设置</legend>
 						<hr>
@@ -49,12 +49,12 @@
 							<label for="dbtype" class="form-label">数据库类型</label>
 							<select id="dbtype" name="dbtype" class="form-control form-select">
 								<option value="mysql" selected>MySQL</option>
-								<?php if(extension_loaded("sqlite3")) {;?><option value="sqlite">SQLite</option><?php } ?>
+								<?php if(extension_loaded("sqlite3")) {;?><option value="sqlite">SQLite</option><?php }?>
 							</select>
-							<div class="form-text text-danger">数据库类型一般为MySQL，SQLite仅用于开发调试，不建议生产中使用</div>
+							<div class="form-text text-danger">数据库类型一般为MySQL，类型SQLite用于开发调试，不建议生产中使用</div>
 						</div>
 						<div class="form-group server">
-							<label for="dbhost" class="form-label">数据库主机</label>
+							<label for="dbhost" class="form-label">数据库地址</label>
 							<input type="text" name="dbhost" id="dbhost" class="form-control" placeholder="localhost">
 						</div>
 						<div class="form-group server">
@@ -68,13 +68,13 @@
 						<div class="form-group">
 							<label for="dbprefix" class="form-label">数据表前缀</label>
 							<input type="text" name="dbprefix" id="dbprefix" class="form-control" placeholder="biz_">
-							<div class="form-text text-danger">请注意数据库名称默认为biz_</div>
+							<div class="form-text text-danger">请注意DedeV6数据表前缀默认为biz_</div>
 						</div>
 						<div class="form-group">
 							<label for="dbname" class="form-label">数据库名称</label>
 							<div class="input-group">
 								<input id="dbname" name="dbname" type="text" class="form-control" placeholder="DedeBIZ">
-								<div class="input-group-append"><button type="button" id="btnCheckConnect" class="btn btn-success">检查连接</button></div>
+								<div class="input-group-append"><button type="button" id="btnCheckConnect" class="btn btn-success">检查</button></div>
 							</div>
 						</div>
 						<div id="alertConnect"></div>
@@ -82,25 +82,25 @@
 						<hr>
 						<div class="form-group">
 							<label for="baseurl" class="form-label">网站网址</label>
-							<input type="text" name="baseurl" id="baseurl" class="form-control" placeholder="<?php echo $baseurl; ?>">
+							<input type="text" name="baseurl" id="baseurl" class="form-control" placeholder="<?php echo $baseurl;?>">
 						</div>
 						<div class="form-group">
 							<label for="webname" class="form-label">网站名称</label>
 							<input type="text" name="webname" id="webname" class="form-control" placeholder="某某公司">
 						</div>
 						<div class="form-group">
-							<label for="adminuser" class="form-label">用户名</label>
+							<label for="adminuser" class="form-label">管理员账号</label>
 							<input type="text" name="adminuser" id="adminuser" class="form-control" placeholder="admin">
-							<div class="form-text text-dark">只能用[0-9a-zA-Z_@!.-]以内范围的字符</div>
+							<div class="form-text text-dark">请使用[0-9a-zA-Z_@!.-]以内范围字符</div>
 						</div>
 						<div class="form-group">
-							<label for="adminpwd" class="form-label">密码</label>
+							<label for="adminpwd" class="form-label">管理员密码</label>
 							<input type="text" name="adminpwd" id="adminpwd" class="form-control" placeholder="admin">
 						</div>
 						<div class="form-group">
 							<label for="cmspath" class="form-label">安装目录</label>
-							<input type="text" name="cmspath" id="cmspath" class="form-control" value="<?php echo $basepath; ?>" placeholder="<?php echo $basepath; ?>">
-							<div class="form-text text-danger">在根目录安装时不必理会</div>
+							<input type="text" name="cmspath" id="cmspath" class="form-control" value="<?php echo $basepath;?>" placeholder="<?php echo $basepath;?>">
+							<div class="form-text text-danger">根目录安装时不必理会</div>
 						</div>
 						<div class="text-right"><button type="submit" class="btn btn-success">立即安装</button></div>
 					</form>
@@ -112,29 +112,29 @@
 		</div>
 	</div>
 	<script>
-	$("#btnCheckConnect").click(function() {
-		let dbhost = $('#dbhost').val();
-		let dbuser = $('#dbuser').val();
-		let dbpwd = $('#dbpwd').val();
-		if (!dbhost) dbhost = "localhost";
-		if (!dbuser) dbuser = "root";
-		$.get('index.php?step=10&dbhost=' + dbhost + '&dbuser=' + dbuser + '&dbpwd=' + dbpwd,function(rs){
-			console.log(rs);
-			let result = JSON.parse(rs);
-			if (result.code === 200) {
-				ShowAlert("#alertConnect", result.data, "success", 5000);
+		$("#btnCheckConnect").click(function() {
+			let dbhost = $('#dbhost').val();
+			let dbuser = $('#dbuser').val();
+			let dbpwd = $('#dbpwd').val();
+			if (!dbhost) dbhost = "localhost";
+			if (!dbuser) dbuser = "root";
+			$.get('index.php?step=10&dbhost=' + dbhost + '&dbuser=' + dbuser + '&dbpwd=' + dbpwd,function(rs){
+				console.log(rs);
+				let result = JSON.parse(rs);
+				if (result.code === 200) {
+					ShowAlert("#alertConnect", result.data, "success", 5000);
+				} else {
+					ShowAlert("#alertConnect", result.data, "danger", 5000);
+				}
+			})
+		})
+		$("#dbtype").change(function () {
+			if ($(this).val() === 'sqlite') {
+				$(".form-group.server").hide();
 			} else {
-				ShowAlert("#alertConnect", result.data, "danger", 5000);
+				$(".form-group.server").show();
 			}
 		})
-	})
-	$("#dbtype").change(function () {
-		if ($(this).val() === 'sqlite') {
-			$(".form-group.server").hide();
-		} else {
-			$(".form-group.server").show();
-		}
-	})
 	</script>
 </body>
 </html>

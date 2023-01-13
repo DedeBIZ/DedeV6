@@ -33,18 +33,18 @@
 					<div class="login-from">
 						<?php echo $redmsg;?>
 						<div class="login-box shadow-sm">
-							<h2 class="text-center mb-3">管理登录</h2>
+							<h2 class="text-center mb-3">后台登录</h2>
 							<form name="form1" method="post" action="login.php">
 								<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
 								<input type="hidden" name="dopost" value="login">
 								<input type="hidden" name="adminstyle" value="newDedeBIZ">
 								<div class="form-group">
-									<label for="iptUserid">账号</label>
-									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入管理员账号">
+									<label for="iptUserid">管理员账号</label>
+									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入账号">
 								</div>
 								<div class="form-group">
-									<label for="iptPassword">密码</label>
-									<input type="password" name="pwd" id="iptPassword" class="form-control" placeholder="请输入管理员密码">
+									<label for="iptPassword">管理员密码</label>
+									<input type="password" name="pwd" id="iptPassword" class="form-control" placeholder="请输入密码">
 								</div>
 								<div id="vdimgck" class="form-group" style="display:none">
 									<label for="iptValidate">验证码</label>

@@ -78,7 +78,7 @@
 					<td>管理</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="8" align="center">暂无文档</td></tr>'}
-				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center">
 					<td><input type='checkbox' name='aids' value='{dede:field.id/}'></td>
 					<td>{dede:field.webname function='dede_htmlspecialchars(@me)'/} 地址：{dede:field.url/}</td>
 					<td>{dede:field.logo function="GetPic(@me)"/}</td>

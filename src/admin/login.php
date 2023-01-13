@@ -16,7 +16,7 @@ $gotopage = RemoveXSS($gotopage);
 //检测安装目录安全性
 if (is_dir(dirname(__FILE__).'/../install')) {
     if (!file_exists(dirname(__FILE__).'/../install/install_lock.txt')) {
-        $fp = fopen(dirname(__FILE__).'/../install/install_lock.txt', 'w') or die('安装目录无写入权限，无法进行写入锁定文件，请安装完毕删除安装目录');
+        $fp = fopen(dirname(__FILE__).'/../install/install_lock.txt', 'w') or die('安装目录无写入权限和写入锁定文件，请安装完成后删除安装目录');
         fwrite($fp, 'ok');
         fclose($fp);
     }
@@ -30,7 +30,7 @@ if (is_dir(dirname(__FILE__).'/../install')) {
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if (preg_match('/admin/', $cururl)) {
-    $redmsg = '<div class="alert alert-warning">安全提示：后台管理目录名称中包含默认名称admin，建议把它修改为其它名称</div>';
+    $redmsg = '<div class="alert alert-warning">安全提示：后台管理目录名称中包含名称admin，建议把后台管理目录修改为其它名称</div>';
 } else {
     $redmsg = '';
 }

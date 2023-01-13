@@ -107,7 +107,7 @@
 				$fields['uptime'] = GetDateMk($fields['uptime']);
 				$fields['tag'] = dede_htmlspecialchars($fields['tag']);
 				?>
-				<tr align="center" onmousemove="javascript:this.bgColor='#e9ecef';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center">
 					<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id'];?>"></td>
 					<td>{dede:field.id/}</td>
 					<td><a href="../apps/tags.php?/<?php echo $fields['id'];?>/" target="_blank">{dede:field.tag/}</a></td>

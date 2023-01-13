@@ -46,7 +46,7 @@ if ($dopost == "save") {
     }
     //修改子栏目属性
     if (!empty($upnext)) {
-    $upquery = "UPDATE `#@__arctype` SETissend='$issend',defaultname='$defaultname',channeltype='$channeltype',tempindex='$tempindex',templist='$templist',temparticle='$temparticle',namerule='$namerule',namerule2='$namerule2',ishidden='$ishidden' WHERE 1=1 AND $slinks";
+    $upquery = "UPDATE `#@__arctype` SET issend='$issend',defaultname='$defaultname',channeltype='$channeltype',tempindex='$tempindex',templist='$templist',temparticle='$temparticle',namerule='$namerule',namerule2='$namerule2',ishidden='$ishidden' WHERE 1=1 AND $slinks";
         if (!$dsql->ExecuteNoneQuery($upquery)) {
             ShowMsg("修改栏目成功，但修改下级栏目属性时失败", "-1");
             exit();
