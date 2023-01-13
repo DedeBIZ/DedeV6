@@ -27,7 +27,7 @@ $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $menutype = 'content';
 if (empty($formhtml)) $formhtml = 0;
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("文档发布失败，投稿已经超出投稿限制次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
+    ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
 /*-------------

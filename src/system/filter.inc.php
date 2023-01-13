@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 过滤核心处理文件
+ * 过滤核心处理
  *
  * @version        $id:filter.inc.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries

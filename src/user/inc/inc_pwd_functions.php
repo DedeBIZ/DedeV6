@@ -61,7 +61,7 @@ function sendmail($email, $mailtitle, $mailbody, $headers)
     }
 }
 /**
- *  发送邮件；type为INSERT新建验证码，UPDATE修改验证码
+ *  发送邮件，type为INSERT新建验证码，UPDATE修改验证码
  *
  * @param     int  $mid  会员id
  * @param     int  $userid  用户id
@@ -108,7 +108,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
     }
 }
 /**
- *  查询会员信息mail用户输入邮箱地址userid用户名
+ *  查询会员信息，mail用户输入邮箱地址，userid用户名
  *
  * @param     string  $mail  邮件
  * @param     string  $userid  用户id

@@ -1,6 +1,6 @@
 <?php
 /**
- * 验证图片
+ * 验证码
  *
  * @version        $id:vdimgck.php$
  * @package        DedeBIZ.Libraries

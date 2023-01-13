@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 文档调用标签
+ * 文档标签
  *
  * @version        $id:arccontent.lib.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Taglib

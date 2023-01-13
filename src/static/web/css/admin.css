@@ -97,23 +97,6 @@ select:focus,input:focus,textarea:focus {
 	box-shadow:0 0 0 0.2rem rgba(0,123,255,.25);
 	outline:0
 }
-body.hidemenu {
-	background:none
-}
-body.showmenu .body-left {
-	display:block
-}
-body.hidemenu .body-left {
-	display:none
-}
-body.showmenu .body-right {
-	left:230px;
-	transition:all .3s
-}
-body.hidemenu .body-right {
-	left:0;
-	transition:all .3s
-}
 .coolbg {
 	padding:.25rem .65rem;
 	background:#f5f5f5;
@@ -267,12 +250,29 @@ body.hidemenu .body-right {
 	border:2px solid #1eb867;
 	z-index:10005
 }
+body.hidemenu {
+	background:none
+}
+body.showmenu .body-left {
+	display:block
+}
+body.hidemenu .body-left {
+	display:none
+}
+body.showmenu .body-right {
+	left:220px;
+	transition:all .3s
+}
+body.hidemenu .body-right {
+	left:0;
+	transition:all .3s
+}
 .body-left {
 	position:absolute;
 	top:60px;
 	left:0;
 	bottom:0;
-	width:230px
+	width:220px
 }
 .body-right {
 	position:absolute;
@@ -296,9 +296,9 @@ body.hidemenu .body-right {
 	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)
 }
 .top-logo {
-	margin-left:30px;
 	float:left;
-	width:200px
+	padding-left:30px;
+	width:220px
 }
 .top-name a {
 	float:left;

@@ -1,6 +1,6 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-//显示类似BS的提示信息
+//显示类似Bootstrap系统提示
 define('ALERT_PRIMARY', 1);
 define('ALERT_SECONDARY', 2);
 define('ALERT_SUCCESS', 3);
@@ -20,7 +20,7 @@ define('ALERT_COLORS', array(
     ALERT_DARK => array('#d3d3d4','#bcbebf','#141619'),
 ));
 define("ALERT_TPL", '<div style="position:relative;padding:.75rem 1.25rem;width:auto;font-size:12px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:.2rem">~content~</div>');
-//$content:文档 $type:alert类型
+//$content:文档，$type:alert类型
 function DedeAlert($content, $type = ALERT_PRIMARY)
 {
     $content = htmlspecialchars($content);
@@ -313,9 +313,9 @@ function UpdateStat()
 $arrs1 = array();
 $arrs2 = array();
 /**
- *  短消息函数，可以在某个动作处理后友好的提示信息
+ *  短消息函数，可以在某个动作处理后友好的系统提示
  *
- * @param     string  $msg       消息提示信息
+ * @param     string  $msg       消息系统提示
  * @param     string  $gourl     跳转地址
  * @param     int     $onlymsg   仅显示信息
  * @param     int     $limittime 限制时间
@@ -332,7 +332,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         return;
     }
     if (empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
-    $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>提示信息</title><base target='_self'></head><body><script>";
+    $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>系统提示</title><base target='_self'></head><body><script>";
     $htmlfoot  = "</script></body></html>";
     $litime = ($limittime == 0 ? 1000 : $limittime);
     $func = '';
@@ -351,8 +351,8 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         }
         $func .= "var pgo=0;function JumpUrl(){if (pgo==0){location='$gourl'; pgo=1;}}";
         $rmsg = $func;
-        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#1eb867;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.2rem;text-align:center;transition:all .3s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5)}.text-primary{color:#007bff}@media (max-width:768px){.tips{padding:0 15px}.tips,.tips-box{width:100%}}</style>\");";
-        $rmsg .= "document.write(\"<div class='tips'><div class='tips-box'><div class='tips-head'><p>提示信息</p></div>\");";
+        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#1eb867;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.2rem;text-align:center;transition:all .3s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(72,180,97,.5)}.text-primary{color:#007bff}@media (max-width:768px){.tips{padding:0 15px}.tips,.tips-box{width:100%}}</style>\");";
+        $rmsg .= "document.write(\"<div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div>\");";
         $rmsg .= "document.write(\"<div class='tips-body'>\");";
         $rmsg .= "document.write(\"".str_replace("\"", "“", $msg)."\");";
         $rmsg .= "document.write(\"";

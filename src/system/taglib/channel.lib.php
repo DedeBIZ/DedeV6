@@ -1,6 +1,6 @@
 <?php
 /**
- * 获取栏目列表标签
+ * 栏目列表标签
  *
  * @version        $id:channel.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

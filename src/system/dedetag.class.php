@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 模板类
+ * 模板主题
  *
  * @version        $id:dedetag.class.php 10:33 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 会员登录类
+ * 会员登录
  *
  * @version        $id:userlogin.class.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries

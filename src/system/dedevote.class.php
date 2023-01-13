@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 投票类
+ * 投票
  *
  * @version        $id:dedevote.class.php 10:31 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries

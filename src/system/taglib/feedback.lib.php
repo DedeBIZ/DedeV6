@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 调用最新评论
+ * 评论标签
  *
  * @version        $id:feedback.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

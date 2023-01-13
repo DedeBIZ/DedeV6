@@ -35,7 +35,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
     $cfg_basedir = $GLOBALS['cfg_basedir'];
     $basehost = IsSSL()? "https://".$_SERVER["HTTP_HOST"] : "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
-    preg_match_all("/(src)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
+    preg_match_all("/(src)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|jpeg|png))/isU", $body, $img_array);
     $img_array = array_unique($img_array[2]);
     $imgUrl = $cfg_uploaddir.'/'.MyDate($cfg_addon_savetype, time());
     $imgPath = $cfg_basedir.$imgUrl;
@@ -53,7 +53,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
             continue;
         }
         $itype =  substr($value, -4, 4);
-        if (!preg_match("#\.(gif|jpg|png)#", $itype)) $itype = ".jpg";
+        if (!preg_match("#\.(gif|jpg|jpeg|png)#", $itype)) $itype = ".jpg";
         $rndFileName = $imgPath.'/'.$milliSecond.'-'.$key.$itype;
         $iurl = $imgUrl.'/'.$milliSecond.'-'.$key.$itype;
         //下载并保存文件

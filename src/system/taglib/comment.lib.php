@@ -1,6 +1,6 @@
 <?php
 /**
- * 用于注释的标签
+ * 注释标签
  *
  * @version        $id:comment.lib.php 9:29 2020年9月2日 tianya $
  * @package        DedeBIZ.Taglib

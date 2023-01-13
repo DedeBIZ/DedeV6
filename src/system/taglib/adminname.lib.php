@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 获得作者名称
+ * 作者标签
  *
  * @version        $id:adminname.lib.php 2 8:48 2010年7月8日 tianya $
  * @package        DedeBIZ.Taglib
@@ -10,7 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 /**
- *  获得作者名称
+ *  作者标签
  *
  * @access    public
  * @param     object  $ctag  解析标签

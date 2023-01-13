@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 自定义宏标记调用标签
+ * 自定义宏标记标签
  *
  * @version        $id:mytag.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

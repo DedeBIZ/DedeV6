@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 模块类
+ * 模块插件
  *
  * @version        $id:dedemodule.class.php 10:31 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries

@@ -1,6 +1,7 @@
 <?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 单表模型的文档列表调用标记
+ * 单表模型文档列表标签
  *
  * @version        $id:arclistsg.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

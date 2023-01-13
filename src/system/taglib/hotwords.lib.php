@@ -1,6 +1,6 @@
 <?php
 /**
- * 获取网站搜索的热门关键词
+ * 热门搜索词标签
  *
  * @version        $id:hotwords.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

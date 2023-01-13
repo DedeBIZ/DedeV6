@@ -1,6 +1,6 @@
 <?php
 /**
- * 子栏目调用标签
+ * 子栏目标签
  *
  * @version        $id:sonchannel.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

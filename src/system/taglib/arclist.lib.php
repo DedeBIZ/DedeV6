@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 文档列表调用标记
+ * 文档列表标签
  *
  * @version        $id:arclist.lib.php 3 9:19 2010年7月13日 tianya $
  * @package        DedeBIZ.Taglib

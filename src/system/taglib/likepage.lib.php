@@ -1,6 +1,7 @@
 <?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 单页文档相同标识调用标签
+ * 单页文档相同标识标签
  *
  * @version        $id:likepage.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
@@ -8,7 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!defined('DEDEINC')) exit('dedebiz');
 require_once(dirname(__FILE__).'/likesgpage.lib.php');
 function lib_likepage(&$ctag, &$refObj)
 {

@@ -1,6 +1,6 @@
 <?php
 /**
- * 属性的数据描述
+ * 属性数据描述
  *
  * @version        $id:dedeatt.class.php 13:50 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries

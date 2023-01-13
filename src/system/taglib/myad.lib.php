@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 广告调用
+ * 广告标签
  *
  * @version        $id:myad.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

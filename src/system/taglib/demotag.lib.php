@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 这仅是一个演示标签
+ * 演示标签
  *
  * @version        $id:demotag.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

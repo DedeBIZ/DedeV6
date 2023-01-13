@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 单页文档调用标签
+ * 单页文档标签
  *
  * @version        $id:likesgpage.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

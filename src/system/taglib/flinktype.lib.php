@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 友情链接
+ * 友情链接标签
  *
  * @version        $id:flinktype.lib.php 15:57 2011年2月18日Z niap $
  * @package        DedeBIZ.Taglib

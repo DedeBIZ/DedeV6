@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 动态分页类
+ * 动态分页
  *
  * @version        $id:datalistcp.class.php 3 17:02 2010年7月9日 tianya $
  * @package        DedeBIZ.Libraries
@@ -10,7 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/dedetemplate.class.php');
-// 分页说明
+//分页说明
 $lang_pre_page = '上页';
 $lang_next_page = '下页';
 $lang_index_page = '首页';

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 图像处理类
+ * 图像处理
  *
  * @version        $id:image.class.php 18:10 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries

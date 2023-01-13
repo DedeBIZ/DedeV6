@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 联动菜单类
+ * 联动菜单
  *
  * @version        $id:enums.func.php 2 13:19 2011-3-24 tianya $
  * @package        DedeBIZ.Libraries

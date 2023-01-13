@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 调用任意表的数据标签
+ * 任意表调用标签
  *
  * @version        $id:loop.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
