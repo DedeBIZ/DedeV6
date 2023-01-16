@@ -15,12 +15,12 @@
 				<td colspan="4">自定义表单管理</td>
 			</tr>
 			<tr bgcolor="#e9ecef" align="center">
-				<td width="6%">diyid</td>
+				<td width="6%">表单</td>
 				<td width="30%">名称</td>
-				<td width="14%">表名</td>
-				<td>管理</td>
+				<td width="10%">表名</td>
+				<td>操作</td>
 			</tr>
-			{dede:datalist empty='<tr><td colspan="4" align="center">暂无文档</td></tr>'}
+			{dede:datalist empty='<tr><td colspan="4" align="center">暂无记录</td></tr>'}
 			<tr align="center">
 				<td>{dede:field.diyid/}</td>
 				<td><a href="diy_list.php?action=list&diyid={dede:field.diyid/}">{dede:field.name/}</a></td>

@@ -67,7 +67,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
             <td width='20%'>模板文件</td>
             <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('click')\">点击</a></td>
             <td width='12%'>创建时间</td>
-            <td>管理</td>
+            <td>操作</td>
         </tr>";
     echo $printhead;
     $dsql->SetQuery("SELECT aid,title,templet,click,edtime,namerule,listdir,defaultpage,nodefault FROM `#@__freelist` $addsql ORDER BY $orderby DESC LIMIT $start,$pagesize");

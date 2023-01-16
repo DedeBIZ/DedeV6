@@ -72,7 +72,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
       <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('count')\">频率</a></td>
       <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('result')\">结果</a></td>
       <td width='12%'><a href='javascript:;' onclick=\"ReloadPage('lasttime')\">最后搜索时间</a></td>
-      <td>管理</td>
+      <td>操作</td>
     </tr>";
     echo $printhead;
     if ($orderby == 'result') $orderby = $orderby." ASC";
