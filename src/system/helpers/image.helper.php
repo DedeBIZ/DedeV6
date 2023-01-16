@@ -1,5 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
+
+require_once DEDEINC."/libraries/imageresize.class.php";
 /**
  * 图像处理相关函数
  *
@@ -23,79 +25,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
 if (!function_exists('ImageResize')) {
     function ImageResize($srcFile, $toW, $toH, $toFile = "")
     {
-        global $cfg_photo_type;
-        try {
-            if ($toFile == '') $toFile = $srcFile;
-            $info = '';
-            $srcInfo = GetImageSize($srcFile, $info);
-            switch ($srcInfo[2]) {
-                case 1:
-                    if (!$cfg_photo_type['gif']) return FALSE;
-                    $im = imagecreatefromgif ($srcFile);
-                    break;
-                case 2:
-                    if (!$cfg_photo_type['jpeg']) return FALSE;
-                    $im = imagecreatefromjpeg($srcFile);
-                    break;
-                case 3:
-                    if (!$cfg_photo_type['png']) return FALSE;
-                    $im = imagecreatefrompng($srcFile);
-                    break;
-                case 6:
-                    if (!$cfg_photo_type['bmp']) return FALSE;
-                    $im = imagecreatefromwbmp($srcFile);
-                    break;
-            }
-            $srcW = ImageSX($im);
-            $srcH = ImageSY($im);
-            if ($srcW <= $toW && $srcH <= $toH) return TRUE;
-            $toWH = $toW / $toH;
-            $srcWH = $srcW / $srcH;
-            if ($toWH <= $srcWH) {
-                $ftoW = $toW;
-                $ftoH = $ftoW * ($srcH / $srcW);
-            } else {
-                $ftoH = $toH;
-                $ftoW = $ftoH * ($srcW / $srcH);
-            }
-            if ($srcW > $toW || $srcH > $toH) {
-                if (function_exists("imagecreateTRUEcolor")) {
-                    @$ni = imagecreateTRUEcolor($ftoW, $ftoH);
-                    if ($ni) {
-                        imagecopyresampled($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
-                    } else {
-                        $ni = imagecreate($ftoW, $ftoH);
-                        imagecopyresized($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
-                    }
-                } else {
-                    $ni = imagecreate($ftoW, $ftoH);
-                    imagecopyresized($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
-                }
-                $alpha = imagecolorallocatealpha($ni, 0, 0, 0, 127);
-                imagefill($ni, 0, 0, $alpha);
-                switch ($srcInfo[2]) {
-                    case 1:
-                        imagegif ($ni, $toFile);
-                        break;
-                    case 2:
-                        imagejpeg($ni, $toFile, 85);
-                        break;
-                    case 3:
-                        imagepng($ni, $toFile);
-                        break;
-                    case 6:
-                        imagebmp($ni, $toFile);
-                        break;
-                    default:
-                        return FALSE;
-                }
-                imagedestroy($ni);
-            }
-            imagedestroy($im);
+        try{
+            $image = new ImageResize($srcFile);
+            $image->resizeToBestFit($toW, $toH);
+            $image->save($toFile);
             return true;
-        } catch (Throwable $th) {
-            return false;
-        } catch (Exception $e) {
+        } catch (ImageResizeException $e) {
             return false;
         }
     }
@@ -203,118 +138,17 @@ if (!function_exists('WaterImg')) {
 if (!function_exists('ImageResizeNew')) {
     function ImageResizeNew($srcFile, $toW, $toH, $toFile = '', $issave = TRUE)
     {
-        global $cfg_photo_type, $cfg_ddimg_bgcolor;
-        if ($toFile == '') $toFile = $srcFile;
-        $info = '';
-        $srcInfo = GetImageSize($srcFile, $info);
-        switch ($srcInfo[2]) {
-            case 1:
-                if (!$cfg_photo_type['gif']) return FALSE;
-                $img = imagecreatefromgif ($srcFile);
-                break;
-            case 2:
-                if (!$cfg_photo_type['jpeg']) return FALSE;
-                $img = imagecreatefromjpeg($srcFile);
-                break;
-            case 3:
-                if (!$cfg_photo_type['png']) return FALSE;
-                $img = imagecreatefrompng($srcFile);
-                break;
-            case 8:
-                if (!$cfg_photo_type['wbmp']) return FALSE;
-                $img = imagecreatefromwbmp($srcFile);
-                break;
-            case 6:
-                if (!$cfg_photo_type['bmp']) return FALSE;
-                $img = imagecreatefrombmp($srcFile);
-                break;
-            case 18:
-                if (!$cfg_photo_type['webp']) return FALSE;
-                $img = imagecreatefromwebp($srcFile);
-                break;
-        }
-        $width = imageSX($img);
-        $height = imageSY($img);
-        if (!$width || !$height) {
-            return FALSE;
-        }
-        $target_width = $toW;
-        $target_height = $toH;
-        $target_ratio = $target_width / $target_height;
-        $img_ratio = $width / $height;
-        if ($target_ratio > $img_ratio) {
-            $new_height = $target_height;
-            $new_width = $img_ratio * $target_height;
-        } else {
-            $new_height = $target_width / $img_ratio;
-            $new_width = $target_width;
-        }
-        if ($new_height > $target_height) {
-            $new_height = $target_height;
-        }
-        if ($new_width > $target_width) {
-            $new_height = $target_width;
-        }
-        $new_img = imagecreatetruecolor($target_width, $target_height);
-        $alpha = imagecolorallocatealpha($new_img, 0, 0, 0, 127);
-        imagefill($new_img, 0, 0, $alpha);
-        imagealphablending($new_img, true);
-        imagesavealpha($new_img, true);
-        if ($cfg_ddimg_bgcolor == 0) $bgcolor = ImageColorAllocate($new_img, 0xff, 0xff, 0xff);
-        else $bgcolor = 0;
-        if (!@imagefilledrectangle($new_img, 0, 0, $target_width - 1, $target_height - 1, $bgcolor)) {
-            return FALSE;
-        }
-        if (!@imagecopyresampled($new_img, $img, ($target_width - $new_width) / 2, ($target_height - $new_height) / 2, 0, 0, $new_width, $new_height, $width, $height)) {
-            return FALSE;
-        }
-        //保存为目标文件
-        if ($issave) {
-            switch ($srcInfo[2]) {
-                case 1:
-                    imagegif ($new_img, $toFile);
-                    break;
-                case 2:
-                    imagejpeg($new_img, $toFile, 100);
-                    break;
-                case 3:
-                    imagepng($new_img, $toFile);
-                    break;
-                case 6:
-                    imagebmp($new_img, $toFile);
-                    break;
-                case 18:
-                    imagewebp($new_img, $toFile);
-                    break;
-                default:
-                    return FALSE;
+        try{
+            $image = new ImageResize($srcFile);
+            $image->resizeToBestFit($toW, $toH);
+            if ($issave) {
+                $image->save($toFile);
+            } else {
+                $image->output();
             }
+            return true;
+        } catch (ImageResizeException $e) {
+            return false;
         }
-        //不保存
-        else {
-            switch ($srcInfo[2]) {
-                case 1:
-                    imagegif ($new_img);
-                    break;
-                case 2:
-                    imagejpeg($new_img);
-                    break;
-                case 3:
-                    imagepng($new_img);
-                    break;
-                case 6:
-                    imagebmp($new_img);
-                    break;
-                case 18:
-                    imagewebp($new_img);
-                    break;
-                default:
-                    return FALSE;
-            }
-        }
-        imagedestroy($new_img);
-        imagedestroy($img);
-        return TRUE;
     }
 }
-?>

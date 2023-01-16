@@ -693,7 +693,7 @@ class Archives
                 $this->PreNext['diy']['pre']['litpic'] = $preRow['litpic'];
                 $this->PreNext['diy']['pre']['pubdate'] = $preRow['senddate'];
                 $this->PreNext['pre'] = "上一篇：<a href='$mlink'>{$preRow['title']}</a>";
-                $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$preRow['title']}\"></a> ";
+                $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$preRow['title']}\" title=\"{$preRow['title']}\"></a> ";
             } else {
                 $this->PreNext['pre'] = "上一篇：暂无";
                 $this->PreNext['preimg'] = "";
@@ -721,7 +721,7 @@ class Archives
                 $this->PreNext['diy']['next']['litpic'] = $nextRow['litpic'];
                 $this->PreNext['diy']['next']['pubdate'] = $nextRow['senddate'];
                 $this->PreNext['next'] = "下一篇：<a href='$mlink'>{$nextRow['title']}</a> ";
-                $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$preRow['title']}\"></a> ";
+                $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$nextRow['title']}\"></a> ";
             } else {
                 $this->PreNext['next'] = "下一篇：暂无";
                 $this->PreNext['nextimg'] = "";

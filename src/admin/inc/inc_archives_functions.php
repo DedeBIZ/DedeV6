@@ -380,8 +380,7 @@ function GetDDImage($litpic, $picname, $isremote)
         }
         @move_uploaded_file($_FILES[$litpic]['tmp_name'], $cfg_basedir.$fullUrl);
         $litpic = $fullUrl;
-        if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($cfg_basedir.$fullUrl, $cfg_ddimg_width, $cfg_ddimg_height);
-        else @ImageResize($cfg_basedir.$fullUrl, $cfg_ddimg_width, $cfg_ddimg_height);
+        @ImageResizeNew($cfg_basedir.$fullUrl, $cfg_ddimg_width, $cfg_ddimg_height);
         $img = $cfg_basedir.$litpic;
     } else {
         $picname = trim($picname);
@@ -393,16 +392,14 @@ function GetDDImage($litpic, $picname, $isremote)
             } else {
                 $litpic = $ddinfos[0];
                 if ($ddinfos[1] > $cfg_ddimg_width || $ddinfos[2] > $cfg_ddimg_height) {
-                    if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($cfg_basedir.$litpic, $cfg_ddimg_width, $cfg_ddimg_height);
-                    else @ImageResize($cfg_basedir.$litpic, $cfg_ddimg_width, $cfg_ddimg_height);
+                    @ImageResizeNew($cfg_basedir.$litpic, $cfg_ddimg_width, $cfg_ddimg_height);
                 }
             }
         } else {
             if ($litpic == 'ddfirst' && !preg_match("#^http:\/\/#i", $picname)) {
                 $oldpic = $cfg_basedir.$picname;
                 $litpic = str_replace('.', '-ty.', $picname);
-                if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
-                else @ImageResize($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
+                @ImageResizeNew($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
                 if (!is_file($cfg_basedir.$litpic)) $litpic = '';
             } else {
                 $litpic = $picname;
@@ -633,12 +630,11 @@ function Replace_Links(&$body, $allow_urls = array())
  */
 function GetImageMapDD($filename, $maxwidth)
 {
-    global $cuserLogin, $dsql, $cfg_ddimg_height, $cfg_ddimg_full;
+    global $cuserLogin, $dsql, $cfg_ddimg_height;
     $ddn = substr($filename, -3);
     $ddpicok = preg_replace("#\.".$ddn."$#", "-ty.".$ddn, $filename);
     $toFile = $GLOBALS['cfg_basedir'].$ddpicok;
-    if ($cfg_ddimg_full == 'Y') ImageResizeNew($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);
-    else ImageResize($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);
+    ImageResizeNew($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);
     //保存图片附件信息
     $fsize = filesize($toFile);
     $ddpicoks = explode('/', $ddpicok);

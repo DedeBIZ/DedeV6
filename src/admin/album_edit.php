@@ -160,8 +160,7 @@ else if ($dopost == 'save') {
                 $litpicname = $pagestyle > 2 ? GetImageMapDD($iurl, $cfg_ddimg_width) : $iurl;
                 $litimgfile = $cfg_basedir.$litpicname;
             } else {
-                if ($cfg_ddimg_full == 'Y') ImageResizeNew($imgfile, $cfg_ddimg_width, $cfg_ddimg_height, $litimgfile);
-                else ImageResize($imgfile, $cfg_ddimg_width, $cfg_ddimg_height, $litimgfile);
+                ImageResizeNew($imgfile, $cfg_ddimg_width, $cfg_ddimg_height, $litimgfile);
                 $litpicname = $ddurl;
             }
             $imgurls .= "{dede:img ddimg='$litpicname' text='$iinfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
