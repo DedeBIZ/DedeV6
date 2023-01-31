@@ -14,10 +14,10 @@
 				<td colspan="4" bgcolor="#f5f5f5">标签源码碎片管理</td>
 			</tr>
 			<tr bgColor="#e9ecef" align="center">
-				<td width="25%">标签文件名</td>
+				<td width="30%">标签文件名</td>
 				<td width="30%" align="left">标签说明</td>
-				<td width="25%">修改时间</td>
-				<td width="20%">操作</td>
+				<td width="20%">修改时间</td>
+				<td>操作</td>
 			</tr>
 			<tr>
 				<td colspan="4">
@@ -37,7 +37,7 @@
 				<td><img src="../static/web/img/icon_htm.png"><?php echo $filename;?></td>
 				<td><?php echo $fileinfo;?></td>
 				<td align="center"><?php echo $filetime;?></td>
-				<td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a></td>
+				<td><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a></td>
 			</tr>
 			<?php }?>
 			<tr>

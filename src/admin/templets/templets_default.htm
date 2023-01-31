@@ -30,10 +30,10 @@
 				</td>
 			</tr>
 			<tr bgColor="#e9ecef" align="center">
-				<td width="25%">文件名</td>
-				<td width="30%">文件描述</td>
-				<td width="25%">修改时间</td>
-				<td width="20%">操作</td>
+				<td width="30%">模板名</td>
+				<td width="30%">模板描述</td>
+				<td width="20%">修改时间</td>
+				<td>操作</td>
 			</tr>
 			<?php
 			$files = scandir($templetdird);
@@ -47,7 +47,7 @@
 				<td><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="../static/web/img/icon_htm.png"><?php echo $filename;?></a></td>
 				<td><?php echo $fileinfo;?></td>
 				<td align="center"><?php echo $filetime;?></td>
-				<td align="center">
+				<td>
 					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
 					<?php if (!isset($fileinfos[$filename])) {?>
 					<a href="javascript:;" onClick="javascript:DelTpl('<?php echo $filename;?>');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>

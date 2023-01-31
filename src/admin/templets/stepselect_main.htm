@@ -201,7 +201,7 @@
                 <span class="float-right">
                 <?php
                 if ($egroup=='nativeplace') {
-                    echo "<a href='stepselect_main.php?action=exarea' class='btn btn-success btn-sm'>把默认省市地区表导入</a>";
+                    echo "<a href='stepselect_main.php?action=exarea' class='btn btn-success btn-sm'>导入默认省市地区表</a>";
                 }
                 ?>
                 </span>
@@ -227,19 +227,17 @@
     </table>
     <table cellpadding="3" cellspacing="1" align="center" class="table maintable">
         <tr>
-            <td bgcolor="#f5f5f5" colspan="8">
-                <span class="float-left"><a href="stepselect_main.php">联动类别管理</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> &gt; 子分类列表</span>
-            </td>
+            <td bgcolor="#f5f5f5" colspan="8"><a href="stepselect_main.php">联动类别管理</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> &gt; 子分类列表</td>
         </tr>
         <tr bgcolor="#e9ecef" align="center">
             <td width="6%">选择</td>
             <td width="6%">id</td>
             <td width="20%">枚举名</td>
-            <td width="20%">类别组名</td>
+            <td width="30%">类别组名</td>
             <td width="10%">枚举类型</td>
             <td width="10%">枚举值</td>
             <td width="10%">组内排序</td>
-            <td width="18%">操作</td>
+            <td>操作</td>
         </tr>
         <form action="stepselect_main.php" name="upenumf" method="post" id="upenumf">
             <input type="hidden" name="action" value="upenum">
@@ -309,17 +307,15 @@
     ?>
     <table cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
         <tr>
-            <td bgcolor="#f5f5f5" colspan="7">
-                <span class="float-left"><a href="stepselect_main.php">联动类别管理</a></span>
-            </td>
+            <td bgcolor="#f5f5f5" colspan="7">联动类别管理</td>
         </tr>
         <tr bgcolor="#e9ecef" align="center">
             <td width="6%">选择</td>
             <td width="6%">id</td>
-            <td width="28%">组类别名</td>
+            <td width="30%">组类别名</td>
             <td width="10%">级数</td>
             <td width="10%">系统</td>
-            <td width="15%">缓存组名</td>
+            <td width="10%">缓存组名</td>
             <td>操作</td>
         </tr>
         {dede:datalist}
@@ -345,8 +341,8 @@
             <td> {dede:field.issystem function="@me==1 ? '是' : '否'"/} </td>
             <td>{dede:field.egroup/}</td>
             <td>
-                <a href="stepselect_main.php?action=upallcache&egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-repeat"></i> 更新缓存</a>
-                <a href="stepselect_main.php?egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-search"></i> 查看分类</a>
+                <a href="stepselect_main.php?action=upallcache&egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-repeat"></i> 更新</a>
+                <a href="stepselect_main.php?egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-search"></i> 查看</a>
             </td>
         </tr>
         {/dede:datalist}
