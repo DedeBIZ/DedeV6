@@ -107,9 +107,9 @@ class DedeSqli
             $this->linkID = mysqli_init();
             try {
                 mysqli_real_connect($this->linkID, $dbhost, $this->dbUser, $this->dbPwd, false, $dbport);
-                mysqli_errno($this->linkID) != 0 && $this->DisplayError('链接('.$this->pconnect.') 到MySQL发生错误');
+                mysqli_errno($this->linkID) != 0 && $this->DisplayError('链接（'.$this->pconnect.'）到MySQL发生错误');
             } catch (Exception $e) {
-                $this->DisplayError("<span class='text-primary'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+                $this->DisplayError("连接数据库失败，可能数据库密码不对或数据库服务器出错");
                 exit;
             }
             
@@ -118,7 +118,7 @@ class DedeSqli
         }
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("<span class='text-primary'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+            $this->DisplayError("连接数据库失败，可能数据库密码不对或数据库服务器出错");
             exit();
         }
         $this->isInit = TRUE;
@@ -130,7 +130,7 @@ class DedeSqli
             mysqli_query($this->linkID, "SET sql_mode=''");
         }
         if ($this->dbName && !@mysqli_select_db($this->linkID, $this->dbName)) {
-            $this->DisplayError('无法使用数据库');
+            $this->DisplayError('连接数据库失败，可能数据库服务器奔溃');
         }
         return TRUE;
     }
