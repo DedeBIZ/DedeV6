@@ -156,8 +156,11 @@
 									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-md">
 									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
 									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
-										{page} 列表的页码<br>
-										Nginx伪静态默认规则<br>
+										静态规则<br>
+										{tid} 栏目id<br>
+										{page} 栏目页码数<br>
+										<hr>
+										伪静态规则（Nginx）<br>
 										rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
 										rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
 									</div>
@@ -169,14 +172,16 @@
 									<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-md">
 									<i onClick="ShowHide('helpvar2')" class="fa fa-question-circle" title="帮助"></i>
 									<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
+										静态规则<br>
 										{Y}{M}{D} 年月日<br>
 										{timestamp} INT类型的UNIX时间戳<br>
 										{aid} 文档id<br>
-										{pinyin} 拼音+文档id<br>
-										{py} 拼音部首+文档id<br>
-										{typedir} 栏目目录<br>
-										{cc} 日期+id混编后用转换为适合的字母<br>
-										Nginx伪静态默认规则<br>
+										{pinyin} 拼音加文档id<br>
+										{py} 拼音部首加文档id<br>
+										{typedir} 栏目保存目录<br>
+										{cc} 日期加混编id后用转换为适合字母<br>
+										<hr>
+										伪静态规则（Nginx）<br>
 										rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
 										rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
 									</div>
