@@ -154,7 +154,7 @@ $actionSearch[4] = array(
             'linkurl' => 'article_keywords_main.php'
         ),
         3  =>  array(
-            'title' => '重复文档检测',
+            'title' => '文档重复检测',
             'description' => '网站重复标题文档处理',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'article_test_same.php'
@@ -334,7 +334,7 @@ $actionSearch[9] = array(
             'linkurl' => 'sys_admin_user.php'
         ),
         2  =>  array(
-            'title' => '用户组设定',
+            'title' => '用户组设置',
             'description' => '网站管理员组别的划分',
             'purview' => 'sys_Group',
             'linkurl' => 'sys_group.php'
@@ -382,13 +382,13 @@ $actionSearch[9] = array(
             'linkurl' => 'sys_sql_query.php'
         ),
         10  =>  array(
-            'title' => '后台文件扫描',
+            'title' => '文件扫描工具',
             'description' => '以DedeBIZ开发模式为标准对现有的文件进行扫描判断',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_safetest.php'
         ),
         11  =>  array(
-            'title' => '系统错误修复',
+            'title' => '系统修复工具',
             'description' => '手动和自动升级错误处理',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_repair.php'

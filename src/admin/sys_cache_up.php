@@ -51,7 +51,7 @@ if ($dopost == "ok") {
     }
     //修正错误文档
     else if ($step == 9) {
-        ShowMsg('修正错误文档操作已经取消，后台系统中系统错误修复中操作', 'sys_cache_up.php?dopost=ok&step=-1&uparc=1', 0, 5000);
+        ShowMsg('修正错误文档操作已经取消，后台系统中系统修复工具中操作', 'sys_cache_up.php?dopost=ok&step=-1&uparc=1', 0, 5000);
         exit();
     }
 }
