@@ -36,7 +36,7 @@
 					<td width="260">选择首页模板：</td>
 					<td>
 						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-sm">
-						<button type="button" name="set4" value="" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
+						<button type="button" name="set4" value="" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">浏览</button>
 					</td>
 				</tr>
 				<tr>
@@ -106,7 +106,7 @@
 				<tr>
 					<td bgcolor="#e9ecef" colspan="2" align="center">
 						<button type="submit" name="submit" class="btn btn-success btn-sm">开始更新</button>
-						<button type="button" name="view" class="btn btn-outline-success btn-sm" onClick="window.open('makehtml_homepage.php?dopost=view&templet='+form1.templet.value);">预览首页</button>
+						<button type="button" name="view" class="btn btn-outline-success btn-sm" onclick="window.open('makehtml_homepage.php?dopost=view&templet='+form1.templet.value);">预览首页</button>
 					</td>
 				</tr>
 			</form>

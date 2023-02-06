@@ -88,7 +88,7 @@
 						<table cellspacing="0" cellpadding="0" class="table table-borderless">
 							<tr>
 								<td colspan="2">
-									<label><input type="checkbox" name="seltime" id="seltime" value="1" onClick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
+									<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
 								</td>
 							</tr>
 							<tr id="seltimeField" style="display:none">
@@ -105,14 +105,14 @@
 				<tr>
 					<td>操作：</td>
 					<td>
-						<label><input type="radio" name="action" value="check" onClick="ShowHideMove()" checked="1"> 审核文档</label>
-						<label><input type="radio" name="action" value="makehtml" onClick="ShowHideMove()"> 更新网页</label>
-						<label><input type="radio" name="action" value="move" onClick="ShowHideMove()"> 移动文档</label>
-						<label><input type="radio" name="action" value="del" onClick="ShowHideMove()"> 删除文档</label>
+						<label><input type="radio" name="action" value="check" onclick="ShowHideMove()" checked="1"> 审核文档</label>
+						<label><input type="radio" name="action" value="makehtml" onclick="ShowHideMove()"> 更新网页</label>
+						<label><input type="radio" name="action" value="move" onclick="ShowHideMove()"> 移动文档</label>
+						<label><input type="radio" name="action" value="del" onclick="ShowHideMove()"> 删除文档</label>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button></td>
+					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onclick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button></td>
 				</tr>
 			</form>
 			<form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
@@ -126,7 +126,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onClick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button></td>
+					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onclick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button></td>
 				</tr>
 			</form>
 			<tr>

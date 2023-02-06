@@ -113,7 +113,7 @@
 									<input name="picname" type="text" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-md">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
-									<button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
+									<button type="button" name="Submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button id="btnClearAll" type="button" class="btn btn-success btn-sm">清空</button>
 								</td>
 								<td><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
@@ -161,7 +161,7 @@
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择"></i>
+									<i class="btn btn-sm fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择"></i>
 								</td>
 								<td width="90">需要金币：</td>
 								<td><input name="money" type="text" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
@@ -178,7 +178,7 @@
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" class="admin-input-sm">
-									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目"></i>
+									<i class="btn btn-sm fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目"></i>
 								</td>
 							</tr>
 						</table>
@@ -260,7 +260,7 @@
 								<td width="90">标题颜色：</td>
 								<td>
 									<input name="color" type="text" id="color" value="<?php echo $arcRow['color']?>" class="admin-input-sm">
-									<button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
+									<button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onclick="ShowColor(event,this)">选取</button>
 								</td>
 							</tr>
 						</table>
@@ -312,7 +312,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5" align="center" class="py-2">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onClick="location.reload();">重置</button>
+						<button type="button" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 					</td>
 				</tr>
 			</table>

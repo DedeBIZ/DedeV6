@@ -66,7 +66,7 @@
 						<table cellpadding="0" cellspacing="0">
 							<tr>
 								<td width="80" align="center" class="admin-itemnote1">常规文档</td>
-								<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem2()">专题文档</a></td>
+								<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onclick="ShowItem2()">专题文档</a></td>
 							</tr>
 						</table>
 					</td>
@@ -77,7 +77,7 @@
 					<td>
 						<table cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="80" align="center" class="admin-itemnote1"><a href="javascript:;" onClick="ShowItem1()">常规文档</a></td>
+								<td width="80" align="center" class="admin-itemnote1"><a href="javascript:;" onclick="ShowItem1()">常规文档</a></td>
 								<td width="80" align="center" class="admin-itemnote1">专题文档</td>
 							</tr>
 						</table>
@@ -129,7 +129,7 @@
 									<input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-md">
 									<label><input type="checkbox" name="ddisremote" value='1'> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
-									<button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
+									<button type="button" name="Submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
 								</td>
 								<td><img id="litPic" src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
@@ -169,7 +169,7 @@
 								<td width="90">标题颜色：</td>
 								<td>
 									<input type="text" name="color" id="color" class="admin-input-sm" value="<?php echo $arcRow['color']?>">
-									<button type="button" name="modcolor" id="modcolor" value="" onClick="ShowColor(event,this)" class="btn btn-success btn-sm">选取</button>
+									<button type="button" name="modcolor" id="modcolor" value="" onclick="ShowColor(event,this)" class="btn btn-success btn-sm">选取</button>
 								</td>
 							</tr>
 						</table>
@@ -188,7 +188,7 @@
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,0,'typeid')" title="快捷选择"></i>
+									<i class="btn btn-sm fa fa-search" onclick="ShowCatMap(event,this,0,'typeid')" title="快捷选择"></i>
 								</td>
 							</tr>
 						</table>
@@ -238,7 +238,7 @@
 								<td width="90">专题模板：</td>
 								<td width="260">
 									<input type="text" name="templet" id="templet" value="<?php echo $addRow['templet']?>" class="admin-input-sm">
-									<button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
+									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">浏览</button>
 								</td>
 								<td width="90">文件名称：</td>
 								<td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="admin-input-sm">（不包括后缀名如.html等）
@@ -333,7 +333,7 @@
 							<tr>
 								<td>节点文档列表：</td>
 								<td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" class="admin-textarea-xl"><?php echo $idlist?></textarea></td>
-								<td><button type="button" class="btn btn-success btn-sm" name="selarc<?php echo $i?>" id="selarc<?php echo $i?>2" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
+								<td><button type="button" class="btn btn-success btn-sm" name="selarc<?php echo $i?>" id="selarc<?php echo $i?>2" onclick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
 							</tr>
 							<tr>
 								<td>文档来源：</td>
@@ -380,7 +380,7 @@
 							<tr>
 								<td>节点文档列表：</td>
 								<td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" class="admin-textarea-xl"></textarea></td>
-								<td><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
+								<td><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onclick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
 							</tr>
 							<tr>
 								<td>文档来源：</td>
@@ -414,7 +414,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5" align="center" class="py-2">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onClick="location.reload();">重置</button>
+						<button type="button" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 					</td>
 				</tr>
 			</table>

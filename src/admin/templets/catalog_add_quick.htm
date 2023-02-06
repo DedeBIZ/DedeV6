@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="js/main.js"></script>
 		<script>
 			var $ = jQuery;
 			$(document).ready(function () {
@@ -154,8 +155,8 @@
 								<td>列表命名规则：</td>
 								<td>
 									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-md">
-									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
-									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
+									<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+									<div id="helpvar1" class="alert alert-warning my-2" style="display:none">
 										静态规则<br>
 										{tid} 栏目id<br>
 										{page} 栏目页码数<br>
@@ -170,7 +171,7 @@
 								<td>文档命名规则：</td>
 								<td>
 									<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-md">
-									<i onClick="ShowHide('helpvar2')" class="fa fa-question-circle" title="帮助"></i>
+									<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
 									<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
 										静态规则<br>
 										{Y}{M}{D} 年月日<br>

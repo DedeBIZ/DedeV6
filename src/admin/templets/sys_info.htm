@@ -83,7 +83,7 @@
 							echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
 						}
 					}
-					?><a href="javascript:;" onClick="ShowHide('addvar')" class="btn btn-success btn-sm">添加新变量</a>
+					?><a href="javascript:;" onclick="ShowHide('addvar')" class="btn btn-success btn-sm">添加新变量</a>
 				</td>
 			</tr>
 			<tr id="addvar" style="display:none">
@@ -181,7 +181,7 @@
 										} else if ($row['type']=='number') {
 											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-75'>";
 										} else if ($row['type']=='img') {
-											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-50'> <input type='button' name='set9' class='btn btn-success btn-sm' onClick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." value='选择'>";
+											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-50'> <input type='button' name='set9' class='btn btn-success btn-sm' onclick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." value='选择'>";
 												if ($row['value']){
 													echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail-md'>";
 												} else {
@@ -206,7 +206,7 @@
 							<tr>
 								<td bgcolor="#f5f5f5" align="center">
 									<button type="submit" class="btn btn-success btn-sm">保存</button>
-									<button type="button" class="btn btn-outline-success btn-sm" onClick="document.form1.reset()">重置</button>
+									<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset()">重置</button>
 								</td>
 							</tr>
 						</table>

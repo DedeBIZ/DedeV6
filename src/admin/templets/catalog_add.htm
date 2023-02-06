@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="js/main.js"></script>
 		<script>
 			var channelArray = new Array();
 			<?php
@@ -130,8 +131,8 @@
 									<table cellpadding="0" cellspacing="0">
 										<tr>
 											<td width="80" align="center" class="admin-itemnote1">常规选项</td>
-											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
-											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
+											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onclick="ShowItem2()">高级选项</a></td>
+											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onclick="ShowItem3()">栏目文档</a></td>
 										</tr>
 									</table>
 								</td>
@@ -142,9 +143,9 @@
 								<td>
 									<table cellpadding="0" cellspacing="0">
 										<tr>
-											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
+											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onclick="ShowItem1()">常规选项</a></td>
 											<td width="80" align="center" class="admin-itemnote1">高级选项</td>
-											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
+											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onclick="ShowItem3()">栏目文档</a></td>
 										</tr>
 									</table>
 								</td>
@@ -155,8 +156,8 @@
 								<td>
 									<table cellpadding="0" cellspacing="0">
 										<tr>
-											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
-											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
+											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onclick="ShowItem1()">常规选项</a></td>
+											<td width="80" align="center" class="admin-itemnote2"><a href="javascript:;" onclick="ShowItem2()">高级选项</td>
 											<td width="80" align="center" class="admin-itemnote1">栏目文档</td>
 										</tr>
 									</table>
@@ -217,14 +218,14 @@
 								<td>栏目大图：</td>
 								<td>
 									<input type="text" name="bigpic" class="admin-input-md">
-									<input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
+									<input type="button" class="btn btn-success btn-sm" value="浏览" onclick="SelectImage('form1.bigpic');">
 								</td>
 							</tr>
 							<tr>
 								<td>栏目小图：</td>
 								<td>
 									<input type="text" name="litimg" class="admin-input-md">
-									<input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
+									<input type="button" class="btn btn-success btn-sm" value="浏览" onclick="SelectImage('form1.litimg');">
 								</td>
 							</tr>
 							<tr>
@@ -268,7 +269,7 @@
 									<table cellspacing="1" cellpadding="1" class="table-borderless">
 										<tr>
 											<td><input type="text" name="typedir" id="typedir" class="admin-input-md"></td>
-											<td><label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onClick="CheckTypeDir()"> 拼音</label></td>
+											<td><label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onclick="CheckTypeDir()"> 拼音</label></td>
 										</tr>
 									</table>
 								</td>
@@ -304,11 +305,11 @@
 								</td>
 							</tr>
 							<tr>
-								<td>栏目交叉：仅适用列表栏目 <i onClick="ShowHide('helpvarco')" class="fa fa-question-circle" title="帮助"></i></td>
+								<td>栏目交叉：仅适用列表栏目 <span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span></td>
 								<td>
-									<label><input type="radio" name="cross" id="cross0" value="0" onClick="CheckCross()" checked="1"> 不交叉</label>
-									<label><input type="radio" name="cross" id="cross1" value="1" onClick="CheckCross()"> 自动获取同名栏目文档</label>
-									<label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()"> 手工指定交叉栏目id（用英文逗号）</label><br>
+									<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" checked="1"> 不交叉</label>
+									<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()"> 自动获取同名栏目文档</label>
+									<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 手工指定交叉栏目id（用英文逗号）</label><br>
 									<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="display:none"></textarea>
 									<div id="helpvarco" class="alert alert-warning my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
 								</td>
@@ -355,15 +356,15 @@
 								<td>列表模板：</td>
 								<td>
 									<input type="text" name="templist" value="{style}/list_<?php echo $nid?>.htm" class="admin-input-md">
-									<button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
+									<button type="button" name="set1" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templist')">浏览</button>
 								</td>
 							</tr>
 							<tr>
 								<td>封面模板：</td>
 								<td>
 									<input type="text" name="tempindex" value="{style}/index_<?php echo $nid?>.htm" class="admin-input-md">
-									<button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
-									<i onClick="ShowHide('helpvar1')" class="fa fa-question-circle" title="帮助"></i>
+									<button type="button" name="set2" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.tempindex')">浏览</button>
+									<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
 									<div id="helpvar1" class="alert alert-warning my-2" style="display:none">
 										{tid} 栏目id<br>
 										{cid} 栏目模型名字id
@@ -374,15 +375,15 @@
 								<td>文档模板：</td>
 								<td>
 									<input type="text" name="temparticle" value="{style}/article_<?php echo $nid?>.htm" class="admin-input-md">
-									<button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
+									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.temparticle')">浏览</button>
 								</td>
 							</tr>
 							<tr>
 								<td>列表命名规则：</td>
 								<td>
 									<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-md">
-									<i onClick="ShowHide('helpvar3')" class="fa fa-question-circle" title="帮助"></i>
-									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
+									<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+									<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
 										静态规则<br>
 										{tid} 栏目id<br>
 										{page} 栏目页码数<br>
@@ -397,8 +398,8 @@
 								<td>文档命名规则：</td>
 								<td>
 									<input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule;?>" class="admin-input-md">
-									<i onClick="ShowHide('helpvar2')" class="fa fa-question-circle" title="帮助"></i>
-									<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
+									<span onclick="ShowHide('helpvar3')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+									<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
 										静态规则<br>
 										{Y}{M}{D} 年月日<br>
 										{timestamp} INT类型的UNIX时间戳<br>

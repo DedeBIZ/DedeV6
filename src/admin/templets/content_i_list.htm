@@ -17,17 +17,17 @@
 		<table cellspacing="0" cellpadding="0" align="center" class="table maintable my-3">
 			<tr>
 				<td>
-					<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
+					<button type="button" class="btn btn-success btn-sm" onclick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
 					{dede:if $adminid == $mid }
-					<button type="button" class="btn btn-success btn-sm" onClick="location='content_i_list.php?cid={dede:global.cid/}&mid=0';">全部文档</button>
+					<button type="button" class="btn btn-success btn-sm" onclick="location='content_i_list.php?cid={dede:global.cid/}&mid=0';">全部文档</button>
 					{else}
-					<button type="button" class="btn btn-success btn-sm" onClick="location='content_i_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID();?>';">我的文档</button>
+					<button type="button" class="btn btn-success btn-sm" onclick="location='content_i_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID();?>';">我的文档</button>
 					{/dede:if}
 					{dede:global.CheckUserSend/}
-					<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_main.php';">栏目管理</button>
-					<button type="button" class="btn btn-success btn-sm" name="bb1" onClick="location='makehtml_list.php?cid={dede:global.cid/}';">更新列表</button>
-					<button type="button" class="btn btn-success btn-sm" name="bb2" onClick="location='makehtml_archives.php?cid={dede:global.cid/}';">更新文档</button>
-					<button type="button" class="btn btn-success btn-sm" name="bb1" onClick="location='recycling.php?cid={dede:global.cid/}';">文档回收站</button>
+					<button type="button" class="btn btn-success btn-sm" onclick="location='catalog_main.php';">栏目管理</button>
+					<button type="button" class="btn btn-success btn-sm" name="bb1" onclick="location='makehtml_list.php?cid={dede:global.cid/}';">更新列表</button>
+					<button type="button" class="btn btn-success btn-sm" name="bb2" onclick="location='makehtml_archives.php?cid={dede:global.cid/}';">更新文档</button>
+					<button type="button" class="btn btn-success btn-sm" name="bb1" onclick="location='recycling.php?cid={dede:global.cid/}';">文档回收站</button>
 				</td>
 			</tr>
 		</table>
@@ -90,7 +90,7 @@
 					<td width="6%">{dede:field.arcrank function='GetRankName(@me)'/}</td>
 					<td width="6%">{dede:field.mid function=GetMemberName(@me)/}</td>
 					<td>
-						<a href="javascript:;" onClick="QuickEdit({dede:field.id/},event,this);" class="btn btn-light btn-sm"><i class="fa fa-window-maximize"></i> 属性</a>
+						<a href="javascript:;" onclick="QuickEdit({dede:field.id/},event,this);" class="btn btn-light btn-sm"><i class="fa fa-window-maximize"></i> 属性</a>
 						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" class="btn btn-light btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
 					</td>
 				</tr>
@@ -105,10 +105,10 @@
 					<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
 					<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
 					<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
-					<a href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>)" class="btn btn-success btn-sm">移动</a>
+					<a href="javascript:;" onclick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>)" class="btn btn-success btn-sm">移动</a>
 					<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
-					<a href="javascript:;" onClick="cAtts('attsAdd',event,this)" class="btn btn-success btn-sm">增加属性</a>
-					<a href="javascript:;" onClick="cAtts('attsDel',event,this)" class="btn btn-danger btn-sm">删除属性</a>
+					<a href="javascript:;" onclick="cAtts('attsAdd',event,this)" class="btn btn-success btn-sm">增加属性</a>
+					<a href="javascript:;" onclick="cAtts('attsDel',event,this)" class="btn btn-danger btn-sm">删除属性</a>
 				</td>
 			</tr>
 			<tr>

@@ -136,7 +136,7 @@
 									<input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-md">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
-									<button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
+									<button type="button" name="Submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
 								</td>
 								<td><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
@@ -175,7 +175,7 @@
 									echo $typeOptions;
 									echo '</select>';
 									?>
-									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>')" title="快捷选择"></i>
+									<i class="btn btn-sm fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>')" title="快捷选择"></i>
 								</td>
 								<td width="90">需要金币：</td>
 								<td><input type="text" name="money" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
@@ -192,7 +192,7 @@
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" class="admin-input-sm">
-									<i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目"></i>
+									<i class="btn btn-sm fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目"></i>
 								</td>
 							</tr>
 						</table>
@@ -228,9 +228,9 @@
 							<tr>
 								<td width="90">表现方式：</td>
 								<td>
-									<label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if ($pagestyle==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
-									<label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if ($pagestyle==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
-									<label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if ($pagestyle==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
+									<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if ($pagestyle==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
+									<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if ($pagestyle==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
+									<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if ($pagestyle==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
 								</td>
 							</tr>
 						</table>
@@ -282,7 +282,7 @@
 								<td>
 									复制的源网址：<input type="text" name="copysource" value="http://" class="admin-input-md">（防盗链网站需填写您复制图片的其中一个网页网址）<br>
 									把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片
-									<input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()"><br>
+									<input type="button" name="button" id="button" value="预览" onclick="LoadTestDiv()"><br>
 									<div id="copyhtml" style="margin:10px 0;padding:10px;width:98%;height:200px;border:1px solid #ccc" contenteditable="true">粘贴到这里</div>
 								</td>
 							</tr>
@@ -405,7 +405,7 @@
 								<td width="90">标题颜色：</td>
 								<td>
 									<input type="text" name="color" id="color" value="<?php echo $arcRow['color']?>" class="admin-input-sm">
-									<button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
+									<button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onclick="ShowColor(event,this)">选取</button>
 								</td>
 							</tr>
 						</table>
@@ -458,7 +458,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5" align="center" class="py-2">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onClick="location.reload();">重置</button>
+						<button type="button" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 					</td>
 				</tr>
 			</table>
