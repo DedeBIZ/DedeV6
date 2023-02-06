@@ -11,9 +11,9 @@
     <body>
         <table cellspacing="1" cellpadding="2" align="center" class="table maintable icon my-3">
             <tr bgcolor="#f5f5f5" align="center">
-                <td width="30%">文件名称</td>
-                <td width="16%">文件大小</td>
-                <td width="20%">修改时间</td>
+                <td width="26%">文件名称</td>
+                <td width="26%">文件大小</td>
+                <td width="26%">修改时间</td>
                 <td>操作</td>
             </tr>
             <?php
@@ -59,8 +59,8 @@
                     <td><a href='file_manage_main.php?activepath=".urlencode("$activepath/$file")."'><img src='../static/web/img/icon_dir.png'>$file</a></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <a href='file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&fmdo=rename' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                    <td align='left'>
+                        <a href='file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&fmdo=rename' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
                         <a href='file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&type=dir&fmdo=del' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -71,10 +71,10 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='$activeurl/$file'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -85,10 +85,10 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='$activeurl/$file'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center' class='admin-td'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -99,10 +99,10 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_flash.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -113,10 +113,10 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_zip.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -127,10 +127,10 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_exe.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -141,10 +141,10 @@
                 $line = "\n<tr >
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_music.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -155,10 +155,10 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_video.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -169,10 +169,10 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_rm.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center' class='admin-td'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -184,11 +184,11 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_text.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='$edurl' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -200,11 +200,11 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_htm.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='$edurl' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -216,11 +216,11 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_php.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='$edurl' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -232,11 +232,11 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_js.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='$edurl' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -248,11 +248,11 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_css.png'>$file</a></td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='$edurl' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";
@@ -261,10 +261,10 @@
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'>$file</td>
                     <td>$filesize KB</td>
-                    <td align='center'>$filetime</td>
-                    <td>
-                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-folder'></i> 改名</a>
-                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+                    <td>$filetime</td>
+                    <td align='left'>
+                        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-folder'></i> 改名</a>
+                        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>
                         <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
                     </td>
                 </tr>";

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>模板管理器</title>
+		<title>默认模板管理</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -25,14 +25,14 @@
 					<?php
 					if ($acdir=='plus') echo '插件模板';
 					else if ($acdir=='system') echo '底层模板';
-					else echo '核心模板 &gt; '.$acdir;
+					else echo '模板管理 &gt; '.$acdir;
 					?>
 				</td>
 			</tr>
 			<tr bgColor="#e9ecef" align="center">
-				<td width="30%">模板名</td>
-				<td width="30%">模板描述</td>
-				<td width="20%">修改时间</td>
+				<td width="26%">模板名</td>
+				<td width="26%">模板描述</td>
+				<td width="26%">修改时间</td>
 				<td>操作</td>
 			</tr>
 			<?php
@@ -43,12 +43,12 @@
 				$filetime = MyDate("Y-m-d H:i",$filetime);
 				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 			?>
-			<tr>
-				<td><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="../static/web/img/icon_htm.png"><?php echo $filename;?></a></td>
+			<tr align="center">
+				<td align="left"><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="../static/web/img/icon_htm.png"><?php echo $filename;?></a></td>
 				<td><?php echo $fileinfo;?></td>
-				<td align="center"><?php echo $filetime;?></td>
-				<td>
-					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+				<td><?php echo $filetime;?></td>
+				<td align="left">
+					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-light btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
 					<?php if (!isset($fileinfos[$filename])) {?>
 					<a href="javascript:;" onClick="javascript:DelTpl('<?php echo $filename;?>');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 					<?php }?>

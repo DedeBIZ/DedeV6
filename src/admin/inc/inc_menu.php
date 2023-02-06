@@ -67,7 +67,7 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='软件下载设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
     <m:item name='防采集串混淆' link='article_string_mix.php' rank='sys_StringMix' target='main' />
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据备份还原' link='sys_data.php' rank='sys_Data' target='main' />")."
-    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='SQL命令行工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
+    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='SQL命令工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
     <m:item name='文件扫描工具' link='sys_safetest.php' rank='sys_verify' target='main' />
     <m:item name='系统修复工具' link='sys_repair.php' rank='sys_verify' target='main' />
 </m:top>";

@@ -52,11 +52,17 @@
 				</tr>
 				<tr>
 					<td class="admin-td">注册时间：</td>
-					<td class="admin-td"><?php echo GetDateTimeMk($row['jointime'])?>丨<?php echo $row['joinip']?></td>
+					<td class="admin-td">
+						<span class="mr-1"><?php echo GetDateTimeMk($row['jointime'])?></span>
+						<span><?php echo $row['joinip']?></span>
+					</td>
 				</tr>
 				<tr>
 					<td class="admin-td">最近登录时间：</td>
-					<td class="admin-td"><?php echo GetDateTimeMk($row['logintime'])?>丨<?php echo $row['loginip']?></td>
+					<td class="admin-td">
+						<span class="mr-1"><?php echo GetDateTimeMk($row['logintime'])?></span>
+						<span><?php echo $row['loginip']?></span>
+					</td>
 				</tr>
 				<tr>
 					<td class="admin-td">用户类型：</td>

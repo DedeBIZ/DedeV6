@@ -497,6 +497,14 @@ span.page-link {
 	color:#fff;
 	background:#1eb867
 }
+.maintable {
+	width:98%;
+	border:1px solid #dee2e6
+}
+.form-control {
+	display:inline-block;
+	margin-right:10px
+}
 .table {
 	margin-bottom:0;
 	color:#545b62
@@ -505,13 +513,17 @@ span.page-link {
 	padding:.65rem;
 	vertical-align:middle
 }
-.maintable {
-	width:98%;
-	border:1px solid #dee2e6
+.fa {
+	font-size:14px!important;
+	color:inherit
 }
-.form-control {
-	display:inline-block;
-	margin-right:10px
+.btn-xs {
+	padding:2px;
+	line-height:12px;
+	font-size:12px
+}
+.btn+.btn,.btn-text+.btn-text {
+	margin-left:1rem
 }
 .admin-win {
 	background:#f5f5f5;
@@ -577,18 +589,6 @@ span.page-link {
 	width:20px;
 	height:20px;
 	border-radius:.2rem
-}
-.fa {
-	font-size:14px!important;
-	color:inherit
-}
-.btn-xs {
-	padding:2px;
-	line-height:12px;
-	font-size:12px
-}
-.btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
 }
 #browsehappy {
 	padding:20px 30px;

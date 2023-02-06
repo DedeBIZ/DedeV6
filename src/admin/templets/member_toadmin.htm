@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>提升为管理员</title>
+		<title>提升管理员</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -28,7 +28,7 @@
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 提升为管理员</td>
+				<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 提升管理员</td>
 			</tr>
 			<?php if ($row['matt']==10) {echo '<tr><td colspan="2"><div class="alert alert-info mb-0">您已经是管理员，不要提升了</div></td></tr>';} else {?>
 				<form name="form2" action="member_toadmin.php" method="post" onSubmit="return checkSubmit();">

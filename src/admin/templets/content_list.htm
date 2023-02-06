@@ -70,9 +70,9 @@
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
-					<td width="30%">文档标题</td>
+					<td width="26%">文档标题</td>
 					<td width="10%">更新时间</td>
-					<td width="14%">栏目</td>
+					<td width="12%">栏目</td>
 					<td width="6%">点击</td>
 					<td width="6%">网页</td>
 					<td width="6%">权限</td>
@@ -91,9 +91,9 @@
 					<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
 					<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 					<td>
-						<a href="javascript:;" title="属性" class="btn btn-success btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-window-maximize"></i></a>
-						<a href="javascript:;" title="修改" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i></a>
-						<a href="javascript:;" title="预览" class="btn btn-success btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-eye"></i></a>
+						<a href="javascript:;" class="btn btn-light btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-window-maximize"></i> 属性</a>
+						<a href="javascript:;" class="btn btn-light btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i> 修改</a>
+						<a href="javascript:;" class="btn btn-light btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-eye"></i> 预览</a>
 					</td>
 				</tr>
 				{/dede:datalist}

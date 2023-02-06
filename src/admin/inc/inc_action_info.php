@@ -376,7 +376,7 @@ $actionSearch[9] = array(
             'linkurl' => 'sys_data.php'
         ),
         9  => DEDEBIZ_SAFE_MODE? null : array(
-            'title' => 'SQL命令行工具',
+            'title' => 'SQL命令工具',
             'description' => '数据表执行单行或者多行的SQL语句',
             'purview' => 'sys_data',
             'linkurl' => 'sys_sql_query.php'

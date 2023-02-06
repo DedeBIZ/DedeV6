@@ -34,8 +34,9 @@
 					<?php if ($cuserLogin->getUserType() >= 10) {?>
 					<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i></a></li>
 					<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
-					<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
+					<li><a href="diy_main.php" target="main" title="自定义表单管理"><i class="fa fa-file"></i></a></li>
 					<?php }?>
+					<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
 					<?php if (!DEDEBIZ_SAFE_MODE) {?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i></a></li><?php }?>
 					<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
 					<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
@@ -75,7 +76,7 @@
 						$(this).html('<i class="fa fa-dedent"></i>');
 					}
 				});
-			}
+			};
 		</script>
 	</body>
 </html>

@@ -21,14 +21,12 @@
 						<table width="100%" class="table" cellspacing="2" cellpadding="1">
 							<tr>
 								<td align="right" width="160">您好友的邮箱：</td>
-								<td align="left"><input name="email" type="text" class="form-control" id="email" value="@"></td>
+								<td align="left"><input name="email" type="text" class="form-control" id="email"></td>
 							</tr>
 							<tr>
 								<td align="right">您的留言：</td>
 								<td align="left">
-									<textarea name="msg" cols="80" rows="16" id="msg" class="form-control">
-									我在 [<?php echo $cfg_webname;?>] 发现了一个很好的东东，文档的名称是：<?php echo $title;?>，网址是：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?>
-									</textarea>
+									<textarea name="msg" cols="80" rows="16" id="msg" class="form-control">我在<?php echo $cfg_webname;?>发现了一个很好的东东，文档的名称是：<?php echo $title;?>，网址是：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?></textarea>
 								</td>
 							</tr>
 							<tr>

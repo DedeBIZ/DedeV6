@@ -63,9 +63,9 @@
 			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">选择</td>
 				<td width="6%">id</td>
-				<td width="30%">文档属性</td>
+				<td width="26%">文档标题</td>
 				<td width="10%">时间</td>
-				<td width="14%">栏目</td>
+				<td width="12%">栏目</td>
 				<td width="6%">点击</td>
 				<td width="6%">网页</td>
 				<td width="6%">权限</td>
@@ -79,19 +79,19 @@
 				<tr align="center">
 					<td width="6%"><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
 					<td width="6%">{dede:field.id/}</td>
-					<td width="30%" align="left">
+					<td width="26%" align="left">
 						<img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm">
 						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a>
 					</td>
 					<td width="10%">{dede:field.senddate function='GetDateTimeMk(@me)'/}</td>
-					<td width="14%">{dede:field.typeid function='GetTypename(@me)'/}</td>
+					<td width="12%">{dede:field.typeid function='GetTypename(@me)'/}</td>
 					<td width="6%">{dede:field.click/}</td>
 					<td width="6%">{dede:field.ismake function='IsHtmlArchives(@me)'/}</td>
 					<td width="6%">{dede:field.arcrank function='GetRankName(@me)'/}</td>
 					<td width="6%">{dede:field.mid function=GetMemberName(@me)/}</td>
 					<td>
-						<a href="javascript:;" title="属性" onClick="QuickEdit({dede:field.id/},event,this);" class="btn btn-success btn-sm"><i class="fa fa-window-maximize"></i></a>
-						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" title="修改" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a>
+						<a href="javascript:;" onClick="QuickEdit({dede:field.id/},event,this);" class="btn btn-light btn-sm"><i class="fa fa-window-maximize"></i> 属性</a>
+						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" class="btn btn-light btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
 					</td>
 				</tr>
 			</table>

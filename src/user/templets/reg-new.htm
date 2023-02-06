@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -42,7 +41,7 @@
 									</div>
 								</div>
 								<div class="form-group form-check">
-									<input type="checkbox" class="form-check-input" id="iptLicence">
+									<input type="checkbox" id="iptLicence" class="form-check-input">
 									<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《用户注册条款》</a>和<a href="">《隐私保护条例》</a></label>
 								</div>
 								<div class="form-group"><button type="submit" class="btn btn-success btn-sm w-100">注册</button></div>
@@ -55,7 +54,7 @@
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>
 		<script>
-			//CheckSubmit 校验注册提交表单
+			//CheckSubmit校验注册提交表单
 			function CheckSubmit() {
 				let formCheck = [{
 						elem: "#iptUserid",
