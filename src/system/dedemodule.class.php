@@ -359,7 +359,7 @@ class DedeModule
             $modulefile = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
             $fp = fopen($modulefile, 'r') or die("文件 {$modulefile} 不存在或不可读!");
             $i = 0;
-            $dirs = '';
+            $dirs = array();
             while (!feof($fp)) {
                 $line = fgets($fp, 1024);
                 if (preg_match("/^[\s]{0,}<file/i", $line)) {
