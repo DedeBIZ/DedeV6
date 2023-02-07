@@ -526,7 +526,7 @@ INSERT INTO `#@__flinktype` VALUES ('1','综合网站'),
 ('7','论坛类'),
 ('8','其它类型');
 
-INSERT INTO `#@__freelist` VALUES ('1','测试文档','{listdir}/index_{listid}_{page}.html','{cmspath}/freelist/','index.html','1','{style}/list_free.htm','1289712633','100','0','{dede:list pagesize="30" col="1" titlelen="60" orderby="pubdate" orderway="desc" typeid="1" channel="1" }<li>[field:imglink/] [field:textlink/] <span class=info><small>日期：</small>[field:pubdate function="getdatemk(@me)"/] <small>点击：</small>[field:click/] <small>好评：</small>[field:scores/] </span>\t\n<p class=intro>[field:description/]</p></li>{/dede:list}','测试','测试文档'),
+INSERT INTO `#@__freelist` VALUES ('1','测试文档','{listdir}/index_{listid}_{page}.html','{cmspath}/freelist/','index.html','1','{style}/list_free.htm','1289712633','100','0','{dede:list pagesize="30" col="1" titlelen="60" orderby="pubdate" orderway="desc" typeid="1" channel="1" }<li>[field:imglink/] [field:textlink/] <span class=info><small>日期：</small>[field:pubdate function="getdatemk(@me)"/] <small>浏览：</small>[field:click/] <small>好评：</small>[field:scores/] </span>\t\n<p class=intro>[field:description/]</p></li>{/dede:list}','测试','测试文档'),
 ('10','Google SiteMap 生成器','{listdir}googlemap_{page}.xml','{cmspath}','index.html','1','{style}/googlemap.htm','1226884666','100','0','{dede:list pagesize="500" col="1" titlelen="60" orderby="pubdate" orderway="desc"\t\nchannel="1" keyword=""}<url>\t\n<loc>[field:arcurl function="Gmapurl(@me)"/]</loc>\t\n<title>[field:title function="HtmlReplace(@me)"/]</title>\t\n<news:news>\t\n<news:keywords>[field:keywords/]</news:keywords>\t\n<news:publication_date>[field:senddate function="strftime('%Y-%m-%d',@me)"/]</news:publication_date>\t\n</news:news>\t\n</url>{/dede:list}','','');
 
 INSERT INTO `#@__member_type` VALUES ('1','50','中级会员半年','100','7');
@@ -4058,7 +4058,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('122','cfg_mb_wnameone','是否允许用户昵称重复','4','bool','N'),
 ('123','cfg_arc_dirname','是否允许用目录作为文档文件名，文档命名规则：{typedir}/{aid}/index.html','7','bool','Y'),
 ('124','cfg_puccache_time','需缓存文档全局缓存时间（秒）','6','number','36000'),
-('125','cfg_arc_click','文档默认点击数（-1表示随机200-1000）','7','number','-1'),
+('125','cfg_arc_click','文档默认浏览数（-1表示随机1000到6000之间）','7','number','-1'),
 ('126','cfg_addon_savetype','附件保存形式，按data函数日期参数（y年m月d日）','3','string','ymd'),
 ('127','cfg_qk_uploadlit','异步上传缩略图，空间太不稳定用户关闭此项','3','bool','Y'),
 ('128','cfg_login_adds','登录会员中心获积分','5','number','2'),
