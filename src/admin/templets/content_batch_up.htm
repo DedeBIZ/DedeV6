@@ -103,7 +103,7 @@
 					<td><input name="userid" type="text" id="userid" class="admin-input-xs">（网址uid=后面跟的id）</td>
 				</tr>
 				<tr>
-					<td>操作：</td>
+					<td>条件操作：</td>
 					<td>
 						<label><input type="radio" name="action" value="check" onclick="ShowHideMove()" checked="1"> 审核文档</label>
 						<label><input type="radio" name="action" value="makehtml" onclick="ShowHideMove()"> 更新网页</label>
@@ -112,13 +112,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onclick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button></td>
-				</tr>
-			</form>
-			<form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
-				<input type="hidden" name="dopost" value="go">
-				<tr>
-					<td>操作：</td>
+					<td>批量操作：</td>
 					<td>
 						<label><input type="radio" value="delnulltitle" name="action"> 删除空标题的文档</label>
 						<label><input type="radio" value="delnullbody" name="action"> 删除文档为空的文档</label>
@@ -126,7 +120,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onclick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button></td>
+					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onclick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button></td>
 				</tr>
 			</form>
 			<tr>
