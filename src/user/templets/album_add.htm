@@ -21,7 +21,7 @@
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 								<li class="breadcrumb-item">发布<?php echo $cInfos['typename'];?></li></li>
 							</ol>
-							<span class="navbar-text"><a href="javascript:location.href='content_list.php?channelid=<?php echo $cInfos['id'];?>'" class="btn btn-outline-success btn-sm">返回</a></span>
+							<span class="navbar-text"><a href="javascript:location.href='content_list.php?channelid=<?php echo $channelid;?>'" class="btn btn-outline-success btn-sm">返回</a></span>
 						</nav>
 						<form name="addcontent" action="album_add.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
 							<input type="hidden" name="dopost" value="save">
@@ -37,7 +37,10 @@
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">缩略图</label>
-								<div class="col-sm-10"><input type="file" name="upfile1" class="w-100"></div>
+								<div class="col-sm-10">
+									<img src="/static/web/img/thumbnail.jpg" class="thumbnail-md mr-3">
+									<span class="btn btn-success btn-sm file-relative">上传缩略图<input type="file" name="" class="file-absolute"></span>
+								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">作者</label>
@@ -83,6 +86,35 @@
 							<script>
 								MakeUpload(2);
 							</script>
+
+							<!--上传图片新样式-->
+							<span class="btn btn-success btn-sm file-relative">上传图片（支持多选）<input type="file" name="" class="file-absolute"></span>
+							<div class="album-imgs text-center my-3">
+								<div class="row">
+									<div class="col-md-3">
+										<img src="https://www.dedebiz.com/static/img/best_itprato.png">
+										<p class="py-3">图片1</p>
+									</div>
+									<div class="col-md-3">
+										<img src="https://www.dedebiz.com/static/img/best_itprato.png">
+										<p class="py-3">图片1</p>
+									</div>
+									<div class="col-md-3">
+										<img src="https://www.dedebiz.com/static/img/industries-1.jpg">
+										<p class="py-3">图片2</p>
+									</div>
+									<div class="col-md-3">
+										<img src="https://www.dedebiz.com/static/img/index-img.png">
+										<p class="py-3">图片3</p>
+									</div>
+									<div class="col-md-3">
+										<img src="https://www.dedebiz.com/images/quick/type1.png">
+										<p class="py-3">图片4</p>
+									</div>
+								</div>
+							</div>
+							<!--上传图片新样式-->
+
 							<div class="text-center">
 								<button type="submit" class="btn btn-success btn-sm">提交</button>
 								<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>

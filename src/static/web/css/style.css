@@ -43,6 +43,11 @@ form.search {
 	display:flex;
 	width:100%
 }
+input[type=file] {
+	padding:0;
+	height:auto;
+	border:0
+}
 .body-bg {
 	background:#f5f5f5
 }
@@ -299,11 +304,16 @@ form.search {
 .form-control,.btn,.fa {
 	font-size:14px!important
 }
-.btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
+.dedebiz-file {
+	position:absolute;
+	top:0;
+	right:0;
+	margin:0;
+	opacity:0;
+	cursor:pointer
 }
-.rounded-md {
-	border-radius:30px!important
+.btn+.btn,.btn-text+.btn-text {
+	margin-left:10px
 }
 .login-from {
 	margin:6rem 0
@@ -337,9 +347,8 @@ form.search {
 	border-bottom:1px solid #eee
 }
 .user-img {
-	margin-right:10px;
-	width:30px;
-	height:30px;
+	width:36px;
+	height:36px;
 	border-radius:50%;
 	border:1px solid #dee2e6
 }
@@ -370,8 +379,22 @@ form.search {
 	background:#fff
 }
 .thumbnail-md {
-	max-width:200px;
-	max-height:120px
+	max-width:280px;
+	max-height:168px
+}
+.album-imgs img {
+	max-width:260px;
+	max-height:156px
+}
+.file-relative {
+	position:relative
+}
+.file-absolute {
+	position:absolute;
+	top:0;
+	right:0;
+	opacity:0;
+	cursor:pointer
 }
 #btnScrollTop {
 	display:none;

@@ -15,7 +15,7 @@ if (!isset($dopost)) $dopost = '';
 $step = empty($step) ? 1 : intval($step);
 if ($step == 1) {
     if ($cfg_ml->IsLogin()) {
-        ShowMsg('您已经登录，无需重新注册', 'index.php');
+        ShowMsg('操作成功，请重新登录系统', 'index.php');
         exit();
     }
     if ($dopost == 'regbase') {
@@ -96,7 +96,7 @@ if ($step == 1) {
             //模拟登录
             $cfg_ml = new MemberLogin(7 * 3600);
             $rs = $cfg_ml->CheckUser($userid, $userpwd);
-            ShowMsg('您已经登录，无需重新注册', 'index.php');
+            ShowMsg('操作成功，请重新登录系统', 'index.php');
             exit;
         } else {
             ShowMsg("注册失败，请检查资料是否有误或与管理员联系", "-1");
@@ -109,7 +109,7 @@ if ($step == 1) {
         ShowMsg("您未填写基本信息，请填写基本信息", "index_do.php?fmdo=user&dopost=regnew");
         exit;
     } else {
-        ShowMsg('您已经登录，无需重新注册', 'index.php');
+        ShowMsg('操作成功，请重新登录系统', 'index.php');
         exit;
     }
 }

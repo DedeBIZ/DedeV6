@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>修改资料-会员中心-<?php echo $cfg_webname;?></title>
+		<title>资料修改-会员中心-<?php echo $cfg_webname;?></title>
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
@@ -49,75 +49,63 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<ul class="nav nav-tabs">
-							<li class="nav-item"><a class="nav-link active" href="edit_baseinfo.php">账号安全</a></li>
-							<li class="nav-item"><a class="nav-link" href="edit_face.php">头像设置</a></li>
-							<li class="nav-item"><a class="nav-link" href="edit_email.php">验证邮箱</a></li>
-						</ul>
-						<form action="edit_baseinfo.php" method="post" enctype="multipart/form-data" name="form2" onsubmit="return checkSubmit();" class="mt-3">
+						<form action="edit_baseinfo.php" method="post" enctype="multipart/form-data" name="form2" onsubmit="return checkSubmit();">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="save">
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">帐号类型</label>
-								<div class="col-sm-10"><?php echo $row['mtype'];?></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">用户名</label>
-								<div class="col-sm-10"><?php echo $cfg_ml->M_LoginID;?></div>
-							</div>
-							<div class="form-group row">
-								<label for="iptUname" class="col-sm-2 col-form-label">昵称/公司名</label>
-								<div class="col-sm-10"><input type="text" name="uname" class="form-control" id="iptUname" value="<?php echo $row['uname'];?>"></div>
-								<small class="offset-md-2 col-sm-8 text-muted">个人会员该项为昵称，企业会员填写公司名称</small>
-							</div>
-							<div class="form-group row">
-								<label for="iptOldpwd" class="col-sm-2 col-form-label">原登录密码</label>
-								<div class="col-sm-10"><input type="password" name="oldpwd" class="form-control" id="iptOldpwd"></div>
-							</div>
-							<div class="form-group row">
-								<label for="iptUserpwd" class="col-sm-2 col-form-label">新密码</label>
-								<div class="col-sm-10"><input type="password" name="userpwd" class="form-control" id="iptUserpwd"></div>
-								<small class="offset-md-2 col-sm-8 text-muted">不修改密码请保留此项为空</small>
-							</div>
-							<div class="form-group row">
-								<label for="iptUserpwdok" class="col-sm-2 col-form-label">确认新密码</label>
-								<div class="col-sm-10"><input type="password" name="userpwdok" class="form-control" id="iptUserpwdok"></div>
-								<small class="offset-md-2 col-sm-8 text-muted">不修改密码请保留此项为空</small>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">原安全问题</label>
-								<div class="col-sm-10">
-									<?php
-									echo GetSafequestion($row['safequestion'],'safequestion');
-									?>
+								<label class="col-sm-3 col-form-label">头像/用户名/类型</label>
+								<div class="col-sm-9">
+									<img src="/static/web/img/admin.png" class="user-img mr-1">
+									<span class="mr-1"><?php echo $cfg_ml->M_LoginID;?></span>
+									<span><?php echo $row['mtype'];?></span>
 								</div>
-								<small class="offset-md-2 col-sm-8 text-muted">忘记密码时重设密码用</small>
 							</div>
 							<div class="form-group row">
-								<label for="iptSafeanswer" class="col-sm-2 col-form-label">原问题答案</label>
-								<div class="col-sm-10"><input type="text" name="safeanswer" class="form-control" id="iptSafeanswer"></div>
+								<label for="iptUname" class="col-sm-3 col-form-label">公司名/昵称</label>
+								<div class="col-sm-9"><input type="text" name="uname" class="form-control d-inline-block w-50" id="iptUname" value="<?php echo $row['uname'];?>" placeholder="企业会员为公司名，个人会员为昵称"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">新安全问题</label>
-								<div class="col-sm-10">
-									<?php
-									echo GetSafequestion(0,'newsafequestion');
-									?>
+								<label class="col-sm-3 col-form-label">修改头像</label>
+								<div class="col-sm-9">
+									<input type="text" name="faceurl" id="faceurl" class="form-control d-inline-block w-50" value="/static/web/img/admin.png">
+									<span class="btn btn-success btn-sm">修改头像<input type="file" name="" class="file-absolute"></span>
 								</div>
-								<small class="offset-md-2 col-sm-8 text-muted">不修改不用填写</small>
 							</div>
 							<div class="form-group row">
-								<label for="iptNewsafeanswer" class="col-sm-2 col-form-label">新问题答案</label>
-								<div class="col-sm-10"><input type="text" name="newsafeanswer" class="form-control" id="iptNewsafeanswer"></div>
+								<label for="iptOldpwd" class="col-sm-3 col-form-label">原登录密码</label>
+								<div class="col-sm-9"><input type="password" name="oldpwd" id="iptOldpwd" class="form-control w-50"></div>
 							</div>
 							<div class="form-group row">
-								<label for="iptEmail" class="col-sm-2 col-form-label">电子邮箱</label>
-								<div class="col-sm-10"><input type="email" name="email" class="form-control" id="iptEmail"></div>
-								<small class="offset-md-2 col-sm-8 text-muted">每个电子邮邮箱只能注册一个帐号，要修改电子邮箱必须填写正确安全问题的答案</small>
+								<label for="iptUserpwd" class="col-sm-3 col-form-label">新密码</label>
+								<div class="col-sm-9"><input type="password" name="userpwd" id="iptUserpwd" class="form-control w-50" placeholder="不修改密码请保留此项为空"></div>
 							</div>
 							<div class="form-group row">
-								<label for="iptEmail" class="col-sm-2 col-form-label">性别</label>
-								<div class="col-sm-10">
+								<label for="iptUserpwdok" class="col-sm-3 col-form-label">确认新密码</label>
+								<div class="col-sm-9"><input type="password" name="userpwdok" id="iptUserpwdok" class="form-control w-50" placeholder="不修改密码请保留此项为空"></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label">原安全问题</label>
+								<div class="col-sm-9"><?php echo GetSafequestion($row['safequestion'],'safequestion');?></div>
+							</div>
+							<div class="form-group row">
+								<label for="iptSafeanswer" class="col-sm-3 col-form-label">原问题答案</label>
+								<div class="col-sm-9"><input type="text" name="safeanswer" id="iptSafeanswer" class="form-control"></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label">新安全问题</label>
+								<div class="col-sm-9"><?php echo GetSafequestion(0,'newsafequestion');?></div>
+							</div>
+							<div class="form-group row">
+								<label for="iptNewsafeanswer" class="col-sm-3 col-form-label">新问题答案</label>
+								<div class="col-sm-9"><input type="text" name="newsafeanswer" id="iptNewsafeanswer" class="form-control"></div>
+							</div>
+							<div class="form-group row">
+								<label for="iptEmail" class="col-sm-3 col-form-label">电子邮箱</label>
+								<div class="col-sm-9"><input type="email" name="email" id="iptEmail" class="form-control" placeholder="每个邮箱只能注册一个帐号，修改电子邮箱必须填写正确安全问题答案"></div>
+							</div>
+							<div class="form-group row">
+								<label for="iptEmail" class="col-sm-3 col-form-label">性别</label>
+								<div class="col-sm-9">
 									<label><input type="radio" name="sex" value="男" <?php if ($row['sex']=='男') echo " checked='checked' ";?>> 男</label>
 									<label><input type="radio" name="sex" value="女" <?php if ($row['sex']=='女') echo " checked='checked' ";?>> 女</label>
 									<label><input type="radio" name="sex" value="保密" <?php if ($row['sex']=='保密') echo " checked='checked' ";?>> 保密</label>

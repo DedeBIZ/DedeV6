@@ -21,7 +21,7 @@
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 								<li class="breadcrumb-item">发布<?php echo $cInfos['typename'];?></li></li>
 							</ol>
-							<span class="navbar-text"><a href="javascript:location.href='content_list.php?channelid=<?php echo $cInfos['id'];?>'" class="btn btn-outline-success btn-sm">返回</a></span>
+							<span class="navbar-text"><a href="javascript:location.href='content_list.php?channelid=<?php echo $channelid;?>'" class="btn btn-outline-success btn-sm">返回</a></span>
 						</nav>
 						<form name="addcontent" action="archives_add.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit(`<?php echo $cInfos['titlename'];?>`);">
 							<input type="hidden" name="dopost" value="save">
@@ -36,7 +36,10 @@
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">缩略图</label>
-								<div class="col-sm-10"><input type="file" name="upfile1" class="w-100"></div>
+								<div class="col-sm-10">
+									<img src="/static/web/img/thumbnail.jpg" class="thumbnail-md mr-3">
+									<span class="btn btn-success btn-sm file-relative">上传缩略图<input type="file" name="" class="file-absolute"></span>
+								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">作者</label>

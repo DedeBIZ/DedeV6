@@ -315,9 +315,8 @@
 														$fhtml .= "<input type='hidden' name='imgurl{$j}' value='{$bigimg}'>";
 														$fhtml .= "<input type='hidden' name='imgddurl{$j}' value='{$litimg}'>";
 														$fhtml .= "<img src='{$litimg}'>";
-														$fhtml .= "<div class='mt-2'><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm mt-2\">删除</a></div>";
-														$fhtml .= "<div class='mt-2'>名称：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' class='admin-input-sm'></div>";
-														$fhtml .= "<div class='mt-2'>更换：<input type='file' name='imgfile{$j}' class='admin-input-sm'></div>";
+														$fhtml .= "<div class='my-2'>名称：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' class='admin-input-sm'></div>";
+														$fhtml .= "<div><span class='btn btn-success btn-sm file-relative'>更换<input type='file' name='imgfile{$j}' class='file-absolute'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a></div>";
 														$fhtml .= "</div>";
 														echo $fhtml;
 														$j++;
@@ -337,8 +336,8 @@
 					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">增加新图片：</td>
-								<td><span class="btn btn-success btn-sm fileinput-button"><i class="glyphicon glyphicon-plus"></i> 选择本地图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
+								<td width="90">增加图片：</td>
+								<td><span class="btn btn-success btn-sm fileinput-button">上传图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
 							</tr>
 						</table>
 					</td>

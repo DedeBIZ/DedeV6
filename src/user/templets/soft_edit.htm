@@ -17,7 +17,7 @@
 				morelinkobj.style.display = "block";
 				if (endNum > 12) endNum = 12;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<p>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='form-control d-inline-block w-50 mr-2'><span class='btn btn-success btn-sm'>选择</span>></p>";
+					upfield.innerHTML += "<p>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='form-control d-inline-block w-50 mr-2'><span class='btn btn-success btn-sm file-relative'>上传文件<input type='file' name='' class='file-absolute'></span></p>";
 					upfield.innerHTML += "<p>服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'></p>";
 				}
 			}
@@ -57,8 +57,8 @@
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">缩略图</label>
 								<div class="col-sm-10">
-									<img src="/static/web/img/thumbnail.jpg" class="thumbnail-md">
-									<button class="btn btn-success btn-sm">更换</button>
+									<img src="/static/web/img/thumbnail.jpg" class="thumbnail-md mr-3">
+									<span class="btn btn-success btn-sm">修改缩略图<input type="file" name="" class="file-absolute"></span>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -171,7 +171,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<p>下载地址：<input type="text" name="softurl1" id="softurl1" class="form-control d-inline-block w-50 mr-2"><span class="btn btn-success btn-sm">选择</span></p>
+								<p>下载地址：<input type="text" name="softurl1" id="softurl1" class="form-control d-inline-block w-50 mr-2"><span class="btn btn-success btn-sm file-relative">上传文件<input type="file" name="" class="file-absolute"></span></p>
 								<p>服务器名称：<input type="text" name="servermsg1" id="servermsg1" class="form-control" value="下载"></p>
 							</div>
 							<div class="form-group">

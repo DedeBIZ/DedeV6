@@ -216,7 +216,7 @@ else if ($fmdo == 'login') {
     //退出登录
     else if ($dopost == "exit") {
         $cfg_ml->ExitCookie();
-        ShowMsg("成功退出登录", "index.php", 0, 2000);
+        ShowMsg("已退出登录", "index.php", 0, 2000);
         exit();
     }
 } else {

@@ -25,7 +25,7 @@
 							<li class="nav-item"><a class="nav-link" href="edit_face.php">头像设置</a></li>
 							<li class="nav-item"><a class="nav-link active" href="edit_email.php">验证邮箱</a></li>
 						</ul>
-						<form action="edit_email.php" method="post" enctype="multipart/form-data" name="form1" class="mt-3">
+						<form action="edit_email.php" method="post" enctype="multipart/form-data" name="form1">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="save">
 							<div class="form-group row">

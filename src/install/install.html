@@ -43,15 +43,14 @@
 						<input type="hidden" name="step" value="2">
 						<input type="hidden" name="cookieencode" value="<?php echo $rnd_cookieEncode;?>">
 						<input type="hidden" name="adminmail" value="admin@dedebiz.com">
-						<legend>数据库设置</legend>
+						<legend class="text-success">数据库设置</legend>
 						<hr>
 						<div class="form-group">
-							<label for="dbtype" class="form-label">数据库类型</label>
+							<label for="dbtype" class="form-label">数据库类型（数据库类型一般为MySQL，类型SQLite用于开发调试，不建议生产中使用）</label>
 							<select id="dbtype" name="dbtype" class="form-control form-select">
 								<option value="mysql" selected>MySQL</option>
 								<?php if(extension_loaded("sqlite3")) {;?><option value="sqlite">SQLite</option><?php }?>
 							</select>
-							<div class="form-text text-danger">数据库类型一般为MySQL，类型SQLite用于开发调试，不建议生产中使用</div>
 						</div>
 						<div class="form-group server">
 							<label for="dbhost" class="form-label">数据库地址</label>
@@ -66,9 +65,8 @@
 							<input type="text" name="dbpwd" id="dbpwd" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="dbprefix" class="form-label">数据表前缀</label>
+							<label for="dbprefix" class="form-label">数据表前缀（请注意DedeV6数据表前缀默认为<span class="text-danger">biz_</span>）</label>
 							<input type="text" name="dbprefix" id="dbprefix" class="form-control" placeholder="biz_">
-							<div class="form-text text-danger">请注意DedeV6数据表前缀默认为biz_</div>
 						</div>
 						<div class="form-group">
 							<label for="dbname" class="form-label">数据库名称</label>
@@ -78,7 +76,7 @@
 							</div>
 						</div>
 						<div id="alertConnect"></div>
-						<legend>站点设置</legend>
+						<legend class="text-success">站点设置</legend>
 						<hr>
 						<div class="form-group">
 							<label for="baseurl" class="form-label">网站网址</label>
@@ -89,18 +87,16 @@
 							<input type="text" name="webname" id="webname" class="form-control" placeholder="某某公司">
 						</div>
 						<div class="form-group">
-							<label for="adminuser" class="form-label">管理员账号</label>
+							<label for="adminuser" class="form-label">管理员账号（只能用[0-9a-zA-Z_@!.-]以内范围的字符）</label>
 							<input type="text" name="adminuser" id="adminuser" class="form-control" placeholder="admin">
-							<div class="form-text text-dark">请使用[0-9a-zA-Z_@!.-]以内范围字符</div>
 						</div>
 						<div class="form-group">
 							<label for="adminpwd" class="form-label">管理员密码</label>
 							<input type="text" name="adminpwd" id="adminpwd" class="form-control" placeholder="admin">
 						</div>
 						<div class="form-group">
-							<label for="cmspath" class="form-label">安装目录</label>
+							<label for="cmspath" class="form-label">安装目录（根目录安装时不必理会）</label>
 							<input type="text" name="cmspath" id="cmspath" class="form-control" value="<?php echo $basepath;?>" placeholder="<?php echo $basepath;?>">
-							<div class="form-text text-danger">根目录安装时不必理会</div>
 						</div>
 						<div class="text-right"><button type="submit" class="btn btn-success">安装</button></div>
 					</form>

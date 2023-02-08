@@ -16,11 +16,7 @@
 				$.get(`<?php echo $cfg_memberurl?>/pm.php?dopost=read&id=${id}`, function(data) {
 					let result = JSON.parse(data);
 					if (result.code === 200) {
-						ShowMsg(`标题：<p>${result.data.subject}</p>
-							时间：<p>${result.data.sendtime}</p>
-							文档<p>${result.data.message}</p>`, {
-							title: "查看短消息",
-						});
+						ShowMsg(`<p>标题：${result.data.subject}</p><p>时间：${result.data.sendtime}</p><p>文档：${result.data.message}</p>`, {title: "查看短消息",});
 						$(`.pm-read-status[for='${id}']`).html("已阅读");
 					} else {
 						ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
@@ -89,22 +85,22 @@
 								<table class="table">
 									<thead>
 										<tr>
-											<th scope="col">选择</th>
-											<th scope="col">标题</th>
-											<th scope="col">
+											<th width="8%">选择</th>
+											<th>标题</th>
+											<th width="16%">
 												<?php
 												if ($folder == "inbox") echo "发件人";
 												else echo "收件人";
 												?>
 											</th>
-											<th scope="col">状态</th>
-											<th scope="col">发布时间</th>
+											<th width="12%">状态</th>
+											<th width="16%">发布时间</th>
 										</tr>
 									</thead>
 									<tbody>
 										{dede:datalist}
 										<tr>
-											<td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}"></td>
+											<td><input type="checkbox" name="deleteid" value="{dede:field.id/}"></td>
 											<td>
 												<?php
 												if ($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
