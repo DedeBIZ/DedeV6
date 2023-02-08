@@ -108,3 +108,20 @@ ALTER TABLE `#@__member` ADD COLUMN `send_max` int NULL DEFAULT 0 AFTER `loginer
 
 -- 6.2.3
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_bizcore_api', 'DedeBIZ Core接口服务器', 1, 'string', 'http://localhost:8087');
+
+-- 6.2.4
+CREATE TABLE `#@__sys_payment` (
+	`id` int(11) unsigned NOT NULL auto_increment,
+	`code` varchar(20) NOT NULL DEFAULT '',
+	`name` varchar(32) NOT NULL DEFAULT '',
+	`short_name` varchar(32) DEFAULT '',
+	`sortrank` int(3) unsigned NOT NULL DEFAULT '0',
+	`config` text NOT NULL,
+	`status` int(3) unsigned NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+) TYPE=MyISAM;
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (1, 'Wechat', '微信支付', '微信', 0, '{"AppID":"","AppSecret":"","MchID":"","APIV3Key":"","SerialNo":"","PrivateKey":"WechatPrivateKey"}', 0);
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (2, 'Alipay', '支付宝支付', '支付宝', 1, '{"APPID":"","PrivateKey":"","AppCertPublicKey":"AlipayAppCertPublicKey","CertPublicKey":"AlipayCertPublicKey","RootCert":"AlipayRootCert","SignType":"RSA2"}', 0);
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (3, 'Bank', '银行转账', '转账', 2, '{"AccountName":"","AccountNO":"","Name":""}', 0);
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (4, 'Balance', '余额支付', '余额', 3, '[]', 0);
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (5, 'Cod', '货到付款', '货到付款', 4, '[]', 0);

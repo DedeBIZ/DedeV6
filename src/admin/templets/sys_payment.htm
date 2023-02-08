@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -10,6 +11,7 @@
 	<script src="../static/web/js/jquery.min.js"></script>
 	<script src="../static/web/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 	<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 		<tr>
@@ -17,7 +19,8 @@
 				<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
 					<tr>
 						<td>支付接口设置</td>
-						<td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank" class="btn btn-success btn-sm">更多接口</a></span></td>
+						<td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank"
+									class="btn btn-success btn-sm">更多接口</a></span></td>
 					</tr>
 				</table>
 			</td>
@@ -26,19 +29,24 @@
 			<td colspan="4">
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
-						<button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab" data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button>
+						<button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab"
+							data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay" role="tab" aria-controls="alipay" aria-selected="false">支付宝</button>
+						<button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay"
+							role="tab" aria-controls="alipay" aria-selected="false">支付宝</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank" role="tab" aria-controls="bank" aria-selected="false">银行转帐</button>
+						<button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank"
+							role="tab" aria-controls="bank" aria-selected="false">银行转帐</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance" role="tab" aria-controls="balance" aria-selected="false">余额支付</button>
+						<button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance"
+							role="tab" aria-controls="balance" aria-selected="false">余额支付</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod" role="tab" aria-controls="cod" aria-selected="false">货到付款</button>
+						<button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod"
+							role="tab" aria-controls="cod" aria-selected="false">货到付款</button>
 					</li>
 				</ul>
 				<div class="tab-content py-3" id="myTabContent">
@@ -46,7 +54,8 @@
 						<form>
 							<div class="form-group">
 								<label>描述</label>
-								<p>微信支付是腾讯公司的支付业务品牌，微信支付商户平台支持线下场所、公众号、小程序、PC网站、APP、企业微信等经营场景快速接入微信支付。微信支付全面打通O2O生活消费领域，提供专业的互联网+行业解决方案，微信支付支持微信红包和微信理财通，是移动支付的首选。</p>
+								<p>微信支付是腾讯公司的支付业务品牌，微信支付商户平台支持线下场所、公众号、小程序、PC网站、APP、企业微信等经营场景快速接入微信支付。微信支付全面打通O2O生活消费领域，提供专业的互联网+行业解决方案，微信支付支持微信红包和微信理财通，是移动支付的首选。
+								</p>
 							</div>
 							<div class="form-group">
 								<label for="iptWechatAppID">AppID</label>
@@ -66,18 +75,23 @@
 							</div>
 							<div class="form-group">
 								<label for="iptWechatSerialNo">商户证书序列号</label>
-								<input type="appid" class="form-control" id="iptWechatSerialNo">
+								<input type="text" class="form-control" id="iptWechatSerialNo">
 							</div>
 							<div class="form-group">
 								<label>商户证书文件</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="iptWechatPrivateKey">
-									<label class="custom-file-label" data-browse="选择" for="iptWechatPrivateKey">选择商户证书文件...</label>
+									<label class="custom-file-label" data-browse="选择"
+										for="iptWechatPrivateKey">选择商户证书文件...</label>
 								</div>
 							</div>
+							<div class="form-group">
+								<label for="iptWechatSortrank">排序（越小越靠前）</label>
+								<input type="text" class="form-control" id="iptWechatSortrank" value="0">
+							</div>
 							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="WechatEnabled">
-								<label class="form-check-label" for="WechatEnabled"> 是否启用</label>
+								<input type="checkbox" class="form-check-input" id="iptWechatEnabled">
+								<label class="form-check-label" for="iptWechatEnabled"> 是否启用</label>
 							</div>
 						</form>
 					</div>
@@ -85,7 +99,8 @@
 						<form>
 							<div class="form-group">
 								<label for="iptAppID">描述</label>
-								<p>支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。</p>
+								<p>支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。
+								</p>
 							</div>
 							<div class="form-group">
 								<label for="iptAlipayAPPID">APPID</label>
@@ -99,30 +114,37 @@
 								<label>应用公钥证书</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="iptAlipayAppCertPublicKey">
-									<label class="custom-file-label" data-browse="选择" for="iptAlipayAppCertPublicKey">选择应用公钥证书文件...</label>
+									<label class="custom-file-label" data-browse="选择"
+										for="iptAlipayAppCertPublicKey">选择应用公钥证书文件...</label>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>支付宝公钥证书</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="iptAlipayCertPublicKey">
-									<label class="custom-file-label" data-browse="选择" for="iptAlipayCertPublicKey">选择支付宝公钥证书文件...</label>
+									<label class="custom-file-label" data-browse="选择"
+										for="iptAlipayCertPublicKey">选择支付宝公钥证书文件...</label>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>支付宝根证书</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="iptAlipayRootCert">
-									<label class="custom-file-label" data-browse="选择" for="iptAlipayRootCert">选择支付宝根证书文件...</label>
+									<label class="custom-file-label" data-browse="选择"
+										for="iptAlipayRootCert">选择支付宝根证书文件...</label>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="iptAlipaySignType">签名类型</label>
 								<input type="text" class="form-control" id="iptAlipaySignType" value="RSA2" disabled>
 							</div>
+							<div class="form-group">
+								<label for="iptAlipaySortrank">排序（越小越靠前）</label>
+								<input type="text" class="form-control" id="iptAlipaySortrank" value="0">
+							</div>
 							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="AlipayEnabled">
-								<label class="form-check-label" for="AlipayEnabled"> 是否启用</label>
+								<input type="checkbox" class="form-check-input" id="iptAlipayEnabled">
+								<label class="form-check-label" for="iptAlipayEnabled"> 是否启用</label>
 							</div>
 						</form>
 					</div>
@@ -134,19 +156,23 @@
 							</div>
 							<div class="form-group">
 								<label for="iptBankAccountName">账户名</label>
-								<input type="appid" class="form-control" id="iptBankAccountName">
+								<input type="text" class="form-control" id="iptBankAccountName">
 							</div>
 							<div class="form-group">
 								<label for="iptBankAccountNO">账号</label>
-								<input type="appid" class="form-control" id="iptBankAccountNO">
+								<input type="text" class="form-control" id="iptBankAccountNO">
 							</div>
 							<div class="form-group">
 								<label for="iptBankName">开户行</label>
-								<input type="appid" class="form-control" id="iptBankName">
+								<input type="text" class="form-control" id="iptBankName">
+							</div>
+							<div class="form-group">
+								<label for="iptBankSortrank">排序（越小越靠前）</label>
+								<input type="text" class="form-control" id="iptBankSortrank" value="0">
 							</div>
 							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="BankEnabled">
-								<label class="form-check-label" for="BankEnabled"> 是否启用</label>
+								<input type="checkbox" class="form-check-input" id="iptBankEnabled">
+								<label class="form-check-label" for="iptBankEnabled"> 是否启用</label>
 							</div>
 						</form>
 					</div>
@@ -156,9 +182,13 @@
 								<label>描述</label>
 								<p>支持采用积分进行支付。</p>
 							</div>
+							<div class="form-group">
+								<label for="iptBalanceSortrank">排序（越小越靠前）</label>
+								<input type="text" class="form-control" id="iptBalanceSortrank" value="0">
+							</div>
 							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="BalanceEnabled">
-								<label class="form-check-label" for="BalanceEnabled">是否启用</label>
+								<input type="checkbox" class="form-check-input" id="iptBalanceEnabled">
+								<label class="form-check-label" for="iptBalanceEnabled">是否启用</label>
 							</div>
 						</form>
 					</div>
@@ -168,13 +198,18 @@
 								<label>描述</label>
 								<p>购买后直接发货，到货后再进行支付。</p>
 							</div>
+							<div class="form-group">
+								<label for="iptCodSortrank">排序（越小越靠前）</label>
+								<input type="text" class="form-control" id="iptCodSortrank" value="0">
+							</div>
 							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="CodEnabled">
-								<label class="form-check-label" for="CodEnabled"> 是否启用</label>
+								<input type="checkbox" class="form-check-input" id="iptCodEnabled">
+								<label class="form-check-label" for="iptCodEnabled"> 是否启用</label>
 							</div>
 						</form>
 					</div>
-					<div class="text-center"><button type="submit" class="btn btn-success">保存</button></div>
+					<div class="text-center"><button id="btnSave" type="submit" class="btn btn-success">保存</button>
+					</div>
 				</div>
 			</td>
 		</tr>
@@ -184,6 +219,134 @@
 			let fileName = $(this).val().split('\\').pop();
 			$(this).siblings('.custom-file-label').addClass("selected").html(fileName);
 		});
+
+		let config = {
+			Wechat: {
+				AppID: '',
+				AppSecret: '',
+				MchID: '',
+				APIV3Key: '',
+				SerialNo: '',
+				PrivateKey: '',
+				Sortrank: 0,
+				Enabled: true,
+			},
+			Alipay: {
+				APPID: '',
+				PrivateKey: '',
+				AppCertPublicKey: '',
+				CertPublicKey: '',
+				RootCert: '',
+				SignType: 'RSA2',
+				Sortrank: 0,
+				Enabled: false,
+			},
+			Bank: {
+				AccountName: '',
+				AccountNO: '',
+				Name: '',
+				Sortrank: 0,
+				Enabled: true,
+			},
+			Balance: {
+				Sortrank: 0,
+				Enabled: false,
+			},
+			Cod: {
+				Sortrank: 0,
+				Enabled: true,
+			}
+		}
+
+		//加载系统config
+		function getPayments() {
+			$.get("sys_payment.php?dopost=get_payments", function (data) {
+				if (data.code === 0) {
+					for (const key in data.data) {
+						if (Object.hasOwnProperty.call(data.data, key)) {
+							const element = data.data[key];
+							let itemConfig = {};
+							try {
+								itemConfig = JSON.parse(element.config);
+							} catch (error) {
+								itemConfig = config[key]
+							}
+							itemConfig.Sortrank = element.sortrank;
+							itemConfig.Enabled = element.status === 0? false : true;
+							console.log("itemConfig=", itemConfig);
+							for (const k1 in config[key]) {
+								if (Object.hasOwnProperty.call(config[key], k1)) {
+									const ee = config[key][k1];
+									if (typeof itemConfig[k1] === "undefined") {
+										itemConfig[k1] = ee;
+									}
+								}
+							}
+							for (const k2 in itemConfig) {
+								if (Object.hasOwnProperty.call(itemConfig, k2)) {
+									const element = itemConfig[k2];
+									if ($(`#ipt${key}${k2}`).attr('type') === 'text') {
+										$(`#ipt${key}${k2}`).val(element);
+									} else if ($(`#ipt${key}${k2}`).attr('type') === 'checkbox') {
+										$(`#ipt${key}${k2}`).prop('checked', element);
+									}
+								}
+							}
+							config[key] = itemConfig;
+						}
+					}
+				}
+			})
+		}
+
+		//更新config
+		function updateConfig() {
+			for (const key in config) {
+				if (Object.hasOwnProperty.call(config, key)) {
+					const element = config[key];
+					for (const kk in element) {
+						if (Object.hasOwnProperty.call(element, kk)) {
+							const itemConfig = element[kk];
+							console.log(`#ipt${key}${kk}`, itemConfig);
+							if ($(`#ipt${key}${kk}`).attr('type') === 'text') {
+								let val = $(`#ipt${key}${kk}`).val();
+								if (kk === "Sortrank") {
+									val = parseInt(val);
+								}
+								config[key][kk] = val;
+							} else if ($(`#ipt${key}${kk}`).attr('type') === 'checkbox') {
+								config[key][kk] = $(`#ipt${key}${kk}`).prop('checked');
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//保存配置信息
+		function saveConfig() {
+			$.ajax({
+				type: "post",
+				url: 'sys_payment.php?dopost=save_config',
+				data: JSON.stringify(config),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (data) {
+					console.log(data);
+				}
+			})
+		}
+
+		$(document).ready(function () {
+				getPayments();
+				$("#btnSave").click(() => {
+					updateConfig()
+					saveConfig();
+					console.log(config)
+				})
+			})
+
 	</script>
 </body>
+
 </html>

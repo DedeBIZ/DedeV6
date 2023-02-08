@@ -732,22 +732,6 @@ CREATE TABLE `#@__mytag` (
 	KEY `tagname` (`tagname`,`typeid`,`timeset`,`endtime`,`starttime`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__payment`;
-CREATE TABLE `#@__payment` (
-	`id` tinyint(3) unsigned NOT NULL auto_increment,
-	`code` varchar(20) NOT NULL default '',
-	`name` varchar(120) NOT NULL default '',
-	`fee` varchar(10) NOT NULL default '0',
-	`description` text NOT NULL,
-	`rank` tinyint(3) unsigned NOT NULL default '0',
-	`config` text NOT NULL,
-	`enabled` tinyint(1) unsigned NOT NULL default '0',
-	`cod` tinyint(1) unsigned NOT NULL default '0',
-	`online` tinyint(1) unsigned NOT NULL default '0',
-	PRIMARY KEY (`id`),
-	UNIQUE KEY `code` (`code`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__plus`;
 CREATE TABLE `#@__plus` (
 	`aid` mediumint(8) unsigned NOT NULL auto_increment,
@@ -931,6 +915,18 @@ CREATE TABLE `#@__sys_module` (
 	`indexurl` varchar(30) NOT NULL default '',
 	`ismember` tinyint(4) NOT NULL default '1',
 	`menustring` text,
+	PRIMARY KEY (`id`)
+) TYPE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__sys_payment`;
+CREATE TABLE `#@__sys_payment` (
+	`id` int(11) unsigned NOT NULL auto_increment,
+	`code` varchar(20) NOT NULL DEFAULT '',
+	`name` varchar(32) NOT NULL DEFAULT '',
+	`short_name` varchar(32) DEFAULT '',
+	`sortrank` int(3) unsigned NOT NULL DEFAULT '0',
+	`config` text NOT NULL,
+	`status` int(3) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
 
