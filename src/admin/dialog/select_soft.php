@@ -113,7 +113,7 @@ html{background:#f5f5f5}
                         $filesize = $ty1.".".substr($ty2, 0, 1);
                     }
                 $filetime = filemtime("$inpath/$file");
-                $filetime = MyDate("Y-m-d H:i", $filetime);
+                $filetime = MyDate("Y-m-d H:i:s", $filetime);
             }
             //判断文件类型并作处理
             if ($file == ".") continue;

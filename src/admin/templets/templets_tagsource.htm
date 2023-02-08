@@ -30,7 +30,7 @@
 			{
 				if (!preg_match("#\.php$#", $filename)) continue;
 				$filetime = filemtime($libdir.'/'.$filename);
-				$filetime = MyDate("Y-m-d H:i",$filetime);
+				$filetime = MyDate("Y-m-d H:i:s",$filetime);
 				$fileinfo = GetHelpInfo(str_replace('.lib.php','',$filename));
 			?>
 			<tr align="center">

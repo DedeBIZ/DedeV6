@@ -56,7 +56,7 @@
 					<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
 					<td>{dede:field.id/}</td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
-					<td><?php echo MyDate("Y-m-d H:i",$fields['senddate'])?></td>
+					<td><?php echo MyDate("Y-m-d H:i:s",$fields['senddate'])?></td>
 					<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
 					<td>{dede:field.click/}</td>
 					<td><?php echo IsHtmlArchives($fields['ismake'])?></td>

@@ -42,7 +42,7 @@ if ($dopost == 'read') {
         "data" => array(
             "subject" => $row['subject'],
             "message" => $row['message'],
-            "sendtime" => MyDate("Y-m-d H:i", $row['sendtime']),
+            "sendtime" => MyDate("Y-m-d H:i:s", $row['sendtime']),
         ),
         "msg" => "",
     );

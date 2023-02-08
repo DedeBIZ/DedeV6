@@ -59,7 +59,7 @@ if ($action == 'post') {
                     //获取时间，表单添加text数据类型sj字段型后模板用<input type="hidden" name="sj" value="">
                     if ($fieldinfo[0] == 'sj')
                     {
-                        ${$fieldinfo[0]}=date("Y-m-d H:i");
+                        ${$fieldinfo[0]}=date("Y-m-d H:i:s");
                     } else {
                         ${$fieldinfo[0]} = GetFieldValue(${$fieldinfo[0]}, $fieldinfo[1],0,'add','','diy', $fieldinfo[0]);
                     }

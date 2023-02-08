@@ -40,7 +40,7 @@
 			foreach ($files as $filename){
 				if (!preg_match("#\.htm#", $filename)) continue;
 				$filetime = filemtime($templetdird.'/'.$filename);
-				$filetime = MyDate("Y-m-d H:i",$filetime);
+				$filetime = MyDate("Y-m-d H:i:s",$filetime);
 				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 			?>
 			<tr align="center">
