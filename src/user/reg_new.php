@@ -50,7 +50,7 @@ if ($step == 1) {
         //检测用户名是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的用户名 {$userid} 已存在，请使用别的用户名", "-1");
+            ShowMsg("您指定的用户名<span class='text-primary'>{$userid}</span>已存在，请使用别的用户名", "-1");
             exit();
         }
         //会员的默认金币

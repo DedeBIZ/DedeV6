@@ -41,7 +41,7 @@ class DedeModule
         $this->__construct($modulespath);
     }
     /**
-     *  枚举系统里已经存在的模块(缓存功能实际上只作hash与文件名的解析，在此不特别处理)
+     *  枚举系统里已经存在的模块，缓存功能实际上只作hash与文件名的解析，在此不特别处理
      *
      * @access    public
      * @param     string   $moduletype   模块类型
@@ -51,7 +51,7 @@ class DedeModule
     {
         if (is_array($this->modules)) return $this->modules;
         $dh = dir($this->modulesPath) or die("没找到模块目录：({$this->modulesPath})");
-        $fp = @fopen($this->modulesPath.'/modulescache.php', 'w') or die('读取文件权限出错,目录文件'.$this->modulesPath.'/modulescache.php不可写');
+        $fp = @fopen($this->modulesPath.'/modulescache.php', 'w') or die('读取文件权限出错，目录：'.$this->modulesPath.'/modulescache.php文件不可写');
         fwrite($fp, "<"."?php\r\n");
         fwrite($fp, "global \$allmodules;\r\n");
         while ($filename = $dh->read()) {
@@ -148,7 +148,7 @@ class DedeModule
             $minfos['filesize'] = filesize($filename) / 1024;
             $minfos['filesize'] = number_format($minfos['filesize'], 2, '.', '').' Kb';
         }
-        $fp = fopen($filename, 'r') or die("文件 {$filename} 不存在或不可读!");
+        $fp = fopen($filename, 'r') or die("文件<span class='text-primary'>{$filename}</span>不存在或不可读");
         $n = 0;
         while (!feof($fp)) {
             $n++;
@@ -204,7 +204,7 @@ class DedeModule
         if ($ftype == 'file') $filename = $hash;
         else $filename = $this->modulesPath.'/'.$this->GetHashFile($hash);
         $filexml = '';
-        $fp = fopen($filename, 'r') or die("文件 {$filename} 不存在或不可读!");
+        $fp = fopen($filename, 'r') or die("文件<span class='text-primary'>{$filename}</span>不存在或不可读");
         $start = 0;
         while (!feof($fp)) {
             $line = fgets($fp, 1024);
@@ -236,7 +236,7 @@ class DedeModule
         $this->GetModuleInfo($hashcode, $ntype);
         $start = FALSE;
         $filename = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
-        $fp = fopen($filename, 'r') or die("文件 {$filename} 不存在或不可读!");
+        $fp = fopen($filename, 'r') or die("文件<span class='text-primary'>{$filename}</span>不存在或不可读");
         $okdata = '';
         while (!feof($fp)) {
             $line = fgets($fp, 1024);
@@ -268,7 +268,7 @@ class DedeModule
         $filename = $hashcode."-{$ntype}.php";
         $fname = $this->modulesPath.'/'.$filename;
         $filect = $this->GetSystemFile($hashcode, $ntype);
-        $fp = fopen($fname, 'w') or die('生成 {$ntype} 文件失败');
+        $fp = fopen($fname, 'w') or die("生成<span class='text-primary'>{$ntype}</span>文件失败");
         fwrite($fp, $filect);
         fclose($fp);
         return $filename;
@@ -309,7 +309,7 @@ class DedeModule
      */
     function GetEncodeFile($filename, $isremove = FALSE)
     {
-        $fp = fopen($filename, 'r') or die("文件 {$filename} 不存在或不可读!");
+        $fp = fopen($filename, 'r') or die("文件<span class='text-primary'>{$filename}</span>不存在或不可读");
         $str = @fread($fp, filesize($filename));
         fclose($fp);
         if ($isremove) @unlink($filename);
@@ -328,7 +328,7 @@ class DedeModule
         $dap = new DedeAttParse();
         $filelists = array();
         $modulefile = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
-        $fp = fopen($modulefile, 'r') or die("文件 {$modulefile} 不存在或不可读!");
+        $fp = fopen($modulefile, 'r') or die("文件<span class='text-primary'>{$modulefile}</span>不存在或不可读");
         $i = 0;
         while (!feof($fp)) {
             $line = fgets($fp, 1024);
@@ -357,7 +357,7 @@ class DedeModule
         else {
             $dap = new DedeAttParse();
             $modulefile = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
-            $fp = fopen($modulefile, 'r') or die("文件 {$modulefile} 不存在或不可读!");
+            $fp = fopen($modulefile, 'r') or die("文件<span class='text-primary'>{$modulefile}</span>不存在或不可读");
             $i = 0;
             $dirs = array();
             while (!feof($fp)) {
@@ -400,7 +400,7 @@ class DedeModule
         global $AdminBaseDir;
         $dap = new DedeAttParse();
         $modulefile = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
-        $fp = fopen($modulefile, 'r') or die("文件 {$modulefile} 不存在或不可读!");
+        $fp = fopen($modulefile, 'r') or die("文件<span class='text-primary'>{$modulefile}</span>不存在或不可读");
         $i = 0;
         while (!feof($fp)) {
             $line = fgets($fp, 1024);
@@ -427,7 +427,7 @@ class DedeModule
                         }
                     }
                     if (!empty($filename)) {
-                        $fw = fopen($filename, 'w') or die("写入文件 {$filename} 失败，请检查相关目录的权限");
+                        $fw = fopen($filename, 'w') or die("写入文件<span class='text-primary'>{$filename}</span>失败，请检查相关目录的权限");
                         $ct = '';
                         while (!feof($fp)) {
                             $l = fgets($fp, 1024);
@@ -527,7 +527,7 @@ class DedeModule
         else $this->fileListNames[$f] = 1;
         $fileList = '';
         if (!file_exists($filename)) {
-            ShowMsg("文件或文件夹: {$filename} 不存在，无法进行编译", "-1");
+            ShowMsg("文件或文件夹<span class='text-primary'>{$filename}</span>不存在，无法进行编译", "-1");
             exit();
         }
         if (is_dir($filename)) {
