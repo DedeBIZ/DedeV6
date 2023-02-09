@@ -8,6 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+define('IS_DEDEAPI', TRUE);
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 require_once(DEDEINC."/libraries/statistics.class.php");
 if (empty($dopost)) $dopost = '';

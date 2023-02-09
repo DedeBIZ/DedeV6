@@ -10,7 +10,7 @@
 define('DEDEBIZ_SAFE_MODE', FALSE);
 //生产环境使用`production`，如果采用`dev`模式，会有一些php的报错信息提示，用于开发调试
 if (!defined('DEDE_ENVIRONMENT')) {
-    define('DEDE_ENVIRONMENT', 'production');
+    define('DEDE_ENVIRONMENT', 'dev');
 }
 if (!defined('DEBUG_LEVEL')) {
     if (DEDE_ENVIRONMENT == 'production') {
@@ -228,7 +228,7 @@ if (isset($GLOBALS['TotalResult'])) {
 if (!isset($cfg_NotPrintHead)) {
     if (PHP_SAPI != 'cli') {
         if (defined('IS_DEDEAPI')) {
-            header("Content-Type:text/json;");
+            header("Content-Type:text/json; charset={$cfg_soft_lang}");
         } else {
             header("Content-Type:text/html; charset={$cfg_soft_lang}");
         }

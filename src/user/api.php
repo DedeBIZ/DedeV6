@@ -7,7 +7,7 @@
  * @link           https://www.dedebiz.com
  */
 define('AJAXLOGIN', TRUE);
-$cfg_NotPrintHead = 'Y';
+define('IS_DEDEAPI', TRUE);
 require_once(dirname(__FILE__)."/config.php");
 AjaxHead();
 $action = isset($action)? $action : '';

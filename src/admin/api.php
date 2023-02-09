@@ -9,8 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 define('AJAXLOGIN', TRUE);
+define('IS_DEDEAPI', TRUE);
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
-$cfg_NotPrintHead = 'Y';
 require_once(DEDEADMIN.'/../system/common.inc.php');
 require_once(DEDEINC.'/userlogin.class.php');
 AjaxHead();

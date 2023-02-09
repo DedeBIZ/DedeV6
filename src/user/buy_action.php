@@ -17,8 +17,11 @@ $ptype = '';
 $pname = '';
 $price = '';
 $mtime = time();
+
 if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cookie_encode) == $pd_verify) {
+    
     $result = json_decode(mchStrCode($pd_encode, 'DECODE'));
+   
     $product = preg_replace("#[^0-9a-z]#i", "", $result->product);
     $pid = preg_replace("#[^0-9a-z]#i", "", $result->pid);
     $row  = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE mid='$mid' AND sta=0 AND product='$product'");
@@ -62,6 +65,7 @@ if ($product == 'member') {
     $pname = $row['pname'];
     $price = $row['money'];
 }
+
 if (!isset($paytype)) {
     $inquery = "INSERT INTO `#@__member_operation` (`buyid`,`pname`,`product`,`money`,`mtime`,`pid`,`mid`,`sta`,`oldinfo`) VALUES ('$buyid','$pname','$product','$price','$mtime','$pid','$mid','0','$ptype');";
     $isok = $dsql->ExecuteNoneQuery($inquery);
@@ -75,14 +79,13 @@ if (!isset($paytype)) {
     }
     //获取支付接口设置
     $payment_list = array();
-    $dsql->SetQuery("SELECT * FROM `#@__payment` WHERE enabled='1' ORDER BY `rank` ASC");
+    $dsql->SetQuery("SELECT * FROM `#@__sys_payment` WHERE `status`=1 ORDER BY sortrank ASC");
     $dsql->Execute();
     $i = 0;
     while ($row = $dsql->GetArray()) {
         $payment_list[] = $row;
         $i++;
     }
-    unset($row);
     $pr_encode = array();
     foreach ($_REQUEST as $key => $val) {
         if (!in_array($key, array('product', 'pid'))) {
@@ -96,6 +99,8 @@ if (!isset($paytype)) {
     $tpl = new DedeTemplate();
     $tpl->LoadTemplate(DEDEMEMBER.'/templets/buy_action_payment.htm');
     $tpl->Display();
+} else {
+    //TODO进行支付处理
 }
 /**
  *  加密函数

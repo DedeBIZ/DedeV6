@@ -206,8 +206,7 @@
 			$("#btnStep" + step).show();
 		}
 		function update() {
-			$.get("api.php?action=update", function (data) {
-				let rs = JSON.parse(data);
+			$.get("api.php?action=update", function (rs) {
 				if (rs.code === 0) {
 					$("#_updateMsg").html(rs.msg);
 					if (rs.data.finish === false) {
@@ -224,9 +223,8 @@
 			})
 		}
 		function hasNewVersion() {
-			$.get("api.php?action=has_new_version", function (data) {
+			$.get("api.php?action=has_new_version", function (rs) {
 				try {
-					let rs = JSON.parse(data);
 					if (rs.code === 0) {
 						if (rs.result.HasNew === true) {
 							hasNewVer = true;
@@ -254,8 +252,7 @@
 				let alertMsg = dedeAlter("正在备份差异文件", 'info', true);
 				$("#_msgInfo").html(alertMsg);
 				$("#_msgInfo").show();
-				$.get("api.php?action=update_backup", function (data) {
-					let rs = JSON.parse(data);
+				$.get("api.php?action=update_backup", function (rs) {
 					if (rs.code === 0) {
 						alertMsg = dedeAlter(`成功备份差异文件，目录：${rs.data.backupdir}`, 'success');
 						$("#_msgInfo").html(alertMsg);
@@ -272,8 +269,7 @@
 				$('#mdlUpdate').modal('show');
 				showStepArea(currentStep);
 				currentStep++;
-				$.get("api.php?action=get_changed_files", function (data) {
-					let rs = JSON.parse(data);
+				$.get("api.php?action=get_changed_files", function (rs) {
 					if (rs.code === 0) {
 						let fstr = '<ul class="list-group list-group-flush">';
 						let i = 1;
@@ -299,8 +295,7 @@
 				$("#_msgInfo").html('');
 				$("#_msgInfo").hide();
 				showStepArea(currentStep);
-				$.get("api.php?action=get_update_versions", function (data) {
-					let rs = JSON.parse(data);
+				$.get("api.php?action=get_update_versions", function (rs) {
 					if (rs.code === 0) {
 						let fstr = '<ul class="list-group list-group-flush">';
 						let i = 1;

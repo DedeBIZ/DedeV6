@@ -104,8 +104,7 @@
 				<button type="button" class="btn btn-success btnSend ml-2" onClick='SendReplyFeedback(${fid})'>评论</button>
 			</div>
 		</div>`;
-        $.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(data) {
-            let result = JSON.parse(data);
+        $.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {
             if (result.code !== 200) {
 				$(`._feedback_reply`).html("");
 				ShowAlert(`._feedback_reply[for="${fid}"]`, 
