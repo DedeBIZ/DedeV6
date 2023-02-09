@@ -16,7 +16,7 @@ function lib_softmsg(&$ctag, &$refObj)
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';
-    $row = $dsql->GetOne(" SELECT * FROM `#@__softconfig` ");
+    $row = $dsql->GetOne(" SELECT * FROM `#@__softconfig`");
     if (is_array($row)) $revalue = $row['downmsg'];
     return $revalue;
 }

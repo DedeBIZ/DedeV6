@@ -49,7 +49,7 @@ else if ($dopost == 'delall') {
 }
 //第一次进入这个页面
 if ($dopost == '') {
-    $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__search_keywords` ");
+    $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__search_keywords`");
     $totalRow = $row['dd'];
     include(DEDEADMIN."/templets/search_keywords_main.htm");
 }

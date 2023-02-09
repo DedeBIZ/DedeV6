@@ -37,7 +37,7 @@ if ($needMoney > 0 || $needRank > 1) {
     $pubdate = GetDateTimeMk($arc->Fields["pubdate"]);
     //会员级别不足
     if (($needRank > 1 && $cfg_ml->M_Rank < $needRank && $arc->Fields['mid'] != $cfg_ml->M_ID)) {
-        $dsql->Execute('me', "SELECT * FROM `#@__arcrank` ");
+        $dsql->Execute('me', "SELECT * FROM `#@__arcrank`");
         while ($row = $dsql->GetObject('me')) {
             $memberTypes[$row->rank] = $row->membername;
         }

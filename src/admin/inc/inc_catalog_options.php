@@ -20,7 +20,7 @@
 function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
 {
     global $OptionArrayList, $channels, $dsql, $cfg_admin_channel, $admin_catalogs;
-    $dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` ");
+    $dsql->SetQuery("SELECT id,typename FROM `#@__channeltype`");
     $dsql->Execute('dd');
     $channels = array();
     while ($row = $dsql->GetObject('dd')) $channels[$row->id] = $row->typename;

@@ -55,10 +55,6 @@
 					<td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $myrow['title']?>" class="admin-input-md"></td>
 				</tr>
 				<tr>
-					<td class="admin-td">参数说明：</td>
-					<td class="admin-td" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
-				</tr>
-				<tr>
 					<td class="admin-td">附加参数：</td>
 					<td class="admin-td">
 						宽：<input type="text" name="mediawidth" id="mediawidth" value="<?php echo $myrow['width']?>" class="admin-input-sm">（像素）
@@ -67,7 +63,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">原文件：</td>
+					<td class="admin-td">源文件：</td>
 					<td class="admin-td">
 						<input type="text" name="filename" id="filename" value="<?php echo $myrow['url']?>" class="admin-input-md">
 						<a href="<?php echo $myrow['url']?>" target="_blank" class="btn btn-success btn-sm">查看</a>

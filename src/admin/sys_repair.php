@@ -72,7 +72,7 @@ function 2_test_arctiny() {  }
 else if ($dopost == 2) {
     $msg = '';
     $allarcnum = 0;
-    $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__archives` ");
+    $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__archives`");
     $allarcnum = $arcnum = $row['dd'];
     $msg .= "#@__archives 表总记录数：{$arcnum}<br>";
     $shtables = array();
@@ -84,7 +84,7 @@ else if ($dopost == 2) {
         } else {
             if (!isset($shtables[$addtable])) {
                 $shtables[$addtable] = 1;
-                $row = $dsql->GetOne("SELECT COUNT(aid) AS dd FROM `$addtable` ");
+                $row = $dsql->GetOne("SELECT COUNT(aid) AS dd FROM `$addtable`");
                 $msg .= "{$addtable} 表总记录数：{$row['dd']} <br>";
                 $allarcnum += $row['dd'];
             }
@@ -92,7 +92,7 @@ else if ($dopost == 2) {
     }
     $msg .= "总有效记录数：{$allarcnum}<br>";
     $errall = "<a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>";
-    $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
+    $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny`");
     $msg .= "微统计表记录数：{$row['dd']}<br>";
     if ($row['dd'] == $allarcnum) {
         $msg .= "<span class='text-dark'>两者记录一致，无需修正</span><br>";
@@ -109,7 +109,7 @@ else if ($dopost == 2) {
             $rs = $dsql->ExecuteNoneQuery($sql);
             $doarray[$tb]  = 1;
         }
-        $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
+        $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny`");
         if ($row['dd'] == $allarcnum) {
             $msg .= "<span class='text-dark'>修正记录成功</span><br>";
         } else {

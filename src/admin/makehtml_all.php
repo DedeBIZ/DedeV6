@@ -34,7 +34,7 @@ if ($action == '') {
     if ($step == 3) {
         include_once(DEDEINC."/archive/partview.class.php");
         $pv = new PartView();
-        $row = $pv->dsql->GetOne("SELECT * FROM `#@__homepageset` ");
+        $row = $pv->dsql->GetOne("SELECT * FROM `#@__homepageset`");
         $templet = str_replace("{style}", $cfg_df_style, $row['templet']);
         $homeFile = DEDEADMIN.'/'.$row['position'];
         $homeFile = str_replace("\\", '/', $homeFile);
@@ -123,7 +123,7 @@ function OptimizeData($dsql)
 {
     global $cfg_dbprefix;
     $tptables = array("{$cfg_dbprefix}archives", "{$cfg_dbprefix}arctiny");
-    $dsql->SetQuery("SELECT maintable,addtable FROM `#@__channeltype` ");
+    $dsql->SetQuery("SELECT maintable,addtable FROM `#@__channeltype`");
     $dsql->Execute();
     while ($row = $dsql->GetObject()) {
         $addtable = str_replace('#@__', $cfg_dbprefix, $row->addtable);

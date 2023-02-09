@@ -51,7 +51,7 @@ if ($totalnum == 0) {
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` $idsql");
     $totalnum = $row['dd'];
     //清空缓存
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
 }
 //获取记录，并更新网页
 if ($totalnum > $startdd + $pagesize) {

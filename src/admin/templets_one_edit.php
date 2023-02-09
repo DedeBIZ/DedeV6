@@ -60,7 +60,7 @@ if ($dopost == "saveedit") {
     exit();
 } else if ($dopost == "mkall") {
     include_once(DEDEINC."/archive/sgpage.class.php");
-    $dsql->Execute("ex", "SELECT aid FROM `#@__sgpage` ");
+    $dsql->Execute("ex", "SELECT aid FROM `#@__sgpage`");
     $i = 0;
     while ($row = $dsql->GetArray("ex")) {
         $sg = new sgpage($row['aid']);

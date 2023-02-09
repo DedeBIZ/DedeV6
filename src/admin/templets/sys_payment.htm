@@ -1,225 +1,194 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	<title>支付接口设置</title>
-	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/web/css/admin.css">
-	<script src="../static/web/js/jquery.min.js"></script>
-	<script src="../static/web/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-	<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-		<tr>
-			<td bgcolor="#f5f5f5" colspan="4">
-				<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
-					<tr>
-						<td>支付接口设置</td>
-						<td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank"
-									class="btn btn-success btn-sm">更多接口</a></span></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="4">
-				<ul class="nav nav-tabs" id="myTab" role="tablist">
-					<li class="nav-item" role="presentation">
-						<button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab"
-							data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay"
-							role="tab" aria-controls="alipay" aria-selected="false">支付宝</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank"
-							role="tab" aria-controls="bank" aria-selected="false">银行转帐</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance"
-							role="tab" aria-controls="balance" aria-selected="false">余额支付</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod"
-							role="tab" aria-controls="cod" aria-selected="false">货到付款</button>
-					</li>
-				</ul>
-				<div class="tab-content py-3" id="myTabContent">
-					<div class="tab-pane fade show active" id="wechat" role="tabpanel" aria-labelledby="wechat-tab">
-						<form>
-							<div class="form-group">
-								<label>描述</label>
-								<p>微信支付是腾讯公司的支付业务品牌，微信支付商户平台支持线下场所、公众号、小程序、PC网站、APP、企业微信等经营场景快速接入微信支付。微信支付全面打通O2O生活消费领域，提供专业的互联网+行业解决方案，微信支付支持微信红包和微信理财通，是移动支付的首选。
-								</p>
-							</div>
-							<div class="form-group">
-								<label for="iptWechatAppID">AppID</label>
-								<input type="text" class="form-control" id="iptWechatAppID">
-							</div>
-							<div class="form-group">
-								<label for="iptWechatAppSecret">AppSecret</label>
-								<input type="text" class="form-control" id="iptWechatAppSecret">
-							</div>
-							<div class="form-group">
-								<label for="iptWechatMchID">商户号</label>
-								<input type="text" class="form-control" id="iptWechatMchID">
-							</div>
-							<div class="form-group">
-								<label for="iptWechatAPIV3Key">APIv3秘钥</label>
-								<input type="text" class="form-control" id="iptWechatAPIV3Key">
-							</div>
-							<div class="form-group">
-								<label for="iptWechatSerialNo">商户证书序列号</label>
-								<input type="text" class="form-control" id="iptWechatSerialNo">
-							</div>
-							<div class="form-group">
-								<label>商户证书文件</label>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="iptWechatPrivateKey">
-									<label class="custom-file-label" data-browse="选择"
-										for="iptWechatPrivateKey">选择商户证书文件...</label>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>支付接口设置</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="4">
+					<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
+						<tr>
+							<td>支付接口设置</td>
+							<td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank" class="btn btn-success btn-sm">更多接口</a></span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation"><button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab"	data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button></li>
+						<li class="nav-item" role="presentation"><button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay" role="tab" aria-controls="alipay" aria-selected="false">支付宝</button></li>
+						<li class="nav-item" role="presentation"><button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank" role="tab" aria-controls="bank" aria-selected="false">银行转帐</button></li>
+						<li class="nav-item" role="presentation"><button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance" role="tab" aria-controls="balance" aria-selected="false">余额支付</button></li>
+						<li class="nav-item" role="presentation"><button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod" role="tab" aria-controls="cod" aria-selected="false">货到付款</button></li>
+					</ul>
+					<div class="tab-content py-3" id="myTabContent">
+						<div class="tab-pane fade show active" id="wechat" role="tabpanel" aria-labelledby="wechat-tab">
+							<form>
+								<div class="form-group">
+									<span>微信支付是腾讯公司的支付业务品牌，微信支付商户平台支持线下场所、公众号、小程序、PC网站、APP、企业微信等经营场景快速接入微信支付。微信支付全面打通O2O生活消费领域，提供专业的互联网+行业解决方案，微信支付支持微信红包和微信理财通，是移动支付的首选。</span>
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="iptWechatSortrank">排序（越小越靠前）</label>
-								<input type="text" class="form-control" id="iptWechatSortrank" value="0">
-							</div>
-							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="iptWechatEnabled">
-								<label class="form-check-label" for="iptWechatEnabled"> 是否启用</label>
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="alipay" role="tabpanel" aria-labelledby="alipay-tab">
-						<form>
-							<div class="form-group">
-								<label for="iptAppID">描述</label>
-								<p>支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。
-								</p>
-							</div>
-							<div class="form-group">
-								<label for="iptAlipayAPPID">APPID</label>
-								<input type="text" class="form-control" id="iptAlipayAPPID">
-							</div>
-							<div class="form-group">
-								<label for="iptAlipayPrivateKey">应用私钥</label>
-								<input type="text" class="form-control" id="iptAlipayPrivateKey">
-							</div>
-							<div class="form-group">
-								<label>应用公钥证书</label>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="iptAlipayAppCertPublicKey">
-									<label class="custom-file-label" data-browse="选择"
-										for="iptAlipayAppCertPublicKey">选择应用公钥证书文件...</label>
+								<div class="form-group">
+									<label for="iptWechatAppID">AppID</label>
+									<input type="text" id="iptWechatAppID" class="form-control">
 								</div>
-							</div>
-							<div class="form-group">
-								<label>支付宝公钥证书</label>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="iptAlipayCertPublicKey">
-									<label class="custom-file-label" data-browse="选择"
-										for="iptAlipayCertPublicKey">选择支付宝公钥证书文件...</label>
+								<div class="form-group">
+									<label for="iptWechatAppSecret">AppSecret</label>
+									<input type="text" id="iptWechatAppSecret" class="form-control">
 								</div>
-							</div>
-							<div class="form-group">
-								<label>支付宝根证书</label>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="iptAlipayRootCert">
-									<label class="custom-file-label" data-browse="选择"
-										for="iptAlipayRootCert">选择支付宝根证书文件...</label>
+								<div class="form-group">
+									<label for="iptWechatMchID">商户号</label>
+									<input type="text" id="iptWechatMchID" class="form-control">
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="iptAlipaySignType">签名类型</label>
-								<input type="text" class="form-control" id="iptAlipaySignType" value="RSA2" disabled>
-							</div>
-							<div class="form-group">
-								<label for="iptAlipaySortrank">排序（越小越靠前）</label>
-								<input type="text" class="form-control" id="iptAlipaySortrank" value="0">
-							</div>
-							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="iptAlipayEnabled">
-								<label class="form-check-label" for="iptAlipayEnabled"> 是否启用</label>
-							</div>
-						</form>
+								<div class="form-group">
+									<label for="iptWechatAPIV3Key">APIv3秘钥</label>
+									<input type="text" id="iptWechatAPIV3Key" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptWechatSerialNo">商户证书序列号</label>
+									<input type="text" id="iptWechatSerialNo" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>商户证书文件</label>
+									<div class="custom-file">
+										<input type="file" id="iptWechatPrivateKey" class="custom-file-input">
+										<label class="custom-file-label" for="iptWechatPrivateKey" data-browse="选择">选择商户证书文件</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="iptWechatSortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptWechatSortrank" class="form-control" value="0">
+								</div>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptWechatEnabled" class="form-check-input">
+									<label class="form-check-label" for="iptWechatEnabled"> 是否启用</label>
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="alipay" role="tabpanel" aria-labelledby="alipay-tab">
+							<form>
+								<div class="form-group">
+									<span>支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。</span>
+								</div>
+								<div class="form-group">
+									<label for="iptAlipayAPPID">APPID</label>
+									<input type="text" id="iptAlipayAPPID" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptAlipayPrivateKey">应用私钥</label>
+									<input type="text" id="iptAlipayPrivateKey" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>应用公钥证书</label>
+									<div class="custom-file">
+										<input type="file" id="iptAlipayAppCertPublicKey" class="custom-file-input">
+										<label class="custom-file-label" for="iptAlipayAppCertPublicKey" data-browse="选择">选择应用公钥证书文件</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>支付宝公钥证书</label>
+									<div class="custom-file">
+										<input type="file" id="iptAlipayCertPublicKey" class="custom-file-input">
+										<label class="custom-file-label" for="iptAlipayCertPublicKey" data-browse="选择">选择支付宝公钥证书文件</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>支付宝根证书</label>
+									<div class="custom-file">
+										<input type="file" class="custom-file-input" id="iptAlipayRootCert">
+										<label class="custom-file-label" for="iptAlipayRootCert" data-browse="选择">选择支付宝根证书文件</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="iptAlipaySignType">签名类型</label>
+									<input type="text" id="iptAlipaySignType" class="form-control" value="RSA2" disabled>
+								</div>
+								<div class="form-group">
+									<label for="iptAlipaySortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptAlipaySortrank" class="form-control" value="0">
+								</div>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptAlipayEnabled" class="form-check-input">
+									<label class="form-check-label" for="iptAlipayEnabled"> 是否启用</label>
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="bank-tab">
+							<form>
+								<div class="form-group">
+									<span>用户支付到商户指定银行卡账号，手动确认订单收款。</span>
+								</div>
+								<div class="form-group">
+									<label for="iptBankAccountName">账户名</label>
+									<input type="text" id="iptBankAccountName" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptBankAccountNO">账号</label>
+									<input type="text" id="iptBankAccountNO" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptBankName">开户行</label>
+									<input type="text" id="iptBankName" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptBankSortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptBankSortrank" class="form-control" value="0">
+								</div>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptBankEnabled" class="form-check-input">
+									<label class="form-check-label" for="iptBankEnabled"> 是否启用</label>
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
+							<form>
+								<div class="form-group">
+									<span>支持采用积分进行支付。</span>
+								</div>
+								<div class="form-group">
+									<label for="iptBalanceSortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptBalanceSortrank" class="form-control" value="0">
+								</div>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptBalanceEnabled" class="form-check-input">
+									<label class="form-check-label" for="iptBalanceEnabled">是否启用</label>
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
+							<form>
+								<div class="form-group">
+									<span>购买后直接发货，到货后再进行支付。</span>
+								</div>
+								<div class="form-group">
+									<label for="iptCodSortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptCodSortrank" class="form-control" value="0">
+								</div>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptCodEnabled" class="form-check-input">
+									<label class="form-check-label" for="iptCodEnabled"> 是否启用</label>
+								</div>
+							</form>
+						</div>
+						<div class="text-center"><button type="submit" id="btnSave" class="btn btn-success">保存</button></div>
 					</div>
-					<div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="bank-tab">
-						<form>
-							<div class="form-group">
-								<label>描述</label>
-								<p>用户支付到商户指定银行卡账号，手动确认订单收款。</p>
-							</div>
-							<div class="form-group">
-								<label for="iptBankAccountName">账户名</label>
-								<input type="text" class="form-control" id="iptBankAccountName">
-							</div>
-							<div class="form-group">
-								<label for="iptBankAccountNO">账号</label>
-								<input type="text" class="form-control" id="iptBankAccountNO">
-							</div>
-							<div class="form-group">
-								<label for="iptBankName">开户行</label>
-								<input type="text" class="form-control" id="iptBankName">
-							</div>
-							<div class="form-group">
-								<label for="iptBankSortrank">排序（越小越靠前）</label>
-								<input type="text" class="form-control" id="iptBankSortrank" value="0">
-							</div>
-							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="iptBankEnabled">
-								<label class="form-check-label" for="iptBankEnabled"> 是否启用</label>
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
-						<form>
-							<div class="form-group">
-								<label>描述</label>
-								<p>支持采用积分进行支付。</p>
-							</div>
-							<div class="form-group">
-								<label for="iptBalanceSortrank">排序（越小越靠前）</label>
-								<input type="text" class="form-control" id="iptBalanceSortrank" value="0">
-							</div>
-							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="iptBalanceEnabled">
-								<label class="form-check-label" for="iptBalanceEnabled">是否启用</label>
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
-						<form>
-							<div class="form-group">
-								<label>描述</label>
-								<p>购买后直接发货，到货后再进行支付。</p>
-							</div>
-							<div class="form-group">
-								<label for="iptCodSortrank">排序（越小越靠前）</label>
-								<input type="text" class="form-control" id="iptCodSortrank" value="0">
-							</div>
-							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="iptCodEnabled">
-								<label class="form-check-label" for="iptCodEnabled"> 是否启用</label>
-							</div>
-						</form>
-					</div>
-					<div class="text-center"><button id="btnSave" type="submit" class="btn btn-success">保存</button>
-					</div>
-				</div>
-			</td>
-		</tr>
-	</table>
-	<script>
+				</td>
+			</tr>
+		</table>
+		<script>
 		$('.custom-file-input').on('change', function () {
 			let fileName = $(this).val().split('\\').pop();
 			$(this).siblings('.custom-file-label').addClass("selected").html(fileName);
 		});
-
 		let config = {
 			Wechat: {
 				AppID: '',
@@ -257,7 +226,6 @@
 				Enabled: true,
 			}
 		}
-
 		//加载系统config
 		function getPayments() {
 			$.get("sys_payment.php?dopost=get_payments", function (data) {
@@ -298,7 +266,6 @@
 				}
 			})
 		}
-
 		//更新config
 		function updateConfig() {
 			for (const key in config) {
@@ -322,7 +289,6 @@
 				}
 			}
 		}
-
 		//保存配置信息
 		function saveConfig() {
 			$.ajax({
@@ -336,17 +302,14 @@
 				}
 			})
 		}
-
 		$(document).ready(function () {
-				getPayments();
-				$("#btnSave").click(() => {
-					updateConfig()
-					saveConfig();
-					console.log(config)
-				})
+			getPayments();
+			$("#btnSave").click(() => {
+				updateConfig()
+				saveConfig();
+				console.log(config)
 			})
-
-	</script>
-</body>
-
+		})
+		</script>
+	</body>
 </html>

@@ -41,7 +41,7 @@ if ($dopost == "save") {
     ShowMsg("成功增加一个页面", "templets_one.php");
     exit();
 }
-$row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage` ");
+$row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage`");
 $nowid = is_array($row) ? $row['aid'] + 1 : '';
 include_once(DEDEADMIN."/templets/templets_one_add.htm");
 ?>

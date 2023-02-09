@@ -1,5 +1,14 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
+/**
+ * 系统核心函数存放文件
+ * 
+ * @version        $id:common.func.php 4 16:39 2010年7月6日 tianya $
+ * @package        DedeBIZ.Libraries
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license
+ * @link           https://www.dedebiz.com
+ */
 //显示类似Bootstrap系统提示
 define('ALERT_PRIMARY', 1);
 define('ALERT_SECONDARY', 2);
@@ -28,15 +37,6 @@ function DedeAlert($content, $type = ALERT_PRIMARY)
     list($background, $border, $color) = $colors;
     return str_replace(array('~color~','~background~','~border~', '~content~'),array($color,$background,$border,$content),ALERT_TPL);
 }
-/**
- * 系统核心函数存放文件
- * 
- * @version        $id:common.func.php 4 16:39 2010年7月6日 tianya $
- * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
- * @link           https://www.dedebiz.com
- */
 if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
     if (!function_exists('mysql_connect') and function_exists('mysqli_connect')) {
         function mysql_connect($server, $username, $password)

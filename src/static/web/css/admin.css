@@ -500,8 +500,8 @@ span.page-link {
 	background:#1eb867
 }
 .maintable {
-	width:98%;
-	border:1px solid #dee2e6
+	width:98%!important;
+	border:1px solid #dee2e6!important
 }
 .form-control {
 	display:inline-block;

@@ -38,7 +38,7 @@ if ($dopost == "viewinfo") //查看表结构
     if (empty($tablename)) {
         echo "没有指定表名";
     } else {
-        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
+        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
         if ($rs) {
             echo "执行优化表<span class='text-primary'>$tablename</span>完成<br>";
         } else {
@@ -53,7 +53,7 @@ if ($dopost == "viewinfo") //查看表结构
     if (empty($tablename)) {
         echo "没有指定表名";
     } else {
-        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
+        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
         if ($rs) {
             echo "修复表<span class='text-primary'>$tablename</span>完成<br>";
         } else {
@@ -67,7 +67,7 @@ if ($dopost == "viewinfo") //查看表结构
 $otherTables = array();
 $dedeSysTables = array();
 $channelTables = array();
-$dsql->SetQuery("SELECT addtable FROM `#@__channeltype` ");
+$dsql->SetQuery("SELECT addtable FROM `#@__channeltype`");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $channelTables[] = $row->addtable;

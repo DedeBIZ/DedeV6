@@ -59,7 +59,7 @@ else if ($open == 1) {
         $query = " INSERT INTO `#@__downloads` (`hash`,`id`,`downloads`) VALUES ('$hash','$id',1); ";
         $dsql->ExecNoneQuery($query);
     }
-    $row = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
+    $row = $dsql->GetOne("SELECT * FROM `#@__softconfig`");
     $sites = explode("\n", $row['sites']);
     $allowed = array();
     foreach ($sites as $site) {
@@ -95,7 +95,7 @@ else if ($open == 2) {
         ShowMsg('找不到所需要的软件资源', 'javascript:;');
         exit();
     }
-    $softconfig = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
+    $softconfig = $dsql->GetOne("SELECT * FROM `#@__softconfig`");
     $needRank = $softconfig['dfrank'];
     $needMoney = $softconfig['dfywboy'];
     if ($softconfig['argrange'] == 0) {
@@ -166,7 +166,7 @@ else if ($open == 2) {
         $pubdate = GetDateTimeMk($pubdate);
         //会员级别不足
         if (($needRank > 1 && $cfg_ml->M_Rank < $needRank && $mid != $cfg_ml->M_ID)) {
-            $dsql->Execute('me', "SELECT * FROM `#@__arcrank` ");
+            $dsql->Execute('me', "SELECT * FROM `#@__arcrank`");
             while ($row = $dsql->GetObject('me')) {
                 $memberTypes[$row->rank] = $row->membername;
             }

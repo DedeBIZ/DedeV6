@@ -26,7 +26,7 @@ if ($dopost != 'save') {
     } else {
         if ($channelid == 0) $channelid = 1;
     }
-    $softconfig = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
+    $softconfig = $dsql->GetOne("SELECT * FROM `#@__softconfig`");
     //获得栏目模型信息
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid' ");
     $channelid = $cInfos['id'];

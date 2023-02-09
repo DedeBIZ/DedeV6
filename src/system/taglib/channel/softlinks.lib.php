@@ -22,7 +22,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 function ch_softlinks($fvalue, &$ctag, &$refObj, $fname = '', $downloadpage = false)
 {
     global $dsql;
-    $row = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
+    $row = $dsql->GetOne("SELECT * FROM `#@__softconfig`");
     $phppath = $GLOBALS['cfg_phpurl'];
     $downlinks = '';
     if ($row['downtype'] != '0' && !$downloadpage) {

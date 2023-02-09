@@ -40,7 +40,7 @@ if ($tinfos['issystem'] == -1) {
         require_once(DEDEINC.'/memberlogin.class.php');
         $cfg_ml = new MemberLogin();
         if ($cfg_ml->M_Rank < $lv->Fields['corank']) {
-            $dsql->Execute('me', "SELECT * FROM `#@__arcrank` ");
+            $dsql->Execute('me', "SELECT * FROM `#@__arcrank`");
             while ($row = $dsql->GetObject('me')) {
                 $memberTypes[$row->rank] = $row->membername;
             }

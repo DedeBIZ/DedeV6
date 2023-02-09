@@ -12,7 +12,7 @@ require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
 CheckPurview('sys_Edit');
 if (empty($action)) $action = '';
-if (empty($message)) $message = '尚未进行检测……';
+if (empty($message)) $message = '尚未进行检测';
 if (empty($filetype)) $filetype = 'php|inc';
 if (empty($info)) $info = 'eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode';
 $fileHashURL = "https://cdn.dedebiz.com/release/{$cfg_version_detail}.json";
@@ -25,7 +25,7 @@ foreach ($filelist as $key => $ff) {
 }
 $alter = "";
 if (count($offFiles) == 0) {
-    $alter = DedeAlert('无法同官方网站文件服务器通信，校验时候无法保证本地文件是否同官方服务器文件是否一致', ALERT_DANGER);
+    $alter = DedeAlert('<li>与官方文件服务器通信失败，校验时候无法保证本地文件和同官方文件服务器是否一致</li>', ALERT_DANGER);
 }
 function TestOneFile($f)
 {
@@ -47,12 +47,7 @@ function TestOneFile($f)
         if ($localFilehash === $remoteFilehash) {
             return 0;
         }
-        $message .= "<div style='clear:both'>
-        <div style='float:left;width:360px'>可疑文件：{$trfile}</div>
-        <a class='btn btn-success btn-sm' href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank'>修改记录</a>
-        <a class='btn btn-success btn-sm' href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank'>删除</a>
-        <a class='btn btn-success btn-sm' href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank'>查看源码</a>
-        </div></div><hr>\r\n";
+        $message .= "<div><span class='float-left w-75'>发现可疑文件：{$trfile}</span><a href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i> 修改</a><a href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 查看</a><a href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a></div><hr>\r\n";
         return 1;
     }
     return 0;

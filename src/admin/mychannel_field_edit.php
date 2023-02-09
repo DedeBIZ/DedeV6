@@ -125,7 +125,7 @@ else if ($action == "delete") {
     }
     $oksetting = addslashes($dtp->GetResultNP());
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting' WHERE id='$id' ");
-    $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname` ");
+    $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname`");
     ShowMsg("成功删除一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }

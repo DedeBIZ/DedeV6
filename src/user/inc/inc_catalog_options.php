@@ -19,7 +19,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 function GetOptionList($selid = 0, $channeltype = 0)
 {
     global $OptionArrayList, $channels, $dsql;
-    $dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` ");
+    $dsql->SetQuery("SELECT id,typename FROM `#@__channeltype`");
     $dsql->Execute('opt');
     $channels = array();
     while ($row = $dsql->GetObject('opt')) {

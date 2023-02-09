@@ -10,7 +10,7 @@
 define('DEDEBIZ_SAFE_MODE', FALSE);
 //生产环境使用`production`，如果采用`dev`模式，会有一些php的报错信息提示，用于开发调试
 if (!defined('DEDE_ENVIRONMENT')) {
-    define('DEDE_ENVIRONMENT', 'dev');
+    define('DEDE_ENVIRONMENT', 'production');
 }
 if (!defined('DEBUG_LEVEL')) {
     if (DEDE_ENVIRONMENT == 'production') {
@@ -133,8 +133,7 @@ if (!isset($cfg_dbtype)) {
 if (!empty($cfg_domain_cookie)) {
     @session_set_cookie_params(0, '/', $cfg_domain_cookie);
 }
-//php5.1版本以上时区设置
-//由于这个函数对于是php5.1以下版本并无意义，因此实际上的时间调用，应该用MyDate函数调用
+//php5.1版本以上时区设置，由于这个函数对于是php5.1以下版本并无意义，因此实际上的时间调用，应该用MyDate函数调用
 if (PHP_VERSION > '5.1') {
     $time51 = $cfg_cli_time * -1;
     @date_default_timezone_set('Etc/GMT'.$time51);
@@ -187,7 +186,7 @@ $cfg_soft_dir = $cfg_medias_dir.'/soft';
 $cfg_other_medias = $cfg_medias_dir.'/media';
 //软件摘要信息，请不要删除，否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
-$cfg_version_detail = '6.2.3'; //详细版本号
+$cfg_version_detail = '6.2.3';//详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 $cfg_softname = '得德系统';

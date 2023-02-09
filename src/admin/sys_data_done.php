@@ -112,7 +112,7 @@ if ($dopost == 'bak') {
         }
         $fsd = $j - 1;
         //读取表的文档
-        $dsql->SetQuery("SELECT * FROM `$nowtable` ");
+        $dsql->SetQuery("SELECT * FROM `$nowtable`");
         $dsql->Execute();
         $m = 0;
         $bakfilename = "$bkdir/{$nowtable}_{$startpos}_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";

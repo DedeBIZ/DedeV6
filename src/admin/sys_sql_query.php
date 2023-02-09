@@ -34,7 +34,7 @@ else if ($dopost == "opimize") {
     if (empty($tablename)) {
         echo "没有指定表名";
     } else {
-        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
+        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
         if ($rs)  echo "执行优化表<span class='text-primary'>$tablename</span>完成<br>";
         else echo "执行优化表<span class='text-primary'>$tablename</span>失败，原因是：".$dsql->GetError();
     }
@@ -46,7 +46,7 @@ else if ($dopost == "opimizeAll") {
     $dsql->SetQuery("SHOW TABLES");
     $dsql->Execute('t');
     while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
-        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `{$row[0]}` ");
+        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `{$row[0]}`");
         if ($rs) {
             echo "优化表<span class='text-primary'>{$row[0]}</span>完成<br>";
         } else {
@@ -61,7 +61,7 @@ else if ($dopost == "repair") {
     if (empty($tablename)) {
         echo "没有指定表名";
     } else {
-        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
+        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
         if ($rs) echo "修复表<span class='text-primary'>$tablename</span>完成<br>";
         else echo "修复表<span class='text-primary'>$tablename</span>失败，原因是：".$dsql->GetError();
     }
@@ -73,7 +73,7 @@ else if ($dopost == "repairAll") {
     $dsql->SetQuery("Show Tables");
     $dsql->Execute('t');
     while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
-        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `{$row[0]}` ");
+        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `{$row[0]}`");
         if ($rs) {
             echo "修复表<span class='text-primary'>{$row[0]}</span>完成<br>";
         } else {

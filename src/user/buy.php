@@ -25,7 +25,7 @@ while ($row = $dsql->GetObject('mct')) {
     </tr>
     ";
 }
-$dsql->SetQuery("SELECT `#@__member_type`.*,`#@__arcrank`.membername,`#@__arcrank`.`money` as cm From `#@__member_type` LEFT JOIN `#@__arcrank` on `#@__arcrank`.`rank` = `#@__member_type`.`rank` ");
+$dsql->SetQuery("SELECT `#@__member_type`.*,`#@__arcrank`.membername,`#@__arcrank`.`money` as cm From `#@__member_type` LEFT JOIN `#@__arcrank` on `#@__arcrank`.`rank` = `#@__member_type`.`rank`");
 $dsql->Execute('mt');
 while ($row = $dsql->GetObject('mt')) {
     $row->money = sprintf("%01.2f", $row->money);

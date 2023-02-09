@@ -24,7 +24,7 @@
 				var endNum = Number(document.form1.picnum.value) + startNum;
 				if (endNum > 40) endNum = 40;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<input type='file' name='upfile" + startNum + "' class='admin-input-md'><br>";
+					upfield.innerHTML += "<p><input type='file' name='upfile" + startNum + "' class='admin-input-md'></p>";
 				}
 			}
 			function ResetUpload() {
@@ -68,10 +68,6 @@
 					<td class="admin-td"><input type="text" name="title" id="title" class="admin-input-md"></td>
 				</tr>
 				<tr>
-					<td class="admin-td">参数说明：</td>
-					<td class="admin-td" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
-				</tr>
-				<tr>
 					<td class="admin-td">附加参数：</td>
 					<td class="admin-td">
 						宽：<input type="text" name="mediawidth" id="mediawidth" class="admin-input-sm">（像素）
@@ -90,11 +86,11 @@
 				<tr>
 					<td></td>
 					<td>
-						<input type="file" name="upfile1" id="upfile1" class="admin-input-md"><br>
-						<input type="file" name="upfile2" id="upfile2" class="admin-input-md"><br>
-						<input type="file" name="upfile3" id="upfile3" class="admin-input-md"><br>
-						<input type="file" name="upfile4" id="upfile4" class="admin-input-md"><br>
-						<input type="file" name="upfile5" id="upfile5" class="admin-input-md"><br>
+						<p><input type="file" name="upfile1" id="upfile1" class="admin-input-md"></p>
+						<p><input type="file" name="upfile2" id="upfile2" class="admin-input-md"></p>
+						<p><input type="file" name="upfile3" id="upfile3" class="admin-input-md"></p>
+						<p><input type="file" name="upfile4" id="upfile4" class="admin-input-md"></p>
+						<p><input type="file" name="upfile5" id="upfile5" class="admin-input-md"></p>
 						<span id="uploadfield"></span>
 					</td>
 				</tr>
