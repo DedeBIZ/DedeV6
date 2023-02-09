@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>文档模型修改字段</title>
+		<title>模型修改字段</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -69,7 +69,7 @@
 					<td bgcolor="#f5f5f5" colspan="2">
 						<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
 							<tr>
-								<td width="30%"><a href="mychannel_main.php">文档模型管理</a> &gt; 查看修改字段</td>
+								<td width="30%"><a href="mychannel_main.php">文档模型管理</a> &gt; 模型修改字段</td>
 								<td width="70%" align="right">
 									<button type="button" name="ss1" class="btn btn-success btn-sm" onclick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';">当前模型信息</button>
 									<button type="button" name="ss12" onclick="location='mychannel_main.php';" class="btn btn-success btn-sm">文档模型管理</button>
@@ -86,12 +86,12 @@
 				</tr>
 				<?php }?>
 				<tr>
-					<td>表单提示文字：发布文档时显示的提示文字</td>
+					<td>提示文字：</td>
 					<td><input type="text" name="itemname" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>">（发布文档时显示的项名字）</td>
 				</tr>
 				<tr>
-					<td width="30%">字段名称：只能用英文字母或数字，数据表的真实字段名</td>
-					<td width="70%" style="table-layout:fixed;word-break:break-all"><?php echo $fname?></td>
+					<td width="260">字段名称：</td>
+					<td><?php echo $fname?>（只能用英文字母或数字，数据表的真实字段名）</td>
 				</tr>
 				<tr>
 					<td>字段类型：</td>
@@ -146,7 +146,7 @@
 					</td>
 				</tr>
 				<tr id="_relation" <?php echo $dtype=="relation"? '' : 'style="display:none"';?>>
-					<td>文档模型：选择关联文档对应的文档模型</td>
+					<td>文档模型：</td>
 					<td>
 						<select name="channeltype" id="channeltype" class="admin-input-md">
 							<?php
@@ -166,20 +166,24 @@
 					</td>
 				</tr>
 				<tr>
-					<td>文档是否需要分页符：如果文档需要分页符，不论何种文档，都可以用#P#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段</td>
+					<td>文档是否需要分页符：</td>
 					<td>
 						<input name="isnull" type="hidden" value="1">
 						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
 						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
+						<span>（如果文档需要分页符，不论何种文档，都可以用#P#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>默认值：如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（英文逗号分开，如“DedeBIZ,得德”）如果为联动选框，这里填写联动选框项目名称</td>
-					<td><textarea name="vdefault" id="vdefault" class="admin-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea></td>
+					<td>默认值：</td>
+					<td>
+						<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea>
+						<span>（如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目，英文逗号分开，如“DedeBIZ,得德”。如果为联动选框，这里填写联动选框项目名称）</span>
+					</td>
 				</tr>
 				<tr>
-					<td>最大长度：文本数据必须填写，大于255为text类型</td>
-					<td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" class="admin-input-xs"></td>
+					<td>最大长度：</td>
+					<td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" class="admin-input-xs">（文本数据必须填写，大于255为text类型）</td>
 				</tr>
 				<tr>
 					<td>自定义网页表单：</td>

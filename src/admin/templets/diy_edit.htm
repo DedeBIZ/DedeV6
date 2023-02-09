@@ -29,30 +29,30 @@
 					<td bgcolor="#f5f5f5" colspan="2"><a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单</td>
 				</tr>
 				<tr>
-					<td width="260">自定义表单diyid：创建后不可修改，并具有唯一性</td>
-					<td><?php echo $diyid;?></td>
+					<td width="260">自定义表单diyid：</td>
+					<td><?php echo $diyid;?>（创建后不可修改，并具有唯一性）</td>
 				</tr>
 				<tr>
-					<td>自定义表单名称：修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改</td>
-					<td><input type="text" name="name" id="name" value="<?php echo $row['name']?>" class="admin-input-sm"></td>
+					<td>自定义表单名称：</td>
+					<td><input type="text" name="name" id="name" value="<?php echo $row['name']?>" class="admin-input-sm">（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）</td>
 				</tr>
 				<tr>
-					<td>数据表：自定义表单数据表创建后不可修改表名</td>
-					<td><input type="text" name="table" id="table" value="<?php echo $row['table'];?>" disabled="1" class="admin-input-sm"></td>
+					<td>数据表：</td>
+					<td><input type="text" name="table" id="table" value="<?php echo $row['table'];?>" disabled="1" class="admin-input-sm">（自定义表单数据表创建后不可修改表名）</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5">模型字段配置：信息索引类字段系统已经加入，您只需要增加其它个性化字段即可</td>
-					<td bgcolor="#f5f5f5"><button type="button" name="fset" id="fset" onclick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'" class="btn btn-success btn-sm">添加新字段</button></td>
+					<td>模型字段配置：</td>
+					<td><button type="button" name="fset" id="fset" onclick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'" class="btn btn-success btn-sm">添加新字段</button></td>
 				</tr>
 				<tr>
 					<td colspan="2">
 						<table width="100%" cellpadding="1" cellspacing="1" align="center">
 							<tr bgcolor="#e9ecef" align="center">
-								<td width="28%">表单提示文字</td>
-								<td width="18%">数据字段名</td>
-								<td width="20%">数据类型</td>
-								<td width="18%">表单类型</td>
-								<td>维护</td>
+								<td width="16%">表单提示文字</td>
+								<td width="16%">数据字段名</td>
+								<td width="16%">数据类型</td>
+								<td width="16%">表单类型</td>
+								<td>操作</td>
 							</tr>
 							<?php 
 							$ds = file(DedeInclude('/inc/fieldtype.txt'));

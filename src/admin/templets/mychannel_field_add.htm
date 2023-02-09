@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>文档模型增加字段</title>
+		<title>模型增加字段</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -34,25 +34,21 @@
 				var islist = (theform.islist.checked ? 1 : 0);
 				var notsend = (theform.notsend.checked ? 1 : 0);
 				var automake = theform.relation_automake.checked ? 1 : 0;
-				if (itemname=="")
-				{
+				if (itemname=="") {
 					ShowMsg("表单提示名称不能为空");
 					theform.itemname.focus();
 					return false;
 				}
-				if (fieldname=="") 
-				{
+				if (fieldname=="") {
 					ShowMsg("字段名称不能为空");
 					theform.fieldname.focus();
 					return false;
 				}
-				if (notAllow.indexOf(" "+fieldname+" ") >-1 ) 
-				{
+				if (notAllow.indexOf(" "+fieldname+" ") >-1 ) {
 					ShowMsg("字段名称不合法，如下字段名已经存在，建议在名称后加上数字以区分：\n"+notAllow);
 					return false;
 				}
-				if ((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
-				{
+				if ((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="") {
 					ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用英文逗号分开）");
 					return false;
 				}
@@ -88,7 +84,7 @@
 					<td bgcolor="#f5f5f5" colspan="2">
 						<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
 							<tr>
-								<td width="30%"><a href="mychannel_main.php">文档模型管理</a> &gt; 增加新字段</td>
+								<td width="30%"><a href="mychannel_main.php">文档模型管理</a> &gt; 模型增加字段</td>
 								<td width="70%" align="right">
 									<button type="button" name="ss1" onclick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';" class="btn btn-success btn-sm">当前模型信息</button>
 									<button type="button" name="ss12" onclick="location='mychannel_main.php';" class="btn btn-success btn-sm">文档模型管理</button>
@@ -99,16 +95,16 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-danger mb-0">所有填写的文档不允许包含双引号[&quot;]，否则配置无法写入</div>
+						<div class="alert alert-danger mb-0">所有填写的文档不允许包含双引号["]，否则配置无法写入</div>
 					</td>
 				</tr>
 				<tr>
-					<td width="30%">表单提示文字：发布文档时显示的提示文字</td>
-					<td><input type="text" name="itemname" id="itemname"></td>
+					<td width="260">提示文字：</td>
+					<td><input type="text" name="itemname" id="itemname">（发布文档时显示的提示文字）</td>
 				</tr>
 				<tr>
-					<td>字段名称：只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的<a href="stepselect_main.php" target="_blank">[组名称]</a></span></td>
-					<td><input type="text" name="fieldname" id="fieldname"></td>
+					<td>字段名称：</td>
+					<td><input type="text" name="fieldname" id="fieldname">（只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的<a href="stepselect_main.php" target="_blank">[组名称]</a>）</td>
 				</tr>
 				<tr>
 					<td>字段类型：</td>
@@ -125,11 +121,12 @@
 					</td>
 				</tr>
 				<tr>
-					<td>文档是否需要分页符：如果文档需要分页符，不论何种文档，都可以用#P#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段</td>
+					<td>文档是否需要分页符：</td>
 					<td>
 						<input type="hidden" name="isnull" value="1">
 						<label><input type="radio" name="spage" value="split"> 是</label>
 						<label><input type="radio" name="spage" value="no" checked="1"> 否</label>
+						<span>（如果文档需要分页符，不论何种文档，都可以用#P#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段）</span>
 					</td>
 				</tr>
 				<tr>
@@ -160,7 +157,7 @@
 					</td>
 				</tr>
 				<tr id="_relation" style="display:none">
-					<td>文档模型：选择关联文档对应的文档模型</td>
+					<td>文档模型：</td>
 					<td>
 						<select name="channeltype" id="channeltype" class="admin-input-md">
 							<?php
@@ -177,15 +174,19 @@
 							?>
 						</select>
 						<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1"> 发布时候自动更新关联网页文档</label>
+						<span>（选择关联文档对应的文档模型）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>默认值：如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（英文逗号分开，如“DedeBIZ,得德”）</td>
-					<td><textarea name="vdefault" id="vdefault" class="admin-textarea-xl"></textarea></td>
+					<td>默认值：</td>
+					<td>
+						<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"></textarea>
+						<span>（如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目，英文逗号分开，如“DedeBIZ,得德”）</span>
+					</td>
 				</tr>
 				<tr>
-					<td>最大长度：文本数据必须填写，大于255为text类型</td>
-					<td><input type="text" name="maxlength" id="maxlength" value="250" class="admin-input-xs"></td>
+					<td>最大长度：</td>
+					<td><input type="text" name="maxlength" id="maxlength" value="250" class="admin-input-xs">（文本数据必须填写，大于255为text类型）</td>
 				</tr>
 				<tr>
 					<td>自定义网页表单：</td>

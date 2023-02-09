@@ -27,16 +27,16 @@
 					<td bgcolor="#f5f5f5" colspan="2"><a href="diy_main.php">自定义表单管理</a> &gt; 新增自定义表单</td>
 				</tr>
 				<tr>
-					<td width="260">自定义表单diyid：创建后不可修改，并具有唯一性</td>
-					<td><input type="text" name="diyid" id="diyid" value="<?php echo $newdiyid?>" class="admin-input-sm"></td>
+					<td width="260">自定义表单diyid：</td>
+					<td><input type="text" name="diyid" id="diyid" value="<?php echo $newdiyid?>" class="admin-input-sm">（创建后不可修改，并具有唯一性）</td>
 				</tr>
 				<tr>
-					<td>定义表单名称：自定义表单的中文名称，在后台管理，前台发布等均使用此名字</td>
-					<td><input type="text" name="name" id="name" value="自定义表单<?php echo $newdiyid;?>" class="admin-input-sm"></td>
+					<td>定义表单名称：</td>
+					<td><input type="text" name="name" id="name" value="自定义表单<?php echo $newdiyid;?>" class="admin-input-sm">（自定义表单的中文名称，在后台管理，前台发布等均使用此名字）</td>
 				</tr>
 				<tr>
-					<td>数据表：用于保存自定义表单数据，不能和已有表名重复，自定义表单数据表创建后不可修改表名</td>
-					<td><input type="text" name="table" id="table" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>" class="admin-input-sm"></td>
+					<td>数据表：</td>
+					<td><input type="text" name="table" id="table" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>" class="admin-input-sm">（用于保存自定义表单数据，不能和已有表名重复，自定义表单数据表创建后不可修改表名）</td>
 				</tr>
 				<tr>
 					<td>字段配置：</td>

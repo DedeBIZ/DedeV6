@@ -52,30 +52,31 @@
 				</tr>
 				<?php }?>
 				<tr>
-					<td class="border-top-0">模型性质：<span id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid、栏目id、发布时间、文档标题</span></td>
+					<td class="border-top-0">模型性质：</td>
 					<td class="border-top-0">
 						<?php
 						if ($row['issystem']==0) echo "自动模型";
 						else if ($row['issystem']==1) echo "系统模型";
 						else if ($row['issystem']==-1) echo "独立模型";
 						?>
+						<span id="help5">（如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid、栏目id、发布时间、文档标题）</span>
 					</td>
 				</tr>
 				<tr>
-					<td width="30%">栏目id：<span id="help1">数字，创建后不可修改，并具有唯一性</span></td>
-					<td width="70%"><?php echo $row['id'];?></td>
+					<td width="260">栏目id：</td>
+					<td><?php echo $row['id'];?><span id="help1">（数字，创建后不可修改，并具有唯一性）</span></td>
 				</tr>
 				<tr>
-					<td>名字标识：<span id="help2">与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，栏目默认文档模板是“default/article_名字标识.htm”，列表模板、封面模板类推</span></td>
-					<td><?php echo $row['nid'];?></td>
+					<td>名字标识：</td>
+					<td><?php echo $row['nid'];?><span id="help2">（与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，栏目默认文档模板是“default/article_名字标识.htm”，列表模板、封面模板类推）</span></td>
 				</tr>
 				<tr>
-					<td>栏目名称：<span id="help3">栏目的中文名称，在后台管理，前台发布等均使用此名字</span></td>
-					<td><input type="text" name="typename" id="typename" value="<?php echo $row['typename'];?>"></td>
+					<td>栏目名称：</td>
+					<td><input type="text" name="typename" id="typename" value="<?php echo $row['typename'];?>"><span id="help3">（栏目的中文名称，在后台管理，前台发布等均使用此名字）</span></td>
 				</tr>
 				<tr>
-					<td>附加表：<span id="help4">栏目除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性（推荐、会员权限等），也可以使用完全以附加表作为存储数据</span></td>
-					<td><input type="text" name="addtable" id="addtable" value="<?php echo $row['addtable'];?>">（#@__是表示数据表前缀）</td>
+					<td>附加表：</td>
+					<td><input type="text" name="addtable" id="addtable" value="<?php echo $row['addtable'];?>"><span id="help4">（#@__是表示数据表前缀，栏目除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性推荐、会员权限等，也可以使用完全以附加表作为存储数据）</span></td>
 				</tr>
 				<tr>
 					<td>是否支持会员投稿：</td>
@@ -129,7 +130,7 @@
 					<td><input type="text" name="addcon" id="addcon" value="<?php echo $row['addcon'];?>"></td>
 				</tr>
 				<tr>
-					<td>文档修改程序；</td>
+					<td>文档修改程序：</td>
 					<td><input type="text" name="editcon" id="editcon" value="<?php echo $row['editcon'];?>"></td>
 				</tr>
 				<tr>
@@ -149,52 +150,52 @@
 					<td><input type="text" name="usermancon" id="usermancon" value="<?php echo $row['usermancon'];?>"></td>
 				</tr>
 				<tr>
-					<td>列表附加字段：<span id="help6">用英文逗号分开，可以在列表模板{dede:list}{/dede:list}中用[field:name/]调用</span></td>
-					<td><input type="text" name="listfields" id="listfields" value="<?php echo $row['listfields'];?>" class="w-75"></td>
+					<td>列表附加字段：</td>
+					<td><input type="text" name="listfields" id="listfields" value="<?php echo $row['listfields'];?>" class="w-50"><span id="help6">（用英文逗号分开，可以在列表模板“{dede:list}{/dede:list}”中用“[field:name/]”调用）</span></td>
 				</tr>
 				<tr>
 					<td>投稿标题使用名称：</td>
 					<td><input type="text" name="titlename" id="titlename" value="<?php echo $row['titlename'];?>"></td>
 				</tr>
 				<tr>
-					<td>投稿是否使用摘要：如果不使用主表（独立模型）缩略图设置同</td>
+					<td>投稿是否使用摘要：</td>
 					<td>
 						<label><input type="radio" name="needdes" value="1" <?php if ($row['needdes']==1) echo "checked='1'";?>> 使用</label>
 						<label><input type="radio" name="needdes" value="0" <?php if ($row['needdes']==0) echo "checked='1'";?>> 不使用</label>
 					</td>
 				</tr>
 				<tr>
-					<td>投稿是否使用缩图:</td>
+					<td>投稿是否使用缩图：</td>
 					<td>
 						<label><input type="radio" name="needpic" value="1" <?php if ($row['needpic']==1) echo "checked='1'";?>> 使用</label>
 						<label><input type="radio" name="needpic" value="0" <?php if ($row['needpic']==0) echo "checked='1'";?>> 不使用</label>
 					</td>
 				</tr>
 				<tr>
-					<td>默认栏目id：<span id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span></td>
-					<td><input type="text" name="dfcid" id="dfcid" value="<?php echo $row['dfcid'];?>" class="admin-input-sm"></td>
+					<td>默认栏目id：</td>
+					<td><input type="text" name="dfcid" id="dfcid" value="<?php echo $row['dfcid'];?>" class="admin-input-sm"><span id="help8">（与投稿是唯一性结合可以用模型设计自定义表单）</span></td>
 				</tr>
 				<tr>
-					<td>投稿具有唯一性：<span id="help9">如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单</span></td>
+					<td>投稿具有唯一性：</td>
 					<td>
 						<label><input type="radio" name="onlyone" value="1" <?php if ($row['onlyone']==1) echo "checked='1'";?>> 是</label>
 						<label><input type="radio" name="onlyone" value="0" <?php if ($row['onlyone']==0) echo "checked='1'";?>> 不是</label>
+						<span id="help9">（如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单）</span>
 					</td>
 				</tr>
 			</table>
 			<table id="adset" cellpadding="3" cellspacing="1" align="center" class="table maintable" style="display:none">
 				<tr>
-					<td>模型字段配置（可视化模式）</td>
-					<td><button type="button" name="fset" id="fset" onclick="location.href='mychannel_field_add.php?id=<?php echo $id;?>'" class="btn btn-success btn-sm">添加新字段</button></td>
+					<td colspan="5"><button type="button" name="fset" id="fset" onclick="location.href='mychannel_field_add.php?id=<?php echo $id;?>'" class="btn btn-success btn-sm">添加新字段</button></td>
 				</tr>
 				<tr>
 					<td colspan="2" class="p-0">
 						<table width="100%" cellpadding="1" cellspacing="1" align="center">
 							<tr bgcolor="#e9ecef" align="center">
-								<td width="28%" class="border-top-0">表单提示文字</td>
-								<td width="18%" class="border-top-0">数据字段名</td>
-								<td width="20%" class="border-top-0">数据类型</td>
-								<td width="18%" class="border-top-0">表单类型</td>
+								<td width="16%" class="border-top-0">提示文字</td>
+								<td width="16%" class="border-top-0">字段名称</td>
+								<td width="16%" class="border-top-0">数据类型</td>
+								<td width="16%" class="border-top-0">表单类型</td>
 								<td>操作</td>
 							</tr>
 							<?php
@@ -202,7 +203,7 @@
 							{
 							?>
 							<tr>
-								<td colspan='5'>aid 和 typeid 是强制使用字段，这里不列出</td>
+								<td colspan='5'>aid和typeid是强制使用字段，这里不列出</td>
 							</tr>
 							<?php
 							} else {
@@ -271,8 +272,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="30%">模型字段配置（文本模式）修改配置文本可调整字段顺序，但不会修改字段属性</td>
-					<td width="70%"><textarea name="fieldset" id="fieldset" class="admin-textarea-xl"><?php echo stripslashes($row['fieldset']);?></textarea></td>
+					<td width="260">模型字段配置（文本模式）修改配置文本可调整字段顺序，但不会修改字段属性</td>
+					<td><textarea name="fieldset" id="fieldset" class="admin-textarea-xl"><?php echo stripslashes($row['fieldset']);?></textarea></td>
 				</tr>
 			</table>
 			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
