@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>点卡生成向导</title>
+		<title>积分生成向导</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -16,17 +16,17 @@
 					<td bgcolor="#f5f5f5" colspan="4">
 						<table cellspacing="0" cellpadding="0" class="table table-borderless w-100">
 							<tr>
-								<td width="30%">点卡生成向导</td>
+								<td width="30%">积分生成向导</td>
 								<td width="70%" align="right">
-									<button type="button" name="ss1" onclick="location='cards_type.php';" class="btn btn-success btn-sm">点卡产品分类</button>
-									<button type="button" name="ss2" onclick="location='cards_manage.php';" class="btn btn-success btn-sm">点卡使用记录</button>
+									<button type="button" name="ss1" onclick="location='cards_type.php';" class="btn btn-success btn-sm">积分产品分类</button>
+									<button type="button" name="ss2" onclick="location='cards_manage.php';" class="btn btn-success btn-sm">积分使用记录</button>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td width="260">点卡类型：</td>
+					<td width="260">积分类型：</td>
 					<td>
 						<select name="cardtype" class="admin-input-sm">
 							<?php
@@ -43,7 +43,7 @@
 					<td><input name="mnum" type="text" id="mnum" class="admin-input-sm" value="100"></td>
 				</tr>
 				<tr>
-					<td>点卡前缀：</td>
+					<td>积分前缀：</td>
 					<td><input name="snprefix" type="text" id="snprefix" class="admin-input-sm" value="SN"></td>
 					<td>密码长度：</td>
 					<td><input name="pwdlen" type="text" id="pwdlen" class="admin-input-sm" value="4"></td>
@@ -58,7 +58,7 @@
 					<td><input name="pwdgr" type="text" id="pwdgr" class="admin-input-sm" value="3"></td>
 				</tr>
 				<tr>
-					<td colspan="4" bgcolor="#f5f5f5" align="center" align="py-2"><button type="submit" name="Submit" class="btn btn-success btn-sm">生成点卡</button></td>
+					<td colspan="4" bgcolor="#f5f5f5" align="center" align="py-2"><button type="submit" name="Submit" class="btn btn-success btn-sm">生成积分</button></td>
 				</tr>
 			</form>
 			<tr>

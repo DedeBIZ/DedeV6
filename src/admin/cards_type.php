@@ -1,6 +1,6 @@
 <?php
 /**
- * 点卡类型
+ * 积分类型
  *
  * @version        $id:cards_type.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -43,7 +43,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery($query);
     }
     header("Content-Type:text/html; charset={$cfg_soft_lang}");
-    ShowMsg("成功更新点卡产品分类表","cards_type.php");
+    ShowMsg("成功更新积分产品分类表","cards_type.php");
     exit();
 }
 require_once(DEDEADMIN."/templets/cards_type.htm");

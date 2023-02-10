@@ -56,7 +56,7 @@ if ($product == 'member') {
     $pname = $row['pname'];
     $price = $row['money'];
 } else if ($product == 'card') {
-    $ptype = "点卡购买";
+    $ptype = "积分购买";
     $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid='{$pid}'");
     if (!is_array($row)) {
         ShowMsg("无法识别您的订单", 'javascript:;');

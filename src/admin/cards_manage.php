@@ -1,6 +1,6 @@
 <?php
 /**
- * 点卡管理
+ * 积分管理
  *
  * @version        $id:cards_manage.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

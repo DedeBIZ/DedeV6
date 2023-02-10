@@ -205,17 +205,17 @@ $actionSearch[5] = array(
 );
 $actionSearch[6] = array(
     'title' => '支付工具',
-    'description' => '财务相关设置，包含点卡，商店订单等操作',
+    'description' => '财务相关设置，包含积分，商店订单等操作',
     'soniterm' => array(
         0  =>  array(
-            'title' => '点卡产品管理',
-            'description' => '网站点卡产品管理，可以在这里生成点卡以及查看点卡的当前状态',
+            'title' => '积分产品管理',
+            'description' => '网站积分产品管理，可以在这里生成积分以及查看积分的当前状态',
             'purview' => 'sys_Data',
             'linkurl' => 'cards_manage.php'
         ),
         1  =>  array(
-            'title' => '点卡产品分类',
-            'description' => '网站点卡产品分类，可以添加不同点数的点卡产品类型',
+            'title' => '积分产品分类',
+            'description' => '网站积分产品分类，可以添加不同点数的积分产品类型',
             'purview' => 'sys_Data',
             'linkurl' => 'cards_type.php'
         ),

@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成点卡
+ * 生成积分
  *
  * @version        $id:cards_make.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Card');
 if (empty($dopost)) $dopost = '';
 if ($dopost == '') include(DEDEADMIN."/templets/cards_make.htm");
-//生成点卡
+//生成积分
 elseif ($dopost == 'make') {
     $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_record` ORDER BY aid DESC");
     !is_array($row) ? $startid = 100000 : $startid = $row['aid'] + 100000;
@@ -48,8 +48,8 @@ elseif ($dopost == 'make') {
         }
         $inquery = "INSERT INTO `#@__moneycard_record` (ctid,cardid,uid,isexp,mtime,utime,money,num) VALUES ('$ctid','$cardid','0','0','$mtime','$utime','$money','$num'); ";
         $dsql->ExecuteNoneQuery($inquery);
-        echo "成功生成点卡：{$cardid}<br>";
+        echo "成功生成积分：{$cardid}<br>";
     }
-    echo "成功生成<span class='text-primary'>{$mnum}</span>个点卡";
+    echo "成功生成<span class='text-primary'>{$mnum}</span>个积分";
 }
 ?>

@@ -51,8 +51,8 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='自定义表单管理' link='diy_main.php' rank='c_List' target='main' />
 </m:top>";
   $adminMenu2 = "<m:top item='10_' name='支付工具' rank='sys_Data' icon='fa-credit-card'>
-    <m:item name='点卡产品管理' link='cards_manage.php' rank='sys_Data' target='main' />
-    <m:item name='点卡产品分类' link='cards_type.php' rank='sys_Data' target='main' />
+    <m:item name='积分产品管理' link='cards_manage.php' rank='sys_Data' target='main' />
+    <m:item name='积分产品分类' link='cards_type.php' rank='sys_Data' target='main' />
     <m:item name='会员消费记录' link='member_operations.php' rank='sys_Data' target='main' />
     <m:item name='会员产品分类' link='member_type.php' rank='sys_Data' target='main' />
     <m:item name='支付接口设置' link='sys_payment.php' .php' rank='sys_Data' target='main' />
