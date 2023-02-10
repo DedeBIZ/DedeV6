@@ -17,8 +17,7 @@ if (empty($dopost)) {
     $win->mainTitle = "系统修复工具";
     $wecome_info = "系统修复工具";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
-    $msg = "
-    <table>
+    $msg = "<table>
         <tr>
             <td>
                 由于手动升级时用户没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
@@ -29,8 +28,7 @@ if (empty($dopost)) {
                 <br><a href='sys_repair.php?dopost=1' class='btn btn-danger btn-sm'>常规检测</a>
             </td>
         </tr>
-    </table>
-    ";
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
@@ -46,8 +44,7 @@ else if ($dopost == 1) {
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 检测数据结构";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
-    $msg = "
-    <table>
+    $msg = "<table>
         <tr>
             <td>
             <span class='text-dark'>已完成数据结构完整性检测</span>
@@ -58,8 +55,7 @@ else if ($dopost == 1) {
             <br><a href='sys_repair.php?dopost=2' class='btn btn-danger btn-sm'>检测数据</a>
             </td>
         </tr>
-    </table>
-    ";
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
@@ -123,16 +119,14 @@ else if ($dopost == 2) {
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 检测微表正确性";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
-    $msg = "
-    <table>
+    $msg = "<table>
         <tr>
             <td>
                 {$msg}<br>
                 {$errall}
             </td>
         </tr>
-    </table>
-    ";
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
@@ -177,16 +171,14 @@ else if ($dopost == 3) {
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 高级综合检测修复";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
-    $msg = "
-    <table>
+    $msg = "<table>
     <tr>
         <td>
             完成所有修复操作，移除错误记录{$errnum}条<br>
             <br><a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>
         </td>
     </tr>
-    </table>
-    ";
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();

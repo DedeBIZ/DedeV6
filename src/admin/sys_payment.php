@@ -8,15 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 if (!empty($_REQUEST['dopost'])) define('IS_DEDEAPI', TRUE);
-
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC.'/datalistcp.class.php');
-
 CheckPurview('sys_Data');
 $dopost = (empty($dopost)) ? '' : $dopost;
-
 if ($dopost === "get_payments") {
     $sql = "SELECT * FROM `#@__sys_payment`";
     $dsql->SetQuery($sql);
@@ -46,7 +42,6 @@ if ($dopost === "get_payments") {
             } else {
                 $configItem[$kk] = $ii;
             }
-
         }
         $cfg = json_encode($configItem);
         $upQuery = "UPDATE `#@__sys_payment` SET sortrank='$sortrank',status='$status',config='$cfg' WHERE code='$key'; ";
@@ -65,7 +60,5 @@ if ($dopost === "get_payments") {
     ));
     exit;
 }
-
 include DedeInclude('templets/sys_payment.htm');
-
 ?>
