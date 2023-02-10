@@ -525,7 +525,8 @@ span.page-link {
 }
 .fa {
 	font-size:14px!important;
-	color:inherit
+	color:inherit;
+	cursor:pointer
 }
 .admin-win {
 	background:#f5f5f5;
