@@ -133,7 +133,7 @@ else if ($fmdo == "space") {
     } else {
         $ecpath = $activepath;
     }
-    $titleinfo = "目录[<a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>]空间使用状况：<br>";
+    $titleinfo = "[<a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>]空间使用状况：<br>";
     $wintitle = "文件管理";
     $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::空间大小检查";
     $activepath = $cfg_basedir.$activepath;
