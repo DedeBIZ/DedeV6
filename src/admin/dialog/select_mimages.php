@@ -13,13 +13,13 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
 <meta name="format-detection" content="telephone=no">
 <title>插入多图</title>
 <style>
-body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#fff}
+body{margin:0;line-height:1.6;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#fff}
 ul{margin:0;padding:0;list-style:none}
 input[type=radio],input[type=checkbox]{margin:0;height:auto;box-shadow:none;outline:none;vertical-align:text-top}
 button+button{margin-left:10px}
 #wrap{padding:10px}
 #topbar{padding:10px 0;border-bottom:1px solid #ccc;text-align:right}
-#topbar button{display:inline-block;border:0;padding:.25rem .5rem;line-height:1.5;font-size:12px;color:#fff;background:#1eb867;border-color:#1eb867;border-radius:.25rem;transition:all .6s;text-align:center}
+#topbar button{display:inline-block;border:0;padding:.25rem .5rem;line-height:1.6;font-size:12px;color:#fff;background:#1eb867;border-color:#1eb867;border-radius:.25rem;transition:all .6s;text-align:center}
 .topbar button+.topbar button{margin-left:10px}
 #topbar button:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5);outline:none}
 #file_list{display:grid;grid-gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));padding-top:10px}

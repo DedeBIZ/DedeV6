@@ -32,7 +32,7 @@ form,h1,h2,h3,ul,ol,div {
 	padding:0
 }
 body,th,td {
-	line-height:1.5
+	line-height:1.6
 }
 li,dd {
 	margin:0;
@@ -172,8 +172,7 @@ select:focus,input:focus,textarea:focus {
 	font-weight:600;
 	color:#545b62;
 	background:#f5f5f5;
-	border-bottom:1px solid #dee2e6;
-	cursor:move
+	border-bottom:1px solid #dee2e6
 }
 .fullpagediv {
 	position:absolute;

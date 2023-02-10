@@ -1,5 +1,5 @@
 body {
-	line-height:1.5;
+	line-height:1.6;
 	font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
 	color:#545b62;
 	letter-spacing:.6px
@@ -23,7 +23,7 @@ ul,ol {
 }
 h1,h2,h3,h4,h5,h6 {
 	margin:0;
-	line-height:1.5;
+	line-height:1.6;
 	font-weight:600;
 	color:#393d49
 }
@@ -297,19 +297,15 @@ input[type=file] {
 .table {
 	color:#545b62
 }
+.form-control,.btn,.fa {
+	font-size:14px!important
+}
 .form-control {
 	height:36px;
 	line-height:36px
 }
-.form-control,.btn,.fa {
-	font-size:14px!important
-}
-.dedebiz-file {
-	position:absolute;
-	top:0;
-	right:0;
-	margin:0;
-	opacity:0;
+.fa {
+	color:inherit;
 	cursor:pointer
 }
 .btn+.btn,.btn-text+.btn-text {
@@ -402,13 +398,13 @@ input[type=file] {
 	padding:10px 12px;
 	right:1rem;
 	bottom:1rem;
-	z-index:9998;
 	font-size:16px;
 	color:#fff;
 	cursor:pointer;
 	background:#ec982c;
 	border-radius:.25rem;
-	border:0
+	border:0;
+	z-index:9998
 }
 #btnScrollTop:hover {
 	background:#e77817
