@@ -47,7 +47,7 @@ function Copyinfo() {
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
     document.execCommand("Copy");
-    alert("复制环境配置摘要成功");
+    alert("复制环境配置信息成功");
 }
 //Dedebiz info
 var dedebizInfo;
@@ -56,8 +56,7 @@ function ViewDedeBIZ() {
         ShowMsg("启动商业组件失败");
         return;
     }
-    ShowMsg(`
-    <table class="table table-borderless w-100">
+    ShowMsg(`<table class="table table-borderless w-100">
         <tr>
             <td width="120">版本号：</td>
             <td>V${dedebizInfo.result.server_version}</td>
@@ -70,8 +69,7 @@ function ViewDedeBIZ() {
             <td>内存占用：</td>
             <td>${dedebizInfo.result.server_memory_usage}%</td>
         </tr>
-    </table>
-    `);
+    </table>`);
 }
 function LoadServer() {
     $.get("index_body.php?dopost=system_info", function (data) {
@@ -84,8 +82,7 @@ function LoadServer() {
             }
             let infoStr = `<table class="table table-borderless w-100">`;
             if (typeof rsp.result.domain !== "undefined") {
-                infoStr += `
-                <tr>
+                infoStr += `<tr>
                     <td width="90">授权域名：</td>
                     <td>${rsp.result.domain}</td>
                     <td width="90">授权版本：</td>
@@ -99,22 +96,19 @@ function LoadServer() {
                         <a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank" class="btn btn-success btn-sm">授权证书</a>
                         <a href="javascript:ViewDedeBIZ()" class="btn btn-primary btn-sm">组件信息</a>
                     </td>
-                </tr>
-                `;
+                </tr>`;
             }
             infoStr += "</table>";
             $("#system-info").html(infoStr);
         } else {
-            $("#system-info").html(`
-            <table class="table table-borderless w-100">
+            $("#system-info").html(`<table class="table table-borderless w-100">
                 <tr>
                     <td>${rsp.msg}</td>
                 </tr>
                 <tr>
-                    <td>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息。若授权结果与实际授权存在差异，可能购买到其它非商业授权，及时和官网取得联系。</td>
+                    <td>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息。若授权结果与实际授权存在差异，可能购买到其它非商业授权，及时与我们取得联系。</td>
                 </tr>
-            </table>
-            `);
+            </table>`);
         }
     });
 }

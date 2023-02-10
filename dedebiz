@@ -63,14 +63,13 @@ function RandEncode($length=26)
     $rnd_cookieEncode='';
     $length = rand(28,32);
     $max = strlen($chars) - 1;
-    for($i = 0; $i < $length; $i++) {
+    for ($i = 0; $i < $length; $i++) {
         $rnd_cookieEncode .= $chars[mt_rand(0, $max)];
     }
     return $rnd_cookieEncode;
 }
 if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
-	//PHP5.4以下不支持内建服务器
-	//用于开发调试
+	//PHP5.4以下不支持内建服务器，用于开发调试
 	if (phpversion() < "5.4") {
 		die("DedeBIZ:command web server not support\n\n");
 	}
@@ -98,7 +97,6 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		if (!empty($aid)) {
 			$addsql .= " AND id IN(" . $typeid . ")";
 		}
-
 		$tt = $dsql->GetOne("SELECT COUNT(id) as dd FROM `#@__arctiny` WHERE " . $addsql);
 		$total = intval($tt['dd']);
 		$dsql->Execute('out', "SELECT id FROM `#@__arctiny` WHERE " . $addsql . " ORDER BY typeid ASC");
@@ -152,7 +150,6 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		$templet = str_replace("{style}", $cfg_df_style, $templet);
         $pv = new PartView();
 		$GLOBALS['_arclistEnv'] = 'index';
-		
         $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . "/" . $templet);
         $pv->SaveToHtml($homeFile);
 		DedeCli::write("Make index html successfull");
@@ -345,10 +342,10 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     fclose($fp);
     $query = '';
     $fp = fopen($workDir.'/install/sql-dftables.txt','r');
-    while(!feof($fp))
+    while (!feof($fp))
     {
         $line = rtrim(fgets($fp,1024));
-        if(preg_match("#;$#", $line))
+        if (preg_match("#;$#", $line))
         {
             $query .= $line."\n";
             $query = str_replace('#@__',$dbprefix,$query);
@@ -365,16 +362,13 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			$query = preg_replace('/,  UNIQUE KEY(.*?);/',');',$query);
 			$query = preg_replace('/set\(([^\)]*?)\)/','varchar',$query);
 			$query = preg_replace('/enum\(([^\)]*?)\)/','varchar',$query);
-			if ( preg_match("/PRIMARY KEY AUTOINCREMENT/",$query) )
-			{
-			$query = preg_replace('/,([\t\s ]+)PRIMARY KEY  \(`([0-9a-zA-Z]+)`\)/i','',$query);
-			$query = str_replace(',	PRIMARY KEY (`id`)','',$query);
+			if (preg_match("/PRIMARY KEY AUTOINCREMENT/",$query)) {
+				$query = preg_replace('/,([\t\s ]+)PRIMARY KEY  \(`([0-9a-zA-Z]+)`\)/i','',$query);
+				$query = str_replace(',	PRIMARY KEY (`id`)','',$query);
 			}
 			@$db->exec($query);
-    
             $query='';
-        } else if(!preg_match("#^(\/\/|--)#", $line))
-        {
+        } else if (!preg_match("#^(\/\/|--)#", $line)) {
             $query .= $line;
         }
     }
@@ -382,11 +376,10 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     //导入默认数据
     $query = '';
     $fp = fopen($workDir.'/install/sql-dfdata.txt','r');
-    while(!feof($fp))
+    while (!feof($fp))
     {
         $line = rtrim(fgets($fp, 1024));
-        if(preg_match("#;$#", $line))
-        {
+        if (preg_match("#;$#", $line)) {
             $query .= $line;
             $query = str_replace('#@__',$dbprefix,$query);
             $query = str_replace("\'","\"",$query);
@@ -395,8 +388,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
             @$db->exec($query);
     
             $query='';
-        } else if(!preg_match("#^(\/\/|--)#", $line))
-        {
+        } else if (!preg_match("#^(\/\/|--)#", $line)) {
             $query .= $line;
         }
     }
@@ -442,7 +434,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	if (phpversion() < "5.4") {
 		die("DedeBIZ:command web server not support\n\n");
 	}
-	// 写入程序安装锁
+	//写入程序安装锁
 	file_put_contents($workDir.'/install/install_lock.txt', 'ok');
 	echo "Start Dev Server For DedeBIZ\n\r";
 	echo "Open http://localhost:8088\n\r";
@@ -451,3 +443,4 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 } else {
 	echo $helpStr;
 }
+?>

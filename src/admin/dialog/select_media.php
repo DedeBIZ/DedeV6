@@ -49,12 +49,7 @@ if (!empty($noeditor)) {
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
-    <style>
-html{background:#f5f5f5}
-.bg{margin:10px;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}
-    </style>
-</head>
-<body class="bg">
+    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}</style>
     <script>
     function nullLink() {
         return;
@@ -70,126 +65,130 @@ html{background:#f5f5f5}
         window.close();
     }
     </script>
-    <table width="100%" align="center" cellspacing="0" cellpadding="2" class="table table-borderless icon">
-        <tr>
-            <td colspan="3">
-                <form action="select_media_post.php" method="POST" enctype="multipart/form-data" name="myform">
-                    <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
-                    <input type="hidden" name="f" value="<?php echo $f ?>">
-                    <input type="hidden" name="job" value="upload">
-                    <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
-                    <span>选择：<input type="file" name="uploadfile" class="w-75"></span>
-                    <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td width="50%" align="center" class="admin-td">点击名称选择文件</td>
-            <td width="20%" align="center" class="admin-td">文件大小</td>
-            <td align="center" class="admin-td">最后修改时间</td>
-        </tr>
-        <?php
-        $dh = scandir($inpath);
-        $ty1 = "";
-        $ty2 = "";
-        foreach ($dh as $file) {
-            //计算文件大小和创建时间
-            if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
-                $filesize = filesize("$inpath/$file");
-                $filesize = $filesize / 1024;
-                if ($filesize != "")
-                    if ($filesize < 0.1) {
-                        @list($ty1, $ty2) = split("\.", $filesize);
-                        $filesize = $ty1.".".substr($ty2, 0, 2);
-                    } else {
-                        @list($ty1, $ty2) = split("\.", $filesize);
-                        $filesize = $ty1.".".substr($ty2, 0, 1);
-                    }
-                $filetime = filemtime("$inpath/$file");
-                $filetime = MyDate("Y-m-d H:i:s", $filetime);
-            }
-            //判断文件类型并作处理
-            if ($file == ".") continue;
-            else if ($file == "..") {
-                if ($activepath == "") continue;
-                $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                $line = "<tr>
-                <td class='admin-td'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
-                <td colspan='2' class='admin-td'>当前目录：$activepath</td>
-                </tr>";
-                echo $line;
-            } else if (is_dir("$inpath/$file")) {
-                if (preg_match("#^_(.*)$#i", $file)) continue;
-                if (preg_match("#^\.(.*)$#i", $file)) continue;
-                $line = "<tr>
-                <td class='admin-td'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                <td class='admin-td'></td>
-                <td class='admin-td'></td>
-                </tr>";
-                echo "$line";
-            } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {
-                $reurl = "$activeurl/$file";
-                $reurl = preg_replace("#^\.\.#", "", $reurl);
-                $reurl = $reurl;
-                if ($file == $comeback) $lstyle = "class='text-danger'";
-                else  $lstyle = "";
-                $line = "<tr>
-                <td class='admin-td'>
-                    <img src='../../static/web/img/icon_flash.png'>
-                    <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+</head>
+<body>
+    <div class="upload-bg">
+        <table width="100%" align="center" cellspacing="0" cellpadding="2" class="table table-borderless icon">
+            <tr>
+                <td colspan="3">
+                    <form action="select_media_post.php" method="POST" enctype="multipart/form-data" name="myform">
+                        <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
+                        <input type="hidden" name="f" value="<?php echo $f ?>">
+                        <input type="hidden" name="job" value="upload">
+                        <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
+                        <span>选择：<input type="file" name="uploadfile" class="w-75"></span>
+                        <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
+                    </form>
                 </td>
-                <td class='admin-td'>$filesize KB</td>
-                <td align='center' class='admin-td'>$filetime</td>
-                </tr>";
-                echo "$line";
-            } else if (preg_match("#\.(wmv|avi)#i", $file)) {
-                $reurl = "$activeurl/$file";
-                $reurl = preg_replace("#^\.\.#", "", $reurl);
-                $reurl = $reurl;
-                if ($file == $comeback) $lstyle = "class='text-danger'";
-                else  $lstyle = "";
-                $line = "<tr>
-                <td class='admin-td'>
-                    <img src='../../static/web/img/icon_video.png'>
-                    <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                </td>
-                <td class='admin-td'>$filesize KB</td>
-                <td align='center' class='admin-td'>$filetime</td>
-                </tr>";
-                echo "$line";
-            } else if (preg_match("#\.(rm|rmvb|mp3|mp4)#i", $file)) {
-                $reurl = "$activeurl/$file";
-                $reurl = preg_replace("#^\.\.#", "", $reurl);
-                $reurl = $reurl;
-                if ($file == $comeback) $lstyle = "class='text-danger'";
-                else  $lstyle = "";
-                $line = "<tr>
-                <td class='admin-td'>
-                    <img src='../../static/web/img/icon_rm.png'>
-                    <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                </td>
-                <td class='admin-td'>$filesize KB</td>
-                <td class='admin-td' align='center'>$filetime</td>
-                </tr>";
-                echo "$line";
-            } else if (preg_match("#\.(mp3|wma)#", $file)) {
-                $reurl = "$activeurl/$file";
-                $reurl = preg_replace("#^\.\.#", "", $reurl);
-                $reurl = $reurl;
-                if ($file == $comeback) $lstyle = "class='text-danger'";
-                else  $lstyle = "";
-                $line = "<tr>
-                <td class='admin-td'>
-                    <img src='../../static/web/img/icon_music.png'>
-                    <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                </td>
-                <td class='admin-td'>$filesize KB</td>
-                <td align='center' class='admin-td'>$filetime</td>
-                </tr>";
-                echo "$line";
-            }
-        }//End Loop
-        ?>
-    </table>
+            </tr>
+            <tr>
+                <td width="50%" align="center" class="admin-td">点击名称选择文件</td>
+                <td width="20%" align="center" class="admin-td">文件大小</td>
+                <td align="center" class="admin-td">最后修改时间</td>
+            </tr>
+            <?php
+            $dh = scandir($inpath);
+            $ty1 = "";
+            $ty2 = "";
+            foreach ($dh as $file) {
+                //计算文件大小和创建时间
+                if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
+                    $filesize = filesize("$inpath/$file");
+                    $filesize = $filesize / 1024;
+                    if ($filesize != "")
+                        if ($filesize < 0.1) {
+                            @list($ty1, $ty2) = split("\.", $filesize);
+                            $filesize = $ty1.".".substr($ty2, 0, 2);
+                        } else {
+                            @list($ty1, $ty2) = split("\.", $filesize);
+                            $filesize = $ty1.".".substr($ty2, 0, 1);
+                        }
+                    $filetime = filemtime("$inpath/$file");
+                    $filetime = MyDate("Y-m-d H:i:s", $filetime);
+                }
+                //判断文件类型并作处理
+                if ($file == ".") continue;
+                else if ($file == "..") {
+                    if ($activepath == "") continue;
+                    $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
+                    $line = "<tr>
+                    <td class='admin-td'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                    <td colspan='2' class='admin-td'>当前目录：$activepath</td>
+                    </tr>";
+                    echo $line;
+                } else if (is_dir("$inpath/$file")) {
+                    if (preg_match("#^_(.*)$#i", $file)) continue;
+                    if (preg_match("#^\.(.*)$#i", $file)) continue;
+                    $line = "<tr>
+                    <td class='admin-td'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                    <td class='admin-td'></td>
+                    <td class='admin-td'></td>
+                    </tr>";
+                    echo "$line";
+                } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {
+                    $reurl = "$activeurl/$file";
+                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                    $reurl = $reurl;
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                    else  $lstyle = "";
+                    $line = "<tr>
+                    <td class='admin-td'>
+                        <img src='../../static/web/img/icon_flash.png'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
+                    <td class='admin-td'>$filesize KB</td>
+                    <td align='center' class='admin-td'>$filetime</td>
+                    </tr>";
+                    echo "$line";
+                } else if (preg_match("#\.(wmv|avi)#i", $file)) {
+                    $reurl = "$activeurl/$file";
+                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                    $reurl = $reurl;
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                    else  $lstyle = "";
+                    $line = "<tr>
+                    <td class='admin-td'>
+                        <img src='../../static/web/img/icon_video.png'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
+                    <td class='admin-td'>$filesize KB</td>
+                    <td align='center' class='admin-td'>$filetime</td>
+                    </tr>";
+                    echo "$line";
+                } else if (preg_match("#\.(rm|rmvb|mp3|mp4)#i", $file)) {
+                    $reurl = "$activeurl/$file";
+                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                    $reurl = $reurl;
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                    else  $lstyle = "";
+                    $line = "<tr>
+                    <td class='admin-td'>
+                        <img src='../../static/web/img/icon_rm.png'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
+                    <td class='admin-td'>$filesize KB</td>
+                    <td class='admin-td' align='center'>$filetime</td>
+                    </tr>";
+                    echo "$line";
+                } else if (preg_match("#\.(mp3|wma)#", $file)) {
+                    $reurl = "$activeurl/$file";
+                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                    $reurl = $reurl;
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                    else  $lstyle = "";
+                    $line = "<tr>
+                    <td class='admin-td'>
+                        <img src='../../static/web/img/icon_music.png'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
+                    <td class='admin-td'>$filesize KB</td>
+                    <td align='center' class='admin-td'>$filetime</td>
+                    </tr>";
+                    echo "$line";
+                }
+            }//End Loop
+            ?>
+        </table>
+    </div>
 </body>
 </html>

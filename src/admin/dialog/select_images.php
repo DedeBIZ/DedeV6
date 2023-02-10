@@ -59,11 +59,7 @@ if (!empty($iseditor)) {
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
-    <style>
-html{background:#f5f5f5}
-.bg{margin:10px;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}
-.napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}
-    </style>
+    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}</style>
     <script>
     function nullLink() {
         return;
@@ -72,11 +68,6 @@ html{background:#f5f5f5}
         document.getElementById('picview').src = surl;
     }
     </script>
-</head>
-<body class="bg">
-    <div id="floater" class="napisdiv">
-        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
-    </div>
     <script src="../js/float.js"></script>
     <script>
     function nullLink() {
@@ -134,108 +125,115 @@ html{background:#f5f5f5}
         window.close();
     }
     </script>
-    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless icon">
-        <tr>
-            <td colspan="4">
-                <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
-                    <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
-                    <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
-                    <input type="hidden" name="f" value="<?php echo $f ?>">
-                    <input type="hidden" name="v" value="<?php echo $v ?>">
-                    <input type="hidden" name="iseditor" value="<?php echo $iseditor ?>">
-                    <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
-                    <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
-                    <input type="hidden" name="job" value="upload">
-                    <span>选择：<input type="file" name="imgfile" class="w-50"></span>
-                    <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?>> 水印</label>
-                    <label><input type="checkbox" name="resize" value="1"> 缩小</label>
-                    <span>宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs"></span>
-                    <span>高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="admin-input-xs"></span>
-                    <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td class="admin-td" colspan="4">点击图片预览，再点击图片关闭预览，点击文件名选择图片</td>
-        </tr>
-        <tr>
-            <td width="6%" class="admin-td">预览</td>
-            <td width="42%" class="admin-td">选择图片</td>
-            <td width="20%" class="admin-td">文件大小</td>
-            <td class="admin-td">修改时间</td>
-        </tr>
-        <?php
-        $dh = scandir($inpath);
-        $ty1 = "";
-        $ty2 = "";
-        foreach ($dh as $file) {
-            //计算文件大小和创建时间
-            if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
-                $filesize = filesize("$inpath/$file");
-                $filesize = $filesize / 1024;
-                if ($filesize != "")
-                    if ($filesize < 0.1) {
-                        @list($ty1, $ty2) = explode("\.", $filesize);
-                        $filesize = $ty1.".".substr($ty2, 0, 2);
-                    } else {
-                        @list($ty1, $ty2) = explode("\.", $filesize);
-                        $filesize = $ty1.".".substr($ty2, 0, 1);
-                    }
-                $filetime = filemtime("$inpath/$file");
-                $filetime = MyDate("Y-m-d H:i:s", $filetime);
-            }
-            if ($file == ".") continue;
-            else if ($file == "..") {
-                if ($activepath == "") continue;
-                $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                $line = "<tr>
-                <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
-                <td colspan='2' class='admin-td'>当前目录：$activepath</td>
-                </tr>";
-                echo $line;
-            } else if (is_dir("$inpath/$file")) {
-                if (preg_match("#^_(.*)$#i", $file)) continue;
-                if (preg_match("#^\.(.*)$#i", $file)) continue;
-                $line = "<tr>
-                <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                <td class='admin-td'></td>
-                <td class='admin-td'></td>
-                </tr>";
-                echo "$line";
-            } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
-                $reurl = "$activeurl/$file";
-                $reurl = preg_replace("#^\.\.#", "", $reurl);
-                $reurl = $reurl;
-                if ($file == $comeback) $lstyle = "class='text-danger'";
-                else  $lstyle = "";
-                $line = "<tr>
-                <td colspan='2' class='admin-td'>
-                    <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
-                    <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+</head>
+<body>
+    <div class="upload-bg">
+        <div id="floater" class="napisdiv">
+            <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
+        </div>
+        <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless icon">
+            <tr>
+                <td colspan="4">
+                    <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
+                        <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
+                        <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
+                        <input type="hidden" name="f" value="<?php echo $f ?>">
+                        <input type="hidden" name="v" value="<?php echo $v ?>">
+                        <input type="hidden" name="iseditor" value="<?php echo $iseditor ?>">
+                        <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
+                        <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
+                        <input type="hidden" name="job" value="upload">
+                        <span>选择：<input type="file" name="imgfile" class="w-50"></span>
+                        <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?>> 水印</label>
+                        <label><input type="checkbox" name="resize" value="1"> 缩小</label>
+                        <span>宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs"></span>
+                        <span>高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="admin-input-xs"></span>
+                        <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
+                    </form>
                 </td>
-                <td class='admin-td'>$filesize KB</td>
-                <td class='admin-td'>$filetime</td>
-                </tr>";
-                echo "$line";
-            } else if (preg_match("#\.(jpg)#i", $file)) {
-                $reurl = "$activeurl/$file";
-                $reurl = preg_replace("#^\.\.#", "", $reurl);
-                $reurl = $reurl;
-                if ($file == $comeback) $lstyle = "class='text-danger'";
-                else  $lstyle = "";
-                $line = "<tr>
-                <td colspan='2' class='admin-td'>
-                    <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
-                    <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
-                </td>
-                <td class='admin-td'>$filesize KB</td>
-                <td class='admin-td'>$filetime</td>
-                </tr>";
-                echo "$line";
-            }
-        }//End Loop
-        ?>
-        </tr>
-    </table>
+            </tr>
+            <tr>
+                <td class="admin-td" colspan="4">点击图片预览，再点击图片关闭预览，点击文件名选择图片</td>
+            </tr>
+            <tr>
+                <td width="6%" class="admin-td">预览</td>
+                <td width="40%" class="admin-td">选择图片</td>
+                <td width="20%" class="admin-td">文件大小</td>
+                <td class="admin-td">修改时间</td>
+            </tr>
+            <?php
+            $dh = scandir($inpath);
+            $ty1 = "";
+            $ty2 = "";
+            foreach ($dh as $file) {
+                //计算文件大小和创建时间
+                if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
+                    $filesize = filesize("$inpath/$file");
+                    $filesize = $filesize / 1024;
+                    if ($filesize != "")
+                        if ($filesize < 0.1) {
+                            @list($ty1, $ty2) = explode("\.", $filesize);
+                            $filesize = $ty1.".".substr($ty2, 0, 2);
+                        } else {
+                            @list($ty1, $ty2) = explode("\.", $filesize);
+                            $filesize = $ty1.".".substr($ty2, 0, 1);
+                        }
+                    $filetime = filemtime("$inpath/$file");
+                    $filetime = MyDate("Y-m-d H:i:s", $filetime);
+                }
+                if ($file == ".") continue;
+                else if ($file == "..") {
+                    if ($activepath == "") continue;
+                    $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
+                    $line = "<tr>
+                    <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                    <td colspan='2' class='admin-td'>当前目录：$activepath</td>
+                    </tr>";
+                    echo $line;
+                } else if (is_dir("$inpath/$file")) {
+                    if (preg_match("#^_(.*)$#i", $file)) continue;
+                    if (preg_match("#^\.(.*)$#i", $file)) continue;
+                    $line = "<tr>
+                    <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                    <td class='admin-td'></td>
+                    <td class='admin-td'></td>
+                    </tr>";
+                    echo "$line";
+                } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
+                    $reurl = "$activeurl/$file";
+                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                    $reurl = $reurl;
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                    else  $lstyle = "";
+                    $line = "<tr>
+                    <td colspan='2' class='admin-td'>
+                        <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
+                        <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+                    </td>
+                    <td class='admin-td'>$filesize KB</td>
+                    <td class='admin-td'>$filetime</td>
+                    </tr>";
+                    echo "$line";
+                } else if (preg_match("#\.(jpg)#i", $file)) {
+                    $reurl = "$activeurl/$file";
+                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                    $reurl = $reurl;
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                    else  $lstyle = "";
+                    $line = "<tr>
+                    <td colspan='2' class='admin-td'>
+                        <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
+                        <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+                    </td>
+                    <td class='admin-td'>$filesize KB</td>
+                    <td class='admin-td'>$filetime</td>
+                    </tr>";
+                    echo "$line";
+                }
+            }//End Loop
+            ?>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

@@ -333,8 +333,7 @@ function getEvent() {
 	while (func != null) {
 		var arg0 = func.arguments[0];
 		if (arg0) {
-			if ((arg0.constructor == Event || arg0.constructor == MouseEvent)
-				|| (typeof (arg0) == "object" && arg0.preventDefault && arg0.stopPropagation)) {
+			if ((arg0.constructor == Event || arg0.constructor == MouseEvent) || (typeof (arg0) == "object" && arg0.preventDefault && arg0.stopPropagation)) {
 				return arg0;
 			}
 		}
@@ -343,13 +342,6 @@ function getEvent() {
 	return null;
 }
 //模拟ondrop事件相关代码
-/*----------------------------
-leftLeaning = 300;
-如果对象文档固定，用onmousedown=DropStart去除底下的DropStop
-newobj.ondblclick =  DropStart;
-newobj.onmousemove = DropMove;
-newobj.onmousedown = DropStop;
-----------------------------*/
 function DropStart() {
 	this.style.cursor = 'move';
 }
@@ -371,11 +363,6 @@ function DropMove() {
 	this.style.left = posLeft - leftLeaning;
 }
 //对指定的元素绑定move事件
-/*-----------------------------
-onmousemove="DropMoveHand('divname', 225);"
-onmousedown="DropStartHand();"
-onmouseup="DropStopHand();"
------------------------------*/
 function DropStartHand() {
 	canMove = (canMove ? false : true);
 }
@@ -386,7 +373,6 @@ function DropMoveHand(objid, mleftLeaning) {
 	var event = getEvent();
 	var obj = $Obj(objid);
 	if (!canMove) return;
-
 	if ($Nav() == 'IE') {
 		var posLeft = event.clientX - 20;
 		var posTop = event.clientY - 20;
@@ -413,7 +399,7 @@ function copyToClipboard(txt) {
 		try {
 			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
 		} catch (e) {
-			alert("浏览器已拒绝，请在浏览器地址栏输入about:config并回车\n然后把signed.applets.codebase_principal_support项设置为true");
+			alert("浏览器已拒绝，请稍后重试");
 		}
 		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
 		if (!clip) return;
@@ -461,9 +447,8 @@ function getSelCat(targetId) {
 			}
 		}
 		if (targetObj) targetObj.value = selvalue;
-	}
-	//主栏目单选
-	else {
+	} else {
+		//主栏目单选
 		if (selBox) {
 			for (var i = 0; i < selBox.length; i++) {
 				if (selBox[i].checked) selvalue = selBox[i].value;
@@ -528,13 +513,8 @@ function DedeConfirm(content="",title="确认提示") {
             CloseModal(`DedeModal${modalID}`);
         }
         let footer = `<button type="button" class="btn btn-outline-success btn-sm" onClick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onClick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
-        let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content"><div class="modal-header">
-    <h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
-        modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span>&times;</span>
-    </button>`;
+        let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
+        modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>`;
         modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
         $("body").append(modal)
         $("#DedeModal" + modalID).modal({
@@ -571,13 +551,9 @@ function ShowMsg(content, ...args) {
 	}
 	footer = footer.replaceAll("~modalID~", modalID);
 	content = content.replaceAll("~modalID~", modalID);
-	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}">
-<div class="modal-dialog ${size}" role="document"><div class="modal-content">
-<div class="modal-header"><h5 class="modal-title" id="GKModalLabel${modalID}">${title}</h5>`;
+	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}"><div class="modal-dialog ${size}" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="GKModalLabel${modalID}">${title}</h5>`;
 	if (!noClose) {
-		modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		<span>&times;</span>
-		</button>`;
+		modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>`;
 	}
 	modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
 	$("body").append(modal)
@@ -703,20 +679,9 @@ $(document).ready(function () {
 	});
 	//截取缩略图
 	function SetThumb(srcURL) {
-		var footer =
-			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a><a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
-		var optButton = `<p>
-			<label for="aspectRatio">比例</label>
-			<select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)">
-				<option>16:9</option>
-				<option selected>4:3</option>
-				<option>1:1</option>
-				<option>2:3</option>
-				<option>自定义</option>
-			</select>
-			</p>`;
-		mdlCropperID = ShowMsg(
-			'<div class="float-left" style="width:320px"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden"></div>', {
+		var footer = "<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a><a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
+		var optButton = `<p><label for="aspectRatio">比例</label><select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)"><option>16:9</option><option selected>4:3</option><option>1:1</option><option>2:3</option><option>自定义</option></select></p>`;
+		mdlCropperID = ShowMsg('<div class="float-left" style="width:320px"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden"></div>', {
 			footer: footer,
 			noClose: false,
 			title: '图片裁剪',

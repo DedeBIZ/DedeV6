@@ -23,7 +23,7 @@ button+button{margin-left:10px}
 .topbar button+.topbar button{margin-left:10px}
 #topbar button:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5);outline:none}
 #file_list{display:grid;grid-gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));padding-top:10px}
-#file_list:empty:after{content:'可以直接拖拽文件到这里'}
+#file_list:empty:after{content:'拖拽图片放到这里进行上传'}
 #file_list li{position:relative;display:block;vertical-align:top;padding:10px;border-radius:.25rem}
 #file_list li.up-now:after{content:'';position:absolute;top:0;left:0;display:block;width:100%;height:100%;background:rgba(255,255,255,0.8) url(loading.gif) center center no-repeat;border-radius:.25rem;z-index:999}
 #file_list li:hover{background:#f5f5f5}

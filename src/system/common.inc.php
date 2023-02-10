@@ -50,7 +50,7 @@ PwAMpkTJJ9nwNOO6saH2eMGaQ3oxZIQ+SmminDB8miI/+hwIn2hNmaHFuur0OGlB
 NQabUzX9JoYtXqPcpZRT7ymHrppU0KFdUSEJiW0utTWJo0HrDOBIT5qWlM0MP9p/
 PwIDAQAB
 -----END PUBLIC KEY-----
-');//DedeBIZ系统公钥
+'); //DedeBIZ系统公钥
 define('DEDECDNURL', 'https://cdn.dedebiz.com');//默认静态资源地址
 if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
     if (!function_exists('session_register')) {
@@ -120,7 +120,7 @@ if (!is_dir($sessSavePath)) mkdir($sessSavePath);
 if (is_writeable($sessSavePath) && is_readable($sessSavePath)) {
     session_save_path($sessSavePath);
 }
-//转换上传的文件相关的变量及安全处理、并引用前台通用的上传函数
+//转换上传的文件相关的变量及安全处理，并引用前台通用的上传函数
 if ($_FILES) {
     require_once(DEDEINC.'/uploadsafe.inc.php');
 }
@@ -152,13 +152,13 @@ if ($cfg_multi_site == 'Y') {
 } else {
     $cfg_mainsite = '';
 }
-//模板的存放目录
+//模板存放目录
 $cfg_templets_dir = $cfg_cmspath.'/theme';
 $cfg_templeturl = $cfg_mainsite.$cfg_templets_dir;
 $cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/templets" : $cfg_mainsite.$cfg_templets_dir."/$cfg_df_style";
-//cms安装目录的网址
+//安装目录网址
 $cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
-//插件目录，这个目录是用于存放计数器、投票、评论等程序的必要动态程序
+//模块插件目录
 $cfg_plus_dir = $cfg_cmspath.'/apps';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
 $cfg_static_dir = $cfg_cmspath.'/static';
@@ -167,22 +167,22 @@ $cfg_mobile_dir = $cfg_cmspath.'/m';
 $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
 $cfg_data_dir = $cfg_cmspath.'/data';
 $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
-//会员目录
+//会员用户目录
 $cfg_member_dir = $cfg_cmspath.'/user';
 $cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
-//专题列表的存放路径
+//专题存放目录
 $cfg_special = $cfg_cmspath.'/a/special';
 $cfg_specialurl = $cfg_mainsite.$cfg_special;
 //附件目录
 $cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;
 $cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
-//上传的普通图片的路径,建议按默认
+//上传图片存放目录，建议按默认
 $cfg_image_dir = $cfg_medias_dir.'/allimg';
 //用户投稿图片存放目录
 $cfg_user_dir = $cfg_medias_dir.'/userup';
-//上传的软件目录
+//上传软件存放目录
 $cfg_soft_dir = $cfg_medias_dir.'/soft';
-//上传的多媒体文件目录
+//上传多媒体文件存放目录
 $cfg_other_medias = $cfg_medias_dir.'/media';
 //软件摘要信息，请不要删除，否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
