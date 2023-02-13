@@ -323,7 +323,7 @@ $arrs2 = array();
  */
 function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
 {
-    if (strtolower($GLOBALS['format'])==='json') {
+    if (isset($GLOBALS['format']) && strtolower($GLOBALS['format'])==='json') {
         echo json_encode(array(
             "code"=>0,
             "msg"=>$msg,

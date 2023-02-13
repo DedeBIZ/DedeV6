@@ -55,7 +55,7 @@
 											<div class="form-check mb-2">
 												<input class="form-check-input" id="iptPayment{dede:value.id/}" type="radio" name="paytype" value="{dede:value.id/}">
 												<label class="form-check-label" for="iptPayment{dede:value.id/}">
-													{dede:value.name/}
+													{dede:value.name/}<?php echo intval($value['id'])=== 4? '(余额：'.$cfg_ml->M_UserMoney.')' : '' ;?>
 												</label>
 											</div>
 											{/dede:array}

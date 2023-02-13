@@ -144,6 +144,12 @@ function __EditUser()
 ----------------*/
 else if ($dopost == 'edituser') {
     CheckPurview('member_Edit');
+    $send_max = isset($send_max)? intval($send_max) : 0;
+    $user_money = isset($user_money)? intval($user_money) : 0;
+    $money = isset($money)? intval($money) : 0;
+    $scores = isset($scores)? intval($scores) : 0;
+    $rank = isset($rank)? intval($rank) : 0;
+    $id = isset($id)? intval($id) : 0;
     if (!isset($_POST['id'])) exit('dedebiz');
     $pwdsql = empty($pwd) ? '' : ",pwd='".md5($pwd)."'";
     if (function_exists('password_hash')) {
@@ -155,7 +161,7 @@ else if ($dopost == 'edituser') {
         ShowMsg("不支持直接把前台会员转为管理的操作", "-1");
         exit();
     }
-    $query = "UPDATE `#@__member` SET send_max='$send_max',email='$email',uname='$uname',sex='$sex',matt='$matt',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' AND matt<>10 ";
+    $query = "UPDATE `#@__member` SET send_max='$send_max',email='$email',uname='$uname',sex='$sex',matt='$matt',user_money='$user_money',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' AND matt<>10 ";
     $rs = $dsql->ExecuteNoneQuery2($query);
     if ($rs == 0) {
         $query = "UPDATE `#@__member` SET email='$email',uname='$uname',sex='$sex',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' ";

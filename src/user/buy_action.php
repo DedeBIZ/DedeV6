@@ -1,6 +1,6 @@
 <?php
 /**
- * @version        $id:buy_action.php 8:38 2010年7月9日 tianya $
+ * @version        $id:buy_action.php 8:38 2023年02月13日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -17,6 +17,7 @@ $ptype = '';
 $pname = '';
 $price = '';
 $mtime = time();
+$paytype = isset($paytype)? intval($paytype) : 0;
 
 if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cookie_encode) == $pd_verify) {
     
@@ -29,7 +30,7 @@ if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cook
         ShowMsg("请不要重复提交表单", 'javascript:;');
         exit();
     }
-    if (!isset($paytype)) {
+    if ($paytype === 0) {
         ShowMsg("请选择支付方式", 'javascript:;');
         exit();
     }
@@ -66,7 +67,7 @@ if ($product == 'member') {
     $price = $row['money'];
 }
 
-if (!isset($paytype)) {
+if ($paytype === 0) {
     $inquery = "INSERT INTO `#@__member_operation` (`buyid`,`pname`,`product`,`money`,`mtime`,`pid`,`mid`,`sta`,`oldinfo`) VALUES ('$buyid','$pname','$product','$price','$mtime','$pid','$mid','0','$ptype');";
     $isok = $dsql->ExecuteNoneQuery($inquery);
     if (!$isok) {
@@ -100,7 +101,26 @@ if (!isset($paytype)) {
     $tpl->LoadTemplate(DEDEMEMBER.'/templets/buy_action_payment.htm');
     $tpl->Display();
 } else {
-    //TODO进行支付处理
+    $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid'");
+    if ($moRow['sta'] == 2) {
+        ShowMsg("已完成支付，无需重复付款", "javascript:;");
+        exit;
+    }
+    if($paytype === 4) {
+        if ($cfg_ml->M_UserMoney < $row['money']) {
+            ShowMsg("余额不足，请确保当前账户有足够金币支付", "javascript:;");
+            exit;
+        }
+        $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE buyid = '$buyid'";
+        $dsql->ExecuteNoneQuery($query);
+        $query = "UPDATE `#@__member` SET money = money+{$row['num']} WHERE mid = '$mid'";
+        $dsql->ExecuteNoneQuery($query);
+        $query = "UPDATE `#@__member` SET user_money = user_money-{$row['money']} WHERE mid = '$mid'";
+        $dsql->ExecuteNoneQuery($query);
+        ShowMsg("成功使用余额付款", "javascript:;");
+        exit;
+    }
+    
 }
 /**
  *  加密函数

@@ -99,6 +99,7 @@ class MemberLogin
     var $M_LoginID;
     var $M_MbType;
     var $M_Money;
+    var $M_UserMoney;
     var $M_Scores;
     var $M_UserName;
     var $M_Rank;
@@ -153,6 +154,7 @@ class MemberLogin
                 $this->M_LoginID = $this->fields['userid'];
                 $this->M_MbType = $this->fields['mtype'];
                 $this->M_Money = $this->fields['money'];
+                $this->M_UserMoney = $this->fields['user_money'];
                 $this->M_UserName = FormatUsername($this->fields['uname']);
                 $this->M_Scores = $this->fields['scores'];
                 $this->M_Face = $this->fields['face'];
@@ -296,6 +298,7 @@ class MemberLogin
         $this->M_Rank = 0;
         $this->M_Face = "";
         $this->M_Money = 0;
+        $this->M_UserMoney = 0;
         $this->M_UserName = "";
         $this->M_LoginTime = 0;
         $this->M_MbType = '';
@@ -542,7 +545,7 @@ class MemberLogin
                 elseif ($this->M_Rank > 10) $sta .= "<span class='text-danger'>会员已到期</span>";
             }
         }
-        $sta .= " 积分<span class='text-primary'>{$this->M_Scores}</span>分，金币<span class='text-primary'>{$this->M_Money}</span>个";
+        $sta .= " 积分<span class='text-primary'>{$this->M_Scores}</span>分，金币<span class='text-primary'>{$this->M_Money}</span>个，余额<span class='text-primary'>{$this->M_UserMoney}</span>元";
         return $sta;
     }
     //获取能够发布文档的栏目
