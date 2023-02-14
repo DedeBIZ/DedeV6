@@ -58,7 +58,7 @@
 					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">电子邮箱：</td>
+					<td class="admin-td">邮箱：</td>
 					<td class="admin-td"><input type="text" name="email" id="email" class="admin-input-sm" value="<?php echo $row['email']?>"></td>
 				</tr>
 				<tr>
@@ -70,7 +70,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">钱包</td>
+					<td class="admin-td">钱包积分：</td>
 					<td class="admin-td">
 						<span class="mr-1">金币：<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>"></span>
 						<span class="mr-1">积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>"></span>
@@ -150,14 +150,14 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">注册时间：</td>
+					<td class="admin-td">注册时间/地址：</td>
 					<td class="admin-td">
 						<span class="mr-1"><?php echo GetDateTimeMk($row['jointime'])?></span>
 						<span><?php echo $row['joinip']?></span>
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">最近登录时间：</td>
+					<td class="admin-td">最近时间/地址：</td>
 					<td class="admin-td">
 						<span class="mr-1"><?php echo GetDateTimeMk($row['logintime'])?></span>
 						<span><?php echo $row['loginip']?></span>
