@@ -28,8 +28,8 @@
 						if (!empty($fields))
 						{
 							echo '<tbody>';
-							echo '<tr><td bgcolor="#eeeeee" width="20%">id</td>';
-							echo '<td bgcolor="#eeeeee"><div class="left">'.$fields['id'].'</div><div class="right"><a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank">详细</a></div></td></tr>';
+							echo '<tr><td width="30%" bgcolor="#f5f5f5">id</td>';
+							echo '<td bgcolor="#f5f5f5">'.$fields['id'].'<a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank">详细</a></td></tr>';
 							foreach($fieldlist as $field=>$fielddata)
 							{
 								if ($fields[$field]=='') continue;
