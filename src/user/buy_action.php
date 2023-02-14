@@ -18,11 +18,8 @@ $pname = '';
 $price = '';
 $mtime = time();
 $paytype = isset($paytype)? intval($paytype) : 0;
-
 if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cookie_encode) == $pd_verify) {
-    
     $result = json_decode(mchStrCode($pd_encode, 'DECODE'));
-   
     $product = preg_replace("#[^0-9a-z]#i", "", $result->product);
     $pid = preg_replace("#[^0-9a-z]#i", "", $result->pid);
     $row  = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE mid='$mid' AND sta=0 AND product='$product'");
@@ -66,7 +63,6 @@ if ($product == 'member') {
     $pname = $row['pname'];
     $price = $row['money'];
 }
-
 if ($paytype === 0) {
     $inquery = "INSERT INTO `#@__member_operation` (`buyid`,`pname`,`product`,`money`,`mtime`,`pid`,`mid`,`sta`,`oldinfo`) VALUES ('$buyid','$pname','$product','$price','$mtime','$pid','$mid','0','$ptype');";
     $isok = $dsql->ExecuteNoneQuery($inquery);
@@ -120,7 +116,6 @@ if ($paytype === 0) {
         ShowMsg("成功使用余额付款", "javascript:;");
         exit;
     }
-    
 }
 /**
  *  加密函数

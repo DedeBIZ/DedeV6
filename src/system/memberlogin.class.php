@@ -545,7 +545,7 @@ class MemberLogin
                 elseif ($this->M_Rank > 10) $sta .= "<span class='text-danger'>会员已到期</span>";
             }
         }
-        $sta .= " 积分<span class='text-primary'>{$this->M_Scores}</span>分，金币<span class='text-primary'>{$this->M_Money}</span>个，余额<span class='text-primary'>{$this->M_UserMoney}</span>元";
+        $sta .= " 积分<span class='text-primary'>{$this->M_Scores}</span>分 金币<span class='text-primary'>{$this->M_Money}</span>个 余额<span class='text-primary'>{$this->M_UserMoney}</span>元";
         return $sta;
     }
     //获取能够发布文档的栏目

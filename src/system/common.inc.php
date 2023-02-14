@@ -10,7 +10,7 @@
 define('DEDEBIZ_SAFE_MODE', FALSE);
 //生产环境使用`production`，如果采用`dev`模式，会有一些php的报错信息提示，用于开发调试
 if (!defined('DEDE_ENVIRONMENT')) {
-    define('DEDE_ENVIRONMENT', 'dev');
+    define('DEDE_ENVIRONMENT', 'production');
 }
 if (!defined('DEBUG_LEVEL')) {
     if (DEDE_ENVIRONMENT == 'production') {

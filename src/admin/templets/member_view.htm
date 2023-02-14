@@ -38,43 +38,28 @@
 				<input type="hidden" name="dopost" value="edituser">
 				<input type="hidden" name="id" value="<?php echo $id?>">
 				<tr>
-					<td width="260" class="admin-td">用户名：</td>
-					<td class="admin-td">
-						<?php
-						if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};
-						echo "".$row['userid']."";
-						?>
+					<td width="260" class="admin-td">头像/用户名/类型：</td>
+					<td>
+						<span class="mr-1">
+							<?php
+							if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};
+							echo "".$row['userid']."";
+							?>
+						</span>
+						<span class="btn btn-outline-success btn-sm"><?php echo $row['mtype'];?></span>
 					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">公司名/昵称：</td>
+					<td class="admin-td"><input type="text" name="uname" id="uname" class="admin-input-sm" value="<?php echo $row['uname']?>"></td>
 				</tr>
 				<tr>
 					<td class="admin-td">密码：</td>
 					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">注册时间：</td>
-					<td class="admin-td">
-						<span class="mr-1"><?php echo GetDateTimeMk($row['jointime'])?></span>
-						<span><?php echo $row['joinip']?></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">最近登录时间：</td>
-					<td class="admin-td">
-						<span class="mr-1"><?php echo GetDateTimeMk($row['logintime'])?></span>
-						<span><?php echo $row['loginip']?></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">用户类型：</td>
-					<td><?php echo $row['mtype'];?></td>
-				</tr>
-				<tr>
 					<td class="admin-td">电子邮箱：</td>
 					<td class="admin-td"><input type="text" name="email" id="email" class="admin-input-sm" value="<?php echo $row['email']?>"></td>
-				</tr>
-				<tr>
-					<td class="admin-td">昵称：</td>
-					<td class="admin-td"><input type="text" name="uname" id="uname" class="admin-input-sm" value="<?php echo $row['uname']?>"></td>
 				</tr>
 				<tr>
 					<td class="admin-td">性别：</td>
@@ -85,11 +70,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">金币：</td>
+					<td class="admin-td">钱包</td>
 					<td class="admin-td">
-						<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>">
-						积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>">
-						余额：<input type="text" name="user_money" id="user_money" class="admin-input-xs" value="<?php echo $row['user_money'];?>">
+						<span class="mr-1">金币：<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>"></span>
+						<span class="mr-1">积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>"></span>
+						<span>余额：<input type="text" name="user_money" id="user_money" class="admin-input-xs" value="<?php echo $row['user_money'];?>"></span>
 					</td>
 				</tr>
 				<tr>
@@ -132,7 +117,7 @@
 					<td class="admin-td">推荐级别：</td>
 					<td class="admin-td">
 						<input type="hidden" name="oldmatt" id="oldmatt" class="admin-input-sm" value="<?php echo $row['matt']?>">
-						<input name="matt" type="text" id="matt" class="admin-input-sm" value="<?php echo $row['matt']?>">（0普通、1推荐、10管理员，管理员不能在前台登录，<a href="sys_admin_user_add.php">新建管理员</a>）
+						<input name="matt" type="text" id="matt" class="admin-input-sm" value="<?php echo $row['matt']?>">（0普通，1推荐，10管理员）
 					</td>
 				</tr>
 				<tr>
@@ -160,12 +145,26 @@
 					<td class="admin-td">
 						<?php
 						$nrow = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='{$row['mid']}' ");
-						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']} 空间浏览：{$nrow['homecount']} 页面浏览：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']}";
+						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']} 页面浏览：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']}";
 						?>
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">特殊操作：</td>
+					<td class="admin-td">注册时间：</td>
+					<td class="admin-td">
+						<span class="mr-1"><?php echo GetDateTimeMk($row['jointime'])?></span>
+						<span><?php echo $row['joinip']?></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">最近登录时间：</td>
+					<td class="admin-td">
+						<span class="mr-1"><?php echo GetDateTimeMk($row['logintime'])?></span>
+						<span><?php echo $row['loginip']?></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">管理操作：</td>
 					<td class="admin-td">
 						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>&jumpurl=../user/edit_baseinfo.php" target="_blank" class="btn btn-success btn-sm">修改资料</a>
 						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>" target="_blank" class="btn btn-success btn-sm">用户面板</a>

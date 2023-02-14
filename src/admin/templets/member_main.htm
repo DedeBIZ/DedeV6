@@ -47,10 +47,10 @@
 					</td>
 					<td>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
-						<a href="member_main.php" class="btn btn-success btn-sm">所有会员</a>
-						<a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">被禁言用户</a>
-						<a href="member_main.php?matt=1" class="btn btn-success btn-sm">被推荐</a>
-						<a href="member_main.php?matt=0" class="btn btn-success btn-sm">普通</a>
+						<a href="member_main.php" class="btn btn-success btn-sm">所有用户</a>
+						<a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">禁言用户</a>
+						<a href="member_main.php?matt=1" class="btn btn-success btn-sm">推荐用户</a>
+						<a href="member_main.php?matt=0" class="btn btn-success btn-sm">普通用户</a>
 					</td>
 				</tr>
 			</table>
@@ -58,53 +58,48 @@
 		<form name="form2">
 			<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="10">所有会员列表</td>
+					<td bgcolor="#f5f5f5" colspan="9">所有会员列表</td>
 				</tr>
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">mid</td>
-					<td width="8%">用户</td>
-					<td width="8%">名称</td>
-					<td width="8%">邮箱</td>
-					<td width="6%">会员等级</td>
-					<td width="14%">会员属性</td>
+					<td width="16%">头像/用户名/类型</td>
+					<td width="8%">公司名/昵称</td>
+					<td width="8%">等级</td>
+					<td width="16%">钱包</td>
+					<td width="6%">投稿限制</td>
 					<td width="14%">地址时间</td>
-					<td width="6%">发布限制</td>
 					<td>操作</td>
 				</tr>
-				{dede:datalist empty='<tr><td colspan="10" align="center">暂无文档</td></tr>'}
+				{dede:datalist empty='<tr><td colspan="9" align="center">暂无用户</td></tr>'}
 				<tr align="center">
 					<td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
 					<td>{dede:field.mid/}</td>
 					<td align="left">
 						<span class="mr-1">
-						<?php
-						if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};
-						echo ''.$fields['userid'].'';
-						if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";
-						if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";
-						?>
+							<?php
+							if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};
+							echo ''.$fields['userid'].'';
+							if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";
+							if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";
+							?>
 						</span>
-						<span class="mr-1">{dede:field.sex/}</span>
 						<span>{dede:field.matt function="GetMAtt(@me)"/}</span>
 					</td>
 					<td>{dede:field.uname/}</td>
-					<td>{dede:field.email/}</td>
-
-					<td><a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a></td>
+					<td>{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</td>
 					<td>
-						<span class="mr-1">{dede:field.mtype/}用户</span><br/>
-						<span class="mr-1">金币{dede:field.money/}</span> 
-						<span>积分{dede:field.scores/}</span>
-						<span>余额{dede:field.user_money/}</span>
+						<span class="mr-1">积分：{dede:field.scores/}</span>
+						<span class="mr-1">金币：{dede:field.money/}</span> 
+						<span>余额：{dede:field.user_money/}</span>
 					</td>
+					<td>{dede:field.send_max/}</td>
 					<td>
 						<span class="mr-1">{dede:field.loginip/}</span>
 						<span>{dede:field.logintime function="MyDate('Y-m-d H:i:s',@me)"/}</span>
 					</td>
-					<td>{dede:field.send_max/}</td>
 					<td>
-						<a href="member_view.php?id={dede:field.mid/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+						<a href="member_view.php?id={dede:field.mid/}" class="btn btn-light btn-sm"><i class="fa fa-eye"></i> 查看</a>
 						<a href="content_list.php?mid={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-file-text"></i> 文档</a>
 						<a href="member_toadmin.php?id={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-user-plus"></i> 提升</a>
 						<a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
@@ -112,14 +107,14 @@
 				</tr>
 				{/dede:datalist}
 				<tr>
-					<td colspan="10">
+					<td colspan="9">
 						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
 						<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="10" bgcolor="#f5f5f5" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="9" bgcolor="#f5f5f5" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>

@@ -349,7 +349,8 @@ input[type=file] {
 	border:1px solid #dee2e6
 }
 .user-meter i {
-	font-size:24px!important
+	font-size:24px!important;
+	color:#1eb867
 }
 .list-group-item.active a {
 	color:#fff

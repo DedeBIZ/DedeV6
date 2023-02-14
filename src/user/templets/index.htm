@@ -22,10 +22,16 @@
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body row">
 								<div class="col-12 text-center">
-									<a href="<?php echo $cfg_memberurl;?>/"><img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="user-logo"></a>
-									<h3 class="mb-2"><?php echo $cfg_ml->M_LoginID;?></h3>
-									<p class="mb-2"><?php echo $cfg_ml->M_MbType;?>积分：<span class="text-primary"><?php echo $cfg_ml->M_Scores;?></span></p>
-									<p class="mb-0">金币：<span class="text-primary"><?php echo $cfg_ml->M_Money;?></span></p>
+									<img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="user-logo mb-2">
+									<div class="mb-2">
+										<h3 class="d-inline-block mr-1 mb-2"><?php echo $cfg_ml->M_LoginID;?></h3>
+										<span class="btn btn-outline-success btn-sm"><?php echo $cfg_ml->M_MbType;?></span>
+									</div>
+									<p class="mb-0">
+										<span class="mr-1">积分：<?php echo $cfg_ml->M_Scores;?></span>
+										<span class="mr-1">金币：<?php echo $cfg_ml->M_Money;?></span>
+										<span>余额：<?php echo $cfg_ml->M_UserMoney;?></span>
+									</p>
 								</div>
 							</div>
 						</div>
@@ -35,23 +41,23 @@
 							<div class="media-body">
 								<ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled text-center mb-0">
 									<li class="col m-pb-1" data-tags="alarm clock">
-										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1"><i class="fa fa-file-text"></i></a></div>
-										<a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1">文档管理</a>
-									</li>
-									<li class="col m-pb-1" data-tags="alarm clock">
-										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox"><i class="fa fa-commenting-o"></i></a></div>
+										<div class="bg-light user-meter rounded mb-2 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox"><i class="fa fa-commenting"></i></a></div>
 										<a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">消息管理</a>
 									</li>
 									<li class="col m-pb-1" data-tags="alarm clock">
-										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/buy.php"><i class="fa fa-credit-card-alt"></i></a></div>
+										<div class="bg-light user-meter rounded mb-2 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1"><i class="fa fa-file-text"></i></a></div>
+										<a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1">文档管理</a>
+									</li>
+									<li class="col" data-tags="space align distribute">
+										<div class="bg-light user-meter rounded mb-2 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/mystow.php"><i class="fa fa-star"></i></a></div>
+										<a href="<?php echo $cfg_memberurl;?>/mystow.php">我的收藏</a>
+									</li>
+									<li class="col m-pb-1" data-tags="alarm clock">
+										<div class="bg-light user-meter rounded mb-2 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/buy.php"><i class="fa fa-credit-card-alt"></i></a></div>
 										<a href="<?php echo $cfg_memberurl;?>/buy.php">积分钱包</a>
 									</li>
 									<li class="col" data-tags="space align distribute">
-										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/mystow.php"><i class="fa fa-star"></i></a></div>
-										<a href="<?php echo $cfg_memberurl;?>/mystow.php">我的收藏</a>
-									</li>
-									<li class="col" data-tags="space align distribute">
-										<div class="bg-light user-meter rounded mb-3 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php"><i class="fa fa fa-pencil-square"></i></a></div>
+										<div class="bg-light user-meter rounded mb-2 p-4 py-3"><a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php"><i class="fa fa fa-pencil-square"></i></a></div>
 										<a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">资料修改</a>
 									</li>
 								</ul>
@@ -61,15 +67,13 @@
 					<div class="py-3">
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body">
-								<div class="col-12">
-									<h4>最新文档</h4>
-									<div class="card ddcard">
-										<ul class="list-group list-group-flush">
-											<?php foreach ($archives as $archive) {?>
-											<li><a href="<?php echo $archive['htmlurl'];?>" title="<?php echo $archive['title'];?>"><?php echo $archive['title'];?></a></li>
-											<?php }?>
-										</ul>
-									</div>
+								<h4>最新文档</h4>
+								<div class="card ddcard">
+									<ul class="list-group list-group-flush">
+										<?php foreach ($archives as $archive) {?>
+										<li><a href="<?php echo $archive['htmlurl'];?>" title="<?php echo $archive['title'];?>"><?php echo $archive['title'];?></a></li>
+										<?php }?>
+									</ul>
 								</div>
 							</div>
 						</div>
