@@ -25,28 +25,28 @@
 	<body>
 		<form action="diy_list.php" method="post">
 			<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
-			<table cellpadding="1" cellspacing="1" align="center" class="table maintable border-bottom-0 mt-3">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3" style="border-bottom:0!important">
 				<tr bgcolor="#f5f5f5">
 					<td width="30%"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name;?></td>
 					<td width="70%" align="right"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">前台预览</a></td>
 				</tr>
 			</table>
-			<table cellpadding="1" cellspacing="1" align="center" class="table maintable border-bottom-0">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable" style="border-bottom:0!important">
 				{dede:datalist}
 				<?php 
 				if (!empty($fields)) {
 					$allowhtml = array('htmltext');
 					$fields['sta'] = $fields['ifcheck'] == 1 ? '<span class="btn btn-outline-success btn-sm">已审核</span>':'<span class="btn btn-outline-danger btn-sm">未审核</span>';
 					echo '</tr>';
-					echo '<td width="6%" align="center"><input type="checkbox" name="id[]" value="'.$fields['id'].'"></td><td width="30%"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-sm">'.$fields['id'].'</a>'.$fields['sta'].'<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a></td>';
+					echo '<td width="6%" align="center"><input type="checkbox" name="id[]" value="'.$fields['id'].'"></td><td width="6%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-sm">'.$fields['id'].'</a></td>';
 					foreach($fieldlist as $field=>$fielddata)
 					{
 						if ($fields[$field]=='') continue;
 						if ($fielddata[1]=='img'){
-						$fields[$field] = '<a href="{$fields[$field]}" target="_blank"><i class="fa fa-picture-o"></i> 图片附件</a>';
+						$fields[$field] = '<a href="{$fields[$field]}" target="_blank">图片附件</a>';
 						}
 						else if ($fielddata[1]=='addon'){
-						$fields[$field] = '<a href="{$fields[$field]}" target="_blank"><i class="fa fa-file-text-o"></i> 其它附件</a>';
+						$fields[$field] = '<a href="{$fields[$field]}" target="_blank">其它附件</a>';
 						} else {
 							if (!in_array($fielddata[1],$allowhtml)) {
 								$fields[$field] = dede_htmlspecialchars($fields[$field]);
@@ -54,6 +54,7 @@
 						}
 						echo '<td>'.$fielddata[0].'：'.$fields[$field].'</td>';
 					}
+					echo '<td width="16%" align="center">'.$fields['sta'].'<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square-o"></i></a></td>';
 					echo '</tr>';
 				} else {
 					echo '<tr><td>暂无记录</td></tr>';
@@ -61,13 +62,13 @@
 				?>
 				{/dede:datalist}
 			</table>
-			<table cellpadding="1" cellspacing="1" align="center" class="table maintable border-top-0 mb-3">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3" style="border-top:0!important">
 				<tr>
 					<td>
+						<input type="button" name="select" onclick="selAll()" class="btn btn-success btn-sm" value="全选">
+						<input type="button" name="select" onclick="noSelAll()" class="btn btn-success btn-sm mr-2" value="取消">
 						<label><input type="radio" name="action" value="check"> 审核</label>
 						<label class="mr-2 ml-2"><input type="radio" name="action" value="delete"> 删除</label>
-						<input type="button" name="select" onclick="selAll()" class="btn btn-success btn-sm" value="全选">
-						<input type="button" name="select" onclick="noSelAll()" class="btn btn-success btn-sm" value="取消">
 						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
 					</td>
 				</tr>
