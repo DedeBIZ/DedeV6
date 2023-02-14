@@ -207,8 +207,17 @@ else if ($dopost == "memberlogin") {
     $nid = explode(',', $nid);
     if (is_array($nid)) {
         foreach ($nid as $var) {
-            $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE aid = '$var'";
-            $dsql->ExecuteNoneQuery($query);
+            $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE aid='$var'");
+            if ($moRow['sta'] == 1) {
+                if ($moRow['product'] === "card") {
+                    //点卡
+                    $proRow = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid={$moRow['pid']}");
+                    $query = "UPDATE `#@__member` SET money = money+{$proRow['num']} WHERE mid = '{$moRow['mid']}'";
+                    $dsql->ExecuteNoneQuery($query);
+                }
+                $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE aid = '$var'";
+                $dsql->ExecuteNoneQuery($query);
+            }
             ShowMsg("设置成功", "member_operations.php");
             exit();
         }

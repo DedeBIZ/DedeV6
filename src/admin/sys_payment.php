@@ -33,14 +33,14 @@ if ($dopost === "get_payments") {
     foreach($config as $key => $item) {
         $status = 0;
         $sortrank = 0;
-        $configItem = array();
+        $configItem = new stdClass;
         foreach($item as $kk => $ii) {
             if ($kk === "Enabled") {
                 $status = $ii === true ? 1 : 0;
             } else if ($kk === "Sortrank") {
                 $sortrank = intval($ii);
             } else {
-                $configItem[$kk] = $ii;
+                $configItem->$kk = $ii;
             }
         }
         $cfg = json_encode($configItem);

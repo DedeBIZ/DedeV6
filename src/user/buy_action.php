@@ -8,6 +8,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
+$dopost = isset($dopost)? $dopost : '';
 $menutype = 'mydede';
 $menutype_son = 'op';
 require_once DEDEINC.'/dedetemplate.class.php';
@@ -18,6 +19,21 @@ $pname = '';
 $price = '';
 $mtime = time();
 $paytype = isset($paytype)? intval($paytype) : 0;
+if ($dopost === "bank_ok") {
+    $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid' AND mid={$mid}");
+    if (empty($moRow)) {
+        ShowMsg("订单查询错误，请确保是您自己发起的订单", "javascript:;");
+        exit;
+    }
+    if ($moRow['sta'] == 2) {
+        ShowMsg("已完成支付，无需重复付款", "javascript:;");
+        exit;
+    }
+    $query = "UPDATE `#@__member_operation` SET sta = '1' WHERE buyid = '{$moRow['buyid']}'";
+    $dsql->ExecuteNoneQuery($query);
+    ShowMsg("已经完成付款，等待管理员审核", "operation.php");
+    exit;
+}
 if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cookie_encode) == $pd_verify) {
     $result = json_decode(mchStrCode($pd_encode, 'DECODE'));
     $product = preg_replace("#[^0-9a-z]#i", "", $result->product);
@@ -102,7 +118,56 @@ if ($paytype === 0) {
         ShowMsg("已完成支付，无需重复付款", "javascript:;");
         exit;
     }
-    if($paytype === 4) {
+
+    if($paytype === 1) {
+        //微信支付
+        include_once(DEDEINC.'/sdks/include.php');
+        $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
+        $pData = (array)json_decode($pInfo['config']);
+        $config = array(
+            "appid" => $pData['AppID'],
+            "mch_id" => $pData['MchID'],
+            "mch_key" => $pData['AppSecret'],
+        );
+        $wechat = new \WeChat\Pay($config);
+        $options = array(
+            'product_id'             => $buyid,
+            'body'             => '测试商品',
+            'out_trade_no'     => time(),
+            'total_fee'        => '1',
+            'trade_type'       => 'NATIVE',
+            'notify_url'       => 'http://a.com/text.html',
+            'spbill_create_ip' => '127.0.0.1',
+        );
+        try {
+            // 生成预支付码
+            $result = $wechat->createOrder($options);
+
+            var_dump($result);
+            // 创建JSAPI参数签名
+            $options = $wechat->createParamsForRuleQrc($buyid);
+            var_dump($options);exit;
+            
+        } catch (Exception $e) {
+        
+            // 出错啦，处理下吧
+            echo $e->getMessage() . PHP_EOL;
+            
+        }
+    } elseif ($paytype === 3) {
+        include_once(DEDEINC.'/libraries/oxwindow.class.php');
+        //银行转账
+        $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
+        $pData = (array)json_decode($pInfo['config']);
+        $msg = "请汇款至如下账户：<br><b>账户名：</b>{$pData['AccountName']}<br><b>账号：</b>{$pData['AccountNO']}<br><b>开户行：</b>{$pData['Name']}<br/><b>备注：</b>{$buyid}<br/>如您已经完成转账，请点击下面按钮，等待管理员确认后即可完成充值<br><br><a href='buy_action.php?dopost=bank_ok&buyid={$buyid}' class='btn btn-success btn-sm'>已完成银行转账</a> <a href='operation.php' class='btn btn-outline-success btn-sm'>返回订单管理</a>";
+        $wintitle = "银行转账";
+        $wecome_info = " ";//这个空格不要去
+        $win = new OxWindow();
+        $win->AddMsgItem($msg);
+        $winform = $win->GetWindow("hand", "&nbsp;", false);
+        $win->Display(DEDEMEMBER."/templets/win_templet.htm");
+    } elseif ($paytype === 4) {
+        //余额付款
         if ($cfg_ml->M_UserMoney < $row['money']) {
             ShowMsg("余额不足，请确保当前账户有足够金币支付", "javascript:;");
             exit;
@@ -114,6 +179,10 @@ if ($paytype === 0) {
         $query = "UPDATE `#@__member` SET user_money = user_money-{$row['money']} WHERE mid = '$mid'";
         $dsql->ExecuteNoneQuery($query);
         ShowMsg("成功使用余额付款", "javascript:;");
+        exit;
+    } elseif ($paytype === 5) {
+        //货到付款
+        ShowMsg("虚拟物品，不支持货到付款", "javascript:;");
         exit;
     }
 }
@@ -151,4 +220,3 @@ function mchStrCode($string, $operation = 'ENCODE')
         }
     }
 }
-?>

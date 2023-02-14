@@ -36,7 +36,7 @@ while ($channel = $dsql->GetArray('addmod')) {
             </div>
         </li>
         <li class="list-group-item justify-content-between align-items-center rounded <?php echo (isset($_menu_stow) && $_menu_stow===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/mystow.php">我的收藏</a></li>
-        <li class="list-group-item justify-content-between align-items-center"><a href="<?php echo $cfg_memberurl;?>/buy.php">积分钱包</a></li>
+        <li class="list-group-item justify-content-between align-items-center <?php echo (isset($_menu_buy) && $_menu_buy===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/buy.php">积分钱包</a></li>
         <li class="list-group-item justify-content-between align-items-center">
             <div data-toggle="collapse" data-target="#collapseOrder">订单详情<span class="dropdown ml-2"></span></div>
             <div id="collapseOrder" class="collapse mt-3<?php echo (isset($_menu_order) && $_menu_order===true)? ' show' : '';?>">

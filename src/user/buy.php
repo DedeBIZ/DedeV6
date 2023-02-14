@@ -10,6 +10,7 @@ require_once(dirname(__FILE__).'/config.php');
 CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'op';
+$_menu_buy = true;
 $myurl = $cfg_basehost.$cfg_member_dir.'/index.php?uid='.$cfg_ml->M_LoginID;
 $moneycards = '';
 $membertypes = '';
