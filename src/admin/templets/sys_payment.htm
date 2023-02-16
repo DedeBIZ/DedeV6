@@ -42,27 +42,12 @@
 									<input type="text" id="iptWechatAppID" class="form-control">
 								</div>
 								<div class="form-group">
-									<label for="iptWechatAppSecret">AppSecret</label>
-									<input type="text" id="iptWechatAppSecret" class="form-control">
+									<label for="iptWechatAPIv2Secret">APIv2Secret</label>
+									<input type="text" id="iptWechatAPIv2Secret" class="form-control">
 								</div>
 								<div class="form-group">
 									<label for="iptWechatMchID">商户号</label>
 									<input type="text" id="iptWechatMchID" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="iptWechatAPIV3Key">APIv3秘钥</label>
-									<input type="text" id="iptWechatAPIV3Key" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="iptWechatSerialNo">商户证书序列号</label>
-									<input type="text" id="iptWechatSerialNo" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>商户证书文件</label>
-									<div class="custom-file">
-										<input type="file" id="iptWechatPrivateKey" class="custom-file-input">
-										<label class="custom-file-label" for="iptWechatPrivateKey" data-browse="选择">选择商户证书文件</label>
-									</div>
 								</div>
 								<div class="form-group">
 									<label for="iptWechatSortrank">排序（越小越靠前）</label>
@@ -88,25 +73,8 @@
 									<input type="text" id="iptAlipayPrivateKey" class="form-control">
 								</div>
 								<div class="form-group">
-									<label>应用公钥证书</label>
-									<div class="custom-file">
-										<input type="file" id="iptAlipayAppCertPublicKey" class="custom-file-input">
-										<label class="custom-file-label" for="iptAlipayAppCertPublicKey" data-browse="选择">选择应用公钥证书文件</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<label>支付宝公钥证书</label>
-									<div class="custom-file">
-										<input type="file" id="iptAlipayCertPublicKey" class="custom-file-input">
-										<label class="custom-file-label" for="iptAlipayCertPublicKey" data-browse="选择">选择支付宝公钥证书文件</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<label>支付宝根证书</label>
-									<div class="custom-file">
-										<input type="file" class="custom-file-input" id="iptAlipayRootCert">
-										<label class="custom-file-label" for="iptAlipayRootCert" data-browse="选择">选择支付宝根证书文件</label>
-									</div>
+									<label for="iptAlipayCertPublicKey">支付宝公钥证书</label>
+									<input type="text" id="iptAlipayCertPublicKey" class="form-control">
 								</div>
 								<div class="form-group">
 									<label for="iptAlipaySignType">签名类型</label>
@@ -192,20 +160,15 @@
 		let config = {
 			Wechat: {
 				AppID: '',
-				AppSecret: '',
+				APIv2Secret: '',
 				MchID: '',
-				APIV3Key: '',
-				SerialNo: '',
-				PrivateKey: '',
 				Sortrank: 0,
 				Enabled: true,
 			},
 			Alipay: {
 				APPID: '',
 				PrivateKey: '',
-				AppCertPublicKey: '',
 				CertPublicKey: '',
-				RootCert: '',
 				SignType: 'RSA2',
 				Sortrank: 0,
 				Enabled: false,

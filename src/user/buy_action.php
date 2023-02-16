@@ -122,39 +122,72 @@ if ($paytype === 0) {
     if($paytype === 1) {
         //微信支付
         include_once(DEDEINC.'/sdks/include.php');
+        include_once(DEDEINC.'/libraries/oxwindow.class.php');
         $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
         $pData = (array)json_decode($pInfo['config']);
         $config = array(
             "appid" => $pData['AppID'],
             "mch_id" => $pData['MchID'],
-            "mch_key" => $pData['AppSecret'],
+            "mch_key" => $pData['APIv2Secret'],
         );
         $wechat = new \WeChat\Pay($config);
         $options = array(
-            'product_id'             => $buyid,
+            'product_id'       => $buyid,
             'body'             => '测试商品',
-            'out_trade_no'     => time(),
-            'total_fee'        => '1',
+            'out_trade_no'     => $buyid,
+            'total_fee'        => $row['money']*100,
             'trade_type'       => 'NATIVE',
-            'notify_url'       => 'http://a.com/text.html',
-            'spbill_create_ip' => '127.0.0.1',
+            'notify_url'       => 'https://www.dedebiz.com/notify?platform=wxpay',
         );
         try {
             // 生成预支付码
             $result = $wechat->createOrder($options);
-
-            var_dump($result);
-            // 创建JSAPI参数签名
-            $options = $wechat->createParamsForRuleQrc($buyid);
-            var_dump($options);exit;
-            
+            $payurl = $result['code_url'];
+            $msg = "请使用微信扫一扫，扫描二维码支付：<div id='qrcode' style='width:200px; height:200px; margin-top:15px;'></div><br/><a href='buy_action.php?dopost=wechat_ok&buyid={$buyid}' class='btn btn-success btn-sm'>已完成支付</a> <a href='operation.php' class='btn btn-outline-success btn-sm'>返回订单管理</a>";
+            $script = '<script type="text/javascript">var qrcode = new QRCode(document.getElementById("qrcode"), {
+                width : 300,
+                height : 300,
+                correctLevel : 3
+            });qrcode.makeCode("'.$payurl.'");</script>';
+            $wintitle = "微信支付";
+            $wecome_info = " ";//这个空格不要去
+            $win = new OxWindow();
+            $win->AddMsgItem($msg);
+            $winform = $win->GetWindow("hand", "&nbsp;", false);
+            $win->Display(DEDEMEMBER."/templets/win_templet.htm");
         } catch (Exception $e) {
-        
-            // 出错啦，处理下吧
-            echo $e->getMessage() . PHP_EOL;
-            
+            ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
+            exit;
         }
-    } elseif ($paytype === 3) {
+    } elseif ($paytype === 2) {
+        include_once(DEDEINC.'/libraries/oxwindow.class.php');
+        $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
+        $pData = (array)json_decode($pInfo['config']);
+        $config = array(
+            "sign_type" => $pData['SignType'],
+            "appid" => $pData['APPID'],
+            "private_key" => $pData['PrivateKey'],
+            "public_key" => $pData['CertPublicKey'],
+            "notify_url" => 'https://www.dedebiz.com/alipay-notify.php',
+            "return_url" => 'https://www.dedebiz.com/alipay-notify.php',
+        );
+        //支付宝
+        try {
+            // 实例支付对象
+            $pay = \AliPay\Web::instance($config);
+        
+            // 参考链接：https://docs.open.alipay.com/api_1/alipay.trade.page.pay
+            $result = $pay->apply(array([
+                'out_trade_no' => $buyid, // 商户订单号
+                'total_amount' => sprintf("%d",$row['money']), // 支付金额
+                'subject'      => '支付订单描述', // 支付订单描述
+            ]));
+        
+            var_dump(htmlspecialchars( $result));
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }  elseif ($paytype === 3) {
         include_once(DEDEINC.'/libraries/oxwindow.class.php');
         //银行转账
         $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
