@@ -53,7 +53,7 @@ function TestPurview($n)
 function CheckPurview($n)
 {
     if (!TestPurview($n)) {
-        ShowMsg("您没有权限执行此操作<br><br><a href='javascript:history.go(-1);'>点击返回上一页</a>", 'javascript:;');
+        ShowMsg("您没有权限进行此操作", "-1");
         exit();
     }
 }
@@ -89,7 +89,7 @@ function CheckCatalog($cid, $msg)
         return TRUE;
     }
     if (!in_array($cid, $admin_catalogs)) {
-        ShowMsg(" $msg <br><br><a href='javascript:history.go(-1);'>点击返回上一页</a>", 'javascript:;');
+        ShowMsg("$msg", "-1");
         exit();
     }
     return TRUE;
