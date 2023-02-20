@@ -100,6 +100,7 @@ if ($dopost == 'bak') {
         $fs = array();
         $bakStr = '';
         //分析表里的字段信息
+        $nowtable = str_replace("`", "", $nowtable);
         $dsql->GetTableFields($nowtable);
         $intable = "INSERT INTO `$nowtable` VALUES(";
         while ($r = $dsql->GetFieldObject()) {
