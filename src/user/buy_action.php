@@ -19,6 +19,7 @@ $pname = '';
 $price = '';
 $mtime = time();
 $paytype = isset($paytype)? intval($paytype) : 0;
+$buyid = isset($buyid)? HtmlReplace($buyid, 1) : '';
 if ($dopost === "bank_ok") {
     $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid' AND mid={$mid}");
     if (empty($moRow)) {
@@ -33,6 +34,36 @@ if ($dopost === "bank_ok") {
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("已经完成付款，等待管理员审核", "operation.php");
     exit;
+} else if ($dopost === "wechat_ok") {
+    $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid' AND mid={$mid}");
+    if (empty($moRow)) {
+        ShowMsg("订单查询错误，请确保是您自己发起的订单", "javascript:;");
+        exit;
+    }
+    $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = 1");
+    $pData = (array)json_decode($pInfo['config']);
+    $config = array(
+        "appid" => $pData['AppID'],
+        "mch_id" => $pData['MchID'],
+        "mch_key" => $pData['APIv2Secret'],
+    );
+    $wechat = new \WeChat\Pay($config);
+    $options = array(
+        'out_trade_no' => $buyid,
+    );
+    $result = $wechat->queryOrder($options);
+    if ($result['return_code'] === "SUCCESS" && $result['trade_state'] === "SUCCESS") {
+        $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid='{$moRow['pid']}'");
+        $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE buyid = '$buyid'";
+        $dsql->ExecuteNoneQuery($query);
+        $query = "UPDATE `#@__member` SET money = money+{$row['num']} WHERE mid = '$mid'";
+        $dsql->ExecuteNoneQuery($query);
+        ShowMsg("已经完成付款", "index.php");
+        exit;
+    } else {
+        ShowMsg("尚未完成付款操作", "index.php");
+        exit;
+    }
 }
 if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cookie_encode) == $pd_verify) {
     $result = json_decode(mchStrCode($pd_encode, 'DECODE'));
@@ -121,7 +152,6 @@ if ($paytype === 0) {
 
     if($paytype === 1) {
         //微信支付
-        include_once(DEDEINC.'/sdks/include.php');
         include_once(DEDEINC.'/libraries/oxwindow.class.php');
         $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
         $pData = (array)json_decode($pInfo['config']);
@@ -133,11 +163,11 @@ if ($paytype === 0) {
         $wechat = new \WeChat\Pay($config);
         $options = array(
             'product_id'       => $buyid,
-            'body'             => '测试商品',
+            'body'             => $row['pname'],
             'out_trade_no'     => $buyid,
             'total_fee'        => $row['money']*100,
             'trade_type'       => 'NATIVE',
-            'notify_url'       => 'https://www.dedebiz.com/notify?platform=wxpay',
+            'notify_url'       => $GLOBALS['cfg_basehost'].$GLOBALS['cfg_phpurl'].'/notify.php?dopost=wechat',
         );
         try {
             // 生成预支付码
@@ -168,22 +198,21 @@ if ($paytype === 0) {
             "appid" => $pData['APPID'],
             "private_key" => $pData['PrivateKey'],
             "public_key" => $pData['CertPublicKey'],
-            "notify_url" => 'https://www.dedebiz.com/alipay-notify.php',
-            "return_url" => 'https://www.dedebiz.com/alipay-notify.php',
+            "notify_url" => $GLOBALS['cfg_basehost'].$GLOBALS['cfg_phpurl'].'/notify.php?dopost=alipay',
+            "return_url" => $GLOBALS['cfg_basehost'].$GLOBALS['cfg_phpurl'].'/return.php?dopost=alipay',
         );
+        // var_dump($config);exit;
         //支付宝
         try {
             // 实例支付对象
             $pay = \AliPay\Web::instance($config);
-        
-            // 参考链接：https://docs.open.alipay.com/api_1/alipay.trade.page.pay
-            $result = $pay->apply(array([
+            $result = $pay->apply(array(
                 'out_trade_no' => $buyid, // 商户订单号
-                'total_amount' => sprintf("%d",$row['money']), // 支付金额
-                'subject'      => '支付订单描述', // 支付订单描述
-            ]));
-        
-            var_dump(htmlspecialchars( $result));
+                'total_amount' => $row['money'], // 支付金额
+                'subject'      => $row['pname'], // 支付订单描述
+            ));
+
+            echo $result;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
