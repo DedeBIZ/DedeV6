@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 
 $dopost = isset($dopost)? $dopost : '';
-$buyid = isset($out_trade_no)? $out_trade_no : '';
+$buyid = isset($out_trade_no)? HtmlReplace($out_trade_no, 1) : '';
 
 if ($dopost === 'alipay') {
     $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid'");
