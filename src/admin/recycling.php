@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
-CheckPurview('a_List,a_AccList,a_MyList');
+CheckPurview('a_Recycling');
 require_once(DEDEINC.'/datalistcp.class.php');
 if (empty($cid)) {
     $cid = '0';
