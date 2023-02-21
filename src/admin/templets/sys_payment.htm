@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
+		<script src="./js/main.js"></script>
 	</head>
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
@@ -261,7 +262,11 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function (data) {
-					console.log(data);
+					if (data.code === 0) {
+						ShowMsg("保存支付配置成功");
+					} else {
+						ShowMsg("保存失败");
+					}
 				}
 			})
 		}
@@ -270,7 +275,6 @@
 			$("#btnSave").click(() => {
 				updateConfig()
 				saveConfig();
-				console.log(config)
 			})
 		})
 		</script>

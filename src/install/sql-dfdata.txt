@@ -4086,6 +4086,13 @@ INSERT INTO `#@__sys_module` VALUES(1, '1f35620fb42d452fa2bdc1dee1690f92', '文�
 (4, 'acb8b88eb4a6d4bfc375c18534f9439e', '投票模块', '', '', 0, ''),
 (5, '572606600345b1a4bb8c810bbae434cc', '挑错管理', '', '', 0, '');
 
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (1, 'Wechat', '微信支付', '微信', 0, '{"AppID":"","MchID":"","APIv2Secret":""}', 0);
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (2, 'Alipay', '支付宝支付', '支付宝', 1, '{"APPID":"","PrivateKey":"","CertPublicKey":"","RootCert":"AlipayRootCert","SignType":"RSA2"}', 0);
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (3, 'Bank', '银行转账', '转账', 2, '{"AccountName":"泰隆商业银行上海杨浦支行","AccountNO":"31010090201000020658","Name":"上海穆云智能科技有限公司"}', 1);
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (4, 'Balance', '余额支付', '余额', 3, '{}', 1);
+INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (5, 'Cod', '货到付款', '货到付款', 4, '{}', 0);
+
+
 INSERT INTO `#@__plus` VALUES(1, '文件管理器', '<m:item name=''文件管理器'' link=''file_manage_main.php'' rank=''plus_文件管理器'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (2, '友情链接模块', '<m:item name=''友情链接'' link=''friendlink_main.php'' rank=''plus_友情链接'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (3, '广告管理', '<m:item name=''广告管理'' link=''ad_main.php'' rank=''plus_广告管理'' target=''main'' />', '', 'DedeBIZ', 1, ''),
