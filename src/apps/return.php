@@ -9,10 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
-
 $dopost = isset($dopost)? $dopost : '';
 $buyid = isset($out_trade_no)? HtmlReplace($out_trade_no, 1) : '';
-
 if ($dopost === 'alipay') {
     $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid'");
     if (empty($moRow)) {
@@ -38,11 +36,9 @@ if ($dopost === 'alipay') {
         unset($_REQUEST['dopost']);
         unset($_REQUEST['sign_type']);
         $data = $pay->notify();
-
         if (isset($data['trade_no']) && !empty($data['trade_no'])) {
             // $pay = \AliPay\Transfer::instance($config);
             $result = $pay->query($data['out_trade_no']);
-
             if ($result['trade_status']=== "TRADE_SUCCESS") {
                 $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid='{$moRow['pid']}'");
                 $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE buyid = '$buyid'";
@@ -61,3 +57,4 @@ if ($dopost === 'alipay') {
         exit;
     }
 }
+?>

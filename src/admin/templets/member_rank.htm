@@ -21,10 +21,10 @@
 					</td>
 				</tr>
 				<tr align="center">
-					<td width="20%">级别名称</td>
-					<td width="18%">会员等级值</td>
-					<td width="15%">默认金币</td>
-					<td width="15%">默认积分</td>
+					<td width="16%">级别名称</td>
+					<td width="16%">会员等级值</td>
+					<td width="16%">默认金币</td>
+					<td width="16%">默认积分</td>
 					<td width="16%">类型</td>
 					<td width="16%">状态</td>
 				</tr>
@@ -42,12 +42,7 @@
 					<td><input type="text" name="rank_<?php echo $k?>" value="<?php echo $row->rank;?>" id="rank_<?php echo $k?>"></td>
 					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money;?>" id="money_<?php echo $k?>"></td>
 					<td><input type="text" name="scores_<?php echo $k?>" value="<?php echo $row->scores;?>" id="scores_<?php echo $k?>"></td>
-					<td align="center">
-						<?php
-						if ($row->id<=5) { echo "系统"; }
-						else { echo "用户"; }
-						?>
-					</td>
+					<td><?php if ($row->id<=5) { echo "系统"; } else {echo "用户";}?></td>
 					<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if ($row->id == 3) echo 'disabled="disabled"';?> value="1" checked="checked"> 正在使用</td>
 				</tr>
 				<?php }?>

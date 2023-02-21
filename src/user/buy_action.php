@@ -170,7 +170,7 @@ if ($paytype === 0) {
             'notify_url'       => $GLOBALS['cfg_basehost'].$GLOBALS['cfg_phpurl'].'/notify.php?dopost=wechat',
         );
         try {
-            // 生成预支付码
+            //生成预支付码
             $result = $wechat->createOrder($options);
             $payurl = $result['code_url'];
             $msg = "请使用微信扫一扫，扫描二维码支付：<div id='qrcode' style='width:200px; height:200px; margin-top:15px;'></div><br/><a href='buy_action.php?dopost=wechat_ok&buyid={$buyid}' class='btn btn-success btn-sm'>已完成支付</a> <a href='operation.php' class='btn btn-outline-success btn-sm'>返回订单管理</a>";
@@ -201,10 +201,10 @@ if ($paytype === 0) {
             "notify_url" => $GLOBALS['cfg_basehost'].$GLOBALS['cfg_phpurl'].'/notify.php?dopost=alipay',
             "return_url" => $GLOBALS['cfg_basehost'].$GLOBALS['cfg_phpurl'].'/return.php?dopost=alipay',
         );
-        // var_dump($config);exit;
+        //var_dump($config);exit;
         //支付宝
         try {
-            // 实例支付对象
+            //实例支付对象
             $pay = \AliPay\Web::instance($config);
             $result = $pay->apply(array(
                 'out_trade_no' => $buyid, // 商户订单号
@@ -282,3 +282,4 @@ function mchStrCode($string, $operation = 'ENCODE')
         }
     }
 }
+?>
