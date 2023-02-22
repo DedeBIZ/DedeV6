@@ -87,7 +87,7 @@
 				<?php }?>
 				<tr>
 					<td>提示文字：</td>
-					<td><input type="text" name="itemname" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>">（发布文档时显示的项名字）</td>
+					<td><input type="text" name="itemname" id="itemname" class="admin-input-sm"> value="<?php echo $ctag->GetAtt('itemname')?>">（发布文档时显示的项名字）</td>
 				</tr>
 				<tr>
 					<td width="260">字段名称：</td>
@@ -110,7 +110,7 @@
 				<tr>
 					<td>数据类型：</td>
 					<td>
-						<select name="dtype" id="type" class="admin-input-md">
+						<select name="dtype" id="type" class="admin-input-sm">
 							<?php 
 							$dtype = $ctag->GetAtt('type');
 							if ($dtype!='' && isset($fieldtypes[$dtype]))
@@ -183,7 +183,7 @@
 				</tr>
 				<tr>
 					<td>最大长度：</td>
-					<td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" class="admin-input-xs">（文本数据必须填写，大于255为text类型）</td>
+					<td><input type="text" name="maxlength" id="maxlength" class="admin-input-xs" value="<?php echo $ctag->GetAtt('maxlength')?>">（文本数据必须填写，大于255为text类型）</td>
 				</tr>
 				<tr>
 					<td>自定义网页表单：</td>

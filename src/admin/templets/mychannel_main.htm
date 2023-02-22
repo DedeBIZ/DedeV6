@@ -43,12 +43,12 @@
 				<td align="left">{dede:field.isshow function="GetSta(@me,$fields['id'])"/}</td>
 				<td>{dede:field.issystem function='IsSystem(@me)'/}</td>
 				<td>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=copystart" class="btn btn-light btn-sm"><i class="fa fa-clone" title="复制"></i></a>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=gettemplets" class="btn btn-light btn-sm"><i class="fa fa-file-text-o" title="模板"></i></a>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=export" class="btn btn-light btn-sm"><i class="fa fa-download" title="导出"></i></a>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square-o" title="修改"></i></a>
-					<a href="mychannel_edit.php?mid={dede:field.id/}&dopost=modifysearch" class="btn btn-light btn-sm"><i class="fa fa-search" title="自定义搜索"></i></a>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=gettemplets" class="btn btn-light btn-sm"><i class="fa fa-cube"></i> 模板</a>
+					<a href="mychannel_edit.php?mid={dede:field.id/}&dopost=modifysearch" class="btn btn-light btn-sm"><i class="fa fa-search"></i> 搜索</a>
+					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=copystart" class="btn btn-light btn-sm"><i class="fa fa-clone"></i> 复制</a>
+					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=export" class="btn btn-light btn-sm"><i class="fa fa-share-square-o"></i> 导出</a>
+					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 				</td>
 			</tr>
 			{/dede:datalist}

@@ -36,8 +36,8 @@
 				<input type="hidden" name="att_<?php echo $k?>" value="<?php echo $row->att?>">
 				<tr>
 					<td align="center"><?php echo $row->att;?></td>
-					<td><input type="text" name="sortid_<?php echo $k?>" value="<?php echo $row->sortid;?>"  id="sortid_<?php echo $k?>" style="width:50%"></td>
-					<td><input type="text" name="attname_<?php echo $k?>" value="<?php echo $row->attname;?>" id="attname_<?php echo $k?>" size="30"></td>
+					<td><input type="text" name="sortid_<?php echo $k?>" value="<?php echo $row->sortid;?>"  id="sortid_<?php echo $k?>" class="admin-input-xs"></td>
+					<td><input type="text" name="attname_<?php echo $k?>" value="<?php echo $row->attname;?>" id="attname_<?php echo $k?>" class="admin-input-sm"></td>
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k?>">

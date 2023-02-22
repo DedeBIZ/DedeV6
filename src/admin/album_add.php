@@ -43,7 +43,7 @@ else if ($dopost == 'save') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
     if (!isset($typeid2)) $typeid2 = 0;
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
@@ -54,7 +54,7 @@ else if ($dopost == 'save') {
     if (!isset($ddisfirst)) $ddisfirst = 0;
     if (!isset($albums)) $albums = "";
     if (!isset($delzip)) $delzip = 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
     if ($typeid == 0) {
         ShowMsg("请指定文档的栏目", "-1");
         exit();

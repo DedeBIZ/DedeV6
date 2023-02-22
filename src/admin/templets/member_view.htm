@@ -33,7 +33,7 @@
 			<tr>
 				<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 查看会员</td>
 			</tr>
-			<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">当前用户是网站管理员关连的帐号，请小心操作</div></td></tr>';?>
+			<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">当前用户是关连网站管理员，谨慎操作</div></td></tr>';?>
 			<form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
 				<input type="hidden" name="dopost" value="edituser">
 				<input type="hidden" name="id" value="<?php echo $id?>">
@@ -117,7 +117,7 @@
 					<td class="admin-td">推荐级别：</td>
 					<td class="admin-td">
 						<input type="hidden" name="oldmatt" id="oldmatt" class="admin-input-sm" value="<?php echo $row['matt']?>">
-						<input name="matt" type="text" id="matt" class="admin-input-sm" value="<?php echo $row['matt']?>">（0普通，1推荐，10管理员）
+						<input name="matt" type="text" id="matt" class="admin-input-sm" value="<?php echo $row['matt']?>">（0普通、1推荐、10管理员）
 					</td>
 				</tr>
 				<tr>
@@ -145,7 +145,7 @@
 					<td class="admin-td">
 						<?php
 						$nrow = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='{$row['mid']}' ");
-						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']} 页面浏览：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']}";
+						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']} 浏览：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']}";
 						?>
 					</td>
 				</tr>

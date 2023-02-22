@@ -34,15 +34,15 @@
 				</tr>
 				<tr>
 					<td>自定义表单名称：</td>
-					<td><input type="text" name="name" id="name" value="<?php echo $row['name']?>" class="admin-input-sm">（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）</td>
+					<td><input type="text" name="name" id="name" class="admin-input-sm" value="<?php echo $row['name']?>">（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）</td>
 				</tr>
 				<tr>
 					<td>数据表：</td>
-					<td><input type="text" name="table" id="table" value="<?php echo $row['table'];?>" disabled="1" class="admin-input-sm">（自定义表单数据表创建后不可修改表名）</td>
+					<td><input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $row['table'];?>" disabled="1">（自定义表单数据表创建后不可修改表名）</td>
 				</tr>
 				<tr>
 					<td>模型字段配置：</td>
-					<td><button type="button" name="fset" id="fset" onclick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'" class="btn btn-success btn-sm">添加新字段</button></td>
+					<td><button type="button" name="fset" id="fset" class="btn btn-success btn-sm" onclick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'">添加新字段</button></td>
 				</tr>
 				<tr>
 					<td colspan="2">
