@@ -58,7 +58,66 @@ if ($action === 'is_need_check_code') {
             "email" => $row['email'],
         ),
     ));
-}  else {
+} else if($action === 'upload_face'){
+    if (!$cfg_ml->IsLogin()) {
+        if ($format === 'json') {
+            echo json_encode(array(
+                "code" => -1,
+                "msg" => "未登录",
+                "data" => null,
+            ));
+        } else {
+            echo "";
+        }
+        exit;
+    }
+    $target_dir = "uploads/"; //上传目录
+
+    $allowedTypes = array('image/png', 'image/jpg', 'image/jpeg');
+    $uploadedFile = $_FILES['file']['tmp_name'];
+    $fileType = mime_content_type($uploadedFile);
+    $imgSize = getimagesize($uploadedFile);
+    if (!in_array($fileType, $allowedTypes) || !$imgSize) {
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "仅支持图片格式文件",
+            "data" => null,
+        ));
+        exit;
+    }
+    
+    if (!is_dir($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}")) {
+        MkdirAll($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}", $cfg_dir_purview);
+        CloseFtp();
+    }
+    $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png"; //上传文件名
+    $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/newface.png";
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+        require_once DEDEINC."/libraries/imageresize.class.php";
+        try{
+            $image = new ImageResize($target_file);
+            $image->crop(150, 150);
+            $image->save($target_file);
+            echo json_encode(array(
+                "code" => 0,
+                "msg" => "上传成功",
+                "data" => $target_url,
+            ));
+        } catch (ImageResizeException $e) {
+            echo json_encode(array(
+                "code" => -1,
+                "msg" => "图片自动裁剪失败",
+                "data" => null,
+            ));
+        }
+    } else {
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "上传失败",
+            "data" => null,
+        ));
+    }
+} else {
     $format = isset($format) ? "json" : "";
     if (!$cfg_ml->IsLogin()) {
         if ($format === 'json') {

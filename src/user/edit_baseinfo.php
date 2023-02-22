@@ -13,6 +13,7 @@ if (!isset($dopost)) $dopost = '';
 $pwd2 = (empty($pwd2)) ? "" : $pwd2;
 $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."'");
 $face = $row['face'];
+$newface = isset($newface)? $newface : '';
 if ($dopost == 'save') {
     //校验CSRF
     CheckCSRF();
@@ -31,6 +32,7 @@ if ($dopost == 'save') {
         ShowMsg('您两次输入的新密码不一致', '-1');
         exit();
     }
+
     $addupquery = '';
     $admaddupquery = '';
     $pp = "pwd";
@@ -55,6 +57,14 @@ if ($dopost == 'save') {
             $pwd = md5($userpwd);
             $pwd2 = substr(md5($userpwd), 5, 20);
         }
+    }
+    //修改头像
+    $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png";
+    if (!empty($newface) && file_exists($target_file)) {
+        rename($target_file, $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/face.png");
+        $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/face.png";
+        $addupquery = ",face='{$target_url}'";
+        @unlink($target_file);
     }
     //修改安全问题或邮箱
     if ($email != $row['email'] || ($newsafequestion != 0 && $newsafeanswer != '')) {

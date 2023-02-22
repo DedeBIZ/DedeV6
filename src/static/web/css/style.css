@@ -387,11 +387,7 @@ input[type=file] {
 	position:relative
 }
 .file-absolute {
-	position:absolute;
-	top:0;
-	right:0;
-	opacity:0;
-	cursor:pointer
+	display: none;
 }
 #btnScrollTop {
 	display:none;
