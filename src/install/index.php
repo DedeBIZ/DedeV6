@@ -106,7 +106,7 @@ else if ($step==2)
     $dbname = empty($dbname)? $dfDbname : $dbname;
     $adminuser = empty($adminuser)? "admin" : $adminuser;
     $adminpwd = empty($adminpwd)? "admin" : $adminpwd;
-    $webname = empty($webname)? "某某公司" : $webname;
+    $webname = empty($webname)? "穆云智能科技" : $webname;
     $baseurl = empty($baseurl)? $dfbaseurl : $baseurl;
     $cmspath = empty($cmspath)? $dfbasepath : $cmspath;
     if ( $dbtype == 'sqlite' )

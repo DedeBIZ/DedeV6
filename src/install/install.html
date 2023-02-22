@@ -11,7 +11,7 @@
 		<script src="../static/web/js/popper.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/style.js"></script>
-		<style>*{margin:0;padding:0;letter-spacing:.6px;box-sizing:border-box}body{line-height:1.6;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#545b62}h2,legend{font-size:18px;font-weight:600}input,select,.btn{font-size:14px!important}.install-box{margin:0 auto;width:860px}.admin-head{padding:1rem 0;background:#fff}.logo{height:36px}.admin-nav{height:36px;line-height:36px}.admin-nav-a{padding-right:30px}.admin-btn{color:#545b62}.dropdown-menu{min-width:8rem;font-size:14px}.dropdown-item{padding:0 1rem;height:36px;line-height:36px;font-size:14px;color:#545b62!important}.fa{font-size:14px!important;color:inherit;cursor:pointer}@media (max-width:760px){.install-box{width:100%}.admin-head{padding:1rem 15px}.admin-nav-a{display:none!important}}</style>
+		<style>*{margin:0;padding:0;letter-spacing:.6px;box-sizing:border-box}body{line-height:1.6;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#545b62}h2,legend{line-height:1.6;font-size:24px;color:#393d49;font-weight:600}input,select,.btn{font-size:14px!important}.install-box{margin:0 auto;width:860px}.admin-head{padding:1rem 0;background:#fff}.logo{height:36px}.admin-nav{height:36px;line-height:36px}.admin-nav-a{padding-right:30px}.admin-btn{color:#545b62}.dropdown-menu{min-width:8rem;font-size:14px}.dropdown-item{padding:0 1rem;height:36px;line-height:36px;font-size:14px;color:#545b62!important}.fa{font-size:14px!important;color:inherit;cursor:pointer}@media (max-width:760px){.install-box{width:100%}.admin-head{padding:1rem 15px}.admin-nav-a{display:none!important}}</style>
 	</head>
 	<body>
 		<div class="d-flex flex-md-row align-items-center shadow-sm admin-head mb-5">
@@ -36,8 +36,8 @@
 				<?php }}?>
 				<div class="alert alert-warning">请先阅读<a href="https://www.dedebiz.com/license?from=install" target="_blank" class="text-primary">《站点授权协议》</a></div>
 				<div class="card shadow-sm mb-3">
-					<div class="card-header bg-success text-white">
-						<h2 class="text-center my-0">安装DedeV<?php echo $cfg_version_detail;?></h2>
+					<div class="card-header bg-success">
+						<h2 class="text-center text-white my-0">安装DedeV<?php echo $cfg_version_detail;?></h2>
 					</div>
 					<div class="card-body">
 						<form action="../install/index.php" method="post" name="form1">
@@ -85,7 +85,7 @@
 							</div>
 							<div class="form-group">
 								<label for="webname" class="form-label">网站名称</label>
-								<input type="text" name="webname" id="webname" class="form-control" placeholder="某某公司">
+								<input type="text" name="webname" id="webname" class="form-control" placeholder="穆云智能科技">
 							</div>
 							<div class="form-group">
 								<label for="adminuser" class="form-label">管理员账号<i class="fa fa-question-circle text-warning ml-2" data-toggle="tooltip" title="只能用[0-9a-zA-Z_@!.-]以内范围的字符"></i></label>
