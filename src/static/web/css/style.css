@@ -1,8 +1,8 @@
 body {
 	line-height:1.6;
+	letter-spacing:.6px;
 	font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
-	color:#545b62;
-	letter-spacing:.6px
+	color:#545b62
 }
 a {
 	color:#545b62;
