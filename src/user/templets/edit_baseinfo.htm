@@ -30,11 +30,6 @@
 					ShowMsg("请您填写昵称");
 					return false;
 				}
-				if (document.form2.vdcode.value == "") {
-					document.form2.vdcode.focus();
-					ShowMsg("请您填写验证码");
-					return false;
-				}
 			}
 		</script>
 	</head>
@@ -101,7 +96,10 @@
 							</div>
 							<div class="form-group row">
 								<label for="iptEmail" class="col-sm-3 col-form-label">邮箱</label>
-								<div class="col-sm-9"><input type="email" name="email" id="iptEmail" class="form-control" placeholder="每个邮箱只能注册一个帐号，修改邮箱必须填写正确安全问题答案"></div>
+								<div class="col-sm-9">
+									<span id="spEmail"><?php echo HideEmail($row['email']);?> <span class="btn btn-success btn-sm" id="btnChangeEmail">修改邮箱</span></span>
+									<span id="iptEmail"></span>
+								</div>
 							</div>
 							<div class="form-group row">
 								<label for="iptEmail" class="col-sm-3 col-form-label">性别</label>
@@ -118,5 +116,25 @@
 			</div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>
+		<script>
+			$(document).ready(function () {
+				$("#btnChangeEmail").click(function(){
+					if ($("#iptOldpwd").val() === "") {
+						ShowMsg("请您填写旧密码");
+						return false;
+					}
+					$.post("<?php echo $cfg_cmsurl;?>/user/api.php?action=get_old_email",{oldpwd:$("#iptOldpwd").val()},function(result) {
+						if (result.code === 0) {
+							console.log(result);
+							$("#spEmail").hide();
+							$("#iptEmail").html(`<input value="${result.data.email}" type="email" name="email" id="iptEmail" class="form-control">`);
+							$("#iptEmail").show();
+						} else {
+							ShowMsg(result.msg);
+						}
+					});
+				})
+			});
+		</script>
 	</body>
 </html>

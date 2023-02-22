@@ -63,14 +63,17 @@ if ($dopost == 'save') {
             exit();
         }
         //修改邮箱
-        if ($email != $row['email']) {
-            if (!CheckEmail($email)) {
-                ShowMsg('邮箱格式不正确', '-1');
-                exit();
-            } else {
-                $addupquery .= ",email='$email'";
+        if (!empty($email)) {
+            if ($email != $row['email']) {
+                if (!CheckEmail($email)) {
+                    ShowMsg('邮箱格式不正确', '-1');
+                    exit();
+                } else {
+                    $addupquery .= ",email='$email'";
+                }
             }
         }
+
         //修改安全问题
         if ($newsafequestion != 0 && $newsafeanswer != '') {
             if (strlen($newsafeanswer) > 30) {

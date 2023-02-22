@@ -665,6 +665,20 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
     }
     echo $dede_addonfields;
 }
+/**
+ * HideEmail 隐藏邮箱
+ *
+ * @param  mixed $email
+ * @return string
+ */
+function HideEmail($email)
+{
+    $em   = explode("@",$email);
+    $name = implode('@', array_slice($em, 0, count($em)-1));
+    $len  = floor(strlen($name)/2);
+
+    return substr($name,0, $len) . str_repeat('*', $len) . "@" . end($em);   
+}
 //自定义函数接口
 if (file_exists(DEDEINC.'/extend.func.php')) {
     require_once(DEDEINC.'/extend.func.php');

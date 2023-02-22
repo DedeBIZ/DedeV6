@@ -21,7 +21,44 @@ if ($action === 'is_need_check_code') {
         ),
     ));
     exit;
-} else {
+} else if ($action === 'get_old_email') {
+    $oldpwd = isset($oldpwd)? $oldpwd : '';
+    if (empty($oldpwd)) {
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "旧密码不能为空",
+            "data" => null,
+        ));
+        exit;
+    }
+    $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."'");
+    if (function_exists('password_hash') && !empty($row['pwd_new'])) {
+        if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
+            echo json_encode(array(
+                "code" => -1,
+                "msg" => "旧密码校验错误",
+                "data" => null,
+            ));
+            exit;
+        }
+    } else {
+        if (!is_array($row) || $row['pwd'] != md5($oldpwd)) {
+            echo json_encode(array(
+                "code" => -1,
+                "msg" => "旧密码校验错误",
+                "data" => null,
+            ));
+            exit;
+        }
+    }
+    echo json_encode(array(
+        "code" => 0,
+        "msg" => "",
+        "data" => array(
+            "email" => $row['email'],
+        ),
+    ));
+}  else {
     $format = isset($format) ? "json" : "";
     if (!$cfg_ml->IsLogin()) {
         if ($format === 'json') {
