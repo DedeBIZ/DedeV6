@@ -46,6 +46,6 @@ while ($channel = $dsql->GetArray('addmod')) {
                 </ul>
             </div>
         </li>
-        <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_edtitem) && $_menu_edtitem === 'base') echo 'active';?>"><a href="edit_baseinfo.php">资料修改</a></li>
+        <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_edtitem) && $_menu_edtitem === 'base') echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">资料修改</a></li>
     </ul>
 </div>

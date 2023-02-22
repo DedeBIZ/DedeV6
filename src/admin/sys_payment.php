@@ -43,7 +43,7 @@ if ($dopost === "get_payments") {
                 $configItem->$kk = $ii;
             }
         }
-        $cfg = json_encode($configItem);
+        $cfg = json_encode($configItem, JSON_UNESCAPED_UNICODE);
         $upQuery = "UPDATE `#@__sys_payment` SET sortrank='$sortrank',status='$status',config='$cfg' WHERE code='$key'; ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
             echo json_encode(array(

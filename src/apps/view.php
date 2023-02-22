@@ -55,13 +55,13 @@ if ($needMoney > 0 || $needRank > 1) {
         if (!is_array($row)) {
             if ($cfg_ml->M_Money == '' || $needMoney > $cfg_ml->M_Money) {
                 $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-                $moremsg = "该文档需要<span class='text-primary'>".$needMoney."</span>金币才能浏览，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>";
+                $moremsg = "该文档需要<span class='text-primary'>".$needMoney."</span>金币才能浏览，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><br><a class='btn btn-success btn-sm' href='{$GLOBALS['cfg_cmsurl']}/user/buy.php' target='_blank'>前去充值</a>";
                 include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                 $arc->Close();
                 exit();
             } else {
                 if ($dopost == 'buy') {
-                    $inquery = "INSERT INTO `#@__member_operation` (mid,oldinfo,money,mtime,buyid,product,pname) VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."','ARCHIVE".$aid."','archive',''); ";
+                    $inquery = "INSERT INTO `#@__member_operation` (mid,oldinfo,money,mtime,buyid,product,pname,sta) VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."','ARCHIVE".$aid."','archive','购买内容',2); ";
                     if ($dsql->ExecuteNoneQuery($inquery)) {
                         $inquery = "UPDATE `#@__member` SET money=money-$needMoney WHERE mid='".$cfg_ml->M_ID."'";
                         if (!$dsql->ExecuteNoneQuery($inquery)) {
@@ -76,7 +76,7 @@ if ($needMoney > 0 || $needRank > 1) {
                     }
                 }
                 $msgtitle = "扣金币购买阅读";
-                $moremsg = "该文档需要付费<span class='text-primary'>".$needMoney."</span>金币，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><br><a href='{$GLOBALS['cfg_cmsurl']}/apps/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>";
+                $moremsg = "该文档需要付费<span class='text-primary'>".$needMoney."</span>金币，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><br><a class='btn btn-success btn-sm' href='{$GLOBALS['cfg_cmsurl']}/apps/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>";
                 include_once($cfg_basedir.$cfg_templets_dir."/plus/view_msg.htm");
                 $arc->Close();
                 exit();

@@ -42,16 +42,22 @@ if ($dopost === "bank_ok") {
     }
     $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = 1");
     $pData = (array)json_decode($pInfo['config']);
-    $config = array(
-        "appid" => $pData['AppID'],
-        "mch_id" => $pData['MchID'],
-        "mch_key" => $pData['APIv2Secret'],
-    );
-    $wechat = new \WeChat\Pay($config);
-    $options = array(
-        'out_trade_no' => $buyid,
-    );
-    $result = $wechat->queryOrder($options);
+    try {
+        $config = array(
+            "appid" => $pData['AppID'],
+            "mch_id" => $pData['MchID'],
+            "mch_key" => $pData['APIv2Secret'],
+        );
+        $wechat = new \WeChat\Pay($config);
+        $options = array(
+            'out_trade_no' => $buyid,
+        );
+        $result = $wechat->queryOrder($options);
+    } catch (Exception $e) {
+        ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
+        exit;
+    }
+
     if ($result['return_code'] === "SUCCESS" && $result['trade_state'] === "SUCCESS") {
         $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid='{$moRow['pid']}'");
         $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE buyid = '$buyid'";
@@ -160,16 +166,17 @@ if ($paytype === 0) {
             "mch_id" => $pData['MchID'],
             "mch_key" => $pData['APIv2Secret'],
         );
-        $wechat = new \WeChat\Pay($config);
-        $options = array(
-            'product_id'       => $buyid,
-            'body'             => $row['pname'],
-            'out_trade_no'     => $buyid,
-            'total_fee'        => $row['money']*100,
-            'trade_type'       => 'NATIVE',
-            'notify_url'       => $GLOBALS['cfg_basehost'].$GLOBALS['cfg_phpurl'].'/notify.php?dopost=wechat',
-        );
+
         try {
+            $wechat = new \WeChat\Pay($config);
+            $options = array(
+                'product_id'       => $buyid,
+                'body'             => $row['pname'],
+                'out_trade_no'     => $buyid,
+                'total_fee'        => $row['money']*100,
+                'trade_type'       => 'NATIVE',
+                'notify_url'       => $GLOBALS['cfg_basehost'].$GLOBALS['cfg_phpurl'].'/notify.php?dopost=wechat',
+            );
             //生成预支付码
             $result = $wechat->createOrder($options);
             $payurl = $result['code_url'];
@@ -214,7 +221,8 @@ if ($paytype === 0) {
 
             echo $result;
         } catch (Exception $e) {
-            echo $e->getMessage();
+            ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
+            exit;
         }
     }  elseif ($paytype === 3) {
         include_once(DEDEINC.'/libraries/oxwindow.class.php');

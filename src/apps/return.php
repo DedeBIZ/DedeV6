@@ -56,5 +56,8 @@ if ($dopost === 'alipay') {
         ShowMsg("付款错误", "javascript:;");
         exit;
     }
+} else {
+    ShowMsg("未知支付方式", "javascript:;");
+    exit;
 }
 ?>
