@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('member_Type');
 if (empty($dopost)) $dopost = "";
-
 //保存修改
 if ($dopost == "save") {
     $startID = 1;
@@ -36,7 +35,6 @@ if ($dopost == "save") {
             $dsql->ExecuteNoneQuery($query);
         }
     }
-
     //增加新记录
     if (isset($check_new) && $pname_new != '') {
         $query = "INSERT INTO `#@__moneycard_type` (num,pname,money) VALUES ('{$num_new}','{$pname_new}','{$money_new}');";

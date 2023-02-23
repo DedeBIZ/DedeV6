@@ -21,8 +21,8 @@ while ($row = $dsql->GetObject('mct')) {
     $moneycards .= "<tr>
     <td><input type='radio' name='pid' value='{$row->tid}'></td>
     <td>{$row->pname}</td>
-    <td>{$row->num}个</td>
-    <td>{$row->money}元</td>
+    <td>{$row->num}</td>
+    <td>{$row->money}</td>
     </tr>
     ";
 }
@@ -35,7 +35,7 @@ while ($row = $dsql->GetObject('mt')) {
     <td>{$row->pname}</td>
     <td>{$row->membername}</td>
     <td>{$row->exptime}</td>
-    <td>{$row->money}元</td>
+    <td>{$row->money}</td>
     </tr>
     ";
 }

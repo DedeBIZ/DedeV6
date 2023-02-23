@@ -32,7 +32,6 @@ if ($dopost == 'save') {
         ShowMsg('您两次输入的新密码不一致', '-1');
         exit();
     }
-
     $addupquery = '';
     $admaddupquery = '';
     $pp = "pwd";
@@ -83,7 +82,6 @@ if ($dopost == 'save') {
                 }
             }
         }
-
         //修改安全问题
         if ($newsafequestion != 0 && $newsafeanswer != '') {
             if (strlen($newsafeanswer) > 30) {

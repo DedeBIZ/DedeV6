@@ -38,19 +38,15 @@
 				<input type="hidden" name="dopost" value="edituser">
 				<input type="hidden" name="id" value="<?php echo $id?>">
 				<tr>
-					<td width="260" class="admin-td">头像/用户名/类型：</td>
+					<td width="260" class="admin-td">头像/用户名：</td>
 					<td>
-						<span class="mr-1">
-							<?php
-							if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};
-							echo "".$row['userid']."";
-							?>
-						</span>
-						<span class="btn btn-outline-success btn-sm"><?php echo $row['mtype'];?></span>
+						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};echo "".$row['userid']."";?></span>
+						<span class="btn btn-outline-success btn-sm">高级会员</span>
+						<span class="btn btn-outline-warning btn-sm">少尉</span>
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">公司名/昵称：</td>
+					<td class="admin-td">昵称：</td>
 					<td class="admin-td"><input type="text" name="uname" id="uname" class="admin-input-sm" value="<?php echo $row['uname']?>"></td>
 				</tr>
 				<tr>

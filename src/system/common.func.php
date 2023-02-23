@@ -9,7 +9,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//显示类似Bootstrap系统提示
+//显示类似Bootstrap警告框
 define('ALERT_PRIMARY', 1);
 define('ALERT_SECONDARY', 2);
 define('ALERT_SUCCESS', 3);
@@ -93,7 +93,7 @@ function get_mime_type($filename)
     if (!function_exists('finfo_open')) {
         return 'unknow/octet-stream';
     }
-    $finfo    = finfo_open(FILEINFO_MIME_TYPE);
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mimeType = finfo_file($finfo, $filename);
     finfo_close($finfo);
     return $mimeType;
@@ -108,9 +108,7 @@ function is_all_numeric(array $array)
 function make_hash()
 {
     $rand = dede_random_bytes(16);
-    $_SESSION['token'] = ($rand === FALSE)
-        ? md5(uniqid(mt_rand(), TRUE))
-        : bin2hex($rand);
+    $_SESSION['token'] = ($rand === FALSE) ? md5(uniqid(mt_rand(), TRUE)) : bin2hex($rand);
     return $_SESSION['token'];
 }
 function dede_random_bytes($length)
@@ -154,7 +152,6 @@ if (!function_exists('CheckSql')) {
         //如果是普通查询语句，直接过滤一些特殊语法
         if ($querytype == 'select') {
             $notallow1 = "[^0-9a-z@\._-]{1,}(union|sleep|benchmark|load_file|outfile)[^0-9a-z@\.-]{1,}";
-            //$notallow2 = "--|/\*";
             if (preg_match("/".$notallow1."/i", $db_string)) {
                 fputs(fopen($log_file, 'a+'), "$userIP||$getUrl||$db_string||SelectBreak\r\n");
                 exit("<span>Safe Alert: Request Error step 1 !</span>");
@@ -493,7 +490,6 @@ function GetUpdateSQL()
                     $query = preg_replace('/,([\t\s ]+)PRIMARY KEY([\t\s ]+)\(`([0-9a-zA-Z]+)`\)/i','',$query);
                 }
                 $sqls[] = $query;
-                // $db->exec($query);
             } else {
                 if (preg_match('#CREATE#i', $query)) {
                     $sqls[] = preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query);
@@ -676,7 +672,6 @@ function HideEmail($email)
     $em   = explode("@",$email);
     $name = implode('@', array_slice($em, 0, count($em)-1));
     $len  = floor(strlen($name)/2);
-
     return substr($name,0, $len) . str_repeat('*', $len) . "@" . end($em);   
 }
 //自定义函数接口

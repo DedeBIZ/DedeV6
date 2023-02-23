@@ -28,7 +28,7 @@ h1,h2,h3,h4,h5,h6 {
 	color:#393d49
 }
 h1 {
-	font-size:32px
+	font-size:36px
 }
 h2 {
 	font-size:24px
@@ -300,7 +300,7 @@ input[type=file] {
 .form-control,.btn,.fa {
 	font-size:14px!important
 }
-.form-control {
+.form-control,.input-text {
 	height:36px;
 	line-height:36px
 }
@@ -382,12 +382,6 @@ input[type=file] {
 .album-imgs img {
 	max-width:260px;
 	max-height:156px
-}
-.file-relative {
-	position:relative
-}
-.file-absolute {
-	display: none;
 }
 #btnScrollTop {
 	display:none;
