@@ -37,6 +37,7 @@ function addArchives()
 添加投稿
 ------------------*/
 else if ($dopost == "addArc") {
+    CheckRank(0, 0);
     if ($channelid == 1) {
         $addcon = 'article_add.php?channelid='.$channelid;
     } else if ($channelid == 2) {

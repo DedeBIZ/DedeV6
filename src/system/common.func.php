@@ -669,6 +669,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
  */
 function HideEmail($email)
 {
+    if (empty($email)) return "空";
     $em   = explode("@",$email);
     $name = implode('@', array_slice($em, 0, count($em)-1));
     $len  = floor(strlen($name)/2);

@@ -14,6 +14,7 @@ require_once(DEDEINC."/userlogin.class.php");
 require_once(DEDEINC."/customfields.func.php");
 require_once(dirname(__FILE__)."/inc/inc_catalog_options.php");
 require_once(dirname(__FILE__)."/inc/inc_archives_functions.php");
+CheckRank(0, 0);
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
@@ -146,7 +147,8 @@ else if ($dopost == 'save') {
         ShowMsg("没找到当前模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
-        $inquery = "INSERT INTO `{$addtable}` (aid,typeid,arcrank,mid,channel,title,senddate,litpic,userip{$inadd_f}) VALUES ('$arcID','$typeid','$arcrank','$mid','$channelid','$title','$senddate','','$userip'{$inadd_v})";
+        $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
+        $inquery = "INSERT INTO `{$addtable}` (aid,typeid,arcrank,mid,channel,title,senddate,litpic,userip{$inadd_f}) VALUES ('$arcID','$typeid','$arcrank','$mid','$channelid','$title','$senddate','$litpic','$userip'{$inadd_v})";
         if (!$dsql->ExecuteNoneQuery($inquery)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");

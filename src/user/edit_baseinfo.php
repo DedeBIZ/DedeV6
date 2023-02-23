@@ -60,8 +60,9 @@ if ($dopost == 'save') {
     //修改头像
     $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png";
     if (!empty($newface) && file_exists($target_file)) {
-        rename($target_file, $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/face.png");
-        $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/face.png";
+        $rnd = mt_rand(10000, 99999);
+        rename($target_file, $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/face{$rnd}.png");
+        $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/face{$rnd}.png";
         $addupquery = ",face='{$target_url}'";
         @unlink($target_file);
     }

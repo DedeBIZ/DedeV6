@@ -147,7 +147,7 @@
 				var fileData = $('#iptNewface')[0].files[0];
 				formData.append('file', fileData);
 				$.ajax({
-					url: '<?php echo $cfg_cmsurl;?>/user/api.php?action=upload_face',
+					url: '<?php echo $cfg_cmsurl;?>/user/api.php?action=upload&type=face',
 					type: 'POST',
 					data: formData,
 					processData: false,

@@ -58,7 +58,7 @@ if ($action === 'is_need_check_code') {
             "email" => $row['email'],
         ),
     ));
-} else if($action === 'upload_face'){
+} else if($action === 'upload'){
     if (!$cfg_ml->IsLogin()) {
         if ($format === 'json') {
             echo json_encode(array(
@@ -72,6 +72,7 @@ if ($action === 'is_need_check_code') {
         exit;
     }
     $target_dir = "uploads/"; //上传目录
+    $type = isset($type)? $type : '';
 
     $allowedTypes = array('image/png', 'image/jpg', 'image/jpeg');
     $uploadedFile = $_FILES['file']['tmp_name'];
@@ -85,18 +86,46 @@ if ($action === 'is_need_check_code') {
         ));
         exit;
     }
-    
     if (!is_dir($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}")) {
         MkdirAll($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}", $cfg_dir_purview);
         CloseFtp();
     }
-    $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png"; //上传文件名
-    $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/newface.png";
+    if ($type === "face") {
+        $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png"; //上传文件名
+        $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/newface.png";
+    } else {
+        $nowtme = time();
+        $rnd = $nowtme.'-'.mt_rand(1000,9999);
+        $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.'.png';
+        $fsize = filesize($_FILES["file"]["tmp_name"]);
+        $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".png";
+        $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."'; ");
+        $uptime = time();
+        if(is_array($row))
+        {
+            $query = "UPDATE `#@__uploads` SET mediatype=1,
+                         width='{$imgSize[0]}',height='{$imgSize[1]}',filesize='{$fsize}',uptime='$uptime'
+                         WHERE aid='{$row['aid']}'; ";
+            $dsql->ExecuteNoneQuery($query);
+        }
+        else
+        {
+            $inquery = "INSERT INTO `#@__uploads`(url,mediatype,width,height,playtime,filesize,uptime,mid)
+               VALUES ('$target_url','1','".$imgSize[0]."','".$imgSize[1]."','0','".$fsize."','$uptime','".$cfg_ml->M_ID."'); ";
+            $dsql->ExecuteNoneQuery($inquery);
+        }
+    }
+
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
         require_once DEDEINC."/libraries/imageresize.class.php";
         try{
             $image = new ImageResize($target_file);
-            $image->crop(150, 150);
+            if ($type === "face") {
+                $image->crop(150, 150);
+            } else {
+                $image->resize($cfg_ddimg_width, $cfg_ddimg_height);
+            }
+            
             $image->save($target_file);
             echo json_encode(array(
                 "code" => 0,

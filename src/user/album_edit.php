@@ -114,8 +114,8 @@ else if ($dopost == 'save') {
     }
     $description = HtmlReplace($description, -1);
     //更新数据库的SQL语句
-    //更新数据库的SQL语句
-    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',description='$description',keywords='$keywords',mtype='$mtypesid',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
+    $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
+    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',description='$description',keywords='$keywords',mtype='$mtypesid',flag='$flag',litpic='$litpic' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();

@@ -14,6 +14,7 @@ require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
 require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
+CheckRank(0, 0);
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
@@ -77,8 +78,9 @@ else if ($dopost == 'save') {
     }
     $body = AnalyseHtmlBody($body, $description);
     $body = HtmlReplace($body, -1);
+    $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
     //更新数据库的SQL语句
-    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',description='$description',mtype='$mtypesid',keywords='$keywords',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
+    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',description='$description',mtype='$mtypesid',keywords='$keywords',flag='$flag',litpic='$litpic' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();

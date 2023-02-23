@@ -14,6 +14,7 @@ require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
 require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
+CheckRank(0, 0);
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
@@ -106,7 +107,8 @@ else if ($dopost == 'save') {
         }
     }
     if ($addtable != '') {
-        $upQuery = "UPDATE `$addtable` SET `title`='$title',`typeid`='$typeid',`arcrank`='$arcrank',userip='$userip'{$inadd_f} WHERE aid='$aid' ";
+        $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
+        $upQuery = "UPDATE `$addtable` SET `title`='$title',`typeid`='$typeid',`arcrank`='$arcrank',litpic='$litpic',userip='$userip'{$inadd_f} WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
             ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "javascript:;");
             exit();

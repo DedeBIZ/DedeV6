@@ -253,4 +253,9 @@ function GetSafequestion($selid=0,$formname='safequestion')
 	return $safequestions_form;
 }
 $enabledChannels = MemberLogin::GetEnabledChannels();
+
+function UserInclude($file)
+{
+    return DEDEMEMBER.'/'.$file;
+}
 ?>

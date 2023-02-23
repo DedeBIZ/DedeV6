@@ -7,6 +7,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+CheckRank(0, 0);
 $svali = GetCkVdValue();
 if (strtolower($vdcode) != $svali || $svali == "") {
     ShowMsg("验证码不正确", "-1");
