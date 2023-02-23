@@ -524,6 +524,16 @@ class MemberLogin
             PutCookie('DedeLoginTime', $this->M_LoginTime);
         }
     }
+    function GetMemberTypeName()
+    {
+        global $dsql;
+        if ($this->M_Rank == 0) {
+            return '普通会员';
+        } else {
+            $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$this->M_Rank."'");
+            return $row['membername'];
+        }
+    }
     /**
      *  获得会员目前的状态
      *

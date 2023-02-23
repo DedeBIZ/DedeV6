@@ -243,11 +243,35 @@ if ($paytype === 0) {
             exit;
         }
         $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE buyid = '$buyid'";
-        $dsql->ExecuteNoneQuery($query);
-        $query = "UPDATE `#@__member` SET money = money+{$row['num']} WHERE mid = '$mid'";
-        $dsql->ExecuteNoneQuery($query);
-        $query = "UPDATE `#@__member` SET user_money = user_money-{$row['money']} WHERE mid = '$mid'";
-        $dsql->ExecuteNoneQuery($query);
+        if ($product == 'card') {
+            $dsql->ExecuteNoneQuery($query);
+            $query = "UPDATE `#@__member` SET money = money+{$row['num']} WHERE mid = '$mid'";
+            $dsql->ExecuteNoneQuery($query);
+            $query = "UPDATE `#@__member` SET user_money = user_money-{$row['money']} WHERE mid = '$mid'";
+            $dsql->ExecuteNoneQuery($query);
+        } else if($product == 'member'){
+            $rank = $row['rank'];
+            $exptime = $row['exptime'];
+            $rs = $dsql->GetOne("SELECT uptime,exptime FROM `#@__member` WHERE mid='".$mid."'");
+            if($rs['uptime']!=0 && $rs['exptime']!=0 ) 
+            {
+                $nowtime = time();
+                $mhasDay = $rs['exptime'] - ceil(($nowtime - $rs['uptime'])/3600/24) + 1;
+                $mhasDay=($mhasDay>0)? $mhasDay : 0;
+            }
+            $memrank = $dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE `rank`='$rank'");
+            //更新会员信息
+            $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',
+                       scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' 
+                       WHERE mid='".$mid."'";
+            $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='$buyid' ";
+            if(!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo)))
+            {
+                ShowMsg("余额付款升级会员失败", "javascript:;");
+                exit;
+            }
+        }
+        
         ShowMsg("成功使用余额付款", "javascript:;");
         exit;
     } elseif ($paytype === 5) {
