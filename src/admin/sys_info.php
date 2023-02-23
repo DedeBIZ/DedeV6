@@ -27,7 +27,7 @@ function ReWriteConfig()
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         if ($row['type'] == 'number') {
-            $row['value'] = preg_replace("#[^0-9.]#","", $row['value']);
+            $row['value'] = preg_replace("#[^0-9.-]#","", $row['value']);
             if ($row['value'] == '') $row['value'] = 0;
             fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         } else {
