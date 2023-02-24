@@ -140,8 +140,8 @@
 					<td>空间信息：</td>
 					<td class="admin-td">
 						<?php
-						$nrow = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='{$row['mid']}' ");
-						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']} 浏览：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']}";
+						$nrow = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='{$row['mid']}'");
+						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 收藏：{$nrow['stow']} 浏览：{$nrow['pagecount']}";
 						?>
 					</td>
 				</tr>

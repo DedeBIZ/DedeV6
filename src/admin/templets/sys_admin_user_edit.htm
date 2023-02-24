@@ -25,19 +25,19 @@
 				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<input type="hidden" name="id" value="<?php echo $row['id']?>">
 				<tr>
-					<td width="260" class="admin-td">用户登录id：</td>
+					<td width="260" class="admin-td">用户名：</td>
 					<td><?php echo $row['userid']?></td>
 				</tr>
 				<tr>
-					<td class="admin-td">用户名称：</td>
+					<td class="admin-td">昵称：</td>
 					<td class="admin-td"><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="admin-input-sm">（发布文档后显示作者的名字）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">用户密码：</td>
+					<td class="admin-td">密码：</td>
 					<td class="admin-td"><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">用户类型：</td>
+					<td class="admin-td">类型：</td>
 					<td class="admin-td">
 						<select name="usertype" class="admin-input-sm">
 							<?php
@@ -62,7 +62,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">真实姓名：</td>
+					<td class="admin-td">姓名：</td>
 					<td class="admin-td"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" class="admin-input-sm"></td>
 				</tr>
 				<tr>
