@@ -4,7 +4,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Exceptions\InvalidArgumentException;
 use WeChat\Exceptions\InvalidDecryptException;
 use WeChat\Exceptions\InvalidResponseException;
-
 /**
  * 微信通知处理基本类
  * Class BasicPushEvent
@@ -17,43 +16,36 @@ class BasicPushEvent
      * @var string
      */
     protected $appid;
-
     /**
      * 公众号推送XML内容
      * @var string
      */
     protected $postxml;
-
     /**
      * 公众号推送加密类型
      * @var string
      */
     protected $encryptType;
-
     /**
      * 公众号的推送请求参数
      * @var DataArray
      */
     protected $input;
-
     /**
      * 当前公众号配置对象
      * @var DataArray
      */
     protected $config;
-
     /**
      * 公众号推送内容对象
      * @var DataArray
      */
     protected $receive;
-
     /**
      * 准备回复的消息内容
      * @var array
      */
     protected $message;
-
     /**
      * BasicPushEvent constructor.
      * @param array $options
@@ -70,11 +62,11 @@ class BasicPushEvent
         if (empty($options['token'])) {
             throw new InvalidArgumentException("Missing Config -- [token]");
         }
-        // 参数初始化
+        //参数初始化
         $this->config = new DataArray($options);
         $this->input = new DataArray($_REQUEST);
         $this->appid = $this->config->get('appid');
-        // 推送消息处理
+        //推送消息处理
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $this->postxml = file_get_contents("php://input");
             $this->encryptType = $this->input->get('encrypt_type');
@@ -83,7 +75,7 @@ class BasicPushEvent
                     throw new InvalidArgumentException("Missing Config -- [encodingaeskey]");
                 }
                 if (!class_exists('Prpcrypt', false)) {
-                    require __DIR__ . '/Prpcrypt.php';
+                    require __DIR__.'/Prpcrypt.php';
                 }
                 $prpcrypt = new \Prpcrypt($this->config->get('encodingaeskey'));
                 $result = Tools::xml2arr($this->postxml);
@@ -101,7 +93,6 @@ class BasicPushEvent
             throw new InvalidResponseException('Invalid interface request.', '0');
         }
     }
-
     /**
      * 消息是否需要加密
      * @return boolean
@@ -110,7 +101,6 @@ class BasicPushEvent
     {
         return $this->encryptType === 'aes';
     }
-
     /**
      * 回复消息
      * @param array $data 消息内容
@@ -124,10 +114,10 @@ class BasicPushEvent
         $xml = Tools::arr2xml(empty($data) ? $this->message : $data);
         if ($this->isEncrypt() || $isEncrypt) {
             if (!class_exists('Prpcrypt', false)) {
-                require __DIR__ . '/Prpcrypt.php';
+                require __DIR__.'/Prpcrypt.php';
             }
             $prpcrypt = new \Prpcrypt($this->config->get('encodingaeskey'));
-            // 如果是第三方平台，加密得使用 component_appid
+            //如果是第三方平台，加密得使用 component_appid
             $component_appid = $this->config->get('component_appid');
             $appid = empty($component_appid) ? $this->appid : $component_appid;
             $array = $prpcrypt->encrypt($xml, $appid);
@@ -144,7 +134,6 @@ class BasicPushEvent
         @ob_clean();
         echo $xml;
     }
-
     /**
      * 验证来自微信服务器
      * @param string $str
@@ -160,7 +149,6 @@ class BasicPushEvent
         sort($tmpArr, SORT_STRING);
         return sha1(implode($tmpArr)) === $signature;
     }
-
     /**
      * 获取公众号推送对象
      * @param null|string $field 指定获取字段
@@ -170,7 +158,6 @@ class BasicPushEvent
     {
         return $this->receive->get($field);
     }
-
     /**
      * 获取当前微信OPENID
      * @return string
@@ -179,7 +166,6 @@ class BasicPushEvent
     {
         return $this->receive->get('FromUserName');
     }
-
     /**
      * 获取当前推送消息类型
      * @return string
@@ -188,7 +174,6 @@ class BasicPushEvent
     {
         return $this->receive->get('MsgType');
     }
-
     /**
      * 获取当前推送消息ID
      * @return string
@@ -197,7 +182,6 @@ class BasicPushEvent
     {
         return $this->receive->get('MsgId');
     }
-
     /**
      * 获取当前推送时间
      * @return integer
@@ -206,7 +190,6 @@ class BasicPushEvent
     {
         return $this->receive->get('CreateTime');
     }
-
     /**
      * 获取当前推送公众号
      * @return string
@@ -216,3 +199,4 @@ class BasicPushEvent
         return $this->receive->get('ToUserName');
     }
 }
+?>

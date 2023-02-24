@@ -1,6 +1,6 @@
 <?php
 /**
- * 单表模型列表
+ * 图片/软件列表
  *
  * @version        $id:content_sg_list.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

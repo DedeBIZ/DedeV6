@@ -3,7 +3,6 @@ namespace WeChat\Contracts;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Exceptions\InvalidArgumentException;
 use WeChat\Exceptions\InvalidResponseException;
-
 /**
  * 支付宝支付基类
  * Class AliPay
@@ -17,31 +16,26 @@ abstract class BasicAliPay
      * @var DataArray
      */
     protected $config;
-
     /**
      * 当前请求数据
      * @var DataArray
      */
     protected $options;
-
     /**
      * DzContent数据
      * @var DataArray
      */
     protected $params;
-
     /**
      * 静态缓存
      * @var static
      */
     protected static $cache;
-
     /**
      * 正常请求网关
      * @var string
      */
     protected $gateway = 'https://openapi.alipay.com/gateway.do?charset=utf-8';
-
     /**
      * AliPay constructor.
      * @param array $options
@@ -80,7 +74,6 @@ abstract class BasicAliPay
             $this->options->set('app_auth_token', $options['app_auth_token']);
         }
     }
-
     /**
      * 静态创建对象
      * @param array $config
@@ -88,11 +81,10 @@ abstract class BasicAliPay
      */
     public static function instance(array $config)
     {
-        $key = md5(get_called_class() . serialize($config));
+        $key = md5(get_called_class().serialize($config));
         if (isset(self::$cache[$key])) return self::$cache[$key];
         return self::$cache[$key] = new static($config);
     }
-
     /**
      * 查询支付宝订单状态
      * @param string $out_trade_no
@@ -105,7 +97,6 @@ abstract class BasicAliPay
         $this->options->set('method', 'alipay.trade.query');
         return $this->getResult(['out_trade_no' => $out_trade_no]);
     }
-
     /**
      * 支付宝订单退款操作
      * @param array|string $options 退款参数或退款商户订单号
@@ -120,7 +111,6 @@ abstract class BasicAliPay
         $this->options->set('method', 'alipay.trade.refund');
         return $this->getResult($options);
     }
-
     /**
      * 关闭支付宝进行中的订单
      * @param array|string $options
@@ -134,7 +124,6 @@ abstract class BasicAliPay
         $this->options->set('method', 'alipay.trade.close');
         return $this->getResult($options);
     }
-
     /**
      * 获取通知数据
      *
@@ -158,7 +147,6 @@ abstract class BasicAliPay
         }
         return $data;
     }
-
     /**
      * 验证接口返回的数据签名
      * @param array $data 通知数据
@@ -181,7 +169,6 @@ abstract class BasicAliPay
         }
         return $data;
     }
-
     /**
      * 获取数据签名
      * @return string
@@ -197,7 +184,6 @@ abstract class BasicAliPay
         }
         return base64_encode($sign);
     }
-
     /**
      * 去除证书前后内容及空白
      * @param string $sign
@@ -205,10 +191,9 @@ abstract class BasicAliPay
      */
     protected function trimCert($sign)
     {
-        // if (file_exists($sign)) $sign = file_get_contents($sign);
+        //if (file_exists($sign)) $sign = file_get_contents($sign);
         return preg_replace(['/\s+/', '/\-{5}.*?\-{5}/'], '', $sign);
     }
-
     /**
      * 数据签名处理
      * @param array $data 需要进行签名数据
@@ -226,7 +211,6 @@ abstract class BasicAliPay
         }
         return join('&', $attrs);
     }
-
     /**
      * 数据包生成及数据签名
      * @param array $options
@@ -236,7 +220,6 @@ abstract class BasicAliPay
         $this->options->set('biz_content', json_encode($this->params->merge($options), 256));
         $this->options->set('sign', $this->getSign());
     }
-
     /**
      * 请求接口并验证访问数据
      * @param array $options
@@ -247,7 +230,7 @@ abstract class BasicAliPay
     protected function getResult($options)
     {
         $this->applyData($options);
-        $method = str_replace('.', '_', $this->options['method']) . '_response';
+        $method = str_replace('.', '_', $this->options['method']).'_response';
         $data = json_decode(Tools::get($this->gateway, $this->options->get()), true);
         if (!isset($data[$method]['code']) || $data[$method]['code'] !== '10000') {
             throw new InvalidResponseException(
@@ -258,10 +241,9 @@ abstract class BasicAliPay
             );
         }
         return $data[$method];
-        // 去除返回结果签名检查
-        // return $this->verify($data[$method], $data['sign']);
+        //去除返回结果签名检查
+        //return $this->verify($data[$method], $data['sign']);
     }
-
     /**
      * 生成支付HTML代码
      * @return string
@@ -276,7 +258,6 @@ abstract class BasicAliPay
         $html .= "<input type='submit' value='ok' style='display:none;'></form>";
         return "{$html}<script>document.forms['alipaysubmit'].submit();</script>";
     }
-
     /**
      * 新版 从证书中提取序列号
      * @param string $sign
@@ -284,11 +265,10 @@ abstract class BasicAliPay
      */
     public function getCertSN($sign)
     {
-        // if (file_exists($sign)) $sign = file_get_contents($sign);
+        //if (file_exists($sign)) $sign = file_get_contents($sign);
         $ssl = openssl_x509_parse($sign);
-        return md5($this->_arr2str(array_reverse($ssl['issuer'])) . $ssl['serialNumber']);
+        return md5($this->_arr2str(array_reverse($ssl['issuer'])).$ssl['serialNumber']);
     }
-
     /**
      * 新版 提取根证书序列号
      * @param string $sign
@@ -297,24 +277,23 @@ abstract class BasicAliPay
     public function getRootCertSN($sign)
     {
         $sn = null;
-        // if (file_exists($sign)) $sign = file_get_contents($sign);
+        //if (file_exists($sign)) $sign = file_get_contents($sign);
         $array = explode("-----END CERTIFICATE-----", $sign);
         for ($i = 0; $i < count($array) - 1; $i++) {
-            $ssl[$i] = openssl_x509_parse($array[$i] . "-----END CERTIFICATE-----");
+            $ssl[$i] = openssl_x509_parse($array[$i]."-----END CERTIFICATE-----");
             if (strpos($ssl[$i]['serialNumber'], '0x') === 0) {
                 $ssl[$i]['serialNumber'] = $this->_hex2dec($ssl[$i]['serialNumber']);
             }
             if ($ssl[$i]['signatureTypeLN'] == "sha1WithRSAEncryption" || $ssl[$i]['signatureTypeLN'] == "sha256WithRSAEncryption") {
                 if ($sn == null) {
-                    $sn = md5($this->_arr2str(array_reverse($ssl[$i]['issuer'])) . $ssl[$i]['serialNumber']);
+                    $sn = md5($this->_arr2str(array_reverse($ssl[$i]['issuer'])).$ssl[$i]['serialNumber']);
                 } else {
-                    $sn = $sn . "_" . md5($this->_arr2str(array_reverse($ssl[$i]['issuer'])) . $ssl[$i]['serialNumber']);
+                    $sn = $sn."_".md5($this->_arr2str(array_reverse($ssl[$i]['issuer'])).$ssl[$i]['serialNumber']);
                 }
             }
         }
         return $sn;
     }
-
     /**
      * 新版 数组转字符串
      * @param array $array
@@ -325,13 +304,11 @@ abstract class BasicAliPay
         $string = [];
         if ($array && is_array($array)) {
             foreach ($array as $key => $value) {
-                $string[] = $key . '=' . $value;
+                $string[] = $key.'='.$value;
             }
         }
         return implode(',', $string);
     }
-
-
     /**
      * 新版 0x转高精度数字
      * @param string $hex
@@ -345,12 +322,11 @@ abstract class BasicAliPay
         }
         return $dec;
     }
-
     /**
      * 应用数据操作
      * @param array $options
      * @return mixed
      */
     abstract public function apply($options);
-
 }
+?>

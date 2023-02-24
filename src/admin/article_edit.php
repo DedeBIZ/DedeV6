@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档修改
+ * 修改文档模型
  *
  * @version        $id:article_edit.php 14:12 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

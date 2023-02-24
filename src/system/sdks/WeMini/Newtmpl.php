@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 公众号小程序订阅消息支持
  * Class Mini
@@ -22,7 +21,6 @@ class Newtmpl extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/wxopen/addcategory?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 获取小程序账号的类目
      * @return array
@@ -34,7 +32,6 @@ class Newtmpl extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxaapi/newtmpl/getcategory?access_token=ACCESS_TOKEN';
         return $this->callGetApi($url);
     }
-
     /**
      * 获取小程序账号的类目
      * @return array
@@ -46,7 +43,6 @@ class Newtmpl extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/wxopen/deletecategory?access_token=TOKEN';
         return $this->callPostApi($url, [], true);
     }
-
     /**
      * 获取帐号所属类目下的公共模板标题
      * @param string $ids 类目 id，多个用逗号隔开
@@ -57,10 +53,9 @@ class Newtmpl extends BasicWeChat
     public function getPubTemplateTitleList($ids)
     {
         $url = 'https://api.weixin.qq.com/wxaapi/newtmpl/getpubtemplatetitles?access_token=ACCESS_TOKEN';
-        $url .= '&' . http_build_query(['ids' => $ids, 'start' => '0', 'limit' => '30']);
+        $url .= '&'.http_build_query(['ids' => $ids, 'start' => '0', 'limit' => '30']);
         return $this->callGetApi($url);
     }
-
     /**
      * 获取模板标题下的关键词列表
      * @param string $tid 模板标题 id，可通过接口获取
@@ -71,10 +66,9 @@ class Newtmpl extends BasicWeChat
     public function getPubTemplateKeyWordsById($tid)
     {
         $url = 'https://api.weixin.qq.com/wxaapi/newtmpl/getpubtemplatekeywords?access_token=ACCESS_TOKEN';
-        $url .= '&' . http_build_query(['tid' => $tid]);
+        $url .= '&'.http_build_query(['tid' => $tid]);
         return $this->callGetApi($url);
     }
-
     /**
      * 组合模板并添加至帐号下的个人模板库
      * @param string $tid 模板标题 id，可通过接口获取，也可登录小程序后台查看获取
@@ -89,7 +83,6 @@ class Newtmpl extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxaapi/newtmpl/addtemplate?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['tid' => $tid, 'kidList' => $kidList, 'sceneDesc' => $sceneDesc], false);
     }
-
     /**
      * 获取当前帐号下的个人模板列表
      * @return array
@@ -101,7 +94,6 @@ class Newtmpl extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxaapi/newtmpl/gettemplate?access_token=ACCESS_TOKEN';
         return $this->callGetApi($url);
     }
-
     /**
      * 删除帐号下的个人模板
      * @param string $priTmplId 要删除的模板id
@@ -114,7 +106,6 @@ class Newtmpl extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxaapi/newtmpl/deltemplate?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['priTmplId' => $priTmplId], true);
     }
-
     /**
      * 发送订阅消息
      * @param array $data 发送的消息对象数组
@@ -128,3 +119,4 @@ class Newtmpl extends BasicWeChat
         return $this->callPostApi($url, $data, true);
     }
 }
+?>

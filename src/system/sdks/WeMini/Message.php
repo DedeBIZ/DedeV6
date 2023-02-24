@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 小程序动态消息
  * Class Message
@@ -22,7 +21,6 @@ class Message extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/activityid/create?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 动态消息，修改被分享的动态消息
      * @param array $data
@@ -35,7 +33,6 @@ class Message extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/updatablemsg/send?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 下发小程序和公众号统一的服务消息
      * @param array $data
@@ -49,3 +46,4 @@ class Message extends BasicWeChat
         return $this->callPostApi($url, $data, true);
     }
 }
+?>

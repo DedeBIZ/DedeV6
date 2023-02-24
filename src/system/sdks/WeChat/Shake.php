@@ -3,7 +3,6 @@ namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 use WeChat\Contracts\Tools;
-
 /**
  * 揺一揺周边
  * Class Shake
@@ -24,7 +23,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询审核状态
      * @return array
@@ -37,7 +35,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 申请设备ID
      * @param string $quantity 申请的设备ID的数量，单次新增设备超过500个，需走人工审核流程
@@ -57,7 +54,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询设备ID申请审核状态
      * @param integer $applyId 批次ID，申请设备ID时所返回的批次ID
@@ -71,7 +67,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['apply_id' => $applyId]);
     }
-
     /**
      * 编辑设备信息
      * @param array $data
@@ -85,7 +80,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 配置设备与门店的关联关系
      * @param array $data
@@ -99,7 +93,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询设备列表
      * @param array $data
@@ -113,7 +106,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 页面管理
      * @param array $data
@@ -127,7 +119,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 编辑页面信息
      * @param array $data
@@ -141,7 +132,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询页面列表
      * @param array $data
@@ -155,7 +145,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 删除页面
      * @param integer $page_id 指定页面的id
@@ -169,7 +158,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['page_id' => $page_id]);
     }
-
     /**
      * 上传图片素材
      * @param string $filename 图片名字
@@ -184,7 +172,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media' => Tools::createCurlFile($filename)]);
     }
-
     /**
      * 配置设备与页面的关联关系
      * @param array $data
@@ -198,7 +185,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询设备与页面的关联关系
      * @param array $data
@@ -212,7 +198,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 以设备为维度的数据统计接口
      * @param array $data
@@ -226,7 +211,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 批量查询设备统计数据接口
      * @param integer $date 指定查询日期时间戳，单位为秒
@@ -241,7 +225,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['date' => $date, 'page_index' => $page_index]);
     }
-
     /**
      * 以页面为维度的数据统计接口
      * @param integer $page_id 指定页面的设备ID
@@ -257,7 +240,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['page_id' => $page_id, 'begin_date' => $begin_date, 'end_date' => $end_date]);
     }
-
     /**
      * 编辑分组信息
      * @param integer $group_id 分组唯一标识，全局唯一
@@ -272,7 +254,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['group_id' => $group_id, 'group_name' => $group_name]);
     }
-
     /**
      * 删除分组
      * @param integer $group_id 分组唯一标识，全局唯一
@@ -286,7 +267,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['group_id' => $group_id]);
     }
-
     /**
      * 查询分组列表
      * @param integer $begin 分组列表的起始索引值
@@ -301,8 +281,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['begin' => $begin, 'count' => $count]);
     }
-
-
     /**
      * 查询分组详情
      * @param integer $group_id 分组唯一标识，全局唯一
@@ -318,7 +296,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['group_id' => $group_id, 'begin' => $begin, 'count' => $count]);
     }
-
     /**
      * 添加设备到分组
      * @param array $data
@@ -332,7 +309,6 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 从分组中移除设备
      * @param array $data
@@ -346,5 +322,5 @@ class Shake extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
 }
+?>

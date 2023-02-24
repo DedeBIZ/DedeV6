@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 小程序ORC服务
  * Class Ocr
@@ -22,7 +21,6 @@ class Ocr extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cv/ocr/bankcard?access_token=ACCESS_TOCKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 本接口提供基于小程序的营业执照 OCR 识别
      * @param array $data
@@ -35,7 +33,6 @@ class Ocr extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cv/ocr/bizlicense?access_token=ACCESS_TOCKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 本接口提供基于小程序的驾驶证 OCR 识别
      * @param array $data
@@ -48,7 +45,6 @@ class Ocr extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cv/ocr/drivinglicense?access_token=ACCESS_TOCKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 本接口提供基于小程序的身份证 OCR 识别
      * @param array $data
@@ -61,7 +57,6 @@ class Ocr extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cv/ocr/idcard?access_token=ACCESS_TOCKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 本接口提供基于小程序的通用印刷体 OCR 识别
      * @param array $data
@@ -74,7 +69,6 @@ class Ocr extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cv/ocr/comm?access_token=ACCESS_TOCKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 本接口提供基于小程序的行驶证 OCR 识别
      * @param array $data
@@ -88,3 +82,4 @@ class Ocr extends BasicWeChat
         return $this->callPostApi($url, $data, true);
     }
 }
+?>

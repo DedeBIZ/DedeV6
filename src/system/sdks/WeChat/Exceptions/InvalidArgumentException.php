@@ -12,7 +12,6 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @var array
      */
     public $raw = [];
-
     /**
      * InvalidArgumentException constructor.
      * @param string $message
@@ -25,3 +24,4 @@ class InvalidArgumentException extends \InvalidArgumentException
         $this->raw = $raw;
     }
 }
+?>

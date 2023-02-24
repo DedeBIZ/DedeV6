@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 微信小程序数据接口
  * Class Total
@@ -23,7 +22,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappiddailysummarytrend?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 访问分析
      * @param string $begin_date 开始日期
@@ -37,7 +35,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappiddailyvisittrend?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 周趋势
      * @param string $begin_date 开始日期，为周一日期
@@ -51,7 +48,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappidweeklyvisittrend?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 月趋势
      * @param string $begin_date 开始日期，为自然月第一天
@@ -65,7 +61,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappidmonthlyvisittrend?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 访问分布
      * @param string $begin_date 开始日期
@@ -79,7 +74,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappidvisitdistribution?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 日留存
      * @param string $begin_date 开始日期
@@ -93,7 +87,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappiddailyretaininfo?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 周留存
      * @param string $begin_date 开始日期，为周一日期
@@ -107,7 +100,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappidweeklyretaininfo?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 月留存
      * @param string $begin_date 开始日期，为自然月第一天
@@ -121,7 +113,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappidmonthlyretaininfo?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 访问页面
      * @param string $begin_date 开始日期
@@ -135,7 +126,6 @@ class Total extends BasicWeChat
         $url = 'https://api.weixin.qq.com/datacube/getweanalysisappidvisitpage?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
-
     /**
      * 用户画像
      * @param string $begin_date 开始日期
@@ -150,3 +140,4 @@ class Total extends BasicWeChat
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
 }
+?>

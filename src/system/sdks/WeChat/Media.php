@@ -4,7 +4,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 use WeChat\Contracts\Tools;
 use WeChat\Exceptions\InvalidResponseException;
-
 /**
  * 微信素材管理
  * Class Media
@@ -29,7 +28,6 @@ class Media extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media' => Tools::createCurlFile($filename)], false);
     }
-
     /**
      * 获取临时素材
      * @param string $media_id
@@ -52,7 +50,6 @@ class Media extends BasicWeChat
         }
         return is_null($outType) ? $result : $outType($result);
     }
-
     /**
      * 新增图文素材
      * @param array $data 文件名称
@@ -66,7 +63,6 @@ class Media extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 更新图文素材
      * @param string $media_id 要修改的图文消息的id
@@ -83,7 +79,6 @@ class Media extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 上传图文消息内的图片获取URL
      * @param mixed $filename
@@ -97,7 +92,6 @@ class Media extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media' => Tools::createCurlFile($filename)], false);
     }
-
     /**
      * 新增其他类型永久素材
      * @param mixed $filename 文件名称
@@ -116,7 +110,6 @@ class Media extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media' => Tools::createCurlFile($filename), 'description' => Tools::arr2json($description)], false);
     }
-
     /**
      * 获取永久素材
      * @param string $media_id
@@ -139,7 +132,6 @@ class Media extends BasicWeChat
         }
         return is_null($outType) ? $result : $outType($result);
     }
-
     /**
      * 删除永久素材
      * @param string $media_id
@@ -153,7 +145,6 @@ class Media extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media_id' => $media_id]);
     }
-
     /**
      * 获取素材总数
      * @return array
@@ -166,7 +157,6 @@ class Media extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 获取素材列表
      * @param string $type
@@ -186,3 +176,4 @@ class Media extends BasicWeChat
         return $this->httpPostForJson($url, ['type' => $type, 'offset' => $offset, 'count' => $count]);
     }
 }
+?>

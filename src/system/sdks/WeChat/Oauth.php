@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 微信网页授权
  * Class Oauth
@@ -10,7 +9,6 @@ use WeChat\Contracts\BasicWeChat;
  */
 class Oauth extends BasicWeChat
 {
-
     /**
      * Oauth 授权跳转接口
      * @param string $redirect_url 授权回跳地址
@@ -24,7 +22,6 @@ class Oauth extends BasicWeChat
         $redirect_uri = urlencode($redirect_url);
         return "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri={$redirect_uri}&response_type=code&scope={$scope}&state={$state}#wechat_redirect";
     }
-
     /**
      * 通过 code 获取 AccessToken 和 openid
      * @param string $code 授权Code值，不传则取GET参数
@@ -40,7 +37,6 @@ class Oauth extends BasicWeChat
         $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$appid}&secret={$appsecret}&code={$code}&grant_type=authorization_code";
         return $this->httpGetForJson($url);
     }
-
     /**
      * 刷新AccessToken并续期
      * @param string $refresh_token
@@ -54,7 +50,6 @@ class Oauth extends BasicWeChat
         $url = "https://api.weixin.qq.com/sns/oauth2/refresh_token?appid={$appid}&grant_type=refresh_token&refresh_token={$refresh_token}";
         return $this->httpGetForJson($url);
     }
-
     /**
      * 检验授权凭证（access_token）是否有效
      * @param string $access_token 网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同
@@ -68,7 +63,6 @@ class Oauth extends BasicWeChat
         $url = "https://api.weixin.qq.com/sns/auth?access_token={$access_token}&openid={$openid}";
         return $this->httpGetForJson($url);
     }
-
     /**
      * 拉取用户信息(需scope为 snsapi_userinfo)
      * @param string $access_token 网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同
@@ -84,3 +78,4 @@ class Oauth extends BasicWeChat
         return $this->httpGetForJson($url);
     }
 }
+?>

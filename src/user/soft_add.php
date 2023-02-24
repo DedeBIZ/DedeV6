@@ -106,7 +106,6 @@ else if ($dopost == 'save') {
     }
     $body = HtmlReplace($body, -1);
     $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
-    
     //保存到主表
     $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords) VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$mid','$description','$keywords'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {

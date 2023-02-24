@@ -1,6 +1,6 @@
 <?php
 /**
- * 友情链接添加
+ * 添加友情链接
  *
  * @version        $id:friendlink_add.php 10:59 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

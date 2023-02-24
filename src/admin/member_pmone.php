@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员短消息,发送到一个
+ * 会员短消息，发送一个消息
  *
  * @version        $id:member_pmone.php 11:24 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

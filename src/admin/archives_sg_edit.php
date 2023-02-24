@@ -1,6 +1,6 @@
 <?php
 /**
- * 单表模型文档修改
+ * 修改分类文档模型
  *
  * @version        $id:archives_sg_edit.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

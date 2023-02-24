@@ -1,6 +1,6 @@
 <?php
 /**
- * 允许的站内链接
+ * 允许站内链接
  *
  * @version        $id:article_allowurl_edit.php 11:36 2010年10月8日 tianya $
  * @package        DedeBIZ.Administrator

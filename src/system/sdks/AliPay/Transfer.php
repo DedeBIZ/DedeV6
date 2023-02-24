@@ -3,7 +3,6 @@ namespace AliPay;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicAliPay;
 use WeChat\Exceptions\InvalidArgumentException;
-
 /**
  * 支付宝转账到账户
  * Class Transfer
@@ -11,7 +10,6 @@ use WeChat\Exceptions\InvalidArgumentException;
  */
 class Transfer extends BasicAliPay
 {
-
     /**
      * 旧版 向指定支付宝账户转账
      * @param array $options
@@ -24,7 +22,6 @@ class Transfer extends BasicAliPay
         $this->options->set('method', 'alipay.fund.trans.toaccount.transfer');
         return $this->getResult($options);
     }
-
     /**
      * 新版 向指定支付宝账户转账
      * @param array $options
@@ -38,7 +35,6 @@ class Transfer extends BasicAliPay
         $this->options->set('method', 'alipay.fund.trans.uni.transfer');
         return $this->getResult($options);
     }
-
     /**
      * 新版 转账业务单据查询接口
      * @param array $options
@@ -53,7 +49,6 @@ class Transfer extends BasicAliPay
         return $this->getResult($options);
 
     }
-
     /**
      * 新版 支付宝资金账户资产查询接口
      * @param array $options
@@ -67,7 +62,6 @@ class Transfer extends BasicAliPay
         $this->options->set('method', 'alipay.fund.account.query');
         return $this->getResult($options);
     }
-
     /**
      * 新版 设置网关应用公钥证书SN、支付宝根证书SN
      */
@@ -89,3 +83,4 @@ class Transfer extends BasicAliPay
         }
     }
 }
+?>

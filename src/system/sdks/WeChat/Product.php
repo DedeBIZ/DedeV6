@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 商店管理
  * Class Product
@@ -26,7 +25,6 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 设置测试人员白名单
      * @param array $openids 测试人员的openid列表
@@ -42,7 +40,6 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 获取商品二维码
      * @param string $keystandard 商品编码标准
@@ -61,7 +58,6 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询商品信息
      * @param string $keystandard 商品编码标准
@@ -78,7 +74,6 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 批量查询商品信息
      * @param integer $offset 批量查询的起始位置，从0开始，包含该起始位置
@@ -98,7 +93,6 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 更新商品信息
      * @param array $data
@@ -112,7 +106,6 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 清除商品信息
      * @param string $keystandard 商品编码标准
@@ -127,7 +120,6 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['keystandard' => $keystandard, 'keystr' => $keystr]);
     }
-
     /**
      * 检查wxticket参数
      * @param string $ticket
@@ -141,7 +133,6 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['ticket' => $ticket]);
     }
-
     /**
      * 清除扫码记录
      * @param string $keystandard 商品编码标准
@@ -158,5 +149,5 @@ class Product extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
 }
+?>

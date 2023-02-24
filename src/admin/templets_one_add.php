@@ -1,6 +1,6 @@
 <?php
 /**
- * 添加一个模板
+ * 添加模板
  *
  * @version        $id:templets_one_add.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

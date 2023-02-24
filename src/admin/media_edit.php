@@ -1,6 +1,6 @@
 <?php
 /**
- * 附件修改
+ * 修改附件
  *
  * @version        $id:media_edit.php 11:17 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator

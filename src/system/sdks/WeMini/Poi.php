@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 微信小程序地址管理
  * Class Poi
@@ -29,7 +28,6 @@ class Poi extends BasicWeChat
         ];
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 查看地点列表
      * @param integer $page 起始页id（从1开始计数）
@@ -43,7 +41,6 @@ class Poi extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxa/getnearbypoilist?page={$page}&page_rows={$page_rows}&access_token=ACCESS_TOKEN";
         return $this->callGetApi($url);
     }
-
     /**
      * 删除地点
      * @param string $poi_id 附近地点ID
@@ -56,7 +53,6 @@ class Poi extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxa/delnearbypoi?access_token=ACCESS_TOKEN";
         return $this->callPostApi($url, ['poi_id' => $poi_id], true);
     }
-
     /**
      * 展示/取消展示附近小程序
      * @param string $poi_id 附近地点ID
@@ -71,3 +67,4 @@ class Poi extends BasicWeChat
         return $this->callPostApi($url, ['poi_id' => $poi_id, 'status' => $status], true);
     }
 }
+?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * 管理后台首页
+ * 后台管理主页
  *
  * @version        $id:index.php 11:06 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

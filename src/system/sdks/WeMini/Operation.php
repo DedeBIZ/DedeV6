@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 小程序运维中心
  * Class Operation
@@ -10,7 +9,6 @@ use WeChat\Contracts\BasicWeChat;
  */
 class Operation extends BasicWeChat
 {
-
     /**
      * 实时日志查询
      * @param array $data
@@ -24,3 +22,4 @@ class Operation extends BasicWeChat
         return $this->callPostApi($url, $data, true);
     }
 }
+?>

@@ -2,7 +2,6 @@
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\DataArray;
 use WeChat\Exceptions\InvalidInstanceException;
-
 /**
  * 加载缓存器
  *
@@ -80,13 +79,11 @@ class We
      * @var string
      */
     const VERSION = '1.2.37';
-
     /**
      * 静态配置
      * @var DataArray
      */
     private static $config;
-
     /**
      * 设置及获取参数
      * @param array $option
@@ -102,7 +99,6 @@ class We
         }
         return [];
     }
-
     /**
      * 静态魔术加载方法
      * @param string $name 静态类名
@@ -113,15 +109,15 @@ class We
     public static function __callStatic($name, $arguments)
     {
         if (substr($name, 0, 6) === 'WeChat') {
-            $class = 'WeChat\\' . substr($name, 6);
+            $class = 'WeChat\\'.substr($name, 6);
         } elseif (substr($name, 0, 6) === 'WeMini') {
-            $class = 'WeMini\\' . substr($name, 6);
+            $class = 'WeMini\\'.substr($name, 6);
         } elseif (substr($name, 0, 6) === 'AliPay') {
-            $class = 'AliPay\\' . substr($name, 6);
+            $class = 'AliPay\\'.substr($name, 6);
         } elseif (substr($name, 0, 7) === 'WePayV3') {
-            $class = 'WePayV3\\' . substr($name, 7);
+            $class = 'WePayV3\\'.substr($name, 7);
         } elseif (substr($name, 0, 5) === 'WePay') {
-            $class = 'WePay\\' . substr($name, 5);
+            $class = 'WePay\\'.substr($name, 5);
         }
         if (!empty($class) && class_exists($class)) {
             $option = array_shift($arguments);
@@ -130,5 +126,5 @@ class We
         }
         throw new InvalidInstanceException("class {$name} not found");
     }
-
 }
+?>

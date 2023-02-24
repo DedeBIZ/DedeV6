@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 微信粉丝管理
  * Class User
@@ -10,7 +9,6 @@ use WeChat\Contracts\BasicWeChat;
  */
 class User extends BasicWeChat
 {
-
     /**
      * 设置用户备注名
      * @param string $openid
@@ -25,7 +23,6 @@ class User extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['openid' => $openid, 'remark' => $remark]);
     }
-
     /**
      * 获取用户基本信息（包括UnionID机制）
      * @param string $openid
@@ -40,7 +37,6 @@ class User extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 批量获取用户基本信息
      * @param array $openids
@@ -59,7 +55,6 @@ class User extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 获取用户列表
      * @param string $next_openid
@@ -73,7 +68,6 @@ class User extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 获取标签下粉丝列表
      * @param integer $tagid 标签ID
@@ -88,7 +82,6 @@ class User extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['tagid' => $tagid, 'next_openid' => $next_openid]);
     }
-
     /**
      * 获取公众号的黑名单列表
      * @param string $begin_openid
@@ -102,7 +95,6 @@ class User extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['begin_openid' => $begin_openid]);
     }
-
     /**
      * 批量拉黑用户
      * @param array $openids
@@ -116,7 +108,6 @@ class User extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['openid_list' => $openids]);
     }
-
     /**
      * 批量取消拉黑用户
      * @param array $openids
@@ -130,5 +121,5 @@ class User extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['openid_list' => $openids]);
     }
-
 }
+?>

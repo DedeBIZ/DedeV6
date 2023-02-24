@@ -1,6 +1,6 @@
 <?php
 /**
- * 栏目修改
+ * 修改栏目
  *
  * @version        $id:catalog_edit.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

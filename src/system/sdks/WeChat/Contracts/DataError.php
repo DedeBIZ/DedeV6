@@ -167,7 +167,6 @@ class DataError
         9001035 => '设备申请参数不合法',
         9001036 => '查询起始值 begin 不合法',
     ];
-
     /**
      * 异常代码解析描述
      * @param string $code
@@ -177,5 +176,5 @@ class DataError
     {
         return isset(self::$message[$code]) ? self::$message[$code] : $code;
     }
-
 }
+?>

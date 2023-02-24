@@ -3,7 +3,6 @@ namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 use WeChat\Contracts\Tools;
-
 /**
  * 客服消息处理
  * Class Custom
@@ -26,7 +25,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 修改客服帐号
      * @param string $kf_account 客服账号
@@ -42,7 +40,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 删除客服帐号
      * @param string $kf_account 客服账号
@@ -57,7 +54,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 邀请绑定客服帐号
      * @param string $kf_account 完整客服帐号，格式为：帐号前缀@公众号微信号
@@ -71,7 +67,6 @@ class Custom extends BasicWeChat
         $url = 'https://api.weixin.qq.com/customservice/kfaccount/inviteworker?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['kf_account' => $kf_account, 'invite_wx' => $invite_wx]);
     }
-
     /**
      * 获取所有客服账号
      * @return array
@@ -84,7 +79,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 设置客服帐号的头像
      * @param string $kf_account 客户账号
@@ -99,7 +93,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media' => Tools::createCurlFile($image)]);
     }
-
     /**
      * 客服接口-发消息
      * @param array $data
@@ -113,7 +106,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 客服输入状态
      * @param string $openid 普通用户（openid）
@@ -128,7 +120,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['touser' => $openid, 'command' => $command]);
     }
-
     /**
      * 根据标签进行群发【订阅号与服务号认证后均可用】
      * @param array $data
@@ -142,7 +133,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 根据OpenID列表群发【订阅号不可用，服务号认证后可用】
      * @param array $data
@@ -156,7 +146,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 删除群发【订阅号与服务号认证后均可用】
      * @param integer $msg_id 发送出去的消息ID
@@ -173,7 +162,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 预览接口【订阅号与服务号认证后均可用】
      * @param array $data
@@ -187,7 +175,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询群发消息发送状态【订阅号与服务号认证后均可用】
      * @param integer $msg_id 群发消息后返回的消息id
@@ -201,7 +188,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['msg_id' => $msg_id]);
     }
-
     /**
      * 获取群发速度
      * @return array
@@ -214,7 +200,6 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, []);
     }
-
     /**
      * 设置群发速度
      * @param integer $speed 群发速度的级别
@@ -228,6 +213,5 @@ class Custom extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['speed' => $speed]);
     }
-
-
 }
+?>

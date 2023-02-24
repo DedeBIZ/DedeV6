@@ -1,6 +1,6 @@
 <?php
 /**
- * 修改一个模板
+ * 修改模板
  *
  * @version        $id:templets_one_edit.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -67,7 +67,7 @@ if ($dopost == "saveedit") {
         $sg->SaveToHtml();
         $i++;
     }
-    ShowMsg("成功更新 $i 个页面", '-1');
+    ShowMsg("成功更新<span class='text-primary'>$i</span>个页面", '-1');
     exit();
 } else if ($dopost == "mksel") {
     if (empty($ids)) {
@@ -84,7 +84,7 @@ if ($dopost == "saveedit") {
             $sg->SaveToHtml();
             $i++;
         }
-        ShowMsg("成功更新 $i 个页面", '-1');
+        ShowMsg("成功更新<span class='text-primary'>$i</span>个页面", '-1');
         exit();
     }
 } else if ($dopost == "view") {

@@ -4,7 +4,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Exceptions\InvalidArgumentException;
 use WeChat\Exceptions\InvalidResponseException;
 use WeChat\Exceptions\LocalCacheException;
-
 /**
  * 网络请求支持
  * Class Tools
@@ -17,24 +16,21 @@ class Tools
      * @var null
      */
     public static $cache_path = null;
-
     /**
      * 缓存写入操作
      * @var array
      */
     public static $cache_callable = [
-        'set' => null, // 写入缓存
-        'get' => null, // 获取缓存
-        'del' => null, // 删除缓存
-        'put' => null, // 写入文件
+        'set' => null,//写入缓存
+        'get' => null,//获取缓存
+        'del' => null,//删除缓存
+        'put' => null,//写入文件
     ];
-
     /**
      * 网络缓存
      * @var array
      */
     private static $cache_curl = [];
-
     /**
      * 产生随机字符串
      * @param int $length 指定字符长度
@@ -49,8 +45,6 @@ class Tools
         }
         return $str;
     }
-
-
     /**
      * 根据文件后缀获取文件类型
      * @param string|array $ext 文件后缀
@@ -66,7 +60,6 @@ class Tools
         }
         return join(',', array_unique($mine));
     }
-
     /**
      * 获取所有文件扩展的类型
      * @return array
@@ -83,7 +76,6 @@ class Tools
         }
         return $mines;
     }
-
     /**
      * 创建CURL文件对象
      * @param mixed $filename
@@ -105,7 +97,6 @@ class Tools
         }
         return $filename;
     }
-
     /**
      * 数组转XML内容
      * @param array $data
@@ -113,9 +104,8 @@ class Tools
      */
     public static function arr2xml($data)
     {
-        return "<xml>" . self::_arr2xml($data) . "</xml>";
+        return "<xml>".self::_arr2xml($data)."</xml>";
     }
-
     /**
      * XML内容生成
      * @param array $data 数据
@@ -130,7 +120,7 @@ class Tools
             if (is_array($val) || is_object($val)) {
                 $content .= self::_arr2xml($val);
             } elseif (is_string($val)) {
-                $content .= '<![CDATA[' . preg_replace("/[\\x00-\\x08\\x0b-\\x0c\\x0e-\\x1f]/", '', $val) . ']]>';
+                $content .= '<![CDATA['.preg_replace("/[\\x00-\\x08\\x0b-\\x0c\\x0e-\\x1f]/", '', $val).']]>';
             } else {
                 $content .= $val;
             }
@@ -138,7 +128,6 @@ class Tools
         }
         return $content;
     }
-
     /**
      * 解析XML内容到数组
      * @param string $xml
@@ -155,7 +144,6 @@ class Tools
         }
         return json_decode(json_encode($data), true);
     }
-
     /**
      * 解析XML文本内容
      * @param string $xml
@@ -166,7 +154,6 @@ class Tools
         $state = xml_parse($parser = xml_parser_create(), $xml, true);
         return xml_parser_free($parser) && $state ? self::xml2arr($xml) : false;
     }
-
     /**
      * 数组转xml内容
      * @param array $data
@@ -177,7 +164,6 @@ class Tools
         $json = json_encode($data, JSON_UNESCAPED_UNICODE);
         return $json === '[]' ? '{}' : $json;
     }
-
     /**
      * 数组对象Emoji编译处理
      * @param array $data
@@ -196,7 +182,6 @@ class Tools
         }
         return $data;
     }
-
     /**
      * 数组对象Emoji反解析处理
      * @param array $data
@@ -215,7 +200,6 @@ class Tools
         }
         return $data;
     }
-
     /**
      * Emoji原形转换为String
      * @param string $content
@@ -227,7 +211,6 @@ class Tools
             return addslashes($string[0]);
         }, json_encode($content)));
     }
-
     /**
      * Emoji字符串转换为原形
      * @param string $content
@@ -239,7 +222,6 @@ class Tools
             return '\\';
         }, json_encode($content)));
     }
-
     /**
      * 解析JSON内容到数组
      * @param string $json
@@ -257,7 +239,6 @@ class Tools
         }
         return $result;
     }
-
     /**
      * 以get访问模拟访问
      * @param string $url 访问URL
@@ -271,7 +252,6 @@ class Tools
         $options['query'] = $query;
         return self::doRequest('get', $url, $options);
     }
-
     /**
      * 以post访问模拟访问
      * @param string $url 访问URL
@@ -285,7 +265,6 @@ class Tools
         $options['data'] = $data;
         return self::doRequest('post', $url, $options);
     }
-
     /**
      * CURL模拟网络请求
      * @param string $method 请求方法
@@ -297,25 +276,25 @@ class Tools
     public static function doRequest($method, $url, $options = [])
     {
         $curl = curl_init();
-        // GET参数设置
+        //GET参数设置
         if (!empty($options['query'])) {
-            $url .= (stripos($url, '?') !== false ? '&' : '?') . http_build_query($options['query']);
+            $url .= (stripos($url, '?') !== false ? '&' : '?').http_build_query($options['query']);
         }
-        // CURL头信息设置
+        //CURL头信息设置
         if (!empty($options['headers'])) {
             curl_setopt($curl, CURLOPT_HTTPHEADER, $options['headers']);
         }
-        // POST数据设置
+        //POST数据设置
         if (strtolower($method) === 'post') {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, self::_buildHttpData($options['data']));
         }
-        // 证书文件设置
+        //证书文件设置
         if (!empty($options['ssl_cer'])) if (file_exists($options['ssl_cer'])) {
             curl_setopt($curl, CURLOPT_SSLCERTTYPE, 'PEM');
             curl_setopt($curl, CURLOPT_SSLCERT, $options['ssl_cer']);
         } else throw new InvalidArgumentException("Certificate files that do not exist. --- [ssl_cer]");
-        // 证书文件设置
+        //证书文件设置
         if (!empty($options['ssl_key'])) if (file_exists($options['ssl_key'])) {
             curl_setopt($curl, CURLOPT_SSLKEYTYPE, 'PEM');
             curl_setopt($curl, CURLOPT_SSLKEY, $options['ssl_key']);
@@ -327,14 +306,13 @@ class Tools
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         list($content) = [curl_exec($curl), curl_close($curl)];
-        // 清理 CURL 缓存文件
+        //清理 CURL 缓存文件
         if (!empty(self::$cache_curl)) foreach (self::$cache_curl as $key => $file) {
             Tools::delCache($file);
             unset(self::$cache_curl[$key]);
         }
         return $content;
     }
-
     /**
      * POST数据过滤处理
      * @param array $data 需要处理的数据
@@ -365,7 +343,6 @@ class Tools
         }
         return $build ? http_build_query($data) : $data;
     }
-
     /**
      * 写入文件
      * @param string $name 文件名称
@@ -384,7 +361,6 @@ class Tools
         }
         return $file;
     }
-
     /**
      * 缓存配置与存储
      * @param string $name 缓存名称
@@ -405,7 +381,6 @@ class Tools
         }
         return $file;
     }
-
     /**
      * 获取缓存内容
      * @param string $name 缓存名称
@@ -426,7 +401,6 @@ class Tools
         }
         return null;
     }
-
     /**
      * 移除缓存文件
      * @param string $name 缓存名称
@@ -440,7 +414,6 @@ class Tools
         $file = self::_getCacheName($name);
         return !file_exists($file) || @unlink($file);
     }
-
     /**
      * 应用缓存目录
      * @param string $name
@@ -449,10 +422,11 @@ class Tools
     private static function _getCacheName($name)
     {
         if (empty(self::$cache_path)) {
-            self::$cache_path = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'Cache' . DIRECTORY_SEPARATOR;
+            self::$cache_path = dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR.'Cache'.DIRECTORY_SEPARATOR;
         }
-        self::$cache_path = rtrim(self::$cache_path, '/\\') . DIRECTORY_SEPARATOR;
+        self::$cache_path = rtrim(self::$cache_path, '/\\').DIRECTORY_SEPARATOR;
         file_exists(self::$cache_path) || mkdir(self::$cache_path, 0755, true);
-        return self::$cache_path . $name;
+        return self::$cache_path.$name;
     }
 }
+?>

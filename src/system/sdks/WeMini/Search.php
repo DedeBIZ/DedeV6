@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 小程序搜索
  * Class Search
@@ -23,3 +22,4 @@ class Search extends BasicWeChat
         return $this->callPostApi($url, ['pages' => $pages], true);
     }
 }
+?>

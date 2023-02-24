@@ -72,7 +72,7 @@ class ImageResize
         if (empty($image_data) || $image_data === null) {
             throw new ImageResizeException('image_data must not be empty');
         }
-        $resize = new self('data://application/octet-stream;base64,' . base64_encode($image_data));
+        $resize = new self('data://application/octet-stream;base64,'.base64_encode($image_data));
         return $resize;
     }
 
@@ -458,7 +458,7 @@ class ImageResize
     {
         $image_type = $image_type ?: $this->source_type;
 
-        header('Content-Type: ' . image_type_to_mime_type($image_type));
+        header('Content-Type: '.image_type_to_mime_type($image_type));
 
         $this->save(null, $image_type, $quality);
     }

@@ -12,7 +12,6 @@ class InvalidDecryptException extends \Exception
      * @var array
      */
     public $raw = [];
-
     /**
      * InvalidDecryptException constructor.
      * @param string $message
@@ -25,3 +24,4 @@ class InvalidDecryptException extends \Exception
         $this->raw = $raw;
     }
 }
+?>

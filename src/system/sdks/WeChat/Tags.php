@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 用户标签管理
  * Class Tags
@@ -21,7 +20,6 @@ class Tags extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 创建粉丝标签
      * @param string $name
@@ -35,7 +33,6 @@ class Tags extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['tag' => ['name' => $name]]);
     }
-
     /**
      * 更新粉丝标签
      * @param integer $id 标签ID
@@ -50,7 +47,6 @@ class Tags extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['tag' => ['name' => $name, 'id' => $id]]);
     }
-
     /**
      * 删除粉丝标签
      * @param int $tagId
@@ -64,7 +60,6 @@ class Tags extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['tag' => ['id' => $tagId]]);
     }
-
     /**
      * 批量为用户打标签
      * @param array $openids
@@ -79,7 +74,6 @@ class Tags extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['openid_list' => $openids, 'tagid' => $tagId]);
     }
-
     /**
      * 批量为用户取消标签
      * @param array $openids
@@ -94,7 +88,6 @@ class Tags extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['openid_list' => $openids, 'tagid' => $tagId]);
     }
-
     /**
      * 获取用户身上的标签列表
      * @param string $openid
@@ -109,3 +102,4 @@ class Tags extends BasicWeChat
         return $this->httpPostForJson($url, ['openid' => $openid]);
     }
 }
+?>

@@ -1,19 +1,15 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 try {
-
-    // 1. 手动加载入口文件
+    //手动加载入口文件
     include "../include.php";
-
-    // 2. 准备公众号配置参数
+    //准备公众号配置参数
     $config = include "./config.php";
-
-    // 3. 创建接口实例
-    // $wechat = new \WePay\Redpack($config);
-    // $wechat = \We::WePayRedpack($config);
+    //创建接口实例
+    //$wechat = new \WePay\Redpack($config);
+    //$wechat = \We::WePayRedpack($config);
     $wechat = \WePay\Redpack::instance($config);
-
-    // 4. 组装参数，可以参考官方商户文档
+    //组装参数，可以参考官方商户文档
     $options = [
         'mch_billno'   => time(),
         're_openid'    => 'o38gps3vNdCqaggFfrBRCRikwlWY',
@@ -25,17 +21,15 @@ try {
         'remark'       => '猜越多得越多，快来抢！',
         'client_ip'    => '127.0.0.1',
     ];
-    // 发送红包记录
+    //发送红包记录
     $result = $wechat->create($options);
     echo '<pre>';
     var_export($result);
-    // 查询红包记录
+    //查询红包记录
     $result = $wechat->query($options['mch_billno']);
     var_export($result);
-
 } catch (Exception $e) {
-
-    // 出错啦，处理下吧
-    echo $e->getMessage() . PHP_EOL;
-
+    //出错啦，处理下吧
+    echo $e->getMessage().PHP_EOL;
 }
+?>

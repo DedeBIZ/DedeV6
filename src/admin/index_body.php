@@ -1,6 +1,6 @@
 <?php
 /**
- * 管理后台首页主体
+ * 仪表盘
  *
  * @version        $id:index_body.php 11:06 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

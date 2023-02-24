@@ -1,6 +1,6 @@
 <?php
 /**
- * 安全检测
+ * 系统修复工具
  *
  * @version        $id:sys_safetest.php 2 9:25 2010-11-12 tianya $
  * @package        DedeBIZ.Administrator

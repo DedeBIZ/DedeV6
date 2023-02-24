@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 门店 WIFI 管理
  * Class Wifi
@@ -25,7 +24,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['pageindex' => $pageindex, 'pagesize' => $pagesize]);
     }
-
     /**
      * 查询门店Wi-Fi信息
      * @param integer $shop_id 门店ID
@@ -39,7 +37,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['shop_id' => $shop_id]);
     }
-
     /**
      * 修改门店网络信息
      * @param integer $shop_id 门店ID
@@ -58,7 +55,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 清空门店网络及设备
      * @param integer $shop_id
@@ -72,7 +68,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['shop_id' => $shop_id]);
     }
-
     /**
      * 添加密码型设备
      * @param integer $shop_id 门店ID
@@ -89,7 +84,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 添加portal型设备
      * @param integer $shop_id 门店ID
@@ -106,7 +100,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询设备
      * @param null|integer $shop_id 根据门店id查询
@@ -126,7 +119,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 删除设备
      * @param string $bssid 需要删除的无线网络设备无线mac地址，格式冒号分隔，字符长度17个，并且字母小写，例如：00:1f:7a:ad:5c:a8
@@ -140,7 +132,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['bssid' => $bssid]);
     }
-
     /**
      * 获取物料二维码
      * @param integer $shop_id 门店ID
@@ -156,7 +147,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['shop_id' => $shop_id, 'ssid' => $ssid, 'img_id' => $img_id]);
     }
-
     /**
      * 设置商家主页
      * @param integer $shop_id 门店ID
@@ -174,7 +164,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询商家主页
      * @param integer $shop_id 查询的门店id
@@ -188,7 +177,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['shop_id' => $shop_id]);
     }
-
     /**
      * 设置微信首页欢迎语
      * @param integer $shop_id 门店ID
@@ -203,7 +191,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['shop_id' => $shop_id, 'bar_type' => $bar_type]);
     }
-
     /**
      * 设置连网完成页
      * @param integer $shop_id 门店ID
@@ -218,7 +205,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['shop_id' => $shop_id, 'finishpage_url' => $finishpage_url]);
     }
-
     /**
      * Wi-Fi 数据统计
      * @param string $begin_date 起始日期时间，格式yyyy-mm-dd，最长时间跨度为30天
@@ -234,7 +220,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['shop_id' => $shop_id, 'begin_date' => $begin_date, 'end_date' => $end_date]);
     }
-
     /**
      * 设置门店卡券投放信息
      * @param integer $shop_id 门店ID，可设置为0，表示所有门店
@@ -253,7 +238,6 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查询门店卡券投放信息
      * @param integer $shop_id 门店ID，可设置为0，表示所有门店
@@ -267,5 +251,5 @@ class Wifi extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['shop_id' => $shop_id]);
     }
-
 }
+?>

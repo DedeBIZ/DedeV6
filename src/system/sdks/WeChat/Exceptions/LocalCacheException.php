@@ -8,12 +8,10 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 class LocalCacheException extends \Exception
 {
-
     /**
      * @var array
      */
     public $raw = [];
-
     /**
      * LocalCacheException constructor.
      * @param string $message
@@ -25,5 +23,5 @@ class LocalCacheException extends \Exception
         parent::__construct($message, intval($code));
         $this->raw = $raw;
     }
-
 }
+?>

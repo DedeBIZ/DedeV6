@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/member.album.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.album.js"></script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -124,6 +124,6 @@
 			</div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>
-		<?php include UserInclude("templets/widget_litpic.htm");?>
+		<?php include(DEDEMEMBER."/templets/widget_litpic.htm");?>
 	</body>
 </html>

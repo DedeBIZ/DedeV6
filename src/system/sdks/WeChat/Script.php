@@ -4,7 +4,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 use WeChat\Contracts\Tools;
 use WeChat\Exceptions\InvalidResponseException;
-
 /**
  * 微信前端支持
  * Class Script
@@ -12,7 +11,6 @@ use WeChat\Exceptions\InvalidResponseException;
  */
 class Script extends BasicWeChat
 {
-
     /**
      * 删除JSAPI授权TICKET
      * @param string $type TICKET类型(wx_card|jsapi)
@@ -25,7 +23,6 @@ class Script extends BasicWeChat
         $cache_name = "{$appid}_ticket_{$type}";
         Tools::delCache($cache_name);
     }
-
     /**
      * 获取JSAPI_TICKET接口
      * @param string $type TICKET类型(wx_card|jsapi)
@@ -51,7 +48,6 @@ class Script extends BasicWeChat
         }
         return $ticket;
     }
-
     /**
      * 获取JsApi使用签名
      * @param string $url 网页的URL
@@ -74,7 +70,7 @@ class Script extends BasicWeChat
             'hideOptionMenu', 'showOptionMenu', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem',
             'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard',
         ];
-        $data = ["url" => $url, "timestamp" => '' . time(), "jsapi_ticket" => $ticket, "noncestr" => Tools::createNoncestr(16)];
+        $data = ["url" => $url, "timestamp" => ''.time(), "jsapi_ticket" => $ticket, "noncestr" => Tools::createNoncestr(16)];
         return [
             'debug'     => false,
             "appId"     => $appid,
@@ -84,7 +80,6 @@ class Script extends BasicWeChat
             'jsApiList' => $jsApiList,
         ];
     }
-
     /**
      * 数据生成签名
      * @param array $data 签名数组
@@ -100,3 +95,4 @@ class Script extends BasicWeChat
         return $method(join('&', $params));
     }
 }
+?>

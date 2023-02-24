@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 公众号小程序模板消息支持
  * Class Mini
@@ -10,7 +9,6 @@ use WeChat\Contracts\BasicWeChat;
  */
 class Template extends BasicWeChat
 {
-
     /**
      * 获取小程序模板库标题列表
      * @return array
@@ -22,7 +20,6 @@ class Template extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/wxopen/template/library/list?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['offset' => '0', 'count' => '20'], true);
     }
-
     /**
      * 获取模板库某个模板标题下关键词库
      * @param string $template_id 模板标题id，可通过接口获取，也可登录小程序后台查看获取
@@ -35,7 +32,6 @@ class Template extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/wxopen/template/library/get?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['id' => $template_id], true);
     }
-
     /**
      * 组合模板并添加至帐号下的个人模板库
      * @param string $template_id 模板标题id，可通过接口获取，也可登录小程序后台查看获取
@@ -49,7 +45,6 @@ class Template extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/wxopen/template/add?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['id' => $template_id, 'keyword_id_list' => $keyword_id_list], true);
     }
-
     /**
      * 获取帐号下已存在的模板列表
      * @return array
@@ -61,7 +56,6 @@ class Template extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/wxopen/template/list?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['offset' => '0', 'count' => '20'], true);
     }
-
     /**
      * 删除模板消息
      * @param string $template_id 要删除的模板id
@@ -74,7 +68,6 @@ class Template extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/wxopen/template/del?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['template_id' => $template_id], true);
     }
-
     /**
      * 发送模板消息
      * @param array $data 发送的消息对象数组
@@ -88,3 +81,4 @@ class Template extends BasicWeChat
         return $this->callPostApi($url, $data, true);
     }
 }
+?>

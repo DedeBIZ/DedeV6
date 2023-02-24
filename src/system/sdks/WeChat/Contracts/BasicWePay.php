@@ -3,7 +3,6 @@ namespace WeChat\Contracts;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Exceptions\InvalidArgumentException;
 use WeChat\Exceptions\InvalidResponseException;
-
 /**
  * 微信支付基础类
  * Class BasicPay
@@ -16,19 +15,16 @@ class BasicWePay
      * @var DataArray
      */
     protected $config;
-
     /**
      * 当前请求数据
      * @var DataArray
      */
     protected $params;
-
     /**
      * 静态缓存
      * @var static
      */
     protected static $cache;
-
     /**
      * WeChat constructor.
      * @param array $options
@@ -48,13 +44,13 @@ class BasicWePay
             Tools::$cache_path = $options['cache_path'];
         }
         $this->config = new DataArray($options);
-        // 商户基础参数
+        //商户基础参数
         $this->params = new DataArray([
             'appid'     => $this->config->get('appid'),
             'mch_id'    => $this->config->get('mch_id'),
             'nonce_str' => Tools::createNoncestr(),
         ]);
-        // 商户参数支持
+        //商户参数支持
         if ($this->config->get('sub_appid')) {
             $this->params->set('sub_appid', $this->config->get('sub_appid'));
         }
@@ -62,7 +58,6 @@ class BasicWePay
             $this->params->set('sub_mch_id', $this->config->get('sub_mch_id'));
         }
     }
-
     /**
      * 静态创建对象
      * @param array $config
@@ -70,11 +65,10 @@ class BasicWePay
      */
     public static function instance(array $config)
     {
-        $key = md5(get_called_class() . serialize($config));
+        $key = md5(get_called_class().serialize($config));
         if (isset(self::$cache[$key])) return self::$cache[$key];
         return self::$cache[$key] = new static($config);
     }
-
     /**
      * 获取微信支付通知
      * @return array
@@ -88,7 +82,6 @@ class BasicWePay
         }
         throw new InvalidResponseException('Invalid Notify.', '0');
     }
-
     /**
      * 获取微信支付通知回复内容
      * @return string
@@ -97,7 +90,6 @@ class BasicWePay
     {
         return Tools::arr2xml(['return_code' => 'SUCCESS', 'return_msg' => 'OK']);
     }
-
     /**
      * 生成支付签名
      * @param array $data 参与签名的数据
@@ -113,13 +105,12 @@ class BasicWePay
             if ('' === $v || null === $v) continue;
             $buff .= "{$k}={$v}&";
         }
-        $buff .= ("key=" . $this->config->get('mch_key'));
+        $buff .= ("key=".$this->config->get('mch_key'));
         if (strtoupper($signType) === 'MD5') {
             return strtoupper(md5($buff));
         }
         return strtoupper(hash_hmac('SHA256', $buff, $this->config->get('mch_key')));
     }
-
     /**
      * 转换短链接
      * @param string $longUrl 需要转换的URL，签名用原串，传输需URLencode
@@ -132,7 +123,6 @@ class BasicWePay
         $url = 'https://api.mch.weixin.qq.com/tools/shorturl';
         return $this->callPostApi($url, ['long_url' => $longUrl]);
     }
-
     /**
      * 数组直接转xml数据输出
      * @param array $data
@@ -147,7 +137,6 @@ class BasicWePay
         }
         echo $xml;
     }
-
     /**
      * 以 Post 请求接口
      * @param string $url 请求
@@ -170,8 +159,8 @@ class BasicWePay
             if (is_string($option['ssl_p12']) && file_exists($option['ssl_p12'])) {
                 $content = file_get_contents($option['ssl_p12']);
                 if (openssl_pkcs12_read($content, $certs, $this->config->get('mch_id'))) {
-                    $option['ssl_key'] = Tools::pushFile(md5($certs['pkey']) . '.pem', $certs['pkey']);
-                    $option['ssl_cer'] = Tools::pushFile(md5($certs['cert']) . '.pem', $certs['cert']);
+                    $option['ssl_key'] = Tools::pushFile(md5($certs['pkey']).'.pem', $certs['pkey']);
+                    $option['ssl_cer'] = Tools::pushFile(md5($certs['cert']).'.pem', $certs['cert']);
                 } else throw new InvalidArgumentException("P12 certificate does not match MCH_ID --- ssl_p12");
             }
             if (empty($option['ssl_cer']) || !file_exists($option['ssl_cer'])) {
@@ -192,3 +181,4 @@ class BasicWePay
         return $result;
     }
 }
+?>

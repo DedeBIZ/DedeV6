@@ -1,6 +1,6 @@
 <?php
 /**
- * 评论修改
+ * 修改评论
  *
  * @version        $id:feedback_edit.php 19:09 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

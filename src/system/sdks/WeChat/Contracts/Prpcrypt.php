@@ -6,9 +6,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 class PKCS7Encoder
 {
-
     public static $blockSize = 32;
-
     /**
      * 对需要加密的明文进行填充补位
      * @param string $text 需要进行填充补位操作的明文
@@ -24,9 +22,8 @@ class PKCS7Encoder
         for ($index = 0; $index < $amount_to_pad; $index++) {
             $tmp .= $pad_chr;
         }
-        return $text . $tmp;
+        return $text.$tmp;
     }
-
     /**
      * 对解密后的明文进行补位删除
      * @param string $text 解密后的明文
@@ -40,18 +37,14 @@ class PKCS7Encoder
         }
         return substr($text, 0, strlen($text) - $pad);
     }
-
 }
-
 /**
  * 公众号消息 - 加解密
  * Class Prpcrypt
  */
 class Prpcrypt
 {
-
     public $key;
-
     /**
      * Prpcrypt constructor.
      * @param $key
@@ -60,7 +53,6 @@ class Prpcrypt
     {
         $this->key = base64_decode("{$key}=");
     }
-
     /**
      * 对明文进行加密
      * @param string $text 需要加密的明文
@@ -73,14 +65,13 @@ class Prpcrypt
             $random = $this->getRandomStr();
             $iv = substr($this->key, 0, 16);
             $pkcEncoder = new PKCS7Encoder();
-            $text = $pkcEncoder->encode($random . pack("N", strlen($text)) . $text . $appid);
+            $text = $pkcEncoder->encode($random.pack("N", strlen($text)).$text.$appid);
             $encrypted = openssl_encrypt($text, 'AES-256-CBC', substr($this->key, 0, 32), OPENSSL_ZERO_PADDING, $iv);
             return [ErrorCode::$OK, $encrypted];
         } catch (Exception $e) {
             return [ErrorCode::$EncryptAESError, null];
         }
     }
-
     /**
      * 对密文进行解密
      * @param string $encrypted 需要解密的密文
@@ -108,7 +99,6 @@ class Prpcrypt
             return [ErrorCode::$IllegalBuffer, null];
         }
     }
-
     /**
      * 随机生成16位字符串
      * @param string $str
@@ -123,9 +113,7 @@ class Prpcrypt
         }
         return $str;
     }
-
 }
-
 /**
  * 仅用作类内部使用
  * 不用于官方API接口的errCode码
@@ -160,7 +148,6 @@ class ErrorCode
         '40010' => 'Base64解码失败',
         '40011' => '公众帐号生成回包xml失败',
     ];
-
     /**
      * 获取错误消息内容
      * @param string $code 错误代码
@@ -173,5 +160,5 @@ class ErrorCode
         }
         return false;
     }
-
 }
+?>

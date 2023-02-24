@@ -5,7 +5,6 @@ use WeChat\Contracts\Tools;
 use WeChat\Exceptions\InvalidArgumentException;
 use WePayV3\Contracts\BasicWePay;
 use WePayV3\Contracts\DecryptAes;
-
 /**
  * 订单支付接口
  * Class Order
@@ -17,7 +16,6 @@ class Order extends BasicWePay
     const WXPAY_APP = 'app';
     const WXPAY_JSAPI = 'jsapi';
     const WXPAY_NATIVE = 'native';
-
     /**
      * 创建支付订单
      * @param string $type 支付类型
@@ -36,10 +34,10 @@ class Order extends BasicWePay
         if (empty($types[$type])) {
             throw new InvalidArgumentException("Payment {$type} not defined.");
         } else {
-            // 创建预支付码
+            //创建预支付码
             $result = $this->doRequest('POST', $types[$type], json_encode($data, JSON_UNESCAPED_UNICODE), true);
             if (empty($result['prepay_id'])) return $result;
-            // 支付参数签名
+            //支付参数签名
             $time = (string)time();
             $appid = $this->config['appid'];
             $prepayId = $result['prepay_id'];
@@ -55,7 +53,6 @@ class Order extends BasicWePay
             }
         }
     }
-
     /**
      * 支付订单查询
      * @param string $orderNo 订单单号
@@ -67,7 +64,6 @@ class Order extends BasicWePay
         $pathinfo = "/v3/pay/transactions/out-trade-no/{$orderNo}";
         return $this->doRequest('GET', "{$pathinfo}?mchid={$this->config['mch_id']}", '', true);
     }
-
     /**
      * 支付通知
      * @return array
@@ -81,7 +77,6 @@ class Order extends BasicWePay
         } else {
             $data = $parameters;
         }
-
         if (isset($data['resource'])) {
             $aes = new DecryptAes($this->config['mch_v3_key']);
             $data['result'] = $aes->decryptToString(
@@ -93,3 +88,4 @@ class Order extends BasicWePay
         return $data;
     }
 }
+?>

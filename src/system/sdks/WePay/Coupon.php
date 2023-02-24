@@ -2,7 +2,6 @@
 namespace WePay;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWePay;
-
 /**
  * 微信商户代金券
  * Class Coupon
@@ -22,7 +21,6 @@ class Coupon extends BasicWePay
         $url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/send_coupon";
         return $this->callPostApi($url, $options, true, 'MD5');
     }
-
     /**
      * 查询代金券批次
      * @param array $options
@@ -35,7 +33,6 @@ class Coupon extends BasicWePay
         $url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/query_coupon_stock";
         return $this->callPostApi($url, $options, false);
     }
-
     /**
      * 查询代金券信息
      * @param array $options
@@ -48,5 +45,5 @@ class Coupon extends BasicWePay
         $url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/query_coupon_stock";
         return $this->callPostApi($url, $options, false);
     }
-
 }
+?>

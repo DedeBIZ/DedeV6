@@ -2,7 +2,6 @@
 namespace AliPay;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicAliPay;
-
 /**
  * 支付宝扫码支付
  * Class Scan
@@ -19,7 +18,6 @@ class Scan extends BasicAliPay
         parent::__construct($options);
         $this->options->set('method', 'alipay.trade.precreate');
     }
-
     /**
      * 创建数据操作
      * @param array $options
@@ -32,3 +30,4 @@ class Scan extends BasicAliPay
         return $this->getResult($options);
     }
 }
+?>

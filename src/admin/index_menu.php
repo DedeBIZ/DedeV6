@@ -1,6 +1,6 @@
 <?php
 /**
- * 菜单项
+ * 侧边菜单
  *
  * @version        $id:index_menu.php 11:06 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

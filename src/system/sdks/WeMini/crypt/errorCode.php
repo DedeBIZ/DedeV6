@@ -1,5 +1,6 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');/**
+if (!defined('DEDEINC')) exit('dedebiz');
+/**
  * error code 说明.
  * <ul>
  *    <li>-41001: encodingAesKey 非法</li>
@@ -17,3 +18,4 @@ class ErrorCode
     public static $IllegalBuffer = -41003;
     public static $DecodeBase64Error = -41004;
 }
+?>

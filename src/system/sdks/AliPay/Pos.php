@@ -2,7 +2,6 @@
 namespace AliPay;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicAliPay;
-
 /**
  * 支付宝刷卡支付
  * Class Pos
@@ -20,7 +19,6 @@ class Pos extends BasicAliPay
         $this->options->set('method', 'alipay.trade.pay');
         $this->params->set('product_code', 'FACE_TO_FACE_PAYMENT');
     }
-
     /**
      * 创建数据操作
      * @param array $options
@@ -33,3 +31,4 @@ class Pos extends BasicAliPay
         return $this->getResult($options);
     }
 }
+?>

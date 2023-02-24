@@ -1,9 +1,7 @@
 <?php
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
-
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 小程序即时配送
  * Class Delivery
@@ -11,7 +9,6 @@ use WeChat\Contracts\BasicWeChat;
  */
 class Delivery extends BasicWeChat
 {
-
     /**
      * 异常件退回商家商家确认收货接口
      * @param array $data
@@ -24,7 +21,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/order/confirm_return?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 下配送单接口
      * @param array $data
@@ -37,7 +33,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/order/add?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 可以对待接单状态的订单增加小费
      * @param array $data
@@ -50,7 +45,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/order/addtips?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 取消配送单接口
      * @param array $data
@@ -63,7 +57,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/order/cancel?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 获取已支持的配送公司列表接口
      * @param array $data
@@ -76,7 +69,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/delivery/getall?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 拉取已绑定账号
      * @param array $data
@@ -89,7 +81,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/shop/get?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 拉取配送单信息
      * @param array $data
@@ -102,7 +93,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/order/get?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 模拟配送公司更新配送单状态
      * @param array $data
@@ -115,7 +105,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/test_update_order?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 预下配送单接口
      * @param array $data
@@ -128,7 +117,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/order/pre_add?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 预取消配送单接口
      * @param array $data
@@ -141,7 +129,6 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/order/precancel?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 重新下单
      * @param array $data
@@ -154,5 +141,5 @@ class Delivery extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/express/local/business/order/readd?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
 }
+?>

@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 模板消息
  * Class Template
@@ -24,7 +23,6 @@ class Template extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['industry_id1' => $industry_id1, 'industry_id2' => $industry_id2]);
     }
-
     /**
      * 获取设置的行业信息
      * @return array
@@ -37,7 +35,6 @@ class Template extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 获得模板ID
      * @param string $tpl_id 板库中模板的编号，有“TM**”和“OPENTMTM**”等形式
@@ -51,7 +48,6 @@ class Template extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['template_id_short' => $tpl_id]);
     }
-
     /**
      * 获取模板列表
      * @return array
@@ -64,7 +60,6 @@ class Template extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 删除模板ID
      * @param string $tpl_id 公众帐号下模板消息ID
@@ -78,7 +73,6 @@ class Template extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['template_id' => $tpl_id]);
     }
-
     /**
      * 发送模板消息
      * @param array $data
@@ -92,6 +86,5 @@ class Template extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
-
 }
+?>

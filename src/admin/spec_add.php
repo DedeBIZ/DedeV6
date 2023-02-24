@@ -1,6 +1,6 @@
 <?php
 /**
- * 专题添加
+ * 发布专题
  *
  * @version        $id:spec_add.php 16:22 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

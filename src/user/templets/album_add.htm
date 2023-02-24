@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/member.album.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.album.js"></script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -88,35 +88,6 @@
 							<script>
 								MakeUpload(2);
 							</script>
-
-							<!--上传图片新样式-->
-							<span class="btn btn-success btn-sm">上传图片（支持多选）</span>
-							<div class="album-imgs text-center my-3">
-								<div class="row">
-									<div class="col-md-3">
-										<img src="https://www.dedebiz.com/static/img/best_itprato.png">
-										<p class="py-3">图片1</p>
-									</div>
-									<div class="col-md-3">
-										<img src="https://www.dedebiz.com/static/img/best_itprato.png">
-										<p class="py-3">图片1</p>
-									</div>
-									<div class="col-md-3">
-										<img src="https://www.dedebiz.com/static/img/industries-1.jpg">
-										<p class="py-3">图片2</p>
-									</div>
-									<div class="col-md-3">
-										<img src="https://www.dedebiz.com/static/img/index-img.png">
-										<p class="py-3">图片3</p>
-									</div>
-									<div class="col-md-3">
-										<img src="https://www.dedebiz.com/images/quick/type1.png">
-										<p class="py-3">图片4</p>
-									</div>
-								</div>
-							</div>
-							<!--上传图片新样式-->
-
 							<div class="text-center">
 								<button type="submit" class="btn btn-success btn-sm">提交</button>
 								<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
@@ -127,6 +98,6 @@
 			</div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>
-		<?php include UserInclude("templets/widget_litpic.htm");?>
+		<?php include(DEDEMEMBER."/templets/widget_litpic.htm");?>
 	</body>
 </html>

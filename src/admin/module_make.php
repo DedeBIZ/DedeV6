@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成模块
+ * 模块生成
  *
  * @version        $id:module_make.php 14:17 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

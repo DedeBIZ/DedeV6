@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员短消息,发布所有消息
+ * 会员短消息，发布所有消息
  *
  * @version        $id:member_pmall.php 11:24 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统权限组添加
+ * 添加系统权限组
  *
  * @version        $id:sys_group_add.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

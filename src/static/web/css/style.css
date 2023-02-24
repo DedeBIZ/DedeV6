@@ -379,10 +379,6 @@ input[type=file] {
 	max-width:280px;
 	max-height:168px
 }
-.album-imgs img {
-	max-width:260px;
-	max-height:156px
-}
 #btnScrollTop {
 	display:none;
 	position:fixed;

@@ -1,6 +1,6 @@
 <?php
 /**
- * 管理目录配置文件
+ * 管理目录配置
  *
  * @version        $id:config.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

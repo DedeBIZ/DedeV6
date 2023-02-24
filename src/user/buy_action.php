@@ -57,7 +57,6 @@ if ($dopost === "bank_ok") {
         ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
         exit;
     }
-
     if ($result['return_code'] === "SUCCESS" && $result['trade_state'] === "SUCCESS") {
         $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid='{$moRow['pid']}'");
         $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE buyid = '$buyid'";
@@ -155,7 +154,6 @@ if ($paytype === 0) {
         ShowMsg("已完成支付，无需重复付款", "javascript:;");
         exit;
     }
-
     if($paytype === 1) {
         //微信支付
         include_once(DEDEINC.'/libraries/oxwindow.class.php');
@@ -166,7 +164,6 @@ if ($paytype === 0) {
             "mch_id" => $pData['MchID'],
             "mch_key" => $pData['APIv2Secret'],
         );
-
         try {
             $wechat = new \WeChat\Pay($config);
             $options = array(
@@ -214,11 +211,10 @@ if ($paytype === 0) {
             //实例支付对象
             $pay = \AliPay\Web::instance($config);
             $result = $pay->apply(array(
-                'out_trade_no' => $buyid, // 商户订单号
-                'total_amount' => $row['money'], // 支付金额
-                'subject'      => $row['pname'], // 支付订单描述
+                'out_trade_no' => $buyid,//商户订单号
+                'total_amount' => $row['money'],//支付金额
+                'subject'      => $row['pname'],//支付订单描述
             ));
-
             echo $result;
         } catch (Exception $e) {
             ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
@@ -261,9 +257,7 @@ if ($paytype === 0) {
             }
             $memrank = $dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE `rank`='$rank'");
             //更新会员信息
-            $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',
-                       scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' 
-                       WHERE mid='".$mid."'";
+            $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' WHERE mid='".$mid."'";
             $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='$buyid' ";
             if(!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo)))
             {
@@ -271,7 +265,6 @@ if ($paytype === 0) {
                 exit;
             }
         }
-        
         ShowMsg("成功使用余额付款", "javascript:;");
         exit;
     } elseif ($paytype === 5) {

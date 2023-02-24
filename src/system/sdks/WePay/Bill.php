@@ -4,7 +4,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWePay;
 use WeChat\Contracts\Tools;
 use WeChat\Exceptions\InvalidResponseException;
-
 /**
  * 微信商户账单及评论
  * Class Bill
@@ -33,8 +32,6 @@ class Bill extends BasicWePay
         }
         return is_null($outType) ? $result : $outType($result);
     }
-
-
     /**
      * 拉取订单评价数据
      * @param array $options
@@ -48,3 +45,4 @@ class Bill extends BasicWePay
         return $this->callPostApi($url, $options, true);
     }
 }
+?>

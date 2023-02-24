@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 小程序直播接口
  * Class Live
@@ -22,7 +21,6 @@ class Live extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxaapi/broadcast/room/create?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 获取直播房间列表
      * @param integer $start 起始拉取房间
@@ -36,7 +34,6 @@ class Live extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxa/business/getliveinfo?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['start' => $start, 'limit' => $limit], true);
     }
-
     /**
      * 获取回放源视频
      * @param array $data
@@ -49,7 +46,6 @@ class Live extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxa/business/getliveinfo?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 直播间导入商品
      * @param array $data
@@ -62,7 +58,6 @@ class Live extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxaapi/broadcast/room/addgoods?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 商品添加并提审
      * @param array $data
@@ -75,7 +70,6 @@ class Live extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxaapi/broadcast/goods/add?access_token=ACCESS_TOKEN";
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 商品撤回审核
      * @param array $data
@@ -88,7 +82,6 @@ class Live extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxaapi/broadcast/goods/resetaudit?access_token=ACCESS_TOKEN";
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 重新提交审核
      * @param array $data
@@ -101,7 +94,6 @@ class Live extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxaapi/broadcast/goods/audit?access_token=ACCESS_TOKEN";
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 删除商品
      * @param array $data
@@ -114,7 +106,6 @@ class Live extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxaapi/broadcast/goods/delete?access_token=ACCESS_TOKEN";
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 更新商品
      * @param array $data
@@ -127,7 +118,6 @@ class Live extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxaapi/broadcast/goods/update?access_token=ACCESS_TOKEN";
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 获取商品状态
      * @param array $data
@@ -140,7 +130,6 @@ class Live extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxa/business/getgoodswarehouse?access_token=ACCESS_TOKEN";
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 获取商品列表
      * @param array $data
@@ -154,3 +143,4 @@ class Live extends BasicWeChat
         return $this->callPostApi($url, $data, true);
     }
 }
+?>

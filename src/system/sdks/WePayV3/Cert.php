@@ -4,7 +4,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Exceptions\InvalidResponseException;
 use WePayV3\Contracts\BasicWePay;
 use WePayV3\Contracts\DecryptAes;
-
 /**
  * 平台证书管理
  * Class Cert
@@ -34,3 +33,4 @@ class Cert extends BasicWePay
         }
     }
 }
+?>

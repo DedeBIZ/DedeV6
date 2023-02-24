@@ -9,7 +9,6 @@ class WXBizDataCrypt
 {
     private $appid;
     private $sessionKey;
-
     /**
      * 构造函数
      * @param $sessionKey string 用户在小程序登录后获取的会话密钥
@@ -19,9 +18,8 @@ class WXBizDataCrypt
     {
         $this->appid = $appid;
         $this->sessionKey = $sessionKey;
-        include_once __DIR__ . DIRECTORY_SEPARATOR . "errorCode.php";
+        include_once __DIR__.DIRECTORY_SEPARATOR."errorCode.php";
     }
-
     /**
      * 检验数据的真实性，并且获取解密后的明文.
      * @param $encryptedData string 加密的用户数据
@@ -46,13 +44,12 @@ class WXBizDataCrypt
         if ($dataObj == null) {
             return ErrorCode::$IllegalBuffer;
         }
-        // 兼容新版本无 watermark 的情况
+        //兼容新版本无 watermark 的情况
         if (isset($dataObj->watermark) && $dataObj->watermark->appid != $this->appid) {
             return ErrorCode::$IllegalBuffer;
         }
         $data = $result;
         return ErrorCode::$OK;
     }
-
 }
-
+?>

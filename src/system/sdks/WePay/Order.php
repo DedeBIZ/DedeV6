@@ -3,7 +3,6 @@ namespace WePay;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWePay;
 use WeChat\Contracts\Tools;
-
 /**
  * 微信商户订单
  * Class Order
@@ -11,7 +10,6 @@ use WeChat\Contracts\Tools;
  */
 class Order extends BasicWePay
 {
-
     /**
      * 统一下单
      * @param array $options
@@ -24,7 +22,6 @@ class Order extends BasicWePay
         $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
         return $this->callPostApi($url, $options, false, 'MD5');
     }
-
     /**
      * 刷卡支付
      * @param array $options
@@ -37,7 +34,6 @@ class Order extends BasicWePay
         $url = 'https://api.mch.weixin.qq.com/pay/micropay';
         return $this->callPostApi($url, $options, false, 'MD5');
     }
-
     /**
      * 查询订单
      * @param array $options
@@ -50,7 +46,6 @@ class Order extends BasicWePay
         $url = 'https://api.mch.weixin.qq.com/pay/orderquery';
         return $this->callPostApi($url, $options);
     }
-
     /**
      * 关闭订单
      * @param string $outTradeNo 商户订单号
@@ -63,7 +58,6 @@ class Order extends BasicWePay
         $url = 'https://api.mch.weixin.qq.com/pay/closeorder';
         return $this->callPostApi($url, ['out_trade_no' => $outTradeNo]);
     }
-
     /**
      * 创建JsApi及H5支付参数
      * @param string $prepayId 统一下单预支付码
@@ -81,7 +75,6 @@ class Order extends BasicWePay
         $option['timestamp'] = $option['timeStamp'];
         return $option;
     }
-
     /**
      * 获取支付规则二维码
      * @param string $productId 商户定义的商品id或者订单号
@@ -97,9 +90,8 @@ class Order extends BasicWePay
             'product_id' => (string)$productId,
         ];
         $data['sign'] = $this->getPaySign($data, 'MD5');
-        return "weixin://wxpay/bizpayurl?" . http_build_query($data);
+        return "weixin://wxpay/bizpayurl?".http_build_query($data);
     }
-
     /**
      * 获取微信App支付秘需参数
      * @param string $prepayId 统一下单预支付码
@@ -118,7 +110,6 @@ class Order extends BasicWePay
         $data['sign'] = $this->getPaySign($data, 'MD5');
         return $data;
     }
-
     /**
      * 刷卡支付 撤销订单
      * @param array $options
@@ -131,7 +122,6 @@ class Order extends BasicWePay
         $url = 'https://api.mch.weixin.qq.com/secapi/pay/reverse';
         return $this->callPostApi($url, $options, true);
     }
-
     /**
      * 刷卡支付 授权码查询openid
      * @param string $authCode 扫码支付授权码，设备读取用户微信中的条码或者二维码信息
@@ -144,7 +134,6 @@ class Order extends BasicWePay
         $url = 'https://api.mch.weixin.qq.com/tools/authcodetoopenid';
         return $this->callPostApi($url, ['auth_code' => $authCode], false, 'MD5', false);
     }
-
     /**
      * 刷卡支付 交易保障
      * @param array $options
@@ -158,3 +147,4 @@ class Order extends BasicWePay
         return $this->callPostApi($url, $options);
     }
 }
+?>

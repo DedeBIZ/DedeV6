@@ -1,6 +1,6 @@
 <?php
 /**
- * 根据条件生成标记
+ * 自定义标记向导生成条件标记
  *
  * @version        $id:mytag_tag_guide_ok.php 15:39 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -13,7 +13,7 @@ if (DEDEBIZ_SAFE_MODE) {
     die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
 CheckPurview('temp_Other');
-//根据条件生成标记
+//根据生成条件标记
 $attlist = "";
 $attlist .= " row='".$row."'";
 $attlist .= " titlelen='".$titlelen."'";

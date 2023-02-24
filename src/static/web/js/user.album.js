@@ -42,7 +42,7 @@ function MakeUpload(mnum)
 		fhtml = '';
 		fhtml += "<div><label><input type='checkbox' name='isokcheck"+startNum+"' id='isokcheck"+startNum+"' value='1' "+dsel+" onClick='CheckSelTable("+startNum+")'> 显示图片"+startNum+"上传框</label></div>";
 		fhtml += "<div id=\"seltb"+startNum+"\" style=\""+dplay+"\">";
-		fhtml += "<p>图片"+startNum+"：<input type='text' name='imgfile"+startNum+"' class='form-control d-inline-block w-50 mr-2' placeholder='请输入网址'><span class='btn btn-success btn-sm'>选择</span></p>";
+		fhtml += "<p>图片"+startNum+"：<input type='text' name='imgfile"+startNum+"' class='form-control d-inline-block w-50 mr-2' placeholder='请输入网址'></p>";
 		fhtml += "<p>图片简介：<textarea name='imgmsg"+startNum+"' class='form-control'></textarea></p>";
 		fhtml += "</div>";
 		upfield.innerHTML += fhtml;

@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义标记修改
+ * 修改自定义标记
  *
  * @version        $id:mytag_edit.php 15:37 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 微信草稿箱管理
  * Class Draft
@@ -24,7 +23,6 @@ class Draft extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['articles' => $articles]);
     }
-
     /**
      * 获取草稿
      * @param string $media_id
@@ -39,8 +37,6 @@ class Draft extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media_id' => $media_id]);
     }
-
-
     /**
      * 删除草稿
      * @param string $media_id
@@ -54,7 +50,6 @@ class Draft extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media_id' => $media_id]);
     }
-
     /**
      * 新增图文素材
      * @param array $data 文件名称
@@ -68,7 +63,6 @@ class Draft extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 修改草稿
      * @param string $media_id 要修改的图文消息的id
@@ -85,7 +79,6 @@ class Draft extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 获取草稿总数
      * @return array
@@ -98,7 +91,6 @@ class Draft extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 获取草稿列表
      * @param int $offset 从全部素材的该偏移位置开始返回，0表示从第一个素材返回
@@ -114,5 +106,5 @@ class Draft extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['no_content' => $no_content, 'offset' => $offset, 'count' => $count]);
     }
-
 }
+?>

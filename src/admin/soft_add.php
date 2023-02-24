@@ -1,6 +1,6 @@
 <?php
 /**
- * 软件发布
+ * 发布软件模型
  *
  * @version        $id:soft_add.php 16:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

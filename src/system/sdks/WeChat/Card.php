@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 卡券管理
  * Class Card
@@ -23,7 +22,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 设置买单接口
      * @param string $card_id
@@ -38,7 +36,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id, 'is_open' => $is_open]);
     }
-
     /**
      * 设置自助核销接口
      * @param string $card_id
@@ -53,7 +50,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id, 'is_open' => $is_open]);
     }
-
     /**
      * 创建二维码接口
      * @param array $data
@@ -67,7 +63,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 创建货架接口
      * @param array $data
@@ -81,7 +76,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 导入自定义code
      * @param string $card_id
@@ -96,7 +90,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id, 'code' => $code]);
     }
-
     /**
      * 查询导入code数目
      * @param string $card_id
@@ -110,7 +103,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id]);
     }
-
     /**
      * 核查code接口
      * @param string $card_id 进行导入code的卡券ID
@@ -125,7 +117,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id, 'code' => $code]);
     }
-
     /**
      * 图文消息群发卡券
      * @param string $card_id
@@ -139,7 +130,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id]);
     }
-
     /**
      * 设置测试白名单
      * @param array $openids
@@ -154,7 +144,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['openid' => $openids, 'username' => $usernames]);
     }
-
     /**
      * 线下核销查询Code
      * @param string $code 单张卡券的唯一标准
@@ -173,7 +162,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 线下核销核销Code
      * @param string $code 需核销的Code码
@@ -190,7 +178,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * Code解码接口
      * @param string $encrypt_code
@@ -204,7 +191,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['encrypt_code' => $encrypt_code]);
     }
-
     /**
      * 获取用户已领取卡券接口
      * @param string $openid
@@ -221,7 +207,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 查看卡券详情
      * @param string $card_id
@@ -235,7 +220,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id]);
     }
-
     /**
      * 批量查询卡券列表
      * @param int $offset 查询卡列表的起始偏移量，从0开始，即offset: 5是指从从列表里的第六个开始读取
@@ -253,7 +237,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 更改卡券信息接口
      * @param string $card_id
@@ -268,7 +251,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id, 'member_card' => $member_card]);
     }
-
     /**
      * 修改库存接口
      * @param string $card_id 卡券ID
@@ -287,7 +269,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 更改Code接口
      * @param string $code 需变更的Code码
@@ -305,7 +286,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 删除卡券接口
      * @param string $card_id
@@ -319,7 +299,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id]);
     }
-
     /**
      * 设置卡券失效接口
      * @param string $code
@@ -337,7 +316,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 拉取卡券概况数据接口
      * @param string $begin_date 查询数据的起始时间
@@ -354,7 +332,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 获取免费券数据接口
      * @param string $begin_date 查询数据的起始时间
@@ -373,8 +350,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
-
     /**
      * 激活会员卡
      * @param array $data
@@ -388,7 +363,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 设置开卡字段接口
      * 用户激活时需要填写的选项
@@ -403,7 +377,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 获取用户提交资料
      * 根据activate_ticket获取到用户填写的信息
@@ -418,7 +391,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['activate_ticket' => $activate_ticket]);
     }
-
     /**
      * 更新会员信息
      * @param array $data
@@ -432,7 +404,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 拉取会员卡概况数据接口
      * @param string $begin_date 查询数据的起始时间
@@ -449,7 +420,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 拉取单张会员卡数据接口
      * @param string $begin_date 查询数据的起始时间
@@ -466,7 +436,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 拉取会员信息（积分查询）接口
      * @param string $card_id 查询会员卡的cardid
@@ -482,7 +451,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 设置支付后投放卡券接口
      * @param array $data
@@ -496,7 +464,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 删除支付后投放卡券规则
      * @param integer $rule_id 支付即会员的规则名称
@@ -510,7 +477,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['rule_id' => $rule_id]);
     }
-
     /**
      * 查询支付后投放卡券规则详情
      * @param integer $rule_id 要查询规则id
@@ -524,7 +490,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['rule_id' => $rule_id]);
     }
-
     /**
      * 批量查询支付后投放卡券规则
      * @param integer $offset 起始偏移量
@@ -541,7 +506,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 创建支付后领取立减金活动
      * @param array $data
@@ -555,7 +519,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 开通券点账户接口
      * @return array
@@ -568,7 +531,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 对优惠券批价
      * @param string $card_id 需要来配置库存的card_id
@@ -583,7 +545,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['card_id' => $card_id, 'quantity' => $quantity]);
     }
-
     /**
      * 查询券点余额接口
      * @return array
@@ -596,7 +557,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
     /**
      * 确认兑换库存接口
      * @param string $card_id 需要来兑换库存的card_id
@@ -613,7 +573,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
     /**
      * 充值券点接口
      * @param integer $coin_count
@@ -627,7 +586,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['coin_count' => $coin_count]);
     }
-
     /**
      * 查询订单详情接口
      * @param string $order_id
@@ -641,7 +599,6 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['order_id' => $order_id]);
     }
-
     /**
      * 查询券点流水详情接口
      * @param array $data
@@ -655,5 +612,5 @@ class Card extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data);
     }
-
 }
+?>

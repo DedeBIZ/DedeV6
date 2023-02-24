@@ -1,6 +1,6 @@
 <?php
 /**
- * 退出
+ * 退出登录
  *
  * @version        $id:exit.php 19:09 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

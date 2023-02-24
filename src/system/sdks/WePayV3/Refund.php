@@ -5,7 +5,6 @@ use WeChat\Contracts\Tools;
 use WeChat\Exceptions\InvalidDecryptException;
 use WeChat\Exceptions\InvalidResponseException;
 use WePayV3\Contracts\BasicWePay;
-
 /**
  * 订单退款接口
  * Class Refund
@@ -23,7 +22,6 @@ class Refund extends BasicWePay
     {
         return $this->doRequest('POST', '/v3/ecommerce/refunds/apply', json_encode($data, JSON_UNESCAPED_UNICODE), true);
     }
-
     /**
      * 退款订单查询
      * @param string $refundNo 退款单号
@@ -35,7 +33,6 @@ class Refund extends BasicWePay
         $pathinfo = "/v3/ecommerce/refunds/out-refund-no/{$refundNo}";
         return $this->doRequest('GET', "{$pathinfo}?sub_mchid={$this->config['mch_id']}", '', true);
     }
-
     /**
      * 获取退款通知
      * @return array
@@ -59,3 +56,4 @@ class Refund extends BasicWePay
         }
     }
 }
+?>

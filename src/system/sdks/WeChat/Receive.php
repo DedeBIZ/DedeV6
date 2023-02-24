@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicPushEvent;
-
 /**
  * 公众号推送管理
  * Class Receive
@@ -10,7 +9,6 @@ use WeChat\Contracts\BasicPushEvent;
  */
 class Receive extends BasicPushEvent
 {
-
     /**
      * 转发多客服消息
      * @param string $account
@@ -27,7 +25,6 @@ class Receive extends BasicPushEvent
         empty($account) || $this->message['TransInfo'] = ['KfAccount' => $account];
         return $this;
     }
-
     /**
      * 设置文本消息
      * @param string $content 文本内容
@@ -44,7 +41,6 @@ class Receive extends BasicPushEvent
         ];
         return $this;
     }
-
     /**
      * 设置回复图文
      * @param array $newsData
@@ -62,7 +58,6 @@ class Receive extends BasicPushEvent
         ];
         return $this;
     }
-
     /**
      * 设置图片消息
      * @param string $mediaId 图片媒体ID
@@ -79,7 +74,6 @@ class Receive extends BasicPushEvent
         ];
         return $this;
     }
-
     /**
      * 设置语音回复消息
      * @param string $mediaid 语音媒体ID
@@ -96,7 +90,6 @@ class Receive extends BasicPushEvent
         ];
         return $this;
     }
-
     /**
      * 设置视频回复消息
      * @param string $mediaid 视频媒体ID
@@ -119,7 +112,6 @@ class Receive extends BasicPushEvent
         ];
         return $this;
     }
-
     /**
      * 设置音乐回复消息
      * @param string $title 音乐标题
@@ -149,3 +141,4 @@ class Receive extends BasicPushEvent
         return $this;
     }
 }
+?>

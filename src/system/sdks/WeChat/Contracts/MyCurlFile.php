@@ -1,7 +1,6 @@
 <?php
 namespace WeChat\Contracts;
 if (!defined('DEDEINC')) exit('dedebiz');
-
 /**
  * 自定义CURL文件类
  * Class MyCurlFile
@@ -14,7 +13,6 @@ class MyCurlFile extends \stdClass
      * @var string
      */
     public $datatype = 'MY_CURL_FILE';
-
     /**
      * MyCurlFile constructor.
      * @param string|array $filename
@@ -34,10 +32,9 @@ class MyCurlFile extends \stdClass
             if (empty($this->mimetype)) $this->mimetype = Tools::getExtMine($this->extension);
             if (empty($this->postname)) $this->postname = pathinfo($filename, PATHINFO_BASENAME);
             $this->content = base64_encode(file_get_contents($filename));
-            $this->tempname = md5($this->content) . ".{$this->extension}";
+            $this->tempname = md5($this->content).".{$this->extension}";
         }
     }
-
     /**
      * 获取文件上传信息
      * @return \CURLFile|string
@@ -52,14 +49,13 @@ class MyCurlFile extends \stdClass
             return "@{$this->tempname};filename={$this->postname};type={$this->mimetype}";
         }
     }
-
     /**
      * 通用销毁函数清理缓存文件
      * 提前删除过期因此放到了网络请求之后
      */
     public function __destruct()
     {
-        // Tools::delCache($this->tempname);
+        //Tools::delCache($this->tempname);
     }
-
 }
+?>

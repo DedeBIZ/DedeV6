@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统配置
+ * 系统配置变量
  *
  * @version        $id:sys_info.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -17,7 +17,7 @@ function ReWriteConfig()
 {
     global $dsql, $configfile;
     if (!is_writeable($configfile)) {
-        echo "配置文件{$configfile}不支持写入，无法修改系统配置参数";
+        echo "配置文件<span class='text-primary'>{$configfile}</span>不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
@@ -61,7 +61,7 @@ if ($dopost == "save") {
 else if ($dopost == 'add') {
     CheckCSRF();
     if ($vartype == 'bool' && ($nvarvalue != 'Y' && $nvarvalue != 'N')) {
-        ShowMsg("布尔变量值必须为'Y'或'N'", "-1");
+        ShowMsg("布尔变量值必须为Y或N", "-1");
         exit();
     }
     if ($valtype == 'number') {

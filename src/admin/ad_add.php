@@ -1,6 +1,6 @@
 <?php
 /**
- * 广告添加
+ * 添加广告
  *
  * @version        $id:ad_add.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

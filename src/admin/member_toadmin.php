@@ -1,6 +1,6 @@
 <?php
 /**
- * 升级为管理员
+ * 升级管理员
  *
  * @version        $id:member_toadmin.php 14:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

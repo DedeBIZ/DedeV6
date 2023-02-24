@@ -1,6 +1,6 @@
 <?php
 /**
- * 栏目添加
+ * 添加栏目
  *
  * @version        $id:catalog_add.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

@@ -2,7 +2,6 @@
 namespace AliPay;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicAliPay;
-
 /**
  * 手机WAP网站支付支持
  * Class Wap
@@ -20,7 +19,6 @@ class Wap extends BasicAliPay
         $this->options->set('method', 'alipay.trade.wap.pay');
         $this->params->set('product_code', 'QUICK_WAP_WAY');
     }
-
     /**
      * 创建数据操作
      * @param array $options
@@ -32,3 +30,4 @@ class Wap extends BasicAliPay
         return $this->buildPayHtml();
     }
 }
+?>

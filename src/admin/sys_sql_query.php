@@ -1,6 +1,6 @@
 <?php
 /**
- * SQL命令执行器
+ * SQL命令工具
  *
  * @version        $id:sys_sql_query.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

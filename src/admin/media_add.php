@@ -1,6 +1,6 @@
 <?php
 /**
- * 附件添加
+ * 添加附件
  *
  * @version        $id:media_add.php 2 15:25 2011-6-2 tianya $
  * @package        DedeBIZ.Administrator

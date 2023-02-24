@@ -12,7 +12,6 @@ class InvalidInstanceException extends \Exception
      * @var array
      */
     public $raw = [];
-
     /**
      * InvalidResponseException constructor.
      * @param string $message
@@ -25,3 +24,4 @@ class InvalidInstanceException extends \Exception
         $this->raw = $raw;
     }
 }
+?>

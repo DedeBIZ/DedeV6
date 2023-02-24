@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 小程序生物认证
  * Class Soter
@@ -23,3 +22,4 @@ class Soter extends BasicWeChat
         return $this->callPostApi($url, $data, true);
     }
 }
+?>

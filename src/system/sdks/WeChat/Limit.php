@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 接口调用频次限制
  * Class Limit
@@ -10,7 +9,6 @@ use WeChat\Contracts\BasicWeChat;
  */
 class Limit extends BasicWeChat
 {
-
     /**
      * 公众号调用或第三方平台帮公众号调用对公众号的所有api调用（包括第三方帮其调用）次数进行清零
      * @return array
@@ -22,7 +20,6 @@ class Limit extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/clear_quota?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['appid' => $this->config->get('appid')]);
     }
-
     /**
      * 网络检测
      * @param string $action 执行的检测动作
@@ -36,7 +33,6 @@ class Limit extends BasicWeChat
         $url = 'https://api.weixin.qq.com/cgi-bin/callback/check?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['action' => $action, 'check_operator' => $operator]);
     }
-
     /**
      * 获取微信服务器IP地址
      * @return array
@@ -50,3 +46,4 @@ class Limit extends BasicWeChat
         return $this->httpGetForJson($url);
     }
 }
+?>

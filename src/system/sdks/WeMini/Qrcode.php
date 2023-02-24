@@ -3,7 +3,6 @@ namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 use WeChat\Contracts\Tools;
-
 /**
  * 微信小程序二维码管理
  * Class Qrcode
@@ -11,7 +10,6 @@ use WeChat\Contracts\Tools;
  */
 class Qrcode extends BasicWeChat
 {
-
     /**
      * 获取小程序码（永久有效）
      * 接口A: 适用于需要的码数量较少的业务场景
@@ -40,7 +38,6 @@ class Qrcode extends BasicWeChat
         }
         return is_null($outType) ? $result : $outType($result);
     }
-
     /**
      * 获取小程序码（永久有效）
      * 接口B：适用于需要的码数量极多的业务场景
@@ -70,7 +67,6 @@ class Qrcode extends BasicWeChat
         }
         return is_null($outType) ? $result : $outType($result);
     }
-
     /**
      * 获取小程序二维码（永久有效）
      * 接口C：适用于需要的码数量较少的业务场景
@@ -96,3 +92,4 @@ class Qrcode extends BasicWeChat
         return is_null($outType) ? $result : $outType($result);
     }
 }
+?>

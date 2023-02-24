@@ -2,7 +2,6 @@
 namespace WeMini;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 小程序 URL-Scheme
  * Class Scheme
@@ -10,7 +9,6 @@ use WeChat\Contracts\BasicWeChat;
  */
 class Scheme extends BasicWeChat
 {
-
     /**
      * 创建 URL-Scheme
      * @param array $data
@@ -23,7 +21,6 @@ class Scheme extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxa/generatescheme?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 查询 URL-Scheme
      * @param string $scheme
@@ -36,7 +33,6 @@ class Scheme extends BasicWeChat
         $url = 'https://api.weixin.qq.com/wxa/queryscheme?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, ['scheme' => $scheme], true);
     }
-
     /**
      * 创建 URL-Link
      * @param array $data
@@ -49,7 +45,6 @@ class Scheme extends BasicWeChat
         $url = "https://api.weixin.qq.com/wxa/generate_urllink?access_token=ACCESS_TOKEN";
         return $this->callPostApi($url, $data, true);
     }
-
     /**
      * 查询 URL-Link
      * @param string $urllink
@@ -63,3 +58,4 @@ class Scheme extends BasicWeChat
         return $this->callPostApi($url, ['url_link' => $urllink], true);
     }
 }
+?>

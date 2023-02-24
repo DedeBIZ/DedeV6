@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档发布
+ * 发布文档模型
  *
  * @version        $id:article_add.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Administrator

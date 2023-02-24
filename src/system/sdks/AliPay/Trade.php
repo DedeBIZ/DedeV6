@@ -2,7 +2,6 @@
 namespace AliPay;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicAliPay;
-
 /**
  * 支付宝标准接口
  * Class Trade
@@ -10,7 +9,6 @@ use WeChat\Contracts\BasicAliPay;
  */
 class Trade extends BasicAliPay
 {
-
     /**
      * 设置交易接口地址
      * @param string $method
@@ -21,7 +19,6 @@ class Trade extends BasicAliPay
         $this->options->set('method', $method);
         return $this;
     }
-
     /**
      * 获取交易接口地址
      * @return string
@@ -30,7 +27,6 @@ class Trade extends BasicAliPay
     {
         return $this->options->get('method');
     }
-
     /**
      * 设置接口公共参数
      * @param array $option
@@ -43,7 +39,6 @@ class Trade extends BasicAliPay
         }
         return $this;
     }
-
     /**
      * 获取接口公共参数
      * @return array|string|null
@@ -52,7 +47,6 @@ class Trade extends BasicAliPay
     {
         return $this->options->get();
     }
-
     /**
      * 执行通过接口
      * @param array $options
@@ -65,3 +59,4 @@ class Trade extends BasicAliPay
         return $this->getResult($options);
     }
 }
+?>

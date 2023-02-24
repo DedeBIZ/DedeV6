@@ -1,12 +1,10 @@
 <?php
 namespace WePayV3\Contracts;
 if (!defined('DEDEINC')) exit('dedebiz');
-
 use WeChat\Contracts\Tools;
 use WeChat\Exceptions\InvalidArgumentException;
 use WeChat\Exceptions\InvalidResponseException;
 use WePayV3\Cert;
-
 /**
  * 微信支付基础类
  * Class BasicWePay
@@ -19,26 +17,23 @@ abstract class BasicWePay
      * @var string
      */
     protected $base = 'https://api.mch.weixin.qq.com';
-
     /**
      * 实例对象静态缓存
      * @var array
      */
     static $cache = [];
-
     /**
      * 配置参数
      * @var array
      */
     protected $config = [
-        'appid'        => '', // 微信绑定APPID，需配置
-        'mch_id'       => '', // 微信商户编号，需要配置
-        'mch_v3_key'   => '', // 微信商户密钥，需要配置
-        'cert_serial'  => '', // 商户证书序号，无需配置
-        'cert_public'  => '', // 商户公钥内容，需要配置
-        'cert_private' => '', // 商户密钥内容，需要配置
+        'appid'        => '',//微信绑定APPID，需配置
+        'mch_id'       => '',//微信商户编号，需要配置
+        'mch_v3_key'   => '',//微信商户密钥，需要配置
+        'cert_serial'  => '',//商户证书序号，无需配置
+        'cert_public'  => '',//商户公钥内容，需要配置
+        'cert_private' => '',//商户密钥内容，需要配置
     ];
-
     /**
      * BasicWePayV3 constructor.
      * @param array $options [mch_id, mch_v3_key, cert_public, cert_private]
@@ -57,7 +52,6 @@ abstract class BasicWePay
         if (empty($options['cert_public'])) {
             throw new InvalidArgumentException("Missing Config -- [cert_public]");
         }
-
         if (stripos($options['cert_public'], '-----BEGIN CERTIFICATE-----') === false) {
             if (file_exists($options['cert_public'])) {
                 $options['cert_public'] = file_get_contents($options['cert_public']);
@@ -65,7 +59,6 @@ abstract class BasicWePay
                 throw new InvalidArgumentException("File Non-Existent -- [cert_public]");
             }
         }
-
         if (stripos($options['cert_private'], '-----BEGIN PRIVATE KEY-----') === false) {
             if (file_exists($options['cert_private'])) {
                 $options['cert_private'] = file_get_contents($options['cert_private']);
@@ -73,19 +66,16 @@ abstract class BasicWePay
                 throw new InvalidArgumentException("File Non-Existent -- [cert_private]");
             }
         }
-
         $this->config['appid'] = isset($options['appid']) ? $options['appid'] : '';
         $this->config['mch_id'] = $options['mch_id'];
         $this->config['mch_v3_key'] = $options['mch_v3_key'];
         $this->config['cert_public'] = $options['cert_public'];
         $this->config['cert_private'] = $options['cert_private'];
         $this->config['cert_serial'] = openssl_x509_parse($this->config['cert_public'])['serialNumberHex'];
-
         if (empty($this->config['cert_serial'])) {
             throw new InvalidArgumentException("Failed to parse certificate public key");
         }
     }
-
     /**
      * 静态创建对象
      * @param array $config
@@ -93,11 +83,10 @@ abstract class BasicWePay
      */
     public static function instance($config)
     {
-        $key = md5(get_called_class() . serialize($config));
+        $key = md5(get_called_class().serialize($config));
         if (isset(self::$cache[$key])) return self::$cache[$key];
         return self::$cache[$key] = new static($config);
     }
-
     /**
      * 模拟发起请求
      * @param string $method 请求访问
@@ -109,13 +98,13 @@ abstract class BasicWePay
      */
     public function doRequest($method, $pathinfo, $jsondata = '', $verify = false)
     {
-        list($time, $nonce) = [time(), uniqid() . rand(1000, 9999)];
+        list($time, $nonce) = [time(), uniqid().rand(1000, 9999)];
         $signstr = join("\n", [$method, $pathinfo, $time, $nonce, $jsondata, '']);
-        // 生成数据签名TOKEN
+        //生成数据签名TOKEN
         $token = sprintf('mchid="%s",nonce_str="%s",timestamp="%d",serial_no="%s",signature="%s"',
             $this->config['mch_id'], $nonce, $time, $this->config['cert_serial'], $this->signBuild($signstr)
         );
-        list($header, $content) = $this->_doRequestCurl($method, $this->base . $pathinfo, [
+        list($header, $content) = $this->_doRequestCurl($method, $this->base.$pathinfo, [
             'data' => $jsondata, 'header' => [
                 "Accept: application/json", "Content-Type: application/json",
                 'User-Agent: https://thinkadmin.top', "Authorization: WECHATPAY2-SHA256-RSA2048 {$token}",
@@ -141,7 +130,6 @@ abstract class BasicWePay
         }
         return json_decode($content, true);
     }
-
     /**
      * 通过CURL模拟网络请求
      * @param string $method 请求方法
@@ -152,12 +140,12 @@ abstract class BasicWePay
     private function _doRequestCurl($method, $location, $options = [])
     {
         $curl = curl_init();
-        // POST数据设置
+        //POST数据设置
         if (strtolower($method) === 'post') {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $options['data']);
         }
-        // CURL头信息设置
+        //CURL头信息设置
         if (!empty($options['header'])) {
             curl_setopt($curl, CURLOPT_HTTPHEADER, $options['header']);
         }
@@ -172,7 +160,6 @@ abstract class BasicWePay
         curl_close($curl);
         return [substr($content, 0, $headerSize), substr($content, $headerSize)];
     }
-
     /**
      * 生成数据签名
      * @param string $data 签名内容
@@ -184,7 +171,6 @@ abstract class BasicWePay
         openssl_sign($data, $signature, $pkeyid, 'sha256WithRSAEncryption');
         return base64_encode($signature);
     }
-
     /**
      * 验证内容签名
      * @param string $data 签名内容
@@ -203,7 +189,6 @@ abstract class BasicWePay
         }
         return @openssl_verify($data, base64_decode($sign), openssl_x509_read($cert), 'sha256WithRSAEncryption');
     }
-
     /**
      * 写入或读取临时文件
      * @param string $name
@@ -220,3 +205,4 @@ abstract class BasicWePay
         }
     }
 }
+?>

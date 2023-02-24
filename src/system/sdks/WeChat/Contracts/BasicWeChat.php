@@ -3,50 +3,42 @@ namespace WeChat\Contracts;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Exceptions\InvalidArgumentException;
 use WeChat\Exceptions\InvalidResponseException;
-
 /**
  * Class BasicWeChat
  * @package WeChat\Contracts
  */
 class BasicWeChat
 {
-
     /**
      * 当前微信配置
      * @var DataArray
      */
     public $config;
-
     /**
      * 访问AccessToken
      * @var string
      */
     public $access_token = '';
-
     /**
      * 当前请求方法参数
      * @var array
      */
     protected $currentMethod = [];
-
     /**
      * 当前模式
      * @var bool
      */
     protected $isTry = false;
-
     /**
      * 静态缓存
      * @var static
      */
     protected static $cache;
-
     /**
      * 注册代替函数
      * @var string
      */
     protected $GetAccessTokenCallback;
-
     /**
      * BasicWeChat constructor.
      * @param array $options
@@ -67,7 +59,6 @@ class BasicWeChat
         }
         $this->config = new DataArray($options);
     }
-
     /**
      * 静态创建对象
      * @param array $config
@@ -75,11 +66,10 @@ class BasicWeChat
      */
     public static function instance(array $config)
     {
-        $key = md5(get_called_class() . serialize($config));
+        $key = md5(get_called_class().serialize($config));
         if (isset(self::$cache[$key])) return self::$cache[$key];
         return self::$cache[$key] = new static($config);
     }
-
     /**
      * 获取访问 AccessToken
      * @return string
@@ -91,12 +81,12 @@ class BasicWeChat
         if (!empty($this->access_token)) {
             return $this->access_token;
         }
-        $cache = $this->config->get('appid') . '_access_token';
+        $cache = $this->config->get('appid').'_access_token';
         $this->access_token = Tools::getCache($cache);
         if (!empty($this->access_token)) {
             return $this->access_token;
         }
-        // 处理开放平台授权公众号获取AccessToken
+        //处理开放平台授权公众号获取AccessToken
         if (!empty($this->GetAccessTokenCallback) && is_callable($this->GetAccessTokenCallback)) {
             $this->access_token = call_user_func_array($this->GetAccessTokenCallback, [$this->config->get('appid'), $this]);
             if (!empty($this->access_token)) {
@@ -112,7 +102,6 @@ class BasicWeChat
         }
         return $this->access_token = $result['access_token'];
     }
-
     /**
      * 设置外部接口 AccessToken
      * @param string $accessToken
@@ -128,10 +117,9 @@ class BasicWeChat
         if (!is_string($accessToken)) {
             throw new InvalidArgumentException("Invalid AccessToken type, need string.");
         }
-        $cache = $this->config->get('appid') . '_access_token';
+        $cache = $this->config->get('appid').'_access_token';
         Tools::setCache($cache, $this->access_token = $accessToken);
     }
-
     /**
      * 清理删除 AccessToken
      * @return bool
@@ -139,9 +127,8 @@ class BasicWeChat
     public function delAccessToken()
     {
         $this->access_token = '';
-        return Tools::delCache($this->config->get('appid') . '_access_token');
+        return Tools::delCache($this->config->get('appid').'_access_token');
     }
-
     /**
      * 以GET获取接口数据并转为数组
      * @param string $url 接口地址
@@ -163,7 +150,6 @@ class BasicWeChat
             throw new InvalidResponseException($exception->getMessage(), $exception->getCode());
         }
     }
-
     /**
      * 以POST获取接口数据并转为数组
      * @param string $url 接口地址
@@ -187,7 +173,6 @@ class BasicWeChat
             throw new InvalidResponseException($exception->getMessage(), $exception->getCode());
         }
     }
-
     /**
      * 注册当前请求接口
      * @param string $url 接口地址
@@ -203,7 +188,6 @@ class BasicWeChat
         if (empty($this->access_token)) $this->access_token = $this->getAccessToken();
         return $url = str_replace('ACCESS_TOKEN', urlencode($this->access_token), $url);
     }
-
     /**
      * 接口通用POST请求方法
      * @param string $url 接口URL
@@ -218,7 +202,6 @@ class BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, $data, $isBuildJson);
     }
-
     /**
      * 接口通用GET请求方法
      * @param string $url 接口URL
@@ -231,5 +214,5 @@ class BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpGetForJson($url);
     }
-
 }
+?>

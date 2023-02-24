@@ -1,6 +1,6 @@
 <?php
 /**
- * 用于后台的api接口
+ * 后台api接口
  *
  * @version        $id:api.php 8:26 2022年11月20日 tianya $
  * @package        DedeBIZ.Administrator

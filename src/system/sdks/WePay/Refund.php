@@ -5,7 +5,6 @@ use WeChat\Contracts\BasicWePay;
 use WeChat\Contracts\Tools;
 use WeChat\Exceptions\InvalidDecryptException;
 use WeChat\Exceptions\InvalidResponseException;
-
 /**
  * 微信商户退款
  * Class Refund
@@ -13,7 +12,6 @@ use WeChat\Exceptions\InvalidResponseException;
  */
 class Refund extends BasicWePay
 {
-
     /**
      * 创建退款订单
      * @param array $options
@@ -26,7 +24,6 @@ class Refund extends BasicWePay
         $url = 'https://api.mch.weixin.qq.com/secapi/pay/refund';
         return $this->callPostApi($url, $options, true);
     }
-
     /**
      * 查询退款
      * @param array $options
@@ -39,7 +36,6 @@ class Refund extends BasicWePay
         $url = 'https://api.mch.weixin.qq.com/pay/refundquery';
         return $this->callPostApi($url, $options);
     }
-
     /**
      * 获取退款通知
      * @return array
@@ -63,3 +59,4 @@ class Refund extends BasicWePay
         }
     }
 }
+?>

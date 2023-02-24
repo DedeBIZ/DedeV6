@@ -1,6 +1,6 @@
 <?php
 /**
- * 获取TAGS管理
+ * 标签管理
  *
  * @version        $id:tag_test_action.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

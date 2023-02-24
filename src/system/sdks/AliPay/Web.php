@@ -2,7 +2,6 @@
 namespace AliPay;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicAliPay;
-
 /**
  * 支付宝网站支付
  * Class Web
@@ -20,7 +19,6 @@ class Web extends BasicAliPay
         $this->options->set('method', 'alipay.trade.page.pay');
         $this->params->set('product_code', 'FAST_INSTANT_TRADE_PAY');
     }
-
     /**
      * 创建数据操作
      * @param array $options
@@ -32,3 +30,4 @@ class Web extends BasicAliPay
         return $this->buildPayHtml();
     }
 }
+?>

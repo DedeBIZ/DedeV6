@@ -2,7 +2,6 @@
 namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
-
 /**
  * 发布能力
  * Class Freepublish
@@ -25,7 +24,6 @@ class Freepublish extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['media_id' => $media_id]);
     }
-
     /**
      * 发布状态轮询接口
      * @param mixed $publish_id
@@ -39,7 +37,6 @@ class Freepublish extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['publish_id' => $publish_id]);
     }
-
     /**
      * 删除发布
      * 发布成功之后，随时可以通过该接口删除。此操作不可逆，请谨慎操作。
@@ -55,7 +52,6 @@ class Freepublish extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['article_id' => $article_id, 'index' => $index]);
     }
-
     /**
      * 通过 article_id 获取已发布文章
      * @param mixed $article_id 要获取的草稿的article_id
@@ -69,7 +65,6 @@ class Freepublish extends BasicWeChat
         $this->registerApi($url, __FUNCTION__, func_get_args());
         return $this->httpPostForJson($url, ['article_id' => $article_id]);
     }
-
     /**
      * 获取成功发布列表
      * @param int $offset 从全部素材的该偏移位置开始返回，0表示从第一个素材返回
@@ -86,3 +81,4 @@ class Freepublish extends BasicWeChat
         return $this->httpPostForJson($url, ['no_content' => $no_content, 'offset' => $offset, 'count' => $count]);
     }
 }
+?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * 添加系统管理员
+ * 添加管理员
  *
  * @version        $id:sys_admin_user_add.php 16:22 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
