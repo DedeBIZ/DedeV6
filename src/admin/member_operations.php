@@ -13,8 +13,10 @@ CheckPurview('member_Operations');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 require_once(DEDEINC.'/datalistcp.class.php');
 if (empty($buyid)) $buyid = '';
+$buyid = HtmlReplace($buyid , 1);
+$sta = HtmlReplace($sta , 1);
 $addsql = " WHERE buyid LIKE '%$buyid%' ";
-if (isset($sta)) $addsql .= " AND sta='$sta' ";
+if (!empty($sta)) $addsql .= " AND sta='$sta' ";
 $sql = "SELECT * FROM `#@__member_operation` $addsql ORDER BY aid DESC";
 $dlist = new DataListCP();
 //设定每页显示记录数

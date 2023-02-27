@@ -24,8 +24,9 @@
 								<div class="col-12 text-center">
 									<img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="user-logo">
 									<div class="my-3">
-										<h3 class="d-inline-block mr-2" style="vertical-align:middle"><?php echo $cfg_ml->M_LoginID;?></h3>
+										<h3 class="d-inline-block mr-2" style="vertical-align:middle"><?php echo $cfg_ml->M_UserName;?></h3>
 										<span class="btn btn-outline-success btn-sm"><?php echo $cfg_ml->GetMemberTypeName();?></span>
+										<span class="btn btn-outline-warning btn-sm"><?php echo $cfg_ml->M_Honor;?></span>
 									</div>
 									<p class="mb-0">
 										<span class="mr-1">积分：<?php echo $cfg_ml->M_Scores;?></span>

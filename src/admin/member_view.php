@@ -28,5 +28,23 @@ if ($row['uptime'] > 0 && $row['exptime'] > 0) {
 } else {
     $mhasDay = 0;
 }
+function GetMemberTypeName($rank)
+{
+    global $dsql;
+    if ($rank == 0) {
+        return '普通会员';
+    } else {
+        $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$rank."'");
+        return $row['membername'];
+    }
+}
+
+function GetHonor($scores)
+{
+    global $dsql;
+    $sql = "SELECT titles From `#@__scores` WHERE integral<={$scores} ORDER BY integral DESC";
+    $scrow = $dsql->GetOne($sql);
+    return $scrow['titles'];
+}
 include DedeInclude('templets/member_view.htm');
 ?>
