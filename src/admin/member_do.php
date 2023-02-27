@@ -200,11 +200,14 @@ else if ($dopost == "memberlogin") {
     $nid = explode(',', $nid);
     if (is_array($nid)) {
         foreach ($nid as $var) {
-            $query = "UPDATE `#@__member_operation` SET sta = '1' WHERE aid = '$var'";
-            $dsql->ExecuteNoneQuery($query);
-            ShowMsg("设置成功", "member_operations.php");
-            exit();
+            $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE aid='$var'");
+            if ($moRow['sta'] == 0) {
+                $query = "UPDATE `#@__member_operation` SET sta = '1' WHERE aid = '$var'";
+                $dsql->ExecuteNoneQuery($query);
+            }
         }
+        ShowMsg("设置成功", "member_operations.php");
+        exit();
     }
 } else if ($dopost == "okoperations") {
     $nid = preg_replace('#[^0-9,]#', '', preg_replace('#`#', ',', $nid));
@@ -218,6 +221,27 @@ else if ($dopost == "memberlogin") {
                     $proRow = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid={$moRow['pid']}");
                     $query = "UPDATE `#@__member` SET money = money+{$proRow['num']} WHERE mid = '{$moRow['mid']}'";
                     $dsql->ExecuteNoneQuery($query);
+                } else if ($moRow['product'] === "member"){
+                    $row = $dsql->GetOne("SELECT * FROM `#@__member_type` WHERE aid='{$moRow['pid']}'");
+                    $rank = $row['rank'];
+                    $exptime = $row['exptime'];
+                    $rs = $dsql->GetOne("SELECT uptime,exptime FROM `#@__member` WHERE mid='".$moRow['mid']."'");
+                    if($rs['uptime']!=0 && $rs['exptime']!=0 ) 
+                    {
+                        $nowtime = time();
+                        $mhasDay = $rs['exptime'] - ceil(($nowtime - $rs['uptime'])/3600/24) + 1;
+                        $mhasDay=($mhasDay>0)? $mhasDay : 0;
+                    }
+                    $memrank = $dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE `rank`='$rank'");
+                    
+                    //更新会员信息
+                    $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' WHERE mid='".$moRow['mid']."'";
+                    $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='{$moRow['pid']}' ";
+                    if(!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo)))
+                    {
+                        ShowMsg("升级会员失败", "javascript:;");
+                        exit;
+                    }
                 }
                 $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE aid = '$var'";
                 $dsql->ExecuteNoneQuery($query);
