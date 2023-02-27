@@ -80,17 +80,18 @@
 								<td id="fields"></td>
 							</tr>
 							<tr>
-								<td><input type="text" name="rpfield" id="rpfield" class="admin-input-md">（选择替换字段）</td>
+								<td><input type="text" name="rpfield" id="rpfield" class="admin-input-sm">（选择替换字段）</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td>替换方式：</td>
+					<td>主键字段：</td>
 					<td>
+						<input type="text" name="keyfield" id="keyfield" class="admin-input-sm">
 						<label><input type="radio" name="rptype" id="ot1" value="replace" checked="1"> 普通替换</label>
 						<label><input type="radio" name="rptype" id="ot2" value="regex"> 正则表达式</label>
-						主键字段：<input type="text" name="keyfield" id="keyfield" size="12">（正则模式必须指定）
+						（正则模式必须指定）
 					</td>
 				</tr>
 				<tr>

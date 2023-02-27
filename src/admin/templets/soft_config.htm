@@ -27,6 +27,11 @@
 					<td bgcolor="#f5f5f5" colspan="2">软件下载设置</td>
 				</tr>
 				<tr>
+					<td colspan="2">
+						<div class="alert alert-info mb-0">不管是全局，还是具体某软件设置了下面的参数，附件下载方式都必须链接到中转页，否则无效</div>
+					</td>
+				</tr>
+				<tr>
 					<td width="260">链接显示方式：</td>
 					<td>
 						<label><input type="radio" name="downtype" value="0" <?php if ($row['downtype']==0) echo " checked='checked' ";?>> 直接显示地址列表</label>
@@ -60,9 +65,6 @@
 						<label><input type="radio" name="moresitedo" value="1" <?php if ($row['moresitedo']==1) echo " checked='checked' ";?>> 根据本地地址和服务器列表自动生成</label>
 						<label><input type="radio" name="moresitedo" value="0" <?php if ($row['moresitedo']==0) echo " checked='checked' ";?>> 发布时按服务器生成列表由我手工填写</label>
 					</td>
-				</tr>
-				<tr>
-					<td colspan="2">不管是全局，还是具体某软件设置了下面的参数，附件下载方式都必须链接到中转页，否则无效</td>
 				</tr>
 				<tr>
 					<td>下载默认等级：</td>
