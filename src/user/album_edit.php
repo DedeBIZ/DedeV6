@@ -113,6 +113,7 @@ else if ($dopost == 'save') {
         }
     }
     $description = HtmlReplace($description, -1);
+    $body = HtmlReplace($body, -1);
     //更新数据库的SQL语句
     $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
     $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',description='$description',keywords='$keywords',mtype='$mtypesid',flag='$flag',litpic='$litpic' WHERE id='$aid' AND mid='$mid'; ";
@@ -122,7 +123,7 @@ else if ($dopost == 'save') {
     }
     $isrm = 0;
     if ($addtable != '') {
-        $query = "UPDATE `$addtable` SET typeid='$typeid',pagestyle='$pagestyle',maxwidth='$maxwidth',ddmaxwidth='$ddmaxwidth',pagepicnum='$pagepicnum',imgurls='$imgurls',`row`='$prow',col='$pcol',userip='$userip',isrm='$isrm' {$inadd_f} WHERE aid='$aid'; ";
+        $query = "UPDATE `$addtable` SET typeid='$typeid',pagestyle='$pagestyle',maxwidth='$maxwidth',ddmaxwidth='$ddmaxwidth',pagepicnum='$pagepicnum',imgurls='$imgurls',`row`='$prow',col='$pcol',userip='$userip',isrm='$isrm',body='$body' {$inadd_f} WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($query)) {
             ShowMsg("数据保存到数据库附加表时出错，请联系管理员".$dsql->GetError(), "javascript:;");
             exit();

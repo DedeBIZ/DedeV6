@@ -141,7 +141,8 @@ else if ($dopost == 'save') {
         ShowMsg("没找到当前模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
-        $query = "INSERT INTO `$addtable` (aid,typeid,userip,redirecturl,templet,pagestyle,maxwidth,imgurls,`row`,col,isrm,ddmaxwidth,pagepicnum{$inadd_f}) VALUES ('$arcID','$typeid','$userip','','','$pagestyle','$maxwidth','$imgurls','$prow','$pcol','$isrm','$ddmaxwidth','$pagepicnum'{$inadd_v}); ";
+        $body = HtmlReplace($body, -1);
+        $query = "INSERT INTO `$addtable` (aid,typeid,userip,redirecturl,templet,pagestyle,maxwidth,imgurls,`row`,col,isrm,ddmaxwidth,pagepicnum,body{$inadd_f}) VALUES ('$arcID','$typeid','$userip','','','$pagestyle','$maxwidth','$imgurls','$prow','$pcol','$isrm','$ddmaxwidth','$pagepicnum','$body'{$inadd_v}); ";
         if (!$dsql->ExecuteNoneQuery($query)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");

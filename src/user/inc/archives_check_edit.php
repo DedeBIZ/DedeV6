@@ -45,6 +45,7 @@ $writer =  cn_substrR(HtmlReplace($writer, 1), 20);
 if (empty($description)) $description = '';
 $description = cn_substrR(HtmlReplace($description, 1), 250);
 $keywords = cn_substrR(HtmlReplace($tags, 1), 30);
+$source = isset($source)? HtmlReplace($source, 1) : '';
 $mid = $cfg_ml->M_ID;
 $midQuery = "SELECT mid FROM `#@__arctiny` WHERE id='$aid'";
 $midRow = $dsql->GetOne($midQuery);

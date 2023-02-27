@@ -130,7 +130,7 @@ else if ($dopost == 'save') {
     }
     //修改主文档表
     $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
-    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
+    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',flag='$flag',source='$source' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员", "-1");
         exit();

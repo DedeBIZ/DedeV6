@@ -118,9 +118,9 @@ function GetRankName($arcrank)
  * @param     string  $picname  图片名称
  * @return    string
  */
-function IsPicArchives($picname)
+function IsPicArchives($flag)
 {
-    if ($picname != "") {
+    if (strtolower($flag)== "p") {
         return ' <span class="btn btn-outline-success btn-sm">图片</span>';
     } else {
         return '';

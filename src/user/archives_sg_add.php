@@ -102,7 +102,7 @@ else if ($dopost == 'save') {
     $sortrank = $senddate = $pubdate = time();
     $title = cn_substrR(HtmlReplace($title, 1), $cfg_title_maxlen);
     $mid = $cfg_ml->M_ID;
-    $description = empty($description) ? "" : $description;
+    $description = empty($description) ? "" : HtmlReplace($description, -1);
     //分析处理附加表数据
     $inadd_f = $inadd_v = '';
     if (!empty($dede_addonfields)) {
