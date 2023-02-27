@@ -167,12 +167,14 @@ class userLogin
     var $userType = '';
     var $userChannel = '';
     var $userPurview = '';
+    var $userFace = '';
     var $keepUserIDTag = 'dede_admin_id';
     var $keepUserTypeTag = 'dede_admin_type';
     var $keepUserChannelTag = 'dede_admin_channel';
     var $keepUserNameTag = 'dede_admin_name';
     var $keepUserPurviewTag = 'dede_admin_purview';
     var $keepAdminStyleTag = 'dede_admin_style';
+    var $keepUserFace = 'dede_admin_face';
     var $adminStyle = 'DedeBIZ';
     //php5构造函数
     function __construct($admindir = '')
@@ -185,6 +187,7 @@ class userLogin
             $this->userName = $_SESSION[$this->keepUserNameTag];
             $this->userPurview = $_SESSION[$this->keepUserPurviewTag];
             $this->adminStyle = $_SESSION[$this->keepAdminStyleTag];
+            $this->userFace = $_SESSION[$this->keepUserFace];
         }
         if ($admindir != '') {
             $this->adminDir = $admindir;
@@ -211,7 +214,7 @@ class userLogin
         $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
         $this->userPwd = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userpwd);
         $pwd = substr(md5($this->userPwd), 5, 20);
-        $dsql->SetQuery("SELECT admin.*,atype.purviews FROM `#@__admin` admin LEFT JOIN `#@__admintype` atype ON atype.`rank`=admin.usertype WHERE admin.userid LIKE '".$this->userName."' LIMIT 0,1");
+        $dsql->SetQuery("SELECT admin.*,atype.purviews,member.face FROM `#@__admin` admin LEFT JOIN `#@__admintype` atype ON atype.`rank`=admin.usertype LEFT JOIN `#@__member` member ON member.mid = admin.id  WHERE admin.userid LIKE '".$this->userName."' LIMIT 0,1");
         $dsql->Execute();
         $row = $dsql->GetObject();
         if (!isset($row->pwd)) {
@@ -235,6 +238,7 @@ class userLogin
             $this->userChannel = $row->typeid;
             $this->userName = $row->uname;
             $this->userPurview = $row->purviews;
+            $this->userFace = $row->face;
             $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='".time()."'{$upsql},loginerr=0 WHERE id='".$row->id."'";
             $dsql->ExecuteNoneQuery($inquery);
             $sql = "UPDATE `#@__member` SET logintime=".time().", loginip='$loginip' WHERE mid=".$row->id;
@@ -313,6 +317,8 @@ class userLogin
             $_SESSION[$this->keepUserPurviewTag] = $this->userPurview;
             @session_register($this->keepAdminStyleTag);
             $_SESSION[$this->keepAdminStyleTag] = $adminstyle;
+            @session_register($this->keepUserFace);
+            $_SESSION[$this->keepUserFace] = $this->userFace;
             PutCookie('DedeUserID', $this->userID, 3600 * 24, '/');
             PutCookie('DedeLoginTime', time(), 3600 * 24, '/');
             $this->ReWriteAdminChannel();
@@ -369,6 +375,7 @@ class userLogin
         @session_unregister($this->keepUserChannelTag);
         @session_unregister($this->keepUserNameTag);
         @session_unregister($this->keepUserPurviewTag);
+        @session_unregister($this->keepUserFace);
         DropCookie('dedeAdmindir');
         DropCookie('DedeUserID');
         DropCookie('DedeLoginTime');
@@ -400,6 +407,14 @@ class userLogin
             return $this->userType;
         } else {
             return -1;
+        }
+    }
+    function getUserFace()
+    {
+        if ($this->userFace != '') {
+            return $this->userFace;
+        } else {
+            return '../static/web/img/admin.png';
         }
     }
     /**

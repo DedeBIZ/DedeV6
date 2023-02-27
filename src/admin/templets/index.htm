@@ -51,7 +51,7 @@
 			</div>
 			<div class="top-admin">
 				<ul class="mb-0">
-					<li><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="../static/web/img/admin.png"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType()==10){echo "管理员";} else if ($cuserLogin->getUserType()==5) {echo "栏目员";} else {echo "文档员";}?></a></li>
+					<li><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType()==10){echo "管理员";} else if ($cuserLogin->getUserType()==5) {echo "栏目员";} else {echo "文档员";}?></a></li>
 					<li><a href="exit.php">退了</a></li>
 				</ul>
 			</div>
