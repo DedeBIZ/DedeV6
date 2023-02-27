@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">默认首页更新文件存放在根目录，如果您不是根目录安装的网站，想把首页更新到网站根目录，用相对路径来表示“首页位置”，例：安装在http://www.abc.com/DedeBIZ/目录，生成的首页为http://www.abc.com/index.html，应该填写：“../index.html”</div>
+						<div class="alert alert-info mb-0">首页默认更新文件存放在根目录，如果不是根目录安装网站又想首页更新到网站根目录，使用相对路径来表示首页位置，例：安装在“http://www.abc.com/DedeBIZ/目录”，更新首页为：“http://www.abc.com/index.html”，填写：“../index.html”</div>
 					</td>
 				</tr>
 				<tr>
@@ -64,7 +64,7 @@
 					if ($data->code == -1){
 				?>
 				<tr>
-					<td colspan="2">启动商业组件失败，<a class="text-primary" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a></td>
+					<td colspan="2">启动商业组件失败，<a href="https://www.dedebiz.com/start?code=-1008" target="_blank" class="btn btn-warning btn-sm ml-2">如何启动组件</a></td>
 				</tr>
 				<?php
 				} else {
@@ -80,9 +80,7 @@
 					<td>重复密码：</td>
 					<td><input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" class="admin-input-sm"></td>
 				</tr>
-				<?php
-				} else {
-				?>
+				<?php } else {?>
 				<tr>
 					<td>操作密码：</td>
 					<td><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" class="admin-input-sm"></td>
@@ -100,7 +98,7 @@
 				} else {
 				?>
 				<tr>
-					<td colspan="2">启动商业组件失败，<a class="text-primary" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a></td>
+					<td colspan="2">启动商业组件失败<a href="https://www.dedebiz.com/start?code=-1008" target="_blank" class="btn btn-warning btn-sm ml-2">启动组件</a></td>
 				</tr>
 				<?php }?>
 				<tr>
