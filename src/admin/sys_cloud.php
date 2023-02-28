@@ -27,7 +27,7 @@ if ($dopost == "cloud_get") {
         ));
     }
     exit;
-} else if($dopost == "cloud_set"){
+} else if ($dopost == "cloud_set"){
     $config = array(
         "aliyun_enabled" => $aliyun_enabled,
         "aliyun_access_key_id" => $aliyun_access_key_id,

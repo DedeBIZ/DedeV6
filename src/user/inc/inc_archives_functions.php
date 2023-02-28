@@ -346,3 +346,4 @@ function GetCurContent(&$body)
     $htd->Close();
     return $body;
 }
+?>

@@ -48,33 +48,25 @@ if ($dopost == 'read') {
     );
     echo json_encode($result);
     exit();
-} else if($dopost == 'remove'){
+} else if ($dopost == 'remove'){
     $ids = preg_replace("#[^0-9,]#", "", $ids);
-    if($folder==='inbox')
-    {
+    if ($folder==='inbox') {
         $boxsql="SELECT * FROM `#@__member_pms` WHERE id IN($ids) AND folder LIKE 'inbox' AND toid='{$cfg_ml->M_ID}'";
         $dsql->SetQuery($boxsql);
         $dsql->Execute();
         $query='';
         while($row = $dsql->GetArray())
         {
-            if($row && $row['isadmin']==1)
-            {
+            if ($row && $row['isadmin']==1) {
                 $query = "UPDATE `#@__member_pms` SET writetime='0' WHERE id='{$row['id']}' AND folder='inbox' AND toid='{$cfg_ml->M_ID}' AND isadmin='1';";
                 $dsql->ExecuteNoneQuery($query);
-            }
-            else
-            {
+            } else {
                 $query = "DELETE FROM `#@__member_pms` WHERE id in($ids) AND toid='{$cfg_ml->M_ID}' AND folder LIKE 'inbox'";
             }
         }
-    }
-    else if($folder==='outbox')
-    {
+    } else if ($folder==='outbox') {
         $query = "DELETE FROM `#@__member_pms` WHERE id in($ids) AND fromid='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' ";
-    }
-    else
-    {
+    } else {
         $query = "DELETE FROM `#@__member_pms` WHERE id in($ids) AND fromid='{$cfg_ml->M_ID}' Or toid='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' Or (folder LIKE 'inbox' AND hasview='0')";
     }
     $dsql->ExecuteNoneQuery($query);

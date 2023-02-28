@@ -23,9 +23,6 @@ if ($cfg_ml->IsSendLimited()) {
     ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
-/*-------------
-function _ShowForm(){  }
---------------*/
 if (empty($dopost)) {
     //读取归档信息
     $arcQuery = "SELECT ch.*,arc.* FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
@@ -42,11 +39,7 @@ if (empty($dopost)) {
     $addRow['id'] = $addRow['aid'];
     include(DEDEMEMBER."/templets/archives_sg_edit.htm");
     exit();
-}
-/*------------------------------
-function _SaveArticle(){  }
-------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     require_once(DEDEINC."/image.func.php");
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     $flag = '';

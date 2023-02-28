@@ -23,9 +23,6 @@ if ($cfg_ml->IsSendLimited()) {
     ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
-/*-------------
-function _ShowForm(){  }
---------------*/
 if (empty($dopost)) {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
     if (!is_array($cInfos)) {
@@ -48,11 +45,7 @@ if (empty($dopost)) {
     }
     include(DEDEMEMBER."/templets/archives_add.htm");
     exit();
-}
-/*------------------------------
-function _SaveArticle(){  }
-------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     include(dirname(__FILE__).'/inc/archives_check.php');
     //分析处理附加表数据
     $inadd_f = $inadd_v = '';

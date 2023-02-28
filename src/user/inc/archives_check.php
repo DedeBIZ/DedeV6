@@ -66,3 +66,4 @@ if ($cfg_mb_cktitle == 'Y') {
         exit();
     }
 }
+?>

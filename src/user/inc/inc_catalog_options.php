@@ -103,3 +103,4 @@ function classification($mid, $mtypeid = 0, $channelid = 1)
     }
     return $list;
 }
+?>

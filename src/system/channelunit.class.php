@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/channelunit.func.php");
-//function C____ChannelUnit();
 class ChannelUnit
 {
     var $ChannelInfos;

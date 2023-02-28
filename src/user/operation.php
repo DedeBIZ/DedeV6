@@ -1,6 +1,6 @@
 <?php
 /**
- * 操作
+ * 交易操作
  * 
  * @version        $id:search.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User
@@ -15,12 +15,6 @@ $menutype = 'mydede';
 $menutype_son = 'op';
 setcookie("ENV_GOBACK_URL", GetCurUrl(), time() + 3600, "/");
 if (!isset($dopost)) $dopost = '';
-/**
- *  获取状态
- *
- * @param     string  $sta  状态ID
- * @return    string
- */
 function GetSta($sta)
 {
     if ($sta == 0) return '未付款';

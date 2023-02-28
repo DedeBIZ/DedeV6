@@ -151,3 +151,4 @@ function sn($mid, $userid, $mailto, $send = 'Y')
         return ShowMsg('请10分钟后再重新申请', 'login.php');
     }
 }
+?>

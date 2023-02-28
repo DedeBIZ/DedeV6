@@ -17,9 +17,6 @@ require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 3;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $menutype = 'content';
-/*-------------
-function _ShowForm(){  }
---------------*/
 if (empty($dopost)) {
     //读取归档信息
     $arcQuery = "SELECT `#@__channeltype`.typename as channelname,`#@__arcrank`.membername as rankname,`#@__channeltype`.arcsta,`#@__archives`.* FROM `#@__archives` LEFT JOIN `#@__channeltype` ON `#@__channeltype`.id=`#@__archives`.channel LEFT JOIN `#@__arcrank` ON `#@__arcrank`.`rank`=`#@__archives`.arcrank WHERE `#@__archives`.id='$aid'";
@@ -67,11 +64,7 @@ if (empty($dopost)) {
     $tags = GetTags($aid);
     include(DEDEMEMBER."/templets/soft_edit.htm");
     exit();
-}
-/*------------------------------
-function _SaveArticle(){  }
-------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     $description = '';
     include(DEDEMEMBER.'/inc/archives_check_edit.php');
     //分析处理附加表数据

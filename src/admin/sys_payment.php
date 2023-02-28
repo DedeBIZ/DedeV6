@@ -27,7 +27,7 @@ if ($dopost === "get_payments") {
         "data" => $payments,
     ));
     exit;
-} else if($dopost === "save_config") {
+} else if ($dopost === "save_config") {
     $json = file_get_contents("php://input");
     $config = json_decode($json);
     foreach($config as $key => $item) {

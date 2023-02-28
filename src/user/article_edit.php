@@ -23,9 +23,6 @@ if ($cfg_ml->IsSendLimited()) {
     ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
-/*-------------
-function _ShowForm(){  }
---------------*/
 if (empty($dopost)) {
     //读取归档信息
     $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,arc.mtype as mtypeid,ch.arcsta FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' And arc.mid='".$cfg_ml->M_ID."'; ";
@@ -44,12 +41,7 @@ if (empty($dopost)) {
     $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid'; ");
     include(DEDEMEMBER."/templets/article_edit.htm");
     exit();
-}
-
-/*------------------------------
-function _SaveArticle(){  }
-------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     include(DEDEMEMBER.'/inc/archives_check_edit.php');
     //分析处理附加表数据
     $inadd_f = $inadd_m = '';

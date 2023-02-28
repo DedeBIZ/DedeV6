@@ -32,9 +32,6 @@ if ($cfg_ml->IsSendLimited()) {
     ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
-/*-------------
-function _ShowForm(){  }
---------------*/
 if (empty($dopost)) {
     $query = "SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ";
     $cInfos = $dsql->GetOne($query);
@@ -54,11 +51,7 @@ if (empty($dopost)) {
     }
     include(DEDEMEMBER."/templets/album_add.htm");
     exit();
-}
-/*------------------------------
-function _SaveArticle(){  }
-------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     include(DEDEMEMBER.'/inc/archives_check.php');
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
     $maxwidth = isset($maxwidth) && is_numeric($maxwidth) ? $maxwidth : 800;
@@ -83,7 +76,7 @@ else if ($dopost == 'save') {
             $info = str_replace(array("\"", "'"), "`", $msg);
             $imgurls .= "{dede:img ddimg='' text='$info'} $u {/dede:img}\r\n";
         }
-    } //循环结束
+    }//循环结束
     $imgurls = addslashes($imgurls);
     //分析处理附加表数据
     $isrm = 1;

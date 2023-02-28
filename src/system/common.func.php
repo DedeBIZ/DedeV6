@@ -389,13 +389,13 @@ function GetSimpleServerSoftware()
 {
     if (preg_match("#^php#i",$_SERVER["SERVER_SOFTWARE"])) {
         return 'PHP Server';
-    } else if(preg_match("#^apache#i",$_SERVER["SERVER_SOFTWARE"])){
+    } else if (preg_match("#^apache#i",$_SERVER["SERVER_SOFTWARE"])){
         return 'Apache';
-    } else if(preg_match("#^nginx#i",$_SERVER["SERVER_SOFTWARE"])){
+    } else if (preg_match("#^nginx#i",$_SERVER["SERVER_SOFTWARE"])){
         return 'Nginx';
-    } else if(preg_match("#^microsoft-iis#i",$_SERVER["SERVER_SOFTWARE"])){
+    } else if (preg_match("#^microsoft-iis#i",$_SERVER["SERVER_SOFTWARE"])){
         return 'IIS';
-    } else if(preg_match("#^caddy#i",$_SERVER["SERVER_SOFTWARE"])){
+    } else if (preg_match("#^caddy#i",$_SERVER["SERVER_SOFTWARE"])){
         return 'Caddy';
     } else {
         return 'Other';

@@ -126,3 +126,4 @@ function IsPicArchives($flag)
         return '';
     }
 }
+?>

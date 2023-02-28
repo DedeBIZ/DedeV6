@@ -183,3 +183,4 @@ function GetTruePath()
     $truepath = $GLOBALS["cfg_basedir"];
     return $truepath;
 }
+?>

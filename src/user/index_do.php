@@ -9,9 +9,6 @@
 require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
-/*********************
-function check_email()
- *******************/
 if ($fmdo == 'sendMail') {
     if (!CheckEmail($cfg_ml->fields['email'])) {
         ShowMsg('您的邮箱格式有错误', '-1');
@@ -72,11 +69,7 @@ if ($fmdo == 'sendMail') {
     $cfg_ml->DelCache($mid);
     ShowMsg('操作成功，请重新登录系统', 'login.php');
     exit();
-}
-/*********************
-function Case_user()
-*******************/
-else if ($fmdo == 'user') {
+} else if ($fmdo == 'user') {
     //检查用户名是否存在
     if ($dopost == "checkuser") {
         AjaxHead();
@@ -126,10 +119,7 @@ else if ($fmdo == 'user') {
         require_once(dirname(__FILE__)."/reg_new.php");
         exit();
     }
-    /***************************
     //积分换金币
-    function money2s() {  }
-    ***************************/
     else if ($dopost == "money2s") {
         CheckRank(0, 0);
         if ($cfg_money_scores == 0) {
@@ -158,11 +148,7 @@ else if ($fmdo == 'user') {
         ShowMsg('成功兑换指定量的金币', 'operation.php');
         exit();
     }
-}
-/*********************
-function login()
-*******************/
-else if ($fmdo == 'login') {
+} else if ($fmdo == 'login') {
     //用户登录
     if ($dopost == "login") {
         if (!isset($vdcode)) {

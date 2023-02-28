@@ -57,3 +57,4 @@ $isadmin = ($cfg_ml->fields['matt'] == 10 ? true : false);
 if (empty($oldlitpic)) {
     $oldlitpic = '';
 }
+?>

@@ -30,9 +30,6 @@ if ($cfg_ml->IsSendLimited()) {
     ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
-/*-------------
-function _ShowForm(){  }
---------------*/
 if (empty($dopost)) {
     //读取归档信息
     $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,ch.arcsta FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' AND arc.mid='".$cfg_ml->M_ID."'; ";
@@ -56,11 +53,7 @@ if (empty($dopost)) {
     $addRow = XSSClean($addRow);
     include(DEDEMEMBER."/templets/album_edit.htm");
     exit();
-}
-/*------------------------------
-function _Save(){  }
-------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
     $maxwidth = isset($maxwidth) && is_numeric($maxwidth) ? $maxwidth : 800;
     $pagepicnum = isset($pagepicnum) && is_numeric($pagepicnum) ? $pagepicnum : 12;

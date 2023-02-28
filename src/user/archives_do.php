@@ -12,10 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
-/*-----------------
-function delStow()
-删除收藏
-------------------*/
+//删除收藏
 if ($dopost == "delStow") {
     CheckRank(0, 0);
     $type = empty($type) ? '' : HtmlReplace(trim($type), -1);
@@ -32,10 +29,7 @@ if ($dopost == "delStow") {
     ShowMsg("成功删除一条收藏记录", $ENV_GOBACK_URL);
     exit();
 }
-/*-----------------
-function addArchives()
-添加投稿
-------------------*/
+//添加投稿
 else if ($dopost == "addArc") {
     CheckRank(0, 0);
     if ($channelid == 1) {
@@ -59,10 +53,7 @@ else if ($dopost == "addArc") {
     header("Location:$addcon");
     exit();
 }
-/*-----------------
-function editArchives()
-修改投稿
-------------------*/
+//修改投稿
 else if ($dopost == "edit") {
     CheckRank(0, 0);
     if ($channelid == 1) {
@@ -86,10 +77,7 @@ else if ($dopost == "edit") {
     header("Location:$edit"."&aid=$aid");
     exit();
 }
-/*--------------------
-function delArchives()
-删除文档
---------------------*/
+//删除文档
 else if ($dopost == "delArc") {
     CheckRank(0, 0);
     include_once(DEDEMEMBER."/inc/inc_batchup.php");
@@ -145,10 +133,7 @@ else if ($dopost == "delArc") {
     }
     exit();
 }
-/*-----------------
-function viewArchives()
-查看文档
-------------------*/
+//查看文档
 else if ($dopost == "viewArchives") {
     CheckRank(0, 0);
     if ($type == "") {

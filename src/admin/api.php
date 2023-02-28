@@ -292,7 +292,7 @@ if ($action === 'is_need_check_code') {
                 $srcFile = $backupVerPath.$f->filename;
                 $dstFile = str_replace(array("\\", "//"), '/', DEDEROOT.$f->filename);
                 $rs = @copy($srcFile, $dstFile);
-                if($rs) {
+                if ($rs) {
                     unlink($srcFile);
                 }
             }

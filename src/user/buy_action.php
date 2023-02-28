@@ -64,29 +64,25 @@ if ($dopost === "bank_ok") {
             $dsql->ExecuteNoneQuery($query);
             $query = "UPDATE `#@__member` SET money = money+{$row['num']} WHERE mid = '$mid'";
             $dsql->ExecuteNoneQuery($query);
-        } else if($moRow['product'] === "member"){
+        } else if ($moRow['product'] === "member") {
             $row = $dsql->GetOne("SELECT * FROM `#@__member_type` WHERE aid='{$moRow['pid']}'");
             $rank = $row['rank'];
             $exptime = $row['exptime'];
             $rs = $dsql->GetOne("SELECT uptime,exptime FROM `#@__member` WHERE mid='".$moRow['mid']."'");
-            if($rs['uptime']!=0 && $rs['exptime']!=0 ) 
-            {
+            if ($rs['uptime']!=0 && $rs['exptime']!=0) {
                 $nowtime = time();
                 $mhasDay = $rs['exptime'] - ceil(($nowtime - $rs['uptime'])/3600/24) + 1;
                 $mhasDay=($mhasDay>0)? $mhasDay : 0;
             }
             $memrank = $dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE `rank`='$rank'");
-            
             //更新会员信息
             $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' WHERE mid='".$moRow['mid']."'";
             $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='{$moRow['pid']}' ";
-            if(!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo)))
-            {
+            if (!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo))) {
                 ShowMsg("升级会员失败", "javascript:;");
                 exit;
             }
         }
-
         ShowMsg("已经完成付款", "index.php");
         exit;
     } else {
@@ -178,7 +174,7 @@ if ($paytype === 0) {
         ShowMsg("已完成支付，无需重复付款", "javascript:;");
         exit;
     }
-    if($paytype === 1) {
+    if ($paytype === 1) {
         //微信支付
         include_once(DEDEINC.'/libraries/oxwindow.class.php');
         $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
@@ -269,12 +265,11 @@ if ($paytype === 0) {
             $dsql->ExecuteNoneQuery($query);
             $query = "UPDATE `#@__member` SET user_money = user_money-{$row['money']} WHERE mid = '$mid'";
             $dsql->ExecuteNoneQuery($query);
-        } else if($product == 'member'){
+        } else if ($product == 'member') {
             $rank = $row['rank'];
             $exptime = $row['exptime'];
             $rs = $dsql->GetOne("SELECT uptime,exptime FROM `#@__member` WHERE mid='".$mid."'");
-            if($rs['uptime']!=0 && $rs['exptime']!=0 ) 
-            {
+            if ($rs['uptime']!=0 && $rs['exptime']!=0) {
                 $nowtime = time();
                 $mhasDay = $rs['exptime'] - ceil(($nowtime - $rs['uptime'])/3600/24) + 1;
                 $mhasDay=($mhasDay>0)? $mhasDay : 0;
@@ -283,8 +278,7 @@ if ($paytype === 0) {
             //更新会员信息
             $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' WHERE mid='".$mid."'";
             $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='$buyid' ";
-            if(!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo)))
-            {
+            if (!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo))) {
                 ShowMsg("升级会员失败", "javascript:;");
                 exit;
             }

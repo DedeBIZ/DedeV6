@@ -31,13 +31,13 @@ if ($dopost === 'alipay') {
     );
     //支付宝
     try {
-        // 实例支付对象
+        //实例支付对象
         $pay = \AliPay\Web::instance($config);
         unset($_REQUEST['dopost']);
         unset($_REQUEST['sign_type']);
         $data = $pay->notify();
         if (isset($data['trade_no']) && !empty($data['trade_no'])) {
-            // $pay = \AliPay\Transfer::instance($config);
+            //$pay = \AliPay\Transfer::instance($config);
             $result = $pay->query($data['out_trade_no']);
             if ($result['trade_status']=== "TRADE_SUCCESS") {
                 if ($moRow['product'] === "card") {
@@ -46,24 +46,21 @@ if ($dopost === 'alipay') {
                     $dsql->ExecuteNoneQuery($query);
                     $query = "UPDATE `#@__member` SET money = money+{$row['num']} WHERE mid = '{$moRow['mid']}'";
                     $dsql->ExecuteNoneQuery($query);
-                } else if($moRow['product'] === "member"){
+                } else if ($moRow['product'] === "member") {
                     $row = $dsql->GetOne("SELECT * FROM `#@__member_type` WHERE aid='{$moRow['pid']}'");
                     $rank = $row['rank'];
                     $exptime = $row['exptime'];
                     $rs = $dsql->GetOne("SELECT uptime,exptime FROM `#@__member` WHERE mid='".$moRow['mid']."'");
-                    if($rs['uptime']!=0 && $rs['exptime']!=0 ) 
-                    {
+                    if ($rs['uptime']!=0 && $rs['exptime']!=0) {
                         $nowtime = time();
                         $mhasDay = $rs['exptime'] - ceil(($nowtime - $rs['uptime'])/3600/24) + 1;
                         $mhasDay=($mhasDay>0)? $mhasDay : 0;
                     }
                     $memrank = $dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE `rank`='$rank'");
-                    
                     //更新会员信息
                     $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' WHERE mid='".$moRow['mid']."'";
                     $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='{$moRow['pid']}' ";
-                    if(!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo)))
-                    {
+                    if (!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo))) {
                         ShowMsg("升级会员失败", "javascript:;");
                         exit;
                     }

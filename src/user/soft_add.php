@@ -23,9 +23,6 @@ require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 3;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $menutype = 'content';
-/*-------------
-function _ShowForm(){  }
---------------*/
 if (empty($dopost)) {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
     if (!is_array($cInfos)) {
@@ -48,11 +45,7 @@ if (empty($dopost)) {
     }
     include(DEDEMEMBER."/templets/soft_add.htm");
     exit();
-}
-/*------------------------------
-function _SaveArticle(){  }
-------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     $description = '';
     include(DEDEMEMBER.'/inc/archives_check.php');
     //生成文档id

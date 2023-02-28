@@ -23,9 +23,6 @@ if ($cfg_ml->IsSendLimited()) {
     ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
     exit();
 }
-/*-------------
-function _ShowForm(){  }
---------------*/
 if (empty($dopost)) {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
     if (!is_array($cInfos)) {
@@ -48,11 +45,7 @@ if (empty($dopost)) {
     }
     include(DEDEMEMBER."/templets/archives_sg_add.htm");
     exit();
-}
-/*------------------------------
-function _SaveArticle(){  }
-------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     include_once(DEDEINC."/image.func.php");
     include_once(DEDEINC."/libraries/oxwindow.class.php");
     //游客需要校验验证码

@@ -35,7 +35,7 @@ if ($dopost == "") {
         exit();
     }
     $member = member($mail, $userid);
-    //以邮件方式取回密码；
+    //以邮件方式取回密码
     if ($type == 1) {
         //判断系统邮件服务是否开启
         if ($cfg_sendmail_bysmtp == "Y") {

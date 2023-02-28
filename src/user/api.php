@@ -58,7 +58,7 @@ if ($action === 'is_need_check_code') {
             "email" => $row['email'],
         ),
     ));
-} else if($action === 'upload'){
+} else if ($action === 'upload') {
     if (!$cfg_ml->IsLogin()) {
         if ($format === 'json') {
             echo json_encode(array(
