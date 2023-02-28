@@ -508,7 +508,7 @@ function GetUpdateSQL()
     fclose($fp);
     return $result;
 }
-//用户名称标签{dede:field.mid function="GetMemberInfos('uname',@me)"/}和[field:mid function="GetMemberInfos('uname',@me)"/]
+//会员昵称标签{dede:field.mid function="GetMemberInfos('uname',@me)"/}和[field:mid function="GetMemberInfos('uname',@me)"/]
 function GetMemberInfos($fields, $mid)
 {
     global $dsql;
@@ -524,7 +524,7 @@ function GetMemberInfos($fields, $mid)
     }
     return $revalue;
 }
-//用户头像标签{dede:field.mid function='face(@me)'/}和[field:mid function='face(@me)'/]
+//会员头像标签{dede:field.mid function='face(@me)'/}和[field:mid function='face(@me)'/]
 function face($mid)
 {
     global $dsql;
@@ -554,7 +554,7 @@ if (!function_exists('GetMyTags')) {
         return $tags;
     }
 }
-/*用户中心调用默认模板<?php pasterTempletDiy('head.htm');?>*/
+/*会员中心调用默认模板<?php pasterTempletDiy('head.htm');?>*/
 if (!function_exists('pasterTempletDiy')) {
     function pasterTempletDiy($path)
     {
@@ -662,7 +662,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
     echo $dede_addonfields;
 }
 /**
- * HideEmail 隐藏邮箱
+ * HideEmail隐藏邮箱
  *
  * @param  mixed $email
  * @return string
