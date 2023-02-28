@@ -29,12 +29,13 @@ if ($dopost == 'add') {
         exit();
     }
     $pfd = "pwd";
-    $mpwd = md5($pwd);
-    $pwd = substr(md5($pwd), 5, 20);
     if (function_exists('password_hash')) {
         $pfd = "pwd_new";
         $mpwd = password_hash($pwd, PASSWORD_BCRYPT);
         $pwd = password_hash($pwd, PASSWORD_BCRYPT);
+    } else {
+        $mpwd = md5($pwd);
+        $pwd = substr(md5($pwd), 5, 20);
     }
 
     $typeid = join(',', $typeids);

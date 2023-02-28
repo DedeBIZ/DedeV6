@@ -21,33 +21,11 @@
 		<script src="js/album.js"></script>
 		<script src="js/handlers.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
-		<style>table{border-collapse:inherit}</style>
+		<style>table{border-collapse:inherit}input[type=file]{width: 100%;}</style>
 		<script>
 			var swfu = null;
 			var vcc = 0;
 			var albums = [];
-			$(document).ready(function () {
-				//添加图片
-				$("#iptAlbumImages").change(function (event) {
-					var files = event.target.files;
-					for (var i = 0, f; f = files[i]; i++) {
-						//如果不是图片忽略
-						if (!f.type.match('image.*')) {
-							continue;
-						}
-						//图片渲染到浏览器
-						var reader = new FileReader();
-						reader.onload = (function (theFile) {
-							return function (e) {
-								litpicImgSrc = e.target.result;
-								addImage(litpicImgSrc, 0);
-							};
-						})(f);
-						reader.readAsDataURL(f);
-					}
-					$("#iptAlbumImages").val("");
-				});
-			});
 		</script>
 	</head>
 	<body>
@@ -308,15 +286,16 @@
 														if ($ctag->GetAtt('ddimg') != $bigimg && $ctag->GetAtt('ddimg')!='') {
 															$litimg = $ctag->GetAtt('ddimg');
 														} else {
-															$litimg = 'swfupload.php?dopost=ddimg&img='.$bigimg;
+															if (preg_match("#^(http|https):\/\/#i", $bigimg)) $litimg = $bigimg;
+															else $litimg = 'swfupload.php?dopost=ddimg&img='.$bigimg;
 														}
 														$fhtml = '';
 														$fhtml .= "<div class='albCt albEdit' id='albold{$j}'>";
 														$fhtml .= "<input type='hidden' name='imgurl{$j}' value='{$bigimg}'>";
 														$fhtml .= "<input type='hidden' name='imgddurl{$j}' value='{$litimg}'>";
-														$fhtml .= "<img src='{$litimg}'>";
+														$fhtml .= "<img src='{$litimg}' id='lit{$j}'>";
 														$fhtml .= "<div class='my-2'>标题：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' class='admin-input-sm'></div>";
-														$fhtml .= "<div><span class='btn btn-success btn-sm file-relative'>更换<input type='file' name='imgfile{$j}' class='file-absolute'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a></div>";
+														$fhtml .= "<div><span class='btn btn-success btn-sm file-relative'>更换<input for='item{$j}' type='file' name='imgfile{$j}' class='file-absolute btnEdit'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a></div>";
 														$fhtml .= "</div>";
 														echo $fhtml;
 														$j++;
@@ -463,5 +442,55 @@
 			</table>
 		</form>
 		<script>InitPage();</script>
+		<script>
+			$(".btnEdit").change(function(val){
+				var formData = new FormData();
+				var fileData = val.target.files[0];
+				formData.append('file', fileData);
+				$.ajax({
+					url: 'api.php?action=upload_image',
+					type: 'POST',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (result) {
+						if (result.code === 0) {
+							let idx = val.target.getAttribute("for").replace("item","");
+							$(`input[name='imgurl${idx}']`).val(result.data);
+							$(`input[name='imgddurl${idx}']`).val(result.data);
+							$("#lit"+idx).attr('src', result.data);
+						}
+					},
+					error: function (xhr, status, error) {
+						alert(error); //处理上传失败后的回调
+					}
+				});
+			})
+			$("#iptAlbumImages").change(function(val){
+				for (let i = 0; i < val.target.files.length; i++) {
+					const f = val.target.files[i];
+					var formData = new FormData();
+					var fileData = f;
+					formData.append('file', fileData);
+					$.ajax({
+						url: 'api.php?action=upload_image',
+						type: 'POST',
+						data: formData,
+						processData: false,
+						contentType: false,
+						success: function (result) {
+							if (result.code === 0) {
+								// console.log(result)
+								addImage(result.data, 0);
+								$("#iptAlbumImages").val('');
+							}
+						},
+						error: function (xhr, status, error) {
+							alert(error); //处理上传失败后的回调
+						}
+					});
+				}
+			})
+		</script>
 	</body>
 </html>

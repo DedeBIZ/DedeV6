@@ -26,28 +26,6 @@
 			var swfu = null;
 			var vcc = 0;
 			var albums = [];
-			$(document).ready(function () {
-				//添加图片
-				$("#iptAlbumImages").change(function (event) {
-					var files = event.target.files;
-					for (var i = 0, f; f = files[i]; i++) {
-						//如果不是图片忽略
-						if (!f.type.match('image.*')) {
-							continue;
-						}
-						//图片渲染到浏览器
-						var reader = new FileReader();
-						reader.onload = (function (theFile) {
-							return function (e) {
-								litpicImgSrc = e.target.result;
-								addImage(litpicImgSrc, 0);
-							};
-						})(f);
-						reader.readAsDataURL(f);
-					}
-					$("#iptAlbumImages").val("");
-				});
-			});
 		</script>
 	</head>
 	<body>
@@ -415,5 +393,32 @@
 			</table>
 		</form>
 		<script>InitPage();</script>
+		<script>
+			$("#iptAlbumImages").change(function(val){
+				for (let i = 0; i < val.target.files.length; i++) {
+					const f = val.target.files[i];
+					var formData = new FormData();
+					var fileData = f;
+					formData.append('file', fileData);
+					$.ajax({
+						url: 'api.php?action=upload_image',
+						type: 'POST',
+						data: formData,
+						processData: false,
+						contentType: false,
+						success: function (result) {
+							if (result.code === 0) {
+								// console.log(result)
+								addImage(result.data, 0);
+								$("#iptAlbumImages").val('');
+							}
+						},
+						error: function (xhr, status, error) {
+							alert(error); //处理上传失败后的回调
+						}
+					});
+				}
+			})
+		</script>
 	</body>
 </html>

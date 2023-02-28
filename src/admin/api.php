@@ -15,7 +15,7 @@ require_once(DEDEADMIN.'/../system/common.inc.php');
 require_once(DEDEINC.'/userlogin.class.php');
 AjaxHead();
 helper('cache');
-$action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update')) ? $action  : '';
+$action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update', 'upload_image')) ? $action  : '';
 $curDir = dirname(GetCurUrl()); //当前目录
 /**
  * 登录鉴权
@@ -317,5 +317,57 @@ if ($action === 'is_need_check_code') {
         ),
     ));
     exit;
+} else if($action === 'upload_image'){
+    checkLogin();
+    $imgfile_name = $_FILES["file"]['name'];
+    $activepath = $cfg_image_dir;
+    $allowedTypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
+    $uploadedFile = $_FILES['file']['tmp_name'];
+    $fileType = mime_content_type($uploadedFile);
+    $imgSize = getimagesize($uploadedFile);
+    if (!in_array($fileType, $allowedTypes) || !$imgSize) {
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "仅支持图片格式文件",
+            "data" => null,
+        ));
+        exit;
+    }
+    $nowtme = time();
+    $mdir = MyDate($cfg_addon_savetype, $nowtme);
+    if (!is_dir($cfg_basedir.$activepath."/$mdir")) {
+        MkdirAll($cfg_basedir.$activepath."/$mdir", $cfg_dir_purview);
+        CloseFtp();
+    }
+    $cuserLogin = new userLogin();
+    $iseditor = isset($iseditor)? intval($iseditor) : 0;
+    $filename_name = $cuserLogin->getUserID().'-'.dd2char(MyDate("ymdHis", $nowtme).mt_rand(100, 999));
+    $filename = $mdir.'/'.$filename_name;
+    $fs = explode('.', $imgfile_name);
+    $filename = $filename.'.'.$fs[count($fs) - 1];
+    $filename_name = $filename_name.'.'.$fs[count($fs) - 1];
+    $fullfilename = $cfg_basedir.$activepath."/".$filename;
+    move_uploaded_file($_FILES["file"]["tmp_name"], $fullfilename) or die(json_encode(array(
+        "code" => -1,
+        "msg" => "上传失败",
+        "data" => null,
+    )));
+    $info = '';
+    $sizes[0] = 0;
+    $sizes[1] = 0;
+    $sizes = getimagesize($fullfilename, $info);
+    $imgwidthValue = $sizes[0];
+    $imgheightValue = $sizes[1];
+    $imgsize = filesize($fullfilename);
+    $inquery = "INSERT INTO `#@__uploads` (arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','".$activepath."/".$filename."','1','$imgwidthValue','$imgheightValue','0','{$imgsize}','{$nowtme}','".$cuserLogin->getUserID()."'); ";
+    $dsql->ExecuteNoneQuery($inquery);
+    $fid = $dsql->GetLastID();
+    AddMyAddon($fid, $activepath.'/'.$filename);
+    echo json_encode(array(
+        "code" => 0,
+        "msg" => "上传成功",
+        "data" => $activepath."/".$filename,
+    ));
+
 }
 ?>
