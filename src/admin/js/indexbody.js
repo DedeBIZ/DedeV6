@@ -47,7 +47,7 @@ function Copyinfo() {
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
     document.execCommand("Copy");
-    alert("复制环境配置信息成功");
+    ShowMsg("复制环境配置信息成功");
 }
 //Dedebiz info
 var dedebizInfo;

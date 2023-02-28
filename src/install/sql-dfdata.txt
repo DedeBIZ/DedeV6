@@ -4065,7 +4065,6 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('131','cfg_mb_feedcheck','是否需要会员动态审核','4','bool','N'),
 ('132','cfg_mb_msgischeck','是否需要会员状态审核','4','bool','N'),
 ('133','cfg_title_site','是否发布和修改文档时远程发布，启用远程站点的前提下','2','bool','N'),
-('134','cfg_mysql_type','数据库类型，支持MySQL和Mysqli','2','string','mysql'),
 ('135', 'cfg_domain_cookie', '跨域共享Cookie的域名', 2, 'string', ''),
 ('136', 'cfg_cross_sectypeid', '支持交叉栏目显示副栏目文档', '7', 'bool', 'Y'),
 ('137', 'cfg_digg_update', '顶踩缓存异步更新间隔（0为不缓存）', '6', 'number', '0'),
