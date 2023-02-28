@@ -1,6 +1,6 @@
 <?php
 /**
- * 图片发布
+ * 发布图片模型
  * 
  * @version        $id:album_add.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User

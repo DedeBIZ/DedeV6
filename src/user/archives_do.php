@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档管理
+ * 处理自定义文档模型
  * 
  * @version        $id:archives_do.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User

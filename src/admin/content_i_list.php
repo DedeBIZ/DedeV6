@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档列表
+ * 图片文档列表
  *
  * @version        $id:content_i_list.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

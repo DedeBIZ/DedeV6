@@ -1,8 +1,6 @@
 <?php
 /**
  * 文档列表
- * content_s_list.php、content_i_list.php、content_select_list.php
- * 均使用本文件作为实际处理代码，只是使用的模板不同，如有相关变动，只需改本文件及相关模板即可
  *
  * @version        $id:content_list.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

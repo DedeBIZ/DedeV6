@@ -1,6 +1,6 @@
 <?php
 /**
- * 我的收藏夹
+ * 我的收藏
  * 
  * @version        $id:mystow.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User

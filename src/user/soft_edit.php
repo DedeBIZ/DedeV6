@@ -1,6 +1,6 @@
 <?php
 /**
- * 软件修改
+ * 修改软件模型
  * 
  * @version        $id:soft_edit.php 2 14:16 2010-11-11 tianya $
  * @package        DedeBIZ.User

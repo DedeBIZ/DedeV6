@@ -1,6 +1,6 @@
 <?php
 /**
- * 密码重设
+ * 修改密码
  * 
  * @version        $id:resetpassword.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User

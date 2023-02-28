@@ -110,7 +110,7 @@
 							<!-- 如果使用的是多页单图模式幻灯，把href里的链接改为 javascript:dPlayNext(); 表示点击看下一页 -->
 							{dede:field name='imgurls' alt='图片输出区'}
 								[field:pagestyle runphp='yes'] @me= (@me==3 ? '<li>' : '');[/field:pagestyle]
-								<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ] @me=(@me==3 ? 'class="pic"' : '' ); [/field:pagestyle]><img src='[field:imgsrc/]' id='bigimg' [field:imgwidth/] alt='[field:alttext/]'></a>
+								<p><a href='[field:linkurl/]' [field:pagestyle runphp='yes' ] @me=(@me==3 ? 'class="pic"' : '' ); [/field:pagestyle]><img src='[field:imgsrc/]' id='bigimg' [field:imgwidth/] alt='[field:alttext/]'></a></p>
 								<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ]@me=(@me==3 ? 'class="title"' : '' );[/field:pagestyle]>[field:title/]</a>
 								[field:pagestyle runphp='yes'] @me = (@me==3 ? '</li>' : ''); [/field:pagestyle]
 							{/dede:field}

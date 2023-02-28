@@ -1,6 +1,6 @@
 <?php
 /**
- * 发布文档
+ * 发布文档模型
  * 
  * @version        $id:article_add.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User

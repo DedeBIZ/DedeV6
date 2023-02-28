@@ -1,5 +1,7 @@
 <?php
 /**
+ * 会员登录
+ * 
  * @version        $id:login.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM

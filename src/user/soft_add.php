@@ -1,6 +1,6 @@
 <?php
 /**
- * 软件添加
+ * 发布软件模型
  * 
  * @version        $id:soft_add.php 2 14:16 2010-11-11 tianya $
  * @package        DedeBIZ.User

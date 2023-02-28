@@ -152,30 +152,6 @@
 					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">文档排序：</td>
-								<td width="260">
-									<select name="sortup" id="sortup" class="admin-input-sm">
-										<option value="0" selected>默认排序</option>
-										<option value="7">置顶一周</option>
-										<option value="30">置顶一个月</option>
-										<option value="90">置顶三个月</option>
-										<option value="180">置顶半年</option>
-										<option value="360">置顶一年</option>
-									</select>
-								</td>
-								<td width="90">标题颜色：</td>
-								<td>
-									<input type="text" name="color" id="color" class="admin-input-sm">
-									<button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onclick="ShowColor(event,this)">选取</button>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
-							<tr>
 								<td width="90">主分类：</td>
 								<td>
 									<?php
@@ -228,6 +204,30 @@
 								<td>
 									<label><input type="radio" name="ishtml" value="1" checked="1"> 生成网页</label>
 									<label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">
+						<table cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="90">文档排序：</td>
+								<td width="260">
+									<select name="sortup" id="sortup" class="admin-input-sm">
+										<option value="0" selected>默认排序</option>
+										<option value="7">置顶一周</option>
+										<option value="30">置顶一个月</option>
+										<option value="90">置顶三个月</option>
+										<option value="180">置顶半年</option>
+										<option value="360">置顶一年</option>
+									</select>
+								</td>
+								<td width="90">标题颜色：</td>
+								<td>
+									<input type="text" name="color" id="color" class="admin-input-sm">
+									<button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onclick="ShowColor(event,this)">选取</button>
 								</td>
 							</tr>
 						</table>

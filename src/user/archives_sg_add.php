@@ -1,6 +1,6 @@
 <?php
 /**
- * 单表模型发布器
+ * 发布分类文档模型
  * 
  * @version        $id:archives_sg_add.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User

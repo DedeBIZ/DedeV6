@@ -1,5 +1,7 @@
 <?php
 /**
+ * 积分钱包
+ * 
  * @version        $id:buy_action.php 8:38 2023年02月13日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM

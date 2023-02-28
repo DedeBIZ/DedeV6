@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>图片文档管理</title>
+		<title>图片文档列表</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -92,6 +92,7 @@
 					<td>
 						<a href="javascript:;" onclick="QuickEdit({dede:field.id/},event,this);" class="btn btn-light btn-sm"><i class="fa fa-window-maximize"></i> 属性</a>
 						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" class="btn btn-light btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+						<a href="javascript:;" class="btn btn-light btn-sm" onclick="viewArc({dede:field.id/});"><i class="fa fa-eye"></i> 预览</a>
 					</td>
 				</tr>
 			</table>
