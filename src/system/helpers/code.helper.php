@@ -377,9 +377,7 @@ function evalCode($code)
 //校验脚本
 function checkCode($code)
 {
-    global $allowedCalls;
-    global $allowedTokens;
-    global $disallowedExpressions;
+    global $allowedCalls, $allowedTokens, $disallowedExpressions;
     $tokens = token_get_all('<?php '.$code.' ?>');
     $errors = array();
     $braces = 0;
@@ -416,17 +414,17 @@ function checkCode($code)
                 $id = token_name($token[0]);
                 switch ($id) {
                     case ('T_STRING'):
-                        if (in_array(strtolower($token[1]), $allowedCalls) === false) {
-                            $errors[$i]['name'] = 'Illegal function: '.$token[1];
-                            $errors[$i]['line'] = $token[2];
-                        }
-                        break;
+                    if (in_array(strtolower($token[1]), $allowedCalls) === false) {
+                        $errors[$i]['name'] = 'Illegal function: '.$token[1];
+                        $errors[$i]['line'] = $token[2];
+                    }
+                    break;
                     default:
-                        if (in_array($id, $allowedTokens) === false) {
-                            $errors[$i]['name'] = 'Illegal token: '.$token[1];
-                            $errors[$i]['line'] = $token[2];
-                        }
-                        break;
+                    if (in_array($id, $allowedTokens) === false) {
+                        $errors[$i]['name'] = 'Illegal token: '.$token[1];
+                        $errors[$i]['line'] = $token[2];
+                    }
+                    break;
                 }
             }
         }

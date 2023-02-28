@@ -19,9 +19,7 @@
  */
 function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
 {
-    global $dsql, $cfg_cookie_encode, $cfg_multi_site, $cfg_medias_dir;
-    global $cuserLogin, $cfg_upload_switch, $cfg_delete, $cfg_basedir;
-    global $admin_catalogs, $cfg_admin_channel;
+    global $dsql, $cfg_cookie_encode, $cfg_multi_site, $cfg_medias_dir, $cuserLogin, $cfg_upload_switch, $cfg_delete, $cfg_basedir, $admin_catalogs, $cfg_admin_channel;
     if ($cfg_delete == 'N') $type = 'OK';
     if (empty($aid)) return;
     $aid = preg_replace("#[^0-9]#i", '', $aid);

@@ -870,11 +870,7 @@ class DedeTagParse
         return $restr;
     }
 }
-/**********************************************
-//class DedeAttribute Dede模板标记属性集合
-function c____DedeAttribute();
- **********************************************/
-//属性的数据描述
+//属性数据描述
 class DedeAttribute
 {
     var $Count = -1;
@@ -913,10 +909,7 @@ class DedeAttribute
         return $this->Count + 1;
     }
 }
-/*******************************
-//属性解析器(本版本中已经支持使用\'这种语法,和用.间隔表示name属性,如 field.body)
-function c____DedeAttributeParse();
- ********************************/
+//属性解析器
 class DedeAttributeParse
 {
     var $sourceString = "";
@@ -990,7 +983,7 @@ class DedeAttributeParse
                     $startdd = 0;
                 }
             }
-            //查找属性的限定标志
+            //查找属性限定标志
             else if ($startdd == 0) {
                 switch ($d) {
                     case ' ':
@@ -1021,7 +1014,7 @@ class DedeAttributeParse
                 }
             }
         }//for
-        //最后一个属性的给值
+        //最后一个属性给值
         if ($tmpatt != '') {
             $this->cAttributes->Count++;
             $this->cAttributes->Items[$tmpatt] = trim($tmpvalue);

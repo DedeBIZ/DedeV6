@@ -23,9 +23,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 if (!function_exists('AdminUpload')) {
     function AdminUpload($uploadname, $ftype = 'image', $rnddd = 0, $watermark = TRUE, $filetype = '')
     {
-        global $dsql, $cuserLogin, $cfg_addon_savetype, $cfg_dir_purview;
-        global $cfg_basedir, $cfg_image_dir, $cfg_soft_dir, $cfg_other_medias;
-        global $cfg_imgtype, $cfg_softtype, $cfg_mediatype;
+        global $dsql, $cuserLogin, $cfg_addon_savetype, $cfg_dir_purview, $cfg_basedir, $cfg_image_dir, $cfg_soft_dir, $cfg_other_medias, $cfg_imgtype, $cfg_softtype, $cfg_mediatype;
         if ($watermark) include_once(DEDEINC.'/image.func.php');
         $file_tmp = isset($GLOBALS[$uploadname]) ? $GLOBALS[$uploadname] : '';
         if ($file_tmp == '' || !is_uploaded_file($file_tmp)) {

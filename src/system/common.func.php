@@ -452,7 +452,7 @@ function IsSSL()
 //获取对应版本号的更新SQL
 function GetUpdateSQL()
 {
-    global $cfg_dbprefix,$cfg_dbtype,$cfg_db_language;
+    global $cfg_dbprefix, $cfg_dbtype, $cfg_db_language;
     $result = array();
     $query = '';
     $sql4tmp = "ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language;
@@ -543,7 +543,7 @@ function face($mid)
 if (!function_exists('GetMyTags')) {
     function GetMyTags($aid, $num=3)
     {
-        global $dsql,$cfg_cmspath;
+        global $dsql, $cfg_cmspath;
         $tags = '';
         $query = "SELECT * FROM `#@__taglist` WHERE aid='$aid' LIMIT $num";
         $dsql->Execute('tag',$query);
@@ -558,7 +558,7 @@ if (!function_exists('GetMyTags')) {
 if (!function_exists('pasterTempletDiy')) {
     function pasterTempletDiy($path)
     {
-        global $cfg_basedir,$cfg_templets_dir,$cfg_df_style;
+        global $cfg_basedir, $cfg_templets_dir, $cfg_df_style;
         $tmpfile = $cfg_basedir.$cfg_templets_dir.'/'.$cfg_df_style.'/'.$path;
         $dtp = new PartView();
         $dtp->SetTemplet($tmpfile);

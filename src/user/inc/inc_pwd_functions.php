@@ -42,8 +42,7 @@ function random($length, $numeric = 0)
  */
 function sendmail($email, $mailtitle, $mailbody, $headers)
 {
-    global $cfg_sendmail_bysmtp, $cfg_smtp_server, $cfg_smtp_port, $cfg_smtp_usermail, $cfg_smtp_user, $cfg_smtp_password, $cfg_adminemail;
-    global $cfg_bizcore_appid,$cfg_bizcore_key;
+    global $cfg_sendmail_bysmtp, $cfg_smtp_server, $cfg_smtp_port, $cfg_smtp_usermail, $cfg_smtp_user, $cfg_smtp_password, $cfg_adminemail, $cfg_bizcore_appid, $cfg_bizcore_key;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient();
         $client->MailSend($email,$mailtitle,$mailtitle,$mailbody);

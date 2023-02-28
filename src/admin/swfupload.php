@@ -10,10 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/image.func.php');
-/************************
 //上传
-function Upload(){  }
- *************************/
 if (empty($dopost)) {
     ini_set('html_errors', '0');
     if (empty($Filedata) || !is_uploaded_file($Filedata)) {
@@ -122,10 +119,7 @@ if (empty($dopost)) {
     echo "FILEID:".$_SESSION['fileid'];
     exit(0);
 }
-/************************
 //生成缩图
-function GetThumbnail(){  }
-*************************/
 else if ($dopost == 'thumbnail') {
     if (empty($id)) {
         header('HTTP/1.1 500 Internal Server Error');
@@ -141,9 +135,7 @@ else if ($dopost == 'thumbnail') {
     echo $_SESSION['file_info'][$id];
     exit(0);
 }
-/************************
 //删除指定id的图片
-*************************/
 else if ($dopost == 'del') {
     if (!isset($_SESSION['bigfile_info'][$id])) {
         echo '';
@@ -156,9 +148,7 @@ else if ($dopost == 'del') {
     echo "已删除";
     exit();
 }
-/************************
 //获取图片地址
-*************************/
 else if ($dopost == 'addtoedit') {
     if (!isset($_SESSION['bigfile_info'][$id])) {
         echo '';
@@ -167,10 +157,7 @@ else if ($dopost == 'addtoedit') {
     echo $_SESSION['bigfile_info'][$id];
     exit();
 }
-/************************
 //获取本地图片的缩略预览图
-function GetddImg(){  }
-*************************/
 else if ($dopost == 'ddimg') {
     //生成缩略图
     ob_start();
@@ -183,9 +170,7 @@ else if ($dopost == 'ddimg') {
     echo $imagevariable;
     exit();
 }
-/************************
 //删除指定的图片修改图片时用
-*************************/
 else if ($dopost == 'delold') {
     $imgfile = $cfg_basedir.$picfile;
     if (!file_exists($imgfile) && !is_dir($imgfile) && preg_match("#^".$cfg_medias_dir."#", $imgfile)) {
