@@ -11,10 +11,11 @@
 	border-radius:.2rem
 }
 * {
-	font-size:12px;
-	letter-spacing:.6px
+	font-size:12px
 }
 body {
+	line-height:1.6;
+	letter-spacing:.6px;
 	font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
 	color:#545b62;
 	background:#fff
@@ -27,12 +28,13 @@ a:hover {
 	color:#ec982c;
 	text-decoration:none
 }
-form,h1,h2,h3,ul,ol,div {
+h1,h2,h3,ul,ol,div,form {
 	margin:0;
 	padding:0
 }
-body,th,td {
-	line-height:1.6
+td,th,div {
+	word-break:break-all;
+	word-wrap:break-word
 }
 li,dd {
 	margin:0;
