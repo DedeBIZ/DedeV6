@@ -42,7 +42,7 @@
 					<td><input type="text" name="rank_<?php echo $k?>" value="<?php echo $row->rank;?>" id="rank_<?php echo $k?>"></td>
 					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money;?>" id="money_<?php echo $k?>"></td>
 					<td><input type="text" name="scores_<?php echo $k?>" value="<?php echo $row->scores;?>" id="scores_<?php echo $k?>"></td>
-					<td><?php if ($row->id<=5) { echo "系统"; } else {echo "用户";}?></td>
+					<td><?php if ($row->id<=5) { echo "系统"; } else {echo "会员";}?></td>
 					<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if ($row->id == 3) echo 'disabled="disabled"';?> value="1" checked="checked"> 正在使用</td>
 				</tr>
 				<?php }?>

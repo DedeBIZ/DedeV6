@@ -131,6 +131,6 @@ function OptimizeData($dsql)
     }
     $tptable = '';
     foreach ($tptables as $t) $tptable .= ($tptable == '' ? "`{$t}`" : ",`{$t}`");
-    $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE $tptable; ");
+    $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE $tptable;");
 }
 ?>

@@ -65,11 +65,7 @@ if ($dopost != 'save') {
     $addRow = XSSClean($addRow);
     include DedeInclude("templets/soft_edit.htm");
     exit();
-}
-/*--------------------------------
-function __save(){  }
--------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';

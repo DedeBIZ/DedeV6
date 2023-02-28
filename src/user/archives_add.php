@@ -24,7 +24,7 @@ if ($cfg_ml->IsSendLimited()) {
     exit();
 }
 if (empty($dopost)) {
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     if (!is_array($cInfos)) {
         ShowMsg('模型不存在', '-1');
         exit();
@@ -115,7 +115,7 @@ if (empty($dopost)) {
         }
     }
     //增加积分
-    $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
+    $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ;");
     //更新统计
     countArchives($channelid);
     //生成网页

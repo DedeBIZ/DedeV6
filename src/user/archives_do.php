@@ -22,7 +22,7 @@ if ($dopost == "delStow") {
     }
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "mystow.php" : $_COOKIE['ENV_GOBACK_URL'];
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE aid='$aid' AND mid='".$cfg_ml->M_ID."'$tupdate;");
-    //更新用户统计
+    //更新会员统计
     $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='".$cfg_ml->M_ID."' ");
     $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `stow`='$row[nums]' WHERE `mid`='".$cfg_ml->M_ID."'");
 
@@ -121,10 +121,10 @@ else if ($dopost == "delArc") {
         $ENV_GOBACK_URL = $ENV_GOBACK_URL.$channelid;
     }
     if ($rs) {
-        //更新用户记录
+        //更新会员记录
         countArchives($channelid);
         //扣除积分
-        $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores-{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' And (scores-{$cfg_sendarc_scores}) > 0; ");
+        $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores-{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' And (scores-{$cfg_sendarc_scores}) > 0;");
         ShowMsg("成功删除一篇文档", $ENV_GOBACK_URL);
         exit();
     } else {

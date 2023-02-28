@@ -34,7 +34,7 @@ if ($dopost=='getlist') {
 //删除字段
 else if ($dopost=='del') {
     $aid = preg_replace("#[^0-9]#", "", $aid);
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__freelist` WHERE aid='$aid'; ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__freelist` WHERE aid='$aid';");
     AjaxHead();
     GetTagList($dsql,$pageno,$pagesize,$orderby);
     exit();

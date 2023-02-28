@@ -65,7 +65,7 @@ else if ($dopost == 'delsel') {
             DelArc($naid, 'OFF');
         }
     }
-    $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `$maintable`; ");
+    $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `$maintable`;");
     ShowMsg("一共删除了<span class='text-primary'>{$totalarc}</span>篇重复的文档", "javascript:;");
     exit();
 }

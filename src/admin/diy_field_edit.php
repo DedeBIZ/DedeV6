@@ -33,9 +33,6 @@ foreach ($ds as $d) {
     $fieldtypes[$dds[0]] = $dds[1];
 }
 //保存修改
-/*--------------------
-function _SAVE()
-----------------------*/
 if ($action == 'save') {
     if (!isset($fieldtypes[$dtype])) {
         ShowMsg("您修改的是系统专用类型的数据，禁止操作", "-1");
@@ -91,10 +88,7 @@ if ($action == 'save') {
     ShowMsg("成功修改一个字段的配置", "diy_edit.php?diyid={$diyid}");
     exit();
 }
-/*------------------
-删除字段
-function _DELETE()
--------------------*/
+//删除字段
 else if ($action == "delete") {
     //检测旧数据类型，并替换为新配置
     foreach ($dtp->CTags as $tagid => $ctag) {

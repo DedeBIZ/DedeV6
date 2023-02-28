@@ -12,7 +12,7 @@ require_once(dirname(__FILE__).'/../system/common.inc.php');
 require_once(DEDEINC.'/archive/partview.class.php');
 if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
-if ($aid == 0) die(" document.write('Request Error!'); ");
+if ($aid == 0) die(" document.write('Request Error!');");
 $cacheFile = DEDEDATA.'/cache/mytag-'.$aid.'.htm';
 if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile) > $cfg_puccache_time) {
     $pv = new PartView();

@@ -48,11 +48,7 @@ if ($dopost != 'save') {
     $addRow = XSSClean($addRow);
     include DedeInclude("templets/album_edit.htm");
     exit();
-}
-/*--------------------------------
-function __save(){  }
--------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
@@ -177,7 +173,7 @@ else if ($dopost == 'save') {
             $imgurls .= "{dede:img ddimg='$ddurl' text='$iinfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
         }
     }
-    //从HTML中获取新图片
+    //从网页中获取新图片
     if ($formhtml == 1 && !empty($imagebody)) {
         $imagebody = stripslashes($imagebody);
         $imgurls .= GetCurContentAlbum($imagebody, $copysource, $litpicname);
@@ -186,10 +182,7 @@ else if ($dopost == 'save') {
             $hasone = true;
         }
     }
-    /*---------------------
-    function _getformzip()
-    从ZIP文件中获取新图片
-    ---------------------*/
+    //从ZIP文件中获取新图片
     if ($formzip == 1) {
         include_once(DEDEADMIN."/file_class.php");
         $zipfile = $cfg_basedir.str_replace($cfg_mainsite, '', $zipfile);

@@ -14,9 +14,6 @@ require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($dopost)) $dopost = "";
 $id = isset($id) && is_numeric($id) ? $id : 0;
-/*----------------
-function __ShowHide()
------------------*/
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=1 WHERE id='$id' ");
     ShowMsg("操作成功", "mychannel_main.php");
@@ -25,11 +22,7 @@ if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id'");
     ShowMsg("操作成功", "mychannel_main.php");
     exit();
-}
-/*----------------
-function __CopyStart()
------------------*/
-else if ($dopost == "copystart") {
+} else if ($dopost == "copystart") {
     if ($id == -1) {
         ShowMsg("专题文档模型不支持复制", "-1");
         exit();
@@ -88,11 +81,7 @@ else if ($dopost == "copystart") {
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     exit();
-}
-/*----------------
-function __Export()
------------------*/
-else if ($dopost == "export") {
+} else if ($dopost == "export") {
     if ($id == -1) {
         ShowMsg("专题文档模型不支持导出", "-1");
         exit();
@@ -113,11 +102,7 @@ else if ($dopost == "export") {
     $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:98%;height:300px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
-}
-/*----------------
-function __ExportIn()
------------------*/
-else if ($dopost == "exportin") {
+} else if ($dopost == "exportin") {
     $wintitle = "导入文档模型规则";
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::导入文档模型规则";
     $win = new OxWindow();
@@ -128,11 +113,7 @@ else if ($dopost == "exportin") {
     $winform = $win->GetWindow("ok");
     $win->Display();
     exit();
-}
-/*----------------
-function __ExportInOk()
------------------*/
-else if ($dopost == "exportinok") {
+} else if ($dopost == "exportinok") {
     require_once(DEDEADMIN."/inc/inc_admin_channel.php");
     function GotoStaMsg($msg)
     {
@@ -222,11 +203,7 @@ else if ($dopost == "exportinok") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET listfields='$allfields' WHERE id='{$fields['newid']}' ");
     }
     GotoStaMsg("成功导入一个文档模型");
-}
-/*----------------
-function __SaveCopy()
------------------*/
-else if ($dopost == "copysave") {
+} else if ($dopost == "copysave") {
     $cid = intval($cid);
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$cid' ", MYSQL_ASSOC);
     foreach ($row as $k => $v) {
@@ -257,11 +234,7 @@ else if ($dopost == "copysave") {
         ShowMsg("系统出错，请检查原因<br>错误提示：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
         exit();
     }
-}
-/*------------
-function __SaveEdit()
-------------*/
-else if ($dopost == "save") {
+} else if ($dopost == "save") {
     $fieldset = preg_replace("#[\r\n]{1,}#", "\r\n", $fieldset);
     $usertype = empty($usertype) ? '' : $usertype;
     $query = "UPDATE `#@__channeltype` SET typename='$typename',addtable='$addtable',addcon='$addcon',mancon='$mancon',editcon='$editcon',useraddcon='$useraddcon',usermancon='$usermancon',usereditcon='$usereditcon',fieldset='$fieldset',listfields='$listfields',issend='$issend',arcsta='$arcsta',usertype='$usertype',sendrank='$sendrank',needdes='$needdes',needpic='$needpic',titlename='$titlename',onlyone='$onlyone',dfcid='$dfcid' WHERE id='$id' ";
@@ -282,11 +255,7 @@ else if ($dopost == "save") {
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("成功修改一个文档模型", "mychannel_main.php");
     exit();
-}
-/*--------------------
-function __GetTemplate()
---------------------*/
-else if ($dopost == "gettemplets") {
+} else if ($dopost == "gettemplets") {
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     $wintitle = "文档模型管理-查看模板";
@@ -311,11 +280,7 @@ else if ($dopost == "gettemplets") {
     $winform = $win->GetWindow("hand", "");
     $win->Display();
     exit();
-}
-/*--------------------
-function __Delete()
---------------------*/
-else if ($dopost == "delete") {
+} else if ($dopost == "delete") {
     CheckPurview('c_Del');
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     if ($row['issystem'] == 1) {
@@ -346,7 +311,7 @@ else if ($dopost == "delete") {
         }
         //检查栏目的表是否独占数据表
         $addtable = str_replace($cfg_dbprefix, '', str_replace('#@__', $cfg_dbprefix, $myrow['addtable']));
-        $row = $dsql->GetOne("SELECT COUNT(id) AS dd FROM `#@__channeltype` WHERE addtable like '{$cfg_dbprefix}{$addtable}' OR addtable LIKE CONCAT('#','@','__','$addtable') ; ");
+        $row = $dsql->GetOne("SELECT COUNT(id) AS dd FROM `#@__channeltype` WHERE addtable like '{$cfg_dbprefix}{$addtable}' OR addtable LIKE CONCAT('#','@','__','$addtable') ;");
         $isExclusive2 = ($row['dd'] > 1 ? 0 : 1);
         //获取与栏目关连的所有栏目id
         $tids = '';
@@ -356,18 +321,18 @@ else if ($dopost == "delete") {
         }
         //删除相关信息
         if ($tids != '') {
-            $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE typeid IN($tids); ");
-            $dsql->ExecuteNoneQuery("DELETE FROM `{$myrow['maintable']}` WHERE typeid IN($tids); ");
-            $dsql->ExecuteNoneQuery("DELETE FROM `#@__spec` WHERE typeid IN ($tids); ");
-            $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE typeid IN ($tids); ");
-            $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctype` WHERE id IN ($tids); ");
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE typeid IN($tids);");
+            $dsql->ExecuteNoneQuery("DELETE FROM `{$myrow['maintable']}` WHERE typeid IN($tids);");
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__spec` WHERE typeid IN ($tids);");
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE typeid IN ($tids);");
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctype` WHERE id IN ($tids);");
         }
         //删除附加表或附加表内的信息
         if ($isExclusive2 == 1) {
             $dsql->ExecuteNoneQuery("DROP TABLE IF EXISTS `{$cfg_dbprefix}{$addtable}`;");
         } else {
             if ($tids != '' && $myrow['addtable'] != '') {
-                $dsql->ExecuteNoneQuery("DELETE FROM `{$myrow['addtable']}` WHERE typeid IN ($tids); ");
+                $dsql->ExecuteNoneQuery("DELETE FROM `{$myrow['addtable']}` WHERE typeid IN ($tids);");
             }
         }
         //删除栏目配置信息
@@ -377,11 +342,7 @@ else if ($dopost == "delete") {
         ShowMsg("成功删除一个文档模型", "mychannel_main.php");
         exit();
     }
-} //del
-/*----------------
-function __modifysearch()
------------------*/
-else if ($dopost == 'modifysearch') {
+} else if ($dopost == 'modifysearch') {
     if (!isset($step)) $step = 0;
     if (empty($step)) {
         $step = 1;
@@ -573,7 +534,7 @@ else if ($dopost == 'modifysearch') {
 //删除自定义搜索；
 else if ($dopost == 'del') {
     $mid = intval($mid);
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__advancedsearch` WHERE mid = '$mid'; ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__advancedsearch` WHERE mid = '$mid';");
     ShowMsg("成功删除一个自定义搜索", "mychannel_main.php");
     exit();
 }

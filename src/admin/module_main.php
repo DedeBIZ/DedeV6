@@ -52,9 +52,6 @@ function ReWriteConfigAuto()
       fwrite($fp, "?".">");
       fclose($fp);
 }
-/*--------------
-function ShowAll();
---------------*/
 if ($action == '') {
     $types = array('soft' => '模块', 'templets' => '模板', 'plus' => '小插件', 'patch' => '补丁');
     $dm = new DedeModule($mdir);
@@ -69,11 +66,7 @@ if ($action == '') {
     require_once(dirname(__FILE__)."/templets/module_main.htm");
     $dm->Clear();
     exit();
-}
-/*--------------
-function ViewDevelopoer();
---------------*/
-else if ($action == 'view_developoer') {
+} else if ($action == 'view_developoer') {
     //检验开发者信息
     $dm = new DedeModule($mdir);
     $info = $dm->GetModuleInfo($hash);
@@ -98,11 +91,7 @@ else if ($action == 'view_developoer') {
     }
     ShowMsg("<p>开发者名称：{$devInfo['dev_name']}</p><p>开发者id：{$devInfo['dev_id']}</p><span>认证于：{$authAt}</span>", "-1");
     exit;
-}
-/*--------------
-function Setup();
---------------*/
-else if ($action == 'setup') {
+} else if ($action == 'setup') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     if ($infos == null) {
@@ -219,11 +208,7 @@ else if ($action == 'setup') {
     $win->Display();
     $dm->Clear();
     exit();
-}
-/*---------------
-function SetupRun()
---------------*/
-else if ($action == 'setupstart') {
+} else if ($action == 'setupstart') {
     if (!is_writeable($mdir)) {
         ShowMsg("目录<span class='text-primary'>{$mdir}</span>不支持写入，这导致程序安装没法正常创建", "-1");
         exit();
@@ -280,11 +265,7 @@ else if ($action == 'setupstart') {
         ShowMsg('模块安装完成', 'module_main.php');
         exit();
     }
-}
-/*--------------
-function DelModule();
---------------*/
-else if ($action == 'del') {
+} else if ($action == 'del') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
@@ -335,11 +316,7 @@ else if ($action == 'del') {
     unlink($modfile) or die("删除文件<span class='text-primary'>{$modfile}</span>失败");
     ShowMsg("成功删除一个模块文件", "module_main.php");
     exit();
-}
-/*--------------
-function UnInstall();
---------------*/
-else if ($action == 'uninstall') {
+} else if ($action == 'uninstall') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     if ($infos['url'] == '') $infos['url'] = ' ';
@@ -404,11 +381,7 @@ else if ($action == 'uninstall') {
     $win->Display();
     $dm->Clear();
     exit();
-}
-/*--------------
-function UnInstallRun();
---------------*/
-else if ($action == 'uninstallok') {
+} else if ($action == 'uninstallok') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_module` WHERE hashcode LIKE '$hash' ");
     $dm = new DedeModule($mdir);
     $minfos = (array)$dm->GetModuleInfo($hash);
@@ -441,11 +414,7 @@ else if ($action == 'uninstallok') {
         ShowMsg('模块卸载完成', 'module_main.php');
         exit();
     }
-}
-/*--------------
-function ShowReadme();
---------------*/
-else if ($action == 'showreadme') {
+} else if ($action == 'showreadme') {
     $dm = new DedeModule($mdir);
     $msg = $dm->GetSystemFile($hash, 'readme');
     $msg = preg_replace("/(.*)<body/isU", "", $msg);
@@ -459,11 +428,7 @@ else if ($action == 'showreadme') {
     $winform = $win->GetWindow("hand");
     $win->Display();
     exit();
-}
-/*--------------
-function ViewOne();
---------------*/
-else if ($action == 'view') {
+} else if ($action == 'view') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     if ($infos['url'] == '') $infos['url'] = ' ';
@@ -535,11 +500,7 @@ else if ($action == 'view') {
     $win->Display();
     $dm->Clear();
     exit();
-}
-/*--------------
-function Edit();
---------------*/
-else if ($action == 'edit') {
+} else if ($action == 'edit') {
     $dm = new DedeModule($mdir);
     $minfos = (array)$dm->GetModuleInfo($hash);
     extract($minfos, EXTR_SKIP);
@@ -554,11 +515,7 @@ else if ($action == 'edit') {
     $dm->Clear();
     require_once(dirname(__FILE__).'/templets/module_edit.htm');
     exit();
-}
-/*--------------
-function Download();
---------------*/
-else if ($action == 'download') {
+} else if ($action == 'download') {
     ShowMsg("暂不支持模块下载功能", "javascript:;");
 }
 ?>

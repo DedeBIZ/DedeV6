@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC.'/image.func.php');
 require_once(DEDEINC."/userlogin.class.php");
-//检查用户是否被禁言
+//检查会员是否被禁言
 CheckNotAllow();
 /**
  *  获得网页里的外部资源，针对图片
@@ -123,7 +123,7 @@ function SaveUploadInfo($title, $filename, $medaitype = 1, $addinfos = '')
         $addinfos = GetImageSize($cfg_basedir.$filename, $info);
     }
     $addinfos[2] = @filesize($cfg_basedir.$filename);
-    $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$filename' AND mid='".$cfg_ml->M_ID."'; ");
+    $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$filename' AND mid='".$cfg_ml->M_ID."';");
     $uptime = time();
     if (is_array($row)) {
         $query = "UPDATE `#@__uploads` SET title='$title',mediatype='$medaitype',width='{$addinfos[0]}',height='{$addinfos[1]}',filesize='{$addinfos[2]}',uptime='$uptime' WHERE aid='{$row['aid']}';";

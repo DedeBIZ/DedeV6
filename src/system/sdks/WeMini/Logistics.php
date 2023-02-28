@@ -92,7 +92,7 @@ class Logistics extends BasicWeChat
         return $this->callPostApi($url, $data, true);
     }
     /**
-     * 模拟快递公司更新订单状态, 该接口只能用户测试
+     * 模拟快递公司更新订单状态, 该接口只能会员测试
      * @param array $data
      * @return array
      * @throws \WeChat\Exceptions\InvalidResponseException

@@ -18,10 +18,7 @@ if (empty($action)) {
     require_once(DEDEADMIN."/templets/sys_data_replace.htm");
     exit();
 }
-/*-------------------------------
 //列出数据库表里的字段
-function __getfields()
---------------------------------*/
 else if ($action == 'getfields') {
     AjaxHead();
     $dsql->GetTableFields($exptable);
@@ -33,10 +30,7 @@ else if ($action == 'getfields') {
     echo "</div>";
     exit();
 }
-/*-------------------------------
-//保存用户设置，清空会员数据
-function __Apply()
---------------------------------*/
+//保存会员设置，清空会员数据
 else if ($action == 'apply') {
     $validate = empty($validate) ? '' : strtolower($validate);
     $svali = GetCkVdValue();

@@ -23,11 +23,7 @@ if ($dopost != 'save') {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid' ");
     include DedeInclude("templets/spec_add.htm");
     exit();
-}
-/*--------------------------------
-function __save(){  }
--------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';

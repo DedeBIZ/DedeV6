@@ -39,9 +39,6 @@ while ($crow = $dsql->GetObject()) {
     $channelArray[$crow->id]['nid'] = $crow->nid;
 }
 //保存修改
-/*--------------------
-function _SAVE()
-----------------------*/
 if ($action == 'save') {
     if (!isset($fieldtypes[$dtype])) {
         ShowMsg("您修改的是系统专用类型的数据，禁止操作", "-1");
@@ -108,10 +105,7 @@ if ($action == 'save') {
     ShowMsg("成功修改一个字段的配置", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
-/*------------------
-删除字段
-function _DELETE()
--------------------*/
+//删除字段
 else if ($action == "delete") {
     if ($row['issystem'] == 1) {
         ShowMsg("系统模型的字段不允许删除", "-1");

@@ -3,7 +3,7 @@ namespace WeChat;
 if (!defined('DEDEINC')) exit('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 /**
- * 用户标签管理
+ * 会员标签管理
  * Class Tags
  * @package WeChat
  */
@@ -61,7 +61,7 @@ class Tags extends BasicWeChat
         return $this->httpPostForJson($url, ['tag' => ['id' => $tagId]]);
     }
     /**
-     * 批量为用户打标签
+     * 批量为会员打标签
      * @param array $openids
      * @param integer $tagId
      * @return array
@@ -75,7 +75,7 @@ class Tags extends BasicWeChat
         return $this->httpPostForJson($url, ['openid_list' => $openids, 'tagid' => $tagId]);
     }
     /**
-     * 批量为用户取消标签
+     * 批量为会员取消标签
      * @param array $openids
      * @param integer $tagId
      * @return array
@@ -89,7 +89,7 @@ class Tags extends BasicWeChat
         return $this->httpPostForJson($url, ['openid_list' => $openids, 'tagid' => $tagId]);
     }
     /**
-     * 获取用户身上的标签列表
+     * 获取会员身上的标签列表
      * @param string $openid
      * @return array
      * @throws Exceptions\InvalidResponseException

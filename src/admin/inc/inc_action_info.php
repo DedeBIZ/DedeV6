@@ -328,13 +328,13 @@ $actionSearch[9] = array(
             'linkurl' => 'sys_info.php'
         ),
         1  =>  array(
-            'title' => '系统用户管理',
+            'title' => '系统会员管理',
             'description' => '网站管理员管理',
             'purview' => 'sys_User',
             'linkurl' => 'sys_admin_user.php'
         ),
         2  =>  array(
-            'title' => '用户组设置',
+            'title' => '会员组设置',
             'description' => '网站管理员组别的划分',
             'purview' => 'sys_Group',
             'linkurl' => 'sys_group.php'

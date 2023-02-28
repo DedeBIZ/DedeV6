@@ -13,7 +13,7 @@
  *
  * @access    public
  * @param     string  $selid  选择id
- * @param     string  $userCatalog  用户栏目
+ * @param     string  $userCatalog  会员栏目
  * @param     string  $channeltype  栏目类型
  * @return    string
  */
@@ -31,7 +31,7 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
         if ($row['ispart'] == 1) $OptionArrayList .= "<option value='".$row['id']."' class='option1' selected='selected'>".$row['typename']."(封面栏目)</option>";
         else $OptionArrayList .= "<option value='".$row['id']."' selected='selected'>".$row['typename']."</option>";
     }
-    //是否限定用户管理的栏目
+    //是否限定会员管理的栏目
     if ($cfg_admin_channel == 'array') {
         if (count($admin_catalogs) == 0) {
             $query = "SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE 1=2 ";

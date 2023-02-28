@@ -74,9 +74,9 @@ if (!function_exists('GetCurUrl')) {
     }
 }
 /**
- *  获取用户真实地址
+ *  获取会员真实地址
  *
- * @return    string  返回用户ip
+ * @return    string  返回会员ip
  */
 if (!function_exists('GetIP')) {
     function GetIP()

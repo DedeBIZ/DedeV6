@@ -41,7 +41,7 @@ $isUrlOpen = @ini_get('allow_url_fopen');
 $dedeNowurl = GetCurUrl();
 $dedeNowurls = explode('?', $dedeNowurl);
 $s_scriptName = $dedeNowurls[0];
-//检验用户登录状态
+//检验会员登录状态
 $cuserLogin = new userLogin();
 if ($cuserLogin->getUserID() == -1) {
     if (preg_match("#PHP (.*) Development Server#", $_SERVER['SERVER_SOFTWARE'])) {
@@ -139,10 +139,10 @@ function DedeInclude($filename, $isabs = FALSE)
     return $isabs ? $filename : DEDEADMIN.'/'.$filename;
 }
 /**
- *  根据用户mid获取用户名称
+ *  根据会员mid获取会员名称
  *
  * @access    public
- * @param     int  $mid   用户id
+ * @param     int  $mid   会员id
  * @return    string
  */
 if (!function_exists('GetMemberName')) {

@@ -21,7 +21,7 @@ if ($dopost != 'save') {
     $cid = empty($cid) ? 0 : intval($cid);
     //获得栏目模型id
     if ($cid > 0 && $channelid == 0) {
-        $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid'; ");
+        $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid';");
         $channelid = $row['channeltype'];
     } else {
         if ($channelid == 0) {
@@ -34,11 +34,7 @@ if ($dopost != 'save') {
     $channelid = $cInfos['id'];
     include DedeInclude("templets/archives_sg_add.htm");
     exit();
-}
-/*--------------------------------
-function __save(){  }
--------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     if ($typeid == 0) {

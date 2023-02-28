@@ -21,10 +21,7 @@ $bkdir = DEDEDATA.'/'.$cfg_backup_dir;
 //跳转一下页的js
 $gotojs = "function GotoNextPage(){document.gonext."."submit();}"."\r\nset"."Timeout('GotoNextPage()',500);";
 $dojs = "<script>$gotojs</script>";
-/*--------------------
-备份数据
-function __bak_data();
---------------------*/
+//备份数据
 if ($dopost == 'bak') {
     if (empty($tablearr)) {
         ShowMsg('您没选中数据表', 'javascript:;');
@@ -180,10 +177,7 @@ if ($dopost == 'bak') {
     }
     //分页备份代码结束
 }
-/*-------------------------
-还原数据
-function __re_data();
--------------------------*/ 
+//还原数据
 else if ($dopost == 'redat') {
     if ($bakfiles == '') {
         ShowMsg('没指定任何要还原数据', 'javascript:;');

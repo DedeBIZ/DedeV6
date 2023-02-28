@@ -15,9 +15,6 @@ if (empty($action)) $action = '';
 $mysql_version = $dsql->GetVersion();
 $mysql_versions = explode(".", trim($mysql_version));
 $mysql_version = $mysql_versions[0].".".$mysql_versions[1];
-/*----------------------
-function Save()
----------------------*/
 if ($action == 'save') {
     //模型信息
     $fieldname = strtolower($fieldname);
@@ -70,9 +67,6 @@ if ($action == 'save') {
     exit();
 }
 //检测模型相关信息，并初始化相关数据
-/*----------------------
-function ShowPage()
----------------------*/
 $row = $dsql->GetOne("SELECT `table` FROM `#@__diyforms` WHERE diyid='$diyid'");
 $trueTable = $row['table'];
 $tabsql = "CREATE TABLE IF NOT EXISTS  `$trueTable`(

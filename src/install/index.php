@@ -35,10 +35,7 @@ if (empty($step))
     $step = 1;
 }
 $proto = IsSSL()? "https://" : "http://";
-/*------------------------
-使用协议书
-function _1_Agreement()
-------------------------*/
+//使用协议书
 if ($step==1)
 {
     $arrMsg = array();
@@ -83,10 +80,7 @@ if ($step==1)
     include('./install.html');
     exit();
 }
-/*------------------------
-普通安装
-function _2_Setup()
-------------------------*/
+//普通安装
 else if ($step==2)
 {
     $dbtype = empty($dbtype)? "mysql" : $dbtype;
@@ -275,10 +269,7 @@ else if ($step==2)
     header('Location:../admin/index.php');
     exit();
 }
-/*------------------------
-检测数据库是否有效
-function _10_TestDbPwd()
-------------------------*/
+//检测数据库是否有效
 else if ($step==10)
 {
     header("Pragma:no-cache\r\n");

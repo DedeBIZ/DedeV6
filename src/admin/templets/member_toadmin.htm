@@ -19,7 +19,7 @@
 				}
 				if (document.form2.uname.value == "") {
 					document.form2.uname.focus();
-					ShowMsg("用户昵称不能为空");
+					ShowMsg("会员昵称不能为空");
 					return false;
 				}
 			}
@@ -36,7 +36,7 @@
 				<input type="hidden" name="userid" value="<?php echo $row['userid']?>">
 				<input type="hidden" name="id" value="<?php echo $id?>">
 				<tr>
-					<td width="260" class="admin-td">头像/用户名/类型：</td>
+					<td width="260" class="admin-td">头像/会员名/类型：</td>
 					<td>
 						<span class="mr-1">
 							<?php

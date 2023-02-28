@@ -14,9 +14,6 @@ require_once(DEDEADMIN."/inc/inc_admin_channel.php");
 require_once(DEDEINC."/dedetag.class.php");
 if (empty($action)) $action = '';
 $mysql_version = $dsql->GetVersion();
-/*----------------------
-function Save()
----------------------*/
 if ($action == 'save') {
     //修改字段配置信息
     $dfvalue = trim($vdefault);
@@ -78,9 +75,6 @@ if ($action == 'save') {
     ShowMsg("成功增加一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
-/*----------------------
-function ShowPage()
----------------------*/
 //检测模型相关信息，并初始化相关数据
 $row = $dsql->GetOne("SELECT '#@__archives' AS maintable,addtable FROM `#@__channeltype` WHERE id='$id'");
 $trueTable = $row['addtable'];

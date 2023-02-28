@@ -92,7 +92,7 @@ if (!function_exists('AdminUpload')) {
 }
 //前台会员通用上传函数
 //$upname 是文件上传框的表单名，而不是表单的变量
-//$handname 允许用户手工指定网址情况下的网址
+//$handname 允许会员手工指定网址情况下的网址
 if (!function_exists('MemberUploads')) {
     function MemberUploads($upname, $handname, $userid = 0, $utype = 'image', $exname = '', $maxwidth = 0, $maxheight = 0, $water = false, $isadmin = false)
     {

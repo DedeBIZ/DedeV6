@@ -21,10 +21,7 @@ if ($action == '') {
     require_once(dirname(__FILE__)."/templets/module_make.htm");
     exit();
 }
-/*-------------
 //生成项目
-function Makemodule()
---------------*/
 else if ($action == 'make') {
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     //校验私钥,确定开发者身份
@@ -168,10 +165,7 @@ $filelist
     ShowMsg("成功对一个新模块进行编译", "module_main.php");
     exit();
 }
-/*-------------
 //修改项目
-function editModule()
---------------*/
 else if ($action == 'edit') {
     $filelist = str_replace("\r", "\n", trim($filelist));
     $filelist = trim(preg_replace("#[\n]{1,}#", "\n", $filelist));

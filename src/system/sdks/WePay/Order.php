@@ -124,7 +124,7 @@ class Order extends BasicWePay
     }
     /**
      * 刷卡支付 授权码查询openid
-     * @param string $authCode 扫码支付授权码，设备读取用户微信中的条码或者二维码信息
+     * @param string $authCode 扫码支付授权码，设备读取会员微信中的条码或者二维码信息
      * @return array
      * @throws \WeChat\Exceptions\InvalidResponseException
      * @throws \WeChat\Exceptions\LocalCacheException

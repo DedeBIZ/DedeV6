@@ -19,10 +19,7 @@ if (empty($dopost)) {
     exit();
 }
 $aid = isset($aid) ? preg_replace("#[^0-9]#", '', $aid) : '';
-/*--------------------------
 //修改文档
-function editArchives(){ }
----------------------------*/
 if ($dopost == 'editArchives') {
     $query = "SELECT arc.id,arc.typeid,ch.maintable,ch.editcon FROM `#@__arctiny` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $row = $dsql->GetOne($query);
@@ -58,10 +55,7 @@ if ($dopost == 'editArchives') {
     }
     exit();
 }
-/*--------------------------
 //浏览文档
-function viewArchives(){ }
----------------------------*/
 else if ($dopost == "viewArchives") {
     $aid = preg_replace("#[^0-9]#", '', $aid);
     //获取主表信息
@@ -129,10 +123,7 @@ else if ($dopost == "viewArchives") {
     echo "<script>location.href='$arcurl"."?".time()."';</script>";
     exit();
 }
-/*--------------------------
 //异步上传缩略图
-function uploadLitpic(){ }
----------------------------*/
 else if ($dopost == "uploadLitpic") {
     $upfile = AdminUpload('litpic', 'imagelit', 0, false);
     if ($upfile == '-1') {
@@ -171,10 +162,7 @@ else if ($dopost == "uploadLitpic") {
     echo $msg;
     exit();
 }
-/*--------------------------
 //推荐文档
-function commendArchives(){ }
----------------------------*/
 else if ($dopost == "commendArchives") {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) {
@@ -205,10 +193,7 @@ else if ($dopost == "commendArchives") {
     ShowMsg("成功把所选文档设为推荐", $ENV_GOBACK_URL);
     exit();
 }
-/*--------------------------
 //生成网页
-function makeArchives();
----------------------------*/
 else if ($dopost == "makeArchives") {
     CheckPurview('sys_MakeHtml,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
@@ -226,10 +211,7 @@ else if ($dopost == "makeArchives") {
     ShowMsg("成功更新指定<span class='text-primary'>$i</span>个文件", $ENV_GOBACK_URL);
     exit();
 }
-/*--------------------------
 //审核文档
-function checkArchives() {   }
----------------------------*/
 else if ($dopost == "checkArchives") {
     CheckPurview('a_Check,a_AccCheck,sys_ArcBatch');
     require_once(DEDEADMIN."/inc/inc_archives_functions.php");
@@ -256,11 +238,7 @@ else if ($dopost == "checkArchives") {
     }
     ShowMsg("成功审核指定文档", $ENV_GOBACK_URL);
     exit();
-}
-/*-----------------------------
-function moveArchives(){ }
-------------------------------*/
-else if ($dopost == 'moveArchives') {
+} else if ($dopost == 'moveArchives') {
     CheckPurview('sys_ArcBatch');
     if (empty($totype)) {
         require_once(DEDEINC.'/typelink/typelink.class.php');
@@ -273,7 +251,7 @@ else if ($dopost == 'moveArchives') {
         <option value='0'>请选择移动位置</option>
         $typeOptions
         </select>";
-        //输出AJAX可移动窗体
+        //输出Ajax可移动窗体
         $divname = 'moveArchives';
         echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">移动文档</div>";
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
@@ -346,10 +324,7 @@ else if ($dopost == 'moveArchives') {
         exit();
     }
 }
-/*-----------------------------
 //还原文档
-function RbReturnArchives(){ }
-------------------------------*/
 else if ($dopost == 'return') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
     require_once(DEDEINC."/libraries/oxwindow.class.php");
@@ -363,15 +338,12 @@ else if ($dopost == 'return') {
     $qstrs = explode('`', $qstr);
     foreach ($qstrs as $aid) {
         $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET arcrank='-1',ismake='0' WHERE id='$aid'");
-        $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET `arcrank` = '-1' WHERE id = '$aid'; ");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET `arcrank` = '-1' WHERE id = '$aid';");
     }
     ShowMsg("成功还原指定文档", "recycling.php");
     exit();
 }
-/*--------------------------
 //删除文档
-function delArchives(){ }
----------------------------*/
 else if ($dopost == "delArchives") {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
     require_once(DEDEINC."/libraries/oxwindow.class.php");
@@ -409,10 +381,7 @@ else if ($dopost == "delArchives") {
         $win->Display();
     }
 }
-/*-----------------------------
 //清空文档
-function RbClearArchives(){ }
-------------------------------*/
 else if ($dopost == 'clear') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
     require_once(DEDEINC."/libraries/oxwindow.class.php");
@@ -463,10 +432,7 @@ else if ($dopost == 'clear') {
         $win->Display();
     }
 }
-/*-----------------------------
 //清除文档
-function RbDelArchives(){ }
-------------------------------*/
 else if ($dopost == 'del') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
     require_once(DEDEINC."/libraries/oxwindow.class.php");
@@ -504,10 +470,7 @@ else if ($dopost == 'del') {
         $win->Display();
     }
 }
-/*-----------------------------
 //快速修改
-function quickEdit(){ }
-------------------------------*/
 else if ($dopost == 'quickEdit') {
     require_once(DEDEADMIN."/inc/inc_catalog_options.php");
     AjaxHead();
@@ -590,10 +553,7 @@ else if ($dopost == 'quickEdit') {
 <?php
 //Ajax窗体结束
 }
-/*-----------------------------
 //保存快速修改文档
-function quickEditSave(){ }
-------------------------------*/
 else if ($dopost == 'quickEditSave') {
     require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
     //权限检测
@@ -629,10 +589,7 @@ else if ($dopost == 'quickEditSave') {
     ShowMsg('成功更新一篇文档基本信息', $backurl);
     exit();
 }
-/*--------------------------
-分析并自动获取文档关键词
-function makekw(){ }
---------------------------*/
+//分析并自动获取文档关键词
 else if ($dopost == "makekw") {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
@@ -715,10 +672,7 @@ else if ($dopost == "makekw") {
     ShowMsg("成功分析指定文档关键词", $ENV_GOBACK_URL);
     exit();
 }
-/*--------------------------
 //批量增加属性
-function attsAdd(){ }
----------------------------*/
 else if ($dopost == 'attsAdd') {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
@@ -751,10 +705,7 @@ else if ($dopost == 'attsAdd') {
     ShowMsg("成功对选中文档增加指定属性", $ENV_GOBACK_URL);
     exit();
 }
-/*--------------------------
 //批量删除属性
-function attsDel(){ }
----------------------------*/
 else if ($dopost == 'attsDel') {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
@@ -797,15 +748,12 @@ else if ($dopost == 'attsDel') {
     ShowMsg("成功对选中文档删除指定属性", $ENV_GOBACK_URL);
     exit();
 }
-/*--------------------------
-//获得批量属性处理AJAX窗体
-function attsDlg(){ }
----------------------------*/
+//获得批量属性处理Ajax窗体
 else if ($dopost == 'attsDlg') {
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     $dojobname = ($dojob == 'attsDel' ? '批量删除属性' : '批量增加属性');
     AjaxHead();
-    //输出AJAX可移动窗体
+    //输出Ajax可移动窗体
     $divname = 'attsDlg';
     echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">{$dojobname}</div>";
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
@@ -841,14 +789,10 @@ else if ($dopost == 'attsDlg') {
     </form>
 <?php
 //Ajax窗体结束
-}
-/*------------------------
-function getCatMap() {  }
--------------------------*/
-else if ($dopost == 'getCatMap') {
+} else if ($dopost == 'getCatMap') {
     require_once(DEDEINC.'/typelink/typeunit.class.selector.php');
     AjaxHead();
-    //输出AJAX可移动窗体
+    //输出Ajax可移动窗体
     $divname = 'getCatMap';
     echo "<div class='title'>选择副栏目</div>";
     $tus = new TypeUnitSelector();

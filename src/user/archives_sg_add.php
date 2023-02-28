@@ -24,7 +24,7 @@ if ($cfg_ml->IsSendLimited()) {
     exit();
 }
 if (empty($dopost)) {
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     if (!is_array($cInfos)) {
         ShowMsg('模型不存在', '-1');
         exit();
@@ -150,7 +150,7 @@ if (empty($dopost)) {
         }
     }
     //增加积分
-    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ;");
     //生成网页
     $artUrl = MakeArt($arcID, true);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";

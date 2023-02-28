@@ -53,7 +53,7 @@ class Oauth extends BasicWeChat
     /**
      * 检验授权凭证（access_token）是否有效
      * @param string $access_token 网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同
-     * @param string $openid 用户的唯一标识
+     * @param string $openid 会员的唯一标识
      * @return array
      * @throws \WeChat\Exceptions\InvalidResponseException
      * @throws \WeChat\Exceptions\LocalCacheException
@@ -64,9 +64,9 @@ class Oauth extends BasicWeChat
         return $this->httpGetForJson($url);
     }
     /**
-     * 拉取用户信息(需scope为 snsapi_userinfo)
+     * 拉取会员信息(需scope为 snsapi_userinfo)
      * @param string $access_token 网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同
-     * @param string $openid 用户的唯一标识
+     * @param string $openid 会员的唯一标识
      * @param string $lang 返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语
      * @return array
      * @throws \WeChat\Exceptions\InvalidResponseException

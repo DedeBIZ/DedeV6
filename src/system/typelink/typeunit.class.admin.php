@@ -76,7 +76,7 @@ class TypeUnit
     {
         global $cfg_admin_channel, $admin_catalogs;
         $this->dsql = $GLOBALS['dsql'];
-        //检测用户有权限的顶级栏目
+        //检测会员有权限的顶级栏目
         if ($cfg_admin_channel == 'array') {
             $admin_catalog = join(',', $admin_catalogs);
             $this->dsql->SetQuery("SELECT reid FROM `#@__arctype` WHERE id in($admin_catalog) GROUP BY reid ");

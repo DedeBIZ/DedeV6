@@ -9,7 +9,7 @@ try {
     //$wechat = \We::WeChatQrcode($config);
     //$wechat = new \WeChat\Qrcode($config);
     $wechat = \WeChat\Qrcode::instance($config);
-    //获取用户列表
+    //获取会员列表
     $result = $wechat->create('场景内容');
     echo var_export($result, true).PHP_EOL;
     //创建二维码链接

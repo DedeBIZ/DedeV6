@@ -341,7 +341,7 @@ class DedeHttpDown
             }
             $this->m_puthead = array();
             $this->m_puthead["Host"] = $this->m_host;
-            //发送用户自定义的请求头
+            //发送会员自定义的请求头
             if (!isset($this->m_puthead["Accept"])) {
                 $this->m_puthead["Accept"] = "*/*";
             }
@@ -398,7 +398,7 @@ class DedeHttpDown
             $headString .= "POST ".$ps[0]." $httpv\r\n";
         }
         $this->m_puthead["Host"] = $this->m_host;
-        //发送用户自定义的请求头
+        //发送会员自定义的请求头
         if (!isset($this->m_puthead["Accept"])) {
             $this->m_puthead["Accept"] = "*/*";
         }

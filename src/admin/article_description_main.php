@@ -128,7 +128,7 @@ if ($dojob == '') {
                 if (!preg_match("/#p#/iU", $body)) {
                     $body = SpLongBody($body, $cfg_arcautosp_size * 1024, "#p#分页标题#e#");
                     $body = addslashes($body);
-                    $dsql->ExecuteNoneQuery("UPDATE $table SET $field='$body' WHERE aid='$aid' ; ");
+                    $dsql->ExecuteNoneQuery("UPDATE $table SET $field='$body' WHERE aid='$aid' ;");
                 }
             }
         }//end if limit

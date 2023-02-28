@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//考虑安全原因不管是否开启游客投稿功能，都不允许用户投稿
+//考虑安全原因不管是否开启游客投稿功能，都不允许会员投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
     ShowMsg("由于系统开启了会员空间精简版，您浏览的功能不可用", "-1");
@@ -24,7 +24,7 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 3;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $menutype = 'content';
 if (empty($dopost)) {
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     if (!is_array($cInfos)) {
         ShowMsg('模型不正确', '-1');
         exit();
@@ -155,7 +155,7 @@ if (empty($dopost)) {
     }
     //增加积分
     $cfg_sendarc_scores = intval($cfg_sendarc_scores);
-    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ;");
     //更新统计
     countArchives($channelid);
     //生成网页

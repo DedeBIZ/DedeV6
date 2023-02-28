@@ -118,8 +118,8 @@ else if ($action == 'move') {
         ShowMsg('该操作必须指定栏目', 'javascript:;');
         exit();
     }
-    $typeold = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$typeid'; ");
-    $typenew = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$newtypeid'; ");
+    $typeold = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$typeid';");
+    $typenew = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$newtypeid';");
     if (!is_array($typenew)) {
         ShowMsg("无法检测移动到的新栏目的信息，不能完成操作", "javascript:;");
         exit();

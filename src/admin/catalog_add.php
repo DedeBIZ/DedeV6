@@ -40,11 +40,7 @@ if ($dopost == 'quick') {
     $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
     include DedeInclude('templets/catalog_add_quick.htm');
     exit();
-}
-/*---------------------
-function action_savequick(){ }
----------------------*/
-else if ($dopost == 'savequick') {
+} else if ($dopost == 'savequick') {
     if (!isset($savetype)) $savetype = '';
     $isdefault = isset($isdefault) ? $isdefault : 0;
     $tempindex = "{style}/index_{$nid}.htm";
@@ -126,11 +122,7 @@ else if ($dopost == 'savequick') {
     UpDateCatCache();
     ShowMsg('成功增加指定栏目', 'catalog_main.php');
     exit();
-}
-/*---------------------
-function action_save(){ }
----------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     $smalltypes = '';
     if (empty($smalltype)) $smalltype = '';
     if (is_array($smalltype)) $smalltypes = join(',', $smalltype);

@@ -192,7 +192,7 @@ class Card extends BasicWeChat
         return $this->httpPostForJson($url, ['encrypt_code' => $encrypt_code]);
     }
     /**
-     * 获取用户已领取卡券接口
+     * 获取会员已领取卡券接口
      * @param string $openid
      * @param null|string $card_id
      * @return array
@@ -365,7 +365,7 @@ class Card extends BasicWeChat
     }
     /**
      * 设置开卡字段接口
-     * 用户激活时需要填写的选项
+     * 会员激活时需要填写的选项
      * @param array $data
      * @return array
      * @throws Exceptions\InvalidResponseException
@@ -378,8 +378,8 @@ class Card extends BasicWeChat
         return $this->httpPostForJson($url, $data);
     }
     /**
-     * 获取用户提交资料
-     * 根据activate_ticket获取到用户填写的信息
+     * 获取会员提交资料
+     * 根据activate_ticket获取到会员填写的信息
      * @param string $activate_ticket
      * @return array
      * @throws Exceptions\InvalidResponseException
@@ -439,7 +439,7 @@ class Card extends BasicWeChat
     /**
      * 拉取会员信息（积分查询）接口
      * @param string $card_id 查询会员卡的cardid
-     * @param string $code 所查询用户领取到的code值
+     * @param string $code 所查询会员领取到的code值
      * @return array
      * @throws Exceptions\InvalidResponseException
      * @throws Exceptions\LocalCacheException

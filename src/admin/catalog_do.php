@@ -16,10 +16,7 @@ if (empty($dopost)) {
 $cid = empty($cid) ? 0 : intval($cid);
 $unittype = empty($unittype) ? 0 : intval($unittype);
 $channelid = empty($channelid) ? 0 : intval($channelid);
-/*--------------------------
 //增加文档
-function addArchives();
----------------------------*/
 if ($dopost == "addArchives") {
     //默认文档调用发布表单
     if (empty($cid) && empty($channelid)) {
@@ -43,10 +40,7 @@ if ($dopost == "addArchives") {
     header("location:{$gurl}?channelid={$channelid}&cid={$cid}");
     exit();
 }
-/*--------------------------
 //管理文档
-function listArchives();
----------------------------*/
 else if ($dopost == "listArchives") {
     if (!empty($gurl)) {
         if (empty($arcrank)) {
@@ -78,18 +72,12 @@ else if ($dopost == "listArchives") {
     header("location:{$gurl}?channelid={$channelid}&cid={$cid}");
     exit();
 }
-/*--------------------------
 //浏览通用模板目录
-function viewTempletDir();
----------------------------*/
 else if ($dopost == "viewTemplet") {
     header("location:tpl.php?path=/".$cfg_df_style);
     exit();
 }
-/*------------------------
-浏览单个页面的栏目
-function ViewSgPage()
-------------------------*/
+//浏览单个页面的栏目
 else if ($dopost == "viewSgPage") {
     require_once(DEDEINC."/archive/listview.class.php");
     $lv = new ListView($cid);
@@ -97,10 +85,7 @@ else if ($dopost == "viewSgPage") {
     ShowMsg("更新缓冲，请稍后", $pageurl);
     exit();
 }
-/*------------------------
-修改栏目排列顺序
-function upRank()
-------------------------*/
+//修改栏目排列顺序
 else if ($dopost == "upRank") {
     //检查权限许可
     CheckPurview('t_Edit,t_AccEdit');
@@ -133,10 +118,7 @@ else if ($dopost == "upRank") {
     ShowMsg("操作成功，正在返回", "catalog_main.php");
     exit();
 }
-/*--------------------------
 //更新栏目缓存
-function UpCatlogCache();
----------------------------*/
 else if ($dopost == "upcatcache") {
     UpDateCatCache();
     $sql = " TRUNCATE TABLE `#@__arctiny`";
@@ -161,18 +143,12 @@ else if ($dopost == "upcatcache") {
     ShowMsg("操作成功，正在返回", "catalog_main.php");
     exit();
 }
-/*---------------------
-获取js文件
-function GetJs
-----------------------*/
+//获取js文件
 else if ($dopost == "GetJs") {
     header("location:makehtml_js.php");
     exit();
 }
-/*-----------
-获得子类的文档
-function GetSunListsMenu();
------------*/
+//获得子类的文档
 else if ($dopost == "GetSunListsMenu") {
     $userChannel = $cuserLogin->getUserChannel();
     require_once(DEDEINC."/typelink/typeunit.class.menu.php");
@@ -180,12 +156,7 @@ else if ($dopost == "GetSunListsMenu") {
     PutCookie('lastCidMenu', $cid, 3600 * 24, "/");
     $tu = new TypeUnit($userChannel);
     $tu->LogicListAllSunType($cid, "　");
-}
-/*-----------
-获得子类的文档
-function GetSunLists();
------------*/
-else if ($dopost == "GetSunLists") {
+} else if ($dopost == "GetSunLists") {
     require_once(DEDEINC."/typelink/typeunit.class.admin.php");
     AjaxHead();
     PutCookie('lastCid', $cid, 3600 * 24, "/");
@@ -196,10 +167,7 @@ else if ($dopost == "GetSunLists") {
     echo "</table>\r\n";
     $tu->Close();
 }
-/*----------------
-合并栏目
-function unitCatalog() { }
------------------*/
+//合并栏目
 else if ($dopost == 'unitCatalog') {
     CheckPurview('t_Move');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
@@ -255,10 +223,7 @@ else if ($dopost == 'unitCatalog') {
         exit();
     }
 }
-/*----------------
-移动栏目
-function moveCatalog() { }
------------------*/
+//移动栏目
 else if ($dopost == 'moveCatalog') {
     CheckPurview('t_Move');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');

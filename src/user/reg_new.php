@@ -1,6 +1,6 @@
 <?php
 /**
- * 用户注册
+ * 会员注册
  * 
  * @version        $id:reg_new.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User
@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 if ($cfg_mb_allowreg == 'N') {
-    ShowMsg('系统关闭了新用户注册', 'index.php');
+    ShowMsg('系统关闭了新会员注册', 'index.php');
     exit();
 }
 if (!isset($dopost)) $dopost = '';
@@ -30,17 +30,17 @@ if ($step == 1) {
         $userid = $uname = trim($userid);
         $pwd = trim($userpwd);
         $pwdc = trim($userpwdok);
-        $rs = CheckUserID($userid, '用户名');
+        $rs = CheckUserID($userid, '会员名');
         if ($rs != 'ok') {
             ShowMsg($rs, '-1');
             exit();
         }
         if (strlen($userid) > 20 || strlen($uname) > 36) {
-            ShowMsg('您的用户名或用户名称过长，不允许注册', '-1');
+            ShowMsg('您的会员名或会员名称过长，不允许注册', '-1');
             exit();
         }
         if (strlen($userid) < $cfg_mb_idmin || strlen($pwd) < $cfg_mb_pwdmin) {
-            ShowMsg("您的用户名或密码过短，不允许注册", "-1");
+            ShowMsg("您的会员名或密码过短，不允许注册", "-1");
             exit();
         }
         if ($pwdc != $pwd) {
@@ -49,10 +49,10 @@ if ($step == 1) {
         }
         $uname = HtmlReplace($uname, 1);
         $userid = HtmlReplace($userid, 1);
-        //检测用户名是否存在
+        //检测会员名是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的用户名<span class='text-primary'>{$userid}</span>已存在，请使用别的用户名", "-1");
+            ShowMsg("您指定的会员名<span class='text-primary'>{$userid}</span>已存在，请使用别的会员名", "-1");
             exit();
         }
         //会员的默认金币
@@ -94,7 +94,7 @@ if ($step == 1) {
             $spacequery = "INSERT INTO `#@__member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`) VALUES ('{$mid}','10','0','{$uname}的空间','','$space','',''); ";
             $dsql->ExecuteNoneQuery($spacequery);
             //写入其它默认数据
-            $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES ('$mid','DedeBIZ','https://www.dedebiz.com'); ");
+            $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES ('$mid','DedeBIZ','https://www.dedebiz.com');");
             //模拟登录
             $cfg_ml = new MemberLogin(7 * 3600);
             $rs = $cfg_ml->CheckUser($userid, $userpwd);

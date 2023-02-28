@@ -45,7 +45,7 @@ if (empty($dopost)) {
             exit();
         }
     }
-    $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid'; ");
+    $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid';");
     $dtp = new DedeTagParse();
     $dtp->LoadSource($addRow['imgurls']);
     $abinfo = $dtp->GetTagByName('pagestyle');
@@ -54,7 +54,7 @@ if (empty($dopost)) {
     include(DEDEMEMBER."/templets/album_edit.htm");
     exit();
 } else if ($dopost == 'save') {
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     $maxwidth = isset($maxwidth) && is_numeric($maxwidth) ? $maxwidth : 800;
     $pagepicnum = isset($pagepicnum) && is_numeric($pagepicnum) ? $pagepicnum : 12;
     $ddmaxwidth = isset($ddmaxwidth) && is_numeric($ddmaxwidth) ? $ddmaxwidth : 200;

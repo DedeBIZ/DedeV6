@@ -28,7 +28,7 @@ if (!empty($dopost)) {
         $AllPurviews = trim($AllPurviews);
     }
     $dsql->ExecuteNoneQuery("INSERT INTO `#@__admintype` (`rank`,typename,`system`,purviews) VALUES ('$rankid','$groupname', 0, '$AllPurviews');");
-    ShowMsg("成功创建一个新的用户组", "sys_group.php");
+    ShowMsg("成功创建一个新的会员组", "sys_group.php");
     exit();
 }
 include DedeInclude('templets/sys_group_add.htm');

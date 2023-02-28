@@ -13,17 +13,17 @@
 		<script>
 			function checkSubmit() {
 				if (document.form1.userid.value == "") {
-					ShowMsg("用户id不能为空");
+					ShowMsg("会员id不能为空");
 					document.form1.userid.focus();
 					return false;
 				}
 				if (document.form1.uname.value == "") {
-					ShowMsg("用户名不能为空");
+					ShowMsg("会员名不能为空");
 					document.form1.uname.focus();
 					return false;
 				}
 				if (document.form1.pwd.value == "") {
-					ShowMsg("用户密码不能为空");
+					ShowMsg("会员密码不能为空");
 					document.form1.pwd.focus();
 					return false;
 				}
@@ -47,7 +47,7 @@
 				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<input type="hidden" name="dopost" value="add">
 				<tr>
-					<td width="260" class="admin-td">用户名：</td>
+					<td width="260" class="admin-td">会员名：</td>
 					<td><input type="text" name="userid" id="userid" class="admin-input-sm">（只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
@@ -59,7 +59,7 @@
 					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">用户组：</td>
+					<td class="admin-td">会员组：</td>
 					<td class="admin-td">
 						<select name="usertype" class="admin-input-sm">
 							<?php
@@ -71,7 +71,7 @@
 							}
 							?>
 						</select>
-						<a href="sys_group.php" class="btn btn-success btn-sm">用户组设置</a>
+						<a href="sys_group.php" class="btn btn-success btn-sm">会员组设置</a>
 					</td>
 				</tr>
 				<tr>

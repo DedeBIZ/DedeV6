@@ -20,38 +20,23 @@ else $inpath = $cfg_basedir.$activepath;
 //文件管理器交互与逻辑控制文件
 $fmm = new FileManagement();
 $fmm->Init();
-/*---------------
-function __rename();
-----------------*/
 if ($fmdo == "rename") {
     $fmm->RenameFile($oldfilename, $newfilename);
 }
 //新建目录
-/*---------------
-function __newdir();
-----------------*/
 else if ($fmdo == "newdir") {
     CheckCSRF();
     $fmm->NewDir($newpath);
 }
 //移动文件
-/*---------------
-function __move();
-----------------*/
 else if ($fmdo == "move") {
     $fmm->MoveFile($filename, $newpath);
 }
 //删除文件
-/*---------------
-function __delfile();
-----------------*/
 else if ($fmdo == "del") {
     $fmm->DeleteFile($filename);
 }
 //文件修改
-/*---------------
-function __saveEdit();
-----------------*/
 else if ($fmdo == "edit") {
     CheckCSRF();
     $filename = str_replace("..", "", $filename);
@@ -92,9 +77,6 @@ else if ($fmdo=="editview")
 }
 */
 //文件上传
-/*---------------
-function __upload();
-----------------*/
 else if ($fmdo == "upload") {
     $j = 0;
     for ($i = 1; $i <= 50; $i++) {

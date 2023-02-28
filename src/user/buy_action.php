@@ -108,7 +108,7 @@ if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cook
     $buyid = $row['buyid'];
 } else {
     $buyid = 'M'.$mid.'T'.$mtime.'RN'.mt_rand(100, 999);
-    //删除用户旧的未付款的同类记录
+    //删除会员旧的未付款的同类记录
     if (!empty($product)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_operation` WHERE mid='$mid' AND sta=0 AND product='$product'");
     }

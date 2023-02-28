@@ -26,7 +26,7 @@ if ($dopost != 'save') {
     $keywords = $writer = $source = $body = $description = $title = '';
     //获得栏目模型id
     if ($cid > 0 && $channelid == 0) {
-        $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid'; ");
+        $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid';");
         $channelid = $row['channeltype'];
     } else {
         if ($channelid == 0) {
@@ -40,11 +40,7 @@ if ($dopost != 'save') {
     $maxWright = empty($maxWright)? array('cc'=>1) : $maxWright;
     include DedeInclude("templets/article_add.htm");
     exit();
-}
-/*--------------------------------
-function __save(){  }
--------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
@@ -181,7 +177,7 @@ else if ($dopost == 'save') {
                     $picTitle = TRUE;
                     $titleSet = ",title='{$pictitle}'";
                 }
-                $dsql->ExecuteNoneQuery("UPDATE `#@__uploads` SET arcid='{$arcID}'{$titleSet} WHERE url LIKE '{$v}'; ");
+                $dsql->ExecuteNoneQuery("UPDATE `#@__uploads` SET arcid='{$arcID}'{$titleSet} WHERE url LIKE '{$v}';");
             }
         }
     }

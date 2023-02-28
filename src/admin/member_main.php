@@ -21,7 +21,7 @@ else $keyword = trim(FilterSearch($keyword));
 $mtypeform = empty($mtype) ? "<option value=''>类型</option>\r\n" : "<option value='$mtype'>$mtype</option>\r\n";
 $sexform = empty($sex) ? "<option value=''>性别</option>\r\n" : "<option value='$sex'>$sex</option>\r\n";
 $sortkey = empty($sortkey) ? 'mid' : preg_replace("#[^a-z]#i", '', $sortkey);
-$staArr = array(-2 => '限制禁言用户', -1 => '未通过审核', 0 => '审核通过需要填写信息', 1 => '待补充完善信息', 2 => '正常使用');
+$staArr = array(-2 => '限制禁言会员', -1 => '未通过审核', 0 => '审核通过需要填写信息', 1 => '待补充完善信息', 2 => '正常使用');
 $staArrmatt = array(1 => '被推荐', 0 => '非普通 ');
 $MemberTypes = array();
 $dsql->SetQuery("SELECT `rank`,membername From `#@__arcrank` where `rank`>0 ");

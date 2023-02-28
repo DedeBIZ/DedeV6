@@ -273,7 +273,7 @@ function dede_htmlspecialchars($str)
     else return htmlspecialchars($str);
 }
 /**
- *  载入小助手，这里用户可能载入用helps载入多个小助手
+ *  载入小助手，这里会员可能载入用helps载入多个小助手
  *
  * @access    public
  * @param     string

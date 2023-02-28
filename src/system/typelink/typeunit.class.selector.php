@@ -41,7 +41,7 @@ class TypeUnitSelector
         global $cfg_admin_channel, $admin_catalogs, $targetid, $oldvalue;
         $oldvalues = array();
         if (!empty($oldvalue)) $oldvalues = explode(',', $oldvalue);
-        //检测用户有权限的顶级栏目
+        //检测会员有权限的顶级栏目
         if ($cfg_admin_channel == 'array') {
             $admin_catalog = join(',', $admin_catalogs);
             $this->dsql->SetQuery("SELECT reid FROM `#@__arctype` WHERE id IN($admin_catalog) GROUP BY reid ");

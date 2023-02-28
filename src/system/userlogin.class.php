@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 session_start();
 /**
- *  检验用户是否有权使用某功能，这个函数是一个回值函数CheckPurview函数只是对他回值的一个处理过程
+ *  检验会员是否有权使用某功能，这个函数是一个回值函数CheckPurview函数只是对他回值的一个处理过程
  *
  * @access    public
  * @param     string  $n  功能名称
@@ -32,7 +32,7 @@ function TestPurview($n)
     }
     $ns = explode(',', $n);
     foreach ($ns as $n) {
-        //只要找到一个匹配的权限，即可认为用户有权浏览此页面
+        //只要找到一个匹配的权限，即可认为会员有权浏览此页面
         if ($n == '') {
             continue;
         }
@@ -75,7 +75,7 @@ function TestAdmin()
 }
 $DedeUserCatalogs = array();
 /**
- *  检测用户是否有权限操作某栏目
+ *  检测会员是否有权限操作某栏目
  *
  * @access    public
  * @param     int   $cid  栏目id
@@ -200,17 +200,17 @@ class userLogin
         $this->__construct($admindir);
     }
     /**
-     *  检验用户是否正确
+     *  检验会员是否正确
      *
      * @access    public
-     * @param     string    $username  用户名
+     * @param     string    $username  会员名
      * @param     string    $userpwd  密码
      * @return    string
      */
     function checkUser($username, $userpwd)
     {
         global $dsql;
-        //只允许用户名和密码用0-9,a-z,A-Z,'@','_','.','-'这些字符
+        //只允许会员名和密码用0-9,a-z,A-Z,'@','_','.','-'这些字符
         $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
         $this->userPwd = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userpwd);
         $pwd = substr(md5($this->userPwd), 5, 20);
@@ -295,7 +295,7 @@ class userLogin
         $dsql->ExecuteNoneQuery($inquery);
     }
     /**
-     *  保持用户的会话状态
+     *  保持会员的会话状态
      *
      * @access    public
      * @return    int    成功返回 1，失败返回 -1
@@ -328,7 +328,7 @@ class userLogin
         }
     }
     /**
-     *  重写用户权限栏目
+     *  重写会员权限栏目
      *
      * @access    public
      * @return    void
@@ -362,7 +362,7 @@ class userLogin
         fclose($fp);
     }
     /**
-     *  结束用户的会话状态
+     *  结束会员的会话状态
      *
      * @access    public
      * @return    void
@@ -382,7 +382,7 @@ class userLogin
         $_SESSION = array();
     }
     /**
-     *  获得用户管理栏目的值
+     *  获得会员管理栏目的值
      *
      * @access    public
      * @return    array
@@ -396,7 +396,7 @@ class userLogin
         }
     }
     /**
-     *  获得用户的权限值
+     *  获得会员的权限值
      *
      * @access    public
      * @return    int
@@ -418,7 +418,7 @@ class userLogin
         }
     }
     /**
-     *  获取用户权限值
+     *  获取会员权限值
      *
      * @access    public
      * @return    int
@@ -428,7 +428,7 @@ class userLogin
         return $this->getUserType();
     }
     /**
-     *  获得用户的id
+     *  获得会员的id
      *
      * @access    public
      * @return    int
@@ -442,7 +442,7 @@ class userLogin
         }
     }
     /**
-     *  获得用户的名称
+     *  获得会员的名称
      *
      * @access    public
      * @return    string
@@ -456,7 +456,7 @@ class userLogin
         }
     }
     /**
-     *  用户权限表
+     *  会员权限表
      *
      * @access    public
      * @return    string

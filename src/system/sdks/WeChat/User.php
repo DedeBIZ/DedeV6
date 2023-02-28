@@ -10,7 +10,7 @@ use WeChat\Contracts\BasicWeChat;
 class User extends BasicWeChat
 {
     /**
-     * 设置用户备注名
+     * 设置会员备注名
      * @param string $openid
      * @param string $remark
      * @return array
@@ -24,7 +24,7 @@ class User extends BasicWeChat
         return $this->httpPostForJson($url, ['openid' => $openid, 'remark' => $remark]);
     }
     /**
-     * 获取用户基本信息（包括UnionID机制）
+     * 获取会员基本信息（包括UnionID机制）
      * @param string $openid
      * @param string $lang
      * @return array
@@ -38,7 +38,7 @@ class User extends BasicWeChat
         return $this->httpGetForJson($url);
     }
     /**
-     * 批量获取用户基本信息
+     * 批量获取会员基本信息
      * @param array $openids
      * @param string $lang
      * @return array
@@ -56,7 +56,7 @@ class User extends BasicWeChat
         return $this->httpPostForJson($url, $data);
     }
     /**
-     * 获取用户列表
+     * 获取会员列表
      * @param string $next_openid
      * @return array
      * @throws Exceptions\InvalidResponseException
@@ -96,7 +96,7 @@ class User extends BasicWeChat
         return $this->httpPostForJson($url, ['begin_openid' => $begin_openid]);
     }
     /**
-     * 批量拉黑用户
+     * 批量拉黑会员
      * @param array $openids
      * @return array
      * @throws Exceptions\InvalidResponseException
@@ -109,7 +109,7 @@ class User extends BasicWeChat
         return $this->httpPostForJson($url, ['openid_list' => $openids]);
     }
     /**
-     * 批量取消拉黑用户
+     * 批量取消拉黑会员
      * @param array $openids
      * @return array
      * @throws Exceptions\InvalidResponseException

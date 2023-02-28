@@ -34,7 +34,7 @@ use WeChat\Exceptions\InvalidInstanceException;
  * @method \WeChat\Scan WeChatScan($options = []) static 微信扫一扫接入管理
  * @method \WeChat\Script WeChatScript($options = []) static 微信前端支持
  * @method \WeChat\Shake WeChatShake($options = []) static 微信揺一揺周边
- * @method \WeChat\Tags WeChatTags($options = []) static 微信用户标签管理
+ * @method \WeChat\Tags WeChatTags($options = []) static 微信会员标签管理
  * @method \WeChat\Template WeChatTemplate($options = []) static 微信模板消息
  * @method \WeChat\User WeChatUser($options = []) static 微信粉丝管理
  * @method \WeChat\Wifi WeChatWifi($options = []) static 微信门店WIFI管理

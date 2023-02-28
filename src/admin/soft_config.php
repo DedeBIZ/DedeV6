@@ -22,7 +22,7 @@ if ($dopost == "save") {
 //读取参数
 $row = $dsql->GetOne("SELECT * FROM `#@__softconfig`");
 if (!is_array($row)) {
-    $dsql->ExecuteNoneQuery("INSERT INTO `#@__softconfig` (`downtype`,`ismoresite`,`islocal`,`gotojump`,`sites`,`downmsg`,`moresitedo`,`dfrank`,`dfywboy`,`argrange`) VALUES ('1','0','1','0','','$downmsg','1','0','0','0'); ");
+    $dsql->ExecuteNoneQuery("INSERT INTO `#@__softconfig` (`downtype`,`ismoresite`,`islocal`,`gotojump`,`sites`,`downmsg`,`moresitedo`,`dfrank`,`dfywboy`,`argrange`) VALUES ('1','0','1','0','','$downmsg','1','0','0','0');");
     $row['downtype']   = 1;
     $row['ismoresite'] = 0;
     $row['islocal']    = 1;

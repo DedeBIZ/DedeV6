@@ -18,9 +18,6 @@ if (empty($diyid)) {
 }
 require_once DEDEINC.'/diyform.class.php';
 $diy = new diyform($diyid);
-/*----------------------------
-function Post(){ }
----------------------------*/
 if ($action == 'post') {
     if (empty($do)) {
         $postform = $diy->getForm(true);
@@ -84,11 +81,7 @@ if ($action == 'post') {
             showmsg($bkmsg, $goto);
         }
     }
-}
-/*----------------------------
-function list(){ }
----------------------------*/
-else if ($action == 'list') {
+} else if ($action == 'list') {
     if (empty($diy->public)) {
         ShowMsg('后台关闭前台浏览', 'javascript:;');
         exit();

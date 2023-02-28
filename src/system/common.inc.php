@@ -139,7 +139,7 @@ if (PHP_VERSION > '5.1') {
     @date_default_timezone_set('Etc/GMT'.$time51);
 }
 $cfg_isUrlOpen = @ini_get("allow_url_fopen");
-//用户浏览的网站host
+//会员浏览的网站host
 if (PHP_SAPI === 'cli') {
     $cfg_clihost = 'https://www.dedebiz.com';
 } else {
@@ -167,7 +167,7 @@ $cfg_mobile_dir = $cfg_cmspath.'/m';
 $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
 $cfg_data_dir = $cfg_cmspath.'/data';
 $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
-//会员用户目录
+//会员会员目录
 $cfg_member_dir = $cfg_cmspath.'/user';
 $cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
 //专题存放目录
@@ -178,7 +178,7 @@ $cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;
 $cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
 //上传图片存放目录，建议按默认
 $cfg_image_dir = $cfg_medias_dir.'/allimg';
-//用户投稿图片存放目录
+//会员投稿图片存放目录
 $cfg_user_dir = $cfg_medias_dir.'/userup';
 //上传软件存放目录
 $cfg_soft_dir = $cfg_medias_dir.'/soft';

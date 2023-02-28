@@ -40,10 +40,7 @@ if ($open == 0) {
     require_once(DEDETEMPLATE.'/plus/download_links_templet.htm');
     exit();
 }
-/*------------------------
-//提供软件给用户下载(旧模式)
-function getSoft_old()
-------------------------*/
+//提供软件给会员下载旧模式
 else if ($open == 1) {
     //更新下载次数
     $id = isset($id) && is_numeric($id) ? $id : 0;
@@ -76,10 +73,7 @@ else if ($open == 1) {
     header("location:$link");
     exit();
 }
-/*------------------------
-//提供软件给用户下载(新模式)
-function getSoft_new()
-------------------------*/
+//提供软件给会员下载新模式
 else if ($open == 2) {
     $id = intval($id);
     //获得附加表信息
@@ -177,7 +171,7 @@ else if ($open == 2) {
             exit();
         }
         //以下为正常情况，自动扣点数
-        //如果文档需要金币，检查用户是否浏览过本文档
+        //如果文档需要金币，检查会员是否浏览过本文档
         if ($needMoney > 0  && $mid != $cfg_ml->M_ID) {
             $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE".$id."' AND mid='".$cfg_ml->M_ID."'";
             $row = $dsql->GetOne($sql);
@@ -190,7 +184,7 @@ else if ($open == 2) {
                     include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                     exit(0);
                 }
-                //有足够金币，记录用户信息
+                //有足够金币，记录会员信息
                 $inquery = "INSERT INTO `#@__member_operation` (mid,oldinfo,money,mtime,buyid,product,pname,sta) VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."', 'ARCHIVE".$id."', 'archive','下载软件', 2); ";
                 //记录定单
                 if (!$dsql->ExecuteNoneQuery($inquery)) {

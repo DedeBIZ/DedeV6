@@ -174,7 +174,7 @@ function GetCurContent($body)
  *
  * @access    public
  * @param     string  $url  地址
- * @param     int  $uid  用户id
+ * @param     int  $uid  会员id
  * @return    array
  */
 function GetRemoteImage($url, $uid = 0)
@@ -351,7 +351,7 @@ function GetDDImage($litpic, $picname, $isremote)
     $ntime = time();
     if (($litpic != 'none' || $litpic != 'ddfirst') && !empty($_FILES[$litpic]['tmp_name']) && is_uploaded_file($_FILES[$litpic]['tmp_name'])
     ) {
-        //如果用户自行上传缩略图
+        //如果会员自行上传缩略图
         $istype = 0;
         $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png");
         $_FILES[$litpic]['type'] = strtolower(trim($_FILES[$litpic]['type']));
@@ -665,7 +665,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
     $filename = '';
     $isrm_up = FALSE;
     $handurl = trim($handurl);
-    //如果用户自行上传了图片
+    //如果会员自行上传了图片
     if (!empty($_FILES[$upname]['tmp_name']) && is_uploaded_file($_FILES[$upname]['tmp_name'])) {
         $istype = 0;
         $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png");

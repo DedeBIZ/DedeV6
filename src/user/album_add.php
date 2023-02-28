@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//考虑安全原因不管是否开启游客投稿功能，都不允许用户对图片投稿
+//考虑安全原因不管是否开启游客投稿功能，都不允许会员对图片投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
     ShowMsg("由于系统开启了会员空间精简版，您浏览的功能不可用", "-1");
@@ -53,7 +53,7 @@ if (empty($dopost)) {
     exit();
 } else if ($dopost == 'save') {
     include(DEDEMEMBER.'/inc/archives_check.php');
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     $maxwidth = isset($maxwidth) && is_numeric($maxwidth) ? $maxwidth : 800;
     $pagepicnum = isset($pagepicnum) && is_numeric($pagepicnum) ? $pagepicnum : 12;
     $ddmaxwidth = isset($ddmaxwidth) && is_numeric($ddmaxwidth) ? $ddmaxwidth : 200;
@@ -145,7 +145,7 @@ if (empty($dopost)) {
         }
     }
     //增加积分
-    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ;");
     //更新统计
     countArchives($channelid);
     //生成网页

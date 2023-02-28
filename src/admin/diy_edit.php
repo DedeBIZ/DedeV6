@@ -14,9 +14,6 @@ require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($dopost)) $dopost = "";
 $diyid = (empty($diyid) ? 0 : intval($diyid));
-/*----------------
-function __SaveEdit()
------------------*/
 if ($dopost == "save") {
     $public = isset($public) && is_numeric($public) ? $public : 0;
     $name = dede_htmlspecialchars($name);
@@ -24,11 +21,7 @@ if ($dopost == "save") {
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("成功修改一个自定义表单", "diy_main.php");
     exit();
-}
-/*----------------
-function __Delete()
------------------*/
-else if ($dopost == "delete") {
+} else if ($dopost == "delete") {
     @set_time_limit(0);
     CheckPurview('c_Del');
     $row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid'");
@@ -62,9 +55,6 @@ else if ($dopost == "delete") {
         exit();
     }
 }
-/*----------------
-function edit()
------------------*/
 $row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid'");
 include DEDEADMIN."/templets/diy_edit.htm";
 ?>

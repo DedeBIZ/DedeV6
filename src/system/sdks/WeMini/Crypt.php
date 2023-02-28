@@ -45,8 +45,8 @@ class Crypt extends BasicWeChat
         return json_decode(Tools::get($url), true);
     }
     /**
-     * 换取用户信息
-     * @param string $code 用户登录凭证（有效期五分钟）
+     * 换取会员信息
+     * @param string $code 会员登录凭证（有效期五分钟）
      * @param string $iv 加密算法的初始向量
      * @param string $encryptedData 加密数据( encryptedData )
      * @return array
@@ -62,7 +62,7 @@ class Crypt extends BasicWeChat
         }
         $userinfo = $this->decode($iv, $result['session_key'], $encryptedData);
         if (empty($userinfo)) {
-            throw new InvalidDecryptException('用户信息解析失败', 403);
+            throw new InvalidDecryptException('会员信息解析失败', 403);
         }
         return array_merge($result, $userinfo);
     }
@@ -80,8 +80,8 @@ class Crypt extends BasicWeChat
         return $this->httpPostForJson($url, ['code' => $code], true);
     }
     /**
-     * 用户支付完成后，获取该用户的 UnionId
-     * @param string $openid 支付用户唯一标识
+     * 会员支付完成后，获取该会员的 UnionId
+     * @param string $openid 支付会员唯一标识
      * @param null|string $transaction_id 微信支付订单号
      * @param null|string $mch_id 微信支付分配的商户号，和商户订单号配合使用
      * @param null|string $out_trade_no 微信支付商户订单号，和商户号配合使用

@@ -10,8 +10,8 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Pm');
-//检查用户名的合法性
-function CheckUserID($uid, $msgtitle = '用户名', $ckhas = true)
+//检查会员名的合法性
+function CheckUserID($uid, $msgtitle = '会员名', $ckhas = true)
 {
     global $cfg_mb_notallow, $cfg_mb_idmin, $cfg_md_idurl, $cfg_soft_lang, $dsql;
     if ($cfg_mb_notallow != '') {
@@ -52,14 +52,14 @@ if ($action == "post") {
         ShowMsg("请填写信息标题", "-1");
         exit();
     }
-    $msg = CheckUserID($msgtoid, "用户名", false);
+    $msg = CheckUserID($msgtoid, "会员名", false);
     if ($msg != 'ok') {
         ShowMsg($msg, "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__member` where userid like '$msgtoid' ");
     if (!is_array($row)) {
-        ShowMsg("您指定的用户不存在，不能发送信息", "-1");
+        ShowMsg("您指定的会员不存在，不能发送信息", "-1");
         exit();
     }
     $subject = cn_substrR(HtmlReplace($subject, 1), 60);

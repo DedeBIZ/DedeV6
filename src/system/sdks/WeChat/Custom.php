@@ -108,7 +108,7 @@ class Custom extends BasicWeChat
     }
     /**
      * 客服输入状态
-     * @param string $openid 普通用户（openid）
+     * @param string $openid 普通会员（openid）
      * @param string $command Typing:正在输入,CancelTyping:取消正在输入
      * @return array
      * @throws Exceptions\InvalidResponseException

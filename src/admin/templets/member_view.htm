@@ -22,7 +22,7 @@
 				if (document.form2.uname.value=="")
 				{
 				  document.form2.uname.focus();
-				  ShowMsg("用户昵称不能为空");
+				  ShowMsg("会员昵称不能为空");
 				  return false;
 				}
 			}
@@ -33,12 +33,12 @@
 			<tr>
 				<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 查看会员</td>
 			</tr>
-			<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">当前用户是关连网站管理员，谨慎操作</div></td></tr>';?>
+			<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">当前会员是关连网站管理员，谨慎操作</div></td></tr>';?>
 			<form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
 				<input type="hidden" name="dopost" value="edituser">
 				<input type="hidden" name="id" value="<?php echo $id?>">
 				<tr>
-					<td width="260" class="admin-td">头像/用户名：</td>
+					<td width="260" class="admin-td">头像/会员名：</td>
 					<td>
 						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};echo "".$row['userid']."";?></span>
 						<span class="btn btn-outline-success btn-sm"><?php echo GetMemberTypeName($row['rank']);?></span>
@@ -163,7 +163,7 @@
 					<td class="admin-td">管理操作：</td>
 					<td class="admin-td">
 						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>&jumpurl=../user/edit_baseinfo.php" target="_blank" class="btn btn-success btn-sm">修改资料</a>
-						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>" target="_blank" class="btn btn-success btn-sm">用户面板</a>
+						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>" target="_blank" class="btn btn-success btn-sm">会员面板</a>
 					</td>
 				</tr>
 				<tr>

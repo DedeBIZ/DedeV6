@@ -60,7 +60,7 @@
 
 >>系统管理权限
 
->sys_User>系统用户管理
+>sys_User>系统会员管理
 >sys_Group>系统组管理
 >sys_MdPwd>修改个人密码
 >sys_DelUpload>删除附件

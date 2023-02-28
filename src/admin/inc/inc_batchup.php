@@ -60,7 +60,7 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
     /** 删除到回收站 **/
     if ($cfg_delete == 'Y' && $type == 'ON') {
         $dsql->ExecuteNoneQuery("UPDATE `$maintable` SET arcrank='-2' WHERE id='$aid' ");
-        $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET `arcrank` = '-2' WHERE id = '$aid'; ");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET `arcrank` = '-2' WHERE id = '$aid';");
     } else {
         //删除数据库记录
         if (!$onlyfile) {

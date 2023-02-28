@@ -31,7 +31,7 @@ if (empty($dopost)) {
         ShowMsg("读取文档信息出错", "-1");
         exit();
     }
-    $addRow = $dsql->GetOne("SELECT * FROM `{$cInfos['addtable']}` WHERE aid='$aid'; ");
+    $addRow = $dsql->GetOne("SELECT * FROM `{$cInfos['addtable']}` WHERE aid='$aid';");
     if ($addRow['mid'] != $cfg_ml->M_ID) {
         ShowMsg("您没权限操作此文档", "-1");
         exit();

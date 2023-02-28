@@ -40,10 +40,10 @@ if ($dopost == "add") {
     } else {
         $imgurl = $logo;
     }
-    //强制检测用户友情链接分类是否数据结构不符
+    //强制检测会员友情链接分类是否数据结构不符
     if (empty($typeid) || preg_match("#[^0-9]#", $typeid)) {
         $typeid = 0;
-        $dsql->ExecuteNoneQuery("ALTER TABLE `#@__flinktype` CHANGE `ID` `id` MEDIUMINT( 8 ) UNSIGNED DEFAULT NULL AUTO_INCREMENT; ");
+        $dsql->ExecuteNoneQuery("ALTER TABLE `#@__flinktype` CHANGE `ID` `id` MEDIUMINT( 8 ) UNSIGNED DEFAULT NULL AUTO_INCREMENT;");
     }
     $sortrank = isset($sortrank)? intval($sortrank) : 1;
     $url = isset($url)? HtmlReplace($url, -1) : '';

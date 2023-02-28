@@ -20,7 +20,7 @@ if (empty($dopost)) {
     $msg = "<table>
         <tr>
             <td>
-                由于手动升级时用户没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
+                由于手动升级时会员没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
                 1、修复/优化数据表；<br>
                 2、更新缓存；<br>
                 3、检测系统变量一致性<br>
@@ -34,10 +34,7 @@ if (empty($dopost)) {
     $win->Display();
     exit();
 }
-/*-------------------
-数据结构常规检测
-function 1_test_db() {  }
---------------------*/
+//数据结构常规检测
 else if ($dopost == 1) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
@@ -61,10 +58,7 @@ else if ($dopost == 1) {
     $win->Display();
     exit();
 }
-/*-------------------
-检测微表正确性并尝试修复
-function 2_test_arctiny() {  }
---------------------*/
+//检测微表正确性并尝试修复
 else if ($dopost == 2) {
     $msg = '';
     $allarcnum = 0;
@@ -132,10 +126,7 @@ else if ($dopost == 2) {
     $win->Display();
     exit();
 }
-/*-------------------
-高级方式修复微表，会删除不合法主键的文档
-function 3_re_arctiny() {  }
---------------------*/
+//高级方式修复微表，会删除不合法主键的文档
 else if ($dopost == 3) {
     $errnum = 0;
     $sql = " TRUNCATE TABLE `#@__arctiny`";

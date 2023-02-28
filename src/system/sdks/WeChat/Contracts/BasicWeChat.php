@@ -108,9 +108,9 @@ class BasicWeChat
      * @throws \WeChat\Exceptions\LocalCacheException
      * @author 高一平 <iam@gaoyiping.com>
      *
-     * 当用户使用自己的缓存驱动时，直接实例化对象后可直接设置 AccessToken
+     * 当会员使用自己的缓存驱动时，直接实例化对象后可直接设置 AccessToken
      * - 多用于分布式项目时保持 AccessToken 统一
-     * - 使用此方法后就由用户来保证传入的 AccessToken 为有效 AccessToken
+     * - 使用此方法后就由会员来保证传入的 AccessToken 为有效 AccessToken
      */
     public function setAccessToken($accessToken)
     {

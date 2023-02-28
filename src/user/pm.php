@@ -20,7 +20,7 @@ if ($cfg_mb_lit == 'Y') {
 if (!isset($dopost)) {
     $dopost = '';
 }
-//检查用户是否被禁言
+//检查会员是否被禁言
 CheckNotAllow();
 $state = empty($state) ? 0 : intval($state);
 if ($dopost == 'read') {

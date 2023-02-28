@@ -15,13 +15,13 @@ $id = preg_replace("#[^0-9]#", "", $id);
 $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$id'");
 $staArr = array(
     -10 => '等待验证邮件',
-    -2 => '限制禁言用户',
+    -2 => '限制禁言会员',
     -1 => '未通过审核',
     0 => '审核通过需要填写信息',
     1 => '待补充完善信息',
     2 => '正常使用'
 );
-//如果这个用户是管理员帐号，必须有足够权限的用户才能操作
+//如果这个会员是管理员帐号，必须有足够权限的会员才能操作
 if ($row['matt'] == 10) CheckPurview('sys_User');
 if ($row['uptime'] > 0 && $row['exptime'] > 0) {
     $mhasDay = $row['exptime'] - ceil((time() - $row['uptime']) / 3600 / 24) + 1;

@@ -38,8 +38,8 @@ if (empty($dopost)) {
             exit();
         }
     }
-    $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid'; ");
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='{$row['channel']}'; ");
+    $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid';");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='{$row['channel']}';");
     include(DEDEMEMBER."/templets/archives_edit.htm");
     exit();
 } else if ($dopost == 'save') {

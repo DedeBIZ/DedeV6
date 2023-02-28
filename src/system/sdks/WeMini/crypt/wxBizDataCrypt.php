@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 对微信小程序用户加密数据的解密示例代码
+ * 对微信小程序会员加密数据的解密示例代码
  * Class WXBizDataCrypt
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
@@ -11,7 +11,7 @@ class WXBizDataCrypt
     private $sessionKey;
     /**
      * 构造函数
-     * @param $sessionKey string 用户在小程序登录后获取的会话密钥
+     * @param $sessionKey string 会员在小程序登录后获取的会话密钥
      * @param $appid string 小程序的appid
      */
     public function __construct($appid, $sessionKey)
@@ -22,8 +22,8 @@ class WXBizDataCrypt
     }
     /**
      * 检验数据的真实性，并且获取解密后的明文.
-     * @param $encryptedData string 加密的用户数据
-     * @param $iv string 与用户数据一同返回的初始向量
+     * @param $encryptedData string 加密的会员数据
+     * @param $iv string 与会员数据一同返回的初始向量
      * @param $data string 解密后的原文
      *
      * @return int 成功0，失败返回对应的错误码

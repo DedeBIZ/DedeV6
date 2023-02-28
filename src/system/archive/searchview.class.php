@@ -119,7 +119,7 @@ class SearchView
         }
         $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
         if ($this->PageNo == 1) {
-            $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET result='".$this->TotalResult."' WHERE keyword='".addslashes($keyword)."'; ");
+            $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET result='".$this->TotalResult."' WHERE keyword='".addslashes($keyword)."';");
         }
         $envs['url_type'] = 3;
         $envs['value'] = $keyword;
@@ -153,7 +153,7 @@ class SearchView
     {
         global $cfg_soft_lang, $cfg_bizcore_appid, $cfg_bizcore_key;
         $keyword = cn_substr($keyword, 50);
-        $row = $this->dsql->GetOne("SELECT spwords FROM `#@__search_keywords` WHERE keyword='".addslashes($keyword)."'; ");
+        $row = $this->dsql->GetOne("SELECT spwords FROM `#@__search_keywords` WHERE keyword='".addslashes($keyword)."';");
         if (!is_array($row)) {
             if (strlen($keyword) > 7) {
                 if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
@@ -190,7 +190,7 @@ class SearchView
             $inquery = "INSERT INTO `#@__search_keywords` (`keyword`,`spwords`,`count`,`result`,`lasttime`) VALUES ('".addslashes($keyword)."', '".addslashes($keywords)."', '1', '0', '".time()."'); ";
             $this->dsql->ExecuteNoneQuery($inquery);
         } else {
-            $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET count=count+1,lasttime='".time()."' WHERE keyword='".addslashes($keyword)."'; ");
+            $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET count=count+1,lasttime='".time()."' WHERE keyword='".addslashes($keyword)."';");
             $keywords = $row['spwords'];
         }
         return $keywords;
@@ -267,7 +267,7 @@ class SearchView
         } else {
             $likeword = '';
             $lsql = "(".$lsql.") AND NOT(keyword like '".addslashes($this->Keyword)."') ";
-            $this->dsql->SetQuery("SELECT keyword,count FROM `#@__search_keywords` WHERE $lsql ORDER BY lasttime DESC LIMIT 0,$num; ");
+            $this->dsql->SetQuery("SELECT keyword,count FROM `#@__search_keywords` WHERE $lsql ORDER BY lasttime DESC LIMIT 0,$num;");
             $this->dsql->Execute('l');
             while ($row = $this->dsql->GetArray('l')) {
                 if ($row['count'] > 1000) {

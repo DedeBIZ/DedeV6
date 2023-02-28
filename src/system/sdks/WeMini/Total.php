@@ -127,7 +127,7 @@ class Total extends BasicWeChat
         return $this->callPostApi($url, ['begin_date' => $begin_date, 'end_date' => $end_date], true);
     }
     /**
-     * 用户画像
+     * 会员画像
      * @param string $begin_date 开始日期
      * @param string $end_date 结束日期，开始日期与结束日期相差的天数限定为0/6/29，分别表示查询最近1/7/30天数据，end_date允许设置的最大值为昨日
      * @return array

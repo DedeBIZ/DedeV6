@@ -23,7 +23,7 @@ $positionname = '';
 $menutype = 'content';
 $mid = $cfg_ml->M_ID;
 $tl = new TypeLink($cid);
-$cInfos = $tl->dsql->GetOne("SELECT arcsta,issend,issystem,usertype,typename,addtable FROM `#@__channeltype` WHERE id='$channelid'; ");
+$cInfos = $tl->dsql->GetOne("SELECT arcsta,issend,issystem,usertype,typename,addtable FROM `#@__channeltype` WHERE id='$channelid';");
 if (!is_array($cInfos)) {
     ShowMsg('模型不存在', '-1');
     exit();

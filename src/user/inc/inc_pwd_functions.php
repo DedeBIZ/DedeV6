@@ -63,7 +63,7 @@ function sendmail($email, $mailtitle, $mailbody, $headers)
  *  发送邮件，type为INSERT新建验证码，UPDATE修改验证码
  *
  * @param     int  $mid  会员id
- * @param     int  $userid  用户id
+ * @param     int  $userid  会员id
  * @param     string  $mailto  发送到
  * @param     string  $type  类型
  * @param     string  $send  发送到
@@ -77,7 +77,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
     $mailtitle = $cfg_webname.":密码修改";
     $mailto = $mailto;
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: $cfg_adminemail";
-    $mailbody = "尊敬的用户".$userid."，临时登录密码：".$randval."\r\n请三天内修改登录密码：".$cfg_basehost."/resetpassword.php?dopost=getpasswd&id=".$mid;
+    $mailbody = "尊敬的会员".$userid."，临时登录密码：".$randval."\r\n请三天内修改登录密码：".$cfg_basehost."/resetpassword.php?dopost=getpasswd&id=".$mid;
     if ($type == 'INSERT') {
         $key = md5($randval);
         $sql = "INSERT INTO `#@__pwd_tmp` (`mid` ,`membername` ,`pwd` ,`mailtime`) VALUES ('$mid', '$userid',  '$key', '$mailtime');";
@@ -107,10 +107,10 @@ function newmail($mid, $userid, $mailto, $type, $send)
     }
 }
 /**
- *  查询会员信息，mail用户输入邮箱地址，userid用户名
+ *  查询会员信息，mail会员输入邮箱地址，userid会员名
  *
  * @param     string  $mail  邮件
- * @param     string  $userid  用户id
+ * @param     string  $userid  会员id
  * @return    string
  */
 function member($mail, $userid)
@@ -118,14 +118,14 @@ function member($mail, $userid)
     global $db;
     $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE email='$mail' AND userid = '$userid'";
     $row = $db->GetOne($sql);
-    if (!is_array($row)) return ShowMsg("用户id输入错误", "-1");
+    if (!is_array($row)) return ShowMsg("会员id输入错误", "-1");
     else return $row;
 }
 /**
  *  查询是否发送过验证码
  *
  * @param     string  $mid  会员id
- * @param     string  $userid  用户名称
+ * @param     string  $userid  会员名称
  * @param     string  $mailto  发送邮件地址
  * @param     string  $send  为Y发送邮件,为N不发送邮件默认为Y
  * @return    string

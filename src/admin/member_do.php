@@ -24,7 +24,7 @@ if ($dopost == "delmember") {
             exit();
         }
         if (!empty($id)) {
-            //删除用户信息
+            //删除会员信息
             $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$id' LIMIT 1 ");
             $rs = 0;
             if ($row['matt'] == 10) {
@@ -39,7 +39,7 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_space` WHERE mid='$id' LIMIT 1");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_company` WHERE mid='$id' LIMIT 1");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_person` WHERE mid='$id' LIMIT 1");
-                //删除用户相关数据
+                //删除会员相关数据
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE mid='$id' ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_flink` WHERE mid='$id' ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_operation` WHERE mid='$id' ");
@@ -79,14 +79,14 @@ if ($dopost == "delmember") {
             exit();
         }
         if (!empty($id)) {
-            //删除用户信息
+            //删除会员信息
             $rs = $dsql->ExecuteNoneQuery2("DELETE FROM `#@__member` WHERE mid IN (".str_replace("`", ",", $id).") And matt<>10 ");
             if ($rs > 0) {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_tj` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_space` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_company` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_person` WHERE mid IN (".str_replace("`", ",", $id).") ");
-                //删除用户相关数据
+                //删除会员相关数据
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_flink` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_operation` WHERE mid IN (".str_replace("`", ",", $id).") ");

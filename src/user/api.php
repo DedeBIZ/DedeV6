@@ -98,7 +98,7 @@ if ($action === 'is_need_check_code') {
         $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.'.png';
         $fsize = filesize($_FILES["file"]["tmp_name"]);
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".png";
-        $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."'; ");
+        $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."';");
         $uptime = time();
         if (is_array($row)) {
             $query = "UPDATE `#@__uploads` SET mediatype=1, width='{$imgSize[0]}',height='{$imgSize[1]}',filesize='{$fsize}',uptime='$uptime' WHERE aid='{$row['aid']}'; ";

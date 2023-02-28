@@ -141,7 +141,7 @@ else if ($dopost == 'del') {
         echo '';
         exit();
     }
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$_SESSION['bigfile_info'][$id]}'; ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$_SESSION['bigfile_info'][$id]}';");
     @unlink($cfg_basedir.$_SESSION['bigfile_info'][$id]);
     $_SESSION['file_info'][$id] = '';
     $_SESSION['bigfile_info'][$id] = '';
@@ -176,7 +176,7 @@ else if ($dopost == 'delold') {
     if (!file_exists($imgfile) && !is_dir($imgfile) && preg_match("#^".$cfg_medias_dir."#", $imgfile)) {
         @unlink($imgfile);
     }
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$picfile}'; ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$picfile}';");
     echo "已删除";
     exit();
 }

@@ -38,7 +38,7 @@ if (empty($dopost)) {
             exit();
         }
     }
-    $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid'; ");
+    $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid';");
     include(DEDEMEMBER."/templets/article_edit.htm");
     exit();
 } else if ($dopost == 'save') {

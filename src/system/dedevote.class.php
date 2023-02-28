@@ -162,7 +162,7 @@ class DedeVote
         } else {
             setcookie('VOTE_MEMBER_IP', $_SERVER['REMOTE_ADDR'], time() * $row['spec'] * 3600, '/');
         }
-        //检查用户是否已投过票
+        //检查会员是否已投过票
         $nowtime = time();
         $VoteMem = $this->dsql->GetOne("SELECT * FROM `#@__vote_member` WHERE voteid = '$this->VoteID' and userid='$memberID'");
         if (!empty($memberID)) {

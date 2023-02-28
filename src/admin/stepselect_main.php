@@ -12,10 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Stepselect');
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC.'/enums.func.php');
-/*-----------------
-前台视图
-function __show() { }
-------------------*/
+//前台视图
 $ENV_GOBACK_URL = (isset($ENV_GOBACK_URL) ? $ENV_GOBACK_URL : 'stepselect_main.php');
 if (empty($action)) {
     setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
@@ -58,10 +55,7 @@ if (empty($action)) {
     include('./templets/stepselect_showajax.htm');
     exit();
 }
-/*-----------------
-删除类型或枚举值
-function __del() { }
-------------------*/
+//删除类型或枚举值
 else if ($action == 'del') {
     $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
     if (!is_array($arr)) {
@@ -72,8 +66,8 @@ else if ($action == 'del') {
         ShowMsg("系统内置的枚举分类不能删除", "stepselect_main.php?".ExecTime());
         exit();
     }
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__stepselect` WHERE id='$id'; ");
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}'; ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__stepselect` WHERE id='$id';");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}';");
     ShowMsg("成功删除一个分类", "stepselect_main.php?".ExecTime());
     exit();
 } else if ($action == 'delenumAllSel') {
@@ -84,7 +78,7 @@ else if ($action == 'del') {
         while ($row = $dsql->GetArray('me')) {
             $groups[] = $row['egroup'];
         }
-        $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE id IN($id); ");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE id IN($id);");
         //更新缓存
         foreach ($groups as $egropu) {
             WriteEnumsCache($egroup);
@@ -96,28 +90,22 @@ else if ($action == 'del') {
     exit();
 } else if ($action == 'delenum') {
     $row = $dsql->GetOne("SELECT egroup FROM `#@__sys_enum` WHERE id = '$id' ");
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE id='{$id}'; ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE id='{$id}';");
     WriteEnumsCache($row['egroup']);
     ShowMsg("成功删除一个枚举", $ENV_GOBACK_URL);
     exit();
 }
-/*-----------------
-保存类型修改
-function __edit_save() { }
-------------------*/
+//保存类型修改
 else if ($action == 'edit_save') {
     if (preg_match("#[^0-9a-z_-]#i", $egroup)) {
         ShowMsg("组名称不能有全角字符或特殊符号", "-1");
         exit();
     }
-    $dsql->ExecuteNoneQuery("UPDATE `#@__stepselect` SET `itemname`='$itemname',`egroup`='$egroup' WHERE id='$id'; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__stepselect` SET `itemname`='$itemname',`egroup`='$egroup' WHERE id='$id';");
     ShowMsg("成功修改一个分类", "stepselect_main.php?".ExecTime());
     exit();
 }
-/*-----------------
-保存新类型
-function __addnew_save() { }
-------------------*/
+//保存新类型
 else if ($action == 'addnew_save') {
     if (preg_match("#[^0-9a-z_-]#i", $egroup)) {
         ShowMsg("组名称不能有全角字符或特殊符号", "-1");
@@ -128,25 +116,22 @@ else if ($action == 'addnew_save') {
         ShowMsg("您指定的类别名称或组名称已经存在，不能使用", "stepselect_main.php");
         exit();
     }
-    $dsql->ExecuteNoneQuery("INSERT INTO `#@__stepselect` (`itemname`,`egroup`,`issign`,`issystem`) VALUES ('$itemname','$egroup','0','0'); ");
+    $dsql->ExecuteNoneQuery("INSERT INTO `#@__stepselect` (`itemname`,`egroup`,`issign`,`issystem`) VALUES ('$itemname','$egroup','0','0');");
     WriteEnumsCache($egroup);
     ShowMsg("成功添加一个分类", "stepselect_main.php?egroup=$egroup");
     exit();
 }
-/*---------
-把旧版全国省市表替换当前地区数据
-function __exarea() { }
-----------*/
+//旧版全国省市表替换当前地区数据
 else if ($action == 'exarea') {
     $bigtypes = array();
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE egroup='nativeplace'; ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE egroup='nativeplace';");
     $query = "SELECT * FROM `#@__area` WHERE reid =0 ORDER BY id ASC";
     $dsql->Execute('me', $query);
     $n = 1;
     while ($row = $dsql->GetArray()) {
         $bigtypes[$row['id']] = $evalue = $disorder = $n * 500;
         $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum` (`ename`,`evalue`,`egroup`,`disorder`,`issign`)
-            VALUES ('{$row['name']}','$evalue','nativeplace','$disorder','0'); ");
+            VALUES ('{$row['name']}','$evalue','nativeplace','$disorder','0');");
         $n++;
     }
     $stypes = array();
@@ -157,7 +142,7 @@ else if ($action == 'exarea') {
         while ($row = $dsql->GetArray()) {
             $stypes[$row['id']] = $evalue = $disorder = $v + $n;
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum` (`ename`,`evalue`,`egroup`,`disorder`,`issign`)
-                VALUES ('{$row['name']}','$evalue','nativeplace','$disorder','0'); ");
+                VALUES ('{$row['name']}','$evalue','nativeplace','$disorder','0');");
             $n++;
         }
     }
@@ -165,11 +150,7 @@ else if ($action == 'exarea') {
     ShowMsg("成功导入所有旧的地区数据", "stepselect_main.php?egroup=nativeplace");
     exit();
 }
-/*--------------------
-function __addenum_save() { }
-关于二级枚举：为了节省查询速度，二级枚举是通过特殊算法生成的，原理为凡是能被500整除的都是一级枚举(500 * n) + 1 < em < 500 * (n+1)为下级枚举，如：1000的下级枚举对应的值为 1001,1002,10031499对于issign=1的，表示这个类别只有一级枚举，则不受上面的算法限制
-更新算法：新增二级枚举下添加"-N"自己类别选择，例如：1001二级枚举下面的3级栏目，则为1001-1,1001-2这时候需要issign=2
----------------------*/
+//关于二级枚举：为了节省查询速度，二级枚举是通过特殊算法生成的，原理为凡是能被500整除的都是一级枚举(500 * n) + 1 < em < 500 * (n+1)为下级枚举，如：1000的下级枚举对应的值为 1001,1002,10031499对于issign=1的，表示这个类别只有一级枚举，则不受上面的算法限制。更新算法：新增二级枚举下添加"-N"自己类别选择，例如：1001二级枚举下面的3级栏目，则为1001-1,1001-2这时候需要issign=2
 else if ($action == 'addenum_save') {
     if (empty($ename) || empty($egroup)) {
         Showmsg("类别名称或组名称不能为空", "-1");
@@ -182,7 +163,7 @@ else if ($action == 'addenum_save') {
             if (!is_array($arr)) $disorder = $evalue = ($issign == 1 ? 1 : 500);
             else $disorder = $evalue = $arr['disorder'] + ($issign == 1 ? 1 : 500);
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum` (`ename`,`evalue`,`egroup`,`disorder`,`issign`) 
-                VALUES ('$ename','$evalue','$egroup','$disorder','$issign'); ");
+                VALUES ('$ename','$evalue','$egroup','$disorder','$issign');");
         }
         WriteEnumsCache($egroup);
         ShowMsg("成功添加枚举分类".$dsql->GetError(), $ENV_GOBACK_URL);
@@ -225,17 +206,14 @@ else if ($action == 'addenum_save') {
                 $evalue = $arr['evalue'] + 1;
             }
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum` (`ename`,`evalue`,`egroup`,`disorder`,`issign`) 
-                VALUES ('$ename','$evalue','$egroup','$disorder','$issign'); ");
+                VALUES ('$ename','$evalue','$egroup','$disorder','$issign');");
         }
         WriteEnumsCache($egroup);
         ShowMsg("成功添加枚举分类", $ENV_GOBACK_URL);
         exit();
     }
 }
-/*-----------------
-修改枚举名称和排序
-function __upenum() { }
-------------------*/
+//修改枚举名称和排序
 else if ($action == 'upenum') {
     $ename = trim(preg_replace("# └─(─){1,}#", '', $ename));
     $row = $dsql->GetOne("SELECT egroup FROM `#@__sys_enum` WHERE id = '$aid' ");
@@ -244,10 +222,7 @@ else if ($action == 'upenum') {
     ShowMsg("成功修改一个枚举", $ENV_GOBACK_URL);
     exit();
 }
-/*-----------------
-更新枚举缓存
-function __upallcache() { }
-------------------*/
+//更新枚举缓存
 else if ($action == 'upallcache') {
     if (!isset($egroup)) $egroup = '';
     WriteEnumsCache($egroup);

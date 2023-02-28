@@ -24,10 +24,7 @@ if (preg_match("#\.#", $acdir)) {
     ShowMsg('Not Allow dir '.$acdir.'!', '-1');
     exit();
 }
-/*
-function edit_new_tpl() { }
-修改模板
-*/
+//修改模板
 if ($action == 'edit' || $action == 'newfile') {
     if ($filename == '' && $action == 'edit') {
         ShowMsg('未指定要修改的文件', '-1');
@@ -72,10 +69,7 @@ if ($action == 'edit' || $action == 'newfile') {
     include DEDEADMIN.'/templets/tpl_edit.htm';
     exit();
 }
-/*---------------------------
-function save_tpl() { }
-保存修改模板
---------------------------*/
+//保存修改模板
 else if ($action == 'saveedit') {
     CheckCSRF();
     if ($filename == '') {
@@ -98,10 +92,7 @@ else if ($action == 'saveedit') {
     ShowMsg('成功修改或新建文件', 'templets_main.php?acdir='.$acdir);
     exit();
 }
-/*---------------------------
-function del_tpl() { }
-删除模板
---------------------------*/
+//删除模板
 else if ($action == 'del') {
     $truefile = $templetdird.'/'.$filename;
     if (unlink($truefile)) {
@@ -112,10 +103,7 @@ else if ($action == 'del') {
         exit();
     }
 }
-/*----------------------
-function _upload() {}
-上传新模板
------------------------*/
+//上传新模板
 else if ($action == 'upload') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $acdir = str_replace('.', '', $acdir);
@@ -143,10 +131,7 @@ else if ($action == 'upload') {
     $win->Display();
     exit();
 }
-/*----------------------
-function _upload() {}
-上传新模板
------------------------*/
+//上传新模板
 else if ($action == 'uploadok') {
     CheckCSRF();
     if (!is_uploaded_file($upfile)) {
@@ -168,10 +153,7 @@ else if ($action == 'uploadok') {
     }
     exit();
 }
-/*---------------------------
-function edittag() { }
-修改标签碎片
---------------------------*/
+//修改标签碎片
 else if ($action == 'edittag' || $action == 'addnewtag') {
     if ($action == 'addnewtag') {
         $democode = '<'."?php
@@ -207,10 +189,7 @@ function lib_demotag(&\$ctag,&\$refObj)
     include DEDEADMIN.'/templets/tpl_edit_tag.htm';
     exit();
 }
-/*---------------------------
-function savetagfile() { }
-保存标签碎片修改
---------------------------*/
+//保存标签碎片修改
 else if ($action == 'savetagfile') {
     CheckCSRF();
     if (!preg_match("#^[a-z0-9_-]{1,}\.lib\.php$#i", $filename)) {
@@ -226,9 +205,8 @@ else if ($action == 'savetagfile') {
     fclose($fp);
     $msg = "
     <form name='form1' action='tag_test_action.php' target='blank' method='post'>
-      <input type='hidden' name='dopost' value='make' />
-        标签测试（环境变量标签不支持测试）<br>
-        <textarea name='partcode' cols='150' rows='6' style='width:90%;'>{dede:{$tagname}}{/dede:{$tagname}}</textarea><br>
+        <label><input type='hidden' name='dopost' value='make'> 标签测试（环境变量标签不支持测试）</label><br>
+        <textarea name='partcode' cols='150' rows='6' style='width:90%'>{dede:{$tagname}}{/dede:{$tagname}}</textarea><br>
         <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
     </form>
     ";

@@ -21,7 +21,7 @@ if ($dopost != 'save') {
     $cid = empty($cid) ? 0 : intval($cid);
     //获得栏目模型id
     if ($cid > 0 && $channelid == 0) {
-        $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid'; ");
+        $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid';");
         $channelid = $row['channeltype'];
     } else {
         if ($channelid == 0) $channelid = 2;
@@ -34,11 +34,7 @@ if ($dopost != 'save') {
     $maxWright = empty($maxWright)? array('cc'=>1) : $maxWright;
     include DedeInclude("templets/album_add.htm");
     exit();
-}
-/*--------------------------------
-function __save(){  }
--------------------------------*/
-else if ($dopost == 'save') {
+} else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
@@ -105,9 +101,6 @@ else if ($dopost == 'save') {
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$row' col='$col' value='$pagestyle'/}\r\n";
     $hasone = FALSE;
     //处理并保存从网上复制的图片
-    /*---------------------
-    function _getformhtml()
-    ------------------*/
     if ($formhtml == 1) {
         $imagebody = stripslashes($imagebody);
         $imgurls .= GetCurContentAlbum($imagebody, $copysource, $litpicname);
@@ -116,10 +109,7 @@ else if ($dopost == 'save') {
             $hasone = TRUE;
         }
     }
-    /*---------------------
-    function _getformzip()
-    处理从ZIP中解压的图片
-    ---------------------*/
+    //处理从ZIP中解压的图片
     if ($formzip == 1) {
         include_once(DEDEADMIN."/file_class.php");
         $zipfile = $cfg_basedir.str_replace($cfg_mainsite, '', $zipfile);

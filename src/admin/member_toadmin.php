@@ -14,10 +14,7 @@ if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
 $ENV_GOBACK_URL = isset($_COOKIE['ENV_GOBACK_URL']) ? 'member_main.php' : '';
 $row = array();
-/*----------------
-function __Toadmin()
-升级为管理员
-----------------*/
+//升级为管理员
 if ($dopost == "toadmin") {
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
@@ -82,8 +79,7 @@ if ($dopost == "toadmin") {
     exit();
 }
 $id = preg_replace("#[^0-9]#", "", $id);
-
-//显示用户信息
+//显示会员信息
 $randcode = mt_rand(10000, 99999);
 $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
 $typeOptions = '';

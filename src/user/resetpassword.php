@@ -23,15 +23,15 @@ if ($dopost == "") {
         ShowMsg("验证码输入错误", "-1");
         exit();
     }
-    //验证邮箱，用户名
+    //验证邮箱，会员名
     if (empty($mail) && empty($userid)) {
-        showmsg('请输入用户名或邮箱', '-1');
+        showmsg('请输入会员名或邮箱', '-1');
         exit;
     } else if (!preg_match("#(.*)@(.*)\.(.*)#", $mail)) {
         showmsg('请输入正确的邮箱格式', '-1');
         exit;
     } else if (CheckUserID($userid, '', false) != 'ok') {
-        ShowMsg("您输入的用户名<span class='text-primary'>{$userid}</span>不合法", "-1");
+        ShowMsg("您输入的会员名<span class='text-primary'>{$userid}</span>不合法", "-1");
         exit();
     }
     $member = member($mail, $userid);

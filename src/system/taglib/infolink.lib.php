@@ -25,8 +25,7 @@ function is_str_float($value){
 }
 function lib_infolink(&$ctag, &$refObj)
 {
-    global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite;
-    global $em_nativeplaces, $em_infotypes;
+    global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite, $em_nativeplaces, $em_infotypes;
     //属性处理
     //$attlist="row|12,titlelen|24";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);

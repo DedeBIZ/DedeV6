@@ -24,7 +24,7 @@ if ($cfg_ml->IsSendLimited()) {
     exit();
 }
 if (empty($dopost)) {
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     //如果限制了会员级别或类型，则允许游客投稿选项无效
     if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') CheckRank(0, 0);
     //检查会员等级和类型限制
@@ -105,7 +105,7 @@ if (empty($dopost)) {
         }
     }
     //增加积分
-    $dsql->ExecuteNoneQuery("UPDATE `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ;");
     //更新统计
     countArchives($channelid);
     //生成网页

@@ -13,9 +13,7 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Upload,sys_MyUpload');
 if (empty($dopost)) $dopost = "";
 $backurl = isset($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : "javascript:history.go(-1);";
-/*---------------------------
-function __del_file() //删除附件
------------------------------*/
+//删除附件
 if ($dopost == 'del') {
     CheckPurview('sys_DelUpload');
     if (empty($ids)) {
@@ -64,9 +62,7 @@ if ($dopost == 'del') {
         exit();
     }
 }
-/*--------------------------------
-function __save_edit() //保存修改
------------------------------------*/
+//保存修改
 else if ($dopost == 'save') {
     if ($aid == "") exit();
     CheckCSRF();

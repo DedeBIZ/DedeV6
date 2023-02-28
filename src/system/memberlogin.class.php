@@ -12,15 +12,15 @@ if (!defined('DEDEINC')) exit('dedebiz');
 //使用缓存助手
 helper('cache');
 /**
- *  检查用户名的合法性
+ *  检查会员名的合法性
  *
  * @access    public
- * @param     string  $uid  用户UID
+ * @param     string  $uid  会员UID
  * @param     string  $msgtitle  提示标题
  * @param     string  $ckhas  检查是否存在
  * @return    string
  */
-function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
+function CheckUserID($uid, $msgtitle = '会员名', $ckhas = TRUE)
 {
     global $cfg_mb_notallow, $cfg_mb_idmin, $cfg_md_idurl, $cfg_soft_lang, $dsql;
     if ($cfg_mb_notallow != '') {
@@ -57,7 +57,7 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
     return 'ok';
 }
 /**
- *  检查用户是否被禁言
+ *  检查会员是否被禁言
  *
  * @return    void
  */
@@ -146,7 +146,7 @@ class MemberLogin
                 $this->fields = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$this->M_ID}' ");
             }
             if (is_array($this->fields)) {
-                //间隔一小时更新一次用户登录时间
+                //间隔一小时更新一次会员登录时间
                 if (time() - $this->M_LoginTime > 3600) {
                     $dsql->ExecuteNoneQuery("update `#@__member` set logintime='".time()."',loginip='".GetIP()."' WHERE mid='".$this->fields['mid']."';");
                     PutCookie("DedeLoginTime", time(), $this->M_KeepTime);
@@ -185,7 +185,7 @@ class MemberLogin
         $this->__construct($kptime);
     }
     /**
-     *  删除缓存,每次登录时和在修改用户资料的地方会清除
+     *  删除缓存,每次登录时和在修改会员资料的地方会清除
      *
      * @access    public
      * @param     string
@@ -220,7 +220,7 @@ class MemberLogin
         $this->ResetUser();
     }
     /**
-     *  验证用户是否已经登录
+     *  验证会员是否已经登录
      *
      * @return    bool
      */
@@ -230,7 +230,7 @@ class MemberLogin
         else return FALSE;
     }
     /**
-     *  检测用户上传空间
+     *  检测会员上传空间
      *
      * @return    int
      */
@@ -238,11 +238,11 @@ class MemberLogin
     {
         global $dsql;
         $uid = $this->M_ID;
-        $row = $dsql->GetOne("SELECT sum(filesize) AS fs FROM `#@__uploads` WHERE mid='$uid'; ");
+        $row = $dsql->GetOne("SELECT sum(filesize) AS fs FROM `#@__uploads` WHERE mid='$uid';");
         return $row['fs'];
     }
     /**
-     *  检查用户空间信息
+     *  检查会员空间信息
      *
      * @return    void
      */
@@ -258,7 +258,7 @@ class MemberLogin
         }
     }
     /**
-     *  更新用户信息统计表
+     *  更新会员信息统计表
      *
      * @access    public
      * @param     string  $field  字段信息
@@ -286,7 +286,7 @@ class MemberLogin
         $dsql->ExecuteNoneQuery($inquery);
     }
     /**
-     *  重置用户信息
+     *  重置会员信息
      *
      * @return    void
      */
@@ -324,7 +324,7 @@ class MemberLogin
         return $fnum;
     }
     /**
-     *  用户登录
+     *  会员登录
      *  把登录密码转为指定长度md5数据
      *
      * @access    public
@@ -398,19 +398,19 @@ class MemberLogin
         }
     }
     /**
-     *  检查用户是否合法
+     *  检查会员是否合法
      *
      * @access    public
-     * @param     string  $loginuser  登录用户名
-     * @param     string  $loginpwd  用户密码
+     * @param     string  $loginuser  登录会员名
+     * @param     string  $loginpwd  会员密码
      * @return    string
      */
     function CheckUser(&$loginuser, $loginpwd)
     {
         global $dsql;
-        //检测用户名的合法性
-        $rs = CheckUserID($loginuser, '用户名', FALSE);
-        //用户名不正确时返回验证错误，原登录名通过引用返回错误提示信息
+        //检测会员名的合法性
+        $rs = CheckUserID($loginuser, '会员名', FALSE);
+        //会员名不正确时返回验证错误，原登录名通过引用返回错误提示信息
         if ($rs != 'ok') {
             $loginuser = $rs;
             return '0';
@@ -463,8 +463,8 @@ class MemberLogin
     function getLoginError($loginuser)
     {
         global $dsql;
-        $rs = CheckUserID($loginuser, '用户名', FALSE);
-        //用户名不正确时返回验证错误，原登录名通过引用返回错误提示信息
+        $rs = CheckUserID($loginuser, '会员名', FALSE);
+        //会员名不正确时返回验证错误，原登录名通过引用返回错误提示信息
         if ($rs != 'ok') {
             return -1;
         }
@@ -487,8 +487,8 @@ class MemberLogin
     function loginError($loginuser)
     {
         global $dsql;
-        $rs = CheckUserID($loginuser, '用户名', FALSE);
-        //用户名不正确时返回验证错误，原登录名通过引用返回错误提示信息
+        $rs = CheckUserID($loginuser, '会员名', FALSE);
+        //会员名不正确时返回验证错误，原登录名通过引用返回错误提示信息
         if ($rs != 'ok') {
             return;
         }
@@ -497,10 +497,10 @@ class MemberLogin
         $dsql->ExecuteNoneQuery($inquery);
     }
     /**
-     *  保存用户cookie
+     *  保存会员cookie
      *
      * @access    public
-     * @param     string  $uid  用户id
+     * @param     string  $uid  会员id
      * @param     string  $logintime  登录限制时间
      * @return    void
      */

@@ -10,7 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 include(DEDEDATA.'/mark/inc_photowatermark_config.php');
-//检测用户系统支持的图片格式
+//检测会员系统支持的图片格式
 global $cfg_photo_type, $cfg_photo_typenames, $cfg_photo_support;
 $cfg_photo_type['gif'] = FALSE;
 $cfg_photo_type['jpeg'] = FALSE;

@@ -16,9 +16,6 @@ $id = isset($id) ? intval($id) : 0;
 CheckPurview('t_Edit,t_AccEdit');
 //检查栏目操作许可
 CheckCatalog($id, '您无权修改本栏目');
-/*-----------------------
-function action_save()
-----------------------*/
 if ($dopost == "save") {
     $description = Html2Text($description, 1);
     $keywords = Html2Text($keywords, 1);
@@ -36,7 +33,7 @@ if ($dopost == "save") {
     }
     //如果选择子栏目可投稿，更新顶级栏目为可投稿
     if ($topid > 0 && $issend == 1) {
-        $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET issend='$issend' WHERE id='$topid'; ");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET issend='$issend' WHERE id='$topid';");
     }
     $slinks = " id IN (".GetSonIds($id).")";
     //修改顶级栏目时强制修改下级的多站点支持属性
@@ -70,7 +67,7 @@ else if ($dopost == "savetime") {
     }
     //如果选择子栏目可投稿，更新顶级栏目为可投稿
     if ($topid > 0 && $issend == 1) {
-        $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET issend='$issend' WHERE id='$topid'; ");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET issend='$issend' WHERE id='$topid';");
     }
     $upquery = "UPDATE `#@__arctype` SET issend='$issend',sortrank='$sortrank',typedir='$typedir',typename='$typename',isdefault='$isdefault',defaultname='$defaultname',ispart='$ispart',corank='$corank' $uptopsql WHERE id='$id' ";
     if (!$dsql->ExecuteNoneQuery($upquery)) {

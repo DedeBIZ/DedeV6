@@ -44,7 +44,7 @@ function WriteEnumsCache($egroup = '')
             if ($nrow['issign'] == 2) $tenum = true;
         }
         file_put_contents($cachefile,json_encode($data));
-        if ($tenum) $dsql->ExecuteNoneQuery("UPDATE `#@__stepselect` SET `issign`=2 WHERE egroup='$egroup'; ");
+        if ($tenum) $dsql->ExecuteNoneQuery("UPDATE `#@__stepselect` SET `issign`=2 WHERE egroup='$egroup';");
     }
     return '成功更新所有枚举缓存';
 }

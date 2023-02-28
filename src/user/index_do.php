@@ -27,7 +27,7 @@ if ($fmdo == 'sendMail') {
     $url = $proto.preg_replace("#\/\/#i", '/', $url);
     $mailtitle = "{$cfg_webname}，会员邮件验证通知";
     $mailbody = '';
-    $mailbody .= "尊敬的用户<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，您好：\r\n";
+    $mailbody .= "尊敬的会员<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，您好：\r\n";
     $mailbody .= "欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
     $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏浏览这地址：\r\n";
     $mailbody .= "{$url}\r\n";
@@ -72,15 +72,15 @@ if ($fmdo == 'sendMail') {
     ShowMsg('操作成功，请重新登录系统', 'login.php');
     exit();
 } else if ($fmdo == 'user') {
-    //检查用户名是否存在
+    //检查会员名是否存在
     if ($dopost == "checkuser") {
         AjaxHead();
         $msg = '';
         $uid = trim($uid);
         if ($cktype == 0) {
-            $msgtitle = '用户名称';
+            $msgtitle = '会员名称';
         } else {
-            $msgtitle = '用户名';
+            $msgtitle = '会员名';
         }
         if ($cktype != 0 || $cfg_mb_wnameone == 'N') {
             $msg = CheckUserID($uid, $msgtitle);
@@ -151,14 +151,14 @@ if ($fmdo == 'sendMail') {
         exit();
     }
 } else if ($fmdo == 'login') {
-    //用户登录
+    //会员登录
     if ($dopost == "login") {
         if (!isset($vdcode)) {
             $vdcode = '';
         }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();
-            ShowMsg("您输入的用户名<span class='text-primary'>{$userid}</span>不合法", "index.php");
+            ShowMsg("您输入的会员名<span class='text-primary'>{$userid}</span>不合法", "index.php");
             exit();
         }
         if ($pwd == '') {
@@ -193,7 +193,7 @@ if ($fmdo == 'sendMail') {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg("成功登录，正在跳转用户首页", "index.php", 0, 2000);
+                ShowMsg("成功登录，正在跳转会员首页", "index.php", 0, 2000);
             } else {
                 $gourl = str_replace('^', '&', $gourl);
                 ShowMsg("成功登录，正在跳转指定页面", $gourl, 0, 2000);

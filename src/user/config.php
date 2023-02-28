@@ -107,7 +107,7 @@ $s_scriptName = $dedeNowurls[0];
 $menutype = '';
 $menutype_son = '';
 $gourl = empty($gourl) ? "" : RemoveXSS($gourl);
-//检查是否开放用户功能
+//检查是否开放会员功能
 if ($cfg_mb_open == 'N') {
     if (defined('AJAXLOGIN')) {
         if ($format === 'json') {
@@ -141,7 +141,7 @@ function PmRead(){
         }
     }
 }
-//判断用户是否登录
+//判断会员是否登录
 $myurl = '';
 if ($cfg_ml->IsLogin()) {
     $myurl = $cfg_memberurl."/index.php?uid=".urlencode($cfg_ml->M_LoginID);
@@ -154,7 +154,7 @@ if ($cfg_ml->IsLogin()) {
 //有没新短信
 $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_pms` WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");
 /**
- *  检查用户是否有权限进行某个操作
+ *  检查会员是否有权限进行某个操作
  *
  * @param     int  $rank  权限值
  * @param     int  $money  金币

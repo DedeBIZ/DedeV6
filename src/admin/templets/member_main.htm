@@ -47,10 +47,10 @@
 					</td>
 					<td>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
-						<a href="member_main.php" class="btn btn-success btn-sm">所有用户</a>
-						<a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">禁言用户</a>
-						<a href="member_main.php?matt=1" class="btn btn-success btn-sm">推荐用户</a>
-						<a href="member_main.php?matt=0" class="btn btn-success btn-sm">普通用户</a>
+						<a href="member_main.php" class="btn btn-success btn-sm">所有会员</a>
+						<a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">禁言会员</a>
+						<a href="member_main.php?matt=1" class="btn btn-success btn-sm">推荐会员</a>
+						<a href="member_main.php?matt=0" class="btn btn-success btn-sm">普通会员</a>
 					</td>
 				</tr>
 			</table>
@@ -63,7 +63,7 @@
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">mid</td>
-					<td width="16%">头像/用户名</td>
+					<td width="16%">头像/会员名</td>
 					<td width="8%">昵称</td>
 					<td width="8%">等级</td>
 					<td width="16%">钱包积分</td>
@@ -71,7 +71,7 @@
 					<td width="14%">地址/时间</td>
 					<td>操作</td>
 				</tr>
-				{dede:datalist empty='<tr><td colspan="9" align="center">暂无用户</td></tr>'}
+				{dede:datalist empty='<tr><td colspan="9" align="center">暂无会员</td></tr>'}
 				<tr align="center">
 					<td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
 					<td>{dede:field.mid/}</td>

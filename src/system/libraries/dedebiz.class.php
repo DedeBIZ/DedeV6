@@ -59,7 +59,7 @@ class DedeBizClient
         }
         return $this->CheckSign($msg);
     }
-    //用户获取当前服务器状态信息
+    //会员获取当前服务器状态信息
     function SystemInfo()
     {
         $req = array(

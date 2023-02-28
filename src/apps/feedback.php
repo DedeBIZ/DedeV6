@@ -112,7 +112,7 @@ else if ($action == 'send') {
             exit();
         }
     }
-    //检查用户登录
+    //检查会员登录
     if (empty($notuser)) {
         $notuser = 0;
     }
@@ -128,16 +128,16 @@ else if ($action == 'send') {
     if ($notuser == 1) {
         $username = $cfg_ml->M_ID > 0 ? '匿名' : '游客';
     }
-    //已登录的用户
+    //已登录的会员
     else if ($cfg_ml->M_ID > 0) {
         $username = $cfg_ml->M_UserName;
     }
-    //用户身份验证
+    //会员身份验证
     else {
         if ($username != '' && $pwd != '') {
             $rs = $cfg_ml->CheckUser($username, $pwd);
             if ($rs == 1) {
-                $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET logintime='".time()."',loginip='".GetIP()."' WHERE mid='{$cfg_ml->M_ID}'; ");
+                $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET logintime='".time()."',loginip='".GetIP()."' WHERE mid='{$cfg_ml->M_ID}';");
             } else {
                 $username = '游客';
             }
@@ -222,7 +222,7 @@ else if ($action == 'send') {
     if ($cfg_ml->M_ID > 0) {
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendfb_scores} WHERE mid='{$cfg_ml->M_ID}' ");
     }
-    //统计用户发出的评论
+    //统计会员发出的评论
     if ($cfg_ml->M_ID > 0) {
         $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__feedback` WHERE `mid`='".$cfg_ml->M_ID."'");
         $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `feedback`='$row[nums]' WHERE `mid`='".$cfg_ml->M_ID."'");

@@ -18,7 +18,7 @@ if ($uid == '') {
     if (!$cfg_ml->IsLogin()) {
         include_once(dirname(__FILE__)."/templets/index-notlogin.htm");
     } else {
-        $minfos = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='".$cfg_ml->M_ID."'; ");
+        $minfos = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='".$cfg_ml->M_ID."';");
         $minfos['totaluse'] = $cfg_ml->GetUserSpace();
         $minfos['totaluse'] = number_format($minfos['totaluse'] / 1024 / 1024, 2);
         if ($cfg_mb_max > 0) {
