@@ -102,7 +102,7 @@ input[type=file] {
 .ddcard > .card-header {
 	padding:0;
 	background:#fff;
-	border-bottom:solid 4px #1eb867
+	border-bottom:solid 3px #1eb867
 }
 .ddcard-normal > .card-header {
 	padding:10px;
@@ -134,9 +134,6 @@ input[type=file] {
 	color:#fff;
 	background:#1eb867;
 	border-radius:.2rem .2rem 0 0
-}
-.ddcard-normal > .list-group > li i {
-	color:#1eb867
 }
 .ddcard-normal {
 	padding:0;
@@ -181,12 +178,12 @@ input[type=file] {
 	line-height:30px
 }
 .items > li .title,.items > li .caption a {
-	display:inline;
-	line-height:18px;
-	color:#212529
+	display:inline
+}
+.items > li .source span,.items > li .source a {
+	color:#c0c0c0
 }
 .items > li .description,.items > li .description a,.items > li .addinfo {
-	color:#868686;
 	display:-webkit-box;
 	-webkit-line-clamp:3;
 	-webkit-box-orient:vertical;
@@ -329,24 +326,24 @@ input[type=file] {
 	line-height:40px;
 	text-align:right
 }
-.user-admin img {
+.user-admin-img {
+	max-width:60px;
+	min-height:60px;
+	border-radius:50%;
+	border:1px solid #eee
+}
+.user-admin-img-xs {
 	margin-right:10px;
 	width:30px;
 	height:30px;
 	border-radius:50%;
-	border-bottom:1px solid #eee
+	border:1px solid #eee
 }
-.user-logo {
-	max-width:60px;
-	min-height:60px;
-	border-radius:50%;
-	border-bottom:1px solid #eee
-}
-.user-img {
+.user-edit-img {
 	width:36px;
 	height:36px;
 	border-radius:50%;
-	border:1px solid #dee2e6
+	border:1px solid #eee
 }
 .user-meter i {
 	font-size:24px!important;
@@ -358,17 +355,14 @@ input[type=file] {
 .list-group-flush>.list-group-item {
 	cursor:pointer
 }
-.nav-link.active {
-	color:#ec982c
-}
 .dropdown {
 	display:inline-block;
 	margin-left:.25rem;
 	content:"";
-	border-top:.3em solid;
-	border-right:.3em solid transparent;
+	border-top:.3rem solid;
+	border-right:.3rem solid transparent;
 	border-bottom:0;
-	border-left:.3em solid transparent;
+	border-left:.3rem solid transparent;
 	vertical-align:.25rem
 }
 .pannel-main-container {

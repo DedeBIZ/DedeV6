@@ -508,6 +508,21 @@ function GetUpdateSQL()
     fclose($fp);
     return $result;
 }
+//会员头像标签{dede:field.mid function='face(@me)'/}和[field:mid function='face(@me)'/]
+function face($mid)
+{
+    global $dsql;
+    if ($mid <> 0) {
+        $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$mid'");
+        if ($row['face'] == "") {
+            $face = "/static/web/img/admin.png";
+        } else {
+            $face = $row['face'];
+            $face = "$face";
+        }
+    }
+    return $face;
+}
 //会员昵称标签{dede:field.mid function="GetMemberInfos('uname',@me)"/}和[field:mid function="GetMemberInfos('uname',@me)"/]
 function GetMemberInfos($fields, $mid)
 {
@@ -523,21 +538,6 @@ function GetMemberInfos($fields, $mid)
         }
     }
     return $revalue;
-}
-//会员头像标签{dede:field.mid function='face(@me)'/}和[field:mid function='face(@me)'/]
-function face($mid)
-{
-    global $dsql;
-    if ($mid <> 0) {
-        $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$mid'");
-        if ($row['face'] == "") {
-            $face = "/static/web/img/admin.png";
-        } else {
-            $face = $row['face'];
-            $face = "$face";
-        }
-    }
-    return $face;
 }
 //标签调用标签[field:id function='GetMyTags(@me,2)'/]2表示输出2个文档
 if (!function_exists('GetMyTags')) {

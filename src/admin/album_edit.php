@@ -161,7 +161,7 @@ if ($dopost != 'save') {
             }
             $imgurls .= "{dede:img ddimg='$litpicname' text='$iinfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
         }
-        //没上传图片(只修改msg信息)
+        //没上传图片，只修改msg信息
         else {
             $iinfo = str_replace("'", "`", stripslashes(${'imgmsg'.$i}));
             $iurl = stripslashes(${'imgurl'.$i});

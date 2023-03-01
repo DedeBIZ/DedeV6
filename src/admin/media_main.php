@@ -13,7 +13,7 @@ require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($dopost)) $dopost = '';
-//文件式管理器
+//文件理器
 if ($dopost == 'filemanager') {
     if (file_exists('./file_manage_main.php')) {
         header("location:file_manage_main.php?activepath=$cfg_medias_dir");

@@ -12,8 +12,8 @@ require_once(dirname(__FILE__)."/../config.php");
 $cuserLogin = new userLogin();
 //后台功能操作配置项
 $actionSearch[0] = array(
-    'title'  => '常规操作',
-    'description' => '常规功能操作',
+    'title'  => '常用操作',
+    'description' => '后台常用操作',
     'soniterm' =>  array(
         0  =>  array(
             'title' => '网站栏目管理',
@@ -34,10 +34,10 @@ $actionSearch[0] = array(
             'linkurl' => 'content_list.php?mid=$cuserLogin->userID'
         ),
         3  =>  array(
-            'title' => '自定义文档属性',
-            'description' => '网站自定义文档属性',
-            'purview' => 'sys_Att',
-            'linkurl' => 'content_att.php'
+            'title' => '标签管理',
+            'description' => '网站所有标签管理',
+            'purview' => 'sys_Keyword',
+            'linkurl' => 'tags_main.php'
         ),
         4  =>  array(
             'title' => '评论管理',
@@ -46,29 +46,17 @@ $actionSearch[0] = array(
             'linkurl' => 'feedback_main.php'
         ),
         5  =>  array(
-            'title' => '文档回收站',
-            'description' => '系统配置变量的核心设置中开启了文档回收站是否开启功能，后台删除的文档会存放在此处',
-            'purview' => 'a_List,a_AccList,a_MyList',
-            'linkurl' => 'recycling.php'
-        )
-    )
-);
-$actionSearch[1] = array(
-    'title' => '文档管理',
-    'description' => '网站文档管理',
-    'soniterm' => array(
-        0  =>  array(
             'title' => '专题管理',
             'description' => '网站所有专题管理',
             'purview' => 'spec_New',
             'linkurl' => 'content_s_list.php'
         ),
-        1  =>  array(
-            'title' => '标签管理',
-            'description' => '网站所有标签管理',
-            'purview' => 'sys_Keyword',
-            'linkurl' => 'tags_main.php'
-        ),
+        6  =>  array(
+            'title' => '文档回收站',
+            'description' => '系统配置变量的核心设置中开启了文档回收站是否开启功能，后台删除的文档会存放在此处',
+            'purview' => 'a_List,a_AccList,a_MyList',
+            'linkurl' => 'recycling.php'
+        )
     )
 );
 $actionSearch[2] = array(
@@ -82,13 +70,13 @@ $actionSearch[2] = array(
             'linkurl' => 'media_add.php'
         ),
         1  =>  array(
-            'title' => '附件数据管理',
+            'title' => '附件管理',
             'description' => '列出所有上传的附件',
             'purview' => 'sys_Upload,sys_MyUpload',
             'linkurl' => 'media_main.php'
         ),
         2  =>  array(
-            'title' => '文件式管理器',
+            'title' => '文件理器',
             'description' => '应用文件浏览的模式进行附件的管理',
             'purview' => 'plus_文件管理器',
             'linkurl' => 'media_main.php?dopost=filemanager'
@@ -123,8 +111,14 @@ $actionSearch[3] = array(
             'purview' => 'c_List',
             'linkurl' => 'freelist_main.php'
         ),
+        3  =>  array(
+            'title' => '自定义文档属性',
+            'description' => '网站自定义文档属性',
+            'purview' => 'sys_Att',
+            'linkurl' => 'content_att.php'
+        ),
         4  =>  array(
-            'title' => '自定义表单',
+            'title' => '自定义表单管理',
             'description' => '创建和管理自定义表单',
             'purview' => 'c_List',
             'linkurl' => 'diy_main.php'
@@ -142,30 +136,30 @@ $actionSearch[4] = array(
             'linkurl' => 'content_batch_up.php'
         ),
         1  =>  array(
-            'title' => '搜索关键词维护',
-            'description' => '所有搜索关键词管理',
-            'purview' => 'sys_Keyword',
-            'linkurl' => 'search_keywords_main.php?dopost=filemanager'
-        ),
-        2  =>  array(
-            'title' => '文档关键词维护',
-            'description' => '所有文档关键词批量维护',
-            'purview' => 'sys_Keyword',
-            'linkurl' => 'article_keywords_main.php'
-        ),
-        3  =>  array(
             'title' => '文档重复检测',
             'description' => '网站重复标题文档处理',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'article_test_same.php'
         ),
+        3  =>  array(
+            'title' => '文档关键词维护',
+            'description' => '所有文档关键词批量维护',
+            'purview' => 'sys_Keyword',
+            'linkurl' => 'article_keywords_main.php'
+        ),
         4  =>  array(
+            'title' => '搜索关键词维护',
+            'description' => '所有搜索关键词管理',
+            'purview' => 'sys_Keyword',
+            'linkurl' => 'search_keywords_main.php?dopost=filemanager'
+        ),
+        5  =>  array(
             'title' => '自动摘要分页',
             'description' => '更新没有填写描述的文档或更新没分页的文档的自动分页标识',
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_description_main.php'
         ),
-        5  =>  array(
+        6  =>  array(
             'title' => '数据库字段替换',
             'description' => '网站数据库字段批量替换',
             'purview' => 'sys_ArcBatch',
@@ -184,22 +178,22 @@ $actionSearch[5] = array(
             'linkurl' => 'member_main.php'
         ),
         1  =>  array(
+            'title' => '会员短信管理',
+            'description' => '会员之间发送的短消息管理，其中包含群发短消息和对单个会员发送短消息两种',
+            'purview' => 'member_Type',
+            'linkurl' => 'member_pm.php'
+        ),
+        2  =>  array(
             'title' => '会员级别设置',
             'description' => '会员级别设置，通过不同会员的浏览权限来对会员级别进行一个扩展',
             'purview' => 'member_Type',
             'linkurl' => 'member_rank.php'
         ),
-        2  =>  array(
+        3  =>  array(
             'title' => '积分头衔设置',
             'description' => '会员积分等级设置，根据活动积分对会员进行头衔划分',
             'purview' => 'member_Type',
             'linkurl' => 'member_scores.php'
-        ),
-        4  =>  array(
-            'title' => '会员短信管理',
-            'description' => '会员之间发送的短消息管理，其中包含群发短消息和对单个会员发送短消息两种',
-            'purview' => 'member_Type',
-            'linkurl' => 'member_pm.php'
         ),
     )
 );
@@ -220,18 +214,18 @@ $actionSearch[6] = array(
             'linkurl' => 'cards_type.php'
         ),
         2  =>  array(
-            'title' => '会员产品分类',
-            'description' => '会员类产品型划分，对会员产品进行定义',
-            'purview' => 'sys_Data',
-            'linkurl' => 'member_type.php'
-        ),
-        3  =>  array(
             'title' => '会员消费记录',
             'description' => '会员消费记录，同时可以查看消费充值订单的付款情况',
             'purview' => 'sys_Data',
             'linkurl' => 'member_operations.php'
         ),
-        5  =>  array(
+        3  =>  array(
+            'title' => '会员产品分类',
+            'description' => '会员类产品型划分，对会员产品进行定义',
+            'purview' => 'sys_Data',
+            'linkurl' => 'member_type.php'
+        ),
+        4  =>  array(
             'title' => '支付接口设置',
             'description' => '网站支付接口设置',
             'purview' => 'sys_Data',
@@ -351,12 +345,12 @@ $actionSearch[9] = array(
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info_mark.php'
         ),
-        // 5  =>  array(
-        //     'title' => '云服务设置',
-        //     'description' => '主流云服务平台支持',
-        //     'purview' => 'sys_Edit',
-        //     'linkurl' => 'sys_cloud.php'
-        // ),
+        /*5  =>  array(
+            'title' => '云服务设置',
+            'description' => '主流云服务平台支持',
+            'purview' => 'sys_Edit',
+            'linkurl' => 'sys_cloud.php'
+        ),*/
         6  =>  array(
             'title' => '软件下载设置',
             'description' => '软件下载连接显示方式，下载方式，镜像服务器等等进行配置',

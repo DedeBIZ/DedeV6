@@ -61,7 +61,10 @@
 								<div class="col-md-12 caption">
 									<a href="[field:arcurl/]"><h4 class="title">[field:code/] [field:title/]</h4></a>
 								</div>
-								<div class="col-md-12 source text-right">发布时间：[field:pubdate function="MyDate('y-m-d',@me)"/]</div>
+								<div class="col-md-12 source text-right">
+									<span><img src="[field:mid function='face(@me)'/]" class="user-admin-img-xs">[field:mid function="GetMemberInfos('uname',@me)"/]</span>
+									<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+								</div>
 							</div>
 						</li>
 						{/dede:list}
