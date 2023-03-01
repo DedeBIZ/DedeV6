@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-$cid = isset($cid) ? intval($cid) : 0;
+
 $channelid = isset($channelid) ? intval($channelid) : 0;
 $mid = isset($mid) ? intval($mid) : 0;
 if (!isset($keyword)) $keyword = '';
@@ -29,6 +29,7 @@ if (TestPurview('a_List')) {
         CheckCatalog($cid, "您无权浏览非指定栏目的文档");
     }
 }
+$cid = isset($cid) ? intval($cid) : 0;
 $adminid = $cuserLogin->getUserID();
 $maintable = '#@__archives';
 require_once(DEDEINC."/typelink/typelink.class.php");
@@ -52,7 +53,7 @@ $optionarr = $tl->GetOptionArray($cid, $admin_catalogs, $channelid);
 $whereSql = $channelid == 0 ? " WHERE arc.channel < -1 " : " WHERE arc.channel = '$channelid' ";
 if (!empty($mid)) $whereSql .= " AND arc.mid = '$mid' ";
 if ($keyword != '') $whereSql .= " AND (arc.title like '%$keyword%') ";
-if ($cid != 0) $whereSql .= " AND arc.typeid in (".GetSonIds($cid).")";
+if ($cid != 0 && !empty(GetSonIds($cid))) $whereSql .= " AND arc.typeid in (".GetSonIds($cid).")";
 if ($arcrank != '') {
     $whereSql .= " AND arc.arcrank = '$arcrank' ";
     $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='content_sg_list.php?cid={$cid}&channelid={$channelid}&dopost=listArchives';\">所有文档</button>";
