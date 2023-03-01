@@ -106,7 +106,7 @@ ALTER TABLE `#@__member` ADD COLUMN `send_max` int NULL DEFAULT 1 AFTER `loginer
 -- 6.2.3
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_bizcore_api', 'DedeBIZ Core接口服务器', 1, 'string', 'http://localhost:8087');
 
--- 6.2.4
+-- 6.2.5
 CREATE TABLE `#@__sys_payment` (`id` int(11) unsigned NOT NULL auto_increment,
 	`code` varchar(20) NOT NULL DEFAULT '',
 	`name` varchar(32) NOT NULL DEFAULT '',
@@ -116,11 +116,9 @@ CREATE TABLE `#@__sys_payment` (`id` int(11) unsigned NOT NULL auto_increment,
 	`status` int(3) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
-
 INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (1, 'Wechat', '微信支付', '微信', 0, '{"AppID":"","MchID":"","APIv2Secret":""}', 0);
 INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (2, 'Alipay', '支付宝支付', '支付宝', 1, '{"APPID":"","PrivateKey":"","CertPublicKey":"","RootCert":"AlipayRootCert","SignType":"RSA2"}', 0);
 INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (3, 'Bank', '银行转账', '转账', 2, '{"AccountName":"泰隆商业银行上海杨浦支行","AccountNO":"31010090201000020658","Name":"上海穆云智能科技有限公司"}', 1);
 INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (4, 'Balance', '余额支付', '余额', 3, '{}', 1);
 INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (5, 'Cod', '货到付款', '货到付款', 4, '{}', 0);
-
 ALTER TABLE `#@__member` ADD COLUMN `user_money` decimal(10, 2) UNSIGNED NULL DEFAULT 0.00 AFTER `send_max`;
