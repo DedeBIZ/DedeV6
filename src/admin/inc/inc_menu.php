@@ -54,7 +54,7 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='积分产品管理' link='cards_manage.php' rank='sys_Data' target='main' />
     <m:item name='积分产品分类' link='cards_type.php' rank='sys_Data' target='main' />
     <m:item name='会员消费记录' link='member_operations.php' rank='sys_Data' target='main' />
-    <m:item name='会员产品分类' link='member_type.php' rank='sys_Data' target='main' />
+    <m:item name='会员等级分类' link='member_type.php' rank='sys_Data' target='main' />
     <m:item name='支付接口设置' link='sys_payment.php' .php' rank='sys_Data' target='main' />
 </m:top>
 <m:top item='12_' name='系统设置' rank='sys_User,sys_Group,sys_Edit,sys_Log,sys_Data' icon='fa-cog'>

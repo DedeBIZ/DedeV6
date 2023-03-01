@@ -23,13 +23,13 @@ $actionSearch[0] = array(
         ),
         1  =>  array(
             'title' => '待审核的文档',
-            'description' => '所有文档模型发表待审核文档列表',
+            'description' => '所有文档模型发表未审核列表',
             'purview' => 'a_Check,a_AccCheck',
             'linkurl' => 'content_list.php?arcrank=-1'
         ),
         2  =>  array(
             'title' => '我发布的文档',
-            'description' => '当前后台登录所发表的文档',
+            'description' => '后台管理登录所发表的文档',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'content_list.php?mid=$cuserLogin->userID'
         ),
@@ -53,7 +53,7 @@ $actionSearch[0] = array(
         ),
         6  =>  array(
             'title' => '文档回收站',
-            'description' => '系统配置变量的核心设置中开启了文档回收站是否开启功能，后台删除的文档会存放在此处',
+            'description' => '后台删除的文档会存放在此处',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'recycling.php'
         )
@@ -61,23 +61,23 @@ $actionSearch[0] = array(
 );
 $actionSearch[2] = array(
     'title' => '附件管理',
-    'description' => '网站附件管理',
+    'description' => '网站所有附件管理',
     'soniterm' => array(
         0  =>  array(
             'title' => '上传新文件',
-            'description' => '通过这可以上传图片、FLASH、视频音频、附件等其它附件',
+            'description' => '上传图片、FLASH、视频音频、附件等其它附件',
             'purview' => '',
             'linkurl' => 'media_add.php'
         ),
         1  =>  array(
             'title' => '附件管理',
-            'description' => '列出所有上传的附件',
+            'description' => '网站所有附件管理',
             'purview' => 'sys_Upload,sys_MyUpload',
             'linkurl' => 'media_main.php'
         ),
         2  =>  array(
             'title' => '文件理器',
-            'description' => '应用文件浏览的模式进行附件的管理',
+            'description' => '文件浏览式附件管理',
             'purview' => 'plus_文件管理器',
             'linkurl' => 'media_main.php?dopost=filemanager'
         ),
@@ -89,7 +89,7 @@ $actionSearch[3] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '文档模型管理',
-            'description' => '网站文档、图片、软件、专题、分类等模型就行管理，也可以创建新模型',
+            'description' => '网站文档、图片、软件、专题、分类等模型管理',
             'purview' => 'c_List',
             'linkurl' => 'mychannel_main.php'
         ),
@@ -101,7 +101,7 @@ $actionSearch[3] = array(
         ),
         2  =>  array(
             'title' => '联动类别管理',
-            'description' => '创建和管理所有的联动',
+            'description' => '创建和管理所有联动',
             'purview' => 'c_Stepseclect',
             'linkurl' => 'stepselect_main.php?dopost=filemanager'
         ),
@@ -113,7 +113,7 @@ $actionSearch[3] = array(
         ),
         3  =>  array(
             'title' => '自定义文档属性',
-            'description' => '网站自定义文档属性',
+            'description' => '自定义文档属性管理',
             'purview' => 'sys_Att',
             'linkurl' => 'content_att.php'
         ),
@@ -155,7 +155,7 @@ $actionSearch[4] = array(
         ),
         5  =>  array(
             'title' => '自动摘要分页',
-            'description' => '更新没有填写描述的文档或更新没分页的文档的自动分页标识',
+            'description' => '没有填写描述的文档或没分页的文档的自动分页标识自动更新',
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_description_main.php'
         ),
@@ -173,13 +173,13 @@ $actionSearch[5] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '所有会员列表',
-            'description' => '所有会员修改删除，查看会员文档以及提升管理员等操作',
+            'description' => '所有会员修改删除，查看会员文档以及提升管理员',
             'purview' => 'member_List',
             'linkurl' => 'member_main.php'
         ),
         1  =>  array(
             'title' => '会员短信管理',
-            'description' => '会员之间发送的短消息管理，其中包含群发短消息和对单个会员发送短消息两种',
+            'description' => '会员发送的短消息，其中包含群发短消息和对单个会员发送短消息两种',
             'purview' => 'member_Type',
             'linkurl' => 'member_pm.php'
         ),
@@ -191,7 +191,7 @@ $actionSearch[5] = array(
         ),
         3  =>  array(
             'title' => '积分头衔设置',
-            'description' => '会员积分等级设置，根据活动积分对会员进行头衔划分',
+            'description' => '会员积分等级设置，根据活动积分对会员进行头衔管理',
             'purview' => 'member_Type',
             'linkurl' => 'member_scores.php'
         ),
@@ -199,35 +199,35 @@ $actionSearch[5] = array(
 );
 $actionSearch[6] = array(
     'title' => '支付工具',
-    'description' => '财务相关设置，包含积分，商店订单等操作',
+    'description' => '配置支付方式',
     'soniterm' => array(
         0  =>  array(
             'title' => '积分产品管理',
-            'description' => '网站积分产品管理，可以在这里生成积分以及查看积分的当前状态',
+            'description' => '网站积分产品管理，生成积分以及查看积分使用状态',
             'purview' => 'sys_Data',
             'linkurl' => 'cards_manage.php'
         ),
         1  =>  array(
             'title' => '积分产品分类',
-            'description' => '网站积分产品分类，可以添加不同点数的积分产品类型',
+            'description' => '网站积分产品分类，添加不同点数的积分产品类型',
             'purview' => 'sys_Data',
             'linkurl' => 'cards_type.php'
         ),
         2  =>  array(
             'title' => '会员消费记录',
-            'description' => '会员消费记录，同时可以查看消费充值订单的付款情况',
+            'description' => '会员消费记录，查看消费充值订单的付款情况',
             'purview' => 'sys_Data',
             'linkurl' => 'member_operations.php'
         ),
         3  =>  array(
-            'title' => '会员产品分类',
-            'description' => '会员类产品型划分，对会员产品进行定义',
+            'title' => '会员等级分类',
+            'description' => '会员等级分类划分，设置网站会员等级',
             'purview' => 'sys_Data',
             'linkurl' => 'member_type.php'
         ),
         4  =>  array(
             'title' => '支付接口设置',
-            'description' => '网站支付接口设置',
+            'description' => '网站支付接口配置',
             'purview' => 'sys_Data',
             'linkurl' => 'sys_payment.php'
         ),
@@ -269,7 +269,7 @@ $actionSearch[7] = array(
         ),
         5  =>  array(
             'title' => '更新缓存',
-            'description' => '更新栏目缓存、更新枚举缓存、清理文档调用缓存、清理过期会员浏览历史、删除过期会员短信、删除过期流量统计',
+            'description' => '更新栏目缓存、更新枚举缓存、清理文档调用缓存、清理过期会员浏览历史、删除过期会员短信',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_cache_up.php'
         ),
@@ -281,13 +281,13 @@ $actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
     'soniterm' => array(
         0  => array(
             'title' => '默认模板管理',
-            'description' => '网站正在采用的模板文件管理',
+            'description' => '网站主题模板文件管理',
             'purview' => 'temp_All',
             'linkurl' => 'templets_main.php'
         ),
         1  => array(
             'title' => '标签源码管理',
-            'description' => '系统标签文件编辑修改',
+            'description' => '系统标签文件修改',
             'purview' => 'temp_All',
             'linkurl' => 'templets_tagsource.php'
         ),
@@ -317,7 +317,7 @@ $actionSearch[9] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '系统配置变量',
-            'description' => '包括站点设置、核心设置、附件设置、会员设置、互动设置、性能选项、其它选项、添加新变量等分类设置',
+            'description' => '站点设置、核心设置、附件设置、会员设置、互动设置、性能选项、其它选项、添加新变量等功能设置',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info.php'
         ),
@@ -329,19 +329,19 @@ $actionSearch[9] = array(
         ),
         2  =>  array(
             'title' => '系统会员组管理',
-            'description' => '网站管理员组别的划分',
+            'description' => '网站管理员组权限管理',
             'purview' => 'sys_Group',
             'linkurl' => 'sys_group.php'
         ),
         3  =>  array(
             'title' => '系统日志管理',
-            'description' => '登录后台的管理员操作进行记录',
+            'description' => '登录后台管理员操作进行记录',
             'purview' => 'sys_Log',
             'linkurl' => 'log_list.php'
         ),
         5  =>  array(
             'title' => '图片水印设置',
-            'description' => '上传图片添加的水印配置',
+            'description' => '上传图片添加水印设置',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info_mark.php'
         ),
@@ -353,7 +353,7 @@ $actionSearch[9] = array(
         ),*/
         6  =>  array(
             'title' => '软件下载设置',
-            'description' => '软件下载连接显示方式，下载方式，镜像服务器等等进行配置',
+            'description' => '软件下载连接显示方式，下载方式等配置',
             'purview' => 'sys_SoftConfig',
             'linkurl' => 'soft_config.php'
         ),
@@ -365,7 +365,7 @@ $actionSearch[9] = array(
         ),
         8  =>  array(
             'title' => '数据库备份还原',
-            'description' => '数据库备份和还原',
+            'description' => '数据库备份和还原数据备份',
             'purview' => 'sys_data',
             'linkurl' => 'sys_data.php'
         ),

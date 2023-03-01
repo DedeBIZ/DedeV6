@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员类型
+ * 会员等级分类
  *
  * @version        $id:member_type.php 14:14 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -39,7 +39,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery($query);
     }
     header("Content-Type:text/html; charset={$cfg_soft_lang}");
-    echo "<script> alert('成功更新会员产品分类表'); </script>";
+    echo "<script> alert('成功更新会员等级分类'); </script>";
 }
 $arcranks = array();
 $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank`>10 ");
