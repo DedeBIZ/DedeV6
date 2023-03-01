@@ -328,7 +328,7 @@ $actionSearch[9] = array(
             'linkurl' => 'sys_admin_user.php'
         ),
         2  =>  array(
-            'title' => '会员组设置',
+            'title' => '系统会员组管理',
             'description' => '网站管理员组别的划分',
             'purview' => 'sys_Group',
             'linkurl' => 'sys_group.php'
@@ -358,8 +358,8 @@ $actionSearch[9] = array(
             'linkurl' => 'soft_config.php'
         ),
         7  =>  array(
-            'title' => '防采集串混淆',
-            'description' => '网站防采集串混淆',
+            'title' => '防采集小工具',
+            'description' => '网站防采集小工具',
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_string_mix.php'
         ),

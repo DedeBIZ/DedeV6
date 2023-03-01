@@ -1,6 +1,6 @@
-INSERT INTO `#@__admintype` VALUES ('1','信息发布员','1','t_AccList a_AccNew a_AccList a_MyList a_MyEdit a_MyDel sys_MdPwd sys_Feedback sys_MyUpload plus_留言簿模块 '),
-('5','栏目管理员','1','t_AccList t_AccNew t_AccEdit t_AccDel a_AccNew a_AccList a_AccEdit a_AccDel a_AccCheck a_MyList a_MyEdit a_MyDel a_MyCheck spec_New spec_List spec_Edit sys_MdPwd sys_Log sys_ArcTj sys_Source sys_Writer sys_Keyword sys_MakeHtml sys_Feedback sys_Upload sys_MyUpload member_List member_Edit plus_站内新闻发布 plus_友情链接模块 plus_留言簿模块 plus_投票模块 plus_广告管理 '),
-('10','超级管理员','1','admin_AllowAll ');
+INSERT INTO `#@__admintype` VALUES ('1','文档员','1','t_AccList a_AccNew a_AccList a_MyList a_MyEdit a_MyDel sys_MdPwd sys_ArcBatch sys_Feedback sys_MyUpload'),
+('5','栏目员','1','t_AccList t_AccNew t_AccEdit t_AccDel a_AccNew a_AccList a_AccEdit a_AccDel a_AccCheck a_MyList a_MyEdit a_MyDel a_MyCheck spec_New spec_List spec_Edit sys_MdPwd sys_ArcBatch sys_Log sys_ArcTj sys_Source sys_Writer sys_Keyword sys_MakeHtml sys_Feedback sys_Upload sys_MyUpload member_List member_Edit plus_友情链接模块 plus_投票模块 plus_广告管理'),
+('10','管理员','1','admin_AllowAll');
 
 INSERT INTO `#@__arcatt` VALUES ('1','h','头条'),
 ('2','c','推荐'),

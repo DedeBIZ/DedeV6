@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-$headTemplet = '<li id="~name~"><div class="link"><i class="fa ~icon~"></i>~channelname~<i class="fa fa-angle-down"></i></div><ul class="submenu">';
+$headTemplet = '<li><div class="link"><i class="fa ~icon~"></i>~channelname~<i class="fa fa-angle-down"></i></div><ul class="submenu">';
 $footTemplet = "</ul></li>";
 $itemTemplet = "<li>~link~</li>";
 function GetMenus($userrank, $topos = 'main')
@@ -29,11 +29,9 @@ function GetMenus($userrank, $topos = 'main')
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('m', '<', '>');
     foreach ($dtp->CTags as $i => $ctag) {
-        $id = "id".md5($ctag->GetAtt("name"));
         if ($ctag->GetName() == 'top' && ($ctag->GetAtt('rank') == '' || TestPurview($ctag->GetAtt('rank')))) {
             if ($openitem != 999 && !preg_match("#".$openitem.'_'."#", $ctag->GetAtt('item')) && $openitem != 100) continue;
             $htmp = str_replace("~channelname~", $ctag->GetAtt("name"), $headTemplet);
-            $htmp = str_replace("~name~", $id, $htmp);
             $icon = 'fa-plug';
             if ($ctag->GetAtt('icon') != '') {
                 $icon = $ctag->GetAtt('icon');
@@ -41,11 +39,9 @@ function GetMenus($userrank, $topos = 'main')
             $htmp = str_replace('~icon~', $icon, $htmp);
             echo $htmp;
             $dtp2->LoadSource($ctag->InnerText);
-            $hasItem = false;
             foreach ($dtp2->CTags as $j => $ctag2) {
                 $ischannel = trim($ctag2->GetAtt('ischannel'));
                 if ($ctag2->GetName() == 'item' && ($ctag2->GetAtt('rank') == '' || TestPurview($ctag2->GetAtt('rank')))) {
-                    $hasItem = true;
                     $link = "<a href='".$ctag2->GetAtt('link')."' target='".$ctag2->GetAtt('target')."'>".$ctag2->GetAtt('name')."</a>";
                     if ($ischannel == '1') {
                         if ($ctag2->GetAtt('addico') != '') {
@@ -61,9 +57,6 @@ function GetMenus($userrank, $topos = 'main')
                     $itemtmp = str_replace('~link~', $link, $itemTemplet);
                     echo $itemtmp;
                 }
-            }
-            if (!$hasItem) {
-                echo "<script>if(document.querySelector('#{$id}') !== null) document.querySelector('#{$id}').style.display='none'</script>";
             }
             echo $footTemplet;
         }

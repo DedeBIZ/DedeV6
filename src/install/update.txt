@@ -30,16 +30,14 @@ CREATE TABLE `#@__search_limits` (
 ) TYPE=MyISAM;
 
 -- 6.1.0
-ALTER TABLE `#@__arctype`
-	ADD COLUMN `namegk` varchar(255) NULL AFTER `typename`,
+ALTER TABLE `#@__arctype` ADD COLUMN `namegk` varchar(255) NULL AFTER `typename`,
 	ADD COLUMN `enname` varchar(255) NULL AFTER `namegk`,
 	ADD COLUMN `ennamegk` varchar(255) NULL AFTER `enname`,
 	ADD COLUMN `litpic` varchar(255) NULL AFTER `ennamegk`,
 	ADD COLUMN `litimg` varchar(255) NULL AFTER `litpic`;
 
 -- 6.1.7
-CREATE TABLE `#@__statistics` (
-	`id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `#@__statistics` (`id` int NOT NULL AUTO_INCREMENT,
 	`sdate` int DEFAULT NULL COMMENT '记录日期',
 	`pv` int DEFAULT NULL COMMENT 'PV',
 	`uv` int DEFAULT NULL COMMENT 'UV',
@@ -47,8 +45,7 @@ CREATE TABLE `#@__statistics` (
 	`vv` int DEFAULT NULL COMMENT 'vv',
 	PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
-CREATE TABLE `#@__statistics_detail` (
-	`id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `#@__statistics_detail` (`id` int NOT NULL AUTO_INCREMENT,
 	`t` int DEFAULT NULL COMMENT 'unixtime',
 	`created_date` int DEFAULT NULL COMMENT '日期，20220326',
 	`created_hour` int DEFAULT NULL COMMENT '时间，12',
@@ -110,8 +107,7 @@ ALTER TABLE `#@__member` ADD COLUMN `send_max` int NULL DEFAULT 1 AFTER `loginer
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_bizcore_api', 'DedeBIZ Core接口服务器', 1, 'string', 'http://localhost:8087');
 
 -- 6.2.4
-CREATE TABLE `#@__sys_payment` (
-	`id` int(11) unsigned NOT NULL auto_increment,
+CREATE TABLE `#@__sys_payment` (`id` int(11) unsigned NOT NULL auto_increment,
 	`code` varchar(20) NOT NULL DEFAULT '',
 	`name` varchar(32) NOT NULL DEFAULT '',
 	`short_name` varchar(32) DEFAULT '',
