@@ -192,10 +192,10 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                     } else {
                         $selquery = '';
                         if ($arr['cross'] == 1) {
-                            $selquery = "SELECT id,topid FROM `#@__arctype` WHERE typename LIKE '{$arr['typename']}' AND id<>'{$typeid}' AND topid<>'{$typeid}'  ";
+                            $selquery = "SELECT id,topid FROM `#@__arctype` WHERE typename LIKE '{$arr['typename']}' AND id<>'{$typeid}' AND topid<>'{$typeid}' ";
                         } else {
                             $arr['crossid'] = preg_replace('#[^0-9,]#', '', trim($arr['crossid']));
-                            if ($arr['crossid'] != '') $selquery = "SELECT id,topid FROM `#@__arctype` WHERE id IN('{$arr['crossid']}') AND id<>'{$typeid}' AND topid<>'{$typeid}'  ";
+                            if ($arr['crossid'] != '') $selquery = "SELECT id,topid FROM `#@__arctype` WHERE id IN('{$arr['crossid']}') AND id<>'{$typeid}' AND topid<>'{$typeid}' ";
                         }
                         if ($selquery != '') {
                             $dsql->SetQuery($selquery);

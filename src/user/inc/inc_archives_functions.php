@@ -218,9 +218,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
     if (is_array($dtp->CTags)) {
         foreach ($dtp->CTags as $tid => $ctag) {
             if (
-                $loadtype != 'autofield'
-                || ($loadtype == 'autofield' && $ctag->GetAtt('autofield') == 1)
-            ) {
+                $loadtype != 'autofield' || ($loadtype == 'autofield' && $ctag->GetAtt('autofield') == 1)) {
                 $dede_addonfields .= ($dede_addonfields == '' ? $ctag->GetName().",".$ctag->GetAtt('type') : ";".$ctag->GetName().",".$ctag->GetAtt('type'));
                 echo GetFormItemValueA($ctag, $fieldValues[$ctag->GetName()]);
             }

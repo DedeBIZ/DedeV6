@@ -82,15 +82,14 @@ function lib_arclistsg(&$ctag, &$refObj)
                 $CrossID = '';
                 if ((isset($envs['cross']) || $ctag->GetAtt('cross') == '1') && $ctag->GetAtt('nocross') != '1') {
                     $arr = $dsql->GetOne("SELECT `id`,`topid`,`cross`,`crossid`,`ispart`,`typename` FROM `#@__arctype` WHERE id='$typeid' ");
-                    if ($arr['cross'] == 0 || ($arr['cross'] == 2 && trim($arr['crossid'] == '')))
-                        $orwheres[] = ' typeid IN ('.GetSonIds($typeid).')';
+                    if ($arr['cross'] == 0 || ($arr['cross'] == 2 && trim($arr['crossid'] == ''))) $orwheres[] = ' typeid IN ('.GetSonIds($typeid).')';
                     else {
                         $selquery = '';
                         if ($arr['cross'] == 1) {
-                            $selquery = "SELECT id,topid FROM `#@__arctype` WHERE typename like '{$arr['typename']}' AND id<>'{$typeid}' AND topid<>'{$typeid}'  ";
+                            $selquery = "SELECT id,topid FROM `#@__arctype` WHERE typename like '{$arr['typename']}' AND id<>'{$typeid}' AND topid<>'{$typeid}' ";
                         } else {
                             $arr['crossid'] = preg_replace('#[^0-9,]#', '', trim($arr['crossid']));
-                            if ($arr['crossid'] != '') $selquery = "SELECT id,topid FROM `#@__arctype` WHERE id IN('{$arr['crossid']}') AND id<>'{$typeid}' AND topid<>'{$typeid}'  ";
+                            if ($arr['crossid'] != '') $selquery = "SELECT id,topid FROM `#@__arctype` WHERE id IN('{$arr['crossid']}') AND id<>'{$typeid}' AND topid<>'{$typeid}' ";
                         }
                         if ($selquery != '') {
                             $dsql->SetQuery($selquery);

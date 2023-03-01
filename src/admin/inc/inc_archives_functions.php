@@ -47,9 +47,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
     foreach ($img_array as $key => $value) {
         $value = trim($value);
         if (
-            preg_match("#".$basehost."#i", $value) || !preg_match("#^http:\/\/#i", $value)
-            || ($cfg_basehost != $basehost && preg_match("#".$cfg_basehost."#i", $value))
-        ) {
+            preg_match("#".$basehost."#i", $value) || !preg_match("#^http:\/\/#i", $value) || ($cfg_basehost != $basehost && preg_match("#".$cfg_basehost."#i", $value))) {
             continue;
         }
         $itype =  substr($value, -4, 4);

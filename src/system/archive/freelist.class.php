@@ -136,7 +136,7 @@ class FreeList
                 $addSql .= " AND FIND_IN_SET('c',flag) > 0  ";
             }
             if (preg_match("#image#i", $listtype)) {
-                $addSql .= " AND litpic <> ''  ";
+                $addSql .= " AND litpic <> '' ";
             }
             if (preg_match("#spec#i", $listtype) || $channelid == -1) {
                 $addSql .= " AND channel = -1  ";
@@ -417,7 +417,7 @@ class FreeList
             $orwhere .= " AND FIND_IN_SET('c',flag) > 0  ";
         }
         if (preg_match("#image#i", $listtype)) {
-            $orwhere .= " AND arc.litpic <> ''  ";
+            $orwhere .= " AND arc.litpic <> '' ";
         }
         if (preg_match("#spec#i", $listtype) || $channelid == -1) {
             $orwhere .= " AND arc.channel = -1  ";

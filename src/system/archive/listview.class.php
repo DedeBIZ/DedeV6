@@ -86,7 +86,7 @@ class ListView
             if ($this->TypeLink->TypeInfos['cross'] > 0 && $this->TypeLink->TypeInfos['ispart'] == 0) {
                 $selquery = '';
                 if ($this->TypeLink->TypeInfos['cross'] == 1) {
-                    $selquery = "SELECT id,topid FROM `#@__arctype` WHERE typename LIKE '{$this->Fields['typename']}' AND id<>'{$this->TypeID}' AND topid<>'{$this->TypeID}'  ";
+                    $selquery = "SELECT id,topid FROM `#@__arctype` WHERE typename LIKE '{$this->Fields['typename']}' AND id<>'{$this->TypeID}' AND topid<>'{$this->TypeID}' ";
                 } else {
                     $this->Fields['crossid'] = preg_replace('/[^0-9,]/', '', trim($this->Fields['crossid']));
                     if ($this->Fields['crossid'] != '') {
