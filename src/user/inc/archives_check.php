@@ -50,7 +50,8 @@ if ($cInfos['arcsta'] == 0) {
 }
 //对保存的文档进行处理
 $money = 0;
-$flag = $shorttitle = $color = $source = '';
+$flag = $shorttitle = $color = '';
+$source = isset($source)? HtmlReplace($source, 1) : '';
 $sortrank = $senddate = $pubdate = time();
 $title = cn_substrR(HtmlReplace($title, 1), $cfg_title_maxlen);
 $writer =  cn_substrR(HtmlReplace($writer, 1), 20);
