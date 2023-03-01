@@ -76,7 +76,7 @@ $actionSearch[2] = array(
             'linkurl' => 'media_main.php'
         ),
         2  =>  array(
-            'title' => '文件理器',
+            'title' => '文件管理器',
             'description' => '文件浏览式附件管理',
             'purview' => 'plus_文件管理器',
             'linkurl' => 'media_main.php?dopost=filemanager'
