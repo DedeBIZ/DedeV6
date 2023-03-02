@@ -34,14 +34,17 @@ if ($dopost == "ok") {
         ShowMsg("成功更新枚举缓存，准备更新调用缓存", "sys_cache_up.php?dopost=ok&step=3&uparc=$uparc");
         exit();
     }
-    //清理arclist调用缓存、过期会员浏览历史、过期短信
+    //清理arclist调用缓存、过期会员浏览历史、过期短信、陈旧的流量统计数据
     else if ($step == 3) {
         echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
-        echo "\n成功更新arclist调用缓存，准备清理过期会员浏览历史<hr/>";
+        echo DedeAlert("成功更新arclist调用缓存，准备清理过期会员浏览历史", ALERT_INFO);
         $oldtime = time() - (90 * 24 * 3600);
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_pms` WHERE sendtime<'$oldtime' ");
-        echo "成功清理过期短信，准备修正错误文档，这可能要占较长的时间";
+        echo DedeAlert("成功清理过期短信，准备修正错误文档，这可能要占较长的时间", ALERT_INFO);
+        $limit = date('Ymd', strtotime('-15 days'));
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` WHERE created_date < '$limit'");
+        echo DedeAlert("成功清空15天之前的流量统计数据", ALERT_INFO);
         if ($uparc == 1) {
             echo "<script>location='sys_cache_up.php?dopost=ok&step=9';</script>";
         } else {
