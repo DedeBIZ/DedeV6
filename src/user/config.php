@@ -170,9 +170,9 @@ function CheckRank($rank = 0, $money = 0)
         if ($cfg_mb_spacesta == '-10') {
             //var_dump($cfg_ml->fields);
             //如果启用注册邮件验证
-            if ($cfg_ml->fields['spacesta'] == '-10') {
+            if ($cfg_ml->fields['spacesta'] == '-10' && !preg_match("#edit_baseinfo.php$#", GetCurUrl())) {
                 if (empty($cfg_ml->fields['email'])) {
-                    ShowMsg("邮箱地址为空，请设置一个邮箱地址", "edit_email.php", 0, 5000);
+                    ShowMsg("邮箱地址为空，请设置一个邮箱地址", "edit_baseinfo.php", 0, 5000);
                     exit;
                 }
                 $msg = "您未进行邮件验证，请到验证邮箱</br>重新发送邮件验证<a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail' class='text-primary'>点击此处</a>";
