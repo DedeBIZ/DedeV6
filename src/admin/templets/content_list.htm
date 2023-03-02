@@ -6,10 +6,13 @@
 		<title>文档列表</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
+		<script src="../static/web/js/moment.min.js"></script>
+		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/list.js"></script>
 	</head>
@@ -57,6 +60,9 @@
 							<option value="">选择属性</option>
 							{dede:global.flagsArr/}
 						</select>
+					</td>
+					<td width="200">
+						<input autocomplete="off" value="<?php echo $strTimerange;?>" type="text" name="timerange" id="timerange" class="admin-input-sm">
 					</td>
 					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 				</tr>
@@ -116,5 +122,28 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			$(document).ready(function() {
+				$('#timerange').daterangepicker({
+					autoUpdateInput: false,
+					timePicker: true,
+					locale : {
+						format: 'YYYY-MM-DD HH:mm',
+						applyLabel: '确定',
+						cancelLabel: '清空',
+						daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+						firstDay: 1
+					},
+				});
+				$('#timerange').on('apply.daterangepicker', function(ev, picker) {
+					$(this).val(picker.startDate.format('YYYY-MM-DD HH:mm') + ' - ' + picker.endDate.format('YYYY-MM-DD HH:mm'));
+				});
+
+				$('#timerange').on('cancel.daterangepicker', function(ev, picker) {
+					$(this).val('');
+				});
+			})
+		</script>
 	</body>
 </html>

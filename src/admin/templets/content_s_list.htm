@@ -6,7 +6,10 @@
 		<title>专题列表</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/moment.min.js"></script>
+		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/list.js"></script>
 	</head>
 	<body>
@@ -22,6 +25,7 @@
 		</table>
 		<form name="form3" action="content_s_list.php" method="get">
 			<input type="hidden" name="dopost" value="listArchives">
+			<input type="hidden" name="channelid" value="3">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
 					<td width="380"><input type="text" name="keyword" class="admin-input-md" value="<?php echo $keyword?>" placeholder="请输入文档标题或文档id"></td>
@@ -82,5 +86,28 @@
 				<td bgcolor="#f5f5f5" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
+		<script>
+			$(document).ready(function() {
+				$('#timerange').daterangepicker({
+					autoUpdateInput: false,
+					timePicker: true,
+					locale : {
+						format: 'YYYY-MM-DD HH:mm',
+						applyLabel: '确定',
+						cancelLabel: '清空',
+						daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+						firstDay: 1
+					},
+				});
+				$('#timerange').on('apply.daterangepicker', function(ev, picker) {
+					$(this).val(picker.startDate.format('YYYY-MM-DD HH:mm') + ' - ' + picker.endDate.format('YYYY-MM-DD HH:mm'));
+				});
+
+				$('#timerange').on('cancel.daterangepicker', function(ev, picker) {
+					$(this).val('');
+				});
+			})
+		</script>
 	</body>
 </html>

@@ -35,7 +35,17 @@ if (TestPurview('a_List')) {;
     }
     if (TestPurview('a_MyList')) $mid =  $cuserLogin->getUserID();
 }
-
+$stime = 0;
+$etime = 0;
+$timerange = isset($timerange)? explode(" - ",$timerange) : array();
+if (count($timerange) === 2) {
+    $stime = strtotime($timerange[0]);
+    $etime = strtotime($timerange[1]);
+}
+if ($stime > $etime) {
+    $stime = 0;
+    $etime = 0;
+}
 $adminid = $cuserLogin->getUserID();
 $maintable = '#@__archives';
 setcookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
@@ -61,6 +71,10 @@ if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
     }
     if (!empty($cid)) {
         $tinyQuerys[] = " typeid in(".GetSonIds($cid).") ";
+    }
+    if ($stime > 0 && $etime > 0) {
+        $tinyQuerys[] = " senddate>$stime ";
+        $tinyQuerys[] = " senddate<$etime ";
     }
     if (count($tinyQuerys) > 0) {
         $tinyQuery = "WHERE ".join(' AND ', $tinyQuerys);
@@ -128,6 +142,9 @@ if ($flag != '') {
 if ($cid != 0) {
     $whereSql .= ' AND arc.typeid IN ('.GetSonIds($cid).')';
 }
+if ($stime > 0 && $etime > 0) {
+    $whereSql .=  "AND arc.senddate>$stime AND arc.senddate<$etime";
+}
 if ($arcrank != '') {
     $whereSql .= " AND arc.arcrank = '$arcrank' ";
     $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='catalog_do.php?cid=".$cid."&dopost=listArchives&gurl=content_list.php';\">所有文档</button>";
@@ -151,6 +168,11 @@ $dlist->SetParameter('orderby', $orderby);
 $dlist->SetParameter('arcrank', $arcrank);
 $dlist->SetParameter('channelid', $channelid);
 $dlist->SetParameter('f', $f);
+$strTimerange = "";
+if ($stime > 0 && $etime > 0) {
+    $strTimerange = implode(" - ",array(MyDate("Y-m-d H:i:s",$stime),MyDate("Y-m-d H:i:s",$etime)));
+    $dlist->SetParameter('timerange', $strTimerange);
+}
 //模板
 if (empty($s_tmplets)) $s_tmplets = 'templets/content_list.htm';
 $dlist->SetTemplate(DEDEADMIN.'/'.$s_tmplets);

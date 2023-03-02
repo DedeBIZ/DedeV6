@@ -620,6 +620,9 @@ span.page-link {
 }
 @media (min-width:480px) {
 	.modal-dialog {
-	max-width:500px
+		max-width:500px
+	}
 }
+#timerange{
+	width: 230px;
 }

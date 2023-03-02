@@ -50,7 +50,21 @@ if ($cid == 0) {
 }
 $optionarr = $tl->GetOptionArray($cid, $admin_catalogs, $channelid);
 $whereSql = $channelid == 0 ? " WHERE arc.channel < -1 " : " WHERE arc.channel = '$channelid' ";
+$stime = 0;
+$etime = 0;
+$timerange = isset($timerange)? explode(" - ",$timerange) : array();
+if (count($timerange) === 2) {
+    $stime = strtotime($timerange[0]);
+    $etime = strtotime($timerange[1]);
+}
+if ($stime > $etime) {
+    $stime = 0;
+    $etime = 0;
+}
 if (!empty($mid)) $whereSql .= " AND arc.mid = '$mid' ";
+if ($stime > 0 && $etime > 0) {
+    $whereSql .=  "AND arc.senddate>$stime AND arc.senddate<$etime";
+}
 if ($keyword != '') $whereSql .= " AND (arc.title like '%$keyword%') ";
 if ($cid != 0 && !empty(GetSonIds($cid))) $whereSql .= " AND arc.typeid in (".GetSonIds($cid).")";
 if ($arcrank != '') {
@@ -66,6 +80,11 @@ $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);
 $dlist->SetParameter("channelid", $channelid);
+$strTimerange = "";
+if ($stime > 0 && $etime > 0) {
+    $strTimerange = implode(" - ",array(MyDate("Y-m-d H:i:s",$stime),MyDate("Y-m-d H:i:s",$etime)));
+    $dlist->SetParameter('timerange', $strTimerange);
+}
 $dlist->SetTemplate(DEDEADMIN."/templets/content_sg_list.htm");
 $dlist->SetSource($query);
 $dlist->Display();
