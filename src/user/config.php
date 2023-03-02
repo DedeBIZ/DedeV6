@@ -184,7 +184,7 @@ function CheckRank($rank = 0, $money = 0)
             $needname = "";
             if ($cfg_ml->M_Rank == 0) {
                 $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='$rank'");
-                $myname = "普通会员";
+                $myname = "注册会员";
                 $needname = $row['membername'];
             } else {
                 $dsql->SetQuery("SELECT membername From `#@__arcrank` WHERE `rank`='$rank' OR `rank`='".$cfg_ml->M_Rank."' ORDER BY `rank` DESC");
@@ -194,7 +194,7 @@ function CheckRank($rank = 0, $money = 0)
                 if ($row = $dsql->GetObject()) {
                     $myname = $row->membername;
                 } else {
-                    $myname = "普通会员";
+                    $myname = "注册会员";
                 }
             }
             ShowMsg("需要<span class='text-primary'>$needname</span>才能浏览本页面<br>您目前等级是<span class='text-primary'>$myname</span>", "-1", 0, 5000);

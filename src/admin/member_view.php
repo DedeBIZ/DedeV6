@@ -32,7 +32,7 @@ function GetMemberTypeName($rank)
 {
     global $dsql;
     if ($rank == 0) {
-        return '普通会员';
+        return '注册会员';
     } else {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$rank."'");
         return $row['membername'];

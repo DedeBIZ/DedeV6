@@ -528,7 +528,7 @@ class MemberLogin
     {
         global $dsql;
         if ($this->M_Rank == 0) {
-            return '普通会员';
+            return '注册会员';
         } else {
             $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$this->M_Rank."'");
             return $row['membername'];
@@ -545,17 +545,17 @@ class MemberLogin
     {
         $sta = '';
         if ($this->M_Rank == 0) {
-            $sta .= "您目前的身份是：普通会员";
+            $sta .= "您目前等级是：注册会员";
         } else {
             $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$this->M_Rank."'");
-            $sta .= "您目前的身份是：".$row['membername'];
+            $sta .= "您目前等级是：".$row['membername'];
             $rs = $dsql->GetOne("SELECT id FROM `#@__admin` WHERE userid='".$this->M_LoginID."'");
             if (!is_array($rs)) {
-                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余<span class='text-primary'>".$this->M_HasDay."</span>天";
-                elseif ($this->M_Rank > 10) $sta .= "<span class='text-danger'>会员已到期</span>";
+                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= "，剩余<span class='text-primary'>".$this->M_HasDay."</span>天";
+                elseif ($this->M_Rank > 10) $sta .= "，<span class='text-danger'>会员已到期</span>";
             }
         }
-        $sta .= " 积分<span class='text-primary'>{$this->M_Scores}</span>分 金币<span class='text-primary'>{$this->M_Money}</span>个 余额<span class='text-primary'>{$this->M_UserMoney}</span>元";
+        $sta .= "，积分<span class='text-primary'>{$this->M_Scores}</span>分，金币<span class='text-primary'>{$this->M_Money}</span>个，余额<span class='text-primary'>{$this->M_UserMoney}</span>元";
         return $sta;
     }
     //获取能够发布文档的栏目
