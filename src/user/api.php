@@ -60,15 +60,11 @@ if ($action === 'is_need_check_code') {
     ));
 } else if ($action === 'upload') {
     if (!$cfg_ml->IsLogin()) {
-        if ($format === 'json') {
-            echo json_encode(array(
-                "code" => -1,
-                "msg" => "未登录",
-                "data" => null,
-            ));
-        } else {
-            echo "";
-        }
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "未登录",
+            "data" => null,
+        ));
         exit;
     }
     $target_dir = "uploads/";//上传目录

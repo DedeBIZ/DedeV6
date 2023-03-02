@@ -77,8 +77,9 @@ if ($action == 'post') {
                 $bkmsg = '发布成功，请等待管理员处理';
                 //提交后返回提交页面
                 echo"<script>alert('提交成功');history.go(-1)</script>";
+                exit;
             }
-            showmsg($bkmsg, $goto);
+            ShowMsg($bkmsg, $goto);
         }
     }
 } else if ($action == 'list') {

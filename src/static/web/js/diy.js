@@ -1,15 +1,3 @@
-function checkSubmit(t) {
-    if (document.addcontent.title.value == "") {
-        ShowMsg(`${t}不能为空`);
-        document.addcontent.title.focus();
-        return false;
-    }
-    if (document.addcontent.typeid.value == 0) {
-        ShowMsg("请您选择文档所属栏目");
-        return false;
-    }
-}
-
 function SelectImage(sform,stype) {
     let s = sform.split(".");
     if (s.length === 2) {
@@ -29,7 +17,7 @@ function SelectImage(sform,stype) {
             var fileData = f;
             formData.append('file', fileData);
             $.ajax({
-                url: 'api.php?action=upload&type=litpic',
+                url: '../user/api.php?action=upload&type=litpic',
                 type: 'POST',
                 data: formData,
                 processData: false,

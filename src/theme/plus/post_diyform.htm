@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/diy.js"></script>
 	</head>
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
@@ -15,7 +16,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h4 class="mb-3"><?php echo $diy->name;?>发布</h4>
-					<form action="<?php echo $cfg_cmspath;?>/apps/diy.php" enctype="multipart/form-data" method="post">
+					<form name="addcontent" action="<?php echo $cfg_cmspath;?>/apps/diy.php" enctype="multipart/form-data" method="post">
 						<input type="hidden" name="action" value="post">
 						<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 						<input type="hidden" name="do" value="2">
