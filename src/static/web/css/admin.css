@@ -594,14 +594,18 @@ span.page-link {
 	height:20px;
 	border-radius:.2rem
 }
-.file-relative {
-	position:relative
+.fileinput-button {
+	position:relative;
+	overflow:hidden;
+	display:inline-block
 }
-.file-absolute {
+.fileinput-button input {
 	position:absolute;
 	top:0;
 	right:0;
+	margin:0;
 	opacity:0;
+	direction:ltr;
 	cursor:pointer
 }
 #browsehappy {

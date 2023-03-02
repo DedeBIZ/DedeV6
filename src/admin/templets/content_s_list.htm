@@ -49,7 +49,7 @@
 					<td width="6%">点击</td>
 					<td width="6%">网页</td>
 					<td width="6%">权限</td>
-					<td>属性</td>
+					<td>操作</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="9" align="center">暂无文档</td></tr>'}
 				<tr align="center">
@@ -61,7 +61,10 @@
 					<td>{dede:field.click/}</td>
 					<td><?php echo IsHtmlArchives($fields['ismake'])?></td>
 					<td><?php echo GetRankName($fields['arcrank'])?></td>
-					<td><?php echo IsCommendArchives($fields['flag'])?></td>
+					<td>
+						<a href="javascript:;" class="btn btn-light btn-sm" onclick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i> 修改</a>
+						<a href="javascript:;" class="btn btn-light btn-sm" onclick="viewArc({dede:field.id/});"><i class="fa fa-eye"></i> 预览</a>
+					</td>
 				</tr>
 				{/dede:datalist}
 				<tr>

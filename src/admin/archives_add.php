@@ -167,12 +167,12 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布商品</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看商品</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改商品</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布商品管理</a>$backurl";
+    $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改自定义文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览自定义文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理自定义文档</a>$backurl";
     $msg = "<div>{$msg}</div>".GetUpdateTest();
-    $wintitle = '成功发布商品';
-    $wecome_info = '文档管理::发布商品';
+    $wintitle = '成功发布自定义文档';
+    $wecome_info = '文档管理::发布自定义文档';
     $win = new OxWindow();
-    $win->AddTitle('成功发布商品：');
+    $win->AddTitle('成功发布自定义文档：');
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow('hand', '&nbsp;', false);
     $win->Display();

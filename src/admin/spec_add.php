@@ -176,11 +176,11 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>创建新专题</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>已发布专题管理</a>";
-    $wintitle = "成功创建专题";
-    $wecome_info = "文档管理::发布专题";
+    $msg = "请选择您的后续操作：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>管理专题</a>";
+    $wintitle = "成功发布专题";
+    $wecome_info = "专题管理::发布专题";
     $win = new OxWindow();
-    $win->AddTitle("成功创建专题");
+    $win->AddTitle("成功发布专题");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
     $win->Display();

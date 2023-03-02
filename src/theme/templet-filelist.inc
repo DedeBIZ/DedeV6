@@ -4,7 +4,6 @@ article_default.htm,自定义文档模板
 article_default_sg.htm,自定义表单文档模板
 article_image.htm,图片文档模板
 article_infos.htm,分类文档模板
-article_shop.htm,商品文档模板
 article_soft.htm,软件文档模板
 article_spec.htm,专题文档模板
 foot.htm,底部模板
@@ -15,7 +14,6 @@ index_default.htm,默认封面模板
 index_default_sg.htm,默认表单封面模板
 index_image.htm,图片封面模板
 index_infos.htm,分类封面模板
-index_shop.htm,商品封面模板
 index_soft.htm,软件封面模板
 list_article.htm,文档列表模板
 list_default.htm,默认列表模板

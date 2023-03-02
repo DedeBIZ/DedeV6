@@ -9,7 +9,6 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
 		<link rel="stylesheet" href="../static/web/css/cropper.min.css">
-		<link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
 		<link rel="stylesheet" href="css/albumupload.min.css">
 		<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
 		<script src="../static/web/js/jquery.min.js"></script>
@@ -295,7 +294,7 @@
 														$fhtml .= "<input type='hidden' name='imgddurl{$j}' value='{$litimg}'>";
 														$fhtml .= "<img src='{$litimg}' id='lit{$j}'>";
 														$fhtml .= "<div class='my-2'>标题：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' class='admin-input-sm'></div>";
-														$fhtml .= "<div><span class='btn btn-success btn-sm file-relative'>更换<input for='item{$j}' type='file' name='imgfile{$j}' class='file-absolute btnEdit'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a></div>";
+														$fhtml .= "<div><span class='btn btn-success btn-sm fileinput-button'>更换<input for='item{$j}' type='file' name='imgfile{$j}'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a></div>";
 														$fhtml .= "</div>";
 														echo $fhtml;
 														$j++;

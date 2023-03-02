@@ -280,11 +280,11 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>预览图片</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理已发布图片</a>$backurl";
-    $wintitle = "成功修改图片";
-    $wecome_info = "文档管理::修改图片";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片文档</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理图片文档</a>$backurl";
+    $wintitle = "成功修改图片文档";
+    $wecome_info = "文档管理::修改图片文档";
     $win = new OxWindow();
-    $win->AddTitle("成功修改一个图片");
+    $win->AddTitle("成功修改图片文档");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();

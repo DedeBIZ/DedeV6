@@ -156,11 +156,11 @@ if (empty($dopost)) {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?channelid=$channelid' class='btn btn-success btn-sm'>继续发布文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a><a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改文档</a><a href='content_sg_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>已发布文档管理</a>";
-    $wintitle = "成功发布文档";
-    $wecome_info = "文档管理::发布文档";
+    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?channelid=$channelid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='content_sg_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理分类文档</a>";
+    $wintitle = "成功发布分类文档";
+    $wecome_info = "文档管理::发布分类文档";
     $win = new OxWindow();
-    $win->AddTitle("成功发布文档");
+    $win->AddTitle("成功发布分类文档");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
