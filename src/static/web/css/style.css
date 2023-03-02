@@ -356,7 +356,8 @@ input[type=file] {
 	color:#545b62
 }
 .form-control {
-	display:inline-block
+	display:inline-block;
+	height:36px
 }
 .fa {
 	color:inherit;
@@ -368,7 +369,7 @@ input[type=file] {
 .form-control,.btn,.fa {
 	font-size:14px!important
 }
-.form-control,.input-text {
+.input-text {
 	height:36px;
 	line-height:36px
 }
@@ -377,12 +378,7 @@ input[type=file] {
 	max-height:168px
 }
 .admin-textarea-xl {
-	width:100%;
-	height:90px
-}
-.admin-textarea-sm {
-	width:360px;
-	height:50px
+	width:100%
 }
 .admin-input-md {
 	width:90%
