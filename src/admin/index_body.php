@@ -36,12 +36,10 @@ else if ($dopost == 'setskin') {
 <table class="table table-borderless">
     <?php
     $userCatalogSql = '';
-    
     if (count($admin_catalogs) > 0) {
         $admin_catalog = join(',', $admin_catalogs);
         $userCatalogSql = "AND arc.typeid IN($admin_catalog) ";
     }
-    
     $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,12";
     $arcArr = array();
     $dsql->Execute('m', $query);
@@ -51,11 +49,10 @@ else if ($dopost == 'setskin') {
     }
     ?>
     <?php
-    if (count($arcArr) > 0)
-    {
+    if (count($arcArr) > 0) {
         foreach($arcArr as $row)
         {
-            if (trim($row['editcon'])==''){
+            if (trim($row['editcon'])=='') {
                 $row['editcon'] = 'archives_edit.php';
             }
             $rowarcrank = $row['arcrank']==-1? " <span class='btn btn-danger btn-xs'>未审核</span>":"";
