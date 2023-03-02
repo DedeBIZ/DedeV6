@@ -25,6 +25,16 @@
 			var swfu = null;
 			var vcc = 0;
 			var albums = [];
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("请输入文档标题");
+					return false;
+				}
+				if (document.form1.typeid.value == 0) {
+					ShowMsg("请选择文档栏目");
+					return false;
+				}
+			}
 		</script>
 	</head>
 	<body>

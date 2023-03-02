@@ -21,7 +21,7 @@
 		<script>
 			function checkSubmit() {
 				if (document.form1.title.value == "") {
-					ShowMsg("<?php echo $cInfos['titlename'];?>不能为空");
+					ShowMsg("请输入文档标题");
 					document.form1.title.focus();
 					return false;
 				}

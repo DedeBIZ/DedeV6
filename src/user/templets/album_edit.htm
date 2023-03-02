@@ -81,10 +81,10 @@
 								<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if ($cfg_album_style==1) echo " checked='checked'";?>> 多页多图显示（适用于表情等）</label>
 								<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if ($cfg_album_style==2) echo " checked='checked'";?>> 多页单图显示（幻灯）</label>
 								<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if ($cfg_album_style==3) echo " checked='checked'";?>> 多行多列显示（缩略图）</label>
-								<div id="spagelist" style="<?php if ($abinfo->GetAtt('value')!=2) echo 'display:none';?>">每页图片数：<input name="pagpicnum" id="pagpicnum" class="form-control d-inline-block w-25" value="<?php echo $abinfo->GetAtt('pagpicnum');?>"></div>
+								<div id="spagelist" style="<?php if ($abinfo->GetAtt('value')!=2) echo 'display:none';?>">每页图片数：<input name="pagpicnum" id="pagpicnum" class="form-control w-25" value="<?php echo $abinfo->GetAtt('pagpicnum');?>"></div>
 							</div>
 							<div class="form-group">
-								<span>图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control d-inline-block w-25 mr-2"></span>
+								<span>图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control w-25 mr-2"></span>
 								<button type="button" name="kkkup" id="kkkup2" class="btn btn-success btn-sm" onclick="MakeUpload(0);">增加</button>（最大60幅）
 							</div>
 							<div id="uploadfield"></div>
@@ -97,7 +97,7 @@
 							?>
 							<div><label><input type="checkbox" name="isokcheck<?php echo $j;?>" id="isokcheck<?php echo $j;?>" value="1" onclick="CheckSelTable(<?php echo $j;?>)" checked="1"> 显示隐藏图片<?php echo $j;?>选框</label></div>
 							<div id="seltb<?php echo $j;?>">
-								<p>本地上传：<input type="text" name="imgfile<?php echo $j;?>" class="form-control d-inline-block w-50 mr-2" placeholder="请输入网址"><span class="btn btn-success btn-sm">选择</span></p>
+								<p>本地上传：<input type="text" name="imgfile<?php echo $j;?>" class="form-control w-50 mr-2" placeholder="请输入网址"><span class="btn btn-success btn-sm">选择</span></p>
 								<p>
 									<div id="divpicview<?php echo $j;?>" class="divpre"></div>
 									<img src="<?php echo trim($ctag->GetInnerText());?>" id="picview<?php echo $j;?>" name="picview<?php echo $j;?>">

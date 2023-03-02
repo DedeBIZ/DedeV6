@@ -34,13 +34,13 @@ function ChangeSon()
 {
     //由于支持3级联动,所以这里需要对自己改变进行重构
     var emname = this.name.replace('_son', '');
-    if ( document.getElementById(emname+'_sec') ) {
+    if (document.getElementById(emname+'_sec')) {
         var oj = document.getElementById(emname + '_sec');
     } else {
         var oj  = document.createElement('select');
         oj.name = emname + '_sec';
         oj.id   = emname + '_sec';
-        oj.className = "form-control";
+        oj.className = "form-control admin-input-sm mr-2";
         oj.onchange = ChangeSec;
     }
     var v = this.options[this.selectedIndex].value;
@@ -92,13 +92,13 @@ function ChangeSec()
 function selNextSon()
 {
     var emname = this.name.replace('_top', '');
-    if ( document.getElementById(emname+'_son') ) {
+    if (document.getElementById(emname+'_son')) {
         var oj = document.getElementById(emname + '_son');
     } else {
         var oj  = document.createElement('select');
         oj.name = emname + '_son';
         oj.id   = emname + '_son';
-        oj.className = "form-control";
+        oj.className = "form-control admin-input-sm mr-2";
         oj.onchange = ChangeSon;
     }
     var v = this.options[this.selectedIndex].value;
@@ -139,7 +139,7 @@ function MakeTopSelect(emname, selvalue)
     var selObj = document.createElement("select");
     selObj.name = emname + '_top';
     selObj.id   = emname + '_top';
-    selObj.className = "form-control";
+    selObj.className = "form-control admin-input-sm mr-2";
     selObj.onchange = selNextSon;
     var selarr = eval('em_'+emname+'s');
     var topvalue = 0;
@@ -153,8 +153,7 @@ function MakeTopSelect(emname, selvalue)
         topvalue = selvalue;
     }
     //如果是小数,则依次取出顶级数值,二级数值以及三级数值
-    else if (!!(selvalue % 1))
-    {
+    else if (!!(selvalue % 1)) {
         secvalue = selvalue;
         sonvalue = Math.floor(selvalue);
         topvalue = sonvalue - (sonvalue % 500);
@@ -184,15 +183,14 @@ function MakeTopSelect(emname, selvalue)
     selObj = document.createElement("select");
     selObj.name = emname + '_son';
     selObj.id   = emname + '_son';
-    selObj.className = "form-control";
+    selObj.className = "form-control admin-input-sm mr-2";
     selObj.onchange = ChangeSon;
     aOption = document.createElement('OPTION');
     aOption.text = '请选择..';
     aOption.value = 0;
     selObj.options.add(aOption);
     //当大类有值输出子类
-    if (topvalue > 0)
-    {
+    if (topvalue > 0) {
         var selv = topvalue;
         var maxv = parseInt(topvalue) + 500;
         for (i = selv + 1; i < maxv; i++) {
@@ -221,7 +219,7 @@ function MakeTopSelect(emname, selvalue)
         selObj.onchange = ChangeSec;
         aOption = document.createElement('OPTION');
         aOption.text = '请选择..';
-        selObj.className = "form-control";
+        selObj.className = "form-control admin-input-sm mr-2";
         aOption.value = 0;
         selObj.options.add(aOption);
         var selv = sonvalue;

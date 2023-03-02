@@ -19,6 +19,13 @@
 		<script src="../static/web/js/cropper.min.js"></script>
 		<style>table{border-collapse:inherit}</style>
 		<script>
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("请输入专题标题");
+					document.form1.title.focus();
+					return false;
+				}
+			}
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800,600);
 				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);

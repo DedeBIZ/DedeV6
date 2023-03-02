@@ -25,6 +25,13 @@
 			var swfu = null;
 			var vcc = 0;
 			var albums = [];
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("请输入文档标题");
+					document.form1.title.focus();
+					return false;
+				}
+			}
 		</script>
 	</head>
 	<body>
@@ -294,7 +301,7 @@
 														$fhtml .= "<input type='hidden' name='imgddurl{$j}' value='{$litimg}'>";
 														$fhtml .= "<img src='{$litimg}' id='lit{$j}'>";
 														$fhtml .= "<div class='my-2'>标题：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' class='admin-input-sm'></div>";
-														$fhtml .= "<div><span class='btn btn-success btn-sm fileinput-button'>更换<input for='item{$j}' type='file' name='imgfile{$j}'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a></div>";
+														$fhtml .= "<div><span class='btn btn-success btn-sm fileinput-button'>更换<input type='file' name='imgfile{$j}' for='item{$j}' class='btnEdit'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a></div>";
 														$fhtml .= "</div>";
 														echo $fhtml;
 														$j++;

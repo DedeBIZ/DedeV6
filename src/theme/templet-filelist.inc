@@ -1,7 +1,7 @@
 advancedsearch.htm,高级搜索模板
 article_article.htm,文档模板
-article_default.htm,自定义文档模板
-article_default_sg.htm,自定义表单文档模板
+article_default.htm,默认文档模板
+article_default_sg.htm,默认表单文档模板
 article_image.htm,图片文档模板
 article_infos.htm,分类文档模板
 article_soft.htm,软件文档模板
@@ -17,14 +17,13 @@ index_infos.htm,分类封面模板
 index_soft.htm,软件封面模板
 list_article.htm,文档列表模板
 list_default.htm,默认列表模板
-list_default_sg.htm,默认列表表单模板
+list_default_sg.htm,默认表单列表模板
 list_free.htm,自由列表模板
 list_image.htm,图片列表模板
 list_infos.htm,分类列表模板
 list_soft.htm,软件列表模板
 list_spec.htm,专题列表模板
-list_shop.htm,商城列表模板 
 search.htm,搜索模板
+top.htm,顶部模板
 tag.htm,标签首页模板
 taglist.htm,标签文档列表模板
-top.htm,顶部模板
