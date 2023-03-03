@@ -172,7 +172,7 @@
 								echo "<option value='".$row->rank."'>".$row->membername."</option>";
 							}
 							?>
-						</select>（仅限制栏目里的文档浏览权限）
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -301,9 +301,7 @@
 								}
 								if ($arr['evalue']%500==0) {
 									echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
-								}
-								else if (preg_match("#\.#", $arr['evalue']))
-								{
+								} else if (preg_match("#\.#", $arr['evalue'])) {
 									echo "<option value='{$arr['evalue']}'{$selstr}>└─ {$arr['ename']}</option>";
 								} else {
 									echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
@@ -311,12 +309,13 @@
 							}
 							?>
 						</select>
-						<td colspan="2"></td>
+						<span>（支持多选）</span>
 					</td>
+					<td colspan="2"></td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<div class="alert alert-info mb-0">栏目文档是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div>
+						<div class="alert alert-info mb-0">栏目文案，应用企业简介之类，标签“{dede:field.content/}”调用</div>
 					</td>
 				</tr>
 				<tr>

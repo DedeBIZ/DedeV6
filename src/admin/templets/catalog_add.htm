@@ -185,7 +185,7 @@
 							<?php
 							$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0");
 							$dsql->Execute('cc');
-							while($row = $dsql->GetObject('cc')){
+							while($row = $dsql->GetObject('cc')) {
 								if ($corank==$row->rank) echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
 								else {
 									if ($corank==0){
@@ -194,7 +194,7 @@
 								}
 							}
 							?>
-						</select>（仅限制栏目里的文档浏览权限）
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -340,11 +340,14 @@
 							}
 							?>
 						</select>
+						<span>（支持多选）</span>
 					</td>
 					<td colspan="2"></td>
 				</tr>
 				<tr>
-					<td colspan="4"><div class="alert alert-info mb-0">栏目文档是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div></td>
+					<td colspan="4">
+						<div class="alert alert-info mb-0">栏目文案，应用企业简介之类，标签“{dede:field.content/}”调用</div>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4"><?php GetEditor("content","","300","Default","print","false");?></td>
