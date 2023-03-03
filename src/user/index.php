@@ -27,9 +27,9 @@ if ($uid == '') {
             $ddsize = 0;
         }
         require_once(DEDEINC.'/channelunit.func.php');
-        //最新文档20条
+        //显示最新文档
         $archives = array();
-        $sql = "SELECT arc.*, category.namerule, category.typedir, category.moresite, category.siteurl, category.sitepath, mem.userid FROM `#@__archives` arc LEFT JOIN `#@__arctype` category ON category.id=arc.typeid LEFT JOIN `#@__member` mem ON mem.mid=arc.mid WHERE arc.arcrank > -1 ORDER BY arc.sortrank DESC LIMIT 20";
+        $sql = "SELECT arc.*, category.namerule, category.typedir, category.moresite, category.siteurl, category.sitepath, mem.userid FROM `#@__archives` arc LEFT JOIN `#@__arctype` category ON category.id=arc.typeid LEFT JOIN `#@__member` mem ON mem.mid=arc.mid WHERE arc.arcrank > -1 ORDER BY arc.sortrank DESC LIMIT 10";
         $dsql->SetQuery($sql);
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
