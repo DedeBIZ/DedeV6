@@ -60,14 +60,14 @@ function ReWriteConfigAuto()
     global $dsql;
     $configfile = DEDEDATA.'/config.cache.inc.php';
     if (!is_writeable($configfile)) {
-        echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数";
+        echo "配置文件<span class='text-primary'>{$configfile}</span>不支持写入，无法修改系统配置参数";
         //ClearAllLink();
         exit();
     }
     $fp = fopen($configfile, 'w');
     flock($fp, 3);
     fwrite($fp, "<"."?php\r\n");
-    $dsql->SetQuery("Select `varname`,`type`,`value`,`groupid` From `#@__sysconfig` order by aid asc ");
+    $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         if ($row['type'] == 'number') fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
@@ -81,8 +81,7 @@ function UpDateCatCache()
 {
     global $conn, $cfg_multi_site, $dbprefix;
     $cache1 = DEDEDATA."/cache/inc_catalog_base.inc";
-    $rs = mysql_query("Select id,reid,channeltype,issend,typename From `".$dbprefix."arctype`", $conn);
-
+    $rs = mysql_query("SELECT id,reid,channeltype,issend,typename FROM `".$dbprefix."arctype`", $conn);
     $fp1 = fopen($cache1, 'w');
     $phph = '?';
     $fp1Header = "<{$phph}php\r\nglobal \$cfg_Cs;\r\n\$cfg_Cs=array();\r\n";

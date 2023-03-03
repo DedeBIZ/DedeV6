@@ -21,7 +21,7 @@
 					<div class="row">
 						<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
-								{dede:arclist channelid='1' flag='f' row='6'}
+								{dede:arclist flag='f' row='6'}
 								<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
 								{/dede:arclist}
 							</ol>
@@ -109,8 +109,8 @@
 										</p>
 									</li>
 									{/dede:arclist}
-									{dede:arclist titlelen='60' limit='1,9'}
-									<li><a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>
+									{dede:arclist titlelen='50' limit='1,9'}
+									<li><a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a><span class="float-right">[field:pubdate function="MyDate('Y-m-d',@me)"/]</span></li>
 									{/dede:arclist}
 								</ul>
 							</div>
@@ -130,7 +130,6 @@
                     </div>
 					{dede:include comment='推荐文档' filename='widget_recommend.htm'/}
 					{dede:include comment='热点文档' filename='widget_hot.htm'/}
-					{dede:include comment='投票' filename='widget_vote.htm'/}
 				</div>
 			</div>
 		</div>

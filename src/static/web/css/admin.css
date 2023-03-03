@@ -618,11 +618,11 @@ span.page-link {
 	float:right;
 	cursor:pointer
 }
+#timerange {
+	width:230px
+}
 @media (min-width:480px) {
 	.modal-dialog {
-		max-width:500px
-	}
+	max-width:500px
 }
-#timerange{
-	width: 230px;
 }

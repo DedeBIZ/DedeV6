@@ -283,48 +283,26 @@ function CkRemote() {
 }
 //载入指定宽高的Ajax窗体
 function LoadQuickDiv(e, surl, oname, w, h) {
-	if ($Nav() == 'IE') {
-		if (window.event) {
-			var posLeft = window.event.clientX - 20;
-			var posTop = window.event.clientY - 30;
-		} else {
-			var posLeft = e.clientX - 20;
-			var posTop = e.clientY + 30;
-		}
-	} else {
-		var posLeft = e.pageX - 20;
-		var posTop = e.pageY - 30;
-	}
-	posTop += MyGetScrollTop();
-	posLeft = posLeft - 400;
-	//固定位置的高度
-	if (fixupPos) {
-		posLeft = posTop = 50;
-	}
 	var newobj = $Obj(oname);
 	if (!newobj) {
 		newobj = document.createElement("DIV");
 		newobj.id = oname;
-		newobj.style.position = 'absolute';
+		newobj.style.position = 'fixed';
 		newobj.className = 'pubdlg';
 		newobj.style.width = w;
 		newobj.style.height = h + 30;
 		document.body.appendChild(newobj);
 	}
-	if (posTop > 500) posTop = 500;
-	if (posLeft < 50) posLeft = 50;
 	newobj.style.minWidth = "500px";
-	newobj.style.top = posTop + "px";
-	newobj.style.left = posLeft + "px";
+	newobj.style.top = "50%";
+	newobj.style.left = "50%";
+	newobj.style.transform = "translate(-50%, -50%)";
 	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
 	newobj.style.display = 'block';
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
 	});
 	fixupPos = false;
-}
-function MyGetScrollTop() {
-	return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 }
 //通用事件获取接口
 function getEvent() {

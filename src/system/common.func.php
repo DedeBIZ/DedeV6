@@ -528,11 +528,11 @@ function GetMemberInfos($fields, $mid)
 {
     global $dsql;
     if ($mid <= 0) {
-        $revalue = "Error";
+        $revalue = "张三";
     } else {
         $row=$dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}'");
         if (!is_array($row)) {
-            $revalue = "未命名";
+            $revalue = "李四";
         } else {
             $revalue = $row[$fields];
         }

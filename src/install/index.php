@@ -26,18 +26,15 @@ foreach(Array('_GET','_POST','_COOKIE') as $_request)
     foreach($$_request as $_k => $_v) ${$_k} = RunMagicQuotes($_v);
 }
 require_once(DEDEINC.'/common.func.php');
-if (file_exists(INSLOCKFILE))
-{
+if (file_exists(INSLOCKFILE)) {
     die(DedeAlert("完成软件安装，如果您要重新安装，安装目录找到install文件夹，然后删除install_lock.txt文件",ALERT_DANGER));
 }
-if (empty($step))
-{
+if (empty($step)) {
     $step = 1;
 }
 $proto = IsSSL()? "https://" : "http://";
 //使用协议书
-if ($step==1)
-{
+if ($step==1) {
     $arrMsg = array();
     if (version_compare(PHP_VERSION, '5.3.0', '<')) {
         $arrMsg[] = "PHP请升级到5.3及以上版本，低版本PHP环境无法正常使用本系统";
@@ -81,8 +78,7 @@ if ($step==1)
     exit();
 }
 //普通安装
-else if ($step==2)
-{
+else if ($step==2) {
     $dbtype = empty($dbtype)? "mysql" : $dbtype;
     $dblang = "utf8";
     if (!in_array($dbtype,array("mysql", "sqlite"))) {
@@ -100,11 +96,10 @@ else if ($step==2)
     $dbname = empty($dbname)? $dfDbname : $dbname;
     $adminuser = empty($adminuser)? "admin" : $adminuser;
     $adminpwd = empty($adminpwd)? "admin" : $adminpwd;
-    $webname = empty($webname)? "穆云智能科技" : $webname;
+    $webname = empty($webname)? "我的网站" : $webname;
     $baseurl = empty($baseurl)? $dfbaseurl : $baseurl;
     $cmspath = empty($cmspath)? $dfbasepath : $cmspath;
-    if ( $dbtype == 'sqlite' )
-    {
+    if ($dbtype == 'sqlite') {
         $db = new SQLite3(DEDEDATA.'/'.$dbname.'.db');
     } else {
         $dbtype = 'mysql';
@@ -153,8 +148,7 @@ else if ($step==2)
     $fp = fopen(DEDEDATA.'/config.cache.bak.php','w');
     fwrite($fp,$configStr2);
     fclose($fp);
-    if ($mysqlVersion >= 4.1)
-    {
+    if ($mysqlVersion >= 4.1) {
         $sql4tmp = "ENGINE=MyISAM DEFAULT CHARSET=".$dblang;
     }
     //创建数据表
@@ -163,12 +157,10 @@ else if ($step==2)
     while(!feof($fp))
     {
         $line = rtrim(fgets($fp,1024));
-        if (preg_match("#;$#", $line))
-        {
+        if (preg_match("#;$#", $line)) {
             $query .= $line."\n";
             $query = str_replace('#@__',$dbprefix,$query);
-            if ( $dbtype == 'sqlite' )
-            {
+            if ($dbtype == 'sqlite') {
                 $query = preg_replace('/character set (.*?) /i','',$query);
                 $query = preg_replace('/unsigned/i','',$query);
                 $query = str_replace('TYPE=MyISAM','',$query);
@@ -182,22 +174,19 @@ else if ($step==2)
                 $query = preg_replace('/,([\t\s ]+)UNIQUE KEY(.*?);/',');',$query);
                 $query = preg_replace('/set\(([^\)]*?)\)/','varchar',$query);
                 $query = preg_replace('/enum\(([^\)]*?)\)/','varchar',$query);
-                if ( preg_match("/PRIMARY KEY AUTOINCREMENT/",$query) )
-                {
+                if (preg_match("/PRIMARY KEY AUTOINCREMENT/",$query)) {
                     $query = preg_replace('/,([\t\s ]+)PRIMARY KEY([\t\s ]+)\(`([0-9a-zA-Z]+)`\)/i','',$query);
                 }
                 $db->exec($query);
             } else {
-                if (preg_match('#CREATE#i', $query))
-                {
+                if (preg_match('#CREATE#i', $query)) {
                     $rs = mysql_query(preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query),$conn);
                 } else {
                     $rs = mysql_query($query,$conn);
                 }
             }
             $query='';
-        } else if (!preg_match("#^(\/\/|--)#", $line))
-        {
+        } else if (!preg_match("#^(\/\/|--)#", $line)) {
             $query .= $line;
         }
     }
@@ -208,10 +197,8 @@ else if ($step==2)
     while(!feof($fp))
     {
         $line = rtrim(fgets($fp, 1024));
-        if (preg_match("#;$#", $line))
-        {
-            if ( $dbtype == 'sqlite' )
-            {
+        if (preg_match("#;$#", $line)) {
+            if ($dbtype == 'sqlite') {
                 $query .= $line;
                 $query = str_replace('#@__',$dbprefix,$query);
                 $query = str_replace("\'","\"",$query);
@@ -270,8 +257,7 @@ else if ($step==2)
     exit();
 }
 //检测数据库是否有效
-else if ($step==10)
-{
+else if ($step==10) {
     header("Pragma:no-cache\r\n");
     header("Cache-Control:no-cache\r\n");
     header("Expires:0\r\n");

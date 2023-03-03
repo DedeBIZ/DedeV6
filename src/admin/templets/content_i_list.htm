@@ -56,9 +56,7 @@
 							<option value="lastpost">最后评论</option>
 						</select>
 					</td>
-					<td width="200">
-						<input autocomplete="off" value="<?php echo $strTimerange;?>" type="text" name="timerange" id="timerange" class="admin-input-sm">
-					</td>
+					<td width="170"><input type="text" name="timerange" autocomplete="off" value="<?php echo $strTimerange;?>" id="timerange" class="admin-input-sm"></td>
 					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 				</tr>
 			</table>
@@ -140,7 +138,6 @@
 				$('#timerange').on('apply.daterangepicker', function(ev, picker) {
 					$(this).val(picker.startDate.format('YYYY-MM-DD HH:mm') + ' - ' + picker.endDate.format('YYYY-MM-DD HH:mm'));
 				});
-
 				$('#timerange').on('cancel.daterangepicker', function(ev, picker) {
 					$(this).val('');
 				});

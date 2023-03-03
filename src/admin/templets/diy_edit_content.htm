@@ -28,9 +28,9 @@
 							   $allowhtml = array('htmltext');
 								if ($row[$field]=='') continue;
 								if ($fielddata[1]=='img') {
-									$row[$field] = "<input type='file' name='photo'> <a href='{$row[$field]}' target='_blank'><i class='fa fa-picture-o'></i> 浏览原图</a> <a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field'>删除原图</a>";
+									$row[$field] = "<input type='file' name='photo'> <a href='{$row[$field]}' target='_blank' class='btn btn-light btn-sm'>浏览原图</a><a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field' class='btn btn-light btn-sm'>删除原图</a>";
 								} else if ($fielddata[1]=='addon') {
-									$row[$field] = "<input type='file' name='file'> <a href='{$row[$field]}' target='_blank'><i class='fa fa-file-text-o'></i> 浏览附件</a> <a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field'>删除附件</a>";
+									$row[$field] = "<input type='file' name='file'> <a href='{$row[$field]}' target='_blank' class='btn btn-light btn-sm'>浏览附件</a><a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field' class='btn btn-danger btn-sm'>删除附件</a>";
 								} else {
 									if (!in_array($fielddata[1],$allowhtml)) {
 										$row[$field] = dede_htmlspecialchars($row[$field]);
