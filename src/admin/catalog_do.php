@@ -16,7 +16,7 @@ if (empty($dopost)) {
 $cid = empty($cid) ? 0 : intval($cid);
 $unittype = empty($unittype) ? 0 : intval($unittype);
 $channelid = empty($channelid) ? 0 : intval($channelid);
-//增加文档
+//添加文档
 if ($dopost == "addArchives") {
     //默认文档调用发布表单
     if (empty($cid) && empty($channelid)) {

@@ -176,7 +176,7 @@ class DedeTagParse
     {
         global $cfg_disable_funs;
         $cfg_disable_funs = isset($cfg_disable_funs) ? $cfg_disable_funs : 'phpinfo,eval,exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,file_put_contents,fsockopen,fopen,fwrite';
-        //模板引擎增加disable_functions
+        //模板引擎添加disable_functions
         if (defined('DEDEDISFUN')) {
             $tokens = token_get_all_nl('<?php'.$str."\n\r?>");
             $disabled_functions = explode(',', $cfg_disable_funs);

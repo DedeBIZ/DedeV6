@@ -26,7 +26,7 @@ if ($dopost == 'save') {
     $dtime = time();
     $query = "INSERT INTO `#@__flink` (sortrank,url,webname,logo,msg,email,typeid,dtime,ischeck) VALUES ('50','$url','$webname','$logo','$msg','$email','$typeid','$dtime','0')";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg('成功增加一个链接，但需要审核后才能显示', 'flink.php');
+    ShowMsg('成功添加一个链接，但需要审核后才能显示', 'flink.php');
     exit;
 } elseif ($dopost == 'add') {
     //显示模板简单PHP文件

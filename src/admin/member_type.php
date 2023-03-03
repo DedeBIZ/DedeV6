@@ -33,7 +33,7 @@ if ($dopost == "save") {
             $dsql->ExecuteNoneQuery($query);
         }
     }
-    //增加新记录
+    //添加新记录
     if (isset($check_new) && $pname_new != '') {
         $query = "INSERT INTO `#@__member_type` (`rank`,pname,money,exptime) VALUES ('{$rank_new}','{$pname_new}','{$money_new}','{$exptime_new}');";
         $dsql->ExecuteNoneQuery($query);

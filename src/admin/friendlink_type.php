@@ -28,7 +28,7 @@ if ($dopost == "save") {
             $dsql->ExecuteNoneQuery($query);
         }
     }
-    //增加新记录
+    //添加新记录
     if (isset($check_new) && $pname_new != '') {
         $pname_new = HtmlReplace($pname_new, -1);
         $query = "INSERT INTO `#@__flinktype` (typename) VALUES ('{$pname_new}');";

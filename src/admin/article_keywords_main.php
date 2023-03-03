@@ -46,7 +46,7 @@ if ($dopost == 'saveall') {
     ShowMsg("完成指定的修改", $ENV_GOBACK_URL);
     exit();
 }
-//增加关键词
+//添加关键词
 else if ($dopost == 'add') {
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "-1" : $_COOKIE['ENV_GOBACK_URL'];
     $keyword = trim($keyword);
@@ -62,7 +62,7 @@ else if ($dopost == 'add') {
     }
     $inquery = "INSERT INTO `#@__keywords`(keyword,`rank`,sta,rpurl) VALUES ('$keyword','$rank','1','$rpurl');";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功增加一个关键词", $ENV_GOBACK_URL);
+    ShowMsg("成功添加一个关键词", $ENV_GOBACK_URL);
     exit();
 }
 if (empty($keyword)) {

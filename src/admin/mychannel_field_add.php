@@ -46,7 +46,7 @@ if ($action == 'save') {
     $rs = $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` ADD $ntabsql ");
     if (!$rs) {
         $gerr = $dsql->GetError();
-        ShowMsg("增加字段失败，错误提示为：".$gerr, "javascript:;");
+        ShowMsg("添加字段失败，错误提示为：".$gerr, "javascript:;");
         exit();
     }
     //检测旧配置信息，并替换为新配置
@@ -72,7 +72,7 @@ if ($action == 'save') {
         ShowMsg("保存节点配置出错".$grr, "javascript:;");
         exit();
     }
-    ShowMsg("成功增加一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
+    ShowMsg("成功添加一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
 //检测模型相关信息，并初始化相关数据

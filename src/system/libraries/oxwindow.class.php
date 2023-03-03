@@ -49,7 +49,7 @@ class OxWindow
         $this->myWin .= "<form name='$formname' method='$formmethod' onSubmit='return CheckSubmit();' action='$formaction'>";
     }
     /**
-     *  增加隐藏域
+     *  添加隐藏域
      *
      * @param     string  $iname  隐藏域名称
      * @param     string  $ivalue  隐藏域值
@@ -69,7 +69,7 @@ class OxWindow
         $this->myWin .= "<table width='100%' cellpadding='3' cellspacing='1'>";
     }
     /**
-     *  增加一个两列的行
+     *  添加一个两列的行
      *
      * @access    public
      * @param     string  $iname  名称
@@ -84,7 +84,7 @@ class OxWindow
         $this->myWinItem .= "</tr>";
     }
     /**
-     *  增加一个单列的消息行
+     *  添加一个单列的消息行
      *
      * @access    public
      * @param     string  $ivalue  短消息值
@@ -109,7 +109,7 @@ class OxWindow
         $this->myWinItem .= "</tr>";
     }
     /**
-     *  增加单列的标题行
+     *  添加单列的标题行
      *
      * @access    public
      * @param     string  $title  标题
@@ -143,7 +143,7 @@ class OxWindow
         }
     }
     /**
-     *  增加自定义JS脚本
+     *  添加自定义JS脚本
      *
      * @param     string  $scripts
      * @return    void

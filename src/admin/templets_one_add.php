@@ -31,14 +31,14 @@ if ($dopost == "save") {
     }
     $inQuery = "INSERT INTO `#@__sgpage`(title,keywords,description,template,likeid,ismake,filename,uptime,body) VALUES ('$title','$keywords','$description','$template','$likeid','$ismake','$filename','$uptime','$body'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("增加页面失败，请检文档是否有问题", "-1");
+        ShowMsg("添加页面失败，请检文档是否有问题", "-1");
         exit();
     }
     $id = $dsql->GetLastID();
     include_once(DEDEINC."/archive/sgpage.class.php");
     $sg = new sgpage($id);
     $sg->SaveToHtml();
-    ShowMsg("成功增加一个页面", "templets_one.php");
+    ShowMsg("成功添加一个页面", "templets_one.php");
     exit();
 }
 $row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage`");

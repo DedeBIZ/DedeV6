@@ -41,8 +41,24 @@
 					<td><input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $row['table'];?>" disabled="1">（自定义表单数据表创建后不可修改表名）</td>
 				</tr>
 				<tr>
-					<td>模型字段配置：</td>
-					<td><button type="button" name="fset" id="fset" class="btn btn-success btn-sm" onclick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'">添加新字段</button></td>
+					<td>列表模板：</td>
+					<td><input type="text" name="listtemplate" id="listtemplate" class="admin-input-sm" value="<?php echo $row['listtemplate'];?>"></td>
+				</tr>
+				<tr>
+					<td>文档模板：</td>
+					<td><input type="text" name="viewtemplate" id="viewtemplate" class="admin-input-sm" value="<?php echo $row['viewtemplate'];?>"></td>
+				</tr>
+				<tr>
+					<td>发布模板：</td>
+					<td><input type="text" name="posttemplate" id="posttemplate" class="admin-input-sm" value="<?php echo $row['posttemplate'];?>"></td>
+				</tr>
+				<tr>
+					<td>前台列表和文档页公开：</td>
+					<td>
+						<label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>> 完全公开</label>
+						<label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>> 公开审核过的</label>
+						<label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : '';?>> 不公开</label>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -101,24 +117,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>列表模板：</td>
-					<td><input type="text" name="listtemplate" id="listtemplate" class="admin-input-sm" value="<?php echo $row['listtemplate'];?>"></td>
-				</tr>
-				<tr>
-					<td>文档模板：</td>
-					<td><input type="text" name="viewtemplate" id="viewtemplate" class="admin-input-sm" value="<?php echo $row['viewtemplate'];?>"></td>
-				</tr>
-				<tr>
-					<td>发布模板：</td>
-					<td><input type="text" name="posttemplate" id="posttemplate" class="admin-input-sm" value="<?php echo $row['posttemplate'];?>"></td>
-				</tr>
-				<tr>
-					<td>前台列表和文档页公开：</td>
-					<td>
-						<label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>> 完全公开</label>
-						<label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>> 公开审核过的</label>
-						<label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : '';?>> 不公开</label>
-					</td>
+					<td colspan="2"><button type="button" name="fset" id="fset" class="btn btn-success btn-sm" onclick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'">添加新字段</button></td>
 				</tr>
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2" align="center">

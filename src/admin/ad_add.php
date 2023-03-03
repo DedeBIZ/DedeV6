@@ -55,7 +55,7 @@ if ($dopost == "save") {
     }
     $query = "INSERT INTO `#@__myad` (clsid,typeid,tagname,adname,timeset,starttime,endtime,normbody,expbody) VALUES ('$clsid','$typeid','$tagname','$adname','$timeset','$starttime','$endtime','$normbody','$expbody');";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功增加一个广告", "ad_main.php");
+    ShowMsg("成功添加一个广告", "ad_main.php");
     exit();
 }
 $dsql->Execute('dd', 'SELECT * FROM `#@__myadtype` ORDER BY id DESC');

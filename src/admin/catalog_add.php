@@ -120,7 +120,7 @@ if ($dopost == 'quick') {
         }
     }
     UpDateCatCache();
-    ShowMsg('成功增加指定栏目', 'catalog_main.php');
+    ShowMsg('成功添加指定栏目', 'catalog_main.php');
     exit();
 } else if ($dopost == 'save') {
     $smalltypes = '';

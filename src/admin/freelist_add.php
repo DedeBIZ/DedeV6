@@ -1,6 +1,6 @@
 <?php
 /**
- * 增加自由列表
+ * 添加自由列表
  *
  * @version        $id:freelist_add.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
@@ -39,7 +39,7 @@ if (empty($dopost)) {
     $listTag = addslashes($listTag);
     $inquery = "INSERT INTO `#@__freelist` (`title`,`namerule`  , `listdir`,`defaultpage`,`nodefault`,`templet`,`edtime`, `maxpage`,`click`,`listtag`,`keywords`,`description`) VALUES ('$title','$namerule','$listdir','$defaultpage','$nodefault','$templet','$edtime','$maxpage','0','$listTag','$keywords','$description');";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功增加一个自由列表", "freelist_main.php");
+    ShowMsg("成功添加一个自由列表", "freelist_main.php");
     exit();
 }
 ?>

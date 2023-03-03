@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//增加权限检查
+//添加权限检查
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEADMIN."/inc/inc_admin_channel.php");
 if (empty($action)) $action = '';

@@ -125,7 +125,7 @@ function GetFormItem($ctag)
  * @param     string  $dtype  类型
  * @param     int  $aid  文档id
  * @param     string  $job  操作类型
- * @param     string  $addvar  增加值
+ * @param     string  $addvar  添加值
  * @return    string
  */
 function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')

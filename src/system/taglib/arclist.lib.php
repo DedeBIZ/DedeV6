@@ -24,7 +24,7 @@ function lib_arclist(&$ctag, &$refObj)
     $tagid = '';
     $tagname = $ctag->GetTagName();
     $channelid = $ctag->GetAtt('channelid');
-    //增加对分页文档的处理
+    //添加对分页文档的处理
     $pagesize = $ctag->GetAtt('pagesize');
     if ($pagesize == '') {
         $multi = 0;
@@ -240,7 +240,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - ".$arcid.")";
     else if ($orderby == 'lastpost') $ordersql = " ORDER BY arc.lastpost $orderWay";
     else if ($orderby == 'scores') $ordersql = " ORDER BY arc.scores $orderWay";
-    //增加按好评数和差评数调用
+    //添加按好评数和差评数调用
     else if ($orderby == 'goodpost') $ordersql = " order by arc.goodpost $orderWay";
     else if ($orderby == 'badpost') $ordersql = " order by arc.badpost $orderWay";
     else if ($orderby == 'rand') $ordersql = " ORDER BY rand()";

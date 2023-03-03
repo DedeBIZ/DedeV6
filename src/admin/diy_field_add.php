@@ -1,6 +1,6 @@
 <?php
 /**
- * 增加自定义表单字段
+ * 添加自定义表单字段
  *
  * @version        $id:diy_field_add.php 18:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//增加权限检查
+//添加权限检查
 require_once(DEDEADMIN.'/inc/inc_admin_channel.php');
 if (empty($action)) $action = '';
 $mysql_version = $dsql->GetVersion();
@@ -36,7 +36,7 @@ if ($action == 'save') {
     $rs = $dsql->ExecuteNoneQuery(" ALTER TABLE `$trueTable` ADD  $ntabsql ");
     if (!$rs) {
         $gerr = $dsql->GetError();
-        ShowMsg("增加字段失败，错误提示为：".$gerr, "javascript:;");
+        ShowMsg("添加字段失败，错误提示为：".$gerr, "javascript:;");
         exit();
     }
     $ok = FALSE;
@@ -63,7 +63,7 @@ if ($action == 'save') {
         ShowMsg("保存节点配置出错".$grr, "javascript:;");
         exit();
     }
-    ShowMsg("成功增加一个字段", "diy_edit.php?diyid=$diyid");
+    ShowMsg("成功添加一个字段", "diy_edit.php?diyid=$diyid");
     exit();
 }
 //检测模型相关信息，并初始化相关数据

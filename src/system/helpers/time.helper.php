@@ -94,10 +94,10 @@ if (!function_exists('SubDay')) {
     }
 }
 /**
- *  增加天数
+ *  添加天数
  *
  * @param     int  $ntime  当前时间
- * @param     int  $aday   增加天数
+ * @param     int  $aday   添加天数
  * @return    int
  */
 if (!function_exists('AddDay')) {

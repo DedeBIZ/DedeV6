@@ -1,6 +1,6 @@
 <?php
 /**
- * 增加自定义标记
+ * 添加自定义标记
  *
  * @version        $id:mytag_add.php 15:35 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -27,7 +27,7 @@ if ($dopost == "save") {
     $endtime = GetMkTime($endtime);
     $inQuery = "INSERT INTO `#@__mytag` (typeid,tagname,timeset,starttime,endtime,normbody,expbody) VALUES ('$typeid','$tagname','$timeset','$starttime','$endtime','$normbody','$expbody'); ";
     $dsql->ExecuteNoneQuery($inQuery);
-    ShowMsg("成功增加一个自定义标记", "mytag_main.php");
+    ShowMsg("成功添加一个自定义标记", "mytag_main.php");
     exit();
 }
 $startDay = time();

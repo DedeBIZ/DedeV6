@@ -51,7 +51,7 @@ if ($keyword != '') {
     $whereSql .= " And (arc.title like '%$keyword%') ";
 }
 if ($cid != 0) $whereSql .= " And arc.typeid in (".GetSonIds($cid).")";
-//增加分类查询
+//添加分类查询
 if ($arcrank == '1') {
     $whereSql .= " And arc.arcrank >= 0";
 } else if ($arcrank == '-1') {

@@ -295,7 +295,7 @@ else if ($dopost == "checkArchives") {
         if (empty($typeInfos['addtable'])) {
             $typeInfos['maintable'] = '#@__archives';
         }
-        //增加单表模型判断
+        //添加单表模型判断
         if ($typeInfos['issystem'] == -1) {
             $typeInfos['maintable'] = $typeInfos['addtable'];
             $idtype = "aid";
@@ -672,7 +672,7 @@ else if ($dopost == "makekw") {
     ShowMsg("成功分析指定文档关键词", $ENV_GOBACK_URL);
     exit();
 }
-//批量增加属性
+//批量添加属性
 else if ($dopost == 'attsAdd') {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
@@ -702,7 +702,7 @@ else if ($dopost == 'attsAdd') {
             $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
-    ShowMsg("成功对选中文档增加指定属性", $ENV_GOBACK_URL);
+    ShowMsg("成功对选中文档添加指定属性", $ENV_GOBACK_URL);
     exit();
 }
 //批量删除属性
@@ -751,7 +751,7 @@ else if ($dopost == 'attsDel') {
 //获得批量属性处理Ajax窗体
 else if ($dopost == 'attsDlg') {
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
-    $dojobname = ($dojob == 'attsDel' ? '批量删除属性' : '批量增加属性');
+    $dojobname = ($dojob == 'attsDel' ? '批量删除属性' : '批量添加属性');
     AjaxHead();
     //输出Ajax可移动窗体
     $divname = 'attsDlg';

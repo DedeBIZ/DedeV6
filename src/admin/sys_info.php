@@ -57,7 +57,7 @@ if ($dopost == "save") {
     ShowMsg("成功修改站点配置", "sys_info.php");
     exit();
 }
-//增加新变量
+//添加新变量
 else if ($dopost == 'add') {
     CheckCSRF();
     if ($vartype == 'bool' && ($nvarvalue != 'Y' && $nvarvalue != 'N')) {

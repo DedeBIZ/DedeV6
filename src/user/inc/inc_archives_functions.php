@@ -198,7 +198,7 @@ function PrintAutoFieldsAdd(&$fieldset, $loadtype = 'all', $isprint = TRUE)
     }
     echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"".$dede_addonfields."\" />";
     echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"".$GLOBALS['csrf_token']."\" />";
-    //增加一个返回
+    //添加一个返回
     return $addonfieldsname;
 }
 /**

@@ -97,7 +97,7 @@ function echo_validate_image($config = array())
     }
     $_SESSION['securimage_code_value'] = strtolower($rndstring);
     $rndcodelen = strlen($rndstring);
-    //增加一些噪线
+    //添加一些噪线
     for ($i = 0; $i < 5; $i++) {
         $red = mt_rand(50, 255);
         $green = mt_rand(50, 255);

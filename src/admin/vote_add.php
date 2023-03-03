@@ -28,7 +28,7 @@ if ($dopost == "save" && $isarc == 0) {
     }
     $inQuery = "INSERT INTO `#@__vote` (votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("增加投票失败，请检查数据是否非法", "-1");
+        ShowMsg("添加投票失败，请检查数据是否非法", "-1");
         exit();
     }
     $aid = $dsql->GetLastID();
@@ -38,7 +38,7 @@ if ($dopost == "save" && $isarc == 0) {
     $vote_content = 'document.write("'.$vote_content.'");';
     $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
     file_put_contents($vote_file, $vote_content);
-    ShowMsg("成功增加一组投票", "vote_main.php");
+    ShowMsg("成功添加一组投票", "vote_main.php");
     exit();
 } else if ($dopost == "save" && $isarc == 1) {
     $starttime = GetMkTime($starttime);
@@ -53,7 +53,7 @@ if ($dopost == "save" && $isarc == 0) {
     }
     $inQuery = "INSERT INTO `#@__vote` (votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("增加投票失败，请检查数据是否非法", "-1");
+        ShowMsg("添加投票失败，请检查数据是否非法", "-1");
         exit();
     }
     $aid = $dsql->GetLastID();
@@ -64,7 +64,7 @@ if ($dopost == "save" && $isarc == 0) {
 
     $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
     file_put_contents($vote_file, $vote_content);
-    ShowMsg("成功增加一组投票", "vote_main.php?issel=1&aid=".$aid);
+    ShowMsg("成功添加一组投票", "vote_main.php?issel=1&aid=".$aid);
     exit();
 }
 $startDay = time();

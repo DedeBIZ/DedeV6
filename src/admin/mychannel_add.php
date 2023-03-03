@@ -80,7 +80,7 @@ if ($action == 'add') {
     }
     $inQuery = "INSERT INTO `#@__channeltype` (id,nid,typename,addtable,addcon,mancon,editcon,useraddcon,usermancon,usereditcon,fieldset,listfields,issystem,issend,arcsta,usertype,sendrank,needdes,needpic,titlename,onlyone,dfcid) VALUES ('$id','$nid','$typename','$addtable','$addcon','$mancon','$editcon','$useraddcon','$usermancon','$usereditcon','$fieldset','$listfields','$issystem','$issend','$arcsta','$usertype','$sendrank','$needdes','$needpic','$titlename','$onlyone','$dfcid');";
     $dsql->ExecuteNoneQuery($inQuery);
-    ShowMsg("成功增加一个栏目模型", "mychannel_edit.php?id=".$id);
+    ShowMsg("成功添加一个栏目模型", "mychannel_edit.php?id=".$id);
     exit();
 }
 $row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id DESC LIMIT 0,1 ");

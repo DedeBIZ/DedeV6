@@ -63,7 +63,7 @@ class DedeVote
         }
     }
     /**
-     *  增加指定的投票节点的票数
+     *  添加指定的投票节点的票数
      *
      * @access    public
      * @param     int    $aid  投票ID

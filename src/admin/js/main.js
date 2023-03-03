@@ -66,12 +66,6 @@ function HideObj(objname) {
 	if (obj == null) return false;
 	obj.style.display = "none";
 }
-function ShowItem1() {
-	ShowObj('needset'); ShowObj('head1'); HideObj('head2'); HideObj('adset'); ShowObj('votehead');
-}
-function ShowItem2() {
-	ShowObj('head2'); ShowObj('adset'); HideObj('voteset'); HideObj('head1'); HideObj('needset'); HideObj('votehead');
-}
 function SeePic(img, f) {
 	if (f.value != '') img.src = f.value;
 }
@@ -167,7 +161,7 @@ function PutWriter(str) {
 	$Obj('mywriter').style.display = 'none';
 	ChangeFullDiv('hide');
 }
-//增加选择投票文档
+//添加选择投票文档
 function PutVote(str) {
 	var ovote = $Obj('voteid');
 	if (ovote) {

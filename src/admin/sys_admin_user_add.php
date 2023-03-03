@@ -60,7 +60,7 @@ if ($dopost == 'add') {
     $adminquery = "Insert Into `#@__member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`)
         VALUES ('$mid','10','0','{$uname}的空间','','person','',''); ";
     $dsql->ExecuteNoneQuery($adminquery);
-    ShowMsg('成功增加一个会员', 'sys_admin_user.php');
+    ShowMsg('成功添加一个会员', 'sys_admin_user.php');
     exit();
 }
 $randcode = mt_rand(10000, 99999);

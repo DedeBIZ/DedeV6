@@ -88,7 +88,7 @@ class ChannelUnit
      * @access    public
      * @param     string  $fname  字段名称
      * @param     string  $fvalue  字段值
-     * @param     string  $addvalue  增加值
+     * @param     string  $addvalue  添加值
      * @return    string
      */
     function MakeField($fname, $fvalue, $addvalue = '')

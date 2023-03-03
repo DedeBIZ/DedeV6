@@ -237,7 +237,7 @@ else if ($step==2) {
         $apwd = password_hash($adminpwd, PASSWORD_BCRYPT);
         $upwd = password_hash($adminpwd, PASSWORD_BCRYPT);
     }
-    //增加管理员帐号
+    //添加管理员帐号
     $adminquery = "INSERT INTO `{$dbprefix}admin` (`id`,`usertype`,`userid`,`$pfd`,`uname`,`tname`,`email`,`typeid`,`logintime`,`loginip`) VALUES (1,10,'$adminuser','".$apwd."','admin','','',0,'".time()."','127.0.0.1');";
     $dbtype == 'sqlite'? $db->exec($adminquery) : mysql_query($adminquery,$conn);
     //关连前台会员帐号

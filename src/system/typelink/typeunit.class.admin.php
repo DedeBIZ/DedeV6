@@ -114,7 +114,7 @@ class TypeUnit
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
-                echo "<a href='catalog_add.php?id={$id}' title='增加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
+                echo "<a href='catalog_add.php?id={$id}' title='添加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i></a>";
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></a>";
@@ -127,7 +127,7 @@ class TypeUnit
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
-                echo "<a href='catalog_add.php?id={$id}' title='增加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
+                echo "<a href='catalog_add.php?id={$id}' title='添加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i></a>";
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></a>";
@@ -197,7 +197,7 @@ class TypeUnit
                     echo "</td><td align='right'>";
                     echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
-                    echo "<a href='catalog_add.php?id={$id}' title='增加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
+                    echo "<a href='catalog_add.php?id={$id}' title='添加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i></a>";
                     echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i></a>";
                     echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></a>";
@@ -211,7 +211,7 @@ class TypeUnit
                     echo "</td><td align='right'>";
                     echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
-                    echo "<a href='catalog_add.php?id={$id}' title='增加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
+                    echo "<a href='catalog_add.php?id={$id}' title='添加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改' class='btn btn-light btn-sm'><i class='fa fa-pencil-square-o'></i></a>";
                     echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i></a>";
                     echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></a>";
