@@ -51,13 +51,13 @@
 			</tr>
 			<tr>
 				<td>
-					<div class="alert alert-info mb-0">
+					<div class="alert alert-info">
 						<ul>
-							<?php echo $alter;?>
 							<li>检测结果：结果仅供参考，请务必查看源码后才删除非法文件</li>
 							<li>安全建议：1、有条件的会员把data、system、theme修改为不可对外浏览，static、a目录设置为不允许执行脚本，其它目录禁止写入，系统更安全；2、本检测程以开发模式为标准，如果您的网站目录包含其它系统，此检测程序可能会产生错误判断；3、检测程序会跳过对模板缓存目录的检测，为了安全起见，检测完成后建议清空模板缓存</li>
 						</ul>
 					</div>
+					<?php echo $alter;?>
 				</td>
 			</tr>
 			<tr>
@@ -73,7 +73,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td id="messagetd" valign="top"></td>
+				<td id="messagetd"></td>
 			</tr>
 		</table>
 	</body>

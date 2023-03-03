@@ -25,7 +25,7 @@ foreach ($filelist as $key => $ff) {
 }
 $alter = "";
 if (count($offFiles) == 0) {
-    $alter = DedeAlert('<li>与官方文件服务器通信失败，校验时候无法保证本地文件和同官方文件服务器是否一致</li>', ALERT_DANGER);
+    $alter = DedeAlert('与官方文件服务器通信失败，校验时候无法保证本地文件和同官方文件服务器是否一致', ALERT_DANGER);
 }
 function TestOneFile($f)
 {
