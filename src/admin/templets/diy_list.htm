@@ -41,7 +41,7 @@
 						if ($fielddata[1]=='img') {
 							$fields[$field] = "<a href='{$fields[$field]}' target='_blank' class='btn btn-light btn-sm'>图片附件</a>";
 						} else if ($fielddata[1]=='addon') {
-						$fields[$field] = "<a href='{$fields[$field]}' target='_blank' class='btn btn-light btn-sm'>其它附件</a>";
+						$fields[$field] = "<a href='../apps/jump.php?url={$fields[$field]}' target='_blank' class='btn btn-light btn-sm'>其它附件</a>";
 						} else {
 							if (!in_array($fielddata[1],$allowhtml)) {
 								$fields[$field] = dede_htmlspecialchars($fields[$field]);
@@ -61,7 +61,7 @@
 						<label><input type="radio" name="action" value="check"> 审核</label>
 						<label class="mr-2 ml-2"><input type="radio" name="action" value="delete"> 删除</label>
 						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
-						<a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
+						<a href="../apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
 					</td>
 				</tr>
 				<tr>

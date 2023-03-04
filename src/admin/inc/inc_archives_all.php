@@ -178,7 +178,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
         }
         $iurl = trim(str_replace($GLOBALS['cfg_basehost'], "", $iurl));
         $imgurl = "{dede:img text='' width='' height=''} ".$iurl." {/dede:img}";
-        if (preg_match("#^http:\/\/#i", $iurl) && $GLOBALS['isUrlOpen']) {
+        if (preg_match("#^(http|https):\/\/#i", $iurl) && $GLOBALS['isUrlOpen']) {
             //远程图片
             $reimgs = "";
             if ($isUrlOpen) {

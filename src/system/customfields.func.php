@@ -219,7 +219,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         CloseFtp();
         return $filename;
     } else if ($dtype == 'img' || $dtype == 'imgfile') {
-        if (preg_match("#[\\|/]static[\\|/]userup#", $dvalue)) return $dvalue;
+        if (preg_match("#[\\|/]static[\\|/]userup#", $dvalue)) return addslashes($dvalue);
         if ($admintype == 'diy') {
             $iurl = MemberUploads($fieldname, '', 0, 'image', '', -1, -1, false);
             return $iurl;
@@ -264,7 +264,9 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         }
         return addslashes($imgurl);
     } else if ($dtype == 'addon' && $admintype == 'diy') {
-        if (preg_match("#[\\|/]uploads[\\|/]userup#", $dvalue)) return $dvalue;
+        if ($admintype == 'diy') {
+            return addslashes($dvalue);
+        }
         $dvalue = MemberUploads($fieldname, '', 0, 'addon', '', -1, -1, false);
         return $dvalue;
     } else {
