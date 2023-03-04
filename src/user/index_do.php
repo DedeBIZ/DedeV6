@@ -39,7 +39,7 @@ if ($fmdo == 'sendMail') {
         $client->Close();
     } else {
         if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server)) {
-            $mailtype = 'TXT';
+            $mailtype = 'HTML';
             require_once(DEDEINC.'/libraries/mail.class.php');
             $smtp = new smtp($cfg_smtp_server, $cfg_smtp_port, true, $cfg_smtp_usermail, $cfg_smtp_password);
             $smtp->debug = false;
@@ -48,7 +48,7 @@ if ($fmdo == 'sendMail') {
             @mail($cfg_ml->fields['email'], $mailtitle, $mailbody, $headers);
         }
     }
-    ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收', '/user');
+    ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收', 'index.php');
     exit();
 } else if ($fmdo == 'checkMail') {
     $mid = intval($mid);

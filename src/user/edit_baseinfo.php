@@ -81,7 +81,8 @@ if ($dopost == 'save') {
                     ShowMsg('邮箱格式不正确', '-1');
                     exit();
                 } else {
-                    $addupquery .= ",email='$email'";
+                    $addupquery .= ",email='$email',spacesta='-10'";
+
                 }
             }
         }
