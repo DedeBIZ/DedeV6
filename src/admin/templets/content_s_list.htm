@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/list.js"></script>
@@ -35,6 +36,7 @@
 							<?php echo $optionarr?>
 						</select>
 					</td>
+					<td width="240"><input type="text" name="timerange" autocomplete="off" value="<?php echo $strTimerange;?>" id="timerange" class="admin-input-md"></td>
 					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 				</tr>
 			</table>
