@@ -38,13 +38,15 @@ if ($dopost == "ok") {
     else if ($step == 3) {
         echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
-        echo DedeAlert("成功更新arclist调用缓存，准备清理过期会员浏览历史", ALERT_INFO);
+        $msg = array();
+        $msg[] = "成功更新arclist调用缓存，准备清理过期会员浏览历史";
         $oldtime = time() - (90 * 24 * 3600);
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_pms` WHERE sendtime<'$oldtime' ");
-        echo DedeAlert("成功清理过期短信，准备修正错误文档，这可能要占较长的时间", ALERT_INFO);
+        $msg[] = "成功清理过期短信，准备修正错误文档，这可能要占较长的时间";
         $limit = date('Ymd', strtotime('-15 days'));
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` WHERE created_date < '$limit'");
-        echo DedeAlert("成功清空15天之前的流量统计数据", ALERT_INFO);
+        $msg[] = "成功清空15天之前的流量统计数据";
+        echo DedeAlert(implode("<br/>",$msg), ALERT_INFO, TRUE);
         if ($uparc == 1) {
             echo "<script>location='sys_cache_up.php?dopost=ok&step=9';</script>";
         } else {

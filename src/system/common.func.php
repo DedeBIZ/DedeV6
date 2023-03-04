@@ -30,9 +30,9 @@ define('ALERT_COLORS', array(
 ));
 define("ALERT_TPL", '<div style="position:relative;padding:.75rem 1.25rem;width:auto;font-size:12px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:.2rem">~content~</div>');
 //$content:文档，$type:alert类型
-function DedeAlert($content, $type = ALERT_PRIMARY)
+function DedeAlert($content, $type = ALERT_PRIMARY, $isHTML=false)
 {
-    $content = htmlspecialchars($content);
+    $content =  $isHTML? RemoveXSS($content) : htmlspecialchars($content);
     $colors = isset(ALERT_COLORS[$type])? ALERT_COLORS[$type] : ALERT_COLORS[ALERT_PRIMARY];
     list($background, $border, $color) = $colors;
     return str_replace(array('~color~','~background~','~border~', '~content~'),array($color,$background,$border,$content),ALERT_TPL);
