@@ -218,7 +218,7 @@
 									<?php
 									if ($ft==1) {
 									?>
-									<a href="mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&issystem=<?php echo $row['issystem'];?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+									<a href="mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&issystem=<?php echo $row['issystem'];?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
 									<?php if ($row['issystem']!=1) {?>
 									<a href="javascript:;" onclick="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&action=delete');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 									<?php }?>
