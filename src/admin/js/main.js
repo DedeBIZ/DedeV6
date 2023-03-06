@@ -287,12 +287,11 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 		newobj.style.height = h + 30;
 		document.body.appendChild(newobj);
 	}
-	newobj.style.minWidth = "500px";
 	newobj.style.top = "50%";
 	newobj.style.left = "50%";
+	newobj.style.display = 'block';
 	newobj.style.transform = "translate(-50%, -50%)";
 	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
-	newobj.style.display = 'block';
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
 	});
@@ -369,7 +368,7 @@ function getSelCat(targetId) {
 			}
 		}
 		if (selvalue == '') {
-			alert('您没有选中任何项目');
+			alert('您没有选中任何栏目');
 			return;
 		}
 		if (targetObj) {
