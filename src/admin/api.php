@@ -72,6 +72,13 @@ if ($action === 'is_need_check_code') {
     if (!TableHasField("#@__admin", "loginerr") || !TableHasField("#@__member", "loginerr")) {
         $unQueryVer[] = "6.2.0";
     }
+    $row = $dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__sysconfig` WHERE varname = 'cfg_bizcore_api'");
+    if ($row['dd'] == 0) {
+        $unQueryVer[] = "6.2.3";
+    }
+    if (!$dsql->IsTable("#@__sys_payment")) {
+        $unQueryVer[] = "6.2.5";
+    }
     if (count($unQueryVer) > 0) {
         $upsqls = GetUpdateSQL();
         foreach ($unQueryVer as $vv) {
