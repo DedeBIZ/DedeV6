@@ -45,11 +45,11 @@
 					</td>
 				</tr>
 				<tr bgcolor="#e9ecef" align="center">
-					<td width="30%">模块名称</td>
+					<td width="26%">模块名称</td>
 					<td width="10%">发布时间</td>
 					<td width="10%">编码</td>
 					<td width="10%">类型</td>
-					<td width="10%">模块状态</td>
+					<td width="12%">模块状态</td>
 					<td>操作</td>
 				</tr>
 				<?php if (count($modules) > 0) foreach($modules as $k => $v) {?>
@@ -79,10 +79,10 @@
 					</td>
 					<td>
 						<div id="manager_<?php echo $v['hash'];?>" <?php if (!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo "style='display:none'"?>>
-							<a class="btn btn-light btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>">开发者</a>
-							<a class="btn btn-light btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>">详情</a>
-							<a class="btn btn-light btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>">修改</a>
-							<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash'];?>">删除</a>
+							<a class="btn btn-light btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>"><i class="fa fa-user-circle"></i> 开发者</a>
+							<a class="btn btn-light btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>"><i class="fa fa-eye"></i> 查看</a>
+							<a class="btn btn-light btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>"><i class="fa fa-pencil-square-o"></i> 修改</a>
+							<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash'];?>"><i class="fa fa-trash"></i> 删除</a>
 						</div>
 					</td>
 				</tr>
