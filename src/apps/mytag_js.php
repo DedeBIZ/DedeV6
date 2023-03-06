@@ -36,6 +36,7 @@ if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile
         $myvalues = str_replace('"', '\"', $myvalues);
         $myvalues = str_replace("\r", "\\r", $myvalues);
         $myvalues = str_replace("\n", "\\n", $myvalues);
+        $myvalues = str_replace("<?", "", $myvalues);
         $myvalues =  "<!--\r\ndocument.write(\"{$myvalues}\");\r\n-->\r\n";
         file_put_contents($cacheFile, $myvalues);
     }
