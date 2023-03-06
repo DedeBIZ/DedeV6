@@ -58,7 +58,7 @@ class Archives
             $this->ChannelUnit = new ChannelUnit($arr['channel'], $aid);
             $this->TypeLink = new TypeLink($arr['typeid']);
             if ($this->ChannelUnit->ChannelInfos['issystem'] != -1) {
-                //如果当前文档不是系统模型，为单表模型
+                //如果当前文档不是系统模型，为自定义模型
                 $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid LEFT JOIN `#@__channeltype` as ch on arc.channel = ch.id WHERE arc.id='$aid' ";
                 $this->Fields = $this->dsql->GetOne($query);
             } else {
@@ -101,7 +101,7 @@ class Archives
                 $query = "SELECT * FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` WHERE `aid` = '$aid'";
                 $this->addTableRow = $this->dsql->GetOne($query);
             }
-            //issystem==-1 表示单表模型，单表模型不支持redirecturl这类参数，因此限定文档普通模型才进行下面查询
+            //issystem==-1 表示自定义模型，自定义模型不支持redirecturl这类参数，因此限定文档普通模型才进行下面查询
             if ($this->ChannelUnit->ChannelInfos['addtable'] != '' && $this->ChannelUnit->ChannelInfos['issystem'] != -1) {
                 if (is_array($this->addTableRow)) {
                     $this->Fields['redirecturl'] = $this->addTableRow['redirecturl'];

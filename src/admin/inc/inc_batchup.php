@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档操作相关函数
+ * 文档函数相关操作
  *
  * @version        $id:inc_batchup.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
@@ -54,7 +54,7 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
             return FALSE;
         }
     }
-    //$issystem==-1 是单表模型，不使用回收站
+    //$issystem==-1 是自定义模型，不使用回收站
     if ($issystem == -1) $type = 'OK';
     if (!is_array($arcRow)) return FALSE;
     /** 删除到回收站 **/

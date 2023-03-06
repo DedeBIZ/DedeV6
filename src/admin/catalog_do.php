@@ -126,7 +126,7 @@ else if ($dopost == "upcatcache") {
     //导入普通模型微数据
     $sql = "INSERT INTO `#@__arctiny` (id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid) SELECT id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid FROM `#@__archives` ";
     $dsql->ExecuteNoneQuery($sql);
-    //导入单表模型微数据
+    //导入自定义模型微数据
     $dsql->SetQuery("SELECT id,addtable FROM `#@__channeltype` WHERE id < -1 ");
     $dsql->Execute();
     $doarray = array();

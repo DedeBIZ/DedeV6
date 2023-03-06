@@ -93,7 +93,7 @@ else if ($dopost == 2) {
         //导入普通模型微数据
         $sql = "INSERT INTO `#@__arctiny` (id,typeid,typeid2,arcrank,channel,senddate,sortrank,mid) SELECT id,typeid,typeid2,arcrank,channel,senddate,sortrank,mid FROM `#@__archives` ";
         $dsql->ExecuteNoneQuery($sql);
-        //导入单表模型微数据
+        //导入自定义模型微数据
         foreach ($shtables as $tb => $v) {
             $sql = "INSERT INTO `#@__arctiny` (id,typeid,typeid2,arcrank,channel,senddate,sortrank,mid) SELECT aid,typeid,0,arcrank,channel,senddate,0,mid FROM `$tb` ";
             $rs = $dsql->ExecuteNoneQuery($sql);
@@ -143,7 +143,7 @@ else if ($dopost == 3) {
             if (!empty($addtable)) $dsql->ExecuteNoneQuery("DELETE FROM `$addtable` WHERE id='{$row['id']}' ");
         }
     }
-    //导入单表模型微数据
+    //导入自定义模型微数据
     $dsql->SetQuery("SELECT id,addtable FROM `#@__channeltype` WHERE id < -1 ");
     $dsql->Execute();
     $doarray = array();

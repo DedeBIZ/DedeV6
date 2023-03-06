@@ -1,6 +1,6 @@
 <?php
 /**
- * 处理文档管理列表操作
+ * 文档列表相关操作
  *
  * @version        $id:archives_do.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -295,7 +295,7 @@ else if ($dopost == "checkArchives") {
         if (empty($typeInfos['addtable'])) {
             $typeInfos['maintable'] = '#@__archives';
         }
-        //添加单表模型判断
+        //添加自定义模型判断
         if ($typeInfos['issystem'] == -1) {
             $typeInfos['maintable'] = $typeInfos['addtable'];
             $idtype = "aid";
