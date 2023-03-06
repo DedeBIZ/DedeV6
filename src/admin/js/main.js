@@ -298,64 +298,6 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	});
 	fixupPos = false;
 }
-//通用事件获取接口
-function getEvent() {
-	if ($Nav() == 'IE') return window.event;
-	func = getEvent.caller;
-	while (func != null) {
-		var arg0 = func.arguments[0];
-		if (arg0) {
-			if ((arg0.constructor == Event || arg0.constructor == MouseEvent) || (typeof (arg0) == "object" && arg0.preventDefault && arg0.stopPropagation)) {
-				return arg0;
-			}
-		}
-		func = func.caller;
-	}
-	return null;
-}
-//模拟ondrop事件相关代码
-function DropStart() {
-	this.style.cursor = 'move';
-}
-function DropStop() {
-	this.style.cursor = 'default';
-}
-function DropMove() {
-	if (this.style.cursor != 'move') return;
-	var event = getEvent();
-	if ($Nav() == 'IE') {
-		var posLeft = event.clientX - 20;
-		var posTop = event.clientY - 30;
-		posTop += document.body.scrollTop;
-	} else {
-		var posLeft = event.pageX - 20;
-		var posTop = event.pageY - 30;
-	}
-	this.style.top = posTop;
-	this.style.left = posLeft - leftLeaning;
-}
-//对指定的元素绑定move事件
-function DropStartHand() {
-	canMove = (canMove ? false : true);
-}
-function DropStopHand() {
-	canMove = false;
-}
-function DropMoveHand(objid, mleftLeaning) {
-	var event = getEvent();
-	var obj = $Obj(objid);
-	if (!canMove) return;
-	if ($Nav() == 'IE') {
-		var posLeft = event.clientX - 20;
-		var posTop = event.clientY - 20;
-		posTop += window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-	} else {
-		var posLeft = event.pageX - 20;
-		var posTop = event.pageY - 20;
-	}
-	obj.style.top = posTop + "px";
-	obj.style.left = posLeft - mleftLeaning + "px";
-}
 //复制文档到剪切板
 function copyToClipboard(txt) {
 	if (txt == null || txt == '') {

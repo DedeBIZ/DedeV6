@@ -253,7 +253,7 @@ else if ($dopost == "checkArchives") {
         </select>";
         //输出Ajax可移动窗体
         $divname = 'moveArchives';
-        echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">移动文档</div>";
+        echo "<div class='title'>移动文档</div>";
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
@@ -477,7 +477,7 @@ else if ($dopost == 'quickEdit') {
     $query = "SELECT ch.typename as channelname,ch.addtable,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($query);
     $divname = 'quickEdit';
-    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">文档属性修改</div>";
+    echo "<div class='title'>文档属性修改</div>";
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
@@ -755,7 +755,7 @@ else if ($dopost == 'attsDlg') {
     AjaxHead();
     //输出Ajax可移动窗体
     $divname = 'attsDlg';
-    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">{$dojobname}</div>";
+    echo "<div class='title'>{$dojobname}</div>";
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
