@@ -22,10 +22,10 @@
 			}
 			function showHide(objname, tid) {
 				if ($DE(objname).style.display == "none") {
-					$DE('img' + tid).className = 'fa fa-minus-square-o';
+					$DE('img' + tid).className = 'fa fa-minus-square';
 					$DE(objname).style.display = BROWSER.firefox ? "" : "block";
 				} else {
-					$DE('img' + tid).className = 'fa fa-plus-square-o';
+					$DE('img' + tid).className = 'fa fa-plus-square';
 					$DE(objname).style.display = "none";
 				}
 			}
@@ -38,13 +38,15 @@
 					<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">添加栏目</a>
 					<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量添加</a>
 					<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新缓存</a>
+					<button type="button" name="sb1" class="btn btn-success btn-sm" onclick="document.form1.submit();">更新排序</button>
+				</td>
+				<td align="right">
 					<?php if (!isset($exallct)) {?>
 					<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
 					<?php } else {?>
 					<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
 					<?php }?>
 				</td>
-				<td align="right"><button type="button" name="sb1" class="btn btn-success btn-sm" onclick="document.form1.submit();">更新排序</button></td>
 			</tr>
 		</table>
 		<table cellpadding="1" cellspacing="1" align="center" class="maintable mb-3">
