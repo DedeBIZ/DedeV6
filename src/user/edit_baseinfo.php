@@ -82,7 +82,6 @@ if ($dopost == 'save') {
                     exit();
                 } else {
                     $addupquery .= ",email='$email',spacesta='-10'";
-
                 }
             }
         }

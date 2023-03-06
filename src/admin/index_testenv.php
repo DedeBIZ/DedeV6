@@ -123,7 +123,7 @@ if (!function_exists('IsWritable')) {
 $safeMsg = array();
 $dirname = str_replace('index_body.php', '', strtolower($_SERVER['PHP_SELF']));
 if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
-	$safeMsg[] = '后台管理登录默认名称admin，建议您进行修改';
+	$safeMsg[] = '后台管理登录名称为admin，建议您进行修改';
 }
 if (IsWritable(DEDEDATA.'/common.inc.php')) {
 	$safeMsg[] = '数据库配置data/common.inc.php文件，建议您以管理员权限设置禁止写入和执行';
@@ -135,7 +135,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 	$safeMsg[] = 'php版本过低会无法正常使用后台，建议您升级到php7.x';
 }
 if (!DEDEBIZ_SAFE_MODE) {
-	$safeMsg[] = '系统运行环境为开发模式，建议您启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-xs">查看</a>';
+	$safeMsg[] = '系统运行环境为开发模式，建议您启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-xs">详情</a>';
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
