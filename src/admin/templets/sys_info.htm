@@ -64,9 +64,7 @@
 	<body>
 		<table cellpadding="2" cellspacing="1" align="center" class="table maintable my-3">
 			<tr bgcolor="#f5f5f5">
-				<td width="180">
-					<input type="text" name="keywds" id="keywds" placeholder="请输入变量说明" class="admin-input-sm">
-				</td>
+				<td width="370"><input type="text" name="keywds" id="keywds" placeholder="请输入变量说明" class="admin-input-md"></td>
 				<td>
 					<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a><?php
 					$ds = file(DEDEADMIN.'/inc/configgroup.txt');
@@ -83,7 +81,7 @@
 							echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
 						}
 					}
-					?><a href="javascript:;" onclick="ShowHide('addvar')" class="btn btn-success btn-sm">添加新变量</a>
+					?><a href="javascript:;" onclick="ShowHide('addvar')" class="btn btn-success btn-sm">添加变量</a>
 				</td>
 			</tr>
 			<tr id="addvar" style="display:none">
@@ -94,23 +92,23 @@
 						<table width="100%" cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="90" class="border-top-0">变量说明</td>
-								<td width="270" class="border-top-0"><input type="text" name="varmsg" id="varmsg" class="admin-input-md"></td>
+								<td width="370" class="border-top-0"><input type="text" name="varmsg" id="varmsg" class="admin-input-md"></td>
 								<td width="90" class="border-top-0">变量值</td>
-								<td width="270" class="border-top-0"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-md"></td>
+								<td width="370" class="border-top-0"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-md"></td>
+							</tr>
+							<tr>
+								<td width="90">变量名称</td>
+								<td colspan="3"><input type="text" name="nvarname" id="nvarname" class="admin-input-md"></td>
 							</tr>
 							<tr>
 								<td width="90">变量类型</td>
-								<td colspan="3">
+								<td width="370">
 									<label><input type="radio" name="vartype" value="string" checked="checked"> 文本</label>
 									<label><input type="radio" name="vartype" value="number"> 数字</label>
 									<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
 									<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
 									<label><input type="radio" name="vartype" value="img"> 图片</label>
 								</td>
-							</tr>
-							<tr>
-								<td width="90">变量名称</td>
-								<td width="270"><input type="text" name="nvarname" id="nvarname" class="admin-input-md"></td>
 								<td width="90">所属组</td>
 								<td width="170">
 									<?php
