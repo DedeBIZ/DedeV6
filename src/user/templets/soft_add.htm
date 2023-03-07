@@ -8,24 +8,6 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script>
-			var startNum = 2;
-			function MakeUpload() {
-				var upfield = document.getElementById("uploadfield");
-				var morelinkobj = document.getElementById("morelink");
-				var endNum = parseInt(document.addcontent.picnum.value) + startNum - 1;
-				morelinkobj.style.display = "block";
-				if (endNum > 12) endNum = 12;
-				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<p>下载地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='form-control'></p>";
-					upfield.innerHTML += "<p>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' class='form-control'></p>";
-				}
-			}
-			function ShowHideAddr() {
-				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
-				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏地址' : '显示地址');
-			}
-		</script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -196,6 +178,24 @@
 			</div>
 		</main>
 		<?php pasterTempletDiy('foot.htm');?>
+		<script>
+			var startNum = 2;
+			function MakeUpload() {
+				var upfield = document.getElementById("uploadfield");
+				var morelinkobj = document.getElementById("morelink");
+				var endNum = parseInt(document.addcontent.picnum.value) + startNum - 1;
+				morelinkobj.style.display = "block";
+				if (endNum > 12) endNum = 12;
+				for (startNum; startNum <= endNum; startNum++) {
+					upfield.innerHTML += "<p>下载地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='form-control'></p>";
+					upfield.innerHTML += "<p>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' class='form-control'></p>";
+				}
+			}
+			function ShowHideAddr() {
+				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
+				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏地址' : '显示地址');
+			}
+		</script>
 		<?php include(DEDEMEMBER."/templets/widget_litpic.htm");?>
 	</body>
 </html>

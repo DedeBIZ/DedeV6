@@ -10,52 +10,6 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/bootstrap.min.js"></script>
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/style.js"></script>
-		<script>
-			//阅读消息
-			function ReadMsg(id) {
-				$.get(`<?php echo $cfg_memberurl?>/pm.php?dopost=read&id=${id}`, function(data) {
-					let result = JSON.parse(data);
-					if (result.code === 200) {
-						ShowMsg(`<p>标题：${result.data.subject}</p><p>时间：${result.data.sendtime}</p><p>文档：${result.data.message}</p>`, {title: "查看短消息",});
-						$(`.pm-read-status[for='${id}']`).html("已阅读");
-					} else {
-						ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
-					}
-				})
-			}
-			//获得选中文件的文件名
-			function GetCheckfolderItem() {
-				var allSel = '';
-				if (document.form1.deleteid.value) return document.form1.deleteid.value;
-				for (i = 0; i < document.form1.deleteid.length; i++) {
-					if (document.form1.deleteid[i].checked) {
-						if (allSel == '')
-							allSel = document.form1.deleteid[i].value;
-						else
-							allSel = allSel + "," + document.form1.deleteid[i].value;
-					}
-				}
-				return allSel;
-			}
-			//删除操作
-			function DoSubmit(myfolder) {
-				var selid = GetCheckfolderItem();
-				if (selid == '') {
-					ShowMsg("您没选中任何信息");
-					return false;
-				}
-				DedeConfirm("您确定要删除这些消息吗").then((v)=>{
-					$.get("pm.php?dopost=remove&ids=" + selid + "&folder=" + myfolder,function (data) {
-						let result = JSON.parse(data);
-						if (result.code === 200) {
-							location.reload();
-						}
-					})
-				}).catch((e)=>{
-					console.log(e)
-				});
-			}
-		</script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -134,5 +88,51 @@
 			</div>
 		</main>
 		<?php pasterTempletDiy('foot.htm');?>
+		<script>
+			//阅读消息
+			function ReadMsg(id) {
+				$.get(`<?php echo $cfg_memberurl?>/pm.php?dopost=read&id=${id}`, function(data) {
+					let result = JSON.parse(data);
+					if (result.code === 200) {
+						ShowMsg(`<p>标题：${result.data.subject}</p><p>时间：${result.data.sendtime}</p><p>文档：${result.data.message}</p>`, {title: "查看短消息",});
+						$(`.pm-read-status[for='${id}']`).html("已阅读");
+					} else {
+						ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
+					}
+				})
+			}
+			//获得选中文件的文件名
+			function GetCheckfolderItem() {
+				var allSel = '';
+				if (document.form1.deleteid.value) return document.form1.deleteid.value;
+				for (i = 0; i < document.form1.deleteid.length; i++) {
+					if (document.form1.deleteid[i].checked) {
+						if (allSel == '')
+							allSel = document.form1.deleteid[i].value;
+						else
+							allSel = allSel + "," + document.form1.deleteid[i].value;
+					}
+				}
+				return allSel;
+			}
+			//删除操作
+			function DoSubmit(myfolder) {
+				var selid = GetCheckfolderItem();
+				if (selid == '') {
+					ShowMsg("您没选中任何信息");
+					return false;
+				}
+				DedeConfirm("您确定要删除这些消息吗").then((v)=>{
+					$.get("pm.php?dopost=remove&ids=" + selid + "&folder=" + myfolder,function (data) {
+						let result = JSON.parse(data);
+						if (result.code === 200) {
+							location.reload();
+						}
+					})
+				}).catch((e)=>{
+					console.log(e)
+				});
+			}
+		</script>
 	</body>
 </html>

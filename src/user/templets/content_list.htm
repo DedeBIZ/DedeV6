@@ -8,21 +8,6 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script>
-			function viewArc(aid) {
-				window.open("{dede:global.cfg_phpurl/}/view.php?aid=" + aid);
-			}
-			function editArc(aid, channelid) {
-				location = "archives_do.php?dopost=edit&channelid=" + channelid + "&aid=" + aid;
-			}
-			function delArc(aid) {
-				DedeConfirm("您确定要删除这篇文档吗").then((v)=>{
-					location = "archives_do.php?aid=" + aid + "&dopost=delArc";
-				}).catch((e)=>{
-					console.log(e)
-				});
-			}
-		</script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -91,5 +76,20 @@
 			</div>
 		</main>
 		<?php pasterTempletDiy('foot.htm');?>
+		<script>
+			function viewArc(aid) {
+				window.open("{dede:global.cfg_phpurl/}/view.php?aid=" + aid);
+			}
+			function editArc(aid, channelid) {
+				location = "archives_do.php?dopost=edit&channelid=" + channelid + "&aid=" + aid;
+			}
+			function delArc(aid) {
+				DedeConfirm("您确定要删除这篇文档吗").then((v)=>{
+					location = "archives_do.php?aid=" + aid + "&dopost=delArc";
+				}).catch((e)=>{
+					console.log(e)
+				});
+			}
+		</script>
 	</body>
 </html>
