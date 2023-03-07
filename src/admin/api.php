@@ -298,6 +298,7 @@ if ($action === 'is_need_check_code') {
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
                 $srcFile = $backupVerPath.$f->filename;
                 $dstFile = str_replace(array("\\", "//"), '/', DEDEROOT.$f->filename);
+                @mkdir(dirname($dstFile), 0777, true);
                 $rs = @copy($srcFile, $dstFile);
                 if ($rs) {
                     unlink($srcFile);
