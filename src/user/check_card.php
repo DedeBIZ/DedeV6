@@ -20,7 +20,7 @@ if (empty($cardid)) {
 }
 $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_record` WHERE cardid='$cardid' ");
 if (!is_array($row)) {
-    ShowMsg("卡号错误：不存在此卡号", "-1");
+    ShowMsg("卡号错误，不存在此卡号", "-1");
     exit();
 }
 if ($row['isexp'] == -1) {

@@ -25,7 +25,6 @@ if ($dopost == "delStow") {
     //更新会员统计
     $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='".$cfg_ml->M_ID."' ");
     $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `stow`='$row[nums]' WHERE `mid`='".$cfg_ml->M_ID."'");
-
     ShowMsg("成功删除一条收藏记录", $ENV_GOBACK_URL);
     exit();
 }
