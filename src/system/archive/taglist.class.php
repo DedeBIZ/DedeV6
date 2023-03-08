@@ -51,7 +51,7 @@ class TagList
         $this->TypeLink = new TypeLink(0);
         $this->Fields['tag'] = $keyword;
         if (empty($keyword)) {
-            $this->Fields['title'] = "TAGS列表";
+            $this->Fields['title'] = "标签列表";
         }
         $this->Fields['position'] = $cfg_cmsurl."/apps/tags.php";
         $this->TempletsFile = '';
@@ -61,8 +61,7 @@ class TagList
         if (!empty($this->Tag)) {
             $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` where id = '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
-                $msg = "网站找不到该标签";
-                ShowMsg($msg, "-1");
+                ShowMsg('当前标签不存在，系统自动返回标签首页', 'tags.php');
                 exit();
             }
             $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->TagInfos['tag'] : $this->TagInfos['title'];
