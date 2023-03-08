@@ -92,6 +92,7 @@ class TypeUnit
         }
         $this->dsql->SetQuery("SELECT id,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid=0 ORDER BY sortrank");
         $this->dsql->Execute(0);
+        $i = 0;
         while ($row = $this->dsql->GetObject(0)) {
             if ($cfg_admin_channel == 'array' && !in_array($row->id, $admin_catalogs)) {
                 continue;
@@ -152,6 +153,10 @@ class TypeUnit
                 echo "</table>";
             }
             echo "</td></tr></table>";
+            $i++;
+        }
+        if ($i === 0) {
+            echo "<div class='text-center py-3'>暂无栏目，请先添加栏目</div>";
         }
     }
     /**
