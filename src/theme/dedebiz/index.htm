@@ -21,10 +21,10 @@
 				<div class="col-md-6 m-pb-2">
 					<div class="row">
 						<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
-							<ol class="carousel-indicators">{dede:arclist row='6' flag='f' orderby='id'}
+							<ol class="carousel-indicators">{dede:arclist row='5' flag='f' orderby='id'}
 								<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>{/dede:arclist}
 							</ol>
-							<div class="carousel-inner">{dede:arclist row='6' orderby='id'}
+							<div class="carousel-inner">{dede:arclist row='5' orderby='id'}
 								<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]"><a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" alt="[field:fulltitle/]" class="bannr-img"></a></div>{/dede:arclist}
 							</div>
 							<a href="#carouselIndex" class="carousel-control-prev" role="button" data-slide="prev">
@@ -91,7 +91,7 @@
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row">{dede:channelartlist typeid='1,1'}
+			<div class="row">{dede:channelartlist typeid='3,3'}
 				<div class="col-md-6 m-pb-2">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
@@ -99,7 +99,7 @@
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</div>
-				</div>{/dede:channelartlist}{dede:channelartlist typeid='2,2'}
+				</div>{/dede:channelartlist}{dede:channelartlist typeid='4,4'}
 				<div class="col-md-6">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
