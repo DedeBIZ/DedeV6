@@ -82,7 +82,7 @@ function GetMemberName($rank, $mt)
 function GetMAtt($m)
 {
     if ($m < 1) return '';
-    else if ($m == 10) return " <span class='btn btn-outline-success btn-sm'>管理</span>";
-    else return " <span class='btn btn-outline-success btn-sm'>推荐</span>";
+    else if ($m == 10) return " <span class='btn btn-success btn-sm'>管理</span>";
+    else return " <span class='btn btn-success btn-sm'>推荐</span>";
 }
 ?>

@@ -1,12 +1,6 @@
-<div class="card ddcard py-3">
-    <div class="card-header">
-        <div class="row">
-            <div class="col-md-12 caption"><span>热点文档</span></div>
-        </div>
-    </div>
-    <ul class="list-group list-group-flush">
-        {dede:arclist orderby='click' titlelen='42' row='10'}
-        <li><a href="[field:arcurl/]" title="[field:fulltitle/]">[field:title/]</a></li>
-        {/dede:arclist}
-    </ul>
+<div class="item-article bg-white shadow-sm rounded p-3">
+	<h2 class="mb-3">热门头条</h2>
+	<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
+		<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
+	</ul>
 </div>

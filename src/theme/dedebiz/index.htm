@@ -12,25 +12,20 @@
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
-	<body>
+	<body class="body-bg">
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
 			<div class="row">
-				<div class="col-md-9 m-pb-2">
+				<div class="col-md-3 m-pb-2">{dede:include comment='栏目列表' filename='widget_menu.htm'/}</div>
+				<div class="col-md-6 m-pb-2">
 					<div class="row">
 						<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
-							<ol class="carousel-indicators">
-								{dede:arclist flag='f' row='6'}
-								<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
-								{/dede:arclist}
+							<ol class="carousel-indicators">{dede:arclist row='6' flag='f' orderby='id'}
+								<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>{/dede:arclist}
 							</ol>
-							<div class="carousel-inner">
-								{dede:arclist channelid='1' flag='f' row='6'}
-								<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
-									<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" alt="[field:fulltitle/]"></a>
-								</div>
-								{/dede:arclist}
+							<div class="carousel-inner">{dede:arclist row='6' orderby='id'}
+								<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]"><a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" alt="[field:fulltitle/]" class="bannr-img"></a></div>{/dede:arclist}
 							</div>
 							<a href="#carouselIndex" class="carousel-control-prev" role="button" data-slide="prev">
 								<span class="carousel-control-prev-icon"></span>
@@ -43,94 +38,77 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="row">
-				        <div class="col-md-12">
-							<div class="card ddcard-normal">
-								<div class="card-header">
-									<div class="row">
-										<div class="col-md-12">
-											<h4>推荐头条</h4>
-										</div>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush">
-									{dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
-									<li><a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>
-									{/dede:arclist}
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div class="col-md-3 m-pb-2">{dede:include comment='推荐文档' filename='widget_recommend.htm'/}</div>
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row">
-				<div class="col-md-9 mb-3">
-					<div class="row spec">
-						<div class="col-md-12 mb-3">
-							<h4 class="title">图文资讯</h4>
-						</div>
-						<div class="col-md-12">
-							<div class="row row-cols-2 row-cols-md-4">
-								{dede:arclist row='4' orderby='pubdate' type='image.'}
-								<div class="col">
-									<div class="card image-item border-0 mb-3">
-										<a href="[field:arcurl/]" class="text-body stretched-link"><img src="[field:litpic/]" class="card-img-top" alt="[field:fulltitle/]"></a>
-										<div class="card-body">
-											<h5 class="card-title"><a href="[field:arcurl/]">[field:title/]</a></h5>
-										</div>
-									</div>
+			<div class="row biz-mb">{dede:channelartlist typeid='1,1'}
+				<div class="col-md-12 mb-3">
+					<div class="item-title text-left">
+						<h2>{dede:field.typename/}</h2>
+					</div>
+				</div>{dede:arclist row='3' orderby='id'}
+				<div class="col-md-4">
+					<div class="item-theme bg-white shadow-sm rounded">
+						<div class="item-theme-img"><a href="[field:arcurl/]" target="_blank"><img src="[field:picname/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<div class="item-theme-box">
+							<h4 class="mb-3"><a href="[field:arcurl/]" target="_blank">[field:flag runphp='yes']if (stristr(@me,"h")) @me="<span class='btn btn-success btn-sm mr-2'>头条</span>";else if(stristr(@me,"c")) @me="<span class='btn btn-success btn-sm mr-2'>推荐</span>";else @me="";[/field:flag][field:title/]</a></h4>
+							<div class="row">
+								<div class="col-4 text-left l-height-30 text-danger">
+									<i class="fa fa-download mr-1"></i>
+									<span><script src="/apps/disdls.php?aid=[field:id/]"></script></span>
 								</div>
-								{/dede:arclist}
+								<div class="col-8 text-right">
+									<img src="[field:mid function='face(@me)'/]" class="user-img-xs mr-1">
+									<span>[field:mid function="GetMemberInfos('uname',@me)"/]</span>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						{dede:channelartlist}
-						<div class="col-md-6 my-3">
-							<div class="card ddcard-normal">
-								<div class="card-header">
-									<div class="row">
-										<div class="col-md-6">
-											<h4>{dede:field.typename/}</h4>
-										</div>
-										<div class="col-md-6 d-flex justify-content-end more"><a href="{dede:field.typeurl/}">更多</a></div>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush">
-									{dede:arclist titlelen='60' limit='0,1'}
-									<li>
-										<p><a title="[field:fulltitle/]" href="[field:arcurl/]"><i class="fa fa-file-word-o mr-1"></i>[field:title/]</a></p>
-										<p class="text-right mb-0">
-											<span class="mr-3"><img src="[field:mid function='face(@me)'/]" class="user-admin-img-xs">[field:mid function="GetMemberInfos('uname',@me)"/]</span>
-											<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
-										</p>
-									</li>
-									{/dede:arclist}
-									{dede:arclist titlelen='50' limit='1,9'}
-									<li><a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a><span class="float-right">[field:pubdate function="MyDate('Y-m-d',@me)"/]</span></li>
-									{/dede:arclist}
-								</ul>
-							</div>
-						</div>
-						{/dede:channelartlist}
+				</div>{/dede:arclist}{/dede:channelartlist}
+			</div>
+		</div>
+		<div class="container py-3">
+			<div class="row biz-mb">{dede:channelartlist typeid='2,2'}
+				<div class="col-md-12 mb-3">
+					<div class="item-title text-left">
+						<h2>{dede:field.typename/}</h2>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="pb-3">
-	                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
-	                        <input type="hidden" name="kwtype" value="0">
-	                        <div class="input-group">
-		                        <input name="q" type="text" class="form-control" placeholder="请输入...">
-		                        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-		                    </div>
-	                    </form>
-                    </div>
-					{dede:include comment='推荐文档' filename='widget_recommend.htm'/}
-					{dede:include comment='热点文档' filename='widget_hot.htm'/}
-				</div>
+				</div>{dede:arclist row='3' orderby='id'}
+				<div class="col-md-4">
+					<div class="item-news bg-white shadow-sm rounded">
+						<div class="item-news-img"><a href="[field:arcurl/]" target="_blank"><img src="[field:picname/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
+						<div class="mb-3">
+							<img src="[field:mid function='face(@me)'/]" class="user-img-xs mr-1">
+							<span class="mr-1">[field:mid function="GetMemberInfos('uname',@me)"/]</span>
+							<i class="fa fa-calendar mr-1"></i>
+							<span>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+						</div>
+						<p>[field:description function="cn_substr(@me,180)"/]... </p>
+					</div>
+				</div>{/dede:arclist}{/dede:channelartlist}
+			</div>
+		</div>
+		<div class="container py-3">
+			<div class="row">{dede:channelartlist typeid='1,1'}
+				<div class="col-md-6 m-pb-2">
+					<div class="item-article bg-white shadow-sm rounded p-3">
+						<h2 class="mb-3">{dede:field.typename/}</h2>
+						<ul>{dede:arclist row='10' titlelen='120' orderby='id'}
+							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
+						</ul>
+					</div>
+				</div>{/dede:channelartlist}{dede:channelartlist typeid='2,2'}
+				<div class="col-md-6">
+					<div class="item-article bg-white shadow-sm rounded p-3">
+						<h2 class="mb-3">{dede:field.typename/}</h2>
+						<ul>{dede:arclist row='10' titlelen='120' orderby='id'}
+							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
+						</ul>
+					</div>
+				</div>{/dede:channelartlist}
+
 			</div>
 		</div>
 		{dede:include filename='foot.htm'/}

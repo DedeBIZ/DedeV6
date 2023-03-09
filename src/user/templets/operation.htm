@@ -25,11 +25,11 @@
 								<thead>
 									<tr>
 										<th width="8%">选择</th>
-				                        <th width="16%">订单号</th>
-				                        <th>产品</th>
-				                        <th width="16%">信息</th>
-				                        <th width="12%">状态</th>
-				                        <th width="16%">时间</th>
+										<th width="16%">订单号</th>
+										<th>产品</th>
+										<th width="16%">信息</th>
+										<th width="12%">状态</th>
+										<th width="16%">时间</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -38,11 +38,11 @@
 										{dede:datalist}
 										<tr>
 											<td><input type="checkbox" name="deleteid" value="{dede:field.aid/}"></td>
-						                    <td>{dede:field.buyid/}</td>
-						                    <td><?php echo $fields['pname']; ?></td>
-						                    <td><?php echo $fields['oldinfo']; ?></td>
-						                    <td>{dede:field.sta function="GetSta(@me)"/}</td>
-						                    <td>{dede:field.mtime function="GetDateMk(@me)"/}</td>
+											<td>{dede:field.buyid/}</td>
+											<td><?php echo $fields['pname']; ?></td>
+											<td><?php echo $fields['oldinfo']; ?></td>
+											<td>{dede:field.sta function="GetSta(@me)"/}</td>
+											<td>{dede:field.mtime function="GetDateMk(@me)"/}</td>
 										</tr>
 										{/dede:datalist}
 										<tr>

@@ -22,7 +22,7 @@
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body row">
 								<div class="col-12 text-center">
-									<img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="user-admin-img">
+									<img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="user-img-md">
 									<div class="my-3">
 										<h3 class="d-inline-block mr-2" style="vertical-align:middle"><?php echo $cfg_ml->M_UserName;?></h3>
 										<span class="btn btn-outline-success btn-sm"><?php echo $cfg_ml->GetMemberTypeName();?></span>
@@ -65,17 +65,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="py-3">
+					<div class="pt-3">
 						<div class="pannel-main-container shadow-sm rounded">
-							<div class="media-body">
-								<h4>最新文档</h4>
-								<div class="card ddcard">
-									<ul class="list-group list-group-flush">
-										<?php foreach ($archives as $archive) {?>
-										<li><a href="<?php echo $archive['htmlurl'];?>" title="<?php echo $archive['title'];?>"><?php echo $archive['title'];?></a></li>
-										<?php }?>
-									</ul>
-								</div>
+							<div class="media-body item-article">
+								<h4 class="mb-3">最新文档</h4>
+								<ul>
+									<?php foreach ($archives as $archive) {?>
+									<li><a href="<?php echo $archive['htmlurl'];?>" title="<?php echo $archive['title'];?>"><?php echo $archive['title'];?></a></li>
+									<?php }?>
+								</ul>
 							</div>
 						</div>
 					</div>

@@ -12,50 +12,54 @@
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 	</head>
-	<body>
+	<body class="body-bg">
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="position rounded">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">当前位置</li>
-								{dede:field name='position'/}
-							</ol>
-						</nav>
-					</div>
+				<div class="col-md-12">	
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb mb-0">
+							<li class="breadcrumb-item">当前位置</li>
+							{dede:field name='position'/}
+						</ol>
+					</nav>
 				</div>
 			</div>
 		</div>
 		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-9 list-main">
-					<ul class="list-unstyled items">
-						{dede:list pagesize='10'}
-						<li class="media border-bottom-dashed py-3">
-							<div class="media-body row">
-								<div class="col-md-12 caption">
-									<a href="[field:arcurl/]"><h4 class="title">[field:code/] [field:title/]</h4></a>
-								</div>
-								<div class="col-md-12 description">
-									<a href="[field:arcurl/]">[field:description/]...</a>
-								</div>
-								<div class="col-md-12 source text-right">
-									<span class="mr-3"><img src="[field:mid function='face(@me)'/]" class="user-admin-img-xs">[field:mid function="GetMemberInfos('uname',@me)"/]</span>
-									<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+				<div class="col-md-9 m-pb-2">
+					<div class="row">{dede:list pagesize='10'}
+						<div class="col-md-12 mb-3">
+							<div class="list-article mb-3">
+								<div class="list-article-body bg-white rounded shadow-sm p-3">
+									<h2 class="mb-3"><a href="[field:arcurl/]">[field:title/]</a></h2>
+									<div class="mb-3">
+										<span class="mr-3"><img src="[field:mid function='face(@me)'/]" class="user-img-xs mr-1">[field:mid function="GetMemberInfos('uname',@me)"/]</span>
+										<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+									</div>
+									<p>[field:description function="cn_substr(@me,120)"/]...</p>
 								</div>
 							</div>
-						</li>
-						{/dede:list}
-					</ul>
-					<ul class="pagination justify-content-center py-3">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
+						</div>{/dede:list}
+					</div>
+					<ul class="pagination">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 				</div>
 				<div class="col-md-3">
-					{dede:include comment='栏目列表' filename='widget_channels.htm'/}
-					{dede:include comment='推荐文档' filename='widget_recommend_sg.htm'/}
-					{dede:include comment='热点文档' filename='widget_hot_sg.htm'/}
+					<div class="pb-3">
+						<div class="item-hot bg-white shadow-sm rounded p-3">
+							<form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
+								<input type="hidden" name="kwtype" value="0">
+								<div class="input-group">
+									<input name="q" type="text" class="form-control" placeholder="请输入...">
+									<button type="submit" class="btn btn-success" style="border-radius:0 .2rem .2rem 0"><i class="fa fa-search"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="py-3">{dede:include comment='推荐栏目' filename='widget_menu.htm'/}</div>
+					<div class="pt-3">{dede:include comment='热门文档' filename='widget_hot.htm'/}</div>
 				</div>
 			</div>
 		</main>

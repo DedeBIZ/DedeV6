@@ -154,9 +154,8 @@ class TypeUnit
             }
             echo "</td></tr></table>";
             $i++;
-        }
-        if ($i === 0) {
-            echo "<div class='text-center py-3'>暂无栏目，请先添加栏目</div>";
+        } if ($i === 0) {
+            echo "<div class='text-center py-3'>暂无栏目，请添加栏目</div>";
         }
     }
     /**

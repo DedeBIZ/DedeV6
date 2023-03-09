@@ -14,51 +14,52 @@
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 	</head>
-	<body>
+	<body class="body-bg">
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="position rounded">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">当前位置</li>
-								{dede:field name='position'/}
-							</ol>
-						</nav>
-					</div>
+				<div class="col-md-12">	
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb mb-0">
+							<li class="breadcrumb-item">当前位置</li>
+							{dede:field name='position'/}
+						</ol>
+					</nav>
 				</div>
 			</div>
 		</div>
 		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-9 article-main">
-					<h2 >{dede:field.title/}</h2>
-					<div class="article-meta">
-						<span>时间：{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
-						<span>来源：{dede:field.source/}</span>
-						<span>作者：{dede:field.writer/}</span>
-						<span>浏览：<script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}"></script>次</span>
+				<div class="col-md-9">
+					<div class="article-main bg-white shadow-sm rounded p-3">
+						<h2>{dede:field.title/}</h2>
+						<div class="article-meta">
+							<span><img src="{dede:field.mid function='face(@me)'/}" class="user-img-xs mr-1">{dede:field.mid function="GetMemberInfos('uname',@me)"/}</span>
+							<span><i class="fa fa-calendar mr-1"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
+							<span><i class="fa fa-globe mr-1"></i>{dede:field.source/}</span>
+							<span><i class="fa fa-eye mr-1"></i><script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}"></script>次</span>
+						</div>
+						<div class="speciallist row py-3">{dede:field.note/}</div>
+						<div class="py-3">{dede:field.body/}</div>
+						<div class="py-3">作者：{dede:adminname/}</div>
+						<div class="alert alert-success my-3">{dede:softmsg/}</div>
 					</div>
-					<div class="speciallist row py-3">{dede:field.note/}</div>
-					<div class="py-3">{dede:field.body/}</div>
-					<div class="py-3">作者：{dede:adminname/}</div>
-					<div class="alert alert-success my-3">{dede:softmsg/}</div>
-					<div class="clearfix"></div>
 				</div>
 				<div class="col-md-3">
 					<div class="pb-3">
-	                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
-	                        <input type="hidden" name="kwtype" value="0">
-	                        <div class="input-group">
-		                        <input name="q" type="text" class="form-control" placeholder="请输入...">
-		                        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-		                    </div>
-	                    </form>
-                    </div>
-					{dede:include comment='推荐文档' filename='widget_recommend.htm'/}
-					{dede:include comment='热点文档' filename='widget_hot.htm'/}
+						<div class="item-hot bg-white shadow-sm rounded p-3">
+							<form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
+								<input type="hidden" name="kwtype" value="0">
+								<div class="input-group">
+									<input name="q" type="text" class="form-control" placeholder="请输入...">
+									<button type="submit" class="btn btn-success" style="border-radius:0 .2rem .2rem 0"><i class="fa fa-search"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="py-3">{dede:include comment='推荐栏目' filename='widget_menu.htm'/}</div>
+					<div class="pt-3">{dede:include comment='热门文档' filename='widget_hot.htm'/}</div>
 				</div>
 			</div>
 		</main>

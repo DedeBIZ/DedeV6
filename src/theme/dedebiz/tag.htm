@@ -14,61 +14,35 @@
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 		<style>.tags{padding-top:10px}.tags a{float:left;margin:5px 10px}.tagc1{color:darkolivegreen}.tagc2{color:blue}.tagc3{color:blueviolet}.tagc4{color:brown}.tagc5{color:cadetblue}.tagc6{color:green}.tagc7{color:coral}.tagc8{color:cornflowerblue}.tagc9{color:black}</style>
 	</head>
-	<body>
+	<body class="body-bg">
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="position rounded">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">当前位置</li>
-								<li class="breadcrumb-item">标签页</li>
-							</ol>
-						</nav>
-					</div>
+				<div class="col-md-12">	
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb mb-0">
+							<li class="breadcrumb-item">当前位置</li>
+							<li class="breadcrumb-item">标签页</li>
+						</ol>
+					</nav>
 				</div>
 			</div>
 		</div>
-		<main class="container mb-3">
+		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-12 list-main">
-					<div class="card ddcard-normal">
-						<div class="card-header">
-							<div class="row">
-								<div class="col-8 caption"><span>最新标签</span></div>
-							</div>
-						</div>
-						<div class="tags">
-							{dede:tag row='120' sort='new'}
-							<a href="[field:link/]" class="tagc[field:highlight/]">[field:tag/]</a>
-							{/dede:tag}
-						</div>
+				<div class="col-md-12">
+					<div class="item-tag mb-3">
+						<h2 class="mb-3">最新标签</h2>
+						<div>{dede:tag row='120' sort='new'}<a href="[field:link/]" class="btn btn-outline-success btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
 					</div>
-					<div class="card ddcard-normal mt-3">
-						<div class="card-header">
-							<div class="row">
-								<div class="col-8 caption"><span>当月热门标签</span></div>
-							</div>
-						</div>
-						<div class="tags">
-							{dede:tag row='120' sort='month'}
-							<a href="[field:link/]" class="tagc[field:highlight/]">[field:tag/]</a>
-							{/dede:tag}
-						</div>
+					<div class="item-tag mb-3">
+						<h2 class="mb-3">当月热门标签</h2>
+						<div>{dede:tag row='120' sort='month'}<a href="[field:link/]" class="btn btn-outline-warning btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
 					</div>
-					<div class="card ddcard-normal mt-3">
-						<div class="card-header">
-							<div class="row">
-								<div class="col-8 caption"><span>随机标签</span></div>
-							</div>
-						</div>
-						<div class="tags">
-							{dede:tag row='120' sort='rand'}
-							<a href="[field:link/]" class="tagc[field:highlight/]">[field:tag/]</a>
-							{/dede:tag}
-						</div>
+					<div class="item-tag">
+						<h2 class="mb-3">最新标签</h2>
+						<div>{dede:tag row='120' sort='rand'}<a href="[field:link/]" class="btn btn-outline-info btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
 					</div>
 				</div>
 			</div>
