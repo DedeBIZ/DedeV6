@@ -36,7 +36,7 @@
 		</table>
 		<form name="form3" action="content_i_list.php" method="get">
 			<input type="hidden" name="dopost" value="listArchives">
-			<input type="hidden" name="channelid" value="2">
+			<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
 				<tr bgcolor="#f5f5f5">
 					<td width="380"><input type="text" name="keyword" class="admin-input-md" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id"></td>
