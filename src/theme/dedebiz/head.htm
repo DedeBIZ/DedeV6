@@ -11,7 +11,7 @@
 						<li class="nav-item"><a href="/" class="nav-link {dede:field name='typeid' runphp='yes'}(@me=='')?@me='active':@me='';{/dede:field}">首页</a></li>
 						{dede:channelartlist typeid='top' row='10'}
 						<li class="nav-item {dede:channel type='son' noself='yes' row='1'}dropdown{/dede:channel}">
-							<a class="nav-link {dede:channel type='son' noself='yes' row='1'}dropdown-toggle{/dede:channel}" href="{dede:field.typeurl/}" {dede:channel type='son' noself='yes' row='1'}id="dropdown-auth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{/dede:channel}>{dede:field.typename/}</a>
+							<a class="nav-link {dede:channel type='son' noself='yes' row='1'}dropdown-toggle{/dede:channel}" href="{dede:field.typeurl/}" {dede:channel type='son' noself='yes' row='1'}data-toggle="dropdown"{/dede:channel}>{dede:field.typename/}</a>
 							{dede:channel type='son' noself='yes' row='1'}<div class="dropdown-menu" aria-labelledby="dropdown-auth">{/dede:channel}{dede:channel type='son'}
 								<a href="[field:typelink/]" class="dropdown-item">[field:typename/]</a>{/dede:channel}
 							{dede:channel type='son' noself='yes' row='1'}</div>{/dede:channel}

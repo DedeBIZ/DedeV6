@@ -1,3 +1,15 @@
+::-webkit-scrollbar {
+	width:6px;
+	height:6px
+}
+::-webkit-scrollbar-track {
+	background:#f5f5f5;
+	border-radius:.2rem
+}
+::-webkit-scrollbar-thumb {
+	background:#dee2e6;
+	border-radius:.2rem
+}
 body {
 	line-height:1.6;
 	letter-spacing:.6px;
@@ -63,6 +75,7 @@ input[type=file] {
 }
 .item-article li {
 	margin-bottom:10px;
+	line-height:18px;
 	overflow:hidden;
 	text-overflow:ellipsis;
 	white-space:nowrap
@@ -181,7 +194,7 @@ input[type=file] {
 	text-overflow:ellipsis;
 	white-space:nowrap
 }
-.article-hot-box i,.article-hot-box span {
+.article-hot-box i,.article-hot-box span,.article-meta span,.item-theme-box i,.item-theme-box span,.list-article-body i,.list-article-body span {
 	color:#999
 }
 .article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6 {
@@ -191,10 +204,7 @@ input[type=file] {
 .article-meta span {
 	margin-right:1rem
 }
-.article-meta span,.item-theme-box i,.item-theme-box span,.list-article-body i,.list-article-body span {
-	color:#999
-}
-.digg .comment-container {
+.likes .comment-container {
 	width:200px;
 	padding:10px 20px;
 	border:1px solid #f5f5f5;
@@ -202,43 +212,39 @@ input[type=file] {
 	margin:0 6px;
 	cursor:pointer
 }
-.digg .comment-container:hover {
+.likes .comment-container:hover {
 	background:#fffce0
 }
-.digg .comment-top {
+.likes .comment-top {
 	display:flex;
 	flex-direction:row;
 	align-items:center;
 	margin-bottom:10px
 }
-.digg .comment-top-text {
+.likes .comment-top-text {
 	margin-left:10px;
 	color:#497cf6
 }
-.digg .comment-top-text-danger {
+.likes .comment-top-text-danger {
 	margin-left:10px;
 	color:#d21d35
 }
-.digg .text-like {
+.likes .text-like {
 	color:#497cf6
 }
-.digg .text-unlike {
+.likes .text-unlike {
 	color:#d21d35
 }
-.digg .comment-top p {
+.likes .comment-top p {
 	margin-bottom:unset
 }
 .prenext .pagination-previous,.pagination-next {
-	padding:6px 12px;
+	padding:10px 20px;
 	font-size:14px;
 	color:#a6a5a6;
 	border-radius:30px;
 	border:1px solid #f0f0f0;
 	cursor:pointer
-}
-.prenext .pagination-previous:hover,.pagination-next:hover {
-	color:#c2e5d0;
-	background:#1eac5a
 }
 .actbox {
 	float:right;
@@ -282,6 +288,9 @@ input[type=file] {
 	height:36px;
 	line-height:36px
 }
+.navbar-dark .navbar-nav .nav-link {
+	color:#eee
+}
 .logo img {
 	height:40px
 }
@@ -318,7 +327,7 @@ input[type=file] {
 }
 .bannr-img {
 	width:100%;
-	height:375px
+	height:345px
 }
 .user-img-md {
 	width:70px;
@@ -364,6 +373,7 @@ input[type=file] {
 	height:36px
 }
 .fa {
+	font-size:14px;
 	color:inherit;
 	cursor:pointer
 }

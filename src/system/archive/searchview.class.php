@@ -694,15 +694,14 @@ class SearchView
             }
         }
 		$plist = "";
-        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
-        $plist .= "<ul class='pagination justify-content-center pt-3'>";
-        $plist .=  preg_match('/info/i', $listitem)? $infos : "";
+        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."' class='d-flex'>$hidenform";
+        $plist .= preg_match('/info/i', $listitem)? $infos : "";
         $plist .= preg_match('/index/i', $listitem)? $indexpage : "";
         $plist .= preg_match('/pre/i', $listitem)? $prepage : "";
         $plist .= preg_match('/pageno/i', $listitem)? $listdd : "";
         $plist .= preg_match('/next/i', $listitem)? $nextpage : "";
         $plist .= preg_match('/end/i', $listitem)? $endpage : "";
-        $plist .= "</ul></form>\r\n";
+        $plist .= "</form>\r\n";
         return $plist;
     }
     /**

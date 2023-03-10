@@ -36,7 +36,7 @@
 				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
 					<div class="item-news bg-white shadow-sm rounded">
-						<div class="item-news-img"><a href="[field:arcurl/]" target="_blank"><img src="[field:picname/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
 						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
 						<div class="mb-3">
 							<img src="[field:mid function='face(@me)'/]" class="user-img-xs mr-1">

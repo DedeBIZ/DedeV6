@@ -38,7 +38,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 m-pb-2">{dede:include comment='推荐文档' filename='widget_recommend.htm'/}</div>
+				<div class="col-md-3">{dede:include comment='推荐文档' filename='widget_recommend.htm'/}</div>
 			</div>
 		</div>
 		<div class="container py-3">
@@ -50,7 +50,7 @@
 				</div>{dede:arclist row='3' orderby='id'}
 				<div class="col-md-4">
 					<div class="item-theme bg-white shadow-sm rounded">
-						<div class="item-theme-img"><a href="[field:arcurl/]" target="_blank"><img src="[field:picname/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<div class="item-theme-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
 						<div class="item-theme-box">
 							<h4 class="mb-3"><a href="[field:arcurl/]" target="_blank">[field:flag runphp='yes']if (stristr(@me,"h")) @me="<span class='btn btn-success btn-sm mr-2'>头条</span>";else if(stristr(@me,"c")) @me="<span class='btn btn-success btn-sm mr-2'>推荐</span>";else @me="";[/field:flag][field:title/]</a></h4>
 							<div class="row">
@@ -77,7 +77,7 @@
 				</div>{dede:arclist row='3' orderby='id'}
 				<div class="col-md-4">
 					<div class="item-news bg-white shadow-sm rounded">
-						<div class="item-news-img"><a href="[field:arcurl/]" target="_blank"><img src="[field:picname/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
 						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
 						<div class="mb-3">
 							<img src="[field:mid function='face(@me)'/]" class="user-img-xs mr-1">
@@ -91,8 +91,9 @@
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row">{dede:channelartlist typeid='3,3'}
-				<div class="col-md-6 m-pb-2">
+			<div class="row">
+				{dede:channelartlist typeid='3,3'}
+				<div class="col-md-4 m-pb-2">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
 						<ul>{dede:arclist row='10' titlelen='120' orderby='id'}
@@ -100,7 +101,15 @@
 						</ul>
 					</div>
 				</div>{/dede:channelartlist}{dede:channelartlist typeid='4,4'}
-				<div class="col-md-6">
+				<div class="col-md-4">
+					<div class="item-article bg-white shadow-sm rounded p-3">
+						<h2 class="mb-3">{dede:field.typename/}</h2>
+						<ul>{dede:arclist row='10' titlelen='120' orderby='id'}
+							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
+						</ul>
+					</div>
+				</div>{/dede:channelartlist}{dede:channelartlist typeid='5,5'}
+				<div class="col-md-4">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
 						<ul>{dede:arclist row='10' titlelen='120' orderby='id'}
@@ -108,7 +117,6 @@
 						</ul>
 					</div>
 				</div>{/dede:channelartlist}
-
 			</div>
 		</div>
 		{dede:include filename='foot.htm'/}
