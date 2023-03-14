@@ -36,7 +36,7 @@
 					<div class="article-main bg-white shadow-sm rounded p-3">
 						<h2>{dede:field.title/}</h2>
 						<div class="article-meta">
-							<span><img src="{dede:field.mid function='face(@me)'/}" class="user-img-xs mr-1">{dede:field.mid function="GetMemberInfos('uname',@me)"/}</span>
+							<span><img src="{dede:field.face/}" class="user-img-xs mr-1">{dede:field.uname/}</span>
 							<span><i class="fa fa-calendar mr-1"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
 							<span><i class="fa fa-globe mr-1"></i>{dede:field.source/}</span>
 							<span><i class="fa fa-eye mr-1"></i><script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}"></script>次</span>

@@ -475,7 +475,7 @@ class FreeList
                 }
             }
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addField FROM {$this->maintable} arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $addJoin WHERE $orwhere $ordersql LIMIT $limitstart,".$this->pagesize;
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face $addField FROM {$this->maintable} arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addJoin WHERE $orwhere $ordersql LIMIT $limitstart,".$this->pagesize;
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
         $artlist = "";
@@ -553,6 +553,7 @@ class FreeList
                     if (preg_match("#c#", $row['flag'])) {
                         $row['title'] = "".$row['title']."";
                     }
+                    $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                     //编译附加表里的数据
                     if (is_object($this->ChannelUnit)) {
                         foreach ($row as $k => $v) {
