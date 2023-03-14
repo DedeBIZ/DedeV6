@@ -612,6 +612,7 @@ class ListView
         }
         //获得附加表的相关信息
         $addtable = $this->ChannelUnit->ChannelInfos['addtable'];
+        $filtersql = "";
         if ($addtable!="")
         {
             $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
@@ -897,6 +898,7 @@ class ListView
         $purl .= '?'.$geturl;
         $optionlist = '';
         //添加联动单筛选
+        $pageaddurl = "";
         foreach($_GET as $key => $value) {
             $pageaddurl .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? "&".string_filter($key)."=".string_filter($value) : '';
         }

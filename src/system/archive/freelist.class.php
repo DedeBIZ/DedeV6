@@ -15,6 +15,7 @@ class FreeList
 {
     var $dsql;
     var $dtp;
+    var $FreeID;
     var $TypeID;
     var $TypeLink;
     var $PageNo;

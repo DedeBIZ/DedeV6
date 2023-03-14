@@ -27,7 +27,9 @@ class SearchView
     var $TotalPage;
     var $TotalResult;
     var $pagesize;
+    var $AddTable;
     var $ChannelType;
+    var $ChannelTypeid;
     var $TempInfos;
     var $Fields;
     var $PartView;

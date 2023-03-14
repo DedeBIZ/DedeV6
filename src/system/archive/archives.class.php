@@ -318,7 +318,7 @@ class Archives
         $filenames  = explode("/", $filename);
         $this->NameFirst = preg_replace("/\.".$this->ShortName."$/i", "", $filenames[count($filenames) - 1]);
         if ($this->NameFirst == '') {
-            $this->NameFirst = $this->arcID;
+            $this->NameFirst = $this->ArcID;
         }
         //获得当前文档的全名
         $filenameFull = GetFileUrl(
