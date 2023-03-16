@@ -115,7 +115,7 @@ class DataListCP
             $countQuery = preg_replace("#ORDER[ \r\n\t]{1,}BY(.*)#is", '', $countQuery);
 
             $row = $this->dsql->GetOne($countQuery);
-            if (is_array($row)) $row['dd'] = 0;
+            if (!is_array($row)) $row = array("dd" => 0);
             $this->totalResult = isset($row['dd']) ? $row['dd'] : 0;
             $this->sourceSql .= " LIMIT 0,".$this->pagesize;
         } else {
