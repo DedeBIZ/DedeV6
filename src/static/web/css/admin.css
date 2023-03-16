@@ -609,7 +609,7 @@ span.page-link {
 	direction:ltr;
 	cursor:pointer
 }
-table,input,select,textarea,.search,.menu,.coolbg,.mysource,.mywriter,.pubdlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.pagination,.card,.form-control,.btn,.alert,.rounded {
+table,input,select,textarea,.search,.menu,.coolbg,.mysource,.mywriter,.pubdlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
 	border-radius:.5rem!important
 }
 .btn-xs {

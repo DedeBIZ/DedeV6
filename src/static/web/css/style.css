@@ -4,11 +4,11 @@
 }
 ::-webkit-scrollbar-track {
 	background:#f5f5f5;
-	border-radius:.2rem
+	border-radius:.5rem
 }
 ::-webkit-scrollbar-thumb {
 	background:#dee2e6;
-	border-radius:.2rem
+	border-radius:.5rem
 }
 body {
 	line-height:1.6;
@@ -25,7 +25,7 @@ a:hover {
 }
 img {
 	max-width:100%;
-	border-radius:.25rem
+	border-radius:.5rem
 }
 ul,ol,li {
 	margin:0;
@@ -93,7 +93,7 @@ input[type=file] {
 .item-theme-img img {
 	width:100%;
 	height:250px;
-	border-radius:.2rem .2rem 0 0
+	border-radius:.5rem .5rem 0 0
 }
 .item-theme p,.item-news p {
 	margin-bottom:0;
@@ -129,10 +129,10 @@ input[type=file] {
 .list-article-img img {
 	width:100%;
 	height:260px;
-	border-radius:.2rem .2rem 0 0
+	border-radius:.5rem .5rem 0 0
 }
 .list-article-body {
-	border-radius:0 0 .2rem .2rem
+	border-radius:0 0 .5rem .5rem
 }
 .list-article-body h2 {
 	font-size:18px;
@@ -181,7 +181,7 @@ input[type=file] {
 }
 .article-hot-img img {
 	width:100%;
-	border-radius:.2rem .2rem 0 0
+	border-radius:.5rem .5rem 0 0
 }
 .article-hot-box {
 	padding:1rem 1.5rem;
@@ -303,7 +303,7 @@ input[type=file] {
 	background:#fff
 }
 #validateimg {
-	border-radius:0 .2rem .2rem 0
+	border-radius:0 .5rem .5rem 0
 }
 .user-login {
 	line-height:40px
@@ -403,6 +403,34 @@ input[type=file] {
 .admin-input-xs {
 	width:60px
 }
+.navbar-toggler,.dropdown-menu,.breadcrumb,.cke_chrome,.cke_inner,.pagination,.form-control,.alert,.rounded {
+	border-radius:.5rem!important
+}
+.btn-xs {
+	border-radius:.35rem!important
+}
+.cke_top {
+	border-radius:.5rem .5rem 0 0
+}
+.cke_bottom {
+	border-radius:0 0 .5rem .5rem
+}
+.page-item:first-child .page-link {
+	border-top-left-radius:.5rem;
+	border-bottom-left-radius:.5rem
+}
+.page-item:last-child .page-link {
+	border-top-right-radius:.5rem;
+	border-bottom-right-radius:.5rem
+}
+.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label,.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,.input-group:not(.has-validation)>.custom-select:not(:last-child),.input-group:not(.has-validation)>.form-control:not(:last-child) {
+	border-top-right-radius:0!important;
+	border-bottom-right-radius:0!important
+}
+.input-group>.input-group-append>.btn,.input-group>.input-group-append>.input-group-text,.input-group>.input-group-prepend:first-child>.btn:not(:first-child),.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),.input-group>.input-group-prepend:not(:first-child)>.btn,.input-group>.input-group-prepend:not(:first-child)>.input-group-text {
+	border-top-left-radius:0!important;
+	border-bottom-left-radius:0!important
+}
 #btnScrollTop {
 	display:none;
 	position:fixed;
@@ -413,7 +441,7 @@ input[type=file] {
 	color:#fff;
 	cursor:pointer;
 	background:#ec982c;
-	border-radius:.25rem;
+	border-radius:.5rem;
 	border:0;
 	z-index:9998
 }
