@@ -238,7 +238,7 @@ else if ($dopost == 'redat') {
             ShowMsg('成功还原所有数据', 'javascript:;');
             exit();
         }
-        $tmsg = "正在还原$nowfile}文件{$oknum}条数据，继续还原其它数据";
+        $tmsg = "正在还原{$nowfile}文件{$oknum}条数据，继续还原其它数据";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=redat'>
         <input type='hidden' name='startgo' value='1'>
         <input type='hidden' name='delfile' value='$delfile'>
