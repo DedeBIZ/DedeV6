@@ -4,11 +4,11 @@
 }
 ::-webkit-scrollbar-track {
 	background:#f5f5f5;
-	border-radius:.2rem
+	border-radius:.5rem
 }
 ::-webkit-scrollbar-thumb {
 	background:#dee2e6;
-	border-radius:.2rem
+	border-radius:.5rem
 }
 * {
 	font-size:12px
@@ -41,7 +41,28 @@ li {
 }
 img {
 	margin-right:10px;
-	border-radius:.2rem
+	max-width:100%;
+	border-radius:.5rem
+}
+table {
+	border-collapse:separate;
+	border-spacing:0
+}
+table tr:first-child td:first-child {
+	border-top-left-radius:.5rem;
+	border-top:0
+}
+table tr:first-child td:last-child {
+	border-top-right-radius:.5rem;
+	border-top:0
+}
+table tr:last-child td:first-child {
+	border-bottom-left-radius:.5rem;
+	border-bottom:0
+}
+table tr:last-child td:last-child {
+	border-bottom-right-radius:.5rem;
+	border-bottom:0
 }
 label {
 	margin-bottom:0
@@ -52,7 +73,7 @@ input {
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
-	border-radius:.2rem;
+	vertical-align:middle;
 	transition:all .3s
 }
 input[type=file] {
@@ -65,7 +86,6 @@ input[type=button],input[type=submit],input[type=reset] {
 	height:auto;
 	color:#fff;
 	background:#1eb867;
-	border-radius:.2rem;
 	border:0;
 	transition:all .3s
 }
@@ -81,7 +101,7 @@ select {
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
-	border-radius:.2rem;
+	vertical-align:middle;
 	transition:all .3s
 }
 textarea {
@@ -89,7 +109,6 @@ textarea {
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
-	border-radius:.2rem;
 	transition:all .3s
 }
 input:focus,select:focus,textarea:focus {
@@ -176,7 +195,7 @@ body.hidemenu .body-right {
 }
 .btn-version {
 	float:left;
-	margin-top:18px;
+	margin-top:16px;
 	margin-left:5px
 }
 .top-item ul li {
@@ -202,7 +221,6 @@ body.hidemenu .body-right {
 	font-size:12px;
 	color:#545b62;
 	background:0;
-	border-radius:.2rem;
 	border:0
 }
 .search-input {
@@ -240,13 +258,11 @@ body.hidemenu .body-right {
 }
 .menu-box {
 	margin:0;
-	padding:1rem 5px;
-	background:#ffff
+	padding:1rem 5px
 }
 .menu {
 	width:100%;
 	background:#fff;
-	border-radius:.2rem;
 	box-shadow:0 .125rem .25rem rgba(0,0,0,.075)
 }
 .menu .link {
@@ -279,9 +295,9 @@ body.hidemenu .body-right {
 }
 .submenu {
 	display:none;
-	padding:5px 0;
+	padding:6px 0;
 	background:#adb5bd;
-	border-radius:0 0 .2rem .2rem
+	border-radius:0 0 .5rem .5rem
 }
 .submenu li {
 	height:40px;
@@ -350,7 +366,6 @@ span.page-link {
 	padding:.25rem .65rem;
 	background:#f5f5f5;
 	border-bottom:1px solid #dee2e6;
-	border-radius:.2rem;
 	border:0;
 	cursor:pointer
 }
@@ -397,7 +412,7 @@ span.page-link {
 	border:1px solid #bdc5b4
 }
 .coolbg4 {
-	width:160px;
+	padding:.65rem;
 	background:#fff;
 	border-bottom:1px solid #dee2e6;
 	text-align:right
@@ -410,7 +425,7 @@ span.page-link {
 .pubdlg {
 	background:#fff;
 	border:2px solid #1eb867;
-	border-radius:.2rem;
+	border-radius:.5rem;
 	z-index:8888
 }
 .pubdlg .title {
@@ -448,11 +463,13 @@ span.page-link {
 	line-height:28px
 }
 .quickselItem .topcat {
+	margin-bottom:1rem;
 	padding:0 10px;
 	background:#e9ecef;
 	clear:both
 }
 .quickselItem .soncat {
+	margin-bottom:1rem;
 	padding:0 10px
 }
 .quickselItem .item {
@@ -465,9 +482,8 @@ span.page-link {
 	border:2px solid #1eb867;
 	z-index:10001
 }
-.dlgws div {
-	padding:.65rem;
-	width:100%
+.wsselect {
+	padding:.65rem
 }
 #uploadfield {
 	float:left
@@ -524,7 +540,7 @@ span.page-link {
 	font-size:12px
 }
 .btn+.btn,.btn-text+.btn-text {
-	margin-left:10px
+	margin-left:1rem
 }
 .admin-win {
 	background:#f5f5f5;
@@ -564,7 +580,6 @@ span.page-link {
 .web-info {
 	padding:10px;
 	background:#f5f5f5;
-	border-radius:.2rem;
 	text-align:center
 }
 .thumbnail-md {
@@ -578,8 +593,7 @@ span.page-link {
 .icon img {
 	margin-right:10px;
 	width:20px;
-	height:20px;
-	border-radius:.2rem
+	height:20px
 }
 .fileinput-button {
 	display:inline-block;
@@ -594,6 +608,26 @@ span.page-link {
 	opacity:0;
 	direction:ltr;
 	cursor:pointer
+}
+table,input,select,textarea,.search,.menu,.coolbg,.mysource,.mywriter,.pubdlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.pagination,.card,.form-control,.btn,.alert,.rounded {
+	border-radius:.5rem!important
+}
+.btn-xs {
+	border-radius:.35rem!important
+}
+.coolbg4,.pubdlg .title,.cke_top {
+	border-radius:.5rem .5rem 0 0
+}
+.wsselect,.cke_bottom {
+	border-radius:0 0 .5rem .5rem
+}
+.page-item:first-child .page-link {
+	border-top-left-radius:.5rem;
+	border-bottom-left-radius:.5rem
+}
+.page-item:last-child .page-link {
+	border-top-right-radius:.5rem;
+	border-bottom-right-radius:.5rem
 }
 #browsehappy {
 	padding:20px 30px;

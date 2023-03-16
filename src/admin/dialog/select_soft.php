@@ -48,7 +48,7 @@ if (!empty($noeditor)) {
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
-    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}</style>
+    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}</style>
     <script>
     function nullLink() {
         return;

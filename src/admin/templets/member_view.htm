@@ -38,7 +38,7 @@
 				<input type="hidden" name="dopost" value="edituser">
 				<input type="hidden" name="id" value="<?php echo $id?>">
 				<tr>
-					<td width="260" class="admin-td">头像/会员名：</td>
+					<td width="260">头像/会员名：</td>
 					<td>
 						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};echo "".$row['userid']."";?></span>
 						<span class="btn btn-outline-success btn-sm"><?php echo GetMemberTypeName($row['rank']);?></span>
@@ -46,36 +46,36 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">昵称：</td>
-					<td class="admin-td"><input type="text" name="uname" id="uname" class="admin-input-sm" value="<?php echo $row['uname']?>"></td>
+					<td>昵称：</td>
+					<td><input type="text" name="uname" id="uname" class="admin-input-sm" value="<?php echo $row['uname']?>"></td>
 				</tr>
 				<tr>
-					<td class="admin-td">密码：</td>
+					<td>密码：</td>
 					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">邮箱：</td>
-					<td class="admin-td"><input type="text" name="email" id="email" class="admin-input-sm" value="<?php echo $row['email']?>"></td>
+					<td>邮箱：</td>
+					<td><input type="text" name="email" id="email" class="admin-input-sm" value="<?php echo $row['email']?>"></td>
 				</tr>
 				<tr>
-					<td class="admin-td">性别：</td>
-					<td class="admin-td">
+					<td>性别：</td>
+					<td>
 						<label><input type="radio" name="sex" value="男" <?php if ($row['sex']=="男" ) echo" checked='1'" ;?>> 男</label>
 						<label><input type="radio" name="sex" value="女" <?php if ($row['sex']=="女" ) echo" checked='1'" ;?>> 女</label>
 						<label><input type="radio" name="sex" value="" <?php if ($row['sex']=="" ) echo" checked='1'" ;?>> 保密</label>
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">钱包积分：</td>
-					<td class="admin-td">
+					<td>钱包积分：</td>
+					<td>
 						<span class="mr-1">金币：<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>"></span>
 						<span class="mr-1">积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>"></span>
 						<span>余额：<input type="text" name="user_money" id="user_money" class="admin-input-xs" value="<?php echo $row['user_money'];?>"></span>
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">等级：</td>
-					<td class="admin-td">
+					<td>等级：</td>
+					<td>
 						<?php
 						$MemberTypes = array();
 						$dsql->SetQuery("SELECT `rank`,membername From `#@__arcrank` where `rank`>0");
@@ -96,35 +96,35 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">升级时间：</td>
-					<td class="admin-td"><input type="text" name="uptime" id="uptime" class="admin-input-sm" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>">（如果您要升级会员，必须设置此时间为当前时间）</td>
+					<td>升级时间：</td>
+					<td><input type="text" name="uptime" id="uptime" class="admin-input-sm" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>">（如果您要升级会员，必须设置此时间为当前时间）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">会员天数：</td>
-					<td class="admin-td"><input type="text" name="exptime" id="exptime" class="admin-input-sm" value="<?php echo $row['exptime']?>">（如果您要升级会员，会员天数必须大于0）</td>
+					<td>会员天数：</td>
+					<td><input type="text" name="exptime" id="exptime" class="admin-input-sm" value="<?php echo $row['exptime']?>">（如果您要升级会员，会员天数必须大于0）</td>
 				</tr>
-				<?php if ($mhasDay!=0) {$mhasDay=($mhasDay>0)? $mhasDay : '<tr><td colspan="2" class="admin-td"><span class="text-danger">会员已经到期</span></td></tr>';?>
+				<?php if ($mhasDay!=0) {$mhasDay=($mhasDay>0)? $mhasDay : '<tr><td colspan="2"><span class="text-danger">会员已经到期</span></td></tr>';?>
 				<tr>
-					<td class="admin-td">剩余天数：</td>
-					<td class="admin-td"><?php echo $mhasDay;?></td>
+					<td>剩余天数：</td>
+					<td><?php echo $mhasDay;?></td>
 				</tr>
 				<?php }?>
 				<tr>
-					<td class="admin-td">推荐级别：</td>
-					<td class="admin-td">
+					<td>推荐级别：</td>
+					<td>
 						<input type="hidden" name="oldmatt" id="oldmatt" class="admin-input-sm" value="<?php echo $row['matt']?>">
 						<input name="matt" type="text" id="matt" class="admin-input-sm" value="<?php echo $row['matt']?>">（0普通、1推荐、10管理员）
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">投稿限制：</td>
-					<td class="admin-td">
+					<td>投稿限制：</td>
+					<td>
 						<input type="text" name="send_max" class="admin-input-xs" value="<?php echo $row['send_max']?>">（0为不能投稿）
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">资料状况：</td>
-					<td class="admin-td">
+					<td>资料状况：</td>
+					<td>
 						<select name="spacesta" class="admin-input-sm">
 							<?php
 							foreach($staArr as $k=>$v)
@@ -138,7 +138,7 @@
 				</tr>
 				<tr>
 					<td>空间信息：</td>
-					<td class="admin-td">
+					<td>
 						<?php
 						$nrow = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='{$row['mid']}'");
 						echo "文档：{$nrow['article']} 图片：{$nrow['album']} 收藏：{$nrow['stow']} 浏览：{$nrow['pagecount']}";
@@ -146,22 +146,22 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">注册时间/地址：</td>
-					<td class="admin-td">
+					<td>注册时间/地址：</td>
+					<td>
 						<span class="mr-1"><?php echo GetDateTimeMk($row['jointime'])?></span>
 						<span><?php echo $row['joinip']?></span>
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">最近时间/地址：</td>
-					<td class="admin-td">
+					<td>最近时间/地址：</td>
+					<td>
 						<span class="mr-1"><?php echo GetDateTimeMk($row['logintime'])?></span>
 						<span><?php echo $row['loginip']?></span>
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">管理操作：</td>
-					<td class="admin-td">
+					<td>管理操作：</td>
+					<td>
 						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>&jumpurl=../user/edit_baseinfo.php" target="_blank" class="btn btn-success btn-sm">修改资料</a>
 						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>" target="_blank" class="btn btn-success btn-sm">会员面板</a>
 					</td>

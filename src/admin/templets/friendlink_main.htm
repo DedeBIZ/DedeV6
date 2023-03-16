@@ -39,9 +39,9 @@
 		<form action="friendlink_main.php" name="form1" method="get">
 			<table cellspacing="0" cellpadding="3" width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="380" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" class="admin-input-md"></td>
-					<td width="170">
-						<select name="ischeck" id="ischeck" class="admin-input-sm">
+					<td>
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" class="admin-input-md mr-3">
+						<select name="ischeck" id="ischeck" class="admin-input-sm mr-3">
 							<?php
 							foreach($selCheckArr as $k=>$v)
 							{
@@ -50,8 +50,6 @@
 							}
 							?>
 						</select>
-					</td>
-					<td>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 						<a href="friendlink_add.php" class="btn btn-success btn-sm">添加链接</a>
 						<a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>

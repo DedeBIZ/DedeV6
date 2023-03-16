@@ -12,15 +12,15 @@
 		<form action="member_pm.php" name="form1" method="get">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="380" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-md"></td>
-					<td width="370"><input type="text" name="username" id="username" placeholder="请输入会员名" class="admin-input-md"></td>
-					<td width="170">
-						<select name="folder" id="folder" class="admin-input-sm">
+					<td>
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-md mr-3">
+						<input type="text" name="username" id="username" placeholder="请输入会员名" class="admin-input-md mr-3">
+						<select name="folder" id="folder" class="admin-input-sm mr-3">
 							<option value="inbox">收件箱</option>
 							<option value="outbox">发件箱</option>
 						</select>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
-					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 				</tr>
 			</table>
 		</form>

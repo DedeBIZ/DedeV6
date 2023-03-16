@@ -29,15 +29,15 @@
 			<input type="hidden" name="channelid" value="3">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="380"><input type="text" name="keyword" class="admin-input-md" value="<?php echo $keyword?>" placeholder="请输入文档标题或文档id"></td>
-					<td width="170" align="center">
-						<select name="cid" class="admin-input-sm">
+					<td>
+						<input type="text" name="keyword" class="admin-input-md mr-3" value="<?php echo $keyword?>" placeholder="请输入文档标题或文档id">
+						<select name="cid" class="admin-input-sm mr-3">
 							<option value="0">选择分类</option>
 							<?php echo $optionarr?>
 						</select>
+						<input type="text" name="timerange" autocomplete="off" value="<?php echo $strTimerange;?>" id="timerange" class="admin-input-md mr-3">
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
-					<td width="240"><input type="text" name="timerange" autocomplete="off" value="<?php echo $strTimerange;?>" id="timerange" class="admin-input-md"></td>
-					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 				</tr>
 			</table>
 		</form>
