@@ -260,7 +260,7 @@ if ($GLOBALS['cfg_dbtype'] == 'mysql' || $GLOBALS['cfg_dbtype'] == 'mysqli') {
 } else {
     require_once(DEDEINC.'/database/dedesqlite.class.php');
 }
-//载入小助手配置,并对其进行默认初始化
+//载入小助手配置，并对其进行默认初始化
 $cfg_helper_autoload = array(
     'charset',    /* 编码小助手 */
     'channelunit',/* 模型单元小助手 */

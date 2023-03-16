@@ -96,17 +96,16 @@ class Archives
             foreach ($GLOBALS['PubFields'] as $k => $v) {
                 $this->Fields[$k] = $v;
             }
-            //为了减少重复查询，这里直接把附加表查询记录放在 $this->addTableRow 中，在 ParAddTable() 不再查询
+            //为了减少重复查询，这里直接把附加表查询记录放在$this->addTableRow中，在ParAddTable()不再查询
             if ($this->ChannelUnit->ChannelInfos['addtable'] != '') {
                 if ($this->ChannelUnit->ChannelID < 0) {
                     $query = "SELECT tb.*,mb.uname,mb.face FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` tb LEFT JOIN `#@__member` mb on tb.mid = mb.mid WHERE tb.`aid` = '$aid'";
                 } else {
                     $query = "SELECT * FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` WHERE `aid` = '$aid'";
                 }
-                
                 $this->addTableRow = $this->dsql->GetOne($query);
             }
-            //issystem==-1 表示自定义模型，自定义模型不支持redirecturl这类参数，因此限定文档普通模型才进行下面查询
+            //issystem==-1表示自定义模型，自定义模型不支持redirecturl这类参数，因此限定文档普通模型才进行下面查询
             if ($this->ChannelUnit->ChannelInfos['addtable'] != '' && $this->ChannelUnit->ChannelInfos['issystem'] != -1) {
                 if (is_array($this->addTableRow)) {
                     $this->Fields['redirecturl'] = $this->addTableRow['redirecturl'];
@@ -189,15 +188,15 @@ class Archives
             //设置全局环境变量
             $this->Fields['typename'] = $this->TypeLink->TypeInfos['typename'];
             @SetSysEnv($this->Fields['typeid'], $this->Fields['typename'], $this->Fields['id'], $this->Fields['title'], 'archives');
-            //文档图片注释替换为标题，利于优化
+            //文档模型正文图片注释自动为标题
             $this->Fields['body'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['body']);
             $this->Fields['body'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['body']);
             $this->Fields['body'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\" ",$this->Fields['body']);
-            //图片注释替换为标题，利于优化
+            //图片模型正文图片注释自动为标题
             $this->Fields['imgurls'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['imgurls']);
             $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
             $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
-            //清除文档图片的宽度和高度，适配自适应网站
+            //移除文档模型正文图片宽度和高度，适配自适应/响应式网站
             $this->Fields['body'] = preg_replace("/style=\"width\:(.*)\"/","",$this->Fields['body']);
         }
         //完成附加表信息读取

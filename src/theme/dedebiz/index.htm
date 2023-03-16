@@ -42,12 +42,12 @@
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row biz-mb">{dede:channelartlist typeid='1,1'}
+			<div class="row biz-mb">{dede:channelartlist typeid='18,18'}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
 						<h2>{dede:field.typename/}</h2>
 					</div>
-				</div>{dede:arclist row='3' orderby='id'}
+				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
 					<div class="item-theme bg-white shadow-sm rounded">
 						<div class="item-theme-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
@@ -69,12 +69,12 @@
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row biz-mb">{dede:channelartlist typeid='2,2'}
+			<div class="row biz-mb">{dede:channelartlist typeid='17,17'}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
 						<h2>{dede:field.typename/}</h2>
 					</div>
-				</div>{dede:arclist row='3' orderby='id'}
+				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
 					<div class="item-news bg-white shadow-sm rounded">
 						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
@@ -91,28 +91,27 @@
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row">
-				{dede:channelartlist typeid='3,3'}
+			<div class="row">{dede:channelartlist typeid='18,18'}
 				<div class="col-md-4 m-pb-2">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='120' orderby='id'}
+						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</div>
-				</div>{/dede:channelartlist}{dede:channelartlist typeid='4,4'}
+				</div>{/dede:channelartlist}{dede:channelartlist typeid='19,19'}
 				<div class="col-md-4">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='120' orderby='id'}
+						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</div>
-				</div>{/dede:channelartlist}{dede:channelartlist typeid='5,5'}
+				</div>{/dede:channelartlist}{dede:channelartlist typeid='17,17'}
 				<div class="col-md-4">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='120' orderby='id'}
+						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</div>

@@ -40,7 +40,7 @@ else if ($dopost == 'setskin') {
         $admin_catalog = join(',', $admin_catalogs);
         $userCatalogSql = "AND arc.typeid IN($admin_catalog) ";
     }
-    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,12";
+    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,15";
     $arcArr = array();
     $dsql->Execute('m', $query);
     while($row = $dsql->GetArray('m'))
@@ -55,7 +55,7 @@ else if ($dopost == 'setskin') {
             if (trim($row['editcon'])=='') {
                 $row['editcon'] = 'archives_edit.php';
             }
-            $rowarcrank = $row['arcrank']==-1? " <span class='btn btn-danger btn-xs'>未审核</span>":"";
+            $rowarcrank = $row['arcrank']==-1? "<span class='btn btn-danger btn-xs ml-2'>未审核</span>":"";
             $pubdate = GetDateMk($row['pubdate']);
             echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
         }

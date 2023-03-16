@@ -54,7 +54,7 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
             return FALSE;
         }
     }
-    //$issystem==-1 是自定义模型，不使用回收站
+    //$issystem==-1是自定义模型，不使用回收站
     if ($issystem == -1) $type = 'OK';
     if (!is_array($arcRow)) return FALSE;
     /** 删除到回收站 **/
