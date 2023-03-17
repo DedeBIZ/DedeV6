@@ -9,4 +9,4 @@
 >>dede>>
 row='6' 调用条数
 orderby='threads' 排列顺序（默认是主题数）
-titlelen='30'   圈子名称最大长度
+titlelen='30' 圈子名称长度

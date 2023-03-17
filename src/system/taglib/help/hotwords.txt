@@ -4,4 +4,4 @@
 >>dede>>
 num='6' 关键词数目
 subday='365' 天数
-maxlength='16' 关键词最大长度
+maxlength='16' 关键词长度

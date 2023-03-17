@@ -17,6 +17,5 @@
 typeid='' 调用栏目id，用英文逗号分开表示多个栏目
 notypeid='' 不调用栏目id，用英文逗号分开表示多个栏目
 row='20' 获取的栏目返回值
-其他说明：
 除了宏标记外，channelArtlist 是唯一一个可以直接嵌套其它标记的标记，不过仅限于嵌套 
 {dede:type}{/dede:type}和{dede:arclist}{/dede:arclist}两个标记

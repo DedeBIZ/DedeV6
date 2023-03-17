@@ -11,4 +11,4 @@ gid='0' 圈子id，默认为全部
 orderby='dateline' 排序，默认为时间
 orderway='desc' 排序方向，默认是最新主题在前
 row='12' 记录数
-titlelen='30' 主题标题(subject)最大长度
+titlelen='30' 主题标题长度
