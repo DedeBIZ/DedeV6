@@ -9,12 +9,14 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="menu-box">
-		<ul id="menu" class="menu">
-			<?php 
-			$openitem=100;
-			GetMenus($cuserLogin->getUserRank(),'main'); 
-			?>
-		</ul>
+		<div class="menu-body">
+			<ul id="menu" class="item-menu">
+				<?php 
+				$openitem=100;
+				GetMenus($cuserLogin->getUserRank(),'main'); 
+				?>
+			</ul>
+		</div>
 		<script>
 			$(function() {
 				var menu = function(el, multiple) {

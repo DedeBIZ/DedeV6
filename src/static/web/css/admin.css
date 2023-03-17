@@ -25,7 +25,7 @@ a {
 	text-decoration:none
 }
 a:hover {
-	color:#ec982c;
+	color:#ff8400;
 	text-decoration:none
 }
 h1,h2,h3,div,form,ul,ol,li,dd {
@@ -46,7 +46,8 @@ img {
 }
 table {
 	border-collapse:separate;
-	border-spacing:0
+	border-spacing:0;
+	background:#fff
 }
 table tr:first-child td:first-child {
 	border-top-left-radius:.5rem;
@@ -74,7 +75,7 @@ input {
 	background:#fff;
 	border:1px solid #dee2e6;
 	vertical-align:middle;
-	transition:all .3s
+	transition:all .5s
 }
 input[type=file] {
 	padding:0;
@@ -87,7 +88,7 @@ input[type=button],input[type=submit],input[type=reset] {
 	color:#fff;
 	background:#1eb867;
 	border:0;
-	transition:all .3s
+	transition:all .5s
 }
 input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkbox]:focus {
 	height:auto;
@@ -102,14 +103,14 @@ select {
 	background:#fff;
 	border:1px solid #dee2e6;
 	vertical-align:middle;
-	transition:all .3s
+	transition:all .5s
 }
 textarea {
 	padding:.25rem .65rem;
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
-	transition:all .3s
+	transition:all .5s
 }
 input:focus,select:focus,textarea:focus {
 	color:#495057;
@@ -129,11 +130,11 @@ body.hidemenu .body-left {
 }
 body.showmenu .body-right {
 	left:220px;
-	transition:all .3s
+	transition:all .5s
 }
 body.hidemenu .body-right {
 	left:0;
-	transition:all .3s
+	transition:all .5s
 }
 .body-left {
 	position:absolute;
@@ -150,12 +151,49 @@ body.hidemenu .body-right {
 }
 .main,.menu {
 	width:100%;
-	height:100%
+	height:98%
 }
 .main iframe,.menu iframe {
 	width:100%;
 	height:98%;
 	border:0
+}
+.menu-box {
+	margin:0;
+	padding:1rem 5px
+}
+.menu-body {
+	width:100%;
+	background:#fff;
+	box-shadow:0 .125rem .25rem rgba(0,0,0,.075)
+}
+.item-menu .link {
+	position:relative;
+	padding-left:50px;
+	display:block;
+	height:40px;
+	line-height:40px;
+	cursor:pointer;
+	transition:all .5s
+}
+.item-menu li:last-child .link {
+	border-bottom:0
+}
+.item-menu li i {
+	position:absolute;
+	top:12px;
+	left:20px;
+	color:#545b62
+}
+.item-menu li i.fa-angle-down {
+	right:20px;
+	left:auto
+}
+.item-menu li.open .link,.item-menu li.open i {
+	color:#1eb867
+}
+.item-menu li.open i.fa-angle-down {
+	transform:rotate(180deg)
 }
 .head {
 	width:100%;
@@ -256,53 +294,15 @@ body.hidemenu .body-right {
 	border-radius:50%;
 	border:1px solid #dee2e6
 }
-.menu-box {
-	margin:0;
-	padding:1rem 5px
-}
-.menu {
-	width:100%;
-	background:#fff;
-	box-shadow:0 .125rem .25rem rgba(0,0,0,.075)
-}
-.menu .link {
-	position:relative;
-	padding-left:50px;
-	display:block;
-	height:40px;
-	line-height:40px;
-	cursor:pointer;
-	transition:all .3s
-}
-.menu li:last-child .link {
-	border-bottom:0
-}
-.menu li i {
-	position:absolute;
-	top:13px;
-	left:20px;
-	color:#545b62
-}
-.menu li i.fa-angle-down {
-	right:20px;
-	left:auto
-}
-.menu li.open .link,.menu li.open i {
-	color:#1eb867
-}
-.menu li.open i.fa-angle-down {
-	transform:rotate(180deg)
-}
 .submenu {
 	display:none;
 	padding:6px 0;
-	background:#adb5bd;
-	border-radius:0 0 .5rem .5rem
+	background:#adb5bd
 }
 .submenu li {
 	height:40px;
 	line-height:40px;
-	transition:all .3s
+	transition:all .5s
 }
 .submenu li:hover {
 	background:#009688
@@ -609,7 +609,7 @@ span.page-link {
 	direction:ltr;
 	cursor:pointer
 }
-table,input,select,textarea,.search,.menu,.coolbg,.mysource,.mywriter,.pubdlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded {
+table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded {
 	border-radius:.5rem!important
 }
 .btn-xs {
@@ -618,7 +618,7 @@ table,input,select,textarea,.search,.menu,.coolbg,.mysource,.mywriter,.pubdlg,.q
 .coolbg4,.pubdlg .title,.cke_top {
 	border-radius:.5rem .5rem 0 0
 }
-.wsselect,.cke_bottom {
+.submenu,.wsselect,.cke_bottom {
 	border-radius:0 0 .5rem .5rem
 }
 .page-item:first-child .page-link {

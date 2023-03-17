@@ -61,7 +61,7 @@ else if ($dopost == 'setskin') {
         }
     } else {
     ?>
-    <tr><td colspan="2">暂无文档</td></tr>
+    <tr><td colspan="2" align="center">暂无文档</td></tr>
     <?php }?>
 </table>
 <?php

@@ -25,15 +25,21 @@
 								<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>{/dede:arclist}
 							</ol>
 							<div class="carousel-inner">{dede:arclist row='5' orderby='id'}
-								<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]"><a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" alt="[field:fulltitle/]" class="bannr-img"></a></div>{/dede:arclist}
+								<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
+									<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" alt="[field:fulltitle/]" class="bannr-img"></a>
+									<div class="carousel-caption d-none d-md-block">
+										<h2 class="mb-3">[field:title/]</h2>
+										<p class="mb-0">[field:description function="cn_substr(@me,120)"/]...</p>
+									</div>
+								</div>{/dede:arclist}
 							</div>
 							<a href="#carouselIndex" class="carousel-control-prev" role="button" data-slide="prev">
 								<span class="carousel-control-prev-icon"></span>
-								<span class="sr-only">上一个</span>
+								<span class="sr-only">上篇</span>
 							</a>
 							<a href="#carouselIndex" class="carousel-control-next" role="button" data-slide="next">
 								<span class="carousel-control-next-icon"></span>
-								<span class="sr-only">下一个</span>
+								<span class="sr-only">下篇</span>
 							</a>
 						</div>
 					</div>
@@ -42,7 +48,7 @@
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row biz-mb">{dede:channelartlist typeid='18,18'}
+			<div class="row biz-mb">{dede:channelartlist typeid='1,1'}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
 						<h2>{dede:field.typename/}</h2>
@@ -69,7 +75,7 @@
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row biz-mb">{dede:channelartlist typeid='17,17'}
+			<div class="row biz-mb">{dede:channelartlist typeid='2,2'}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
 						<h2>{dede:field.typename/}</h2>
@@ -91,7 +97,7 @@
 			</div>
 		</div>
 		<div class="container py-3">
-			<div class="row">{dede:channelartlist typeid='18,18'}
+			<div class="row">{dede:channelartlist typeid='3,3'}
 				<div class="col-md-4 m-pb-2">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
@@ -99,7 +105,7 @@
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</div>
-				</div>{/dede:channelartlist}{dede:channelartlist typeid='19,19'}
+				</div>{/dede:channelartlist}{dede:channelartlist typeid='4,4'}
 				<div class="col-md-4">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
@@ -107,7 +113,7 @@
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</div>
-				</div>{/dede:channelartlist}{dede:channelartlist typeid='17,17'}
+				</div>{/dede:channelartlist}{dede:channelartlist typeid='5,5'}
 				<div class="col-md-4">
 					<div class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
