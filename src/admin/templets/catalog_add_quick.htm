@@ -47,23 +47,21 @@
 					.appendTo($("#addQuickRel"));
 				});
 			});
-		</script>
-		<script>
 			function ShowHide(objname) {
 				var obj = document.getElementById(objname);
 				if (obj.style.display == "block")
 					obj.style.display = "none";
 				else
 					obj.style.display = "block";
-			}
+			};
 			function ShowObj(objname) {
 				var obj = document.getElementById(objname);
 				obj.style.display = "block";
-			}
+			};
 			function HideObj(objname) {
 				var obj = document.getElementById(objname);
 				obj.style.display = "none";
-			}
+			};
 			function showSeltype(objname) {
 				if (objname.value != 0) {
 					$("#addQuickRel").show();
@@ -76,7 +74,7 @@
 					$("#pathtype").hide();
 					$("#savetype").val('');
 				}
-			}
+			};
 		</script>
 	</head>
 	<body>
@@ -176,14 +174,11 @@
 				<tr>
 					<td colspan="4">
 						<table cellpadding="3" cellspacing="1" id="addQuick" align="center" class="table maintable">
-							<tr>
-								<td colspan="4" bgcolor="f5f5f5">批量添加栏目</td>
-							</tr>
 							<tr bgcolor="#e9ecef" align="center">
-								<td width="6%">排序</td>
-								<td width="20%">顶级栏目名称</td>
-								<td width="60%">子类栏目名称（目录名称1,目录名称2）</td>
-								<td align="center"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
+								<td width="6%" class="border-top-0">排序</td>
+								<td width="16%" class="border-top-0">顶级栏目名称</td>
+								<td width="60%" class="border-top-0">子类栏目名称（目录名称1,目录名称2）</td>
+								<td class="border-top-0"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
 							</tr>
 							<tr align="center">
 								<td class="rank">
@@ -192,7 +187,7 @@
 								</td>
 								<td><input type="text" name="toptype" id="toptype" class="pubinputs admin-input-sm"></td>
 								<td><input type="text" name="sontype" id="sontype" class="pubinputs w-100"></td>
-								<td align="center"><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php for($i=2;$i<=10;$i++) {?>
 							<tr align="center" class="repeat">
@@ -202,23 +197,23 @@
 								</td>
 								<td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
 								<td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
-								<td align="center"><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php }?>
 						</table>
-						<table width="100%" cellpadding="3" cellspacing="1" id="addQuickRel" style="display:none">
+						<table cellpadding="3" cellspacing="1" id="addQuickRel" align="center" class="table maintable" style="display:none">
 							<tr bgcolor="#e9ecef" align="center">
 								<td width="6%">排序</td>
-								<td width="20%">栏目名称</td>
-								<td align="center"><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
+								<td width="16%">栏目名称</td>
+								<td><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
 							</tr>
 							<tr align="center">
 								<td class="rank">
 									<input type="hidden" name="posttype" value="" class="pubinputs">
 									<input type="text" name="rank" id="rank" value="1" class="pubinputs admin-input-xs">
 								</td>
-								<td align="center"><input type="text" name="reltype" id="reltype" class="pubinputs admin-input-sm"></td>
-								<td align="center"><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="reltype" id="reltype" class="pubinputs admin-input-sm"></td>
+								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php for($i=2;$i<=10;$i++) {?>
 							<tr align="center" class="repeat">
@@ -226,8 +221,8 @@
 									<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
 									<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
 								</td>
-								<td align="center"><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
-								<td align="center"><button type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
+								<td><button type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php }?>
 						</table>
