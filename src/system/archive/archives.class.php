@@ -98,7 +98,7 @@ class Archives
             }
             //为了减少重复查询，这里直接把附加表查询记录放在$this->addTableRow中，在ParAddTable()不再查询
             if ($this->ChannelUnit->ChannelInfos['addtable'] != '') {
-                if ($this->ChannelUnit->ChannelID < 0) {
+                if ($this->ChannelUnit->ChannelID < -1) {
                     $query = "SELECT tb.*,mb.uname,mb.face FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` tb LEFT JOIN `#@__member` mb on tb.mid = mb.mid WHERE tb.`aid` = '$aid'";
                 } else {
                     $query = "SELECT * FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` WHERE `aid` = '$aid'";
