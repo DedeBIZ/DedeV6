@@ -24,7 +24,7 @@ while ($channel = $dsql->GetArray('addmod')) {
 			<div id="collapseArchives" class="collapse mt-3<?php echo (isset($_menu_conex) && $_menu_conex===true)? ' show' : '';?>">
 				<ul class="list-group list-group-flush">
 					<?php foreach($channels as $chid => $channel) {?>
-					<?php if(!in_array($chid,$enabledChannels)) continue;?>
+					<?php if(!in_array($chid,$enabledChannels) || $channel['isshow'] == 0) continue;?>
 						<?php $channel['usermancon'] = empty($channel['usermancon'])? "content_list.php" : $channel['usermancon'];?>
 						<?php if ($channel['issend'] == 1) {?>
 						<li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_conex) && $channelid == $channel['id']) echo 'active';?>">

@@ -300,16 +300,6 @@ if (!function_exists('file_put_contents')) {
         }
     }
 }
-/**
- *  显示更新信息
- *
- * @return    void
- */
-function UpdateStat()
-{
-    include_once(DEDEINC."/inc/inc_stat.php");
-    return SpUpdateStat();
-}
 $arrs1 = array();
 $arrs2 = array();
 /**
