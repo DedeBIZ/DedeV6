@@ -176,6 +176,125 @@
 					</td>
 				</tr>
 				<tr>
+					<td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
+				</tr>
+				<tr>
+					<td class="admin-td">
+						<table width="100%" cellspacing="2" cellpadding="2">
+							<?php
+							$speclisttmp = GetSysTemplets("spec_arclist.htm");
+							$i = 1;
+							$dtp = new DedeTagParse();
+							$dtp->LoadSource($addRow["note"]);
+							if (is_array($dtp->CTags)) {
+								foreach($dtp->CTags as $tagid=>$ctag) {
+								if ($ctag->GetName()!="specnote") continue;
+								$notename = $ctag->GetAtt('name');
+								$col = $ctag->GetAtt('col');
+								$idlist = $ctag->GetAtt('idlist');
+								$imgwidth = $ctag->GetAtt('imgwidth');
+								$imgheight = $ctag->GetAtt('imgheight');
+								$titlelen = $ctag->GetAtt('titlelen');
+								$infolen = $ctag->GetAtt('infolen');
+								$temp = trim($ctag->GetInnerText());
+								$noteid = $ctag->GetAtt('noteid');
+								if (empty($noteid)) $noteid = $i;
+								$isauto = $ctag->GetAtt('isauto');
+								if (empty($isauto)) $isauto = 0;
+								$keywords = $ctag->GetAtt('keywords');
+								$typeid = $ctag->GetAtt('typeid');
+								if (empty($typeid)) $typeid = 0;
+								$rownum = $ctag->GetAtt('rownum');
+								if (empty($rownum)) $rownum = 40;
+							?>
+							<tr>
+								<td width="90" class="admin-td">节点<?php echo $i?>名称：</td>
+								<td class="admin-td">
+									<input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" class="admin-input-md" value="<?php echo $notename?>">
+									<label>节点标识：<input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" value="<?php echo $noteid?>" class="admin-input-sm"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="admin-td">文档列表：</td>
+								<td class="admin-td">
+									<textarea name="arcid<?php echo $i?>" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" class="admin-textarea-sm"><?php echo $idlist?></textarea>
+									<button type="button" class="btn btn-success btn-sm" name="selarc<?php echo $i?>" id="selarc<?php echo $i?>2" onclick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button>
+								</td>
+							</tr>
+							<tr>
+								<td class="admin-td">文档来源：</td>
+								<td class="admin-td">
+									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" <?php if ($isauto==0) echo "checked";?>> 按文档列表</label>
+									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1" <?php if ($isauto==1) echo "checked";?>> 自动获取文档</label>
+									<label>关键词：<input type="text" name="keywords<?php echo $i?>" value="<?php echo $keywords?>" id="keywords<?php echo $i?>" value="" size="16">（英文逗号分开）</label>
+									<label>栏目id：<input type="text" name="typeid<?php echo $i?>" value="<?php echo $typeid?>" id="typeid<?php echo $i?>" value="0" size="4"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="admin-td">节点布局：</td>
+								<td class="admin-td">
+									<label>列数：<input type="text" name="col<?php echo $i?>" id="col<?php echo $i?>" value="<?php echo $col?>" class="admin-input-sm"></label>
+									<label>图片宽：<input type="text" name="imgwidth<?php echo $i?>" id="imgwidth<?php echo $i?>" value="<?php echo $imgwidth?>" class="admin-input-sm"></label>
+									<label>图片高：<input type="text" name="imgheight<?php echo $i?>" id="imgheight<?php echo $i?>" value="<?php echo $imgheight?>" class="admin-input-sm"></label>
+									<label>标题长：<input type="text" name="titlelen<?php echo $i?>" id="titlelen<?php echo $i?>" value="<?php echo $titlelen?>" class="admin-input-sm"></label>
+									<label>简介长：<input type="text" name="infolen<?php echo $i?>" id="infolen<?php echo $i?>" value="<?php echo $infolen?>" class="admin-input-sm"></label>
+									<label>文档数：<input type="text" name="rownum<?php echo $i?>" id="rownum<?php echo $i?>" value="<?php echo $rownum?>" class="admin-input-sm"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="admin-td">应用样式：</td>
+								<td class="admin-td"><textarea name="listtmp<?php echo $i?>" id="listtmp<?php echo $i?>" class="admin-textarea-xl"><?php echo $temp?></textarea></td>
+							</tr>
+							<?php
+							$i++;
+							}}
+							$dtp->Clear();
+							for ($i;$i<=$cfg_specnote;$i++)
+							{
+							?>
+							<tr>
+								<td width="90" class="admin-td">节点<?php echo $i?>名称：</td>
+								<td class="admin-td">
+									<input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" class="admin-input-md">
+									<label>节点标识：<input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" class="admin-input-sm"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="admin-td">文档列表：</td>
+								<td class="admin-td">
+									<textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" class="admin-textarea-sm"></textarea>
+									<button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onclick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button>
+								</td>
+							</tr>
+							<tr>
+								<td class="admin-td">文档来源：</td>
+								<td class="admin-td">
+									<label>栏目id：<input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" class="admin-input-sm"></label>
+									<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" value="" class="admin-input-md">（空格分开）</label>
+									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文档列表</label>
+									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="admin-td">节点布局：</td>
+								<td class="admin-td">
+									<label>列数：<input type="text" name="col<?php echo $i?>" id="col<?php echo $i?>" value="1" class="admin-input-sm"></label>
+									<label>图片高：<input type="text" name="imgheight<?php echo $i?>" id="imgheight<?php echo $i?>" value="90" class="admin-input-sm"></label>
+									<label>图片宽：<input type="text" name="imgwidth<?php echo $i?>" id="imgwidth<?php echo $i?>" value="120" class="admin-input-sm"></label>
+									<label>标题长：<input type="text" name="titlelen<?php echo $i?>" id="titlelen<?php echo $i?>" value="60" class="admin-input-sm"></label>
+									<label>简介长：<input type="text" name="infolen<?php echo $i?>" id="infolen<?php echo $i?>" value="160" class="admin-input-sm"></label>
+									<label>文档数：<input type="text" name="rownum<?php echo $i?>" id="rownum<?php echo $i?>" value="40" class="admin-input-sm"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="admin-td">应用样式：</td>
+								<td class="admin-td"><textarea name="listtmp<?php echo $i?>" id="listtmp<?php echo $i?>" class="admin-textarea-xl"><?php echo $speclisttmp?></textarea></td>
+							</tr>
+							<?php }?>
+						</table>
+					</td>
+				</tr>
+				<tr>
 					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
@@ -265,129 +384,6 @@
 								<td width="90">浏览次数：</td>
 								<td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" class="admin-input-sm"></td>
 							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table width="100%" cellspacing="2" cellpadding="2">
-							<?php
-							$speclisttmp = GetSysTemplets("spec_arclist.htm");
-							$i = 1;
-							$dtp = new DedeTagParse();
-							$dtp->LoadSource($addRow["note"]);
-							if (is_array($dtp->CTags)) {
-								foreach($dtp->CTags as $tagid=>$ctag) {
-								if ($ctag->GetName()!="specnote") continue;
-								$notename = $ctag->GetAtt('name');
-								$col = $ctag->GetAtt('col');
-								$idlist = $ctag->GetAtt('idlist');
-								$imgwidth = $ctag->GetAtt('imgwidth');
-								$imgheight = $ctag->GetAtt('imgheight');
-								$titlelen = $ctag->GetAtt('titlelen');
-								$infolen = $ctag->GetAtt('infolen');
-								$temp = trim($ctag->GetInnerText());
-								$noteid = $ctag->GetAtt('noteid');
-								if (empty($noteid)) $noteid = $i;
-								$isauto = $ctag->GetAtt('isauto');
-								if (empty($isauto)) $isauto = 0;
-								$keywords = $ctag->GetAtt('keywords');
-								$typeid = $ctag->GetAtt('typeid');
-								if (empty($typeid)) $typeid = 0;
-								$rownum = $ctag->GetAtt('rownum');
-								if (empty($rownum)) $rownum = 40;
-							?>
-							<tr bgcolor="#e9ecef">
-								<td width="260">节点<?php echo $i?>名称：</td>
-								<td>
-									<table cellspacing="0" cellpadding="0">
-										<tr>
-											<td width="370"><input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" class="admin-input-md" value="<?php echo $notename?>"></td>
-											<td width="90">节点标识：</td>
-											<td><input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" value="<?php echo $noteid?>" class="admin-input-sm"></td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td>节点文档列表：</td>
-								<td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" class="admin-textarea-xl"><?php echo $idlist?></textarea></td>
-								<td><button type="button" class="btn btn-success btn-sm" name="selarc<?php echo $i?>" id="selarc<?php echo $i?>2" onclick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
-							</tr>
-							<tr>
-								<td>文档来源：</td>
-								<td>
-									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" <?php if ($isauto==0) echo "checked";?>> 按文档列表</label>
-									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1" <?php if ($isauto==1) echo "checked";?>> 自动获取文档</label>
-									<label>关键词：<input type="text" name="keywords<?php echo $i?>" value="<?php echo $keywords?>" id="keywords<?php echo $i?>" value="" size="16">（英文逗号分开）</label>
-									<label>栏目id：<input type="text" name="typeid<?php echo $i?>" value="<?php echo $typeid?>" id="typeid<?php echo $i?>" value="0" size="4"></label>
-								</td>
-							</tr>
-							<tr>
-								<td rowspan="2">节点布局：</td>
-								<td>
-									列数：<input type="text" name="col<?php echo $i?>" id="col<?php echo $i?>" value="<?php echo $col?>" size="3">
-									图片宽：<input type="text" name="imgwidth<?php echo $i?>" id="imgwidth<?php echo $i?>" value="<?php echo $imgwidth?>" size="3">
-									图片高：<input type="text" name="imgheight<?php echo $i?>" id="imgheight<?php echo $i?>" value="<?php echo $imgheight?>" size="3">
-									标题长：<input type="text" name="titlelen<?php echo $i?>" id="titlelen<?php echo $i?>" value="<?php echo $titlelen?>" size="3">
-									简介长：<input type="text" name="infolen<?php echo $i?>" id="infolen<?php echo $i?>" value="<?php echo $infolen?>" size="3">
-									文档数：<input type="text" name="rownum<?php echo $i?>" id="rownum<?php echo $i?>" value="<?php echo $rownum?>" size="3">
-								</td>
-							</tr>
-							<tr>
-								<td>单条记录的模板：<br><textarea name="listtmp<?php echo $i?>" rows="3" id="listtmp<?php echo $i?>" class="admin-textarea-xl"><?php echo $temp?></textarea></td>
-							</tr>
-							<?php
-							$i++;
-							}}
-							$dtp->Clear();
-							for ($i;$i<=$cfg_specnote;$i++)
-							{
-							?>
-							<tr bgcolor="#e9ecef">
-								<td width="90">节点<?php echo $i?>名称：</td>
-								<td>
-									<table cellspacing="0" cellpadding="0">
-										<tr>
-											<td width="370"><input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" class="admin-input-md"></td>
-											<td width="90">节点标识：</td>
-											<td><input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" class="admin-input-sm"></td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td>节点文档列表：</td>
-								<td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" class="admin-textarea-xl"></textarea></td>
-								<td><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onclick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
-							</tr>
-							<tr>
-								<td>文档来源：</td>
-								<td>
-									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文档列表</label>
-									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
-									<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" value="" size="16">（空格分开）</label>
-									<label>栏目id：<input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" size="4"></label>
-								</td>
-							</tr>
-							<tr>
-								<td rowspan="2">节点布局：<br></td>
-								<td>
-									列数：<input type="text" name="col<?php echo $i?>" id="col<?php echo $i?>" value="1" size="3">
-									图片高：<input type="text" name="imgheight<?php echo $i?>" id="imgheight<?php echo $i?>" value="90" size="3">
-									图片宽：<input type="text" name="imgwidth<?php echo $i?>" id="imgwidth<?php echo $i?>" value="120" size="3">
-									标题长：<input type="text" name="titlelen<?php echo $i?>" id="titlelen<?php echo $i?>" value="60" size="3">
-									简介长：<input type="text" name="infolen<?php echo $i?>" id="infolen<?php echo $i?>" value="160" size="3">
-									文档数：<input type="text" name="rownum<?php echo $i?>" id="rownum<?php echo $i?>" value="40" size="3">
-								</td>
-							</tr>
-							<tr>
-								<td>单条记录的模板：<br><textarea name="listtmp<?php echo $i?>" rows="3" id="listtmp<?php echo $i?>" class="admin-textarea-xl"><?php echo $speclisttmp?></textarea></td>
-							</tr>
-							<?php }?>
 						</table>
 					</td>
 				</tr>

@@ -80,7 +80,8 @@ input {
 input[type=file] {
 	padding:0;
 	height:auto;
-	border:0
+	border:0;
+	vertical-align:middle
 }
 input[type=button],input[type=submit],input[type=reset] {
 	padding:.25rem .65rem;
@@ -110,6 +111,7 @@ textarea {
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
+	vertical-align:middle;
 	transition:all .5s
 }
 input:focus,select:focus,textarea:focus {
