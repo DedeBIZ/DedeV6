@@ -214,28 +214,28 @@ async function LoadStatChart() {
 				{
 					label: 'PV',
 					data: pvs,
-					lineTension: 0.6,
+					lineTension: 0.3,
 					borderColor: 'rgba(54, 162, 235, 1)',
 					backgroundColor: 'rgba(54, 162, 235, 0.2)',
 					borderWidth: 1
 				}, {
 					label: 'UV',
 					data: uvs,
-					lineTension: 0.6,
+					lineTension: 0.3,
 					borderColor: 'rgba(255, 206, 86, 1)',
 					backgroundColor: 'rgba(255, 206, 86, 0.2)',
 					borderWidth: 1
 				}, {
 					label: 'IP',
 					data: ips,
-					lineTension: 0.6,
+					lineTension: 0.3,
 					borderColor: 'rgba(255, 99, 132, 1)',
 					backgroundColor: 'rgba(255, 99, 132, 0.2)',
 					borderWidth: 1
 				}, {
 					label: 'VV',
 					data: vvs,
-					lineTension: 0.6,
+					lineTension: 0.3,
 					borderColor: 'rgba(75, 192, 192, 1)',
 					backgroundColor: 'rgba(75, 192, 192, 0.2)',
 					borderWidth: 1
