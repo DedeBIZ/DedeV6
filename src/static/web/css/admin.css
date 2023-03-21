@@ -607,6 +607,10 @@ body.hidemenu .body-right {
 	direction:ltr;
 	cursor:pointer
 }
+span.page-link {
+	color:#fff;
+	background:#1eb867
+}
 table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded {
 	border-radius:.5rem!important
 }
