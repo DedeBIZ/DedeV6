@@ -345,7 +345,8 @@
 				</tr>
 				<?php if ($softconfig['moresitedo'] == 0 && trim($softconfig['sites']) != '') {?>
 				<tr>
-					<td class="admin-td">（服务器地址 + 软件地址 = 软件真实地址）</a><br>
+					<td class="admin-td">
+						<div class="py-2">（服务器地址 + 软件地址 = 软件真实地址）</div>
 						<?php
 						$sites = explode("\n", $softconfig['sites']);
 						$startNum = 2;
@@ -357,13 +358,14 @@
 							$siteurl = trim($siteurl);
 							$sitename = trim($sitename);
 						?>
-						<?php echo $sitename;?>：
-						<input type='hidden' name='forconfig<?php echo $startNum;?>' value='1'>
-						<input type='text' name='softurlfirst<?php echo $startNum;?>' class='admin-input-md' value='<?php echo $siteurl;?>'> +
-						<input type='text' name='softurl<?php echo $startNum;?>' class='admin-input-sm'> =
-						<input type='text' name='servermsg<?php echo $startNum;?>' class='admin-input-sm' value='<?php echo $sitename;?>'>
-						<label><input type='checkbox' name='need<?php echo $startNum;?>' value='1' checked> 启用</label>
-						<br>
+						<div class="py-2">
+							<?php echo $sitename;?>
+							<input type='hidden' name='forconfig<?php echo $startNum;?>' value='1'>
+							<input type='text' name='softurlfirst<?php echo $startNum;?>' class='admin-input-md' value='<?php echo $siteurl;?>'> +
+							<input type='text' name='softurl<?php echo $startNum;?>' class='admin-input-sm'> =
+							<input type='text' name='servermsg<?php echo $startNum;?>' class='admin-input-sm' value='<?php echo $sitename;?>'>
+							<label><input type='checkbox' name='need<?php echo $startNum;?>' value='1' checked> 启用</label>
+						</div>
 						<?php
 						$startNum++;
 						}

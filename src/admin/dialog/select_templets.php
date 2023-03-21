@@ -61,8 +61,8 @@ if (empty($comeback)) {
                         <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                         <input type="hidden" name="f" value="<?php echo $f ?>">
                         <input type="hidden" name="job" value="upload">
-                        <span>选择：<input type="file" name="uploadfile" class="w-50"></span>
-                        <span>改名：<input type="text" name="filename" class="admin-input-sm"></span>
+                        <label>选择：<input type="file" name="uploadfile" class="w-50"></label>
+                        <label>改名：<input type="text" name="filename" class="admin-input-sm"></label>
                         <button type="submit" name="sb1" class="btn btn-success btn-sm">保存</button>
                     </form>
                 </td>

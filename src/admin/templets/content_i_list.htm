@@ -75,32 +75,30 @@
 				<td width="6%">发布人</td>
 				<td>操作</td>
 			</tr>
+			<form name="form2">
+				{dede:datalist empty='<tr><td colspan="10">暂无文档</td></tr>'}
+					<tr align="center">
+						<td width="6%"><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
+						<td width="6%">{dede:field.id/}</td>
+						<td width="26%" align="left">
+							<img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm">
+							<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a>
+						</td>
+						<td width="10%">{dede:field.senddate function='GetDateTimeMk(@me)'/}</td>
+						<td width="12%">{dede:field.typeid function='GetTypename(@me)'/}</td>
+						<td width="6%">{dede:field.click/}</td>
+						<td width="6%">{dede:field.ismake function='IsHtmlArchives(@me)'/}</td>
+						<td width="6%">{dede:field.arcrank function='GetRankName(@me)'/}</td>
+						<td width="6%">{dede:field.mid function=GetMemberName(@me)/}</td>
+						<td>
+							<a href="javascript:;" class="btn btn-light btn-sm" onclick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-sliders"></i> 属性</a>
+							<a href="javascript:;" class="btn btn-light btn-sm" onclick="editArc({dede:field.id/});"><i class="fa fa-pencil-square"></i> 修改</a>
+							<a href="javascript:;" class="btn btn-light btn-sm" onclick="viewArc({dede:field.id/});"><i class="fa fa-eye"></i> 预览</a>
+						</td>
+					</tr>
+				{/dede:datalist}
+			</form>
 		</table>
-		<form name="form2">
-			{dede:datalist empty='<div class="text-center py-2">暂无文档</div>'}
-			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
-				<tr align="center">
-					<td width="6%"><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
-					<td width="6%">{dede:field.id/}</td>
-					<td width="26%" align="left">
-						<img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm">
-						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a>
-					</td>
-					<td width="10%">{dede:field.senddate function='GetDateTimeMk(@me)'/}</td>
-					<td width="12%">{dede:field.typeid function='GetTypename(@me)'/}</td>
-					<td width="6%">{dede:field.click/}</td>
-					<td width="6%">{dede:field.ismake function='IsHtmlArchives(@me)'/}</td>
-					<td width="6%">{dede:field.arcrank function='GetRankName(@me)'/}</td>
-					<td width="6%">{dede:field.mid function=GetMemberName(@me)/}</td>
-					<td>
-						<a href="javascript:;" class="btn btn-light btn-sm" onclick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-sliders"></i> 属性</a>
-						<a href="javascript:;" class="btn btn-light btn-sm" onclick="editArc({dede:field.id/});"><i class="fa fa-pencil-square"></i> 修改</a>
-						<a href="javascript:;" class="btn btn-light btn-sm" onclick="viewArc({dede:field.id/});"><i class="fa fa-eye"></i> 预览</a>
-					</td>
-				</tr>
-			</table>
-			{/dede:datalist}
-		</form>
 		<table cellspacing="1" cellpadding="1" align="center" class="table maintable mb-3">
 			<tr>
 				<td>

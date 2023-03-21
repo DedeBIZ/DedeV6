@@ -76,7 +76,7 @@ if (!empty($noeditor)) {
                         <input type="hidden" name="f" value="<?php echo $f ?>">
                         <input type="hidden" name="job" value="upload">
                         <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
-                        <span>选择：<input type="file" name="uploadfile" class="w-75"></span>
+                        <label>选择：<input type="file" name="uploadfile" class="w-75"></label>
                         <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
                     </form>
                 </td>
