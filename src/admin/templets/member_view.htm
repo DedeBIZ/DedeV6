@@ -40,7 +40,7 @@
 				<tr>
 					<td width="260">头像/会员名：</td>
 					<td>
-						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};echo "".$row['userid']."";?></span>
+						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo "".$row['userid']."";?></span>
 						<span class="btn btn-outline-success btn-sm"><?php echo GetMemberTypeName($row['rank']);?></span>
 						<span class="btn btn-outline-warning btn-sm"><?php echo GetHonor($row['scores']);?></span>
 					</td>

@@ -70,7 +70,7 @@
 					<td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
 					<td>{dede:field.mid/}</td>
 					<td align="left">
-						<span class="mr-1"><?php if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};echo ''.$fields['userid'].'';if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";?></span>
+						<span class="mr-1"><?php if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img-sm'>";};echo ''.$fields['userid'].'';if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";?></span>
 						<span>{dede:field.matt function="GetMAtt(@me)"/}</span>
 					</td>
 					<td>{dede:field.uname/}</td>
