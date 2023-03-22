@@ -295,6 +295,17 @@ class FreeList
         }
     }
     /**
+     *  获得站点的真实根路径
+     *
+     * @access    public
+     * @return    string
+     */
+    function GetTruePath()
+    {
+        $truepath = $GLOBALS["cfg_basedir"];
+        return $truepath;
+    }
+    /**
      *  解析模板，对固定的标记进行初始给值
      *
      * @access    public
