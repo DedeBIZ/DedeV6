@@ -93,24 +93,12 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid';");
     $ddd = $row['dd'] + $ddd;
     $ccd = $row['cc'] + $ccd;
-    $msg = "<table width='100%' align='center' cellpadding='3' cellspacing='1'>
-    <tr align='center' bgcolor='#e9ecef'>
-      <td width='18%'>管理员</td>
-      <td width='18%'>文档与点击</td>
-      <td width='16%'>季度</td>
-      <td width='16%'>当月</td>
-      <td width='16%'>近七天</td>
-      <td width='16%'>当天</td>
-    </tr>
-    <tr align='center'>
-      <td>{$userid}</td>
-      <td>{$dd} | {$cc}</td>
-      <td>{$dds} | {$ccs}</td>
-      <td>{$ddm} | {$ccm}</td>
-      <td>{$ddw} | {$ccw}</td>
-      <td>{$ddd} | {$ccd}</td>
-    </tr>
-    </table>";
+    $msg = "<span class='mr-3'>管理员：{$userid}</span>
+        <span class='mr-3'>文档/点击：{$dd}/{$cc}</span>
+        <span class='mr-3'>季度：{$dds}/{$ccs}</span>
+        <span class='mr-3'>当月：{$ddm}/{$ccm}</span>
+        <span class='mr-3'>近七天：{$ddw}/{$ccw}</span>
+        <span>当天：{$ddd}/{$ccd}</span>";
     AjaxHead();
     echo $msg;
     exit();
