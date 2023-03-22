@@ -79,7 +79,7 @@ $ttime = time() - $sstime;
 $ttime = number_format(($ttime / 60), 2);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
-$tjsta = "<div style='margin:0 auto 20px;width:360px;height:16px;text-align:left;border:1px solid #1eb867;border-radius:.5rem'><div style='max-width:360px;width:$tjlen%;height:16px;background:#1eb867'></div></div>";
+$tjsta = "<div style='margin:0 auto 20px;width:360px;height:16px;text-align:left;border:1px solid #1eb867;border-radius:.35rem'><div style='max-width:360px;width:$tjlen%;height:16px;background:#1eb867;border-radius:.35rem'></div></div>";
 $tjsta .= "到达位置<span class='text-primary'>".($startdd + $pagesize)."</span>，用时<span class='text-primary'>{$ttime}</span>分钟，完成更新文档总数<span class='text-primary'>$tjlen</span>%";
 //速度测试
 if ($tjnum < $totalnum) {
