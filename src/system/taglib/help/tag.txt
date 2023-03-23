@@ -1,4 +1,4 @@
-TAG调用标签
+TAG标签
 >>dede>>
 {dede:tag row='30' sort='new'/}
 >>dede>>

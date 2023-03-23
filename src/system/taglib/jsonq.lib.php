@@ -1,5 +1,4 @@
 <?php
-
 /**
  * JSONQ标签
  *
@@ -16,9 +15,7 @@ function lib_jsonq(&$ctag, &$refObj)
     $attlist = "url|,path|,cachetime|3600";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     $Innertext = trim($ctag->GetInnerText());
-
     if ($url == '' || $Innertext == '') return '';
     $key = md5($url);
     try {
@@ -42,7 +39,6 @@ function lib_jsonq(&$ctag, &$refObj)
             SetCache("tagjsonq2", $key, $revalue, $cachetime);
             return $revalue;
         }
-        
         $row = GetCache("tagjsonq", $key);
         if (!is_array($row) || $cachetime == 0) {
             $jsonq = new Jsonq($url);
@@ -52,14 +48,11 @@ function lib_jsonq(&$ctag, &$refObj)
         if (!is_array($row)) {
             return "";
         }
-
         $ctp = new DedeTagParse();
         $ctp->SetNameSpace('field', '[', ']');
         $ctp->LoadSource($Innertext);
-
         $GLOBALS['autoindex'] = 0;
         $revalue = "";
-
         foreach ($row as $key => $value) {
             $GLOBALS['autoindex']++;
             foreach ($ctp->CTags as $tagid => $ctag) {
@@ -75,9 +68,9 @@ function lib_jsonq(&$ctag, &$refObj)
             }
             $revalue .= $ctp->GetResult();
         }
-
         return $revalue;
     } catch (Exception $e) {
         return "";
     }
 }
+?>

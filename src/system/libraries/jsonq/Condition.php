@@ -14,7 +14,6 @@ class Condition
     {
         return $value == $comparable;
     }
-
     /**
      * Strict equals
      *
@@ -27,7 +26,6 @@ class Condition
     {
         return $value === $comparable;
     }
-
     /**
      * Simple not equal
      *
@@ -40,7 +38,6 @@ class Condition
     {
         return $value != $comparable;
     }
-
     /**
      * Strict not equal
      *
@@ -53,7 +50,6 @@ class Condition
     {
         return $value !== $comparable;
     }
-
     /**
      * Strict greater than
      *
@@ -66,7 +62,6 @@ class Condition
     {
         return $value > $comparable;
     }
-
     /**
      * Strict less than
      *
@@ -79,7 +74,6 @@ class Condition
     {
         return $value < $comparable;
     }
-
     /**
      * Greater or equal
      *
@@ -92,7 +86,6 @@ class Condition
     {
         return $value >= $comparable;
     }
-
     /**
      * Less or equal
      *
@@ -105,7 +98,6 @@ class Condition
     {
         return $value <= $comparable;
     }
-
     /**
      * In array
      *
@@ -118,7 +110,6 @@ class Condition
     {
         return (is_array($comparable) && in_array($value, $comparable));
     }
-
     /**
      * Not in array
      *
@@ -131,7 +122,6 @@ class Condition
     {
         return (is_array($comparable) && !in_array($value, $comparable));
     }
-
     /**
      * Is null equal
      *
@@ -143,7 +133,6 @@ class Condition
     {
         return is_null($value);
     }
-
     /**
      * Is not null equal
      *
@@ -155,7 +144,6 @@ class Condition
     {
         return !is_null($value);
     }
-
     /**
      * Start With
      *
@@ -169,14 +157,11 @@ class Condition
         if (is_array($comparable) || is_array($value) || is_object($comparable) || is_object($value)) {
             return false;
         }
-        
         if (preg_match("/^$comparable/", $value)) {
             return true;
         }
-
         return false;
     }
-
     /**
      * End with
      *
@@ -190,14 +175,11 @@ class Condition
         if (is_array($comparable) || is_array($value) || is_object($comparable) || is_object($value)) {
             return false;
         }
-        
         if (preg_match("/$comparable$/", $value)) {
             return true;
         }
-
         return false;
     }
-
     /**
      * Match with pattern
      *
@@ -211,16 +193,12 @@ class Condition
         if (is_array($comparable) || is_array($value) || is_object($comparable) || is_object($value)) {
             return false;
         }
-        
         $comparable = trim($comparable);
-
         if (preg_match("/^$comparable$/", $value)) {
             return true;
         }
-
         return false;
     }
-
     /**
      * Contains substring in string
      *
@@ -233,7 +211,6 @@ class Condition
     {
         return (strpos($value, $comparable) !== false);
     }
-
     /**
      * Dates equal
      *
@@ -247,7 +224,6 @@ class Condition
         $date = date($format, strtotime($value));
         return $date == $comparable;
     }
-
     /**
      * Months equal
      *
@@ -261,7 +237,6 @@ class Condition
         $month = date('m', strtotime($value));
         return $month == $comparable;
     }
-
     /**
      * Years equal
      *
@@ -276,3 +251,4 @@ class Condition
         return $year == $comparable;
     }
 }
+?>

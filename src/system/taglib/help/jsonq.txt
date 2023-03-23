@@ -1,7 +1,9 @@
 JSONQ标签
 >>dede>>
-{dede:jsonq url='https://www.dedebiz.com/api/v1/ping' path='list' cachetime=3600}[field:id/] - [field:name/]<br/>{/dede:jsonq}
+{dede:jsonq url='https://www.dedebiz.com/api/v1/ping' path='list' cachetime='3600'}
+	<a href="[field:arcurl/]">[field:title/]</a>
+{/dede:json}
 >>dede>>
 url='' JSON接口地址
 path='' 路径（可选），如果为空[field:path/]可获取指定path的值
-cachetime=3600 缓存时间
+cachetime='3600' 缓存时间

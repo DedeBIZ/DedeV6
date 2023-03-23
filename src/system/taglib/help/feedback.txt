@@ -1,10 +1,8 @@
-调用最新评论
+调用最新评论标签
 >>dede>>
 {dede:feedback}
-<ul>
-	<li class='fbtitle'>[field:username function="(@me=='guest' ? '游客' : @me)"/]对[field:title/]的评论：</li>
-	<li class='fbmsg'><a href="apps/feedback.php?aid=[field:aid/]">[field:msg/]</a></li>
-</ul>
+	[field:username function="(@me=='guest' ? '游客' : @me)"/]对[field:title/]的评论
+	<a href="apps/feedback.php?aid=[field:aid/]">[field:msg/]</a></li>
 {/dede:feedback}
 >>dede>>
 row='12' 调用评论条数

@@ -1,4 +1,4 @@
-连载图书调用
+连载图书标签
 >>dede>>
 {dede:booklist row='12' booktype='-1' orderby='lastpost' author='' keyword=''}
 	<a href='[field:bookurl/]'>[field:bookname/]</a>

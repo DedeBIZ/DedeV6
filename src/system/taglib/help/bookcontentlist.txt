@@ -1,13 +1,9 @@
-连载图书最新文档调用
+连载图书最新文档标签
 >>dede>>
 {dede:bookcontentlist row='12' booktype='-1' orderby='lastpost' author='' keyword=''}
-<table width="100%" cellspacing="2" cellpadding="2">
-	<tr>
-		<td width='40%'>[[field:cataloglink/]] [field:booklink/]</td>
-		<td width='40%'>[field:contentlink/]</td>
-		<td width='20%'>[field:lastpost function="GetDateMk(@me)"/]</td>
-	</tr>
-</table>
+	[field:cataloglink/] [field:booklink/]
+	[field:contentlink/]
+	[field:lastpost function="GetDateMk(@me)"/]
 {/dede:bookcontentlist}
 >>dede>>
 这个标签和booklist实际是完全相同的，只是默认底层模板不同

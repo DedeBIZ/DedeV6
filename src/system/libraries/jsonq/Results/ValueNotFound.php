@@ -5,3 +5,4 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * value was queried but did not exist.
  */
 class ValueNotFound {}
+?>

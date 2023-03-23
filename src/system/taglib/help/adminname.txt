@@ -1,4 +1,4 @@
-获得作者名称
+作者名称标签
 >>dede>>
 {dede:adminname/}
 >>dede>>

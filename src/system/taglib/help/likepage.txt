@@ -1,4 +1,4 @@
-单页文档相同标识调用标签
+单页文档相同标识标签
 >>dede>>
 {dede:likepage likeid='' row=''/}
 >>dede>>

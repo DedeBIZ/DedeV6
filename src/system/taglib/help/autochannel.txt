@@ -1,4 +1,4 @@
-按排序位置的获取单个栏目的链接信息
+按排序位置获取单个栏目链接信息
 >>dede>>
 {dede:autochannel partsort='' typeid=''}{/dede:autochannel}
 >>dede>>

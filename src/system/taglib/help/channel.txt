@@ -1,7 +1,7 @@
 获取栏目列表标签
 >>dede>>
 {dede:channel type='top' typeid='' notypeid='' row='8' currentstyle="<li><a href='~typelink~' class='thisclass'>~typename~</a></li>"}
-  <li><a href='[field:typelink/]'>[field:typename/]</a> </li>
+    <li><a href='[field:typelink/]'>[field:typename/]</a></li>
 {/dede:channel}
 >>dede>>
 typeid='' 调用栏目id，用英文逗号分开表示多个栏目
