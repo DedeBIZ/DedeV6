@@ -1,6 +1,6 @@
 JSONQ标签
 >>dede>>
-{dede:jsonq url='https://www.dedebiz.com/api/v1/ping' path='list' cachetime='3600'}
+{dede:jsonq url='域名/api/v1/ping' path='list' cachetime='3600'}
 	<a href="[field:arcurl/]">[field:title/]</a>
 {/dede:json}
 >>dede>>
