@@ -16,11 +16,11 @@
 					<td bgcolor="#f5f5f5" colspan="5">会员等级分类</td>
 				</tr>
 				<tr bgcolor="#e9ecef">
-					<td width="22%" align="center">产品名称</td>
-					<td width="23%" align="center">会员级别</td>
-					<td width="21%" align="center">产品价格</td>
-					<td width="18%" align="center">会员期限(天)</td>
-					<td width="16%" align="center">状态</td>
+					<td width="26%" align="center">产品名称</td>
+					<td width="16%" align="center">会员级别</td>
+					<td width="16%" align="center">产品价格（元）</td>
+					<td width="16%" align="center">会员期限(天)</td>
+					<td align="center">状态</td>
 				</tr>
 				<?php
 				$dsql->SetQuery("SELECT * FROM `#@__member_type`");
@@ -32,9 +32,9 @@
 				?>
 				<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
 				<tr align="center">
-					<td width="380" align="center"><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" class="admin-input-md"></td>
+					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" class="admin-input-md"></td>
 					<td>
-						<select name="rank_<?php echo $k?>" id="rank_<?php echo $k?>" class="admin-input-md">
+						<select name="rank_<?php echo $k?>" id="rank_<?php echo $k?>" class="admin-input-sm">
 							<?php
 							foreach($arcranks as $kkk=>$vvv){
 								if ($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
@@ -43,9 +43,9 @@
 							?>
 						</select>
 					</td>
-					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" class="admin-input-sm">（元）</td>
+					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" class="admin-input-sm"></td>
 					<td>
-						<select name="exptime_<?php echo $k?>" id="exptime_<?php echo $k?>" class="admin-input-md">
+						<select name="exptime_<?php echo $k?>" id="exptime_<?php echo $k?>" class="admin-input-sm">
 							<?php
 							foreach($times as $kkk=>$vvv){
 								if ($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
@@ -61,7 +61,7 @@
 				<tr align="center">
 					<td><input type="text" name="pname_new" id="pname_new" class="admin-input-md"></td>
 					<td>
-						<select name="rank_new" id="rank_new" class="admin-input-md">
+						<select name="rank_new" id="rank_new" class="admin-input-sm">
 							<?php
 							foreach($arcranks as $kkk=>$vvv){
 								echo "<option value='{$kkk}'>{$vvv}</option>";
@@ -69,9 +69,9 @@
 							?>
 						</select>
 					</td>
-					<td><input type="text" name="money_new" id="money_new" class="admin-input-sm" value="100">（元）</td>
+					<td><input type="text" name="money_new" id="money_new" class="admin-input-sm" value="100"></td>
 					<td>
-						<select name="exptime_new" id="exptime_new" class="admin-input-md">
+						<select name="exptime_new" id="exptime_new" class="admin-input-sm">
 							<?php
 							foreach($times as $kkk=>$vvv){
 								echo "<option value='{$kkk}'>{$vvv}</option>";
