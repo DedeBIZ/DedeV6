@@ -85,7 +85,7 @@ function _RunMagicQuotes(&$svar)
         }
     } else {
         if (strlen($svar) > 0 && preg_match('#^(cfg_|GLOBALS|_GET|_REQUEST|_POST|_COOKIE|_SESSION)#', $svar)) {
-            exit('Request var not allow!');
+            exit('The requested operation is forbidden');
         }
         $svar = addslashes($svar);
     }
@@ -93,6 +93,9 @@ function _RunMagicQuotes(&$svar)
 }
 foreach (array('_GET', '_POST', '_COOKIE') as $_req) {
     foreach ($$_req as $_k => $_v) {
+        if (preg_match('#^(cfg_|GLOBALS|_GET|_REQUEST|_POST|_COOKIE|_SESSION)#', $_k)) {
+            exit('The requested operation is forbidden');
+        }
         if ($_k == 'nvarname') ${$_k} = $_v;
         else ${$_k} = _RunMagicQuotes($_v);
     }
