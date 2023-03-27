@@ -17,9 +17,10 @@
 				<input type="hidden" name="dopost" value="saveedit">
 				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<input type="hidden" name="id" value="<?php echo $row['id']?>">
+				<input type="hidden" name="olduserid" value="<?php echo $row['userid']?>">
 				<tr>
 					<td width="260">会员名：</td>
-					<td><?php echo $row['userid']?></td>
+					<td><input type="text" name="userid" id="userid" value="<?php echo $row['userid']?>" class="admin-input-sm"></td>
 				</tr>
 				<tr>
 					<td>昵称：</td>
