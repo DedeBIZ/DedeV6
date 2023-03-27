@@ -33,15 +33,17 @@ class ListView
     var $CrossID;
     var $IsReplace;
     var $remoteDir;
+    var $mod;
     /**
      *  php5构造函数
      *
      * @access    public
-     * @param     int  $typeid  栏目id
-     * @param     int  $uppage  上一页
+     * @param     int    $typeid  栏目id
+     * @param     int    $uppage  上一页
+     * @param     int    $mod  渲染类型 0:HTML 1:JSON
      * @return    string
      */
-    function __construct($typeid, $uppage = 1)
+    function __construct($typeid, $uppage = 1, $mod = 0)
     {
         global $dsql, $envs;
         $envs['url_type'] = 1;
@@ -58,6 +60,7 @@ class ListView
         $this->TypeLink = new TypeLink($typeid);
         $this->upPageType = $uppage;
         $this->remoteDir = '';
+        $this->mod = $mod;
         $this->TotalResult = is_numeric($this->TotalResult) ? $this->TotalResult : "";
         if (!is_array($this->TypeLink->TypeInfos)) {
             $this->IsError = true;
@@ -71,7 +74,7 @@ class ListView
             //添加联动单筛选
             if (isset($_REQUEST['tid'])) {
                 foreach($_GET as $key => $value) {
-                    if ($key!="tid" && $key!="TotalResult" && $key!="PageNo") {
+                    if ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key!="mod") {
                         $this->Fields[string_filter($key)] = string_filter(urldecode($value));
                     }
                 }
@@ -104,9 +107,9 @@ class ListView
         }//!error
     }
     //php4构造函数
-    function ListView($typeid, $uppage = 0)
+    function ListView($typeid, $uppage = 0, $mod = 0)
     {
-        $this->__construct($typeid, $uppage);
+        $this->__construct($typeid, $uppage, $mod);
     }
     //关闭相关资源
     function Close()
@@ -148,7 +151,7 @@ class ListView
             }
             if (isset($_REQUEST['tid'])) {
                 foreach ($_GET as $key => $value) {
-                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
+                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key!="mod") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
                 }
             }
         } else {
@@ -211,30 +214,35 @@ class ListView
                 $this->TotalResult = 0;
             }
         }
-        //初始化列表模板，并统计页面总数
-        $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$this->TypeLink->TypeInfos['templist'];
-        $tempfile = str_replace("{tid}", $this->TypeID, $tempfile);
-        $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
-        if (!file_exists($tempfile)) {
-            $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/list_default.htm";
-        }
-        if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "主题模板文件不存在，无法发布文档";
-            exit();
-        }
-        $this->dtp->LoadTemplate($tempfile);
-        $ctag = $this->dtp->GetTag("page");
-        if (!is_object($ctag)) {
-            $ctag = $this->dtp->GetTag("list");
-        }
-        if (!is_object($ctag)) {
-            $this->pagesize = 30;
-        } else {
-            if ($ctag->GetAtt("pagesize") != "") {
-                $this->pagesize = $ctag->GetAtt("pagesize");
-            } else {
-                $this->pagesize = 30;
+        if ($this->mod === 0) {
+            //初始化列表模板，并统计页面总数
+            $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$this->TypeLink->TypeInfos['templist'];
+            $tempfile = str_replace("{tid}", $this->TypeID, $tempfile);
+            $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
+            if (!file_exists($tempfile)) {
+                $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/list_default.htm";
             }
+            if (!file_exists($tempfile) || !is_file($tempfile)) {
+                echo "主题模板文件不存在，无法发布文档";
+                exit();
+            }
+            $this->dtp->LoadTemplate($tempfile);
+            $ctag = $this->dtp->GetTag("page");
+            if (!is_object($ctag)) {
+                $ctag = $this->dtp->GetTag("list");
+            }
+            if (!is_object($ctag)) {
+                $this->pagesize = 30;
+            } else {
+                if ($ctag->GetAtt("pagesize") != "") {
+                    $this->pagesize = $ctag->GetAtt("pagesize");
+                } else {
+                    $this->pagesize = 30;
+                }
+            }
+        } else {
+            $this->pagesize = isset($GLOBALS['PageSize'])? intval($GLOBALS['PageSize']) : 10;
+            $this->pagesize = $this->pagesize > 20? 20 : $this->pagesize;
         }
         $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
     }
@@ -319,24 +327,214 @@ class ListView
      */
     function Display()
     {
-        if ($this->TypeLink->TypeInfos['ispart'] > 0) {
-            $this->DisplayPartTemplets();
-            return;
-        }
-        $this->CountRecord();
-        if ((empty($this->PageNo) || $this->PageNo == 1) && $this->TypeLink->TypeInfos['ispart'] == 1) {
-            $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
-            $tempfile = str_replace("{tid}", $this->TypeID, $this->Fields['tempindex']);
-            $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
-            $tempfile = $tmpdir."/".$tempfile;
-            if (!file_exists($tempfile)) {
-                $tempfile = $tmpdir."/".$GLOBALS['cfg_df_style']."/index_default.htm";
+        if ($this->mod === 0) {
+            if ($this->TypeLink->TypeInfos['ispart'] > 0) {
+                $this->DisplayPartTemplets();
+                return;
             }
-            $this->dtp->LoadTemplate($tempfile);
+            $this->CountRecord();
+            if ((empty($this->PageNo) || $this->PageNo == 1) && $this->TypeLink->TypeInfos['ispart'] == 1) {
+                $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
+                $tempfile = str_replace("{tid}", $this->TypeID, $this->Fields['tempindex']);
+                $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
+                $tempfile = $tmpdir."/".$tempfile;
+                if (!file_exists($tempfile)) {
+                    $tempfile = $tmpdir."/".$GLOBALS['cfg_df_style']."/index_default.htm";
+                }
+                $this->dtp->LoadTemplate($tempfile);
+            }
+            $this->ParseTempletsFirst();
+            $this->ParseDMFields($this->PageNo, 0);
+            $this->dtp->Display();
+        } else {
+            $this->CountRecord();
+            $result = $this->GetAPIList($this->PageNo,$this->pagesize);
+            if (!is_array($result)) {
+                echo json_encode(array(
+                    "code" => -1,
+                    "msg" => "none result",
+                ));
+            } else {
+                echo json_encode(array(
+                    "code" => 0,
+                    "msg" => "",
+                    "lists" => $result,
+                    "total" => intval($this->TotalResult),
+                ));
+            }
         }
-        $this->ParseTempletsFirst();
-        $this->ParseDMFields($this->PageNo, 0);
-        $this->dtp->Display();
+    }    
+    
+    /**
+     * GetAPIList
+     *
+     * @param  mixed $PageNo 页码
+     * @param  mixed $row 条数
+     * @param  mixed $titlelen 标题字符长度
+     * @param  mixed $infolen 描述字符长度
+     * @param  mixed $orderby 排序
+     * @param  mixed $orderWay 排序方式
+     * @return array
+     */
+    function GetAPIList($PageNo = 1,$row = 10,$titlelen = 30,$infolen = 250,$orderby = "default",$orderWay = 'desc') {
+        $limitstart = ($PageNo - 1) * $row;
+        if ($row == '') $row = 10;
+        if ($limitstart == '') $limitstart = 0;
+        if ($titlelen == '') $titlelen = 100;
+        if ($infolen == '') $infolen = 250;
+        if ($orderWay == '') $orderWay = 'desc';
+        if ($orderby == '') {
+            $orderby = 'default';
+        } else {
+            $orderby = strtolower($orderby);
+        }
+        //排序方式
+        $ordersql = '';
+        if ($orderby == "senddate" || $orderby == "id") {
+            $ordersql = " ORDER BY arc.id $orderWay";
+        } else if ($orderby == "hot" || $orderby == "click") {
+            $ordersql = " ORDER BY arc.click $orderWay";
+        } else if ($orderby == "lastpost") {
+            $ordersql = " ORDER BY arc.lastpost $orderWay";
+        } else {
+            $ordersql = " ORDER BY arc.sortrank $orderWay";
+        }
+        //获得附加表的相关信息
+        $addtable = $this->ChannelUnit->ChannelInfos['addtable'];
+        $filtersql = "";
+        if ($addtable!="")
+        {
+            $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
+            $addField = '';
+            $fields = explode(',',$this->ChannelUnit->ChannelInfos['listfields']);
+            foreach($fields as $k=>$v)
+            {
+                $nfields[$v] = $k;
+            }
+            if (is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields)) {
+                foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
+                {
+                    if (isset($nfields[$k])) {
+                        if (!empty($arr['rename'])) {
+                            $addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
+                        }
+                        else {
+                            $addField .= ','.$addtable.'.'.$k;
+                        }
+                    }
+                }
+            }
+            //添加联动单筛选
+            if (isset($_REQUEST['tid'])) {
+                foreach($_GET as $key => $value) 
+                {
+                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key !="mod") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
+                }
+            }
+        } else {
+            $addField = '';
+            $addJoin = '';
+        }
+        //如果不用默认的sortrank或id排序，使用联合查询数据量大时非常缓慢
+        if (preg_match('/hot|click|lastpost/', $orderby)) {
+            $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb ON arc.mid=mb.mid $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
+        }
+        //普通情况先从arctiny表查出id，然后按di查询速度非常快
+        else {
+            $t1 = ExecTime();
+            $ids = array();
+            $query = "SELECT id FROM `#@__arctiny` arc $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
+            $this->dsql->SetQuery($query);
+            $this->dsql->Execute();
+            while ($arr = $this->dsql->GetArray()) {
+                $ids[] = $arr['id'];
+            }
+            $idstr = join(',', $ids);
+            if ($idstr == '') {
+                return '';
+            } else {
+                $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb ON arc.mid=mb.mid $addJoin WHERE arc.id in($idstr) $ordersql ";
+            }
+            $t2 = ExecTime();
+        }
+        $this->dsql->SetQuery($query);
+        $this->dsql->Execute('al');
+        $t2 = ExecTime();
+        $result = array();
+        $GLOBALS['autoindex'] = 0;
+        while ($row = $this->dsql->GetArray("al")) {
+            $GLOBALS['autoindex']++;
+            $ids[$row['id']] = $row['id'];
+            //处理一些特殊字段
+            $row['infos'] = cn_substr($row['description'], $infolen);
+            $row['id'] =  $row['id'];
+            if ($row['corank'] > 0 && $row['arcrank'] == 0) {
+                $row['arcrank'] = $row['corank'];
+            }
+            $row['filename'] = $row['arcurl'] = GetFileUrl(
+                $row['id'],
+                $row['typeid'],
+                $row['senddate'],
+                $row['title'],
+                $row['ismake'],
+                $row['arcrank'],
+                $row['namerule'],
+                $row['typedir'],
+                $row['money'],
+                $row['filename'],
+                $row['moresite'],
+                $row['siteurl'],
+                $row['sitepath']
+            );
+            $row['typeurl'] = GetTypeUrl(
+                $row['typeid'],
+                MfTypedir($row['typedir']),
+                $row['isdefault'],
+                $row['defaultname'],
+                $row['ispart'],
+                $row['namerule2'],
+                $row['moresite'],
+                $row['siteurl'],
+                $row['sitepath']
+            );
+            if ($row['litpic'] == '-' || $row['litpic'] == '') {
+                $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+            }
+            /*if (!preg_match("/^http:\/\//i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
+            }*/
+            $row['picname'] = $row['litpic'];
+            $row['stime'] = GetDateMK($row['pubdate']);
+            $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
+            $row['image'] = "<img src='".$row['picname']."' title='".preg_replace("/['><]/", "", $row['title'])."'>";
+            $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
+            $row['fulltitle'] = $row['title'];
+            $row['title'] = cn_substr($row['title'], $titlelen);
+            if ($row['color'] != '') {
+                $row['title'] = "<span style='color:".$row['color']."'>".$row['title']."</span>";
+            }
+            if (preg_match('/c/', $row['flag'])) {
+                $row['title'] = "".$row['title']."";
+            }
+            $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
+            $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
+            $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
+            $row['memberurl'] = $GLOBALS['cfg_memberurl'];
+            $row['templeturl'] = $GLOBALS['cfg_templeturl'];
+            //编译附加表里的数据
+            foreach ($row as $k => $v) {
+                $row[strtolower($k)] = $v;
+            }
+            foreach ($this->ChannelUnit->ChannelFields as $k => $arr) {
+                if (isset($row[$k])) {
+                    $row[$k] = $this->ChannelUnit->MakeField($k, $row[$k]);
+                }
+            }
+            $result[] = $row;
+        }//if hasRow
+        $t3 = ExecTime();
+        $this->dsql->FreeResult('al');
+        return $result;
     }
     /**
      *  创建单独模板页面
@@ -639,7 +837,7 @@ class ListView
             if (isset($_REQUEST['tid'])) {
                 foreach($_GET as $key => $value) 
                 {
-                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
+                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key!="mod") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
                 }
             }
         } else {
@@ -900,7 +1098,7 @@ class ListView
         //添加联动单筛选
         $pageaddurl = "";
         foreach($_GET as $key => $value) {
-            $pageaddurl .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? "&".string_filter($key)."=".string_filter($value) : '';
+            $pageaddurl .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key!="mod") ? "&".string_filter($key)."=".string_filter($value) : '';
         }
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
