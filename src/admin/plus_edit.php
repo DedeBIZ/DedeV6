@@ -13,11 +13,11 @@ CheckPurview('sys_plus');
 $aid = preg_replace("#[^0-9]#", "", $aid);
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=1 WHERE aid='$aid';");
-    ShowMsg("启用一个插件，请刷侧边导航", "plus_main.php");
+    ShowMsg("启用一个插件，请刷新侧边导航", "plus_main.php");
     exit();
 } else if ($dopost == "hide") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=0 WHERE aid='$aid';");
-    ShowMsg("禁用一个插件，请刷侧边导航", "plus_main.php");
+    ShowMsg("隐藏一个插件，请刷新侧边导航", "plus_main.php");
     exit();
 } else if ($dopost == "delete") {
     if (empty($job)) $job = "";
@@ -39,7 +39,7 @@ if ($dopost == "show") {
     } else if ($job == "yes") //操作
     {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__plus` WHERE aid='$aid';");
-        ShowMsg("删除一个插件，请刷侧边导航", "plus_main.php");
+        ShowMsg("删除一个插件，请刷新侧边导航", "plus_main.php");
         exit();
     }
 } else if ($dopost == "saveedit") //保存修改

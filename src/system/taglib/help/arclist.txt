@@ -1,4 +1,4 @@
-文档列表调用标记
+文档列表标签
 >>dede>>
 {dede:arclist typeid='' row='' col='' titlelen='' flag='h' infolen='' imgwidth='' imgheight='' listtype='' orderby='' keyword='' limit='0,1'}
 	<a href='[field:arcurl/]'>[field:title/]</a>

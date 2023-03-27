@@ -9,7 +9,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//显示类似Bootstrap警告框
+//类似Bootstrap警告框
 define('ALERT_PRIMARY', 1);
 define('ALERT_SECONDARY', 2);
 define('ALERT_SUCCESS', 3);
@@ -28,7 +28,7 @@ define('ALERT_COLORS', array(
     ALERT_LIGHT => array('#fefefe','#fdfdfe','#636464'),
     ALERT_DARK => array('#d3d3d4','#bcbebf','#141619'),
 ));
-define("ALERT_TPL", '<div style="position:relative;padding:.75rem 1.25rem;width:auto;font-size:12px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:.2rem">~content~</div>');
+define("ALERT_TPL", '<div style="position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;width:auto;font-size:12px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:.5rem">~content~</div>');
 //$content:文档，$type:alert类型
 function DedeAlert($content, $type = ALERT_PRIMARY, $isHTML=false)
 {
@@ -65,7 +65,11 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
     if (!function_exists('mysql_close') and function_exists('mysqli_close')) {
         function mysql_close($link)
         {
-            return mysqli_close($link);
+            if ($link) {
+                return @mysqli_close($link);
+            } else {
+                return false;
+            }
         }
     }
     if (!function_exists('mysql_free_result') and function_exists('mysqli_free_result')) {
@@ -188,12 +192,12 @@ if (!function_exists('CheckSql')) {
             if (preg_match("#^create table#i", $clean)) $fail = FALSE;
             $error = "unusual character";
         }
-        //老版本的Mysql并不支持union，常用的程序里也不使用union，但是一些黑客使用它，所以检查它
+        //老版本数据库不支持union，程序不使用union，但黑客使用它，所以检查它
         if (strpos($clean, 'union') !== FALSE && preg_match('~(^|[^a-z])union($|[^[a-z])~s', $clean) != 0) {
             $fail = TRUE;
             $error = "union detect";
         }
-        //发布版本的程序可能比较少包括--,#这样的注释，但是黑客经常使用它们
+        //发布版本的程序可能比较少包括--,#这样的注释，但黑客经常使用它们
         elseif (strpos($clean, '/*') > 2 || strpos($clean, '--') !== FALSE || strpos($clean, '#') !== FALSE) {
             $fail = TRUE;
             $error = "comment detect";
@@ -212,7 +216,7 @@ if (!function_exists('CheckSql')) {
             $fail = TRUE;
             $error = "file fun detect";
         }
-        //老版本的MYSQL不支持子查询，我们的程序里可能也用得少，但是黑客可以使用它来查询数据库敏感信息
+        //老版本数据库不支持子查询，该功能也用得少，但黑客可以使用它来查询数据库敏感信息
         elseif (preg_match('~\([^)]*?select~s', $clean) != 0) {
             $fail = TRUE;
             $error = "sub select detect";
@@ -226,8 +230,7 @@ if (!function_exists('CheckSql')) {
     }
 }
 /**
- *  载入小助手,系统默认载入小助手
- *  在/data/helper.inc.php中进行默认小助手初始化的设置，创建一个示例为test.helper.php文件基本文档如下：
+ *  载入小助手，系统默认载入小助手示例：
  *  <code>
  *  if (!function_exists('HelloDede'))
  *  {
@@ -237,10 +240,10 @@ if (!function_exists('CheckSql')) {
  *      }
  *  }
  *  </code>
- *  则我们在开发中使用这个小助手的时候直接使用函数helper('test');初始化它，然后在文件中就可以直接使用:HelloDede();来进行调用
+ *  开发中使用这个小助手的时候直接使用函数helper('test');初始化它，然后在文件中就可以直接使用:HelloDede();调用
  *
  * @access    public
- * @param     mix   $helpers  小助手名称,可以是数组,可以是单个字符串
+ * @param     mix   $helpers  小助手名称，可以是数组，可以是单个字符串
  * @return    void
  */
 $_helpers = array();
@@ -297,16 +300,6 @@ if (!function_exists('file_put_contents')) {
         }
     }
 }
-/**
- *  显示更新信息
- *
- * @return    void
- */
-function UpdateStat()
-{
-    include_once(DEDEINC."/inc/inc_stat.php");
-    return SpUpdateStat();
-}
 $arrs1 = array();
 $arrs2 = array();
 /**
@@ -348,7 +341,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         }
         $func .= "var pgo=0;function JumpUrl(){if (pgo==0){location='$gourl'; pgo=1;}}";
         $rmsg = $func;
-        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.6;letter-spacing:.6px;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#1eb867;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.2rem;text-align:center;transition:all .3s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(72,180,97,.5)}.text-primary{color:#007bff}@media (max-width:768px){.tips{padding:0 15px}.tips,.tips-box{width:100%}}</style>\");";
+        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.6;letter-spacing:.6px;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#007bff;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.5rem;text-align:center;transition:all .5s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(72,180,97,.5)}.text-primary{color:#007bff}@media (max-width:768px){.tips{padding:0 15px}.tips,.tips-box{width:100%}}</style>\");";
         $rmsg .= "document.write(\"<div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div>\");";
         $rmsg .= "document.write(\"<div class='tips-body'>\");";
         $rmsg .= "document.write(\"".str_replace("\"", "“", $msg)."\");";
@@ -425,6 +418,20 @@ function ResetVdValue()
 function IndexSub($idx, $num)
 {
     return intval($idx) - intval($num) == 0 ? '0 ' : intval($idx) - intval($num);
+}
+/**
+ * HideEmail隐藏邮箱
+ *
+ * @param  mixed $email
+ * @return string
+ */
+function HideEmail($email)
+{
+    if (empty($email)) return "暂无";
+    $em   = explode("@",$email);
+    $name = implode('@', array_slice($em, 0, count($em)-1));
+    $len  = floor(strlen($name)/2);
+    return substr($name,0, $len).str_repeat('*', $len)."@".end($em);   
 }
 //用来返回index的active
 function IndexActive($idx)
@@ -508,38 +515,18 @@ function GetUpdateSQL()
     fclose($fp);
     return $result;
 }
-//会员头像标签{dede:field.mid function='face(@me)'/}和[field:mid function='face(@me)'/]
-function face($mid)
-{
-    global $dsql;
-    if ($mid <> 0) {
-        $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$mid'");
-        if ($row['face'] == "") {
-            $face = "/static/web/img/admin.png";
-        } else {
-            $face = $row['face'];
-            $face = "$face";
-        }
+/*会员中心调用默认主题模板<?php pasterTempletDiy('head.htm');?>*/
+if (!function_exists('pasterTempletDiy')) {
+    function pasterTempletDiy($path)
+    {
+        global $cfg_basedir, $cfg_templets_dir, $cfg_df_style;
+        $tmpfile = $cfg_basedir.$cfg_templets_dir.'/'.$cfg_df_style.'/'.$path;
+        $dtp = new PartView();
+        $dtp->SetTemplet($tmpfile);
+        $dtp->Display();
     }
-    return $face;
 }
-//会员昵称标签{dede:field.mid function="GetMemberInfos('uname',@me)"/}和[field:mid function="GetMemberInfos('uname',@me)"/]
-function GetMemberInfos($fields, $mid)
-{
-    global $dsql;
-    if ($mid <= 0) {
-        $revalue = "张三";
-    } else {
-        $row=$dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}'");
-        if (!is_array($row)) {
-            $revalue = "李四";
-        } else {
-            $revalue = $row[$fields];
-        }
-    }
-    return $revalue;
-}
-//标签调用标签[field:id function='GetMyTags(@me,2)'/]2表示输出2个文档
+//标签调用标签[field:id function='GetMyTags(@me,2)'/]2表示调用文档2个标签
 if (!function_exists('GetMyTags')) {
     function GetMyTags($aid, $num=3)
     {
@@ -554,18 +541,7 @@ if (!function_exists('GetMyTags')) {
         return $tags;
     }
 }
-/*会员中心调用默认模板<?php pasterTempletDiy('head.htm');?>*/
-if (!function_exists('pasterTempletDiy')) {
-    function pasterTempletDiy($path)
-    {
-        global $cfg_basedir, $cfg_templets_dir, $cfg_df_style;
-        $tmpfile = $cfg_basedir.$cfg_templets_dir.'/'.$cfg_df_style.'/'.$path;
-        $dtp = new PartView();
-        $dtp->SetTemplet($tmpfile);
-        $dtp->Display();
-    }
-}
-//联动单筛选标签{dede:php}AddFilter(模型id,类型,'字段1,字段2');{/dede:php}
+//联动单筛选标签{dede:php}AddFilter(模型id,类型,'字段1,字段2');{/dede:php}类型对应以下case数值
 function litimgurls($imgid = 0)
 {
     global $lit_imglist, $dsql;
@@ -598,7 +574,7 @@ function string_filter($str, $stype = "inject")
     return $str;
 }
 //联动单筛选发布三种类型
-function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $toptid=0, $loadtype='autofield')
+function AddFilter($channelid, $type=1, $fieldsnamef='', $defaulttid=0, $toptid=0, $loadtype='autofield')
 {
     global $tid, $dsql, $id, $aid;
     $tid = $defaulttid ? $defaulttid : $tid;
@@ -660,20 +636,6 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
         }
     }
     echo $dede_addonfields;
-}
-/**
- * HideEmail隐藏邮箱
- *
- * @param  mixed $email
- * @return string
- */
-function HideEmail($email)
-{
-    if (empty($email)) return "空";
-    $em   = explode("@",$email);
-    $name = implode('@', array_slice($em, 0, count($em)-1));
-    $len  = floor(strlen($name)/2);
-    return substr($name,0, $len).str_repeat('*', $len)."@".end($em);   
 }
 //自定义函数接口
 if (file_exists(DEDEINC.'/extend.func.php')) {

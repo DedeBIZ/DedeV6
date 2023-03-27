@@ -79,7 +79,7 @@ if ($dojob == '') {
                 exit();
             }
             $dvlen = $tjlen * 1;
-            $tjsta = "<div style='margin-bottom:18px;width:260px;height:18px;text-align:left;border:1px solid #1eb867;border-radius:.2rem'><div style='max-width:260px;width:$dvlen%;height:18px;background:#1eb867'></div></div>";  
+            $tjsta = "<div style='margin-bottom:18px;width:260px;height:18px;text-align:left;border:1px solid #1eb867;border-radius:.5rem'><div style='max-width:260px;width:$dvlen%;height:18px;background:#1eb867'></div></div>";  
             $tjsta .= "完成更新文档总数<span class='text-primary'>$tjlen</span>%";
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd={$startdd}&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
@@ -139,7 +139,7 @@ if ($dojob == '') {
             $tjlen = 100;
         }
         $dvlen = $tjlen * 1;
-        $tjsta = "<div style='margin-bottom:18px;width:260px;height:18px;text-align:left;border:1px solid #1eb867;border-radius:.2rem'><div style='max-width:260px;width:$dvlen%;height:18px;background:#1eb867'></div></div>";
+        $tjsta = "<div style='margin-bottom:18px;width:260px;height:18px;text-align:left;border:1px solid #1eb867;border-radius:.5rem'><div style='max-width:260px;width:$dvlen%;height:18px;background:#1eb867'></div></div>";
         $tjsta .= "完成更新文档总数<span class='text-primary'>$tjlen</span>%";
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";

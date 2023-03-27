@@ -49,7 +49,7 @@ if (!empty($noeditor)) {
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
-    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}</style>
+    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}</style>
     <script>
     function nullLink() {
         return;
@@ -76,7 +76,7 @@ if (!empty($noeditor)) {
                         <input type="hidden" name="f" value="<?php echo $f ?>">
                         <input type="hidden" name="job" value="upload">
                         <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
-                        <span>选择：<input type="file" name="uploadfile" class="w-75"></span>
+                        <label>选择：<input type="file" name="uploadfile" class="w-75"></label>
                         <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
                     </form>
                 </td>

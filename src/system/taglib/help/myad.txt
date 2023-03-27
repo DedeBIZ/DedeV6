@@ -1,4 +1,4 @@
-广告调用
+广告标签
 >>dede>>
 {dede:myad name=''/}
 >>dede>>

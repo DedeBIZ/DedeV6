@@ -146,8 +146,8 @@
     <div id="edsta"><img src="../static/web/img/loadinglit.gif"></div>
     <table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
         <tr bgcolor="#f5f5f5">
-            <td width="170">
-                <select name="egroup1" id="egroup1" onChange="ChangePage(this)" class="admin-input-sm">
+            <td>
+                <select name="egroup1" id="egroup1" onChange="ChangePage(this)" class="admin-input-sm mr-3">
                     <option value="0">所有组</option>
                     <?php
                     $selgroup = '';
@@ -164,8 +164,6 @@
                     }
                     ?>
                 </select>
-            </td>
-            <td>
                 <button type="button" name="gedit" id="gedit" class="btn btn-success btn-sm" onclick="EditType()">修改</button>
                 <button type="button" name="gdel" id="gdel" class="btn btn-success btn-sm" onclick="DelType()">删除</button>
                 <button type="button" name="gview" id="gview" class="btn btn-success btn-sm" onclick="ViewType()">预览</button>

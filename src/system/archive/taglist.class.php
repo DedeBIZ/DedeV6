@@ -51,7 +51,7 @@ class TagList
         $this->TypeLink = new TypeLink(0);
         $this->Fields['tag'] = $keyword;
         if (empty($keyword)) {
-            $this->Fields['title'] = "TAGS列表";
+            $this->Fields['title'] = "标签列表";
         }
         $this->Fields['position'] = $cfg_cmsurl."/apps/tags.php";
         $this->TempletsFile = '';
@@ -61,8 +61,7 @@ class TagList
         if (!empty($this->Tag)) {
             $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` where id = '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
-                $msg = "网站找不到该标签";
-                ShowMsg($msg, "-1");
+                ShowMsg('当前标签不存在，系统自动返回标签首页', 'tags.php');
                 exit();
             }
             $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->TagInfos['tag'] : $this->TagInfos['title'];
@@ -296,7 +295,7 @@ class TagList
         } else {
             $ordersql = " ORDER BY se.id $orderWay";
         }
-        $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id WHERE $orwhere $ordersql ";
+        $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id LEFT JOIN `#@__member` mb on se.mid = mb.mid WHERE $orwhere $ordersql ";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $row = $this->pagesize / $col;
@@ -363,6 +362,7 @@ class TagList
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
+                    $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                     if (is_array($this->dtp2->CTags)) {
                         foreach ($this->dtp2->CTags as $k => $ctag) {
                             if ($ctag->GetName() == 'array') {

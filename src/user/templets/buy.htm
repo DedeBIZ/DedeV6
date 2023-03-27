@@ -16,7 +16,7 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg mb-3 p-0">
+						<nav class="navbar navbar-expand-lg p-0">
 							<ol class="breadcrumb mr-auto">
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 								<li class="breadcrumb-item">积分钱包</li></li>
@@ -26,49 +26,49 @@
 						<div class="alert alert-success"><?php echo $cfg_ml->GetSta($dsql);?></div>
 						<?php if ($cfg_money_scores > 0) {?>							
 						<?php $canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);?>
-						<div class="py-3">
+						<div class="pb-3">
 							<p>积分兑换金币（<?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币{$canCav}";?>）</p>
 							<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
 								<table width="100%" cellpadding="0" cellspacing="0" class="table">
 									<tbody>
 										<tr>
-											<td width="20%" align="right">兑换数量：</td>
+											<td width="20%">兑换数量：</td>
 											<td><input type="text" name="money" id="money" class="form-control w-25" value="<?php echo $canCav;?>"></td>
 										</tr>
 										<tr>
 											<td></td>
-											<td align="left"><button type="submit" class="btn btn-success btn-sm">兑换</button></td>
+											<td><button type="submit" class="btn btn-success btn-sm">兑换</button></td>
 										</tr>
 									</tbody>
 								</table>
 							</form>
 						</div>
 						<?php }?>
-						<div class="py-3">
+						<div class="pb-3">
 							<h4 class="mb-3">积分充值</h4>
 							<form name="formrank" action="check_card.php" method="post">
 								<table width="100%" cellpadding="0" cellspacing="0" class="table">
 									<tbody>
 										<tr>
-											<td width="20%" align="right">积分密码：</td>
+											<td width="20%">积分密码：</td>
 											<td><input type="text" name="cardid" id="cardid" class="form-control w-25"></td>
 										</tr>
 										<tr>
-											<td align="right">验证码</td>
+											<td>验证码</td>
 											<td>
 												<input type="text" name="vdcode" id="vdcode" class="form-control text-uppercase d-inline-block w-25">
 												<img src="../apps/vdimgck.php" title="验证码" onclick="this.src=this.src+'?'">
 											</td>
 										</tr>
 										<tr>
-											<td align="right"></td>
+											<td></td>
 											<td><button type="submit" class="btn btn-success btn-sm">充值</button></td>
 										</tr>
 									</tbody>
 								</table>
 							</form>
 						</div>
-						<div class="py-3">
+						<div class="pb-3">
 							<h4 class="mb-3">购买金币</h4>
 							<form name="f1" action="buy_action.php" method="post">
 								<input type="hidden" name="product" value="card">
@@ -86,7 +86,7 @@
 								<div class="text-center"><button type="submit" class="btn btn-success btn-sm">购买</button></div>
 							</form>
 						</div>
-						<div class="py-3">
+						<div>
 							<h4 class="mb-3">账号升级</h4>
 							<form name="f1" action="buy_action.php" method="post">
 								<input type="hidden" name="product" value="member">

@@ -539,7 +539,7 @@ class SgListView
         $addField = 'arc.'.join(',arc.', $this->ListFields);
         //如果不用默认的sortrank或id排序，使用联合查询数据量大时非常缓慢
         if (preg_match('/hot|click/', $orderby) || $this->sAddTable) {
-            $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,$addField FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE {$this->addSql} $ordersql LIMIT $limitstart,$row";
+            $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,mb.uname,mb.face,$addField FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE {$this->addSql} $ordersql LIMIT $limitstart,$row";
         }
         //普通情况先从arctiny表查出id，然后按id查询速度非常快
         else {
@@ -556,7 +556,7 @@ class SgListView
             if ($idstr == '') {
                 return '';
             } else {
-                $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,$addField FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.aid IN($idstr) AND arc.arcrank >-1 $ordersql";
+                $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,mb.uname,mb.face,$addField FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE arc.aid IN($idstr) AND arc.arcrank >-1 $ordersql";
             }
             $t2 = ExecTime();
         }
@@ -624,6 +624,7 @@ class SgListView
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
+                    $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                     //编译附加表里的数据
                     foreach ($row as $k => $v) $row[strtolower($k)] = $v;
                     foreach ($this->ChannelUnit->ChannelFields as $k => $arr) {

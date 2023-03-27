@@ -14,9 +14,9 @@
 		<form action="member_main.php" name="form1" method="get">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="380" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="admin-input-md"></td>
-					<td width="170">
-						<select name="sortkey" id="sortkey" class="admin-input-sm">
+					<td>
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="admin-input-md mr-3">
+						<select name="sortkey" id="sortkey" class="admin-input-sm mr-3">
 							{dede:global name='sortform'/}
 							<option value="mid">mid/注册时间</option>
 							<option value="logintime">登录时间</option>
@@ -24,17 +24,13 @@
 							<option value="money">会员金币</option>
 							<option value="scores">会员积分</option>
 						</select>
-					</td>
-					<td width="170">
-						<select name="sex" id="sex" class="admin-input-sm">
+						<select name="sex" id="sex" class="admin-input-sm mr-3">
 							{dede:global name='sexform'/}
 							<option value="男">男</option>
 							<option value="女">女</option>
 							<option value="保密">保密</option>
 						</select>
-					</td>
-					<td width="170">
-						<select name="spacesta" id="spacesta" class="admin-input-sm">
+						<select name="spacesta" id="spacesta" class="admin-input-sm mr-3">
 							<option value="-10">会员状态</option>
 							<?php
 							foreach($staArr as $k=>$v)
@@ -44,8 +40,6 @@
 							}
 							?>
 						</select>
-					</td>
-					<td>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 						<a href="member_main.php" class="btn btn-success btn-sm">所有会员</a>
 						<a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">禁言会员</a>
@@ -63,12 +57,12 @@
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">mid</td>
-					<td width="16%">头像/会员名</td>
+					<td width="15%">头像/会员名</td>
 					<td width="8%">昵称</td>
-					<td width="8%">等级</td>
-					<td width="16%">钱包积分</td>
+					<td width="6%">等级</td>
+					<td width="15%">钱包积分</td>
 					<td width="6%">投稿限制</td>
-					<td width="14%">地址/时间</td>
+					<td width="15%">地址/时间</td>
 					<td>操作</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="9" align="center">暂无会员</td></tr>'}
@@ -76,7 +70,7 @@
 					<td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
 					<td>{dede:field.mid/}</td>
 					<td align="left">
-						<span class="mr-1"><?php if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};echo ''.$fields['userid'].'';if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";?></span>
+						<span class="mr-1"><?php if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img-sm'>";};echo ''.$fields['userid'].'';if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";?></span>
 						<span>{dede:field.matt function="GetMAtt(@me)"/}</span>
 					</td>
 					<td>{dede:field.uname/}</td>

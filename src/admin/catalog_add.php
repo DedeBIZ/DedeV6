@@ -23,7 +23,7 @@ if ($id == 0 && $reid == 0) {
 } else {
     $checkID = empty($id) ? $reid : $id;
     CheckPurview('t_AccNew');
-    CheckCatalog($checkID, '您无权在本栏目下创建子类');
+    CheckCatalog($checkID, '您无权在该栏目下创建子栏目');
 }
 if (empty($myrow)) $myrow = array();
 $dsql->SetQuery("SELECT id,typename,nid FROM `#@__channeltype` WHERE id<>-1 AND isshow=1 ORDER BY id");
@@ -149,7 +149,7 @@ if ($dopost == 'quick') {
         if ($siteurl != '') {
             $siteurl = preg_replace("#\/$#", "", $siteurl);
             if (!preg_match("#http:\/\/#i", $siteurl)) {
-                ShowMsg("您绑定的二级域名无效，请用(http://host)的形式", "-1");
+                ShowMsg("您绑定的二级域名无效，需要加http开头的链接", "-1");
                 exit();
             }
             if (preg_match("#".$cfg_basehost."#i", $siteurl)) {
@@ -176,7 +176,7 @@ if ($dopost == 'quick') {
     if ($reid > 0) {
         PutCookie('lastCid', GetTopid($reid), 3600 * 24, '/');
     }
-    ShowMsg("成功创建一个分类", "catalog_main.php");
+    ShowMsg("成功创建一个栏目", "catalog_main.php");
     exit();
 }//End dopost==save
 //获取从父目录继承的默认参数

@@ -85,7 +85,7 @@ function _RunMagicQuotes(&$svar)
         }
     } else {
         if (strlen($svar) > 0 && preg_match('#^(cfg_|GLOBALS|_GET|_REQUEST|_POST|_COOKIE|_SESSION)#', $svar)) {
-            exit('Request var not allow!');
+            exit('The requested operation is forbidden');
         }
         $svar = addslashes($svar);
     }
@@ -93,6 +93,9 @@ function _RunMagicQuotes(&$svar)
 }
 foreach (array('_GET', '_POST', '_COOKIE') as $_req) {
     foreach ($$_req as $_k => $_v) {
+        if (preg_match('#^(cfg_|GLOBALS|_GET|_REQUEST|_POST|_COOKIE|_SESSION)#', $_k)) {
+            exit('The requested operation is forbidden');
+        }
         if ($_k == 'nvarname') ${$_k} = $_v;
         else ${$_k} = _RunMagicQuotes($_v);
     }
@@ -186,7 +189,7 @@ $cfg_soft_dir = $cfg_medias_dir.'/soft';
 $cfg_other_medias = $cfg_medias_dir.'/media';
 //软件摘要信息，请不要删除，否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
-$cfg_version_detail = '6.2.5';//详细版本号
+$cfg_version_detail = '6.2.6';//详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 $cfg_softname = '得德系统';
@@ -260,7 +263,7 @@ if ($GLOBALS['cfg_dbtype'] == 'mysql' || $GLOBALS['cfg_dbtype'] == 'mysqli') {
 } else {
     require_once(DEDEINC.'/database/dedesqlite.class.php');
 }
-//载入小助手配置,并对其进行默认初始化
+//载入小助手配置，并对其进行默认初始化
 $cfg_helper_autoload = array(
     'charset',    /* 编码小助手 */
     'channelunit',/* 模型单元小助手 */

@@ -197,7 +197,7 @@
 								itemConfig = config[key]
 							}
 							itemConfig.Sortrank = element.sortrank;
-							itemConfig.Enabled = element.status === 0? false : true;
+							itemConfig.Enabled = parseInt(element.status) === 0? false : true;
 							console.log("itemConfig=", itemConfig);
 							for (const k1 in config[key]) {
 								if (Object.hasOwnProperty.call(config[key], k1)) {

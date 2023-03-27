@@ -59,7 +59,7 @@ if (!empty($iseditor)) {
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
-    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}</style>
+    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}</style>
     <script>
     function nullLink() {
         return;
@@ -143,11 +143,11 @@ if (!empty($iseditor)) {
                         <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
                         <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
                         <input type="hidden" name="job" value="upload">
-                        <span>选择：<input type="file" name="imgfile" class="w-50"></span>
+                        <label>选择：<input type="file" name="imgfile" class="w-50"></label>
                         <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?>> 水印</label>
                         <label><input type="checkbox" name="resize" value="1"> 缩小</label>
-                        <span>宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs"></span>
-                        <span>高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="admin-input-xs"></span>
+                        <label>宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs"></label>
+                        <label>高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="admin-input-xs"></label>
                         <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
                     </form>
                 </td>

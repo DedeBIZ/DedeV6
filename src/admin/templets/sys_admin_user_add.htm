@@ -40,20 +40,20 @@
 				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<input type="hidden" name="dopost" value="add">
 				<tr>
-					<td width="260" class="admin-td">会员名：</td>
+					<td width="260">会员名：</td>
 					<td><input type="text" name="userid" id="userid" class="admin-input-sm">（只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">昵称：</td>
+					<td>昵称：</td>
 					<td><input type="text" name="uname" id="uname" class="admin-input-sm">（发布文档后显示作者的名字）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">密码：</td>
+					<td>密码：</td>
 					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
 				</tr>
 				<tr>
-					<td class="admin-td">会员组：</td>
-					<td class="admin-td">
+					<td>会员组：</td>
+					<td>
 						<select name="usertype" class="admin-input-sm">
 							<?php
 							$dsql->SetQuery("SELECT * FROM `#@__admintype` order by `rank` asc");
@@ -68,26 +68,26 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">授权栏目：</td>
-					<td class="admin-td">
+					<td>授权栏目：</td>
+					<td>
 						<select name="typeids[]" id="typeid" multiple="true" class="admin-input-md" style="height:200px">
-							<option value="0" class="alltype" selected>所有栏目</option>
+							<option value="0" selected>所有栏目</option>
 							<?php echo $typeOptions?>
 						</select>
 						<span>（支持多选）</span>
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td">姓名：</td>
-					<td class="admin-td"><input type="text" name="tname" id="tname" class="admin-input-sm"></td>
+					<td>姓名：</td>
+					<td><input type="text" name="tname" id="tname" class="admin-input-sm"></td>
 				</tr>
 				<tr>
-					<td class="admin-td">邮箱：</td>
-					<td class="admin-td"><input type="text" name="email" id="email" class="admin-input-sm"></td>
+					<td>邮箱：</td>
+					<td><input type="text" name="email" id="email" class="admin-input-sm"></td>
 				</tr>
 				<tr>
-					<td class="admin-td">验证安全码：</td>
-					<td class="admin-td">
+					<td>验证安全码：</td>
+					<td>
 						<input type="text" name="safecode" id="safecode" class="admin-input-sm">
 						<input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class="text-primary"><?php echo $safecode;?></span>）
 					</td>

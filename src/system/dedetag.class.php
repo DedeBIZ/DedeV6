@@ -389,7 +389,7 @@ class DedeTagParse
      *
      * @access    public
      * @param     string  $str  字符串
-     * @return    string
+     * @return    mixed
      */
     function GetTag($str)
     {

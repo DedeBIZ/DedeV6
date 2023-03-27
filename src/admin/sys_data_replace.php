@@ -1,6 +1,6 @@
 <?php
 /**
- * 数据库操作替换
+ * 数据库字段替换
  *
  * @version        $id:sys_data_replace.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

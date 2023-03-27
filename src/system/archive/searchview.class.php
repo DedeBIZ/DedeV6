@@ -27,7 +27,9 @@ class SearchView
     var $TotalPage;
     var $TotalResult;
     var $pagesize;
+    var $AddTable;
     var $ChannelType;
+    var $ChannelTypeid;
     var $TempInfos;
     var $Fields;
     var $PartView;
@@ -301,8 +303,8 @@ class SearchView
                 continue;
             }
             //这里不区分大小写进行关键词替换
-            $fstr = str_ireplace($k, "<span class='text-primary'>$k</span>", $fstr);
-            //速度更快，效率更高$fstr = str_replace($k, "<span class='text-primary'>$k</span>", $fstr);
+            $fstr = str_ireplace($k, "<span class='text-danger'>$k</span>", $fstr);
+            //速度更快，效率更高$fstr = str_replace($k, "<span class='text-danger'>$k</span>", $fstr);
         }
         return $fstr;
     }
@@ -521,7 +523,7 @@ class SearchView
             }
         }
         //搜索
-        $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
+        $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath,mb.uname,mb.face FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
         $artlist = "";
@@ -568,7 +570,7 @@ class SearchView
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
                         $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
                     }
-                    if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                    if (!preg_match("/^(http|https):\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                     }
                     $row['picname'] = $row['litpic'];
@@ -583,6 +585,7 @@ class SearchView
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
+                    $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                     if (is_array($this->dtp2->CTags)) {
                         foreach ($this->dtp2->CTags as $k => $ctag) {
                             if ($ctag->GetName() == 'array') {
@@ -694,15 +697,14 @@ class SearchView
             }
         }
 		$plist = "";
-        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
-        $plist .= "<ul class='pagination justify-content-center pt-3'>";
-        $plist .=  preg_match('/info/i', $listitem)? $infos : "";
+        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."' class='d-flex'>$hidenform";
+        $plist .= preg_match('/info/i', $listitem)? $infos : "";
         $plist .= preg_match('/index/i', $listitem)? $indexpage : "";
         $plist .= preg_match('/pre/i', $listitem)? $prepage : "";
         $plist .= preg_match('/pageno/i', $listitem)? $listdd : "";
         $plist .= preg_match('/next/i', $listitem)? $nextpage : "";
         $plist .= preg_match('/end/i', $listitem)? $endpage : "";
-        $plist .= "</ul></form>\r\n";
+        $plist .= "</form>\r\n";
         return $plist;
     }
     /**

@@ -59,7 +59,7 @@ class Archives
             $this->TypeLink = new TypeLink($arr['typeid']);
             if ($this->ChannelUnit->ChannelInfos['issystem'] != -1) {
                 //如果当前文档不是系统模型，为自定义模型
-                $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid LEFT JOIN `#@__channeltype` as ch on arc.channel = ch.id WHERE arc.id='$aid' ";
+                $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable,mb.uname,mb.face FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid LEFT JOIN `#@__channeltype` as ch on arc.channel = ch.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE arc.id='$aid' ";
                 $this->Fields = $this->dsql->GetOne($query);
             } else {
                 $this->Fields['title'] = '';
@@ -96,12 +96,16 @@ class Archives
             foreach ($GLOBALS['PubFields'] as $k => $v) {
                 $this->Fields[$k] = $v;
             }
-            //为了减少重复查询，这里直接把附加表查询记录放在 $this->addTableRow 中，在 ParAddTable() 不再查询
+            //为了减少重复查询，这里直接把附加表查询记录放在$this->addTableRow中，在ParAddTable()不再查询
             if ($this->ChannelUnit->ChannelInfos['addtable'] != '') {
-                $query = "SELECT * FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` WHERE `aid` = '$aid'";
+                if ($this->ChannelUnit->ChannelID < -1) {
+                    $query = "SELECT tb.*,mb.uname,mb.face FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` tb LEFT JOIN `#@__member` mb on tb.mid = mb.mid WHERE tb.`aid` = '$aid'";
+                } else {
+                    $query = "SELECT * FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` WHERE `aid` = '$aid'";
+                }
                 $this->addTableRow = $this->dsql->GetOne($query);
             }
-            //issystem==-1 表示自定义模型，自定义模型不支持redirecturl这类参数，因此限定文档普通模型才进行下面查询
+            //issystem==-1表示自定义模型，自定义模型不支持redirecturl这类参数，因此限定文档普通模型才进行下面查询
             if ($this->ChannelUnit->ChannelInfos['addtable'] != '' && $this->ChannelUnit->ChannelInfos['issystem'] != -1) {
                 if (is_array($this->addTableRow)) {
                     $this->Fields['redirecturl'] = $this->addTableRow['redirecturl'];
@@ -113,7 +117,9 @@ class Archives
                 $this->Fields['userip'] = (empty($this->Fields['userip']) ? '' : trim($this->Fields['userip']));
             } else {
                 $this->Fields['templet'] = $this->Fields['redirecturl'] = '';
+                $this->Fields['uname'] = $this->addTableRow['uname'];
             }
+            $this->Fields['face'] = empty($this->Fields['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $this->Fields['face'];
         } //!error
     }
     //php4构造函数
@@ -182,15 +188,15 @@ class Archives
             //设置全局环境变量
             $this->Fields['typename'] = $this->TypeLink->TypeInfos['typename'];
             @SetSysEnv($this->Fields['typeid'], $this->Fields['typename'], $this->Fields['id'], $this->Fields['title'], 'archives');
-            //文档图片注释替换为标题，利于优化
+            //文档模型正文图片注释自动为标题
             $this->Fields['body'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['body']);
             $this->Fields['body'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['body']);
             $this->Fields['body'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\" ",$this->Fields['body']);
-            //图片注释替换为标题，利于优化
+            //图片模型正文图片注释自动为标题
             $this->Fields['imgurls'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['imgurls']);
             $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
             $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
-            //清除文档图片的宽度和高度，适配自适应网站
+            //移除文档模型正文图片宽度和高度，适配自适应/响应式网站
             $this->Fields['body'] = preg_replace("/style=\"width\:(.*)\"/","",$this->Fields['body']);
         }
         //完成附加表信息读取
@@ -311,7 +317,7 @@ class Archives
         $filenames  = explode("/", $filename);
         $this->NameFirst = preg_replace("/\.".$this->ShortName."$/i", "", $filenames[count($filenames) - 1]);
         if ($this->NameFirst == '') {
-            $this->NameFirst = $this->arcID;
+            $this->NameFirst = $this->ArcID;
         }
         //获得当前文档的全名
         $filenameFull = GetFileUrl(

@@ -31,7 +31,7 @@ if ($action === 'is_need_check_code') {
         ));
         exit;
     }
-    $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."' ");
     if (function_exists('password_hash') && !empty($row['pwd_new'])) {
         if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
             echo json_encode(array(
@@ -91,17 +91,16 @@ if ($action === 'is_need_check_code') {
     } else {
         $nowtme = time();
         $rnd = $nowtme.'-'.mt_rand(1000,9999);
-        $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.'.png';
+        $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.".png";
         $fsize = filesize($_FILES["file"]["tmp_name"]);
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".png";
-        $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."';");
+        $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."'; ");
         $uptime = time();
         if (is_array($row)) {
-            $query = "UPDATE `#@__uploads` SET mediatype=1, width='{$imgSize[0]}',height='{$imgSize[1]}',filesize='{$fsize}',uptime='$uptime' WHERE aid='{$row['aid']}'; ";
+            $query = "UPDATE `#@__uploads` SET mediatype=1,width='{$imgSize[0]}',height='{$imgSize[1]}',filesize='{$fsize}',uptime='$uptime' WHERE aid='{$row['aid']}'; ";
             $dsql->ExecuteNoneQuery($query);
         } else {
-            $inquery = "INSERT INTO `#@__uploads`(url,mediatype,width,height,playtime,filesize,uptime,mid)
-               VALUES ('$target_url','1','".$imgSize[0]."','".$imgSize[1]."','0','".$fsize."','$uptime','".$cfg_ml->M_ID."'); ";
+            $inquery = "INSERT INTO `#@__uploads`(url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$target_url','1','".$imgSize[0]."','".$imgSize[1]."','0','".$fsize."','$uptime','".$cfg_ml->M_ID."'); ";
             $dsql->ExecuteNoneQuery($inquery);
         }
     }

@@ -47,24 +47,20 @@
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 			<form name="forms" method="post" action="media_main.php">
 				<tr bgcolor="#f5f5f5">
-					<td width="380" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" class="admin-input-md"></td>
-					<td width="170">
-						<select name="mediatype" class="admin-input-sm">
+					<td>
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" class="admin-input-md mr-3">
+						<select name="mediatype" class="admin-input-sm mr-3">
 							<option value="0">文件类型</option>
 							<option value="1" <?php if ($mediatype==1) echo "selected"?>>图片</option>
 							<option value="2" <?php if ($mediatype==2) echo "selected"?>>FLASH</option>
 							<option value="3" <?php if ($mediatype==3) echo "selected"?>>视频音频</option>
 							<option value="4" <?php if ($mediatype==4) echo "selected"?>>其它附件</option>
 						</select>
-					</td>
-					<td width="170">
-						<select name="membertype" class="admin-input-sm">
+						<select name="membertype" class="admin-input-sm mr-3">
 							<option value="0">会员组</option>
 							<option value="1" <?php if ($membertype==1) echo "selected"?>>管理员</option>
 							<option value="2" <?php if ($membertype==2) echo "selected"?>>外部会员</option>
 						</select>
-					</td>
-					<td>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 						<a href="media_add.php" class="btn btn-success btn-sm">上传新文件</a>
 					</td>
@@ -77,10 +73,10 @@
 			</tr>
 			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">选择</td>
-				<td width="28%">文件标题</td>
+				<td width="26%">文件标题</td>
 				<td width="10%">文件大小</td>
-				<td width="15%">上传会员</td>
-				<td width="15%">上传时间</td>
+				<td width="16%">上传会员</td>
+				<td width="16%">上传时间</td>
 				<td width="10%">文件类型</td>
 				<td>操作</td>
 			</tr>

@@ -1,6 +1,6 @@
 <?php
 /**
- * 数据库操作
+ * 数据库备份还原操作
  *
  * @version        $id:sys_data_done.php 17:19 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -24,7 +24,7 @@ $dojs = "<script>$gotojs</script>";
 //备份数据
 if ($dopost == 'bak') {
     if (empty($tablearr)) {
-        ShowMsg('您没选中数据表', 'javascript:;');
+        ShowMsg('您还没选择备份数据表', 'javascript:;');
         exit();
     }
     if (!is_dir($bkdir)) {
@@ -63,7 +63,7 @@ if ($dopost == 'bak') {
             }
         }
         $dh->close();
-        $tmsg .= "清除备份目录旧数据完成";
+        $tmsg .= "完成备份目录旧数据清理";
         if ($isstruct == 1) {
             $bkfile = $bkdir."/tables_struct_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
             $mysql_version = $dsql->GetVersion();
@@ -80,17 +80,17 @@ if ($dopost == 'bak') {
                 fwrite($fp, ''.$tableStruct.";\r\n\r\n");
             }
             fclose($fp);
-            $tmsg .= "备份数据表结构信息完成";
+            $tmsg .= "完成备份数据表结构信息";
         }
         $tmsg .= "正在进行数据备份初始化工作，请稍后";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php'>
-           <input type='hidden' name='isstruct' value='$isstruct' />
-           <input type='hidden' name='dopost' value='bak' />
-           <input type='hidden' name='fsize' value='$fsize' />
-           <input type='hidden' name='tablearr' value='$tablearr' />
-           <input type='hidden' name='nowtable' value='{$tables[0]}' />
-           <input type='hidden' name='startpos' value='0' />
-           <input type='hidden' name='iszip' value='$iszip' />\r\n</form>\r\n{$dojs}\r\n";
+           <input type='hidden' name='isstruct' value='$isstruct'>
+           <input type='hidden' name='dopost' value='bak'>
+           <input type='hidden' name='fsize' value='$fsize'>
+           <input type='hidden' name='tablearr' value='$tablearr'>
+           <input type='hidden' name='nowtable' value='{$tables[0]}'>
+           <input type='hidden' name='startpos' value='0'>
+           <input type='hidden' name='iszip' value='$iszip'>\r\n</form>\r\n{$dojs}\r\n";
         PutInfo($tmsg, $doneForm);
         exit();
     }
@@ -104,7 +104,6 @@ if ($dopost == 'bak') {
         $dsql->GetTableFields($nowtable);
         $intable = "INSERT INTO `$nowtable` VALUES(";
         while ($r = $dsql->GetFieldObject()) {
-
             $fs[$j] = trim($r->name);
             $j++;
         }
@@ -124,15 +123,15 @@ if ($dopost == 'bak') {
                 $fp = fopen($bakfilename, "w");
                 fwrite($fp, $bakStr);
                 fclose($fp);
-                $tmsg = "完成到{$m}条数据备份，继续备份{$nowtable}";
+                $tmsg = "正在备份{$m}条数据，继续备份{$nowtable}";
                 $doneForm = "<form name='gonext' method='post' action='sys_data_done.php'>
-                <input type='hidden' name='isstruct' value='$isstruct' />
-                <input type='hidden' name='dopost' value='bak' />
-                <input type='hidden' name='fsize' value='$fsize' />
-                <input type='hidden' name='tablearr' value='$tablearr' />
-                <input type='hidden' name='nowtable' value='$nowtable' />
-                <input type='hidden' name='startpos' value='$m' />
-                <input type='hidden' name='iszip' value='$iszip' />\r\n</form>\r\n{$dojs}\r\n";
+                <input type='hidden' name='isstruct' value='$isstruct'>
+                <input type='hidden' name='dopost' value='bak'>
+                <input type='hidden' name='fsize' value='$fsize'>
+                <input type='hidden' name='tablearr' value='$tablearr'>
+                <input type='hidden' name='nowtable' value='$nowtable'>
+                <input type='hidden' name='startpos' value='$m'>
+                <input type='hidden' name='iszip' value='$iszip'>\r\n</form>\r\n{$dojs}\r\n";
                 PutInfo($tmsg, $doneForm);
                 exit();
             }
@@ -161,17 +160,17 @@ if ($dopost == 'bak') {
                     $startpos = 0;
                     break;
                 } else {
-                    PutInfo("完成所有数据备份", "");
+                    PutInfo("成功完成所有数据备份", "");
                     exit();
                 }
             }
         }
-        $tmsg = "完成到{$m}条数据备份，继续备份{$nowtable}";
+        $tmsg = "正在备份{$m}条数据，继续备份{$nowtable}";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=bak'>
-          <input type='hidden' name='isstruct' value='$isstruct' />
-          <input type='hidden' name='fsize' value='$fsize' />
-          <input type='hidden' name='tablearr' value='$tablearr' />
-          <input type='hidden' name='nowtable' value='$nowtable' />
+          <input type='hidden' name='isstruct' value='$isstruct'>
+          <input type='hidden' name='fsize' value='$fsize'>
+          <input type='hidden' name='tablearr' value='$tablearr'>
+          <input type='hidden' name='nowtable' value='$nowtable'>
           <input type='hidden' name='startpos' value='$startpos'>\r\n</form>\r\n{$dojs}\r\n";
         PutInfo($tmsg, $doneForm);
         exit();
@@ -181,7 +180,7 @@ if ($dopost == 'bak') {
 //还原数据
 else if ($dopost == 'redat') {
     if ($bakfiles == '') {
-        ShowMsg('没指定任何要还原数据', 'javascript:;');
+        ShowMsg('您还没选择还原数据表', 'javascript:;');
         exit();
     }
     $bakfilesTmp = $bakfiles;
@@ -210,11 +209,11 @@ else if ($dopost == 'redat') {
         if ($delfile == 1) {
             @unlink("$bkdir/$structfile");
         }
-        $tmsg = "完成数据表还原，继续还原数据";
+        $tmsg = "成功完成数据表还原，继续还原其它数据";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=redat'>
-        <input type='hidden' name='startgo' value='1' />
-        <input type='hidden' name='delfile' value='$delfile' />
-        <input type='hidden' name='bakfiles' value='$bakfilesTmp' />
+        <input type='hidden' name='startgo' value='1'>
+        <input type='hidden' name='delfile' value='$delfile'>
+        <input type='hidden' name='bakfiles' value='$bakfilesTmp'>
         </form>\r\n{$dojs}\r\n";
         PutInfo($tmsg, $doneForm);
         exit();
@@ -236,14 +235,14 @@ else if ($dopost == 'redat') {
             @unlink("$bkdir/$nowfile");
         }
         if ($bakfilesTmp == "") {
-            ShowMsg('成功还原所有的文件数据', 'javascript:;');
+            ShowMsg('成功还原所有数据', 'javascript:;');
             exit();
         }
-        $tmsg = "成功还原{$nowfile}文件{$oknum}条数据，正在继续还原其它数据";
+        $tmsg = "正在还原{$nowfile}文件{$oknum}条数据，继续还原其它数据";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=redat'>
-        <input type='hidden' name='startgo' value='1' />
-        <input type='hidden' name='delfile' value='$delfile' />
-        <input type='hidden' name='bakfiles' value='$bakfilesTmp' />
+        <input type='hidden' name='startgo' value='1'>
+        <input type='hidden' name='delfile' value='$delfile'>
+        <input type='hidden' name='bakfiles' value='$bakfilesTmp'>
         </form>\r\n{$dojs}\r\n";
         PutInfo($tmsg, $doneForm);
         exit();
@@ -252,7 +251,7 @@ else if ($dopost == 'redat') {
 function PutInfo($msg1, $msg2)
 {
     global $cfg_soft_lang;
-    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>系统提示</title><style>body{margin:0;line-height:1.6;letter-spacing:.6px;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#1eb867;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.2rem;text-align:center;transition:all .3s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(72,180,97,.5)}.text-primary{color:#007bff}@media (max-width:768px){.tips{padding:0 15px}.tips,.tips-box{width:100%}}</style></head><body><div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div><div class='tips-body'>{$msg1}{$msg2}</div></div></div>";
+    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>系统提示</title><style>body{margin:0;line-height:1.6;letter-spacing:.6px;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#007bff;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.5rem;text-align:center;transition:all .5s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(72,180,97,.5)}.text-primary{color:#007bff}@media (max-width:768px){.tips{padding:0 15px}.tips,.tips-box{width:100%}}</style></head><body><div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div><div class='tips-body'>{$msg1}{$msg2}</div></div></div>";
     echo $msginfo."</body></html>";
 }
 function RpLine($str)

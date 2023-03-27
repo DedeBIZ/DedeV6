@@ -8,21 +8,6 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script>
-			function viewArc(aid) {
-				window.open("{dede:global.cfg_phpurl/}/view.php?aid=" + aid);
-			}
-			function editArc(aid, channelid) {
-				location = "archives_do.php?dopost=edit&channelid=" + channelid + "&aid=" + aid;
-			}
-			function delArc(aid) {
-				DedeConfirm("您确定要删除这篇文档吗").then((v)=>{
-					location = "archives_do.php?aid=" + aid + "&dopost=delArc";
-				}).catch((e)=>{
-					console.log(e)
-				});
-			}
-		</script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -34,7 +19,7 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg mb-3 p-0">
+						<nav class="navbar navbar-expand-lg p-0">
 							<ul class="navbar-nav mr-auto">
 								<li class="nav-item"><a class="nav-link <?php echo ($arcrank=='')? 'active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>">全部</a></li>
 								<li class="nav-item"><a class="nav-link<?php echo ($arcrank=='1')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=1">已审核</a></li>
@@ -75,8 +60,6 @@
 											<a href="javascript:editArc(<?php echo $fields['id']?>,<?php echo $fields['channel']?>);" class="btn btn-success btn-sm">修改</a>
 											<a href="javascript:delArc(<?php echo $fields['id']?>);" class="btn btn-danger btn-sm">删除</a>
 											<?php
-											} else {
-												echo "<span class='btn btn-sm'>无操作</span>";
 											}
 											?>
 										</td>
@@ -91,5 +74,20 @@
 			</div>
 		</main>
 		<?php pasterTempletDiy('foot.htm');?>
+		<script>
+			function viewArc(aid) {
+				window.open("{dede:global.cfg_phpurl/}/view.php?aid=" + aid);
+			}
+			function editArc(aid, channelid) {
+				location = "archives_do.php?dopost=edit&channelid=" + channelid + "&aid=" + aid;
+			}
+			function delArc(aid) {
+				DedeConfirm("您确定要删除这篇文档吗").then((v)=>{
+					location = "archives_do.php?aid=" + aid + "&dopost=delArc";
+				}).catch((e)=>{
+					console.log(e)
+				});
+			}
+		</script>
 	</body>
 </html>

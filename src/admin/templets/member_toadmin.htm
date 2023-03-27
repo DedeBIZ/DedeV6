@@ -38,12 +38,7 @@
 				<tr>
 					<td width="260" class="admin-td">头像/会员名/类型：</td>
 					<td>
-						<span class="mr-1">
-							<?php
-							if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};
-							echo "".$row['userid']."";
-							?>
-						</span>
+						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo "".$row['userid']."";?></span>
 						<span class="btn btn-outline-success btn-sm"><?php echo $row['mtype'];?></span>
 					</td>
 				</tr>

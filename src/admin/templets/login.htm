@@ -19,10 +19,10 @@
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
 		</div>
 		<?php }?>
-		<div class="d-flex flex-md-row align-items-center shadow-sm rounded admin-head mb-5">
+		<div class="d-flex flex-md-row align-items-center shadow-sm admin-head mb-5">
 			<div class="container">
 				<div class="row">
-					<div class="col-6 col-md-4 text-left"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
+					<div class="col-6 col-md-4"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
 					<div class="col-6 col-md-8 text-right d-flex justify-content-end admin-nav"><a href="/" target="_blank" class="admin-nav-a"><i class="fa fa-home"></i> 网站首页</a></div>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 										<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
 									</div>
 								</div>
-								<div><button type="submit" class="btn btn-success w-100">登录</button></div>
+								<div><button type="submit" class="btn btn-success btn-md btn-block">登录</button></div>
 								<div class="login-power"><?php echo $cfg_powerby;?></div>
 							</form>
 						</div>

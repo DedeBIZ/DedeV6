@@ -1,6 +1,6 @@
 <?php
 /**
- * 数据库备份还原 
+ * 数据库备份还原
  *
  * @version        $id:sys_data.php 17:19 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

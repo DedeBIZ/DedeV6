@@ -290,7 +290,7 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	newobj.style.top = "50%";
 	newobj.style.left = "50%";
 	newobj.style.display = 'block';
-	newobj.style.transform = "translate(-54%, -46%)";
+	newobj.style.transform = "translate(-50%, -201px)";
 	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;

@@ -41,15 +41,31 @@ if ($dopost == 'saveedit') {
         $typeid = join(',', $typeids);
         if ($typeid == '0') $typeid = '';
     }
+    $olduserid = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $olduserid);
+    $userid = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userid);
+    $usql = "";
+    if ($olduserid !== $userid) {
+        $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
+        if (is_array($row)) {
+            ShowMsg("您指定的会员名<span class='text-primary'>{$userid}</span>已存在，请使用别的会员名", "-1");
+            exit();
+        }
+        $row = $dsql->GetOne("SELECT id FROM `#@__admin` WHERE userid LIKE '$userid' ");
+        if (is_array($row)) {
+            ShowMsg("您指定的会员名<span class='text-primary'>{$userid}</span>已存在，请使用别的会员名", "-1");
+            exit();
+        }
+        $usql = ",userid='$userid'";
+    }
     if ($id != 1) {
-        $query = "UPDATE `#@__admin` SET uname='$uname',usertype='$usertype',tname='$tname',email='$email',typeid='$typeid' $pwd WHERE id='$id'";
+        $query = "UPDATE `#@__admin` SET uname='$uname',usertype='$usertype',tname='$tname',email='$email',typeid='$typeid' $pwd $usql WHERE id='$id'";
     } else {
-        $query = "UPDATE `#@__admin` SET uname='$uname',tname='$tname',email='$email',typeid='$typeid' $pwd WHERE id='$id'";
+        $query = "UPDATE `#@__admin` SET uname='$uname',tname='$tname',email='$email',typeid='$typeid' $pwd $usql WHERE id='$id'";
     }
     $dsql->ExecuteNoneQuery($query);
-    $query = "UPDATE `#@__member` SET uname='$uname',email='$email'$pwdm WHERE mid='$id'";
+    $query = "UPDATE `#@__member` SET uname='$uname',email='$email'$pwdm $usql WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功修改一个帐户", "sys_admin_user.php");
+    ShowMsg("成功修改一个用户", "sys_admin_user.php");
     exit();
 } else if ($dopost == 'delete') {
     if (empty($userok)) $userok = "";

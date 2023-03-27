@@ -28,7 +28,6 @@ if ($cid < 0) {
     $idtype = 'aid';
 }
 $mid = (isset($mid) && is_numeric($mid)) ? $mid : 0;
-//UpdateStat();
 if (!empty($maintable)) {
     $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET click=click+1 WHERE {$idtype}='$aid' ");
 }

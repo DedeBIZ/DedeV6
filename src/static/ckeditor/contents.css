@@ -49,7 +49,7 @@ figure > figcaption {
 	display:block
 }
 img {
-	border-radius:.2rem
+	border-radius:.5rem
 }
 a > img {
 	padding:1px;

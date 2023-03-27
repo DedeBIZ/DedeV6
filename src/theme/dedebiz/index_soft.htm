@@ -12,72 +12,44 @@
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
-	<body>
+	<body class="body-bg">
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="position rounded">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">当前位置</li>
-								{dede:field name='position'/}
-							</ol>
-						</nav>
-					</div>
+				<div class="col-md-12">	
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb mb-0">
+							<li class="breadcrumb-item">当前位置</li>
+							{dede:field name='position'/}
+						</ol>
+					</nav>
 				</div>
 			</div>
 		</div>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-9">
-					<div class="row">
-						{dede:channelartlist}
-						<div class="col-md-6 mb-3">
-							<div class="card ddcard-normal">
-								<div class="card-header">
-									<div class="row">
-										<div class="col-6 caption">
-											<span><a href="{dede:field.typeurl/}">{dede:field.typename/}</a></span>
-										</div>
-										<div class="col-6 d-flex justify-content-end more">
-											<a href="{dede:field.typeurl/}">更多</a>
-										</div>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush">
-									{dede:arclist titlelen='60' limit='0,1'}
-									<li>
-										<p><a title="[field:fulltitle/]" href="[field:arcurl/]"><i class="fa fa-file-word-o mr-1"></i>[field:title/]</a></p>
-										<p class="text-right mb-0">
-											<span class="mr-3"><img src="[field:mid function='face(@me)'/]" class="user-admin-img-xs">[field:mid function="GetMemberInfos('uname',@me)"/]</span>
-											<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
-										</p>
-									</li>
-									{/dede:arclist}
-									{dede:arclist titlelen='60' limit='1,9'}
-									<li><a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>
-									{/dede:arclist}
-								</ul>
-							</div>
-						</div>
-						{/dede:channelartlist}
+			<div class="row biz-mb">{dede:channelartlist}
+				<div class="col-md-12 mb-3">
+					<div class="item-title text-left">
+						<h2>{dede:field.typename/}</h2>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="pb-3">
-	                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
-	                        <input type="hidden" name="kwtype" value="0">
-	                        <div class="input-group">
-		                        <input name="q" type="text" class="form-control" placeholder="请输入...">
-		                        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-		                    </div>
-	                    </form>
-                    </div>
-					{dede:include comment='推荐文档' filename='widget_recommend.htm'/}
-					{dede:include comment='热点文档' filename='widget_hot.htm'/}
-				</div>
+				</div>{dede:arclist row='3' orderby='rand'}
+				<div class="col-md-4">
+					<div class="item-news bg-white shadow-sm rounded">
+						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
+						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
+						<div class="mb-3">
+							<img src="[field:face/]" class="user-img-xs mr-1">
+							<span class="mr-1">[field:uname/]</span>
+							<i class="fa fa-calendar mr-1"></i>
+							<span>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+						</div>
+						<p class="mb-3">[field:description function="cn_substr(@me,120)"/]...</p>
+						<div>
+							<span class="mr-2">下载次数：<script src="/apps/disdls.php?aid=[field:id/]"></script></span>
+						</div>
+					</div>
+				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
 		</main>
 		{dede:include filename='foot.htm'/}

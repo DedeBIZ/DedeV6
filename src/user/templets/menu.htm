@@ -2,50 +2,50 @@
 $dsql->Execute('addmod', "SELECT id,nid,typename,useraddcon,usermancon,issend,issystem,usertype,isshow FROM `#@__channeltype`");
 $channels = array();
 while ($channel = $dsql->GetArray('addmod')) {
-    $channels[$channel['id']] = $channel;
+	$channels[$channel['id']] = $channel;
 }
 ?>
 <div class="col-md-3 m-pb-2">
-    <ul class="list-group list-group-flush shadow-sm rounded">
-        <li class="list-group-item justify-content-between align-items-center rounded <?php echo (isset($_menu_home) && $_menu_home===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/">会员面板</a></li>
-         <li class="list-group-item justify-content-between align-items-center">
-            <div data-toggle="collapse" data-target="#collapseMessage">消息管理<span class="badge badge-warning badge-pill ml-2"><?php echo $pms['nums'];?></span><span class="dropdown ml-2"></span></div>
-            <div id="collapseMessage" class="mt-3 collapse<?php echo (isset($_menu_pmex) && $_menu_pmex===true)? ' show' : '';?>">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_pmstate) && $_menu_pmstate === 0) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">全部</a></li>
-                    <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_pmstate) && $_menu_pmstate === 1) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox&state=1">已读</a></li>
-                    <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_pmstate) && $_menu_pmstate === -1) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox&state=-1">未读</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="list-group-item justify-content-between align-items-center">
-            <div data-toggle="collapse" data-target="#collapseArchives">我的文档<span class="dropdown ml-2"></span>
-            </div>
-            <div id="collapseArchives" class="collapse mt-3<?php echo (isset($_menu_conex) && $_menu_conex===true)? ' show' : '';?>">
-                <ul class="list-group list-group-flush">
-                    <?php foreach($channels as $chid => $channel) {?>
-                    <?php if(!in_array($chid,$enabledChannels)) continue;?>
-                        <?php $channel['usermancon'] = empty($channel['usermancon'])? "content_list.php" : $channel['usermancon'];?>
-                        <?php if ($channel['issend'] == 1) {?>
-                        <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_conex) && $channelid == $channel['id']) echo 'active';?>">
-                            <a href="<?php echo $cfg_memberurl;?>/<?php echo $channel['usermancon'];?>?channelid=<?php echo $channel['id'];?>"><?php echo $channel['typename'];?></a>
-                        </li>
-                        <?php }?>
-                    <?php }?>
-                </ul>
-            </div>
-        </li>
-        <li class="list-group-item justify-content-between align-items-center rounded <?php echo (isset($_menu_stow) && $_menu_stow===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/mystow.php">我的收藏</a></li>
-        <li class="list-group-item justify-content-between align-items-center <?php echo (isset($_menu_buy) && $_menu_buy===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/buy.php">积分钱包</a></li>
-        <li class="list-group-item justify-content-between align-items-center">
-            <div data-toggle="collapse" data-target="#collapseOrder">订单详情<span class="dropdown ml-2"></span></div>
-            <div id="collapseOrder" class="collapse mt-3<?php echo (isset($_menu_order) && $_menu_order===true)? ' show' : '';?>">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_orderstate) && $_menu_orderstate === 0) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/mypay.php">购买文档</a></li>
-                    <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_orderstate) && $_menu_orderstate === 2) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/operation.php">金币订单</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_edtitem) && $_menu_edtitem === 'base') echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">资料修改</a></li>
-    </ul>
+	<ul class="list-group list-group-flush shadow-sm rounded">
+		<li class="list-group-item justify-content-between align-items-center <?php echo (isset($_menu_home) && $_menu_home===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/">会员面板</a></li>
+		 <li class="list-group-item justify-content-between align-items-center">
+			<div data-toggle="collapse" data-target="#collapseMessage">消息管理<span class="badge badge-warning badge-pill ml-2"><?php echo $pms['nums'];?></span><span class="fa fa-angle-down ml-2"></span></div>
+			<div id="collapseMessage" class="mt-3 collapse<?php echo (isset($_menu_pmex) && $_menu_pmex===true)? ' show' : '';?>">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_pmstate) && $_menu_pmstate === 0) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">全部</a></li>
+					<li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_pmstate) && $_menu_pmstate === 1) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox&state=1">已读</a></li>
+					<li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_pmstate) && $_menu_pmstate === -1) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox&state=-1">未读</a></li>
+				</ul>
+			</div>
+		</li>
+		<li class="list-group-item justify-content-between align-items-center">
+			<div data-toggle="collapse" data-target="#collapseArchives">我的文档<span class="fa fa-angle-down ml-2"></span>
+			</div>
+			<div id="collapseArchives" class="collapse mt-3<?php echo (isset($_menu_conex) && $_menu_conex===true)? ' show' : '';?>">
+				<ul class="list-group list-group-flush">
+					<?php foreach($channels as $chid => $channel) {?>
+					<?php if(!in_array($chid,$enabledChannels) || $channel['isshow'] == 0) continue;?>
+						<?php $channel['usermancon'] = empty($channel['usermancon'])? "content_list.php" : $channel['usermancon'];?>
+						<?php if ($channel['issend'] == 1) {?>
+						<li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_conex) && $channelid == $channel['id']) echo 'active';?>">
+							<a href="<?php echo $cfg_memberurl;?>/<?php echo $channel['usermancon'];?>?channelid=<?php echo $channel['id'];?>"><?php echo $channel['typename'];?></a>
+						</li>
+						<?php }?>
+					<?php }?>
+				</ul>
+			</div>
+		</li>
+		<li class="list-group-item justify-content-between align-items-center <?php echo (isset($_menu_stow) && $_menu_stow===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/mystow.php">我的收藏</a></li>
+		<li class="list-group-item justify-content-between align-items-center <?php echo (isset($_menu_buy) && $_menu_buy===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/buy.php">积分钱包</a></li>
+		<li class="list-group-item justify-content-between align-items-center">
+			<div data-toggle="collapse" data-target="#collapseOrder">订单详情<span class="fa fa-angle-down ml-2"></span></div>
+			<div id="collapseOrder" class="collapse mt-3<?php echo (isset($_menu_order) && $_menu_order===true)? ' show' : '';?>">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_orderstate) && $_menu_orderstate === 0) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/mypay.php">购买文档</a></li>
+					<li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_orderstate) && $_menu_orderstate === 2) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/operation.php">金币订单</a></li>
+				</ul>
+			</div>
+		</li>
+		<li class="list-group-item justify-content-between align-items-center <?php if (isset($_menu_edtitem) && $_menu_edtitem === 'base') echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">资料修改</a></li>
+	</ul>
 </div>

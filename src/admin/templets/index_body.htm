@@ -59,43 +59,49 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 my-3">
+			<div class="col-md-7 my-3">
 				<div class="card">
 					<div class="card-header">
 						<a href="javascript:Copyinfo()"><i class="fa fa-cogs"></i> 软件信息</a>
-						<span id="text">软件：<?php echo $cfg_version_detail;?>|操作系统：<?php echo PHP_OS;?>|Web服务器：<?php echo $_SERVER['SERVER_SOFTWARE'];?>|PHP：<?php echo @phpversion();?>|数据库：<?php echo $dsql->GetVersion();?></span>
+						<span id="text">软件：<?php echo $cfg_version_detail;?>丨操作系统：<?php echo PHP_OS;?>丨Web服务器：<?php echo $_SERVER['SERVER_SOFTWARE'];?>丨PHP：<?php echo @phpversion();?>丨数据库：<?php echo $dsql->GetVersion();?>丨上传限制：<?php echo ini_get("post_max_size")?></span>
 					</div>
 					<div class="card-body">
 						<table class="table table-borderless">
 							<tr>
-								<td width="20%">
+								<td>
 									<div class="web-info">
 										<p>操作系统</p>
 										<span><?php echo PHP_OS;?></span>
 									</div>
 								</td>
-								<td width="20%">
+								<td>
 									<div class="web-info">
 										<p>WEB服务器</p>
 										<span><?php echo GetSimpleServerSoftware();?></span>
 									</div>
 								</td>
-								<td width="20%">
+								<td>
 									<div class="web-info">
 										<p>IP地址</p>
 										<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
 									</div>
 								</td>
-								<td width="20%">
+								<td>
 									<div class="web-info">
 										<p>PHP版本</p>
 										<span><?php echo @phpversion();?></span>
 									</div>
 								</td>
-								<td width="20%">
+								<td>
 									<div class="web-info">
 										<p>数据库版本</p>
 										<span><?php echo $dsql->GetVersion();?></span>
+									</div>
+								</td>
+								<td>
+									<div class="web-info">
+										<p>上传限制</p>
+										<span><?php echo ini_get("post_max_size")?></span>
 									</div>
 								</td>
 							</tr>
@@ -103,7 +109,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 my-3">
+			<div class="col-md-5 my-3">
 				<div class="card">
 					<div class="card-header">
 						<span><i class="fa fa-shield"></i> 版本授权</span>
@@ -112,17 +118,17 @@
 					<div class="card-body" id="system-info">正在加载</div>
 				</div>
 			</div>
-			<div class="col-md-6 my-3">
+			<div class="col-md-7 my-3">
 				<div class="card">
 					<div class="card-header">
 						<a name="statChart"><i class="fa fa-line-chart"></i> 流量统计图</a>
 					</div>
-					<div class="card-body">
+					<div class="card-body py-3">
 						<canvas id="statChart"></canvas>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 my-3">
+			<div class="col-md-5 my-3">
 				<div class="card">
 					<div class="card-header">
 						<span><i class="fa fa-file-word-o"></i> 最新文档</span>

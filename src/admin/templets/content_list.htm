@@ -38,15 +38,13 @@
 			<input type="hidden" name="dopost" value="listArchives">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
 				<tr bgcolor="#f5f5f5">
-					<td width="380"><input type="text" name="keyword" class="admin-input-md" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id"></td>
-					<td width="170" align="center">
-						<select name="cid" class="admin-input-sm">
+					<td>
+						<input type="text" name="keyword" class="admin-input-md mr-3" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
+						<select name="cid" class="admin-input-sm mr-3">
 							<option value="0">选择栏目</option>
 							{dede:global.optionarr/}
 						</select>
-					</td>
-					<td width="170">
-						<select name="orderby" class="admin-input-sm">
+						<select name="orderby" class="admin-input-sm mr-3">
 							<option value="id">选择排序</option>
 							<option value="pubdate">更新时间</option>
 							<option value="sortrank">置顶权值</option>
@@ -54,15 +52,13 @@
 							<option value="scores">评论积分</option>
 							<option value="lastpost">最后评论</option>
 						</select>
-					</td>
-					<td width="170">
-						<select name="flag" class="admin-input-sm">
+						<select name="flag" class="admin-input-sm mr-3">
 							<option value="">选择属性</option>
 							{dede:global.flagsArr/}
 						</select>
+						<input type="text" name="timerange" autocomplete="off" value="<?php echo $strTimerange;?>" id="timerange" class="admin-input-md mr-3">
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
-					<td width="240"><input type="text" name="timerange" autocomplete="off" value="<?php echo $strTimerange;?>" id="timerange" class="admin-input-md"></td>
-					<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 				</tr>
 			</table>
 		</form>

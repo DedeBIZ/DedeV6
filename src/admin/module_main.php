@@ -362,7 +362,7 @@ if ($action == '') {
         <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-        <td>模块包含的文件（文件路径相对于当前目录）</td>
+        <td>模块文件：</td>
         <td></td>
     </tr>
     <tr>
@@ -488,7 +488,7 @@ if ($action == '') {
         <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-        <td>模块包含的文件（文件路径相对于当前目录）</td>
+        <td>模块文件：</td>
         <td></td>
     </tr>
     <tr>

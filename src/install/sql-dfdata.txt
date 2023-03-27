@@ -4028,7 +4028,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('94','cfg_smtp_user','SMTP服务器帐号','2','string','tianya'),
 ('95','cfg_smtp_password','SMTP服务器密码','2','string','tianya'),
 ('96','cfg_online_type','在线支付网关类型','2','string','nps'),
-('97','cfg_upload_switch','删除文档文件同时删除相关附件文件','2','bool','Y'),
+('97','cfg_upload_switch','删除文档同时删除相关附件文件','2','bool','Y'),
 ('98','cfg_fck_xhtml','是否使用富文本','2','bool','N'),
 ('99','cfg_allsearch_limit','网站全局搜索时间限制（秒）','2','string','1'),
 ('100','cfg_delete','是否开启文档回收站','2','bool','Y'),

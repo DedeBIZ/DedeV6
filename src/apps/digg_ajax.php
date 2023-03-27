@@ -40,7 +40,7 @@ if (!is_array($row) || $cfg_digg_update == 0) {
 		}
 		DelCache($prefix, $key);
 	}
-	SetCache($prefix, $key, $row, 0);
+	SetCache($prefix, $key, $row);
 } else {
 	if ($action == 'good') {
 		$row['goodpost'] = $row['goodpost'] + 1;
@@ -59,7 +59,7 @@ if (!is_array($row) || $cfg_digg_update == 0) {
 			DelCache($prefix, $key);
 		}
 	}
-	SetCache($prefix, $key, $row, 0);
+	SetCache($prefix, $key, $row);
 }
 $digg = '';
 if (!is_array($row)) exit();

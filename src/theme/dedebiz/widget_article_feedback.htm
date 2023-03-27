@@ -1,10 +1,9 @@
 {dede:comment text='文档评论模块'/}
-<style>.feedbacks .face{width:40px;height:40px;border-radius:50%;border:solid 1px #ccc}.feedbacks .media{border-bottom:solid 1px #ccc;padding-top:10px}.feedbacks .feedback_replies .media{border-top:solid 1px #ccc;border-bottom:0}.feedbacks .media-body{padding:0 1rem 1rem 1rem}.feedbacks .media-body small{color:#999}.feedbacks .feedback-action{float:right}.feedbacks ._feedback_reply .alert{margin-bottom:0}@media only screen and (max-width:576px){.feedbacks .feedback-action{float:none}}</style>
-<div class="comment py-3">
+<div class="comment pt-3">
 	<h4>发表评论</h4>
 	<div id="feedback-alert"></div>
 	<div class="content mb-3"><textarea cols="60" id="iptMsg" name="msg" rows="5" class="form-control" placeholder="请输入..." required></textarea></div>
-	<div class="post mb-3">
+	<div class="post">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
 			<div class="form-group form-row">
 				<div class="col-md-6">
@@ -26,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="dcmp-submit"><button class="btn btn-success" type="button" onClick='SendFeedback()'>发表评论</button></div>
+		<div class="dcmp-submit"><button type="button" class="btn btn-success btn-md" onClick="SendFeedback()">发表评论</button></div>
 	</div>
 	<div class="feedbacks">
 		{dede:feedback}
@@ -104,15 +103,15 @@
 				<button type="button" class="btn btn-success btnSend ml-2" onClick='SendReplyFeedback(${fid})'>评论</button>
 			</div>
 		</div>`;
-        $.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {
-            if (result.code !== 200) {
+		$.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {
+			if (result.code !== 200) {
 				$(`._feedback_reply`).html("");
 				ShowAlert(`._feedback_reply[for="${fid}"]`, 
 				'回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/user/login.php">点击登录</a>后再来回复', 'warning', 5000);
-            } else {
+			} else {
 				$(`._feedback_reply`).html("");
 				$(`._feedback_reply[for="${fid}"]`).html(replyPannel);
-            }
+			}
 		});
 		$(`._feedback_reply[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin"></i> ');
 	}

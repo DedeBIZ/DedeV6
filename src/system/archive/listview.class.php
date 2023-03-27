@@ -612,6 +612,7 @@ class ListView
         }
         //获得附加表的相关信息
         $addtable = $this->ChannelUnit->ChannelInfos['addtable'];
+        $filtersql = "";
         if ($addtable!="")
         {
             $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
@@ -647,7 +648,7 @@ class ListView
         }
         //如果不用默认的sortrank或id排序，使用联合查询数据量大时非常缓慢
         if (preg_match('/hot|click|lastpost/', $orderby)) {
-            $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
+            $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb ON arc.mid=mb.mid $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
         }
         //普通情况先从arctiny表查出id，然后按di查询速度非常快
         else {
@@ -663,7 +664,7 @@ class ListView
             if ($idstr == '') {
                 return '';
             } else {
-                $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $addJoin WHERE arc.id in($idstr) $ordersql ";
+                $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb ON arc.mid=mb.mid $addJoin WHERE arc.id in($idstr) $ordersql ";
             }
             $t2 = ExecTime();
         }
@@ -732,6 +733,7 @@ class ListView
                     if (preg_match('/c/', $row['flag'])) {
                         $row['title'] = "".$row['title']."";
                     }
+                    $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                     $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
@@ -896,6 +898,7 @@ class ListView
         $purl .= '?'.$geturl;
         $optionlist = '';
         //添加联动单筛选
+        $pageaddurl = "";
         foreach($_GET as $key => $value) {
             $pageaddurl .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? "&".string_filter($key)."=".string_filter($value) : '';
         }

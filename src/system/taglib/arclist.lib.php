@@ -273,7 +273,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             $addfieldsSqlJoin = " LEFT JOIN `$addtable` addf ON addf.aid = arc.id ";
         }
     }
-    $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addfieldsSql FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id $addfieldsSqlJoin $orwhere $ordersql $limitsql";
+    $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face $addfieldsSql FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addfieldsSqlJoin $orwhere $ordersql $limitsql";
     //统一hash
     $taghash = md5(serialize($ctag).$typeid);
     $needSaveCache = true;
@@ -365,6 +365,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
+                $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                 if (is_array($dtp2->CTags)) {
                     foreach ($dtp2->CTags as $k => $ctag) {
                         if ($ctag->GetName() == 'array') {
