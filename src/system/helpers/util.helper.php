@@ -91,7 +91,7 @@ if (!function_exists('GetIP')) {
             } else if (isset($_SERVER['HTTP_CLIENT_IP'])) {
                 $realip = $_SERVER['HTTP_CLIENT_IP'];
             } else {
-                $realip = $_SERVER['REMOTE_ADDR'];
+                $realip = @$_SERVER['REMOTE_ADDR'];
             }
         } else {
             if (getenv('HTTP_X_FORWARDED_FOR')) {

@@ -121,7 +121,7 @@ $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
 $sessSavePath = DEDEDATA."/sessions_{$enkey}";
 if (!is_dir($sessSavePath)) mkdir($sessSavePath);
 if (is_writeable($sessSavePath) && is_readable($sessSavePath)) {
-    session_save_path($sessSavePath);
+    @session_save_path($sessSavePath);
 }
 //转换上传的文件相关的变量及安全处理，并引用前台通用的上传函数
 if ($_FILES) {
