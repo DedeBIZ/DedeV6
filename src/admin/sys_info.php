@@ -99,13 +99,15 @@ else if ($dopost == 'search') {
     $keywords = isset($keywords) ? strip_tags($keywords) : '';
     $i = 1;
     $configstr = <<<EOT
-<table width="100%" cellspacing="1" cellpadding="1" id="tdSearch">
-    <tbody>
-        <tr bgcolor="#e9ecef" align="center">
-            <td width="300">参数说明</td>
-            <td>参数值</td>
-            <td width="220">变量名</td>
-        </tr>
+<table cellspacing="1" cellpadding="1" align="center" id="tdSearch" class="table maintable my-3">
+    <tr>
+        <td bgcolor="#f5f5f5" colspan="3">系统配置变量搜索</td>
+    </tr>
+    <tr bgcolor="#e9ecef" align="center">
+        <td width="300">参数说明</td>
+        <td>参数值</td>
+        <td width="220">变量名</td>
+    </tr>
 EOT;
     echo $configstr;
     if ($keywords) {
@@ -145,7 +147,7 @@ EOT;
     exit;
     }
     if ($i == 1) {
-        echo '<tr bgcolor="#f5f5f5" align="center"><td colspan="3">没有找到搜索的文档</td></tr></table>';
+        echo '<tr bgcolor="#f5f5f5" align="center"><td colspan="3">搜索不到参数</td></tr></table>';
     }
 exit;
 } else if ($dopost == 'make_encode') {
