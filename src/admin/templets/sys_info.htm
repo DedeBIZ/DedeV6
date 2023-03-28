@@ -89,12 +89,12 @@
 					<form name="fadd" action="sys_info.php" method="post">
 						<input type="hidden" name="dopost" value="add">
 						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-						<table width="100%" cellspacing="0" cellpadding="0">
+						<table width="100%" cellspacing="0" cellpadding="0" class="table-borderless">
 							<tr>
-								<td width="90" class="border-top-0">变量说明</td>
-								<td width="370" class="border-top-0"><input type="text" name="varmsg" id="varmsg" class="admin-input-md"></td>
-								<td width="90" class="border-top-0">变量值</td>
-								<td width="370" class="border-top-0"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-md"></td>
+								<td width="90">变量说明</td>
+								<td width="370"><input type="text" name="varmsg" id="varmsg" class="admin-input-md"></td>
+								<td width="90">变量值</td>
+								<td width="370"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-md"></td>
 							</tr>
 							<tr>
 								<td width="90">变量名称</td>
