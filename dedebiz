@@ -15,19 +15,20 @@ define('DEBUG_LEVEL', FALSE); //如果设置为TRUE则会打印执行SQL的时�
 $workDir = dirname(__FILE__) . "/src";
 chdir($workDir);
 if (substr(php_sapi_name(), 0, 3) === 'cgi') {
-	die("DedeBIZ:needs php-cli to run\n\n");
+	die("DedeBIZ:需要使用php-cli运行\n\n");
 }
 $helpStr = "
 NAME:
-	DedeBIZ Cli Tools
+	DedeBIZ命令行工具
 USAGE:
 	php ./dedebiz command [arguments...]
 COMMANDS:
-	serv,s Run cli web server for DedeBIZ
-	make,m Make DedeBIZ HTML
-	update,u Update to latest system
-	help,h Shows a list of commands or help
-	quick,q Quick start a development environment
+	serv,s 运行DedeBIZ开发服务
+	make,m 生成HTML
+	update,u 更新到最新系统
+	help,h Shows 帮助
+	quick,q 快速开始一个开发环境
+	tdata 生成测试数据
 WEBSITE:
 	https://www.dedebiz.com/help/
 ";
@@ -71,14 +72,14 @@ function RandEncode($length=26)
 if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	//PHP5.4以下不支持内建服务器，用于开发调试
 	if (phpversion() < "5.4") {
-		die("DedeBIZ:command web server not support\n\n");
+		die("DedeBIZ:命令行Web Server不支持\n\n");
 	}
-	echo "Start Dev Server For DedeBIZ\n\r";
-	echo "Open http://localhost:8088\n\r";
+	echo "启动DedeBIZ开发环境\n\r";
+	echo "浏览器打开 http://localhost:8088\n\r";
 	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 } else if (count($argv) > 1 && ($argv[1] == "make" || $argv[1] == "m")) {
 	if (!file_exists($workDir . "/system/common.inc.php")) {
-		DedeCli::error("Check your root path is right");
+		DedeCli::error("检查目录是否正确");
 		exit;
 	}
 	require_once($workDir . "/system/common.inc.php");
@@ -108,7 +109,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			DedeCli::showProgress(ceil(($i / $total) * 100), 100, $i, $total);
 			$i++;
 		}
-		DedeCli::write("Make archive html successfull");
+		DedeCli::write("成功生成内容html");
 		$queryTime = ExecTime() - $t1;
 		DedeCli::write($queryTime);
 		exit;
@@ -128,7 +129,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 				$lv = new SgListView($row->id);
 			}
 			$lv->CountRecord();
-			DedeCli::write("Start make list html[id:{$row->id}]");
+			DedeCli::write("开始生成列表html[id:{$row->id}]");
 			$lv->MakeHtml('', '', 0);
 		}
 		exit;
@@ -139,7 +140,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			$position = "../index.html";
 		}
 		if (!preg_match("#\.html$#", $position)) {
-			DedeCli::error("position must end with .html");
+			DedeCli::error("位置必须以.html结尾");
 			exit;
 		}
 		$homeFile = DEDEINC . "/" . $position;
@@ -152,7 +153,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		$GLOBALS['_arclistEnv'] = 'index';
         $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . "/" . $templet);
         $pv->SaveToHtml($homeFile);
-		DedeCli::write("Make index html successfull");
+		DedeCli::write("成功生成首页html");
 	} else if (count($argv) > 2 && ($argv[2] == "auto" || $argv[2] == "o")) {
 		//自动生成
 		function OptimizeData($dsql)
@@ -172,7 +173,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		$start = empty(DedeCli::getOption("start"))? "-1 day" : DedeCli::getOption("start");
 		$start = strtotime($start);
 		if (!$start) {
-			DedeCli::error("start is empty");
+			DedeCli::error("start参数为空");
 			exit;
 		}
 		//1.生成首页
@@ -189,7 +190,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
         } else {
             if (file_exists($homeFile)) @unlink($homeFile);
 		}
-		DedeCli::write("Make index html successfull");
+		DedeCli::write("成功生成首页html");
 		//2.生成栏目
 		$query = "SELECT DISTINCT typeid From `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1";
 		$dsql->SetQuery($query);
@@ -219,10 +220,10 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 					$lv = new SgListView($tt);
 				}
 				$lv->CountRecord();
-				DedeCli::write("Start make list html[id:{$tt}]");
+				DedeCli::write("开始生成列表html[id:{$tt}]");
 				$lv->MakeHtml('', '', 0);
 			}
-			DedeCli::write("Make list html successfull");
+			DedeCli::write("成功生成列表html");
 		}
 		//生成文档
 		$tt = $dsql->GetOne("SELECT COUNT(id) as dd FROM `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1");
@@ -236,24 +237,25 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			DedeCli::showProgress(ceil(($i / $total) * 100), 100);
 			$i++;
 		}
-		DedeCli::write("Make archives html successfull");
+		DedeCli::write("成功生成html");
 		//优化数据
 		OptimizeData($dsql);
-		DedeCli::write("Optimize data successfull");
+		DedeCli::write("成功优化数据");
 	} else {
 		$helpStr = "
 		USAGE:
 			php ./dedebiz make action [arguments...]
 		ACTIONS:
-			index,i Make Index html
-				--position index html position,default: ../index.html(relative include dir)
-			arc,a Make Archive htmls 
-				--typeid type id
-				--aid    archive id
-			list,l Make List htmls
-				--typeid type id
-			auto,o Auto Make htmls
-				--start start time(format:2012-03-12)
+			index,i 生成首页html
+				--position 首页html位置,默认: ../index.html(相对system目录)
+			arc,a 生成文档html
+				--typeid 栏目id
+				--aid    文档id
+			list,l 生成列表html
+				--typeid 栏目id
+			auto,o 自动生成
+				--start 开始时间(format:2012-03-12)
+			tdata 生成测试数据
 		WEBSITE:
 			https://www.dedebiz.com/help/";
 		DedeCli::write($helpStr);
@@ -272,7 +274,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	preg_match("#_version_detail = '([\d\.]+)'#", $commStr, $matchs);
 	$cfg_version_detail = $localVerStr = $matchs[1];
 	if (version_compare($localVerStr, $remoteVerStr, '>=')) {
-		DedeCli::error("latest version,don't need to update");
+		DedeCli::error("已经是最新版本，无需继续升级");
 		exit;
 	}
 	$fileHashURL = "https://cdn.dedebiz.com/release/{$cfg_version_detail}.json";
@@ -286,9 +288,9 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	require_once(DEDEINC . "/libraries/cli.class.php");
 	//快速开始一个用于开发的DedeBIZ环境，基于SQLite无其他依赖
 	if (file_exists($workDir."/data/DedeBIZ.db")) {
-		DedeCli::write("development environment has inited");
-		echo "Start Dev Server For DedeBIZ\n\r";
-		echo "Open http://localhost:8088\n\r";
+		DedeCli::write("开发环境已经初始化");
+		echo "启动DedeBIZ开发环境\n\r";
+		echo "浏览器打开 http://localhost:8088\n\r";
 		passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 		exit;
 	}
@@ -432,7 +434,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     DedeCli::write("admin user:admin");
     DedeCli::write("admin password:admin");
 	if (phpversion() < "5.4") {
-		die("DedeBIZ:command web server not support\n\n");
+		die("DedeBIZ:命令行Web Server不支持\n\n");
 	}
 	//写入程序安装锁
 	file_put_contents($workDir.'/install/install_lock.txt', 'ok');
@@ -440,6 +442,42 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	echo "Open http://localhost:8088\n\r";
 	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 	exit;
+} else if(count($argv) > 1 && ($argv[1] =="tdata")){
+	if (!file_exists($workDir . "/system/common.inc.php")) {
+		DedeCli::error("检查根目录是否存在错误");
+		exit;
+	}
+	require_once($workDir . "/system/common.inc.php");
+	require_once(DEDEINC . "/libraries/cli.class.php");
+    $in_query = "INSERT INTO `#@__arctype` (reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`) VALUES ('0','0','999','测试栏目','','','','','','{cmspath}/a/ceshilanmu','1','index.html','1','1','{style}/index_article.htm','{style}/list_article.htm','{style}/article_article.htm','default','{typedir}/{aid}.html','{typedir}/{tid}-{page}.html','0','0','测试','测试','','0','','','0','0','','','')";
+    if (!$dsql->ExecuteNoneQuery($in_query)) {
+        die("保存目录数据时失败，请检查您的输入资料是否存在问题");
+    }
+	$typeid = $dsql->GetLastID();
+	DedeCli::write("开始生成测试数据...");
+	for ($i=0; $i < 30000; $i++) { 
+		DedeCli::showProgress(ceil(($i / 30000) * 100), 100);
+		$now = time();
+		$arcID = GetIndexKey(0, $typeid, $now, 1, $now, 1);
+		if (empty($arcID)) {
+			die("无法获得主键，因此无法进行后续操作");
+		}
+		$query = "INSERT INTO `#@__archives` (id,typeid,typeid2,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,notpost,description,keywords,filename,dutyadmin,weight) VALUES ('$arcID','$typeid','0','$now','','1','1','0','100','0','这是一篇测试文章$arcID','测试文章$arcID','','天涯','DedeBIZ','','$now','$now','1','0','测试描述','测试关键词','','1','');";
+		if (!$dsql->ExecuteNoneQuery($query)) {
+			$gerr = $dsql->GetError();
+			$dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
+			die("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段".str_replace('"', '', $gerr));
+		}
+		$body = str_repeat("得德内容管理系统DedeBIZ上海穆云智能科技有限公司，天涯、叙述别离、老岳2023",500);
+		$query = "INSERT INTO `#@__addonarticle` (aid,typeid,redirecturl,templet,userip,body) VALUES ('$arcID','$typeid','','','127.0.0.1','$body')";
+		if (!$dsql->ExecuteNoneQuery($query)) {
+			$gerr = $dsql->GetError();
+			$dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
+			$dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
+			die("数据保存到数据库附加表时出错，请检查数据库字段".str_replace('"', '', $gerr));
+		}
+	}
+	DedeCli::write("成功生成所有测试数据");
 } else {
 	echo $helpStr;
 }
