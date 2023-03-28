@@ -13,7 +13,7 @@
 		<script>
 			function LoadSuns(ctid, tid) {
 				if ($DE(ctid).innerHTML.length < 10) {
-					$DE('img' + tid).className = 'fa fa-minus-square-o';
+					$DE('img' + tid).className = 'fa fa-minus-square';
 					fetch('catalog_do.php?dopost=GetSunLists&cid=' + tid).then(resp => resp.text()).then((d) => {
 						$DE(ctid).innerHTML = d;
 					});
