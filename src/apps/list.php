@@ -11,6 +11,7 @@
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 $t1 = ExecTime();
 $tid = (isset($tid) && is_numeric($tid) ? $tid : 0);
+$mod = (isset($mod) && is_numeric($mod) ? $mod : 0);
 $channelid = (isset($channelid) && is_numeric($channelid) ? $channelid : 0);
 if ($tid == 0 && $channelid == 0) die("dedebiz");
 if (isset($TotalResult)) $TotalResult = intval(preg_replace("/[^\d]/", '', $TotalResult));
@@ -31,10 +32,10 @@ if ($tinfos['issystem'] == -1) {
     if (!empty($infotype)) $cArr['infotype'] = $infotype;
     if (!empty($keyword)) $cArr['keyword'] = $keyword;
     include(DEDEINC."/archive/sglistview.class.php");
-    $lv = new SgListView($tid, $cArr);
+    $lv = new SgListView($tid, $cArr, $mod);
 } else {
     include(DEDEINC."/archive/listview.class.php");
-    $lv = new ListView($tid);
+    $lv = new ListView($tid, 1, $mod);
     //对设置了会员级别的栏目进行处理
     if (isset($lv->Fields['corank']) && $lv->Fields['corank'] > 0) {
         require_once(DEDEINC.'/memberlogin.class.php');
