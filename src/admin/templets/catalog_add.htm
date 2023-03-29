@@ -263,7 +263,7 @@
 					<td>多站点支持：</td>
 					<td>
 						<label><input type="radio" name="moresite" value="1"> 启用</label>
-						<label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>（如果需要绑定二级域名，必须在“系统参数”中设定“支持多站点”）
+						<label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>（需要绑定二级域名，系统参数中开启支持多站点）
 					</td>
 					<td>绑定域名：</td>
 					<td><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="admin-input-md">（需要加http开头的链接）</td>
@@ -339,7 +339,7 @@
 				<tr>
 					<td>是否支持跨站数据：</td>
 					<td>
-						<input type="text" name="" id="" class="admin-input-md" placeholder="请输入调用秘钥">
+						<input type="text" name="" id="" class="admin-input-md" placeholder="请输入字符串类秘钥">
 						<label><input type="radio" name="issend" value="1" <?php if ($issend==1) echo " checked='checked' ";?>> 支持</label>
 						<label><input type="radio" name="issend" value="0" <?php if ($issend==0) echo " checked='checked' ";?>> 不支持</label>
 					</td>

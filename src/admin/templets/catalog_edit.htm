@@ -237,7 +237,7 @@
 					<td width="260">多站点支持：</td>
 					<td>
 						<label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo "checked='1'";?>> 启用</label>
-						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>（绑名绑定仅需要在顶级栏目设定，子级栏目修改无效）
+						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>（只需要顶级栏目设置，子级栏目修改无效）
 					</td>
 					<td>绑定域名：</td>
 					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-md">（需要加http开头的链接）</td>
@@ -312,7 +312,7 @@
 				<tr>
 					<td>是否支持跨站数据：</td>
 					<td>
-						<input type="text" name="" id="" class="admin-input-md" placeholder="请输入调用秘钥">
+						<input type="text" name="" id="" class="admin-input-md" placeholder="请输入字符串类秘钥">
 						<label><input type="radio" name="" value="1" <?php if ($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
 						<label><input type="radio" name="" value="0" <?php if ($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
 					</td>
