@@ -9,8 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-require_once(DEDEINC."/datalistcp.class.php");
 CheckRank(0, 0);
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", GetCurUrl(), time() + 3600, "/");
 $type = empty($type) ? "sys" : trim($type);
 $tpl = '';

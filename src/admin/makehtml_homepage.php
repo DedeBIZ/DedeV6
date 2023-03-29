@@ -82,12 +82,12 @@ if ($dopost == "view") {
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/admin.css\">";
-        echo "<div class=\"alert alert-success my-3\">更新首页模式：".$position." <a href='{$position}' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
+        echo "<div class=\"alert alert-success\">更新首页模式：".$position." <a href=\"{$position}\" target=\"_blank\" class=\"btn btn-success btn-sm\">浏览</a></div>";
     } else {
         //动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/admin.css\">";
-        echo "<div class=\"alert alert-success my-3\">动态浏览模式：<a href='../index.php' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
+        echo "<div class=\"alert alert-success\">动态浏览模式：<a href=\"../index.php\" target=\"_blank\" class=\"btn btn-success btn-sm\">浏览</a></div>";
     }
     $iquery = "UPDATE `#@__homepageset` SET showmod='$showmod'";
     $dsql->ExecuteNoneQuery($iquery);

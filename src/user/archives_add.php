@@ -9,12 +9,12 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+CheckRank(0, 0);
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/userlogin.class.php");
 require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
 require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
-CheckRank(0, 0);
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;

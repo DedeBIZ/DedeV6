@@ -21,8 +21,8 @@ if ($dopost == "show") {
     exit();
 } else if ($dopost == "delete") {
     if (empty($job)) $job = "";
-    if ($job == "") //确认提示
-    {
+    if ($job == "") {
+        //确认
         require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "删除插件";
         $wecome_info = "<a href='plus_main.php'>插件管理</a>::删除插件";
@@ -36,14 +36,14 @@ if ($dopost == "show") {
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
-    } else if ($job == "yes") //操作
-    {
+    } else if ($job == "yes") {
+        //操作
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__plus` WHERE aid='$aid';");
         ShowMsg("删除一个插件，请刷新侧边导航", "plus_main.php");
         exit();
     }
-} else if ($dopost == "saveedit") //保存修改
-{
+} else if ($dopost == "saveedit") {
+    //保存
     $inquery = "UPDATE `#@__plus` SET plusname='$plusname',menustring='$menustring',filelist='$filelist' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg("完成修改插件配置", "plus_main.php");

@@ -93,15 +93,13 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid';");
     $ddd = $row['dd'] + $ddd;
     $ccd = $row['cc'] + $ccd;
-    $msg = "<div class='container-fluid'>
-        <div class='row'>
-            <div class='col-2'>管理员：{$userid}</div>
-            <div class='col-2'>文档/点击：{$dd}/{$cc}</div>
-            <div class='col-2'>季度：{$dds}/{$ccs}</div>
-            <div class='col-2'>当月：{$ddm}/{$ccm}</div>
-            <div class='col-2'>七天：{$ddw}/{$ccw}</div>
-            <div class='col-2'>当天：{$ddd}/{$ccd}</div>
-        </div>
+    $msg = "<div class='row'>
+        <div class='col-2'>管理员：{$userid}</div>
+        <div class='col-2'>文档/点击：{$dd}/{$cc}</div>
+        <div class='col-2'>季度：{$dds}/{$ccs}</div>
+        <div class='col-2'>当月：{$ddm}/{$ccm}</div>
+        <div class='col-2'>七天：{$ddw}/{$ccw}</div>
+        <div class='col-2'>当天：{$ddd}/{$ccd}</div>
     </div>";
     AjaxHead();
     echo $msg;
