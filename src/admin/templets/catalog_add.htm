@@ -39,7 +39,7 @@
 			function ShowObj(objname) {
 				var obj = document.getElementById(objname);
 				if (Nav() == 'IE') obj.style.display = "block";
-				else obj.style.display = "table";
+				else obj.style.display = "block";
 			}
 			function HideObj(objname) {
 				var obj = document.getElementById(objname);
@@ -49,7 +49,7 @@
 				var upinyin = document.getElementById('upinyin');
 				var tpobj = document.getElementById('typedir');
 				if (upinyin.checked) tpobj.style.display = "none";
-				else tpobj.style.display = "block";
+				else tpobj.style.display = "inline-block";
 			}
 			function ParTemplet(obj) {
 				var sevvalue = channelArray[obj.value];
@@ -64,7 +64,7 @@
 				temparticle[0].value = dfstyleValue + "/article_" + sevvalue + ".htm";
 				if (obj.value < 0) {
 					if (Nav() == 'IE') tobj.style.display = "block";
-					else tobj.style.display = "table-row";
+					else tobj.style.display = "block";
 				} else {
 					tobj.style.display = "none";
 				}
@@ -126,6 +126,7 @@
 				<tr>
 					<td>文档模型：</td>
 					<td>
+						<input type="hidden" value="{style}" name="dfstyle">
 						<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
 							<?php
 							foreach($channelArray as $k=>$arr)
@@ -139,7 +140,25 @@
 							}
 							?>
 						</select>
-						<input type="hidden" value="{style}" name="dfstyle">
+						<div id="smclass" class="mt-3" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
+							<select name="smalltype[]" multiple="yes" class="admin-input-md">
+								<?php
+								$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
+								$dsql->Execute('s',$sql);
+								while($arr = $dsql->GetArray('s'))
+								{
+									if ($arr['evalue']%500==0) {
+										echo "<option value='{$arr['evalue']}'>{$arr['ename']}</option>";
+									} else if (preg_match("#\.#", $arr['evalue'])) {
+										echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
+									} else {
+										echo "<option value='{$arr['evalue']}'>{$arr['ename']}</option>";
+									}
+								}
+								?>
+							</select>
+							<span>（支持多选）</span>
+						</div>
 					</td>
 					<td>上级目录：</td>
 					<td>
@@ -199,13 +218,9 @@
 				</tr>
 				<tr>
 					<td>文件保存目录：</td>
-					<td class="p-0">
-						<table cellspacing="1" cellpadding="1" class="table-borderless">
-							<tr>
-								<td><input type="text" name="typedir" id="typedir" class="admin-input-md"></td>
-								<td><label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onclick="CheckTypeDir()"> 拼音</label></td>
-							</tr>
-						</table>
+					<td>
+						<input type="text" name="typedir" id="typedir" class="admin-input-md">
+						<label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onclick="CheckTypeDir()"> 拼音</label>
 					</td>
 					<td>目录相对位置：</td>
 					<td>
@@ -321,31 +336,17 @@
 					<td>栏目描述：</td>
 					<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea>（标签“{dede:field.description/}”调用）</td>
 				</tr>
-				<tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
-					<td>绑定小分类</td>
+				<tr>
+					<td>是否支持跨站数据：</td>
 					<td>
-						<select name="smalltype[]" multiple="yes" class="admin-input-md" style="height:200px">
-							<?php
-							$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
-							$dsql->Execute('s',$sql);
-							while($arr = $dsql->GetArray('s'))
-							{
-								if ($arr['evalue']%500==0) {
-									echo "<option value='{$arr['evalue']}'>{$arr['ename']}</option>";
-								} else if (preg_match("#\.#", $arr['evalue'])) {
-									echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
-								} else {
-									echo "<option value='{$arr['evalue']}'>{$arr['ename']}</option>";
-								}
-							}
-							?>
-						</select>
-						<span>（支持多选）</span>
+						<input type="text" name="" id="" class="admin-input-md" placeholder="请输入调用秘钥">
+						<label><input type="radio" name="issend" value="1" <?php if ($issend==1) echo " checked='checked' ";?>> 支持</label>
+						<label><input type="radio" name="issend" value="0" <?php if ($issend==0) echo " checked='checked' ";?>> 不支持</label>
 					</td>
 					<td colspan="2"></td>
 				</tr>
 				<tr>
-					<td colspan="4"><?php GetEditor("content","","300","Default","print","false");?></td>
+					<td colspan="4"><?php GetEditor("content","","400","Default","print","false");?></td>
 				</tr>
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="4" align="center">

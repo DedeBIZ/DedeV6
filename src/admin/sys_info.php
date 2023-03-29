@@ -104,9 +104,9 @@ else if ($dopost == 'search') {
         <td bgcolor="#f5f5f5" colspan="3">系统配置变量搜索</td>
     </tr>
     <tr bgcolor="#e9ecef" align="center">
-        <td width="300">参数说明</td>
+        <td width="360">参数说明</td>
         <td>参数值</td>
-        <td width="220">变量名</td>
+        <td width="260">变量名</td>
     </tr>
 EOT;
     echo $configstr;

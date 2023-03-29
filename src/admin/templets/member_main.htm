@@ -57,12 +57,12 @@
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">mid</td>
-					<td width="15%">头像/会员名</td>
+					<td width="12%">头像/会员名</td>
 					<td width="8%">昵称</td>
 					<td width="6%">等级</td>
-					<td width="15%">钱包积分</td>
+					<td width="16%">钱包积分</td>
+					<td width="16%">地址/时间</td>
 					<td width="6%">投稿限制</td>
-					<td width="15%">地址/时间</td>
 					<td>操作</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="9" align="center">暂无会员</td></tr>'}
@@ -80,11 +80,11 @@
 						<span class="mr-1">金币：{dede:field.money/}</span> 
 						<span>余额：{dede:field.user_money/}</span>
 					</td>
-					<td>{dede:field.send_max/}</td>
 					<td>
 						<span class="mr-1">{dede:field.loginip/}</span>
 						<span>{dede:field.logintime function="MyDate('Y-m-d H:i:s',@me)"/}</span>
 					</td>
+					<td>{dede:field.send_max/}</td>
 					<td>
 						<a href="member_toadmin.php?id={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-user-plus"></i> 提升</a>
 						<a href="content_list.php?mid={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-file-text"></i> 文档</a>

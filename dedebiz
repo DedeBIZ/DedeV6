@@ -24,7 +24,7 @@ USAGE:
 	php ./dedebiz command [arguments...]
 COMMANDS:
 	serv,s 运行DedeBIZ开发服务
-	make,m 生成HTML
+	make,m 更新网页
 	update,u 更新到最新系统
 	help,h Shows 帮助
 	quick,q 快速开始一个开发环境
@@ -109,7 +109,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			DedeCli::showProgress(ceil(($i / $total) * 100), 100, $i, $total);
 			$i++;
 		}
-		DedeCli::write("成功生成内容html");
+		DedeCli::write("成功更新文档页");
 		$queryTime = ExecTime() - $t1;
 		DedeCli::write($queryTime);
 		exit;
@@ -129,7 +129,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 				$lv = new SgListView($row->id);
 			}
 			$lv->CountRecord();
-			DedeCli::write("开始生成列表html[id:{$row->id}]");
+			DedeCli::write("开始更新列表页[id:{$row->id}]");
 			$lv->MakeHtml('', '', 0);
 		}
 		exit;
@@ -153,7 +153,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		$GLOBALS['_arclistEnv'] = 'index';
         $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . "/" . $templet);
         $pv->SaveToHtml($homeFile);
-		DedeCli::write("成功生成首页html");
+		DedeCli::write("成功更新首页");
 	} else if (count($argv) > 2 && ($argv[2] == "auto" || $argv[2] == "o")) {
 		//自动生成
 		function OptimizeData($dsql)
@@ -190,7 +190,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
         } else {
             if (file_exists($homeFile)) @unlink($homeFile);
 		}
-		DedeCli::write("成功生成首页html");
+		DedeCli::write("成功更新首页");
 		//2.生成栏目
 		$query = "SELECT DISTINCT typeid From `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1";
 		$dsql->SetQuery($query);
@@ -220,10 +220,10 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 					$lv = new SgListView($tt);
 				}
 				$lv->CountRecord();
-				DedeCli::write("开始生成列表html[id:{$tt}]");
+				DedeCli::write("开始更新列表页[id:{$tt}]");
 				$lv->MakeHtml('', '', 0);
 			}
-			DedeCli::write("成功生成列表html");
+			DedeCli::write("成功更新列表页");
 		}
 		//生成文档
 		$tt = $dsql->GetOne("SELECT COUNT(id) as dd FROM `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1");
@@ -237,7 +237,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			DedeCli::showProgress(ceil(($i / $total) * 100), 100);
 			$i++;
 		}
-		DedeCli::write("成功生成html");
+		DedeCli::write("成功更新网页");
 		//优化数据
 		OptimizeData($dsql);
 		DedeCli::write("成功优化数据");
@@ -246,16 +246,16 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		USAGE:
 			php ./dedebiz make action [arguments...]
 		ACTIONS:
-			index,i 生成首页html
-				--position 首页html位置,默认: ../index.html(相对system目录)
-			arc,a 生成文档html
+			index,i 更新首页
+				--position 首页位置,默认: ../index.html(相对system目录)
+			arc,a 更新文档页
 				--typeid 栏目id
 				--aid    文档id
-			list,l 生成列表html
+			list,l 更新列表页
 				--typeid 栏目id
-			auto,o 自动生成
+			auto,o 自动更新
 				--start 开始时间(format:2012-03-12)
-			tdata 生成测试数据
+			tdata 更新测试数据
 		WEBSITE:
 			https://www.dedebiz.com/help/";
 		DedeCli::write($helpStr);

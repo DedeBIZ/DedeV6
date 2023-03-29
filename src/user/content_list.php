@@ -9,10 +9,10 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckRank(0, 0);
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEMEMBER."/inc/inc_list_functions.php");
+CheckRank(0, 0);
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $cid = isset($cid) && is_numeric($cid) ? $cid : 0;
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 0;
