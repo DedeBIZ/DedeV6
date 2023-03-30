@@ -1,6 +1,6 @@
 <?php
 /**
- * 多媒体选择
+ * 选择多媒体
  *
  * @version        $id:select_media.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog
@@ -46,8 +46,8 @@ if (!empty($noeditor)) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>选择多媒体</title>
-    <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}</style>
     <script>
@@ -68,7 +68,7 @@ if (!empty($noeditor)) {
 </head>
 <body>
     <div class="upload-bg">
-        <table width="100%" align="center" cellspacing="0" cellpadding="2" class="table table-borderless icon">
+        <table align="center" cellspacing="0" cellpadding="2" class="table icon">
             <tr>
                 <td colspan="3">
                     <form action="select_media_post.php" method="POST" enctype="multipart/form-data" name="myform">
@@ -82,9 +82,9 @@ if (!empty($noeditor)) {
                 </td>
             </tr>
             <tr>
-                <td width="50%" align="center" class="admin-td">点击名称选择文件</td>
-                <td width="20%" align="center" class="admin-td">文件大小</td>
-                <td align="center" class="admin-td">最后修改时间</td>
+                <td width="50%">点击名称选择文件</td>
+                <td width="20%">文件大小</td>
+                <td>最后修改时间</td>
             </tr>
             <?php
             $dh = scandir($inpath);
@@ -112,17 +112,17 @@ if (!empty($noeditor)) {
                     if ($activepath == "") continue;
                     $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                     $line = "<tr>
-                    <td class='admin-td'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
-                    <td colspan='2' class='admin-td'>当前目录：$activepath</td>
+                    <td><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                    <td colspan='2'>当前目录：$activepath</td>
                     </tr>";
                     echo $line;
                 } else if (is_dir("$inpath/$file")) {
                     if (preg_match("#^_(.*)$#i", $file)) continue;
                     if (preg_match("#^\.(.*)$#i", $file)) continue;
                     $line = "<tr>
-                    <td class='admin-td'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                    <td class='admin-td'></td>
-                    <td class='admin-td'></td>
+                    <td><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                    <td></td>
+                    <td></td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {
@@ -132,12 +132,12 @@ if (!empty($noeditor)) {
                     if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $line = "<tr>
-                    <td class='admin-td'>
+                    <td>
                         <img src='../../static/web/img/icon_flash.png'>
                         <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                     </td>
-                    <td class='admin-td'>$filesize KB</td>
-                    <td align='center' class='admin-td'>$filetime</td>
+                    <td>$filesize KB</td>
+                    <td align='center'>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(wmv|avi)#i", $file)) {
@@ -147,12 +147,12 @@ if (!empty($noeditor)) {
                     if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $line = "<tr>
-                    <td class='admin-td'>
+                    <td>
                         <img src='../../static/web/img/icon_video.png'>
                         <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                     </td>
-                    <td class='admin-td'>$filesize KB</td>
-                    <td align='center' class='admin-td'>$filetime</td>
+                    <td>$filesize KB</td>
+                    <td align='center'>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(rm|rmvb|mp3|mp4)#i", $file)) {
@@ -162,12 +162,12 @@ if (!empty($noeditor)) {
                     if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $line = "<tr>
-                    <td class='admin-td'>
+                    <td>
                         <img src='../../static/web/img/icon_rm.png'>
                         <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                     </td>
-                    <td class='admin-td'>$filesize KB</td>
-                    <td class='admin-td' align='center'>$filetime</td>
+                    <td>$filesize KB</td>
+                    <td align='center'>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(mp3|wma)#", $file)) {
@@ -177,12 +177,12 @@ if (!empty($noeditor)) {
                     if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $line = "<tr>
-                    <td class='admin-td'>
+                    <td>
                         <img src='../../static/web/img/icon_music.png'>
                         <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                     </td>
-                    <td class='admin-td'>$filesize KB</td>
-                    <td align='center' class='admin-td'>$filetime</td>
+                    <td>$filesize KB</td>
+                    <td align='center'>$filetime</td>
                     </tr>";
                     echo "$line";
                 }

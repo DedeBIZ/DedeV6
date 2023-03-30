@@ -1,6 +1,6 @@
 <?php
 /**
- * 图片选择
+ * 选择图片
  *
  * @version        $id:select_images.php 2022-07-01 tianya $
  * @package        DedeBIZ.Dialog
@@ -56,8 +56,8 @@ if (!empty($iseditor)) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>选择图片</title>
-    <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}</style>
     <script>
@@ -131,7 +131,7 @@ if (!empty($iseditor)) {
         <div id="floater" class="napisdiv">
             <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
         </div>
-        <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless icon">
+        <table cellpadding="0" cellspacing="1" align="center" class="table icon">
             <tr>
                 <td colspan="4">
                     <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
@@ -153,13 +153,13 @@ if (!empty($iseditor)) {
                 </td>
             </tr>
             <tr>
-                <td class="admin-td" colspan="4">点击图片预览，再点击图片关闭预览，点击文件名选择图片</td>
+                <td colspan="4">点击图片预览，再点击图片关闭预览，点击文件名选择图片</td>
             </tr>
             <tr>
-                <td width="6%" class="admin-td">预览</td>
-                <td width="40%" class="admin-td">选择图片</td>
-                <td width="20%" class="admin-td">文件大小</td>
-                <td class="admin-td">修改时间</td>
+                <td width="6%">预览</td>
+                <td width="40%">选择图片</td>
+                <td width="20%">文件大小</td>
+                <td>修改时间</td>
             </tr>
             <?php
             $dh = scandir($inpath);
@@ -186,17 +186,17 @@ if (!empty($iseditor)) {
                     if ($activepath == "") continue;
                     $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                     $line = "<tr>
-                    <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
-                    <td colspan='2' class='admin-td'>当前目录：$activepath</td>
+                    <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                    <td colspan='2'>当前目录：$activepath</td>
                     </tr>";
                     echo $line;
                 } else if (is_dir("$inpath/$file")) {
                     if (preg_match("#^_(.*)$#i", $file)) continue;
                     if (preg_match("#^\.(.*)$#i", $file)) continue;
                     $line = "<tr>
-                    <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                    <td class='admin-td'></td>
-                    <td class='admin-td'></td>
+                    <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                    <td></td>
+                    <td></td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
@@ -206,12 +206,12 @@ if (!empty($iseditor)) {
                     if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $line = "<tr>
-                    <td colspan='2' class='admin-td'>
+                    <td colspan='2'>
                         <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
                         <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                     </td>
-                    <td class='admin-td'>$filesize KB</td>
-                    <td class='admin-td'>$filetime</td>
+                    <td>$filesize KB</td>
+                    <td>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(jpg)#i", $file)) {
@@ -221,12 +221,12 @@ if (!empty($iseditor)) {
                     if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $line = "<tr>
-                    <td colspan='2' class='admin-td'>
+                    <td colspan='2'>
                         <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
                         <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                     </td>
-                    <td class='admin-td'>$filesize KB</td>
-                    <td class='admin-td'>$filetime</td>
+                    <td>$filesize KB</td>
+                    <td>$filetime</td>
                     </tr>";
                     echo "$line";
                 }

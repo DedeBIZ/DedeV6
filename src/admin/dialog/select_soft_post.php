@@ -1,6 +1,6 @@
 <?php
 /**
- * 软件发送
+ * 选择软件发送
  *
  * @version        $id:select_soft_post.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog

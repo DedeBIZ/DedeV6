@@ -12,30 +12,8 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
 <title>插入多图</title>
-<style>
-body{margin:0;line-height:1.6;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#fff}
-ul{margin:0;padding:0;list-style:none}
-input[type=radio],input[type=checkbox]{margin:0;height:auto;box-shadow:none;outline:none;vertical-align:text-top}
-button+button{margin-left:10px}
-#wrap{padding:10px}
-#topbar{padding:10px 0;border-bottom:1px solid #ccc;text-align:right}
-#topbar button{display:inline-block;border:0;padding:.25rem .5rem;line-height:1.6;font-size:12px;color:#fff;background:#1eb867;border-color:#1eb867;border-radius:.25rem;transition:all .6s;text-align:center}
-.topbar button+.topbar button{margin-left:10px}
-#topbar button:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5);outline:none}
-#file_list{display:grid;grid-gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));padding-top:10px}
-#file_list:empty:after{content:'拖拽图片放到这里进行上传'}
-#file_list li{position:relative;display:block;vertical-align:top;padding:10px;border-radius:.25rem}
-#file_list li.up-now:after{content:'';position:absolute;top:0;left:0;display:block;width:100%;height:100%;background:rgba(255,255,255,0.8) url(loading.gif) center center no-repeat;border-radius:.25rem;z-index:999}
-#file_list li:hover{background:#f5f5f5}
-#file_list li .picbox{display:flex;flex:0 0 auto;justify-content:center;overflow:hidden;position:relative;width:100%;padding-top:90%;align-items:center}
-#file_list li .picbox img{display:block;max-width:100%;max-height:100%;position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);border-radius:.25rem}
-#file_list li .namebox{padding:10px;display:flex;justify-content:center;align-items:flex-start}
-#file_list li.up-over .picbox:after{content:url(data:image/svg+xml;%20charset=utf8,%3Csvg%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22M512%200C229.376%200%200%20229.376%200%20512s229.376%20512%20512%20512%20512-229.376%20512-512S794.624%200%20512%200z%22%20fill%3D%22%234AC711%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M855.552%20394.752l-358.4%20358.4a50.9952%2050.9952%200%200%201-72.192%200l-204.8-204.8c-18.944-19.968-18.944-51.2%200-71.168a50.5344%2050.5344%200%200%201%2072.192-1.024L460.8%20644.608l322.048-322.048c19.968-18.944%2051.2-18.944%2071.168%200%2020.48%2019.456%2020.992%2051.712%201.536%2072.192z%22%20fill%3D%22%23FFFFFF%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E);position:absolute;bottom:10px;right:0;z-index:9}
-#file_list li .tools{display:none;position:absolute;bottom:12px;right:10px;z-index:99}
-#file_list li:hover .tools{display:block}
-#file_list li .tools .remove{cursor:pointer}
-#file_list li .tools .remove:after{content:url(data:image/svg+xml;%20charset=utf8,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath%20d=%22M17%206h3a1%201%200%200%201%200%202h-1v11a3%203%200%200%201-3%203H8a3%203%200%200%201-3-3V8H4a1%201%200%201%201%200-2h3V5a3%203%200%200%201%203-3h4a3%203%200%200%201%203%203v1zm-2%200V5a1%201%200%200%200-1-1h-4a1%201%200%200%200-1%201v1h6zm2%202H7v11a1%201%200%200%200%201%201h8a1%201%200%200%200%201-1V8zm-8%203a1%201%200%200%201%202%200v6a1%201%200%200%201-2%200v-6zm4%200a1%201%200%200%201%202%200v6a1%201%200%200%201-2%200v-6z%22%3E%3C/path%3E%3C/svg%3E)}
-</style>
+<link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
+<style>body{margin:0;line-height:1.6;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#fff}ul{margin:0;padding:0;list-style:none}input[type=radio],input[type=checkbox]{margin:0;height:auto;outline:none;box-shadow:none;vertical-align:text-top}button+button{margin-left:10px}#wrap{padding:10px}#topbar{padding:10px 0;border-bottom:1px solid #ccc;text-align:right}#topbar button{display:inline-block;padding:.25rem .65rem;line-height:1.6;font-size:12px;color:#fff;background:#1eb867;border-color:#1eb867;border-radius:.5rem;border:0;transition:all .5s;text-align:center}.topbar button+.topbar button{margin-left:10px}#topbar button:focus{background:#006829;border-color:#005b24;box-shadow:0 .125rem .25rem rgba(0,0,0,.075);outline:none}#file_list{display:grid;grid-gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));padding-top:10px}#file_list:empty:after{content:'拖拽图片到此处上传'}#file_list li{display:block;position:relative;padding:10px;vertical-align:top;border-radius:.5rem}#file_list li.up-now:after{content:'';display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.8) url(../../static/web/img/loadinglit.gif)center center no-repeat;border-radius:.5rem;z-index:999}#file_list li:hover{background:#f5f5f5}#file_list li .picbox{display:flex;flex:0 0 auto;position:relative;padding-top:90%;width:100%;align-items:center;justify-content:center;overflow:hidden}#file_list li .picbox img{display:block;max-width:100%;max-height:100%;position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);border-radius:.5rem}#file_list li .namebox{display:flex;padding:10px;justify-content:center;align-items:flex-start}#file_list li.up-over .picbox:after{position:absolute;bottom:10px;right:0;font-family:'FontAwesome';font-size:18px;color:#1eb867;content:'\f058';z-index:9}#file_list li .tools{display:none;position:absolute;bottom:12px;right:10px;z-index:99}#file_list li:hover .tools{display:block}#file_list li .tools .remove{cursor:pointer}#file_list li .tools .remove:after{font-family:'FontAwesome';font-size:18px;color:#dc3545;content:'\f1f8'}</style>
 </head>
 <body>
 <div id="wrap">
@@ -83,7 +61,7 @@ button+button{margin-left:10px}
     function isFileImage(file) {
         return file && file['type'].split('/')[0] === 'image';
     }
-    function addList(files){
+    function addList(files) {
         var files_sum = files.length;
         var vDom = document.createDocumentFragment();
         for (let i=0;i<files_sum;i++) {

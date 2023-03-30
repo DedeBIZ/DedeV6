@@ -1,6 +1,6 @@
 <?php
 /**
- * 图片选择
+ * 选择图片发送
  *
  * @version        $id:select_images_post.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog
