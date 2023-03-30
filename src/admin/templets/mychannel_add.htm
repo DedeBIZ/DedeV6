@@ -43,16 +43,25 @@
 					<td bgcolor="#f5f5f5" colspan="2"><a href="mychannel_main.php">文档模型管理</a> &gt; 新增文档模型</td>
 				</tr>
 				<tr>
-					<td width="260">栏目id：</td>
-					<td><input type="text" name="id" id="id" class="admin-input-xs" value="<?php echo $newid;?>">（数字，创建后不可修改，并具有唯一性）</td>
+					<td width="260">模型性质：</td>
+					<td>
+						<label><input type="radio" name="issystem" id="is1" value="0" onclick="PublicDefault()" checked="1"> 自动模型</label>
+						<label><input type="radio" name="issystem" id="is2" value="1" onclick="PublicDefault()"> 系统模型</label>
+						<label><input type="radio" name="issystem" id="is3" value="-1" onclick="PublicDefault()"> 独立模型，不使用主表</label>
+						（如果为系统模型禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid,typeid,senddate,title,mid,channel，独立模型的文档必须点击栏目进入列表才能管理）
+					</td>
 				</tr>
 				<tr>
-					<td>名字标识：</td>
+					<td>栏目id：</td>
+					<td><input type="text" name="id" id="id" class="admin-input-xs" value="<?php echo $newid;?>">（创建后不可修改，并具有唯一性）</td>
+				</tr>
+				<tr>
+					<td>模型标识：</td>
 					<td><input type="text" name="nid" id="nid" class="admin-input-sm" value="ch<?php echo $newid;?>">（与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，栏目默认文档模板是“default/article_名字标识.htm”，列表模板、封面模板类推）</td>
 				</tr>
 				<tr>
-					<td>栏目名称：</td>
-					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="栏目<?php echo $newid;?>">（栏目的中文名称，在后台管理，前台发布等均使用此名字）</td>
+					<td>模型名称：</td>
+					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="栏目<?php echo $newid;?>">（模型名称，在后台管理，会员发布等均使用此名称）</td>
 				</tr>
 				<tr>
 					<td>附加表：</td>
@@ -60,15 +69,6 @@
 						<input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $cfg_dbprefix,'addon',$newid;?>">
 						<label><input type="checkbox" name="isdel" id="isdel" value="1"> 删除已有表</label>
 						（必须由英文、数字、下划线组成，栏目除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性：推荐、会员权限等，也可以使用完全以附加表作为存储数据）
-					</td>
-				</tr>
-				<tr>
-					<td>模型性质：</td>
-					<td>
-						<label><input type="radio" name="issystem" id="is1" value="0" onclick="PublicDefault()" checked="1"> 自动模型</label>
-						<label><input type="radio" name="issystem" id="is2" value="1" onclick="PublicDefault()"> 系统模型</label>
-						<label><input type="radio" name="issystem" id="is3" value="-1" onclick="PublicDefault()"> 独立模型，不使用主表</label>
-						（如果为系统模型禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid,typeid,senddate,title,mid,channel，独立模型的文档必须点击栏目进入列表才能管理）
 					</td>
 				</tr>
 				<tr>
