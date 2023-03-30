@@ -140,7 +140,7 @@
 							}
 							?>
 						</select>
-						<div id="smclass" class="mt-3" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
+						<div id="smclass" class="mt-2" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
 							<select name="smalltype[]" multiple="yes" class="admin-input-md">
 								<?php
 								$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
