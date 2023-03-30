@@ -32,12 +32,12 @@ function DedeCopyToClipboard(text) {
 	}
 }
 $(function () {
-	$.get("index_testenv.php", function (data) {
+	$.get("index_testenv.php",function (data) {
 		if (data !== '') {
 			$("#body-tips").html(data);
 		}
 	});
-	$.get("index_body.php?dopost=get_articles", function (data) {
+	$.get("index_body.php?dopost=get_articles",function (data) {
 		if (data !== '') {
 			$("#system-word").html(data);
 		}
@@ -72,7 +72,7 @@ function ViewDedeBIZ() {
 	</table>`);
 }
 function LoadServer() {
-	$.get("index_body.php?dopost=system_info", function (data) {
+	$.get("index_body.php?dopost=system_info",function (data) {
 		let rsp = JSON.parse(data);
 		if (rsp.code === 200) {
 			if (rsp.result.core.code === 200) {
@@ -128,7 +128,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 	return fmt;
 }
 function LoadStat() {
-	$.get("index_body.php?dopost=get_statistics", function (data) {
+	$.get("index_body.php?dopost=get_statistics",function (data) {
 		try {
 			let rsp = JSON.parse(data);
 			if (rsp.code == 200) {
@@ -140,7 +140,7 @@ function LoadStat() {
 				$("#today_uv").html(tuv);
 				$("#today_ip").html(tip);
 				$("#today_vv").html(tvv);
-				$.get("index_body.php?dopost=get_statistics&sdate=-1", function (data) {
+				$.get("index_body.php?dopost=get_statistics&sdate=-1",function (data) {
 					let rsp = JSON.parse(data);
 					if (rsp.code == 200) {
 						$("#total_pv").html(parseInt(rsp.result.pv) + tpv);
@@ -158,7 +158,7 @@ function LoadStat() {
 	d.setDate(d.getDate() - 1);
 	var s = d.Format("yyyy-MM-dd");
 	s = s.replaceAll("-", "");
-	$.get("index_body.php?dopost=get_statistics&sdate=" + s, function (data) {
+	$.get("index_body.php?dopost=get_statistics&sdate=" + s,function (data) {
 		try {
 			let rsp = JSON.parse(data);
 			if (rsp.code == 200) {

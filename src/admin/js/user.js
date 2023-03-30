@@ -12,8 +12,7 @@ function getCheckboxItem()
 {
 	var allSel="";
 	if (document.form2.mid.value) return document.form2.mid.value;
-	for (i=0;i<document.form2.mid.length;i++)
-	{
+	for (i=0;i<document.form2.mid.length;i++) {
 		if (document.form2.mid[i].checked) {
 			if (allSel=="")
 				allSel=document.form2.mid[i].value;

@@ -1,6 +1,6 @@
 <?php
 /**
- * 检索操作
+ * 搜索结果
  *
  * @version        $id:action_search.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
