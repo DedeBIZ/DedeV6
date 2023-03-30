@@ -112,7 +112,7 @@ function LoadServer() {
 		}
 	});
 }
-Date.prototype.Format = function (fmt) { //author: meizz 
+Date.prototype.Format = function (fmt) {
 	var o = {
 		"M+": this.getMonth() + 1, //月份 
 		"d+": this.getDate(), //日 
@@ -199,46 +199,46 @@ async function LoadStatChart() {
 		});
 	}
 	const myChart = new Chart(ctx, {
-		type: 'line',
-		options: {
-			responsive: true,
-			plugins: {
-				legend: {
-					position: 'right',
+		type:'line',
+		options:{
+			responsive:true,
+			plugins:{
+				legend:{
+					position:'right',
 				}
 			}
 		},
-		data: {
-			labels: labels,
-			datasets: [
+		data:{
+			labels:labels,
+			datasets:[
 				{
-					label: 'PV',
-					data: pvs,
-					lineTension: 0.3,
-					borderColor: 'rgba(54, 162, 235, 1)',
-					backgroundColor: 'rgba(54, 162, 235, 0.2)',
-					borderWidth: 1
+					label:'PV',
+					data:pvs,
+					lineTension:.35,
+					borderColor:'rgba(54, 162, 235, 1)',
+					backgroundColor:'rgba(54, 162, 235, 0.2)',
+					borderWidth:1
 				}, {
-					label: 'UV',
-					data: uvs,
-					lineTension: 0.3,
-					borderColor: 'rgba(255, 206, 86, 1)',
-					backgroundColor: 'rgba(255, 206, 86, 0.2)',
-					borderWidth: 1
+					label:'UV',
+					data:uvs,
+					lineTension:.35,
+					borderColor:'rgba(255, 206, 86, 1)',
+					backgroundColor:'rgba(255, 206, 86, 0.2)',
+					borderWidth:1
 				}, {
-					label: 'IP',
-					data: ips,
-					lineTension: 0.3,
-					borderColor: 'rgba(255, 99, 132, 1)',
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderWidth: 1
+					label:'IP',
+					data:ips,
+					lineTension:.35,
+					borderColor:'rgba(255, 99, 132, 1)',
+					backgroundColor:'rgba(255, 99, 132, 0.2)',
+					borderWidth:1
 				}, {
-					label: 'VV',
-					data: vvs,
-					lineTension: 0.3,
-					borderColor: 'rgba(75, 192, 192, 1)',
-					backgroundColor: 'rgba(75, 192, 192, 0.2)',
-					borderWidth: 1
+					label:'VV',
+					data:vvs,
+					lineTension:.35,
+					borderColor:'rgba(75, 192, 192, 1)',
+					backgroundColor:'rgba(75, 192, 192, 0.2)',
+					borderWidth:1
 				}
 			]
 		},
