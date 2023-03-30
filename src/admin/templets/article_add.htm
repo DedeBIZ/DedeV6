@@ -229,9 +229,7 @@
 						</table>
 					</td>
 				</tr>
-				<tr>
-					<td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?></td>
-				</tr>
+				<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
 				<tr>
 					<td class="admin-td"><?php GetEditor("body",$body,400);?></td>
 					<td id="mPic" style="display:none"></td>
