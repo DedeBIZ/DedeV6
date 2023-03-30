@@ -42,11 +42,11 @@ function lib_channelartlist(&$ctag, &$refObj)
             $tpsql = " id IN($typeid) AND ishidden<>1 ";
         }
     }
-    $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
     //否定指定栏目
     if ($notypeid!=0) {
         $tpsql = $tpsql."and not(id in($notypeid))";
     }
+    $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $typeids[] = $row;
