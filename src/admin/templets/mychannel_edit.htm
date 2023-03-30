@@ -35,7 +35,7 @@
 					<td><?php if ($row['issystem']==0) echo "自动模型";else if ($row['issystem']==1) echo "系统模型";else if ($row['issystem']==-1) echo "独立模型";?>（如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid、栏目id、发布时间、文档标题）</td>
 				</tr>
 				<tr>
-					<td>栏目id：</td>
+					<td>模型id：</td>
 					<td><?php echo $row['id'];?>（创建后不可修改，并具有唯一性）</td>
 				</tr>
 				<tr>
