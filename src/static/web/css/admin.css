@@ -429,7 +429,6 @@ body.hidemenu .body-right {
 .pubdlg {
 	background:#fff;
 	border:2px solid #1eb867;
-	border-radius:.5rem;
 	z-index:8888
 }
 .pubdlg .title {
@@ -601,7 +600,6 @@ body.hidemenu .body-right {
 	max-height:60px
 }
 .icon img {
-	margin-right:10px;
 	width:20px;
 	height:20px
 }
@@ -623,7 +621,7 @@ span.page-link {
 	color:#fff;
 	background:#1eb867
 }
-table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded {
+table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.colordlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded {
 	border-radius:.5rem!important
 }
 .btn-xs {
@@ -646,13 +644,17 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 #timerange {
 	width:230px
 }
+#selColor {
+	padding:0;
+	width:50px
+}
 #browsehappy {
 	padding:20px 30px;
 	font-size:14px;
 	line-height:16px;
 	color:#856404;
 	background:#fff3cd;
-	border-radius:.25rem;
+	border-radius:.35rem;
 	border:0
 }
 .browsehappy-close {
