@@ -3,8 +3,7 @@ function $DE(id) {
     return document.getElementById(id);
 }
 //读写cookie函数
-function GetCookie(c_name)
-{
+function GetCookie(c_name) {
     if (document.cookie.length > 0) {
         c_start = document.cookie.indexOf(c_name + "=")
         if (c_start != -1) {
@@ -18,8 +17,7 @@ function GetCookie(c_name)
     }
     return null
 }
-function SetCookie(c_name,value,expiredays)
-{
+function SetCookie(c_name, value, expiredays) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + expiredays);
     document.cookie = c_name + "=" +escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()); //使设置的有效时间正确。添加toGMTString()

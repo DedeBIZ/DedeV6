@@ -1,5 +1,4 @@
-function checkSubmit()
-{
+function checkSubmit() {
 	if (document.form1.title.value=='') {
 		alert("文档标题不能为空");
 		document.form1.title.focus();
@@ -12,15 +11,14 @@ function checkSubmit()
 	document.form1.imagebody.value = document.getElementById('copyhtml').innerHTML;
 	document.getElementById('postloader').style.display = 'block';
 }
-function CheckSelTable(nnum){
+function CheckSelTable(nnum) {
 	var cbox = document.getElementById('isokcheck'+nnum);
 	var seltb = document.getElementById('seltb'+nnum);
 	if (!cbox.checked) seltb.style.display = 'none';
 	else seltb.style.display = 'block';
 }
 var startNum = 1;
-function MakeUpload(mnum)
-{
+function MakeUpload(mnum) {
 	var endNum = 0;
 	var upfield = document.getElementById("uploadfield");
 	var pnumObj = document.getElementById("picnum");
@@ -48,13 +46,11 @@ function MakeUpload(mnum)
 		upfield.innerHTML += fhtml;
 	}
 }
-function TestGet()
-{
+function TestGet() {
 	LoadTestDiv();
 }
 var vcc = 0;
-function LoadTestDiv()
-{
+function LoadTestDiv() {
 	var posLeft = 100; var posTop = 100;
 	var newobj = document.getElementById('_myhtml');
 	document.getElementById('imagebody').value = document.getElementById('copyhtml').innerHTML;
@@ -88,8 +84,7 @@ function LoadTestDiv()
 		vcc++;
 	})
 }
-function checkMuList(psid,cmid)
-{
+function checkMuList(psid, cmid) {
 	if (document.getElementById('pagestyle3').checked)
 	{
 		document.getElementById('spagelist').style.display = 'none';
@@ -102,8 +97,7 @@ function checkMuList(psid,cmid)
 	}
 }
 //图片显示与隐藏zip文件选项
-function ShowZipField(formitem,zipid,upid)
-{
+function ShowZipField(formitem, zipid, upid) {
 	if (formitem.checked){
 		document.getElementById(zipid).style.display = 'block';
 		document.getElementById(upid).style.display = 'none';
@@ -114,13 +108,12 @@ function ShowZipField(formitem,zipid,upid)
 	}
 }
 //图片显示与隐藏修改框
-function ShowHtmlField(formitem,htmlid,upid)
-{
-	if ($Nav()!="IE"){
+function ShowHtmlField(formitem, htmlid, upid) {
+	if ($Nav()!="IE") {
 		alert("该方法不适用于非IE浏览器");
 		return ;
 	}
-	if (formitem.checked){
+	if (formitem.checked)  {
 		document.getElementById(htmlid).style.display = 'block';
 	} else {
 		document.getElementById(htmlid).style.display = 'none';

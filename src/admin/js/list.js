@@ -39,8 +39,7 @@ function adArc(aid) {
 	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=commendArchives&qstr="+qstr;
 }
-function cAtts(jname, e, obj)
-{
+function cAtts(jname, e, obj) {
 	var qstr=getCheckboxItem();
     var screeheight = document.body.clientHeight + 20;
 	if (qstr=='') {
@@ -55,14 +54,12 @@ function delArc(aid) {
 	if (aid==0) aid = getOneItem();
 	location="archives_do.php?qstr="+qstr+"&aid="+aid+"&dopost=delArchives";
 }
-function QuickEdit(aid, e, obj)
-{
+function QuickEdit(aid, e, obj) {
 	LoadQuickDiv(e, 'archives_do.php?dopost=quickEdit&aid='+aid+'&rnd='+Math.random(), 'quickEdit', 'auto', '300px');
 	ChangeFullDiv('show');
 }
 //获得选中文件的文件名
-function getCheckboxItem()
-{
+function getCheckboxItem() {
 	var allSel="";
 	if (document.form2.arcID.value) return document.form2.arcID.value;
 	for (i=0;i<document.form2.arcID.length;i++) {
@@ -76,8 +73,7 @@ function getCheckboxItem()
 	return allSel;
 }
 //获得选中其中一个的id
-function getOneItem()
-{
+function getOneItem() {
 	var allSel="";
 	if (document.form2.arcID.value) return document.form2.arcID.value;
 	for (i=0;i<document.form2.arcID.length;i++) {
@@ -88,8 +84,7 @@ function getOneItem()
 	}
 	return allSel;
 }
-function selAll()
-{
+function selAll() {
 	if (typeof document.form2.arcID.length === "undefined") {
 		document.form2.arcID.checked = true;
 	}
@@ -99,8 +94,7 @@ function selAll()
 		}
 	}
 }
-function noSelAll()
-{
+function noSelAll() {
 	if (typeof document.form2.arcID.length === "undefined") {
 		document.form2.arcID.checked = false;
 	}

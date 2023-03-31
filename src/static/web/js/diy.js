@@ -1,4 +1,4 @@
-function SelectImage(sform,stype) {
+function SelectImage(sform, stype) {
     let s = sform.split(".");
     if (s.length === 2) {
         let frm = document.getElementsByName(s[0]);

@@ -1,6 +1,5 @@
 //选择地区的二级分类
-function selNext(oj, v)
-{
+function selNext(oj, v) {
     var newobj = oj.options;
     var selv = parseInt(v);
     var maxv = parseInt(v) + 500;
@@ -30,8 +29,7 @@ function selNext(oj, v)
     }
 }
 //子类改变事件
-function ChangeSon()
-{
+function ChangeSon() {
     //由于支持3级联动,所以这里需要对自己改变进行重构
     var emname = this.name.replace('_son', '');
     if (document.getElementById(emname+'_sec')) {
@@ -78,8 +76,7 @@ function ChangeSon()
     else document.getElementById('span_'+emname+'_sec').innerHTML = "";
 }
 //改变第三级的事件
-function ChangeSec()
-{
+function ChangeSec() {
     var emname = this.name.replace('_sec', '');
     var topSelObj = document.getElementById(emname+'_top');
     if (this.options[this.selectedIndex].value==0) {
@@ -89,8 +86,7 @@ function ChangeSec()
     }
 }
 //顶级类改变事件
-function selNextSon()
-{
+function selNextSon() {
     var emname = this.name.replace('_top', '');
     if (document.getElementById(emname+'_son')) {
         var oj = document.getElementById(emname + '_son');
@@ -132,8 +128,7 @@ function selNextSon()
     document.getElementById('span_'+emname+'_son').appendChild(oj);
 }
 //根据数组生成多级联动菜单
-function MakeTopSelect(emname, selvalue)
-{
+function MakeTopSelect(emname, selvalue) {
     var selectFormHtml = '';
     var aOption = null;
     var selObj = document.createElement("select");
@@ -245,8 +240,7 @@ function MakeTopSelect(emname, selvalue)
     document.getElementById('span_'+emname+'_sec').appendChild(selObj);
 }
 //两个小数相加进度计算
-function FloatAdd(arg1, arg2)
-{
+function FloatAdd(arg1, arg2) {
     var r1,r2,m;
     try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0}
     try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0}
@@ -254,8 +248,7 @@ function FloatAdd(arg1, arg2)
     return (arg1*m+arg2*m)/m
 }
 //清除旧对象
-function clear(o)
-{
+function clear(o) {
     l=o.length;
     for (i = 0; i< l; i++) {
         o.options[1]=null;
