@@ -83,6 +83,12 @@
 				if (cross2.checked) crossid.style.display = 'block';
 				else crossid.style.display = 'none';
 			}
+			function makeAPIKey(){
+				var apikey = document.getElementById('apikey');
+				jQuery.get("sys_info.php?dopost=make_encode", function(data) {
+					jQuery("#apikey").val(data);
+				});
+			}
 		</script>
 	</head>
 	<body>
@@ -312,9 +318,10 @@
 				<tr>
 					<td>是否支持跨站数据：</td>
 					<td>
-						<input type="text" name="" id="" class="admin-input-md" placeholder="请输入字符串类秘钥">
-						<label><input type="radio" name="" value="1" <?php if ($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
-						<label><input type="radio" name="" value="0" <?php if ($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
+						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-md" placeholder="请输入字符串类秘钥">
+						<span onclick="makeAPIKey()" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-refresh"></i></span>
+						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='1'";?>> 支持</label>
+						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='1'";?>> 不支持</label>
 					</td>
 					<td colspan="2"></td>
 				</tr>

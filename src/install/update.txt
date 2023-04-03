@@ -122,3 +122,6 @@ INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `c
 INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (4, 'Balance', '余额支付', '余额', 3, '{}', 1);
 INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (5, 'Cod', '货到付款', '货到付款', 4, '{}', 0);
 ALTER TABLE `#@__member` ADD COLUMN `user_money` decimal(10, 2) UNSIGNED NULL DEFAULT 0.00 AFTER `send_max`;
+
+-- 6.2.7
+ALTER TABLE `#@__arctype` ADD COLUMN `apienabled` tinyint UNSIGNED NULL DEFAULT 0 AFTER `smalltypes`,ADD COLUMN `apikey` varchar(64) NULL AFTER `apienabled`;
