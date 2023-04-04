@@ -262,10 +262,7 @@ input[type=file] {
 	border-top:solid 1px #ccc;
 	border-bottom:0
 }
-.feedbacks .media-body {
-	padding:0 1rem 0 1rem
-}
-.feedbacks .media-body small {
+.feedbacks .media-body span {
 	color:#999
 }
 .feedbacks .feedback-action {

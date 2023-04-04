@@ -2,8 +2,8 @@
 <div class="comment pt-3">
 	<h4>发表评论</h4>
 	<div id="feedback-alert"></div>
-	<div class="content mb-3"><textarea id="iptMsg" name="msg" class="form-control" placeholder="请输入..." required></textarea></div>
-	<div class="post mb-3">
+	<div class="content pb-3"><textarea id="iptMsg" name="msg" class="form-control" placeholder="请输入..." required></textarea></div>
+	<div class="post pb-3">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
 			<div class="form-group">
 				<div class="row">
@@ -32,19 +32,24 @@
 	<div class="feedbacks">
 		{dede:feedback}
 		<div class="media pt-3">
-			<img class="face" src="[field:face/]" class="mr-2">
+			<img src="[field:face/]" class="face mr-3">
 			<div class="media-body">
-				<div class="feedback-content">[field:msg/]</div>
-				<div class="feedback-infos">
-					<span class="feedback-basic">
-						[field:username function="(@me=='guest' ? '游客' : @me)"/] 
-						<small>[field:dtime function="MyDate('Y-m-d',@me)"/]</small>
-						<a href="javascript:LoadReplyFeedbacks([field:id/])">[field:replycount/]条回复</a>
+				<div class="feedback-infos pb-3">
+					<div class="feedback-basic">
+						<span>[field:username function="(@me=='guest' ? '游客' : @me)"/]</span>
+						<span>[field:dtime function="MyDate('Y-m-d',@me)"/]</span>
+					</div>
+					<div class="feedback-action pb-3">
+						<a href="javascript:LoadReplyFeedbacks([field:id/])" class="btn btn-outline-success btn-sm">[field:replycount/]条回复</a>
+						<a href="javascript:GoodFeedback([field:id/], [field:good/])" class="btn btn-outline-success btn-sm">
+							<i class="fa fa-thumbs-up"></i>
+							<i id="feedbackGood[field:id/]">[field:good/]</i>
+						</a>
 						<a href="javascript:ReplyFeedback([field:id/])" class="btn btn-success btn-sm">回复</a>
-					</span>
-					<div class="feedback-action"><a href="javascript:GoodFeedback([field:id/], [field:good/])"><span id="feedbackGood[field:id/]">[field:good/]</span><i class="fa fa-thumbs-up ml-2"></i></a></div>
+					</div>
 				</div>
-				<div class="_feedback_reply my-2" for="[field:id/]"></div>
+				<div class="feedback-content pb-3">[field:msg/]</div>
+				<div class="_feedback_reply" for="[field:id/]"></div>
 				<div class="feedback_replies" for="[field:id/]"></div>
 			</div>
 		</div>
@@ -99,7 +104,7 @@
 	}
 	//回复某个评论
 	function ReplyFeedback(fid) {
-		let replyPannel = `<div class="form-group my-2">
+		let replyPannel = `<div class="form-group">
 			<div class="input-group">
 				<input type="text" class="form-control iptReplyContent">
 				<button type="button" class="btn btn-success btnSend" onClick='SendReplyFeedback(${fid})'>评论</button>
@@ -108,37 +113,38 @@
 		$.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {
 			if (result.code !== 200) {
 				$(`._feedback_reply`).html("");
-				ShowAlert(`._feedback_reply[for="${fid}"]`, 
-				'回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/user/login.php">点击登录</a>后再来回复', 'warning', 5000);
+				ShowAlert(`._feedback_reply[for="${fid}"]`, '回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/user/login.php">点击登录</a>后再来回复', 'warning', 5000);
 			} else {
 				$(`._feedback_reply`).html("");
 				$(`._feedback_reply[for="${fid}"]`).html(replyPannel);
 			}
 		});
-		$(`._feedback_reply[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin"></i> ');
+		$(`._feedback_reply[for="${fid}"]`).html('<i class="fa fa-spinner"></i>');
 	}
 	//加载回复评论
 	function LoadReplyFeedbacks(fid) {
-		$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin"></i> ');
-
+		$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner"></i>');
 		$.get("{dede:field name='phpurl'/}/feedback.php", {
 			"aid" : "{dede:field name='id'/}",
 			"fid" : fid,
 		}, function (data) {
 			let result = JSON.parse(data);
 			let tpl = `<div class="media py-3">
-				<img class="face" src="~face~">
+				<img src="~face~" class="face mr-3">
 				<div class="media-body">
-					<div class="feedback-content">~msg~</div>
 					<div class="feedback-infos">
-						<span class="feedback-basic">
-							~username~
-							<small>~dtimestr~</small>
-						</span>
+						<div class="feedback-basic">
+							<span>~username~</span>
+							<span>~dtimestr~</span>
+						</div>
 						<div class="feedback-action">
-							<a href="javascript:GoodFeedback(~id~, ~good~)"><span id="feedbackGood~id~">~good~</span><i class="fa fa-thumbs-up ml-2"></i></a>
+							<a href="javascript:GoodFeedback(~id~, ~good~)">
+								<i class="fa fa-thumbs-up"></i>
+								<i id="feedbackGood~id~">~good~</i>
+							</a>
 						</div>
 					</div>
+					<div class="feedback-content">~msg~</div>
 				</div>
 			</div>`;
 			if (result.code === 200) {
