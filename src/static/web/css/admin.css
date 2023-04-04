@@ -538,13 +538,16 @@ body.hidemenu .body-right {
 	color:inherit;
 	cursor:pointer
 }
+.l-height-28 {
+	line-height:28px
+}
 .btn-xs {
 	padding:2px;
 	line-height:12px;
 	font-size:12px
 }
 .btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
+	margin-left:10px
 }
 .admin-win {
 	background:#f5f5f5;

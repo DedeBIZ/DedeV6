@@ -339,18 +339,21 @@
 				<tr>
 					<td>关键词：</td>
 					<td><textarea name="keywords" id="keywords" class="admin-textarea-sm"></textarea>（标签“{dede:field.keywords/}”调用）</td>
-					<td>栏目描述：</td>
+					<td>描述：</td>
 					<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea>（标签“{dede:field.description/}”调用）</td>
 				</tr>
 				<tr>
 					<td>是否支持跨站调用：</td>
 					<td>
 						<input type="text" name="apikey" id="apikey" class="admin-input-md" placeholder="请输入跨站调用秘钥">
-						<span class="btn btn-success btn-sm mr-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-refresh"></i></span>
-						<label><input type="radio" name="apienabled" value="1"> 支持</label>
-						<label><input type="radio" name="apienabled" value="0" checked> 不支持</label>
+						<span class="btn btn-success btn-sm mr-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
+						<label class="l-height-28"><input type="radio" name="apienabled" value="1"> 支持</label>
+						<label class="l-height-28"><input type="radio" name="apienabled" value="0" checked> 不支持</label>
 					</td>
 					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td colspan="4">栏目文档（标签“{dede:field.content/}”调用）</td>
 				</tr>
 				<tr>
 					<td colspan="4"><?php GetEditor("content","","400","Default","print","false");?></td>

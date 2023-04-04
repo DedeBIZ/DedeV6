@@ -311,9 +311,6 @@ input[type=file] {
 .flink,.flink a,.copyright,.copyright a {
 	color:#fff
 }
-.l-height-30 {
-	line-height:30px
-}
 .biz-mb {
 	margin-bottom:-2rem
 }
@@ -364,13 +361,16 @@ input[type=file] {
 	display:inline-block;
 	height:36px
 }
+.l-height-30 {
+	line-height:30px
+}
 .fa {
 	font-size:14px;
 	color:inherit;
 	cursor:pointer
 }
 .btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
+	margin-left:10px
 }
 .form-control,.btn,.fa {
 	font-size:14px!important
