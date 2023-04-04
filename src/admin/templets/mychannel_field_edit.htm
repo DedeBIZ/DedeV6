@@ -138,7 +138,7 @@
 				<tr id="_relation" <?php echo $dtype=="relation"? '' : 'style="display:none"';?>>
 					<td>文档模型：</td>
 					<td>
-						<select name="channeltype" id="channeltype" class="admin-input-lg">
+						<select name="channeltype" id="channeltype" class="admin-input-sm">
 							<?php
 							$channelid = $ctag->GetAtt('channel') == "" ? 1 : $ctag->GetAtt('channel');
 							foreach($channelArray as $k=>$arr)
@@ -152,7 +152,7 @@
 							}
 							?>
 						</select>
-						<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时候自动更新关联网页文档</label>
+						<label class="l-height-28"><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时候自动更新关联网页文档</label>
 					</td>
 				</tr>
 				<tr>

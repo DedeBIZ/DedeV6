@@ -135,8 +135,7 @@
 						<div class="nw"><label><input type="radio" name="dtype" id="dtype9" value="img"> 图片</label></div>
 						<div class="nw"><label><input type="radio" name="dtype" id="dtype10" value="imgfile"> 图片(仅网址)</label></div>
 						<div class="nw"><label><input type="radio" name="dtype" id="dtype11" value="media"> 多媒体文件</label></div>
-						<div class="nw"><label><input type="radio" name="dtype" id="dtype12" value="addon"> 附件类型</label>
-						</div>
+						<div class="nw"><label><input type="radio" name="dtype" id="dtype12" value="addon"> 附件类型</label></div>
 						<br class="cls">
 						<div class="nw"><label><input type="radio" name="dtype" id="dtype13" value="select"> option下拉框</label></div>
 						<div class="nw"><label><input type="radio" name="dtype" id="dtype14" value="radio"> radio选项卡</label></div>
@@ -149,7 +148,7 @@
 				<tr id="_relation" style="display:none">
 					<td>文档模型：</td>
 					<td>
-						<select name="channeltype" id="channeltype" class="admin-input-lg">
+						<select name="channeltype" id="channeltype" class="admin-input-sm">
 							<?php
 							$channelid = 1;
 							foreach($channelArray as $k=>$arr)
@@ -163,8 +162,7 @@
 							}
 							?>
 						</select>
-						<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1"> 发布时候自动更新关联网页文档</label>
-						<span>（选择关联文档对应的文档模型）</span>
+						<label class="l-height-28"><input type="checkbox" name="relation_automake" id="relation_automake" value="1"> 发布时候自动更新关联网页文档</label>
 					</td>
 				</tr>
 				<tr>
