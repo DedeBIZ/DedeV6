@@ -316,10 +316,10 @@
 					<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $myrow['description']?></textarea>（标签“{dede:field.description/}”调用）</td>
 				</tr>
 				<tr>
-					<td>是否支持跨站数据：</td>
+					<td>是否支持跨站调用：</td>
 					<td>
-						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-md" placeholder="请输入字符串类秘钥">
-						<span onclick="makeAPIKey()" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-refresh"></i></span>
+						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-md" placeholder="请输入跨站调用秘钥">
+						<span class="btn btn-success btn-sm mr-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-refresh"></i></span>
 						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='1'";?>> 支持</label>
 						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='1'";?>> 不支持</label>
 					</td>

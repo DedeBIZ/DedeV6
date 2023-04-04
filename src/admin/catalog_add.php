@@ -134,7 +134,7 @@ if ($dopost == 'quick') {
     $keywords = Html2Text($keywords, 1);
     $apikey = Html2Text($apikey, 1);
     if ($apienabled == 1 && empty($apikey)) {
-        ShowMsg("API密钥不能为空", "-1");
+        ShowMsg("跨站调用秘钥不能为空", "-1");
         exit();
     }
     if ($ispart != 2) {

@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-md-12">
 				<?php
-				if (count($arrMsg) > 0){
+				if (count($arrMsg) > 0) {
 					foreach($arrMsg as $msg){
 				?>
 				<div class="alert alert-warning"><?php echo $msg ?></div>
@@ -47,7 +47,7 @@
 							<legend class="text-success">数据库设置</legend>
 							<hr>
 							<div class="form-group">
-								<label for="dbtype" class="form-label">数据库类型<i class="ml-2 fa fa-question-circle text-warning" data-toggle="tooltip" title="数据库类型一般为MySQL，类型SQLite用于开发调试，不建议生产中使用"></i></label>
+								<label for="dbtype" class="form-label">数据库类型<i class="fa fa-question-circle text-warning ml-2" data-toggle="tooltip" title="数据库类型一般为MySQL，类型SQLite用于开发调试，不建议生产中使用"></i></label>
 								<select id="dbtype" name="dbtype" class="form-control form-select">
 									<option value="mysql" selected>MySQL</option>
 									<?php if (extension_loaded("sqlite3")) {;?><option value="sqlite">SQLite</option><?php }?>
