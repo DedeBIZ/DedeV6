@@ -141,7 +141,7 @@
 					<td align="left">{dede:field.username/}</td>
 					<td align="left">{dede:field.arctitle function="RemoveXSS(@me)"/}</td>
 					<td align="left">
-						{dede:field.msg function='cn_substr(Text2Html(@me),280)'/}
+						<span>{dede:field.msg function='cn_substr(Text2Html(@me),280)'/}</span>
 						<?php if ($fields['replycount'] > 0) {?><a href='feedback_main.php?fid={dede:field.id/}' class='btn btn-light btn-sm'>{dede:field.replycount/}条回复</a><?php }?>
 					</td>
 					<td><a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
