@@ -265,6 +265,9 @@ input[type=file] {
 .feedbacks .media-body span {
 	color:#999
 }
+.feedbacks .feedback-basic {
+	display:inline-block
+}
 .feedbacks .feedback-action {
 	float:right
 }
