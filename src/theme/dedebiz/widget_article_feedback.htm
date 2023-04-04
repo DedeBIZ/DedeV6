@@ -3,18 +3,20 @@
 	<h4>发表评论</h4>
 	<div id="feedback-alert"></div>
 	<div class="content mb-3"><textarea id="iptMsg" name="msg" class="form-control" placeholder="请输入..." required></textarea></div>
-	<div class="post">
+	<div class="post mb-3">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
-			<div class="form-group form-row">
-				<div class="col-md-6">
-					<label for="iptUsername">会员名</label>
-					<input type="text" class="form-control" id="iptUsername">
-				</div>
-				<div class="col-md-6 areaValidate" style="display:none">
-					<label for="iptValidate">验证码</label>
-					<div class="input-group">
-						<input type="text" class="form-control text-uppercase" id="iptValidate">
-						<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-6">
+						<label for="iptUsername">会员名</label>
+						<input type="text" class="form-control" id="iptUsername">
+					</div>
+					<div class="col-md-6 areaValidate" style="display:none">
+						<label for="iptValidate">验证码</label>
+						<div class="input-group">
+							<input type="text" class="form-control text-uppercase" id="iptValidate">
+							<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -29,7 +31,7 @@
 	</div>
 	<div class="feedbacks">
 		{dede:feedback}
-		<div class="media">
+		<div class="media pt-3">
 			<img class="face" src="[field:face/]" class="mr-2">
 			<div class="media-body">
 				<div class="feedback-content">[field:msg/]</div>
@@ -40,7 +42,7 @@
 						<a href="javascript:LoadReplyFeedbacks([field:id/])">[field:replycount/]条回复</a>
 						<a href="javascript:ReplyFeedback([field:id/])" class="btn btn-success btn-sm">回复</a>
 					</span>
-					<div class="feedback-action"><a href="javascript:GoodFeedback([field:id/], [field:good/])"><span id="feedbackGood[field:id/]">[field:good/]</span><i class="fa fa-thumbs-up ml-1"></i></a></div>
+					<div class="feedback-action"><a href="javascript:GoodFeedback([field:id/], [field:good/])"><span id="feedbackGood[field:id/]">[field:good/]</span><i class="fa fa-thumbs-up ml-2"></i></a></div>
 				</div>
 				<div class="_feedback_reply my-2" for="[field:id/]"></div>
 				<div class="feedback_replies" for="[field:id/]"></div>
@@ -100,7 +102,7 @@
 		let replyPannel = `<div class="form-group my-2">
 			<div class="input-group">
 				<input type="text" class="form-control iptReplyContent">
-				<button type="button" class="btn btn-success btnSend ml-2" onClick='SendReplyFeedback(${fid})'>评论</button>
+				<button type="button" class="btn btn-success btnSend" onClick='SendReplyFeedback(${fid})'>评论</button>
 			</div>
 		</div>`;
 		$.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {
@@ -124,7 +126,7 @@
 			"fid" : fid,
 		}, function (data) {
 			let result = JSON.parse(data);
-			let tpl = `<div class="media">
+			let tpl = `<div class="media py-3">
 				<img class="face" src="~face~">
 				<div class="media-body">
 					<div class="feedback-content">~msg~</div>
@@ -134,7 +136,7 @@
 							<small>~dtimestr~</small>
 						</span>
 						<div class="feedback-action">
-							<a href="javascript:GoodFeedback(~id~, ~good~)"><span id="feedbackGood~id~">~good~</span><i class="fa fa-thumbs-up"></i></a>
+							<a href="javascript:GoodFeedback(~id~, ~good~)"><span id="feedbackGood~id~">~good~</span><i class="fa fa-thumbs-up ml-2"></i></a>
 						</div>
 					</div>
 				</div>

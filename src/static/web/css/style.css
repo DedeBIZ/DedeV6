@@ -256,15 +256,14 @@ input[type=file] {
 	border:solid 1px #ccc
 }
 .feedbacks .media {
-	border-bottom:solid 1px #ccc;
-	padding-top:10px
+	border-bottom:solid 1px #ccc
 }
 .feedbacks .feedback_replies .media {
 	border-top:solid 1px #ccc;
 	border-bottom:0
 }
 .feedbacks .media-body {
-	padding:0 1rem 1rem 1rem
+	padding:0 1rem 0 1rem
 }
 .feedbacks .media-body small {
 	color:#999
@@ -407,7 +406,7 @@ input[type=file] {
 .cke_bottom,.list-article-body {
 	border-radius:0 0 .5rem .5rem
 }
-#validateimg {
+#validateimg,.btnSend {
 	border-radius:0 .5rem .5rem 0
 }
 .rounded-circle {

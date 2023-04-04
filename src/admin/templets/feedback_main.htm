@@ -85,7 +85,7 @@
 					ShowMsg("您没选中任何文档");
 					return;
 				};
-				DedeConfirm("您确定要删除这些评论吗").then((v)=>{
+				DedeConfirm("您确定要审核这些评论吗").then((v)=>{
 					location.href = "feedback_main.php?job=check&fid=" + qstr;
 				}).catch((e)=>{
 					console.log(e)
