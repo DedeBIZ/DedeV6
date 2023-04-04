@@ -40,7 +40,7 @@
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
 				<tr bgcolor="#f5f5f5">
 					<td>
-						<input type="text" name="keyword" class="admin-input-md mr-3" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
+						<input type="text" name="keyword" class="admin-input-lg mr-3" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
 						<select name="cid" class="admin-input-sm mr-3">
 							<option value="0">选择栏目</option>
 							{dede:global.optionarr/}
@@ -53,7 +53,7 @@
 							<option value="scores">评论积分</option>
 							<option value="lastpost">最后评论</option>
 						</select>
-						<input type="text" name="timerange" autocomplete="off" value="<?php echo $strTimerange;?>" id="timerange" class="admin-input-sm mr-3">
+						<input type="text" name="timerange" autocomplete="off" id="timerange" class="admin-input-md mr-3" value="<?php echo $strTimerange;?>">
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
 				</tr>

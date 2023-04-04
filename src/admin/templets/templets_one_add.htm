@@ -39,11 +39,11 @@
 				</tr>
 				<tr>
 					<td width="260">页面标题：</td>
-					<td><input type="text" name="title" id="title" class="admin-input-md"></td>
+					<td><input type="text" name="title" id="title" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>页面关键词：</td>
-					<td><input type="text" name="keywords" id="keywords" class="admin-input-md"></td>
+					<td><input type="text" name="keywords" id="keywords" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>页面摘要信息：</td>
@@ -52,7 +52,7 @@
 				<tr>
 					<td>关联标识：</td>
 					<td>
-						<input type="text" name="likeid" id="likeid" value="" class="admin-input-md">
+						<input type="text" name="likeid" id="likeid" value="" class="admin-input-lg">
 						<?php
 						echo "<select name='likeidsel' id='likeidsel' class='admin-input-sm'>";
 						$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
@@ -67,11 +67,11 @@
 				</tr>
 				<tr>
 					<td>保存位置：</td>
-					<td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/diy.html';?>" class="admin-input-md">（填写路径文件夹）</td>
+					<td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/diy.html';?>" class="admin-input-lg">（填写路径文件夹）</td>
 				</tr>
 				<tr>
 					<td>模板文件名：</td>
-					<td><input type="text" name="template" id="template" value="{style}/index_article.htm" class="admin-input-md">（填写模板名称）</td>
+					<td><input type="text" name="template" id="template" value="{style}/index_article.htm" class="admin-input-lg">（填写模板名称）</td>
 				</tr>
 				<tr>
 					<td>是否编译文档：</td>

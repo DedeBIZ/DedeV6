@@ -578,10 +578,10 @@ body.hidemenu .body-right {
 	height:60px
 }
 .admin-input-lg {
-	width:380px
+	width:360px
 }
 .admin-input-md {
-	width:360px
+	width:260px
 }
 .admin-input-sm {
 	width:160px
@@ -643,9 +643,6 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 .page-item:last-child .page-link {
 	border-top-right-radius:.5rem;
 	border-bottom-right-radius:.5rem
-}
-#timerange {
-	width:230px
 }
 #selColor {
 	padding:0;

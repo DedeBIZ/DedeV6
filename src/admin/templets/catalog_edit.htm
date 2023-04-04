@@ -126,7 +126,7 @@
 							?>
 						</select>
 						<div id="smclass" class="mt-2" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
-							<select name="smalltype[]" multiple="yes" class="admin-input-md">
+							<select name="smalltype[]" multiple="yes" class="admin-input-lg">
 								<?php
 								$smtypes = explode(',',trim($myrow['smalltypes']));
 								$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
@@ -164,25 +164,25 @@
 				</tr>
 				<tr>
 					<td>中文名称：</td>
-					<td><input type="text" name="typename" value="<?php echo $myrow['typename']?>" class="admin-input-md"></td>
+					<td><input type="text" name="typename" value="<?php echo $myrow['typename']?>" class="admin-input-lg"></td>
 					<td>中文概述：</td>
-					<td><input type="text" name="cnoverview" value="<?php echo $myrow['cnoverview']?>" class="admin-input-md"></td>
+					<td><input type="text" name="cnoverview" value="<?php echo $myrow['cnoverview']?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>英文名称：</td>
-					<td><input type="text" name="enname" value="<?php echo $myrow['enname']?>" class="admin-input-md"></td>
+					<td><input type="text" name="enname" value="<?php echo $myrow['enname']?>" class="admin-input-lg"></td>
 					<td>英文概述：</td>
-					<td><input type="text" name="enoverview" value="<?php echo $myrow['enoverview']?>" class="admin-input-md"></td>
+					<td><input type="text" name="enoverview" value="<?php echo $myrow['enoverview']?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>栏目大图：</td>
 					<td>
-						<input type="text" name="bigpic" value="<?php echo $myrow['bigpic']?>" class="admin-input-md">
+						<input type="text" name="bigpic" value="<?php echo $myrow['bigpic']?>" class="admin-input-lg">
 						<input type="button" class="btn btn-success btn-sm" value="浏览" onclick="SelectImage('form1.bigpic');">
 					</td>
 					<td>栏目小图：</td>
 					<td>
-						<input type="text" name="litimg" value="<?php echo $myrow['litimg']?>" class="admin-input-md">
+						<input type="text" name="litimg" value="<?php echo $myrow['litimg']?>" class="admin-input-lg">
 						<input type="button" class="btn btn-success btn-sm" value="浏览" onclick="SelectImage('form1.litimg');">
 					</td>
 				</tr>
@@ -208,7 +208,7 @@
 				</tr>
 				<tr>
 					<td>文件保存目录：</td>
-					<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-md">（标签“{cmspath}”请勿删除）</td>
+					<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-lg">（标签“{cmspath}”请勿删除）</td>
 					<td>继承选项：</td>
 					<td><label><input type="checkbox" name="upnext" id="upnext" value="1"> 同时继承下级栏目浏览权限、文档类型、模板风格、命名规则等通用属性</label></td>
 				</tr>
@@ -220,7 +220,7 @@
 						<label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo "checked='1'";?>> 使用动态页</label>
 					</td>
 					<td>默认页的名称：</td>
-					<td><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="admin-input-md"></td>
+					<td><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>栏目属性：</td>
@@ -231,9 +231,9 @@
 					</td>
 					<td>栏目交叉：</td>
 					<td>
-						<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
-						<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目文档</label>
-						<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目文档</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
 						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
 						<div id="helpvarco" class="alert alert-warning my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
@@ -246,17 +246,17 @@
 						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>（只需要顶级栏目设置，子级栏目修改无效）
 					</td>
 					<td>绑定域名：</td>
-					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-md">（需要加http开头的链接）</td>
+					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-lg">（需要加http开头的链接）</td>
 				</tr>
 				<tr>
 					<td>列表模板：</td>
 					<td>
-						<input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="admin-input-md">
+						<input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="admin-input-lg">
 						<button type="button" name="set1" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templist')">浏览</button>
 					</td>
 					<td>封面模板：</td>
 					<td>
-						<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-md">
+						<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-lg">
 						<button type="button" name="set2" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.tempindex')">浏览</button>
 						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
 						<div id="helpvar1" class="alert alert-warning my-2" style="display:none">
@@ -268,12 +268,12 @@
 				<tr>
 					<td>文档模板：</td>
 					<td>
-						<input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" class="admin-input-md">
+						<input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" class="admin-input-lg">
 						<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.temparticle')">浏览</button>
 					</td>
 					<td>列表命名规则：</td>
 					<td>
-						<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-md">
+						<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-lg">
 						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
 						<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
 							静态规则<br>
@@ -289,7 +289,7 @@
 				<tr>
 					<td>文档命名规则：</td>
 					<td>
-						<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="admin-input-md">
+						<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="admin-input-lg">
 						<span onclick="ShowHide('helpvar3')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
 						<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
 							静态规则<br>
@@ -307,7 +307,7 @@
 						</div>
 					</td>
 					<td>SEO标题：</td>
-					<td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="admin-input-md">（标签“{dede:field.seotitle/}”调用）</td>
+					<td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="admin-input-lg">（标签“{dede:field.seotitle/}”调用）</td>
 				</tr>
 				<tr>
 					<td>关键词：</td>
@@ -318,7 +318,7 @@
 				<tr>
 					<td>是否支持跨站调用：</td>
 					<td>
-						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-md" placeholder="请输入跨站调用秘钥">
+						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
 						<span class="btn btn-success btn-sm mr-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
 						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='1'";?>> 支持</label>
 						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='1'";?>> 不支持</label>

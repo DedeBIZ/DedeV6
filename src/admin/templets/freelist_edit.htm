@@ -33,27 +33,27 @@
 				</tr>
 				<tr>
 					<td width="260">自由列表标题：</td>
-					<td><input type="text" name="title" id="title" value="<?php echo $row['title']?>" class="admin-input-md"></td>
+					<td><input type="text" name="title" id="title" value="<?php echo $row['title']?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>列表网页存放目录：</td>
-					<td><input type="text" name="listdir" id="listdir" value="<?php echo $row['listdir']?>" class="admin-input-md"> {listdir}变量的值</td>
+					<td><input type="text" name="listdir" id="listdir" value="<?php echo $row['listdir']?>" class="admin-input-lg"> {listdir}变量的值</td>
 				</tr>
 				<tr>
 					<td>目录默认页名称：</td>
 					<td>
-						<input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" class="admin-input-md">
+						<input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" class="admin-input-lg">
 						<label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if ($row['nodefault']==1) echo "checked";?>> 不使用目录默认首页</label>
 					</td>
 				</tr>
 				<tr>
 					<td>命名规则：</td>
-					<td><input type="text" name="namerule" id="namerule" value="<?php echo $row['namerule']?>" class="admin-input-md"></td>
+					<td><input type="text" name="namerule" id="namerule" value="<?php echo $row['namerule']?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>列表模板：</td>
 					<td>
-						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-md">
+						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-lg">
 						<button type="button" name="set4" onclick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
 					</td>
 				</tr>
@@ -63,7 +63,7 @@
 				</tr>
 				<tr>
 					<td>关键词：</td>
-					<td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="admin-input-md"></td>
+					<td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>列表描述：</td>

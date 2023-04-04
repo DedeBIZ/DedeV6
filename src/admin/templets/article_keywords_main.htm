@@ -23,8 +23,8 @@
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
 					<td>
-						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-md mr-3">
-						<input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="admin-input-md mr-3">
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
+						<input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="admin-input-lg mr-3">
 						<input type="text" name="rank" id="rank" value="30" class="admin-input-sm mr-3">
 						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
 					</td>
@@ -47,10 +47,10 @@
 				{dede:datalist empty='<tr><td colspan="5" align="center">暂无文档</td></tr>'}
 				<tr align="center">
 					<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked="1"></td>
-					<td><input type="hidden" name="keyword_{dede:field.aid/}" class="admin-input-md" value="{dede:field.keyword/}">{dede:field.keyword/}</td>
+					<td><input type="hidden" name="keyword_{dede:field.aid/}" class="admin-input-lg" value="{dede:field.keyword/}">{dede:field.keyword/}</td>
 					<td>
 						<input type="hidden" name="rpurlold_{dede:field.aid/}" value="{dede:field.rpurl/}">
-						<input type="text" name="rpurl_{dede:field.aid/}" class="admin-input-md" value="{dede:field.rpurl/}">
+						<input type="text" name="rpurl_{dede:field.aid/}" class="admin-input-lg" value="{dede:field.rpurl/}">
 					</td>
 					<td><input type="text" name="rank_{dede:field.aid/}" class="admin-input-sm" value="{dede:field.rank/}"></td>
 					<td>

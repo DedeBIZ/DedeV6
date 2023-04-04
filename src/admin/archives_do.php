@@ -266,8 +266,8 @@ else if ($dopost == "checkArchives") {
         <tr>
             <td width="90" class="admin-td">文档id：</td>
             <td class="admin-td">
-                <input type="text" name="tmpids" class="admin-input-md" value="<?php echo $qstr;?>"><br>
-                移动栏目必须和选定文档栏目类型一致，否则自动过滤不相关文档
+                <input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"><br>
+                <span>移动栏目必须和选定文档栏目类型一致，否则自动过滤不相关文档</span>
             </td>
         </tr>
         <tr>
@@ -514,11 +514,11 @@ else if ($dopost == 'quickEdit') {
     </tr>
     <tr>
         <td width="90" class="admin-td">标题：</td>
-        <td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-md"></td>
+        <td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
         <td width="90" class="admin-td">简略标题：</td>
-        <td class="admin-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-md"></td>
+        <td class="admin-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
         <td width="90" class="admin-td">阅读权限：</td>
@@ -540,7 +540,7 @@ else if ($dopost == 'quickEdit') {
     </tr>
     <tr>
         <td width="90" class="admin-td">关键词：</td>
-        <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-md"></td>
+        <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">

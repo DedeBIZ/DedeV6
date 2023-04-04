@@ -66,7 +66,7 @@
 					<td>模块识别码：</td>
 					<td>
 						<input type="hidden" name="hash" value="<?php echo $hash;?>">
-						<input type="text" name="hashv" value="<?php echo $hash;?>" class="admin-input-md" disabled>（不可改）
+						<input type="text" name="hashv" value="<?php echo $hash;?>" class="admin-input-lg" disabled>（不可改）
 					</td>
 				</tr>
 				<tr>
@@ -107,7 +107,7 @@
 					<td>程序安装：</td>
 					<td>
 						<label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" <?php if (isset($autosetup) && $autosetup==1) echo "checked='1'";?>> 自动生成（由系统自动处理安装）</label><br>
-						<div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input type="file" name="setup" id="setup" class="admin-input-md"></div>
+						<div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input type="file" name="setup" id="setup" class="admin-input-lg"></div>
 						<div style="display:<?php if (isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
 							<table width="100%" cellpadding="5" cellspacing="1">
 								<tr>
@@ -124,7 +124,7 @@
 					<td>删除程序：</td>
 					<td>
 						<label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if (isset($autodel) && $autodel==1) echo "checked='1'";?>> 自动生成（由系统自动处理卸载）</label><br>
-						<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input type="file" name="uninstall" id="uninstall" class="admin-input-md"></div>
+						<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input type="file" name="uninstall" id="uninstall" class="admin-input-lg"></div>
 						<div style='display:<?php if (isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>'
 							id='autodelct'>
 							<table width="100%" cellpadding="5" cellspacing="1">

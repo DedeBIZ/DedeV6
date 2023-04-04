@@ -138,7 +138,7 @@
 				<tr id="_relation" <?php echo $dtype=="relation"? '' : 'style="display:none"';?>>
 					<td>文档模型：</td>
 					<td>
-						<select name="channeltype" id="channeltype" class="admin-input-md">
+						<select name="channeltype" id="channeltype" class="admin-input-lg">
 							<?php
 							$channelid = $ctag->GetAtt('channel') == "" ? 1 : $ctag->GetAtt('channel');
 							foreach($channelArray as $k=>$arr)

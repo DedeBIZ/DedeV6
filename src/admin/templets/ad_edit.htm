@@ -70,7 +70,7 @@
 						<?php
 						$tl = new TypeLink(0);
 						$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
-						echo "<select name='typeid' class='admin-input-md'>";
+						echo "<select name='typeid' class='admin-input-lg'>";
 						echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>";
 						echo $typeOptions;
 						echo "</select>";
@@ -79,7 +79,7 @@
 				</tr>
 				<tr>
 					<td>广告位名称：</td>
-					<td><input type="text" name="adname" id="adname" value="<?php echo $row['adname']?>" class="admin-input-md"></td>
+					<td><input type="text" name="adname" id="adname" value="<?php echo $row['adname']?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>时间限制：</td>

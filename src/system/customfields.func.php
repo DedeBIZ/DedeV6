@@ -102,14 +102,14 @@ function GetFormItem($ctag, $admintype = 'admin')
         $innertext = "<textarea name='$fieldname' id='$fieldname' class='form-control admin-textarea-sm'></textarea>";
     } else if ($fieldType == "datetime") {
         $nowtime = GetDateTimeMk(time());
-        $innertext = "<input type=\"text\" name=\"$fieldname\" value=\"$nowtime\" id=\"$fieldname\" class=\"form-control admin-input-md\">";
+        $innertext = "<input type=\"text\" name=\"$fieldname\" value=\"$nowtime\" id=\"$fieldname\" class=\"form-control admin-input-lg\">";
     } else if ($fieldType == 'img' || $fieldType == 'imgfile') {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-md'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($fieldType == 'media') {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-md' placeholder='请输入多媒体文件地址'>";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请输入多媒体文件地址'>";
     } else if ($fieldType == 'addon') {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-md' placeholder='请输入附件地址'>";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请输入附件地址'>";
     } else if ($fieldType == 'int' || $fieldType == 'float') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '0');
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-xs' value='$dfvalue'>";
@@ -133,7 +133,7 @@ if (typeof SelectArcList === "undefined") {
 EOT;
     } else {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '');
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-md' value='$dfvalue'>
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' value='$dfvalue'>
         ";
     }
     $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
@@ -395,7 +395,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         $innertext = "<textarea name='$fieldname' id='$fieldname' class='form-control admin-textarea-sm'>$fvalue</textarea>";
     } else if ($ftype == "datetime") {
         $nowtime = GetDateTimeMk($fvalue);
-        $innertext = "<input type=\"text\" name=\"$fieldname\" value=\"$nowtime\" id=\"$fieldname\" class=\"form-control admin-input-md\">";
+        $innertext = "<input type=\"text\" name=\"$fieldname\" value=\"$nowtime\" id=\"$fieldname\" class=\"form-control admin-input-lg\">";
     } else if ($ftype == "img") {
         $ndtp = new DedeTagParse();
         $ndtp->LoadSource($fvalue);
@@ -409,16 +409,16 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             }
         }
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-md'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($ftype == "imgfile") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-md'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($ftype == "media") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-md'> <input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm'value='浏览' onClick=\"SelectMedia('$fname.$fieldname')\">";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm'value='浏览' onClick=\"SelectMedia('$fname.$fieldname')\">";
     } else if ($ftype == "addon") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control admin-input-md'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectSoft('$fname.$fieldname')\">";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectSoft('$fname.$fieldname')\">";
     } else if ($ftype == "int" || $ftype == "float") {
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-xs' value='$fvalue'>";
     } else if ($ftype == "relation") {
@@ -440,7 +440,7 @@ if (typeof SelectArcList === "undefined") {
 </script>
 EOT;
     } else {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-md' value='$fvalue'>";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' value='$fvalue'>";
     }
     $formitem = str_replace('~name~', $ctag->GetAtt('itemname'), $formitem);
     $formitem = str_replace('~form~', $innertext, $formitem);

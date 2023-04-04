@@ -67,7 +67,7 @@
 										echo "<span class='text-primary'>找不到您所指定的数据库 $dbname</span><br>";
 										echo $qbutton;
 									}
-									echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='admin-input-md'>";
+									echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='admin-input-lg'>";
 									while($row = $dsql->GetArray('t',MYSQL_BOTH)){
 										echo "<option value='{$row[0]}'>{$row[0]}</option>";
 									}
