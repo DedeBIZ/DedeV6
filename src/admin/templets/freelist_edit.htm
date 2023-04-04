@@ -71,7 +71,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">限定栏目：
+					<td colspan="2">
+						<span>限定栏目：</span>
 						<?php
 						$typeid = $ctag->GetAtt('typeid');
 						echo "<select name='typeid' class='admin-input-sm'>";
@@ -92,7 +93,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">限定栏目：
+					<td colspan="2">
+						<span>限定栏目：</span>
 						<?php
 						$channel  = $ctag->GetAtt('channel');
 						echo "<select name='channel' class='admin-input-sm'><option value='0'>不限</option>";
@@ -108,7 +110,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">附加属性：
+					<td colspan="2">
+						<span>附加属性：</span>
 						<?php
 						$att  = $ctag->GetAtt('att');
 						echo "<select name='att' class='admin-input-sm'>";
@@ -126,14 +129,14 @@
 						}
 						echo "</select>";
 						?>
-						文档发布时间：<input type="text" name="subday" id="subday" size="6" value="<?php echo $ctag->GetAtt('subday')?>"> 天以内（0表示不限）
+						<label>文档发布时间：<input type="text" name="subday" id="subday" size="6" value="<?php echo $ctag->GetAtt('subday')?>"> 天以内（0表示不限）</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						每页记录数：<input type="text" name="pagesize" id="pagesize" value="<?php echo $ctag->GetAtt('pagesize')?>" size="4">
-						显示列数：<input type="text" name="col" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v;?>" size="4">
-						标题长度：<input type="text" name="titlelen" id="titlelen" value="<?php echo $ctag->GetAtt('titlelen')?>" size="4">（1字节 = 0.5个中文字）
+						<label>每页记录数：<input type="text" name="pagesize" id="pagesize" value="<?php echo $ctag->GetAtt('pagesize')?>" class="admin-input-sm"></label>
+						<label>显示列数：<input type="text" name="col" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v;?>" class="admin-input-sm"></label>
+						<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="<?php echo $ctag->GetAtt('titlelen')?>" class="admin-input-sm">（1字节 = 0.5个中文字）</label>
 					</td>
 				</tr>
 				<tr>
@@ -142,15 +145,16 @@
 						$setype = $ctag->GetAtt('type');
 						if ($setype=='') $setype = 'X';
 						?>
-						高级筛选：
-						<label><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo ' checked';?>> 带缩略图</label>
-						<label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo ' checked';?>> 推荐</label>
-						<label><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo ' checked';?>> 专题</label>
-						关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号分开）
+						<span>高级筛选：</span>
+						<label class="l-height-28"><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo ' checked';?>> 带缩略图</label>
+						<label class="l-height-28"><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo ' checked';?>> 推荐</label>
+						<label class="l-height-28"><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo ' checked';?>> 专题</label>
+						<label>关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号分开）</label>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">排列顺序：
+					<td colspan="2">
+						<span>排列顺序：</span>
 						<?php
 						$orderby = $ctag->GetAtt('orderby');
 						$sorta = "sortrank,置顶权限值;pubdate,发布时间;senddate,录入时间;click,点击量;id,文档id,lastpost,最后评论时间;postnum,评论总数;rand,随机获取";
@@ -172,8 +176,8 @@
 							<option value="lastpost">最后评论时间</option>
 							<option value="postnum">评论总数</option>
 						</select>
-						<label><input type="radio" name="order" value="desc" <?php if ($ctag->GetAtt('orderway')=='desc') echo "checked";?>> 由高到低</label>
-						<label><input type="radio" name="order" value="asc" <?php if ($ctag->GetAtt('orderway')=='asc') echo "checked";?>> 由低到高</label>
+						<label class="l-height-28"><input type="radio" name="order" value="desc" <?php if ($ctag->GetAtt('orderway')=='desc') echo "checked";?>> 由高到低</label>
+						<label class="l-height-28"><input type="radio" name="order" value="asc" <?php if ($ctag->GetAtt('orderway')=='asc') echo "checked";?>> 由低到高</label>
 					</td>
 				</tr>
 				<tr>

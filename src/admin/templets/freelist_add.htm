@@ -85,7 +85,7 @@
 					<td>目录默认页名称：</td>
 					<td>
 						<input type="text" name="defaultpage" id="defaultpage" value="index.html" class="admin-input-lg">
-						<label><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认首页</label>
+						<label class="l-height-28"><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认首页</label>
 					</td>
 				</tr>
 				<tr>
@@ -132,7 +132,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">限定栏目：
+					<td colspan="2">
+						<span>限定栏目：</span>
 						<?php
 						echo "<select name='typeid' class='admin-input-sm'>";
 						echo "<option value='0'>不限栏目</option>";
@@ -150,7 +151,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">限定栏目：
+					<td colspan="2">
+						<span>限定栏目：</span>
 						<?php
 						echo "<select name='channel' class='admin-input-sm'>";
 						echo "<option value='0' selected>不限</option>";
@@ -161,11 +163,13 @@
 								echo "<option value='{$row->ID}'>{$row->typename}</option>";
 							}
 							echo "</select>";
-						?>（如果限定了栏目文档模型，则允许使用附加表指定的列表字段作为底层变量）
+						?>
+						<span>（如果限定了栏目文档模型，则允许使用附加表指定的列表字段作为底层变量）</span>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">附加属性：
+					<td colspan="2">
+						<span>附加属性：</span>
 						<?php
 						echo "<select name='att' class='admin-input-sm'>";
 						echo "<option value='0' selected>不限</option>";
@@ -177,27 +181,28 @@
 						}
 						echo "</select>";
 						?>
-						文档发布时间：<input type="text" name="subday" id="subday2" value="0" class="admin-input-sm"> 天以内（0表示不限）
+						<label>文档发布时间：<input type="text" name="subday" id="subday2" value="0" class="admin-input-sm"> 天以内（0表示不限）</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" class="admin-input-sm">
-						显示列数： <input type="text" name="col" id="col3" value="1" class="admin-input-sm">
-						标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="admin-input-sm">（1字节 = 0.5个中文字）
+						<label>每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" class="admin-input-sm"></label>
+						<label>显示列数： <input type="text" name="col" id="col3" value="1" class="admin-input-sm"></label>
+						<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="admin-input-sm">（1字节 = 0.5个中文字）</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						高级筛选：<label><input type="checkbox" name="types[]" id="type1" value="image"> 带缩略图</label>
-						<label><input type="checkbox" name="types[]" id="type2" value="commend"> 推荐</label>
-						<label><input type="checkbox" name="types[]" id="type3" value="spec"> 专题</label>
-						关键词：<input type="text" name="keywordarc" id="keywordarc">（英文逗号分开）
+						<label class="l-height-28">高级筛选：<input type="checkbox" name="types[]" id="type1" value="image"> 带缩略图</label>
+						<label class="l-height-28"><input type="checkbox" name="types[]" id="type2" value="commend"> 推荐</label>
+						<label class="l-height-28"><input type="checkbox" name="types[]" id="type3" value="spec"> 专题</label>
+						<label>关键词：<input type="text" name="keywordarc" id="keywordarc">（英文逗号分开）</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						排列顺序：<select name="orderby" id="orderby" class="admin-input-sm">
+						<span>排列顺序：</span>
+						<select name="orderby" id="orderby" class="admin-input-sm">
 							<option value="sortrank">置顶权限值</option>
 							<option value="pubdate" selected>发布时间</option>
 							<option value="senddate">录入时间</option>
@@ -206,8 +211,8 @@
 							<option value="lastpost">最后评论时间</option>
 							<option value="postnum">评论总数</option>
 						</select>
-						<label><input type="radio" name="order" value="desc" checked> 由高到低</label>
-						<label><input type="radio" name="order" value="asc"> 由低到高</label>
+						<label class="l-height-28"><input type="radio" name="order" value="desc" checked> 由高到低</label>
+						<label class="l-height-28"><input type="radio" name="order" value="asc"> 由低到高</label>
 					</td>
 				</tr>
 				<tr>
