@@ -110,7 +110,7 @@ if (empty($dopost)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("数据保存到数据库附加表时出错，请联系管理员<br>error:{$gerr}", "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请联系管理员，错误：{$gerr}", "javascript:;");
             exit();
         }
     }

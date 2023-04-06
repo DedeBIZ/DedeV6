@@ -231,7 +231,7 @@ if ($dopost == "show") {
         exit();
     } else {
         $errv = $dsql->GetError();
-        ShowMsg("系统出错，请检查原因<br>错误提示：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
+        ShowMsg("系统出错，请检查原因，错误提示：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
         exit();
     }
 } else if ($dopost == "save") {

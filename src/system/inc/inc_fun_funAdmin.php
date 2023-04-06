@@ -104,7 +104,7 @@ function SpCreateDir($spath)
                 $isok = ChmodAll($truepath, $cfg_dir_purview);
             }
             if (!$isok) {
-                echo "创建或修改目录<span class='text-primary'>".$truepath."</span>失败<br>";
+                echo "创建或修改目录<span class='text-primary'>".$truepath."</span>失败";
                 CloseFtp();
                 return false;
             }

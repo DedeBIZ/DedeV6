@@ -166,7 +166,7 @@ else if ($dopost == 3) {
     <tr>
         <td>
             完成所有修复操作，移除错误记录{$errnum}条<br>
-            <br><a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>
+            <a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>
         </td>
     </tr>
     </table>";

@@ -21,7 +21,7 @@
 		function ReloadPage(ordertype) {
 			orderby = ordertype;
 			var listArea = $Obj('rslist');
-			var errMsg = "网络通信出错<br><a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
+			var errMsg = "网络通信出错，<a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
 			fetch("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype).then(resp=>{
 				if (resp.ok) {
 					return resp.text()
@@ -45,7 +45,7 @@
 			var kw = $Obj('keyword' + nid).value;
 			var kws = $Obj('spwords' + nid).value;
 			var ct = $Obj('count' + nid).value;
-			var errMsg = "网络通信出错<br><a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
+			var errMsg = "网络通信出错，<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
 			<?php
 			if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {
 			?>
@@ -82,7 +82,7 @@
 			totalrow = totalrow - 1;
 			var pagenum = Math.ceil(totalrow / pagesize);
 			if (pagenum <= pageno) pageno = pagenum;
-			var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
+			var errMsg = "网络通信出错，<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
 			fetch("search_keywords_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno + "&orderby=" + orderby).then(resp=>{
 				if (resp.ok) {
 					return resp.text()

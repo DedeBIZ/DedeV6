@@ -78,7 +78,7 @@ else if ($action == 'make') {
     $dm = new DedeModule($mdir);
     if ($dm->HasModule($hashcode)) {
         $dm->Clear();
-        ShowMsg("您指定同名模块已经存在，因此不能创建项目<br>如果您要更新这个模块，请先删除：module/{$hashcode}.xml", "-1");
+        ShowMsg("您指定同名模块已经存在，因此不能创建项目，如果您要更新这个模块，请先删除：module/{$hashcode}.xml", "-1");
         exit();
     }
     $readmef = $setupf = $uninstallf = '';
