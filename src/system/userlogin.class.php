@@ -414,7 +414,7 @@ class userLogin
         if ($this->userFace != '') {
             return $this->userFace;
         } else {
-            return '../static/web/img/admin.png';
+            return '/static/web/img/admin.png';
         }
     }
     /**
