@@ -563,7 +563,7 @@ $(document).ready(function () {
 		litpicImgSrc = "";
 		litpicImg = "";
 		$("#picname").val(litpicImg);
-		$("#litPic").attr("src", "../../static/web/img/thumbnail.jpg");
+		$("#litPic").attr("src", "/static/web/img/thumbnail.jpg");
 	})
 	//添加图片
 	$("#iptAddImages").change(function (event) {
