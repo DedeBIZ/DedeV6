@@ -156,7 +156,7 @@
 								<td width="90">关键词：</td>
 								<td width="410">
 									<input type="text" name="keywords" id="keywords" value="" class="admin-input-lg">
-									<button type="button" name="Submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">浏览</button>
+									<button type="button" name="Submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
 								</td>
 								<td><label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="1"';?>> 自动获取</label></td>
 							</tr>
@@ -231,7 +231,7 @@
 								<td class="admin-td">应用模板：</td>
 								<td class="admin-td">
 									<input type="text" name="notetemplet<?php echo $i?>" id="notetemplet<?php echo $i?>" value="system/channel_spec_note.htm" class="admin-input-lg">
-									<button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.notetemplet<?php echo $i?>');">浏览</button>
+									<button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.notetemplet<?php echo $i?>');">选择</button>
 								</td>
 							</tr>
 							<?php }?>
@@ -287,7 +287,7 @@
 								<td width="90">专题模板：</td>
 								<td width="260">
 									<input type="text" name="templet" id="templet" value="<?php echo $cfg_df_style?>/article_spec.htm" class="admin-input-sm">
-									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">浏览</button>
+									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
 								</td>
 								<td width="90">文件名称：</td>
 								<td><input type="text" name="filename" id="filename" class="admin-input-sm">（不包括后缀名如.html等）</td>

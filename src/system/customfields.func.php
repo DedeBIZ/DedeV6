@@ -105,7 +105,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         $innertext = "<input type=\"text\" name=\"$fieldname\" value=\"$nowtime\" id=\"$fieldname\" class=\"form-control admin-input-lg\">";
     } else if ($fieldType == 'img' || $fieldType == 'imgfile') {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($fieldType == 'media') {
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请输入多媒体文件地址'>";
     } else if ($fieldType == 'addon') {
@@ -409,16 +409,16 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             }
         }
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($ftype == "imgfile") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('$fname.$fieldname','big')\">";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($ftype == "media") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm'value='浏览' onClick=\"SelectMedia('$fname.$fieldname')\">";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectMedia('$fname.$fieldname')\">";
     } else if ($ftype == "addon") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectSoft('$fname.$fieldname')\">";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectSoft('$fname.$fieldname')\">";
     } else if ($ftype == "int" || $ftype == "float") {
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-xs' value='$fvalue'>";
     } else if ($ftype == "relation") {
