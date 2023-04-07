@@ -67,8 +67,8 @@ CREATE TABLE `#@__addonshop` (
 	`body` mediumtext,
 	`price` float NOT NULL default '0',
 	`trueprice` float NOT NULL default '0',
-	`brand` varchar(250) NOT NULL default '',
-	`units` varchar(250) NOT NULL default '',
+	`brand` varchar(255) NOT NULL default '',
+	`units` varchar(255) NOT NULL default '',
 	`templet` varchar(30) NOT NULL,
 	`userip` char(46) NOT NULL,
 	`redirecturl` varchar(255) NOT NULL,
@@ -430,7 +430,7 @@ CREATE TABLE `#@__freelist` (
 	`click` int(11) NOT NULL default '1',
 	`listtag` mediumtext,
 	`keywords` varchar(100) NOT NULL default '',
-	`description` varchar(250) NOT NULL default '',
+	`description` varchar(255) NOT NULL default '',
 	PRIMARY KEY (`aid`)
 ) TYPE=MyISAM;
 
@@ -829,7 +829,7 @@ CREATE TABLE `#@__sgpage` (
 	`keywords` varchar(30) NOT NULL default '',
 	`template` varchar(30) NOT NULL default '',
 	`likeid` varchar(20) NOT NULL default '',
-	`description` varchar(250) NOT NULL default '',
+	`description` varchar(255) NOT NULL default '',
 	`uptime` int(10) unsigned NOT NULL default '0',
 	`body` mediumtext,
 	PRIMARY KEY (`aid`),
@@ -951,7 +951,7 @@ CREATE TABLE `#@__sys_task` (
 	`endtime` int(10) unsigned NOT NULL default '0',
 	`freq` tinyint(2) unsigned NOT NULL default '0',
 	`lastrun` int(10) unsigned NOT NULL default '0',
-	`description` varchar(250) NOT NULL,
+	`description` varchar(255) NOT NULL,
 	`parameter` text,
 	`settime` int(10) unsigned NOT NULL default '0',
 	`sta` enum('运行','成功','失败') default NULL,
