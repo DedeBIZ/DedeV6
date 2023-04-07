@@ -26,7 +26,7 @@
 						<input type="hidden" id="newface" name="newface" value="">
 						<div class="form-group row">
 							<div class="col-sm-12">
-								<div class="alert alert-info mb-0">会员资料修改需验证原登录密码，才能修改</div>
+								<div class="alert alert-info mb-0">会员资料修改需验证原登录密码才能修改</div>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -38,11 +38,11 @@
 							<div class="col-sm-9"><input type="text" name="uname" class="form-control w-75" id="iptUname" value="<?php echo $row['uname'];?>" placeholder="企业会员为公司名，个人会员为昵称"></div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">修改头像：</label>
+							<label class="col-sm-3 col-form-label">头像：</label>
 							<div class="col-sm-9">
 								<input id="iptNewface" type="file" name="iptNewface" class="d-none">
 								<img id="face" src="<?php echo empty($row['face'])? $cfg_staticurl.'/web/img/admin.png' : $row['face'];?>" class="user-img-sm mr-3">
-								<span class="btn btn-success btn-sm" id="btnChangeFace">修改头像</span>
+								<span class="btn btn-success btn-sm" id="btnChangeFace">修改</span>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -78,7 +78,7 @@
 							<div class="col-sm-9">
 								<div id="spEmail">
 									<span class="input-text"><?php echo HideEmail($row['email']);?></span>
-									<span class="btn btn-success btn-sm ml-3" id="btnChangeEmail">修改邮箱</span>
+									<span class="btn btn-success btn-sm ml-3" id="btnChangeEmail">修改</span>
 								</div>
 								<span id="iptEmail"></span>
 							</div>
