@@ -19,22 +19,29 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<ul class="nav nav-tabs">
-							<li class="nav-item"><a class="nav-link <?php echo $rank===''? 'active' : '';?>" href="mystow.php">我的收藏</a></li>
-							<li class="nav-item"><a class="nav-link <?php echo $rank==='top'? 'active' : '';?>" href="mystow.php?rank=top">收藏排行</a></li>
-						</ul>
+						<nav class="navbar navbar-expand-lg p-0">
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item"><a class="nav-link <?php echo $rank===''? 'active' : '';?>" href="mystow.php">我的收藏</a></li>
+								<li class="nav-item"><a class="nav-link <?php echo $rank==='top'? 'active' : '';?>" href="mystow.php?rank=top">收藏排行</a></li>
+							</ul>
+						</nav>
 						<table width="100%" cellpadding="0" cellspacing="0" class="table">
 							<tbody>
+								<thead>
+									<tr>
+										<th>标题</th>
+										<th width="26%">收藏时间</th>
+										<th width="26%">操作</th>
+									</tr>
+								</thead>
 								{dede:datalist}
 								<tr>
-									<td colspan="5"><a href="archives_do.php?dopost=viewArchives&aid={dede:field.aid/}" target="_blank">{dede:field.title/}</a></td>
-									<td width="25%" align="center">
+									<td><a href="archives_do.php?dopost=viewArchives&aid={dede:field.aid/}" target="_blank">{dede:field.title/}</a></td>
+									<td><?php echo MyDate('Y-m-d H:i:s', $fields['addtime']);?></td>
+									<td>
 										<a href="../apps/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}" target="_blank" class="btn btn-success btn-sm">推荐</a>
 									 	<a href="archives_do.php?dopost=delStow&type={dede:field.type/}&aid={dede:field.aid/}" class="btn btn-danger btn-sm">删除</a>
 									</td>
-								</tr>
-								<tr>
-									<td colspan="6">收藏时间：<?php echo MyDate('Y-m-d H:i:s', $fields['addtime']);?></td>
 								</tr>
 								{/dede:datalist}
 							</tbody>
