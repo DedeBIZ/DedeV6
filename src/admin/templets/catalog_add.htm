@@ -343,6 +343,8 @@
 					<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea>（标签“{dede:field.description/}”调用）</td>
 				</tr>
 				<tr>
+					<td>栏目文档：</td>
+					<td>（标签“{dede:field.content/}”调用）</td>
 					<td>是否支持跨站调用：</td>
 					<td>
 						<input type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
@@ -350,10 +352,6 @@
 						<label class="l-height-28"><input type="radio" name="apienabled" value="1"> 支持</label>
 						<label class="l-height-28"><input type="radio" name="apienabled" value="0" checked> 不支持</label>
 					</td>
-					<td colspan="2"></td>
-				</tr>
-				<tr>
-					<td colspan="4">栏目文档（标签“{dede:field.content/}”调用）</td>
 				</tr>
 				<tr>
 					<td colspan="4"><?php GetEditor("content","","400","Default","print","false");?></td>

@@ -80,7 +80,7 @@ if (!empty($noeditor)) {
                         <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                         <input type="hidden" name="f" value="<?php echo $f ?>">
                         <input type="hidden" name="job" value="upload">
-                        <label>选择：<input type="file" name="uploadfile" class="w-50"></label>
+                        <input type="file" name="uploadfile" class="w-50">
                         <label>改名：<input type="text" name="newname" class="admin-input-sm"></label>
                         <button type="submit" name="sb1" class="btn btn-success btn-sm">保存</button>
                     </form>
@@ -127,9 +127,7 @@ if (!empty($noeditor)) {
                     if (preg_match("#^_(.*)$#i", $file)) continue;
                     if (preg_match("#^\.(.*)$#i", $file)) continue;
                     $line = "<tr>
-                    <td><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan='3'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {

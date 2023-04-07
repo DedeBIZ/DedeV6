@@ -143,7 +143,7 @@ if (!empty($iseditor)) {
                         <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
                         <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
                         <input type="hidden" name="job" value="upload">
-                        <label>选择：<input type="file" name="imgfile" class="w-50"></label>
+                        <input type="file" name="imgfile" class="w-50">
                         <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?>> 水印</label>
                         <label><input type="checkbox" name="resize" value="1"> 缩小</label>
                         <label>宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs"></label>
@@ -194,9 +194,7 @@ if (!empty($iseditor)) {
                     if (preg_match("#^_(.*)$#i", $file)) continue;
                     if (preg_match("#^\.(.*)$#i", $file)) continue;
                     $line = "<tr>
-                    <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan='4'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
@@ -207,7 +205,7 @@ if (!empty($iseditor)) {
                     else  $lstyle = "";
                     $line = "<tr>
                     <td colspan='2'>
-                        <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
+                        <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
                         <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                     </td>
                     <td>$filesize KB</td>
@@ -222,7 +220,7 @@ if (!empty($iseditor)) {
                     else  $lstyle = "";
                     $line = "<tr>
                     <td colspan='2'>
-                        <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
+                        <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
                         <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                     </td>
                     <td>$filesize KB</td>

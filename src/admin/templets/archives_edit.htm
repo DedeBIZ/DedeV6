@@ -106,7 +106,7 @@
 									<button type="button" name="Submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button id="btnClearAll" type="button" class="btn btn-success btn-sm">清空</button>
 								</td>
-								<td><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '/static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
+								<td><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
 							</tr>
 						</table>
 					</td>

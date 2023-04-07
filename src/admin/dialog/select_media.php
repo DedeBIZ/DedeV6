@@ -76,7 +76,7 @@ if (!empty($noeditor)) {
                         <input type="hidden" name="f" value="<?php echo $f ?>">
                         <input type="hidden" name="job" value="upload">
                         <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
-                        <label>选择：<input type="file" name="uploadfile" class="w-75"></label>
+                        <input type="file" name="uploadfile" class="w-75">
                         <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
                     </form>
                 </td>
@@ -120,9 +120,7 @@ if (!empty($noeditor)) {
                     if (preg_match("#^_(.*)$#i", $file)) continue;
                     if (preg_match("#^\.(.*)$#i", $file)) continue;
                     $line = "<tr>
-                    <td><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan='3'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {

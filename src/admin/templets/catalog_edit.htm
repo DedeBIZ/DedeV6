@@ -316,6 +316,8 @@
 					<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $myrow['description']?></textarea>（标签“{dede:field.description/}”调用）</td>
 				</tr>
 				<tr>
+					<td>栏目文档：</td>
+					<td>（标签“{dede:field.content/}”调用）</td>
 					<td>是否支持跨站调用：</td>
 					<td>
 						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
@@ -323,10 +325,6 @@
 						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='1'";?>> 支持</label>
 						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='1'";?>> 不支持</label>
 					</td>
-					<td colspan="2"></td>
-				</tr>
-				<tr>
-					<td colspan="4">栏目文档（标签“{dede:field.content/}”调用）</td>
 				</tr>
 				<tr>
 					<td colspan="4"><?php GetEditor("content",$myrow['content'],"400","Default","print","false");?></td>
