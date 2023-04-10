@@ -15,23 +15,36 @@
 					<td bgcolor="#f5f5f5" colspan="2">自动摘要分页</td>
 				</tr>
 				<tr>
-					<td width="360">栏目id：<input type="text" name="channel" id="channel" value="1" class="admin-input-xs">（可在“<a href="mychannel_main.php">栏目模型管理</a>”处获得）</td>
-					<td>摘要大小：<input type="text" name="dsize" id="dsize" value="<?php echo $cfg_auot_description?>" class="admin-input-xs">（最大250字节）</td>
+					<td width="360">
+						<label>栏目id：<input type="text" name="channel" id="channel" value="1" class="admin-input-xs"></label>
+						<span>（可在“<a href="mychannel_main.php">栏目模型管理</a>”处获得）</span>
+					</td>
+					<td>
+						<label>摘要大小：<input type="text" name="dsize" id="dsize" value="<?php echo $cfg_auot_description?>" class="admin-input-xs"></label>
+						<span>（最大250字节）</span>
+					</td>
 				</tr>
 				<tr>
-					<td>数据表：<input type="text" name="table" id="table2" value="<?php echo $cfg_dbprefix?>addonarticle" class="admin-input-sm"></td>
-					<td>分析字段：<input type="text" name="field" id="field2" value="body" class="admin-input-sm"></td>
+					<td><label>数据表：<input type="text" name="table" id="table2" value="<?php echo $cfg_dbprefix?>addonarticle" class="admin-input-sm"></label></td>
+					<td><label>分析字段：<input type="text" name="field" id="field2" value="body" class="admin-input-sm"></label></td>
 				</tr>
 				<tr>
-					<td>最小值：<input type="text" name="msize" id="msize2" value="512" class="admin-input-xs">（字节，文档大于该值才分析）</td>
-					<td>每页更新：<input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-xs">（网页）</td>
+					<td>
+						<label>最小值：<input type="text" name="msize" id="msize2" value="512" class="admin-input-xs"></label>
+						<span>（字节，文档大于该值才分析）</span>
+					</td>
+					<td>
+						<label>每页更新：<input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-xs"></label>
+						<span>（网页）</span>
+					</td>
 				</tr>
 				<tr>
-					<td>开始id：<input type="text" name="sid" id="sid" class="admin-input-xs"></td>
-					<td>结束id：<input type="text" name="eid" id="eid" class="admin-input-xs"></td>
+					<td><label>开始id：<input type="text" name="sid" id="sid" class="admin-input-xs"></label></td>
+					<td><label>结束id：<input type="text" name="eid" id="eid" class="admin-input-xs"></label></td>
 				</tr>
 				<tr>
-					<td>操作：
+					<td>
+						<span>操作：</span>
 						<label><input type="radio" name="dojob" value="des" checked> 自动摘要</label>
 						<label><input type="radio" name="dojob" value="page"> 自动分页</label>
 					</td>

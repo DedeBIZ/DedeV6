@@ -48,15 +48,24 @@
 				</tr>
 				<tr>
 					<td>水印图片文件名：</td>
-					<td><img src="../data/mark/<?php echo $photo_markimg;?>">（如果不存在，则使用文字水印）</td>
+					<td>
+						<img src="../data/mark/<?php echo $photo_markimg;?>">
+						<span>（如果不存在，则使用文字水印）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>上传新图片：</td>
-					<td><input name="newimg" type="file" id="newimg" class="admin-input-lg">（支持gif和png图片格式）</td>
+					<td>
+						<input name="newimg" type="file" id="newimg" class="admin-input-lg">
+						<span>（支持gif和png图片格式）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>水印图片文字：</td>
-					<td><input type="text" name="get_photo_watertext" value="<?php echo $photo_watertext?>" class="admin-input-sm">（查看/data/mark/simhei.ttf字体库是否存在）</td>
+					<td>
+						<input type="text" name="get_photo_watertext" value="<?php echo $photo_watertext?>" class="admin-input-sm">
+						<span>（查看/data/mark/simhei.ttf字体库是否存在）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>水印图片文字字体大小：</td>
@@ -68,11 +77,17 @@
 				</tr>
 				<tr>
 					<td>JPEG图附件添加水印后质量</td>
-					<td><input type="text" name="get_photo_marktrans" id="get_photo_marktrans" value="<?php echo $photo_marktrans?>" class="admin-input-sm">（范围为0～100的整数，数值越大结果图片效果越好，但尺寸也越大）</td>
+					<td>
+						<input type="text" name="get_photo_marktrans" id="get_photo_marktrans" value="<?php echo $photo_marktrans?>" class="admin-input-sm">
+						<span>（范围为0～100的整数，数值越大结果图片效果越好，但尺寸也越大）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>GIF水印图片与原始图片透明度</td>
-					<td><input name="get_photo_diaphaneity" type=text id="get_photo_diaphaneity" value="<?php echo $photo_diaphaneity?>" class="admin-input-sm">（0—100，值越小越透明）</td>
+					<td>
+						<input name="get_photo_diaphaneity" type=text id="get_photo_diaphaneity" value="<?php echo $photo_diaphaneity?>" class="admin-input-sm">
+						<span>（0—100，值越小越透明）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>水印位置：</td>

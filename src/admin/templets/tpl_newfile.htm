@@ -21,7 +21,10 @@
 				<input type="hidden" name="action" value="savenewfile">
 				<tr>
 					<td width="260">工作目录：</td>
-					<td><input name="path" value="<?php echo $path;?>" class="admin-input-lg">（空白表示根目录，不允许用“..” 形式的路径）</td>
+					<td>
+						<input name="path" value="<?php echo $path;?>" class="admin-input-lg">
+						<span>（空白表示根目录，不允许用“..” 形式的路径）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>文件名称：</td>
