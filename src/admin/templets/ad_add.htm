@@ -66,7 +66,10 @@
 				</tr>
 				<tr>
 					<td width="260">广告位标识：</td>
-					<td><input type="text" name="tagname" id="tagname" class="admin-input-lg">（使用英文或数字表示的简洁标识）</td>
+					<td>
+						<input type="text" name="tagname" id="tagname" class="admin-input-lg">
+						<span>（使用英文或数字表示的简洁标识）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>广告分类：</td>
@@ -104,8 +107,8 @@
 				<tr>
 					<td>投放时间：</td>
 					<td>
-						从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="admin-input-sm">
-						到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="admin-input-sm">
+						<label>从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="admin-input-sm"></label>
+						<label>到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="admin-input-sm"></label>
 					</td>
 				</tr>
 				<tr>

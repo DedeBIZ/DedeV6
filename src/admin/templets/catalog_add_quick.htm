@@ -138,13 +138,12 @@
 						<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-lg">
 						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
 						<div id="helpvar1" class="alert alert-warning my-2" style="display:none">
-							静态规则<br>
-							{tid} 栏目id<br>
-							{page} 栏目页码数<br>
-							<hr>
-							伪静态规则（Nginx）<br>
-							rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
-							rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+							<p>静态规则</p>
+							<p>{tid} 栏目id</p>
+							<p>{page} 栏目页码数</p>
+							<p>伪静态规则（Nginx）</p>
+							<p>rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;</p>
+							<span>rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;</span>
 						</div>
 					</td>
 				</tr>
@@ -154,18 +153,17 @@
 						<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-lg">
 						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
 						<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
-							静态规则<br>
-							{Y}{M}{D} 年月日<br>
-							{timestamp} INT类型的UNIX时间戳<br>
-							{aid} 文档id<br>
-							{pinyin} 拼音加文档id<br>
-							{py} 拼音部首加文档id<br>
-							{typedir} 栏目保存目录<br>
-							{cc} 日期加混编id后用转换为适合字母<br>
-							<hr>
-							伪静态规则（Nginx）<br>
-							rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
-							rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
+							<p>静态规则</p>
+							<p>{Y}{M}{D} 年月日</p>
+							<p>{timestamp} INT类型的UNIX时间戳</p>
+							<p>{aid} 文档id</p>
+							<p>{pinyin} 拼音加文档id</p>
+							<p>{py} 拼音部首加文档id</p>
+							<p>{typedir} 栏目保存目录</p>
+							<p>{cc} 日期加混编id后用转换为适合字母</p>
+							<p>伪静态规则（Nginx）</p>
+							<p>rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;</p>
+							<span>rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
 						</div>
 					</td>
 					<td>默认页的名称：</td>

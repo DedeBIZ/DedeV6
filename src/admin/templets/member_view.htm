@@ -51,7 +51,10 @@
 				</tr>
 				<tr>
 					<td>密码：</td>
-					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
+					<td>
+						<input type="text" name="pwd" id="pwd" class="admin-input-sm">
+						<span>（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>邮箱：</td>
@@ -97,11 +100,17 @@
 				</tr>
 				<tr>
 					<td>升级时间：</td>
-					<td><input type="text" name="uptime" id="uptime" class="admin-input-sm" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>">（如果您要升级会员，必须设置此时间为当前时间）</td>
+					<td>
+						<input type="text" name="uptime" id="uptime" class="admin-input-sm" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>">
+						<span>（如果您要升级会员，必须设置此时间为当前时间）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>会员天数：</td>
-					<td><input type="text" name="exptime" id="exptime" class="admin-input-sm" value="<?php echo $row['exptime']?>">（如果您要升级会员，会员天数必须大于0）</td>
+					<td>
+						<input type="text" name="exptime" id="exptime" class="admin-input-sm" value="<?php echo $row['exptime']?>">
+						<span>（如果您要升级会员，会员天数必须大于0）</span>
+					</td>
 				</tr>
 				<?php if ($mhasDay!=0) {$mhasDay=($mhasDay>0)? $mhasDay : '<tr><td colspan="2"><span class="text-danger">会员已经到期</span></td></tr>';?>
 				<tr>
@@ -113,13 +122,15 @@
 					<td>推荐级别：</td>
 					<td>
 						<input type="hidden" name="oldmatt" id="oldmatt" class="admin-input-sm" value="<?php echo $row['matt']?>">
-						<input name="matt" type="text" id="matt" class="admin-input-sm" value="<?php echo $row['matt']?>">（0普通、1推荐、10管理员）
+						<input name="matt" type="text" id="matt" class="admin-input-sm" value="<?php echo $row['matt']?>">
+						<span>（0普通、1推荐、10管理员）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>投稿限制：</td>
 					<td>
-						<input type="text" name="send_max" class="admin-input-xs" value="<?php echo $row['send_max']?>">（0为不能投稿）
+						<input type="text" name="send_max" class="admin-input-xs" value="<?php echo $row['send_max']?>">
+						<span>（0为不能投稿）</span>
 					</td>
 				</tr>
 				<tr>

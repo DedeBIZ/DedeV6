@@ -67,7 +67,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td>调用栏目：
+					<td>
+						<span>调用栏目：</span>
 						<?php
 						$tl = new TypeLink(0);
 						$typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
@@ -79,7 +80,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td>限定栏目：
+					<td>
+						<span>限定栏目：</span>
 						<?php
 						echo "<select name='channel' class='admin-input-sm'>";
 						echo "<option value='0' selected>不限栏目</option>";
@@ -107,9 +109,10 @@
 				</tr>
 				<tr>
 					<td>
-						调用记录条数：<input type="text" name="row" id="row" value="10" class="admin-input-xs">
-						显示列数：<input type="text" name="col" id="col" value="1" class="admin-input-xs">
-						标题长度：<input type="text" name="titlelen" id="titlelen" value="24" class="admin-input-xs">（1字节=0.5个中文字）
+						<label>调用记录条数：<input type="text" name="row" id="row" value="10" class="admin-input-xs"></label>
+						<label>显示列数：<input type="text" name="col" id="col" value="1" class="admin-input-xs"></label>
+						<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="24" class="admin-input-xs"></label>
+						<span>（1字节=0.5个中文字）</span>
 					</td>
 				</tr>
 				<tr>
@@ -117,11 +120,13 @@
 						<label><input type="checkbox" name="types[]" id="type[]" value="image"> 带缩略图</label>
 						<label><input type="checkbox" name="types[]" id="type[]" value="commend"> 推荐</label>
 						<label><input type="checkbox" name="types[]" id="type[]" value="spec"> 专题</label>
-						关键词：<input type="text" name="keyword" id="keyword" class="admin-input-sm">（英文逗号分开）
+						<label>关键词：<input type="text" name="keyword" id="keyword" class="admin-input-sm"></label>
+						<span>（英文逗号分开）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>排列顺序：
+					<td>
+						<span>排列顺序：</span>
 						<select name="orderby" id="orderby" class="admin-input-sm">
 							<option value="sortrank">置顶权限值</option>
 							<option value="pubdate" selected>发布时间</option>
@@ -137,10 +142,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td>文档发布时间：<input type="text" name="subday" id="subday" value="0" class="admin-input-xs"> 天以内（0表示不限）</td>
+					<td>
+						<label>文档发布时间：<input type="text" name="subday" id="subday" value="0" class="admin-input-xs"> 天以内</label>
+						<span>（0表示不限）</span>
+					</td>
 				</tr>
 				<tr>
-					<td>提取特定文档：<button type="button" class="btn btn-success btn-sm" id="selarc" onclick="SelectArcList('form1.arcid');">选择节点文档</button>
+					<td>
+						<span>提取特定文档：</span>
+						<button type="button" class="btn btn-success btn-sm" id="selarc" onclick="SelectArcList('form1.arcid');">选择节点文档</button>
 						<textarea name="arcid" id="arcid" class="admin-textarea-sm"></textarea>
 					</td>
 				</tr>

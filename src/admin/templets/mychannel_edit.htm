@@ -26,7 +26,7 @@
 				<?php if ($row['issystem'] == 1) {?>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">您目前所展开的是系统模型，系统模型一般对发布程序和管理程序已经固化，如果操作不当导致数据库错误，小心使用</div>
+						<div class="alert alert-danger mb-0">数据库字段批量替换中某字段值，如果操作不当导致数据库错误，小心使用</div>
 					</td>
 				</tr>
 				<?php }?>
@@ -44,11 +44,17 @@
 				</tr>
 				<tr>
 					<td>模型名称：</td>
-					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="<?php echo $row['typename'];?>">（模型名称，在后台管理，会员发布等均使用此名称）</td>
+					<td>
+						<input type="text" name="typename" id="typename" class="admin-input-sm" value="<?php echo $row['typename'];?>">
+						<span>（模型名称，在后台管理，会员发布等均使用此名称）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>附加表：</td>
-					<td><input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $row['addtable'];?>">（#@__是表示数据表前缀，栏目除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性：推荐、会员权限等，也可以使用完全以附加表作为存储数据）</td>
+					<td>
+						<input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $row['addtable'];?>">
+						<span>（#@__是表示数据表前缀，栏目除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性：推荐、会员权限等，也可以使用完全以附加表作为存储数据）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>是否支持会员投稿：</td>
@@ -99,7 +105,10 @@
 				</tr>
 				<tr>
 					<td>列表附加字段：</td>
-					<td><input type="text" name="listfields" id="listfields" class="admin-input-lg" value="<?php echo $row['listfields'];?>" class="w-50">（用英文逗号分开，可以在列表模板“{dede:list}{/dede:list}”中用“[field:name/]”调用）</td>
+					<td>
+						<input type="text" name="listfields" id="listfields" class="admin-input-lg" value="<?php echo $row['listfields'];?>" class="w-50">
+						<span>（用英文逗号分开，可以在列表模板“{dede:list}{/dede:list}”中用“[field:name/]”调用）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>投稿标题使用名称：</td>
@@ -128,7 +137,7 @@
 					<td>
 						<label><input type="radio" name="onlyone" value="1" <?php if ($row['onlyone']==1) echo "checked='1'";?>> 是</label>
 						<label><input type="radio" name="onlyone" value="0" <?php if ($row['onlyone']==0) echo "checked='1'";?>> 不是</label>
-						（如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单）
+						<span>（如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单）</span>
 					</td>
 				</tr>
 				<tr>

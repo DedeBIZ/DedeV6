@@ -34,11 +34,17 @@
 				</tr>
 				<tr>
 					<td>自定义表单名称：</td>
-					<td><input type="text" name="name" id="name" class="admin-input-sm" value="<?php echo $row['name']?>">（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）</td>
+					<td>
+						<input type="text" name="name" id="name" class="admin-input-sm" value="<?php echo $row['name']?>">
+						<span>（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>数据表：</td>
-					<td><input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $row['table'];?>" disabled="1">（自定义表单数据表创建后不可修改表名）</td>
+					<td>
+						<input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $row['table'];?>" disabled="1">
+						<span>（自定义表单数据表创建后不可修改表名）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>列表模板：</td>
