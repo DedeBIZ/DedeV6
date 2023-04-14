@@ -7,38 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			//获得选中文件的文件名
-			function SelKw(kw)
-			{
-				if (document.form2.keywords.value)
-				{
-					document.form2.keywords.value += ","+kw;
-				} else {
-					document.form2.keywords.value = kw;
-				}
-			}
-			function ReturnValue()
-			{
-				if (window.opener.document.<?php echo $f?>.value)
-				{
-				  window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
-				} else {
-				  window.opener.document.<?php echo $f?>.value = document.form2.keywords.value;
-				}
-				window.close();
-			}
-			function showHide(objname)
-			{
-				var obj = document.getElementById(objname);
-				if (obj.style.display=="none") obj.style.display = "block";
-				else obj.style.display="none";
-			}
-			function AddNewKw()
-			{
-				showHide("addnew");
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="article_keywords_main.php">
@@ -76,5 +44,35 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			//获得选中文件的文件名
+			function SelKw(kw)
+			{
+				if (document.form2.keywords.value) {
+					document.form2.keywords.value += ","+kw;
+				} else {
+					document.form2.keywords.value = kw;
+				}
+			}
+			function ReturnValue()
+			{
+				if (window.opener.document.<?php echo $f?>.value) {
+				  window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
+				} else {
+				  window.opener.document.<?php echo $f?>.value = document.form2.keywords.value;
+				}
+				window.close();
+			}
+			function showHide(objname)
+			{
+				var obj = document.getElementById(objname);
+				if (obj.style.display=="none") obj.style.display = "block";
+				else obj.style.display="none";
+			}
+			function AddNewKw()
+			{
+				showHide("addnew");
+			}
+		</script>
 	</body>
 </html>

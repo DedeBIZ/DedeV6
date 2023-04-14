@@ -7,16 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			function DelTpl(filename) {
-				DedeConfirm("您确实要删除这个模板吗").then((v)=>{
-					location = 'tpl.php?action=del&acdir=<?php echo $acdir;?>&filename=' +
-						filename;
-				}).catch((e)=>{
-					console.log(e)
-				});
-			}
-		</script>
 	</head>
 	<body>
 		<table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable my-3">
@@ -64,5 +54,15 @@
 				</td>
 			</tr>
 		</table>
+		<script>
+			function DelTpl(filename) {
+				DedeConfirm("您确实要删除这个模板吗").then((v)=>{
+					location = 'tpl.php?action=del&acdir=<?php echo $acdir;?>&filename=' +
+						filename;
+				}).catch((e)=>{
+					console.log(e)
+				});
+			}
+		</script>
 	</body>
 </html>

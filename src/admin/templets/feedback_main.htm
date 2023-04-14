@@ -10,6 +10,71 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<form name="form1">
+			<table cellpadding="3" align="center" cellspacing="1" class="table maintable my-3">
+				<tr bgcolor="#f5f5f5">
+					<td>
+						<input type="text" name="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
+						<select name="typeid" class="admin-input-sm mr-3">
+							<option value="0">请选择</option>
+							{dede:global.openarray/}
+						</select>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<form name="feedback">
+			<table cellpadding="0" cellspacing="0" align="center" class="table maintable mb-3">
+				<tr>
+					<td colspan="8" bgcolor="#f5f5f5">评论列表</td>
+				</tr>
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">选择</td>
+					<td width="10%">名称</td>
+					<td width="20%">文档</td>
+					<td width="20%">评论</td>
+					<td width="10%">地址</td>
+					<td width="10%">时间</td>
+					<td width="10%">状态</td>
+					<td>操作</td>
+				</tr>
+				{dede:datalist empty='<tr><td colspan="8" align="center">暂无文档</td></tr>'}
+				<tr align="center">
+					<td><input type="checkbox" name="fid" id="fid" value="{dede:field.id/}"></td>
+					<td align="left">{dede:field.username/}</td>
+					<td align="left">{dede:field.arctitle function="RemoveXSS(@me)"/}</td>
+					<td align="left">
+						<span>{dede:field.msg function='cn_substr(Text2Html(@me),280)'/}</span>
+						<?php if ($fields['replycount'] > 0) {?><a href='feedback_main.php?fid={dede:field.id/}' class='btn btn-light btn-sm'>{dede:field.replycount/}条回复</a><?php }?>
+					</td>
+					<td><a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
+					<td>{dede:field.dtime function="GetDateTimeMK(@me)"/}</td>
+					<td>{dede:field.ischeck function="IsCheck(@me)"/}</td>
+					<td>
+						<a href="feedback_edit.php?id={dede:field.id/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
+						<a href="feedback_edit.php?id={dede:field.id/}&dopost=makehtml" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 更新</a>
+						<a href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives" target="_blank" class="btn btn-light btn-sm"><i class="fa fa-eye"></i> 浏览</a>
+					</td>
+				</tr>
+				{/dede:datalist}
+				<tr>
+					<td colspan="8">
+						<button type="button" name="kk1" onclick="selAll()" class="btn btn-success btn-sm">全选</button>
+						<button type="button" name="kk2" onclick="selNone()" class="btn btn-success btn-sm">取消</button>
+						<button type="button" name="kk3" onclick="selNor()" class="btn btn-success btn-sm">反选</button>
+						<button type="button" name="db2" onclick="checkFeedback()" class="btn btn-success btn-sm">审核评论</button>
+						<button type="button" name="db" onclick="delFeedback()" class="btn btn-danger btn-sm">删除评论</button>
+						<button type="button" name="db" onclick="delFeedbackIP()" class="btn btn-danger btn-sm">删除所有相同地址评论</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="8" bgcolor="#f5f5f5" align="center">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			//获得选中文件的文件名
 			function getCheckboxItem() {
@@ -104,70 +169,5 @@
 				});
 			}
 		</script>
-	</head>
-	<body>
-		<form name="form1">
-			<table cellpadding="3" align="center" cellspacing="1" class="table maintable my-3">
-				<tr bgcolor="#f5f5f5">
-					<td>
-						<input type="text" name="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
-						<select name="typeid" class="admin-input-sm mr-3">
-							<option value="0">请选择</option>
-							{dede:global.openarray/}
-						</select>
-						<button type="submit" class="btn btn-success btn-sm">搜索</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form name="feedback">
-			<table cellpadding="0" cellspacing="0" align="center" class="table maintable mb-3">
-				<tr>
-					<td colspan="8" bgcolor="#f5f5f5">评论列表</td>
-				</tr>
-				<tr bgcolor="#e9ecef" align="center">
-					<td width="6%">选择</td>
-					<td width="10%">名称</td>
-					<td width="20%">文档</td>
-					<td width="20%">评论</td>
-					<td width="10%">地址</td>
-					<td width="10%">时间</td>
-					<td width="10%">状态</td>
-					<td>操作</td>
-				</tr>
-				{dede:datalist empty='<tr><td colspan="8" align="center">暂无文档</td></tr>'}
-				<tr align="center">
-					<td><input type="checkbox" name="fid" id="fid" value="{dede:field.id/}"></td>
-					<td align="left">{dede:field.username/}</td>
-					<td align="left">{dede:field.arctitle function="RemoveXSS(@me)"/}</td>
-					<td align="left">
-						<span>{dede:field.msg function='cn_substr(Text2Html(@me),280)'/}</span>
-						<?php if ($fields['replycount'] > 0) {?><a href='feedback_main.php?fid={dede:field.id/}' class='btn btn-light btn-sm'>{dede:field.replycount/}条回复</a><?php }?>
-					</td>
-					<td><a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
-					<td>{dede:field.dtime function="GetDateTimeMK(@me)"/}</td>
-					<td>{dede:field.ischeck function="IsCheck(@me)"/}</td>
-					<td>
-						<a href="feedback_edit.php?id={dede:field.id/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
-						<a href="feedback_edit.php?id={dede:field.id/}&dopost=makehtml" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 更新</a>
-						<a href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives" target="_blank" class="btn btn-light btn-sm"><i class="fa fa-eye"></i> 浏览</a>
-					</td>
-				</tr>
-				{/dede:datalist}
-				<tr>
-					<td colspan="8">
-						<button type="button" name="kk1" onclick="selAll()" class="btn btn-success btn-sm">全选</button>
-						<button type="button" name="kk2" onclick="selNone()" class="btn btn-success btn-sm">取消</button>
-						<button type="button" name="kk3" onclick="selNor()" class="btn btn-success btn-sm">反选</button>
-						<button type="button" name="db2" onclick="checkFeedback()" class="btn btn-success btn-sm">审核评论</button>
-						<button type="button" name="db" onclick="delFeedback()" class="btn btn-danger btn-sm">删除评论</button>
-						<button type="button" name="db" onclick="delFeedbackIP()" class="btn btn-danger btn-sm">删除所有相同地址评论</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="8" bgcolor="#f5f5f5" align="center">{dede:pagelist listsize='6'/}</td>
-				</tr>
-			</table>
-		</form>
 	</body>
 </html>

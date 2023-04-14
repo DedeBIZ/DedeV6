@@ -7,33 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			function $Obj(objname) {
-				return document.getElementById(objname);
-			}
-			function ShowHide2(objname) {
-				var obj = $Obj(objname);
-				if (obj.style.display != 'block') { obj.style.display = 'block' }
-				else { obj.style.display = 'none'; }
-			}
-			function PublicDefault() {
-				if ($Obj('is1').checked || $Obj('is2').checked) {
-					$Obj("addcon").value = "archives_add.php";
-					$Obj("editcon").value = "archives_edit.php";
-					$Obj("mancon").value = "content_list.php";
-					$Obj("useraddcon").value = "archives_add.php";
-					$Obj("usereditcon").value = "archives_edit.php";
-					$Obj("usermancon").value = "content_list.php";
-				} else {
-					$Obj("addcon").value = "archives_sg_add.php";
-					$Obj("editcon").value = "archives_sg_edit.php";
-					$Obj("mancon").value = "content_sg_list.php";
-					$Obj("useraddcon").value = "archives_sg_add.php";
-					$Obj("usereditcon").value = "archives_sg_edit.php";
-					$Obj("usermancon").value = "content_sg_list.php";
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="mychannel_add.php" method="post">
@@ -185,5 +158,32 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function $Obj(objname) {
+				return document.getElementById(objname);
+			}
+			function ShowHide2(objname) {
+				var obj = $Obj(objname);
+				if (obj.style.display != 'block') { obj.style.display = 'block' }
+				else { obj.style.display = 'none'; }
+			}
+			function PublicDefault() {
+				if ($Obj('is1').checked || $Obj('is2').checked) {
+					$Obj("addcon").value = "archives_add.php";
+					$Obj("editcon").value = "archives_edit.php";
+					$Obj("mancon").value = "content_list.php";
+					$Obj("useraddcon").value = "archives_add.php";
+					$Obj("usereditcon").value = "archives_edit.php";
+					$Obj("usermancon").value = "content_list.php";
+				} else {
+					$Obj("addcon").value = "archives_sg_add.php";
+					$Obj("editcon").value = "archives_sg_edit.php";
+					$Obj("mancon").value = "content_sg_list.php";
+					$Obj("useraddcon").value = "archives_sg_add.php";
+					$Obj("usereditcon").value = "archives_sg_edit.php";
+					$Obj("usermancon").value = "content_sg_list.php";
+				}
+			}
+		</script>
 	</body>
 </html>

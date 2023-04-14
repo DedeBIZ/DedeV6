@@ -7,15 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			function selAll() {
-				var celements = document.getElementsByName('aids[]');
-				for (i = 0; i < celements.length; i++) {
-					if (!celements[i].checked) celements[i].checked = true;
-					else celements[i].checked = false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form2" action="article_keywords_main.php">
@@ -71,5 +62,14 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function selAll() {
+				var celements = document.getElementsByName('aids[]');
+				for (i = 0; i < celements.length; i++) {
+					if (!celements[i].checked) celements[i].checked = true;
+					else celements[i].checked = false;
+				}
+			}
+		</script>
 	</body>
 </html>

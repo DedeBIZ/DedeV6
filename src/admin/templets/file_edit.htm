@@ -18,15 +18,6 @@
 		<script src="js/mode/clike/clike.js"></script>
 		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function Post() {
-				if (document.form1.filename.value == "") {
-					ShowMsg("文件名不能为空");
-					document.form1.filename.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form method="POST" action="file_manage_control.php" name=form1 onSubmit="return Post()">
@@ -62,6 +53,15 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function Post() {
+				if (document.form1.filename.value == "") {
+					ShowMsg("文件名不能为空");
+					document.form1.filename.focus();
+					return false;
+				}
+			}
+		</script>
 		<script>
 			var editor = CodeMirror.fromTextArea(document.getElementById('str'), {
 				lineNumbers: true,

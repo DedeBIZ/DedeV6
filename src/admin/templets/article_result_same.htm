@@ -4,44 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>文档重复检测</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			//获得选中文件的文件名
-			function getCheckboxItem() {
-				var allSel = "";
-				if (document.form2.arcTitle.value) return document.form2.arcTitle.value;
-				for (i = 0; i < document.form2.arcTitle.length; i++) {
-					if (document.form2.arcTitle[i].checked) {
-						if (allSel == "")
-							allSel = document.form2.arcTitle[i].value;
-						else
-							allSel = allSel + "`" + document.form2.arcTitle[i].value;
-					}
-				}
-				return allSel;
-			}
-			//删除文档
-			function delArc() {
-				var qstr = getCheckboxItem();
-				document.form2.titles.value = qstr;
-				document.form2.submit();
-			}
-			function selAll() {
-				for (i = 0; i < document.form2.arcTitle.length; i++) {
-					if (!document.form2.arcTitle[i].checked) {
-						document.form2.arcTitle[i].checked = true;
-					}
-				}
-			}
-			function noSelAll() {
-				for (i = 0; i < document.form2.arcTitle.length; i++) {
-					if (document.form2.arcTitle[i].checked) {
-						document.form2.arcTitle[i].checked = false;
-					}
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form2" method="POST" action="article_test_same.php">
@@ -85,5 +50,41 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			//获得选中文件的文件名
+			function getCheckboxItem() {
+				var allSel = "";
+				if (document.form2.arcTitle.value) return document.form2.arcTitle.value;
+				for (i = 0; i < document.form2.arcTitle.length; i++) {
+					if (document.form2.arcTitle[i].checked) {
+						if (allSel == "")
+							allSel = document.form2.arcTitle[i].value;
+						else
+							allSel = allSel + "`" + document.form2.arcTitle[i].value;
+					}
+				}
+				return allSel;
+			}
+			//删除文档
+			function delArc() {
+				var qstr = getCheckboxItem();
+				document.form2.titles.value = qstr;
+				document.form2.submit();
+			}
+			function selAll() {
+				for (i = 0; i < document.form2.arcTitle.length; i++) {
+					if (!document.form2.arcTitle[i].checked) {
+						document.form2.arcTitle[i].checked = true;
+					}
+				}
+			}
+			function noSelAll() {
+				for (i = 0; i < document.form2.arcTitle.length; i++) {
+					if (document.form2.arcTitle[i].checked) {
+						document.form2.arcTitle[i].checked = false;
+					}
+				}
+			}
+		</script>
 	</body>
 </html>

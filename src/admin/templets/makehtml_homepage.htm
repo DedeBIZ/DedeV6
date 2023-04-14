@@ -9,16 +9,6 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="js/main.js"></script>
-		<script>
-			function SelectTemplets(fname) {
-				var pos = GetWinPos(800, 600);
-				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin","scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-			}
-			function htmlSubmit() {
-				form1.submit();
-				$("#dedebiz_admin").val("");
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="makehtml_homepage.php" target="stafrm" method="post">
@@ -110,5 +100,15 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function SelectTemplets(fname) {
+				var pos = GetWinPos(800, 600);
+				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin","scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+			}
+			function htmlSubmit() {
+				form1.submit();
+				$("#dedebiz_admin").val("");
+			}
+		</script>
 	</body>
 </html>

@@ -10,26 +10,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function checkSubmit() {
-				if (document.form1.userid.value == "") {
-					ShowMsg("会员id不能为空");
-					document.form1.userid.focus();
-					return false;
-				}
-				if (document.form1.uname.value == "") {
-					ShowMsg("会员名不能为空");
-					document.form1.uname.focus();
-					return false;
-				}
-				if (document.form1.pwd.value == "") {
-					ShowMsg("会员密码不能为空");
-					document.form1.pwd.focus();
-					return false;
-				}
-				return true;
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="sys_admin_user_add.php" onSubmit="return checkSubmit();" method="post">
@@ -106,5 +86,25 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function checkSubmit() {
+				if (document.form1.userid.value == "") {
+					ShowMsg("会员id不能为空");
+					document.form1.userid.focus();
+					return false;
+				}
+				if (document.form1.uname.value == "") {
+					ShowMsg("会员名不能为空");
+					document.form1.uname.focus();
+					return false;
+				}
+				if (document.form1.pwd.value == "") {
+					ShowMsg("会员密码不能为空");
+					document.form1.pwd.focus();
+					return false;
+				}
+				return true;
+			}
+		</script>
 	</body>
 </html>

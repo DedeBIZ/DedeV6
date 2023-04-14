@@ -230,7 +230,7 @@ if (!function_exists('CheckSql')) {
     }
 }
 /**
- *  载入小助手，系统默认载入小助手示例：
+ *  载入小助手，系统默认载入小助手示例
  *  <code>
  *  if (!function_exists('HelloDede'))
  *  {
@@ -300,8 +300,6 @@ if (!function_exists('file_put_contents')) {
         }
     }
 }
-$arrs1 = array();
-$arrs2 = array();
 /**
  *  短消息函数，可以在某个动作处理后友好的系统提示
  *

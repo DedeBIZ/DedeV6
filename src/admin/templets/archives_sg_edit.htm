@@ -17,15 +17,6 @@
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/main.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
-		<script>
-			function checkSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("请输入文档标题");
-					document.form1.title.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="archives_sg_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
@@ -142,5 +133,14 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("请输入文档标题");
+					document.form1.title.focus();
+					return false;
+				}
+			}
+		</script>
 	</body>
 </html>

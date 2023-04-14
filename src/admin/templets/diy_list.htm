@@ -7,20 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-		function selAll(){
-			var a = document.getElementsByTagName("input");
-			for (var i = 0; i < a.length; i++){
-				if (a[i].type == "checkbox") a[i].checked = true;
-			}
-		}
-		function noSelAll(){
-			var a = document.getElementsByTagName("input");
-			for (var i = 0; i < a.length; i++){
-				if (a[i].type == "checkbox") a[i].checked = false;
-			}
-		}
-		</script>
 	</head>
 	<body>
 		<form action="diy_list.php" method="post">
@@ -69,5 +55,19 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+		function selAll(){
+			var a = document.getElementsByTagName("input");
+			for (var i = 0; i < a.length; i++){
+				if (a[i].type == "checkbox") a[i].checked = true;
+			}
+		}
+		function noSelAll(){
+			var a = document.getElementsByTagName("input");
+			for (var i = 0; i < a.length; i++){
+				if (a[i].type == "checkbox") a[i].checked = false;
+			}
+		}
+		</script>
 	</body>
 </html>

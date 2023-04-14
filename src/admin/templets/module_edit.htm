@@ -8,30 +8,6 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/webajax.js"></script>
-		<script>
-			function ShowHideField(cbox,vid,nid)
-			{
-				var cboxobj = document.getElementById(cbox);
-				if (cboxobj.checked)
-				{
-					document.getElementById(nid).style.display = 'block';
-					document.getElementById(vid).style.display = 'none';
-				} else {
-					document.getElementById(nid).style.display = 'none';
-					document.getElementById(vid).style.display = 'block';
-				}
-			}
-			function ShowHideMb(rbox1,nid)
-			{
-				var rboxobj = document.getElementById(rbox1);
-				if (rboxobj.checked)
-				{
-					document.getElementById(nid).style.display = 'none';
-				} else {
-					document.getElementById(nid).style.display = 'block';
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
@@ -169,5 +145,27 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function ShowHideField(cbox,vid,nid)
+			{
+				var cboxobj = document.getElementById(cbox);
+				if (cboxobj.checked) {
+					document.getElementById(nid).style.display = 'block';
+					document.getElementById(vid).style.display = 'none';
+				} else {
+					document.getElementById(nid).style.display = 'none';
+					document.getElementById(vid).style.display = 'block';
+				}
+			}
+			function ShowHideMb(rbox1,nid)
+			{
+				var rboxobj = document.getElementById(rbox1);
+				if (rboxobj.checked) {
+					document.getElementById(nid).style.display = 'none';
+				} else {
+					document.getElementById(nid).style.display = 'block';
+				}
+			}
+		</script>
 	</body>
 </html>

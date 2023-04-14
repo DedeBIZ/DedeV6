@@ -10,23 +10,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function checkSubmit()
-			{
-				if (document.form2.email.value=="")
-				{
-				  document.form2.email.focus();
-				  ShowMsg("邮箱不能为空");
-				  return false;
-				}
-				if (document.form2.uname.value=="")
-				{
-				  document.form2.uname.focus();
-				  ShowMsg("会员昵称不能为空");
-				  return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
@@ -185,5 +168,20 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function checkSubmit()
+			{
+				if (document.form2.email.value=="") {
+					document.form2.email.focus();
+					ShowMsg("邮箱不能为空");
+					return false;
+				}
+				if (document.form2.uname.value=="") {
+					document.form2.uname.focus();
+					ShowMsg("会员昵称不能为空");
+					return false;
+				}
+			}
+		</script>
 	</body>
 </html>

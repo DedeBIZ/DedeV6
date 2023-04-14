@@ -7,52 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			//获得选中项
-			function getCheckboxItem() {
-				var allSel = "";
-				if (document.form1.aids.value) return document.form1.aids.value;
-				for (i = 0; i < document.form1.aids.length; i++) {
-					if (document.form1.aids[i].checked) {
-						if (allSel == "")
-							allSel = document.form1.aids[i].value;
-						else
-							allSel = allSel + "`" + document.form1.aids[i].value;
-					}
-				}
-				return allSel;
-			}
-			function ReSel() {
-				for (i = 0; i < document.form1.aids.length; i++) {
-					if (document.form1.aids[i].checked) document.form1.aids[i].checked = false;
-					else document.form1.aids[i].checked = true;
-				}
-			}
-			function DelSel() {
-				var nid = getCheckboxItem();
-				if (nid == "") {
-					alert("请选择要删除消费记录");
-					return;
-				}
-				location.href = "member_do.php?dopost=deoperations&nid=" + nid;
-			}
-			function UpSel() {
-				var nid = getCheckboxItem();
-				if (nid == "") {
-					alert("请选择要修改消费记录");
-					return;
-				}
-				location.href = "member_do.php?dopost=upoperations&nid=" + nid;
-			}
-			function OkSel() {
-				var nid = getCheckboxItem();
-				if (nid == "") {
-					alert("请选择要修改消费记录");
-					return;
-				}
-				location.href = "member_do.php?dopost=okoperations&nid=" + nid;
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form2" method="get" action="member_operations.php">
@@ -109,5 +63,51 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			//获得选中项
+			function getCheckboxItem() {
+				var allSel = "";
+				if (document.form1.aids.value) return document.form1.aids.value;
+				for (i = 0; i < document.form1.aids.length; i++) {
+					if (document.form1.aids[i].checked) {
+						if (allSel == "")
+							allSel = document.form1.aids[i].value;
+						else
+							allSel = allSel + "`" + document.form1.aids[i].value;
+					}
+				}
+				return allSel;
+			}
+			function ReSel() {
+				for (i = 0; i < document.form1.aids.length; i++) {
+					if (document.form1.aids[i].checked) document.form1.aids[i].checked = false;
+					else document.form1.aids[i].checked = true;
+				}
+			}
+			function DelSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择要删除消费记录");
+					return;
+				}
+				location.href = "member_do.php?dopost=deoperations&nid=" + nid;
+			}
+			function UpSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择要修改消费记录");
+					return;
+				}
+				location.href = "member_do.php?dopost=upoperations&nid=" + nid;
+			}
+			function OkSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择要修改消费记录");
+					return;
+				}
+				location.href = "member_do.php?dopost=okoperations&nid=" + nid;
+			}
+		</script>
 	</body>
 </html>

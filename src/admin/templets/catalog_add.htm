@@ -9,97 +9,6 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			var channelArray = new Array();
-			<?php
-			$i = 0;
-			foreach($channelArray as $k=> $arr)
-			{
-				echo "channelArray[$k] = \"{$arr['nid']}\";";
-			}
-			?>
-			function Nav() {
-				if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-				else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-				else return "OT";
-			}
-			function SelectTemplets(fname) {
-				var pos = GetWinPos(800,600);
-				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-			}
-			function ShowHide(objname) {
-				var obj = document.getElementById(objname);
-				if (obj.style.display != "none")
-					obj.style.display = "none";
-				else {
-					if (Nav() == 'IE') obj.style.display = "block";
-					else obj.style.display = "block";
-				}
-			}
-			function ShowObj(objname) {
-				var obj = document.getElementById(objname);
-				if (Nav() == 'IE') obj.style.display = "block";
-				else obj.style.display = "block";
-			}
-			function HideObj(objname) {
-				var obj = document.getElementById(objname);
-				obj.style.display = "none";
-			}
-			function CheckTypeDir() {
-				var upinyin = document.getElementById('upinyin');
-				var tpobj = document.getElementById('typedir');
-				if (upinyin.checked) tpobj.style.display = "none";
-				else tpobj.style.display = "inline-block";
-			}
-			function ParTemplet(obj) {
-				var sevvalue = channelArray[obj.value];
-				var tobj = document.getElementById('smclass');
-				var tempindex = document.getElementsByName('tempindex');
-				var templist = document.getElementsByName('templist');
-				var temparticle = document.getElementsByName('temparticle');
-				var dfstyle = document.getElementsByName('dfstyle');
-				var dfstyleValue = dfstyle[0].value;
-				tempindex[0].value = dfstyleValue + "/index_" + sevvalue + ".htm";
-				templist[0].value = dfstyleValue + "/list_" + sevvalue + ".htm";
-				temparticle[0].value = dfstyleValue + "/article_" + sevvalue + ".htm";
-				if (obj.value < 0) {
-					if (Nav() == 'IE') tobj.style.display = "block";
-					else tobj.style.display = "block";
-				} else {
-					tobj.style.display = "none";
-				}
-			}
-			function checkSubmit() {
-				if (document.form1.typename.value == "") {
-					alert("栏目名称不能为空");
-					document.form1.typename.focus();
-					return false;
-				}
-				return true;
-			}
-			function CheckPathSet() {
-				var surl = document.getElementById("siteurl");
-				var sreid = document.getElementById("reid");
-				var mysel = document.getElementById("truepath3");
-				if (surl.value != "") {
-					if (sreid.value == "0" || sreid.value == "") {
-						mysel.checked = true;
-					}
-				}
-			}
-			function CheckCross() {
-				var cross2 = document.getElementById('cross2');
-				var crossid = document.getElementById('crossid');
-				if (cross2.checked) crossid.style.display = 'block';
-				else crossid.style.display = 'none';
-			}
-			function makeAPIKey(){
-				var apikey = document.getElementById('apikey');
-				jQuery.get("sys_info.php?dopost=make_encode", function(data) {
-					jQuery("#apikey").val(data);
-				});
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
@@ -371,5 +280,96 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			var channelArray = new Array();
+			<?php
+			$i = 0;
+			foreach($channelArray as $k=> $arr)
+			{
+				echo "channelArray[$k] = \"{$arr['nid']}\";";
+			}
+			?>
+			function Nav() {
+				if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
+				else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+				else return "OT";
+			}
+			function SelectTemplets(fname) {
+				var pos = GetWinPos(800,600);
+				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+			}
+			function ShowHide(objname) {
+				var obj = document.getElementById(objname);
+				if (obj.style.display != "none")
+					obj.style.display = "none";
+				else {
+					if (Nav() == 'IE') obj.style.display = "block";
+					else obj.style.display = "block";
+				}
+			}
+			function ShowObj(objname) {
+				var obj = document.getElementById(objname);
+				if (Nav() == 'IE') obj.style.display = "block";
+				else obj.style.display = "block";
+			}
+			function HideObj(objname) {
+				var obj = document.getElementById(objname);
+				obj.style.display = "none";
+			}
+			function CheckTypeDir() {
+				var upinyin = document.getElementById('upinyin');
+				var tpobj = document.getElementById('typedir');
+				if (upinyin.checked) tpobj.style.display = "none";
+				else tpobj.style.display = "inline-block";
+			}
+			function ParTemplet(obj) {
+				var sevvalue = channelArray[obj.value];
+				var tobj = document.getElementById('smclass');
+				var tempindex = document.getElementsByName('tempindex');
+				var templist = document.getElementsByName('templist');
+				var temparticle = document.getElementsByName('temparticle');
+				var dfstyle = document.getElementsByName('dfstyle');
+				var dfstyleValue = dfstyle[0].value;
+				tempindex[0].value = dfstyleValue + "/index_" + sevvalue + ".htm";
+				templist[0].value = dfstyleValue + "/list_" + sevvalue + ".htm";
+				temparticle[0].value = dfstyleValue + "/article_" + sevvalue + ".htm";
+				if (obj.value < 0) {
+					if (Nav() == 'IE') tobj.style.display = "block";
+					else tobj.style.display = "block";
+				} else {
+					tobj.style.display = "none";
+				}
+			}
+			function checkSubmit() {
+				if (document.form1.typename.value == "") {
+					alert("栏目名称不能为空");
+					document.form1.typename.focus();
+					return false;
+				}
+				return true;
+			}
+			function CheckPathSet() {
+				var surl = document.getElementById("siteurl");
+				var sreid = document.getElementById("reid");
+				var mysel = document.getElementById("truepath3");
+				if (surl.value != "") {
+					if (sreid.value == "0" || sreid.value == "") {
+						mysel.checked = true;
+					}
+				}
+			}
+			function CheckCross() {
+				var cross2 = document.getElementById('cross2');
+				var crossid = document.getElementById('crossid');
+				if (cross2.checked) crossid.style.display = 'block';
+				else crossid.style.display = 'none';
+			}
+			function makeAPIKey(){
+				var apikey = document.getElementById('apikey');
+				jQuery.get("sys_info.php?dopost=make_encode", function(data) {
+					jQuery("#apikey").val(data);
+				});
+			}
+		</script>
 	</body>
 </html>

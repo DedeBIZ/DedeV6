@@ -7,50 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			//获得选中文件的数据表
-			function getCheckboxItem() {
-				var myform = document.form1;
-				var allSel = "";
-				if (myform.bakfile.value) return myform.bakfile.value;
-				for (i = 0; i < myform.bakfile.length; i++) {
-					if (myform.bakfile[i].checked) {
-						if (allSel == "")
-							allSel = myform.bakfile[i].value;
-						else
-							allSel = allSel + "," + myform.bakfile[i].value;
-					}
-				}
-				return allSel;
-			}
-			//反选
-			function ReSel() {
-				var myform = document.form1;
-				for (i = 0; i < myform.bakfile.length; i++) {
-					if (myform.bakfile[i].checked) myform.bakfile[i].checked = false;
-					else myform.bakfile[i].checked = true;
-				}
-			}
-			//全选
-			function SelAll() {
-				var myform = document.form1;
-				for (i = 0; i < myform.bakfile.length; i++) {
-					myform.bakfile[i].checked = true;
-				}
-			}
-			//取消
-			function NoneSel() {
-				var myform = document.form1;
-				for (i = 0; i < myform.bakfile.length; i++) {
-					myform.bakfile[i].checked = false;
-				}
-			}
-			function checkSubmit() {
-				var myform = document.form1;
-				myform.bakfiles.value = getCheckboxItem();
-				return true;
-			}
-		</script>
 	</head>
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
@@ -104,5 +60,49 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			//获得选中文件的数据表
+			function getCheckboxItem() {
+				var myform = document.form1;
+				var allSel = "";
+				if (myform.bakfile.value) return myform.bakfile.value;
+				for (i = 0; i < myform.bakfile.length; i++) {
+					if (myform.bakfile[i].checked) {
+						if (allSel == "")
+							allSel = myform.bakfile[i].value;
+						else
+							allSel = allSel + "," + myform.bakfile[i].value;
+					}
+				}
+				return allSel;
+			}
+			//反选
+			function ReSel() {
+				var myform = document.form1;
+				for (i = 0; i < myform.bakfile.length; i++) {
+					if (myform.bakfile[i].checked) myform.bakfile[i].checked = false;
+					else myform.bakfile[i].checked = true;
+				}
+			}
+			//全选
+			function SelAll() {
+				var myform = document.form1;
+				for (i = 0; i < myform.bakfile.length; i++) {
+					myform.bakfile[i].checked = true;
+				}
+			}
+			//取消
+			function NoneSel() {
+				var myform = document.form1;
+				for (i = 0; i < myform.bakfile.length; i++) {
+					myform.bakfile[i].checked = false;
+				}
+			}
+			function checkSubmit() {
+				var myform = document.form1;
+				myform.bakfiles.value = getCheckboxItem();
+				return true;
+			}
+		</script>
 	</body>
 </html>

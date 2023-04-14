@@ -10,20 +10,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function checkSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("页面名称不能为空");
-					document.form1.title.focus();
-					return false;
-				}
-				if (document.form1.nfilename.value == "") {
-					ShowMsg("文件名不能为空");
-					document.form1.nfilename.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form action="templets_one_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
@@ -92,5 +78,19 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("页面名称不能为空");
+					document.form1.title.focus();
+					return false;
+				}
+				if (document.form1.nfilename.value == "") {
+					ShowMsg("文件名不能为空");
+					document.form1.nfilename.focus();
+					return false;
+				}
+			}
+		</script>
 	</body>
 </html>

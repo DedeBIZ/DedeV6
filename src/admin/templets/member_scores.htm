@@ -9,17 +9,6 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function CheckAll(form, prefix, checkall) {
-				var checkall = checkall ? checkall : 'chkall';
-				for (var i = 0; i < form.elements.length; i++) {
-					var e = form.elements[i];
-					if (e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix)))) {
-						e.checked = form.elements[checkall].checked;
-					}
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form action="member_scores.php" method="post">
@@ -67,5 +56,16 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function CheckAll(form, prefix, checkall) {
+				var checkall = checkall ? checkall : 'chkall';
+				for (var i = 0; i < form.elements.length; i++) {
+					var e = form.elements[i];
+					if (e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix)))) {
+						e.checked = form.elements[checkall].checked;
+					}
+				}
+			}
+		</script>
 	</body>
 </html>

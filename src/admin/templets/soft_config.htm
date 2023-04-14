@@ -10,14 +10,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function AddServer() {
-				if (document.form1.serverurl.value == "" || document.form1.serverurl.value == "http://") { ShowMsg('服务器网址不能为空'); return; }
-				if (document.form1.servername.value == "") { ShowMsg('服务器名称不能为空'); return; }
-				if (document.form1.servertype.value == "") { ShowMsg('服务器类型不能为空'); return; }
-				document.form1.sites.value += document.form1.serverurl.value + " | " + document.form1.servername.value + " | " + document.form1.servertype.value + "";
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="soft_config.php" method="post">
@@ -122,5 +114,13 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function AddServer() {
+				if (document.form1.serverurl.value == "" || document.form1.serverurl.value == "http://") { ShowMsg('服务器网址不能为空'); return; }
+				if (document.form1.servername.value == "") { ShowMsg('服务器名称不能为空'); return; }
+				if (document.form1.servertype.value == "") { ShowMsg('服务器类型不能为空'); return; }
+				document.form1.sites.value += document.form1.serverurl.value + " | " + document.form1.servername.value + " | " + document.form1.servertype.value + "";
+			}
+		</script>
 	</body>
 </html>

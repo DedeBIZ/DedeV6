@@ -9,73 +9,6 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			var $ = jQuery;
-			$(document).ready(function () {
-				//删除按钮事件
-				$("#addQuick .del").click(function () {
-					$(this).parents(".repeat").remove();
-				});
-				//添加按钮事件
-				$("#add").click(function () {
-					var id = $("#addQuick tr").prevAll("tr").length + 1;
-					$("#addQuick tr:eq(1)").clone(true).addClass("repeat")
-					.find(".rank input")
-					.attr("value", function () { return id })
-					.end()
-					.find(".pubinputs")
-					.attr("name", function () { return this.name + id })
-					.attr("id", function () { return this.id + id })
-					.end()
-					.appendTo($("#addQuick"));
-				});
-				//删除按钮事件
-				$("#addQuickRel .del").click(function () {
-					$(this).parents(".repeat").remove();
-				});
-				//添加按钮事件
-				$("#addrel").click(function () {
-					var id = $("#addQuickRel tr").prevAll("tr").length + 1;
-					$("#addQuickRel tr:eq(1)").clone(true).addClass("repeat")
-					.find(".rank input")
-					.attr("value", function () { return id })
-					.end()
-					.find(".pubinputs")
-					.attr("name", function () { return this.name + id })
-					.attr("id", function () { return this.id + id })
-					.end()
-					.appendTo($("#addQuickRel"));
-				});
-			});
-			function ShowHide(objname) {
-				var obj = document.getElementById(objname);
-				if (obj.style.display == "block")
-					obj.style.display = "none";
-				else
-					obj.style.display = "block";
-			};
-			function ShowObj(objname) {
-				var obj = document.getElementById(objname);
-				obj.style.display = "block";
-			};
-			function HideObj(objname) {
-				var obj = document.getElementById(objname);
-				obj.style.display = "none";
-			};
-			function showSeltype(objname) {
-				if (objname.value != 0) {
-					$("#addQuickRel").show();
-					$("#pathtype").show();
-					$("#addQuick").hide();
-					$("#savetype").val('rel');
-				} else {
-					$("#addQuickRel").hide();
-					$("#addQuick").show();
-					$("#pathtype").hide();
-					$("#savetype").val('');
-				}
-			};
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="catalog_add.php" method="post">
@@ -235,5 +168,72 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			var $ = jQuery;
+			$(document).ready(function () {
+				//删除按钮事件
+				$("#addQuick .del").click(function () {
+					$(this).parents(".repeat").remove();
+				});
+				//添加按钮事件
+				$("#add").click(function () {
+					var id = $("#addQuick tr").prevAll("tr").length + 1;
+					$("#addQuick tr:eq(1)").clone(true).addClass("repeat")
+					.find(".rank input")
+					.attr("value", function () { return id })
+					.end()
+					.find(".pubinputs")
+					.attr("name", function () { return this.name + id })
+					.attr("id", function () { return this.id + id })
+					.end()
+					.appendTo($("#addQuick"));
+				});
+				//删除按钮事件
+				$("#addQuickRel .del").click(function () {
+					$(this).parents(".repeat").remove();
+				});
+				//添加按钮事件
+				$("#addrel").click(function () {
+					var id = $("#addQuickRel tr").prevAll("tr").length + 1;
+					$("#addQuickRel tr:eq(1)").clone(true).addClass("repeat")
+					.find(".rank input")
+					.attr("value", function () { return id })
+					.end()
+					.find(".pubinputs")
+					.attr("name", function () { return this.name + id })
+					.attr("id", function () { return this.id + id })
+					.end()
+					.appendTo($("#addQuickRel"));
+				});
+			});
+			function ShowHide(objname) {
+				var obj = document.getElementById(objname);
+				if (obj.style.display == "block")
+					obj.style.display = "none";
+				else
+					obj.style.display = "block";
+			};
+			function ShowObj(objname) {
+				var obj = document.getElementById(objname);
+				obj.style.display = "block";
+			};
+			function HideObj(objname) {
+				var obj = document.getElementById(objname);
+				obj.style.display = "none";
+			};
+			function showSeltype(objname) {
+				if (objname.value != 0) {
+					$("#addQuickRel").show();
+					$("#pathtype").show();
+					$("#addQuick").hide();
+					$("#savetype").val('rel');
+				} else {
+					$("#addQuickRel").hide();
+					$("#addQuick").show();
+					$("#pathtype").hide();
+					$("#savetype").val('');
+				}
+			};
+		</script>
 	</body>
 </html>

@@ -11,36 +11,6 @@
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function ShowFields() {
-				var exptable = $DE('exptable').options[$DE('exptable').selectedIndex].value;
-				var queryUrl = "sys_data_replace.php?exptable=" + exptable + "&action=getfields";
-				fetch(queryUrl).then(resp => {
-					if (resp.ok) {
-						return resp.text()
-					}
-					throw new Error('x');
-				}).then((d) => {
-					$DE('fields').innerHTML = d;
-				}).catch((error) => {
-					$DE('fields').innerHTML = errMsg;
-				});
-			}
-			function CheckSubmit() {
-				if ($DE('rpfield').value == "") {
-					ShowMsg("您选择的操作为手工指定字段，但您并没指定");
-					return false;
-				}
-				if ($DE('rpstring').value == "") {
-					ShowMsg("您没指定要替换的字符串");
-					return false;
-				}
-				return true;
-			}
-			function pf(v) {
-				$DE('rpfield').value = v;
-			}
-		</script>
 	</head>
 	<body>
 		<form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
@@ -129,5 +99,35 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function ShowFields() {
+				var exptable = $DE('exptable').options[$DE('exptable').selectedIndex].value;
+				var queryUrl = "sys_data_replace.php?exptable=" + exptable + "&action=getfields";
+				fetch(queryUrl).then(resp => {
+					if (resp.ok) {
+						return resp.text()
+					}
+					throw new Error('x');
+				}).then((d) => {
+					$DE('fields').innerHTML = d;
+				}).catch((error) => {
+					$DE('fields').innerHTML = errMsg;
+				});
+			}
+			function CheckSubmit() {
+				if ($DE('rpfield').value == "") {
+					ShowMsg("您选择的操作为手工指定字段，但您并没指定");
+					return false;
+				}
+				if ($DE('rpstring').value == "") {
+					ShowMsg("您没指定要替换的字符串");
+					return false;
+				}
+				return true;
+			}
+			function pf(v) {
+				$DE('rpfield').value = v;
+			}
+		</script>
 	</body>
 </html>

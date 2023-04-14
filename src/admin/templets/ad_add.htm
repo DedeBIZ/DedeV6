@@ -12,43 +12,6 @@
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<style>.typetab{text-align:left}.typetab ul{list-style:none}.typetab ul li{float:left;width:64px;height:28px;line-height:28px;background:#f5f5f5;text-align:center;cursor:pointer}.typetab ul .act{background:#e9ecef}.i_table{border:1px solid #eee}</style>
-		<script>
-			function checkSubmit() {
-				if (document.form1.tagname.value == "") {
-					alert("广告标识不能为空");
-					document.form1.tagname.focus();
-					return false;
-				}
-			}
-			$(document).ready(function () {
-				$('.datepicker').daterangepicker({
-					"singleDatePicker": true,
-					"autoApply": true,
-					"showDropdowns": true,
-					"linkedCalendars": false,
-					"timePicker": true,
-					"timePicker24Hour": true,
-					//"timePickerSeconds": true,
-					"showCustomRangeLabel": false,
-					ranges: {
-						'今日': [moment(), moment()],
-						'昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-						'本月': [moment().startOf('month'), moment().startOf('month')],
-						'上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
-					},
-					"locale": {
-						format: 'YYYY-MM-DD HH:mm',
-						applyLabel: '确定',
-						cancelLabel: '取消',
-						daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
-						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-						firstDay: 1
-					}
-				}, function (start) {
-					$(this).val(start.format("YYYY-MM-DD HH:mm"));
-				});
-			})
-		</script>
 	</head>
 	<body>
 		<form action="ad_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
@@ -206,6 +169,43 @@
 				</table>
 			</div>
 		</div>
+		<script>
+			function checkSubmit() {
+				if (document.form1.tagname.value == "") {
+					alert("广告标识不能为空");
+					document.form1.tagname.focus();
+					return false;
+				}
+			}
+			$(document).ready(function () {
+				$('.datepicker').daterangepicker({
+					"singleDatePicker": true,
+					"autoApply": true,
+					"showDropdowns": true,
+					"linkedCalendars": false,
+					"timePicker": true,
+					"timePicker24Hour": true,
+					//"timePickerSeconds": true,
+					"showCustomRangeLabel": false,
+					ranges: {
+						'今日': [moment(), moment()],
+						'昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+						'本月': [moment().startOf('month'), moment().startOf('month')],
+						'上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+					},
+					"locale": {
+						format: 'YYYY-MM-DD HH:mm',
+						applyLabel: '确定',
+						cancelLabel: '取消',
+						daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+						firstDay: 1
+					}
+				}, function (start) {
+					$(this).val(start.format("YYYY-MM-DD HH:mm"));
+				});
+			})
+		</script>
 		<script>
 			(function ($) {
 				function showcode(idName) {

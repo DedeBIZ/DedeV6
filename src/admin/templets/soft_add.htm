@@ -17,32 +17,6 @@
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/main.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
-		<script>
-			function checkSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("请输入文档标题");
-					return false;
-				}
-				if (document.form1.typeid.value == 0) {
-					ShowMsg("请选择文档栏目");
-					return false;
-				}
-			}
-			var startNum = 0;
-			function MakeUpload() {
-				var upfield = document.getElementById("uploadfield");
-				var endNum = parseInt(document.form1.picnum.value) + startNum - 1;
-				if (endNum > 30) endNum = 30;
-				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<div class='py-2'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='admin-input-lg'> 服务器名称：<input type='text' name='servermsg" + startNum + "' class='admin-input-sm'></div>";
-				}
-			}
-			function ShowHideAddr() {
-				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
-				document.getElementById('morelink').style.height = '100%';
-				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏地址' : '显示地址');
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="soft_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
@@ -491,6 +465,32 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("请输入文档标题");
+					return false;
+				}
+				if (document.form1.typeid.value == 0) {
+					ShowMsg("请选择文档栏目");
+					return false;
+				}
+			}
+			var startNum = 0;
+			function MakeUpload() {
+				var upfield = document.getElementById("uploadfield");
+				var endNum = parseInt(document.form1.picnum.value) + startNum - 1;
+				if (endNum > 30) endNum = 30;
+				for (startNum; startNum <= endNum; startNum++) {
+					upfield.innerHTML += "<div class='py-2'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='admin-input-lg'> 服务器名称：<input type='text' name='servermsg" + startNum + "' class='admin-input-sm'></div>";
+				}
+			}
+			function ShowHideAddr() {
+				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
+				document.getElementById('morelink').style.height = '100%';
+				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏地址' : '显示地址');
+			}
+		</script>
 		<script>InitPage();</script>
 	</body>
 </html>

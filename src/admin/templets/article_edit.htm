@@ -18,17 +18,6 @@
 		<script src="js/main.js"></script>
 		<script src="js/handlers.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
-		<script>
-			var swfu = null;
-			var arctype = 'article';
-			function checkSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("请输入文档标题");
-					document.form1.title.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="article_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
@@ -312,6 +301,17 @@
 			</table>
 		</form>
 		<div id="__tmpbody" style="display:none"></div>
+		<script>
+			var swfu = null;
+			var arctype = 'article';
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("请输入文档标题");
+					document.form1.title.focus();
+					return false;
+				}
+			}
+		</script>
 		<script>InitPage();</script>
 	</body>
 </html>

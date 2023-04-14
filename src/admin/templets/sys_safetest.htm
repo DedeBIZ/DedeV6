@@ -10,38 +10,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function LoadCtTest() {
-				var filetype = $Obj('filetype').value;
-				var info = $Obj('info').value;
-				$Obj('loaddiv').style.display = 'block';
-				fetch('sys_safetest.php?action=test&filetype=' + filetype + "&info=" + info).then(resp=>{
-					if (resp.ok) {
-					   return resp.text()
-					}
-					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
-					$DE('messagetd').innerHTML = d;
-					$Obj('loaddiv').style.display = 'none';
-				}).catch((error) => {
-					console.log(error);
-				});
-			}
-			function LoadCtClear() {
-				$Obj('loaddiv').style.display = 'block';
-				fetch('sys_safetest.php?action=clear').then(resp=>{
-					if (resp.ok) {
-						return resp.text()
-					}
-					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
-					$DE('messagetd').innerHTML = d;
-					$Obj('loaddiv').style.display = 'none';
-				}).catch((error) => {
-					$DE('messagetd').innerHTML = errMsg;
-				});
-			}
-		</script>
 	</head>
 	<body>
 		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
@@ -77,5 +45,37 @@
 				</td>
 			</tr>
 		</table>
+		<script>
+			function LoadCtTest() {
+				var filetype = $Obj('filetype').value;
+				var info = $Obj('info').value;
+				$Obj('loaddiv').style.display = 'block';
+				fetch('sys_safetest.php?action=test&filetype=' + filetype + "&info=" + info).then(resp=>{
+					if (resp.ok) {
+					   return resp.text()
+					}
+					throw new Error('系统错误，无法获取数据');
+				}).then((d)=>{
+					$DE('messagetd').innerHTML = d;
+					$Obj('loaddiv').style.display = 'none';
+				}).catch((error) => {
+					console.log(error);
+				});
+			}
+			function LoadCtClear() {
+				$Obj('loaddiv').style.display = 'block';
+				fetch('sys_safetest.php?action=clear').then(resp=>{
+					if (resp.ok) {
+						return resp.text()
+					}
+					throw new Error('系统错误，无法获取数据');
+				}).then((d)=>{
+					$DE('messagetd').innerHTML = d;
+					$Obj('loaddiv').style.display = 'none';
+				}).catch((error) => {
+					$DE('messagetd').innerHTML = errMsg;
+				});
+			}
+		</script>
 	</body>
 </html>

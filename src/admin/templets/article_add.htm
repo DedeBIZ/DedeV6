@@ -18,19 +18,6 @@
 		<script src="js/main.js"></script>
 		<script src="js/handlers.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
-		<script>
-			var arctype = 'article';
-			function checkSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("请输入文档标题");
-					return false;
-				}
-				if (document.form1.typeid.value == 0) {
-					ShowMsg("请选择文档栏目");
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="article_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit()">
@@ -331,6 +318,19 @@
 			</table>
 		</form>
 		<div id="__tmpbody" style="display:none"></div>
+		<script>
+			var arctype = 'article';
+			function checkSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("请输入文档标题");
+					return false;
+				}
+				if (document.form1.typeid.value == 0) {
+					ShowMsg("请选择文档栏目");
+					return false;
+				}
+			}
+		</script>
 		<script>InitPage();</script>
 	</body>
 </html>

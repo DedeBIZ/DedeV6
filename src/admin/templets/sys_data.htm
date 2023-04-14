@@ -11,66 +11,6 @@
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			var posLeft = 200;
-			var posTop = 150;
-			function LoadUrl(surl) {
-				fetch("sys_data.php?" + surl).then(resp => {
-					if (resp.ok) {
-						return resp.text()
-					}
-					throw new Error('x');
-				}).then((d) => {
-					ShowMsg(d, {
-						size: "modal-lg"
-					});
-				}).catch((error) => {
-					ShowMsg("操作失败");
-				});
-			}
-			//获得选中文件的数据表
-			function getCheckboxItem() {
-				var myform = document.form1;
-				var allSel = "";
-				if (myform.tables.value) return myform.tables.value;
-				for (i = 0; i < myform.tables.length; i++) {
-					if (myform.tables[i].checked) {
-						if (allSel == "")
-							allSel = myform.tables[i].value;
-						else
-							allSel = allSel + "," + myform.tables[i].value;
-					}
-				}
-				return allSel;
-			}
-			//反选
-			function ReSel() {
-				var myform = document.form1;
-				for (i = 0; i < myform.tables.length; i++) {
-					if (myform.tables[i].checked) myform.tables[i].checked = false;
-					else myform.tables[i].checked = true;
-				}
-			}
-			//全选
-			function SelAll() {
-				var myform = document.form1;
-				for (i = 0; i < myform.tables.length; i++) {
-					myform.tables[i].checked = true;
-				}
-			}
-			//取消
-			function NoneSel() {
-				var myform = document.form1;
-				for (i = 0; i < myform.tables.length; i++) {
-					myform.tables[i].checked = false;
-				}
-			}
-			function checkSubmit() {
-				var myform = document.form1;
-				myform.tablearr.value = getCheckboxItem();
-				return true;
-			}
-		</script>
 	</head>
 	<body>
 		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
@@ -201,5 +141,65 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			var posLeft = 200;
+			var posTop = 150;
+			function LoadUrl(surl) {
+				fetch("sys_data.php?" + surl).then(resp => {
+					if (resp.ok) {
+						return resp.text()
+					}
+					throw new Error('x');
+				}).then((d) => {
+					ShowMsg(d, {
+						size: "modal-lg"
+					});
+				}).catch((error) => {
+					ShowMsg("操作失败");
+				});
+			}
+			//获得选中文件的数据表
+			function getCheckboxItem() {
+				var myform = document.form1;
+				var allSel = "";
+				if (myform.tables.value) return myform.tables.value;
+				for (i = 0; i < myform.tables.length; i++) {
+					if (myform.tables[i].checked) {
+						if (allSel == "")
+							allSel = myform.tables[i].value;
+						else
+							allSel = allSel + "," + myform.tables[i].value;
+					}
+				}
+				return allSel;
+			}
+			//反选
+			function ReSel() {
+				var myform = document.form1;
+				for (i = 0; i < myform.tables.length; i++) {
+					if (myform.tables[i].checked) myform.tables[i].checked = false;
+					else myform.tables[i].checked = true;
+				}
+			}
+			//全选
+			function SelAll() {
+				var myform = document.form1;
+				for (i = 0; i < myform.tables.length; i++) {
+					myform.tables[i].checked = true;
+				}
+			}
+			//取消
+			function NoneSel() {
+				var myform = document.form1;
+				for (i = 0; i < myform.tables.length; i++) {
+					myform.tables[i].checked = false;
+				}
+			}
+			function checkSubmit() {
+				var myform = document.form1;
+				myform.tablearr.value = getCheckboxItem();
+				return true;
+			}
+		</script>
 	</body>
 </html>

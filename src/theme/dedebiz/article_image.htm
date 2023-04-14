@@ -6,61 +6,13 @@
 		<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
+		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 		<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-		<script>
-			var shortname = "{dede:global.art_shortname/}";
-			var npage = parseInt("{dede:field name = 'nowpage'/}");
-			var totalpage = parseInt("{dede:field name = 'totalpage'/}");
-			var namehand = "{dede:field name='namehand'/}";
-			var displaytype = "{dede:field name='displaytype'/}";
-			var gtimer = null;
-			//大图
-			function dPlayBig() {
-				var imgObj = document.getElementById("bigimg");
-				window.open(imgObj.src);
-			}
-			//停止幻灯
-			function dStopPlay() {
-				if (gtimer) clearTimeout(gtimer);
-				else dPlayNext();
-			}
-			//开始幻灯
-			function dStartPlay() {
-				if (npage != totalpage) {
-					gtimer = setTimeout("dPlayNext()", 10000);
-				}
-			}
-			//上一张
-			function dPlayPre() {
-				if (npage < 2) {
-					ShowMsg("这是第一页");
-				} else {
-					if (npage == 2) {
-						if (namehand != '') location.href = namehand + shortname;
-						else location.href = "view.php?aid={dede:field name='id'/}";
-					} else if (displaytype == 'st' && namehand != '') {
-						location.href = namehand + "_" + (npage - 1) + shortname;
-					} else {
-						location.href = "view.php?aid={dede:field name='id'/}&pageno=" + (npage - 1);
-					}
-				}
-			}
-			//下一张
-			function dPlayNext() {
-				if (npage == totalpage) {
-					ShowMsg("没有了哦");
-			} 	else {
-					if (displaytype == 'st' && namehand != '') location.href = namehand + "_" + (npage + 1) + shortname;
-					else location.href = "view.php?aid={dede:field name='id'/}&pageno=" + (npage + 1);
-				}
-			}
-		</script>
 	</head>
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}
@@ -160,5 +112,53 @@
 			</div>
 		</main>
 		{dede:include filename='foot.htm'/}
+		<script>
+			var shortname = "{dede:global.art_shortname/}";
+			var npage = parseInt("{dede:field name = 'nowpage'/}");
+			var totalpage = parseInt("{dede:field name = 'totalpage'/}");
+			var namehand = "{dede:field name='namehand'/}";
+			var displaytype = "{dede:field name='displaytype'/}";
+			var gtimer = null;
+			//大图
+			function dPlayBig() {
+				var imgObj = document.getElementById("bigimg");
+				window.open(imgObj.src);
+			}
+			//停止幻灯
+			function dStopPlay() {
+				if (gtimer) clearTimeout(gtimer);
+				else dPlayNext();
+			}
+			//开始幻灯
+			function dStartPlay() {
+				if (npage != totalpage) {
+					gtimer = setTimeout("dPlayNext()", 10000);
+				}
+			}
+			//上一张
+			function dPlayPre() {
+				if (npage < 2) {
+					ShowMsg("这是第一页");
+				} else {
+					if (npage == 2) {
+						if (namehand != '') location.href = namehand + shortname;
+						else location.href = "view.php?aid={dede:field name='id'/}";
+					} else if (displaytype == 'st' && namehand != '') {
+						location.href = namehand + "_" + (npage - 1) + shortname;
+					} else {
+						location.href = "view.php?aid={dede:field name='id'/}&pageno=" + (npage - 1);
+					}
+				}
+			}
+			//下一张
+			function dPlayNext() {
+				if (npage == totalpage) {
+					ShowMsg("没有了哦");
+			} 	else {
+					if (displaytype == 'st' && namehand != '') location.href = namehand + "_" + (npage + 1) + shortname;
+					else location.href = "view.php?aid={dede:field name='id'/}&pageno=" + (npage + 1);
+				}
+			}
+		</script>
 	</body>
 </html>

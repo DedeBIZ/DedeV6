@@ -4,16 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>文件修改</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			function Post() {
-				if (document.form1.filename.value == "") {
-					alert("文件名不能为空");
-					document.form1.filename.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
@@ -42,5 +35,14 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function Post() {
+				if (document.form1.filename.value == "") {
+					alert("文件名不能为空");
+					document.form1.filename.focus();
+					return false;
+				}
+			}
+		</script>
 	</body>
 </html>

@@ -10,15 +10,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function CheckSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("请设置标题");
-					document.form1.title.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form enctype="multipart/form-data" name="form1" action="media_edit.php" method="POST" onSubmit="return CheckSubmit();">
@@ -87,5 +78,14 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function CheckSubmit() {
+				if (document.form1.title.value == "") {
+					ShowMsg("请设置标题");
+					document.form1.title.focus();
+					return false;
+				}
+			}
+		</script>
 	</body>
 </html>

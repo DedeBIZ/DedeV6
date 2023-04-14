@@ -10,15 +10,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
-		<script>
-			function getmodule(action, hash) {
-				$DE('status_' + hash).innerHTML = '<img src="../static/web/img/loadinglit.gif">';
-				fetch('module_main.php?action=download&hash=' + hash).then(resp => resp.text()).then((d) => {
-					$DE('status_' + hash).innerHTML = d;
-				});
-				$DE('manager_' + hash).style.display = 'block';
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="plus_add.php" method="post">
@@ -89,5 +80,14 @@
 				<?php }?>
 			</table>
 		</form>
+		<script>
+			function getmodule(action, hash) {
+				$DE('status_' + hash).innerHTML = '<img src="../static/web/img/loadinglit.gif">';
+				fetch('module_main.php?action=download&hash=' + hash).then(resp => resp.text()).then((d) => {
+					$DE('status_' + hash).innerHTML = d;
+				});
+				$DE('manager_' + hash).style.display = 'block';
+			}
+		</script>
 	</body>
 </html>

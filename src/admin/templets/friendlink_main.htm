@@ -11,29 +11,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function Sel(stype) {
-				for (var i = 0; i < document.getElementsByName('aids').length; i++) {
-					if (stype == 'all') document.getElementsByName('aids')[i].checked = true;
-					else document.getElementsByName('aids')[i].checked = false;
-				}
-			}
-			function checkSubmit() {
-				var str = '';
-				for (var i = 0; i < document.getElementsByName('aids').length; i++) {
-					if (document.getElementsByName('aids')[i].checked) {
-						if (str == '') str += document.getElementsByName('aids')[i].value;
-						else str += ',' + document.getElementsByName('aids')[i].value;
-					}
-				}
-				if (str == '') {
-					ShowMsg('您没选择任何文档');
-					return false;
-				} else {
-					location = "friendlink_edit.php?aids=" + str + "&dopost=delall";
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form action="friendlink_main.php" name="form1" method="get">
@@ -102,5 +79,28 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function Sel(stype) {
+				for (var i = 0; i < document.getElementsByName('aids').length; i++) {
+					if (stype == 'all') document.getElementsByName('aids')[i].checked = true;
+					else document.getElementsByName('aids')[i].checked = false;
+				}
+			}
+			function checkSubmit() {
+				var str = '';
+				for (var i = 0; i < document.getElementsByName('aids').length; i++) {
+					if (document.getElementsByName('aids')[i].checked) {
+						if (str == '') str += document.getElementsByName('aids')[i].value;
+						else str += ',' + document.getElementsByName('aids')[i].value;
+					}
+				}
+				if (str == '') {
+					ShowMsg('您没选择任何文档');
+					return false;
+				} else {
+					location = "friendlink_edit.php?aids=" + str + "&dopost=delall";
+				}
+			}
+		</script>
 	</body>
 </html>

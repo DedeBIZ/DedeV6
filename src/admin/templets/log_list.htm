@@ -7,39 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			//获得选中文件的文件名
-			function getCheckboxItem() {
-				var allSel = "";
-				if (document.form1.logs.value) return document.form1.logs.value;
-				for (i = 0; i < document.form1.logs.length; i++) {
-					if (document.form1.logs[i].checked) {
-						if (allSel == "")
-							allSel = document.form1.logs[i].value;
-						else
-							allSel = allSel + "`" + document.form1.logs[i].value;
-					}
-				}
-				return allSel;
-			}
-			function ReSel() {
-				for (i = 0; i < document.form1.logs.length; i++) {
-					if (document.form1.logs[i].checked) document.form1.logs[i].checked = false;
-					else document.form1.logs[i].checked = true;
-				}
-			}
-			function DelSel() {
-				var nid = getCheckboxItem();
-				if (nid == "") {
-					alert("请选择项目");
-					return;
-				}
-				location.href = "log_edit.php?dopost=del&ids=" + nid;
-			}
-			function ClearLog() {
-				location.href = "log_edit.php?dopost=clear";
-			}
-		</script>
 	</head>
 	<body>
 		<form name="formsearch">
@@ -100,5 +67,38 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			//获得选中文件的文件名
+			function getCheckboxItem() {
+				var allSel = "";
+				if (document.form1.logs.value) return document.form1.logs.value;
+				for (i = 0; i < document.form1.logs.length; i++) {
+					if (document.form1.logs[i].checked) {
+						if (allSel == "")
+							allSel = document.form1.logs[i].value;
+						else
+							allSel = allSel + "`" + document.form1.logs[i].value;
+					}
+				}
+				return allSel;
+			}
+			function ReSel() {
+				for (i = 0; i < document.form1.logs.length; i++) {
+					if (document.form1.logs[i].checked) document.form1.logs[i].checked = false;
+					else document.form1.logs[i].checked = true;
+				}
+			}
+			function DelSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择项目");
+					return;
+				}
+				location.href = "log_edit.php?dopost=del&ids=" + nid;
+			}
+			function ClearLog() {
+				location.href = "log_edit.php?dopost=clear";
+			}
+		</script>
 	</body>
 </html>

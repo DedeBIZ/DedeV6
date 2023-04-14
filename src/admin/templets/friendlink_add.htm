@@ -10,22 +10,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function CheckSubmit()
-			{
-				if (document.form1.url.value=="http://"||document.form1.url.value=="") {
-					document.form1.url.focus();
-					ShowMsg("网址不能为空");
-					return false;
-				}
-				if (document.form1.webname.value=="") {
-					document.form1.webname.focus();
-					ShowMsg("网站名称不能为空");
-					return false;
-				}
-				return true;
-			}
-		</script>
 	</head>
 	<body>
 		<form action="friendlink_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return CheckSubmit();">
@@ -93,5 +77,21 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function CheckSubmit()
+			{
+				if (document.form1.url.value=="http://"||document.form1.url.value=="") {
+					document.form1.url.focus();
+					ShowMsg("网址不能为空");
+					return false;
+				}
+				if (document.form1.webname.value=="") {
+					document.form1.webname.focus();
+					ShowMsg("网站名称不能为空");
+					return false;
+				}
+				return true;
+			}
+		</script>
 	</body>
 </html>

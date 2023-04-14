@@ -6,20 +6,6 @@
 		<title>文件上传</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			var i=1;
-			function make_upload()
-			{
-				i++;
-				myob = document.getElementById("upfield");
-				myob.innerHTML+="<p>文件"+i+"：<input type='file' name='upfile"+i+"' class='admin-input-lg'></p>";
-			}
-			function reset_upload()
-			{
-				myob = document.getElementById("upfield");
-				myob.innerHTML="<p>文件1：<input type='file' name='upfile1' class='admin-input-lg'></p>";
-			}
-		</script>
 	</head>
 	<body>
 		<form method="POST" enctype="multipart/form-data" action="file_manage_control.php" name="form1">
@@ -47,5 +33,19 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			var i=1;
+			function make_upload()
+			{
+				i++;
+				myob = document.getElementById("upfield");
+				myob.innerHTML+="<p>文件"+i+"：<input type='file' name='upfile"+i+"' class='admin-input-lg'></p>";
+			}
+			function reset_upload()
+			{
+				myob = document.getElementById("upfield");
+				myob.innerHTML="<p>文件1：<input type='file' name='upfile1' class='admin-input-lg'></p>";
+			}
+		</script>
 	</body>
 </html>

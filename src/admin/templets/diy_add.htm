@@ -9,16 +9,7 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
-  		<script src="js/main.js"></script>
-  		<script>
-	  		function checkSubmit() {
-	  			if (document.form1.name.value == '') {
-	  				ShowMsg("自定义表单名称不能为空");
-	  				return false;
-	  			}
-	  			return true;
-	  		}
-  		</script>
+		<script src="js/main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="diy_add.php?action=add" method="post" onSubmit="return checkSubmit();">
@@ -79,5 +70,14 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			function checkSubmit() {
+				if (document.form1.name.value == '') {
+					ShowMsg("自定义表单名称不能为空");
+					return false;
+				}
+				return true;
+			}
+		</script>
 	</body>
 </html>

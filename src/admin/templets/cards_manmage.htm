@@ -7,36 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			//获得选中项
-			function getCheckboxItem() {
-				var allSel = "";
-				if (document.form1.aids.value) return document.form1.aids.value;
-				for (i = 0; i < document.form1.aids.length; i++) {
-					if (document.form1.aids[i].checked) {
-						if (allSel == "")
-							allSel = document.form1.aids[i].value;
-						else
-							allSel = allSel + "`" + document.form1.aids[i].value;
-					}
-				}
-				return allSel;
-			}
-			function ReSel() {
-				for (i = 0; i < document.form1.aids.length; i++) {
-					if (document.form1.aids[i].checked) document.form1.aids[i].checked = false;
-					else document.form1.aids[i].checked = true;
-				}
-			}
-			function DelSel() {
-				var nid = getCheckboxItem();
-				if (nid == "") {
-					alert("请选择要删除的卡");
-					return;
-				}
-				 location.href = "cards_manage.php?dopost=delete&aids=" + nid;
-			}
-		</script>
 	</head>
 	<body>
 		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
@@ -87,5 +57,35 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			//获得选中项
+			function getCheckboxItem() {
+				var allSel = "";
+				if (document.form1.aids.value) return document.form1.aids.value;
+				for (i = 0; i < document.form1.aids.length; i++) {
+					if (document.form1.aids[i].checked) {
+						if (allSel == "")
+							allSel = document.form1.aids[i].value;
+						else
+							allSel = allSel + "`" + document.form1.aids[i].value;
+					}
+				}
+				return allSel;
+			}
+			function ReSel() {
+				for (i = 0; i < document.form1.aids.length; i++) {
+					if (document.form1.aids[i].checked) document.form1.aids[i].checked = false;
+					else document.form1.aids[i].checked = true;
+				}
+			}
+			function DelSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择要删除的卡");
+					return;
+				}
+				 location.href = "cards_manage.php?dopost=delete&aids=" + nid;
+			}
+		</script>
 	</body>
 </html>
