@@ -9,15 +9,15 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="2">修改管理员</td>
-			</tr>
-			<form name="form1" action="sys_admin_user_edit.php" method="post">
-				<input type="hidden" name="dopost" value="saveedit">
-				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-				<input type="hidden" name="id" value="<?php echo $row['id']?>">
-				<input type="hidden" name="olduserid" value="<?php echo $row['userid']?>">
+		<form name="form1" action="sys_admin_user_edit.php" method="post">
+			<input type="hidden" name="dopost" value="saveedit">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+			<input type="hidden" name="id" value="<?php echo $row['id']?>">
+			<input type="hidden" name="olduserid" value="<?php echo $row['userid']?>">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2">修改管理员</td>
+				</tr>
 				<tr>
 					<td width="260">会员名：</td>
 					<td><input type="text" name="userid" id="userid" value="<?php echo $row['userid']?>" class="admin-input-sm"></td>
@@ -83,7 +83,7 @@
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
 					</td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

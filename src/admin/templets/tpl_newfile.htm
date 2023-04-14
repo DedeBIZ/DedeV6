@@ -16,9 +16,9 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" cellpadding="0" cellspacing="0">
-			<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
-				<input type="hidden" name="action" value="savenewfile">
+		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
+			<input type="hidden" name="action" value="savenewfile">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 				<tr>
 					<td width="260">工作目录：</td>
 					<td>
@@ -40,7 +40,7 @@
 						<input type="button" name="B4" class="btn btn-outline-success btn-sm" value="返回" onclick="javascript:history.go(-1)">
 					</td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

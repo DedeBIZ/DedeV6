@@ -69,14 +69,14 @@
 		</script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="2"><a href='vote_main.php'>投票管理</a> &gt; 添加投票</td>
-			</tr>		
-			<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
-				<input type="hidden" name="dopost" value="save">
-				<input type="hidden" name="isarc" value="<?php echo $isarc;?>">
-				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+		<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
+			<input type="hidden" name="dopost" value="save">
+			<input type="hidden" name="isarc" value="<?php echo $isarc;?>">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2"><a href='vote_main.php'>投票管理</a> &gt; 添加投票</td>
+				</tr>		
 				<tr>
 					<td width="260">投票名称：</td>
 					<td><input type="text" name="votename" id="votename" class="admin-input-lg"></td>
@@ -143,7 +143,7 @@
 						<button type="button" name="Submit" class="btn btn-outline-success btn-sm" onclick="history.back()">返回</button>
 					</td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

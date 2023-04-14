@@ -34,10 +34,10 @@
 		</script>
 	</head>
 	<body>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
-				<input type="hidden" name="action" value="edit">
-				<input type="hidden" name="dev_id" value="<?php echo $dev_id;?>">
+		<form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
+			<input type="hidden" name="action" value="edit">
+			<input type="hidden" name="dev_id" value="<?php echo $dev_id;?>">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2"><a href="module_main.php">模块管理</a> &gt; 模块修改</td>
 				</tr>
@@ -167,7 +167,7 @@
 						<button type="button" id="button" class="btn btn-outline-success btn-sm" onclick="location='module_main.php';">返回</button>
 					</td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

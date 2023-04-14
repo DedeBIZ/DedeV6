@@ -24,8 +24,7 @@
             $ty1 = "";
             $ty2 = "";
             $files = $dirs = array();
-            foreach ($dh as $file)
-            {
+            foreach ($dh as $file) {
                 if ($file!="." && $file!=".." && !is_dir("$inpath/$file")) {
                     @$filesize = filesize("$inpath/$file");
                     @$filesize = $filesize/1024;
@@ -53,9 +52,7 @@
                     <td colspan='3'>当前目录：$activepath</td>
                 </tr>";
                 $dirs[] = $line;
-            }
-            else if (is_dir("$inpath/$file"))
-            {
+            } else if (is_dir("$inpath/$file")) {
                 if (preg_match("#^_(.*)$#i",$file)) continue;
                 if (preg_match("#^\.(.*)$#i",$file)) continue;
                 $line = "\n<tr>
@@ -68,9 +65,7 @@
                     </td>
                 </tr>";
                 $dirs[] = $line;
-            }
-            else if (preg_match("#\.(gif|png)#i",$file))
-            {
+            } else if (preg_match("#\.(gif|png)#i",$file)) {
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='$activeurl/$file'>$file</a></td>
                     <td>$filesize KB</td>
@@ -82,9 +77,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(jpg)#i",$file))
-            {
+            } else if (preg_match("#\.(jpg)#i",$file)) {
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='$activeurl/$file'>$file</a></td>
                     <td>$filesize KB</td>
@@ -96,9 +89,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(swf|fla|fly)#i",$file))
-            {
+            } else if (preg_match("#\.(swf|fla|fly)#i",$file)) {
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_flash.png'>$file</a></td>
                     <td>$filesize KB</td>
@@ -110,9 +101,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(zip|rar|tar.gz)#i",$file))
-             {
+            } else if (preg_match("#\.(zip|rar|tar.gz)#i",$file)) {
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_zip.png'>$file</a></td>
                     <td>$filesize KB</td>
@@ -124,9 +113,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(exe)#i",$file))
-            {
+            } else if (preg_match("#\.(exe)#i",$file)) {
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_exe.png'>$file</a></td>
                     <td>$filesize KB</td>
@@ -138,9 +125,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(mp3|wma)#i",$file))
-            {
+            } else if (preg_match("#\.(mp3|wma)#i",$file)) {
                 $line = "\n<tr >
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_music.png'>$file</a></td>
                     <td>$filesize KB</td>
@@ -152,9 +137,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(wmv|api)#i",$file))
-            {
+            } else if (preg_match("#\.(wmv|api)#i",$file)) {
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_video.png'>$file</a></td>
                     <td>$filesize KB</td>
@@ -166,9 +149,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(rm|rmvb)#i",$file))
-            {
+            } else if (preg_match("#\.(rm|rmvb)#i",$file)) {
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_rm.png'>$file</a></td>
                     <td>$filesize KB</td>
@@ -180,9 +161,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(txt|inc|pl|cgi|asp|xml|xsl|aspx|cfm)#",$file))
-            {
+            } else if (preg_match("#\.(txt|inc|pl|cgi|asp|xml|xsl|aspx|cfm)#",$file)) {
                 $edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_text.png'>$file</a></td>
@@ -196,9 +175,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(htm|html)#i",$file))
-            {
+            } else if (preg_match("#\.(htm|html)#i",$file)) {
                 $edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_htm.png'>$file</a></td>
@@ -212,9 +189,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(php)#i",$file))
-            {
+            } else if (preg_match("#\.(php)#i",$file)) {
                 $edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_php.png'>$file</a></td>
@@ -228,9 +203,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(js)#i",$file))
-            {
+            } else if (preg_match("#\.(js)#i",$file)) {
                 $edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_js.png'>$file</a></td>
@@ -244,9 +217,7 @@
                     </td>
                 </tr>";
                 $files[] = $line;
-            }
-            else if (preg_match("#\.(css)#i",$file))
-            {
+            } else if (preg_match("#\.(css)#i",$file)) {
                 $edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
                 $line = "\n<tr>
                     <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_css.png'>$file</a></td>
@@ -274,12 +245,10 @@
                 $files[] = $line;
                 }
             }
-            foreach ($dirs as $dir)
-            {
+            foreach ($dirs as $dir) {
                 echo $dir;
             }
-            foreach ($files as $file)
-            {
+            foreach ($files as $file) {
                 echo $file;
             }
             ?>

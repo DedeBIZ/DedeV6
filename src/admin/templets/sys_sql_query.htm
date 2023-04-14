@@ -55,8 +55,8 @@
 				</tr>
 			</form>
 			<form action="sys_sql_query.php" method="post" name="form1" target="stafrm">
-				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<input type="hidden" name="dopost" value="query">
+				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<tr>
 					<td colspan="2">运行SQL命令行：
 						<label><input type="radio" name="querytype" value="0"> 单行命令</label>

@@ -44,8 +44,8 @@
 		</script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="forms" method="post" action="media_main.php">
+		<form name="forms" method="post" action="media_main.php">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 				<tr bgcolor="#f5f5f5">
 					<td>
 						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" class="admin-input-lg mr-3">
@@ -65,22 +65,22 @@
 						<a href="media_add.php" class="btn btn-success btn-sm">上传新文件</a>
 					</td>
 				</tr>
-			</form>
-		</table>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="7">附件管理</td>
-			</tr>
-			<tr bgcolor="#e9ecef" align="center">
-				<td width="6%">选择</td>
-				<td width="26%">文件标题</td>
-				<td width="10%">文件大小</td>
-				<td width="16%">上传会员</td>
-				<td width="16%">上传时间</td>
-				<td width="10%">文件类型</td>
-				<td>操作</td>
-			</tr>
-			<form name="form1">
+			</table>
+		</form>
+		<form name="form1">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="7">附件管理</td>
+				</tr>
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">选择</td>
+					<td width="26%">文件标题</td>
+					<td width="10%">文件大小</td>
+					<td width="16%">上传会员</td>
+					<td width="16%">上传时间</td>
+					<td width="10%">文件类型</td>
+					<td>操作</td>
+				</tr>
 				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
 				<tr align="center">
 					<td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}"></td>
@@ -106,7 +106,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

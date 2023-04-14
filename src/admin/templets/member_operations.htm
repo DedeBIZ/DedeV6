@@ -69,21 +69,21 @@
 				</tr>
 			</table>
 		</form>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="8">会员消费记录</td>
-			</tr>
-			<tr bgcolor="#e9ecef" align="center">
-				<td width="6%">选择</td>
-				<td width="16%">订单号</td>
-				<td>产品名称</td>
-				<td width="10%">产品类型</td>
-				<td width="16%">生成日期</td>
-				<td width="6%">金额</td>
-				<td width="6%">状态</td>
-				<td width="10%">会员</td>
-			</tr>
-			<form name="form1">
+		<form name="form1">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="8">会员消费记录</td>
+				</tr>
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">选择</td>
+					<td width="16%">订单号</td>
+					<td>产品名称</td>
+					<td width="10%">产品类型</td>
+					<td width="16%">生成日期</td>
+					<td width="6%">金额</td>
+					<td width="6%">状态</td>
+					<td width="10%">会员</td>
+				</tr>
 				{dede:datalist empty='<tr><td colspan="8" align="center">暂无文档</td></tr>'}
 				<tr align="center">
 					<td><input type="checkbox" name="aids" value="<?php echo $fields['aid']?>"></td>
@@ -96,18 +96,18 @@
 					<td><?php echo GetMemberID($fields['mid'])?></td>
 				</tr>
 				{/dede:datalist}
-			</form>
-			<tr>
-				<td colspan="8">
-					<button type="button" onclick="ReSel();" class="btn btn-success btn-sm">反选</button>
-					<button type="button" onclick="UpSel();" class="btn btn-success btn-sm">设为已付款</button>
-					<button type="button" onclick="OkSel();" class="btn btn-success btn-sm">设为已完成</button>
-					<button type="button" onclick="DelSel();" class="btn btn-danger btn-sm">删除</button>
-				</td>
-			</tr>
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="8" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
-			</tr>
-		</table>
+				<tr>
+					<td colspan="8">
+						<button type="button" onclick="ReSel();" class="btn btn-success btn-sm">反选</button>
+						<button type="button" onclick="UpSel();" class="btn btn-success btn-sm">设为已付款</button>
+						<button type="button" onclick="OkSel();" class="btn btn-success btn-sm">设为已完成</button>
+						<button type="button" onclick="DelSel();" class="btn btn-danger btn-sm">删除</button>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="8" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
 	</body>
 </html>

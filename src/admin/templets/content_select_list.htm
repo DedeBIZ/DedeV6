@@ -48,10 +48,10 @@
 		</script>
 	</head>
 	<body>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<tr bgcolor="#e9ecef">
-				<form name="form3" action="content_select_list.php" method="get">
-					<input type="hidden" name="f" value="<?php echo $f?>">
+		<form name="form3" action="content_select_list.php" method="get">
+			<input type="hidden" name="f" value="<?php echo $f?>">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
+				<tr bgcolor="#e9ecef">
 					<td>
 						<input type="text" name="keyword" class="admin-input-lg mr-3" value="<?php echo $keyword?>">
 						<select name="cid" class="admin-input-sm mr-3">
@@ -60,14 +60,14 @@
 						</select>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
-				</form>
-			</tr>
-		</table>
-		<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="9">文档列表</td>
-			</tr>
-			<form name="form2">
+				</tr>
+			</table>
+		</form>
+		<form name="form2">
+			<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="9">文档列表</td>
+				</tr>
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
@@ -99,10 +99,10 @@
 						<a href="javascript:ReturnValue()" class="btn btn-success btn-sm">选定值加到列表</a>
 					</td>
 				</tr>
-			</form>
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
 	</body>
 </html>

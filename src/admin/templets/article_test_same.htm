@@ -9,9 +9,9 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<form action="article_test_same.php" name="form1" target="stafrm">
-				<input type="hidden" name="dopost" value="analyse">
+		<form action="article_test_same.php" name="form1" target="stafrm">
+			<input type="hidden" name="dopost" value="analyse">
+			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2">文档重复检测</td>
 				</tr>
@@ -43,15 +43,12 @@
 				<tr>
 					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">分析标题重复文档</button></td>
 				</tr>
-			</form>
-			<tr>
-				<td colspan="2">结果：</td>
-			</tr>
-			<tr>
-				<td colspan="2" id="mtd">
-					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-				</td>
-			</tr>
-		</table>
+				<tr>
+					<td colspan="2" id="mtd">
+						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</body>
 </html>

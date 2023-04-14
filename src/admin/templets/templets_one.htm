@@ -10,9 +10,9 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr bgcolor="#f5f5f5">
-				<form action="templets_one.php" name="sss">
+		<form action="templets_one.php" name="sss">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+				<tr bgcolor="#f5f5f5">
 					<td>
 						<input type="text" name="keyword" value="<?php if (!empty($keyword)) $keyword = '';?>" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<?php
@@ -32,24 +32,24 @@
 						<a href="javascript:;" onclick="document.form1.submit();" class="btn btn-success btn-sm">更新选中页面</a>
 						<a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm">更新所有页面</a>
 					</td>
-				</form>
-			</tr>
-		</table>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="7">文档单页管理</td>
-			</tr>
-			<tr bgcolor="#e9ecef" align="center">
-				<td width="6%">选择</td>
-				<td width="6%">id</td>
-				<td width="30%">页面名称</td>
-				<td width="10%">需编译</td>
-				<td width="10%">标识</td>
-				<td width="10%">修改时间</td>
-				<td>管理</td>
-			</tr>
-			<form name="form1" action="templets_one_edit.php">
-				<input type="hidden" name="dopost" value="mksel">
+				</tr>
+			</table>
+		</form>
+		<form name="form1" action="templets_one_edit.php">
+			<input type="hidden" name="dopost" value="mksel">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="7">文档单页管理</td>
+				</tr>
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">选择</td>
+					<td width="6%">id</td>
+					<td width="30%">页面名称</td>
+					<td width="10%">需编译</td>
+					<td width="10%">标识</td>
+					<td width="10%">修改时间</td>
+					<td>管理</td>
+				</tr>
 				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
 				<tr align="center">
 					<td><input type="checkbox" name="ids[]" value="{dede:field.aid/}"></td>
@@ -65,10 +65,10 @@
 					</td>
 				</tr>
 				{/dede:datalist}
-			</form>
-			<tr bgcolor="#f5f5f5" align="center">
-				<td colspan="7">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
+				<tr bgcolor="#f5f5f5" align="center">
+					<td colspan="7">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
 	</body>
 </html>

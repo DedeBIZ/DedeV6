@@ -15,26 +15,26 @@
 		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="form1" action="tag_test_action.php" target="stafrm" method="post">
-				<input type="hidden" name="dopost" value="make">
-				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+		<form name="form1" action="tag_test_action.php" target="stafrm" method="post">
+			<input type="hidden" name="dopost" value="make">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2">全局标记测试</td>
 				</tr>
 				<tr>
-					<td colspan="2">
+					<td >
 						<div class="alert alert-info mb-0">全局标记应用在网站首页、单独页面、封面栏目使用的单独模板标记，在列表或文档模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文档或列表所在的栏目，如果您要测试的标记是在列表或文档中使用，请指定环境变量（栏目id）各标记的具体含义和用途</div>
 					</td>
 				</tr>
 				<tr>
-					<td>环境变量：</td>
-					<td>
+					<td colspan="2">
+						<span>环境变量：</span>
 						<?php
 						if (empty($cid)) $cid="0";
 						$tl = new TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
-						echo "<select name='typeid' class='admin-input-sm'>";
+						echo "<select name='typeid' class='admin-input-sm ml-2'>";
 						if ($cid=="0") echo "<option value='0' selected>不使用环境</option>";
 						echo $typeOptions;
 						echo "</select>";
@@ -47,16 +47,13 @@
 				<tr>
 					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">提交测试</button></td>
 				</tr>
-			</form>
-			<tr>
-				<td colspan="2">结果：</td>
-			</tr>
-			<tr>
-				<td colspan="2" id="mtd">
-					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-				</td>
-			</tr>
-		</table>
+				<tr>
+					<td colspan="2" id="mtd">
+						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			var editor = CodeMirror.fromTextArea(document.getElementById('partcode'), {
 				lineNumbers: true,

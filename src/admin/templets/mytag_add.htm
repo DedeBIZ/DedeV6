@@ -52,13 +52,13 @@
 		</script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="2"><a href="mytag_main.php">自定义宏标记</a> &gt; 添加新标记</td>
-			</tr>
-			<form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
-				<input type="hidden" name="dopost" value="save">
-				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+		<form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
+			<input type="hidden" name="dopost" value="save">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="mytag_main.php">自定义宏标记</a> &gt; 添加新标记</td>
+				</tr>
 				<tr>
 					<td colspan="2">
 						<div class="alert alert-info mb-0">自定义标记的调用方法：{dede:mytag name='标记名称' ismake='是否含板块代码（yes或no）' typeid='栏目id'/} 1、name标记名称，该项是必须的属性，以下2、3是可选属性；2、ismake默认是no表示设定的纯网页代码，yes表示含板块标记的代码；3、typeid表示所属栏目的id，默认为0，表示所有栏目通用的显示文档，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</div>
@@ -107,7 +107,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

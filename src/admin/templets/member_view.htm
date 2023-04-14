@@ -29,14 +29,14 @@
 		</script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 查看会员</td>
-			</tr>
-			<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">当前会员是关连网站管理员，谨慎操作</div></td></tr>';?>
-			<form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
-				<input type="hidden" name="dopost" value="edituser">
-				<input type="hidden" name="id" value="<?php echo $id?>">
+		<form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
+			<input type="hidden" name="dopost" value="edituser">
+			<input type="hidden" name="id" value="<?php echo $id?>">
+			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 查看会员</td>
+				</tr>
+				<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">当前会员是关连网站管理员，谨慎操作</div></td></tr>';?>
 				<tr>
 					<td width="260">头像/会员名：</td>
 					<td>
@@ -183,7 +183,7 @@
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
 					</td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

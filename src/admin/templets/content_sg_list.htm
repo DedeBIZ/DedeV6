@@ -50,11 +50,11 @@
 				</tr>
 			</table>
 		</form>
-		<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="9">{dede:global.positionname/}文档列表</td>
-			</tr>
-			<form name="form2">
+		<form name="form2">
+			<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="9">{dede:global.positionname/}文档列表</td>
+				</tr>
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
@@ -97,11 +97,11 @@
 						<?php }?>
 					</td>
 				</tr>
-			</form>
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			$(document).ready(function() {
 				$('#timerange').daterangepicker({
