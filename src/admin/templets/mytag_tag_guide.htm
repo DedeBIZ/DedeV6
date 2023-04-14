@@ -29,7 +29,7 @@
 				</tr>
 			</table>
 		</span>
-		<span style="display:none" id="list4">
+		<span id="list4" style="display:none">
 			<table width="100%" cellspacing="2" cellpadding="2">
 				<tr>
 					<td width="30%" rowspan="2" align="center">[field:imglink/]</td>
@@ -47,8 +47,8 @@
 					<td bgcolor="#f5f5f5"><a href="mytag_main.php">自定义宏标记</a> &gt; 智能标记向导</td>
 				</tr>
 				<tr>
-					<td>
-						<table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
+					<td class="p-0">
+						<table cellspacing="0" cellpadding="0" class="table table-borderless">
 							<tr>
 								<td width="25%">
 									<label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="1" checked="1"></label>
@@ -93,7 +93,7 @@
 						}
 						echo "</select>";
 						?>
-						附加属性：
+						<span>附加属性：</span>
 						<?php
 						echo "<select name='att' class='admin-input-sm'>";
 						echo "<option value='0' selected>不限</option>";
@@ -116,7 +116,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td>高级筛选：
+					<td>
+						<span>高级筛选：</span>
 						<label><input type="checkbox" name="types[]" id="type[]" value="image"> 带缩略图</label>
 						<label><input type="checkbox" name="types[]" id="type[]" value="commend"> 推荐</label>
 						<label><input type="checkbox" name="types[]" id="type[]" value="spec"> 专题</label>

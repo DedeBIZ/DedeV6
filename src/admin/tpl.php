@@ -203,13 +203,11 @@ else if ($action == 'savetagfile') {
     $fp = fopen($truefile, 'w');
     fwrite($fp, $content);
     fclose($fp);
-    $msg = "
-    <form name='form1' action='tag_test_action.php' target='blank' method='post'>
+    $msg = "<form name='form1' action='tag_test_action.php' target='blank' method='post'>
         <label><input type='hidden' name='dopost' value='make'> 标签测试（环境变量标签不支持测试）</label><br>
         <textarea name='partcode' cols='150' rows='6' style='width:90%'>{dede:{$tagname}}{/dede:{$tagname}}</textarea><br>
         <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
-    </form>
-    ";
+    </form>";
     $wintitle = "成功操作文件";
     $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> &gt; 新建修改标签";
     $win = new OxWindow();

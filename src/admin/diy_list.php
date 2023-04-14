@@ -13,7 +13,7 @@ CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete','excel')) ? $action : '';
 if (empty($diyid)) {
-    showMsg("非法操作", 'javascript:;');
+    showMsg("操作失败", 'javascript:;');
     exit();
 }
 require_once DEDEINC.'/diyform.class.php';
@@ -80,7 +80,7 @@ if ($action == 'post') {
     if (empty($do)) {
         $id = isset($id) && is_numeric($id) ? $id : 0;
         if (empty($id)) {
-            showMsg('非法操作未指定id', 'javascript:;');
+            showMsg('操作失败，未指定id', 'javascript:;');
             exit();
         }
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";

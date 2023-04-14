@@ -29,7 +29,7 @@ $row = $dsql->GetOne("SELECT * FROM `#@__vote` WHERE aid='$aid'");
 //判断是否允许游客进行投票
 if ($row['isallow'] == 1) {
     if (!$member->IsLogin()) {
-        ShowMsg('请先登录再进行投票', $loginurl);
+        ShowMsg('请先登录后投票', $loginurl);
         exit();
     }
 }

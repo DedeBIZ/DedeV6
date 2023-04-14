@@ -16,7 +16,7 @@ CheckPurview('temp_Test');
 require_once(DEDEINC."/archive/partview.class.php");
 CheckCSRF();
 if (empty($partcode)) {
-    ShowMsg('错误请求', 'javascript:;');
+    ShowMsg('标签测试失败', 'javascript:;');
     exit;
 }
 $partcode = stripslashes($partcode);
@@ -26,9 +26,8 @@ if ($typeid > 0) $pv = new PartView($typeid);
 else $pv = new PartView();
 $pv->SetTemplet($partcode, "string");
 if ($showsource == "" || $showsource == "yes") {
-    echo "模板代码:";
     echo "<span class='text-primary'><pre>".dede_htmlspecialchars($partcode)."</pre></span>";
-    echo "结果:<hr size='1' width='100%'>";
+    echo "<hr>";
 }
 $pv->Display();
 ?>

@@ -75,16 +75,15 @@
 				for ($i=0;$i<count($filelists);$i++)
 				{
 					echo "<tr align='center'>";
-				$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='1'></td><td width='40%'>{$filelists[$i]}</td>";
-				echo $mtd;
-				if (isset($filelists[$i+1]))
-				{
-					$i++;
 					$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='1'></td><td width='40%'>{$filelists[$i]}</td>";
 					echo $mtd;
-				} else {
-					echo "<td></td><td></td>";
-				}
+					if (isset($filelists[$i+1])) {
+						$i++;
+						$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='1'></td><td width='40%'>{$filelists[$i]}</td>";
+						echo $mtd;
+					} else {
+						echo "<td></td><td></td>";
+					}
 					echo "</tr>";
 				}
 				?>

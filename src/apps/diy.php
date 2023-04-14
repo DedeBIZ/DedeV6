@@ -13,7 +13,7 @@ $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'view')) ? $action : 'post';
 $id = isset($id) && is_numeric($id) ? $id : 0;
 if (empty($diyid)) {
-    showMsg('非法操作', 'javascript:;');
+    showMsg('操作失败', 'javascript:;');
     exit();
 }
 require_once DEDEINC.'/diyform.class.php';
@@ -49,13 +49,11 @@ if ($action == 'post') {
                         ${$fieldinfo[0]} = addslashes(${$fieldinfo[0]});
                     } 
                     //获取地址，表单添加text数据类型ip字段型后模板用<input type="hidden" name="ip" value="">
-                    if ($fieldinfo[0] == 'ip')
-                    {
+                    if ($fieldinfo[0] == 'ip') {
                         ${$fieldinfo[0]}=GetIP();
                     }
                     //获取时间，表单添加text数据类型sj字段型后模板用<input type="hidden" name="sj" value="">
-                    if ($fieldinfo[0] == 'sj')
-                    {
+                    if ($fieldinfo[0] == 'sj') {
                         ${$fieldinfo[0]}=date("Y-m-d H:i:s");
                     } else {
                         ${$fieldinfo[0]} = GetFieldValue(${$fieldinfo[0]}, $fieldinfo[1],0,'add','','diy', $fieldinfo[0]);
@@ -106,7 +104,7 @@ if ($action == 'post') {
         exit();
     }
     if (empty($id)) {
-        showMsg('非法操作未指定id', 'javascript:;');
+        showMsg('操作失败，未指定id', 'javascript:;');
         exit();
     }
     if ($diy->public == 2) {

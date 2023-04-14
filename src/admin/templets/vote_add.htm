@@ -18,16 +18,16 @@
 			function AddItem() {
 			  i++;
 			  if (i > 15) {
-				ShowMsg("最大只允许15个选项");
+				ShowMsg("最多添加15个选项");
 					return;
 				}
-				var htmldata = "<br>选项" + i + "：<input name='voteitem" + i + "' type='text' size='30' class='mt-2'>";
+				var htmldata = "<div class='py-2'>选项" + i + "：<input type='text' name='voteitem" + i + "' class='admin-input-lg'></div>";
 				jQuery("#voteitem").append(htmldata);
 			}
 			function ResetItem() {
 				i = 1;
 				var obj = document.getElementById("voteitem");
-				obj.innerHTML = "选项1：<input name='voteitem1' type='text' size='30'>";
+				obj.innerHTML = "<div class='py-2'>选项1：<input type='text' name='voteitem1' class='admin-input-lg'></div>";
 			}
 			function checkSubmit() {
 				if (document.form1.votename.value == "") {
@@ -127,7 +127,7 @@
 				<tr>
 					<td></td>
 					<td>
-						<div id="voteitem">选项1：<input type="text" name="voteitem1" size="30" id="voteitem1"></div>
+						<div id="voteitem" class="py-2">选项1：<input type="text" name="voteitem1" id="voteitem1" class="admin-input-lg"></div>
 					</td>
 				</tr>
 				<tr>
