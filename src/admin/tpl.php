@@ -118,9 +118,9 @@ else if ($action == 'upload') {
         <tr>
             <td width='90'>选择文件：</td>
             <td>
-                <input name='acdir' type='hidden' value='$acdir'  />
-                <input name='token' type='hidden' value='{$_SESSION['token']}'  />
-                <input name='upfile' type='file' id='upfile' class='admin-input-lg' />
+                <input name='acdir' type='hidden' value='$acdir'>
+                <input name='token' type='hidden' value='{$_SESSION['token']}'>
+                <input name='upfile' type='file' id='upfile' class='admin-input-lg'>
             </td>
         </tr>
     </table>";
