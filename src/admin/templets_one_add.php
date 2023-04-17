@@ -18,7 +18,7 @@ if ($dopost == "save") {
     $filename = preg_replace("#^\/#", "", $nfilename);
     if (DEDEBIZ_SAFE_MODE) $ismake = 0; //安全模式不允许编译
     if (!preg_match('#\.htm$#i', trim($template))) {
-        ShowMsg("指定的文件名已被系统禁止", "javascript:;");
+        ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
     if ($likeid == '') {

@@ -21,7 +21,7 @@ $s_scriptName = $dedeNowurls[0];
 $cuserLogin = new userLogin();
 if ($cuserLogin->getUserID() <= 0) {
     if (empty($adminDirHand)) {
-        ShowMsg("提示：需要输入后台管理目录才能登录<br><form>请输入后台管理目录名：<input type='hidden' name='gotopage' value='".urlencode($dedeNowurl)."'><input type='text' name='adminDirHand' value='dede'><input type='submit' name='sbt' value='前往登录'></form>", "javascript:;");
+        ShowMsg("<p>提示：需要输入后台管理目录才能登录</p><form><span>请输入后台管理目录名：</span><input type='hidden' name='gotopage' value='".urlencode($dedeNowurl)."'><input type='text' name='adminDirHand' value='admin'><input type='submit' name='sbt' value='前往登录'></form>", "javascript:;");
         exit();
     }
     $adminDirHand = HtmlReplace($adminDirHand, 1);

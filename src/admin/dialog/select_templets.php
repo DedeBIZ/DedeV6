@@ -33,55 +33,45 @@ if (empty($comeback)) {
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>选择模板</title>
-    <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/web/css/admin.css">
-    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}</style>
-    <script>
-    function nullLink() {
-        return;
-    }
-    function ReturnValue(reimg) {
-        window.opener.document.<?php echo $f ?>.value = reimg;
-        if (document.all) window.opener = true;
-        window.close();
-    }
-    </script>
-</head>
-<body>
-    <div class="upload-bg">
-        <table cellpadding="0" cellspacing="1" align="center" class="table icon">
-            <tr>
-                <td colspan="3">
-                    <form action="select_templets_post.php" method="POST" enctype="multipart/form-data" name="myform">
-                        <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
-                        <input type="hidden" name="f" value="<?php echo $f ?>">
-                        <input type="hidden" name="job" value="upload">
-                        <input type="file" name="uploadfile" class="w-50">
-                        <label>改名：<input type="text" name="filename" class="admin-input-sm"></label>
-                        <button type="submit" name="sb1" class="btn btn-success btn-sm">保存</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td width="50%">选择文件</td>
-                <td width="20%">文件大小</td>
-                <td>修改时间</td>
-            </tr>
-            <?php
-            $dh = scandir($inpath);
-            $ty1 = "";
-            $ty2 = "";
-            foreach ($dh as $file) {
-                //计算文件大小和创建时间
-                if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
-                    $filesize = filesize("$inpath/$file");
-                    $filesize = $filesize / 1024;
-                    if ($filesize != "")
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <title>选择模板</title>
+        <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/web/css/admin.css">
+        <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}</style>
+    </head>
+    <body>
+        <div class="upload-bg">
+            <table cellpadding="0" cellspacing="1" align="center" class="table icon">
+                <tr>
+                    <td colspan="3">
+                        <form action="select_templets_post.php" method="POST" enctype="multipart/form-data" name="myform">
+                            <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
+                            <input type="hidden" name="f" value="<?php echo $f ?>">
+                            <input type="hidden" name="job" value="upload">
+                            <input type="file" name="uploadfile" class="w-50">
+                            <label>改名：<input type="text" name="filename" class="admin-input-sm"></label>
+                            <button type="submit" name="sb1" class="btn btn-success btn-sm">保存</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="50%">选择文件</td>
+                    <td width="20%">文件大小</td>
+                    <td>修改时间</td>
+                </tr>
+                <?php
+                $dh = scandir($inpath);
+                $ty1 = "";
+                $ty2 = "";
+                foreach ($dh as $file) {
+                    //计算文件大小和创建时间
+                    if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
+                        $filesize = filesize("$inpath/$file");
+                        $filesize = $filesize / 1024;
+                        if ($filesize != "")
                         if ($filesize < 0.1) {
                             @list($ty1, $ty2) = split("\.", $filesize);
                             $filesize = $ty1.".".substr($ty2, 0, 2);
@@ -203,5 +193,15 @@ if (empty($comeback)) {
                 ?>
             </table>
         </div>
+        <script>
+        function nullLink() {
+            return;
+        }
+        function ReturnValue(reimg) {
+            window.opener.document.<?php echo $f ?>.value = reimg;
+            if (document.all) window.opener = true;
+            window.close();
+        }
+        </script>
     </body>
 </html>

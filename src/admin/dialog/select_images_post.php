@@ -22,20 +22,20 @@ if (empty($imgfile)) {
     $imgfile = '';
 }
 if (!is_uploaded_file($imgfile)) {
-    ShowMsg("您没有选择上传的文件".$imgfile, "-1");
+    ShowMsg("您没有选择上传文件".$imgfile, "-1");
     exit();
 }
 $CKEditorFuncNum = (isset($CKEditorFuncNum)) ? $CKEditorFuncNum : 1;
 $imgfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $imgfile_name));
 if (!preg_match("#\.(".$cfg_imgtype.")#i", $imgfile_name)) {
-    ShowMsg("您所上传的图片类型不在许可列表，请修改系统对扩展名限定的配置", "-1");
+    ShowMsg("您上传的图片类型错误，请修改系统对扩展名配置", "-1");
     exit();
 }
 $nowtme = time();
 $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
 $imgfile_type = strtolower(trim($imgfile_type));
 if (!in_array($imgfile_type, $sparr)) {
-    ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种", "-1");
+    ShowMsg("您上传的图片格式错误，请使用jpg、png、gif、wbmp格式其中一种", "-1");
     exit();
 }
 $mdir = MyDate($cfg_addon_savetype, $nowtme);

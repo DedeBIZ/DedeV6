@@ -26,7 +26,7 @@ while ($row = $dsql->GetObject()) {
 }
 $adminMenu = '';
 if ($cuserLogin->getUserType() >= 10) {
-    $adminMenu = DEDEBIZ_SAFE_MODE? "" : "<m:top item='6_' name='模块管理' c='6,' icon='fa-database'>
+    $adminMenu = DEDEBIZ_SAFE_MODE? "" : "<m:top item='6_' name='模块管理' icon='fa-database'>
     <m:item name='模块管理' link='module_main.php' rank='sys_module' target='main' />
     <m:item name='模块打包' link='module_make.php' rank='sys_module' target='main' />
     </m:top>";

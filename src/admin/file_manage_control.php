@@ -41,7 +41,7 @@ else if ($fmdo == "edit") {
     CheckCSRF();
     $filename = str_replace("..", "", $filename);
     if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
-        ShowMsg("指定的文件名已被系统禁止", "javascript:;");
+        ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
     $file = "$cfg_basedir$activepath/$filename";
