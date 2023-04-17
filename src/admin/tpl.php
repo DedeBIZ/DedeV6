@@ -77,7 +77,7 @@ else if ($action == 'saveedit') {
         exit();
     }
     if (!preg_match("#\.htm$#", $filename)) {
-        ShowMsg('DEDE模板文件，文件名必须用.htm结尾', '-1');
+        ShowMsg('模板只能用.htm扩展名', '-1');
         exit();
     }
     $content = stripslashes($content);
@@ -114,18 +114,16 @@ else if ($action == 'upload') {
     $wecome_info = "<a href='templets_main.php'>模板管理</a> &gt; 上传模板";
     $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'uploadok');
-    $msg = "
-    <table cellspacing='0' cellpadding='0'>
-  <tr>
-    <td width='90'>选择文件：</td>
-    <td>
-        <input name='acdir' type='hidden' value='$acdir'  />
-        <input name='token' type='hidden' value='{$_SESSION['token']}'  />
-        <input name='upfile' type='file' id='upfile' class='admin-input-lg' />
-      </td>
-  </tr>
- </table>
-    ";
+    $msg = "<table cellspacing='0' cellpadding='0'>
+        <tr>
+            <td width='90'>选择文件：</td>
+            <td>
+                <input name='acdir' type='hidden' value='$acdir'  />
+                <input name='token' type='hidden' value='{$_SESSION['token']}'  />
+                <input name='upfile' type='file' id='upfile' class='admin-input-lg' />
+            </td>
+        </tr>
+    </table>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('ok', '');
     $win->Display();
@@ -139,7 +137,7 @@ else if ($action == 'uploadok') {
         exit();
     } else {
         if (!preg_match("#\.(htm|html)$#", $upfile_name)) {
-            ShowMsg("DedeBIZ模板只能用 .htm或.html扩展名", "-1");
+            ShowMsg("模板只能用.htm或.html扩展名", "-1");
             exit();
         }
         if (preg_match("#[\\\\\/]#", $upfile_name)) {
