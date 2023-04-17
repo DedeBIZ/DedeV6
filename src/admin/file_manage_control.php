@@ -21,6 +21,8 @@ else $inpath = $cfg_basedir.$activepath;
 $fmm = new FileManagement();
 $fmm->Init();
 if ($fmdo == "rename") {
+    $oldfilename = str_replace("..","",$oldfilename);
+    $newfilename = str_replace("..","",$newfilename);
     $fmm->RenameFile($oldfilename, $newfilename);
 }
 //新建目录

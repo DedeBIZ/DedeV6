@@ -36,6 +36,7 @@ COMMANDS:
 	help,h Shows 帮助
 	quick,q 快速开始一个开发环境
 	tdata 生成测试数据
+	pwd 更改管理员密码
 WEBSITE:
 	https://www.dedebiz.com/help/
 ";
