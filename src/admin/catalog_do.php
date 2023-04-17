@@ -265,5 +265,15 @@ else if ($dopost == 'moveCatalog') {
         ShowMsg('成功移动目录', 'catalog_main.php');
         exit();
     }
+} //查看API
+else if ($dopost == 'viewAPI') {
+    require_once(DEDEINC.'/typelink/typelink.class.php');
+    $typeid = isset($typeid) ? intval($typeid) : 0;
+    $tl = new TypeLink($typeid);
+    $timestamp = time();
+    $sign = sha1($typeid.$timestamp.$tl->TypeInfos['apikey'].'1'.'10');
+    $u = "tid={$typeid}&mod=1&timestamp={$timestamp}&PageNo=1&PageSize=10&sign={$sign}";
+    header('HTTP/1.1 301 Moved Permanently');
+    header("Location:../apps/list.php?{$u}");
 }
 ?>

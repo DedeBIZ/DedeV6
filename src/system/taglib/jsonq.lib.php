@@ -12,14 +12,25 @@ require_once(DEDEINC . "/libraries/jsonq/Jsonq.php");
 helper('cache');
 function lib_jsonq(&$ctag, &$refObj)
 {
-    $attlist = "url|,path|,cachetime|3600";
+    $attlist = "url|,path|,typeid|,row|,apikey|,cachetime|3600";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $Innertext = trim($ctag->GetInnerText());
     if ($url == '' || $Innertext == '') return '';
+    if (!empty($typeid)) {
+        $typeid = intval($typeid);
+    }
+    if ($typeid > 0) {
+        $timestamp = time();
+        $sign = sha1($typeid.$timestamp.$apikey.'1'.'10');
+        $u = "tid={$typeid}&mod=1&timestamp={$timestamp}&PageNo=1&PageSize={$row}&sign={$sign}";
+        $url = $url."/apps/list.php?{$u}";
+        $path = "$.lists";
+    }
     $key = md5($url);
     try {
         if ($path=='') {
+            //选择器获取某个特定值
             $jsonq = new Jsonq($url);
             $revalue = GetCache("tagjsonq2", $key);
             if (!empty($revalue)) {

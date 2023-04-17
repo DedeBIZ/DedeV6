@@ -34,6 +34,7 @@ class ListView
     var $IsReplace;
     var $remoteDir;
     var $mod;
+    var $_parms = array('tid','TotalResult','PageNo','PageSize','mod','timestamp','sign');
     /**
      *  php5构造函数
      *
@@ -74,13 +75,41 @@ class ListView
             //添加联动单筛选
             if (isset($_REQUEST['tid'])) {
                 foreach($_GET as $key => $value) {
-                    if ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key!="mod") {
+                    if (!in_array($key,$this->_parms)) {
                         $this->Fields[string_filter($key)] = string_filter(urldecode($value));
                     }
                 }
             }
             //设置一些全局参数的值
             foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
+            //API相关逻辑处理
+            if ($this->mod == 1 && empty($this->Fields['apikey'])) {
+                echo json_encode(array(
+                    "code" => -1,
+                    "msg" => "api key is empty",
+                ));
+                exit;
+            } 
+            if($this->mod == 1){
+                if (empty($GLOBALS['sign'])) {
+                    echo json_encode(array(
+                        "code" => -1,
+                        "msg" => "sign is empty",
+                    ));
+                    exit;
+                }
+                //验签算法 sha1(typeid+timestamp+apikey+PageNo+PageSize)
+                $sign = sha1($this->TypeID.$GLOBALS['timestamp'].$this->Fields['apikey'].$GLOBALS['PageNo'].$GLOBALS['PageSize']);
+                if ($sign !== $GLOBALS['sign']) {
+                    echo json_encode(array(
+                        "code" => -1,
+                        "msg" => "sign check failed",
+                    ));
+                    exit;
+                }
+            }
+
+
             $this->Fields['rsslink'] = $GLOBALS['cfg_cmsurl']."/static/rss/".$this->TypeID.".xml";
             //设置环境变量
             SetSysEnv($this->TypeID, $this->Fields['typename'], 0, '', 'list');
@@ -151,7 +180,7 @@ class ListView
             }
             if (isset($_REQUEST['tid'])) {
                 foreach ($_GET as $key => $value) {
-                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key!="mod") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
+                    $filtersql .= (!in_array($key,$this->_parms)) ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
                 }
             }
         } else {
@@ -428,7 +457,7 @@ class ListView
             if (isset($_REQUEST['tid'])) {
                 foreach($_GET as $key => $value) 
                 {
-                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key !="mod") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
+                    $filtersql .= (!in_array($key,$this->_parms)) ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
                 }
             }
         } else {
@@ -837,7 +866,7 @@ class ListView
             if (isset($_REQUEST['tid'])) {
                 foreach($_GET as $key => $value) 
                 {
-                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo" && $key!="PageSize" && $key!="mod") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
+                    $filtersql .= (!in_array($key,$this->_parms)) ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
                 }
             }
         } else {
