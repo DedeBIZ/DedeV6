@@ -8,6 +8,8 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<style>.admin-td{border-bottom:1px solid #dee2e6!important}</style>
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/global.js"></script>
 	</head>
@@ -46,6 +48,59 @@
 				</tr>
 			</table>
 		</form>
+		<div id="mdlViewAPI" class="modal fade" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">跨站调用</h5>
+						<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<span>
+									本功能主要用于移动客户端或第三方系统调用栏目数据进行展现。
+								</span>
+							</div>
+							<div class="form-group">
+								<label for="iptAPICode">代码调用</label>
+								<nav>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									  <button class="nav-link active" id="nav-php-tab" data-toggle="tab" data-target="#nav-php" type="button" role="tab" aria-controls="nav-php" aria-selected="true">PHP</button>
+									  <button class="nav-link" id="nav-js-tab" data-toggle="tab" data-target="#nav-js" type="button" role="tab" aria-controls="nav-js" aria-selected="true">Javasctipt</button>
+									  <button class="nav-link" id="nav-go-tab" data-toggle="tab" data-target="#nav-go" type="button" role="tab" aria-controls="nav-go" aria-selected="false">Go</button>
+									  <button class="nav-link" id="nav-python-tab" data-toggle="tab" data-target="#nav-python" type="button" role="tab" aria-controls="nav-python" aria-selected="false">Python3</button>
+									</div>
+								  </nav>
+								  <div class="tab-content py-3" id="nav-tabContent">
+									<div class="tab-pane fade show active" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
+										<pre><code id="codephp"></code></pre></div>
+									<div class="tab-pane fade" id="nav-js" role="tabpanel" aria-labelledby="nav-js-tab">
+										<pre><code id="codejs"></code></pre>
+									</div>
+									<div class="tab-pane fade" id="nav-go" role="tabpanel" aria-labelledby="nav-go-tab">
+										<pre><code id="codego"></code></pre>
+									</div>
+									<div class="tab-pane fade" id="nav-python" role="tabpanel" aria-labelledby="nav-python-tab">
+										<pre><code id="codepython"></code></pre>
+									</div>
+								  </div>
+							</div>
+							<div class="form-group">
+								<label for="iptAPITag">标签调用</label>
+								<pre><code id="codetag"></code></pre>
+							</div>
+							
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="btnStep">
+							<button id="btnGoStep4" type="button" class="btn btn-success">我知道了</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script>
 			function LoadSuns(ctid, tid) {
 				if ($DE(ctid).innerHTML.length < 10) {
@@ -65,6 +120,20 @@
 					$DE('img' + tid).className = 'fa fa-plus-square';
 					$DE(objname).style.display = "none";
 				}
+			}
+			function showAPI(tid) {
+				fetch('catalog_do.php?dopost=viewAPI&typeid=' + tid).then(resp => resp.text()).then((d) => {
+					let data = JSON.parse(d);
+					if (data.code == 0) {
+						$("#codephp").html(data.data.phpcode);
+						$("#codego").html(data.data.gocode);
+						$("#codepython").html(data.data.pythoncode);
+						$("#codejs").html(data.data.jscode);
+						$("#codetag").html(data.data.tagcode);
+						$("#mdlViewAPI").modal('show');
+					}
+				});
+				
 			}
 		</script>
 	</body>

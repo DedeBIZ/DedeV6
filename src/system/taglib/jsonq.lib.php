@@ -22,10 +22,10 @@ function lib_jsonq(&$ctag, &$refObj)
     }
     if ($typeid > 0) {
         $timestamp = time();
-        $sign = sha1($typeid.$timestamp.$apikey.'1'.'10');
+        $sign = md5($typeid.$timestamp.$apikey.'1'.$row);
         $u = "tid={$typeid}&mod=1&timestamp={$timestamp}&PageNo=1&PageSize={$row}&sign={$sign}";
         $url = $url."/apps/list.php?{$u}";
-        $path = "$.lists";
+        $path = "lists";
     }
     $key = md5($url);
     try {

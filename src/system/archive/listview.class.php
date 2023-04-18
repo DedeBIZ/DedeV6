@@ -98,8 +98,8 @@ class ListView
                     ));
                     exit;
                 }
-                //验签算法 sha1(typeid+timestamp+apikey+PageNo+PageSize)
-                $sign = sha1($this->TypeID.$GLOBALS['timestamp'].$this->Fields['apikey'].$GLOBALS['PageNo'].$GLOBALS['PageSize']);
+                //验签算法 md5(typeid+timestamp+apikey+PageNo+PageSize)
+                $sign = md5($this->TypeID.$GLOBALS['timestamp'].$this->Fields['apikey'].$GLOBALS['PageNo'].$GLOBALS['PageSize']);
                 if ($sign !== $GLOBALS['sign']) {
                     echo json_encode(array(
                         "code" => -1,

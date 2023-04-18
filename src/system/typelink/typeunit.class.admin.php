@@ -115,7 +115,7 @@ class TypeUnit
                 echo "</td>";
                 echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 $apidisabled = $row->apienabled == 1? '' : ' disabled';
-                echo "<a href='catalog_do.php?dopost=viewAPI&typeid={$id}' target='_blank' title='接口' class='btn btn-light btn-sm{$apidisabled}'><i class='fa fa-bolt'></i></a>";
+                echo "<a href='javascript:showAPI({$id})' title='跨站' class='btn btn-light btn-sm{$apidisabled}'><i class='fa fa-bolt'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
                 echo "<a href='catalog_add.php?id={$id}' title='添加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i></a>";
@@ -200,7 +200,7 @@ class TypeUnit
                     echo "</td>";
                     echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                     $apidisabled = $row->apienabled == 1? '' : ' disabled';
-                    echo "<a href='catalog_do.php?dopost=viewAPI&typeid={$id}' target='_blank' title='接口' class='btn btn-light btn-sm{$apidisabled}'><i class='fa fa-bolt'></i></a>";
+                    echo "<a href='javascript:showAPI({$id})' title='跨站' class='btn btn-light btn-sm{$apidisabled}'><i class='fa fa-bolt'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
                     echo "<a href='catalog_add.php?id={$id}' title='添加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i></a>";

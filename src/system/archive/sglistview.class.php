@@ -78,6 +78,32 @@ class SgListView
             //设置一些全局参数的值
             foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
             $this->Fields['rsslink'] = $GLOBALS['cfg_cmsurl']."/static/rss/".$this->TypeID.".xml";
+            //API相关逻辑处理
+            if ($this->mod == 1 && empty($this->Fields['apikey'])) {
+                echo json_encode(array(
+                    "code" => -1,
+                    "msg" => "api key is empty",
+                ));
+                exit;
+            } 
+            if($this->mod == 1){
+                if (empty($GLOBALS['sign'])) {
+                    echo json_encode(array(
+                        "code" => -1,
+                        "msg" => "sign is empty",
+                    ));
+                    exit;
+                }
+                //验签算法 md5(typeid+timestamp+apikey+PageNo+PageSize)
+                $sign = md5($this->TypeID.$GLOBALS['timestamp'].$this->Fields['apikey'].$GLOBALS['PageNo'].$GLOBALS['PageSize']);
+                if ($sign !== $GLOBALS['sign']) {
+                    echo json_encode(array(
+                        "code" => -1,
+                        "msg" => "sign check failed",
+                    ));
+                    exit;
+                }
+            }
             //设置环境变量
             SetSysEnv($this->TypeID, $this->Fields['typename'], 0, '', 'list');
             $this->Fields['typeid'] = $this->TypeID;

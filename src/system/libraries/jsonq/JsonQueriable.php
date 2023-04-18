@@ -88,7 +88,11 @@ trait JsonQueriable
     {
         if (!is_null($file)) {
             if (is_string($file)) {
-                $this->_map = $this->getDataFromFile($file);
+                if (preg_match("#^http#", $file)) {
+                    $this->_map = $this->getDataFromUrl($file);
+                } else {
+                    $this->_map = $this->getDataFromFile($file);
+                }
                 $this->_baseContents = $this->_map;
                 return true;
             }
@@ -242,20 +246,39 @@ trait JsonQueriable
      * Read JSON data from file
      *
      * @param string $file
-     * @param string $type
      * @return bool|string|array
      * @throws FileNotFoundException
      * @throws InvalidJsonException
      */
-    protected function getDataFromFile($file, $type = 'application/json')
+    protected function getDataFromFile($file)
     {
-        $opts = [
-            'http' => [
-                'header' => 'Content-Type: '.$type.'; charset=utf-8',
-            ],
-        ];
-        $context = stream_context_create($opts);
-        $data = file_get_contents($file, 0, $context);
+        $data = file_get_contents($file);
+        $json = $this->isJson($data, true);
+        if (!$json) {
+            throw new InvalidJsonException();
+        }
+        return $json;
+    }
+    /**
+     * Get JSON data from url
+     *
+     * @param string $url
+     * @return bool|string|array
+     * @throws FileNotFoundException
+     * @throws InvalidJsonException
+     */
+    protected function getDataFromUrl($url)
+    {
+       
+        $curl_handle=curl_init();
+        curl_setopt($curl_handle, CURLOPT_URL, $url);
+        curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl_handle, CURLOPT_TIMEOUT, 5);
+        curl_setopt($curl_handle, CURLOPT_MAXREDIRS, 10 );
+        curl_setopt($curl_handle, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36');
+        $data = curl_exec($curl_handle);
+        curl_close($curl_handle);
         $json = $this->isJson($data, true);
         if (!$json) {
             throw new InvalidJsonException();

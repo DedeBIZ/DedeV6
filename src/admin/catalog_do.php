@@ -270,10 +270,111 @@ else if ($dopost == 'viewAPI') {
     require_once(DEDEINC.'/typelink/typelink.class.php');
     $typeid = isset($typeid) ? intval($typeid) : 0;
     $tl = new TypeLink($typeid);
+    $phpCode = '<?php 
+    $typeid = '.$typeid.';
+    $row = 10;
     $timestamp = time();
-    $sign = sha1($typeid.$timestamp.$tl->TypeInfos['apikey'].'1'.'10');
-    $u = "tid={$typeid}&mod=1&timestamp={$timestamp}&PageNo=1&PageSize=10&sign={$sign}";
-    header('HTTP/1.1 301 Moved Permanently');
-    header("Location:../apps/list.php?{$u}");
+    $apikey = \''.$tl->TypeInfos['apikey'].'\';
+    $sign = md5($typeid.$timestamp.$apikey.\'1\'.$row);
+    $durl = "'.$cfg_basehost.'/apps/list.php?tid={$typeid}&mod=1&timestamp={$timestamp}&PageNo=1&PageSize={$row}&sign={$sign}";
+    $data = json_decode(file_get_contents($durl),true);
+    if ($data[\'code\'] === 0) {
+    	var_dump($data);
+    }
+ ?>';
+    $gocode = 'package main
+
+import (
+    "crypto/md5"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "strconv"
+    "time"
+)
+
+func main() {
+    typeid := '.$typeid.'
+    row := 10
+    timestamp := strconv.FormatInt(time.Now().Unix(), 10)
+    apikey := "'.$tl->TypeInfos['apikey'].'"
+    sign := fmt.Sprintf("%x", md5.Sum([]byte(fmt.Sprintf("%d%s%s%d%d", typeid, timestamp, apikey, 1, row))))
+    durl := fmt.Sprintf("'.$cfg_basehost.'/apps/list.php?tid=%d&mod=1&timestamp=%s&PageNo=1&PageSize=%d&sign=%s", typeid, timestamp, row, sign)
+    resp, err := http.Get(durl)
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    var data map[string]interface{}
+    if err := json.Unmarshal(body, &data); err != nil {
+        fmt.Println(err)
+        return
+    }
+    if data["code"].(float64) == 0 {
+        fmt.Printf("%+v", data)
+    }
+}';
+    $pythoncode = 'import hashlib
+import json
+import time
+import urllib.request
+
+typeid = '.$typeid.'
+row = 10
+timestamp = int(time.time())
+apikey = \''.$tl->TypeInfos['apikey'].'\'
+sign = hashlib.md5((str(typeid) + str(timestamp) + apikey + \'1\' + str(row)).encode()).hexdigest()
+durl = f"'.$cfg_basehost.'/apps/list.php?tid={typeid}&mod=1&timestamp={timestamp}&PageNo=1&PageSize={row}&sign={sign}"
+with urllib.request.urlopen(durl) as url:
+    data = json.loads(url.read().decode())
+if data[\'code\'] == 0:
+    print(data)
+';
+    $jscode = 'const crypto = require(\'crypto\');
+const http = require(\'http\');
+
+const typeid = '.$typeid.';
+const row = 10;
+const timestamp = Math.floor(Date.now() / 1000);
+const apikey = \''.$tl->TypeInfos['apikey'].'\';
+const sign = crypto.createHash(\'md5\').update(typeid.toString() + timestamp.toString() + apikey + \'1\' + row.toString()).digest(\'hex\');
+const durl = `'.$cfg_basehost.'/apps/list.php?tid=${typeid}&mod=1&timestamp=${timestamp}&PageNo=1&PageSize=${row}&sign=${sign}`
+http.get(durl, (res) => {
+    let data = \'\';
+    res.on(\'data\', (chunk) => {
+        data += chunk;
+    });
+    res.on(\'end\', () => {
+        console.log(data);
+        const result = JSON.parse(data);
+        if (result.code === 0) {
+            console.log(result);
+        }
+    });
+}).on(\'error\', (err) => {
+    console.log(err);
+});';
+    $tagcode = '<ul>
+    {dede:jsonq url="'.$cfg_basehost.'" row="10" typeid='.$typeid.' apikey="'.$tl->TypeInfos['apikey'].'"}
+    <li><a href="[field:arcurl/]">[field:title/]</a></li>
+    {/dede:jsonq}
+</ul>';
+    echo json_encode(array(
+        "code"=>0,
+        "data"=>array(
+            "phpcode"=>htmlspecialchars($phpCode),
+            "gocode"=>htmlspecialchars($gocode),
+            "pythoncode"=>htmlspecialchars($pythoncode),
+            "jscode"=>htmlspecialchars($jscode),
+            "tagcode"=>htmlspecialchars($tagcode),
+        )
+    ));
 }
 ?>
