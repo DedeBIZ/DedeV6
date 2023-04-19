@@ -271,6 +271,8 @@ CREATE TABLE `#@__arctype` (
 	`crossid` text,
 	`content` text,
 	`smalltypes` text,
+	`apienabled` tinyint unsigned DEFAULT '0',
+	`apikey` varchar(64) DEFAULT NULL,
 	PRIMARY KEY (`id`),
 	KEY `reid` (`reid`,`isdefault`,`channeltype`,`ispart`,`corank`,`topid`,`ishidden`),
 	KEY `sortrank` (`sortrank`)

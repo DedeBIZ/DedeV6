@@ -10,10 +10,11 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 require_once(DEDEINC."/channelunit.func.php");
 if (!isset($upnext)) $upnext = 1;
 if (empty($gotype)) $gotype = '';
+if (empty($gotype)) UpDateCatCache();
+require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 if (empty($pageno)) $pageno = 0;
 if (empty($mkpage)) $mkpage = 1;
 if (empty($typeid)) $typeid = 0;
@@ -34,12 +35,17 @@ if ($gotype == '' || $gotype == 'mkallct') {
         $idArray[] = $typeid;
     }
 }
+
 //一键更新带缓存的情况
 else if ($gotype == 'mkall') {
     $uppage = 1;
     $mkcachefile = DEDEDATA."/mkall_cache_{$adminID}.php";
     $idArray = array();
     if (file_exists($mkcachefile)) require_once($mkcachefile);
+}
+if (!$idArray) {
+    ShowMsg("尚未添加栏目，请先添加栏目再进行更新", "javascript:;");
+    exit;
 }
 //当前更新栏目id
 $totalpage = count($idArray);
