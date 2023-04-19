@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
 	</head>
 	<body>
@@ -248,6 +249,9 @@
 					<td>
 						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
 						<span class="btn btn-success btn-sm mr-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
+						<?php if ($myrow['apienabled']=="1") {;?> 
+							<span class="btn btn-success btn-sm" title="调用" onclick="showAPI(<?php echo $id;?>)"><i class="fa fa-question-circle"></i></span>
+						<?php } ;?>
 						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='1'";?>> 支持</label>
 						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='1'";?>> 不支持</label>
 					</td>
@@ -263,6 +267,59 @@
 				</tr>
 			</table>
 		</form>
+		<div id="mdlViewAPI" class="modal fade" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">跨站调用</h5>
+						<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<span>
+									本功能主要用于移动客户端或第三方系统调用栏目数据进行展现。
+								</span>
+							</div>
+							<div class="form-group">
+								<label for="iptAPICode">代码调用</label>
+								<nav>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									  <button class="nav-link active" id="nav-php-tab" data-toggle="tab" data-target="#nav-php" type="button" role="tab" aria-controls="nav-php" aria-selected="true">PHP</button>
+									  <button class="nav-link" id="nav-js-tab" data-toggle="tab" data-target="#nav-js" type="button" role="tab" aria-controls="nav-js" aria-selected="true">Javasctipt</button>
+									  <button class="nav-link" id="nav-go-tab" data-toggle="tab" data-target="#nav-go" type="button" role="tab" aria-controls="nav-go" aria-selected="false">Go</button>
+									  <button class="nav-link" id="nav-python-tab" data-toggle="tab" data-target="#nav-python" type="button" role="tab" aria-controls="nav-python" aria-selected="false">Python3</button>
+									</div>
+								  </nav>
+								  <div class="tab-content py-3" id="nav-tabContent">
+									<div class="tab-pane fade show active" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
+										<pre><code id="codephp"></code></pre></div>
+									<div class="tab-pane fade" id="nav-js" role="tabpanel" aria-labelledby="nav-js-tab">
+										<pre><code id="codejs"></code></pre>
+									</div>
+									<div class="tab-pane fade" id="nav-go" role="tabpanel" aria-labelledby="nav-go-tab">
+										<pre><code id="codego"></code></pre>
+									</div>
+									<div class="tab-pane fade" id="nav-python" role="tabpanel" aria-labelledby="nav-python-tab">
+										<pre><code id="codepython"></code></pre>
+									</div>
+								  </div>
+							</div>
+							<div class="form-group">
+								<label for="iptAPITag">标签调用</label>
+								<pre><code id="codetag"></code></pre>
+							</div>
+							
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="btnStep">
+							<button id="btnGoStep4" type="button" class="btn btn-success" data-dismiss="modal">我知道了</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script>
 			var channelArray = new Array();
 			<?php	
@@ -341,6 +398,19 @@
 				var apikey = document.getElementById('apikey');
 				jQuery.get("sys_info.php?dopost=make_encode", function(data) {
 					jQuery("#apikey").val(data);
+				});
+			}
+			function showAPI(tid) {
+				fetch('catalog_do.php?dopost=viewAPI&typeid=' + tid).then(resp => resp.text()).then((d) => {
+					let data = JSON.parse(d);
+					if (data.code == 0) {
+						$("#codephp").html(data.data.phpcode);
+						$("#codego").html(data.data.gocode);
+						$("#codepython").html(data.data.pythoncode);
+						$("#codejs").html(data.data.jscode);
+						$("#codetag").html(data.data.tagcode);
+						$("#mdlViewAPI").modal('show');
+					}
 				});
 			}
 		</script>
