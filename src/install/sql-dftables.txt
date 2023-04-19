@@ -319,18 +319,6 @@ CREATE TABLE `#@__channeltype` (
 	KEY `nid` (`nid`,`isshow`,`arcsta`,`sendrank`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__co_onepage`;
-CREATE TABLE `#@__co_onepage` (
-	`id` int(11) NOT NULL auto_increment,
-	`url` varchar(60) NOT NULL default '',
-	`title` varchar(60) NOT NULL default '',
-	`issource` smallint(6) NOT NULL default '1',
-	`lang` varchar(10) NOT NULL default 'gb2312',
-	`rule` text,
-	PRIMARY KEY (`id`),
-	KEY `url` (`url`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__diyforms`;
 CREATE TABLE `#@__diyforms` (
 	`diyid` int(10) unsigned NOT NULL auto_increment,
