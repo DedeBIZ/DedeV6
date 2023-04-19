@@ -17,6 +17,10 @@ CheckPurview('t_Edit,t_AccEdit');
 //检查栏目操作许可
 CheckCatalog($id, '您无权修改本栏目');
 if ($dopost == "save") {
+    if ($apienabled == 1 && empty($apikey)) {
+        ShowMsg("跨站调用秘钥不能为空", "-1");
+        exit();
+    }
     $description = Html2Text($description, 1);
     $keywords = Html2Text($keywords, 1);
     $uptopsql = $smalltypes = '';
