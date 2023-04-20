@@ -482,6 +482,7 @@ CREATE TABLE `#@__member` (
 	`loginerr` tinyint NULL DEFAULT 0,
 	`send_max` int DEFAULT '1',
 	`user_money` decimal(10, 2) unsigned NULL default 0.00,
+	`pmid` INT(8) UNSIGNED NULL DEFAULT 0,
 	PRIMARY KEY (`mid`),
 	KEY `userid` (`userid`,`sex`),
 	KEY `logintime` (`logintime`)

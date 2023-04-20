@@ -125,4 +125,4 @@ ALTER TABLE `#@__member` ADD COLUMN `user_money` decimal(10, 2) UNSIGNED NULL DE
 
 -- 6.2.7
 ALTER TABLE `#@__arctype` ADD COLUMN `apienabled` tinyint UNSIGNED NULL DEFAULT 0 AFTER `smalltypes`,ADD COLUMN `apikey` varchar(64) NULL AFTER `apienabled`;
-ALTER TABLE `#@__member` ADD COLUMN `pmid` INT(8) UNSIGNED NULL DEFAULT NULL AFTER `user_money`;
+ALTER TABLE `#@__member` ADD COLUMN `pmid` INT(8) UNSIGNED NULL DEFAULT 0 AFTER `user_money`;
