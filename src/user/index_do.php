@@ -207,6 +207,65 @@ if ($fmdo == 'sendMail') {
         ShowMsg("已退出登录", "index.php", 0, 2000);
         exit();
     }
+} else if ($fmdo == 'purl'){
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
+    CheckRank(0, 0);
+    $row = $dsql->GetOne("SELECT count(*) as dd FROM `#@__member` WHERE `pmid`='{$cfg_ml->M_ID}' ");
+    $msg = "您已经邀请了{$row['dd']}人：
+    <div class='my-3 bg-white'>
+    <div class='media text-muted pt-3'>
+      <svg class='bd-placeholder-img mr-2 rounded' width='32' height='32' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 32x32' preserveAspectRatio='xMidYMid slice' focusable='false'><title>Placeholder</title><rect width='100%' height='100%' fill='green'></rect><text x='50%' y='50%' fill='green' dy='.3em'>32x32</text></svg>
+
+      <div class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'>
+        <div class='d-flex justify-content-between align-items-center w-100'>
+          <strong class='text-gray-dark'>链接邀请</strong>
+          <a href='javascript:Copylink()'>复制链接</a>
+        </div>
+        <span class='d-block'>复制链接分享给其他人，对方通过链接注册后双方均可获得{$cfg_userad_adds}积分<span id='text' style='font-size:0'>{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}</span></span>
+      </div>
+    </div>
+    <div class='media text-muted pt-3'>
+      <svg class='bd-placeholder-img mr-2 rounded' width='32' height='32' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 32x32' preserveAspectRatio='xMidYMid slice' focusable='false'><title>Placeholder</title><rect width='100%' height='100%' fill='#007bff'></rect><text x='50%' y='50%' fill='#007bff' dy='.3em'>32x32</text></svg>
+      <div class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'>
+        <div class='d-flex justify-content-between align-items-center w-100'>
+          <strong class='text-gray-dark'>二维码邀请</strong>
+          <a href='javascript:ShowQrcode()'>查看二维码</a>
+        </div>
+        <span class='d-block'>分享二维码到移动设备，通过二维码扫码注册，双方均可获得{$cfg_userad_adds}积分</span>
+      </div>
+    </div>
+    <div><a href='index.php' class='btn btn-outline-success btn-sm mt-3'>返回</a></div>
+  </div>
+  <div id='qrcode' style='margin:15px 0;width:200px;height:200px;display:none;margin:0 auto'></div>
+  <script type=\"text/javascript\">var qrcode = new QRCode(document.getElementById(\"qrcode\"), {
+    width : 200,
+    height : 200,
+    correctLevel : 3
+});qrcode.makeCode('{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}');</script>
+  <script>
+    function Copylink() {
+        var val = document.getElementById('text');
+        window.getSelection().selectAllChildren(val);
+        document.execCommand(\"Copy\");
+        ShowMsg(\"复制推广链接成功\");
+    }
+    function ShowQrcode(){
+        ShowMsg(document.getElementById('qrcode').innerHTML);
+    }
+  </script>
+  <style>
+    .modal-body img{
+        margin:0 auto;
+    }
+  </style>
+    ";
+    $wintitle = "邀请好友赚积分";
+    $wecome_info = " ";
+    $win = new OxWindow();
+    $win->AddMsgItem($msg);
+    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $win->Display(DEDEMEMBER."/templets/win_templet.htm");
+    exit;
 } else {
     ShowMsg("本页面禁止返回", "index.php");
 }

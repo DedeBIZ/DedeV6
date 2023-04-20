@@ -113,8 +113,12 @@
 					<td>投稿限制：</td>
 					<td>
 						<input type="text" name="send_max" class="admin-input-xs" value="<?php echo $row['send_max']?>">
-						<span>（0为不能投稿）</span>
+						<span>（0不能投稿，-1无限次）</span>
 					</td>
+				</tr>
+				<tr>
+					<td>投稿剩余次数：</td>
+					<td><?php echo $rtimes;?>次</td>
 				</tr>
 				<tr>
 					<td>资料状况：</td>

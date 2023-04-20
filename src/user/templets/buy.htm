@@ -23,7 +23,7 @@
 							</ol>
 							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
 						</nav>
-						<div class="alert alert-success"><?php echo $cfg_ml->GetSta($dsql);?></div>
+						<div class="alert alert-success"><?php echo $cfg_ml->GetSta();?></div>
 						<?php if ($cfg_money_scores > 0) {?>							
 						<?php $canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);?>
 						<div class="pb-3">

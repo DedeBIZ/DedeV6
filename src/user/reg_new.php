@@ -28,6 +28,10 @@ if ($step == 1) {
             exit();
         }
         $userid = $uname = trim($userid);
+        $pid = HtmlReplace($pid, 1);
+        //推广pid
+        $pRow = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$pid'");
+        $pMid = isset($pRow['mid'])? intval($pRow['mid']) : 0;
         $pwd = trim($userpwd);
         $pwdc = trim($userpwdok);
         $rs = CheckUserID($userid, '会员名');
@@ -63,6 +67,9 @@ if ($step == 1) {
             $dfmoney = $dfrank['money'];
             $dfscores = $dfrank['scores'];
         }
+        if ($pMid > 0) {
+            $dfscores = $dfscores + $cfg_userad_adds;
+        }
         $jointime = time();
         $logintime = time();
         $joinip = GetIP();
@@ -76,7 +83,7 @@ if ($step == 1) {
         }
         $mtype = '个人';
         $spaceSta = ($cfg_mb_spacesta < 0 ? $cfg_mb_spacesta : 0);
-        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`$pp`,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip`) VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip'); ";
+        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`$pp`,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip`, `pmid`) VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip', '$pMid'); ";
         if ($dsql->ExecuteNoneQuery($inQuery)) {
             $mid = $dsql->GetLastID();
             //写入默认会员详细资料
@@ -98,6 +105,9 @@ if ($step == 1) {
             //模拟登录
             $cfg_ml = new MemberLogin(7 * 3600);
             $rs = $cfg_ml->CheckUser($userid, $userpwd);
+            if ($pMid > 0) {
+                $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_userad_adds} WHERE mid='$pMid'");
+            }
             ShowMsg('操作成功，请重新登录系统', 'index.php');
             exit;
         } else {
@@ -105,6 +115,7 @@ if ($step == 1) {
             exit();
         }
     }
+    $pid = HtmlReplace($pid, 1);
     require_once(DEDEMEMBER."/templets/reg-new.htm");
 } else {
     if (!$cfg_ml->IsLogin()) {

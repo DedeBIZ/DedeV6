@@ -28,6 +28,15 @@ if ($row['uptime'] > 0 && $row['exptime'] > 0) {
 } else {
     $mhasDay = 0;
 }
+//获取用户投稿剩余次数
+$isAdmin = $row['matt'] == 10;
+$sendtime = GetMemberSendTime($id);
+if ($row['send_max'] == -1) {
+    $rtimes = '无限';
+} else {
+    $rtimes = ($row['send_max'] - $sendtime) > 0? $row['send_max'] - $sendtime : 0;
+}
+
 function GetMemberTypeName($rank)
 {
     global $dsql;
@@ -38,7 +47,16 @@ function GetMemberTypeName($rank)
         return $row['membername'];
     }
 }
-
+function GetMemberSendTime($mid)
+{
+    global $dsql;
+    $arr = $dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__arctiny` WHERE mid='{$mid}'");
+    if (is_array($arr)) {
+        return $arr['dd'];
+    } else {
+        return 0;
+    }
+}
 function GetHonor($scores)
 {
     global $dsql;

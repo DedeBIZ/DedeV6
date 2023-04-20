@@ -159,7 +159,7 @@ else if ($dopost == 'edituser') {
     $query = "UPDATE `#@__member` SET send_max='$send_max',email='$email',uname='$uname',sex='$sex',matt='$matt',user_money='$user_money',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' AND matt<>10 ";
     $rs = $dsql->ExecuteNoneQuery2($query);
     if ($rs == 0) {
-        $query = "UPDATE `#@__member` SET email='$email',uname='$uname',sex='$sex',user_money='$user_money',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' ";
+        $query = "UPDATE `#@__member` SET send_max='$send_max',email='$email',uname='$uname',sex='$sex',user_money='$user_money',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' ";
         $rs = $dsql->ExecuteNoneQuery2($query);
         if ($rank == 10 || $rank == 100) {
             $dsql->ExecuteNoneQuery2("UPDATE `#@__admin` SET `uname`='$uname' WHERE id='$id'");
