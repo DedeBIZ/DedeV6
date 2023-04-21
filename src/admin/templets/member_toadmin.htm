@@ -22,12 +22,8 @@
 				</tr>
 				<?php if ($row['matt']==10) {echo '<tr><td colspan="2"><div class="alert alert-info mb-0">您已经是管理员，不要提升了</div></td></tr>';} else {?>
 				<tr>
-					<td width="260">头像/会员名：</td>
-					<td>
-						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo "".$row['userid']."";?></span>
-						<span class="btn btn-outline-success btn-sm"><?php echo GetMemberTypeName($row['rank']);?></span>
-						<span class="btn btn-outline-warning btn-sm"><?php echo GetHonor($row['scores']);?></span>
-					</td>
+					<td width="260">会员名：</td>
+					<td><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo "".$row['userid']."";?></td>
 				</tr>
 				<tr>
 					<td>昵称：</td>
