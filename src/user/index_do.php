@@ -230,7 +230,7 @@ if ($fmdo == 'sendMail') {
             <span class='d-block'>分享二维码到移动设备，通过二维码扫码注册，双方均可获得{$cfg_userad_adds}积分</span>
         </div>
     </div>
-    <div class='text-center'><a href='index.php' class='btn btn-outline-success btn-sm'>返回</a></div>
+    <div class='text-center'><a href='index.php' class='btn btn-success btn-sm'>返回</a></div>
     <div id='qrcode'></div>
     <style>.modal-body img{margin:0 auto}#qrcode{display:none;margin:15px auto;width:200px;height:200px}</style>
     <script>

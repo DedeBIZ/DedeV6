@@ -419,10 +419,10 @@ if ($dopost == "show") {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' class='admin-input-lg'>\r\n";
+                    $forms .= "栏目：<select name='typeid' class='admin-input-lg'>\r\n";
                     $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
-                    $forms .= "</select>";
+                    $forms .= "</select><br>";
                     $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\"> 包含子栏目</label><br>";
                 } else if ($mainfield == 'iscommend') {
                     $forms .= "<label><input type=\"checkbox\" name=\"iscommend\" value=\"1\"> 推荐</label><br>";
@@ -445,10 +445,10 @@ if ($dopost == "show") {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' class='admin-input-lg'>\r\n";
+                    $forms .= "栏目：<select name='typeid' class='admin-input-lg'>\r\n";
                     $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
-                    $forms .= "</select>";
+                    $forms .= "</select><br>";
                     $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\"> 包含子栏目</label><br>";
                     $addonstring .= 'typeid:int,';
                 } elseif ($addonfield == 'senddate') {
@@ -482,22 +482,22 @@ if ($dopost == "show") {
                 $type = $typearr[$k];
                 $tmp = $name.':'.$type;
                 if (in_array($type, $intarr)) {
-                    $forms .= "<br>$itemname : <input type=\"text\" name=\"start".$name."\" value=\"\"> 到 <input type=\"text\" name=\"end".$name."\" value=\"\"><br>";
+                    $forms .= "$itemname : <input type=\"text\" name=\"start".$name."\" value=\"\"> 到 <input type=\"text\" name=\"end".$name."\" value=\"\"><br>";
                 } else if (in_array($type, $textarr)) {
                     $forms .= "$itemname : <input type=\"text\" name=\"$name\" value=\"\"><br>";
                 } else if ($type == 'select') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br>$itemname : <select name=\"$name\" ><option value=\"\">不限</option>";
+                        $forms .= "$itemname : <select name=\"$name\" ><option value=\"\">不限</option>";
                         foreach ($values as $value) {
                             $forms .= "<option value=\"$value\">$value</option>";
                         }
-                        $forms .= "</select>";
+                        $forms .= "</select><br>";
                     }
                 } else if ($type == 'radio') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br>$itemname : <label><input type=\"radio\" name=\"".$name."\" value=\"\" checked> 不限</label>";
+                        $forms .= "$itemname : <label><input type=\"radio\" name=\"".$name."\" value=\"\" checked> 不限</label><br>";
                         foreach ($values as $value) {
                             $forms .= "<label><input type=\"radio\" name=\"".$name."\" value=\"$value\"> $value</label>";
                         }
@@ -505,13 +505,13 @@ if ($dopost == "show") {
                 } else if ($type == 'checkbox') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br>$itemname : ";
+                        $forms .= "$itemname : ";
                         foreach ($values as $value) {
-                            $forms .= "<label><input type=\"checkbox\" name=\"".$name."[]\" value=\"$value\"> $value</label>";
+                            $forms .= "<label><input type=\"checkbox\" name=\"".$name."[]\" value=\"$value\"> $value</label><br>";
                         }
                     }
                 } elseif ($type == 'datetime') {
-                    $forms .= "<br>开始时间：<input type=\"text\" name=\"startdate\" value=\"\"><br>";
+                    $forms .= "开始时间：<input type=\"text\" name=\"startdate\" value=\"\"><br>";
                     $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\"><br>";
                 } else {
                     $tmp = '';
@@ -525,8 +525,8 @@ if ($dopost == "show") {
         $dsql->ExecuteNoneQuery($query);
         $formshtml = dede_htmlspecialchars($forms);
         echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
-        echo "下面生成的网页表单，请自行复制，根据自己需求修改样式后粘贴到对应的模板中<br><br><textarea cols=\"100\" rows=\"10\">".$forms."</textarea>";
-        echo '<br>预览：<br><hr>';
+        echo "<p>下面生成的网页表单，请自行复制，根据自己需求修改样式后粘贴到对应的模板中</p><textarea cols=\"100\" rows=\"10\">".$forms."</textarea>";
+        echo '<hr>';
         echo $forms;
     }
     exit;
