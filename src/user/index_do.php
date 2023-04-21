@@ -27,11 +27,9 @@ if ($fmdo == 'sendMail') {
     $url = $proto.preg_replace("#\/\/#i", '/', $url);
     $mailtitle = "{$cfg_webname}，会员邮件验证通知";
     $mailbody = '';
-    $mailbody .= "尊敬的会员<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，您好：\r\n";
-    $mailbody .= "欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
+    $mailbody .= "尊敬的会员<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
     $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏浏览这地址：\r\n";
     $mailbody .= "{$url}\r\n";
-    $mailbody .= "Powered by DedeBIZ开发团队\r\n";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient();
@@ -69,7 +67,7 @@ if ($fmdo == 'sendMail') {
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET spacesta=0 WHERE mid='{$mid}' ");
     //清除会员缓存
     $cfg_ml->DelCache($mid);
-    ShowMsg('操作成功，请重新登录系统', 'login.php');
+    ShowMsg('会员缓存已清理', 'login.php');
     exit();
 } else if ($fmdo == 'user') {
     //检查会员名是否存在
@@ -211,54 +209,49 @@ if ($fmdo == 'sendMail') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     CheckRank(0, 0);
     $row = $dsql->GetOne("SELECT count(*) as dd FROM `#@__member` WHERE `pmid`='{$cfg_ml->M_ID}' ");
-    $msg = "您已经邀请了{$row['dd']}人：
-    <div class='my-3 bg-white'>
-    <div class='media text-muted pt-3'>
-      <svg class='bd-placeholder-img mr-2 rounded' width='32' height='32' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 32x32' preserveAspectRatio='xMidYMid slice' focusable='false'><title>Placeholder</title><rect width='100%' height='100%' fill='green'></rect><text x='50%' y='50%' fill='green' dy='.3em'>32x32</text></svg>
-
-      <div class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'>
-        <div class='d-flex justify-content-between align-items-center w-100'>
-          <strong class='text-gray-dark'>链接邀请</strong>
-          <a href='javascript:Copylink()'>复制链接</a>
+    $msg = "<p>您已经邀请了{$row['dd']}人：</p>
+    <div class='media mb-3'>
+        <span class='btn btn-primary btn-sm mr-2'>链</span>
+        <div class='media-body pb-3 border-bottom border-gray'>
+            <div class='d-flex justify-content-between align-items-center w-100'>
+                <h5>链接邀请</h5>
+                <a href='javascript:Copylink()' class='btn btn-outline-primary btn-sm'>复制链接</a>
+            </div>
+            <span class='d-block'>复制链接分享给其他人，对方通过链接注册后双方均可获得{$cfg_userad_adds}积分<span id='text' style='font-size:0'>{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}</span>
         </div>
-        <span class='d-block'>复制链接分享给其他人，对方通过链接注册后双方均可获得{$cfg_userad_adds}积分<span id='text' style='font-size:0'>{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}</span></span>
-      </div>
     </div>
-    <div class='media text-muted pt-3'>
-      <svg class='bd-placeholder-img mr-2 rounded' width='32' height='32' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 32x32' preserveAspectRatio='xMidYMid slice' focusable='false'><title>Placeholder</title><rect width='100%' height='100%' fill='#007bff'></rect><text x='50%' y='50%' fill='#007bff' dy='.3em'>32x32</text></svg>
-      <div class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'>
-        <div class='d-flex justify-content-between align-items-center w-100'>
-          <strong class='text-gray-dark'>二维码邀请</strong>
-          <a href='javascript:ShowQrcode()'>查看二维码</a>
+    <div class='media mb-3'>
+        <span class='btn btn-success btn-sm mr-2'>码</span>
+        <div class='media-body pb-3 border-bottom border-gray'>
+            <div class='d-flex justify-content-between align-items-center w-100'>
+                <h5>二维码邀请</h5>
+                <a href='javascript:ShowQrcode()' class='btn btn-outline-success btn-sm'>查看二维码</a>
+            </div>
+            <span class='d-block'>分享二维码到移动设备，通过二维码扫码注册，双方均可获得{$cfg_userad_adds}积分</span>
         </div>
-        <span class='d-block'>分享二维码到移动设备，通过二维码扫码注册，双方均可获得{$cfg_userad_adds}积分</span>
-      </div>
     </div>
-    <div><a href='index.php' class='btn btn-outline-success btn-sm mt-3'>返回</a></div>
-  </div>
-  <div id='qrcode' style='margin:15px 0;width:200px;height:200px;display:none;margin:0 auto'></div>
-  <script type=\"text/javascript\">var qrcode = new QRCode(document.getElementById(\"qrcode\"), {
-    width : 200,
-    height : 200,
-    correctLevel : 3
-});qrcode.makeCode('{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}');</script>
-  <script>
-    function Copylink() {
-        var val = document.getElementById('text');
-        window.getSelection().selectAllChildren(val);
-        document.execCommand(\"Copy\");
-        ShowMsg(\"复制推广链接成功\");
-    }
-    function ShowQrcode(){
-        ShowMsg(document.getElementById('qrcode').innerHTML);
-    }
-  </script>
-  <style>
-    .modal-body img{
-        margin:0 auto;
-    }
-  </style>
-    ";
+    <div class='text-center'><a href='index.php' class='btn btn-outline-success btn-sm'>返回</a></div>
+    <div id='qrcode'></div>
+    <style>.modal-body img{margin:0 auto}#qrcode{display:none;margin:15px auto;width:200px;height:200px}</style>
+    <script>
+        var qrcode = new QRCode(document.getElementById(\"qrcode\"), {
+            width : 200,
+            height : 200,
+            correctLevel : 3
+        });
+        qrcode.makeCode('{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}');
+    </script>
+    <script>
+        function Copylink() {
+            var val = document.getElementById('text');
+            window.getSelection().selectAllChildren(val);
+            document.execCommand(\"Copy\");
+            ShowMsg(\"复制推广链接成功\");
+        }
+        function ShowQrcode(){
+            ShowMsg(document.getElementById('qrcode').innerHTML);
+        }
+    </script>";
     $wintitle = "邀请好友赚积分";
     $wecome_info = " ";
     $win = new OxWindow();

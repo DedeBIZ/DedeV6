@@ -2,4 +2,3 @@
 >>dede>>
 {dede:infolink/}
 >>dede>>
-无属性

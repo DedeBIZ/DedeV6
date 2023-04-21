@@ -1,19 +1,27 @@
 自定义模型文档列表标签
 >>dede>>
-{dede:arclistsg typeid='' row='' flag='h' col='' titlelen='' orderway='' keyword='' limit='0,1'}
+{dede:arclistsg typeid='' row='' col='' titlelen='' flag='h' orderway='' keyword='' limit='0,1'}
 	<a href='[field:arcurl/]'>[field:title/]</a>
 {/dede:arclistsg}
 >>dede>>
-col='' 分多少列显示（默认为单列）
-row='10' 返回文档列表总数
-typeid='' 调用栏目id，用英文逗号分开表示多个栏目
-titlelen='30' 标题长度等同于titlelength
-orderwey='desc'或'asc'排序方向
-keyword= 含有指定关键词的文档列表，多个关键词用英文逗号分开
-innertext="<a href='[field:arcurl/]'>[field:title/]</a>" 单条记录样式(innertext是放在标签之间的代码)
-arcid='' 指定文档id
-idlist='' 提取特定文档（文档id） 
+typeid='' 调用栏目id文档，用英文逗号分开表示多个栏目
+row='10' 调用文档列表总数
+col='2' 分多少列显示（默认为单列）
+titlelen='160' 标题长度
+orderby='sortrank' 文档排序方式
+	orderby='hot' 或orderby='click'表示按点击数排列
+	orderby='sortrank' 或orderby='pubdate'按出版时间排列
+	orderby='near' 
+	orderby=='lastpost' 按最后评论时间
+	orderby=='scores' 按得分排序
+	orderby='id' 按文档id排序
+	orderby='rand' 随机获得指定条件的文档列表
+keyword='关键词' 含有指定关键词的文档列表，多个关键词用英文逗号分开
+limit='' 限定的记录范围（如：limit='1,2'）
+innertext='' 单条记录样式
+aid='' 指定文档id
+idlist='' 提取特定文档
 channelid='' 栏目id
-limit='' 起始结束表示限定的记录范围（如：limit='1,2'）
 flag='h' 自定义属性值：头条[h]推荐[c]图片[p]幻灯[f]滚动[s]跳转[j]图文[a]加粗[b] 
-subday='天数' 表示在多少天以内的文档
+orderway='' 值为desc或asc，指定排序方式是降序还是顺向排序，默认为降序
+subday='7' 表示在多少天以内的文档

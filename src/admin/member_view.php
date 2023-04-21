@@ -36,7 +36,6 @@ if ($row['send_max'] == -1) {
 } else {
     $rtimes = ($row['send_max'] - $sendtime) > 0? $row['send_max'] - $sendtime : 0;
 }
-
 function GetMemberTypeName($rank)
 {
     global $dsql;

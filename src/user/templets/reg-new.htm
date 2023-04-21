@@ -18,10 +18,10 @@
 						<div class="login-box shadow-sm rounded text-left">
 							<h2 class="text-center mb-3">会员注册</h2>
 							<form method="post" action="reg_new.php" id="regUser" name="form2" onsubmit="return CheckSubmit();">
-								<input type="hidden" value="regbase" name="dopost">
-								<input type="hidden" value="1" name="step">
-								<input type="hidden" value="个人" name="mtype">
-								<input type="hidden" value="<?php echo $pid;?>" name="pid">
+								<input type="hidden" name="dopost" value="regbase">
+								<input type="hidden" name="step" value="1">
+								<input type="hidden" name="mtype" value="个人">
+								<input type="hidden" name="pid" value="<?php echo $pid;?>">
 								<div class="form-group">
 									<label for="iptUserid">会员账号</label>
 									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入会员账号">

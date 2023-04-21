@@ -1,6 +1,6 @@
 指定单个栏目数据标签
 >>dede>>
-{dede:type}
+{dede:type typeid=''}
 	<a href="[field:typelink/]">[field:typename/]</a>
 {/dede:type}
 >>dede>>

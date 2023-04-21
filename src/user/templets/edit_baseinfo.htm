@@ -102,7 +102,7 @@
 			function checkSubmit() {
 				if (document.form2.oldpwd.value == '') {
 					document.form2.oldpwd.focus();
-					ShowMsg("请您填写旧密码");
+					ShowMsg("请您填写原登录密码");
 					return false;
 				}
 				if (document.form2.userpwdok.value != document.form2.userpwd.value) {
@@ -124,7 +124,7 @@
 			$(document).ready(function () {
 				$("#btnChangeEmail").click(function () {
 					if ($("#iptOldpwd").val() === "") {
-						ShowMsg("请您填写旧密码");
+						ShowMsg("请您填写原登录密码");
 						return false;
 					}
 					$.post("<?php echo $cfg_cmsurl;?>/user/api.php?action=get_old_email", { oldpwd: $("#iptOldpwd").val() }, function (result) {

@@ -29,7 +29,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，暂时无法修改", "-1");
+            ShowMsg("这篇文档已锁定，暂时无法修改", "-1");
             exit();
         }
     }

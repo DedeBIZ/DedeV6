@@ -128,7 +128,7 @@
 				</tr>
 				<tr>
 					<td>文件保存目录：</td>
-					<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-lg">（标签“{cmspath}”请勿删除）</td>
+					<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-lg">（标签“{cmspath}”必填）</td>
 					<td>继承选项：</td>
 					<td><label><input type="checkbox" name="upnext" id="upnext" value="1"> 同时继承下级栏目浏览权限、文档类型、模板风格、命名规则等通用属性</label></td>
 				</tr>
@@ -248,10 +248,8 @@
 					<td>是否支持跨站调用：</td>
 					<td>
 						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
+						<?php if ($myrow['apienabled']=="1") {;?><span class="btn btn-success btn-sm" title="秘钥标签" onclick="showAPI(<?php echo $id;?>)"><i class="fa fa-question-circle"></i></span><?php } ;?>
 						<span class="btn btn-success btn-sm mr-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
-						<?php if ($myrow['apienabled']=="1") {;?> 
-							<span class="btn btn-success btn-sm" title="调用" onclick="showAPI(<?php echo $id;?>)"><i class="fa fa-question-circle"></i></span>
-						<?php } ;?>
 						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='1'";?>> 支持</label>
 						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='1'";?>> 不支持</label>
 					</td>
@@ -277,21 +275,17 @@
 					<div class="modal-body">
 						<form>
 							<div class="form-group">
-								<span>
-									本功能主要用于移动客户端或第三方系统调用栏目数据进行展现。
-								</span>
+								<span>本功能主要用于移动客户端或第三方系统调用栏目数据进行展现。</span>
 							</div>
 							<div class="form-group">
-								<label for="iptAPICode">代码调用</label>
-								<nav>
-									<div class="nav nav-tabs" id="nav-tab" role="tablist">
-									  <button class="nav-link active" id="nav-php-tab" data-toggle="tab" data-target="#nav-php" type="button" role="tab" aria-controls="nav-php" aria-selected="true">PHP</button>
-									  <button class="nav-link" id="nav-js-tab" data-toggle="tab" data-target="#nav-js" type="button" role="tab" aria-controls="nav-js" aria-selected="true">Javasctipt</button>
-									  <button class="nav-link" id="nav-go-tab" data-toggle="tab" data-target="#nav-go" type="button" role="tab" aria-controls="nav-go" aria-selected="false">Go</button>
-									  <button class="nav-link" id="nav-python-tab" data-toggle="tab" data-target="#nav-python" type="button" role="tab" aria-controls="nav-python" aria-selected="false">Python3</button>
-									</div>
-								  </nav>
-								  <div class="tab-content py-3" id="nav-tabContent">
+								<label for="iptAPICode" class="pb-3">代码调用</label>
+								<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									<button class="nav-link active" id="nav-php-tab" data-toggle="tab" data-target="#nav-php" type="button" role="tab" aria-controls="nav-php" aria-selected="true">PHP</button>
+									<button class="nav-link" id="nav-js-tab" data-toggle="tab" data-target="#nav-js" type="button" role="tab" aria-controls="nav-js" aria-selected="true">Javasctipt</button>
+									<button class="nav-link" id="nav-go-tab" data-toggle="tab" data-target="#nav-go" type="button" role="tab" aria-controls="nav-go" aria-selected="false">Go</button>
+									<button class="nav-link" id="nav-python-tab" data-toggle="tab" data-target="#nav-python" type="button" role="tab" aria-controls="nav-python" aria-selected="false">Python3</button>
+								</div>
+								<div class="tab-content" id="nav-tabContent">
 									<div class="tab-pane fade show active" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
 										<pre><code id="codephp"></code></pre></div>
 									<div class="tab-pane fade" id="nav-js" role="tabpanel" aria-labelledby="nav-js-tab">
@@ -303,19 +297,16 @@
 									<div class="tab-pane fade" id="nav-python" role="tabpanel" aria-labelledby="nav-python-tab">
 										<pre><code id="codepython"></code></pre>
 									</div>
-								  </div>
+								</div>
 							</div>
 							<div class="form-group">
-								<label for="iptAPITag">标签调用</label>
+								<label for="iptAPITag" class="pb-3">标签调用</label>
 								<pre><code id="codetag"></code></pre>
 							</div>
-							
 						</form>
 					</div>
 					<div class="modal-footer">
-						<div class="btnStep">
-							<button id="btnGoStep4" type="button" class="btn btn-success" data-dismiss="modal">我知道了</button>
-						</div>
+						<div class="btnStep"><button id="btnGoStep4" type="button" class="btn btn-success" data-dismiss="modal">关闭</button></div>
 					</div>
 				</div>
 			</div>

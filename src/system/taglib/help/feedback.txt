@@ -6,5 +6,5 @@
 {/dede:feedback}
 >>dede>>
 row='12' 调用评论条数
-titlelen='24' 标题长度
-infolen='100' 评论长度
+titlelen='160' 标题长度
+infolen='260' 评论长度

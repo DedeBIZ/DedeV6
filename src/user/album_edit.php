@@ -28,7 +28,7 @@ $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $menutype = 'content';
 if (empty($formhtml)) $formhtml = 0;
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("投稿失败，投稿限定次数<span class='text-primary'>{$cfg_ml->M_SendMax}次</span>（剩余0次），需要增加次数，请联系网站管理员", "-1", "0", 5000);
+    ShowMsg("投稿失败，投稿限定次数<span class='text-primary'>{$cfg_ml->M_SendMax}次</span>（剩余0次），需要增加次数，请联系网站管理员", "index.php", "0", 5000);
     exit();
 }
 if (empty($dopost)) {
@@ -42,7 +42,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，暂时无法修改", "-1");
+            ShowMsg("这篇文档已锁定，暂时无法修改", "-1");
             exit();
         }
     }

@@ -98,7 +98,7 @@ class ListView
                     ));
                     exit;
                 }
-                //验签算法 md5(typeid+timestamp+apikey+PageNo+PageSize)
+                //验签算法md5(typeid+timestamp+apikey+PageNo+PageSize)
                 $sign = md5($this->TypeID.$GLOBALS['timestamp'].$this->Fields['apikey'].$GLOBALS['PageNo'].$GLOBALS['PageSize']);
                 if ($sign !== $GLOBALS['sign']) {
                     echo json_encode(array(
@@ -1106,12 +1106,12 @@ class ListView
         }
         $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>\r\n";
+            return "<li class='page-item disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>\r\n";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>\r\n";
+            return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>\r\n";
         }
-        $maininfo = "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
+        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $purl = $this->GetCurUrl();
         //如果开启为静态，则对规则进行替换
         if ($cfg_rewrite == 'Y') {

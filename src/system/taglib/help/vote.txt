@@ -2,10 +2,9 @@
 >>dede>>
 {dede:vote id='' lineheight='26' tablewidth='100%' titlebgcolor='#EDEDE2' titlebackground='' tablebgcolor='#ffffff'/}
 >>dede>>
-id='' 数字，当前投票ID
+id='' 数字，当前投票id
 lineheight='26' 表格高度
 tablewidth='100%' 表格宽度
 titlebgcolor='#EDEDE2' 投票标题背景色
-titlebackground=''
 tablebg='' 投票表格背景色
 在后台->插件列表->投票管理，直接复制生成的网页代码来使用

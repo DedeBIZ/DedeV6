@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 if (empty($dopost)) {
-    ShowMsg("请指定栏目参数", "catalog_main.php");
+    ShowMsg("请指定一个栏目参数", "catalog_main.php");
     exit();
 }
 $cid = empty($cid) ? 0 : intval($cid);
@@ -32,10 +32,9 @@ if ($dopost == "addArchives") {
     }
     $gurl = $row["addcon"];
     if ($gurl == "") {
-        ShowMsg("您指的栏目可能有误", "catalog_main.php");
+        ShowMsg("操作失败，正在返回", "catalog_main.php");
         exit();
     }
-
     //跳转并传递参数
     header("location:{$gurl}?channelid={$channelid}&cid={$cid}");
     exit();
@@ -57,7 +56,7 @@ else if ($dopost == "listArchives") {
         $typename = $row["typename"];
         $channelname = $row["channelname"];
         if ($gurl == "") {
-            ShowMsg("您指的栏目可能有误", "catalog_main.php");
+            ShowMsg("操作失败，正在返回", "catalog_main.php");
             exit();
         }
     } else if ($channelid > 0) {
@@ -67,7 +66,6 @@ else if ($dopost == "listArchives") {
         $typename = "";
         $channelname = $row["typename"];
     }
-
     if (empty($gurl)) $gurl = 'content_list.php';
     header("location:{$gurl}?channelid={$channelid}&cid={$cid}");
     exit();
@@ -102,8 +100,9 @@ else if ($dopost == "upRank") {
     UpDateCatCache();
     ShowMsg("操作成功，返回目录", "catalog_main.php");
     exit();
-} else if ($dopost == "upRankAll") {
-    //检查权限许可
+}
+//检查权限许可
+else if ($dopost == "upRankAll") {
     CheckPurview('t_Edit');
     $row = $dsql->GetOne("SELECT id FROM `#@__arctype` ORDER BY id DESC");
     if (is_array($row)) {
@@ -141,11 +140,6 @@ else if ($dopost == "upcatcache") {
         }
     }
     ShowMsg("操作成功，正在返回", "catalog_main.php");
-    exit();
-}
-//获取js文件
-else if ($dopost == "GetJs") {
-    header("location:makehtml_js.php");
     exit();
 }
 //获得子类的文档
@@ -193,16 +187,15 @@ else if ($dopost == 'unitCatalog') {
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
-        $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档网页和列表网页");
+        $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档网页和列表网页，栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况");
         $win->AddItem('您选择的栏目是：', "<span class='text-primary'>$typename($typeid)</span>");
         $win->AddItem('您希望合并到那个栏目', "<select name='unittype'>{$typeOptions}</select>");
-        $win->AddItem('注意事项：', '栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况');
         $winform = $win->GetWindow('ok');
         $win->Display();
         exit();
     } else {
         if ($typeid == $unittype) {
-            ShowMsg("同一栏目无法合并,请后退重试", '-1');
+            ShowMsg("同一栏目无法合并，请重新合并", '-1');
             exit();
         }
         if (IsParent($unittype, $typeid)) {
@@ -243,10 +236,9 @@ else if ($dopost == 'moveCatalog') {
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
-        $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建网页");
+        $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建网页，不允许从父级移动到子级目录，只允许子级到更高级或同级或不同父级的情况");
         $win->AddItem('您选择的栏目是：', "$typename($typeid)");
         $win->AddItem('您希望移动到那个栏目', "<select name='movetype'>\r\n<option value='0'>移动为顶级栏目</option>\r\n$typeOptions\r\n</select>");
-        $win->AddItem('注意事项：', '不允许从父级移动到子级目录，只允许子级到更高级或同级或不同父级的情况');
         $winform = $win->GetWindow('ok');
         $win->Display();
         exit();
@@ -265,7 +257,8 @@ else if ($dopost == 'moveCatalog') {
         ShowMsg('成功移动目录', 'catalog_main.php');
         exit();
     }
-} //查看API
+}
+//查看跨站调用秘钥
 else if ($dopost == 'viewAPI') {
     require_once(DEDEINC.'/typelink/typelink.class.php');
     $typeid = isset($typeid) ? intval($typeid) : 0;
@@ -283,7 +276,6 @@ else if ($dopost == 'viewAPI') {
     }
  ?>';
     $gocode = 'package main
-
 import (
     "crypto/md5"
     "encoding/json"
@@ -293,7 +285,6 @@ import (
     "strconv"
     "time"
 )
-
 func main() {
     typeid := '.$typeid.'
     row := 10
@@ -325,7 +316,6 @@ func main() {
 import json
 import time
 import urllib.request
-
 typeid = '.$typeid.'
 row = 10
 timestamp = int(time.time())
@@ -339,7 +329,6 @@ if data[\'code\'] == 0:
 ';
     $jscode = 'const crypto = require(\'crypto\');
 const http = require(\'http\');
-
 const typeid = '.$typeid.';
 const row = 10;
 const timestamp = Math.floor(Date.now() / 1000);

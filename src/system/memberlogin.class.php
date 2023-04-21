@@ -320,8 +320,7 @@ class MemberLogin
         return $fnum;
     }
     /**
-     *  会员登录
-     *  把登录密码转为指定长度md5数据
+     *  会员登录，把登录密码转为指定长度md5数据
      *
      * @access    public
      * @param     string  $pwd  需要加密的密码
@@ -343,29 +342,7 @@ class MemberLogin
         }
     }    
     /**
-     * 投稿是否被限制
-     *
-     * @return array
-     */
-    function IsSendLimited()
-    {
-        $arr = $this->dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__arctiny` WHERE mid='{$this->M_ID}'");
-        if (is_array($arr)) {
-            if ($this->M_SendMax < 0) {
-                return false;
-            }
-            if ($arr['dd'] >= $this->M_SendMax) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
-    }
-    /**
-     *  把数据库密码转为特定长度
-     *  如果数据库密码是明文的，本程序不支持
+     *  会员登录，把数据库密码转为特定长度，如果数据库密码是明文，本程序不支持
      *
      * @access    public
      * @param     string
@@ -392,6 +369,27 @@ class MemberLogin
         }
     }
     /**
+     * 投稿是否被限制
+     *
+     * @return array
+     */
+    function IsSendLimited()
+    {
+        $arr = $this->dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__arctiny` WHERE mid='{$this->M_ID}'");
+        if (is_array($arr)) {
+            if ($this->M_SendMax < 0) {
+                return false;
+            }
+            if ($arr['dd'] >= $this->M_SendMax) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+    /**
      *  检查会员是否合法
      *
      * @access    public
@@ -408,7 +406,7 @@ class MemberLogin
             $loginuser = $rs;
             return '0';
         }
-        //matt=10 是管理员关连的前台帐号，为了安全起见，这个帐号只能从后台登录，不能直接从前台登录
+        //matt=10是管理员关连的前台帐号，为了安全起见，这个帐号只能从后台登录，不能直接从前台登录
         $row = $this->dsql->GetOne("SELECT mid,matt,pwd,pwd_new,logintime FROM `#@__member` WHERE userid LIKE '$loginuser' ");
         if (is_array($row)) {
             if (!empty($row['pwd_new']) && !password_verify($loginpwd, $row['pwd_new'])) {

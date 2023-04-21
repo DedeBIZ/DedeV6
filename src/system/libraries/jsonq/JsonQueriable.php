@@ -269,7 +269,6 @@ trait JsonQueriable
      */
     protected function getDataFromUrl($url)
     {
-       
         $curl_handle=curl_init();
         curl_setopt($curl_handle, CURLOPT_URL, $url);
         curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);

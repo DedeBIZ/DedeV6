@@ -2,5 +2,5 @@
 >>dede>>
 {dede:autochannel partsort='' typeid=''}{/dede:autochannel}
 >>dede>>
-partsort='0' 栏目所在的排序位置
-typeid='0' 指定的父栏目
+partsort='' 栏目所在的排序位置
+typeid='' 指定的父栏目

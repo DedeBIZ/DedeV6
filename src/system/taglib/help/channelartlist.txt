@@ -15,5 +15,4 @@
 typeid='' 调用栏目id，用英文逗号分开表示多个栏目
 notypeid='' 不调用栏目id，用英文逗号分开表示多个栏目
 row='20' 获取的栏目返回值
-除了宏标签外，channelArtlist 是唯一一个可以直接嵌套其它标签的标签，不过仅限于嵌套 
-{dede:type}{/dede:type}和{dede:arclist}{/dede:arclist}两个标签
+除了宏标签外，{dede:channelartlist}标签是唯一一个可以直接嵌套其它标签的标签，仅限于嵌套{dede:type}和{dede:arclist}

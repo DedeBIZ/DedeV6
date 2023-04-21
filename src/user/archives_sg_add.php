@@ -20,7 +20,7 @@ $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("投稿失败，投稿限定次数<span class='text-primary'>{$cfg_ml->M_SendMax}次</span>（剩余0次），需要增加次数，请联系网站管理员", "-1", "0", 5000);
+    ShowMsg("投稿失败，投稿限定次数<span class='text-primary'>{$cfg_ml->M_SendMax}次</span>（剩余0次），需要增加次数，请联系网站管理员", "index.php", "0", 5000);
     exit();
 }
 if (empty($dopost)) {

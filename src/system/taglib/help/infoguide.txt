@@ -2,4 +2,3 @@
 >>dede>>
 {dede:infoguide/}
 >>dede>>
-无属性
