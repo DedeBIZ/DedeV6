@@ -531,7 +531,7 @@ if ($dopost == "show") {
     }
     exit;
 }
-//删除自定义搜索；
+//删除自定义搜索
 else if ($dopost == 'del') {
     $mid = intval($mid);
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__advancedsearch` WHERE mid = '$mid';");
