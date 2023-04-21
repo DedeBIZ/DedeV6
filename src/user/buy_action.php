@@ -209,7 +209,7 @@ if ($paytype === 0) {
             $wecome_info = " ";//这个空格不要去
             $win = new OxWindow();
             $win->AddMsgItem($msg);
-            $winform = $win->GetWindow("hand", "&nbsp;", false);
+            $winform = $win->GetWindow("hand", false);
             $win->Display(DEDEMEMBER."/templets/win_templet.htm");
         } catch (Exception $e) {
             ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
@@ -252,7 +252,7 @@ if ($paytype === 0) {
         $wecome_info = " ";//这个空格不要去
         $win = new OxWindow();
         $win->AddMsgItem($msg);
-        $winform = $win->GetWindow("hand", "&nbsp;", false);
+        $winform = $win->GetWindow("hand", false);
         $win->Display(DEDEMEMBER."/templets/win_templet.htm");
     } elseif ($paytype === 4) {
         //余额付款

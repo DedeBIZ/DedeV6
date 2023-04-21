@@ -243,7 +243,7 @@ if ($dopost != 'save') {
     $win = new OxWindow();
     $win->AddTitle("成功发布图片文档");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
+    $winform = $win->GetWindow("hand", FALSE);
     $win->Display();
 }
 ?>

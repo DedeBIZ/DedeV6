@@ -211,7 +211,7 @@ else if ($action == 'savetagfile') {
     $win = new OxWindow();
     $win->AddTitle("新建修改标签");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
 }

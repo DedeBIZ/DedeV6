@@ -66,7 +66,7 @@ class OxWindow
      */
     function StartWin()
     {
-        $this->myWin .= "<table width='100%' cellpadding='3' cellspacing='1'>";
+        $this->myWin .= "<table width='100%' cellpadding='1' cellspacing='1'>";
     }
     /**
      *  添加一个两列的行
@@ -188,8 +188,7 @@ class OxWindow
         }
         if ($wintype != "") {
             if ($wintype != "hand") {
-                $this->myWin .= "
-<tr>
+                $this->myWin .= "<tr>
 <td colspan='2' align='center'>
 <button type='submit' class='btn btn-success btn-sm'>$tt</button>
 <button type='button' class='btn btn-outline-success btn-sm' onClick='history.go(-1);'>返回</button>

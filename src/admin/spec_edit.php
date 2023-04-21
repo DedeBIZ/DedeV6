@@ -195,7 +195,7 @@ if ($dopost != 'save') {
     $win = new OxWindow();
     $win->AddTitle("成功修改专题");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
+    $winform = $win->GetWindow("hand", FALSE);
     $win->Display();
 }
 ?>

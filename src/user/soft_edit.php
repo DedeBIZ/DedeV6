@@ -169,7 +169,7 @@ if (empty($dopost)) {
     $win = new OxWindow();
     $win->AddTitle("成功修改软件文档");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
 ?>

@@ -26,7 +26,7 @@ if (preg_match("#^http#", $url)) {
         $win = new OxWindow();
         $win->AddTitle("您将要访问的链接不属于当前站点，请关注您的账号安全。");
         $win->AddMsgItem($msg);
-        $winform = $win->GetWindow("hand", "&nbsp;", false);
+        $winform = $win->GetWindow("hand", false);
         $win->Display();
     } else {
         header('HTTP/1.1 301 Moved Permanently');

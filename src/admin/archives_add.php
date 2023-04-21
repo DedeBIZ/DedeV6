@@ -174,7 +174,7 @@ if ($dopost != 'save') {
     $win = new OxWindow();
     $win->AddTitle('成功发布自定义文档：');
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow('hand', '&nbsp;', false);
+    $winform = $win->GetWindow('hand', false);
     $win->Display();
 }
 ?>

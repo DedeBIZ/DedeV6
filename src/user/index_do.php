@@ -256,7 +256,7 @@ if ($fmdo == 'sendMail') {
     $wecome_info = " ";
     $win = new OxWindow();
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
     exit;
 } else {
