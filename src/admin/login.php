@@ -54,15 +54,15 @@ if ($dopost == 'login') {
         if ($res == 1) {
             $cuserLogin->keepUser();
             if (!empty($gotopage)) {
-                ShowMsg('成功登录，正在跳转管理首页', $gotopage);
+                ShowMsg('正在登录后台管理，请稍等', $gotopage);
                 exit();
             } else {
-                ShowMsg('成功登录，正在跳转管理首页', 'index.php');
+                ShowMsg('正在登录后台管理，请稍等', 'index.php');
                 exit();
             }
         } else if ($res == -1) {
             ResetVdValue();
-            ShowMsg('管理员账号不存在', 'login.php', 0, 1000);
+            ShowMsg('管理员账号错误', 'login.php', 0, 1000);
             exit;
         } else {
             ResetVdValue();

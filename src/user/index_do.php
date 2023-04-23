@@ -61,7 +61,7 @@ if ($fmdo == 'sendMail') {
         exit();
     }
     if ($row['spacesta'] != -10) {
-        ShowMsg('您的帐号不在邮件验证状态，本操作无效', '-1');
+        ShowMsg('操作无效，您的帐号不在邮件验证状态', '-1');
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET spacesta=0 WHERE mid='{$mid}' ");
@@ -156,7 +156,7 @@ if ($fmdo == 'sendMail') {
         }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();
-            ShowMsg("您输入的会员名<span class='text-primary'>{$userid}</span>不合法", "index.php");
+            ShowMsg("您输入的会员名<span class='text-primary'>{$userid}</span>已禁止", "index.php");
             exit();
         }
         if ($pwd == '') {
@@ -177,7 +177,7 @@ if ($fmdo == 'sendMail') {
         $rs = $cfg_ml->CheckUser($userid, $pwd);
         if ($rs == 0) {
             ResetVdValue();
-            ShowMsg("您的账号不存在", "index.php", 0, 2000);
+            ShowMsg("您的账号错误", "index.php", 0, 2000);
             exit();
         } else if ($rs == -1) {
             ResetVdValue();
@@ -191,10 +191,10 @@ if ($fmdo == 'sendMail') {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg("成功登录，正在跳转会员首页", "index.php", 0, 2000);
+                ShowMsg("正在登录会员中心，请稍等", "index.php", 0, 2000);
             } else {
                 $gourl = str_replace('^', '&', $gourl);
-                ShowMsg("成功登录，正在跳转指定页面", $gourl, 0, 2000);
+                ShowMsg("正在前往指定页面，请稍等", $gourl, 0, 2000);
             }
             exit();
         }
@@ -202,7 +202,7 @@ if ($fmdo == 'sendMail') {
     //退出登录
     else if ($dopost == "exit") {
         $cfg_ml->ExitCookie();
-        ShowMsg("已退出登录", "index.php", 0, 2000);
+        ShowMsg("已退出会员中心", "index.php", 0, 2000);
         exit();
     }
 } else if ($fmdo == 'purl'){
