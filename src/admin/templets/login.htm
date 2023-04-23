@@ -19,7 +19,7 @@
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
 		</div>
 		<?php }?>
-		<div class="d-flex flex-md-row align-items-center shadow-sm admin-head mb-5">
+		<div class="d-flex flex-md-row align-items-center shadow-sm admin-head mb-6">
 			<div class="container">
 				<div class="row">
 					<div class="col-6 col-md-4"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
@@ -29,10 +29,10 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 mb-3">
 					<div class="login-from">
 						<?php echo $redmsg;?>
-						<div class="login-box shadow-sm">
+						<div class="login-box shadow-sm mb-3">
 							<h2 class="text-center mb-3">后台登录</h2>
 							<form name="form1" method="post" action="login.php">
 								<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
@@ -53,10 +53,10 @@
 										<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
 									</div>
 								</div>
-								<div><button type="submit" class="btn btn-success btn-md btn-block">登录</button></div>
-								<div class="login-power"><?php echo $cfg_powerby;?></div>
+								<div class="text-center"><button type="submit" class="btn btn-success btn-md btn-block">登录</button></div>
 							</form>
 						</div>
+						<span><?php echo $cfg_powerby;?></span>
 					</div>
 				</div>
 			</div>
