@@ -1,6 +1,6 @@
 <?php
 namespace WeMini;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 use WeChat\Contracts\Tools;
 use WeChat\Exceptions\InvalidDecryptException;

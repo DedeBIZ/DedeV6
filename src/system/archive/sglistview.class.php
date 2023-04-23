@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 自定义模型列表类
+ * 自定义模型列表
  *
  * @version        $id:sglistview.class.php 15:48 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries

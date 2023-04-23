@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 防采集混淆字符串
  *
@@ -9,6 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//仅作一个映射，开发直接采用helper('downmix');进行调用
+//仅作一个映射，开发直接采用helper('downmix');调用
 helper('downmix');
 ?>

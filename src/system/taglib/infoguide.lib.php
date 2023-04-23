@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 分类信息地区与小分类搜索
+ * 分类信息地区与小分类搜索标签
  *
  * @version        $id:infoguide.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

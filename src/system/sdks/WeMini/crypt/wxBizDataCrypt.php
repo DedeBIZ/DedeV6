@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 对微信小程序会员加密数据的解密示例代码
  * Class WXBizDataCrypt

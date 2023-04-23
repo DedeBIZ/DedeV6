@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 字符串小助手
+ * 字符串助手
  *
  * @version        $id:string.helper.php 5 14:24 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
@@ -12,8 +12,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 //拼音的缓冲数组
 $pinyins = array();
 /**
- *  中文截取2，单字节截取模式
- *  如果是request的文档，必须使用这个函数
+ *  中文截取2，单字节截取模式，如果是request的文档，必须使用这个函数
  *
  * @access    public
  * @param     string  $str  需要截取的字符串

@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 try {
     //手动加载入口文件
     include "../include.php";

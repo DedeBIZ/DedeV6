@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 时间戳小助手
+ * 时间戳助手
  *
  * @version        $id:time.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers

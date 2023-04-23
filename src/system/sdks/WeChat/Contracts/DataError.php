@@ -1,6 +1,6 @@
 <?php
 namespace WeChat\Contracts;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 错误消息处理
  * Class DataError

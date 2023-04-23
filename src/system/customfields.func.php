@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 系统核心函数
  * @version        $id:customfields.func.php 2 20:50 2010年7月7日 tianya $

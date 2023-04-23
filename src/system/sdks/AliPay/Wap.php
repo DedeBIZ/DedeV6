@@ -1,6 +1,6 @@
 <?php
 namespace AliPay;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use WeChat\Contracts\BasicAliPay;
 /**
  * 手机WAP网站支付支持

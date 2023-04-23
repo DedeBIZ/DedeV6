@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 文件管理逻辑类
  *
@@ -13,8 +13,7 @@ class FileManagement
 {
     var $baseDir = "";
     var $activeDir = "";
-    //是否允许文件管理器删除目录；
-    //默认为不允许 0 ,如果希望可能管理整个目录,请把值设为 1 ；
+    //是否允许文件管理器删除目录，默认为不允许0，如果希望可能管理整个目录，请把值设为1
     var $allowDeleteDir = 0;
     //初始化系统
     function Init()

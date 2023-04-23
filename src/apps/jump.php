@@ -1,6 +1,6 @@
 <?php
 /**
- * 用于地址跳转
+ * 地址跳转
  *
  * @version        $id:jump.php$
  * @package        DedeBIZ.Site

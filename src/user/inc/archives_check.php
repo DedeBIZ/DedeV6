@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEMEMBER')) exit('dedebiz');
+if (!defined('DEDEMEMBER')) exit ('dedebiz');
 /**
  * 文档验证
  * 

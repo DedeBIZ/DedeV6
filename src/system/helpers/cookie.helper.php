@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * Cookie处理小助手
+ * Cookie处理助手
  *
  * @version        $id:file.helper.php 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers

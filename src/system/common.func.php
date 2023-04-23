@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 系统核心函数存放文件
+ * 系统核心函数存放
  * 
  * @version        $id:common.func.php 4 16:39 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
@@ -230,7 +230,7 @@ if (!function_exists('CheckSql')) {
     }
 }
 /**
- *  载入小助手，系统默认载入小助手示例
+ *  载入助手，系统默认载入助手示例
  *  <code>
  *  if (!function_exists('HelloDede'))
  *  {
@@ -240,10 +240,10 @@ if (!function_exists('CheckSql')) {
  *      }
  *  }
  *  </code>
- *  开发中使用这个小助手的时候直接使用函数helper('test');初始化它，然后在文件中就可以直接使用:HelloDede();调用
+ *  开发中使用这个助手的时候直接使用函数helper('test');初始化它，然后在文件中就可以直接使用:HelloDede();调用
  *
  * @access    public
- * @param     mix   $helpers  小助手名称，可以是数组，可以是单个字符串
+ * @param     mix   $helpers  助手名称，可以是数组，可以是单个字符串
  * @return    void
  */
 $_helpers = array();
@@ -263,7 +263,7 @@ function helper($helpers)
         include_once(DEDEINC.'/helpers/'.$helpers.'.helper.php');
         $_helpers[$helpers] = TRUE;
     }
-    //无法载入小助手
+    //无法载入助手
     if (!isset($_helpers[$helpers])) {
         exit('Unable to load the requested file: helpers/'.$helpers.'.helper.php');
     }
@@ -276,7 +276,7 @@ function dede_htmlspecialchars($str)
     else return htmlspecialchars($str);
 }
 /**
- *  载入小助手，这里会员可能载入用helps载入多个小助手
+ *  载入助手，这里会员可能载入用helps载入多个助手
  *
  * @access    public
  * @param     string

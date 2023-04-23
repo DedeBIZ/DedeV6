@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use WeChat\Contracts\BasicWeWork;
 include '../include.php';
 $config = include 'work-config.php';

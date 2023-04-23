@@ -1,6 +1,6 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
-if (isset($_FILES['GLOBALS'])) exit('Request not allow!');
+if (!defined('DEDEINC')) exit ('dedebiz');
+if (isset($_FILES['GLOBALS'])) exit ('Request not allow!');
 /**
  * 文件上传安全校验方法
  *

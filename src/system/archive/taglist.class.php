@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 标签列表类
+ * 标签列表
  *
  * @version        $id:taglist.class.php 18:17 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries

@@ -1,6 +1,6 @@
 <?php
 namespace WeChat\Contracts;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use ArrayAccess;
 /**
  * Class DataArray

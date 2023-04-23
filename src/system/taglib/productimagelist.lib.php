@@ -1,8 +1,6 @@
 <?php
-!defined('DEDEINC') && exit("403 Forbidden!");
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 
- *
  * @version        $id:productimagelist.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM

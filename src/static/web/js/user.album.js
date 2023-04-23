@@ -68,7 +68,7 @@ function LoadTestDiv() {
 		newobj.style.top = posTop;
 		newobj.style.left = posLeft;
 		document.body.appendChild(newobj);
-	} else{
+	} else {
 		newobj.style.display = "block";
 	}
 	const formData = new FormData()

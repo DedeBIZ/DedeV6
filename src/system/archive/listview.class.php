@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档列表类
+ * 文档列表
  *
  * @version        $id:listview.class.php 2 15:15 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries

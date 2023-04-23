@@ -1,6 +1,6 @@
 <?php
 namespace WeMini;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 /**
  * 公众号小程序模板消息支持

@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 自由列表类
+ * 自由列表
  *
  * @version        $id:freelist.class.php 3 15:15 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries

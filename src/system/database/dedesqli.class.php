@@ -1,8 +1,8 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 系统底层数据库核心类
- * 调用这个类前，请先设定这些外部变量
+ * 系统底层数据库核心，调用这个类前，请先设定这些外部变量
+ * 
  * $GLOBALS['cfg_dbhost'];
  * $GLOBALS['cfg_dbuser'];
  * $GLOBALS['cfg_dbpwd'];

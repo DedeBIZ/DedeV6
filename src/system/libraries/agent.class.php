@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 require_once(DEDEINC."/libraries/crawlerdetect.class.php");
 require_once(DEDEINC."/libraries/mobiledetect.class.php");
 //copyright https://github.com/jenssegers/agent

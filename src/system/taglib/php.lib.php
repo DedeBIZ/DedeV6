@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 
+ * PHP标签
  *
  * @version        $id:php.lib.php1 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

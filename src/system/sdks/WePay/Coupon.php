@@ -1,6 +1,6 @@
 <?php
 namespace WePay;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use WeChat\Contracts\BasicWePay;
 /**
  * 微信商户代金券

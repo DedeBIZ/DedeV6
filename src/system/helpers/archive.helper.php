@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档小助手
+ * 文档助手
  *
  * @version        $id:archive.helper.php 2 23:00 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers

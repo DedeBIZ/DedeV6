@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 spl_autoload_register(function ($classname) {
     $pathname = __DIR__.DIRECTORY_SEPARATOR;
     $filename = str_replace('\\', DIRECTORY_SEPARATOR, $classname).'.php';

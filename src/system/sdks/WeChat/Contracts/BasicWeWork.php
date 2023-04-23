@@ -1,6 +1,6 @@
 <?php
 namespace WeChat\Contracts;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 企业微信基础类
  * Class BasicWeWork

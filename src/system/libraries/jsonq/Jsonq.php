@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 require_once(dirname(__FILE__)."/Exceptions/ConditionNotAllowedException.php");
 require_once(dirname(__FILE__)."/Exceptions/FileNotFoundException.php");
 require_once(dirname(__FILE__)."/Exceptions/InvalidJsonException.php");

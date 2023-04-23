@@ -145,7 +145,7 @@ else if ($dopost == 'edituser') {
     $uname = isset($uname)? HtmlReplace($uname,1) : '';
     $spacesta = isset($spacesta)? HtmlReplace($spacesta,1) : '';
     $exptime = isset($exptime)? HtmlReplace($exptime,1) : '';
-    if (!isset($_POST['id'])) exit('dedebiz');
+    if (!isset($_POST['id'])) exit ('dedebiz');
     $pwdsql = empty($pwd) ? '' : ",pwd='".md5($pwd)."'";
     if (function_exists('password_hash')) {
         $pwdsql = empty($pwd) ? '' : ",pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";

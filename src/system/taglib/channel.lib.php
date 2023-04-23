@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 栏目列表标签
  *

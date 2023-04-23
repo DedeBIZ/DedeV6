@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 自定义表单解析
+ * 自定义表单
  *
  * @version        $id:diyform.class.php 10:31 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries

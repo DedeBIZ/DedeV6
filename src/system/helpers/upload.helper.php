@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 上传处理小助手
+ * 上传处理助手
  *
  * @version        $id:upload.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers

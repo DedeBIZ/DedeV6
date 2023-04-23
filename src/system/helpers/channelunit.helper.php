@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档小助手
+ * 文档助手
  *
  * @version        $id:channelunit.helper.php 16:49 2010年7月6日 tianya $
  * @package        DedeBIZ.Helpers
@@ -29,10 +29,7 @@ if (!function_exists('GetRankStar')) {
     }
 }
 /**
- *  获得文档网址
- *  如果要获得文件的路径，直接用
- *  GetFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)
- *  即是不指定站点参数则返回相当对根目录的真实路径
+ *  获得文档网址，如果要获得文件的路径，直接用GetFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)即是不指定站点参数则返回相当对根目录的真实路径
  *
  * @param     int  $aid  文档id
  * @param     int  $typeid  栏目id
@@ -83,7 +80,7 @@ if (!function_exists('GetFileUrl')) {
     }
 }
 /**
- *  获得新文件名(本函数会自动创建目录)
+ *  获得新文件名，本函数会自动创建目录
  *
  * @param     int  $aid  文档id
  * @param     int  $typeid  栏目id
@@ -122,7 +119,7 @@ if (!function_exists('GetFileNewName')) {
     }
 }
 /**
- *  获得文件相对于主站点根目录的物理文件名(动态网址返回url)
+ *  获得文件相对于主站点根目录的物理文件名，动态网址返回url
  *
  * @param     int  $aid  文档id
  * @param     int  $typeid  栏目id
@@ -184,8 +181,7 @@ if (!function_exists('GetFileName')) {
     }
 }
 /**
- *  获得指定栏目链接
- *  对于使用封面文件和单独页面的情况，强制使用默认页名称
+ *  获得指定栏目链接，对于使用封面文件和单独页面的情况，强制使用默认页名称
  *
  * @param     int  $typeid  栏目id
  * @param     string  $typedir  栏目目录
@@ -208,7 +204,7 @@ if (!function_exists('GetTypeUrl')) {
         if ($isdefault==-1) {
             //动态
             if ($cfg_rewrite == 'Y') {
-                //网页版return $GLOBALS['cfg_cmspath']."/list-".$typeid.".html";
+                //网页版，栏目形式：域名/list-1.html、域名/list-2.html，分页形式：域名/list-1-1.html、域名/list-1-2.htmlreturn $GLOBALS['cfg_cmspath']."/list-".$typeid.".html";
                 //目录版默认，栏目形式：域名/list-1、域名/list-2，分页形式：域名/list-1-1、域名/list-1-2
                 return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
             } else {

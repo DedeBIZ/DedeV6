@@ -1,6 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
-
+if (!defined('DEDEINC')) exit ('dedebiz');
 require_once DEDEINC."/libraries/imageresize.class.php";
 /**
  * 图像处理相关函数

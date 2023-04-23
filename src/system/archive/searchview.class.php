@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 搜索视图类
+ * 搜索视图
  *
  * @version        $id:searchview.class.php 15:26 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries

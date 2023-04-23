@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 require_once(DEDEINC."/libraries/agent.class.php");
 /**
  * 轻量级流量统计

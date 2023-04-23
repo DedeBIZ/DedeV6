@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 当前位置面包屑
+ * 面包屑
  *
  * @version        $id:typelink.class.php 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries

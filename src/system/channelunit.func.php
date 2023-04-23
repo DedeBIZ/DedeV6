@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 栏目小助手
+ * 栏目助手
  *
  * @version        $id:channelunit.func.php 2 16:46 2010年7月6日 tianya $
  * @package        DedeBIZ.Helpers

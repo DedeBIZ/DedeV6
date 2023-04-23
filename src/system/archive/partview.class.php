@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 视图类
+ * 视图
  *
  * @version        $id:partview.class.php 14:17 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries

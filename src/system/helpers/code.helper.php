@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 //允许的函数
 $GLOBALS['allowedCalls'] = array(
     //系统

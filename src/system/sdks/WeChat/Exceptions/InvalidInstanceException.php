@@ -1,6 +1,6 @@
 <?php
 namespace WeChat\Exceptions;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 加载类异常
  * Class InvalidInstanceException

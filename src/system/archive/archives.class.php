@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档类
+ * 文档
  *
  * @version        $id:archives.class.php 4 15:13 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
