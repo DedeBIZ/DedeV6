@@ -11,7 +11,7 @@ error_reporting(E_ALL || ~E_NOTICE);
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
-$cfg_version_detail = '6.2.6'; //详细版本号
+$cfg_version_detail = '6.2.7'; //详细版本号
 $errmsg = '';
 if (version_compare(PHP_VERSION, '8.0.0', '>=') && function_exists("mysqli_report")) {
     mysqli_report(MYSQLI_REPORT_OFF);

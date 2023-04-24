@@ -415,10 +415,12 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($ftype == "media") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectMedia('$fname.$fieldname')\">";
+        $selectStr = defined('DEDEADMIN')? "<input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectMedia('$fname.$fieldname')\">" : '';
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> $selectStr";
     } else if ($ftype == "addon") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectSoft('$fname.$fieldname')\">";
+        $selectStr = defined('DEDEADMIN')? "<input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectSoft('$fname.$fieldname')\">" : "";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control admin-input-lg'> $selectStr";
     } else if ($ftype == "int" || $ftype == "float") {
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-xs' value='$fvalue'>";
     } else if ($ftype == "relation") {

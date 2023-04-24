@@ -23,6 +23,10 @@ require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 3;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $menutype = 'content';
+if ($cfg_ml->IsSendLimited()) {
+    ShowMsg("投稿失败，投稿限定次数<span class='text-primary'>{$cfg_ml->M_SendMax}次</span>（剩余0次），需要增加次数，请联系网站管理员", "index.php", "0", 5000);
+    exit();
+}
 if (empty($dopost)) {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     if (!is_array($cInfos)) {

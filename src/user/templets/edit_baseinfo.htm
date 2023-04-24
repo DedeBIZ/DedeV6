@@ -129,7 +129,6 @@
 					}
 					$.post("<?php echo $cfg_cmsurl;?>/user/api.php?action=get_old_email", { oldpwd: $("#iptOldpwd").val() }, function (result) {
 						if (result.code === 0) {
-							console.log(result);
 							$("#spEmail").hide();
 							$("#iptEmail").html(`<input value="${result.data.email}" type="email" name="email" id="iptEmail" class="form-control">`);
 							$("#iptEmail").show();

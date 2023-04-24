@@ -134,7 +134,6 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
     			file_i=0;
                 document.querySelector('#topbar .upall').innerText='全部上传';
                 //返回
-                console.log(axupimgs.res);
                 axupimgs.res.forEach((v,k)=>{
                     let addonHTML = `<img src='${v.url}'/>`;
                     window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);

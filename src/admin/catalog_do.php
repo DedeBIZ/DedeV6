@@ -341,7 +341,6 @@ http.get(durl, (res) => {
         data += chunk;
     });
     res.on(\'end\', () => {
-        console.log(data);
         const result = JSON.parse(data);
         if (result.code === 0) {
             console.log(result);

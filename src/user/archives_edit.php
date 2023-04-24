@@ -18,10 +18,6 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
-if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("投稿失败，投稿限定次数<span class='text-primary'>{$cfg_ml->M_SendMax}次</span>（剩余0次），需要增加次数，请联系网站管理员", "index.php", "0", 5000);
-    exit();
-}
 if (empty($dopost)) {
     //读取归档信息
     $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,arc.mtype as mtypeid,ch.arcsta FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' And arc.mid='".$cfg_ml->M_ID."'; ";

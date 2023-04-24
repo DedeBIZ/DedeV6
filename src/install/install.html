@@ -118,7 +118,6 @@
 			    if (!dbuser) dbuser = "root";
 			    $.get('index.php?step=10&dbhost=' + dbhost + '&dbuser=' + dbuser + '&dbpwd=' + dbpwd,
 			    function(rs) {
-			        console.log(rs);
 			        let result = JSON.parse(rs);
 			        if (result.code === 200) {
 			            ShowAlert("#alertConnect", result.data, "success", 5000)

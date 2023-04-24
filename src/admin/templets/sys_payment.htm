@@ -198,7 +198,6 @@
 							}
 							itemConfig.Sortrank = element.sortrank;
 							itemConfig.Enabled = parseInt(element.status) === 0? false : true;
-							console.log("itemConfig=", itemConfig);
 							for (const k1 in config[key]) {
 								if (Object.hasOwnProperty.call(config[key], k1)) {
 									const ee = config[key][k1];
@@ -231,7 +230,6 @@
 					for (const kk in element) {
 						if (Object.hasOwnProperty.call(element, kk)) {
 							const itemConfig = element[kk];
-							console.log(`#ipt${key}${kk}`, itemConfig);
 							if ($(`#ipt${key}${kk}`).attr('type') === 'text') {
 								let val = $(`#ipt${key}${kk}`).val();
 								if (kk === "Sortrank") {
