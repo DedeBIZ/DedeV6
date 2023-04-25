@@ -36,7 +36,7 @@ if ($dopost == "ok") {
     }
     //清理arclist调用缓存、过期会员浏览历史、过期短信、陈旧的流量统计数据
     else if ($step == 3) {
-        echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
+        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$cfg_soft_lang\">";
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
         $msg = array();
         $msg[] = "正在清理arclist调用缓存，下一步清理过期会员浏览历史";

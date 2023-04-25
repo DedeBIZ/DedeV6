@@ -44,9 +44,9 @@ if ($action == 'save') {
     `ifcheck` tinyint(1) NOT NULL default '0',
     ";
     if ($mysql_version < 4.1) {
-        $tabsql .= " PRIMARY KEY  (`id`)\r\n) TYPE=MyISAM; ";
+        $tabsql .= " PRIMARY KEY (`id`)\r\n) TYPE=MyISAM; ";
     } else {
-        $tabsql .= " PRIMARY KEY  (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
+        $tabsql .= " PRIMARY KEY (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
     }
     $dsql->ExecuteNoneQuery($tabsql);
     //检测表里含有的字段

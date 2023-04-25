@@ -487,7 +487,7 @@ class Archives
             if ($GLOBALS['cfg_jump_once'] == 'N') {
                 $pageHtml = "<html>\r\n<head>\r\n<meta charset=".$GLOBALS['cfg_soft_lang']."\">\r\n<title>".$this->Fields['title']."</title>\r\n";
                 $pageHtml .= "<meta http-equiv=\"refresh\" content=\"3;URL=".$this->Fields['redirecturl']."\">\r\n</head>\r\n<body>\r\n";
-                $pageHtml .= "正在跳转文档：".$this->Fields['title']."<br><br>\r\n文档描述：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
+                $pageHtml .= "正在前往文档：".$this->Fields['title']."<br><br>\r\n文档描述：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
                 echo $pageHtml;
             } else {
                 header("location:{$this->Fields['redirecturl']}");

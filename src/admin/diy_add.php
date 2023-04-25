@@ -53,9 +53,9 @@ if (empty($action)) {
     `ifcheck` tinyint(1) NOT NULL default '0',
     ";
     if ($mysql_version < 4.1) {
-        $sql .= " PRIMARY KEY  (`id`)\r\n) TYPE=MyISAM; ";
+        $sql .= " PRIMARY KEY (`id`)\r\n) TYPE=MyISAM; ";
     } else {
-        $sql .= " PRIMARY KEY  (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
+        $sql .= " PRIMARY KEY (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
     }
     if ($dsql->ExecuteNoneQuery($sql)) {
         $query = "INSERT INTO `#@__diyforms` (`diyid`,`name`,`table`,`info`,`listtemplate`,`viewtemplate`,`posttemplate`,`public` ) VALUES ('$diyid','$name','$table','','$listtemplate','$viewtemplate','$posttemplate','$public')";
