@@ -77,11 +77,11 @@
 							<input name="pcol" type="hidden" value="<?php echo $abinfo->GetAtt('col');?>">
 							<input name="ddmaxwidth" type="hidden" value="<?php echo $abinfo->GetAtt('ddmaxwidth');?>">
 							<div class="form-group">
-								<label>表现方式：</label>
-								<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if ($cfg_album_style==1) echo " checked='checked'";?>> 多页多图显示（适用于表情等）</label>
-								<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if ($cfg_album_style==2) echo " checked='checked'";?>> 多页单图显示（幻灯）</label>
-								<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if ($cfg_album_style==3) echo " checked='checked'";?>> 多行多列显示（缩略图）</label>
-								<div id="spagelist" style="<?php if ($abinfo->GetAtt('value')!=2) echo 'display:none';?>">每页图片数：<input name="pagpicnum" id="pagpicnum" class="form-control w-25" value="<?php echo $abinfo->GetAtt('pagpicnum');?>"></div>
+								<span class="input-text">表现方式：<span>
+								<label class="input-text mb-0"><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if ($cfg_album_style==1) echo " checked='checked'";?>> 多页多图显示</label>
+								<label class="input-text mb-0"><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if ($cfg_album_style==2) echo " checked='checked'";?>> 多页单图显示</label>
+								<label class="input-text mb-0"><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if ($cfg_album_style==3) echo " checked='checked'";?>> 多行多列显示</label>
+								<label id="spagelist" class="input-text mb-0" style="<?php if ($abinfo->GetAtt('value')!=1) echo 'display:none';?>">每页图片数：<input name="pagpicnum" id="pagpicnum" class="form-control w-25" value="<?php echo $abinfo->GetAtt('pagpicnum');?>"></label>
 							</div>
 							<div class="form-group">
 								<span>图片数目：</span>
