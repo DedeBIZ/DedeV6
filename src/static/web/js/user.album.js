@@ -37,12 +37,9 @@ function MakeUpload(mnum) {
 			dsel = " ";
 			dplay = "display:none";
 		}
-		fhtml = '';
-		fhtml += "<div><label><input type='checkbox' name='isokcheck"+startNum+"' id='isokcheck"+startNum+"' value='1' "+dsel+" onClick='CheckSelTable("+startNum+")'> 显示图片"+startNum+"上传框</label></div>";
-		fhtml += "<div id=\"seltb"+startNum+"\" style=\""+dplay+"\">";
-		fhtml += "<p>图片"+startNum+"：<input type='text' name='imgfile"+startNum+"' class='form-control w-50 mr-2' placeholder='请输入网址'></p>";
-		fhtml += "<p>图片简介：<textarea name='imgmsg"+startNum+"' class='form-control'></textarea></p>";
-		fhtml += "</div>";
+		fhtml = "";
+		fhtml += "<div class='mb-3'><label class='mb-0'><input type='checkbox' name='isokcheck" + startNum + "' id='isokcheck" + startNum + "' value='1' "+dsel+" onClick='CheckSelTable(" + startNum + ")'> 显示图片" + startNum + "上传框</label></div>";
+		fhtml += "<div id=\"seltb" + startNum + "\" class='form-group' style=\"" + dplay + "\"><label>图片" + startNum + "上传：</label><div class='input-group mb-3'><input type='text' name='imgfile" + startNum + "' class='form-control' placeholder='请输入网址'><div class='input-group-append'><span class='btn btn-success btn-send'>选择</span></div></div><label>图片" + startNum + "简介：</label><textarea name='imgmsg" + startNum + "' class='form-control'></textarea></div>";
 		upfield.innerHTML += fhtml;
 	}
 }

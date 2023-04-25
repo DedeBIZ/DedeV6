@@ -84,25 +84,29 @@
 								<div id="spagelist" style="<?php if ($abinfo->GetAtt('value')!=2) echo 'display:none';?>">每页图片数：<input name="pagpicnum" id="pagpicnum" class="form-control w-25" value="<?php echo $abinfo->GetAtt('pagpicnum');?>"></div>
 							</div>
 							<div class="form-group">
-								<span>图片数目：<input type="text" name="picnum" value="5" id="picnum" class="form-control w-25 mr-2"></span>
-								<button type="button" name="kkkup" id="kkkup2" class="btn btn-success btn-sm" onclick="MakeUpload(0);">添加</button>（最大60幅）
+								<span>图片数目：</span>
+								<input type="text" name="picnum" value="5" id="picnum" class="form-control w-25 mr-2">
+								<button type="button" name="kkkup" id="kkkup2" class="btn btn-success btn-sm" onclick="MakeUpload(0);">添加</button>
 							</div>
-							<div id="uploadfield"></div>
 							<?php
 							$j = 1;
 							if (is_array($dtp->CTags))
 							{
 								foreach($dtp->CTags as $ctag){
-									if ($ctag->GetName()=="img"){
+									if ($ctag->GetName()=="img") {
 							?>
-							<div><label><input type="checkbox" name="isokcheck<?php echo $j;?>" id="isokcheck<?php echo $j;?>" value="1" onclick="CheckSelTable(<?php echo $j;?>)" checked="1"> 显示隐藏图片<?php echo $j;?>选框</label></div>
-							<div id="seltb<?php echo $j;?>">
-								<p>本地上传：<input type="text" name="imgfile<?php echo $j;?>" class="form-control w-50 mr-2" placeholder="请输入网址"><span class="btn btn-success btn-sm">选择</span></p>
-								<p>
-									<div id="divpicview<?php echo $j;?>" class="divpre"></div>
-									<img src="<?php echo trim($ctag->GetInnerText());?>" id="picview<?php echo $j;?>" name="picview<?php echo $j;?>">
-								</p>
-								<p>简介：<textarea name="imgmsg<?php echo $j;?>" class="form-control"><?php echo trim($ctag->GetAtt('text'))?></textarea></p>
+							<div class="mb-3">
+								<label class="mb-0"><input type="checkbox" name="isokcheck<?php echo $j;?>" id="isokcheck<?php echo $j;?>" value="1" onclick="CheckSelTable(<?php echo $j;?>)" checked="1"> 显示图片<?php echo $j;?>上传框</label>
+							</div>
+							<div id="seltb<?php echo $j;?>" class="mb-3">
+								<div class="mb-3"><img src="<?php echo trim($ctag->GetInnerText());?>" class="thumbnail-md"></div>
+								<label>图片<?php echo $j;?>上传：</label>
+								<div class="input-group mb-3">
+									<input type="text" name="imgfile<?php echo $j;?>" class="form-control" placeholder="请输入网址">
+									<div class="input-group-append"><span class="btn btn-success btn-send">选择</span></div>
+								</div>
+								<label>图片<?php echo $j;?>简介：</label>
+								<textarea name="imgmsg<?php echo $j;?>" class="form-control"><?php echo trim($ctag->GetAtt('text'))?></textarea>
 							</div>
 							<?php
 							$j++;
@@ -111,9 +115,7 @@
 							}
 							$dtp->Clear();
 							?>
-							<script>
-								startNum = <?php echo $j;?>;
-							</script>
+							<div id="uploadfield"></div>
 							<div class="text-center">
 								<button type="submit" class="btn btn-success btn-sm">提交</button>
 								<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
@@ -125,5 +127,8 @@
 		</main>
 		<?php pasterTempletDiy('foot.htm');?>
 		<?php include(DEDEMEMBER."/templets/widget_litpic.htm");?>
+		<script>
+			startNum = <?php echo $j;?>;
+		</script>
 	</body>
 </html>

@@ -552,7 +552,7 @@ INSERT INTO `#@__scores` VALUES ('2','列兵','1','0','1'),
 INSERT INTO `#@__member_stowtype` VALUES ('sys','系统收藏','archives_do.php'),
 ('book','小说收藏','/book/book.php?bid');
 
-INSERT INTO `#@__softconfig` VALUES ('0','1','1','1','http://www.aaa.com | 下载地址一\t\nhttp://www.bbb.com | 下载地址二\t\nhttp://www.ccc.com | 下载地址三\t\n','<p>如果这个软件总是不能下载的请点击报告错误合作<br>\t\n下载本站资源，如果服务器暂不能下载请过一段时间重试<br>\t\n如果遇到什么问题，请联系我们，我们将在那里提供更多，更好的资源</p>','0','0','0','0');
+INSERT INTO `#@__softconfig` VALUES ('0','1','1','1','http://www.aaa.com | 下载地址一\t\nhttp://www.bbb.com | 下载地址二\t\nhttp://www.ccc.com | 下载地址三\t\n','<p>下载本站资源，服务器暂不能下载请过一段时间重试</p>','0','0','0','0');
 
 INSERT INTO `#@__stepselect` VALUES ('1','血型','blood','1','1'),
 ('2','体型','bodytype','1','1'),
