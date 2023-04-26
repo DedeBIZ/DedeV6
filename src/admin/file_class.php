@@ -97,7 +97,7 @@ class FileManagement
     /**
      * 删除目录
      *
-     * @param unknown_type $indir
+     * @param string $indir
      */
     function RmDirFiles($indir)
     {
@@ -120,9 +120,9 @@ class FileManagement
     /**
      * 获得某目录合符规则的文件
      *
-     * @param unknown_type $indir
-     * @param unknown_type $fileexp
-     * @param unknown_type $filearr
+     * @param string $indir
+     * @param string $fileexp
+     * @param array $filearr
      */
     function GetMatchFiles($indir, $fileexp, &$filearr)
     {
@@ -142,8 +142,8 @@ class FileManagement
     /**
      * 删除文件
      *
-     * @param unknown_type $filename
-     * @return unknown
+     * @param string $filename
+     * @return int
      */
     function DeleteFile($filename)
     {

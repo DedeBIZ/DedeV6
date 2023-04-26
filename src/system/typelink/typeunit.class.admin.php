@@ -16,7 +16,7 @@ class TypeUnit
     var $artDir;
     var $baseDir;
     var $idCounter;
-    var $idArrary;
+    var $idArray;
     var $shortName;
     var $CatalogNums;
     //php5构造函数
@@ -26,8 +26,8 @@ class TypeUnit
         $this->artDir = $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
         $this->baseDir = $GLOBALS['cfg_basedir'];
         $this->shortName = $GLOBALS['art_shortname'];
-        $this->idArrary = '';
-        $this->dsql = 0;
+        $this->idArray = array();
+        $this->dsql = $GLOBALS['dsql'];
     }
     function TypeUnit()
     {
@@ -75,7 +75,6 @@ class TypeUnit
     function ListAllType($channel = 0, $nowdir = 0)
     {
         global $cfg_admin_channel, $admin_catalogs;
-        $this->dsql = $GLOBALS['dsql'];
         //检测会员有权限的顶级栏目
         if ($cfg_admin_channel == 'array') {
             $admin_catalog = join(',', $admin_catalogs);
@@ -244,7 +243,6 @@ class TypeUnit
      */
     function GetSunTypes($id, $channel = 0)
     {
-        $this->dsql = $GLOBALS['dsql'];
         $this->idArray[$this->idCounter] = $id;
         $this->idCounter++;
         $fid = $id;
@@ -332,7 +330,7 @@ class TypeUnit
      */
     function RmDirFile($indir)
     {
-        if (!file_exists($indir)) return;
+        if (!file_exists($indir)) return -1;
         $dh = dir($indir);
         while ($file = $dh->read()) {
             if ($file == "." || $file == "..") {

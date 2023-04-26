@@ -69,61 +69,118 @@ if ($action === 'is_need_check_code') {
     }
     $target_dir = "uploads/";//上传目录
     $type = isset($type)? $type : '';
-    $allowedTypes = array('image/png', 'image/jpg', 'image/jpeg');
-    $uploadedFile = $_FILES['file']['tmp_name'];
-    $fileType = mime_content_type($uploadedFile);
-    $imgSize = getimagesize($uploadedFile);
-    if (!in_array($fileType, $allowedTypes) || !$imgSize) {
+    //获取允许的扩展
+    $mediatype = 0;
+    $allowedTypes = array();
+    if ($type == 'litpic' || $type == 'face') {
+        $mediatype = 1;
+        $imgtypes = explode("|", $cfg_imgtype);
+        foreach ($imgtypes as $value) {
+            $allowedTypes[] = GetMimeTypeOrExtension($value);
+        }
+    } else if ($type == 'soft') {
+        $mediatype = 4;
+        $softtypes = explode("|", $cfg_softtype);
+        foreach ($softtypes as $value) {
+            $allowedTypes[] = GetMimeTypeOrExtension($value);
+        }
+    } else if ($type == 'media') {
+        $mediatype = 3;
+        $mediatypes = explode("|", $cfg_mediatype);
+        foreach ($mediatypes as $value) {
+            $allowedTypes[] = GetMimeTypeOrExtension($value);
+        }
+    } else {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "仅支持图片格式文件",
+            "msg" => "未定义文件类型",
             "data" => null,
         ));
         exit;
     }
+
+    $uploadedFile = $_FILES['file']['tmp_name'];
+    $fileType = mime_content_type($uploadedFile);
+    
+    if (!in_array($fileType, $allowedTypes)) {
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "当前文件格式不支持",
+            "data" => null,
+        ));
+        exit;
+    }
+    //获取扩展名
+    $exts = GetMimeTypeOrExtension($fileType, 1);
+    $width = 0;
+    $height = 0;
+    if ($mediatype === 1) {
+        $imgSize = getimagesize($uploadedFile);
+        if (!$imgSize) {
+            echo json_encode(array(
+                "code" => -1,
+                "msg" => "无法获取当前图片正常尺寸",
+                "data" => null,
+            ));
+            exit;
+        }
+        $width = $imgSize[0];
+        $height = $imgSize[1];
+    }
+
     if (!is_dir($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}")) {
         MkdirAll($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}", $cfg_dir_purview);
         CloseFtp();
     }
     if ($type === "face") {
+        //头像特殊处理
         $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png";//上传文件名
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/newface.png";
     } else {
         $nowtme = time();
         $rnd = $nowtme.'-'.mt_rand(1000,9999);
-        $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.".png";
+        $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
         $fsize = filesize($_FILES["file"]["tmp_name"]);
-        $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".png";
+        $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
         $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."'; ");
         $uptime = time();
         if (is_array($row)) {
-            $query = "UPDATE `#@__uploads` SET mediatype=1,width='{$imgSize[0]}',height='{$imgSize[1]}',filesize='{$fsize}',uptime='$uptime' WHERE aid='{$row['aid']}'; ";
+            $query = "UPDATE `#@__uploads` SET mediatype={$mediatype},width='{$width}',height='{$height}',filesize='{$fsize}',uptime='$uptime' WHERE aid='{$row['aid']}'; ";
             $dsql->ExecuteNoneQuery($query);
         } else {
-            $inquery = "INSERT INTO `#@__uploads`(url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$target_url','1','".$imgSize[0]."','".$imgSize[1]."','0','".$fsize."','$uptime','".$cfg_ml->M_ID."'); ";
+            $inquery = "INSERT INTO `#@__uploads`(url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$target_url','$mediatype','".$width."','".$height."','0','".$fsize."','$uptime','".$cfg_ml->M_ID."'); ";
             $dsql->ExecuteNoneQuery($inquery);
         }
     }
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        require_once DEDEINC."/libraries/imageresize.class.php";
-        try{
-            $image = new ImageResize($target_file);
-            if ($type === "face") {
-                $image->crop(150, 150);
-            } else {
-                $image->resize($cfg_ddimg_width, $cfg_ddimg_height);
+        if ($mediatype === 1) {
+            //图片自动裁剪
+            require_once DEDEINC."/libraries/imageresize.class.php";
+            try{
+                $image = new ImageResize($target_file);
+                if ($type === "face") {
+                    $image->crop(150, 150);
+                } else {
+                    $image->resize($cfg_ddimg_width, $cfg_ddimg_height);
+                }
+                $image->save($target_file);
+                echo json_encode(array(
+                    "code" => 0,
+                    "msg" => "上传成功",
+                    "data" => $target_url,
+                ));
+            } catch (ImageResizeException $e) {
+                echo json_encode(array(
+                    "code" => -1,
+                    "msg" => "图片自动裁剪失败",
+                    "data" => null,
+                ));
             }
-            $image->save($target_file);
+        } else {
             echo json_encode(array(
                 "code" => 0,
                 "msg" => "上传成功",
                 "data" => $target_url,
-            ));
-        } catch (ImageResizeException $e) {
-            echo json_encode(array(
-                "code" => -1,
-                "msg" => "图片自动裁剪失败",
-                "data" => null,
             ));
         }
     } else {
