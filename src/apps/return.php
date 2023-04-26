@@ -35,7 +35,7 @@ if ($dopost === 'alipay') {
         $pay = \AliPay\Web::instance($config);
         unset($_REQUEST['dopost']);
         unset($_REQUEST['sign_type']);
-        $data = $pay->notify();
+        $data = $pay->notify(false, $_REQUEST);
         if (isset($data['trade_no']) && !empty($data['trade_no'])) {
             //$pay = \AliPay\Transfer::instance($config);
             $result = $pay->query($data['out_trade_no']);
