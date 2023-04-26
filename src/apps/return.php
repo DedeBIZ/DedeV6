@@ -73,11 +73,11 @@ if ($dopost === 'alipay') {
             exit;
         }
     } catch (Exception $e) {
-        ShowMsg("付款错误", "javascript:;");
+        ShowMsg("付款失败，请检查支付接口设置", "javascript:;");
         exit;
     }
 } else {
-    ShowMsg("未知支付方式", "javascript:;");
+    ShowMsg("未知付款，请检查支付接口设置", "javascript:;");
     exit;
 }
 ?>
