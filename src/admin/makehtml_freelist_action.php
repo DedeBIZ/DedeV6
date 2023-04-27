@@ -19,11 +19,11 @@ if (!empty($endid) && $endid >= $startid) {
 header("Content-Type:text/html; charset={$cfg_soft_lang}");
 $dsql->SetQuery("SELECT aid FROM `#@__freelist` WHERE $ci");
 $dsql->Execute();
+$idArray = array();
 while ($row = $dsql->GetArray()) {
     $idArray[] = $row['aid'];
 }
 if (!isset($pageno)) $pageno = 0;
-if (empty($idArray)) $idArray = '';
 $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
     $lid = $idArray[$pageno];
