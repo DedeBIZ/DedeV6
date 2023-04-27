@@ -27,3 +27,10 @@ search.htm,搜索模板
 top.htm,顶部模板
 tag.htm,标签首页模板
 taglist.htm,标签文档列表模板
+widget_article_feedback.htm,小部件评论模板
+widget_article_likes.htm,小部件点赞模板
+widget_hot.htm,小部件头条文档模板
+widget_menu.htm,小部件栏目模板
+widget_recommend.htm,小部件推荐栏目模板
+widget_search.htm,小部件搜索模板
+widget_vote.htm,小部件投票模板
