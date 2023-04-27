@@ -16,7 +16,7 @@ CheckPurview('temp_Test');
 require_once(DEDEINC."/archive/partview.class.php");
 CheckCSRF();
 if (empty($partcode)) {
-    ShowMsg('标签测试失败', 'javascript:;');
+    ShowMsg('标签测试失败，请稍后重试', 'javascript:;');
     exit;
 }
 $partcode = stripslashes($partcode);
