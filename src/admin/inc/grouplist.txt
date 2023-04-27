@@ -64,7 +64,7 @@
 >sys_Group>系统组管理
 >sys_MdPwd>修改个人密码
 >sys_DelUpload>删除附件
->sys_Edit>修改系统参数
+>sys_Edit>修改系统变量
 >sys_Log>管理日志
 >sys_plus>插件管理
 >sys_Data>数据备份还原>unsafe
