@@ -12,9 +12,8 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 helper('cache');
 function lib_flink(&$ctag, &$refObj)
 {
-
     global $dsql, $cfg_soft_lang;
-    $attlist = "type|textall,row|24,titlelen|24,linktype|1,typeid|0";
+    $attlist = "type|textall,row|30,titlelen|30,linktype|1,typeid|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $totalrow = $row;

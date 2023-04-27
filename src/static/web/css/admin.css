@@ -23,8 +23,7 @@
 	border-radius:.5rem
 }
 * {
-	font-size:12px;
-	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif
+	font-size:12px
 }
 body {
 	margin:0;
@@ -253,7 +252,7 @@ body.hidemenu .body-right {
 }
 .btn-version {
 	float:left;
-	margin-top:16px;
+	margin-top:18px;
 	margin-left:5px
 }
 .top-item ul li {
@@ -282,12 +281,7 @@ body.hidemenu .body-right {
 	border:0
 }
 .search-input {
-	width:160px;
-	height:28px;
-	line-height:28px;
-	font-size:12px;
-	background:#fff;
-	border:0
+	width:160px
 }
 .top-admin {
 	float:right;

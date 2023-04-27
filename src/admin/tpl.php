@@ -27,7 +27,7 @@ if (preg_match("#\.#", $acdir)) {
 //修改模板
 if ($action == 'edit' || $action == 'newfile') {
     if ($filename == '' && $action == 'edit') {
-        ShowMsg('未指定要修改的文件', '-1');
+        ShowMsg('未指定要修改的模板', '-1');
         exit();
     }
     if (!file_exists($templetdird.'/'.$filename)  && $action == 'edit') {
@@ -89,17 +89,17 @@ else if ($action == 'saveedit') {
     $fp = fopen($truefile, 'w');
     fwrite($fp, $content);
     fclose($fp);
-    ShowMsg('成功修改或新建文件', 'templets_main.php?acdir='.$acdir);
+    ShowMsg('修改或新建模板成功', 'templets_main.php?acdir='.$acdir);
     exit();
 }
 //删除模板
 else if ($action == 'del') {
     $truefile = $templetdird.'/'.$filename;
     if (unlink($truefile)) {
-        ShowMsg('删除文件成功', 'templets_main.php?acdir='.$acdir);
+        ShowMsg('删除模板成功', 'templets_main.php?acdir='.$acdir);
         exit();
     } else {
-        ShowMsg('删除文件失败', '-1');
+        ShowMsg('删除模板失败', '-1');
         exit();
     }
 }
@@ -133,7 +133,7 @@ else if ($action == 'upload') {
 else if ($action == 'uploadok') {
     CheckCSRF();
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("貌似您什么都没有上传哦", "javascript:;");
+        ShowMsg("请选择上传的模板文件", "javascript:;");
         exit();
     } else {
         if (!preg_match("#\.(htm|html)$#", $upfile_name)) {
@@ -158,11 +158,11 @@ else if ($action == 'edittag' || $action == 'addnewtag') {
 if (!defined('DEDEINC')) {
     exit(\"Request Error!\");
 }
-function lib_demotag(&\$ctag,&\$refObj)
+function lib_demotag(\$ctag, \$refObj)
 {
-    global \$dsql,\$envs;
+    global \$dsql, \$envs;
     //属性处理
-    \$attlist=\"row|12,titlelen|24\";
+    \$attlist = \"row|12,titlelen|30\";
     FillAttsDefault(\$ctag->CAttribute->Items,\$attlist);
     extract(\$ctag->CAttribute->Items, EXTR_SKIP);
     \$revalue = '';
@@ -202,9 +202,9 @@ else if ($action == 'savetagfile') {
     fwrite($fp, $content);
     fclose($fp);
     $msg = "<form name='form1' action='tag_test_action.php' target='blank' method='post'>
-        <label><input type='hidden' name='dopost' value='make'> 标签测试（环境变量标签不支持测试）</label><br>
-        <textarea name='partcode' cols='150' rows='6' style='width:90%'>{dede:{$tagname}}{/dede:{$tagname}}</textarea><br>
-        <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
+        <div class='mb-3'><label><input type='hidden' name='dopost' value='make'> 标签测试（环境变量标签不支持测试）</label></div>
+        <div class='mb-3'><textarea name='partcode' cols='150' rows='6' class='admin-textarea-xl'>{dede:{$tagname}}{/dede:{$tagname}}</textarea></div>
+        <div class='text-center'><button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button></div>
     </form>";
     $wintitle = "成功操作文件";
     $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> &gt; 新建修改标签";

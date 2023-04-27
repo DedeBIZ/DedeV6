@@ -27,7 +27,7 @@ function lib_infolink(&$ctag, &$refObj)
 {
     global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite, $em_nativeplaces, $em_infotypes;
     //属性处理
-    //$attlist="row|12,titlelen|24";
+    //$attlist="row|12,titlelen|30";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
     $cmspath = ((empty($cfg_cmspath) || !preg_match("#\/$#", $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
