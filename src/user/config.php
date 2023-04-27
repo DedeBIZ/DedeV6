@@ -8,6 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+define('DEDEUSER', true);
 //针对会员中心操作进行XSS过滤
 function XSSClean($val)
 {

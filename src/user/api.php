@@ -98,7 +98,9 @@ if ($action === 'is_need_check_code') {
         ));
         exit;
     }
-    $uploadedFile = $_FILES['file']['tmp_name'];
+
+    $ff = isset($_FILES['file'])? $_FILES['file'] : $_FILES['imgfile'];
+    $uploadedFile = $ff['tmp_name'];
     $fileType = mime_content_type($uploadedFile);
     if (!in_array($fileType, $allowedTypes)) {
         echo json_encode(array(
@@ -137,7 +139,7 @@ if ($action === 'is_need_check_code') {
         $nowtme = time();
         $rnd = $nowtme.'-'.mt_rand(1000,9999);
         $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
-        $fsize = filesize($_FILES["file"]["tmp_name"]);
+        $fsize = filesize($ff["tmp_name"]);
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
         $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."'; ");
         $uptime = time();
@@ -149,7 +151,9 @@ if ($action === 'is_need_check_code') {
             $dsql->ExecuteNoneQuery($inquery);
         }
     }
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+    $rkey = $ck == 1? "url" : "data";
+    
+    if (move_uploaded_file($ff["tmp_name"], $target_file)) {
         if ($mediatype === 1) {
             //图片自动裁剪
             require_once DEDEINC."/libraries/imageresize.class.php";
@@ -163,28 +167,30 @@ if ($action === 'is_need_check_code') {
                 $image->save($target_file);
                 echo json_encode(array(
                     "code" => 0,
+                    "uploaded" => 1,
                     "msg" => "上传成功",
-                    "data" => $target_url,
+                    $rkey => $target_url,
                 ));
             } catch (ImageResizeException $e) {
                 echo json_encode(array(
                     "code" => -1,
                     "msg" => "图片自动裁剪失败",
-                    "data" => null,
+                    $rkey => null,
                 ));
             }
         } else {
             echo json_encode(array(
                 "code" => 0,
+                "uploaded" => 1,
                 "msg" => "上传成功",
-                "data" => $target_url,
+                $rkey => $target_url,
             ));
         }
     } else {
         echo json_encode(array(
             "code" => -1,
             "msg" => "上传失败",
-            "data" => null,
+            $rkey => null,
         ));
     }
 } else {
@@ -194,7 +200,7 @@ if ($action === 'is_need_check_code') {
             echo json_encode(array(
                 "code" => -1,
                 "msg" => "未登录",
-                "data" => null,
+                $rkey => null,
             ));
         } else {
             echo "";

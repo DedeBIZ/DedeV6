@@ -74,12 +74,13 @@ if (empty($dopost)) {
         }
         $f = ${'imgfile'.$i};
         $msg = isset(${'imgmsg'.$i}) ? ${'imgmsg'.$i} : "";
-        if (!empty($f) && filter_var($f, FILTER_VALIDATE_URL)) {
+        if (!empty($f)) {
             $u = str_replace(array("\"", "'"), "`", $f);
             $info = str_replace(array("\"", "'"), "`", $msg);
             $imgurls .= "{dede:img ddimg='' text='$info'} $u {/dede:img}\r\n";
         }
     } //循环结束
+    // var_dump($imgurls);exit;
     $imgurls = addslashes($imgurls);
     //分析处理附加表数据
     $inadd_f = '';

@@ -9,7 +9,7 @@ function checkSubmit(t) {
         return false;
     }
 }
-function SelectImage(sform, stype) {
+function SelectFile(sform, stype) {
     let s = sform.split(".");
     if (s.length === 2) {
         let frm = document.getElementsByName(s[0]);
@@ -28,7 +28,7 @@ function SelectImage(sform, stype) {
             var fileData = f;
             formData.append('file', fileData);
             $.ajax({
-                url: 'api.php?action=upload&type=litpic',
+                url: 'api.php?action=upload&type='+stype,
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -46,4 +46,16 @@ function SelectImage(sform, stype) {
             });
         })
     }
+}
+function SelectImage(sform, stype) {
+    if (stype == 'big') {
+        stype = "litpic";
+    }
+    SelectFile(sform, stype);
+}
+function SelectSoft(sform, stype='soft') {
+    SelectFile(sform, stype);
+}
+function SelectMedia(sform, stype='media') {
+    SelectFile(sform, stype);
 }

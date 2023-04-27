@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.js"></script>
 	</head>
 	<body class="body-bg">
 		<?php pasterTempletDiy('top.htm');?>
@@ -159,7 +160,7 @@
 								<label>下载地址：</label>
 								<div class="input-group mb-3">
 									<input type="text" name="softurl1" id="softurl1" class="form-control d-inline-block w-75">
-									<div class="input-group-append"><span class="btn btn-success btn-send">选择</span></div>
+									<div class="input-group-append"><span class="btn btn-success btn-send" onClick="SelectSoft('addcontent.softurl1')">选择</span></div>
 								</div>
 								<label>下载名称：</label>
 								<input type="text" name="servermsg1" id="servermsg1" class="form-control" value="本地下载">
@@ -192,7 +193,7 @@
 				morelinkobj.style.display = "block";
 				if (endNum > 12) endNum = 12;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<div class='form-group'><label>下载地址" + startNum + "：</label><div class='input-group mb-3'><input type='text' name='softurl" + startNum + "' value='http://' class='form-control'><div class='input-group-append'><span class='btn btn-success btn-send'>选择</span></div></div><label>下载名称" + startNum + "：</label><input type='text' name='servermsg" + startNum + "' class='form-control'></div>";
+					upfield.innerHTML += "<div class='form-group'><label>下载地址" + startNum + "：</label><div class='input-group mb-3'><input type='text' name='softurl" + startNum + "' value='http://' class='form-control'><div class='input-group-append'><span class='btn btn-success btn-send' onClick=\"SelectSoft('addcontent.softurl"+startNum+"')\">选择</span></div></div><label>下载名称" + startNum + "：</label><input type='text' name='servermsg" + startNum + "' class='form-control'></div>";
 				}
 			}
 			function ShowHideAddr() {
