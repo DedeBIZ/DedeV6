@@ -30,7 +30,7 @@ define('ALERT_COLORS', array(
 ));
 define("ALERT_TPL", '<div style="position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;width:auto;font-size:12px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:.5rem">~content~</div>');
 //$content:文档，$type:alert类型
-function DedeAlert($content, $type = ALERT_PRIMARY, $isHTML=false)
+function DedeAlert($content, $type = ALERT_PRIMARY, $isHTML = false)
 {
     $content =  $isHTML? RemoveXSS($content) : htmlspecialchars($content);
     $colors = isset(ALERT_COLORS[$type])? ALERT_COLORS[$type] : ALERT_COLORS[ALERT_PRIMARY];
@@ -365,7 +365,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
  * @param  mixed $field 字段名
  * @return void
  */
-function TableHasField($tablename,$field)
+function TableHasField($tablename, $field)
 {
     global $dsql;
     $dsql->GetTableFields($tablename,"tfd");
@@ -572,7 +572,7 @@ function string_filter($str, $stype = "inject")
     return $str;
 }
 //联动单筛选发布三种类型
-function AddFilter($channelid, $type=1, $fieldsnamef='', $defaulttid=0, $toptid=0, $loadtype='autofield')
+function AddFilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0, $toptid = 0, $loadtype= 'autofield')
 {
     global $tid, $dsql, $id, $aid;
     $tid = $defaulttid ? $defaulttid : $tid;
@@ -639,10 +639,10 @@ function AddFilter($channelid, $type=1, $fieldsnamef='', $defaulttid=0, $toptid=
  * GetMimeTypeOrExtension
  *
  * @param  mixed $str 字符串
- * @param  mixed $t 类型，0:获取mime type，1:获取扩展名
+ * @param  mixed $t 类型，0获取mime type，1获取扩展名
  * @return string
  */
-function GetMimeTypeOrExtension($str,$t=0) {
+function GetMimeTypeOrExtension($str, $t = 0) {
     $mime_types = array(
         'aac' => 'audio/aac',
         'abw' => 'application/x-abiword',
