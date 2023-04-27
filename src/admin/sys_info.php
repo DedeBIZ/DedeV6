@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统配置变量
+ * 系统变量配置
  *
  * @version        $id:sys_info.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -54,7 +54,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__sysconfig` SET `value`='$v' WHERE varname='$k' ");
     }
     ReWriteConfig();
-    ShowMsg("成功修改站点配置", "sys_info.php");
+    ShowMsg("成功修改系统变量配置", "sys_info.php");
     exit();
 }
 //添加新变量
@@ -101,7 +101,7 @@ else if ($dopost == 'search') {
     $configstr = <<<EOT
 <table cellspacing="1" cellpadding="1" align="center" id="tdSearch" class="table maintable my-3">
     <tr>
-        <td bgcolor="#f5f5f5" colspan="3">系统配置变量搜索</td>
+        <td bgcolor="#f5f5f5" colspan="3">系统变量配置搜索</td>
     </tr>
     <tr bgcolor="#e9ecef" align="center">
         <td width="360">参数说明</td>
@@ -126,14 +126,14 @@ EOT;
                 $c1 = '';
                 $c2 = '';
                 $row['value'] == 'Y' ? $c1 = " checked" : $c2 = " checked";
-                echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是 </label> ";
-                echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否 </label> ";
+                echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是</label> ";
+                echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否</label> ";
             } else if ($row['type'] == 'bstring') {
-                echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
+                echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
             } else if ($row['type'] == 'number') {
-                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
+                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-50'>";
             } else {
-                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'>";
+                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-75'>";
             }
             ?>
         </td>
@@ -144,11 +144,11 @@ EOT;
 ?>
 </table>
 <?php
-    exit;
-    }
-    if ($i == 1) {
-        echo '<tr bgcolor="#f5f5f5" align="center"><td colspan="3">搜索不到参数</td></tr></table>';
-    }
+exit;
+}
+if ($i == 1) {
+    echo '<tr bgcolor="#f5f5f5" align="center"><td colspan="3">搜索不到参数</td></tr></table>';
+}
 exit;
 } else if ($dopost == 'make_encode') {
     $chars = 'abcdefghigklmnopqrstuvwxwyABCDEFGHIGKLMNOPQRSTUVWXWY0123456789';

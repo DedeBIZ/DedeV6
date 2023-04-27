@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统配置变量保存
+ * 系统变量配置保存
  *
  * @version        $id:soft_config.php 16:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
