@@ -61,7 +61,7 @@ if ($dopost == 'makeprenext') {
         exit();
     } else {
         $jumpurl = GetNextUrl();
-        ShowMsg("完成下篇文档更新任务，继续执行其它任务", $jumpurl, 0, 500);
+        ShowMsg("完成下篇文档更新任务，继续更新其它任务", $jumpurl, 0, 500);
         exit();
     }
 }
@@ -125,7 +125,7 @@ else if ($dopost == 'makeparenttype') {
         if (!empty($doposttmp)) {
             $jumpurl = preg_replace("#doposttmp|nextdotmp#", 'del', $jumpurl);
             $jumpurl .= "&dopost={$doposttmp}&nextdo={$nextdotmp}";
-            ShowMsg("完成栏目：{$tid}更新，继续执行后续任务", $jumpurl, 0, 500);
+            ShowMsg("完成栏目：{$tid}更新，继续更新后续任务", $jumpurl, 0, 500);
             exit();
         } else {
             ShowMsg("完成栏目：{$tid}更新，完成所有更新任务", "close::tgtable");

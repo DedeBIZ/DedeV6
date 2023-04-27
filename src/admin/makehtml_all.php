@@ -46,7 +46,7 @@ if ($action == '') {
         } else {
             if (file_exists($homeFile)) echo "启用静态更新，建议删除"+$homeFile;
         }
-        ShowMsg("完成所有文档更新，开始更新栏目", "makehtml_all.php?action=make&step=4&uptype=$uptype&mkvalue=$mkvalue");
+        ShowMsg("完成所有文档更新，开始更新所有栏目", "makehtml_all.php?action=make&step=4&uptype=$uptype&mkvalue=$mkvalue");
         exit();
     }
     //更新栏目
@@ -94,11 +94,11 @@ if ($action == '') {
             }
             fwrite($fp, "?".">");
             fclose($fp);
-            ShowMsg("完成栏目缓存处理，开始更新栏目", "makehtml_list_action.php?gotype=mkall");
+            ShowMsg("完成栏目缓存处理，开始更新所有栏目", "makehtml_list_action.php?gotype=mkall");
             exit();
         } else {
             fclose($fp);
-            ShowMsg("没有可更新的栏目，最后数据优化", "makehtml_all.php?action=make&step=10");
+            ShowMsg("没有可更新的栏目，数据已优化", "makehtml_all.php?action=make&step=10");
             exit();
         }
     }

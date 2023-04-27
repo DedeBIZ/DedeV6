@@ -98,10 +98,8 @@ if ($action === 'is_need_check_code') {
         ));
         exit;
     }
-
     $uploadedFile = $_FILES['file']['tmp_name'];
     $fileType = mime_content_type($uploadedFile);
-    
     if (!in_array($fileType, $allowedTypes)) {
         echo json_encode(array(
             "code" => -1,
@@ -127,7 +125,6 @@ if ($action === 'is_need_check_code') {
         $width = $imgSize[0];
         $height = $imgSize[1];
     }
-
     if (!is_dir($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}")) {
         MkdirAll($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}", $cfg_dir_purview);
         CloseFtp();

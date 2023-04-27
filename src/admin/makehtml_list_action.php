@@ -55,7 +55,7 @@ if (isset($idArray[$pageno])) {
         ShowMsg("完成所有栏目更新", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg("完成所有栏目更新，最后数据优化", "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目更新，数据已优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 }
@@ -102,18 +102,18 @@ if ($nextpage >= $totalpage && $finishType) {
         ShowMsg("完成所有栏目更新，<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg("完成所有栏目更新，最后数据优化", "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目更新，数据已优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 } else {
     $typename = isset($cfg_Cs[$tid][3])? base64_decode($cfg_Cs[$tid][3]) : "";
     if ($finishType) {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage";
-        ShowMsg("更新栏目<span class='text-primary'>（id：".$tid."）{$typename}</span>，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新栏目<span class='text-primary'>（id：".$tid."）{$typename}</span>，继续更新栏目", $gourl, 0, 100);
         exit();
     } else {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
-        ShowMsg("更新栏目<span class='text-primary'>（id：".$tid."）{$typename}</span>，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新栏目<span class='text-primary'>（id：".$tid."）{$typename}</span>，继续更新栏目", $gourl, 0, 100);
         exit();
     }
 }

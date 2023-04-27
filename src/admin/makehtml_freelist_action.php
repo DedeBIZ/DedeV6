@@ -28,7 +28,7 @@ $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
     $lid = $idArray[$pageno];
 } else {
-    ShowMsg("完成所有文件更新", 'javascript:;');
+    ShowMsg("完成所有列表更新", 'javascript:;');
     exit();
 }
 $lv = new FreeList($lid);
@@ -50,14 +50,14 @@ if ($ntotalpage <= $maxpagesize) {
 $lv->Close();
 $nextpage = $pageno + 1;
 if ($nextpage == $totalpage) {
-    ShowMsg("完成所有文件更新", 'javascript:;');
+    ShowMsg("完成所有列表更新", 'javascript:;');
 } else {
     if ($finishType) {
         $gourl = "makehtml_freelist_action.php?maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$nextpage";
-        ShowMsg("更新列表<span class='text-primary'>".$tid."</span>，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新列表<span class='text-primary'>".$tid."</span>，继续更新列表", $gourl, 0, 100);
     } else {
         $gourl = "makehtml_freelist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$pageno";
-        ShowMsg("更新列表<span class='text-primary'>".$tid."</span>，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新列表<span class='text-primary'>".$tid."</span>，继续更新列表", $gourl, 0, 100);
     }
 }
 $dsql->ExecuteNoneQuery("UPDATE `#@__freelist` SET nodefault='1' where aid='$startid';");

@@ -35,7 +35,7 @@
 				</td>
 			</tr>
 			<tr id="addvar" style="display:none">
-				<td colspan="2">
+				<td colspan="2" class="p-0">
 					<form name="fadd" action="sys_info.php" method="post">
 						<input type="hidden" name="dopost" value="add">
 						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
@@ -144,15 +144,17 @@
 						<td><?php echo $row['varname']?></td>
 					</tr>
 					<?php }?>
-					<tr>
-						<td bgcolor="#f5f5f5" align="center" colspan="3">
-							<button type="submit" class="btn btn-success btn-sm">保存</button>
-							<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset()">重置</button>
-						</td>
-					</tr>
 				</table>
 				<?php }?>
 			</div>
+			<table cellspacing="1" cellpadding="1" align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" align="center" colspan="3">
+						<button type="submit" class="btn btn-success btn-sm">保存</button>
+						<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset()">重置</button>
+					</td>
+				</tr>
+			</table>
 		</form>
 		<script>
 			var searchconfig = false;
