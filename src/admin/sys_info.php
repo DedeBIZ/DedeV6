@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统变量配置
+ * 系统变量设置
  *
  * @version        $id:sys_info.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -54,7 +54,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__sysconfig` SET `value`='$v' WHERE varname='$k' ");
     }
     ReWriteConfig();
-    ShowMsg("成功修改系统变量配置", "sys_info.php");
+    ShowMsg("成功修改系统变量设置", "sys_info.php");
     exit();
 }
 //添加新变量
@@ -101,7 +101,7 @@ else if ($dopost == 'search') {
     $configstr = <<<EOT
 <table cellspacing="1" cellpadding="1" align="center" id="tdSearch" class="table maintable my-3">
     <tr>
-        <td bgcolor="#f5f5f5" colspan="3">系统变量配置搜索</td>
+        <td bgcolor="#f5f5f5" colspan="3">系统变量设置搜索</td>
     </tr>
     <tr bgcolor="#e9ecef" align="center">
         <td width="360">参数说明</td>

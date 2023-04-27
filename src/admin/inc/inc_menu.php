@@ -58,7 +58,7 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='支付接口设置' link='sys_payment.php' .php' rank='sys_Data' target='main' />
 </m:top>
 <m:top item='12_' name='系统设置' rank='sys_User,sys_Group,sys_Edit,sys_Log,sys_Data' icon='fa-cog'>
-    <m:item name='系统变量配置' link='sys_info.php' rank='sys_Edit' target='main' />
+    <m:item name='系统变量设置' link='sys_info.php' rank='sys_Edit' target='main' />
     <m:item name='系统日志管理' link='log_list.php' rank='sys_Log' target='main' />
     <m:item name='系统会员管理' link='sys_admin_user.php' rank='sys_User' target='main' />
     <m:item name='系统会员组管理' link='sys_group.php' rank='sys_Group' target='main' />
