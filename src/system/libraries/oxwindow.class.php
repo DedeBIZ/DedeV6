@@ -220,7 +220,7 @@ class OxWindow
         }
         $ctp = new DedeTagParse();
         if ($modfile == '') {
-            $ctp->LoadTemplate($cfg_basedir.$cfg_templets_dir.'/plus/win_templet.htm');
+            $ctp->LoadTemplate($cfg_basedir.$cfg_templets_dir.'/apps/win_templet.htm');
         } else {
             $ctp->LoadTemplate($modfile);
         }

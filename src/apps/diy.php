@@ -21,7 +21,7 @@ $diy = new diyform($diyid);
 if ($action == 'post') {
     if (empty($do)) {
         $postform = $diy->getForm(true);
-        include DEDEROOT."/theme/plus/{$diy->postTemplate}";
+        include DEDEROOT."/theme/apps/{$diy->postTemplate}";
         exit();
     } elseif ($do == 2) {
         $dede_fields = empty($dede_fields) ? '' : trim($dede_fields);
@@ -94,7 +94,7 @@ if ($action == 'post') {
     $datalist->pagesize = 10;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
-    $datalist->SetTemplate(DEDEINC."/../theme/plus/{$diy->listTemplate}");
+    $datalist->SetTemplate(DEDEINC."/../theme/apps/{$diy->listTemplate}");
     $datalist->SetSource($query);
     $fieldlist = $diy->getFieldList();
     $datalist->Display();
@@ -119,6 +119,6 @@ if ($action == 'post') {
         exit();
     }
     $fieldlist = $diy->getFieldList();
-    include DEDEROOT."/theme/plus/{$diy->viewTemplate}";
+    include DEDEROOT."/theme/apps/{$diy->viewTemplate}";
 }
 ?>

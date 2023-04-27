@@ -58,5 +58,5 @@ if ($dopost == 'view') {
     }
 }
 //显示模板简单PHP文件
-include(DEDETEMPLATE.'/plus/vote.htm');
+include(DEDETEMPLATE.'/apps/vote.htm');
 ?>
