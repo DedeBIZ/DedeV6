@@ -572,7 +572,7 @@ function string_filter($str, $stype = "inject")
     return $str;
 }
 //联动单筛选发布三种类型
-function AddFilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0, $toptid = 0, $loadtype= 'autofield')
+function AddFilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0, $toptid = 0, $loadtype = 'autofield')
 {
     global $tid, $dsql, $id, $aid;
     $tid = $defaulttid ? $defaulttid : $tid;
