@@ -83,15 +83,17 @@
 				</tr>
 				<tr>
 					<td>最大长度：</td>
-					<td><input type="text" name="maxlength" id="maxlength" class="admin-input-xs" value="<?php echo $ctag->GetAtt('maxlength')?>">（文本数据必须填写，大于255为text类型）</td>
+					<td>
+						<input type="text" name="maxlength" id="maxlength" class="admin-input-xs" value="<?php echo $ctag->GetAtt('maxlength')?>">
+						<span>（文本数据必须填写，大于255为text类型）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>自定义网页表单：</td>
-					<td>自定义网页表单用~name~表示提示文字，~form~表示表单元素</td>
-				</tr>
-				<tr>
-					<td align="center"></td>
-					<td><textarea name="vinnertext" id="vinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText();?></textarea></td>
+					<td>
+						<textarea name="vinnertext" id="vinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText();?></textarea>
+						<span>（自定义网页表单用~name~表示提示文字，~form~表示表单元素）</span>
+					</td>
 				</tr>
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2" align="center">
