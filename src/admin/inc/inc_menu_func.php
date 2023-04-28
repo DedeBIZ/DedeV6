@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-$headTemplet = '<li><div class="link"><i class="fa ~icon~"></i>~channelname~<i class="fa fa-angle-down"></i></div><ul class="submenu">';
+$headTemplet = '<li><div class="link"><i class="~icon~"></i><span>~channelname~</span><i class="fa fa-angle-down"></i></div><ul class="submenu">';
 $footTemplet = "</ul></li>";
 $itemTemplet = "<li>~link~</li>";
 function GetMenus($userrank, $topos = 'main')
