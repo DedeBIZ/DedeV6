@@ -98,7 +98,6 @@ if ($action === 'is_need_check_code') {
         ));
         exit;
     }
-
     $ff = isset($_FILES['file'])? $_FILES['file'] : $_FILES['imgfile'];
     $uploadedFile = $ff['tmp_name'];
     $fileType = mime_content_type($uploadedFile);
@@ -131,9 +130,9 @@ if ($action === 'is_need_check_code') {
         MkdirAll($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}", $cfg_dir_purview);
         CloseFtp();
     }
+    //头像特殊处理
     if ($type === "face") {
-        //头像特殊处理
-        $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png";//上传文件名
+        $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png";
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/newface.png";
     } else {
         $nowtme = time();
@@ -152,12 +151,11 @@ if ($action === 'is_need_check_code') {
         }
     }
     $rkey = $ck == 1? "url" : "data";
-    
     if (move_uploaded_file($ff["tmp_name"], $target_file)) {
         if ($mediatype === 1) {
             //图片自动裁剪
             require_once DEDEINC."/libraries/imageresize.class.php";
-            try{
+            try {
                 $image = new ImageResize($target_file);
                 if ($type === "face") {
                     $image->crop(150, 150);
