@@ -17,6 +17,8 @@
 					if (result.code === 0) {
 						$("#imgLitpic").attr('src', result.data);
 						$("#litpic").val(result.data);
+					} else {
+						ShowMsg(result.msg);
 					}
 				},
 				error: function (xhr, status, error) {

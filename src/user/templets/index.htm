@@ -69,6 +69,18 @@
 							</div>
 						</div>
 					</div>
+					<?php if($cfg_mb_max > 0){ ?>
+					<div class="py-3">
+						<div class="pannel-main-container shadow-sm rounded">
+							<div class="media-body item-article">
+								<h4 class="mb-3 userspace">用户空间<span class="info">（<?php echo $minfos['totaluse'];?>MB/<?php echo $cfg_mb_max;?>MB）</span></h4>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $ddsize;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $ddsize;?>%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<?php } ?>
 					<div class="pt-3">
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body item-article">

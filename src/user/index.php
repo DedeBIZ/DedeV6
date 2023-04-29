@@ -20,12 +20,13 @@ if ($uid == '') {
     } else {
         $minfos = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='".$cfg_ml->M_ID."';");
         $minfos['totaluse'] = $cfg_ml->GetUserSpace();
-        $minfos['totaluse'] = number_format($minfos['totaluse'] / 1024 / 1024, 2);
         if ($cfg_mb_max > 0) {
-            $ddsize = ceil(($minfos['totaluse'] / $cfg_mb_max) * 100);
+            $ddsize = ceil($minfos['totaluse'] / ($cfg_mb_max * 1024 * 1024) * 100);
         } else {
             $ddsize = 0;
         }
+        $ddsize = $ddsize > 100? 100 : $ddsize;
+        $minfos['totaluse'] = number_format($minfos['totaluse'] / 1024 / 1024, 2);
         require_once(DEDEINC.'/channelunit.func.php');
         //显示最新文档
         $archives = array();
@@ -42,4 +43,3 @@ if ($uid == '') {
         $dpl->display();
     }
 }
-?>

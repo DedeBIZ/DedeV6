@@ -236,23 +236,25 @@ class MemberLogin
     {
         $uid = $this->M_ID;
         $row = $this->dsql->GetOne("SELECT sum(filesize) AS fs FROM `#@__uploads` WHERE mid='$uid';");
-        return $row['fs'];
+        return intval($row['fs']);
     }
     /**
-     *  检查会员空间信息
+     *  检查会员空间是否已满
      *
-     * @return    void
+     * @return    bool
      */
-    function CheckUserSpace()
+    function CheckUserSpaceIsFull()
     {
         global $cfg_mb_max;
-        $uid = $this->M_ID;
+        if ($cfg_mb_max == 0) {
+            return false;
+        }
         $hasuse = $this->GetUserSpace();
         $maxSize = $cfg_mb_max * 1024 * 1024;
         if ($hasuse >= $maxSize) {
-            ShowMsg('您的空间已满，不允许上传新文件', '-1');
-            exit();
+            return true;
         }
+        return false;
     }
     /**
      *  更新会员信息统计表

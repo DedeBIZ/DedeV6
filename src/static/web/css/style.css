@@ -478,3 +478,8 @@ input[type=file] {
 	float:none
 }
 }
+.userspace .info{
+	font-size: 14px;
+	font-weight: normal;
+	color: #545b62;
+}

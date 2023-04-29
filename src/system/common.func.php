@@ -675,6 +675,7 @@ function GetMimeTypeOrExtension($str, $t = 0) {
         'midi' => 'audio/midi',
         'mjs' => 'text/javascript',
         'mp3' => 'audio/mpeg',
+        'mp4' => 'video/mp4',
         'mpeg' => 'video/mpeg',
         'mpkg' => 'application/vnd.apple.installer+xml',
         'odp' => 'application/vnd.oasis.opendocument.presentation',

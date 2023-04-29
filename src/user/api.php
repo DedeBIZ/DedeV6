@@ -67,6 +67,14 @@ if ($action === 'is_need_check_code') {
         ));
         exit;
     }
+    if ($cfg_ml->CheckUserSpaceIsFull()) {
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "您的空间已满，不允许上传新文件",
+            "data" => null,
+        ));
+        exit;
+    }
     $target_dir = "uploads/";//上传目录
     $type = isset($type)? $type : '';
     //获取允许的扩展
