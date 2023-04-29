@@ -15,23 +15,28 @@
 		<table cellpadding="2" cellspacing="1" align="center" class="table maintable my-3">
 			<tr bgcolor="#f5f5f5">
 				<td>
-					<input type="text" name="keywds" id="keywds" placeholder="请输入变量说明" class="admin-input-lg mr-3">
-					<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a><?php
-					$ds = file(DEDEADMIN.'/inc/configgroup.txt');
-					$totalGroup = count($ds);
-					$i = 0;
-					foreach($ds as $dl)
-					{
-						$dl = trim($dl);
-						if (empty($dl)) continue;
-						$dls = explode(',',$dl);
-						$i++;
-						if ($i>1) echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
-						else {
-							echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
+					<div class="input-group">
+						<input type="text" name="keywds" id="keywds" class="admin-input-lg mr-3" placeholder="请输入变量说明">
+						<button id="btnClear" type="button" class="btn bg-transparent d-none" style="margin-left: -40px; z-index: 100;">
+						  <i class="fa fa-times"></i>
+						</button>
+						<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a><?php
+						$ds = file(DEDEADMIN.'/inc/configgroup.txt');
+						$totalGroup = count($ds);
+						$i = 0;
+						foreach($ds as $dl)
+						{
+							$dl = trim($dl);
+							if (empty($dl)) continue;
+							$dls = explode(',',$dl);
+							$i++;
+							if ($i>1) echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
+							else {
+								echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
+							}
 						}
-					}
-					?><a href="javascript:;" onclick="ShowHide('addvar')" class="btn btn-success btn-sm">添加变量</a>
+						?><a href="javascript:;" onclick="ShowHide('addvar')" class="btn btn-success btn-sm">添加变量</a>
+					</div>
 				</td>
 			</tr>
 			<tr id="addvar" style="display:none">
@@ -189,6 +194,7 @@
 				searchKeywords = searchKeywords.replace(/^cfg_/, "");
 				fetch('sys_info.php?dopost=search&keywords=' + searchKeywords).then(resp => {
 					if (resp.ok) {
+						$("#btnClear").removeClass('d-none').show();
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
@@ -205,6 +211,11 @@
 					jQuery("#edit___cfg_cookie_encode").val(data);
 				});
 			}
+			$(document).ready(function () {
+				$("#btnClear").click(()=>{
+					location.reload();
+				})
+			});
 		</script>
 	</body>
 </html>
