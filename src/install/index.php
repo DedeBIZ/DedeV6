@@ -276,9 +276,10 @@ else if ($step==10) {
         );
         echo json_encode($result);
     } else {
+        $err = mysql_error();
         $result = array(
             "code" => -1,
-            "data" => "数据库连接失败",
+            "data" => "数据库连接失败，错误信息：{$err}",
         );
         echo json_encode($result);
     }

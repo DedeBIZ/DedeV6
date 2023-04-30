@@ -72,6 +72,19 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
             }
         }
     }
+    if (!function_exists('mysql_error') and function_exists('mysqli_connect_error')) {
+        function mysql_error($link='')
+        {
+            if (mysqli_connect_errno()) {
+                return mysqli_connect_error();
+            }
+            if ($link) {
+                return @mysqli_error($link);
+            } else {
+                return false;
+            }
+        }
+    }
     if (!function_exists('mysql_free_result') and function_exists('mysqli_free_result')) {
         function mysql_free_result($result)
         {
