@@ -76,7 +76,7 @@ if ($fmdo == 'sendMail') {
         $msg = '';
         $uid = trim($uid);
         if ($cktype == 0) {
-            $msgtitle = '会员名称';
+            $msgtitle = '会员名';
         } else {
             $msgtitle = '会员名';
         }
@@ -106,7 +106,7 @@ if ($fmdo == 'sendMail') {
                 if (!is_array($row)) {
                     $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
                 } else {
-                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个帐号占用</span>";
+                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个会员占用</span>";
                 }
             }
         }

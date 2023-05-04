@@ -369,8 +369,13 @@ body.hidemenu .body-right {
 	height:20px;
 	vertical-align:bottom
 }
-.list-group-item {
-	padding:.65rem 0
+.sys-search {
+	position:relative
+}
+.sys-search .sys-times {
+	position:absolute;
+	top:1px;
+	right:20px
 }
 .coolbg {
 	padding:.25rem .65rem;
@@ -548,6 +553,9 @@ body.hidemenu .body-right {
 }
 .l-height-28 {
 	line-height:28px
+}
+.list-group-item {
+	padding:.65rem 0
 }
 .btn-xs {
 	padding:2px;

@@ -43,3 +43,4 @@ if ($uid == '') {
         $dpl->display();
     }
 }
+?>

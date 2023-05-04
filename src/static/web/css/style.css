@@ -352,6 +352,11 @@ input[type=file] {
 	font-size:22px!important;
 	color:#1eb867
 }
+.userspace .info {
+	font-size:14px;
+	font-weight:400;
+	color:#545b62
+}
 .list-group-item.active a {
 	color:#fff
 }
@@ -477,9 +482,4 @@ input[type=file] {
 .feedbacks .feedback-action {
 	float:none
 }
-}
-.userspace .info{
-	font-size: 14px;
-	font-weight: normal;
-	color: #545b62;
 }

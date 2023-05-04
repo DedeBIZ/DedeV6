@@ -26,11 +26,11 @@ function CheckUserID($uid, $msgtitle = '会员名', $ckhas = TRUE)
     if ($cfg_mb_notallow != '') {
         $nas = explode(',', $cfg_mb_notallow);
         if (in_array($uid, $nas)) {
-            return $msgtitle.'为系统禁止的标识';
+            return $msgtitle.'系统禁止的标识';
         }
     }
     if ($cfg_md_idurl == 'Y' && preg_match("/[^a-z0-9]/i", $uid)) {
-        return $msgtitle.'必须由英文字母或数字组成';
+        return $msgtitle.'必须由英文字母和数字组合';
     }
     if ($cfg_soft_lang == 'utf-8') {
         $ck_uid = utf82gb($uid);
@@ -46,13 +46,13 @@ function CheckUserID($uid, $msgtitle = '会员名', $ckhas = TRUE)
             }
         } else {
             if (preg_match("/[^0-9a-z@\.-]/i", $ck_uid[$i])) {
-                return $msgtitle.'不能含有[@]、[.]、[-]以外的特殊符号';
+                return $msgtitle.'只能用[0-9a-zA-Z_@!.-]以内范围的字符';
             }
         }
     }
     if ($ckhas) {
         $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE userid LIKE '$uid' ");
-        if (is_array($row)) return $msgtitle."已经存在";
+        if (is_array($row)) return $msgtitle."已存在";
     }
     return 'ok';
 }
@@ -69,10 +69,10 @@ function CheckNotAllow()
         ShowMsg("您已经被禁言，请与管理员联系", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta == -10) {
-        ShowMsg("系统开启了邮件审核机制，因此您的帐号需要审核后才能发信息", "-1");
+        ShowMsg("系统开启了邮件审核机制，您的帐号需要审核后才能发信息", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta < 0) {
-        ShowMsg('系统开启了审核机制，因此您的帐号需要管理员审核后才能发信息', '-1');
+        ShowMsg('系统开启了审核机制，您的帐号需要管理员审核后才能发信息', '-1');
         exit();
     }
 }
