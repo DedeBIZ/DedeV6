@@ -33,7 +33,7 @@ if ($action == 'post') {
         }
         $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         if (!is_array($diyform)) {
-            showmsg("自定义表单不存在", '-1');
+            showmsg("表单不存在，程序返回", '-1');
             exit();
         }
         $addvar = $addvalue = '';
@@ -99,7 +99,7 @@ if ($action == 'post') {
         $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         $diyco = $dsql->GetOne("SELECT * FROM `$diy->table` WHERE id='$id'");
         if (!is_array($diyform)) {
-            showmsg("自定义表单不存在", '-1');
+            showmsg("表单不存在，程序返回", '-1');
             exit();
         }
         $addsql = '';
@@ -137,7 +137,7 @@ if ($action == 'post') {
     if (is_array($id) && is_all_numeric($id)) {
         $ids = implode(',', $id);
     } else {
-        showmsg('未选中要操作的文档', '-1');
+        showmsg('未选中要操作的表单', '-1');
         exit();
     }
     $query = "UPDATE `$diy->table` SET ifcheck=1 WHERE id IN ($ids)";
@@ -151,7 +151,7 @@ if ($action == 'post') {
         if (is_array($id)) {
             $ids = implode(',', $id);
         } else {
-            showmsg('未选中要操作的文档', '-1');
+            showmsg('未选中要操作的表单', '-1');
             exit();
         }
         $query = "DELETE FROM `$diy->table` WHERE id IN ($ids)";
@@ -165,14 +165,13 @@ if ($action == 'post') {
         if (file_exists($cfg_basedir.$row[$name])) {
             unlink($cfg_basedir.$row[$name]);
             $dsql->ExecuteNoneQuery("UPDATE `$diy->table` SET $name='' WHERE id='$id'");
-            showmsg('文件删除成功', "diy_list.php?action=list&diyid={$diy->diyid}");
+            showmsg('删除成功', "diy_list.php?action=list&diyid={$diy->diyid}");
         } else {
-            showmsg('文件不存在', '-1');
+            showmsg('删除失败', '-1');
         }
     }
-} 
-elseif ($action == 'excel') {
-    ob_end_clean();//清除缓冲区,避免乱码
+} elseif ($action == 'excel') {
+    ob_end_clean();//清除缓冲区，避免乱码
     header("Content-type:application/vnd.ms-excel");
     header("Content-Disposition:attachment;filename={$diy->name}_".date("Y-m-d").".xls");
     print(chr(0xEF).chr(0xBB).chr(0xBF));//清除bom
