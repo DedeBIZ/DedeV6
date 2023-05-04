@@ -86,7 +86,7 @@ if ($action == 'post') {
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";
         $row = $dsql->GetOne($query);
         if (!is_array($row)) {
-            showmsg("您浏览的记录不存在或未经审核", '-1');
+            showmsg("您浏览的记录不存在或未审核", '-1');
             exit();
         }
         $postform = $diy->getForm('edit', $row, 'admin');

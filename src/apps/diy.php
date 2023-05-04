@@ -34,7 +34,7 @@ if ($action == 'post') {
         }
         $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' ");
         if (!is_array($diyform)) {
-            showmsg('自定义表单不存在', '-1');
+            showmsg('表单不存在，程序返回', '-1');
             exit();
         }
         $addvar = $addvalue = '';
@@ -69,7 +69,7 @@ if ($action == 'post') {
             if ($diy->public == 2)
             {
                 $goto = "diy.php?action=list&diyid={$diy->diyid}";
-                $bkmsg = '发布成功，现在跳转表单列表页';
+                $bkmsg = '发布成功，正在前往表单列表';
             } else {
                 $goto = !empty($cfg_cmspath) ? $cfg_cmspath : '/';
                 $bkmsg = '发布成功，请等待管理员处理';
@@ -82,7 +82,7 @@ if ($action == 'post') {
     }
 } else if ($action == 'list') {
     if (empty($diy->public)) {
-        ShowMsg('后台关闭前台浏览', 'javascript:;');
+        ShowMsg('表单已关闭前台浏览', 'javascript:;');
         exit();
     }
     include_once DEDEINC.'/datalistcp.class.php';
@@ -100,7 +100,7 @@ if ($action == 'post') {
     $datalist->Display();
 } else if ($action == 'view') {
     if (empty($diy->public)) {
-        showMsg('后台关闭前台浏览', 'javascript:;');
+        showMsg('表单已关闭前台浏览', 'javascript:;');
         exit();
     }
     if (empty($id)) {
@@ -115,7 +115,7 @@ if ($action == 'post') {
     $row = $dsql->GetOne($query);
 
     if (!is_array($row)) {
-        showmsg('您浏览的记录不存在或未经审核', '-1');
+        showmsg('您浏览的记录不存在或未审核', '-1');
         exit();
     }
     $fieldlist = $diy->getFieldList();
