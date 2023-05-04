@@ -139,14 +139,30 @@ if ($action === 'is_need_check_code') {
         CloseFtp();
     }
     //头像特殊处理
+    $fsize = filesize($ff["tmp_name"]);
     if ($type === "face") {
         $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/newface.png";
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/newface.png";
+        if ($fsize > ($cfg_max_face * 1024)) {
+            echo json_encode(array(
+                "code" => -1,
+                "msg" => "头像尺寸不能超过{$cfg_max_face}KB",
+                $rkey => null,
+            ));
+            exit;
+        }
     } else {
+        if ($fsize > ($cfg_mb_upload_size * 1024)) {
+            echo json_encode(array(
+                "code" => -1,
+                "msg" => "会员上传文件不能超过{$cfg_mb_upload_size}KB",
+                $rkey => null,
+            ));
+            exit;
+        }
         $nowtme = time();
         $rnd = $nowtme.'-'.mt_rand(1000,9999);
         $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
-        $fsize = filesize($ff["tmp_name"]);
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
         $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."'; ");
         $uptime = time();

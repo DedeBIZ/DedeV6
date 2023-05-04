@@ -156,6 +156,8 @@
 							if (result.code === 0) {
 								$("#face").attr('src', result.data);
 								$("#newface").val(result.data);
+							} else {
+								ShowMsg(result.msg);
 							}
 						},
 						error: function (xhr, status, error) {
