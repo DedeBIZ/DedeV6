@@ -16,11 +16,11 @@ if (empty($dopost)) $dopost = "";
 $id = isset($id) && is_numeric($id) ? $id : 0;
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=1 WHERE id='$id' ");
-    ShowMsg("操作成功", "mychannel_main.php");
+    ShowMsg("启用一个模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "hide") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id'");
-    ShowMsg("操作成功", "mychannel_main.php");
+    ShowMsg("隐藏一个模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "copystart") {
     if ($id == -1) {
@@ -227,11 +227,11 @@ if ($dopost == "show") {
     }
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if ($rs) {
-        ShowMsg("成功文档模型复制，正在前往模型管理", "mychannel_edit.php?id={$newid}&dopost=edit");
+        ShowMsg("成功复制文档模型，正在前往模型管理", "mychannel_edit.php?id={$newid}&dopost=edit");
         exit();
     } else {
         $errv = $dsql->GetError();
-        ShowMsg("系统出错，请检查原因，错误提示：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
+        ShowMsg("复制模型失败，错误提示：$errv", "javascript:;");
         exit();
     }
 } else if ($dopost == "save") {
