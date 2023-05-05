@@ -330,7 +330,7 @@ body.hidemenu .body-right {
 .card-body {
 	padding:.65rem
 }
-.fz-0 {
+#fz-0 {
 	font-size:0
 }
 #_fileList,#_verList {
