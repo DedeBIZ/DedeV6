@@ -42,6 +42,11 @@ a:hover {
 	color:#ff8400;
 	text-decoration:none
 }
+img {
+	margin-right:10px;
+	max-width:100%;
+	border-radius:.5rem
+}
 div,form,ul,ol,li {
 	margin:0;
 	padding:0
@@ -52,11 +57,6 @@ div,th,td {
 }
 li {
 	list-style:none
-}
-img {
-	margin-right:10px;
-	max-width:100%;
-	border-radius:.5rem
 }
 table {
 	background:#fff;
@@ -217,8 +217,7 @@ body.hidemenu .body-right {
 .head {
 	width:100%;
 	height:60px;
-	background:linear-gradient(45deg,#1eb867,#009688 80%);
-	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)
+	background:linear-gradient(45deg,#1eb867,#009688 80%)
 }
 .top-logo {
 	float:left;
@@ -232,9 +231,6 @@ body.hidemenu .body-right {
 	font-size:18px;
 	font-weight:600;
 	color:#fff
-}
-.top-name a  img {
-	width:90px
 }
 .top-version a {
 	float:left;
@@ -279,9 +275,6 @@ body.hidemenu .body-right {
 	color:#545b62;
 	background:0;
 	border:0
-}
-.search-input {
-	width:160px
 }
 .top-admin {
 	float:right;
@@ -337,14 +330,11 @@ body.hidemenu .body-right {
 .card-body {
 	padding:.65rem
 }
-#text {
+.fz-0 {
 	font-size:0
 }
-#latestVersion {
-	display:none
-}
 #_fileList,#_verList {
-	height:400px;
+	height:360px;
 	overflow-y:scroll
 }
 #_msgInfo {
@@ -358,7 +348,7 @@ body.hidemenu .body-right {
 	display:none;
 	position:absolute;
 	top:12px;
-	right:8px;
+	right:6px;
 	height:6px;
 	width:6px;
 	background:#dc3545;
@@ -385,31 +375,17 @@ body.hidemenu .body-right {
 	cursor:pointer
 }
 .coolbg2 {
-	height:28px;
-	line-height:28px;
-	background:#dfddd2;
-	border:1px solid #dee2e6
-}
-.coolbt {
-	background:#e4f7d7;
-	border-left:1px solid #efefef;
-	border-top:1px solid #efefef;
-	border-bottom:1px solid #acacac;
-	cursor:pointer
-}
-.coolbt2 {
-	background:#f7fcda;
-	border-left:1px solid #efefef;
-	border-top:1px solid #efefef;
-	border-bottom:1px solid #acacac
-}
-.coolbg3 {
-	width:140px;
-	height:28px;
-	line-height:28px;
-	background:#dfddd2;
-	border:1px solid #bdc5b4;
+	padding:.65rem;
+	background:#fff;
+	border-bottom:1px solid #dee2e6;
 	text-align:right
+}
+.colordlg {
+	padding:.6rem;
+	width:120px;
+	background:#fff;
+	border:2px solid #1eb867;
+	z-index:10005
 }
 .coolbg61 {
 	width:390px;
@@ -427,12 +403,6 @@ body.hidemenu .body-right {
 	height:300px;
 	background:#F8FDF0;
 	border:1px solid #bdc5b4
-}
-.coolbg4 {
-	padding:.65rem;
-	background:#fff;
-	border-bottom:1px solid #dee2e6;
-	text-align:right
 }
 .wsselect {
 	padding:.65rem 0;
@@ -475,21 +445,21 @@ body.hidemenu .body-right {
 	padding:.65rem 0;
 	border-top:1px solid #dee2e6
 }
-.quickselItem {
+.quickselitem {
 	display:block;
 	line-height:28px
 }
-.quickselItem .topcat {
+.quickselitem .topcat {
 	margin-bottom:1rem;
 	padding:0 10px;
 	background:#e9ecef;
 	clear:both
 }
-.quickselItem .soncat {
+.quickselitem .soncat {
 	margin-bottom:1rem;
 	padding:0 10px
 }
-.quickselItem .item {
+.quickselitem .item {
 	display:inline-block;
 	padding-left:10px
 }
@@ -516,20 +486,6 @@ body.hidemenu .body-right {
 }
 .option3 {
 	background:#fff
-}
-.divpre img {
-	max-width:150px;
-	max-height:100px
-}
-.divpre {
-	overflow:hidden
-}
-.colordlg {
-	padding:.6rem;
-	width:120px;
-	background:#fff;
-	border:2px solid #1eb867;
-	z-index:10005
 }
 .maintable {
 	width:98%!important;
@@ -562,7 +518,7 @@ body.hidemenu .body-right {
 	line-height:12px;
 	font-size:12px
 }
-.btn+.btn,.btn-text+.btn-text {
+.btn+.btn {
 	margin-left:10px
 }
 .admin-win {
@@ -640,7 +596,7 @@ span.page-link {
 	color:#fff;
 	background:#1eb867
 }
-table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.colordlg,.quickselItem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded {
+table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.colordlg,.quickselitem .topcat,.web-info,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded {
 	border-radius:.5rem!important
 }
 .btn-xs {

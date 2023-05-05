@@ -44,10 +44,10 @@ $(function () {
 	});
 });
 function Copyinfo() {
-	var val = document.getElementById('text');
+	var val = document.getElementById('fz-0');
 	window.getSelection().selectAllChildren(val);
 	document.execCommand("Copy");
-	ShowMsg("复制环境配置信息成功");
+	ShowMsg("成功复制环境配置信息");
 }
 //Dedebiz info
 var dedebizInfo;

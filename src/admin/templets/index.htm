@@ -18,7 +18,7 @@
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
 		</div>
 		<?php }?>
-		<div class="head">			
+		<div class="head shadow-sm">			
 			<div class="top-logo">
 				<span class="top-name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
 				<span class="top-version"><?php echo $cfg_version_detail;?></span>
@@ -43,7 +43,7 @@
 					<li><a href="../" target="_blank" title="预览首页"><i class="fa fa-home"></i></a></li>
 					<li>
 						<form action="action_search.php" method="post" target="main">
-							<input type="text" name="keyword" placeholder="功能搜索" class="search-input">
+							<input type="text" name="keyword" placeholder="功能搜索" class="admin-input-sm">
 							<button type="submit" class="search"><i class="fa fa-search"></i> </button>
 						</form>
 					</li>
