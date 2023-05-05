@@ -350,7 +350,7 @@ http.get(durl, (res) => {
     console.log(err);
 });';
     $tagcode = '<ul>
-    {dede:jsonq url="'.$cfg_basehost.'" row="10" typeid='.$typeid.' apikey="'.$tl->TypeInfos['apikey'].'"}
+    {dede:jsonq url="'.$cfg_basehost.'" row="10" typeid="'.$typeid.'" apikey="'.$tl->TypeInfos['apikey'].'"}
     <li><a href="[field:arcurl/]">[field:title/]</a></li>
     {/dede:jsonq}
 </ul>';
