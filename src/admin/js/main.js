@@ -1,7 +1,6 @@
 var fixupPos = false;
 var canMove = false;
 var leftLeaning = 0;
-//异步上传缩略图相关变量
 var nForm = null;
 var nFrame = null;
 var picnameObj = null;
@@ -15,59 +14,6 @@ function GetWinPos(w, h) {
 	var left = (width - w) / 2 / systemZoom + dualScreenLeft;
 	var top = (height - h) / 2 / systemZoom + dualScreenTop;
 	return { left: left, top: top };
-}
-function $Nav() {
-	if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-	else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-	else return "OT";
-}
-function $Obj(objname) {
-	return document.getElementById(objname);
-}
-function ColorSel(c, oname) {
-	var tobj = $Obj(oname);
-	if (!tobj) tobj = eval('document.form1.' + oname);
-	if (!tobj) {
-		$Obj('colordlg').style.display = 'none';
-		return false;
-	} else {
-		tobj.value = c;
-		$Obj('colordlg').style.display = 'none';
-		return true;
-	}
-}
-function ShowColor(e, o) {
-	LoadNewDiv(e, '../../static/web/img/colornew.htm', 'colordlg');
-}
-function ShowHide(objname) {
-	var obj = $Obj(objname);
-	if (obj.style.display != "none") obj.style.display = "none";
-	else obj.style.display = "inline-block";
-}
-function ShowHideT(objname) {
-	var obj = $Obj(objname);
-	if (obj.style.display != "none") obj.style.display = "none";
-	else obj.style.display = ($Nav() == "IE" ? "inline-block" : "table");
-}
-function ShowObj(objname) {
-	var obj = $Obj(objname);
-	if (obj == null) return false;
-	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table");
-}
-function ShowObjRow(objname) {
-	var obj = $Obj(objname);
-	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
-}
-function AddTypeid2() {
-	ShowObjRow('typeid2tr');
-}
-function HideObj(objname) {
-	var obj = $Obj(objname);
-	if (obj == null) return false;
-	obj.style.display = "none";
-}
-function SeePic(img, f) {
-	if (f.value != '') img.src = f.value;
 }
 function SeePicNew(f, imgdid, frname, hpos, acname) {
 	var newobj = null;
@@ -134,13 +80,6 @@ function SelectKeywords(f) {
 	var pos = GetWinPos(800,600);
 	window.open("article_keywords_select.php?f=" + f, "popUpkwWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
-function InitPage() {
-	var selsource = $Obj('selsource');
-	var selwriter = $Obj('selwriter');
-	var colorbt = $Obj('color');
-	if (selsource) { selsource.onmousedown = function (e) { SelectSource(e); } }
-	if (selwriter) { selwriter.onmousedown = function (e) { SelectWriter(e); } }
-}
 function OpenMyWin(surl) {
 	var pos = GetWinPos(800,600);
 	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+", top="+pos.top);
@@ -148,6 +87,61 @@ function OpenMyWin(surl) {
 function OpenMyWinCoOne(surl) {
 	var pos = GetWinPos(800,600);
 	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+",top="+pos.top);
+}
+function InitPage() {
+	var selsource = $Obj('selsource');
+	var selwriter = $Obj('selwriter');
+	var colorbt = $Obj('color');
+	if (selsource) { selsource.onmousedown = function (e) { SelectSource(e); } }
+	if (selwriter) { selwriter.onmousedown = function (e) { SelectWriter(e); } }
+}
+function $Nav() {
+	if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
+	else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+	else return "OT";
+}
+function $Obj(objname) {
+	return document.getElementById(objname);
+}
+function ColorSel(c, oname) {
+	var tobj = $Obj(oname);
+	if (!tobj) tobj = eval('document.form1.' + oname);
+	if (!tobj) {
+		$Obj('colordlg').style.display = 'none';
+		return false;
+	} else {
+		tobj.value = c;
+		$Obj('colordlg').style.display = 'none';
+		return true;
+	}
+}
+function ShowColor(e, o) {
+	LoadNewDiv(e, '../../static/web/img/colornew.htm', 'colordlg');
+}
+function ShowHide(objname) {
+	var obj = $Obj(objname);
+	if (obj.style.display != "none") obj.style.display = "none";
+	else obj.style.display = "inline-block";
+}
+function ShowObj(objname) {
+	var obj = $Obj(objname);
+	if (obj == null) return false;
+	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
+}
+function ShowObjRow(objname) {
+	var obj = $Obj(objname);
+	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
+}
+function AddTypeid2() {
+	ShowObjRow('typeid2tr');
+}
+function HideObj(objname) {
+	var obj = $Obj(objname);
+	if (obj == null) return false;
+	obj.style.display = "none";
+}
+function SeePic(img, f) {
+	if (f.value != '') img.src = f.value;
 }
 function PutSource(str) {
 	var osource = $Obj('source');
@@ -160,17 +154,6 @@ function PutWriter(str) {
 	if (owriter) owriter.value = str;
 	$Obj('mywriter').style.display = 'none';
 	ChangeFullDiv('hide');
-}
-//添加选择投票文档
-function PutVote(str) {
-	var ovote = $Obj('voteid');
-	if (ovote) {
-		ovote.value = str;
-		tb_remove(false);
-	} else {
-		parent.document.form1.voteid.value = str;
-		tb_remove(true);
-	}
 }
 function ClearDivCt(objname) {
 	if (!$Obj(objname)) return;
@@ -275,7 +258,7 @@ function ShowUrlTrEdit() {
 function CkRemote() {
 	document.getElementById('picname').value = '';
 }
-//载入指定宽高的Ajax窗体
+//文档列表快捷属性弹出
 function LoadQuickDiv(e, surl, oname, w, h) {
 	var newobj = $Obj(oname);
 	if (!newobj) {
@@ -339,7 +322,7 @@ function getSelTxt() {
 	}
 	return g;
 }
-//显示栏目Map地图
+//显示副栏目
 function ShowCatMap(e, obj, cid, targetId, oldvalue) {
 	fixupPos = true;
 	LoadQuickDiv(e, 'archives_do.php?dopost=getCatMap&targetid=' + targetId + '&channelid=' + cid + '&oldvalue=' + oldvalue + '&rnd=' + Math.random(), 'getCatMap', '700px', '500px');
@@ -381,24 +364,6 @@ function getSelCat(targetId) {
 	HideObj("getCatMap");
 	ChangeFullDiv("hide");
 }
-function getElementLeft(element) {
-	var actualLeft = element.offsetLeft;
-	var current = element.offsetParent;
-	while (current !== null) {
-		actualLeft += current.offsetLeft;
-		current = current.offsetParent;
-	}
-	return actualLeft;
-}
-function getElementTop(element) {
-	var actualTop = element.offsetTop;
-	var current = element.offsetParent;
-	while (current !== null) {
-		actualTop += current.offsetTop;
-		current = current.offsetParent;
-	}
-	return actualTop;
-}
 //生成一个随机id
 function guid() {
 	function S4() {
@@ -439,7 +404,7 @@ function DedeConfirm(content="",title="确认提示") {
         })
     })
 }
-//函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+//函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
 	size = "";
