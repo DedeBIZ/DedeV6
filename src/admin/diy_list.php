@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
-$action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete','excel')) ? $action : '';
+$action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete', 'excel')) ? $action : '';
 if (empty($diyid)) {
     showMsg("操作失败", 'javascript:;');
     exit();
@@ -173,7 +173,7 @@ if ($action == 'post') {
 } elseif ($action == 'excel') {
     ob_end_clean();//清除缓冲区，避免乱码
     header("Content-type:application/vnd.ms-excel");
-    header("Content-Disposition:attachment;filename={$diy->name}_".date("Y-m-d").".xls");
+    header("Content-Disposition:attachment;filename={$diy->name}".date("Y-m-d").".xls");
     print(chr(0xEF).chr(0xBB).chr(0xBF));//清除bom
     $fieldlist = (array)$diy->getFieldList();
     echo "<table><tr>";
@@ -193,7 +193,7 @@ if ($action == 'post') {
         {
             echo "<td>".$arr[$key]."</td>";
         }
-    $status = $arr['ifcheck'] == 1 ? '<span class="btn btn-success btn-sm">已审核</span>' : '<span class="btn btn-danger btn-sm">未审核</span>';
+    $status = $arr['ifcheck'] == 1 ? '已审核' : '未审核';
     echo "<td>".$status."</td>";
     echo "</tr>";
     }
