@@ -1,7 +1,7 @@
 advancedsearch.htm,高级搜索模板
-download_links_templet.htm,下载地址列表模板
-flink-add.htm,添加友情链接模板
-flink-list.htm,友情链接列表模板
+download_links,下载地址列表模板
+flink_add.htm,添加友情链接模板
+flink_list.htm,友情链接列表模板
 heightsearch.htm,高级搜索模板
 list_diyform.htm,自定义表单列表模板
 post_diyform.htm,自定义表单发布模板

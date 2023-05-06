@@ -37,7 +37,7 @@ if ($open == 0) {
     include_once(DEDEINC.'/taglib/channel/softlinks.lib.php');
     $ctag = '';
     $downlinks = ch_softlinks($row[$vname], $ctag, $cu, '', TRUE);
-    require_once(DEDETEMPLATE.'/apps/download_links_templet.htm');
+    require_once(DEDETEMPLATE.'/apps/download_links.htm');
     exit();
 }
 //提供软件给会员下载旧模式
