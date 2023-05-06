@@ -123,7 +123,7 @@ function jsScript($js)
     return $out;
 }
 /**
- *  获取修改器
+ *  获取富文本
  *
  * @access    public
  * @param     string  $fname 表单名称
@@ -157,7 +157,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
         }
         $code = <<<EOT
 <script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
-<textarea id="{$fname}" name="{$fname}" rows="8" cols="60">{$fvalue}</textarea>
+<textarea id="{$fname}" name="{$fname}">{$fvalue}</textarea>
 <script>var editor = CKEDITOR.replace('{$fname}'{$addConfig});</script>
 EOT;
         if ($gtype == "print") {
