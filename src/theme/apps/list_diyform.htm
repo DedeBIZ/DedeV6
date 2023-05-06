@@ -16,16 +16,16 @@
 				<div class="col-md-12">
 					<nav class="navbar navbar-expand-lg p-0">
 						<ul class="breadcrumb mr-auto">
-							<li class="breadcrumb-item"><a href="../apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>"><?php echo $diy->name;?>列表</a></li>
+							<li class="breadcrumb-item"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>"><?php echo $diy->name;?>列表</a></li>
 						</ul>
-						<span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
+						<span class="navbar-text"><a href="/apps/diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
 					</nav>
 					{dede:datalist}
 					<table class="table">
 						<?php
 						if (!empty($fields)) {
 							echo "<tbody>";
-							echo '<tr><td bgcolor="#e9ecef">id'.$fields['id'].'<a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank" class="btn btn-light btn-sm ml-2">详细</a></td></tr></td>';
+							echo '<tr><td bgcolor="#e9ecef">表单'.$fields['id'].'<a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank" class="btn btn-light btn-sm ml-2">详细</a></td></tr></td>';
 							foreach($fieldlist as $field=>$fielddata)
 							{
 								if ($fields[$field]=='') continue;
