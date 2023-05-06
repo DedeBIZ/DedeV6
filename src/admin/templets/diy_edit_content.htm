@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>修改表单数据</title>
+		<title>修改自定义表单数据</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -16,39 +16,27 @@
 			<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">自定义表单管理</a> &gt; 修改表单数据</td>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">自定义表单管理</a> &gt; 修改自定义表单数据</td>
 				</tr>
+				<?php
+				$formfields = '';
+				foreach($fieldlist as $field=>$fielddata)
+				{
+				   $allowhtml = array('htmltext');
+					if ($row[$field]=='') continue;
+					if (!in_array($fielddata[1],$allowhtml)) {
+						$row[$field] = dede_htmlspecialchars($row[$field]);
+						$row[$field] = "<input type='text' name='".$field."' value='".$row[$field]."'>";
+					}
+					echo '<tr><td width="260">'.$fielddata[0].'：'.'</td><td>'.$row[$field].'</td></tr>';
+					$formfields .= 	$formfields == ''? $field.','.$fielddata[1] : ';'.$field.','.$fielddata[1];	
+				}
+				echo "<input type='hidden' name='dede_fields' value='".$formfields."'>";
+				?>
 				<tr>
-					<td colspan="2">
-						<table width="100%" cellpadding="3" cellspacing="1">
-							<?php
-							$formfields = '';
-							foreach($fieldlist as $field=>$fielddata)
-							{
-							   $allowhtml = array('htmltext');
-								if ($row[$field]=='') continue;
-								if ($fielddata[1]=='img') {
-									$row[$field] = "<input type='file' name='photo'> <a href='{$row[$field]}' target='_blank' class='btn btn-light btn-sm'>浏览原图</a><a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field' class='btn btn-light btn-sm'>删除原图</a>";
-								} else if ($fielddata[1]=='addon') {
-									$row[$field] = "<input type='file' name='file'> <a href='{$row[$field]}' target='_blank' class='btn btn-light btn-sm'>浏览附件</a><a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field' class='btn btn-danger btn-sm'>删除附件</a>";
-								} else {
-									if (!in_array($fielddata[1],$allowhtml)) {
-										$row[$field] = dede_htmlspecialchars($row[$field]);
-										$row[$field] = "<input type='text' name='".$field."' value='".$row[$field]."'>";
-									}
-								}
-								echo '<tr><td width="260">'.$fielddata[0].'：'.'</td><td>'.$row[$field].'</td></tr>';
-								$formfields .= 	$formfields == ''? $field.','.$fielddata[1] : ';'.$field.','.$fielddata[1];	
-							}
-							echo "<input type='hidden' name='dede_fields' value='".$formfields."'>";
-							?>
-							<tr>
-								<td colspan="2" align="center">
-									<button type="submit" name="Submit1" class="btn btn-success btn-sm">保存</button>
-									<button type="button" name="Submit2" class="btn btn-outline-success btn-sm" onclick="location='<?php echo $ENV_GOBACK_URL;?>';">返回</button>
-								</td>
-							</tr>
-						</table>
+					<td colspan="2" bgcolor="#f5f5f5" align="center">
+						<button type="submit" name="Submit1" class="btn btn-success btn-sm">保存</button>
+						<button type="button" name="Submit2" class="btn btn-outline-success btn-sm" onclick="location='<?php echo $ENV_GOBACK_URL;?>';">返回</button>
 					</td>
 				</tr>
 			</table>

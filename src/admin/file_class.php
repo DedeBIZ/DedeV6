@@ -13,7 +13,7 @@ class FileManagement
 {
     var $baseDir = "";
     var $activeDir = "";
-    //是否允许文件管理器删除目录，默认为不允许0，如果希望可能管理整个目录，请把值设为1
+    //是否允许文件管理器删除目录，默认为不允许0，如果希望管理整个目录，请把值设为1
     var $allowDeleteDir = 0;
     //初始化系统
     function Init()
@@ -86,7 +86,7 @@ class FileManagement
                 ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 1;
             } else {
-                ShowMsg("移动文件<span class='text-primary'>$oldfile</span>&gt;<span class='text-primary'>$truepath/$mfile</span>失败，可能是某个位置权限不足", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("移动文件<span class='text-primary'>$oldfile</span>&gt;<span class='text-primary'>$truepath/$mfile</span>失败，某个位置权限不足", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 0;
             }
         } else {

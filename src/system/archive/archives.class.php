@@ -997,7 +997,7 @@ function _highlightkeywords($matches)
 {
     return _highlight($matches[2], $GLOBALS['_dd_karr'], $GLOBALS['_dd_kaarr'], $matches[1]);
 }
-//高亮专用，替换多次是可能不能达到最多次
+//高亮专用，替换多次是但不能达到最多次
 function _highlight($string, $words, $result, $pre)
 {
     global $cfg_replace_num;

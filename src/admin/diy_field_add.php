@@ -60,7 +60,7 @@ if ($action == 'save') {
     $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__diyforms` SET `info`='$oksetting' WHERE diyid='$diyid' ");
     if (!$rs) {
         $grr = $dsql->GetError();
-        ShowMsg("保存节点配置出错".$grr, "javascript:;");
+        ShowMsg("保存字段失败".$grr, "javascript:;");
         exit();
     }
     ShowMsg("成功添加一个字段", "diy_edit.php?diyid=$diyid");

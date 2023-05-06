@@ -210,7 +210,7 @@ if (!function_exists('CheckSql')) {
             $fail = TRUE;
             $error = "union detect";
         }
-        //发布版本的程序可能比较少包括--,#这样的注释，但黑客经常使用它们
+        //发布版本的程序比较少包括--,#这样的注释，但黑客经常使用它们
         elseif (strpos($clean, '/*') > 2 || strpos($clean, '--') !== FALSE || strpos($clean, '#') !== FALSE) {
             $fail = TRUE;
             $error = "comment detect";
@@ -289,7 +289,7 @@ function dede_htmlspecialchars($str)
     else return htmlspecialchars($str);
 }
 /**
- *  载入助手，这里会员可能载入用helps载入多个助手
+ *  载入助手，这里会员载入用helps载入多个助手
  *
  * @access    public
  * @param     string

@@ -71,7 +71,7 @@ if ($action == '') {
     $dm = new DedeModule($mdir);
     $info = $dm->GetModuleInfo($hash);
     if ($info == null) {
-        ShowMsg("获取模块信息错误，模块文件可能被篡改", -1);
+        ShowMsg("获取模块信息错误，模块文件错误", -1);
         exit;
     }
     $dev_id = $info['dev_id'];
@@ -95,7 +95,7 @@ if ($action == '') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     if ($infos == null) {
-        ShowMsg("获取模块信息错误，模块文件可能被篡改", -1);
+        ShowMsg("获取模块信息错误，模块文件错误", -1);
         exit;
     }
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');

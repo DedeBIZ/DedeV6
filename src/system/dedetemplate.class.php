@@ -619,7 +619,7 @@ class DedeTemplate
     {
         $this->loopNum++;
         if ($this->loopNum > 10) {
-            return;//限制最大递归深度为 10 以防止因标记出错等可能性导致死循环
+            return;//限制最大递归深度为10以防止因标记出错等，导致死循环
         }
         $ResultString = '';
         $nextTagEnd = 0;

@@ -35,7 +35,7 @@ if ($dopost == "save") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("diyid", $diyid);
-        $win->AddTitle("删除所有自定义表单相关的文件和数据，您确定要删除<span class='text-primary'>\"".$row['name']."\"</span>自定义表单吗");
+        $win->AddTitle("删除所有自定义表单数据，您确定要删除<span class='text-primary'>".$row['name']."</span>自定义表单吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -44,7 +44,7 @@ if ($dopost == "save") {
     else if ($job == "yes") {
         $row = $dsql->GetOne("SELECT `table` FROM `#@__diyforms` WHERE diyid='$diyid'", MYSQL_ASSOC);
         if (!is_array($row)) {
-            ShowMsg("您所指定的自定义表单信息不存在", "-1");
+            ShowMsg("您所指定的自定义表单不存在", "-1");
             exit();
         }
         //删除表

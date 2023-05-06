@@ -30,7 +30,7 @@ function CheckUserID($uid, $msgtitle = '会员名', $ckhas = true)
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
                 $i++;
             } else {
-                return $msgtitle.'可能含有乱码，建议您改用英文字母和数字组合';
+                return $msgtitle.'含有乱码，建议您改用英文字母和数字组合';
             }
         } else {
             if (preg_match("#[^0-9a-z@\.-]i#", $ck_uid[$i])) {

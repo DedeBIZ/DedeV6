@@ -64,7 +64,7 @@ if ($action == 'upload') {
     </tr>
     <tr>
         <td>已有模块：</td>
-        <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 是否删除同名模块可能会导致已经安装模块无法卸载</label></td>
+        <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 是否删除同名模块会导致已经安装模块无法卸载</label></td>
     </tr>
     <tr>
         <td>选择文件：</td>
