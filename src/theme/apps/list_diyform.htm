@@ -16,7 +16,7 @@
 				<div class="col-md-12">
 					<nav class="navbar navbar-expand-lg p-0">
 						<ul class="breadcrumb mr-auto">
-							<li class="breadcrumb-item"><?php echo $diy->name;?>列表</li>
+							<li class="breadcrumb-item"><a href="../apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>"><?php echo $diy->name;?>列表</a></li>
 						</ul>
 						<span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
 					</nav>
