@@ -79,6 +79,9 @@ if ($action === 'is_need_check_code') {
     if (!$dsql->IsTable("#@__sys_payment")) {
         $unQueryVer[] = "6.2.5";
     }
+    if (!TableHasField("#@__arctype", "apienabled")) {
+        $unQueryVer[] = "6.2.6";
+    }
     if (count($unQueryVer) > 0) {
         $upsqls = GetUpdateSQL();
         foreach ($unQueryVer as $vv) {
