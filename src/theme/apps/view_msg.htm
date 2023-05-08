@@ -14,24 +14,26 @@
 		<main class="container py-3">
 			<div class="row">
 				<div class="col-md-12">
-					<table width="100%" cellpadding="3" cellspacing="1" class="table table-bordered">
+					<nav class="navbar navbar-expand-lg p-0">
+						<ul class="breadcrumb mr-auto">
+							<li class="breadcrumb-item">文档错误提示</li>
+						</ul>
+					</nav>
+					<table class="table mb-0">
 						<tr>
-							<td colspan="2">错误具体提示信息：</td>
+							<td colspan="2"><?php echo $moremsg;?></td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center"><?php echo $moremsg;?></td>
+							<td width="160">文档标题：</td>
+							<td><?php echo $arcLinktitle;?></td>
 						</tr>
 						<tr>
-							<td width="30%" align="center">文档标题：</td>
-							<td width="70%"><?php echo $arcLinktitle;?></td>
-						</tr>
-						<tr>
-							<td align="center">发布时间：</td>
-							<td><?php echo $pubdate;?></td>
-						</tr>
-						<tr>
-							<td align="center">文档简介：</td>
+							<td>文档简介：</td>
 							<td><?php echo $description;?></td>
+						</tr>
+						<tr>
+							<td>发布时间：</td>
+							<td><?php echo $pubdate;?></td>
 						</tr>
 					</table>
 				</div>

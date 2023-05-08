@@ -14,9 +14,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<form name="form1" action="search.php" method="get">
-						<table width="100%" cellpadding="0" cellspacing="0" class="table">
+						<table class="table">
 							<tr>
-								<td align="center" width="20%">网站栏目：</td>
+								<td width="160">网站栏目：</td>
 								<td>
 									<?php
 									$tl = new TypeLink(0);
@@ -29,11 +29,11 @@
 								</td>
 							</tr>
 							<tr>
-								<td align="center">关 键 字：</td>
-								<td width="380" ><input name="q" type="text" id="q" class="form-control"></td>
+								<td>关键字：</td>
+								<td><input name="q" type="text" id="q" class="form-control"></td>
 							</tr>
 							<tr>
-								<td align="center">发布时间：</td>
+								<td>发布时间：</td>
 								<td>
 									<select name="starttime" id="starttime">
 										<option value="-1" selected>不限</option>
@@ -45,7 +45,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td align="center">文档类型：</td>
+								<td>文档类型：</td>
 								<td>
 									<select name="channeltype" id="channeltype" class="form-control">
 										<option value="0" selected>不限</option>
@@ -61,7 +61,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td align="center">排序方式：</td>
+								<td>排序方式：</td>
 								<td>
 									<select name="orderby" id="orderby" class="form-control">
 										<option value="sortrank" selected>默认</option>
@@ -72,18 +72,18 @@
 								</td>
 							</tr>
 							<tr>
-								<td align="center">显示条数：</td>
+								<td>显示条数：</td>
 								<td><input name="pagesize" type="text" id="pagesize" value="10" size="4" class="form-control"></td>
 							</tr>
 							<tr>
-								<td align="center">关键词模式：</td>
+								<td>关键词模式：</td>
 								<td>
 									<label><input type="radio" name="kwtype" value="1" checked> 或</label>
 									<label><input type="radio" name="kwtype" value="0"> 与</label>
 								</td>
 							</tr>
 							<tr>
-								<td align="center">搜索文档：</td>
+								<td>搜索文档：</td>
 								<td>
 									<select name="searchtype" id="searchtype" class="form-control">
 										<option value="titlekeyword" selected>默认搜索</option>
@@ -92,9 +92,9 @@
 								</td>
 							</tr>
 							<tr>
-								<td height="30" bgcolor="#F4FCE4" colspan="2" align="center">
-									<button type="submit" class="btn btn-success">搜索</button>
-									<button type="reset" class="btn btn-outline-success">重置</button>
+								<td colspan="2">
+									<button type="submit" class="btn btn-success btn-sm">搜索</button>
+									<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
 								</td>
 							</tr>
 						</table>

@@ -37,7 +37,7 @@ function GetInfoArray($filename)
 }
 $dirlists  = GetInfoArray($templetdir.'/templet-dirlist.inc');
 $filelists = GetInfoArray($templetdir.'/templet-filelist.inc');
-$pluslists = GetInfoArray($templetdir.'/templet-pluslist.inc');
+$pluslists = GetInfoArray($templetdir.'/templet-appslist.inc');
 $fileinfos = ($acdir == 'plus' ? $pluslists : $filelists);
 include DedeInclude('templets/templets_default.htm');
 ?>

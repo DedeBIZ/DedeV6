@@ -67,7 +67,7 @@ $reurl = '';
 //更新数组所记录栏目
 if (!empty($tid)) {
     if (!isset($cfg_Cs[$tid])) {
-        ShowMsg('没有该栏目数据，可能缓存文件没有更新，请检查是否有写入权限', 'javascript:;');
+        ShowMsg('没有该栏目数据，缓存文件没有更新，请检查是否有写入权限', 'javascript:;');
         exit();
     }
     if ($cfg_Cs[$tid][1] > 0) {

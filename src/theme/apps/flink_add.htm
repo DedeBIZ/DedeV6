@@ -14,19 +14,16 @@
 		<main class="container py-3">
 			<div class="row">
 				<div class="col-md-12">
-					<nav class="navbar navbar-expand-lg mb-3">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item">
-								<h3>申请链接</h3>
-							</li>
+					<nav class="navbar navbar-expand-lg p-0">
+						<ul class="breadcrumb mr-auto">
+							<li class="breadcrumb-item">友情链接</li>
+							<li class="breadcrumb-item">申请链接</li>
 						</ul>
-						<span class="navbar-text">
-							<a href="<?php echo '$cfg_phpurl/flink.php';?>" class="btn btn-success">查看链接</a>
-						</span>
+						<span class="navbar-text"><a href="<?php echo '$cfg_phpurl/flink.php';?>" class="btn btn-success btn-sm">查看链接</a></span>
 					</nav>
 					<form name="form1" method="post" action="flink.php">
 						<input type="hidden" name="dopost" value="save">
-			 			<table width="100%" cellspacing="1" cellpadding="3" class="table">
+			 			<table class="table mb-0">
 							<tr>
 								<td>网址：</td>
 								<td><input name="url" type="text" id="url" value="http://" size="30"></td>
@@ -71,8 +68,8 @@
 							</tr>
 							<tr>
 								<td colspan="2" align="center">
-									<button type="submit" name="Submit" class="btn btn-success">提交</button>
-									<button type="reset" name="Submit" class="btn btn-outline-success">重置</button>
+									<button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
+									<button type="reset" name="Submit" class="btn btn-outline-success btn-sm">重置</button>
 								</td>
 							</tr>
 						</table>

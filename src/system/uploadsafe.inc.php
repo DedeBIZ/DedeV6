@@ -10,7 +10,7 @@ if (isset($_FILES['GLOBALS'])) exit ('Request not allow!');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//为了防止会员通过注入的可能性改动了数据库，这里强制限定的某些文件类型禁止上传
+//为了防止会员通过注入，这里强制限定的某些文件类型禁止上传
 $cfg_not_allowall = "php|pl|cgi|asp|aspx|jsp|php3|shtm|shtml";
 $keyarr = array('name', 'type', 'tmp_name', 'size');
 if (

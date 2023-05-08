@@ -16,11 +16,11 @@ if (empty($dopost)) {
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "系统修复工具";
-    $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
+    $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
     $msg = "<table>
         <tr>
             <td>
-                由于手动升级时会员没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
+                由于手动升级时会员没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
                 1、修复/优化数据表<br>
                 2、更新缓存<br>
                 3、检测系统变量一致性<br>
@@ -40,7 +40,7 @@ else if ($dopost == 1) {
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 检测数据结构";
-    $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
+    $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
     $msg = "<table>
         <tr>
             <td>
@@ -112,7 +112,7 @@ else if ($dopost == 2) {
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 检测微表正确性";
-    $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
+    $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
     $msg = "<table>
         <tr>
             <td>
@@ -161,7 +161,7 @@ else if ($dopost == 3) {
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 高级综合检测修复";
-    $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
+    $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
     $msg = "<table>
     <tr>
         <td>

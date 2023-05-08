@@ -42,7 +42,7 @@ if ($dopost == "ok") {
         $msg[] = "正在清理arclist调用缓存，继续清理过期会员浏览历史";
         $oldtime = time() - (90 * 24 * 3600);
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_pms` WHERE sendtime<'$oldtime' ");
-        $msg[] = "正在清理过期短信，继续修正错误文档，可能要占较长时间";
+        $msg[] = "正在清理过期短信，继续修正错误文档，要占较长时间";
         $limit = date('Ymd', strtotime('-15 days'));
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` WHERE created_date < '$limit'");
         $msg[] = "正在清理15天之前流量统计";

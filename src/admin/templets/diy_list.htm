@@ -20,20 +20,14 @@
 				if (!empty($fields)) {
 					$allowhtml = array('htmltext');
 					$fields['sta'] = $fields['ifcheck'] == 1 ? '<span class="btn btn-success btn-sm">已审核</span>':'<span class="btn btn-danger btn-sm">未审核</span>';
-					echo '<tr bgcolor="#e9ecef"><td width="8%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"></td><td width="8%"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a></td><td align="right">'.$fields['sta'].'<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i></a></td></tr>';
+					echo '<tr bgcolor="#e9ecef"><td width="8%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"></td><td width="8%"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">表单'.$fields['id'].'</a></td><td align="right">'.$fields['sta'].'<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i></a></td></tr>';
 					foreach($fieldlist as $field=>$fielddata)
 					{
 						if ($fields[$field]=='') continue;
-						if ($fielddata[1]=='img') {
-							$fields[$field] = "<a href='{$fields[$field]}' target='_blank' class='btn btn-light btn-sm'>图片附件</a>";
-						} else if ($fielddata[1]=='addon') {
-						$fields[$field] = "<a href='../apps/jump.php?url={$fields[$field]}' target='_blank' class='btn btn-light btn-sm'>其它附件</a>";
-						} else {
-							if (!in_array($fielddata[1],$allowhtml)) {
-								$fields[$field] = dede_htmlspecialchars($fields[$field]);
-							}
+						if (!in_array($fielddata[1],$allowhtml)) {
+							$fields[$field] = dede_htmlspecialchars($fields[$field]);
 						}
-						echo '<tr><td>'.$fielddata[0].'</td><td colspan="2">'.$fields[$field].'</td></tr>';
+						echo '<tr><td colspan="2">'.$fielddata[0].'</td><td>'.$fields[$field].'</td></tr>';
 					}
 				} else {
 					echo '<tr><td>暂无记录</td></tr>';

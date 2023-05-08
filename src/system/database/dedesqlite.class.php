@@ -113,7 +113,7 @@ class DedeSqlite
         }
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("系统提示：<span class='text-primary'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+            $this->DisplayError("系统提示：连接数据库失败，数据库密码不对或数据库服务器出错");
             exit();
         }
         $this->isInit = TRUE;

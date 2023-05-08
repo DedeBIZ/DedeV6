@@ -103,11 +103,9 @@ function GetFormItem($ctag, $admintype = 'admin')
     } else if ($fieldType == "datetime") {
         $nowtime = GetDateTimeMk(time());
         $innertext = "<input type='text' name='$fieldname' value='$nowtime' id='$fieldname' class='form-control admin-input-lg'>";
-    } else if ($fieldType == 'img' || $fieldType == 'imgfile') {
+    } else if ($fieldType == 'img') {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $sstr = $fieldType == 'imgfile'? '' : "<input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";
-        $pstr = $fieldType == 'imgfile'? '请填写图片地址' : '请选择图片上传或填写图片地址';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='$pstr'> $sstr";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择图片上传或填写图片地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($fieldType == 'media') {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择多媒体上传或填写多媒体地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectMedia('$fname.$fieldname')\">";

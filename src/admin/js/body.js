@@ -73,7 +73,7 @@ function LoadServer() {
 					<td>${rsp.msg}</td>
 				</tr>
 				<tr>
-					<td>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息。若授权结果与实际授权存在差异，可能购买到其它非商业授权，及时与我们取得联系。</td>
+					<td>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息。若授权结果与实际授权存在差异，购买到其它非商业授权，及时与我们取得联系。</td>
 				</tr>
 			</table>`);
 		}
@@ -181,31 +181,31 @@ async function LoadStatChart() {
 				{
 					label:'PV',
 					data:pvs,
-					lineTension:.35,
+					lineTension:.5,
 					borderColor:'rgba(54, 162, 235, 1)',
 					backgroundColor:'rgba(54, 162, 235, 0.2)',
-					borderWidth:1
+					borderWidth:2
 				}, {
 					label:'UV',
 					data:uvs,
-					lineTension:.35,
+					lineTension:.5,
 					borderColor:'rgba(255, 206, 86, 1)',
 					backgroundColor:'rgba(255, 206, 86, 0.2)',
-					borderWidth:1
+					borderWidth:2
 				}, {
 					label:'IP',
 					data:ips,
-					lineTension:.35,
+					lineTension:.5,
 					borderColor:'rgba(255, 99, 132, 1)',
 					backgroundColor:'rgba(255, 99, 132, 0.2)',
-					borderWidth:1
+					borderWidth:2
 				}, {
 					label:'VV',
 					data:vvs,
-					lineTension:.35,
+					lineTension:.5,
 					borderColor:'rgba(75, 192, 192, 1)',
 					backgroundColor:'rgba(75, 192, 192, 0.2)',
-					borderWidth:1
+					borderWidth:2
 				}
 			]
 		},
