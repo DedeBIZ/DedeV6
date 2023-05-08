@@ -36,3 +36,31 @@ function SelectImage(sform, stype) {
         })
     }
 }
+$(document).ready(function () {
+    $('.datepicker').daterangepicker({
+        "singleDatePicker": true,
+        "autoApply": true,
+        "showDropdowns": true,
+        "linkedCalendars": false,
+        "timePicker": true,
+        "timePicker24Hour": true,
+        //"timePickerSeconds": true,
+        "showCustomRangeLabel": false,
+        ranges: {
+            '今日': [moment(), moment()],
+            '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            '本月': [moment().startOf('month'), moment().startOf('month')],
+            '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+        },
+        "locale": {
+            format: 'YYYY-MM-DD HH:mm',
+            applyLabel: '确定',
+            cancelLabel: '取消',
+            daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            firstDay: 1
+        }
+    }, function (start) {
+        $(this).val(start.format("YYYY-MM-DD HH:mm"));
+    });
+})

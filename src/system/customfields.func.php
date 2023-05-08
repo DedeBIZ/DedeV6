@@ -102,7 +102,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         $innertext = "<textarea name='$fieldname' id='$fieldname' class='form-control admin-textarea-sm'></textarea>";
     } else if ($fieldType == "datetime") {
         $nowtime = GetDateTimeMk(time());
-        $innertext = "<input type='text' name='$fieldname' value='$nowtime' id='$fieldname' class='form-control admin-input-lg'>";
+        $innertext = "<input type='text' name='$fieldname' value='$nowtime' id='$fieldname' class='form-control admin-input-lg datepicker'>";
     } else if ($fieldType == 'img') {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择图片上传或填写图片地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";

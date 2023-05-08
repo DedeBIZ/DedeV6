@@ -7,7 +7,7 @@
  * @link           https://www.dedebiz.com
  */
 //系统默认运行模式为安全模式，模板管理、标签管理、数据库管理、模块管理等功能已暂停，如果您需要这些功能，DEDEBIZ_SAFE_MODE后面值`TRUE`改为`FALSE`恢复使用
-define('DEDEBIZ_SAFE_MODE', FALSE);
+define('DEDEBIZ_SAFE_MODE', TRUE);
 //生产环境使用`production`，如果采用`dev`模式，会有一些php的报错信息提示，用于开发调试
 if (!defined('DEDE_ENVIRONMENT')) {
     define('DEDE_ENVIRONMENT', 'production');

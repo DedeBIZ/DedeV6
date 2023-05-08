@@ -74,7 +74,7 @@ if ($action == 'post') {
                 $goto = !empty($cfg_cmspath) ? $cfg_cmspath : '/';
                 $bkmsg = '发布成功，请等待管理员处理';
                 //提交后返回提交页面
-                echo"<script>alert('提交成功');history.go(-1)</script>";
+                ShowMsg('提交成功', '-1');
                 exit;
             }
             ShowMsg($bkmsg, $goto);
