@@ -333,7 +333,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         return;
     }
     if (empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
-    $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>系统提示</title><base target='_self'></head><body><script>";
+    $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><base target='_self'><style>body{margin:0;line-height:1.6;letter-spacing:.6px;font-size:14px;font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#007bff;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62;word-break:break-all;word-wrap:break-word}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.5rem;text-align:center;transition:all .5s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(72,180,97,.5)}.text-primary{color:#007bff}@media (max-width:480px){.tips,.tips-box{max-width:100%}.tips{padding:0 15px}}</style></head><body><script>";
     $htmlfoot  = "</script></body></html>";
     $litime = ($limittime == 0 ? 1000 : $limittime);
     $func = '';
@@ -352,7 +352,6 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         }
         $func .= "var pgo=0;function JumpUrl(){if (pgo==0){location='$gourl'; pgo=1;}}";
         $rmsg = $func;
-        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.6;letter-spacing:.6px;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#007bff;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.5rem;text-align:center;transition:all .5s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(72,180,97,.5)}.text-primary{color:#007bff}@media (max-width:768px){.tips{padding:0 15px}.tips,.tips-box{width:100%}}</style>\");";
         $rmsg .= "document.write(\"<div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div>\");";
         $rmsg .= "document.write(\"<div class='tips-body'>\");";
         $rmsg .= "document.write(\"".str_replace("\"", "“", $msg)."\");";

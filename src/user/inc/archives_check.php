@@ -44,8 +44,6 @@ if ($cInfos['arcsta'] == 0) {
 } else if ($cInfos['arcsta'] == 1) {
     $ismake = -1;
     $arcrank = 0;
-} else if ($cfg_ml->IsLogin()) {
-    $arcrank = 0;
 } else {
     $ismake = 0;
     $arcrank = -1;
