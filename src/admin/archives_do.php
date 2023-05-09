@@ -128,35 +128,35 @@ else if ($dopost == "uploadLitpic") {
     $upfile = AdminUpload('litpic', 'imagelit', 0, false);
     if ($upfile == '-1') {
         $msg = "<script>
-                parent.document.getElementById('uploadwait').style.display = 'none';
-                alert('您没指定要上传文件或文件大小超过限制');
-            </script>";
+            parent.document.getElementById('uploadwait').style.display = 'none';
+            alert('您没指定要上传文件或文件大小超过限制');
+        </script>";
     } else if ($upfile == '-2') {
         $msg = "<script>
-                parent.document.getElementById('uploadwait').style.display = 'none';
-                alert('上传文件失败，请检查原因');
-            </script>";
+            parent.document.getElementById('uploadwait').style.display = 'none';
+            alert('上传文件失败，请检查原因');
+        </script>";
     } else if ($upfile == '0') {
         $msg = "<script>
-                parent.document.getElementById('uploadwait').style.display = 'none';
-                alert('文件类型不正确');
-            </script>";
+            parent.document.getElementById('uploadwait').style.display = 'none';
+            alert('文件类型不正确');
+        </script>";
     } else {
         if (!empty($cfg_uplitpic_cut) && $cfg_uplitpic_cut == 'N') {
             $msg = "<script>
-                    parent.document.getElementById('uploadwait').style.display = 'none';
-                    parent.document.getElementById('picname').value = '{$upfile}';
-                    if (parent.document.getElementById('divpicview'))
-                    {
-                        parent.document.getElementById('divpicview').style.width = '150px';
-                        parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}?n' width='150'>\";
-                    }
-                </script>";
+                parent.document.getElementById('uploadwait').style.display = 'none';
+                parent.document.getElementById('picname').value = '{$upfile}';
+                if (parent.document.getElementById('divpicview'))
+                {
+                    parent.document.getElementById('divpicview').style.width = '150px';
+                    parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}?n' width='150'>\";
+                }
+            </script>";
         } else {
             $msg = "<script>
-                    parent.document.getElementById('uploadwait').style.display = 'none';
-                    window.open('imagecut.php?f=picname&isupload=yes&file={$upfile}', 'popUpImagesWin', 'scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=150, top=50');
-                </script>";
+                parent.document.getElementById('uploadwait').style.display = 'none';
+                window.open('imagecut.php?f=picname&isupload=yes&file={$upfile}', 'popUpImagesWin', 'scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=150, top=50');
+            </script>";
         }
     }
     echo $msg;
@@ -169,7 +169,7 @@ else if ($dopost == "commendArchives") {
         $qstr = $aid;
     }
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
@@ -217,7 +217,7 @@ else if ($dopost == "checkArchives") {
     require_once(DEDEADMIN."/inc/inc_archives_functions.php");
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
@@ -257,7 +257,7 @@ else if ($dopost == "checkArchives") {
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-        echo "<table width='100%'>";
+        echo "<table>";
         ?>
         <tr>
             <td width="90" class="admin-td">目标栏目：</td>
@@ -266,8 +266,8 @@ else if ($dopost == "checkArchives") {
         <tr>
             <td width="90" class="admin-td">文档id：</td>
             <td class="admin-td">
-                <input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"><br>
-                <span>移动栏目必须和选定文档栏目类型一致，否则自动过滤不相关文档</span>
+                <p>（移动栏目和选定文档栏目类型一致，否则过滤不相关文档）</p>
+                <input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>">
             </td>
         </tr>
         <tr>
@@ -332,7 +332,7 @@ else if ($dopost == 'return') {
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
 
     if ($qstr == '') {
-        ShowMsg("参数无效", "recycling.php");
+        ShowMsg("操作失败", "recycling.php");
         exit();
     }
     $qstrs = explode('`', $qstr);
@@ -353,7 +353,7 @@ else if ($dopost == "delArchives") {
             $qstr = $aid;
         }
         if ($qstr == '') {
-            ShowMsg("参数无效", $ENV_GOBACK_URL);
+            ShowMsg("操作失败", $ENV_GOBACK_URL);
             exit();
         }
         $qstrs = explode('`', $qstr);
@@ -390,7 +390,7 @@ else if ($dopost == 'clear') {
     if ($fmdo == 'yes') {
         if (!empty($aid) && empty($qstr)) $qstr = $aid;
         if ($qstr == '') {
-            ShowMsg("参数无效", "recycling.php");
+            ShowMsg("操作失败", "recycling.php");
             exit();
         }
         $qstrs = explode('`', $qstr);
@@ -441,7 +441,7 @@ else if ($dopost == 'del') {
     if ($fmdo == 'yes') {
         if (!empty($aid) && empty($qstr)) $qstr = $aid;
         if ($qstr == '') {
-            ShowMsg("参数无效", "recycling.php");
+            ShowMsg("操作失败", "recycling.php");
             exit();
         }
         $qstrs = explode('`', $qstr);
@@ -481,7 +481,7 @@ else if ($dopost == 'quickEdit') {
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
-    echo "<table width='100%'>";
+    echo "<table>";
     ?>
     <tr>
         <td width="90" class="admin-td">所属栏目：</td>
@@ -535,7 +535,7 @@ else if ($dopost == 'quickEdit') {
                 }
                 ?>
             </select>
-            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-xs">
+            <label>需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-xs"></label>
         </td>
     </tr>
     <tr>
@@ -549,7 +549,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     </table>
-    </form>
+</form>
 <?php
 //Ajax窗体结束
 }
@@ -586,7 +586,7 @@ else if ($dopost == 'quickEditSave') {
     //更新网页
     $artUrl = MakeArt($aid, TRUE, TRUE);
     $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '-1';
-    ShowMsg('成功更新一篇文档基本信息', $backurl);
+    ShowMsg('成功更新一篇文档指定属性', $backurl);
     exit();
 }
 //分析并自动获取文档关键词
@@ -594,7 +594,7 @@ else if ($dopost == "makekw") {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
@@ -677,7 +677,7 @@ else if ($dopost == 'attsAdd') {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     if (empty($flagname)) {
@@ -710,7 +710,7 @@ else if ($dopost == 'attsDel') {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     if (empty($flagname)) {
@@ -759,7 +759,7 @@ else if ($dopost == 'attsDlg') {
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-    echo "<table width='100%'>";
+    echo "<table>";
 ?>
     <tr>
         <td width="90" class="admin-td">属性：</td>
@@ -786,7 +786,7 @@ else if ($dopost == 'attsDlg') {
         </td>
     </tr>
     </table>
-    </form>
+</form>
 <?php
 //Ajax窗体结束
 } else if ($dopost == 'getCatMap') {
