@@ -26,7 +26,9 @@ if ($cfg_ml->IsSendLimited()) {
 if (empty($dopost)) {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     //如果限制了会员级别或类型，则允许游客投稿选项无效
-    if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') CheckRank(0, 0);
+    if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') {
+        CheckRank(0, 0);
+    }
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
@@ -71,7 +73,6 @@ if (empty($dopost)) {
     $body = AnalyseHtmlBody($body, $description);
     $body = HtmlReplace($body, -1);
     $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
-    
     //生成文档id
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {

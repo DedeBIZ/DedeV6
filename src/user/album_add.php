@@ -36,8 +36,12 @@ if (empty($dopost)) {
     $query = "SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg('模型参数不正确', '-1');
+        ShowMsg('图片模型参数不正确', '-1');
         exit();
+    }
+    //如果限制了会员级别或类型，则允许游客投稿选项无效
+    if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') {
+        CheckRank(0, 0);
     }
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
