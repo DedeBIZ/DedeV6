@@ -1,8 +1,8 @@
 <?php
 /**
- * 会员查看
+ * 会员修改
  *
- * @version        $id:member_view.php 14:15 2010年7月20日 tianya $
+ * @version        $id:member_edit.php 14:15 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -63,5 +63,5 @@ function GetHonor($scores)
     $scrow = $dsql->GetOne($sql);
     return $scrow['titles'];
 }
-include DedeInclude('templets/member_view.htm');
+include DedeInclude('templets/member_edit.htm');
 ?>

@@ -76,23 +76,22 @@
 					<td><input name="get_photo_fontcolor" type=text id="get_photo_fontcolor" value="<?php echo $photo_fontcolor?>" class="admin-input-sm"></td>
 				</tr>
 				<tr>
-					<td>JPEG图附件添加水印后质量</td>
+					<td>JPEG图附件添加水印后质量：</td>
 					<td>
 						<input type="text" name="get_photo_marktrans" id="get_photo_marktrans" value="<?php echo $photo_marktrans?>" class="admin-input-sm">
-						<span>（范围为0～100的整数，数值越大结果图片效果越好，但尺寸也越大）</span>
+						<span>（范围为0-100整数，数值越大结果图片效果越好，但尺寸也越大）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>GIF水印图片与原始图片透明度</td>
+					<td>GIF水印图片与原始图片透明度：</td>
 					<td>
 						<input name="get_photo_diaphaneity" type=text id="get_photo_diaphaneity" value="<?php echo $photo_diaphaneity?>" class="admin-input-sm">
-						<span>（0—100，值越小越透明）</span>
+						<span>（0-100，值越小越透明）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>水印位置：</td>
-					<td>
-						<label><input type="radio" name="get_photo_waterpos" value="0" <?php if ($photo_waterpos==0) echo ' checked';?>> 随机位置</label>
+					<td class="p-0">
 						<table cellspacing="0" cellpadding="0" class="table-borderless w-25">
 							<tr>
 								<td width="33%">
@@ -126,6 +125,9 @@
 								<td>
 									<label><input type="radio" name="get_photo_waterpos" value="9" <?php if ($photo_waterpos==9) echo ' checked';?>> 底部居右</label>
 								</td>
+							</tr>
+							<tr>
+								<td colspan="3"><label><input type="radio" name="get_photo_waterpos" value="0" <?php if ($photo_waterpos==0) echo ' checked';?>> 随机位置</label></td>
 							</tr>
 						</table>
 					</td>

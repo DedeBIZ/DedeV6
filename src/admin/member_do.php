@@ -165,7 +165,7 @@ else if ($dopost == 'edituser') {
             $dsql->ExecuteNoneQuery2("UPDATE `#@__admin` SET `uname`='$uname' WHERE id='$id'");
         }
     }
-    ShowMsg('成功修改会员资料', 'member_view.php?id='.$id);
+    ShowMsg('成功修改会员资料', 'member_edit.php?id='.$id);
     exit();
 }
 //登录会员

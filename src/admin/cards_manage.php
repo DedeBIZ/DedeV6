@@ -45,7 +45,7 @@ function GetMemberID($mid)
     global $dsql;
     if ($mid == 0) return '0';
     $row = $dsql->GetOne("SELECT userid FROM `#@__member` WHERE mid='$mid' ");
-    if (is_array($row)) return "<a href='member_view.php?mid={$mid}'>".$row['userid']."</a>";
+    if (is_array($row)) return "<a href='member_edit.php?mid={$mid}'>".$row['userid']."</a>";
     else return '0';
 }
 function GetUseDate($time = 0)
