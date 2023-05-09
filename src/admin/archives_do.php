@@ -549,7 +549,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     </table>
-</form>
+    </form>
 <?php
 //Ajax窗体结束
 }
@@ -760,7 +760,7 @@ else if ($dopost == 'attsDlg') {
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
     echo "<table>";
-?>
+    ?>
     <tr>
         <td width="90" class="admin-td">属性：</td>
         <td class="admin-td">
@@ -786,7 +786,7 @@ else if ($dopost == 'attsDlg') {
         </td>
     </tr>
     </table>
-</form>
+    </form>
 <?php
 //Ajax窗体结束
 } else if ($dopost == 'getCatMap') {
