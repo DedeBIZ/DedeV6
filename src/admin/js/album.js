@@ -25,11 +25,11 @@ function testGet() {
 }
 function checkMuList(psid, cmid) {
 	if ($Obj('pagestyle3').checked) {
-		$Obj('cfgmulist').style.display = 'block';
+		$Obj('cfgmulist').style.display = 'table-row';
 		$Obj('spagelist').style.display = 'none';
 	} else if ($Obj('pagestyle1').checked) {
 		$Obj('cfgmulist').style.display = 'none';
-		$Obj('spagelist').style.display = 'block';
+		$Obj('spagelist').style.display = 'table-row';
 	} else {
 		$Obj('cfgmulist').style.display = 'none';
 		$Obj('spagelist').style.display = 'none';
@@ -38,7 +38,7 @@ function checkMuList(psid, cmid) {
 //图片显示与隐藏zip文件选项
 function showZipField(formitem, zipid, upid) {
 	if (formitem.checked) {
-		$Obj(zipid).style.display = 'block';
+		$Obj(zipid).style.display = 'table-row';
 		$Obj(upid).style.display = 'none';
 		$Obj('copyhtml').innerHTML = '';
 	} else {
@@ -52,7 +52,7 @@ function showHtmlField(formitem, htmlid, upid) {
 		return;
 	}
 	if (formitem.checked) {
-		$Obj(htmlid).style.display = 'block';
+		$Obj(htmlid).style.display = 'table-row';
 		$Obj(upid).style.display = 'none';
 		$Obj('formzip').checked = false;
 	} else {

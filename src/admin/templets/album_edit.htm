@@ -206,11 +206,8 @@
 									<label>行 <input type="text" name="row" id="row" value="<?php echo $irow;?>" class="admin-input-sm"></label>
 									<label>列 <input type="text" name="col" id="col" value="<?php echo $icol;?>" class="admin-input-sm"></label>
 									<label>缩略图宽度限制：<input type="text" name="ddmaxwidth" id="ddmaxwidth" value="<?php echo $ddmaxwidth;?>" class="admin-input-sm"> 像素</label>
+									<span>（系统仅是每页输出&quot;行x列&quot;张图片，实现需自行控制样式表）</span>
 								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>（系统仅是每页输出&quot;行x列&quot;张图片，实现需自行控制样式表）</td>
 							</tr>
 						</table>
 					</td>
@@ -247,10 +244,10 @@
 							<tr>
 								<td width="90">网上复制：</td>
 								<td>
-									<label>复制的源网址：<input type="text" name="copysource" value="http://" class="admin-input-lg"></label>
-									<span>把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片（防盗链网站需填写您复制图片的其中一个网页网址）</span>
-									<input type="button" name="button" id="button" value="预览" onclick="LoadTestDiv()">
-									<div id="copyhtml" style="margin:10px 0;padding:10px;width:98%;height:200px;border:1px solid #ccc" contenteditable="true">粘贴到这里</div>
+									<label>源网址：<input type="text" name="copysource" value="http://" class="admin-input-lg"></label>
+									<button type="button" name="button" id="button" class="btn btn-success btn-sm" onclick="LoadTestDiv()">预览</button>
+									<p class="my-2">（图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片防盗链网站需填写您复制图片的其中一个网页网址）</p>
+									<div id="copyhtml" contenteditable="true" class="form-control admin-textarea-xl"></div>
 								</td>
 							</tr>
 						</table>
