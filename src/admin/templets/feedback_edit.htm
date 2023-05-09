@@ -37,8 +37,8 @@
 					<td>修改的评论文档网页代码不会被屏蔽，可用语法修改</td>
 				</tr>
 				<tr>
-					<td height="62" align="center"></td>
-					<td height="62"><textarea name="msg" cols="60" rows="5" id="msg"><?php echo cn_substr(Text2Html($row['msg']), 250);?></textarea></td>
+					<td></td>
+					<td><textarea name="msg" id="msg" class="form-control"><?php echo cn_substr(Text2Html($row['msg']), 255);?></textarea></td>
 				</tr>
 				<tr>
 					<td>管理员回复：</td>
