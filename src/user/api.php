@@ -62,7 +62,7 @@ if ($action === 'is_need_check_code') {
     if (!$cfg_ml->IsLogin()) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "未登录",
+            "msg" => "请登录会员中心",
             "data" => null,
         ));
         exit;
@@ -70,7 +70,7 @@ if ($action === 'is_need_check_code') {
     if ($cfg_ml->CheckUserSpaceIsFull()) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "您的空间已满，不允许上传新文件",
+            "msg" => "您的空间已满，禁止上传新文件",
             "data" => null,
         ));
         exit;
@@ -112,7 +112,7 @@ if ($action === 'is_need_check_code') {
     if (!in_array($fileType, $allowedTypes)) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "当前文件格式不支持",
+            "msg" => "不支持该文件格式",
             "data" => null,
         ));
         exit;
@@ -126,7 +126,7 @@ if ($action === 'is_need_check_code') {
         if (!$imgSize) {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "无法获取当前图片正常尺寸",
+                "msg" => "无法获取图片正常尺寸",
                 "data" => null,
             ));
             exit;
@@ -146,7 +146,7 @@ if ($action === 'is_need_check_code') {
         if ($fsize > ($cfg_max_face * 1024)) {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "头像尺寸不能超过{$cfg_max_face}KB",
+                "msg" => "上传头像不能超过{$cfg_max_face}KB",
                 $rkey => null,
             ));
             exit;
@@ -155,7 +155,7 @@ if ($action === 'is_need_check_code') {
         if ($fsize > ($cfg_mb_upload_size * 1024)) {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "会员上传文件不能超过{$cfg_mb_upload_size}KB",
+                "msg" => "上传文件不能超过{$cfg_mb_upload_size}KB",
                 $rkey => null,
             ));
             exit;
@@ -196,7 +196,7 @@ if ($action === 'is_need_check_code') {
             } catch (ImageResizeException $e) {
                 echo json_encode(array(
                     "code" => -1,
-                    "msg" => "图片自动裁剪失败",
+                    "msg" => "自动裁剪图片失败",
                     $rkey => null,
                 ));
             }
@@ -221,7 +221,7 @@ if ($action === 'is_need_check_code') {
         if ($format === 'json') {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "未登录",
+                "msg" => "请登录会员中心",
                 $rkey => null,
             ));
         } else {
