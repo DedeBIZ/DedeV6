@@ -25,7 +25,7 @@
 			<input type="hidden" name="arcrank" value="<?php echo $arcRow['arcrank']?>">
 			<input type="hidden" name="source" value="本站">
 			<input type="hidden" name="dopost" value="save">
-			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="admin-border my-3">
+			<table width="98%" align="center" id="needset" class="admin-border my-3">
 				<tr bgcolor="#f5f5f5">
 					<td class="admin-td">发布专题</td>
 				</tr>
@@ -36,7 +36,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">专题名称：</td>
 								<td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">自定义属性：</td>
 								<td>
@@ -71,7 +71,7 @@
 				</tr>
 				<tr id="pictable">
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">缩略图：</td>
 								<td width="620">
@@ -88,7 +88,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">作者：</td>
 								<td><input type="text" name="writer" id="writer" value="<?php echo $arcRow['writer']?>" class="admin-input-sm"></td>
@@ -98,7 +98,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">主分类：</td>
 								<td>
@@ -117,7 +117,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">关键词：</td>
 								<td><label><input type="text" name="keywords" rows="3" id="keywords" value="<?php echo $arcRow['keywords']?>" class="admin-input-lg"></label></td>
@@ -127,7 +127,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">专题说明：</td>
 								<td><textarea name="description" id="textarea" class="admin-textarea-sm"><?php echo $arcRow['description']?></textarea></td>
@@ -138,7 +138,7 @@
 				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 				<tr>
 					<td class="admin-td">
-						<table width="100%" cellspacing="2" cellpadding="2">
+						<table width="100%">
 							<?php
 							$speclisttmp = GetSysTemplets("spec_arclist.htm");
 							$i = 1;
@@ -254,7 +254,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90" width="260">评论选项：</td>
 								<td width="260">
@@ -271,7 +271,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">文档排序：</td>
 								<td width="260">
@@ -299,7 +299,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">专题模板：</td>
 								<td width="260">
@@ -315,7 +315,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">发布时间：</td>
 								<td>
@@ -330,7 +330,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">更新时间：</td>
 								<td width="260">

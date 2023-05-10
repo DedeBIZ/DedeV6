@@ -53,7 +53,7 @@ if (!empty($noeditor)) {
     </head>
     <body>
         <div class="upload-bg">
-            <table align="center" cellspacing="0" cellpadding="2" class="table icon">
+            <table align="center" class="table icon">
                 <tr>
                     <td colspan="3">
                         <form action="select_media_post.php" method="POST" enctype="multipart/form-data" name="myform">

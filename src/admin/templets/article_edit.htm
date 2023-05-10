@@ -24,13 +24,13 @@
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="channelid" value="<?php echo $channelid?>">
 			<input type="hidden" name="id" value="<?php echo $aid?>">
-			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="admin-border my-3">
+			<table width="98%" align="center" id="needset" class="admin-border my-3">
 				<tr bgcolor="#f5f5f5">
 					<td class="admin-td">修改文档</td>
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">文档标题：</td>
 								<td width="400"><input name="title" type="text" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
@@ -42,7 +42,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">自定义属性：</td>
 								<td>
@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">跳转网址：</td>
 								<td><input name="redirecturl" type="text" id="redirecturl" value="<?php echo $addRow['redirecturl']?>" class="admin-input-lg"></td>
@@ -80,7 +80,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">标签：</td>
 								<td><input name="tags" type="text" id="tags" value="<?php echo $tags;?>" class="admin-input-lg">（英文逗号分开，如“DedeBIZ,得德”）</td>
@@ -92,7 +92,7 @@
 				</tr>
 				<tr id="pictable">
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">缩略图：</td>
 								<td width="620">
@@ -109,7 +109,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">来源：</td>
 								<td width="260">
@@ -127,7 +127,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">发布栏目：</td>
 								<td width="360">
@@ -149,7 +149,7 @@
 				<?php if ($cfg_need_typeid2=='Y') {?>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">副栏目：</td>
 								<td>
@@ -164,7 +164,7 @@
 				<?php }?>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">关键词：</td>
 								<td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']?>" class="admin-input-lg"></td>
@@ -174,7 +174,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">描述：</td>
 								<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $arcRow['description']?></textarea></td>
@@ -185,7 +185,7 @@
 				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">附加选项：</td>
 								<td>
@@ -202,7 +202,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">评论选项：</td>
 								<td width="260">
@@ -220,7 +220,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">文档排序：</td>
 								<td width="260">
@@ -248,7 +248,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">阅读权限：</td>
 								<td width="260">
@@ -277,7 +277,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">更新时间：</td>
 								<td width="260">

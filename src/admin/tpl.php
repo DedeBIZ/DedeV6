@@ -114,7 +114,7 @@ else if ($action == 'upload') {
     $wecome_info = "<a href='templets_main.php'>模板管理</a> &gt; 上传模板";
     $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'uploadok');
-    $msg = "<table cellspacing='0' cellpadding='0'>
+    $msg = "<table>
         <tr>
             <td width='90'>选择文件：</td>
             <td>

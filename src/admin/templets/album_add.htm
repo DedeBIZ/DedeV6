@@ -29,13 +29,13 @@
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="maxwidth" id="maxwidth" value="<?php echo $cfg_album_width;?>">
 			<input type="hidden" id="albums" name="albums" value="">
-			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="admin-border my-3">
+			<table width="98%" align="center" id="needset" class="admin-border my-3">
 				<tr bgcolor="#f5f5f5">
 					<td class="admin-td">发布图片文档</td>
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">图片标题：</td>
 								<td width="400"><input type="text" name="title" id="title" value="" class="admin-input-lg"></td>
@@ -47,7 +47,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">自定义属性：</td>
 								<td>
@@ -69,7 +69,7 @@
 				</tr>
 				<tr id="redirecturltr" style="display:none">
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">跳转网址：</td>
 								<td><input type="text" name="redirecturl" id="redirecturl" value="" class="admin-input-lg"></td>
@@ -79,7 +79,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">标签：</td>
 								<td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" class="admin-input-lg">（英文逗号分开，如“DedeBIZ,得德”）</td>
@@ -91,7 +91,7 @@
 				</tr>
 				<tr id="pictable">
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">缩略图：</td>
 								<td width="620">
@@ -108,7 +108,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">来源：</td>
 								<td width="260">
@@ -126,7 +126,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">发布栏目：</td>
 								<td width="360">
@@ -154,7 +154,7 @@
 				</tr>
 				<tr id="typeid2tr" style="display:none">
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">副栏目：</td>
 								<td>
@@ -168,7 +168,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">关键词：</td>
 								<td width="410">
@@ -184,7 +184,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">描述：</td>
 								<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea></td>
@@ -194,7 +194,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">表现方式：</td>
 								<td>
@@ -208,7 +208,7 @@
 				</tr>
 				<tr id="cfgmulist" style="display:none">
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">多列式参数：</td>
 								<td>
@@ -223,7 +223,7 @@
 				</tr>
 				<tr id="spagelist" style="display:none">
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">每页图片数：</td>
 								<td>
@@ -236,11 +236,11 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">附加选项：</td>
 								<td>
-									<label><input type="checkbox" name="ddisfirst" value="1"> 使用图片的第一幅图</label>
+									<label><input type="checkbox" name="ddisfirst" value="1"> 使用图片第一张图为缩略图</label>
 								</td>
 							</tr>
 						</table>
@@ -249,7 +249,7 @@
 				<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">手工上传：</td>
 								<td><span class="btn btn-success btn-sm fileinput-button">上传图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
@@ -271,7 +271,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">图片文档：</td>
 								<td><?php GetEditor("body","",400,"Diy");?></td>
@@ -281,7 +281,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">评论选项：</td>
 								<td width="260">
@@ -299,7 +299,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">图片排序：</td>
 								<td width="260"><select name="sortup" id="sortup" class="admin-input-sm">
@@ -321,7 +321,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">阅读权限：</td>
 								<td width="260">
@@ -345,7 +345,7 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
 								<td width="90">发布时间：</td>
 								<td width="260">

@@ -99,7 +99,7 @@ else if ($dopost == 'search') {
     $keywords = isset($keywords) ? strip_tags($keywords) : '';
     $i = 1;
     $configstr = <<<EOT
-<table cellspacing="1" cellpadding="1" align="center" id="tdSearch" class="table maintable my-3">
+<table align="center" id="tdSearch" class="table maintable my-3">
     <tr>
         <td bgcolor="#f5f5f5" colspan="3">系统变量设置搜索</td>
     </tr>

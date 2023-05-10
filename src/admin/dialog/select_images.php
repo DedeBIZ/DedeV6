@@ -67,7 +67,7 @@ if (!empty($iseditor)) {
             <div id="floater" class="napisdiv">
                 <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
             </div>
-            <table cellpadding="0" cellspacing="1" align="center" class="table icon">
+            <table align="center" class="table icon">
                 <tr>
                     <td colspan="3">
                         <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">

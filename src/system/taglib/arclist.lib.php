@@ -300,7 +300,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     $dsql->Execute('al');
     $artlist = '';
     if ($pagesize > 0)  $artlist .= "<div id='{$tagid}'>\r\n";
-    if ($col > 1) $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+    if ($col > 1) $artlist = "<table width='$tablewidth'>\r\n";
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');
     $dtp2->LoadString($innertext);

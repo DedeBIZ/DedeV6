@@ -52,7 +52,7 @@ if ($dopost == "show") {
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
-    $msg = "<table cellspacing='0' cellpadding='0'>
+    $msg = "<table>
         <tr>
             <td width='260'>新栏目id：</td>
             <td><input name='newid' type='text' id='newid' value='{$newid}' class='admin-input-sm'></td>

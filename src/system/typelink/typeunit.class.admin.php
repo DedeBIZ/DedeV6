@@ -106,11 +106,11 @@ class TypeUnit
             } else {
                 $nss = '';
             }
-            echo "<table width='100%' cellspacing='0' cellpadding='2'>";
+            echo "<table width='100%'>";
             if ($ispart == 0) {
                 //列表栏目
                 echo "<tr>";
-                echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
+                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
                 echo "</td>";
                 echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
@@ -122,7 +122,7 @@ class TypeUnit
             } else if ($ispart == 1) {
                 //封面栏目
                 echo "<tr>";
-                echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
+                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                 echo "</td>";
                 echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
@@ -134,7 +134,7 @@ class TypeUnit
             } else if ($ispart == 2) {
                 //外部栏目
                 echo "<tr>";
-                echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
+                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                 echo "</td>";
                 echo "<td align='right'><a href='{$typeDir}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i></a>";
@@ -145,7 +145,7 @@ class TypeUnit
             echo "<tr><td colspan='2' id='suns".$id."' class='p-0'>";
             $lastid = GetCookie('lastCid');
             if ($channel == $id || $lastid == $id || isset($GLOBALS['exallct']) || $cfg_admin_channel == 'array') {
-                echo "<table width='100%' cellspacing='0' cellpadding='0'>";
+                echo "<table width='100%'>";
                 $this->LogicListAllSunType($id, "　");
                 echo "</table>";
             }
@@ -192,7 +192,7 @@ class TypeUnit
                 } if ($ispart == 0) {
                     //列表栏目
                     echo "<tr>";
-                    echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'>";
+                    echo "<td class='admin-td'><table width='100%'><tr><td width='50%'>";
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
                     echo "</td>";
                     echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
@@ -205,7 +205,7 @@ class TypeUnit
                 } else if ($ispart == 1) {
                     //封面栏目
                     echo "<tr>";
-                    echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'>";
+                    echo "<td class='admin-td'><table width='100%'><tr><td width='50%'>";
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                     echo "</td>";
                     echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
@@ -218,7 +218,7 @@ class TypeUnit
                 } else if ($ispart == 2) {
                     //外部栏目
                     echo "<tr>";
-                    echo "<td class='admin-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'>";
+                    echo "<td class='admin-td'><table width='100%'><tr><td width='50%'>";
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                     echo "</td>";
                     echo "<td align='right'><a href='{$typeDir}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
@@ -227,7 +227,7 @@ class TypeUnit
                     echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></a>";
                     echo "<input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'></td></tr></table></td></tr>";
                 }
-                echo "<tr><td id='suns".$id."' style='".($GLOBALS['exallct']? "" : "display:none")."'><table width='100%' cellspacing='0' cellpadding='0'>";
+                echo "<tr><td id='suns".$id."' style='".($GLOBALS['exallct']? "" : "display:none")."'><table width='100%'>";
                 $this->LogicListAllSunType($id, $step."　");
                 echo "</table></td></tr>";
             }

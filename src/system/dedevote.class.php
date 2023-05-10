@@ -104,7 +104,7 @@ class DedeVote
         if ($itembgcolor == "") {
             $itembgcolor = "#ffffff";
         }
-        $items = "<table width='$tablewidth' cellspacing='1' cellpadding='1' id='voteitem' class='table'>\r\n";
+        $items = "<table width='$tablewidth' id='voteitem' class='table'>\r\n";
         $items .= "<form name='voteform' method='post' action='".$GLOBALS['cfg_phpurl']."/vote.php' target='_blank'>\r\n";
         $items .= "<input type='hidden' name='dopost' value='send' />\r\n";
         $items .= "<input type='hidden' name='aid' value='".$this->VoteID."' />\r\n";
@@ -225,7 +225,7 @@ class DedeVote
         if ($totalcount == 0) {
             $totalcount = 1;
         }
-        $res = "<table width='$tablewidth' cellspacing='1' cellpadding='1' class='table'>\r\n";
+        $res = "<table width='$tablewidth' class='table'>\r\n";
         $i = 1;
         foreach ($this->VoteNotes as $k => $arr) {
             $res .= "<tr><td width='260'>".$i."、".$arr['name']."</td>";

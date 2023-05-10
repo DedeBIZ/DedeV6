@@ -2,28 +2,16 @@
 	width:6px;
 	height:6px
 }
-::-webkit-scrollbar-track {
-	background:#f5f5f5;
-	border-radius:.5rem
-}
 ::-webkit-scrollbar-thumb {
-	background:#dee2e6;
-	border-radius:.5rem
+	background:#dee2e6
 }
-::-moz-scrollbar {
-	width:6px;
-	height:6px
-}
-::-moz-scrollbar-track {
-	background:#f5f5f5;
-	border-radius:.5rem
-}
-::-moz-scrollbar-thumb {
-	background:#dee2e6;
-	border-radius:.5rem
+::-webkit-scrollbar-track {
+	background:#f5f5f5
 }
 * {
-	font-size:12px
+	font-size:12px;
+	scrollbar-color:#dee2e6 #f5f5f5;
+	scrollbar-width:thin
 }
 body {
 	margin:0;

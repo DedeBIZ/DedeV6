@@ -52,7 +52,7 @@ if (!empty($noeditor)) {
     </head>
     <body>
         <div class="upload-bg">
-            <table cellpadding="0" cellspacing="1" align="center" class="table icon">
+            <table align="center" class="table icon">
                 <tr>
                     <td colspan="3">
                         <form action="select_soft_post.php" method="POST" enctype="multipart/form-data" name="myform">

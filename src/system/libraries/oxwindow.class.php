@@ -66,7 +66,7 @@ class OxWindow
      */
     function StartWin()
     {
-        $this->myWin .= "<table width='100%' cellpadding='1' cellspacing='1'>";
+        $this->myWin .= "<table width='100%'>";
     }
     /**
      *  添加一个两列的行

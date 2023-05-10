@@ -16,7 +16,7 @@
 	</head>
 	<body>
 		<div id="edsta"><img src="../static/web/img/loadinglit.gif"></div>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+		<table align="center" class="table maintable my-3">
 			<tr bgcolor="#f5f5f5">
 				<td>
 					<select name="egroup1" id="egroup1" onChange="ChangePage(this)" class="admin-input-sm mr-3">
@@ -61,7 +61,7 @@
 			//如果添加3级之类
 			if ($topvalue % 500 != 0) $arr['issign'] = 2;
 		?>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+		<table align="center" class="table maintable mb-3">
 			<tr>
 				<td bgcolor="#f5f5f5" colspan="8">联动枚举组管理</td>
 			</tr>
@@ -103,7 +103,7 @@
 		</form>
 		<form name="form1" action="stepselect_main.php" method="post">
 			<input type="hidden" name="action" value="delenumAllSel">
-			<table cellpadding="3" cellspacing="1" align="center" class="table maintable">
+			<table align="center" class="table maintable">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="8"><a href="stepselect_main.php">联动类别管理</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> &gt; 子分类列表</td>
 				</tr>
@@ -172,7 +172,7 @@
 		<?php
 		} else {
 		?>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+		<table align="center" class="table maintable mb-3">
 			<tr>
 				<td bgcolor="#f5f5f5" colspan="7">联动类别管理</td>
 			</tr>

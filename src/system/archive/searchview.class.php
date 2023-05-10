@@ -528,7 +528,7 @@ class SearchView
         $this->dsql->Execute("al");
         $artlist = "";
         if ($col > 1) {
-            $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+            $artlist = "<table width='$tablewidth'>\r\n";
         }
         $this->dtp2->LoadSource($innertext);
         for ($i = 0; $i < $row; $i++) {

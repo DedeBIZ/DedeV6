@@ -299,7 +299,7 @@ class TypeLink
         $line = $row;
         $GLOBALS['autoindex'] = 0;
         if ($col > 1) {
-            $likeType = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+            $likeType = "<table width='$tablewidth'>\r\n";
         }
         for ($i = 0; $i < $line; $i++) {
             if ($col > 1) {
