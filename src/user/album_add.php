@@ -12,11 +12,11 @@ require_once(dirname(__FILE__)."/config.php");
 //禁止游客投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了会员空间精简版，您浏览的功能不可用", "-1");
+    ShowMsg("系统开启精简会员空间，您浏览的功能不可用", "-1");
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("由于系统关闭了图片功能，您浏览的功能不可用", "-1");
+    ShowMsg("系统关闭了图片功能，您浏览的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -36,7 +36,7 @@ if (empty($dopost)) {
     $query = "SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg('图片模型参数不正确', '-1');
+        ShowMsg('模型参数不正确', '-1');
         exit();
     }
     //检查会员等级和类型限制

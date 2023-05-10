@@ -24,7 +24,7 @@ if (empty($dopost)) {
     $dsql->SetQuery($arcQuery);
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
-        ShowMsg("读取文档基本信息出错", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     } else if ($row['arcrank'] >= 0) {
         $dtime = time();

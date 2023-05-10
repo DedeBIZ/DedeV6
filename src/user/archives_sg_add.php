@@ -27,7 +27,7 @@ if ($cfg_ml->IsSendLimited()) {
 if (empty($dopost)) {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid';");
     if (!is_array($cInfos)) {
-        ShowMsg('模型不存在', '-1');
+        ShowMsg('模型参数不正确', '-1');
         exit();
     }
     //检查会员等级和类型限制
