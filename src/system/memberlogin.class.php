@@ -46,7 +46,7 @@ function CheckUserID($uid, $msgtitle = '会员名', $ckhas = TRUE)
             }
         } else {
             if (preg_match("/[^0-9a-z@\.-]/i", $ck_uid[$i])) {
-                return $msgtitle.'只能用[0-9a-zA-Z_@!.-]以内范围的字符';
+                return $msgtitle.'使用[0-9a-zA-Z_@!.-]范围以内字符';
             }
         }
     }

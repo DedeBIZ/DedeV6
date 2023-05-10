@@ -47,11 +47,12 @@
 								<legend class="text-success">数据库设置</legend>
 								<hr>
 								<div class="form-group">
-									<label for="dbtype" class="form-label">数据库类型<i class="fa fa-question-circle text-warning ml-2" data-toggle="tooltip" title="数据库类型一般为MySQL，类型SQLite用于开发调试，不建议生产中使用"></i></label>
+									<label for="dbtype" class="form-label">数据库类型</label>
 									<select id="dbtype" name="dbtype" class="form-control form-select">
 										<option value="mysql" selected>MySQL</option>
 										<?php if (extension_loaded("sqlite3")) {;?><option value="sqlite">SQLite</option><?php }?>
 									</select>
+									<div class="form-text">数据库类型一般为MySQL，则SQLite用于开发调试</div>
 								</div>
 								<div class="form-group server">
 									<label for="dbhost" class="form-label">数据库地址</label>
@@ -66,8 +67,9 @@
 									<input type="text" name="dbpwd" id="dbpwd" class="form-control" placeholder="请输入数据库密码">
 								</div>
 								<div class="form-group">
-									<label for="dbprefix" class="form-label">数据表前缀<i class="fa fa-exclamation-circle text-danger ml-2" data-toggle="tooltip" data-html="true" title="请注意DedeV6数据表前缀默认为<span class='text-danger'>biz_</span>"></i></label>
+									<label for="dbprefix" class="form-label">数据表前缀</label>
 									<input type="text" name="dbprefix" id="dbprefix" class="form-control" placeholder="biz_">
+									<div class="form-text text-danger">注意DedeV6数据表前缀默认为biz_</div>
 								</div>
 								<div class="form-group">
 									<label for="dbname" class="form-label">数据库名称</label>
@@ -88,16 +90,18 @@
 									<input type="text" name="webname" id="webname" class="form-control" placeholder="我的网站">
 								</div>
 								<div class="form-group">
-									<label for="adminuser" class="form-label">管理员账号<i class="fa fa-question-circle text-warning ml-2" data-toggle="tooltip" title="只能用[0-9a-zA-Z_@!.-]以内范围的字符"></i></label>
+									<label for="adminuser" class="form-label">管理员账号</label>
 									<input type="text" name="adminuser" id="adminuser" class="form-control" placeholder="admin">
+									<div class="form-text">使用[0-9a-zA-Z_@!.-]范围以内字符</div>
 								</div>
 								<div class="form-group">
 									<label for="adminpwd" class="form-label">管理员密码</label>
 									<input type="text" name="adminpwd" id="adminpwd" class="form-control" placeholder="admin">
 								</div>
 								<div class="form-group">
-									<label for="cmspath" class="form-label">安装目录<i class="fa fa-question-circle text-warning ml-2" data-toggle="tooltip" title="根目录安装时不必理会"></i></label>
+									<label for="cmspath" class="form-label">安装目录</label>
 									<input type="text" name="cmspath" id="cmspath" class="form-control" value="<?php echo $basepath;?>" placeholder="<?php echo $basepath;?>">
+									<div class="form-text">在根目录安装不需要填写此项</div>
 								</div>
 								<div class="text-right"><button type="submit" class="btn btn-success btn-md">安装</button></div>
 							</form>
@@ -132,9 +136,6 @@
 			    } else {
 			        $(".form-group.server").show()
 			    }
-			});
-			$(function() {
-			    $('[data-toggle="tooltip"]').tooltip()
 			});
 		</script>
 	</body>

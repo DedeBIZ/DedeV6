@@ -17,7 +17,7 @@ if ($dopost == 'saveedit') {
     CheckCSRF();
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
-        ShowMsg('密码不合法，只能用[0-9a-zA-Z_@!.-]以内范围的字符', '-1', 0, 3000);
+        ShowMsg('密码不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
