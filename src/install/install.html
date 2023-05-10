@@ -27,7 +27,7 @@
 		</div>
 		<div class="container install-box">
 			<div class="row">
-				<div class="col-md-12 mb-3">
+				<div class="col-md-12">
 					<?php
 					if (count($arrMsg) > 0) {
 						foreach($arrMsg as $msg){
@@ -35,7 +35,7 @@
 					<div class="alert alert-warning"><?php echo $msg ?></div>
 					<?php }}?>
 					<div class="alert alert-warning">请先阅读<a href="https://www.dedebiz.com/license?from=install" target="_blank" class="text-primary">《站点授权协议》</a></div>
-					<div class="card shadow-sm">
+					<div class="card shadow-sm mb-3">
 						<div class="card-header bg-success">
 							<h2 class="text-center text-white my-0">安装DedeV<?php echo $cfg_version_detail;?></h2>
 						</div>
@@ -107,9 +107,7 @@
 							</form>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-12 mb-3">
-					<a href="https://www.dedebiz.com" target="_blank">Powered by DedeBIZ开发团队</a>
+					<p><a href="https://www.dedebiz.com" target="_blank">Powered by DedeBIZ开发团队</a></p>
 				</div>
 			</div>
 		</div>
