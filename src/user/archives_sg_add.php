@@ -9,6 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+//考虑安全原因不管是否开启游客投稿功能，都不允许会员对图片投稿
 CheckRank(0, 0);
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/userlogin.class.php");
@@ -28,10 +29,6 @@ if (empty($dopost)) {
     if (!is_array($cInfos)) {
         ShowMsg('模型不存在', '-1');
         exit();
-    }
-    //如果限制了会员级别或类型，则允许游客投稿选项无效
-    if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') {
-        CheckRank(0, 0);
     }
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {

@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//考虑安全原因不管是否开启游客投稿功能，都不允许会员投稿
+//考虑安全原因不管是否开启游客投稿功能，都不允许会员对图片投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
     ShowMsg("由于系统开启了会员空间精简版，您浏览的功能不可用", "-1");
@@ -32,10 +32,6 @@ if (empty($dopost)) {
     if (!is_array($cInfos)) {
         ShowMsg('模型不正确', '-1');
         exit();
-    }
-    //如果限制了会员级别或类型，则允许游客投稿选项无效
-    if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') {
-        CheckRank(0, 0);
     }
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {

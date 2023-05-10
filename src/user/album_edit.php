@@ -9,8 +9,6 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//考虑安全原因不管是否开启游客投稿功能，都不允许会员对图片投稿
-CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
     ShowMsg("由于系统开启会员空间精简版，您浏览的功能不可用", "-1");
     exit();
