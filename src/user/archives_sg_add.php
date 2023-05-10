@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//考虑安全原因不管是否开启游客投稿功能，都不允许会员对图片投稿
+//禁止游客投稿
 CheckRank(0, 0);
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/userlogin.class.php");

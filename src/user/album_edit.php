@@ -9,6 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+//禁止游客投稿
+CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
     ShowMsg("由于系统开启会员空间精简版，您浏览的功能不可用", "-1");
     exit();
