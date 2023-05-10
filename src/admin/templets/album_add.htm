@@ -100,7 +100,6 @@
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-sm btn-success delete">清空</button>
-									<label><input type="checkbox" name="ddisfirst" value="1"> 使用图片的第一幅图</label>
 								</td>
 								<td><img src="../static/web/img/thumbnail.jpg" id="litPic" class="thumbnail-md"></td>
 							</tr>
@@ -235,16 +234,13 @@
 						</table>
 					</td>
 				</tr>
-				<tr id="htmlfield" style="display:none">
+				<tr>
 					<td class="admin-td">
 						<table cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90">网上复制：</td>
+								<td width="90">附加选项：</td>
 								<td>
-									<label>源网址：<input type="text" name="copysource" value="http://" class="admin-input-lg"></label>
-									<button type="button" name="button" id="button" class="btn btn-success btn-sm" onclick="LoadTestDiv()">预览</button>
-									<p class="my-2">（图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片防盗链网站需填写您复制图片的其中一个网页网址）</p>
-									<div id="copyhtml" contenteditable="true" class="form-control admin-textarea-xl"></div>
+									<label><input type="checkbox" name="ddisfirst" value="1"> 使用图片的第一幅图</label>
 								</td>
 							</tr>
 						</table>

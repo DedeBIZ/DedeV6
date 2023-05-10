@@ -1,13 +1,4 @@
 function checkSubmitAlb() {
-	if (document.form1.title.value == '') {
-		ShowMsg("标题不能为空");
-		return false;
-	}
-	if (document.form1.typeid.value == 0) {
-		ShowMsg("请选择主类别");
-		return false;
-	}
-	document.form1.imagebody.value = $Obj('copyhtml').innerHTML;
 	if ($("#thumbnails .albCt").length > 0) {
 		//这里从thumbnails中取出图片元素信息
 		$("#thumbnails .albCt").each(function () {
@@ -19,46 +10,6 @@ function checkSubmitAlb() {
 	}
 	$("#albums").val(JSON.stringify(albums));
 	return true;
-}
-function testGet() {
-	LoadTestDiv();
-}
-function checkMuList(psid, cmid) {
-	if ($Obj('pagestyle3').checked) {
-		$Obj('cfgmulist').style.display = 'table-row';
-		$Obj('spagelist').style.display = 'none';
-	} else if ($Obj('pagestyle1').checked) {
-		$Obj('cfgmulist').style.display = 'none';
-		$Obj('spagelist').style.display = 'table-row';
-	} else {
-		$Obj('cfgmulist').style.display = 'none';
-		$Obj('spagelist').style.display = 'none';
-	}
-}
-//图片显示与隐藏zip文件选项
-function showZipField(formitem, zipid, upid) {
-	if (formitem.checked) {
-		$Obj(zipid).style.display = 'table-row';
-		$Obj(upid).style.display = 'none';
-		$Obj('copyhtml').innerHTML = '';
-	} else {
-		$Obj(zipid).style.display = 'none';
-	}
-}
-//图片显示与隐藏修改框
-function showHtmlField(formitem, htmlid, upid) {
-	if ($Nav() != "IE") {
-		alert("该方法不适用于非IE浏览器");
-		return;
-	}
-	if (formitem.checked) {
-		$Obj(htmlid).style.display = 'table-row';
-		$Obj(upid).style.display = 'none';
-		$Obj('formzip').checked = false;
-	} else {
-		$Obj(htmlid).style.display = 'none';
-		$Obj('copyhtml').innerHTML = '';
-	}
 }
 function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 	var newobj = null;
@@ -94,6 +45,18 @@ function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 	nForm.dopost.value = 'save';
 	nForm.target = '';
 	nForm.litpic.disabled = true;
+}
+function checkMuList(psid, cmid) {
+	if ($Obj('pagestyle3').checked) {
+		$Obj('cfgmulist').style.display = 'table-row';
+		$Obj('spagelist').style.display = 'none';
+	} else if ($Obj('pagestyle1').checked) {
+		$Obj('cfgmulist').style.display = 'none';
+		$Obj('spagelist').style.display = 'table-row';
+	} else {
+		$Obj('cfgmulist').style.display = 'none';
+		$Obj('spagelist').style.display = 'none';
+	}
 }
 //删除已经上传的图片
 function delAlbPic(pid) {
