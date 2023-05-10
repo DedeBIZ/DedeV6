@@ -25,7 +25,6 @@ require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 2;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $menutype = 'content';
-if (empty($formhtml)) $formhtml = 0;
 if ($cfg_ml->IsSendLimited()) {
     ShowMsg("投稿失败，每日投稿次数{$cfg_ml->M_SendMax}次，剩余0次，需要增加次数，请联系网站管理员", "index.php", "0", 5000);
     exit();

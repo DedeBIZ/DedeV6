@@ -45,8 +45,6 @@ if ($dopost != 'save') {
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
-    if (!isset($formhtml)) $formhtml = 0;
-    if (!isset($formzip)) $formzip = 0;
     if (!isset($ddisfirst)) $ddisfirst = 0;
     if (!isset($albums)) $albums = "";
     if (!isset($delzip)) $delzip = 0;
@@ -100,22 +98,6 @@ if ($dopost != 'save') {
     }
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$row' col='$col' value='$pagestyle'/}\r\n";
     $hasone = FALSE;
-    //处理并保存从网上复制的图片
-    if ($formhtml == 1) {
-        $imagebody = stripslashes($imagebody);
-        $imgurls .= GetCurContentAlbum($imagebody, $copysource, $litpicname);
-        if ($ddisfirst == 1 && $litpic == '' && !empty($litpicname)) {
-            $litpic = $litpicname;
-            $hasone = TRUE;
-        }
-    }
-    //处理从ZIP中解压的图片
-    if ($formzip == 1) {
-        include_once(DEDEADMIN."/file_class.php");
-        $zipfile = $cfg_basedir.str_replace($cfg_mainsite, '', $zipfile);
-        $tmpzipdir = DEDEDATA.'/ziptmp/'.cn_substr(md5(ExecTime()), 16);
-        $ntime = time();
-    }
     if ($albums !== "") {
         $albumsArr  = json_decode(stripslashes($albums), true);
         for ($i = 0; $i <= count($albumsArr) - 1; $i++) {
@@ -145,6 +127,9 @@ if ($dopost != 'save') {
                 $v = $album['img'];
                 $info = '';
                 $imginfos = GetImageSize($cfg_basedir.$v, $info);
+            }
+            if ($ddisfirst == 1) {
+                $litpic = $v;
             }
             $imginfo =  !empty($album['txt']) ? $album['txt'] : '';
             $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $v {/dede:img}\r\n";

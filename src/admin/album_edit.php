@@ -58,7 +58,6 @@ if ($dopost != 'save') {
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
-    if (!isset($formhtml)) $formhtml = 0;
     if (!isset($albums)) $albums = "";
     if (!isset($formzip)) $formzip = 0;
     if (!isset($ddisfirst)) $ddisfirst = 0;
@@ -172,22 +171,6 @@ if ($dopost != 'save') {
             $imginfos = @GetImageSize($imgfile, $info);
             $imgurls .= "{dede:img ddimg='$ddurl' text='$iinfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
         }
-    }
-    //从网页中获取新图片
-    if ($formhtml == 1 && !empty($imagebody)) {
-        $imagebody = stripslashes($imagebody);
-        $imgurls .= GetCurContentAlbum($imagebody, $copysource, $litpicname);
-        if ($ddisfirst == 1 && $litpic == "" && !empty($litpicname)) {
-            $litpic = $litpicname;
-            $hasone = true;
-        }
-    }
-    //从ZIP文件中获取新图片
-    if ($formzip == 1) {
-        include_once(DEDEADMIN."/file_class.php");
-        $zipfile = $cfg_basedir.str_replace($cfg_mainsite, '', $zipfile);
-        $tmpzipdir = DEDEDATA.'/ziptmp/'.cn_substr(md5(ExecTime()), 16);
-        $ntime = time();
     }
     if ($albums !== "") {
         $albumsArr  = json_decode(stripslashes($albums), true);
