@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 $menutype = 'config';
 if (!isset($dopost)) $dopost = '';
 $pwd2 = (empty($pwd2)) ? "" : $pwd2;

@@ -121,7 +121,7 @@ if ($fmdo == 'sendMail') {
     }
     //积分换金币
     else if ($dopost == "money2s") {
-        CheckRank(0, 0);
+        CheckRank(0, 0);//禁止游客操作
         if ($cfg_money_scores == 0) {
             ShowMsg('系统禁用了积分与金币兑换功能', '-1');
             exit();
@@ -207,7 +207,7 @@ if ($fmdo == 'sendMail') {
     }
 } else if ($fmdo == 'purl'){
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
-    CheckRank(0, 0);
+    CheckRank(0, 0);//禁止游客操作
     $row = $dsql->GetOne("SELECT count(*) as dd FROM `#@__member` WHERE `pmid`='{$cfg_ml->M_ID}' ");
     $msg = "<p>您已经邀请了{$row['dd']}人：</p>
     <div class='media mb-3'>
@@ -260,6 +260,6 @@ if ($fmdo == 'sendMail') {
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
     exit;
 } else {
-    ShowMsg("本页面禁止返回", "index.php");
+    ShowMsg("操作失败", "index.php");
 }
 ?>

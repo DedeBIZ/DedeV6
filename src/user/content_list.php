@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEMEMBER."/inc/inc_list_functions.php");

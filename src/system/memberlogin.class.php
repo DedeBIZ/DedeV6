@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//使用缓存助手
 helper('cache');
 /**
  *  检查会员名的合法性
