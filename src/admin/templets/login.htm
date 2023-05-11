@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="robots" content="noindex,nofollow">
-		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<meta name="robots" content="noindex,nofollow">
 		<title><?php echo $cfg_webname;?>后台登录</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -16,10 +16,10 @@
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
 		<div id="browsehappy">
 			<span>您使用的浏览器已过时，请<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，提高后台操作体验</span>
-			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
+			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close"><i class="fa fa-times"></i></a>
 		</div>
 		<?php }?>
-		<div class="d-flex flex-md-row align-items-center shadow-sm admin-head mb-6">
+		<div class="d-flex flex-md-row align-items-center shadow-sm admin-head">
 			<div class="container">
 				<div class="row">
 					<div class="col-6 col-md-4"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
@@ -30,33 +30,35 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="login-from">
-						<?php echo $redmsg;?>
-						<div class="login-box shadow-sm mb-3">
-							<h2 class="text-center mb-3">后台登录</h2>
-							<form name="form1" method="post" action="login.php">
-								<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
-								<input type="hidden" name="dopost" value="login">
-								<input type="hidden" name="adminstyle" value="newDedeBIZ">
-								<div class="form-group">
-									<label for="iptUserid">管理员账号</label>
-									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入管理员账号">
-								</div>
-								<div class="form-group">
-									<label for="iptPassword">管理员密码</label>
-									<input type="password" name="pwd" id="iptPassword" class="form-control" placeholder="请输入管理员密码">
-								</div>
-								<div id="vdimgck" class="form-group" style="display:none">
-									<label for="iptValidate">验证码</label>
-									<div class="input-group">
-										<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
-										<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
+					<div class="login-flex">
+						<div class="login-from">
+							<?php echo $redmsg;?>
+							<div class="login-box shadow-sm mb-3">
+								<h2 class="text-center mb-3">后台登录</h2>
+								<form name="form1" method="post" action="login.php">
+									<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
+									<input type="hidden" name="dopost" value="login">
+									<input type="hidden" name="adminstyle" value="newDedeBIZ">
+									<div class="form-group">
+										<label for="iptUserid">管理员账号</label>
+										<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入管理员账号">
 									</div>
-								</div>
-								<div><button type="submit" class="btn btn-success btn-md btn-block">登录</button></div>
-							</form>
+									<div class="form-group">
+										<label for="iptPassword">管理员密码</label>
+										<input type="password" name="pwd" id="iptPassword" class="form-control" placeholder="请输入管理员密码">
+									</div>
+									<div id="vdimgck" class="form-group" style="display:none">
+										<label for="iptValidate">验证码</label>
+										<div class="input-group">
+											<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
+											<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
+										</div>
+									</div>
+									<div><button type="submit" class="btn btn-success btn-md btn-block">登录</button></div>
+								</form>
+							</div>
+							<p><?php echo $cfg_powerby;?></p>
 						</div>
-						<p><?php echo $cfg_powerby;?></p>
 					</div>
 				</div>
 			</div>

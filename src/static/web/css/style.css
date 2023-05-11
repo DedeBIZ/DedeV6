@@ -69,14 +69,13 @@ input[type=file] {
 	bottom:0
 }
 .carousel-caption h2 {
-	font-size:18px;
 	color:#fff
+}
+.carousel-caption h2,.item-article h2,.item-vote h2,.item-tag h2,.list-info-search h2 {
+	font-size:18px
 }
 .item-title h2 {
 	font-size:22px
-}
-.item-article h2,.item-vote h2,.item-tag h2,.list-info-search h2 {
-	font-size:18px
 }
 .item-article li {
 	margin-bottom:10px;
@@ -286,19 +285,24 @@ input[type=file] {
 .logo img {
 	height:40px
 }
+.login-flex {
+	display:flex;
+	width:100%;
+	height:70vh;
+	align-items:center;
+	justify-content:center
+}
 .login-from {
-	margin:5rem 0
+	width:500px
 }
 .login-box {
 	padding:1.25rem;
-	width:500px;
 	background:#fff
 }
-.user-login {
+.user-login,.user-actions {
 	line-height:40px
 }
 .user-actions {
-	line-height:40px;
 	text-align:right
 }
 .copyright {
@@ -363,19 +367,18 @@ input[type=file] {
 	display:inline-block;
 	height:36px
 }
-.l-height-30 {
-	line-height:30px
+.form-control,.btn,.fa {
+	font-size:14px!important
 }
 .fa {
-	font-size:14px;
 	color:inherit;
 	cursor:pointer
 }
 .btn+.btn {
 	margin-left:10px
 }
-.form-control,.btn,.fa {
-	font-size:14px!important
+.l-height-30 {
+	line-height:30px
 }
 .input-text {
 	height:36px;
@@ -434,10 +437,9 @@ input[type=file] {
 #btnScrollTop {
 	display:none;
 	position:fixed;
-	padding:10px 12px;
+	padding:10px 14px;
 	right:1rem;
 	bottom:1rem;
-	font-size:16px;
 	color:#fff;
 	cursor:pointer;
 	background:#ec982c;
@@ -455,7 +457,7 @@ input[type=file] {
 .m-pb-2 {
 	padding-bottom:2rem
 }
-.login-from,.login-box {
+.login-from {
 	width:100%
 }
 .bannr-img,.item-theme-img img,.list-article-img img {

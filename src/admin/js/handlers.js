@@ -1,24 +1,22 @@
-var albImg = 0;
+var atlasimg = 0;
 function addImage(src, pid) {
 	var newImgDiv = document.createElement("div");
 	var delstr = '';
-	var iptwidth = 160;
-	albImg++;
+	atlasimg++;
 	if (pid != 0) {
-		albImg = 'ok' + pid;
-		delstr = '<div class="mt-2"><a href="javascript:delAlbPic(' + pid + ')" class="btn btn-danger btn-sm">删除</a></div>';
+		atlasimg = 'ok' + pid;
+		delstr = '<div class="atlas-box"><a href="javascript:delAlbPic(' + pid + ')" class="btn btn-danger btn-sm">删除</a></p>';
 	} else {
-		albImg = 'err' + albImg;
+		atlasimg = 'err' + atlasimg;
 	}
-	newImgDiv.className = 'albCt';
-	newImgDiv.id = 'albCt' + albImg;
-	document.getElementById("thumbnails").appendChild(newImgDiv);
-	newImgDiv.innerHTML = '<img src="' + src + '">' + delstr;
+	newImgDiv.className = 'atlas';
+	newImgDiv.id = 'atlas' + atlasimg;
+	document.getElementById("gallery").appendChild(newImgDiv);
+	newImgDiv.innerHTML = '<div class="atlas-head"><img src="' + src + '"></div>' + delstr;
 	if (typeof arctype != 'undefined' && arctype == 'article') {
-		iptwidth = 100;
 		if (pid != 0) {
-			newImgDiv.innerHTML = '<img src="' + src + '" onClick="addtoEdit(' + pid + ')">' + delstr;
+			newImgDiv.innerHTML = '<div class="atlas-head"><img src="' + src + '" onClick="addtoEdit(' + pid + ')"></div>' + delstr;
 		}
 	}
-	newImgDiv.innerHTML += '<div class="mt-2">标题：<input type="text" name="picinfo' + albImg+ '" value="" style="width:' + iptwidth + 'px"></div>';
+	newImgDiv.innerHTML += '<div class="atlas-foot"><input type="text" name="picinfo' + atlasimg+ '" class="atlas-input" placeholder="请输入图片注释"></div>';
 }

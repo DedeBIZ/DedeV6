@@ -9,6 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+CheckRank(0, 0);//禁止游客投稿
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEMEMBER."/inc/inc_catalog_options.php");

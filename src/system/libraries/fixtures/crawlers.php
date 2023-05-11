@@ -421,7 +421,7 @@ class Crawlers extends AbstractProvider
         'flynxapp',
         'forensiq',
         'FoundSeoTool',
-        'free thumbnails',
+        'free gallery',
         'Freeuploader',
         'FreshRSS',
         'Funnelback',

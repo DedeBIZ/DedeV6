@@ -142,7 +142,7 @@ function ErrAddSaveDo(modalID) {
 		err: err,
 		erradd: erradd,
 	};
-	$("#btnSubmit").attr("disabled", "disabled");
+	$("#btnsubmit").attr("disabled", "disabled");
 	if (typeof PHPURL === "undefined") {
 		const PHPURL = "/plus";
 	}
@@ -153,7 +153,7 @@ function ErrAddSaveDo(modalID) {
 		} else {
 			ShowAlert("#error-add-alert", `提交失败：${result.msg}`, "danger");
 		}
-		$("#btnSubmit").removeAttr("disabled");
+		$("#btnsubmit").removeAttr("disabled");
 	});
 }
 //错误提示
@@ -184,7 +184,7 @@ function ErrorAddSave(id, title) {
 	<label for="message-text" class="col-form-label">修正建议：</label>
 	<textarea name="optErradd" class="form-control" id="iptErradd"></textarea>
 </div>`;
-	let footer = `<button type="button" id="btnSubmit" class="btn btn-success btn-sm" onClick="ErrAddSaveDo('DedeModal~modalID~')">提交</button> <button type="button" class="btn btn-outline-success btn-sm" onClick="CloseModal('DedeModal~modalID~')">确定</button>`;
+	let footer = `<button type="button" id="btnsubmit" class="btn btn-success btn-sm" onClick="ErrAddSaveDo('DedeModal~modalID~')">提交</button> <button type="button" class="btn btn-outline-success btn-sm" onClick="CloseModal('DedeModal~modalID~')">确定</button>`;
 	ShowMsg(content, {
 		'footer': footer,
 	});

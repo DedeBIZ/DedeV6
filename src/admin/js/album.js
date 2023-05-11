@@ -1,7 +1,7 @@
 function checkSubmitAlb() {
-	if ($("#thumbnails .albCt").length > 0) {
-		//这里从thumbnails中取出图片元素信息
-		$("#thumbnails .albCt").each(function () {
+	if ($("#gallery .atlas").length > 0) {
+		//这里从gallery中取出图片元素信息
+		$("#gallery .atlas").each(function () {
 			albums.push({
 				"img": $(this).find("img").attr("src"),
 				"txt": $(this).find("input").val()
@@ -60,10 +60,10 @@ function checkMuList(psid, cmid) {
 }
 //删除已经上传的图片
 function delAlbPic(pid) {
-	var tgobj = $Obj('albCtok' + pid);
+	var tgobj = $Obj('atlasok' + pid);
 	fetch('swfupload.php?dopost=del&id=' + pid).then(resp=>resp.text()).then((d)=>{
 		tgobj.innerHTML = d;
-		$Obj('thumbnails').removeChild(tgobj);
+		$Obj('gallery').removeChild(tgobj);
 	});
 }
 //删除已经上传的图片修改时用
@@ -71,6 +71,6 @@ function delAlbPicOld(picfile, pid) {
 	var tgobj = $Obj('albold' + pid);
 	fetch('swfupload.php?dopost=delold&picfile=' + picfile).then(resp=>resp.text()).then((d)=>{
 		tgobj.innerHTML = d;
-		$Obj('thumbnailsEdit').removeChild(tgobj);
+		$Obj('galleryedit').removeChild(tgobj);
 	});
 }
