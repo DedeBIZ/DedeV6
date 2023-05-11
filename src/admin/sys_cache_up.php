@@ -46,12 +46,11 @@ if ($dopost == "ok") {
         $limit = date('Ymd', strtotime('-15 days'));
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` WHERE created_date < '$limit'");
         $msg[] = "正在清理15天之前流量统计";
-        echo DedeAlert(implode("<br/>",$msg), ALERT_INFO, TRUE);
+        $url = "sys_cache_up.php?dopost=ok&step=-1&uparc=$uparc";
         if ($uparc == 1) {
-            echo "<script>location='sys_cache_up.php?dopost=ok&step=9';</script>";
-        } else {
-            echo "<script>location='sys_cache_up.php?dopost=ok&step=-1&uparc=$uparc';</script>";
+            $url = "sys_cache_up.php?dopost=ok&step=9";
         }
+        ShowMsg(implode("<br/>",$msg),$url);
         exit();
     }
     //修正错误文档
