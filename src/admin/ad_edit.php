@@ -22,7 +22,7 @@ if ($dopost == 'delete') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $jscode = "<script src='{$cfg_phpurl}/ad_js.php?aid=$aid'></script>";
     $showhtml = "<xmp style='color:#333333;background-color:#ffffff'>\r\n\r\n$jscode\r\n\r\n</xmp>";
-    $showhtml .= "预览：<iframe name='testfrm' frameborder='0' src='ad_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='200'></iframe>";
+    $showhtml .= "预览：<iframe name='testfrm' frameborder='0' src='ad_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='360'></iframe>";
     $row = $dsql->GetOne("SELECT tagname from `#@__myad` WHERE aid='$aid' ");
     $showtag = '{'."dede:myad name='{$row['tagname']}'/".'}';
     $info = "广告标签会解析成标签中文档到页面，广告修改后需要重新生成，如果不希望重新生成所有页面，则直接js调用代码即可";

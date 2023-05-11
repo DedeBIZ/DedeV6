@@ -57,7 +57,7 @@ if ($action == 'upload') {
     $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块插件";
     $win->AddTitle('请选择上传的模块插件文件');
     $win->AddHidden("action", 'upload');
-    $msg = "<table width='98%' align='center'>
+    $msg = "<table class='table'>
     <tr>
         <td width='260'>文件格式：</td>
         <td><label><input type='radio' name='filetype' value='0' checked='checked'> 正常模块插件格式</label></td>

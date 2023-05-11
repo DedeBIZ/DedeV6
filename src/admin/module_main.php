@@ -153,7 +153,7 @@ if ($action == '') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 安装{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
-    $msg = "<table width='98%' class='table'>
+    $msg = "<table class='table'>
     <tr>
         <td class='admin-td' colspan='2'>
             <div class='alert alert-danger mb-0'>安装时文件列表中涉及的目录前可写入权限，此外后台管理目录和主题目录也必须暂时设置可写入权限</div>
@@ -276,7 +276,7 @@ if ($action == '') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 删除{$infos['name']}");
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
-    $msg = "<table width='98%' class='table'>
+    $msg = "<table class='table'>
     <tr>
         <td width='260' class='admin-td'>模块名称：</td>
         <td class='admin-td'>{$infos['name']}</td>
@@ -336,7 +336,7 @@ if ($action == '') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 卸载{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
-    $msg = "<table width='98%' class='table'>
+    $msg = "<table class='table'>
     <tr>
         <td width='260' class='admin-td'>模块名称：</td>
         <td class='admin-td'>{$infos['name']}</td>
@@ -462,7 +462,7 @@ if ($action == '') {
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; {$infos['name']}");
-    $msg = "<table width='98%' align='center'>
+    $msg = "<table class='table'>
     <tr>
         <td width='260' class='admin-td'>模块名称：</td>
         <td class='admin-td'>{$infos['name']}</td>

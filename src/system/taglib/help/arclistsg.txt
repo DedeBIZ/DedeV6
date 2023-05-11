@@ -18,7 +18,7 @@ orderby='sortrank' 文档排序方式
 	orderby='rand' 随机获得指定条件的文档列表
 keyword='关键词' 含有指定关键词的文档列表，多个关键词用英文逗号分开
 limit='' 限定的记录范围（如：limit='1,2'）
-innertext='' 单条记录样式
+innertext='' 单行记录样式
 aid='' 指定文档id
 idlist='' 提取特定文档
 channelid='' 栏目id

@@ -60,7 +60,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $start = ($pageno - 1) * $pagesize;
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
-    <table width='98%' align='center' class='table maintable my-3'>
+    <table align='center' class='table maintable my-3'>
     <tr>
         <td colspan='8' bgcolor='#f5f5f5'>搜索关键词维护</td>
     </tr>

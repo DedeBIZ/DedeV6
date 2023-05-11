@@ -9,4 +9,4 @@ row='10' 返回文档列表总数
 titlelen='160' 标题长度等同于titlelength
 infolen='260' 表示文档简介长度 等同于infolength
 mytypeid='0'  手工指定要限定的栏目id，用英文逗号表示多个
-innertext='' 单条记录样式（指标签中间的文档）
+innertext='' 单行记录样式（指标签中间的文档）
