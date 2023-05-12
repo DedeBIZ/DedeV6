@@ -82,7 +82,7 @@ class ListView
             }
             //设置一些全局参数的值
             foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
-            //API相关逻辑处理
+            //api相关逻辑处理
             if ($this->mod == 1 && empty($this->Fields['apikey'])) {
                 echo json_encode(array(
                     "code" => -1,
@@ -90,7 +90,7 @@ class ListView
                 ));
                 exit;
             } 
-            if($this->mod == 1){
+            if ($this->mod == 1) {
                 if (empty($GLOBALS['sign'])) {
                     echo json_encode(array(
                         "code" => -1,
