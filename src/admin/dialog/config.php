@@ -1,6 +1,6 @@
 <?php
 /**
- * 该页仅用于检测会员登录的情况，如要手工修改系统配置，请修改common.inc.php
+ * 检测登录情况
  *
  * @version        $id:config.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog
