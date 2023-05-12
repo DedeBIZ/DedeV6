@@ -22,8 +22,7 @@ if (empty($dopost)) {
     $offUrl = SpGetNewInfo();
     include DedeInclude('templets/index_body.htm');
     exit();
-}
-else if ($dopost == 'setskin') {
+} else if ($dopost == 'setskin') {
     $cskin = empty($cskin) ? 1 : $cskin;
     $skin = !in_array($cskin, array(1, 2, 3, 4)) ? 1 : $cskin;
     $skinconfig = DEDEDATA.'/admin/skin.txt';
@@ -40,7 +39,7 @@ else if ($dopost == 'setskin') {
         $admin_catalog = join(',', $admin_catalogs);
         $userCatalogSql = "AND arc.typeid IN($admin_catalog) ";
     }
-    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,15";
+    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,13";
     $arcArr = array();
     $dsql->Execute('m', $query);
     while($row = $dsql->GetArray('m'))
