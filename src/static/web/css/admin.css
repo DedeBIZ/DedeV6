@@ -39,7 +39,7 @@ div,form,ul,ol,li {
 	margin:0;
 	padding:0
 }
-div,th,td {
+div,li,span,th,td {
 	word-break:break-all;
 	word-wrap:break-word
 }
@@ -271,7 +271,6 @@ body.hidemenu .body-right {
 	line-height:60px
 }
 .top-admin img {
-	margin-right:10px;
 	width:30px;
 	height:30px;
 	border-radius:50%

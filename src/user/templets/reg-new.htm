@@ -14,43 +14,41 @@
 		<?php pasterTempletDiy('top.htm');?>
 		<main class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="login-flex">
-						<div class="login-from">
-							<div class="login-box shadow-sm rounded text-left">
-								<h2 class="text-center mb-3">会员注册</h2>
-								<form method="post" action="reg_new.php" id="regUser" name="form2" onsubmit="return CheckSubmit();">
-									<input type="hidden" name="dopost" value="regbase">
-									<input type="hidden" name="step" value="1">
-									<input type="hidden" name="mtype" value="个人">
-									<input type="hidden" name="pid" value="<?php echo $pid;?>">
-									<div class="form-group">
-										<label for="iptUserid">会员账号</label>
-										<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入会员账号">
+				<div class="col-md-12 text-center">
+					<div class="login-from d-inline-block">
+						<div class="login-box shadow-sm rounded text-left">
+							<h2 class="text-center mb-3">会员注册</h2>
+							<form method="post" action="reg_new.php" id="regUser" name="form2" onsubmit="return CheckSubmit();">
+								<input type="hidden" name="dopost" value="regbase">
+								<input type="hidden" name="step" value="1">
+								<input type="hidden" name="mtype" value="个人">
+								<input type="hidden" name="pid" value="<?php echo $pid;?>">
+								<div class="form-group">
+									<label for="iptUserid">会员账号</label>
+									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入会员账号">
+								</div>
+								<div class="form-group">
+									<label for="iptUserpwd">会员密码</label>
+									<input type="password" name="userpwd" id="iptUserpwd" class="form-control" placeholder="请输入会员密码">
+								</div>
+								<div class="form-group">
+									<label for="iptUserpwdok">确认会员密码</label>
+									<input type="password" name="userpwdok" id="iptUserpwdok" class="form-control" placeholder="请输入确认会员密码">
+								</div>
+								<div class="form-group">
+									<label for="iptValidate">验证码</label>
+									<div class="input-group">
+										<input type="text" name="vdcode" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
+										<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onClick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 									</div>
-									<div class="form-group">
-										<label for="iptUserpwd">会员密码</label>
-										<input type="password" name="userpwd" id="iptUserpwd" class="form-control" placeholder="请输入会员密码">
-									</div>
-									<div class="form-group">
-										<label for="iptUserpwdok">确认会员密码</label>
-										<input type="password" name="userpwdok" id="iptUserpwdok" class="form-control" placeholder="请输入确认会员密码">
-									</div>
-									<div class="form-group">
-										<label for="iptValidate">验证码</label>
-										<div class="input-group">
-											<input type="text" name="vdcode" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
-											<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onClick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
-										</div>
-									</div>
-									<div class="form-group form-check">
-										<input type="checkbox" id="iptLicence" class="form-check-input">
-										<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《会员注册条款》</a>和<a href="">《隐私保护条例》</a></label>
-									</div>
-									<div class="form-group"><button type="submit" class="btn btn-success btn-md btn-block">注册</button></div>
-									<div><a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btn-md btn-block">登录</a></div>
-								</form>
-							</div>
+								</div>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptLicence" class="form-check-input">
+									<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《会员注册条款》</a>和<a href="">《隐私保护条例》</a></label>
+								</div>
+								<div class="form-group"><button type="submit" class="btn btn-success btn-md btn-block">注册</button></div>
+								<div><a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btn-md btn-block">登录</a></div>
+							</form>
 						</div>
 					</div>
 				</div>

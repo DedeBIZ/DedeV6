@@ -285,14 +285,8 @@ input[type=file] {
 .logo img {
 	height:40px
 }
-.login-flex {
-	display:flex;
-	width:100%;
-	height:70vh;
-	align-items:center;
-	justify-content:center
-}
 .login-from {
+	margin:5rem 0;
 	width:500px
 }
 .login-box {
