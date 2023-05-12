@@ -47,7 +47,7 @@ function LoadServer() {
 			} else {
 				dedebizInfo = false;
 			}
-			let infoStr = `<table class="table table-borderless w-100">`;
+			let infoStr = `<table class="table table-borderless">`;
 			if (typeof rsp.result.domain !== "undefined") {
 				infoStr += `<tr>
 					<td width="90">授权域名：</td>
@@ -58,17 +58,17 @@ function LoadServer() {
 				<tr>
 					<td>站点名称：</td>
 					<td>${rsp.result.title}（${rsp.result.stype}）</td>
-					<td>证书组件：</td>
+					<td>站点证书：</td>
 					<td>
 						<a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank" class="btn btn-success btn-sm">授权证书</a>
-						<a href="javascript:ViewDedeBIZ()" class="btn btn-primary btn-sm">组件信息</a>
+						<a href="javascript:ViewDedeBIZ()" class="btn btn-primary btn-sm">组件状态</a>
 					</td>
 				</tr>`;
 			}
 			infoStr += "</table>";
 			$("#system-info").html(infoStr);
 		} else {
-			$("#system-info").html(`<table class="table table-borderless w-100">
+			$("#system-info").html(`<table class="table table-borderless">
 				<tr>
 					<td>${rsp.msg}</td>
 				</tr>

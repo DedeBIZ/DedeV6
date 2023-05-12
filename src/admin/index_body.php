@@ -30,9 +30,9 @@ if (empty($dopost)) {
 } elseif ($dopost == 'get_seo') {
     //直接采用DedeBIZ重写方法
     exit;
-} elseif ($dopost == 'get_articles'){
+} elseif ($dopost == 'get_articles') {
 ?>
-<table class="table table-borderless">
+<table class="table">
     <?php
     $userCatalogSql = '';
     if (count($admin_catalogs) > 0) {
