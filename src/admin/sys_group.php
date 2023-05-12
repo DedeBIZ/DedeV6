@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统会员组管理
+ * 会员组管理
  *
  * @version        $id:sys_group.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

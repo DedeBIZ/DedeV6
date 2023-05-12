@@ -316,25 +316,25 @@ $actionSearch[9] = array(
     'description' => '后台系统设置',
     'soniterm' => array(
         0  =>  array(
-            'title' => '系统变量设置',
+            'title' => '系统设置',
             'description' => '站点设置、核心设置、附件设置、会员设置、互动设置、性能选项、其它选项、添加新变量等功能设置',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info.php'
         ),
         1  =>  array(
-            'title' => '系统会员管理',
+            'title' => '管理员管理',
             'description' => '网站管理员管理',
             'purview' => 'sys_User',
             'linkurl' => 'sys_admin_user.php'
         ),
         2  =>  array(
-            'title' => '系统会员组管理',
+            'title' => '会员组管理',
             'description' => '网站管理员组权限管理',
             'purview' => 'sys_Group',
             'linkurl' => 'sys_group.php'
         ),
         3  =>  array(
-            'title' => '系统日志管理',
+            'title' => '日志管理',
             'description' => '登录后台管理员操作进行记录',
             'purview' => 'sys_Log',
             'linkurl' => 'log_list.php'

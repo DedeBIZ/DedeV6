@@ -8,6 +8,23 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/webajax.js"></script>
+		<script>
+		function LoadUser(uid)
+		{
+			var loadhtml = $DE('loaddiv').innerHTML;
+			var ajaxdiv = $DE('userct'+uid);
+			fetch('sys_admin_user_tj.php?dopost=getone&uid='+uid).then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('加载失败');
+			}).then((d)=>{
+				ajaxdiv.innerHTML = d;
+			}).catch((error) => {
+				ajaxdiv.innerHTML = errMsg;
+			});
+		}
+		</script>
 	</head>
 	<body>
 		<table align="center" class="table maintable my-3">
@@ -26,22 +43,5 @@
 				</td>
 			</tr>
 		</table>
-		<script>
-		function LoadUser(uid)
-		{
-			var loadhtml = $DE('loaddiv').innerHTML;
-			var ajaxdiv = $DE('userct'+uid);
-			fetch('sys_admin_user_tj.php?dopost=getone&uid='+uid).then(resp=>{
-				if (resp.ok) {
-					return resp.text()
-				}
-				throw new Error('加载失败');
-			}).then((d)=>{
-				ajaxdiv.innerHTML = d;
-			}).catch((error) => {
-				ajaxdiv.innerHTML = errMsg;
-			});
-		}
-		</script>
 	</body>
 </html>
