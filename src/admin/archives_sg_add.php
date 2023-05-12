@@ -42,7 +42,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
+        ShowMsg("文档为非指定类型，请检查您发布文档是否正确", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -69,7 +69,7 @@ if ($dopost != 'save') {
     //生成文档id
     $arcID = GetIndexKey($arcrank, $typeid, $senddate, $channelid, $senddate, $adminid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
+        ShowMsg("获取主键失败，无法进行后续操作", "-1");
         exit();
     }
     //分析处理附加表数据
@@ -111,7 +111,7 @@ if ($dopost != 'save') {
         if (!$dsql->ExecuteNoneQuery($query)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
             exit();
         }
     }
@@ -122,7 +122,7 @@ if ($dopost != 'save') {
     }
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>管理分类文档</a>";
+    $msg = "请选择后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>管理分类文档</a>";
     $wintitle = "成功发布分类文档";
     $wecome_info = "文档管理::发布分类文档";
     $win = new OxWindow();

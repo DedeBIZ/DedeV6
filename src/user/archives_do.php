@@ -64,7 +64,7 @@ else if ($dopost == "edit") {
     } else {
         $row = $dsql->GetOne("SELECT usereditcon FROM `#@__channeltype` WHERE id='$channelid' ");
         if (!is_array($row)) {
-            ShowMsg("参数错误", "-1");
+            ShowMsg("操作失败", "-1");
             exit();
         }
         $edit = $row['usereditcon'];

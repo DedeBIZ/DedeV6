@@ -358,8 +358,8 @@ $actionSearch[9] = array(
             'linkurl' => 'soft_config.php'
         ),
         7  =>  array(
-            'title' => '防采集小工具',
-            'description' => '网站防采集小工具',
+            'title' => '防采集工具',
+            'description' => '网站防采集工具',
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_string_mix.php'
         ),

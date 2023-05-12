@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档属性
+ * 文档自定义属性
  *
  * @version        $id:content_att.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -22,7 +22,7 @@ if ($dopost == "save") {
         $query = "UPDATE `#@__arcatt` SET `attname`='$attname',`sortid`='$sortid' WHERE att='$att' ";
         $dsql->ExecuteNoneQuery($query);
     }
-    echo "<script>alert('成功更新自定文档义属性表');</script>";
+    echo "<script>alert('成功更新文档自定义属性');</script>";
 }
 include DedeInclude('templets/content_att.htm');
 ?>

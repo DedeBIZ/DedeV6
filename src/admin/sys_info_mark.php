@@ -1,6 +1,6 @@
 <?php
 /**
- * 图片水印
+ * 图片水印设置
  *
  * @version        $id:sys_info_mark.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

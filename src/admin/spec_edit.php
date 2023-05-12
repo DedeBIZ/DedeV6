@@ -23,13 +23,13 @@ if ($dopost != 'save') {
     $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取文档基本信息出错", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='-1'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取栏目配置信息出错", "javascript:;");
+        ShowMsg("读取栏目信息出错", "javascript:;");
         exit();
     }
     $addRow = $dsql->GetOne("SELECT * FROM `#@__addonspec` WHERE aid='$aid'");
@@ -103,7 +103,7 @@ if ($dopost != 'save') {
     }
     $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',sortrank='$sortrank',flag='$flag',ismake='$ismake',arcrank='$arcrank',click='$click',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段", "-1");
+        ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段", "-1");
         exit();
     }
     //专题节点列表
@@ -167,7 +167,7 @@ if ($dopost != 'save') {
     //更新附加表
     $inQuery = "UPDATE `#@__addonspec` SET typeid ='$typeid',note='$notelist'{$inadd_f},templet='$templet' WHERE aid='$id';";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "-1");
+        ShowMsg("数据保存到数据库附加表出错，请检查数据库字段", "-1");
         exit();
     }
     //生成网页
@@ -189,7 +189,7 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>管理专题</a> ";
+    $msg = "请选择后续操作：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>管理专题</a> ";
     $wintitle = "成功修改专题";
     $wecome_info = "专题管理::修改专题";
     $win = new OxWindow();

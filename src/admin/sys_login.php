@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统登录配置
+ * 登录设置
  *
  * @version        $id:sys_info.php 22:28 2022年12月5日 tianya $
  * @package        DedeBIZ.Administrator

@@ -18,8 +18,8 @@ if ($cfg_dbtype == 'sqlite') {
     showMsg('备份系统根目录下/data/'.$cfg_dbname.'.db文件即可', 'javascript:;');
     exit();
 }
-if ($dopost == "viewinfo") //查看表结构
-{
+//查看表结构
+if ($dopost == "viewinfo") {
     echo "<xmp>";
     if (empty($tablename)) {
         echo "没有指定表名";
@@ -32,8 +32,9 @@ if ($dopost == "viewinfo") //查看表结构
     }
     echo '</xmp>';
     exit();
-} else if ($dopost == "opimize") //优化表
-{
+}
+//优化表
+else if ($dopost == "opimize") {
     echo "<xmp>";
     if (empty($tablename)) {
         echo "没有指定表名";
@@ -47,8 +48,9 @@ if ($dopost == "viewinfo") //查看表结构
     }
     echo '</xmp>';
     exit();
-} else if ($dopost == "repair") //修复表
-{
+}
+//修复表
+else if ($dopost == "repair") {
     echo "<xmp>";
     if (empty($tablename)) {
         echo "没有指定表名";

@@ -1,6 +1,6 @@
 <?php
 /**
- * 添加自定义模型字段
+ * 添加文档模型字段
  *
  * @version        $id:mychannel_field_add.php 15:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

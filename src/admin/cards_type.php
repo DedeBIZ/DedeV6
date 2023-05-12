@@ -1,6 +1,6 @@
 <?php
 /**
- * 积分类型
+ * 积分产品分类
  *
  * @version        $id:cards_type.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

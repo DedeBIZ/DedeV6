@@ -22,13 +22,13 @@ if ($dopost != 'save') {
     $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取文档基本信息出错", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取栏目配置信息出错", "javascript:;");
+        ShowMsg("读取栏目信息出错", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -67,7 +67,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
+        ShowMsg("文档为非指定类型，请检查您发布文档是否正确", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -115,7 +115,7 @@ if ($dopost != 'save') {
     $query = "
     UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($query)) {
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段".$dsql->GetError(), "javascript:;");
+        ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段".$dsql->GetError(), "javascript:;");
         exit();
     }
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$row' col='$col' value='$pagestyle'/}\r\n";
@@ -240,7 +240,7 @@ if ($dopost != 'save') {
         $useip = GetIP();
         $query = "UPDATE `$addtable` SET typeid='$typeid',pagestyle='$pagestyle',body='$body',maxwidth='$maxwidth',ddmaxwidth='$ddmaxwidth',pagepicnum='$pagepicnum',imgurls='$imgurls',`row`='$row',col='$col',isrm='$isrm'{$inadd_f},redirecturl='$redirecturl',userip='$useip' WHERE aid='$id'; ";
         if (!$dsql->ExecuteNoneQuery($query)) {
-            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段".$dsql->GetError(), "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请检查数据库字段".$dsql->GetError(), "javascript:;");
             exit();
         }
     }
@@ -263,7 +263,7 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片文档</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理图片文档</a>$backurl";
+    $msg = "请选择后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片文档</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理图片文档</a>$backurl";
     $wintitle = "成功修改图片文档";
     $wecome_info = "文档管理::修改图片文档";
     $win = new OxWindow();

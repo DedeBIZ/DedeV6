@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义模型管理
+ * 自定义标记管理
  *
  * @version        $id:mychannel_main.php 15:26 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

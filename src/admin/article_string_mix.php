@@ -1,6 +1,6 @@
 <?php
 /**
- * 防采集小工具
+ * 防采集工具
  *
  * @version        $id:article_string_mix.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -31,8 +31,8 @@ if (empty($allsource) && filesize($m_file) > 0) {
     fclose($fp);
 }
 make_hash();
-$wintitle = "防采集小工具";
-$wecome_info = "防采集小工具";
+$wintitle = "防采集工具";
+$wecome_info = "防采集工具";
 $win = new OxWindow();
 $win->Init('article_string_mix.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');

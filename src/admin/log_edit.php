@@ -1,6 +1,6 @@
 <?php
 /**
- * 修改日志
+ * 修改系统日志
  *
  * @version        $id:log_edit.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

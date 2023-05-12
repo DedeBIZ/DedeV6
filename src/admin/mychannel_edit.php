@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档模型管理
+ * 修改文档模型
  *
  * @version        $id:mychannel_edit.php 14:49 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -54,15 +54,15 @@ if ($dopost == "show") {
     $win->AddHidden("dopost", 'copysave');
     $msg = "<table>
         <tr>
-            <td width='260'>新栏目id：</td>
+            <td width='260'>新模型id：</td>
             <td><input name='newid' type='text' id='newid' value='{$newid}' class='admin-input-sm'></td>
         </tr>
         <tr>
-            <td>新栏目名称：</td>
+            <td>新模型名称：</td>
             <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' class='admin-input-lg'></td>
         </tr>
         <tr>
-            <td>新栏目标识：</td>
+            <td>新模型标识：</td>
             <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' class='admin-input-lg'></td>
         </tr>
         <tr>

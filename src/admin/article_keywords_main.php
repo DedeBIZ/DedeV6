@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档关键词管理
+ * 文档关键词维护
  *
  * @version        $id:article_keywords_main.php 14:12 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

@@ -1,6 +1,6 @@
 <?php
 /**
- * 文件管理器
+ * 标签源码管理
  *
  * @version        $id:templets_tagsource.php 23:44 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

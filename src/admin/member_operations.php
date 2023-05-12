@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员日志管理
+ * 会员消费记录
  *
  * @version        $id:member_operations.php 11:24 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

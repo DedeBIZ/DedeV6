@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员权限管理
+ * 会员级别设置
  *
  * @version        $id:member_rank.php 12:37 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

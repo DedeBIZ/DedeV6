@@ -36,7 +36,7 @@ if (empty($dopost)) {
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$row['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取栏目配置信息出错", "javascript:;");
+        ShowMsg("读取栏目信息出错", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -117,7 +117,7 @@ if (empty($dopost)) {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
+            ShowMsg("提交的信息有错误，请修改重新提交", "-1");
             exit();
         }
     }
@@ -125,7 +125,7 @@ if (empty($dopost)) {
     $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
     $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',flag='$flag',source='$source' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员", "-1");
+        ShowMsg("数据保存到数据库文档主表出错，请联系管理员", "-1");
         exit();
     }
     //软件链接列表
@@ -153,7 +153,7 @@ if (empty($dopost)) {
     if ($addtable != '') {
         $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl='$officialUrl',officialDemo='$officialDemo',softsize='$softsize',softlinks='$urls',userip='$userip',needmoney='$needmoney',introduce='$body' {$inadd_f} WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "-1");
+            ShowMsg("数据保存到数据库附加表出错，请联系管理员", "-1");
             exit();
         }
     }
@@ -163,7 +163,7 @@ if (empty($dopost)) {
         $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改软件文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理软件文档</a>";
+    $msg = "请选择后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改软件文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理软件文档</a>";
     $wintitle = "成功修改软件文档";
     $wecome_info = "软件管理::修改软件文档";
     $win = new OxWindow();

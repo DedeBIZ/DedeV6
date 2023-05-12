@@ -72,7 +72,7 @@ if (empty($dopost)) {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
+            ShowMsg("提交的信息有错误，请修改重新提交", "-1");
             exit();
         }
     }
@@ -81,7 +81,7 @@ if (empty($dopost)) {
     //生成文档id
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
+        ShowMsg("获取主键失败，无法进行后续操作", "-1");
         exit();
     }
     //保存到主表
@@ -90,7 +90,7 @@ if (empty($dopost)) {
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员", "javascript:;");
+        ShowMsg("数据保存到数据库文档主表出错，请联系管理员", "javascript:;");
         exit();
     }
     //保存到附加表
@@ -98,7 +98,7 @@ if (empty($dopost)) {
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
+        ShowMsg("没找到模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
         $inquery = "INSERT INTO `{$addtable}` (aid,typeid,userip,redirecturl,templet{$inadd_f}) VALUES ('$arcID','$typeid','$userip','',''{$inadd_v})";
@@ -106,7 +106,7 @@ if (empty($dopost)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("数据保存到数据库附加表时出错，请联系管理员，错误：{$gerr}", "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请联系管理员，错误：{$gerr}", "javascript:;");
             exit();
         }
     }
@@ -122,7 +122,7 @@ if (empty($dopost)) {
     }
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改自定义文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览自定义文档</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理自定义文档</a>";
+    $msg = "请选择后续操作：<a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改自定义文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览自定义文档</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理自定义文档</a>";
     $wintitle = "成功发布自定义文档";
     $wecome_info = "文档管理::发布自定义文档";
     $win = new OxWindow();

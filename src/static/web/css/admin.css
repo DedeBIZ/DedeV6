@@ -375,23 +375,6 @@ body.hidemenu .body-right {
 	border:2px solid #1eb867;
 	z-index:10005
 }
-.coolbg61 {
-	width:390px;
-	height:28px;
-	line-height:28px;
-	background:#e7f3b1;
-	border-top:1px solid #bdc5b4;
-	border-left:1px solid #bdc5b4;
-	border-right:1px solid #bdc5b4;
-	text-align:right
-}
-.coolbg62 {
-	padding:.6rem;
-	width:390px;
-	height:300px;
-	background:#F8FDF0;
-	border:1px solid #bdc5b4
-}
 .wsselect {
 	padding:.65rem 0;
 	background:#fff;

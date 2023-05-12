@@ -39,7 +39,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
+        ShowMsg("文档为非指定类型，请检查您发布文档是否正确", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -95,7 +95,7 @@ if ($dopost != 'save') {
     if ($addtable != '') {
         $iquery = "UPDATE `$addtable` SET typeid='$typeid',arcrank='$arcrank',title='$title',flag='$flag',litpic='$litpic'{$inadd_f} WHERE aid='$id' ";
         if (!$dsql->ExecuteNoneQuery($iquery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请检查数据库字段", "javascript:;");
             exit();
         }
     }
@@ -105,7 +105,7 @@ if ($dopost != 'save') {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$id";
     ClearMyAddon($id, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='catalog_do.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>管理分类文档</a>";
+    $msg = "请选择后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='catalog_do.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>管理分类文档</a>";
     $wintitle = "成功修改分类文档";
     $wecome_info = "文档管理::修改分类文档";
     $win = new OxWindow();

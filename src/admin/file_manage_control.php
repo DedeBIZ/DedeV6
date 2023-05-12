@@ -1,6 +1,6 @@
 <?php
 /**
- * 文件管理控制
+ * 文件管理器操作
  *
  * @version        $id:file_manage_control.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
@@ -58,26 +58,6 @@ else if ($fmdo == "edit") {
     }
     exit();
 }
-/*
-文件修改，可视化模式
-function __saveEditView();
-else if ($fmdo=="editview")
-{
-    $filename = str_replace("..","",$filename);
-    $file = "$cfg_basedir$activepath/$filename";
-    $str = eregi_replace('&quot;','\\"',$str);
-    $str = stripslashes($str);
-    $fp = fopen($file,"w");
-    fputs($fp,$str);
-    fclose($fp);
-    if (empty($backurl))
-    {
-        $backurl = "file_manage_main.php?activepath=$activepath";
-    }
-    ShowMsg("成功保存文件",$backurl);
-    exit();
-}
-*/
 //文件上传
 else if ($fmdo == "upload") {
     $j = 0;

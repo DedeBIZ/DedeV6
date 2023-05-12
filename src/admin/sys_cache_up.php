@@ -1,6 +1,6 @@
 <?php
 /**
- * 清理缓存
+ * 更新缓存
  *
  * @version        $id:sys_cache_up.php 16:22 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

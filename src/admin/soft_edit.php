@@ -24,13 +24,13 @@ if ($dopost != 'save') {
     $dsql->SetQuery($arcQuery);
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取文档基本信息出错", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取栏目配置信息出错", "javascript:;");
+        ShowMsg("读取栏目信息出错", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -80,7 +80,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
+        ShowMsg("文档为非指定类型，请检查您发布文档是否正确", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -156,7 +156,7 @@ if ($dopost != 'save') {
     //修改主文档表
     $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',`money`='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段", "-1");
+        ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段", "-1");
         exit();
     }
     //软件链接列表
@@ -185,7 +185,7 @@ if ($dopost != 'save') {
         $useip = GetIP();
         $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl ='$officialUrl',officialDemo ='$officialDemo',softsize='$softsize',softlinks='$urls',redirecturl='$redirecturl',userip='$useip',daccess='$daccess',needmoney='$needmoney',introduce='$body' {$inadd_f} WHERE aid='$id';";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "-1");
+            ShowMsg("数据保存到数据库附加表出错，请检查数据库字段", "-1");
             exit();
         }
     }
@@ -208,7 +208,7 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件文档</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理软件文档</a>";
+    $msg = "请选择后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件文档</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理软件文档</a>";
     $wintitle = "成功修改软件文档";
     $wecome_info = "文档管理::修改软件文档";
     $win = new OxWindow();

@@ -64,7 +64,7 @@ if (empty($dopost)) {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
-            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
+            ShowMsg("提交的信息有错误，请修改重新提交", "-1");
             exit();
         }
     }
@@ -74,13 +74,13 @@ if (empty($dopost)) {
     $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
     $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',mtype='$mtypesid',flag='$flag' WHERE id='$aid' And mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员".$dsql->GetError(), "-1");
+        ShowMsg("数据保存到数据库文档主表出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
     }
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f}, userip='$userip' WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -90,7 +90,7 @@ if (empty($dopost)) {
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改自定义文档</a><a class='btn btn-success btn-sm' href='$artUrl' target='_blank'>浏览自定义文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理自定义文档</a>";
+    $msg = "请选择后续操作：<a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改自定义文档</a><a class='btn btn-success btn-sm' href='$artUrl' target='_blank'>浏览自定义文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理自定义文档</a>";
     $wintitle = "成功修改自定义文档";
     $wecome_info = "文档管理::修改自定义文档";
     $win = new OxWindow();

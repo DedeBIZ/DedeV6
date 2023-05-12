@@ -1,6 +1,6 @@
 <?php
 /**
- * 获取管理员绩效统计
+ * 管理员绩效统计
  *
  * @version        $id:sys_admin_user_edit.php 16:22 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

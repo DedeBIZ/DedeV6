@@ -1,6 +1,6 @@
 <?php
 /**
- * 标签测试操作
+ * 全局标记测试操作
  *
  * @version        $id:tag_test_action.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

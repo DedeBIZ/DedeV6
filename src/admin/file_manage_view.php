@@ -1,6 +1,6 @@
 <?php
 /**
- * 文件查看
+ * 文件管理器查看
  *
  * @version        $id:file_manage_view.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

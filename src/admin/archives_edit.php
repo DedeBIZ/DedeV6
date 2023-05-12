@@ -22,13 +22,13 @@ if ($dopost != 'save') {
     $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid'";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取文档基本信息出错", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取栏目配置信息出错", "javascript:;");
+        ShowMsg("读取栏目信息出错", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -53,7 +53,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
+        ShowMsg("文档为非指定类型，请检查您发布文档是否正确", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -120,7 +120,7 @@ if ($dopost != 'save') {
     //更新数据库的SQL语句
     $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',notpost='$notpost',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段", "-1");
+        ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段", "-1");
         exit();
     }
     $cts = $dsql->GetOne("SELECT addtable From `#@__channeltype` WHERE id='$channelid' ");
@@ -129,7 +129,7 @@ if ($dopost != 'save') {
         $useip = GetIP();
         $iquery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f},redirecturl='$redirecturl',userip='$useip' WHERE aid='$id' ";
         if (!$dsql->ExecuteNoneQuery($iquery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请检查数据库字段", "javascript:;");
             exit();
         }
     }
@@ -152,7 +152,7 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改自定义文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看自定义文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理自定义文档</a>$backurl";
+    $msg = "请选择后续操作：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改自定义文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看自定义文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理自定义文档</a>$backurl";
     $wintitle = "成功修改自定义文档";
     $wecome_info = "文档管理::修改自定义文档";
     $win = new OxWindow();

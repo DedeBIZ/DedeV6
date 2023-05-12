@@ -1,6 +1,6 @@
 <?php
 /**
- * 日志列表
+ * 系统日志列表
  *
  * @version        $id:log_list.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

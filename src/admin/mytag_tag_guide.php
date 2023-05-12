@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义标记向导
+ * 智能标记向导
  *
  * @version        $id:mytag_tag_guide.php 15:39 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

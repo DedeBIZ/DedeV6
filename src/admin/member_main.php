@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员管理
+ * 所有会员列表
  *
  * @version        $id:member_main.php 10:49 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

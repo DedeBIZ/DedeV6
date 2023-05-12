@@ -50,7 +50,7 @@ if (empty($dopost)) {
     //生成文档id
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
+        ShowMsg("获取主键失败，无法进行后续操作", "-1");
         exit();
     }
     //分析处理附加表数据
@@ -88,7 +88,7 @@ if (empty($dopost)) {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
+            ShowMsg("提交的信息有错误，请修改重新提交", "-1");
             exit();
         }
     }
@@ -103,7 +103,7 @@ if (empty($dopost)) {
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员", "javascript:;");
+        ShowMsg("数据保存到数据库文档主表出错，请联系管理员", "javascript:;");
         exit();
     }
     //软件链接列表
@@ -139,7 +139,7 @@ if (empty($dopost)) {
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
+        ShowMsg("没找到模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
         exit();
     }
     $inQuery = "INSERT INTO `$addtable` (aid,typeid,filetype,language,softtype,accredit,os,softrank,officialUrl,officialDemo,softsize,softlinks,introduce,userip,templet,redirecturl,daccess,needmoney{$inadd_f}) VALUES ('$arcID','$typeid','$filetype','$language','$softtype','$accredit','$os','$softrank','$officialUrl','$officialDemo','$softsize','$urls','$body','$userip','','','0','$needmoney'{$inadd_v});";
@@ -149,7 +149,7 @@ if (empty($dopost)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         echo $inQuery;
         exit();
-        ShowMsg("数据保存到数据库附加表时出错，请联系管理员".str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("数据保存到数据库附加表出错，请联系管理员".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
     //增加积分
@@ -165,7 +165,7 @@ if (empty($dopost)) {
     }
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='soft_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改软件文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理软件文档</a>";
+    $msg = "请选择后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='soft_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改软件文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理软件文档</a>";
     $wintitle = "成功发布文档文档";
     $wecome_info = "软件管理::发布软件文档";
     $win = new OxWindow();
