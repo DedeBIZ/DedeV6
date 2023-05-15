@@ -80,7 +80,7 @@ if ($action === 'is_need_check_code') {
         $unQueryVer[] = "6.2.5";
     }
     if (!TableHasField("#@__arctype", "apienabled")) {
-        $unQueryVer[] = "6.2.6";
+        $unQueryVer[] = "6.2.7";
     }
     if (count($unQueryVer) > 0) {
         $upsqls = GetUpdateSQL();
