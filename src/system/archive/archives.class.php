@@ -193,9 +193,11 @@ class Archives
             $this->Fields['body'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['body']);
             $this->Fields['body'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\" ",$this->Fields['body']);
             //图片模型正文图片注释自动为标题
-            $this->Fields['imgurls'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['imgurls']);
-            $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
-            $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
+            if (isset($this->Fields['imgurls']) && is_array($this->Fields['imgurls'])) {
+                $this->Fields['imgurls'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['imgurls']);
+                $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
+                $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
+            }
             //移除文档模型正文图片宽度和高度，适配自适应/响应式网站
             $this->Fields['body'] = preg_replace("/style=\"width\:(.*)\"/","",$this->Fields['body']);
         }

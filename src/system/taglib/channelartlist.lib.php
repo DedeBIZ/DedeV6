@@ -14,7 +14,7 @@ function lib_channelartlist(&$ctag, &$refObj)
 {
     global $dsql, $envs, $_sys_globals;
     //添加不调用指定栏目参数notypeid
-    $attlist = 'typeid|0,row|20,cacheid|,notypeid|0';
+    $attlist = 'typeid|0,row|20,cacheid|,notypeid|0,currentstyle|';
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = trim($ctag->GetInnerText());
