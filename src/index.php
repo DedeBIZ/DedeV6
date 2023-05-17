@@ -31,7 +31,7 @@ if (isset($_GET['upcache']) || !file_exists('index.html')) {
             if (PHP_SAPI === 'cli') {
                 echo '首页：生成花费时间：'.$queryTime."\r\n";
             } else {
-                echo "<div style='width:98%;margin:1rem auto;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.25rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
+                echo DedeAlert("页面加载总消耗时间：{$queryTime}", ALERT_DANGER);
             }
         }
         include(dirname(__FILE__).'/index.html');
@@ -43,7 +43,7 @@ if (isset($_GET['upcache']) || !file_exists('index.html')) {
             if (PHP_SAPI === 'cli') {
                 echo '首页：加载花费时间：'.$queryTime."\r\n";
             } else {
-                echo "<div style='width:98%;margin:1rem auto;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.25rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
+                echo DedeAlert("页面加载总消耗时间：{$queryTime}", ALERT_DANGER);
             }
         }
         exit();
