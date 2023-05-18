@@ -98,7 +98,7 @@ function LoadServer() {
 					<td>
 						<div class="web-info">
 							<p>${rsp.msg}</p>
-							<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息。</span>
+							<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息</span>
 						</div>
 					</td>
 				</tr>

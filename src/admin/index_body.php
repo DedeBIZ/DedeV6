@@ -11,7 +11,6 @@
 require(dirname(__FILE__).'/config.php');
 require(DEDEINC.'/image.func.php');
 require(DEDEINC.'/dedetag.class.php');
-//默认首页
 if (empty($dopost)) {
     require(DEDEINC.'/inc/inc_fun_funAdmin.php');
     $verLockFile = DEDEDATA.'/admin/ver.txt';
@@ -69,7 +68,7 @@ if (empty($dopost)) {
     if (!extension_loaded("openssl")) {
         echo json_encode(array(
             "code" => -1001,
-            "msg" => "PHP不支持OpenSSL，无法完成商业版授权。",
+            "msg" => "PHP不支持OpenSSL，无法完成商业版授权",
             "result" => null,
         ));
         exit;
@@ -77,7 +76,7 @@ if (empty($dopost)) {
     if (empty($cfg_auth_code)) {
         echo json_encode(array(
             "code" => -1002,
-            "msg" => "当前站点已授权社区版，获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>。",
+            "msg" => "当前站点已授权社区版，获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>",
             "result" => null,
         ));
         exit;
@@ -98,7 +97,7 @@ if (empty($dopost)) {
                 "result" => array(
                     "domain" => $res->domain,
                     "title" => $res->title,
-                    "stype" => $res->stype == 1 ? "企业单位" : "个人",
+                    "stype" => $res->stype == 1 ? "企业" : "个人",
                     "auth_version" => $res->auth_version,
                     "auth_at" => date("Y-m-d", $res->auth_at),
                     "core" => $core_info,
@@ -108,7 +107,6 @@ if (empty($dopost)) {
     }
 } elseif ($dopost == 'get_statistics') {
     require_once(DEDEINC."/libraries/statistics.class.php");
-    //获取统计信息
     $sdate = empty($sdate) ? 0 : intval($sdate);
     $stat = new DedeStatistics;
     $rs = $stat->GetInfoByDate($sdate);
@@ -120,7 +118,6 @@ if (empty($dopost)) {
     exit;
 }  elseif ($dopost == 'get_statistics_multi') {
     require_once(DEDEINC."/libraries/statistics.class.php");
-    //获取统计信息
     $sdates = empty($sdates) ? array() : explode(",",preg_replace("[^\d\,]","",$sdates)) ;
     $stat = new DedeStatistics;
     $rs = $stat->GetInfoByDateMulti($sdates);
