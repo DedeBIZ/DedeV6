@@ -54,7 +54,7 @@ if ($action == 'upload') {
     $win = new OxWindow();
     $win->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data");
     $win->mainTitle = "模块管理";
-    $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块插件";
+    $wecome_info = "<a href='module_main.php'>模块管理</a> - 上传模块插件";
     $win->AddTitle('请选择上传的模块插件文件');
     $win->AddHidden("action", 'upload');
     $msg = "<table class='table'>

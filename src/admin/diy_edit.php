@@ -29,7 +29,7 @@ if ($dopost == "save") {
     //确认提示
     if ($job == "") {
         $wintitle = "自定义表单管理-删除自定义表单";
-        $wecome_info = "<a href='diy_main.php'>自定义表单管理</a>::删除自定义表单";
+        $wecome_info = "<a href='diy_main.php'>自定义表单管理</a> - 删除自定义表单";
         $win = new OxWindow();
         $win->Init("diy_edit.php", "js/blank.js", "POST");
         $win->AddHidden("job", "yes");

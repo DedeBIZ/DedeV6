@@ -25,9 +25,9 @@ if ($dopost == 'delete') {
     $showhtml .= "预览：<iframe name='testfrm' frameborder='0' src='ad_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='360'></iframe>";
     $row = $dsql->GetOne("SELECT tagname from `#@__myad` WHERE aid='$aid' ");
     $showtag = '{'."dede:myad name='{$row['tagname']}'/".'}';
-    $info = "广告标签会解析成标签中文档到页面，广告修改后需要重新生成，如果不希望重新生成所有页面，则直接js调用代码即可";
+    $info = "广告标签会解析成标签中文档到页面，广告修改后需要重新生成，如果不希望重新生成所有页面，则直接js调用标签";
     $wintitle = "广告管理-获取广告标签";
-    $wecome_info = "<a href='ad_main.php'>广告管理</a>::获取js";
+    $wecome_info = "<a href='ad_main.php'>广告管理</a> - 获取标签";
     $win = new OxWindow();
     $win->Init();
     $winform = $win->GetWindow("hand", $info);

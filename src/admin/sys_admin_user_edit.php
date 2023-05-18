@@ -74,7 +74,7 @@ if ($dopost == 'saveedit') {
         $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
         require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "删除会员";
-        $wecome_info = "<a href='sys_admin_user.php'>系统帐号管理</a>::删除会员";
+        $wecome_info = "<a href='sys_admin_user.php'>系统帐号管理</a> - 删除会员";
         $win = new OxWindow();
         $win->Init("sys_admin_user_edit.php", "js/blank.js", "POST");
         $win->AddHidden("dopost", $dopost);

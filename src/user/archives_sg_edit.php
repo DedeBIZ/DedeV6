@@ -108,7 +108,7 @@ if (empty($dopost)) {
     //返回成功信息
     $msg = "请选择后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='content_sg_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理分类文档</a>";
     $wintitle = "成功修改分类文档";
-    $wecome_info = "文档管理::修改分类文档";
+    $wecome_info = "文档管理 - 修改分类文档";
     $win = new OxWindow();
     $win->AddTitle("成功修改分类文档");
     $win->AddMsgItem($msg);

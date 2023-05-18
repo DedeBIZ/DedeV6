@@ -369,7 +369,7 @@ else if ($dopost == "delArchives") {
         exit();
     } else {
         $wintitle = "文档管理-删除文档";
-        $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a>::删除文档";
+        $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a> - 删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -419,7 +419,7 @@ else if ($dopost == 'clear') {
             exit();
         }
         $wintitle = "文档管理-清空所有文档";
-        $wecome_info = "<a href='recycling.php'>文档回收站</a>::清空所有文档";
+        $wecome_info = "<a href='recycling.php'>文档回收站</a> - 清空所有文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -457,7 +457,7 @@ else if ($dopost == 'del') {
         exit();
     } else {
         $wintitle = "文档管理-删除文档";
-        $wecome_info = "<a href='recycling.php'>文档管理</a>::删除文档";
+        $wecome_info = "<a href='recycling.php'>文档管理</a> - 删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
         $win->AddHidden("fmdo", "yes");

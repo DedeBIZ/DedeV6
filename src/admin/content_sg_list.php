@@ -43,10 +43,10 @@ if (!empty($channelid) && !empty($ucid) && $tl->TypeInfos['channeltype'] != $cha
 }
 if ($cid == 0) {
     $row = $tl->dsql->GetOne("SELECT typename,addtable FROM `#@__channeltype` WHERE id='$channelid'");
-    $positionname = $row['typename']." &gt; ";
+    $positionname = $row['typename']." - ";
     $listtable = $row['addtable'];
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
+    $positionname = str_replace($cfg_list_symbol, " - ", $tl->GetPositionName())." - ";
 }
 $optionarr = $tl->GetOptionArray($cid, $admin_catalogs, $channelid);
 $whereSql = $channelid == 0 ? " WHERE arc.channel < -1 " : " WHERE arc.channel = '$channelid' ";

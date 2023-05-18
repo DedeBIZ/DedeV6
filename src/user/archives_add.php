@@ -124,7 +124,7 @@ if (empty($dopost)) {
     //返回成功信息
     $msg = "请选择后续操作：<a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改自定义文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览自定义文档</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理自定义文档</a>";
     $wintitle = "成功发布自定义文档";
-    $wecome_info = "文档管理::发布自定义文档";
+    $wecome_info = "文档管理 - 发布自定义文档";
     $win = new OxWindow();
     $win->AddTitle("成功发布自定义文档");
     $win->AddMsgItem($msg);

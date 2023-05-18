@@ -27,7 +27,7 @@ if ($dopost == 'ok') {
 $dsql->SetQuery("SELECT typename,typedir FROM `#@__arctype` WHERE id=".$id);
 $row = $dsql->GetOne();
 $wintitle = "删除栏目";
-$wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt; 删除栏目";
+$wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 删除栏目";
 $win = new OxWindow();
 $win->Init('catalog_del.php', 'js/blank.js', 'POST');
 $win->AddHidden('id', $id);

@@ -170,7 +170,7 @@ if ($dopost != 'save') {
     $msg = "请选择后续操作：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改自定义文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览自定义文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理自定义文档</a>$backurl";
     $msg = "<div>{$msg}</div>".GetUpdateTest();
     $wintitle = "成功发布自定义文档";
-    $wecome_info = "文档管理::发布自定义文档";
+    $wecome_info = "文档管理 - 发布自定义文档";
     $win = new OxWindow();
     $win->AddTitle("成功发布自定义文档：");
     $win->AddMsgItem($msg);

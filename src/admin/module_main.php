@@ -150,7 +150,7 @@ if ($action == '') {
     if (($devInfo['dev_id'] == $infos['dev_id']) && !empty($devInfo['dev_id'])) {
       $s = "已认证";
     }
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 安装{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> - 安装{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
     $msg = "<table class='table'>
@@ -273,7 +273,7 @@ if ($action == '') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 删除{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> - 删除{$infos['name']}");
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
     $msg = "<table class='table'>
@@ -333,7 +333,7 @@ if ($action == '') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 卸载{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> - 卸载{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<table class='table'>
@@ -423,7 +423,7 @@ if ($action == '') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 使用说明");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> - 使用说明");
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("hand");
     $win->Display();
@@ -461,7 +461,7 @@ if ($action == '') {
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; {$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> - {$infos['name']}");
     $msg = "<table class='table'>
     <tr>
         <td width='260' class='admin-td'>模块名称：</td>

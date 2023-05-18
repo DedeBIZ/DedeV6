@@ -39,7 +39,7 @@ else if ($dopost == 1) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 检测数据结构";
+    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测数据结构";
     $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
     $msg = "<table>
         <tr>
@@ -111,7 +111,7 @@ else if ($dopost == 2) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 检测微表正确性";
+    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测微表正确性";
     $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
     $msg = "<table>
         <tr>
@@ -160,7 +160,7 @@ else if ($dopost == 3) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
     $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> &gt; 高级综合检测修复";
+    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 高级综合检测修复";
     $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
     $msg = "<table>
     <tr>

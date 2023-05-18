@@ -89,12 +89,12 @@ if ($cid == 0) {
         $positionname = '所有栏目&gt;';
     } else {
         $row = $tl->dsql->GetOne("SELECT id,typename,maintable FROM `#@__channeltype` WHERE id='$channelid'");
-        $positionname = $row['typename']." &gt; ";
+        $positionname = $row['typename']." - ";
         $maintable = $row['maintable'];
         $channelid = $row['id'];
     }
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
+    $positionname = str_replace($cfg_list_symbol, " - ", $tl->GetPositionName())." - ";
 }
 //当选择的是自定义模型栏目时，直接跳转自定义模型管理区
 if (empty($channelid) && isset($tl->TypeInfos['channeltype'])) {
