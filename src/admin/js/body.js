@@ -64,31 +64,25 @@ function LoadServer() {
 			let infoStr = `<table class="table table-borderless">`;
 			if (typeof rsp.result.domain !== "undefined") {
 				infoStr += `<tr>
-					<td width="20%">
+					<td width="25%">
 						<div class="web-info">
 							<p>授权域名</p>
 							<span>${rsp.result.domain}</span>
 						</div>
 					</td>
-					<td width="20%">
-						<div class="web-info">
-							<p>授权版本</p>
-							<span>${rsp.result.auth_version}.x.x</span>
-						</div>
-					</td>
-					<td width="20%">
+					<td width="25%">
 						<div class="web-info">
 							<p>站点名称</p>
 							<span>${rsp.result.title}</span>
 						</div>
 					</td>
-					<td width="20%">
+					<td width="25%">
 						<div class="web-info">
 							<p>站点证书</p>
 							<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
 						</div>
 					</td>
-					<td width="20%">
+					<td width="25%">
 						<div class="web-info">
 							<p>商业组件</p>
 							<span><a href="javascript:ViewDedeBIZ()">组件状态</a></span>
