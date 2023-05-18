@@ -35,7 +35,7 @@ img {
 	max-width:100%;
 	border-radius:.5rem
 }
-form,ul,ol,li {
+ul,ol,li {
 	margin:0;
 	padding:0
 }
@@ -315,7 +315,7 @@ body.hidemenu .body-right {
 }
 .card-height {
 	max-height:490px;
-	overflow:auto
+	overflow-y:auto
 }
 .web-info {
 	padding:10px;
@@ -326,7 +326,7 @@ body.hidemenu .body-right {
 }
 #_fileList,#_verList {
 	height:360px;
-	overflow-y:scroll
+	overflow-y:auto
 }
 #_msgInfo {
 	display:none
