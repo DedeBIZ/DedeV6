@@ -47,7 +47,7 @@ function TestOneFile($f)
         if ($localFilehash === $remoteFilehash) {
             return 0;
         }
-        $message .= "<div><span class='float-left w-75'>发现可疑文件：{$trfile}</span><a href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 查看</a><a href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a><a href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a></div><hr>\r\n";
+        $message .= "<div><span class='d-inline-block w-75'>发现可疑文件：{$trfile}</span><a href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 查看</a><a href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a><a href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a></div><hr>\r\n";
         return 1;
     }
     return 0;
@@ -68,10 +68,10 @@ function TestSafe($tdir)
 }
 //检测
 if ($action == 'test') {
-    $message = '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css"><link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">';
+    $message = '<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">';
     AjaxHead();
     TestSafe(DEDEROOT);
-    if ($message == '') $message = "<span class='text-dark'>没发现可疑文件</span>";
+    if ($message == '') $message = "没发现可疑文件";
     echo $message;
     exit();
 } else if ($action == 'viewdiff') {
@@ -108,7 +108,7 @@ else if ($action == 'clear') {
             @unlink($d.'/'.$filename);
         }
     }
-    $message = "<span class='text-dark'>成功清空模板缓存</span>";
+    $message = "成功清空模板缓存";
     echo $message;
     exit();
 }
