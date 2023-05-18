@@ -317,6 +317,15 @@ body.hidemenu .body-right {
 .card-body {
 	padding:.65rem
 }
+.card-height {
+	height:490px;
+	overflow:auto
+}
+.web-info {
+	padding:10px;
+	background:#f5f5f5;
+	white-space:nowrap
+}
 #fz-0 {
 	font-size:0
 }
@@ -530,11 +539,6 @@ body.hidemenu .body-right {
 }
 .admin-input-xs {
 	width:60px
-}
-.web-info {
-	padding:10px;
-	background:#f5f5f5;
-	text-align:center
 }
 .thumbnail-md {
 	max-width:200px;

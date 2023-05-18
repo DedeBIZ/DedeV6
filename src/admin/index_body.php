@@ -32,14 +32,14 @@ if (empty($dopost)) {
     exit;
 } elseif ($dopost == 'get_articles') {
 ?>
-<table class="table">
+<table class="table table-borderless">
     <?php
     $userCatalogSql = '';
     if (count($admin_catalogs) > 0) {
         $admin_catalog = join(',', $admin_catalogs);
         $userCatalogSql = "AND arc.typeid IN($admin_catalog) ";
     }
-    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,13";
+    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,20";
     $arcArr = array();
     $dsql->Execute('m', $query);
     while($row = $dsql->GetArray('m'))

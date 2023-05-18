@@ -23,18 +23,32 @@ function ViewDedeBIZ() {
 		ShowMsg("启动商业组件失败");
 		return;
 	}
-	ShowMsg(`<table class="table table-borderless w-100">
+	ShowMsg(`<table class="table table-borderless">
 		<tr>
-			<td width="120">版本号：</td>
-			<td>V${dedebizInfo.result.server_version}</td>
-			<td width="120">服务器系统：</td>
-			<td>${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}）</td>
-		</tr>
-		<tr>
-			<td>运行时间：</td>
-			<td>${dedebizInfo.result.server_run_time}</td>
-			<td>内存占用：</td>
-			<td>${dedebizInfo.result.server_memory_usage}%</td>
+			<td width="25%">
+				<div class="web-info">
+					<p>版本号</p>
+					<span>${dedebizInfo.result.server_version}</span>
+				</div>
+			</td>
+			<td width="25%">
+				<div class="web-info">
+					<p>服务器系统</p>
+					<span>${dedebizInfo.result.server_goos}</span>
+				</div>
+			</td>
+			<td width="25%">
+				<div class="web-info">
+					<p>运行时间</p>
+					<span>${dedebizInfo.result.server_run_time}</span>
+				</div>
+			</td>
+			<td width="25%">
+				<div class="web-info">
+					<p>内存占用</p>
+					<span>${dedebizInfo.result.server_memory_usage}%</span>
+				</div>
+			</td>
 		</tr>
 	</table>`);
 }
@@ -50,18 +64,35 @@ function LoadServer() {
 			let infoStr = `<table class="table table-borderless">`;
 			if (typeof rsp.result.domain !== "undefined") {
 				infoStr += `<tr>
-					<td width="90">授权域名：</td>
-					<td>${rsp.result.domain}</td>
-					<td width="90">授权版本：</td>
-					<td>${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
-				</tr>
-				<tr>
-					<td>站点名称：</td>
-					<td>${rsp.result.title}（${rsp.result.stype}）</td>
-					<td>站点证书：</td>
-					<td>
-						<a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank" class="btn btn-success btn-sm">授权证书</a>
-						<a href="javascript:ViewDedeBIZ()" class="btn btn-primary btn-sm">组件状态</a>
+					<td width="20%">
+						<div class="web-info">
+							<p>授权域名</p>
+							<span>${rsp.result.domain}</span>
+						</div>
+					</td>
+					<td width="20%">
+						<div class="web-info">
+							<p>授权版本</p>
+							<span>${rsp.result.auth_version}.x.x</span>
+						</div>
+					</td>
+					<td width="20%">
+						<div class="web-info">
+							<p>站点名称</p>
+							<span>${rsp.result.title}</span>
+						</div>
+					</td>
+					<td width="20%">
+						<div class="web-info">
+							<p>站点证书</p>
+							<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
+						</div>
+					</td>
+					<td width="20%">
+						<div class="web-info">
+							<p>商业组件</p>
+							<span><a href="javascript:ViewDedeBIZ()">组件状态</a></span>
+						</div>
 					</td>
 				</tr>`;
 			}
@@ -70,10 +101,12 @@ function LoadServer() {
 		} else {
 			$("#system-info").html(`<table class="table table-borderless">
 				<tr>
-					<td>${rsp.msg}</td>
-				</tr>
-				<tr>
-					<td>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息。若授权结果与实际授权存在差异，购买到其它非商业授权，及时与我们取得联系。</td>
+					<td>
+						<div class="web-info">
+							<p>${rsp.msg}</p>
+							<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息。</span>
+						</div>
+					</td>
 				</tr>
 			</table>`);
 		}
