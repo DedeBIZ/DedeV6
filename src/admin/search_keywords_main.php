@@ -81,11 +81,11 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $line = "<tr align='center'>
-        <td><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
+        <td><input name=\"aids[]\" type=\"checkbox\" value=\"{$row['aid']}\"></td>
         <td>{$row['aid']}</td>
-        <td><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:96%'></td>
-        <td><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:96%'></td>
-        <td><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
+        <td><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}'></td>
+        <td><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}'></td>
+        <td><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}'></td>
         <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
         <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
         <td>

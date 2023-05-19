@@ -783,8 +783,8 @@ class FreeList
         $plist  = "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
         $plist .= $maininfo.$indexpage.$prepage.$listdd.$nextpage.$endpage;
         if ($totalpage > $total_list) {
-            $plist .= "<input type='text' name='PageNo'  value='".$this->PageNo."' style='width:30px' />\r\n";
-            $plist .= "<input type='submit' name='plistgo' value='GO' />\r\n";
+            $plist .= "<input type='text' name='PageNo' value='".$this->PageNo."'>\r\n";
+            $plist .= "<input type='submit' name='plistgo' value='GO'>\r\n";
         }
         $plist .= "</form>\r\n";
         return $plist;
