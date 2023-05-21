@@ -8,11 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__).'/config.php');
-require(DEDEINC.'/image.func.php');
-require(DEDEINC.'/dedetag.class.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/image.func.php');
+require_once(DEDEINC.'/dedetag.class.php');
 if (empty($dopost)) {
-    require(DEDEINC.'/inc/inc_fun_funAdmin.php');
+    require_once(DEDEINC.'/inc/inc_fun_funAdmin.php');
     $verLockFile = DEDEDATA.'/admin/ver.txt';
     $fp = fopen($verLockFile, 'r');
     $upTime = trim(fread($fp, 64));

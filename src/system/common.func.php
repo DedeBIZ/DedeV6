@@ -527,6 +527,7 @@ function GetUpdateSQL()
 }
 /*会员中心调用默认主题模板<?php pasterTempletDiy('head.htm');?>*/
 if (!function_exists('pasterTempletDiy')) {
+    require_once DEDEINC."/archive/partview.class.php";
     function pasterTempletDiy($path)
     {
         global $cfg_basedir, $cfg_templets_dir, $cfg_df_style;
