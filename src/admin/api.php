@@ -115,6 +115,13 @@ if ($action === 'is_need_check_code') {
     $row2 = $dsql->GetOne($query);
     if ($row2) $add_query .= "&acount={$row2['dd']}";
     $offUrl = DEDEBIZURL."/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}&json=1";
+    if (strpos($_SERVER['SERVER_SOFTWARE'], 'Development Server') !== false && version_compare(phpversion(), '7.2', '<')) {
+        echo json_encode(array(
+            "code"=>-1,
+            "msg"=>'获取版本信息失败',
+        ));
+        exit;
+    }
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($offUrl);
     $data = $dhd->GetHtml();
