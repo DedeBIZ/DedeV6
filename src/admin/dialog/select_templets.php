@@ -58,8 +58,8 @@ if (empty($comeback)) {
                     </td>
                 </tr>
                 <tr>
-                    <td width="50%">选择文件</td>
-                    <td width="20%">文件大小</td>
+                    <td width="40%">选择文件</td>
+                    <td width="26%">文件大小</td>
                     <td>修改时间</td>
                 </tr>
                 <?php

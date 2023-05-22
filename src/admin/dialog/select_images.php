@@ -92,8 +92,8 @@ if (!empty($iseditor)) {
                     <td colspan="3">点击图片预览，再点击图片关闭预览，点击文件名选择图片</td>
                 </tr>
                 <tr>
-                    <td width="50%">选择图片</td>
-                    <td width="20%">文件大小</td>
+                    <td width="40%">选择图片</td>
+                    <td width="26%">文件大小</td>
                     <td>修改时间</td>
                 </tr>
                 <?php

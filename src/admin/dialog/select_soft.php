@@ -69,8 +69,8 @@ if (!empty($noeditor)) {
                     <td colspan="3">点击选择文件，红色字样的为刚上传的文件</td>
                 </tr>
                 <tr>
-                    <td width="50%">选择文件</td>
-                    <td width="20%">文件大小</td>
+                    <td width="40%">选择文件</td>
+                    <td width="26%">文件大小</td>
                     <td>修改时间</td>
                 </tr>
                 <?php

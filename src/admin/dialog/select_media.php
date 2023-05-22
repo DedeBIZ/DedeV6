@@ -67,9 +67,9 @@ if (!empty($noeditor)) {
                     </td>
                 </tr>
                 <tr>
-                    <td width="50%">点击名称选择文件</td>
-                    <td width="20%">文件大小</td>
-                    <td>最后修改时间</td>
+                    <td width="40%">点击名称选择文件</td>
+                    <td width="26%">文件大小</td>
+                    <td>修改时间</td>
                 </tr>
                 <?php
                 $dh = scandir($inpath);
