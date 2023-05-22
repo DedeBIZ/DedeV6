@@ -19,7 +19,7 @@
 						<input type="text" name="startaid" placeholder="请输入标签id开始" class="admin-input-sm mr-3">
 						<input type="text" name="endaid" placeholder="请输入标签id结束" class="admin-input-sm mr-3">
 						<button name="submit" type="submit" class="btn btn-success btn-sm">获取标签</button>
-						<a href="makehtml_taglist.php" name="sb" class="btn btn-success btn-sm">生成</a>
+						<a href="makehtml_taglist.php" name="sb" class="btn btn-success btn-sm">更新标签</a>
 					</td>
 				</form>
 			</tr>
@@ -55,8 +55,8 @@
 					<td><?php echo $fields['uptime'];?></td>
 					<td>
 						<a href='javascript:UpdateKwDes(<?php echo $fields['id'];?>,"<?php echo $fields['tag'];?>");' class="btn btn-light btn-sm"><i class="fa fa-cog"></i> 设置</a>
-						<a href="javascript:UpdateOne(<?php echo $fields['id'];?>);" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 更新</a>
-						<a href="makehtml_taglist.php?tagid=<?php echo $fields['id'];?>" class="btn btn-light btn-sm"><i class="fa fa-spinner"></i> 生成</a>
+						<a href="javascript:UpdateOne(<?php echo $fields['id'];?>);" class="btn btn-light btn-sm"><i class="fa fa-refresh"></i> 刷新</a>
+						<a href="makehtml_taglist.php?tagid=<?php echo $fields['id'];?>" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 更新</a>
 						<a href="javascript:DeleteOne(<?php echo $fields['id'];?>);" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 					</td>
 				</tr>
