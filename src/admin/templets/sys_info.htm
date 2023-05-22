@@ -46,17 +46,17 @@
 						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 						<table class="table-borderless w-100">
 							<tr>
-								<td width="120">变量说明</td>
+								<td width="120">变量说明：</td>
 								<td width="370"><input type="text" name="varmsg" id="varmsg" class="admin-input-lg"></td>
-								<td width="120">变量值</td>
+								<td width="120">变量值：</td>
 								<td width="370"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-lg"></td>
 							</tr>
 							<tr>
-								<td width="120">变量名称</td>
+								<td width="120">变量名称：</td>
 								<td colspan="3"><input type="text" name="nvarname" id="nvarname" class="admin-input-lg"></td>
 							</tr>
 							<tr>
-								<td width="120">变量类型</td>
+								<td width="120">变量类型：</td>
 								<td width="370">
 									<label><input type="radio" name="vartype" value="string" checked="checked"> 文本</label>
 									<label><input type="radio" name="vartype" value="number"> 数字</label>
@@ -64,7 +64,7 @@
 									<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
 									<label><input type="radio" name="vartype" value="img"> 图片</label>
 								</td>
-								<td width="120">所属组</td>
+								<td width="120">变量所属：</td>
 								<td width="170">
 									<?php
 									echo "<select name='vargroup' class='admin-input-sm'>";
