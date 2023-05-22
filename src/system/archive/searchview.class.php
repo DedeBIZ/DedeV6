@@ -273,9 +273,9 @@ class SearchView
             $this->dsql->Execute('l');
             while ($row = $this->dsql->GetArray('l')) {
                 if ($row['count'] > 1000) {
-                    $fstyle = " style='font-size:11pt;color:red'";
+                    $fstyle = " style='color:red'";
                 } else if ($row['count'] > 300) {
-                    $fstyle = " style='font-size:10pt;color:green'";
+                    $fstyle = " style='color:green'";
                 } else {
                     $style = "";
                 }
@@ -285,7 +285,7 @@ class SearchView
         }
     }
     /**
-     *  加粗关键词
+     *  关键词加粗标红
      *
      * @access    private
      * @param     string  $fstr  关键词字符
@@ -302,9 +302,9 @@ class SearchView
             if (ord($k[0]) > 0x80 && strlen($k) < 2) {
                 continue;
             }
-            //这里不区分大小写进行关键词替换
-            $fstr = str_ireplace($k, "<span class='text-danger'>$k</span>", $fstr);
-            //速度更快，效率更高$fstr = str_replace($k, "<span class='text-danger'>$k</span>", $fstr);
+            //不区分大小$fstr = str_ireplace($k, "<strong style='color:red'>$k</strong>", $fstr);
+            //速度效率更快
+            $fstr = str_replace($k, "<strong style='color:red'>$k</strong>", $fstr);
         }
         return $fstr;
     }
