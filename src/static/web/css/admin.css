@@ -313,10 +313,6 @@ body.hidemenu .body-right {
 .card-body {
 	padding:.65rem
 }
-.card-height {
-	max-height:490px;
-	overflow-y:auto
-}
 .web-info {
 	padding:10px;
 	background:#f5f5f5
