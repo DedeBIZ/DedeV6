@@ -31,9 +31,9 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90"><?php echo $cInfos['titlename'];?>：</td>
+								<td width="120"><?php echo $cInfos['titlename'];?>：</td>
 								<td width="400"><input type="text" name="title" id="title" value="" class="admin-input-lg"></td>
-								<td width="90">简略标题：</td>
+								<td width="120">简略标题：</td>
 								<td><input type="text" name="shorttitle" id="shorttitle" class="admin-input-sm"></td>
 							</tr>
 						</table>
@@ -43,7 +43,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">自定义属性：</td>
+								<td width="120">自定义属性：</td>
 								<td>
 									<?php
 									$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -65,7 +65,7 @@
 					<td class="admin-td" id="redirecturltr" style="display:none">
 						<table>
 							<tr>
-								<td width="90">跳转网址：</td>
+								<td width="120">跳转网址：</td>
 								<td><input type="text" name="redirecturl" id="redirecturl" value="" class="admin-input-lg"></td>
 							</tr>
 						</table>
@@ -75,7 +75,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">标签：</td>
+								<td width="120">标签：</td>
 								<td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" class="admin-input-lg">（英文逗号分开，如“DedeBIZ,得德”）</td>
 								<td width="60">权重：</td>
 								<td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc'];?>" class="admin-input-sm">（越小越靠前）</td>
@@ -87,8 +87,8 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">缩略图：</td>
-								<td width="620">
+								<td width="120">缩略图：</td>
+								<td width="630">
 									<input type="text" name="picname" id="picname" class="admin-input-lg">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="l-height-28"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
@@ -104,7 +104,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">来源：</td>
+								<td width="120">来源：</td>
 								<td width="260">
 									<input type="text" name="source" id="source" value="" class="admin-input-sm">
 									<button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -129,7 +129,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">发布栏目：</td>
+								<td width="120">发布栏目：</td>
 								<td width="360">
 									<span id="typeidct">
 										<?php
@@ -147,7 +147,7 @@
 									}
 									?>
 								</td>
-								<td width="90">需要金币：</td>
+								<td width="120">需要金币：</td>
 								<td><input type="text" name="money" id="money" value="0" class="admin-input-sm"></td>
 							</tr>
 						</table>
@@ -157,7 +157,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">副栏目：</td>
+								<td width="120">副栏目：</td>
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="" class="admin-input-sm">
@@ -171,7 +171,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">关键词：</td>
+								<td width="120">关键词：</td>
 								<td width="410">
 									<input type="text" name="keywords" id="keywords" value="" class="admin-input-lg">
 									<button type="button" name="Submit" value="" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
@@ -187,7 +187,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">描述：</td>
+								<td width="120">描述：</td>
 								<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea></td>
 							</tr>
 						</table>
@@ -198,7 +198,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">附加选项：</td>
+								<td width="120">附加选项：</td>
 								<td>
 									<label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo 'checked="1"';?>> 下载远程图片和资源</label>
 									<label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if ($cfg_arc_dellink=='Y') echo 'checked="1"';?>> 删除非站内链接</label>
@@ -215,12 +215,12 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90" width="260">评论选项：</td>
+								<td width="120" width="260">评论选项：</td>
 								<td width="260">
 									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
 									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
 								</td>
-								<td width="90">发布选项：</td>
+								<td width="120">发布选项：</td>
 								<td>
 									<label><input type="radio" name="ishtml" value="1" checked> 生成网页</label>
 									<label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
@@ -233,7 +233,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">文档排序：</td>
+								<td width="120">文档排序：</td>
 								<td width="260">
 									<select name="sortup" id="sortup" class="admin-input-sm">
 										<option value="0" selected>默认排序</option>
@@ -244,7 +244,7 @@
 										<option value="360">置顶一年</option>
 									</select>
 								</td>
-								<td width="90">标题颜色：</td>
+								<td width="120">标题颜色：</td>
 								<td>
 									<input type="text" name="color" id="color" class="admin-input-sm">
 									<button type="button" name="modcolor" id="modcolor" onclick="ShowColor(event,this)" class="btn btn-success btn-sm">选取</button>
@@ -257,7 +257,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">阅读权限：</td>
+								<td width="120">阅读权限：</td>
 								<td width="260">
 									<select name="arcrank" id="arcrank" class="admin-input-sm">
 									<?php
@@ -271,7 +271,7 @@
 									?>
 									</select>
 								</td>
-								<td width="90">文件名称：</td>
+								<td width="120">文件名称：</td>
 								<td><input type="text" name="filename" id="filename" class="admin-input-sm">（不包括后缀名如.html等）</td>
 							</tr>
 						</table>
@@ -281,14 +281,14 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">发布时间：</td>
+								<td width="120">发布时间：</td>
 								<td width="260">
 									<?php
 									$nowtime = GetDateTimeMk(time());
 									echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker admin-input-sm'>";
 									?>
 								</td>
-								<td width="90">浏览次数：</td>
+								<td width="120">浏览次数：</td>
 								<td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(1000,6000):$cfg_arc_click);?>" class="admin-input-sm"></td>
 							</tr>
 						</table>

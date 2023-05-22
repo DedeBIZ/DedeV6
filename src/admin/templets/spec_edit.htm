@@ -38,9 +38,9 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">专题名称：</td>
+								<td width="120">专题名称：</td>
 								<td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
-								<td width="90">简略标题：</td>
+								<td width="120">简略标题：</td>
 								<td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-sm"></td>
 							</tr>
 						</table>
@@ -50,7 +50,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">自定义属性：</td>
+								<td width="120">自定义属性：</td>
 								<td>
 									<?php
 									$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -73,8 +73,8 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">缩略图：</td>
-								<td width="620">
+								<td width="120">缩略图：</td>
+								<td width="630">
 									<input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-lg">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="l-height-28"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
@@ -90,7 +90,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">作者：</td>
+								<td width="120">作者：</td>
 								<td><input type="text" name="writer" id="writer" value="<?php echo $arcRow['writer']?>" class="admin-input-sm"></td>
 							</tr>
 						</table>
@@ -100,7 +100,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">主分类：</td>
+								<td width="120">主分类：</td>
 								<td>
 									<?php
 									$typeOptions = GetOptionList($arcRow["typeid"],$cuserLogin->getUserChannel(),0);
@@ -119,7 +119,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">关键词：</td>
+								<td width="120">关键词：</td>
 								<td><label><input type="text" name="keywords" rows="3" id="keywords" value="<?php echo $arcRow['keywords']?>" class="admin-input-lg"></label></td>
 							</tr>
 						</table>
@@ -129,7 +129,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">专题说明：</td>
+								<td width="120">专题说明：</td>
 								<td><textarea name="description" id="textarea" class="admin-textarea-sm"><?php echo $arcRow['description']?></textarea></td>
 							</tr>
 						</table>
@@ -166,7 +166,7 @@
 								if (empty($rownum)) $rownum = 40;
 							?>
 							<tr>
-								<td width="90" class="admin-td">节点<?php echo $i?>名称：</td>
+								<td width="120" class="admin-td">节点<?php echo $i?>名称：</td>
 								<td class="admin-td">
 									<input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" class="admin-input-lg" value="<?php echo $notename?>">
 									<label>节点标识：<input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" value="<?php echo $noteid?>" class="admin-input-sm"></label>
@@ -211,7 +211,7 @@
 							{
 							?>
 							<tr>
-								<td width="90" class="admin-td">节点<?php echo $i?>名称：</td>
+								<td width="120" class="admin-td">节点<?php echo $i?>名称：</td>
 								<td class="admin-td">
 									<input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" class="admin-input-lg">
 									<label>节点标识：<input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" class="admin-input-sm"></label>
@@ -256,11 +256,11 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90" width="260">评论选项：</td>
+								<td width="120" width="260">评论选项：</td>
 								<td width="260">
 									<label><input type="radio" name="notpost" value="0" <?php if ($arcRow['notpost']==0) echo "checked='1'";?>> 允许评论</label>
 									<label><input type="radio" name="notpost" value="1" <?php if ($arcRow['notpost']==1) echo "checked='1'";?>> 禁止评论</label>
-								<td width="90">发布选项：</td>
+								<td width="120">发布选项：</td>
 								<td>
 									<label><input type="radio" name="ishtml" value="1" <?php if ($arcRow["ismake"]!=-1) echo "checked='1'";?>> 生成网页</label>
 									<label><input type="radio" name="ishtml" value="0" <?php if ($arcRow["ismake"]==-1) echo "checked='1'";?>> 仅动态浏览</label>
@@ -273,7 +273,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">文档排序：</td>
+								<td width="120">文档排序：</td>
 								<td width="260">
 									<select name="sortup" id="sortup" class="admin-input-sm">
 										<?php
@@ -288,7 +288,7 @@
 										<option value="360">置顶一年</option>
 									</select>
 								</td>
-								<td width="90">标题颜色：</td>
+								<td width="120">标题颜色：</td>
 								<td>
 									<input type="text" name="color" id="color" class="admin-input-sm" value="<?php echo $arcRow['color']?>">
 									<button type="button" name="modcolor" id="modcolor" value="" onclick="ShowColor(event,this)" class="btn btn-success btn-sm">选取</button>
@@ -301,12 +301,12 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">专题模板：</td>
+								<td width="120">专题模板：</td>
 								<td width="260">
 									<input type="text" name="templet" id="templet" value="<?php echo $addRow['templet']?>" class="admin-input-sm">
 									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
 								</td>
-								<td width="90">文件名称：</td>
+								<td width="120">文件名称：</td>
 								<td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="admin-input-sm">（不包括后缀名如.html等）
 								</td>
 							</tr>
@@ -317,7 +317,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">发布时间：</td>
+								<td width="120">发布时间：</td>
 								<td>
 									<?php
 									$addtime = GetDateTimeMk($arcRow["senddate"]);
@@ -332,14 +332,14 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">更新时间：</td>
+								<td width="120">更新时间：</td>
 								<td width="260">
 									<?php
 									$nowtime = GetDateTimeMk($arcRow["pubdate"]);
 									echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker admin-input-sm'>";
 									?>
 								</td>
-								<td width="90">浏览次数：</td>
+								<td width="120">浏览次数：</td>
 								<td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" class="admin-input-sm"></td>
 							</tr>
 						</table>

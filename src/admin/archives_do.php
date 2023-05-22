@@ -260,11 +260,11 @@ else if ($dopost == "checkArchives") {
         echo "<table>";
         ?>
         <tr>
-            <td width="90" class="admin-td">目标栏目：</td>
+            <td width="120" class="admin-td">目标栏目：</td>
             <td class="admin-td"><?php echo $typeOptions;?></td>
         </tr>
         <tr>
-            <td width="90" class="admin-td">文档id：</td>
+            <td width="120" class="admin-td">文档id：</td>
             <td class="admin-td">
                 <p>（移动栏目和选定文档栏目类型一致，否则过滤不相关文档）</p>
                 <input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>">
@@ -484,7 +484,7 @@ else if ($dopost == 'quickEdit') {
     echo "<table>";
     ?>
     <tr>
-        <td width="90" class="admin-td">所属栏目：</td>
+        <td width="120" class="admin-td">所属栏目：</td>
         <td class="admin-td">
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
@@ -496,7 +496,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">属性：</td>
+        <td width="120" class="admin-td">属性：</td>
         <td class="admin-td">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
@@ -513,15 +513,15 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">标题：</td>
+        <td width="120" class="admin-td">标题：</td>
         <td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">简略标题：</td>
+        <td width="120" class="admin-td">简略标题：</td>
         <td class="admin-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">阅读权限：</td>
+        <td width="120" class="admin-td">阅读权限：</td>
         <td class="admin-td">
             <select name="arcrank" id="arcrank" class="admin-input-sm">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>
@@ -539,7 +539,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">关键词：</td>
+        <td width="120" class="admin-td">关键词：</td>
         <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
@@ -762,7 +762,7 @@ else if ($dopost == 'attsDlg') {
     echo "<table>";
     ?>
     <tr>
-        <td width="90" class="admin-td">属性：</td>
+        <td width="120" class="admin-td">属性：</td>
         <td class="admin-td">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
@@ -776,7 +776,7 @@ else if ($dopost == 'attsDlg') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">文档id：</td>
+        <td width="120" class="admin-td">文档id：</td>
         <td class="admin-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
     </tr>
     <tr>

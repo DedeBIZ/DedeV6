@@ -31,7 +31,7 @@ function moveArc(e, obj, cid){
 		ShowMsg('需要选择一个或多个文档');
 		return;
 	}
-	LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr='+qstr+'&channelid='+cid+'&rnd='+Math.random(), 'moveArchives', '500px', '180px');
+	LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr='+qstr+'&channelid='+cid+'&rnd='+Math.random(), 'moveArchives', 'auto', '180px');
 	ChangeFullDiv('show');
 }
 function adArc(aid) {
@@ -46,7 +46,7 @@ function cAtts(jname, e, obj) {
 		ShowMsg('需要选择一个或多个文档');
 		return;
 	}
-	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr='+qstr+'&dojob='+jname+'&rnd='+Math.random(), 'attsDlg', '500px', '180px');
+	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr='+qstr+'&dojob='+jname+'&rnd='+Math.random(), 'attsDlg', 'auto', '180px');
 	ChangeFullDiv('show', screeheight);
 }
 function delArc(aid) {

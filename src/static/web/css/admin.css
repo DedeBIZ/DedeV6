@@ -9,7 +9,7 @@
 	background:#f5f5f5
 }
 * {
-	font-size:12px;
+	font-size:14px;
 	scrollbar-color:#dee2e6 #f5f5f5;
 	scrollbar-width:thin
 }
@@ -17,7 +17,7 @@ body {
 	margin:0;
 	line-height:1.6;
 	letter-spacing:.6px;
-	font-size:12px;
+	font-size:14px;
 	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
 	color:#545b62;
 	background:#fff
@@ -311,7 +311,7 @@ body.hidemenu .body-right {
 	padding:0 20px 0 10px!important
 }
 .card-body {
-	padding:.65rem
+	padding:.5rem
 }
 .web-info {
 	padding:10px;
@@ -362,20 +362,20 @@ body.hidemenu .body-right {
 	cursor:pointer
 }
 .coolbg2 {
-	padding:.65rem;
+	padding:.5rem;
 	background:#fff;
 	border-bottom:1px solid #dee2e6;
 	text-align:right
 }
 .colordlg {
-	padding:.6rem;
+	padding:.5rem;
 	width:120px;
 	background:#fff;
 	border:2px solid #1eb867;
 	z-index:10005
 }
 .wsselect {
-	padding:.65rem 0;
+	padding:.5rem;
 	background:#fff;
 	overflow:auto
 }
@@ -385,7 +385,7 @@ body.hidemenu .body-right {
 	z-index:8888
 }
 .pubdlg .title {
-	padding-left:.65rem;
+	padding:0 .5rem;
 	height:28px;
 	line-height:28px;
 	font-weight:600;
@@ -412,7 +412,7 @@ body.hidemenu .body-right {
 	z-index:10005
 }
 .quickselfoot {
-	padding:.65rem 0;
+	padding:.5rem;
 	border-top:1px solid #dee2e6
 }
 .quickselitem {
@@ -440,7 +440,7 @@ body.hidemenu .body-right {
 	z-index:10001
 }
 .wsselect {
-	padding:.65rem
+	padding:.5rem
 }
 #uploadfield {
 	float:left
@@ -466,7 +466,7 @@ body.hidemenu .body-right {
 	color:#545b62
 }
 .table td,.table th {
-	padding:.65rem;
+	padding:.5rem;
 	vertical-align:middle
 }
 .form-control {
@@ -481,10 +481,10 @@ body.hidemenu .body-right {
 	line-height:28px
 }
 .list-group-item {
-	padding:.65rem 0
+	padding:.5rem 0
 }
 .btn-xs {
-	padding:2px;
+	padding:.2rem;
 	line-height:12px;
 	font-size:12px
 }
@@ -508,7 +508,7 @@ body.hidemenu .body-right {
 	text-align:center
 }
 .admin-td {
-	padding:.65rem;
+	padding:.5rem;
 	border-bottom:1px solid #dee2e6
 }
 .admin-textarea-xl {

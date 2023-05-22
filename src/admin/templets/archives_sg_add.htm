@@ -31,7 +31,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90"><?php echo $cInfos['titlename'];?>：</td>
+								<td width="120"><?php echo $cInfos['titlename'];?>：</td>
 								<td><input type="text" name="title" id="title" value="" class="admin-input-lg"></td>
 							</tr>
 						</table>
@@ -41,7 +41,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">自定义属性：</td>
+								<td width="120">自定义属性：</td>
 								<td>
 									<?php
 									$dsql->SetQuery("SELECT * FROM `#@__arcatt` WHERE att<>'j' And att<>'p' ORDER BY sortid ASC");
@@ -60,8 +60,8 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">缩略图：</td>
-								<td width="620">
+								<td width="120">缩略图：</td>
+								<td width="630">
 									<input type="text" name="picname" id="picname" class="admin-input-lg">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="l-height-28"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
@@ -82,7 +82,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">发布栏目：</td>
+								<td width="120">发布栏目：</td>
 								<td>
 									<span id="typeidct">
 										<?php
@@ -104,7 +104,7 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="90">浏览权限：</td>
+								<td width="120">浏览权限：</td>
 								<td>
 									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<?php

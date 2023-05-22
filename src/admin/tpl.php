@@ -116,7 +116,7 @@ else if ($action == 'upload') {
     $win->AddHidden("action", 'uploadok');
     $msg = "<table>
         <tr>
-            <td width='90'>选择文件：</td>
+            <td width='120'>选择文件：</td>
             <td>
                 <input name='acdir' type='hidden' value='$acdir'>
                 <input name='token' type='hidden' value='{$_SESSION['token']}'>
