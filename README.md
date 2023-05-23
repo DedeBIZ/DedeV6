@@ -6,7 +6,7 @@ DedeBIZ系统基于PHP7版本开发，具有很强的可扩展性，并且完全
 
 DedeV6.x是一个LTS版本，支持将到2025年10月截止，目前DedeV6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取
 
-![DedeBIZ](docs/dedebiz.jpg)
+![DedeBIZ](docs/dedebiz.png)
 
 ## 参与开源
 
