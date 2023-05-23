@@ -320,9 +320,11 @@ if (!function_exists('file_put_contents')) {
  * @param     string  $gourl     跳转地址
  * @param     int     $onlymsg   仅显示信息
  * @param     int     $limittime 限制时间
+ * @param     string  $btnmsg    按钮提示
+ * @param     string  $target    跳转类型
  * @return    void
  */
-function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
+function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0, $btnmsg='点击反应', $target="_self")
 {
     if (isset($GLOBALS['format']) && strtolower($GLOBALS['format'])==='json') {
         echo json_encode(array(
@@ -358,8 +360,8 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         $rmsg .= "document.write(\"";
         if ($onlymsg == 0) {
             if ($gourl != 'javascript:;' && $gourl != '') {
-                $rmsg .= "<div class='btn'><a href='{$gourl}'>点击反应</a></div>\");";
-                $rmsg .= "setTimeout('JumpUrl()',$litime);";
+                $rmsg .= "<div class='btn'><a href='{$gourl}' target='{$target}'>{$btnmsg}</a></div>\");";
+                $rmsg .= $litime > 0? "setTimeout('JumpUrl()',$litime);" : "";
             } else {
                 $rmsg .= "</div>\");";
             }

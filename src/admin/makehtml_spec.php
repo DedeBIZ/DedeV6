@@ -15,8 +15,7 @@ if ($dopost == "ok") {
     require_once(DEDEINC."/archive/specview.class.php");
     $sp = new SpecView();
     $rurl = $sp->MakeHtml(0);
-    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/admin.css\">";
-    echo "<div class=\"alert alert-success\">完成所有专题更新，<a href=\"$rurl\" target=\"_blank\">浏览专题</a></div>";
+    ShowMsg("完成所有专题更新", $rurl, 0, -1,'浏览专题', '_blank');
     exit();
 }
 include DedeInclude('templets/makehtml_spec.htm');
