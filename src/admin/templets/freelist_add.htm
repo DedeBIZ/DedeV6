@@ -18,50 +18,10 @@
 		<script src="js/main.js"></script>
 	</head>
 	<body>
-		<div id="list1" style="display:none">
-			<li class="media border-bottom-dashed mt-2 py-2">
-				<div class="media-body row">
-					<div class="col-12 title">
-						<a href="[field:arcurl/]"><h4 class="mt-0 mb-3">[field:title/]</h4></a>
-					</div>
-				</div>
-			</li>
-		</div>
-		<div id="list2" style="display:none">
-			<li class="media border-bottom-dashed mt-2 py-2">
-				<div class="media-body row">
-					<div class="col-12 title">
-						[field:typelink/]
-						<a href="[field:arcurl/]"><h4 class="mt-0 mb-3">[field:title/]</h4></a>
-					</div>
-				</div>
-			</li>
-		</div>
-		<div id="list3" style="display:none">
-			<table>
-				<tr>
-					<td align="center">[field:imglink/]</td>
-				</tr>
-				<tr>
-					<td align="center">[field:textlink/]</td>
-				</tr>
-			</table>
-		</div>
-		<div id="list4" style="display:none">
-			<li class="media border-bottom-dashed mt-2 py-2">
-				<div class="media-body row">
-					<div class="col-12 title">
-						<a href="[field:arcurl/]">
-							<h4 class="mt-0 mb-3">[field:title/]</h4>
-						</a>
-					</div>
-					<div class="col-12 description py-2">
-						<a href="[field:arcurl/]">[field:description/]</a>
-					</div>
-					<div class="col-12 addinfo">日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 浏览：[field:click/] 好评：[field:scores/]</div>
-				</div>
-			</li>
-		</div>
+		<div id="list1" style="display:none"><p><a href="[field:arcurl/]">[field:title/]</a></p></div>
+		<div id="list2" style="display:none"><p>[field:typelink/]·<a href="[field:arcurl/]">[field:title/]</a></p></div>
+		<div id="list3" style="display:none"><p>[field:imglink/]</p><p>[field:textlink/]</p></div>
+		<div id="list4" style="display:none"><p><a href="[field:arcurl/]">[field:title/]</a></p><p><a href="[field:arcurl/]">[field:description/]</a></p><p><span>日期：[field:pubdate function="MyDate('Y-m-d', @me)"/]</span><span>浏览：[field:click/]</span><span>好评：[field:scores/]</span></p></div>
 		<form action="freelist_add.php" method="post" name="form1" onSubmit="return CheckSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<table align="center" class="table maintable my-3">
