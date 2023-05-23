@@ -122,20 +122,20 @@ if (!function_exists('IsWritable')) {
 //检测权限
 $safeMsg = array();
 $dirname = str_replace('index_body.php', '', strtolower($_SERVER['PHP_SELF']));
-if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
-	$safeMsg[] = '检测到后台管理登录名称带admin，建议您进行修改';
-}
-if (IsWritable(DEDEDATA.'/common.inc.php')) {
-	$safeMsg[] = '检测到数据库配置data/common.inc.php文件写入权限，建议您以管理员权限设置禁止写入和执行';
-}
-if (!IsSSL()) {
-	$safeMsg[] = '检测到网址非安全链接，建议您配置https';
-}
-if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	$safeMsg[] = '检测到php版本过低会无法正常使用后台，建议您升级到php7.x';
-}
 if (!DEDEBIZ_SAFE_MODE) {
 	$safeMsg[] = '系统运行环境为开发模式，建议您启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-xs">详情</a>';
+}
+if (!IsSSL()) {
+	$safeMsg[] = '检测到网址非安全链接，建议您部署https';
+}
+if (IsWritable(DEDEDATA.'/common.inc.php')) {
+	$safeMsg[] = '检测到data/common.inc.php数据库文件写入权限，建议您以管理员权限设置禁止写入和执行';
+}
+if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+	$safeMsg[] = '检测到php版本过低会无法正常使用后台，建议您升级到php8.x';
+}
+if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
+	$safeMsg[] = '检测到后台管理登录链接带admin，建议您进行修改';
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
