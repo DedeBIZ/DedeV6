@@ -18,7 +18,7 @@ define('ALERT_WARNING', 5);
 define('ALERT_INFO', 6);
 define('ALERT_LIGHT', 7);
 define('ALERT_DARK', 8);
-define("ALERT_TPL", '<div style="position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;width:auto;font-size:12px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:.5rem">~content~</div>');
+define("ALERT_TPL", '<div style="position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;width:auto;font-size:14px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:.5rem">~content~</div>');
 //$content:文档，$type:alert类型
 function DedeAlert($content, $type = ALERT_PRIMARY, $isHTML = false)
 {

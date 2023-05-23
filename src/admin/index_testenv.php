@@ -123,16 +123,16 @@ if (!function_exists('IsWritable')) {
 $safeMsg = array();
 $dirname = str_replace('index_body.php', '', strtolower($_SERVER['PHP_SELF']));
 if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
-	$safeMsg[] = '后台管理登录名称为admin，建议您进行修改';
+	$safeMsg[] = '检测到后台管理登录名称带admin，建议您进行修改';
 }
 if (IsWritable(DEDEDATA.'/common.inc.php')) {
-	$safeMsg[] = '数据库配置data/common.inc.php文件，建议您以管理员权限设置禁止写入和执行';
+	$safeMsg[] = '检测到数据库配置data/common.inc.php文件写入权限，建议您以管理员权限设置禁止写入和执行';
 }
 if (!IsSSL()) {
-	$safeMsg[] = '网址非安全链接，建议您配置https';
+	$safeMsg[] = '检测到网址非安全链接，建议您配置https';
 }
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	$safeMsg[] = 'php版本过低会无法正常使用后台，建议您升级到php7.x';
+	$safeMsg[] = '检测到php版本过低会无法正常使用后台，建议您升级到php7.x';
 }
 if (!DEDEBIZ_SAFE_MODE) {
 	$safeMsg[] = '系统运行环境为开发模式，建议您启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-xs">详情</a>';
@@ -142,10 +142,10 @@ if ($rs < 0) {
 	$linkurl = '<a href="sys_admin_user.php" class="btn btn-success btn-xs">修改</a>';
 	switch ($rs) {
 		case -1:
-			$msg = "管理员默认名称没有修改，建议您修改 {$linkurl}";
+			$msg = "检测到管理员默认名称没有修改，建议您修改 {$linkurl}";
 			break;
 		case -2:
-			$msg = "管理员默认名称和密码没有修改，建议您修改 {$linkurl}";
+			$msg = "检测到管理员默认名称和密码没有修改，建议您修改 {$linkurl}";
 			break;
 	}
 	$safeMsg[] = $msg;
@@ -154,7 +154,7 @@ if ($rs < 0) {
 <?php
 if (count($safeMsg) > 0) {
 ?>
-<div class="alert alert-danger mt-3">
+<div class="alert alert-warning mt-3">
 	<ul>
 		<?php
 		$i = 1;

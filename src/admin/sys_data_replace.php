@@ -22,7 +22,7 @@ if (empty($action)) {
 else if ($action == 'getfields') {
     AjaxHead();
     $dsql->GetTableFields($exptable);
-    echo "<div class='alert alert-warning mb-0'>";
+    echo "<div class='alert alert-info mb-0'>";
     echo "表<span class='text-primary'>".$exptable."</span>含有的字段：<br>";
     while ($row = $dsql->GetFieldObject()) {
         echo "<a href=\"javascript:pf('{$row->name}')\">".$row->name."</a>\r\n";

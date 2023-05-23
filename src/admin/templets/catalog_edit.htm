@@ -156,7 +156,7 @@
 						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
 						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
-						<div id="helpvarco" class="alert alert-warning my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
+						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
 					</td>
 				</tr>
 				<tr>
@@ -179,7 +179,7 @@
 						<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-lg">
 						<button type="button" name="set2" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.tempindex')">选择</button>
 						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
-						<div id="helpvar1" class="alert alert-warning my-2" style="display:none">
+						<div id="helpvar1" class="alert alert-info my-2" style="display:none">
 							<p>{tid} 栏目id</p>
 							<span>{cid} 栏目模型名字id</span>
 						</div>
@@ -195,7 +195,7 @@
 					<td>
 						<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-lg">
 						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
-						<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
+						<div id="helpvar2" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{tid} 栏目id</p>
 							<p>{page} 栏目页码数</p>
@@ -210,7 +210,7 @@
 					<td>
 						<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="admin-input-lg">
 						<span onclick="ShowHide('helpvar3')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
-						<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
+						<div id="helpvar3" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{Y}{M}{D} 年月日</p>
 							<p>{timestamp} INT类型的UNIX时间戳</p>

@@ -174,8 +174,8 @@ body.hidemenu .body-right {
 	position:relative;
 	padding-left:50px;
 	display:block;
-	height:40px;
-	line-height:40px;
+	height:42px;
+	line-height:42px;
 	cursor:pointer;
 	transition:all .5s
 }
@@ -184,7 +184,7 @@ body.hidemenu .body-right {
 }
 .item-menu li i {
 	position:absolute;
-	top:13px;
+	top:14px;
 	left:20px;
 	color:#545b62
 }
