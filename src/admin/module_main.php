@@ -82,7 +82,7 @@ if ($action == '') {
     $devInfo = (array)json_decode($devContent);
     $offUrl = "";
     if ($devInfo['dev_type'] == 1) {
-        $offUrl = "<p>官方网址：<code>{$devInfo['offurl']}</code><small>（复制在浏览器中打开）</small></p>";
+        $offUrl = "<p>官方网址：<code>{$devInfo['offurl']}</code></p>";
     }
     $authAt = date("Y-m-d", $devInfo['auth_at']);
     if (!isset($info['dev_id'])) {
@@ -130,12 +130,11 @@ if ($action == '') {
         }
     }
     $prvdir = "<table>\r\n";
-    $prvdir .= "<tr bgcolor='#e9ecef'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
+    $prvdir .= "<tr bgcolor='#e9ecef'><td width='260'>目录</td><td align='center'>可写</td></tr>\r\n";
     foreach ($prvdirs as $k => $v) {
         if ($v) $cw = "<span class='text-success'><i class='fa fa-check'></i></span>";
-        else $cw = "<span class='text-danger'>×</span>";
-        $prvdir .= "<tr><td>$k</td>";
-        $prvdir .= "<td align='center'>$cw</td></tr>\r\n";
+        else $cw = "<span class='text-danger'><i class='fa fa-times'></i></span>";
+        $prvdir .= "<tr><td>$k</td><td align='center'>$cw</td></tr>";
     }
     $prvdir .= "</table>";
     $win = new OxWindow();
@@ -155,33 +154,33 @@ if ($action == '') {
     $win->AddHidden("action", 'setupstart');
     $msg = "<table class='table'>
     <tr>
-        <td class='admin-td' colspan='2'>
+        <td colspan='2'>
             <div class='alert alert-danger mb-0'>安装时文件列表中涉及的目录前可写入权限，此外后台管理目录和主题目录也必须暂时设置可写入权限</div>
         </td>
     </tr>
     <tr>
-        <td width='260' class='admin-td'>模块名称：</td>
-        <td class='admin-td'>{$infos['name']}</td>
+        <td width='260'>模块名称：</td>
+        <td>{$infos['name']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>语言：</td>
-        <td class='admin-td'>{$infos['lang']} {$alertMsg}</td>
+        <td>语言：</td>
+        <td>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-        <td class='admin-td'>文件大小：</td>
-        <td class='admin-td'>{$infos['filesize']}</td>
+        <td>文件大小：</td>
+        <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>开发者id：</td>
-        <td class='admin-td'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a></td>
+        <td>开发者id：</td>
+        <td>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a></td>
     </tr>
     <tr>
-        <td class='admin-td'>发布时间：</td>
-        <td class='admin-td'>{$infos['time']}</td>
+        <td>发布时间：</td>
+        <td>{$infos['time']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>使用协议：</td>
-        <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
+        <td>使用协议：</td>
+        <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
         <td>目录权限说明：<br>../为根目录<br>./表示当前目录</td>
@@ -189,10 +188,7 @@ if ($action == '') {
     </tr>
     <tr>
         <td>模块包含的所有文件列表：</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
+        <td><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
     </tr>
     <tr>
         <td>对于已存在文件处理方法：</td>
@@ -278,28 +274,28 @@ if ($action == '') {
     $win->AddHidden('action', 'delok');
     $msg = "<table class='table'>
     <tr>
-        <td width='260' class='admin-td'>模块名称：</td>
-        <td class='admin-td'>{$infos['name']}</td>
+        <td width='260'>模块名称：</td>
+        <td>{$infos['name']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>语言：</td>
-        <td class='admin-td'>{$infos['lang']} {$alertMsg}</td>
+        <td>语言：</td>
+        <td>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-        <td class='admin-td'>文件大小：</td>
-        <td class='admin-td'>{$infos['filesize']}</td>
+        <td>文件大小：</td>
+        <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>开发者id：</td>
-        <td class='admin-td'>{$dev_id}</td>
+        <td>开发者id：</td>
+        <td>{$dev_id}</td>
     </tr>
     <tr>
-        <td class='admin-td'>发布时间：</td>
-        <td class='admin-td'>{$infos['time']}</td>
+        <td>发布时间：</td>
+        <td>{$infos['time']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>使用协议：</td>
-        <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
+        <td>使用协议：</td>
+        <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
         <td colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
@@ -338,35 +334,32 @@ if ($action == '') {
     $win->AddHidden("action", 'uninstallok');
     $msg = "<table class='table'>
     <tr>
-        <td width='260' class='admin-td'>模块名称：</td>
-        <td class='admin-td'>{$infos['name']}</td>
+        <td width='260'>模块名称：</td>
+        <td>{$infos['name']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>语言：</td>
-        <td class='admin-td'>{$infos['lang']} {$alertMsg}</td>
+        <td>语言：</td>
+        <td>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-        <td class='admin-td'>文件大小：</td>
-        <td class='admin-td'>{$infos['filesize']}</td>
+        <td>文件大小：</td>
+        <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>开发者id：</td>
-        <td class='admin-td'>{$dev_id}</td>
+        <td>开发者id：</td>
+        <td>{$dev_id}</td>
     </tr>
     <tr>
-        <td class='admin-td'>发布时间：</td>
-        <td class='admin-td'>{$infos['time']}</td>
+        <td>发布时间：</td>
+        <td>{$infos['time']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>使用协议：</td>
-        <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
+        <td>使用协议：</td>
+        <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
         <td>模块文件：</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
+        <td><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
     </tr>
     <tr>
         <td>对于模块的文件处理方法：</td>
@@ -464,28 +457,28 @@ if ($action == '') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> - {$infos['name']}");
     $msg = "<table class='table'>
     <tr>
-        <td width='260' class='admin-td'>模块名称：</td>
-        <td class='admin-td'>{$infos['name']}</td>
+        <td width='260'>模块名称：</td>
+        <td>{$infos['name']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>语言：</td>
-        <td class='admin-td'>{$infos['lang']} {$alertMsg}</td>
+        <td>语言：</td>
+        <td>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-        <td class='admin-td'>文件大小：</td>
-        <td class='admin-td'>{$infos['filesize']}</td>
+        <td>文件大小：</td>
+        <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>开发者id：</td>
-        <td class='admin-td'>{$dev_id}</td>
+        <td>开发者id：</td>
+        <td>{$dev_id}</td>
     </tr>
     <tr>
-        <td class='admin-td'>发布时间：</td>
-        <td class='admin-td'>{$infos['time']}</td>
+        <td>发布时间：</td>
+        <td>{$infos['time']}</td>
     </tr>
     <tr>
-        <td class='admin-td'>使用协议：</td>
-        <td class='admin-td'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
+        <td>使用协议：</td>
+        <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
         <td>模块文件：</td>
