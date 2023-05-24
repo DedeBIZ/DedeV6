@@ -13,6 +13,7 @@ define('IS_DEDEAPI', TRUE);
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
 require_once(DEDEADMIN.'/../system/common.inc.php');
 require_once(DEDEINC.'/userlogin.class.php');
+@set_time_limit(0);
 AjaxHead();
 helper('cache');
 $action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update', 'upload_image')) ? $action  : '';
@@ -245,8 +246,12 @@ if ($action === 'is_need_check_code') {
             RmRecurse($backupVerPath);
             mkdir($backupVerPath);
             foreach ($fileList as $f) {
+                $realFile = $backupVerPath.$f->filename;
                 if (!preg_match("/^\//", $f->filename)) {
                     //忽略src之外的目录
+                    continue;
+                }
+                if (file_exists($realFile)) {
                     continue;
                 }
                 $fileUrl = DEDEBIZCDN.'/update/'.$ver->ver.'/src'.$f->filename;
@@ -255,7 +260,7 @@ if ($action === 'is_need_check_code') {
                 $fData = $dhd->GetHtml();
                 $dhd->Close();
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
-                $realFile = $backupVerPath.$f->filename;
+                
                 @mkdir(dirname($realFile), 0777, true);
                 file_put_contents($realFile, $fData);
             }
