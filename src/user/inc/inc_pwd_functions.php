@@ -77,7 +77,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
     $mailtitle = $cfg_webname.":密码修改";
     $mailto = $mailto;
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: $cfg_adminemail";
-    $mailbody = "尊敬的会员".$userid."，临时登录密码：".$randval."\r\n请三天内修改登录密码：".$cfg_basehost."/resetpassword.php?dopost=getpasswd&id=".$mid;
+    $mailbody = "尊敬的会员".$userid."，临时登录密码：".$randval."\r\n请三天内修改登录密码：".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
     if ($type == 'INSERT') {
         $key = md5($randval);
         $sql = "INSERT INTO `#@__pwd_tmp` (`mid` ,`membername` ,`pwd` ,`mailtime`) VALUES ('$mid', '$userid',  '$key', '$mailtime');";
