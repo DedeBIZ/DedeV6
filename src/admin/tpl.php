@@ -114,16 +114,14 @@ else if ($action == 'upload') {
     $wecome_info = "<a href='templets_main.php'>模板管理</a> - 上传模板";
     $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'uploadok');
-    $msg = "<table>
-        <tr>
-            <td width='120'>选择文件：</td>
+    $msg = "<tr>
+            <td width='260'>选择文件：</td>
             <td>
                 <input name='acdir' type='hidden' value='$acdir'>
                 <input name='token' type='hidden' value='{$_SESSION['token']}'>
                 <input name='upfile' type='file' id='upfile' class='admin-input-lg'>
             </td>
-        </tr>
-    </table>";
+        </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('ok', '');
     $win->Display();

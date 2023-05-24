@@ -17,18 +17,18 @@ if (empty($dopost)) {
     $win->mainTitle = "系统修复工具";
     $wecome_info = "系统修复工具";
     $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
-    $msg = "<table>
-        <tr>
+    $msg = "<tr>
             <td>
                 由于手动升级时会员没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
                 1、修复/优化数据表<br>
                 2、更新缓存<br>
                 3、检测系统变量一致性<br>
-                4、检测微表与主表数据一致性<br>
-                <br><a href='sys_repair.php?dopost=1' class='btn btn-danger btn-sm'>常规检测</a>
+                4、检测微表与主表数据一致性
             </td>
         </tr>
-    </table>";
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=1' class='btn btn-success btn-sm'>常规检测</a></td>
+        </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
@@ -41,18 +41,16 @@ else if ($dopost == 1) {
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测数据结构";
     $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
-    $msg = "<table>
-        <tr>
+    $msg = "<tr>
             <td>
-            <span class='text-dark'>已完成数据结构完整性检测</span>
-            如果您系统有下面几种问题之一，请检测微表正确性：<br>
-            1、获取主键失败，无法进行后续操作<br>
-            2、更新数据库#@__archivess表时出错<br>
-            3、列表显示数据目与实际文档数不一致<br>
-            <br><a href='sys_repair.php?dopost=2' class='btn btn-danger btn-sm'>检测数据</a>
+                已完成数据结构完整性检测：<br>
+                1、获取主键失败，无法进行后续操作<br>
+                2、更新数据库#@__archivess表时出错<br>
+                3、列表显示数据目与实际文档数不一致
             </td>
-        </tr>
-    </table>";
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=2' class='btn btn-success btn-sm'>检测数据</a></td>
+        </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
@@ -101,10 +99,10 @@ else if ($dopost == 2) {
         }
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny`");
         if ($row['dd'] == $allarcnum) {
-            $msg .= "<span class='text-dark'>修正记录成功</span><br>";
+            $msg .= "修正记录成功<br>";
         } else {
-            $msg .= "<span class='text-primary'>修正记录失败，建议进行高级综合检测</span><br>";
-            $errall = "<a href='sys_repair.php?dopost=3' class='btn btn-danger btn-sm'>结合性检测</a> ";
+            $msg .= "修正记录失败，建议进行高级综合检测<br>";
+            $errall = "<a href='sys_repair.php?dopost=3' class='btn btn-success btn-sm'>结合性检测</a> ";
         }
     }
     UpDateCatCache();
@@ -113,14 +111,12 @@ else if ($dopost == 2) {
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测微表正确性";
     $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
-    $msg = "<table>
-        <tr>
-            <td>
-                {$msg}<br>
-                {$errall}
-            </td>
+    $msg = "<tr>
+            <td>{$msg}</td>
         </tr>
-    </table>";
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'>{$errall}</td>
+        </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
@@ -162,14 +158,12 @@ else if ($dopost == 3) {
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 高级综合检测修复";
     $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
-    $msg = "<table>
-    <tr>
-        <td>
-            完成所有修复操作，移除错误记录{$errnum}条<br>
-            <a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>
-        </td>
-    </tr>
-    </table>";
+    $msg = "<tr>
+            <td>完成所有修复操作，移除错误记录{$errnum}条</td>
+        </tr>
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'><a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a></td>
+        </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();

@@ -147,7 +147,7 @@ EOT;
 exit;
 }
 if ($i == 1) {
-    echo '<tr bgcolor="#f5f5f5" align="center"><td colspan="3">搜索不到参数</td></tr></table>';
+    echo '<tr><td bgcolor="#f5f5f5" colspan="3" align="center">搜索不到参数</td></tr></table>';
 }
 exit;
 } else if ($dopost == 'make_encode') {

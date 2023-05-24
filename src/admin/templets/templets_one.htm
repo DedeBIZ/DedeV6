@@ -12,8 +12,8 @@
 	<body>
 		<form action="templets_one.php" name="sss">
 			<table align="center" class="table maintable my-3">
-				<tr bgcolor="#f5f5f5">
-					<td>
+				<tr>
+					<td bgcolor="#f5f5f5">
 						<input type="text" name="keyword" value="<?php if (!empty($keyword)) $keyword = '';?>" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<?php
 						$likeid = (!isset($likeid) ? '' : $likeid);
@@ -65,8 +65,8 @@
 					</td>
 				</tr>
 				{/dede:datalist}
-				<tr bgcolor="#f5f5f5" align="center">
-					<td colspan="7">{dede:pagelist listsize='6'/}</td>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>

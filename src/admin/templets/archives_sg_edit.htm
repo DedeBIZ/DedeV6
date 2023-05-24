@@ -25,8 +25,8 @@
 			<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate'];?>">
 			<input type="hidden" name="dopost" value="save">
 			<table width="98%" align="center" id="needset" class="admin-border my-3">
-				<tr bgcolor="#f5f5f5">
-					<td class="admin-td">修改分类文档</td>
+				<tr>
+					<td bgcolor="#f5f5f5" class="admin-td">修改分类文档</td>
 				</tr>
 				<tr>
 					<td class="admin-td">
@@ -125,8 +125,8 @@
 				</tr>
 				<?php }?>
 				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
-				<tr bgcolor="#f5f5f5">
-					<td align="center" class="admin-td">
+				<tr>
+					<td bgcolor="#f5f5f5" align="center" class="admin-td">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 					</td>

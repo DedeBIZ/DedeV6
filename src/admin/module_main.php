@@ -272,8 +272,7 @@ if ($action == '') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> - 删除{$infos['name']}");
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
-    $msg = "<table class='table'>
-    <tr>
+    $msg = "<tr>
         <td width='260'>模块名称：</td>
         <td>{$infos['name']}</td>
     </tr>
@@ -299,8 +298,7 @@ if ($action == '') {
     </tr>
     <tr>
         <td colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
-    </tr>
-    </table>";
+    </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
@@ -332,8 +330,7 @@ if ($action == '') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> - 卸载{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
-    $msg = "<table class='table'>
-    <tr>
+    $msg = "<tr>
         <td width='260'>模块名称：</td>
         <td>{$infos['name']}</td>
     </tr>
@@ -367,8 +364,7 @@ if ($action == '') {
             <label><input type='radio' name='isreplace' value='0' checked='checked'> 手工删除文件，仅运行卸载程序</label>
             <label><input type='radio' name='isreplace' value='2'> 删除模块的所有文件</label>
         </td>
-    </tr>
-    </table>";
+    </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
@@ -455,8 +451,7 @@ if ($action == '') {
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";
     $win->AddTitle("<a href='module_main.php'>模块管理</a> - {$infos['name']}");
-    $msg = "<table class='table'>
-    <tr>
+    $msg = "<tr>
         <td width='260'>模块名称：</td>
         <td>{$infos['name']}</td>
     </tr>
@@ -486,8 +481,7 @@ if ($action == '') {
     </tr>
     <tr>
         <td colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
-    </tr>
-    </table>";
+    </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('hand', '');
     $win->Display();

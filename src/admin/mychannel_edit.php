@@ -52,8 +52,7 @@ if ($dopost == "show") {
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
-    $msg = "<table>
-        <tr>
+    $msg = "<tr>
             <td width='260'>新模型id：</td>
             <td><input name='newid' type='text' id='newid' value='{$newid}' class='admin-input-sm'></td>
         </tr>
@@ -75,8 +74,7 @@ if ($dopost == "show") {
                 <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked='checked'> 复制</label>
                 <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>
             </td>
-        </tr>
-    </table>";
+        </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
@@ -264,18 +262,24 @@ if ($dopost == "show") {
     $win->Init("", "js/blank.js", "");
     $win->AddTitle("栏目<span class='text-primary'>".$row['typename']."</span>默认模板文件说明");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
-    $msg = "<p>
-        <span>文档模板：{$defaulttemplate}/article_{$row['nid']}.htm</span>
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
-    </p>
-    <p>
-        <span>列表模板：{$defaulttemplate}/list_{$row['nid']}.htm</span>
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
-    </p>
-    <p>
-        <span>封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm</span>
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
-    </p>";
+    $msg = "<tr>
+        <td>
+            <span>文档模板：{$defaulttemplate}/article_{$row['nid']}.htm</span>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>列表模板：{$defaulttemplate}/list_{$row['nid']}.htm</span>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm</span>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
+        </td>
+    </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("hand", "");
     $win->Display();

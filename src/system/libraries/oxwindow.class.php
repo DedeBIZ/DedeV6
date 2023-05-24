@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 提示窗口对话框类
+ * 提示提示对话框
  *
  * @version        $id:oxwindow.class.php 2 13:53 2010-11-11 tianya $
  * @package        .Libraries
@@ -10,13 +10,6 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @link           https://www..com
  */
 require_once(DEDEINC."/dedetag.class.php");
-/**
- * 提示窗口对话框类
- *
- * @package          OxWindow
- * @subpackage       .Libraries
- * @link             https://www..com
- */
 class OxWindow
 {
     var $myWin = "";
@@ -29,7 +22,7 @@ class OxWindow
      *  初始化为含表单的页面
      *
      * @param     string  $formaction  表单操作action
-     * @param     string  $checkScript  检测验证js
+     * @param     string  $checkScript  检测验证脚本
      * @param     string  $formmethod  表单类型
      * @param     string  $formname  表单名称
      * @return    void
@@ -60,7 +53,7 @@ class OxWindow
         $this->myWin .= "<input type='hidden' name='$iname' value='$ivalue'>";
     }
     /**
-     *  开始创建窗口
+     *  开始窗口
      *
      * @return    void
      */
@@ -69,51 +62,11 @@ class OxWindow
         $this->myWin .= "<table width='100%'>";
     }
     /**
-     *  添加一个两列的行
-     *
-     * @access    public
-     * @param     string  $iname  名称
-     * @param     string  $ivalue  值
-     * @return    string
-     */
-    function AddItem($iname, $ivalue)
-    {
-        $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td width='260'>$iname</td>";
-        $this->myWinItem .= "<td>$ivalue</td>";
-        $this->myWinItem .= "</tr>";
-    }
-    /**
-     *  添加一个单列的消息行
-     *
-     * @access    public
-     * @param     string  $ivalue  短消息值
-     * @param     string  $height  消息框高度
-     * @param     string  $col  显示列数
-     * @return    void
-     */
-    function AddMsgItem($ivalue, $height = "auto", $col = "2")
-    {
-        if ($height != "" && $height != "0") {
-            $height = " height='$height'";
-        } else {
-            $height = "";
-        }
-        if ($col != "" && $col != 0) {
-            $colspan = "colspan='$col'";
-        } else {
-            $colspan = "";
-        }
-        $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td $colspan $height>$ivalue</td>";
-        $this->myWinItem .= "</tr>";
-    }
-    /**
-     *  添加单列的标题行
+     *  添加单列的标题
      *
      * @access    public
      * @param     string  $title  标题
-     * @param     string  $col  列
+     * @param     string  $col  列数
      * @return    string
      */
     function AddTitle($title, $col = "2")
@@ -125,11 +78,45 @@ class OxWindow
             $colspan = "";
         }
         $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td $colspan>$title</td>";
+        $this->myWinItem .= "<td $colspan class='1'>$title</td>";
         $this->myWinItem .= "</tr>";
     }
     /**
-     *  结束Window
+     *  添加单列的消息
+     *
+     * @access    public
+     * @param     string  $ivalue  消息行
+     * @param     string  $col  列数
+     * @return    void
+     */
+    function AddMsgItem($ivalue, $col = "2")
+    {
+        if ($col != "" && $col != 0) {
+            $colspan = "colspan='$col'";
+        } else {
+            $colspan = "";
+        }
+        $this->myWinItem .= "<tr>";
+        $this->myWinItem .= "<td $colspan class='2'>$ivalue</td>";
+        $this->myWinItem .= "</tr>";
+    }
+    /**
+     *  添加两列
+     *
+     * @access    public
+     * @param     string  $iname  名称
+     * @param     string  $ivalue  值
+     * @return    string
+     */
+    function AddItem($iname, $ivalue)
+    {
+        $this->myWinItem .= "<tr>";
+        $this->myWinItem .= "<td width='260' class='3'>$iname</td>";
+        $this->myWinItem .= "<td>$ivalue</td>";
+        $this->myWinItem .= "</tr>";
+    }
+    /**
+     *  结束窗口
      *
      * @param     bool   $isform
      * @return    void
@@ -143,7 +130,7 @@ class OxWindow
         }
     }
     /**
-     *  添加自定义JS脚本
+     *  添加自定义脚本
      *
      * @param     string  $scripts
      * @return    void
@@ -189,7 +176,7 @@ class OxWindow
         if ($wintype != "") {
             if ($wintype != "hand") {
                 $this->myWin .= "<tr>
-<td colspan='2' align='center'>
+<td bgcolor='#f5f5f5' colspan='2' align='center'>
 <button type='submit' class='btn btn-success btn-sm'>$tt</button>
 <button type='button' class='btn btn-outline-success btn-sm' onClick='history.go(-1);'>返回</button>
 </td>
@@ -216,7 +203,7 @@ class OxWindow
     {
         global $cfg_templets_dir, $wecome_info, $cfg_basedir;
         if (empty($wecome_info)) {
-            $wecome_info = "通用对话框";
+            $wecome_info = "提示对话框";
         }
         $ctp = new DedeTagParse();
         if ($modfile == '') {
