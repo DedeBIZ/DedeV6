@@ -29,8 +29,8 @@ if ($fmdo == "rename") {
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
     $win->AddTitle("修改文件名，当前路径：$ndirstring");
-    $win->AddItem("旧名称：", "<input type='input' name='oldfilename' id='oldfilename' value='$filename'>");
-    $win->AddItem("新名称：", "<input type='input' name='newfilename' id='newfilename'>");
+    $win->AddItem("旧名称：", "<input type='input' name='oldfilename' id='oldfilename' class='admin-input-md' value='$filename'>");
+    $win->AddItem("新名称：", "<input type='input' name='newfilename' id='newfilename' class='admin-input-md'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
@@ -46,7 +46,7 @@ else if ($fmdo == "newdir") {
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("token", make_hash());
     $win->AddTitle("当前目录 $activepathname ");
-    $win->AddItem("新目录：", "<input type='input' name='newpath' id='newpath'>");
+    $win->AddItem("新目录：", "<input type='input' name='newpath' id='newpath' class='admin-input-md'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
@@ -62,7 +62,7 @@ else if ($fmdo == "move") {
     $win->AddTitle("新位置前面不加'/'表示相对于当前位置，加'/'表示相对于根目录");
     $win->AddItem("被移动文件：", $filename);
     $win->AddItem("当前位置：", $activepath);
-    $win->AddItem("新位置：", "<input type='input' name='newpath' id='newpath'>");
+    $win->AddItem("新位置：", "<input type='input' name='newpath' id='newpath' class='admin-input-md'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }

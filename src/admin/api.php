@@ -28,7 +28,7 @@ function checkLogin()
     if ($cuserLogin->getUserID() <= 0 || $cuserLogin->getUserType() != 10) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "当前操作需要登录超级管理员账号",
+            "msg" => "此操作需要登录超级管理员权限",
             "data" => null,
         ));
         exit;
@@ -226,7 +226,7 @@ if ($action === 'is_need_check_code') {
     if (count($row) === 0) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "请先获取版本更新记录",
+            "msg" => "请获取版本更新记录",
             "data" => null,
         ));
         exit;
@@ -272,7 +272,7 @@ if ($action === 'is_need_check_code') {
             SetCache('update', 'vers', $row);
             echo json_encode(array(
                 "code" => 0,
-                "msg" => "正在下载{$ver->ver}的版本更新文件",
+                "msg" => "正在下载{$ver->ver}版本更新文件",
                 "data" => array(
                     "finish" => false,
                 ),
@@ -319,7 +319,7 @@ if ($action === 'is_need_check_code') {
             RmRecurse($backupVerPath);
             echo json_encode(array(
                 "code" => 0,
-                "msg" => "正在应用{$ver->ver}的版本补丁文件",
+                "msg" => "正在更新{$ver->ver}版本补丁文件",
                 "data" => array(
                     "finish" => false,
                 ),
