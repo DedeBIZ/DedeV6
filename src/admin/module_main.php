@@ -152,8 +152,7 @@ if ($action == '') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> - 安装{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
-    $msg = "<table class='table'>
-    <tr>
+    $msg = "<tr>
         <td colspan='2'>
             <div class='alert alert-danger mb-0'>安装时文件列表中涉及的目录前可写入权限，此外后台管理目录和主题目录也必须暂时设置可写入权限</div>
         </td>
@@ -197,8 +196,7 @@ if ($action == '') {
             <label><input type='radio' name='isreplace' value='3'> 覆盖，保留副本</label>
             <label><input type='radio' name='isreplace' value='0'> 保留旧文件</label>
         </td>
-    </tr>
-    </table>";
+    </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
