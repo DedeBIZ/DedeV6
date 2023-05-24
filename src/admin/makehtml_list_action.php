@@ -99,7 +99,7 @@ if ($nextpage >= $totalpage && $finishType) {
         if (empty($reurl)) {
             $reurl = '../apps/list.php?tid='.$tid;
         }
-        ShowMsg("完成所有栏目更新，<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
+        ShowMsg("完成所有栏目更新，<a href='$reurl' target='_blank' class='btn btn-sm btn-success'>浏览栏目</a>", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
         ShowMsg("完成所有栏目更新，数据已优化", "makehtml_all.php?action=make&step=10");
