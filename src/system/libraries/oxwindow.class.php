@@ -71,14 +71,13 @@ class OxWindow
      */
     function AddTitle($title, $col = "2")
     {
-        global $cfg_static_dir;
         if ($col != "" && $col != "0") {
             $colspan = "colspan='$col'";
         } else {
             $colspan = "";
         }
         $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td $colspan class='1'>$title</td>";
+        $this->myWinItem .= "<td $colspan>$title</td>";
         $this->myWinItem .= "</tr>";
     }
     /**
@@ -97,7 +96,7 @@ class OxWindow
             $colspan = "";
         }
         $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td $colspan class='2'>$ivalue</td>";
+        $this->myWinItem .= "<td $colspan>$ivalue</td>";
         $this->myWinItem .= "</tr>";
     }
     /**
@@ -111,7 +110,7 @@ class OxWindow
     function AddItem($iname, $ivalue)
     {
         $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td width='260' class='3'>$iname</td>";
+        $this->myWinItem .= "<td width='260'>$iname</td>";
         $this->myWinItem .= "<td>$ivalue</td>";
         $this->myWinItem .= "</tr>";
     }
