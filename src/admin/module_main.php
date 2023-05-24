@@ -130,7 +130,7 @@ if ($action == '') {
         }
     }
     $prvdir = "<table>\r\n";
-    $prvdir .= "<tr bgcolor='#e9ecef'><td width='260'>目录</td><td align='center'>可写</td></tr>\r\n";
+    $prvdir .= "<tr><td width='260'>目录</td><td align='center'>可写</td></tr>\r\n";
     foreach ($prvdirs as $k => $v) {
         if ($v) $cw = "<span class='text-success'><i class='fa fa-check'></i></span>";
         else $cw = "<span class='text-danger'><i class='fa fa-times'></i></span>";
