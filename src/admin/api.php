@@ -17,7 +17,7 @@ require_once(DEDEINC.'/userlogin.class.php');
 AjaxHead();
 helper('cache');
 $action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update', 'upload_image')) ? $action  : '';
-$curDir = dirname(GetCurUrl()); //当前目录
+$curDir = dirname(GetCurUrl());//当前目录
 /**
  * 登录鉴权
  *
@@ -47,7 +47,7 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 } else if ($action === 'has_new_version') {
-    //判断版本更新差异sql
+    //判断版本sql之间差异
     $unQueryVer = array();
     if (!TableHasField("#@__tagindex", "keywords")) {
         $unQueryVer[] = "6.0.2";
@@ -98,7 +98,7 @@ if ($action === 'is_need_check_code') {
     }
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
-    //是否存在更新版本
+    //发现有新版本
     $phpv = phpversion();
     $sp_os = PHP_OS;
     $mysql_ver = $dsql->GetVersion();
@@ -187,8 +187,8 @@ if ($action === 'is_need_check_code') {
     mkdir($backupPath);
     foreach ($data as $file) {
         $realFile = DEDEROOT.str_replace("\\", '/', $file->filename);
+        //备份文件
         if (file_exists($realFile) && md5_file($realFile) !== $file->hash) {
-            //备份文件
             $dstFile = $backupPath.'/'.str_replace("\\", '/', $file->filename);
             @mkdir(dirname($dstFile), 0777, true);
             copy($realFile, $dstFile);
@@ -247,8 +247,8 @@ if ($action === 'is_need_check_code') {
             mkdir($backupVerPath);
             foreach ($fileList as $f) {
                 $realFile = $backupVerPath.$f->filename;
+                //忽略src之外的目录
                 if (!preg_match("/^\//", $f->filename)) {
-                    //忽略src之外的目录
                     continue;
                 }
                 if (file_exists($realFile)) {
@@ -260,7 +260,6 @@ if ($action === 'is_need_check_code') {
                 $fData = $dhd->GetHtml();
                 $dhd->Close();
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
-                
                 @mkdir(dirname($realFile), 0777, true);
                 file_put_contents($realFile, $fData);
             }
@@ -288,7 +287,7 @@ if ($action === 'is_need_check_code') {
     foreach ($row as $k => $ver) {
         if ($ver->ispatched !== true) {
             $backupVerPath = $backupPath.'/'.$ver->ver;
-            //执行更新SQL文件
+            //执行更新sql文件
             $sql = file_get_contents($backupVerPath.'/update.sql');
             if (!empty($sql)) {
                 $sql = preg_replace('#ENGINE=MyISAM#i', 'TYPE=MyISAM', $sql);
@@ -306,8 +305,8 @@ if ($action === 'is_need_check_code') {
             //复制文件
             $fileList = json_decode(file_get_contents($backupVerPath.'/files.txt'));
             foreach ($fileList as $f) {
+                //忽略src之外的目录
                 if (!preg_match("/^\//", $f->filename)) {
-                    //忽略src之外的目录
                     continue;
                 }
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
@@ -340,7 +339,7 @@ if ($action === 'is_need_check_code') {
         ),
     ));
     exit;
-} else if($action === 'upload_image'){
+} else if($action === 'upload_image') {
     checkLogin();
     $imgfile_name = $_FILES["file"]['name'];
     $activepath = $cfg_image_dir;
