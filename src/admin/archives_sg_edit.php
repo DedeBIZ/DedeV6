@@ -105,7 +105,9 @@ if ($dopost != 'save') {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$id";
     ClearMyAddon($id, $title);
     //返回成功信息
-    $msg = "<tr><td>请选择后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='catalog_do.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>管理分类文档</a></td></tr>";
+    $msg = "<tr>
+        <td bgcolor='#f5f5f5' align='center'><a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='catalog_do.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>管理分类文档</a></td>
+    </tr>";
     $wintitle = "成功修改分类文档";
     $wecome_info = "文档管理 - 修改分类文档";
     $win = new OxWindow();

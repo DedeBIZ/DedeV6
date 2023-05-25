@@ -221,7 +221,9 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "<tr><td>请选择后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理图片文档</a>$backurl</td></tr>";
+    $msg = "<tr>
+        <td bgcolor='#f5f5f5' align='center'><a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理图片文档</a>$backurl</td>
+    </tr>";
     $msg = "{$msg}".GetUpdateTest();
     $wintitle = "成功发布图片文档";
     $wecome_info = "文档管理 - 发布图片文档";

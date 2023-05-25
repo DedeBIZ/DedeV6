@@ -34,7 +34,7 @@ if (empty($dopost)) {
     $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,ch.arcsta FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' AND arc.mid='".$cfg_ml->M_ID."'; ";
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
-        ShowMsg("读取文档信息出错", "-1");
+        ShowMsg("读取文档信息出错", "index.php");
         exit();
     } else if ($row['arcrank'] >= 0) {
         $dtime = time();
@@ -126,7 +126,7 @@ if (empty($dopost)) {
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "请选择后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改图片文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理图片文档</a> ";
+    $msg = "<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改图片文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理图片文档</a> ";
     //提交后返回提交页面
     $wintitle = "成功修改图片文档";
     $wecome_info = "图片管理 - 修改图片文档";
