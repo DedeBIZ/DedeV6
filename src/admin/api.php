@@ -243,8 +243,10 @@ if ($action === 'is_need_check_code') {
             $fileList = $dhd->GetJSON();
             $dhd->Close();
             $backupVerPath = $backupPath.'/'.$ver->ver;
-            RmRecurse($backupVerPath);
-            mkdir($backupVerPath);
+            if (!is_dir($backupVerPath)) {
+                @mkdir($backupVerPath);
+            }
+            $i = 0;
             foreach ($fileList as $f) {
                 $realFile = $backupVerPath.$f->filename;
                 //忽略src之外的目录
@@ -262,6 +264,17 @@ if ($action === 'is_need_check_code') {
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
                 @mkdir(dirname($realFile), 0777, true);
                 file_put_contents($realFile, $fData);
+                $i++;
+                if ($i === 10) {
+                    echo json_encode(array(
+                        "code" => 0,
+                        "msg" => "正在下载{$ver->ver}版本的{$f->filename}文件",
+                        "data" => array(
+                            "finish" => false,
+                        ),
+                    ));
+                    exit;
+                }
             }
             $sqlUrl = DEDEBIZCDN.'/update/'.$ver->ver.'/update.sql';
             $dhd = new DedeHttpDown();
