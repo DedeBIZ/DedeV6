@@ -73,8 +73,8 @@ if ($dopost == 'saveedit') {
         $randcode = mt_rand(10000, 99999);
         $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
         require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "删除会员";
-        $wecome_info = "<a href='sys_admin_user.php'>系统帐号管理</a> - 删除会员";
+        $wintitle = "删除管理员";
+        $wecome_info = "<a href='sys_admin_user.php'>系统帐号管理</a> - 删除管理员";
         $win = new OxWindow();
         $win->Init("sys_admin_user_edit.php", "js/blank.js", "POST");
         $win->AddHidden("dopost", $dopost);
@@ -82,9 +82,8 @@ if ($dopost == 'saveedit') {
         $win->AddHidden("randcode", $randcode);
         $win->AddHidden("safecode", $safecode);
         $win->AddHidden("id", $id);
-        $win->AddTitle("系统提示");
-        $win->AddMsgItem("您确定要删除id<span class='text-primary'>$userid</span>会员吗", "50");
-        $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-lg'>（安全码：<span class='text-primary'>$safecode</span>）", "30");
+        $win->AddMsgItem("<tr><td>您确定要删除id<span class='text-primary'>$userid</span>管理员吗</td></tr>");
+        $win->AddMsgItem("<tr><td>验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-lg'>（安全码：<span class='text-primary'>$safecode</span>）</td></tr>");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -97,7 +96,7 @@ if ($dopost == 'saveedit') {
     //不能删除id为1的创建人帐号，不能删除自己
     $rs = $dsql->ExecuteNoneQuery2("DELETE FROM `#@__admin` WHERE id='$id' AND id<>1 AND id<>'".$cuserLogin->getUserID()."' ");
     if ($rs > 0) {
-        //更新前台会员信息
+        //更新前台管理员信息
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt='0' WHERE mid='$id' LIMIT 1");
         ShowMsg("成功删除一个帐户", "sys_admin_user.php");
     } else {
@@ -105,7 +104,7 @@ if ($dopost == 'saveedit') {
     }
     exit();
 }
-//显示会员信息
+//显示管理员信息
 $randcode = mt_rand(10000, 99999);
 $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
 $typeOptions = '';

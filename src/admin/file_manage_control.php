@@ -109,7 +109,7 @@ else if ($fmdo == "space") {
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "POST");
     $win->AddTitle($titleinfo);
-    $win->AddMsgItem("$totalmb M<br>$totalkb KB<br>$total 字节");
+    $win->AddMsgItem("<tr><td>$totalmb M<br>$totalkb KB<br>$total 字节</td></tr>");
     $winform = $win->GetWindow("");
     $win->Display();
 }

@@ -107,7 +107,7 @@ if ($dopost == "show") {
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
     $win->AddTitle("导入文档模型规则：导入文档模型和原有文档模型冲突，建议导入后修改");
-    $win->AddMsgItem("<textarea name='exconfig' class='form-control'></textarea>");
+    $win->AddMsgItem("<tr><td><textarea name='exconfig' class='form-control'></textarea></td></tr>");
     $winform = $win->GetWindow("ok");
     $win->Display();
     exit();
@@ -265,19 +265,19 @@ if ($dopost == "show") {
     $msg = "<tr>
         <td>
             <span>文档模板：{$defaulttemplate}/article_{$row['nid']}.htm</span>
-            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm' class='btn btn-success btn-sm'>修改</a>
         </td>
     </tr>
     <tr>
         <td>
             <span>列表模板：{$defaulttemplate}/list_{$row['nid']}.htm</span>
-            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm' class='btn btn-success btn-sm'>修改</a>
         </td>
     </tr>
     <tr>
         <td>
             <span>封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm</span>
-            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm' class='btn btn-success btn-sm'>修改</a>
         </td>
     </tr>";
     $win->AddMsgItem("$msg");

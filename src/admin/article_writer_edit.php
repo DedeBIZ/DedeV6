@@ -35,7 +35,7 @@ $win = new OxWindow();
 $win->Init('article_writer_edit.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
 $win->AddTitle("作者姓名用英文逗号分开");
-$win->AddMsgItem("<textarea name='allwriter' id='allwriter' class='admin-textarea-xl'>$allwriter</textarea>");
+$win->AddMsgItem("<tr><td><textarea name='allwriter' id='allwriter' class='admin-textarea-xl'>$allwriter</textarea></td></tr>");
 $winform = $win->GetWindow('ok');
 $win->Display();
 ?>

@@ -38,7 +38,7 @@ $win->Init('article_string_mix.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
 $win->AddHidden('token', $_SESSION['token']);
 $win->AddTitle("<div class='alert alert-info mb-0'>启用字符串混淆来防采集功能，请在文档模板需要的字段加上function='RndString(@me)'属性，如：{dede:field name='body' function='RndString(@me)'/}</div>");
-$win->AddMsgItem("<textarea name='allsource' id='allsource' class='admin-textarea-xl'>$allsource</textarea>");
+$win->AddMsgItem("<tr><td><textarea name='allsource' id='allsource' class='admin-textarea-xl'>$allsource</textarea></td></tr>");
 $winform = $win->GetWindow('ok');
 $win->Display();
 ?>
