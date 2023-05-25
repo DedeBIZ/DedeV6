@@ -12,7 +12,7 @@
 		<script src="js/main.js"></script>
 	</head>
 	<body>
-		<form enctype="multipart/form-data" name="form1" action="media_edit.php" method="POST" onSubmit="return CheckSubmit();">
+		<form name="form1" action="media_edit.php" method="post" enctype="multipart/form-data" onSubmit="return CheckSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="aid" value="<?php echo $aid?>">

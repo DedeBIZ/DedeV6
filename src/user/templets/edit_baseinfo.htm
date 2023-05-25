@@ -21,7 +21,7 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<form action="edit_baseinfo.php" method="post" enctype="multipart/form-data" name="form2" onsubmit="return checkSubmit();">
+						<form name="form2" action="edit_baseinfo.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="save">
 							<input type="hidden" id="newface" name="newface" value="">

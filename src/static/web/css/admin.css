@@ -63,7 +63,7 @@ table tr:last-child td:last-child {
 	border-bottom-right-radius:.5rem;
 	border-bottom:0
 }
-label {
+form,label {
 	margin-bottom:0
 }
 input {

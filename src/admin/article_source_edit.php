@@ -21,7 +21,7 @@ if ($dopost == 'save') {
     flock($fp, 3);
     fwrite($fp, $allsource);
     fclose($fp);
-    echo "<script>alert('Save OK!');</script>";
+    echo "<script>alert('已保存');</script>";
 }
 //读出
 if (empty($allsource) && filesize($m_file) > 0) {
@@ -29,12 +29,11 @@ if (empty($allsource) && filesize($m_file) > 0) {
     $allsource = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wintitle = "文档来源管理";
 $wecome_info = "文档来源管理";
 $win = new OxWindow();
 $win->Init('article_source_edit.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
-$win->AddTitle("每行保存一个来源");
+$win->AddTitle("一行填写一个地址");
 $win->AddMsgItem("<tr><td><textarea name='allsource' id='allsource' class='admin-textarea-xl'>$allsource</textarea></td></tr>");
 $winform = $win->GetWindow('ok');
 $win->Display();

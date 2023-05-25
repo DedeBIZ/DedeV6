@@ -21,7 +21,7 @@ if ($dopost == 'save') {
     flock($fp, 3);
     fwrite($fp, $allurls);
     fclose($fp);
-    echo "<script>alert('Save OK!');</script>";
+    echo "<script>alert('已保存');</script>";
 }
 //读出
 if (empty($allurls) && filesize($m_file) > 0) {
@@ -29,8 +29,7 @@ if (empty($allurls) && filesize($m_file) > 0) {
     $allurls = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wintitle = "";
-$wecome_info = "允许的超链接";
+$wecome_info = "允许站内链接";
 $win = new OxWindow();
 $win->Init('article_allowurl_edit.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');

@@ -21,7 +21,7 @@ if ($dopost == "save") {
     flock($fp, 3);
     fwrite($fp, $allwriter);
     fclose($fp);
-    echo "<script>alert('保存成功');</script>";
+    echo "<script>alert('已保存');</script>";
 }
 //读出
 if (empty($allwriter) && filesize($m_file) > 0) {
@@ -29,7 +29,6 @@ if (empty($allwriter) && filesize($m_file) > 0) {
     $allwriter = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wintitle = "文档作者管理";
 $wecome_info = "文档作者管理";
 $win = new OxWindow();
 $win->Init('article_writer_edit.php', 'js/blank.js', 'POST');

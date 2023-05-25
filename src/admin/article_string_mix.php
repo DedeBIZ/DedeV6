@@ -22,7 +22,7 @@ if ($dopost == "save") {
     flock($fp, 3);
     fwrite($fp, $allsource);
     fclose($fp);
-    echo "<script>alert('Save OK!');</script>";
+    echo "<script>alert('已保存');</script>";
 }
 //读出
 if (empty($allsource) && filesize($m_file) > 0) {
@@ -31,7 +31,6 @@ if (empty($allsource) && filesize($m_file) > 0) {
     fclose($fp);
 }
 make_hash();
-$wintitle = "防采集工具";
 $wecome_info = "防采集工具";
 $win = new OxWindow();
 $win->Init('article_string_mix.php', 'js/blank.js', 'POST');

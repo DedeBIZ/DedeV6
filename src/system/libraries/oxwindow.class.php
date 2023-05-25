@@ -39,7 +39,7 @@ class OxWindow
         }
         $this->myWin .= "</script>";
         $this->formName = $formname;
-        $this->myWin .= "<form name='$formname' method='$formmethod' onSubmit='return CheckSubmit();' action='$formaction'>";
+        $this->myWin .= "<form name='$formname' action='$formaction' method='$formmethod' onSubmit='return CheckSubmit();'>";
     }
     /**
      *  添加隐藏域
