@@ -28,28 +28,28 @@ if ($dopost == "view") {
             if ($rs["admin_pwd_exists"] == "false") {
                 //设定dedebiz admin密码
                 if ($dedebiz_admin == "" || $dedebiz_admin !== $re_dedebiz_admin) {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
                     echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空或两次指定的密码不符</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminPWDCreate($dedebiz_admin);
                 if ($data->data != "ok") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
                     echo "<div class=\"alert alert-danger\">DedeBIZ设定操作密码失败：${$data}</div><br>";
                     $client->Close();
                     exit;
                 }
             } else {
                 if ($dedebiz_admin == "") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
                     echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminSetIndexLockState($dedebiz_admin, $lockindex);
                 if ($data->data != "ok") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
                     echo "<div class=\"alert alert-danger\">DedeBIZ操作密码失败，填写正确的操作密码</div><br>";
                     $client->Close();
                     exit;
