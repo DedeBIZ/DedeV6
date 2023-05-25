@@ -60,5 +60,5 @@ if ($nextpage == $totalpage) {
         ShowMsg("更新列表<span class='text-primary'>".$tid."</span>，继续更新列表", $gourl, 0, 100);
     }
 }
-$dsql->ExecuteNoneQuery("UPDATE `#@__freelist` SET nodefault='1' where aid='$startid';");
+$dsql->ExecuteNoneQuery("UPDATE `#@__freelist` SET nodefault='1' WHERE aid='$startid';");
 ?>

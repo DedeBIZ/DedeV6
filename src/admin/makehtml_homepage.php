@@ -82,11 +82,11 @@ if ($dopost == "view") {
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/admin.css\">";
-        ShowMsg("更新首页模式", $position, 0, -1, '浏览', '_blank');
+        ShowMsg("更新静态首页，<a href='$position' target='_blank'>点击浏览</a>", "javascript:;");
     } else {
         //动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);
-        ShowMsg("动态浏览模式", '../index.php', 0, -1,'浏览', '_blank');
+        ShowMsg("更新动态首页，<a href='../index.php' target='_blank'>点击浏览</a>", "javascript:;");
     }
     $iquery = "UPDATE `#@__homepageset` SET showmod='$showmod'";
     $dsql->ExecuteNoneQuery($iquery);

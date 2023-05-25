@@ -324,7 +324,7 @@ if (!function_exists('file_put_contents')) {
  * @param     string  $target    跳转类型
  * @return    void
  */
-function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0, $btnmsg='点击反应', $target="_self")
+function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
 {
     if (isset($GLOBALS['format']) && strtolower($GLOBALS['format'])==='json') {
         echo json_encode(array(
@@ -360,8 +360,8 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0, $btnmsg='点击反�
         $rmsg .= "document.write(\"";
         if ($onlymsg == 0) {
             if ($gourl != 'javascript:;' && $gourl != '') {
-                $rmsg .= "<div class='text-center mt-3'><a href='{$gourl}' target='{$target}' class='btn btn-success btn-sm'>{$btnmsg}</a></div>\");";
-                $rmsg .= $litime > 0? "setTimeout('JumpUrl()',$litime);" : "";
+                $rmsg .= "<div class='text-center mt-3'><a href='{$gourl}' class='btn btn-success btn-sm'>点击反应</a></div>\");";
+                $rmsg .= "setTimeout('JumpUrl()', $litime);";
             } else {
                 $rmsg .= "</div>\");";
             }

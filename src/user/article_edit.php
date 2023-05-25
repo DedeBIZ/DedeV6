@@ -89,7 +89,6 @@ if (empty($dopost)) {
     $wintitle = "成功修改文档";
     $wecome_info = "文档管理 - 修改文档";
     $win = new OxWindow();
-    $win->AddTitle("成功修改文档");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

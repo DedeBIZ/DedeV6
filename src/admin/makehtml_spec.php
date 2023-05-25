@@ -15,7 +15,7 @@ if ($dopost == "ok") {
     require_once(DEDEINC."/archive/specview.class.php");
     $sp = new SpecView();
     $rurl = $sp->MakeHtml(0);
-    ShowMsg("完成所有专题更新", $rurl, 0, -1,'浏览专题', '_blank');
+    ShowMsg("完成所有专题更新，<a href='$rurl' target='_blank'>点击浏览</a>", "javascript:;");
     exit();
 }
 include DedeInclude('templets/makehtml_spec.htm');

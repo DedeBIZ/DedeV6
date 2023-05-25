@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 提示提示对话框
+ * 提示对话框
  *
  * @version        $id:oxwindow.class.php 2 13:53 2010-11-11 tianya $
  * @package        .Libraries
@@ -88,16 +88,9 @@ class OxWindow
      * @param     string  $col  列数
      * @return    void
      */
-    function AddMsgItem($ivalue, $col = "2")
+    function AddMsgItem($ivalue)
     {
-        if ($col != "" && $col != 0) {
-            $colspan = "colspan='$col'";
-        } else {
-            $colspan = "";
-        }
-        $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td $colspan>$ivalue</td>";
-        $this->myWinItem .= "</tr>";
+        $this->myWinItem .= "$ivalue";
     }
     /**
      *  添加两列
@@ -175,11 +168,11 @@ class OxWindow
         if ($wintype != "") {
             if ($wintype != "hand") {
                 $this->myWin .= "<tr>
-<td bgcolor='#f5f5f5' colspan='2' align='center'>
-<button type='submit' class='btn btn-success btn-sm'>$tt</button>
-<button type='button' class='btn btn-outline-success btn-sm' onClick='history.go(-1);'>返回</button>
-</td>
-</tr>";
+                    <td bgcolor='#f5f5f5' colspan='2' align='center'>
+                    <button type='submit' class='btn btn-success btn-sm'>$tt</button>
+                    <button type='button' class='btn btn-outline-success btn-sm' onClick='history.go(-1);'>返回</button>
+                    </td>
+                </tr>";
             } else {
                 if ($msg != '') {
                     $this->myWin .= "<tr><td>$msg</td></tr>";

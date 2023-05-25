@@ -226,7 +226,7 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件文档</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理软件文档</a>";
+    $msg = "<tr><td>请选择后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件文档</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理软件文档</a></td></tr>";
     $msg = "{$msg}".GetUpdateTest();
     $wintitle = "成功发布软件文档";
     $wecome_info = "文档管理 - 发布软件文档";
