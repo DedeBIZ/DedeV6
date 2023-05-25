@@ -32,7 +32,7 @@ if ($dopost == "show") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("aid", $aid);
         $win->AddTitle("您确定要删除<span class='text-primary'>".$title."</span>插件吗");
-        $win->AddMsgItem("<tr><td>提示：这里仅删除插件导航，在模块管理处卸载删除干净，<a href='module_main.php?moduletype=plus'>模块管理</a>></td>></tr>");
+        $win->AddMsgItem("<tr><td>提示：仅删除插件导航，前往<a href='module_main.php?moduletype=plus'>模块管理</a>卸载删除</td></tr>");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
