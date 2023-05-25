@@ -265,13 +265,10 @@ else if ($dopost == "checkArchives") {
         </tr>
         <tr>
             <td width="120" class="admin-td">文档id：</td>
-            <td class="admin-td">
-                <p>（移动栏目和选定文档栏目类型一致，否则过滤不相关文档）</p>
-                <input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>">
-            </td>
+            <td class="admin-td"><input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"></td>
         </tr>
         <tr>
-            <td colspan="2" align="center" class="py-2">
+            <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
                 <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
             </td>
@@ -543,7 +540,7 @@ else if ($dopost == 'quickEdit') {
         <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td colspan="2" align="center" class="py-2">
+        <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>
@@ -780,7 +777,7 @@ else if ($dopost == 'attsDlg') {
         <td class="admin-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
     </tr>
     <tr>
-        <td colspan="2" align="center" class="py-2">
+        <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>

@@ -390,9 +390,8 @@ body.hidemenu .body-right {
 }
 .pubdlg .title {
 	padding:0 .5rem;
-	height:28px;
-	line-height:28px;
-	font-weight:600;
+	height:30px;
+	line-height:30px;
 	color:#545b62;
 	background:#f5f5f5;
 	border-bottom:1px solid #dee2e6
@@ -417,6 +416,7 @@ body.hidemenu .body-right {
 }
 .quickselfoot {
 	padding:.5rem;
+	background:#f5f5f5;
 	border-top:1px solid #dee2e6
 }
 .quickselitem {
