@@ -229,8 +229,6 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         if (!empty($notypeid)) {
             $orwheres[] = "and arc.typeid NOT IN (".GetSonIds($notypeid).")";
         }
-        //由于这个条件会导致缓存功能失去意义，因此取消
-        //if ($arcid!=0) $orwheres[] = " arc.id<>'$arcid' ";
     }
     //文档排序的方式
     $ordersql = '';
@@ -258,7 +256,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         $orwhere = preg_replace("#^ And#is", '', $orwhere);
         $orwhere = preg_replace("#And[ ]{1,}And#is", 'And ', $orwhere);
     }
-    if ($orwhere != '') $orwhere = " WHERE $orwhere and tp.ishidden != 1 ";
+    if ($orwhere != '') $orwhere = "WHERE $orwhere and tp.ishidden != 1";
     //获取附加表信息
     $addfield = trim($ctag->GetAtt('addfields'));
     $addfieldsSql = '';
