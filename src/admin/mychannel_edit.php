@@ -16,11 +16,11 @@ if (empty($dopost)) $dopost = "";
 $id = isset($id) && is_numeric($id) ? $id : 0;
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=1 WHERE id='$id' ");
-    ShowMsg("启用一个模型", "mychannel_main.php");
+    ShowMsg("启用一个文档模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "hide") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id'");
-    ShowMsg("隐藏一个模型", "mychannel_main.php");
+    ShowMsg("隐藏一个文档模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "copystart") {
     if ($id == -1) {
@@ -126,7 +126,7 @@ if ($dopost == "show") {
         $win->Display();
         exit();
     }
-    $msg = "无信息";
+    $msg = "操作失败";
     $exconfig = stripslashes($exconfig);
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('channel', '<', '>');
@@ -160,7 +160,7 @@ if ($dopost == "show") {
     }
     $rs = $dsql->ExecuteNoneQuery($tabsql);
     if (!$rs) {
-        GotoStaMsg("创建表失败!".$dsql->GetError());
+        GotoStaMsg("创建表失败".$dsql->GetError());
         exit();
     }
     if ($fields['issystem'] == 1) $fields['issystem'] = 0;
