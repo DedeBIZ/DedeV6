@@ -21,7 +21,7 @@ if ($action == 'add') {
         exit();
     }
     if (preg_match("#[^a-z0-9]#i", $nid) || $nid == "") {
-        ShowMsg("模型名字标识必须为英文字母或与数字混合字符串", "-1");
+        ShowMsg("模型名字必须为英文字母或与数字混合字符串", "-1");
         exit();
     }
     if ($addtable == "") {
@@ -33,7 +33,7 @@ if ($action == 'add') {
     //检查id是否重复
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' OR nid LIKE '$nid' OR addtable LIKE '$addtable'");
     if (is_array($row)) {
-        ShowMsg("模型id和模型名称标识及附加表名称在数据库已存在，不能重复使用", "-1");
+        ShowMsg("模型id和模型名称及附加表名称数据库已存在，请重新填写", "-1");
         exit();
     }
     $mysql_version = $dsql->GetVersion();
@@ -80,7 +80,7 @@ if ($action == 'add') {
     }
     $inQuery = "INSERT INTO `#@__channeltype` (id,nid,typename,addtable,addcon,mancon,editcon,useraddcon,usermancon,usereditcon,fieldset,listfields,issystem,issend,arcsta,usertype,sendrank,needdes,needpic,titlename,onlyone,dfcid) VALUES ('$id','$nid','$typename','$addtable','$addcon','$mancon','$editcon','$useraddcon','$usermancon','$usereditcon','$fieldset','$listfields','$issystem','$issend','$arcsta','$usertype','$sendrank','$needdes','$needpic','$titlename','$onlyone','$dfcid');";
     $dsql->ExecuteNoneQuery($inQuery);
-    ShowMsg("成功添加一个模型模型", "mychannel_edit.php?id=".$id);
+    ShowMsg("成功创建一个文档模型", "mychannel_edit.php?id=".$id);
     exit();
 }
 $row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id DESC LIMIT 0,1 ");
