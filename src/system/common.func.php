@@ -554,7 +554,7 @@ if (!function_exists('obtaintags')) {
         return $tags;
     }
 }
-//提取文档多图片[field:body function='obtainimgs(@me,3)'/]3表示调用文档3张图片
+//提取文档多图片[field:body function='obtainimgs(@me,3)'/]3表示调用文档3张图片，body则列表附加字段需添加body字段
 if (!function_exists('obtainimgs')) {
     function obtainimgs($string, $num)
     {

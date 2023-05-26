@@ -47,7 +47,7 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 } else if ($action === 'has_new_version') {
-    //判断版本sql之间差异
+    //判断版本SQL之间差异
     $unQueryVer = array();
     if (!TableHasField("#@__tagindex", "keywords")) {
         $unQueryVer[] = "6.0.2";
@@ -300,7 +300,7 @@ if ($action === 'is_need_check_code') {
     foreach ($row as $k => $ver) {
         if ($ver->ispatched !== true) {
             $backupVerPath = $backupPath.'/'.$ver->ver;
-            //执行更新sql文件
+            //执行更新SQL文件
             $sql = file_get_contents($backupVerPath.'/update.sql');
             if (!empty($sql)) {
                 $sql = preg_replace('#ENGINE=MyISAM#i', 'TYPE=MyISAM', $sql);
