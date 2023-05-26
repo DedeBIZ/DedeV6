@@ -109,11 +109,11 @@ if ($nextpage >= $totalpage && $finishType) {
     $typename = isset($cfg_Cs[$tid][3])? base64_decode($cfg_Cs[$tid][3]) : "";
     if ($finishType) {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage";
-        ShowMsg("更新栏目<span class='text-primary'>（id：".$tid."）{$typename}</span>，继续更新栏目", $gourl, 0, 100);
+        ShowMsg("更新{$typename}栏目[id：".$tid."]，继续更新栏目", $gourl, 0, 100);
         exit();
     } else {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
-        ShowMsg("更新栏目<span class='text-primary'>（id：".$tid."）{$typename}</span>，继续更新栏目", $gourl, 0, 100);
+        ShowMsg("更新{$typename}栏目[id：".$tid."]，继续更新栏目", $gourl, 0, 100);
         exit();
     }
 }
