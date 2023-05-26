@@ -527,10 +527,10 @@ function GetUpdateSQL()
     fclose($fp);
     return $result;
 }
-/*会员中心调用默认主题模板<?php pasterTempletDiy('head.htm');?>*/
-if (!function_exists('pasterTempletDiy')) {
+/*会员中心调用默认主题模板<?php obtaintheme('head.htm');?>*/
+if (!function_exists('obtaintheme')) {
     require_once DEDEINC."/archive/partview.class.php";
-    function pasterTempletDiy($path)
+    function obtaintheme($path)
     {
         global $cfg_basedir, $cfg_templets_dir, $cfg_df_style;
         $tmpfile = $cfg_basedir.$cfg_templets_dir.'/'.$cfg_df_style.'/'.$path;
@@ -539,9 +539,9 @@ if (!function_exists('pasterTempletDiy')) {
         $dtp->Display();
     }
 }
-//标签调用标签[field:id function='GetMyTags(@me,2)'/]2表示调用文档2个标签
-if (!function_exists('GetMyTags')) {
-    function GetMyTags($aid, $num=3)
+//标签调用[field:id function='obtaintags(@me,3)'/]3表示调用文档3个标签
+if (!function_exists('obtaintags')) {
+    function obtaintags($aid, $num = 3)
     {
         global $dsql, $cfg_cmspath;
         $tags = '';
@@ -549,15 +549,32 @@ if (!function_exists('GetMyTags')) {
         $dsql->Execute('tag',$query);
         while($row = $dsql->GetArray('tag')) {
             $link = $cfg_cmspath."/apps/tags.php?/{$row['tid']}";
-            $tags.= ($tags==''?"<a href='{$link}'>{$row['tag']}</a>" : "<a href='{$link}'>{$row['tag']}</a>");
+            $tags .= ($tags==''?"<a href='{$link}'>{$row['tag']}</a>" : "<a href='{$link}'>{$row['tag']}</a>");
         }
         return $tags;
     }
 }
-//联动单筛选标签{dede:php}AddFilter(模型id,类型,'字段1,字段2');{/dede:php}类型对应以下case数值
+//提取文档多图片[field:body function='obtainimgs(@me,3)'/]3表示调用文档3张图片
+if (!function_exists('obtainimgs')) {
+    function obtainimgs($string, $num)
+    {
+        preg_match_all("/<img([^>]*)\s*src=('|\")([^'\"]+)('|\")/", $string, $matches);
+        $imgsrc_arr = array_unique($matches[3]);
+        $count = count($imgsrc_arr);
+        $i = 0;
+        foreach($imgsrc_arr as $imgsrc)
+        {
+            if ($i == $num) break;
+            $result .= "<img src=\"$imgsrc\">";
+            $i++;
+        }
+        return $result;
+    }
+}
+//联动单筛选{dede:php}AddFilter(模型id,类型,'字段1,字段2');{/dede:php}类型有三种，对应以下case值
 function litimgurls($imgid = 0)
 {
-    global $lit_imglist, $dsql;
+    global  $dsql, $lit_imglist;
     $row = $dsql->GetOne("SELECT c.addtable FROM `#@__archives` AS a LEFT JOIN `#@__channeltype` AS c ON a.channel=c.id WHERE a.id='$imgid'");
     $addtable = trim($row['addtable']);
     $row = $dsql->GetOne("SELECT imgurls FROM `$addtable` WHERE aid='$imgid'");
@@ -586,7 +603,7 @@ function string_filter($str, $stype = "inject")
     }
     return $str;
 }
-//联动单筛选发布三种类型
+//联动单筛选三种类型显示
 function AddFilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0, $toptid = 0, $loadtype = 'autofield')
 {
     global $tid, $dsql, $id, $aid;
