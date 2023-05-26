@@ -21,20 +21,20 @@
 				</tr>
 				<tr>
 					<td width="260">自定义表单id：</td>
-					<td><?php echo $diyid;?>（创建后不可修改，并具有唯一性）</td>
+					<td><?php echo $diyid;?>（创建后不可修改，具有唯一性）</td>
 				</tr>
 				<tr>
 					<td>自定义表单名称：</td>
 					<td>
 						<input type="text" name="name" id="name" class="admin-input-sm" value="<?php echo $row['name']?>">
-						<span>（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）</span>
+						<span>（后台管理和前台发布显示名称）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>数据表：</td>
 					<td>
 						<input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $row['table'];?>" disabled="1">
-						<span>（自定义表单数据表创建后不可修改表名）</span>
+						<span>（储存自定义表单数据，不能重复已有表名，创建后不可修改表名）</span>
 					</td>
 				</tr>
 				<tr>

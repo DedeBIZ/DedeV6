@@ -23,30 +23,30 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-danger mb-0">所有填写的文档不允许包含双引号["]，否则配置无法写入</div>
+						<div class="alert alert-danger mb-0">修改时禁止输入双引号["]，则表单保存失败</div>
 					</td>
 				</tr>
 				<tr>
 					<td width="260">提示文字：</td>
 					<td>
 						<input type="text" name="itemname" id="itemname" class="admin-input-sm">
-						<span>（发布表单时显示的提示文字）</span>
+						<span>（发布时显示提示文字）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>字段名称：</td>
 					<td>
 						<input type="text" name="fieldname" id="fieldname" class="admin-input-sm">
-						<span>（只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的组名称）</span>
+						<span>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型的组名称）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>文档是否需要分页符：</td>
+					<td>是否使用分页符：</td>
 					<td>
 						<input type="hidden" name="isnull" value="1">
 						<label><input type="radio" name="spage" value="split"> 是</label>
 						<label><input type="radio" name="spage" value="no" checked="1"> 否</label>
-						<span>（如果文档需要分页符，不论何种文档，都可以用#p#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段）</span>
+						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符，实现文档分页，但仅允许一个字段）</span>
 					</td>
 				</tr>
 				<tr>
@@ -69,7 +69,7 @@
 				<tr>
 					<td>默认值：</td>
 					<td>
-						<p>（如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目，英文逗号分开，如“DedeBIZ,得德”）</p>
+						<p>（如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目，英文逗号分开，如“DedeBIZ,得德”。如果为联动选框，这里填写联动选框项目名称）</p>
 						<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"></textarea>
 					</td>
 				</tr>

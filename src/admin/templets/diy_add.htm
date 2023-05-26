@@ -21,26 +21,26 @@
 					<td width="260">自定义表单id：</td>
 					<td>
 						<input type="text" name="diyid" id="diyid" class="admin-input-sm" value="<?php echo $newdiyid?>">
-						<span>（创建后不可修改，并具有唯一性）</span>
+						<span>（创建后不可修改，具有唯一性）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>定义表单名称：</td>
+					<td>自定义表单名称：</td>
 					<td>
 						<input type="text" name="name" id="name" class="admin-input-sm" value="自定义表单<?php echo $newdiyid;?>">
-						<span>（自定义表单的中文名称，在后台管理，前台发布等均使用此名字）</span>
+						<span>（后台管理和前台发布显示名称）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>数据表：</td>
 					<td>
 						<input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>">
-						<span>（用于保存自定义表单数据，不能和已有表名重复，自定义表单数据表创建后不可修改表名）</span>
+						<span>（储存自定义表单数据，不能重复已有表名，创建后不可修改表名）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>字段配置：</td>
-					<td>信息索引类字段系统已经加入，您只需要添加其它个性化字段即可</td>
+					<td>创建完后，请添加字段配置</td>
 				</tr>
 				<tr>
 					<td>列表模板：</td>

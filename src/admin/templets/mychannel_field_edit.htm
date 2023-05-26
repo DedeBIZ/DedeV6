@@ -23,10 +23,10 @@
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2">文档模型管理</a> - 修改文档模型字段</td>
 				</tr>
-				<?php if ($row['issystem']==1) {?>
+				<?php if ($row['issystem'] == 1) {?>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-danger mb-0">您当前操作的字段属于系统模型字段：修改系统模型有风险，请不要随便改动系统模型的字段相关的属性</div>
+						<div class="alert alert-danger mb-0">修改系统模型有风险，请不要随便修改系统模型的字段相关属性</div>
 					</td>
 				</tr>
 				<?php }?>
@@ -39,20 +39,30 @@
 				</tr>
 				<tr>
 					<td width="260">字段名称：</td>
-					<td><?php echo $fname?>（只能用英文字母或数字，数据表的真实字段名）</td>
+					<td><?php echo $fname?>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型的组名称）</td>
 				</tr>
 				<tr>
 					<td>字段类型：</td>
 					<td>
-						<label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");?>> 系统自动生成表单字段</label>
-						<label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");?>> 已经固化在发布表单中字段</label>
+						<label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");?>> 自动字段</label>
+						<label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");?>> 固化字段</label>
 					</td>
 				</tr>
 				<tr>
 					<td>前台参数：</td>
 					<td>
-						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 使字段可以在列表的底层模板中获得（自定义字段默认仅能在文档模板显示，启用此选项使列表查询变慢，如无必要请不要选择）</label><br>
-						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");?>> 前台投稿及采集规则禁用本字段</label>
+						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");?>> 投稿和采集禁用字段</label>
+						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 使字段可以在列表的底层模板中获得</label>
+						<span>（列表模板“{dede:list}{/dede:list}”中，标签“[field:name/]”调用）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>是否使用分页符：</td>
+					<td>
+						<input name="isnull" type="hidden" value="1">
+						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
+						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
+						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符，实现文档分页，但仅允许一个字段）</span>
 					</td>
 				</tr>
 				<tr>
@@ -107,16 +117,7 @@
 							}
 							?>
 						</select>
-						<label class="l-height-28"><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时候自动更新关联网页文档</label>
-					</td>
-				</tr>
-				<tr>
-					<td>文档是否需要分页符：</td>
-					<td>
-						<input name="isnull" type="hidden" value="1">
-						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
-						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
-						<span>（如果文档需要分页符，不论何种文档，都可以用#p#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段）</span>
+						<label class="l-height-28"><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时自动更新关联文档</label>
 					</td>
 				</tr>
 				<tr>

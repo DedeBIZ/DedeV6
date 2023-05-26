@@ -20,34 +20,34 @@
 					<td>
 						<label><input type="radio" name="issystem" id="is1" value="0" onclick="PublicDefault()" checked="1"> 自动模型</label>
 						<label><input type="radio" name="issystem" id="is2" value="1" onclick="PublicDefault()"> 系统模型</label>
-						<label><input type="radio" name="issystem" id="is3" value="-1" onclick="PublicDefault()"> 独立模型，不使用主表</label>
-						<span>（如果为系统模型禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid,typeid,senddate,title,mid,channel，独立模型的文档必须点击栏目进入列表才能管理）</span>
+						<label><input type="radio" name="issystem" id="is3" value="-1" onclick="PublicDefault()"> 独立模型</label>
+						<span>（系统模型禁止删除，独立模型具有单独主表，自动创建字段aid、栏目id、文档标题等，文档必须点击栏目进入列表管理）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>模型id：</td>
 					<td>
 						<input type="text" name="id" id="id" class="admin-input-xs" value="<?php echo $newid;?>">
-						<span>（创建后不可修改，并具有唯一性）</span>
+						<span>（创建后不可修改，具有唯一性）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>模型标识：</td>
 					<td>
 						<input type="text" name="nid" id="nid" class="admin-input-sm" value="model<?php echo $newid;?>">
-						<span>（与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，栏目默认文档模板是“dedebiz/article_名字标识.htm”，列表模板、封面模板类推）</span>
+						<span>（建议由英文、数字或下划线组成，示例“article_名字标识.htm”，列表和封面模板类推）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>模型名称：</td>
-					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="模型<?php echo $newid;?>">（模型名称，在后台管理，会员发布等均使用此名称）</td>
+					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="模型<?php echo $newid;?>">（后台管理和会员发布显示名称）</td>
 				</tr>
 				<tr>
 					<td>附加表：</td>
 					<td>
-						<input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $cfg_dbprefix,'addon',$newid;?>">
+						<input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $cfg_dbprefix,'new',$newid;?>">
 						<label><input type="checkbox" name="isdel" id="isdel" value="1"> 删除已有表</label>
-						<span>（必须由英文、数字、下划线组成，模型除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性：推荐、会员权限等，也可以使用完全以附加表作为存储数据）</span>
+						<span>（#@__表示数据表前缀，文档模型主表外其它数据存放附加表）</span>
 					</td>
 				</tr>
 				<tr>
@@ -58,7 +58,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>会员许可投稿级别：</td>
+					<td>会员投稿级别：</td>
 					<td>
 						<select name="sendrank" id="sendrank" class="admin-input-sm">
 							<option value="0">游客</option>
@@ -76,7 +76,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>许可投稿会员组：</td>
+					<td>会员投稿组：</td>
 					<td>
 						<?php
 						$dsql->SetQuery("SELECT * FROM `#@__member_model`");
@@ -90,11 +90,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td>会员稿件默认状态：</td>
+					<td>会员投稿默认状态：</td>
 					<td>
 						<label><input type="radio" name="arcsta" value="-1" checked="1"> 未审核</label>
-						<label><input type="radio" name="arcsta" value="0"> 已审核（自动生成网页）</label>
-						<label><input type="radio" name="arcsta" value="1"> 已审核（仅使用动态文档）</label>
+						<label><input type="radio" name="arcsta" value="0"> 已审核（更新静态页）</label>
+						<label><input type="radio" name="arcsta" value="1"> 已审核（使用动态页）</label>
 					</td>
 				</tr>
 				<tr>
@@ -117,14 +117,14 @@
 				</tr>
 				<tr>
 					<td>默认栏目id：</td>
-					<td><input type="text" name="dfcid" id="dfcid" class="admin-input-xs" value="0">（与投稿是唯一性结合可以用模型设计自定义表单）</td>
+					<td><input type="text" name="dfcid" id="dfcid" class="admin-input-xs" value="0">（与投稿唯一性结合可以用自定义模型）</td>
 				</tr>
 				<tr>
 					<td>投稿具有唯一性：</td>
 					<td>
 						<label><input type="radio" name="onlyone" value="1"> 是</label>
 						<label><input type="radio" name="onlyone" value="0" checked="1"> 不是</label>
-						<span>（如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单）</span>
+						<span>（与投稿唯一会员只能在该模型对应栏目中发布文档，其作用相当于自定义表单）</span>
 					</td>
 				</tr>
 				<tr>

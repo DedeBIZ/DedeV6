@@ -27,12 +27,21 @@
 					<td>提示文字：</td>
 					<td>
 						<input type="text" name="itemname" id="itemname" class="admin-input-sm" value="<?php echo $ctag->GetAtt('itemname')?>">
-						<span>（发布表单时显示的项名字）</span>
+						<span>（发布时显示提示文字）</span>
 					</td>
 				</tr>
 				<tr>
 					<td width="260">字段名称：</td>
-					<td><?php echo $fname?>（只能用英文字母或数字，数据表的真实字段名）</td>
+					<td><?php echo $fname?>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型的组名称）</td>
+				</tr>
+				<tr>
+					<td>是否使用分页符：</td>
+					<td>
+						<input type="hidden" name="isnull" value="1">
+						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
+						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
+						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符，实现文档分页，但仅允许一个字段）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>数据类型：</td>
@@ -61,15 +70,6 @@
 							<option value="checkbox">checkbox多选框</option>
 							<?php }?>
 						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>文档是否需要分页符：</td>
-					<td>
-						<input type="hidden" name="isnull" value="1">
-						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
-						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
-						<span>（如果文档需要分页符，不论何种文档，都可以用#p#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段）</span>
 					</td>
 				</tr>
 				<tr>
