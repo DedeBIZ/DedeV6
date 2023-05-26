@@ -209,7 +209,7 @@ class SgListView
                 $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/list_default_sg.htm";
             }
             if (!file_exists($tempfile) || !is_file($tempfile)) {
-                echo "栏目：{$this->TypeLink->TypeInfos['typename']}，主题模板文件不存在，无法发布文档";
+                echo "栏目：{$this->TypeLink->TypeInfos['typename']}，主题模板文件不存在，无法更新栏目";
                 exit();
             }
             $this->dtp->LoadTemplate($tempfile);

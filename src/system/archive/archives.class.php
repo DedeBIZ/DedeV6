@@ -511,7 +511,7 @@ class Archives
         if ($this->TempSource == '') {
             $tempfile = $this->GetTempletFile();
             if (!file_exists($tempfile) || !is_file($tempfile)) {
-                echo "文档id：{$this->Fields['id']}，标题：{$this->Fields['title']}，主题模板文件不存在，无法发布文档";
+                echo "文档id：{$this->Fields['id']}，标题：{$this->Fields['title']}，主题模板文件不存在，无法更新文档";
                 exit();
             }
             $this->dtp->LoadTemplate($tempfile);
