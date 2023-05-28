@@ -73,7 +73,7 @@ if (empty($dopost)) {
         ));
         exit;
     }
-    if (empty($cfg_auth_code)) {
+    if (empty(trim($cfg_auth_code))) {
         echo json_encode(array(
             "code" => -1002,
             "msg" => "当前站点已授权社区版，获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>",
