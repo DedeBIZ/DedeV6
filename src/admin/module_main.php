@@ -82,14 +82,14 @@ if ($action == '') {
     $devInfo = (array)json_decode($devContent);
     $offUrl = "";
     if ($devInfo['dev_type'] == 1) {
-        $offUrl = "<p>官方网址：<code>{$devInfo['offurl']}</code></p>";
+        $offUrl = "官方网址：<code>{$devInfo['offurl']}</code><br>";
     }
     $authAt = date("Y-m-d", $devInfo['auth_at']);
     if (!isset($info['dev_id'])) {
         $devInfo['dev_name'] = $info['team']."<span class='btn btn-danger btn-sm'>未认证</span>";
         $authAt = "未知";
     }
-    ShowMsg("<p>开发者名称：{$devInfo['dev_name']}</p><p>开发者id：{$devInfo['dev_id']}</p><span>认证于：{$authAt}</span>", "-1");
+    ShowMsg("开发者名称：{$devInfo['dev_name']}<br>开发者id：{$devInfo['dev_id']}<br>认证于：{$authAt}", "-1");
     exit;
 } else if ($action == 'setup') {
     $dm = new DedeModule($mdir);
@@ -139,7 +139,7 @@ if ($action == '') {
     $prvdir .= "</table>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
-    $wecome_info = "模块管理";
+    $wecome_info = "<a href='module_main.php'>模块管理</a> - 安装{$infos['name']}";
     $devURL = DEDECDNURL."/developers/{$infos['dev_id']}.json";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($devURL);
@@ -149,12 +149,11 @@ if ($action == '') {
     if (($devInfo['dev_id'] == $infos['dev_id']) && !empty($devInfo['dev_id'])) {
       $s = "已认证";
     }
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> - 安装{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
     $msg = "<tr>
         <td colspan='2'>
-            <div class='alert alert-danger mb-0'>安装时文件列表中涉及的目录前可写入权限，此外后台管理目录和主题目录也必须暂时设置可写入权限</div>
+            <div class='alert alert-danger mb-0'>文件列表中涉及的目录权限可写入，后台管理目录和主题目录也权限可写入</div>
         </td>
     </tr>
     <tr>
@@ -266,10 +265,9 @@ if ($action == '') {
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
-    $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> - 删除{$infos['name']}");
-    $win->AddHidden('hash', $hash);
-    $win->AddHidden('action', 'delok');
+    $wecome_info = "<a href='module_main.php'>模块管理</a> - 删除{$infos['name']}";
+    $win->AddHidden("hash", $hash);
+    $win->AddHidden("action", "delok");
     $msg = "<tr>
         <td width='260'>模块名称：</td>
         <td>{$infos['name']}</td>
@@ -295,7 +293,7 @@ if ($action == '') {
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-        <td colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
+        <td colspan='2'>删除模块仅删除模块安装后文件，用<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
     </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("ok", "");
@@ -324,8 +322,7 @@ if ($action == '') {
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
-    $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> - 卸载{$infos['name']}");
+    $wecome_info = "<a href='module_main.php'>模块管理</a> - 卸载{$infos['name']}";
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<tr>
@@ -409,8 +406,7 @@ if ($action == '') {
     $dm->Clear();
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
-    $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> - 使用说明");
+    $wecome_info = "<a href='module_main.php'>模块管理</a> - 使用说明";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("hand");
     $win->Display();
@@ -443,12 +439,10 @@ if ($action == '') {
     } else {
         $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
     }
-
     $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-warning btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='module_main.php?action=setup&hash={$hash}' class='btn btn-warning btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a>";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
-    $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> - {$infos['name']}");
+    $wecome_info = "<a href='module_main.php'>模块管理</a> - {$infos['name']}";
     $msg = "<tr>
         <td width='260'>模块名称：</td>
         <td>{$infos['name']}</td>
@@ -474,14 +468,10 @@ if ($action == '') {
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-        <td>模块文件：</td>
-        <td></td>
-    </tr>
-    <tr>
         <td colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
     </tr>";
     $win->AddMsgItem("$msg");
-    $winform = $win->GetWindow('hand', '');
+    $winform = $win->GetWindow("hand", false);
     $win->Display();
     $dm->Clear();
     exit();
@@ -501,6 +491,6 @@ if ($action == '') {
     require_once(dirname(__FILE__).'/templets/module_edit.htm');
     exit();
 } else if ($action == 'download') {
-    ShowMsg("暂不支持模块下载功能", "javascript:;");
+    ShowMsg("不支持模块下载功能", "javascript:;");
 }
 ?>

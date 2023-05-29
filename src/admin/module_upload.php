@@ -30,7 +30,7 @@ if ($action == 'upload') {
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的插件不是正常模块格式文件，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的插件不是正常模块格式文件", "javascript:;");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -40,7 +40,7 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的模块已存在，请删除原模块文件或强制同名模块上传，<a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("您上传的模块已存在，请删除原模块文件或强制同名模块上传", "javascript:;");
             exit();
         }
         @unlink($okfile);
@@ -53,7 +53,6 @@ if ($action == 'upload') {
 } else {
     $win = new OxWindow();
     $win->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data");
-    $win->mainTitle = "模块管理";
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 上传模块插件";
     $win->AddTitle('请选择上传的模块插件文件');
     $win->AddHidden("action", 'upload');
@@ -63,11 +62,11 @@ if ($action == 'upload') {
     </tr>
     <tr>
         <td>已有模块：</td>
-        <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 是否删除同名模块会导致已经安装模块无法卸载</label></td>
+        <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 是否删除同名模块会导致已经安装模块卸载失败</label></td>
     </tr>
     <tr>
         <td>选择文件：</td>
-        <td><input name='upfile' type='file' id='upfile' class='admin-input-lg'></td>
+        <td><input type='file' name='upfile' id='upfile' class='admin-input-lg'></td>
     </tr>";
     $win->AddMsgItem("$msg");
     $winform = $win->GetWindow('ok', '');

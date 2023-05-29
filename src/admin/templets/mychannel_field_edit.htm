@@ -52,7 +52,7 @@
 					<td>前台参数：</td>
 					<td>
 						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");?>> 投稿和采集禁用字段</label>
-						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 是否增加列表附加字段</label>
+						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 添加到列表附加字段</label>
 						<span>（列表模板“{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}”中，标签“[field:name/]”调用）</span>
 					</td>
 				</tr>

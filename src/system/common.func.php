@@ -571,7 +571,7 @@ if (!function_exists('obtainimgs')) {
         return $result;
     }
 }
-//联动单筛选{dede:php}AddFilter(模型id,类型,'字段1,字段2');{/dede:php}类型有三种，对应以下case值
+//联动单筛选{dede:php}obtainfilter(模型id,类型,'字段1,字段2');{/dede:php}类型有三种，对应以下case值
 function litimgurls($imgid = 0)
 {
     global  $dsql, $lit_imglist;
@@ -604,7 +604,7 @@ function string_filter($str, $stype = "inject")
     return $str;
 }
 //联动单筛选三种类型显示
-function AddFilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0, $toptid = 0, $loadtype = 'autofield')
+function obtainfilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0, $toptid = 0, $loadtype = 'autofield')
 {
     global $tid, $dsql, $id, $aid;
     $tid = $defaulttid ? $defaulttid : $tid;

@@ -13,10 +13,9 @@ CheckPurview('sys_ArcBatch');
 require_once(DEDEINC.'/libraries/oxwindow.class.php');
 if (empty($dopost)) {
     $win = new OxWindow();
-    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
-    $win->mainTitle = "系统修复工具";
+    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
     $wecome_info = "系统修复工具";
-    $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
+    $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>
             由于手动升级时会员没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
@@ -27,20 +26,19 @@ if (empty($dopost)) {
         </td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=1' class='btn btn-success btn-sm'>常规检测</a></td>
+        <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=1' class='btn btn-success btn-sm'>开始检测</a></td>
     </tr>";
     $win->AddMsgItem("$msg");
-    $winform = $win->GetWindow('hand', '');
+    $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
 }
 //数据结构常规检测
 else if ($dopost == 1) {
     $win = new OxWindow();
-    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
-    $win->mainTitle = "系统修复工具";
+    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测数据结构";
-    $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
+    $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>
             已完成数据结构完整性检测：<br>
@@ -49,10 +47,10 @@ else if ($dopost == 1) {
             3、列表显示数据目与实际文档数不一致
         </td>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=2' class='btn btn-success btn-sm'>检测数据</a></td>
+        <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=2' class='btn btn-success btn-sm'>下一步</a></td>
     </tr>";
     $win->AddMsgItem("$msg");
-    $winform = $win->GetWindow('hand', '');
+    $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
 }
@@ -62,7 +60,7 @@ else if ($dopost == 2) {
     $allarcnum = 0;
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__archives`");
     $allarcnum = $arcnum = $row['dd'];
-    $msg .= "#@__archives 表总记录数：{$arcnum}<br>";
+    $msg .= "#@__archives表总记录数：{$arcnum}<br>";
     $shtables = array();
     $dsql->Execute('me', "SELECT addtable FROM `#@__channeltype` WHERE id < -1 ");
     while ($row = $dsql->GetArray('me')) {
@@ -79,15 +77,15 @@ else if ($dopost == 2) {
         }
     }
     $msg .= "总有效记录数：{$allarcnum}<br>";
-    $errall = "<a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>";
+    $errall = "<a href='index_body.php' class='btn btn-success btn-sm'>完成修复</a>";
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny`");
     $msg .= "微统计表记录数：{$row['dd']}<br>";
     if ($row['dd'] == $allarcnum) {
-        $msg .= "<span class='text-dark'>两者记录一致，无需修正</span><br>";
+        $msg .= "两者记录一致，无需修复<br>";
     } else {
         $sql = "TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
-        $msg .= "<span class='text-primary'>两者记录不一致，尝试进行简单修正</span><br>";
+        $msg .= "两者记录不一致，尝试进行简单修复<br>";
         //导入普通模型微数据
         $sql = "INSERT INTO `#@__arctiny` (id,typeid,typeid2,arcrank,channel,senddate,sortrank,mid) SELECT id,typeid,typeid2,arcrank,channel,senddate,sortrank,mid FROM `#@__archives` ";
         $dsql->ExecuteNoneQuery($sql);
@@ -99,18 +97,17 @@ else if ($dopost == 2) {
         }
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny`");
         if ($row['dd'] == $allarcnum) {
-            $msg .= "修正记录成功<br>";
+            $msg .= "修复记录成功<br>";
         } else {
-            $msg .= "修正记录失败，建议进行高级综合检测<br>";
-            $errall = "<a href='sys_repair.php?dopost=3' class='btn btn-success btn-sm'>结合性检测</a> ";
+            $msg .= "修复记录失败，建议高级结合检测<br>";
+            $errall = "<a href='sys_repair.php?dopost=3' class='btn btn-success btn-sm'>结合检测</a> ";
         }
     }
     UpDateCatCache();
     $win = new OxWindow();
-    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
-    $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测微表正确性";
-    $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
+    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
+    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测微表数据";
+    $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>{$msg}</td>
     </tr>
@@ -118,7 +115,7 @@ else if ($dopost == 2) {
         <td bgcolor='#f5f5f5' align='center'>{$errall}</td>
     </tr>";
     $win->AddMsgItem("$msg");
-    $winform = $win->GetWindow('hand', '');
+    $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
 }
@@ -155,17 +152,16 @@ else if ($dopost == 3) {
     }
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
-    $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 高级综合检测修复";
-    $win->AddTitle('本工具用于检测和修复您的系统存在的错误');
+    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 高级检测";
+    $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>完成所有修复操作，移除错误记录{$errnum}条</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a></td>
+        <td bgcolor='#f5f5f5' align='center'><a href='index_body.php' class='btn btn-success btn-sm'>完成修复</a></td>
     </tr>";
     $win->AddMsgItem("$msg");
-    $winform = $win->GetWindow('hand', '');
+    $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
 }

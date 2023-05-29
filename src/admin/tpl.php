@@ -110,7 +110,6 @@ else if ($action == 'upload') {
     $win = new OxWindow();
     make_hash();
     $win->Init("tpl.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
-    $win->mainTitle = "模块管理";
     $wecome_info = "<a href='templets_main.php'>模板管理</a> - 上传模板";
     $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'uploadok');

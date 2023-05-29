@@ -11,7 +11,7 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
-		<style>.typetab{text-align:left}.typetab ul{list-style:none}.typetab ul li{float:left;width:64px;height:28px;line-height:28px;background:#f5f5f5;text-align:center;cursor:pointer}.typetab ul .act{background:#e9ecef}.i_table{border:1px solid #eee}</style>
+		<style>.typetab{text-align:left}.typetab ul li{float:left;width:60px;height:28px;line-height:28px;border-radius:.5rem .5rem 0 0;text-align:center;cursor:pointer}.typetab ul .act{background:#f5f5f5}</style>
 	</head>
 	<body>
 		<form action="ad_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
@@ -20,18 +20,18 @@
 			<input type="hidden" name="dopost" value="save">
 			<table align="center" class="table maintable my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="ad_main.php">广告管理</a> - 添加广告位置</td>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="ad_main.php">广告管理</a> - 添加广告</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">广告代码的调用方法“{dede:myad name='广告位标识'/}”</div>
+						<div class="alert alert-info mb-0">广告代码标签“{dede:myad name='广告位标识'/}”调用</div>
 					</td>
 				</tr>
 				<tr>
 					<td width="260">广告位标识：</td>
 					<td>
 						<input type="text" name="tagname" id="tagname" class="admin-input-lg">
-						<span>（使用英文或数字表示的简洁标识）</span>
+						<span>（使用英文或数字表示标识）</span>
 					</td>
 				</tr>
 				<tr>
@@ -91,7 +91,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>过期显示文档：</td>
+					<td>过期显示：</td>
 					<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"></textarea></td>
 				</tr>
 				<tr>
@@ -101,7 +101,7 @@
 		</form>
 		<div id="formtxt" style="display:none">
 			<div class="content" id="code" style="display:none">
-				<table class="i_table w-100">
+				<table class="maintable">
 					<tr>
 						<td width="260">广告代码：请填写广告代码，支持网页代码</td>
 						<td><textarea name="normbody[htmlcode]" class="admin-textarea-xl"></textarea></td>
@@ -109,7 +109,7 @@
 				</table>
 			</div>
 			<div id="txt" class="content" style="display:none">
-				<table class="i_table w-100">
+				<table class="maintable">
 					<tr>
 						<td width="260">文字文档</td>
 						<td><input type="text" name="normbody[title]" value="" class="admin-input-lg"></td>
@@ -129,7 +129,7 @@
 				</table>
 			</div>
 			<div id="img" class="content" style="display:none">
-				<table class="i_table w-100">
+				<table class="maintable">
 					<tr>
 						<td width="260">图片地址</td>
 						<td><input type="text" name="normbody[url]" value="" class="admin-input-lg"></td>
@@ -153,7 +153,7 @@
 				</table>
 			</div>
 			<div id="flash" class="content" style="display:none">
-				<table class="i_table w-100">
+				<table class="maintable">
 					<tr>
 						<td width="260">flash链接</td>
 						<td><input type="text" name="normbody[link]" value="" class="admin-input-lg"></td>
