@@ -28,10 +28,7 @@
 		<div class="container install-box">
 			<div class="row">
 				<div class="col-md-12">
-					<?php
-					if (count($arrMsg) > 0) {
-						foreach($arrMsg as $msg){
-					?>
+					<?php if (count($arrMsg) > 0) {foreach($arrMsg as $msg){?>
 					<div class="alert alert-warning"><?php echo $msg ?></div>
 					<?php }}?>
 					<div class="alert alert-warning">请先阅读<a href="https://www.dedebiz.com/license?from=install" target="_blank" class="text-primary">《站点授权协议》</a></div>
@@ -97,6 +94,7 @@
 								<div class="form-group">
 									<label for="adminpwd" class="form-label">管理员密码</label>
 									<input type="text" name="adminpwd" id="adminpwd" class="form-control" placeholder="admin">
+									<div class="form-text">使用[0-9a-zA-Z_@!.-]范围以内字符</div>
 								</div>
 								<div class="form-group">
 									<label for="cmspath" class="form-label">安装目录</label>
