@@ -215,12 +215,12 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         if (!empty($channelid)) $orwheres[] = " And arc.channel = '$channelid' ";
         if (!empty($noflag)) {
             if (!preg_match('#,#', $noflag)) {
-                $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
+                $orwheres[] = " FIND_IN_SET('$noflag', arc.flag) < 1 ";
             } else {
                 $noflags = explode(',', $noflag);
                 foreach ($noflags as $noflag) {
                     if (trim($noflag) == '') continue;
-                    $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
+                    $orwheres[] = " FIND_IN_SET('$noflag', arc.flag) < 1 ";
                 }
             }
         }
