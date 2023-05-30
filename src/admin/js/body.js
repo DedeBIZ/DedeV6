@@ -167,8 +167,6 @@ function LoadStat() {
 	});
 }
 async function LoadStatChart() {
-	Chart.defaults.font.size = 14;
-	Chart.defaults.color = '#545b62';
 	const ctx = document.getElementById('statChart').getContext('2d');
 	let labels = [];
 	let dates = [];
@@ -194,6 +192,8 @@ async function LoadStatChart() {
 			vvs.push(typeof e.vv == "undefined" ? 0 : e.vv);
 		});
 	}
+	Chart.defaults.font.size = 14;
+	Chart.defaults.color = '#545b62';
 	const myChart = new Chart(ctx, {
 		type: 'line',
 		options: {
