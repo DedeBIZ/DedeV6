@@ -38,7 +38,7 @@ if ($dopost != 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     if (trim($title) == '') {
-        ShowMsg("请输入文档标题", "-1");
+        ShowMsg("文档标题不能为空", "-1");
         exit();
     }
     if (empty($typeid)) {

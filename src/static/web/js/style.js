@@ -37,22 +37,19 @@ function __DedeConfirmRun(modalID) {
 function __DedeConfirmRunClose(modalID) {
 	_DedeConfirmFuncsClose[modalID]();
 }
-function DedeConfirm(content="",title="确认提示") {
+function DedeConfirm(content = "", title = "确认提示") {
 	let modalID = guid();
 	return new Promise((resolve, reject) => {
-		_DedeConfirmFuncs[modalID] = ()=>{
+		_DedeConfirmFuncs[modalID] = () => {
 			resolve("success");
 			CloseModal(`DedeModal${modalID}`);
 		}
-		_DedeConfirmFuncsClose[modalID] = ()=>{
+		_DedeConfirmFuncsClose[modalID] = () => {
 			reject("cancel");
 			CloseModal(`DedeModal${modalID}`);
 		}
 		let footer = `<button type="button" class="btn btn-success btn-sm" onClick="__DedeConfirmRun(\'${modalID}\')">确定</button> <button type="button" class="btn btn-outline-success btn-sm" onClick="__DedeConfirmRunClose(\'${modalID}\')">取消</button>`;
-		let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}">
-<div class="modal-dialog modal-dialog-centered" role="document">
-<div class="modal-content"><div class="modal-header">
-<h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;modal +=`<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>`;
+		let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;modal +=`<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>`;
 		modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
 		$("body").append(modal)
 		$("#DedeModal" + modalID).modal({
@@ -88,10 +85,7 @@ function ShowMsg(content, ...args) {
 	}
 	footer = footer.replaceAll("~modalID~", modalID);
 	content = content.replaceAll("~modalID~", modalID);
-	var modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}">
-<div class="modal-dialog modal-dialog-centered" role="document">
-<div class="modal-content"><div class="modal-header">
-<h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
+	var modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
 	if (!noClose) {
 		modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>`;
 	}

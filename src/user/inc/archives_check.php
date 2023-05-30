@@ -17,7 +17,7 @@ $flag = '';
 $autokey = $remote = $dellink = $autolitpic = 0;
 $userip = GetIP();
 if (trim($title) == '') {
-    ShowMsg("请输入文档标题", "-1");
+    ShowMsg("文档标题不能为空", "-1");
     exit();
 }
 if (empty($typeid)) {

@@ -1,6 +1,6 @@
 function checkSubmit(t) {
     if (document.addcontent.title.value == "") {
-        ShowMsg(`请输入文档标题`);
+        ShowMsg(`文档标题不能为空`);
         document.addcontent.title.focus();
         return false;
     }

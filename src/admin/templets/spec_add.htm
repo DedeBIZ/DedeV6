@@ -285,13 +285,24 @@
 		</form>
 		<script>
 			function checkSubmit() {
-				if (document.form1.title.value == "") {
+				if (document.form1.title.value == '') {
 					ShowMsg("请输入专题标题");
 					return false;
 				}
 				for (i = 1; i <= 6; i++) {
 					$val = CheckVal(i);
 					if ($val == false) {
+						return false;
+					}
+				}
+			}
+			function CheckVal(id) {
+				var notename = $DE('notename' + id);
+				var arcid = $DE('arcid' + id);
+				if (arcid.value != "") {
+					if (notename.value == "") {
+						$DE('notename' + id).focus();
+						ShowMsg('请输入' + id + '名称');
 						return false;
 					}
 				}
@@ -309,17 +320,6 @@
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800,600);
 				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-			}
-			function CheckVal(id) {
-				var notename = $DE('notename' + id);
-				var arcid = $DE('arcid' + id);
-				if (arcid.value != "") {
-					if (notename.value == "") {
-						$DE('notename' + id).focus();
-						ShowMsg('您的节点' + id + '名称不能为空');
-						return false;
-					}
-				}
 			}
 		</script>
 		<script>InitPage();</script>

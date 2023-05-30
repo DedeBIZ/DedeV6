@@ -63,7 +63,7 @@ if ($dopost != 'save') {
     if (!isset($ddisfirst)) $ddisfirst = 0;
     if (!isset($delzip)) $delzip = 0;
     if (trim($title) == '') {
-        ShowMsg("请输入文档标题", "-1");
+        ShowMsg("文档标题不能为空", "-1");
         exit();
     }
     if (empty($typeid)) {

@@ -86,7 +86,7 @@ function OpenMyWin(surl) {
 }
 function OpenMyWinCoOne(surl) {
 	var pos = GetWinPos(800,600);
-	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ",top=" + pos.top);
+	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function InitPage() {
 	var selsource = $Obj('selsource');
@@ -258,28 +258,6 @@ function ShowUrlTrEdit() {
 function CkRemote() {
 	document.getElementById('picname').value = '';
 }
-//文档列表快捷属性弹出
-function LoadQuickDiv(e, surl, oname, w, h) {
-	var newobj = $Obj(oname);
-	if (!newobj) {
-		newobj = document.createElement("div");
-		newobj.id = oname;
-		newobj.style.position = 'fixed';
-		newobj.className = 'pubdlg';
-		newobj.style.width = w;
-		newobj.style.height = h + 30;
-		document.body.appendChild(newobj);
-	}
-	newobj.style.top = "50%";
-	newobj.style.left = "50%";
-	newobj.style.display = 'block';
-	newobj.style.transform = "translate(-50%, -201px)";
-	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
-	fetch(surl).then(resp => resp.text()).then((d) => {
-		newobj.innerHTML = d;
-	});
-	fixupPos = false;
-}
 //复制文档到剪切板
 function copyToClipboard(txt) {
 	if (txt == null || txt == '') {
@@ -321,6 +299,28 @@ function getSelTxt() {
 		g = document.getSelection();
 	}
 	return g;
+}
+//文档列表快捷属性弹出
+function LoadQuickDiv(e, surl, oname, w, h) {
+	var newobj = $Obj(oname);
+	if (!newobj) {
+		newobj = document.createElement("div");
+		newobj.id = oname;
+		newobj.style.position = 'fixed';
+		newobj.className = 'pubdlg';
+		newobj.style.width = w;
+		newobj.style.height = h + 30;
+		document.body.appendChild(newobj);
+	}
+	newobj.style.top = "50%";
+	newobj.style.left = "50%";
+	newobj.style.display = 'block';
+	newobj.style.transform = "translate(-50%, -201px)";
+	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
+	fetch(surl).then(resp => resp.text()).then((d) => {
+		newobj.innerHTML = d;
+	});
+	fixupPos = false;
 }
 //显示副栏目
 function ShowCatMap(e, obj, cid, targetId, oldvalue) {
@@ -379,7 +379,7 @@ function __DedeConfirmRun(modalID) {
 function __DedeConfirmRunClose(modalID) {
     _DedeConfirmFuncsClose[modalID]();
 }
-function DedeConfirm(content="",title="确认提示") {
+function DedeConfirm(content = "", title = "确认提示") {
     let modalID = guid();
     return new Promise((resolve, reject) => {
         _DedeConfirmFuncs[modalID] = ()=>{
@@ -407,6 +407,7 @@ function DedeConfirm(content="",title="确认提示") {
 //函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
+	size = "";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-primary btn-sm" onClick="CloseModal(\'GKModal${modalID}\')">确定</button>`;

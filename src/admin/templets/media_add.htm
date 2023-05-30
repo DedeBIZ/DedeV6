@@ -71,12 +71,14 @@
 		</form>
 		<script>
 			function CheckSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("请设置标题");
+				if (document.form1.title.value == '') {
+					ShowMsg("附件标题不能为空");
 					document.form1.title.focus();
 					return false;
 				}
 			}
+		</script>
+		<script>
 			var startNum = 6;
 			function MakeUpload() {
 				var upfield = document.getElementById("uploadfield");

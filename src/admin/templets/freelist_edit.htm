@@ -183,6 +183,13 @@
 			</table>
 		</form>
 		<script>
+			function CheckSubmit() {
+				if (document.form1.title.value == '') {
+					ShowMsg("请输入自由列表标题");
+					document.form1.title.focus();
+					return false;
+				}
+			}
 			function ChangeListStyle() {
 				var itxt = document.getElementById("myinnertext");
 				var myems = document.getElementsByName("liststyle");
@@ -203,14 +210,6 @@
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800,600);
 				window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-			}
-			function CheckSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("自由列表标题标题不能为空");
-					document.form1.title.focus();
-					return false;
-				}
-				return true;
 			}
 		</script>
 		<script>

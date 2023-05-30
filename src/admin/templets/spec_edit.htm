@@ -355,25 +355,9 @@
 		</form>
 		<script>
 			function checkSubmit() {
-				if (document.form1.title.value == "") {
+				if (document.form1.title.value == '') {
 					ShowMsg("请输入专题标题");
 					document.form1.title.focus();
-					return false;
-				}
-			}
-		</script>
-		<script>
-			function SelectTemplets(fname) {
-				var pos = GetWinPos(800,600);
-				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-			}
-			function SelectArcList(fname) {
-				var pos = GetWinPos(800,600);
-				window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=700,height=500,left=" + pos.left + ", top=" + pos.top);
-			}
-			function checkSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("专题名称不能为空");
 					return false;
 				}
 				for (i = 1; i <= 6; i++) {
@@ -389,10 +373,20 @@
 				  if (arcid.value != "") {
 					if (notename.value == "") {
 						$DE('notename' + id).focus();
-						ShowMsg('您的节点' + id + '名称不能为空');
+						ShowMsg('请输入' + id + '名称');
 						return false;
 					}
 				}
+			}
+		</script>
+		<script>
+			function SelectTemplets(fname) {
+				var pos = GetWinPos(800,600);
+				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+			}
+			function SelectArcList(fname) {
+				var pos = GetWinPos(800,600);
+				window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=700,height=500,left=" + pos.left + ", top=" + pos.top);
 			}
 		</script>
 		<script>InitPage();</script>
