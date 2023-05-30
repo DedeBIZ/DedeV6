@@ -38,6 +38,7 @@ if ($cuserLogin->getUserType() >= 10) {
     $adminMenu1 = (DEDEBIZ_SAFE_MODE? "" : "<m:top item='11_' name='模板管理' rank='temp_One,temp_Other,temp_MyTag,temp_test,temp_All' icon='fa fa-cube'>
     <m:item name='默认模板管理' link='templets_main.php' rank='temp_All' target='main' />
     <m:item name='标签源码管理' link='templets_tagsource.php' rank='temp_All' target='main' />
+    <m:item name='自定义宏标记' link='mytag_main.php' rank='temp_MyTag' target='main' />
     <m:item name='智能标记向导' link='mytag_tag_guide.php' rank='temp_Other' target='main' />
     <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main' />
 </m:top>")."
@@ -46,8 +47,6 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='文档单页管理' link='templets_one.php' rank='temp_One' target='main' />
     <m:item name='联动类别管理' link='stepselect_main.php' rank='c_Stepseclect' target='main' />
     <m:item name='自由列表管理' link='freelist_main.php' rank='c_List' target='main' />
-    <m:item name='自定义宏标记' link='mytag_main.php' rank='temp_MyTag' target='main' />
-    <m:item name='自定义文档属性' link='content_att.php' rank='sys_Att' target='main' />
     <m:item name='自定义表单管理' link='diy_main.php' rank='c_List' target='main' />
 </m:top>";
   $adminMenu2 = "<m:top item='10_' name='财务管理' rank='sys_Data' icon='fa fa-credit-card'>
@@ -83,6 +82,7 @@ $menusMain = "<m:top item='1_' name='常用功能' icon='fa fa-desktop'>
 </m:top>
 <m:top item='2_' name='文档管理' icon='fa fa-file-text'>
     $addset
+    <m:item name='自定义文档属性' link='content_att.php' rank='sys_Att' target='main' />
 </m:top>
 <m:top item='3_' name='附件管理' rank='sys_Upload,sys_MyUpload,plus_文件管理器' icon='fa fa-folder'>
     <m:item name='上传新文件' link='media_add.php' rank='' target='main' />
@@ -106,7 +106,7 @@ $adminMenu1
     <m:item name='更新文档' link='makehtml_archives.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新标签' link='makehtml_taglist.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新专题' link='makehtml_spec.php' rank='sys_MakeHtml' target='main' />
-    <m:item name='更新列表' link='makehtml_freelist.php' rank='sys_MakeHtml' target='main' />
+    <m:item name='更新自由列表' link='makehtml_freelist.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新缓存' link='sys_cache_up.php' rank='sys_ArcBatch' target='main' />
 </m:top>
 <m:top item='9_' name='会员管理' rank='member_List,member_Type' icon='fa fa-user-circle'>

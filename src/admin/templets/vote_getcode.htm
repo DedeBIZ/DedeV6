@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>获取投票代码</title>
+		<title>获取投票标签</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -14,7 +14,7 @@
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<table align="center" class="table maintable my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="vote_main.php">投票管理</a> - 获取投票代码</td>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="vote_main.php">投票管理</a> - 获取投票标签</td>
 				</tr>
 				<tr>
 					<td><textarea name="partcode" id="partcode" class="admin-textarea-xl">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>

@@ -39,7 +39,7 @@ if ($dopost == "saveedit") {
     }
     $sg = new sgpage($aid);
     $sg->SaveToHtml();
-    ShowMsg("成功修改一个页面", "templets_one.php");
+    ShowMsg("成功修改一个单页", "templets_one.php");
     exit();
 } else if ($dopost == "delete") {
     $row = $dsql->GetOne("SELECT filename FROM `#@__sgpage` WHERE aid='$aid'");
@@ -48,7 +48,7 @@ if ($dopost == "saveedit") {
     if (is_file($filename)) {
         unlink($filename);
     }
-    ShowMsg("成功删除一个页面", "templets_one.php");
+    ShowMsg("成功删除一个单页", "templets_one.php");
     exit();
 } else if ($dopost == "make") {
     include_once(DEDEINC."/archive/sgpage.class.php");
@@ -56,7 +56,7 @@ if ($dopost == "saveedit") {
     $fileurl = $cfg_cmsurl.'/'.preg_replace("#\/{1,}#", "/", $row['filename']);
     $sg = new sgpage($aid);
     $sg->SaveToHtml();
-    ShowMsg("成功更新一个页面", $fileurl);
+    ShowMsg("成功更新一个单页", $fileurl);
     exit();
 } else if ($dopost == "mkall") {
     include_once(DEDEINC."/archive/sgpage.class.php");

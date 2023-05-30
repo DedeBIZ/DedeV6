@@ -82,8 +82,8 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
         <td>{$row['click']}</td>
         <td>".MyDate("y-m-d",$row['edtime'])."</td>
         <td>
-            <a href='javascript:;' onclick='EditNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>
             <a href='javascript:;' onclick='CreateNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
+            <a href='javascript:;' onclick='EditNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>
             <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
         </td>
     </tr>";

@@ -80,6 +80,13 @@
 			</table>
 		</form>
 		<script>
+			function checkSubmit() {
+				if (document.form1.tagname.value == "") {
+					alert("请输入广告位标识");
+					document.form1.tagname.focus();
+					return false;
+				}
+			}
 			$(document).ready(function () {
 				$('.datepicker').daterangepicker({
 					"singleDatePicker": true,

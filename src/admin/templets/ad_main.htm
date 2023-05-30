@@ -21,7 +21,7 @@
 							<?php echo $option;?>
 						</select>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
-						<a href="ad_add.php" class="btn btn-success btn-sm">添加一个新广告</a>
+						<a href="ad_add.php" class="btn btn-success btn-sm">添加广告</a>
 						<a href="adtype_main.php" class="btn btn-success btn-sm">广告分类管理</a>
 					</td>
 				</tr>
@@ -49,9 +49,9 @@
 				<td>{dede:field.timeset function='TimeSetValue(@me)'/}</td>
 				<td>{dede:field.endtime function='GetDateMk(@me)'/}</td>
 				<td>
-					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=gettag" class="btn btn-success btn-sm">代码</a>
-					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
-					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
+					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
+					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=gettag" class="btn btn-light btn-sm"><i class="fa fa-code"></i> 代码</a>
+					<a href="ad_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 				</td>
 			</tr>
 			{/dede:datalist}

@@ -29,16 +29,17 @@
 							?>
 						</select>
 					</td>
+				</tr>
+				<tr>
+					<td>每排列出记录：</td>
+					<td><input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-sm"> 条</td>
+				</tr>
 				<tr>
 					<td>删除选项：</td>
 					<td>
 						<label><input type="radio" name="deltype" value="delnew" checked="1"> 保留最旧的一条</label>
 						<label><input type="radio" name="deltype" value="delold"> 保留最新的一条</label>
 					</td>
-				</tr>
-				<tr>
-					<td>每排列出记录：</td>
-					<td><input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-sm"> 条</td>
 				</tr>
 				<tr>
 					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">分析标题重复文档</button></td>

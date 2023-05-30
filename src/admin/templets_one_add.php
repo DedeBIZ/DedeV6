@@ -38,7 +38,7 @@ if ($dopost == "save") {
     include_once(DEDEINC."/archive/sgpage.class.php");
     $sg = new sgpage($id);
     $sg->SaveToHtml();
-    ShowMsg("成功添加一个页面", "templets_one.php");
+    ShowMsg("成功添加一个单页", "templets_one.php");
     exit();
 }
 $row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage`");

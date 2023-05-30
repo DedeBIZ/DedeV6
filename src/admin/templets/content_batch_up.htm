@@ -40,27 +40,24 @@
 					</td>
 				</tr>
 				<tr>
-					<td>文档发布时间：</td>
-					<td class="p-0">
-						<table class="table table-borderless">
-							<tr>
-								<td colspan="2">
-									<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
-								</td>
-							</tr>
-							<tr id="seltimeField" style="display:none">
-								<td width="260">开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" class="admin-input-sm" value="<?php echo $nowtime;?>"></td>
-								<td width="260">结束：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" class="admin-input-sm" value="<?php echo $nowtime;?>"></td>
-							</tr>
-						</table>
+					<td>会员的登录id：</td>
+					<td>
+						<input name="userid" type="text" id="userid" class="admin-input-xs">
+						<span>（网址uid=后面跟的id）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>会员的登录id：</td>
-					<td><input name="userid" type="text" id="userid" class="admin-input-xs">（网址uid=后面跟的id）</td>
+					<td>文档发布时间：</td>
+					<td>
+						<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
+						<div id="seltimeField" style="display:none">
+							<label>开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" class="admin-input-sm" value="<?php echo $nowtime;?>"></label>
+							<label>结束：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" class="admin-input-sm" value="<?php echo $nowtime;?>"></label>
+						</div>
+					</td>
 				</tr>
 				<tr>
-					<td>条件操作：</td>
+					<td>文档操作：</td>
 					<td>
 						<label><input type="radio" name="action" value="check" onclick="ShowHideMove()" checked="1"> 审核文档</label>
 						<label><input type="radio" name="action" value="makehtml" onclick="ShowHideMove()"> 更新网页</label>

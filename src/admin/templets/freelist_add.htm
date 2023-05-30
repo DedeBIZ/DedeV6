@@ -34,6 +34,26 @@
 					</td>
 				</tr>
 				<tr>
+					<td colspan="2">
+						<table class="w-100 table-borderless">
+							<tr>
+								<td width="25%" height="126">
+									<label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="1"></label>
+								</td>
+								<td width="25%">
+									<label><img src="../static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="2"></label>
+								</td>
+								<td width="25%">
+									<label><img src="../static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="3"></label>
+								</td>
+								<td>
+									<label><img src="../static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="4" checked></label>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
 					<td width="260">自由列表标题：</td>
 					<td><input type="text" name="title" id="title" class="admin-input-lg"></td>
 				</tr>
@@ -73,27 +93,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table class="table table-borderless">
-							<tr>
-								<td width="25%" height="126">
-									<label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="1"></label>
-								</td>
-								<td width="25%">
-									<label><img src="../static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="2"></label>
-								</td>
-								<td width="25%">
-									<label><img src="../static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="3"></label>
-								</td>
-								<td>
-									<label><img src="../static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle()" value="4" checked></label>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<span>限定栏目：</span>
+						<span>调用栏目：</span>
 						<?php
 						echo "<select name='typeid' class='admin-input-sm'>";
 						echo "<option value='0'>不限栏目</option>";
@@ -108,14 +108,10 @@
 							}
 							echo "</select>";
 						?>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<span>限定栏目：</span>
+						<span>限定模型：</span>
 						<?php
 						echo "<select name='channel' class='admin-input-sm'>";
-						echo "<option value='0' selected>不限</option>";
+						echo "<option value='0' selected>不限模型</option>";
 						$dsql->SetQuery("Select ID,typename From `#@__channeltype` where ID>0");
 							$dsql->Execute();
 							while($row = $dsql->GetObject())
@@ -124,11 +120,6 @@
 							}
 							echo "</select>";
 						?>
-						<span>（如果限定了栏目文档模型，则允许使用附加表指定的列表字段作为底层变量）</span>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
 						<span>附加属性：</span>
 						<?php
 						echo "<select name='att' class='admin-input-sm'>";

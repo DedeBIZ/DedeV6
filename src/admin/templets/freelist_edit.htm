@@ -71,7 +71,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<span>限定栏目：</span>
+						<span>调用栏目：</span>
 						<?php
 						$typeid = $ctag->GetAtt('typeid');
 						echo "<select name='typeid' class='admin-input-sm'>";
@@ -89,14 +89,10 @@
 						}
 						echo "</select>";
 						?>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<span>限定栏目：</span>
+						<span>限定模型：</span>
 						<?php
 						$channel  = $ctag->GetAtt('channel');
-						echo "<select name='channel' class='admin-input-sm'><option value='0'>不限</option>";
+						echo "<select name='channel' class='admin-input-sm'><option value='0'>不限模型</option>";
 						$dsql->SetQuery("Select id,typename From `#@__channeltype` where id>0");
 						$dsql->Execute();
 						while($nrow = $dsql->GetObject())
@@ -105,11 +101,7 @@
 							else echo "<option value='{$nrow->id}'>{$nrow->typename}</option>";
 						}
 						echo "</select>";
-						?>（如果限定了栏目文档模型，则允许使用附加表指定的列表字段作为底层变量）
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
+						?>
 						<span>附加属性：</span>
 						<?php
 						$att  = $ctag->GetAtt('att');

@@ -41,7 +41,7 @@
 						<input type="text" name="likeid" id="likeid" value="" class="admin-input-lg">
 						<?php
 						echo "<select name='likeidsel' id='likeidsel' class='admin-input-sm'>";
-						$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
+						$dsql->Execute('s',"SELECT likeid FROM `#@__sgpage` GROUP BY likeid "); 
 						echo "<option value='default'>default</option>";
 						while($arr = $dsql->GetArray('s'))
 						{

@@ -33,13 +33,11 @@ if ($dopost == 'delete') {
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     $jscode = "<script src='{$cfg_phpurl}/mytag_js.php?aid=$aid'></script>";
     $showhtml = "<xmp>\r\n\r\n$jscode\r\n\r\n</xmp>";
-    $showhtml .= "预览：<iframe name='testfrm' frameborder='0' id='testfrm' src='mytag_edit.php?aid={$aid}&dopost=testjs'></iframe>";
-    $wintitle = "宏标记定义-获取标签";
-    $wecome_info = "<a href='mytag_main.php'>宏标记定义</a> - 获取标记";
+    $showhtml .= "<iframe name='testfrm' frameborder='0' id='testfrm' src='mytag_edit.php?aid={$aid}&dopost=testjs'></iframe>";
+    $wecome_info = "<a href='mytag_main.php'>自定义宏标记</a> - 获取标签";
     $win = new OxWindow();
     $win->Init();
-    $win->AddTitle('以下为选定宏标记的js调用代码：');
-    $winform = $win->GetWindow('hand', $showhtml);
+    $winform = $win->GetWindow("hand", $showhtml);
     $win->Display();
     exit();
 } else if ($dopost == "testjs") {

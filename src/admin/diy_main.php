@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义表单列表管理
+ * 自定义表单管理
  *
  * @version        $id:diy_main.php 18:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

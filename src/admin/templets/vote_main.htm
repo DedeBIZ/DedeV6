@@ -32,9 +32,9 @@
 				<td>{dede:field.totalcount/}</td>
 				<td><?php if ($fields['isenable'] == 1){echo "<span class='text-primary'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
 				<td>
-					<a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-success btn-sm">代码</a>
-					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
-					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
+					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
+					<a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-light btn-sm"><i class="fa fa-code"></i> 代码</a>
+					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 				</td>
 			</tr>
 			{/dede:datalist}
