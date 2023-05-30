@@ -60,8 +60,8 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
         $sonCats = '';
         LogicGetOptionArray($row->id, '─', $channeltype, $dsql, $sonCats);
         if ($sonCats != '') {
-            if ($row->ispart == 1) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."-封面栏目</option>";
-            else if ($row->ispart == 2) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."-外部栏目-</option>";
+            if ($row->ispart == 1) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename." - 封面栏目</option>";
+            else if ($row->ispart == 2) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename." - 外部栏目</option>";
             else if (empty($channeltype) && $row->ispart != 0) $OptionArrayList .= "<option value='".$row->id."' class='option2'>".$row->typename."-".$channels[$row->channeltype]."</option>";
             else $OptionArrayList .= "<option value='".$row->id."' class='option3'>".$row->typename."</option>";
             $OptionArrayList .= $sonCats;
