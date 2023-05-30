@@ -101,6 +101,10 @@ if ($dopost == 'bak') {
         $bakStr = '';
         //分析表里的字段信息
         $nowtable = str_replace("`", "", $nowtable);
+        if (!$dsql->IsTable($nowtable)) {
+            PutInfo("数据表名称错误", "");
+            exit();
+        }
         $dsql->GetTableFields($nowtable);
         $intable = "INSERT INTO `$nowtable` VALUES(";
         while ($r = $dsql->GetFieldObject()) {
