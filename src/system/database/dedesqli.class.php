@@ -375,11 +375,14 @@ class DedeSqli
     function IsTable($tbname)
     {
         global $dsqli;
+        $prefix = "#@__";
+        $tbname = str_replace($prefix, $GLOBALS['cfg_dbprefix'], $tbname);
+        if (!preg_match('/^[\p{L}_][\p{L}\p{N}@$#\-_]*$/u', $tbname)) {
+            return FALSE;
+        }
         if (!$dsqli->isInit) {
             $this->Init($this->pconnect);
         }
-        $prefix = "#@__";
-        $tbname = str_replace($prefix, $GLOBALS['cfg_dbprefix'], $tbname);
         if (mysqli_num_rows(@mysqli_query($this->linkID, "SHOW TABLES LIKE '".$tbname."'"))) {
             return TRUE;
         }

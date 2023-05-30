@@ -352,11 +352,14 @@ class DedeSqlite
     function IsTable($tbname)
     {
         global $dsqlite;
+        $prefix = "#@__";
+        $tbname = str_replace($prefix, $GLOBALS['cfg_dbprefix'], $tbname);
+        if (!preg_match('/^[\p{L}_][\p{L}\p{N}@$#\-_]*$/u', $tbname)) {
+            return FALSE;
+        }
         if (!$dsqlite->isInit) {
             $this->Init($this->pconnect);
         }
-        $prefix = "#@__";
-        $tbname = str_replace($prefix, $GLOBALS['cfg_dbprefix'], $tbname);
         $row = $this->linkID->querySingle("PRAGMA table_info({$tbname});");
         if ($row !== null) {
             return TRUE;

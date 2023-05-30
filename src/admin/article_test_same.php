@@ -20,6 +20,7 @@ if ($dopost == 'analyse') {
         showmsg('栏目id不正确，无法处理', 'javascript:;');
         exit();
     }
+    $pagesize = intval($pagesize);
     $dsql->SetQuery("SELECT COUNT(title) AS dd,title FROM `$maintable` WHERE channel='$channelid' GROUP BY title ORDER BY dd DESC LIMIT 0, $pagesize");
     $dsql->Execute();
     $allarc = 0;
@@ -34,6 +35,10 @@ else if ($dopost == 'delsel') {
         header("Content-Type: text/html; charset={$cfg_ver_lang}");
         echo "<meta charset={$cfg_ver_lang}\">\r\n";
         echo "没有指定删除的文档";
+        exit();
+    }
+    if (!$dsql->IsTable($maintable)) {
+        ShowMsg("数据表名称错误", "javascript:;");
         exit();
     }
     $titless = split('`', $titles);

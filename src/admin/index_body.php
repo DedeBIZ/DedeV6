@@ -65,18 +65,43 @@ if (empty($dopost)) {
 <?php
     exit;
 } elseif ($dopost == "system_info") {
-    if (!extension_loaded("openssl")) {
+    if (empty(trim($cfg_auth_code))) {
+        $indexHTML = "";
+        if (file_exists(DEDEROOT."/index.html")) {
+            $indexHTML = file_get_contents(DEDEROOT."/index.html");
+        } else {
+            $row = $dsql->GetOne("SELECT * FROM `#@__homepageset`");
+            $row['templet'] = MfTemplet($row['templet']);
+            $pv = new PartView();
+            $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$row['templet']);
+            $row['showmod'] = isset($row['showmod']) ? $row['showmod'] : 0;
+            if ($row['showmod'] == 0) {
+                ob_start();
+                $pv->Display();
+                $indexHTML = ob_get_contents();
+                ob_end_clean();
+            }
+        }
+        $pattern = '/<a\s[^>]*href=["\']?([^"\'>\s]*)["\']?[^>]*>/is';
+        preg_match_all($pattern, $indexHTML, $matches);
+        $hasPowered = false;
+        foreach ($matches[1] as $href) {
+            if (preg_match("#^https://www.dedebiz.com#",$href)) {
+                $hasPowered = true;
+            }
+        }
+        $poweredStr = $hasPowered? "" : "请保留正确的<a href='https://www.dedebiz.com/powered_by_dedebiz' class='text-primary'>底部版权信息</a>，";
         echo json_encode(array(
-            "code" => -1001,
-            "msg" => "PHP不支持OpenSSL，无法完成商业版授权",
+            "code" => -1002,
+            "msg" => "当前站点已授权社区版，{$poweredStr}获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>",
             "result" => null,
         ));
         exit;
     }
-    if (empty(trim($cfg_auth_code))) {
+    if (!extension_loaded("openssl")) {
         echo json_encode(array(
-            "code" => -1002,
-            "msg" => "当前站点已授权社区版，获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>",
+            "code" => -1001,
+            "msg" => "PHP不支持OpenSSL，无法完成商业版授权",
             "result" => null,
         ));
         exit;
