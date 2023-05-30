@@ -51,8 +51,12 @@ if ($dopost != 'save') {
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (trim($title) == '') {
+        ShowMsg("请输入文档标题", "-1");
+        exit();
+    }
     if (empty($typeid)) {
-        ShowMsg("请指定文档的栏目", "-1");
+        ShowMsg("请选择文档栏目", "-1");
         exit();
     }
     if (empty($channelid)) {
@@ -98,10 +102,6 @@ if ($dopost != 'save') {
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $adminid);
     if (empty($arcID)) {
         ShowMsg("获取主键失败，无法进行后续操作", "-1");
-        exit();
-    }
-    if (trim($title) == '') {
-        ShowMsg('标题不能为空', '-1');
         exit();
     }
     //处理body字段自动摘要、自动提取缩略图等

@@ -16,8 +16,12 @@ CheckCSRF();
 $flag = '';
 $autokey = $remote = $dellink = $autolitpic = 0;
 $userip = GetIP();
-if ($typeid == 0) {
-    ShowMsg('您还没选择栏目，请选择发布文档栏目', '-1');
+if (trim($title) == '') {
+    ShowMsg("请输入文档标题", "-1");
+    exit();
+}
+if (empty($typeid)) {
+    ShowMsg("请选择文档栏目", "-1");
     exit();
 }
 $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend as cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$typeid' ";

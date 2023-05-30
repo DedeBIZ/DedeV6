@@ -62,8 +62,12 @@ if ($dopost != 'save') {
     if (!isset($formzip)) $formzip = 0;
     if (!isset($ddisfirst)) $ddisfirst = 0;
     if (!isset($delzip)) $delzip = 0;
-    if ($typeid == 0) {
-        ShowMsg("请指定文档的栏目", "-1");
+    if (trim($title) == '') {
+        ShowMsg("请输入文档标题", "-1");
+        exit();
+    }
+    if (empty($typeid)) {
+        ShowMsg("请选择文档栏目", "-1");
         exit();
     }
     if (empty($channelid)) {

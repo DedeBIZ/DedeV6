@@ -410,9 +410,6 @@
 			</table>
 		</form>
 		<script>
-			var swfu = null;
-			var vcc = 0;
-			var albums = [];
 			function checkSubmit() {
 				if (document.form1.title.value == "") {
 					ShowMsg("请输入文档标题");
@@ -422,7 +419,7 @@
 			}
 		</script>
 		<script>
-			$(".atlasedit").change(function(val){
+			$(".atlasedit").change(function(val) {
 				var formData = new FormData();
 				var fileData = val.target.files[0];
 				formData.append('file', fileData);
@@ -445,7 +442,7 @@
 					}
 				});
 			})
-			$("#iptAlbumImages").change(function(val){
+			$("#iptAlbumImages").change(function(val) {
 				for (let i = 0; i < val.target.files.length; i++) {
 					const f = val.target.files[i];
 					var formData = new FormData();

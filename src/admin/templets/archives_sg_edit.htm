@@ -91,7 +91,7 @@
 									<?php
 									$typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
 									echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
-									if ($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
+									if ($addRow["typeid"]=="0") echo "<option value='0' selected>请选择文档栏目</option>";
 									echo $typeOptions;
 									echo "</select>";
 									?>

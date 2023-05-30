@@ -37,8 +37,12 @@ if ($dopost != 'save') {
 } else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
-    if ($typeid == 0) {
-        ShowMsg("请指定文档的栏目", "-1");
+    if (trim($title) == '') {
+        ShowMsg("请输入文档标题", "-1");
+        exit();
+    }
+    if (empty($typeid)) {
+        ShowMsg("请选择文档栏目", "-1");
         exit();
     }
     if (empty($channelid)) {

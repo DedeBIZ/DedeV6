@@ -28,7 +28,7 @@ function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 	picnameObj.value = '';
 	newobj = $Obj('uploadwait');
 	if (!newobj) {
-		newobj = document.createElement("DIV");
+		newobj = document.createElement("div");
 		newobj.id = 'uploadwait';
 		newobj.style.position = 'absolute';
 		newobj.className = 'uploadwait';

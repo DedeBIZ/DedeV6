@@ -49,8 +49,12 @@ if ($dopost != 'save') {
     if (!isset($albums)) $albums = "";
     if (!isset($delzip)) $delzip = 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
-    if ($typeid == 0) {
-        ShowMsg("请指定文档的栏目", "-1");
+    if (trim($title) == '') {
+        ShowMsg("请输入文档标题", "-1");
+        exit();
+    }
+    if (empty($typeid)) {
+        ShowMsg("请选择文档栏目", "-1");
         exit();
     }
     if (empty($channelid)) {

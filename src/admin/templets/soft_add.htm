@@ -128,7 +128,7 @@
 										<?php
 										$typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
 										echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
-										echo "<option value='0'>请选择栏目</option>";
+										echo "<option value='0'>请选择文档栏目</option>";
 										echo $typeOptions;
 										echo "</select>";
 										?>
@@ -476,6 +476,8 @@
 					return false;
 				}
 			}
+		</script>
+		<script>
 			var startNum = 0;
 			function MakeUpload() {
 				var upfield = document.getElementById("uploadfield");

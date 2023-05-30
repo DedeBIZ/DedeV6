@@ -32,7 +32,7 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 	picnameObj.value = '';
 	newobj = $Obj('uploadwait');
 	if (!newobj) {
-		newobj = document.createElement("DIV");
+		newobj = document.createElement("div");
 		newobj.id = 'uploadwait';
 		newobj.style.position = 'absolute';
 		newobj.className = 'uploadwait';
@@ -82,11 +82,11 @@ function SelectKeywords(f) {
 }
 function OpenMyWin(surl) {
 	var pos = GetWinPos(800,600);
-	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+", top="+pos.top);
+	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function OpenMyWinCoOne(surl) {
 	var pos = GetWinPos(800,600);
-	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+",top="+pos.top);
+	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ",top=" + pos.top);
 }
 function InitPage() {
 	var selsource = $Obj('selsource');
@@ -165,7 +165,7 @@ function ChangeFullDiv(showhide, screenheigt) {
 	var newobj = $Obj('fullpagediv');
 	if (showhide == 'show') {
 		if (!newobj) {
-			newobj = document.createElement("DIV");
+			newobj = document.createElement("div");
 			newobj.id = 'fullpagediv';
 			newobj.style.position = 'absolute';
 			newobj.className = 'fullpagediv';
@@ -201,7 +201,7 @@ function LoadNewDiv(e, surl, oname) {
 	posLeft = posLeft - 100;
 	var newobj = $Obj(oname);
 	if (!newobj) {
-		newobj = document.createElement("DIV");
+		newobj = document.createElement("div");
 		newobj.id = oname;
 		newobj.style.position = 'absolute';
 		newobj.className = oname;
@@ -221,7 +221,7 @@ function LoadNewDiv2(e, surl, oname, dlgcls) {
 	var posTop = 50;
 	var newobj = $Obj(oname);
 	if (!newobj) {
-		newobj = document.createElement("DIV");
+		newobj = document.createElement("div");
 		newobj.id = oname;
 		newobj.style.position = 'absolute';
 		newobj.className = dlgcls;
@@ -262,7 +262,7 @@ function CkRemote() {
 function LoadQuickDiv(e, surl, oname, w, h) {
 	var newobj = $Obj(oname);
 	if (!newobj) {
-		newobj = document.createElement("DIV");
+		newobj = document.createElement("div");
 		newobj.id = oname;
 		newobj.style.position = 'fixed';
 		newobj.className = 'pubdlg';
@@ -407,10 +407,9 @@ function DedeConfirm(content="",title="确认提示") {
 //函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
-	size = "";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
-	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">确定</button>`;
+	var footer = `<button type="button" class="btn btn-primary btn-sm" onClick="CloseModal(\'GKModal${modalID}\')">确定</button>`;
 	var noClose = false;
 	if (args.length == 1) {
 		//存在args参数

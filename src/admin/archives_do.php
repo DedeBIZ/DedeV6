@@ -486,7 +486,7 @@ else if ($dopost == 'quickEdit') {
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
             echo "<select name='typeid' class='admin-input-sm'>";
-            if ($arcRow["typeid"] == "0") echo "<option value='0' selected>请选择栏目</option>";
+            if ($arcRow["typeid"] == "0") echo "<option value='0' selected>请选择文档栏目</option>";
             echo $typeOptions;
             echo "</select>";
             ?>

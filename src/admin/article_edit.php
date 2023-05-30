@@ -54,8 +54,12 @@ if ($dopost != 'save') {
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
+    if (trim($title) == '') {
+        ShowMsg("请输入文档标题", "-1");
+        exit();
+    }
     if (empty($typeid)) {
-        ShowMsg("请指定文档的栏目", "-1");
+        ShowMsg("请选择文档栏目", "-1");
         exit();
     }
     if (empty($channelid)) {

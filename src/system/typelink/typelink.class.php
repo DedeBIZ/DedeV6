@@ -156,7 +156,7 @@ class TypeLink
             $typeinfos['sitepath']
         );
     }
-    //获得类别列表：hid是指默认选中栏目，0表示请选择栏目或不限栏目，oper是会员允许管理的栏目，0表示所有栏目，channeltype是指栏目的文档类型，0表示不限栏目
+    //获得类别列表：hid是指默认选中栏目，0表示请选择文档栏目或不限栏目，oper是会员允许管理的栏目，0表示所有栏目，channeltype是指栏目的文档类型，0表示不限栏目
     function GetOptionArray($hid = 0, $oper = 0, $channeltype = 0, $usersg = 0)
     {
         return $this->GetOptionList($hid, $oper, $channeltype, $usersg);

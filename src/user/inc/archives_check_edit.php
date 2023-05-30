@@ -14,8 +14,12 @@ require_once(DEDEINC."/libraries/oxwindow.class.php");
 $flag = '';
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $userip = GetIP();
-if ($typeid == 0) {
-    ShowMsg('您还没选择栏目，请选择发布文档栏目', '-1');
+if (trim($title) == '') {
+    ShowMsg("请输入文档标题", "-1");
+    exit();
+}
+if (empty($typeid)) {
+    ShowMsg("请选择文档栏目", "-1");
     exit();
 }
 //校验CSRF
@@ -50,7 +54,7 @@ $mid = $cfg_ml->M_ID;
 $midQuery = "SELECT mid FROM `#@__arctiny` WHERE id='$aid'";
 $midRow = $dsql->GetOne($midQuery);
 if ($midRow['mid'] != $mid) {
-    ShowMsg('您暂无权限在这里进行修改文档', 'javascript:;');
+    ShowMsg("您暂无权限修改文档", "javascript:;");
     exit;
 }
 $isadmin = ($cfg_ml->fields['matt'] == 10 ? true : false);

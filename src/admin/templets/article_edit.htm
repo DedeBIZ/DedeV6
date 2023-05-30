@@ -134,7 +134,7 @@
 									<?php
 									$typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
 									echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
-									if ($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
+									if ($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择文档栏目</option>";
 									echo $typeOptions;
 									echo "</select>";
 									?>
@@ -299,10 +299,7 @@
 				</tr>
 			</table>
 		</form>
-		<div id="__tmpbody" style="display:none"></div>
 		<script>
-			var swfu = null;
-			var arctype = 'article';
 			function checkSubmit() {
 				if (document.form1.title.value == "") {
 					ShowMsg("请输入文档标题");

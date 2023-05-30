@@ -1,11 +1,11 @@
 function checkSubmit(t) {
     if (document.addcontent.title.value == "") {
-        ShowMsg(`${t}不能为空`);
+        ShowMsg(`请输入文档标题`);
         document.addcontent.title.focus();
         return false;
     }
     if (document.addcontent.typeid.value == 0) {
-        ShowMsg("请您选择文档所属栏目");
+        ShowMsg("请选择文档栏目");
         return false;
     }
 }
