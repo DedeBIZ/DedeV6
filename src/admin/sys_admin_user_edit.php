@@ -107,19 +107,22 @@ if ($dopost == 'saveedit') {
 //显示管理员信息
 $randcode = mt_rand(10000, 99999);
 $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
+//递归获取分类
+function getTypeOptions($id=0,$sep="└")
+{
+    global $dsql,$typeOptions,$typeids;
+    $dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid={$id} AND (ispart=0 OR ispart=1 OR ispart=2) ORDER BY sortrank");
+    $dsql->Execute($id);
+    while ($nrow = $dsql->GetObject($id)) {
+        $isDisabled = $nrow->ispart==2? " disabled" : "";
+        $typeOptions .= "<option value='{$nrow->id}' ".(in_array($nrow->id, $typeids) ? ' selected' : '')."{$isDisabled}>{$sep}{$nrow->typename}</option>\r\n";
+        getTypeOptions($nrow->id, $sep."─");
+    }
+}
 $typeOptions = '';
 $row = $dsql->GetOne("SELECT * FROM `#@__admin` WHERE id='$id'");
 $typeids = explode(',', $row['typeid']);
-$dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart=0 OR ispart=1)");
-$dsql->Execute('op');
-while ($nrow = $dsql->GetObject('op')) {
-    $typeOptions .= "<option value='{$nrow->id}' ".(in_array($nrow->id, $typeids) ? ' selected' : '').">{$nrow->typename}</option>\r\n";
-    $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid={$nrow->id} AND (ispart=0 OR ispart=1)");
-    $dsql->Execute('s');
-    while ($nrow = $dsql->GetObject('s')) {
-        $typeOptions .= "<option value='{$nrow->id}' ".(in_array($nrow->id, $typeids) ? ' selected' : '').">└─ {$nrow->typename}</option>\r\n";
-    }
-}
+getTypeOptions(0);
 make_hash();
 include DedeInclude('templets/sys_admin_user_edit.htm');
 ?>

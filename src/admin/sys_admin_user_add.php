@@ -66,17 +66,19 @@ if ($dopost == 'add') {
 $randcode = mt_rand(10000, 99999);
 $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
 $typeOptions = '';
-$dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart=0 OR ispart=1)");
-$dsql->Execute('op');
-while ($row = $dsql->GetObject('op')) {
-    $topc = $row->id;
-    $typeOptions .= "<option value='{$row->id}'>{$row->typename}</option>\r\n";
-    $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid={$row->id} AND (ispart=0 OR ispart=1)");
-    $dsql->Execute('s');
-    while ($row = $dsql->GetObject('s')) {
-        $typeOptions .= "<option value='{$row->id}'>└─ {$row->typename}</option>\r\n";
+//递归获取分类
+function getTypeOptions($id=0,$sep="└")
+{
+    global $dsql,$typeOptions;
+    $dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid={$id} AND (ispart=0 OR ispart=1 OR ispart=2) ORDER BY sortrank");
+    $dsql->Execute($id);
+    while ($nrow = $dsql->GetObject($id)) {
+        $isDisabled = $nrow->ispart==2? " disabled" : "";
+        $typeOptions .= "<option value='{$nrow->id}'{$isDisabled}>{$sep}{$nrow->typename}</option>\r\n";
+        getTypeOptions($nrow->id, $sep."─");
     }
 }
+getTypeOptions(0);
 make_hash();
 include DedeInclude('templets/sys_admin_user_add.htm');
 ?>
