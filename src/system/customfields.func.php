@@ -68,7 +68,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         foreach ($items as $v) {
             $v = trim($v);
             if ($v != '') {
-                $myformItem .= ($i == 0 ? "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v' checked> $v</label></div>" : "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v'> $v</label></div>");
+                $myformItem .= ($i == 0 ? "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v' checked='checked'> $v</label></div>" : "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v'> $v</label></div>");
                 $i++;
             }
         }

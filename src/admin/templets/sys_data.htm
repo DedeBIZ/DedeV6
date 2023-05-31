@@ -46,7 +46,7 @@
 					$t = $dedeSysTables[$i];
 					echo "<tr align='center'>";
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked="checked"></td>
 				<td><?php echo $t;?></td>
 				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
@@ -59,7 +59,7 @@
 				if (isset($dedeSysTables[$i])) {
 					$t = $dedeSysTables[$i];
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked="checked"></td>
 				<td><?php echo $t;?></td>
 				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
