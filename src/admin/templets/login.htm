@@ -39,15 +39,15 @@
 								<input type="hidden" name="dopost" value="login">
 								<input type="hidden" name="adminstyle" value="newDedeBIZ">
 								<div class="form-group">
-									<label for="iptUserid">管理员账号</label>
-									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入管理员账号">
+									<label>管理员账号</label>
+									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入管理员账号" required>
 								</div>
 								<div class="form-group">
-									<label for="iptPassword">管理员密码</label>
-									<input type="password" name="pwd" id="iptPassword" class="form-control" placeholder="请输入管理员密码">
+									<label>管理员密码</label>
+									<input type="password" name="pwd" id="iptPwd" class="form-control" placeholder="请输入管理员密码" required>
 								</div>
 								<div id="vdimgck" class="form-group" style="display:none">
-									<label for="iptValidate">验证码</label>
+									<label>验证码</label>
 									<div class="input-group">
 										<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
 										<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
