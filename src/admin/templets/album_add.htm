@@ -327,7 +327,7 @@
 									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<?php
 										$urank = $cuserLogin->getUserRank();
-										$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank'");
+										$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' ORDER BY `rank` ASC");
 										$dsql->Execute();
 										while($row = $dsql->GetObject())
 										{

@@ -82,18 +82,11 @@ if ($step == 1) {
             $pwd = md5($userpwd);
         }
         $mtype = '个人';
+        $space = 'person';
         $spaceSta = ($cfg_mb_spacesta < 0 ? $cfg_mb_spacesta : 0);
         $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`$pp`,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip`, `pmid`) VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip', '$pMid'); ";
         if ($dsql->ExecuteNoneQuery($inQuery)) {
             $mid = $dsql->GetLastID();
-            //写入默认会员详细资料
-            if ($mtype == '个人') {
-                $space = 'person';
-            } else if ($mtype == '企业') {
-                $space = 'company';
-            } else {
-                $space = 'person';
-            }
             //写入默认统计数据
             $membertjquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('$mid','0','0','0','0','0','0','0','0'); ";
             $dsql->ExecuteNoneQuery($membertjquery);

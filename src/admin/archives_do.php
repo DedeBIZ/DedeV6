@@ -525,7 +525,7 @@ else if ($dopost == 'quickEdit') {
                 <?php echo $arcRow["rankname"] ?> </option>
                 <?php
                 $urank = $cuserLogin->getUserRank();
-                $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank'");
+                $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank' ORDER BY `rank` ASC");
                 $dsql->Execute();
                 while ($row = $dsql->GetObject()) {
                     echo "<option value='".$row->rank."'>".$row->membername."</option>";

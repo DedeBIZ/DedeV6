@@ -36,21 +36,21 @@ if ($tinfos['issystem'] == -1) {
 } else {
     include(DEDEINC."/archive/listview.class.php");
     $lv = new ListView($tid, 1, $mod);
-    //对设置了会员级别的栏目进行处理
-    if (isset($lv->Fields['corank']) && $lv->Fields['corank'] > 0) {
-        require_once(DEDEINC.'/memberlogin.class.php');
-        $cfg_ml = new MemberLogin();
-        if ($cfg_ml->M_Rank < $lv->Fields['corank']) {
-            $dsql->Execute('me', "SELECT * FROM `#@__arcrank`");
-            while ($row = $dsql->GetObject('me')) {
-                $memberTypes[$row->rank] = $row->membername;
-            }
-            $memberTypes[0] = "游客或没权限会员";
-            $msgtitle = "您没有权限浏览栏目：{$lv->Fields['typename']} ";
-            $moremsg = "该栏目需要<span class='text-primary'>".$memberTypes[$lv->Fields['corank']]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>";
-            include_once(DEDETEMPLATE.'/apps/view_msg_catalog.htm');
-            exit();
+}
+//对设置了会员级别的栏目进行处理
+if (isset($lv->Fields['corank']) && $lv->Fields['corank'] > 0) {
+    require_once(DEDEINC.'/memberlogin.class.php');
+    $cfg_ml = new MemberLogin();
+    if ($cfg_ml->M_Rank < $lv->Fields['corank']) {
+        $dsql->Execute('me', "SELECT * FROM `#@__arcrank`");
+        while ($row = $dsql->GetObject('me')) {
+            $memberTypes[$row->rank] = $row->membername;
         }
+        $memberTypes[0] = "游客或没权限会员";
+        $msgtitle = "您没有权限浏览栏目：{$lv->Fields['typename']} ";
+        $moremsg = "该栏目需要<span class='text-primary'>".$memberTypes[$lv->Fields['corank']]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>，请进行<a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm'>升级会员</button>";
+        include_once(DEDETEMPLATE.'/apps/view_msg_catalog.htm');
+        exit();
     }
 }
 if ($lv->IsError) ParamError();
