@@ -111,15 +111,19 @@ function newmail($mid, $userid, $mailto, $type, $send)
  *
  * @param     string  $mail  邮件
  * @param     string  $userid  会员id
- * @return    string
+ * @return    mixed
  */
 function member($mail, $userid)
 {
     global $db;
     $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE email='$mail' AND userid = '$userid'";
     $row = $db->GetOne($sql);
-    if (!is_array($row)) return ShowMsg("会员id输入错误", "-1");
-    else return $row;
+    if (!is_array($row)) {
+        ShowMsg("会员id输入错误", "-1");
+        exit;
+    } else {
+        return $row;
+    }
 }
 /**
  *  查询是否发送过验证码

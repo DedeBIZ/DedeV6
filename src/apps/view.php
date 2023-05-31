@@ -87,6 +87,6 @@ if ($needMoney > 0 || $needRank > 1) {
 $arc->Display();
 if (DEBUG_LEVEL === TRUE) {
     $queryTime = ExecTime() - $t1;
-    echo "<div style='position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;width:auto;font-size:14px;color:#721c24;background:#f8d7da;border-color:#f5c6cb;border:1px solid transparent;border-radius:.5rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
+    echo DedeAlert("页面加载总消耗时间：{$queryTime}", ALERT_DANGER);
 }
 ?>
