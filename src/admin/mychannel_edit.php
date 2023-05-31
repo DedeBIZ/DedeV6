@@ -399,7 +399,7 @@ if ($dopost == "show") {
                 $label = $ctag->GetAtt('itemname');
                 if (in_array($datatype, $searchtype)) {
                     $checked = in_array($value, $addonfieldsarr) ? 'checked' : '';
-                    $addonfields .= "<label><input type='checkbox' name='addonfields[]' value='$value' $checked> $label</label> ";
+                    $addonfields .= "<label><input type='checkbox' name='addonfields[]' value='$value' $checked='checked'> $label</label> ";
                 }
             }
         }
@@ -501,7 +501,7 @@ if ($dopost == "show") {
                 } else if ($type == 'radio') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "$itemname：<label><input type=\"radio\" name=\"".$name."\" value=\"\" checked> 不限</label><br>";
+                        $forms .= "$itemname：<label><input type=\"radio\" name=\"".$name."\" value=\"\" checked=\"checked\"> 不限</label><br>";
                         foreach ($values as $value) {
                             $forms .= "<label><input type=\"radio\" name=\"".$name."\" value=\"$value\"> $value</label>";
                         }

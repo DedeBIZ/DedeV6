@@ -55,7 +55,7 @@ if ($needMoney > 0 || $needRank > 1) {
         if (!is_array($row)) {
             if ($cfg_ml->M_Money == '' || $needMoney > $cfg_ml->M_Money) {
                 $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-                $moremsg = "该文档需要<span class='text-primary'>".$needMoney."</span>金币才能浏览，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>，<a class='btn btn-success btn-sm' href='{$GLOBALS['cfg_cmsurl']}/user/buy.php' target='_blank'>前去充值</a>";
+                $moremsg = "该文档需要<span class='text-primary'>".$needMoney."</span>金币才能浏览，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><a class='btn btn-success btn-sm ml-2' href='{$GLOBALS['cfg_cmsurl']}/user/buy.php' target='_blank'>前去充值</a>";
                 include_once(DEDETEMPLATE.'/apps/view_msg.htm');
                 $arc->Close();
                 exit();
@@ -76,7 +76,7 @@ if ($needMoney > 0 || $needRank > 1) {
                     }
                 }
                 $msgtitle = "扣金币购买阅读";
-                $moremsg = "该文档需要付费<span class='text-primary'>".$needMoney."</span>金币，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>，<a class='btn btn-success btn-sm' href='{$GLOBALS['cfg_cmsurl']}/apps/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>";
+                $moremsg = "该文档需要付费<span class='text-primary'>".$needMoney."</span>金币，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><a class='btn btn-success btn-sm ml-2' href='{$GLOBALS['cfg_cmsurl']}/apps/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>";
                 include_once($cfg_basedir.$cfg_templets_dir."/apps/view_msg.htm");
                 $arc->Close();
                 exit();
@@ -87,6 +87,6 @@ if ($needMoney > 0 || $needRank > 1) {
 $arc->Display();
 if (DEBUG_LEVEL === TRUE) {
     $queryTime = ExecTime() - $t1;
-    echo "<div style='width:98%;margin:1rem auto;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.25rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
+    echo "<div style='position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;width:auto;font-size:14px;color:#721c24;background:#f8d7da;border-color:#f5c6cb;border:1px solid transparent;border-radius:.5rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
 }
 ?>
