@@ -114,9 +114,9 @@ function lib_infolink(&$ctag, &$refObj)
         }
     }
     //小分类链接
-    if (empty($infotype) || is_array($smalltypes)) {
+    if (empty($infotype) || !is_array($smalltypes)) {
         foreach ($em_infotypes as $eid => $em) {
-            if (!is_array($smalltypes) && $eid % 500 != 0) continue;
+            if (!is_array($smalltypes) || $eid % 500 != 0) continue;
             if (is_array($smalltypes) && !in_array($eid, $smalltypes)) continue;
             if ($eid == $infotype) {
                 $fields['infotype'] .= " {$em}\r\n";
@@ -128,7 +128,6 @@ function lib_infolink(&$ctag, &$refObj)
         $sontype = (($infotype % 500 != 0) ? $infotype : 0);
         $toptype = (($infotype % 500 == 0) ? (int)$infotype : (int)($infotype - ($infotype % 500)));
         $fields['infotype'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'>{$em_infotypes[$toptype]}</a> - ";
-        
         if ($infotype % 500 == 0) {
             //1级分类
             foreach ($em_infotypes as $eid => $em) {

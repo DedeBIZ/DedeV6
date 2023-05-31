@@ -49,7 +49,7 @@
 							<select name="smalltype[]" multiple="yes" class="admin-input-lg">
 								<?php
 								$smtypes = explode(',',trim($myrow['smalltypes']));
-								$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
+								$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC,evalue ASC ";
 								$dsql->Execute('s',$sql);
 								while($arr = $dsql->GetArray('s'))
 								{
@@ -61,9 +61,9 @@
 									if ($arr['evalue']%500==0) {
 										echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
 									} else if (preg_match("#\.#", $arr['evalue'])) {
-										echo "<option value='{$arr['evalue']}'{$selstr}>└─ {$arr['ename']}</option>";
+										echo "<option value='{$arr['evalue']}'{$selstr}>└── {$arr['ename']}</option>";
 									} else {
-										echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
+										echo "<option value='{$arr['evalue']}'{$selstr}>└─{$arr['ename']}</option>";
 									}
 								}
 								?>
