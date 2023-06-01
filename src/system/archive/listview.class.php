@@ -1112,7 +1112,7 @@ class ListView
         }
         $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $purl = $this->GetCurUrl();
-        //如果开启为静态，则对规则进行替换
+        //开启伪静态对规则替换
         if ($cfg_rewrite == 'Y') {
             $nowurls = preg_replace("/\-/", ".php?", $purl);
             $nowurls = explode("?", $nowurls);
@@ -1169,7 +1169,7 @@ class ListView
         if (preg_match('/end/i', $listitem)) $plist .= $endpage;
         if (preg_match('/option/i', $listitem)) $plist .= $optionlist;
         if (preg_match('/info/i', $listitem)) $plist .= $maininfo;
-        //伪静态分页
+        //伪静态栏目分页
         if ($cfg_rewrite == 'Y') {
             $plist = str_replace(".php?tid=", "-", $plist);
             $plist = preg_replace("/&PageNo=(\d+)/i", "-\\1", $plist);
