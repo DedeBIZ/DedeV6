@@ -25,7 +25,7 @@ function is_str_float($value){
 }
 function lib_infolink(&$ctag, &$refObj)
 {
-    global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite, $em_nativeplaces, $em_infotypes;
+    global $dsql, $nativeplace, $infotype, $cfg_rewrite, $cfg_cmspath, $cfg_mainsite, $em_nativeplaces, $em_infotypes;
     //属性处理
     //$attlist="row|12,titlelen|30";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
@@ -54,18 +54,31 @@ function lib_infolink(&$ctag, &$refObj)
         'channelid' => $channelid, 'linkallplace' => '', 'linkalltype' => ''
     );
     $fields['nativeplace'] = $fields['infotype'] = '';
-    $fields['linkallplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$infotype}'>不限</a>";
-    $fields['linkalltype'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}'>不限</a>";
+    if ($cfg_rewrite == 'Y') {
+        $fields['linkallplace'] = "<a href='{$baseurl}list-{$typeid}?infotype={$infotype}&channelid={$channelid}'>不限</a>";
+        $fields['linkalltype'] = "<a href='{$baseurl}list-{$typeid}?nativeplace={$nativeplace}&channelid={$channelid}'>不限</a>";
+    } else {
+        $fields['linkallplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$infotype}'>不限</a>";
+        $fields['linkalltype'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}'>不限</a>";
+    }
     //地区链接
     if (empty($nativeplace)) {
         foreach ($em_nativeplaces as $eid => $em) {
             if ($eid % 500 != 0) continue;
-            $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+            if ($cfg_rewrite == 'Y') {
+                $fields['nativeplace'] .= " <a href='{$baseurl}list-{$typeid}?nativeplace={$eid}&infotype={$infotype}&channelid={$channelid}'>{$em}</a>\r\n";
+            } else {
+                $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+            }
         }
     } else {
         $sontype = (($nativeplace % 500 != 0) ? $nativeplace : 0); //子集
         $toptype = (($nativeplace % 500 == 0) ? (int)$nativeplace : (int)($nativeplace - ($nativeplace % 500))); //顶级联动分类
-        $fields['nativeplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> {$em_nativeplaces[$toptype]}</a> -";
+        if ($cfg_rewrite == 'Y') {
+            $fields['nativeplace'] = "<a href='{$baseurl}list-{$typeid}?nativeplace={$toptype}&infotype={$infotype}&channelid={$channelid}'> {$em_nativeplaces[$toptype]}</a> -";
+        } else {
+            $fields['nativeplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> {$em_nativeplaces[$toptype]}</a> -";
+        }
         if ($nativeplace % 500 == 0) {
             //1级分类
             foreach ($em_nativeplaces as $eid => $em) {
@@ -74,7 +87,11 @@ function lib_infolink(&$ctag, &$refObj)
                 if ($eid == $nativeplace) {
                     $fields['nativeplace'] .= " {$em}\r\n";
                 } else {
-                    $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+                    if ($cfg_rewrite == 'Y') {
+                        $fields['nativeplace'] .= " <a href='{$baseurl}list-{$typeid}?nativeplace={$eid}&infotype={$infotype}&channelid={$channelid}'>{$em}</a>\r\n";
+                    } else {
+                        $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+                    }
                 }
             }
         } else if (!is_str_float($nativeplace)) {
@@ -91,7 +108,12 @@ function lib_infolink(&$ctag, &$refObj)
                     if ($eid === $nativeplace) {
                         $ff .= " {$em}\r\n";
                     } else {
-                        $ff .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+                        if ($cfg_rewrite == 'Y') {
+                            $ff .= " <a href='{$baseurl}list-{$typeid}?nativeplace={$eid}&infotype={$infotype}&channelid={$channelid}'>{$em}</a>\r\n";
+                        } else {
+                            $ff .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+                        }
+                        
                     }
                 }
             }
@@ -100,14 +122,22 @@ function lib_infolink(&$ctag, &$refObj)
         } else {
             //3级分类
             $t = intval($nativeplace);
-            $fields['nativeplace'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$t}&infotype={$infotype}'> {$em_nativeplaces[$t]}</a> -";
+            if ($cfg_rewrite == 'Y') {
+                $fields['nativeplace'] .= "<a href='{$baseurl}list-{$typeid}?nativeplace={$t}&infotype={$infotype}&channelid={$channelid}'> {$em_nativeplaces[$t]}</a> -";
+            } else {
+                $fields['nativeplace'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$t}&infotype={$infotype}'> {$em_nativeplaces[$t]}</a> -";
+            }
             foreach ($em_nativeplaces as $eid => $em) {
                 if ($eid < $t + 1 && $eid > $t)
                 {
                     if ($eid === $nativeplace) {
                         $fields['nativeplace'] .= " {$em}\r\n";
                     } else {
-                        $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+                        if ($cfg_rewrite == 'Y') {
+                            $fields['nativeplace'] .= " <a href='{$baseurl}list-{$typeid}?nativeplace={$eid}&infotype={$infotype}&channelid={$channelid}'>{$em}</a>\r\n";
+                        } else {
+                            $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+                        }
                     }
                 }
             }
@@ -121,13 +151,21 @@ function lib_infolink(&$ctag, &$refObj)
             if ($eid == $infotype) {
                 $fields['infotype'] .= " {$em}\r\n";
             } else {
-                $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$eid}&nativeplace={$nativeplace}'>{$em}</a>\r\n";
+                if ($cfg_rewrite == 'Y') {
+                    $fields['infotype'] .= " <a href='{$baseurl}list-{$typeid}?infotype={$eid}&nativeplace={$nativeplace}&channelid={$channelid}'>{$em}</a>\r\n";
+                } else {
+                    $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$eid}&nativeplace={$nativeplace}'>{$em}</a>\r\n";
+                }
             }
         }
     } else {
         $sontype = (($infotype % 500 != 0) ? $infotype : 0);
         $toptype = (($infotype % 500 == 0) ? (int)$infotype : (int)($infotype - ($infotype % 500)));
-        $fields['infotype'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'>{$em_infotypes[$toptype]}</a> - ";
+        if ($cfg_rewrite == 'Y') {
+            $fields['infotype'] = "<a href='{$baseurl}list-{$typeid}?infotype={$toptype}&nativeplace={$nativeplace}&channelid={$channelid}'>{$em_infotypes[$toptype]}</a> - ";
+        } else {
+            $fields['infotype'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'>{$em_infotypes[$toptype]}</a> - ";
+        }
         if ($infotype % 500 == 0) {
             //1级分类
             foreach ($em_infotypes as $eid => $em) {
@@ -136,7 +174,11 @@ function lib_infolink(&$ctag, &$refObj)
                 if ($eid == $infotype) {
                     $fields['infotype'] .= " {$em}\r\n";
                 } else {
-                    $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$eid}'>{$em}</a>\r\n";
+                    if ($cfg_rewrite == 'Y') {
+                        $fields['infotype'] .= " <a href='{$baseurl}list-{$typeid}?nativeplace={$nativeplace}&infotype={$eid}&channelid={$channelid}'>{$em}</a>\r\n";
+                    } else {
+                        $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$eid}'>{$em}</a>\r\n";
+                    }
                 }
             }
         } else if (!is_str_float($infotype)) {
@@ -153,7 +195,12 @@ function lib_infolink(&$ctag, &$refObj)
                     if ($eid === $infotype) {
                         $ff .= " {$em}\r\n";
                     } else {
-                        $ff .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$eid}'>{$em}</a>\r\n";
+                        if ($cfg_rewrite == 'Y') {
+                            $ff .= " <a href='{$baseurl}list-{$typeid}?nativeplace={$nativeplace}&infotype={$eid}&channelid={$channelid}'>{$em}</a>\r\n";
+                        } else {
+                            $ff .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$eid}'>{$em}</a>\r\n";
+                        }
+                        
                     }
                 }
             }
@@ -162,14 +209,22 @@ function lib_infolink(&$ctag, &$refObj)
         } else {
             //3级分类
             $t = intval($infotype);
-            $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$t}'> {$em_infotypes[$t]}</a> -";
+            if ($cfg_rewrite == 'Y') {
+                $fields['infotype'] .= "<a href='{$baseurl}list-{$typeid}?nativeplace={$nativeplace}&infotype={$t}&channelid={$channelid}'> {$em_infotypes[$t]}</a> -";
+            } else {
+                $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$t}'> {$em_infotypes[$t]}</a> -";
+            }
             foreach ($em_infotypes as $eid => $em) {
                 if ($eid < $t + 1 && $eid > $t)
                 {
                     if ($eid === $infotype) {
                         $fields['infotype'] .= " {$em}\r\n";
                     } else {
-                        $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$eid}'>{$em}</a>\r\n";
+                        if ($cfg_rewrite == 'Y') {
+                            $fields['infotype'] .= " <a href='{$baseurl}/list-{$typeid}?nativeplace={$nativeplace}&infotype={$eid}&channelid={$channelid}'>{$em}</a>\r\n";
+                        } else {
+                            $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$eid}'>{$em}</a>\r\n";
+                        }
                     }
                 }
             }

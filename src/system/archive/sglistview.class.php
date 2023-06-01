@@ -931,7 +931,7 @@ class SgListView
      */
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $nativeplace, $infotype, $keyword;
+        global $nativeplace, $infotype, $keyword,$cfg_rewrite;
         if (empty($nativeplace)) $nativeplace = 0;
         if (empty($infotype)) $infotype = 0;
         if (empty($keyword)) $keyword = '';
@@ -949,23 +949,30 @@ class SgListView
             return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
         $purl = $this->GetCurUrl();
-        $geturl = "tid=".$this->TypeID."&TotalResult=".$this->TotalResult."&nativeplace=$nativeplace&infotype=$infotype&keyword=".urlencode($keyword)."&";
+        //开启伪静态对规则替换
+        if ($cfg_rewrite == 'Y') {
+            $purl = str_replace("/apps", "", $purl);
+            $nowurls = preg_replace("/\-/", ".php?", $purl);
+            $nowurls = explode("?", $nowurls);
+            $purl = $nowurls[0];
+        }
+        $geturl = "&TotalResult=".$this->TotalResult."&nativeplace=$nativeplace&infotype=$infotype&keyword=".urlencode($keyword)."&";
         $hidenform = "<input type='hidden' name='tid' value='".$this->TypeID."' />\r\n";
         $hidenform = "<input type='hidden' name='nativeplace' value='$nativeplace' />\r\n";
         $hidenform = "<input type='hidden' name='infotype' value='$infotype' />\r\n";
         $hidenform = "<input type='hidden' name='keyword' value='$keyword' />\r\n";
         $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."' />\r\n";
-        $purl .= "?".$geturl;
+        $purl .= "?tid=".$this->TypeID."&";
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum{$geturl}'>上一页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1{$geturl}'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li class='page-item disabled'><a class='page-link'>首页</a></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum{$geturl}'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage{$geturl}'>末页</a></li>\r\n";
         } else {
             $endpage = "<li class='page-item disabled'><a class='page-link'>末页</a></li>";
         }
@@ -988,10 +995,16 @@ class SgListView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><a class='page-link'>$j</a></li>\r\n";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j{$geturl}'>".$j."</a></li>\r\n";
             }
         }
         $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;
+        //伪静态栏目分页
+        if ($cfg_rewrite == 'Y') {
+            $plist = str_replace(".php?tid=", "-", $plist);
+            $plist = preg_replace("/&PageNo=(\d+)/i", "-\\1", $plist);
+            $plist = preg_replace("/&TotalResult=(\d+)&/i", "?", $plist);//去掉分页数值
+        }
         return $plist;
     }
     /**
