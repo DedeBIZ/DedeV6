@@ -116,7 +116,8 @@ function newmail($mid, $userid, $mailto, $type, $send)
 function member($mail, $userid)
 {
     global $db;
-    $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE email='$mail' AND userid = '$userid'";
+    $msql = empty($mail)? "1=1" : "email='$mail'";
+    $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE $msql AND userid = '$userid'";
     $row = $db->GetOne($sql);
     if (!is_array($row)) {
         ShowMsg("会员id输入错误", "-1");

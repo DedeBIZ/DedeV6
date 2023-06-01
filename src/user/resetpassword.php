@@ -18,6 +18,8 @@ if ($dopost == "") {
     //验证验证码
     if (!isset($vdcode)) $vdcode = '';
     $svali = GetCkVdValue();
+    $type = intval($type);
+    $mail = HtmlReplace($mail, 0);
     if (strtolower($vdcode) != $svali || $svali == '') {
         ResetVdValue();
         ShowMsg("验证码输入错误", "-1");
@@ -27,7 +29,7 @@ if ($dopost == "") {
     if (empty($mail) && empty($userid)) {
         showmsg('请输入会员名或邮箱', '-1');
         exit;
-    } else if (!preg_match("#(.*)@(.*)\.(.*)#", $mail)) {
+    } else if (!empty($mail) && !preg_match("#(.*)@(.*)\.(.*)#", $mail)) {
         showmsg('请输入正确的邮箱格式', '-1');
         exit;
     } else if (CheckUserID($userid, '', false) != 'ok') {
