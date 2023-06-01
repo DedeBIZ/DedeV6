@@ -1171,11 +1171,9 @@ class ListView
         if (preg_match('/info/i', $listitem)) $plist .= $maininfo;
         //伪静态分页
         if ($cfg_rewrite == 'Y') {
-            $plist = str_replace('.php?tid=','-',$plist);
-            $plist = preg_replace("/&TotalResult=(\d+)/i","",$plist);//去掉总结果数值
-            //目录版默认
-            $plist = preg_replace("/&PageNo=(\d+)/i",'-\\1',$plist);
-            //网页版$plist = preg_replace("/&PageNo=(\d+)/i",'-\\1.html',$plist);
+            $plist = str_replace(".php?tid=", "-", $plist);
+            $plist = preg_replace("/&PageNo=(\d+)/i", "-\\1", $plist);
+            $plist = preg_replace("/&TotalResult=(\d+)/i", "", $plist);//去掉分页数值
         }
         return $plist;
     }

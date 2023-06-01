@@ -47,8 +47,8 @@ if (isset($lv->Fields['corank']) && $lv->Fields['corank'] > 0) {
             $memberTypes[$row->rank] = $row->membername;
         }
         $memberTypes[0] = "游客或没权限会员";
-        $msgtitle = "您没有权限浏览栏目：{$lv->Fields['typename']} ";
-        $moremsg = "该栏目需要<span class='text-primary'>".$memberTypes[$lv->Fields['corank']]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>，请进行<a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm'>升级会员</button>";
+        $msgtitle = "您没有权限浏览栏目：{$lv->Fields['typename']}";
+        $moremsg = "该栏目需要等级<span class='text-primary'>".$memberTypes[$lv->Fields['corank']]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span><a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm ml-2'>升级会员</button>";
         include_once(DEDETEMPLATE.'/apps/view_msg_catalog.htm');
         exit();
     }

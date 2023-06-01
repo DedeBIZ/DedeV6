@@ -21,12 +21,12 @@
 				<tr>
 					<td width="10%">是否支持投稿：</td>
 					<td width="40%">
-						<label><input type="radio" name="issend" value="1" checked="1"> 支持</label>
+						<label><input type="radio" name="issend" value="1" checked="checked"> 支持</label>
 						<label><input type="radio" name="issend" value="0"> 不支持</label>
 					</td>
 					<td width="10%">目录保存位置：</td>
 					<td width="40%">
-						<label><input type="radio" name="referpath" value="parent" checked="1"> 默认网页目录（
+						<label><input type="radio" name="referpath" value="parent" checked="checked"> 默认网页目录（
 							<?php
 							$pardir = '{cmspath}'.$cfg_arcdir;
 							if (!empty($typedir)) $pardir = $typedir.'/';
@@ -63,7 +63,7 @@
 				<tr>
 					<td>栏目列表选项：</td>
 					<td>
-						<label><input type="radio" name="isdefault" value="1" checked="1"> 链接到默认页</label>
+						<label><input type="radio" name="isdefault" value="1" checked="checked"> 链接到默认页</label>
 						<label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
 						<label><input type="radio" name="isdefault" value="-1"> 使用动态页</label>
 					</td>
@@ -96,8 +96,8 @@
 							<p>{typedir} 栏目保存目录</p>
 							<p>{cc} 日期加混编id后用转换为适合字母</p>
 							<p>伪静态规则（Nginx）</p>
-							<p>rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;</p>
-							<span>rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
+							<p>rewrite ^/doc-([0-9]+).html$ /apps/view.php?arcID=$1;</p>
+							<span>rewrite ^/doc-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
 						</div>
 					</td>
 					<td>默认页的名称：</td>

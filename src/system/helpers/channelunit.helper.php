@@ -142,12 +142,11 @@ if (!function_exists('GetFileName')) {
             $namerule = $cfg_special.'/{aid}.html';
             $typeid = -1;
         }
-        //伪静态文档
+        //动态文档
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
             if ($cfg_rewrite == 'Y') {
-                //目录版return "/article/".$aid."";
-                //网页版默认，文档形式：域名/1.html、域名/2.html，分页形式：域名/1-1.html、域名/1-2.html
-                return "/".$aid.".html";
+                //开启伪静态文档/doc-1.html、/doc-2.html，则分页/doc-1-1.html、/doc-1-2.html
+                return "/doc-".$aid.".html";
             } else {
                 return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
             }
@@ -200,18 +199,17 @@ if (!function_exists('GetTypeUrl')) {
         global $cfg_typedir_df, $cfg_rewrite;
         $typedir = MfTypedir($typedir);
         $sitepath = MfTypedir($sitepath);
-        //伪静态栏目
-        if ($isdefault==-1) {
-            //动态
+        //动态栏目
+        if ($isdefault == -1) {
             if ($cfg_rewrite == 'Y') {
-                //网页版，栏目形式：域名/list-1.html、域名/list-2.html，分页形式：域名/list-1-1.html、域名/list-1-2.htmlreturn $GLOBALS['cfg_cmspath']."/list-".$typeid.".html";
-                //目录版默认，栏目形式：域名/list-1、域名/list-2，分页形式：域名/list-1-1、域名/list-1-2
+                //开启伪静态栏目/list-1、/list-2，则分页/list-1-1、/list-1-2
                 return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
             } else {
                 $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
             }
-        } else if ($ispart == 2) {
-            //跳转网址
+        }
+        //跳转网址
+        else if ($ispart == 2) {
             $reurl = $typedir;
             return $reurl;
         } else {
@@ -268,7 +266,7 @@ if (!function_exists('GetTopids')) {
     }
 }
 /**
- *  获取上级ID列表
+ *  获取上级id列表
  *
  * @access    public
  * @param     string  $tid  栏目id
@@ -361,7 +359,7 @@ function GetSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
 /**
  *  栏目目录规则
  *
- * @param     string  $typedir   栏目目录
+ * @param     string  $typedir  栏目目录
  * @return    string
  */
 function MfTypedir($typedir)

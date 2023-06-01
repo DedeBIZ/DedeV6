@@ -791,7 +791,7 @@ class Archives
                         $PageList = preg_replace("#.php\?aid=(\d+)#i", '-\\1-1.html', $PageList);
                     }
                 } else {
-                    $PageList .= "<li class=\"page-item active\"><a class='page-link'>1</a></li>";
+                    $PageList .= "<li class='page-item active'><a class='page-link'>1</a></li>";
                 }
             } else {
                 $n = $i;
@@ -802,7 +802,7 @@ class Archives
                         $PageList =  preg_replace("#&pageno=(\d+)#i", '-\\1.html', $PageList);
                     }
                 } else {
-                    $PageList .= "<li class=\"page-item active\"><span class='page-link'>{$n}</span></li>";
+                    $PageList .= "<li class='page-item active'><span class='page-link'>{$n}</span></li>";
                 }
             }
         }
@@ -835,7 +835,7 @@ class Archives
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
-            $PageList .= "<li class='page-item disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
+            $PageList .= "<li class='page-item disabled'><span class='page-link'>上一页</span></li>";
         } else {
             if ($nPage == 1) {
                 $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
@@ -848,14 +848,14 @@ class Archives
                 if ($nowPage != 1) {
                     $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>1</a></li>";
                 } else {
-                    $PageList .= "<li class=\"page-item active\"><span class='page-link'>1</span></li>";
+                    $PageList .= "<li class='page-item active'><span class='page-link'>1</span></li>";
                 }
             } else {
                 $n = $i;
                 if ($nowPage != $i) {
                     $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$i.".".$this->ShortName."'>".$n."</a></li>";
                 } else {
-                    $PageList .= "<li class=\"page-item active\"><span class='page-link'>{$n}</span></li>";
+                    $PageList .= "<li class='page-item active'><span class='page-link'>{$n}</span></li>";
                 }
             }
         }

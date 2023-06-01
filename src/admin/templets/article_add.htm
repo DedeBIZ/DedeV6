@@ -170,7 +170,7 @@
 									<button type="button" name="Submit" onclick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">选择</button>
 								</td>
 								<td>
-									<label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="1"';?>> 自动获取</label>
+									<label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="checked"';?>> 自动获取</label>
 								</td>
 							</tr>
 						</table>
@@ -192,10 +192,10 @@
 							<tr>
 								<td width="120">附加选项：</td>
 								<td>
-									<label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo 'checked="1"';?>> 下载远程图片和资源</label>
-									<label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if ($cfg_arc_dellink=='Y') echo 'checked="1"';?>> 删除非站内链接</label>
+									<label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo 'checked="checked"';?>> 下载远程图片和资源</label>
+									<label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if ($cfg_arc_dellink=='Y') echo 'checked="checked"';?>> 删除非站内链接</label>
 									<a href="javascript:OpenMyWin('article_allowurl_edit.php');">[设置]</a>
-									<label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked="1"';?>> 提取第一个图片为缩略图</label>
+									<label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked="checked"';?>> 提取第一个图片为缩略图</label>
 									<label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup=='1') echo "checked";?>> 图片是否加水印</label>
 								</td>
 							</tr>
@@ -208,8 +208,8 @@
 							<tr>
 								<td width="120">分页方式：</td>
 								<td>
-									<label class="l-height-28"><input type="radio" name="sptype" value="hand" <?php if ($cfg_arcautosp=='N') echo "checked='1'"?>> 手动</label>
-									<label class="l-height-28"><input type="radio" name="sptype" value="auto" <?php if ($cfg_arcautosp=='Y') echo "checked='1'"?>> 自动</label>
+									<label class="l-height-28"><input type="radio" name="sptype" value="hand" <?php if ($cfg_arcautosp=='N') echo "checked='checked'"?>> 手动</label>
+									<label class="l-height-28"><input type="radio" name="sptype" value="auto" <?php if ($cfg_arcautosp=='Y') echo "checked='checked'"?>> 自动</label>
 									<label>大小：<input name="spsize" type="text" id="spsize" value="<?php echo $cfg_arcautosp_size?>" class="admin-input-xs"> K（分页符为：#p#分页标题#e#）</label>
 								</td>
 							</tr>
@@ -226,12 +226,12 @@
 							<tr>
 								<td width="120">评论选项：</td>
 								<td width="260">
-									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
-									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
+									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='checked'";?>> 允许评论</label>
+									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='checked'";?>> 禁止评论</label>
 								</td>
 								<td width="120">发布选项：</td>
 								<td>
-									<label><input type="radio" name="ishtml" value="1" checked="1"> 生成网页</label>
+									<label><input type="radio" name="ishtml" value="1" checked="checked"> 生成网页</label>
 									<label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
 								</td>
 							</tr>

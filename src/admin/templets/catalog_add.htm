@@ -67,7 +67,7 @@
 									} else if (preg_match("#\.#", $arr['evalue'])) {
 										echo "<option value='{$arr['evalue']}'>└── {$arr['ename']}</option>";
 									} else {
-										echo "<option value='{$arr['evalue']}'>└─{$arr['ename']}</option>";
+										echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
 									}
 								}
 								?>
@@ -165,7 +165,7 @@
 					</td>
 					<td>栏目交叉：</td>
 					<td>
-						<label class="l-height-28"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" checked="1"> 不交叉</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" checked="checked"> 不交叉</label>
 						<label class="l-height-28"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()"> 自动获取同名栏目文档</label>
 						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 手工指定交叉栏目id（用英文逗号）</label>
 						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
@@ -236,8 +236,8 @@
 							<p>{typedir} 栏目保存目录</p>
 							<p>{cc} 日期加混编id后用转换为适合字母</p>
 							<p>伪静态规则（Nginx）</p>
-							<p>rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;</p>
-							<span>rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
+							<p>rewrite ^/doc-([0-9]+).html$ /apps/view.php?arcID=$1;</p>
+							<span>rewrite ^/doc-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
 						</div>
 					</td>
 					<td>SEO标题：</td>

@@ -32,10 +32,10 @@
 				<tr>
 					<td>封装类型：</td>
 					<td>
-						<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if ($moduletype=='soft') echo "checked='1'";?>> 模块</label>
-						<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if ($moduletype=='templets') echo "checked='1'";?>> 模板</label>
-						<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if ($moduletype=='plus') echo "checked='1'";?>> 小插件</label>
-						<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if ($moduletype=='patch') echo "checked='1'";?>> 补丁</label>
+						<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if ($moduletype=='soft') echo "checked='checked'";?>> 模块</label>
+						<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if ($moduletype=='templets') echo "checked='checked'";?>> 模板</label>
+						<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if ($moduletype=='plus') echo "checked='checked'";?>> 小插件</label>
+						<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if ($moduletype=='patch') echo "checked='checked'";?>> 补丁</label>
 					</td>
 				</tr>
 				<tr>
@@ -52,8 +52,8 @@
 				<tr>
 					<td>是否涉及会员系统：</td>
 					<td>
-						<label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='1') echo "checked='1'";?>> 涉及</label>
-						<label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='0') echo "checked='1'";?>> 不涉及</label>
+						<label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='1') echo "checked='checked'";?>> 涉及</label>
+						<label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='0') echo "checked='checked'";?>> 不涉及</label>
 						<div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block');?>">
 							<label>导航使用名称：<input type="text" name="indexname" id="indexname" class="admin-input-sm" value="<?php echo $indexname;?>"></label><br>
 							<label>导航使用网址：<input type="text" name="indexurl" id="indexurl" class="admin-input-sm" value="<?php echo $indexurl;?>"></label>
@@ -78,7 +78,7 @@
 				<tr>
 					<td>程序安装：</td>
 					<td>
-						<label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" <?php if (isset($autosetup) && $autosetup==1) echo "checked='1'";?>> 自动生成</label><br>
+						<label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" <?php if (isset($autosetup) && $autosetup==1) echo "checked='checked'";?>> 自动生成</label><br>
 						<div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input type="file" name="setup" id="setup" class="admin-input-lg"></div>
 						<div style="display:<?php if (isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
 							<p>（由系统自动处理安装，请使用MySQL4.0版本格式的SQL语句：MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=*，改为TYPE=MyISAM，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束，如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php）</p>
@@ -89,7 +89,7 @@
 				<tr>
 					<td>删除程序：</td>
 					<td>
-						<label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if (isset($autodel) && $autodel==1) echo "checked='1'";?>> 自动生成</label><br>
+						<label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if (isset($autodel) && $autodel==1) echo "checked='checked'";?>> 自动生成</label><br>
 						<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input type="file" name="uninstall" id="uninstall" class="admin-input-lg"></div>
 						<div style="display:<?php if (isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>" id="autodelct">
 							<p>（由系统自动处理卸载，卸载时执行SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）</p>
@@ -100,7 +100,7 @@
 				<tr>
 					<td>模块文件选项：</td>
 					<td>
-						<label><input type="radio" name="rebuild" value="yes" checked="1"> 重新编译所有文件</label>
+						<label><input type="radio" name="rebuild" value="yes" checked="checked"> 重新编译所有文件</label>
 						<label><input type="radio" name="rebuild" value="no"> 不对[文件列表]内文件重编译</label>
 					</td>
 				</tr>

@@ -74,7 +74,7 @@ function getTypeOptions($id=0,$sep="└")
     $dsql->Execute($id);
     while ($nrow = $dsql->GetObject($id)) {
         $isDisabled = $nrow->ispart==2? " disabled" : "";
-        $typeOptions .= "<option value='{$nrow->id}'{$isDisabled}>{$sep}{$nrow->typename}</option>\r\n";
+        $typeOptions .= "<option value='{$nrow->id}'{$isDisabled}>{$sep} {$nrow->typename}</option>\r\n";
         getTypeOptions($nrow->id, $sep."─");
     }
 }

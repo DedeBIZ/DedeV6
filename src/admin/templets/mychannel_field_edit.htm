@@ -60,8 +60,8 @@
 					<td>是否使用分页符：</td>
 					<td>
 						<input name="isnull" type="hidden" value="1">
-						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
-						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
+						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='checked'";?>> 是</label>
+						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='checked'";?>> 否</label>
 						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符，实现文档分页，但仅允许一个字段）</span>
 					</td>
 				</tr>

@@ -23,13 +23,13 @@
 				<tr>
 					<td width="10%">是否支持投稿：</td>
 					<td width="40%">
-						<label><input type="radio" name="issend" value="1" <?php if ($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
-						<label><input type="radio" name="issend" value="0" <?php if ($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
+						<label><input type="radio" name="issend" value="1" <?php if ($myrow['issend']=="1") echo "checked='checked'";?>> 支持</label>
+						<label><input type="radio" name="issend" value="0" <?php if ($myrow['issend']=="0") echo "checked='checked'";?>> 不支持</label>
 					</td>
 					<td width="10%">是否隐藏栏目：</td>
 					<td width="40%">
-						<label><input type="radio" name="ishidden" value="0" <?php if ($myrow['ishidden']=="0") echo "checked='1'";?>> 显示</label>
-						<label><input type="radio" name="ishidden" value="1" <?php if ($myrow['ishidden']=="1") echo "checked='1'";?>> 隐藏</label>
+						<label><input type="radio" name="ishidden" value="0" <?php if ($myrow['ishidden']=="0") echo "checked='checked'";?>> 显示</label>
+						<label><input type="radio" name="ishidden" value="1" <?php if ($myrow['ishidden']=="1") echo "checked='checked'";?>> 隐藏</label>
 					</td>
 				</tr>
 				<tr>
@@ -63,7 +63,7 @@
 									} else if (preg_match("#\.#", $arr['evalue'])) {
 										echo "<option value='{$arr['evalue']}'{$selstr}>└── {$arr['ename']}</option>";
 									} else {
-										echo "<option value='{$arr['evalue']}'{$selstr}>└─{$arr['ename']}</option>";
+										echo "<option value='{$arr['evalue']}'{$selstr}>└─ {$arr['ename']}</option>";
 									}
 								}
 								?>
@@ -135,9 +135,9 @@
 				<tr>
 					<td>栏目列表选项：</td>
 					<td>
-						<label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo "checked='1'";?>> 链接到默认页</label>
-						<label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo "checked='1'";?>> 链接到列表第一页</label>
-						<label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo "checked='1'";?>> 使用动态页</label>
+						<label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo "checked='checked'";?>> 链接到默认页</label>
+						<label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo "checked='checked'";?>> 链接到列表第一页</label>
+						<label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo "checked='checked'";?>> 使用动态页</label>
 					</td>
 					<td>默认页的名称：</td>
 					<td><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="admin-input-lg"></td>
@@ -145,15 +145,15 @@
 				<tr>
 					<td>栏目属性：</td>
 					<td>
-						<label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo "checked='1'";?>> 列表栏目（允许发布）</label>
-						<label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo "checked='1'";?>> 封面栏目（不允许发布）</label>
-						<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo "checked='1'";?>> 外部栏目（文件保存目录填写链接）</label>
+						<label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo "checked='checked'";?>> 列表栏目（允许发布）</label>
+						<label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo "checked='checked'";?>> 封面栏目（不允许发布）</label>
+						<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo "checked='checked'";?>> 外部栏目（文件保存目录填写链接）</label>
 					</td>
 					<td>栏目交叉：</td>
 					<td>
-						<label class="l-height-28"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
-						<label class="l-height-28"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目文档</label>
-						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" <?php if ($myrow['cross']==0) echo "checked='checked'";?>> 不交叉</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='checked'";?>> 自动获取同名栏目文档</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='checked'";?>> 手工指定交叉栏目id（用英文逗号）</label>
 						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
 						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
@@ -162,8 +162,8 @@
 				<tr>
 					<td width="260">多站点支持：</td>
 					<td>
-						<label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo "checked='1'";?>> 启用</label>
-						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>（只需要顶级栏目设置，子级栏目修改无效）
+						<label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo "checked='checked'";?>> 启用</label>
+						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='checked'";?>> 不启用</label>（只需要顶级栏目设置，子级栏目修改无效）
 					</td>
 					<td>绑定域名：</td>
 					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-lg">（需要加http开头的链接）</td>
@@ -220,8 +220,8 @@
 							<p>{typedir} 栏目保存目录</p>
 							<p>{cc} 日期加混编id后用转换为适合字母</p>
 							<p>伪静态规则（Nginx）</p>
-							<p>rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;</p>
-							<span>rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
+							<p>rewrite ^/doc-([0-9]+).html$ /apps/view.php?arcID=$1;</p>
+							<span>rewrite ^/doc-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
 						</div>
 					</td>
 					<td>SEO标题：</td>
@@ -248,8 +248,8 @@
 					<td>是否支持跨站调用：</td>
 					<td>
 						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
-						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='1'";?>> 支持</label>
-						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='1'";?>> 不支持</label>
+						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='checked'";?>> 支持</label>
+						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='checked'";?>> 不支持</label>
 						<span class="btn btn-success btn-sm ml-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
 						<span class="btn btn-success btn-sm" title="秘钥标签" onclick="showAPI(<?php echo $id;?>)"><i class="fa fa-question-circle"></i></span>
 					</td>

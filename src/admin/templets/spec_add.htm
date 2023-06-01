@@ -121,7 +121,7 @@
 									<input type="text" name="keywords" id="keywords" value="" class="admin-input-lg">
 									<button type="button" name="Submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
 								</td>
-								<td><label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="1"';?>> 自动获取</label></td>
+								<td><label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="checked"';?>> 自动获取</label></td>
 							</tr>
 						</table>
 					</td>
@@ -207,12 +207,12 @@
 							<tr>
 								<td width="120" width="260">评论选项：</td>
 								<td width="260">
-									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
-									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
+									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='checked'";?>> 允许评论</label>
+									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='checked'";?>> 禁止评论</label>
 								</td>
 								<td width="120">发布选项：</td>
 								<td>
-									<label><input type="radio" name="ishtml" value="1" checked="1"> 生成网页</label>
+									<label><input type="radio" name="ishtml" value="1" checked="checked"> 生成网页</label>
 									<label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
 								</td>
 							</tr>

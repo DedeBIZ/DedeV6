@@ -98,7 +98,7 @@
 									if ($ctag->GetName()=="img") {
 							?>
 							<div class="mb-3">
-								<label class="mb-0"><input type="checkbox" name="isokcheck<?php echo $j;?>" id="isokcheck<?php echo $j;?>" value="1" onclick="CheckSelTable(<?php echo $j;?>)" checked="1"> 显示图片<?php echo $j;?>上传框</label>
+								<label class="mb-0"><input type="checkbox" name="isokcheck<?php echo $j;?>" id="isokcheck<?php echo $j;?>" value="1" onclick="CheckSelTable(<?php echo $j;?>)" checked="checked"> 显示图片<?php echo $j;?>上传框</label>
 							</div>
 							<div id="seltb<?php echo $j;?>" class="mb-3">
 								<div class="mb-3"><img src="<?php echo trim($ctag->GetInnerText());?>" class="thumbnail-md"></div>

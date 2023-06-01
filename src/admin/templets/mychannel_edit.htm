@@ -59,8 +59,8 @@
 				<tr>
 					<td>是否支持会员投稿：</td>
 					<td>
-						<label><input type="radio" name="issend" value="0" <?php if ($row['issend']==0) echo "checked='1'";?>> 不支持</label>
-						<label><input type="radio" name="issend" value="1" <?php if ($row['issend']==1) echo "checked='1'";?>> 支持</label>
+						<label><input type="radio" name="issend" value="0" <?php if ($row['issend']==0) echo "checked='checked'";?>> 不支持</label>
+						<label><input type="radio" name="issend" value="1" <?php if ($row['issend']==1) echo "checked='checked'";?>> 支持</label>
 					</td>
 				</tr>
 				<tr>
@@ -93,15 +93,15 @@
 							echo "<label><input type='radio' name='usertype' value='".$row3->name."'".($row['usertype']==$row3->name? "checked" : "")."> ".$row3->name."</label> ";
 						}
 						?>
-						<label><input type="radio" name="usertype" value="" <?php if ($row['usertype']=='') echo "checked='1'";?>> 不限</label>
+						<label><input type="radio" name="usertype" value="" <?php if ($row['usertype']=='') echo "checked='checked'";?>> 不限</label>
 					</td>
 				</tr>
 				<tr>
 					<td>会员投稿默认状态：</td>
 					<td>
-						<label><input type="radio" name="arcsta" value="-1" <?php if ($row['arcsta']==-1) echo "checked='1'";?>> 未审核</label>
-						<label><input type="radio" name="arcsta" value="0" <?php if ($row['arcsta']==0) echo "checked='1'";?>> 已审核（更新静态页）</label>
-						<label><input type="radio" name="arcsta" value="1" <?php if ($row['arcsta']==1) echo "checked='1'";?>> 已审核（使用动态页）</label>
+						<label><input type="radio" name="arcsta" value="-1" <?php if ($row['arcsta']==-1) echo "checked='checked'";?>> 未审核</label>
+						<label><input type="radio" name="arcsta" value="0" <?php if ($row['arcsta']==0) echo "checked='checked'";?>> 已审核（更新静态页）</label>
+						<label><input type="radio" name="arcsta" value="1" <?php if ($row['arcsta']==1) echo "checked='checked'";?>> 已审核（使用动态页）</label>
 					</td>
 				</tr>
 				<tr>
@@ -118,15 +118,15 @@
 				<tr>
 					<td>投稿是否使用摘要：</td>
 					<td>
-						<label><input type="radio" name="needdes" value="1" <?php if ($row['needdes']==1) echo "checked='1'";?>> 使用</label>
-						<label><input type="radio" name="needdes" value="0" <?php if ($row['needdes']==0) echo "checked='1'";?>> 不使用</label>
+						<label><input type="radio" name="needdes" value="1" <?php if ($row['needdes']==1) echo "checked='checked'";?>> 使用</label>
+						<label><input type="radio" name="needdes" value="0" <?php if ($row['needdes']==0) echo "checked='checked'";?>> 不使用</label>
 					</td>
 				</tr>
 				<tr>
 					<td>投稿是否使用缩图：</td>
 					<td>
-						<label><input type="radio" name="needpic" value="1" <?php if ($row['needpic']==1) echo "checked='1'";?>> 使用</label>
-						<label><input type="radio" name="needpic" value="0" <?php if ($row['needpic']==0) echo "checked='1'";?>> 不使用</label>
+						<label><input type="radio" name="needpic" value="1" <?php if ($row['needpic']==1) echo "checked='checked'";?>> 使用</label>
+						<label><input type="radio" name="needpic" value="0" <?php if ($row['needpic']==0) echo "checked='checked'";?>> 不使用</label>
 					</td>
 				</tr>
 				<tr>
@@ -136,8 +136,8 @@
 				<tr>
 					<td>投稿具有唯一性：</td>
 					<td>
-						<label><input type="radio" name="onlyone" value="1" <?php if ($row['onlyone']==1) echo "checked='1'";?>> 是</label>
-						<label><input type="radio" name="onlyone" value="0" <?php if ($row['onlyone']==0) echo "checked='1'";?>> 不是</label>
+						<label><input type="radio" name="onlyone" value="1" <?php if ($row['onlyone']==1) echo "checked='checked'";?>> 是</label>
+						<label><input type="radio" name="onlyone" value="0" <?php if ($row['onlyone']==0) echo "checked='checked'";?>> 不是</label>
 						<span>（与投稿唯一会员只能在该模型对应栏目中发布文档，其作用相当于自定义表单）</span>
 					</td>
 				</tr>
