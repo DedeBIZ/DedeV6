@@ -86,7 +86,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
                 return ShowMsg('验证码已经发送到原来的邮箱，请注意查收', 'login.php', '', '5000');
             } else if ($send == 'N') {
-                return ShowMsg('稍后前往修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid."&key=".$randval);
+                return ShowMsg('稍后前往密码修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid."&key=".$randval);
             }
         } else {
             return ShowMsg('修改失败，请联系管理员', 'login.php');
@@ -99,7 +99,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
                 ShowMsg('修改验证码已经发送到原来的邮箱请查收', 'login.php');
             } elseif ($send === 'N') {
-                return ShowMsg('稍后前往修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid."&key=".$randval);
+                return ShowMsg('稍后前往密码修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid."&key=".$randval);
             }
         } else {
             ShowMsg('修改失败，请与管理员联系', 'login.php');

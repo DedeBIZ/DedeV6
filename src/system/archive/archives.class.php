@@ -857,6 +857,7 @@ class Archives
      */
     function GetPageTitlesDM($styleName, $pageNo)
     {
+        global $cfg_rewrite;
         if ($this->TotalPage == 1) {
             return "";
         }
@@ -869,26 +870,47 @@ class Archives
             $revalue = "";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
+                    if ($cfg_rewrite == 'Y') {
+                        $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>\r\n";
+                    } else {
+                        $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
+                    }
                 } else {
                     if ($pageNo == $i) {
                         $revalue .= " $v \r\n";
                     } else {
-                        $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
+                        if ($cfg_rewrite == 'Y') {
+                            $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>\r\n";
+                        } else {
+                            $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
+                        }
+                        
                     }
                 }
                 $i++;
             }
         } else {
-            $revalue = "<select id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+            $revalue = "<select class='form-control w-25' id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
-                } else {
-                    if ($pageNo == $i) {
-                        $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>\r\n";
+                    if ($cfg_rewrite == 'Y') {
+                        $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>\r\n";
                     } else {
                         $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
+                    }
+                } else {
+                    if ($pageNo == $i) {
+                        if ($cfg_rewrite == 'Y') {
+                            $revalue .= "<option value='/doc-$aid-$i.html' selected>{$i}、{$v}</option>\r\n";
+                        } else {
+                            $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>\r\n";
+                        }
+                    } else {
+                        if ($cfg_rewrite == 'Y') {
+                            $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>\r\n";
+                        } else {
+                            $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
+                        }
                     }
                 }
                 $i++;
