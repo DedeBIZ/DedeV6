@@ -1114,6 +1114,7 @@ class ListView
         $purl = $this->GetCurUrl();
         //开启伪静态对规则替换
         if ($cfg_rewrite == 'Y') {
+            $purl = str_replace("/apps", "", $purl);
             $nowurls = preg_replace("/\-/", ".php?", $purl);
             $nowurls = explode("?", $nowurls);
             $purl = $nowurls[0];

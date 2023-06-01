@@ -908,7 +908,7 @@ class Archives
      */
     function GetPagebreakDM($totalPage, $nowPage, $aid)
     {
-        global $cfg_rewrite;
+        global $cfg_rewrite,$cfg_cmsurl;
         if ($totalPage == 1) {
             return "";
         }
@@ -919,24 +919,26 @@ class Archives
             $PageList .= "<li class='page-item disabled'><span class='page-link'>上一页</span></li>";
         } else {
             if ($nPage == 1) {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>上一页</a></li>";
                 if ($cfg_rewrite == 'Y') {
-                    $PageList = preg_replace("#.php\?aid=(\d+)#i", "-\\1-1.html", $PageList);   
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid.html'>上一页</a></li>";
+                } else {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>上一页</a></li>";
                 }
             } else {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$nPage'>上一页</a></li>";
                 if ($cfg_rewrite == 'Y') {
-                    $PageList = str_replace(".php?aid=", "-", $PageList);
-                    $PageList = preg_replace("#&pageno=(\d+)#i", "-\\1.html", $PageList);
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$nPage.html'>上一页</a></li>";
+                } else {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$nPage'>上一页</a></li>";
                 }
             }
         }
         for ($i = 1; $i <= $totalPage; $i++) {
             if ($i == 1) {
                 if ($nowPage != 1) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>1</a></li>";
                     if ($cfg_rewrite == 'Y') {
-                        $PageList = preg_replace("#.php\?aid=(\d+)#i", "-\\1-1.html", $PageList);
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid.html'>1</a></li>";
+                    } else {
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>1</a></li>";
                     }
                 } else {
                     $PageList .= "<li class='page-item active'><span class='page-link'>1</span></li>";
@@ -944,10 +946,10 @@ class Archives
             } else {
                 $n = $i;
                 if ($nowPage != $i) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$n}</a></li>";
                     if ($cfg_rewrite == 'Y') {
-                        $PageList = str_replace(".php?aid=", "-", $PageList);
-                        $PageList = preg_replace("#&pageno=(\d+)#i", "-\\1.html", $PageList);
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$i.html'>{$n}</a></li>";
+                    } else {
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$n}</a></li>";
                     }
                 } else {
                     $PageList .= "<li class='page-item active'><span class='page-link'>{$n}</span></li>";
@@ -955,10 +957,10 @@ class Archives
             }
         }
         if ($lPage <= $totalPage) {
-            $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$lPage'>下一页</a></li>";
             if ($cfg_rewrite == 'Y') {
-                $PageList = str_replace(".php?aid=", "-", $PageList);
-                $PageList = preg_replace("#&pageno=(\d+)#i", "-\\1.html", $PageList);
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$lPage.html'>下一页</a></li>";
+            } else {
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$lPage'>下一页</a></li>";
             }
         } else {
             $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
