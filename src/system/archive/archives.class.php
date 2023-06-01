@@ -750,6 +750,104 @@ class Archives
         return $rs;
     }
     /**
+     *  获得静态文档分页标题
+     *
+     * @access    public
+     * @param     string  $styleName  类型名称
+     * @param     string  $pageNo  页码数
+     * @return    string
+     */
+    function GetPageTitlesST($styleName, $pageNo)
+    {
+        if ($this->TotalPage == 1) {
+            return "";
+        }
+        if (count($this->SplitTitles) == 0) {
+            return "";
+        }
+        $i = 1;
+        if ($styleName == 'link') {
+            $revalue = "";
+            foreach ($this->SplitTitles as $k => $v) {
+                if ($i == 1) {
+                    $revalue .= "<a href='".$this->NameFirst.".".$this->ShortName."'>$v</a>\r\n";
+                } else {
+                    if ($pageNo == $i) {
+                        $revalue .= " $v \r\n";
+                    } else {
+                        $revalue .= "<a href='".$this->NameFirst."-".$i.".".$this->ShortName."'>$v</a>\r\n";
+                    }
+                }
+                $i++;
+            }
+        } else {
+            $revalue = "<select id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+            foreach ($this->SplitTitles as $k => $v) {
+                if ($i == 1) {
+                    $revalue .= "<option value='".$this->NameFirst.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
+                } else {
+                    if ($pageNo == $i) {
+                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."' selected>{$i}、{$v}</option>\r\n";
+                    } else {
+                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
+                    }
+                }
+                $i++;
+            }
+            $revalue .= "</select>\r\n";
+        }
+        return $revalue;
+    }
+    /**
+     *  获得静态文档分页列表
+     *
+     * @access    public
+     * @param     int   $totalPage  总页数
+     * @param     int   $nowPage  当前页数
+     * @param     int   $aid  文档id
+     * @return    string
+     */
+    function GetPagebreak($totalPage, $nowPage, $aid)
+    {
+        if ($totalPage == 1) {
+            return "";
+        }
+        $PageList = "<li class='page-item disabled'><span class='page-link'>".$totalPage."页</span></li>";
+        $nPage = $nowPage - 1;
+        $lPage = $nowPage + 1;
+        if ($nowPage == 1) {
+            $PageList .= "<li class='page-item disabled'><span class='page-link'>上一页</span></li>";
+        } else {
+            if ($nPage == 1) {
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
+            } else {
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$nPage.".".$this->ShortName."'>上一页</a></li>";
+            }
+        }
+        for ($i = 1; $i <= $totalPage; $i++) {
+            if ($i == 1) {
+                if ($nowPage != 1) {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>1</a></li>";
+                } else {
+                    $PageList .= "<li class='page-item active'><span class='page-link'>1</span></li>";
+                }
+            } else {
+                $n = $i;
+                if ($nowPage != $i) {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$i.".".$this->ShortName."'>{$n}</a></li>";
+                } else {
+                    $PageList .= "<li class='page-item active'><span class='page-link'>{$n}</span></li>";
+                }
+            }
+        }
+        if ($lPage <= $totalPage) {
+            $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$lPage.".".$this->ShortName."'>下一页</a></li>";
+        } else {
+            $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
+        }
+        return $PageList;
+    }
+    /**
      *  获得动态文档分页标题
      *
      * @access    public
@@ -791,55 +889,6 @@ class Archives
                         $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>\r\n";
                     } else {
                         $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
-                    }
-                }
-                $i++;
-            }
-            $revalue .= "</select>\r\n";
-        }
-        return $revalue;
-    }
-    /**
-     *  获得静态文档分页标题
-     *
-     * @access    public
-     * @param     string  $styleName  类型名称
-     * @param     string  $pageNo  页码数
-     * @return    string
-     */
-    function GetPageTitlesST($styleName, $pageNo)
-    {
-        if ($this->TotalPage == 1) {
-            return "";
-        }
-        if (count($this->SplitTitles) == 0) {
-            return "";
-        }
-        $i = 1;
-        if ($styleName == 'link') {
-            $revalue = "";
-            foreach ($this->SplitTitles as $k => $v) {
-                if ($i == 1) {
-                    $revalue .= "<a href='".$this->NameFirst.".".$this->ShortName."'>$v</a>\r\n";
-                } else {
-                    if ($pageNo == $i) {
-                        $revalue .= " $v \r\n";
-                    } else {
-                        $revalue .= "<a href='".$this->NameFirst."-".$i.".".$this->ShortName."'>$v</a>\r\n";
-                    }
-                }
-                $i++;
-            }
-        } else {
-            $revalue = "<select id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
-            foreach ($this->SplitTitles as $k => $v) {
-                if ($i == 1) {
-                    $revalue .= "<option value='".$this->NameFirst.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
-                } else {
-                    if ($pageNo == $i) {
-                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."' selected>{$i}、{$v}</option>\r\n";
-                    } else {
-                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
                     }
                 }
                 $i++;
@@ -911,55 +960,6 @@ class Archives
                 $PageList = str_replace(".php?aid=", "-", $PageList);
                 $PageList = preg_replace("#&pageno=(\d+)#i", "-\\1.html", $PageList);
             }
-        } else {
-            $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
-        }
-        return $PageList;
-    }
-    /**
-     *  获得静态文档分页列表
-     *
-     * @access    public
-     * @param     int   $totalPage  总页数
-     * @param     int   $nowPage  当前页数
-     * @param     int   $aid  文档id
-     * @return    string
-     */
-    function GetPagebreak($totalPage, $nowPage, $aid)
-    {
-        if ($totalPage == 1) {
-            return "";
-        }
-        $PageList = "<li class='page-item disabled'><span class='page-link'>".$totalPage."页</span></li>";
-        $nPage = $nowPage - 1;
-        $lPage = $nowPage + 1;
-        if ($nowPage == 1) {
-            $PageList .= "<li class='page-item disabled'><span class='page-link'>上一页</span></li>";
-        } else {
-            if ($nPage == 1) {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
-            } else {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$nPage.".".$this->ShortName."'>上一页</a></li>";
-            }
-        }
-        for ($i = 1; $i <= $totalPage; $i++) {
-            if ($i == 1) {
-                if ($nowPage != 1) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>1</a></li>";
-                } else {
-                    $PageList .= "<li class='page-item active'><span class='page-link'>1</span></li>";
-                }
-            } else {
-                $n = $i;
-                if ($nowPage != $i) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$i.".".$this->ShortName."'>{$n}</a></li>";
-                } else {
-                    $PageList .= "<li class='page-item active'><span class='page-link'>{$n}</span></li>";
-                }
-            }
-        }
-        if ($lPage <= $totalPage) {
-            $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$lPage.".".$this->ShortName."'>下一页</a></li>";
         } else {
             $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
         }
