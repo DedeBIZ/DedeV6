@@ -126,7 +126,7 @@ if (empty($dopost)) {
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改图片文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理图片文档</a> ";
+    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改图片文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理图片文档</a> ";
     //提交后返回提交页面
     $wintitle = "成功修改图片文档";
     $wecome_info = "图片管理 - 修改图片文档";

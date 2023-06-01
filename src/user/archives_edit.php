@@ -90,7 +90,7 @@ if (empty($dopost)) {
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "<a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改自定义文档</a><a class='btn btn-success btn-sm' href='$artUrl' target='_blank'>浏览自定义文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理自定义文档</a>";
+    $msg = "<a class='btn btn-success btn-sm' href='$artUrl' target='_blank'>浏览自定义文档</a><a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success btn-sm'>发布自定义文档</a><a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改自定义文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理自定义文档</a>";
     $wintitle = "成功修改自定义文档";
     $wecome_info = "文档管理 - 修改自定义文档";
     $win = new OxWindow();
