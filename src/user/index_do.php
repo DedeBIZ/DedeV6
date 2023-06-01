@@ -253,7 +253,7 @@ if ($fmdo == 'sendMail') {
         }
     </script>";
     $wintitle = "邀请好友赚积分";
-    $wecome_info = " ";
+    $wecome_info = "邀请好友赚积分";
     $win = new OxWindow();
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
