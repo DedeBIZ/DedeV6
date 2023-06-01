@@ -528,7 +528,8 @@ else if ($dopost == 'quickEdit') {
                 $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank' ORDER BY `rank` ASC");
                 $dsql->Execute();
                 while ($row = $dsql->GetObject()) {
-                    echo "<option value='".$row->rank."'>".$row->membername."</option>";
+                    $selected = $row->rank == 0 ? ' selected' : '';
+                    echo "<option value='".$row->rank."'{$selected}>".$row->membername."</option>";
                 }
                 ?>
             </select>
