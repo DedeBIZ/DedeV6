@@ -65,7 +65,7 @@ if ($dopost == "") {
         sn($mid, $row['userid'], $row['email'], 'N');
         exit();
     } else {
-        ShowMsg("您的安全问题或答案回答错误", "-1");
+        ShowMsg("您的安全问题或答案回答错误", "login.php");
         exit();
     }
 } else if ($dopost == "getpasswd") {
