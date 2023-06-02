@@ -18,7 +18,7 @@
 					return resp.text()
 				}
 				throw new Error('加载失败');
-			}).then((d)=>{
+			}).then((d) => {
 				ajaxdiv.innerHTML = d;
 			}).catch((error) => {
 				ajaxdiv.innerHTML = errMsg;

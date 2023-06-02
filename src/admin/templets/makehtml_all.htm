@@ -49,6 +49,21 @@
 			</table>
 		</form>
 		<script>
+			function SelUp() {
+				var ob1 = document.getElementById("uptype1");
+				var ob2 = document.getElementById("uptype2");
+				var ob3 = document.getElementById("uptype3");
+				if (ob1.checked) {
+					document.getElementById("seltime").style.display = "";
+					document.getElementById("selid").style.display = "none";
+				} else if (ob2.checked) {
+					document.getElementById("seltime").style.display = "none";
+					document.getElementById("selid").style.display = "";
+				} else {
+					document.getElementById("seltime").style.display = "none";
+					document.getElementById("selid").style.display = "none";
+				}
+			}
 			$(document).ready(function() {
 				$('.datepicker').daterangepicker({
 					"singleDatePicker": true,
@@ -78,23 +93,6 @@
 					$(this).val(start.format("YYYY-MM-DD HH:mm"));
 				});
 			})
-		</script>
-		<script>
-			function SelUp() {
-				var ob1 = document.getElementById("uptype1");
-				var ob2 = document.getElementById("uptype2");
-				var ob3 = document.getElementById("uptype3");
-				if (ob1.checked) {
-					document.getElementById("seltime").style.display = "";
-					document.getElementById("selid").style.display = "none";
-				} else if (ob2.checked) {
-					document.getElementById("seltime").style.display = "none";
-					document.getElementById("selid").style.display = "";
-				} else {
-					document.getElementById("seltime").style.display = "none";
-					document.getElementById("selid").style.display = "none";
-				}
-			}
 		</script>
 	</body>
 </html>

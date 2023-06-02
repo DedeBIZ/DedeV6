@@ -71,7 +71,7 @@ if ($dopost == "delete") {
         exit();
     } else {
         require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "删除";
+        $wintitle = "删除错误";
         $wecome_info = "<a href='erraddsave.php'>错误管理</a> - 删除错误";
         $win = new OxWindow();
         $win->Init("erraddsave.php", "js/blank.js", "POST");

@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<style>.napisdiv{position:absolute;left:10;top:0;width:150px;height:100px;z-index:3}</style>
 	</head>
 	<body>
 		<form name="forms" method="post" action="media_main.php">
@@ -28,7 +27,7 @@
 							<option value="2" <?php if ($membertype==2) echo "selected"?>>外部会员</option>
 						</select>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
-						<a href="media_add.php" class="btn btn-success btn-sm">上传新文件</a>
+						<a href="media_add.php" class="btn btn-success btn-sm">添加附件</a>
 					</td>
 				</tr>
 			</table>
@@ -47,7 +46,7 @@
 					<td width="10%">文件类型</td>
 					<td>操作</td>
 				</tr>
-				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
+				{dede:datalist empty='<tr><td colspan="7" align="center">暂无记录</td></tr>'}
 				<tr align="center">
 					<td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}"></td>
 					<td><a href="{dede:field.url/}" title="{dede:field.url/}" target="_blank">{dede:field.title/}</a>

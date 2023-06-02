@@ -89,18 +89,15 @@
 		<script>
 			function checkSubmit() {
 				if (document.form1.userid.value == "") {
-					ShowMsg("会员id不能为空");
-					document.form1.userid.focus();
+					ShowMsg("会员名不能为空");
 					return false;
 				}
 				if (document.form1.uname.value == "") {
-					ShowMsg("会员名不能为空");
-					document.form1.uname.focus();
+					ShowMsg("昵称不能为空");
 					return false;
 				}
 				if (document.form1.pwd.value == "") {
 					ShowMsg("会员密码不能为空");
-					document.form1.pwd.focus();
 					return false;
 				}
 				return true;

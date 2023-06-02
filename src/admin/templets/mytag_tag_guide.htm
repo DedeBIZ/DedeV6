@@ -151,11 +151,6 @@
 			</table>
 		</form>
 		<script>
-			var editor = CodeMirror.fromTextArea(document.getElementById('myinnertext'), {
-				lineNumbers: true,
-				lineWrapping: true,
-				mode: 'text/html'
-			});
 			function ChangeListStyle() {
 				var itxt = document.getElementById("myinnertext");
 				var myems = document.getElementsByName("liststyle");
@@ -174,6 +169,11 @@
 				var pos = GetWinPos(800,600);
 				window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 			}
+			var editor = CodeMirror.fromTextArea(document.getElementById('myinnertext'), {
+				lineNumbers: true,
+				lineWrapping: true,
+				mode: 'text/html'
+			});
 		</script>
 	</body>
 </html>
