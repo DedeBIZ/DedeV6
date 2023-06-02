@@ -361,7 +361,7 @@ input[type=file] {
 	display:inline-block;
 	height:36px
 }
-.form-control,.btn,.fa {
+.form-control,.fa {
 	font-size:14px!important
 }
 .fa {
