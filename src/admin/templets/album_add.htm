@@ -381,6 +381,9 @@
 			}
 		</script>
 		<script>
+			var swfu = null;
+			var vcc = 0;
+			var albums = [];
 			$("#iptAlbumImages").change(function(val) {
 				for (let i = 0; i < val.target.files.length; i++) {
 					const f = val.target.files[i];
