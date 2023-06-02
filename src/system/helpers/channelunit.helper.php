@@ -228,8 +228,8 @@ if (!function_exists('GetFileName')) {
             }
             $articleRule = str_replace($arr_rpsource, $arr_rpvalues, $articleRule);
             if (preg_match("/\{p/", $articleRule)) {
-                $articleRule = str_replace('{pinyin}', GetPinyin($title).'_'.$aid, $articleRule);
-                $articleRule = str_replace('{py}', GetPinyin($title, 1).'_'.$aid, $articleRule);
+                $articleRule = str_replace('{pinyin}', GetPinyin($title).'-'.$aid, $articleRule);
+                $articleRule = str_replace('{py}', GetPinyin($title, 1).'-'.$aid, $articleRule);
             }
             $articleUrl = '/'.preg_replace("/^\//", '', $articleRule);
             if (preg_match("/index\.html/", $articleUrl) && $cfg_arc_dirname == 'Y') {
