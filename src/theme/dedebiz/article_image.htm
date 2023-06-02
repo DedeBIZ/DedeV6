@@ -107,7 +107,7 @@
 								<!--如果使用的是多页单图模式幻灯，把href里的链接改为javascript:dPlayNext();表示点击看下一页-->
 								{dede:field name='imgurls' alt='输出不同的图片信息'}
 								[field:pagestyle runphp='yes'] @me= (@me==3 ? '<div class="col-4">' : '');[/field:pagestyle]
-								<p><a href='[field:linkurl/]'><img src='[field:imgsrc/]' id='bigimg' alt='[field:alttext/]' title='[field:alttext/]'></a></p>
+								<p><a href='[field:linkurl/]'><img src='[field:imgsrc/]' [field:imgwidth/] id='bigimg' alt='[field:alttext/]' title='[field:alttext/]'></a></p>
 								<p class='text-center'><a href='[field:linkurl/]'>（[field:alttext/]）</a></p>
 								[field:pagestyle runphp='yes'] @me = (@me==3 ? '</div>' : ''); [/field:pagestyle]
 								{/dede:field}
