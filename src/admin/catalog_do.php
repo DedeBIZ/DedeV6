@@ -175,11 +175,11 @@ else if ($dopost == 'unitCatalog') {
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         if (!empty($row['dd'])) {
-            ShowMsg("栏目：$typename($typeid) 有子栏目，不能进行合并操作", '-1');
+            ShowMsg("栏目<span style='text-primary'>$typename（$typeid）</span>有子栏目，不能进行合并操作", '-1');
             exit();
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
-        $wintitle = '合并栏目';
+        $wintitle = "合并指定栏目";
         $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 合并栏目";
         $win = new OxWindow();
         $win->Init('catalog_do.php', 'js/blank.js', 'POST');
@@ -188,7 +188,7 @@ else if ($dopost == 'unitCatalog') {
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
         $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档网页和列表网页，栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况");
-        $win->AddItem('您选择的栏目是：', "<span class='text-primary'>$typename($typeid)</span>");
+        $win->AddItem('您选择的栏目是：', "<span class='text-primary'>$typename（$typeid）</span>");
         $win->AddItem('您希望合并到那个栏目', "<select name='unittype'>{$typeOptions}</select>");
         $winform = $win->GetWindow('ok');
         $win->Display();
@@ -228,7 +228,7 @@ else if ($dopost == 'moveCatalog') {
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
-        $wintitle = "移动栏目";
+        $wintitle = "移动指定栏目";
         $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 移动栏目";
         $win = new OxWindow();
         $win->Init('catalog_do.php', 'js/blank.js', 'POST');
@@ -237,7 +237,7 @@ else if ($dopost == 'moveCatalog') {
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
         $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建网页，不允许从父级移动到子级目录，只允许子级到更高级或同级或不同父级的情况");
-        $win->AddItem('您选择的栏目是：', "$typename($typeid)");
+        $win->AddItem('您选择的栏目是：', "$typename（$typeid）");
         $win->AddItem('您希望移动到那个栏目', "<select name='movetype'>\r\n<option value='0'>移动为顶级栏目</option>\r\n$typeOptions\r\n</select>");
         $winform = $win->GetWindow('ok');
         $win->Display();

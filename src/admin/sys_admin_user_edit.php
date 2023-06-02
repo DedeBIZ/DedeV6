@@ -73,7 +73,7 @@ if ($dopost == 'saveedit') {
         $randcode = mt_rand(10000, 99999);
         $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
         require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "删除管理员";
+        $wintitle = "删除指定管理员";
         $wecome_info = "<a href='sys_admin_user.php'>系统帐号管理</a> - 删除管理员";
         $win = new OxWindow();
         $win->Init("sys_admin_user_edit.php", "js/blank.js", "POST");

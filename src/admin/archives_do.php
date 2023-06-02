@@ -365,7 +365,7 @@ else if ($dopost == "delArchives") {
         ShowMsg("成功删除指定文档", $ENV_GOBACK_URL);
         exit();
     } else {
-        $wintitle = "文档管理-删除文档";
+        $wintitle = "删除指定文档";
         $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a> - 删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
@@ -415,7 +415,7 @@ else if ($dopost == 'clear') {
             ShowMsg("未发现相关文档", "recycling.php");
             exit();
         }
-        $wintitle = "文档管理-清空所有文档";
+        $wintitle = "清空回收站所有文档";
         $wecome_info = "<a href='recycling.php'>文档回收站</a> - 清空所有文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
@@ -453,7 +453,7 @@ else if ($dopost == 'del') {
         ShowMsg("成功删除指定文档", "recycling.php");
         exit();
     } else {
-        $wintitle = "文档管理-删除文档";
+        $wintitle = "删除指定文档";
         $wecome_info = "<a href='recycling.php'>文档管理</a> - 删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");

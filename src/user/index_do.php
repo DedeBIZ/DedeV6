@@ -252,7 +252,7 @@ if ($fmdo == 'sendMail') {
             ShowMsg(document.getElementById('qrcode').innerHTML);
         }
     </script>";
-    $wintitle = "邀请好友赚积分";
+    $wintitle = "快来邀请好友赚积分啦";
     $wecome_info = "邀请好友赚积分";
     $win = new OxWindow();
     $win->AddMsgItem($msg);

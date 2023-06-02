@@ -44,7 +44,7 @@ if ($dopost == "show") {
         $idname = 'w'.($newid * -1);
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
-    $wintitle = "文档模型管理-文档模型复制";
+    $wintitle = "复制指定文档模型";
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 复制文档模型";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
@@ -92,7 +92,7 @@ if ($dopost == "show") {
         if ($k == 'fieldset') $v = "\r\n$v\r\n";
         $channelconfig .= "<channel:{$k}>$v</channel:{$k}>\r\n";
     }
-    $wintitle = "导出文档模型规则";
+    $wintitle = "导出指定文档模型规则";
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导出文档模型规则";
     $win = new OxWindow();
     $win->Init();
@@ -101,7 +101,7 @@ if ($dopost == "show") {
     $win->Display();
     exit();
 } else if ($dopost == "exportin") {
-    $wintitle = "导入文档模型规则";
+    $wintitle = "导入指定文档模型规则";
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
@@ -116,7 +116,7 @@ if ($dopost == "show") {
     function GotoStaMsg($msg)
     {
         global $wintitle, $wecome_info, $winform;
-        $wintitle = "导入文档模型规则";
+        $wintitle = "导入指定文档模型规则";
         $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
         $win = new OxWindow();
         $win->Init();
@@ -256,8 +256,8 @@ if ($dopost == "show") {
 } else if ($dopost == "gettemplets") {
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
-    $wintitle = "文档模型管理-查看模板";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 查看模板";
+    $wintitle = "查看模型使用模板";
+    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 查看模型模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
     $win->AddTitle("栏目<span class='text-primary'>".$row['typename']."</span>默认模板文件说明");
@@ -295,7 +295,7 @@ if ($dopost == "show") {
     //确认提示
     if ($job == "") {
         require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "文档模型管理-删除文档模型";
+        $wintitle = "删除指定文档模型";
         $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 删除文档模型";
         $win = new OxWindow();
         $win->Init("mychannel_edit.php", "js/blank.js", "POST");

@@ -203,7 +203,7 @@ else if ($action == 'savetagfile') {
         <div class='mb-3'><textarea name='partcode' cols='150' rows='6' class='admin-textarea-xl'>{dede:{$tagname}}{/dede:{$tagname}}</textarea></div>
         <div class='text-center'><button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button></div>
     </form>";
-    $wintitle = "成功操作文件";
+    $wintitle = "新建修改标签碎片";
     $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> - 新建修改标签";
     $win = new OxWindow();
     $win->AddTitle("新建修改标签");
