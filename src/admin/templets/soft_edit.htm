@@ -17,6 +17,21 @@
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/main.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
+		<script>
+			var startNum = <?php echo $newRowStart?>;
+			function MakeUpload() {
+				var upfield = document.getElementById('uploadfield');
+				var endNum = parseInt(document.form1.picnum.value) + startNum;
+				if (endNum > 30) endNum = 30;
+				for (startNum; startNum < endNum; startNum++) {
+					upfield.innerHTML += "<div class='py-2'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='admin-input-lg'> 服务器名称：<input type='text' name='servermsg" + startNum + "' class='admin-input-sm'></div>";
+				}
+			}
+			function ShowHideAddr() {
+				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
+				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏地址' : '显示地址');
+			}
+		</script>
 	</head>
 	<body>
 		<form name="form1" action="soft_edit.php" method="post" enctype="multipart/form-data" onSubmit="return checkSubmit();">
@@ -436,21 +451,6 @@
 					document.form1.title.focus();
 					return false;
 				}
-			}
-		</script>
-		<script>
-			var startNum = <?php echo $newRowStart?>;
-			function MakeUpload() {
-				var upfield = document.getElementById('uploadfield');
-				var endNum = parseInt(document.form1.picnum.value) + startNum;
-				if (endNum > 30) endNum = 30;
-				for (startNum; startNum < endNum; startNum++) {
-					upfield.innerHTML += "<div class='py-2'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='admin-input-lg'> 服务器名称：<input type='text' name='servermsg" + startNum + "' class='admin-input-sm'></div>";
-				}
-			}
-			function ShowHideAddr() {
-				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
-				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏地址' : '显示地址');
 			}
 		</script>
 		<script>InitPage();</script>
