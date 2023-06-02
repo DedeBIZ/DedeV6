@@ -931,7 +931,7 @@ class SgListView
      */
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $nativeplace, $infotype, $keyword,$cfg_rewrite;
+        global $nativeplace, $infotype, $keyword, $cfg_rewrite;
         if (empty($nativeplace)) $nativeplace = 0;
         if (empty($infotype)) $infotype = 0;
         if (empty($keyword)) $keyword = '';

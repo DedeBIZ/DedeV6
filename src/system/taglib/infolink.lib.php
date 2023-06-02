@@ -113,7 +113,6 @@ function lib_infolink(&$ctag, &$refObj)
                         } else {
                             $ff .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
                         }
-                        
                     }
                 }
             }
@@ -128,8 +127,7 @@ function lib_infolink(&$ctag, &$refObj)
                 $fields['nativeplace'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$t}&infotype={$infotype}'> {$em_nativeplaces[$t]}</a> -";
             }
             foreach ($em_nativeplaces as $eid => $em) {
-                if ($eid < $t + 1 && $eid > $t)
-                {
+                if ($eid < $t + 1 && $eid > $t) {
                     if ($eid === $nativeplace) {
                         $fields['nativeplace'] .= " {$em}\r\n";
                     } else {
@@ -187,8 +185,7 @@ function lib_infolink(&$ctag, &$refObj)
             $i = 0;
             $ff = "";
             foreach ($em_infotypes as $eid => $em) {
-                if ($eid < $sontype + 1 && $eid > $sontype)
-                {
+                if ($eid < $sontype + 1 && $eid > $sontype) {
                     if (is_str_float($eid)) {
                         $i++;
                     }
@@ -200,7 +197,6 @@ function lib_infolink(&$ctag, &$refObj)
                         } else {
                             $ff .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$eid}'>{$em}</a>\r\n";
                         }
-                        
                     }
                 }
             }
@@ -215,8 +211,7 @@ function lib_infolink(&$ctag, &$refObj)
                 $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$t}'> {$em_infotypes[$t]}</a> -";
             }
             foreach ($em_infotypes as $eid => $em) {
-                if ($eid < $t + 1 && $eid > $t)
-                {
+                if ($eid < $t + 1 && $eid > $t) {
                     if ($eid === $infotype) {
                         $fields['infotype'] .= " {$em}\r\n";
                     } else {

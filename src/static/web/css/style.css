@@ -403,7 +403,7 @@ input[type=file] {
 .cke_top,.item-theme-img img,.list-article-img img,.article-hot-img img {
 	border-radius:.5rem .5rem 0 0!important
 }
-.cke_bottom,.list-article-body {
+.cke_bottom,.list-article-radius {
 	border-radius:0 0 .5rem .5rem!important
 }
 #validateimg,.btn-send {

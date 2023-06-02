@@ -11,6 +11,34 @@ function checkSubmitAlb() {
 	$("#albums").val(JSON.stringify(albums));
 	return true;
 }
+function checkMuList(psid, cmid) {
+	if ($Obj('pagestyle3').checked) {
+		$Obj('cfgmulist').style.display = 'table-row';
+		$Obj('spagelist').style.display = 'none';
+	} else if ($Obj('pagestyle1').checked) {
+		$Obj('cfgmulist').style.display = 'none';
+		$Obj('spagelist').style.display = 'table-row';
+	} else {
+		$Obj('cfgmulist').style.display = 'none';
+		$Obj('spagelist').style.display = 'none';
+	}
+}
+//删除已经上传的图片
+function delAlbPic(pid) {
+	var tgobj = $Obj('atlasok' + pid);
+	fetch('swfupload.php?dopost=del&id=' + pid).then(resp => resp.text()).then((d) => {
+		tgobj.innerHTML = d;
+		$Obj('gallery').removeChild(tgobj);
+	});
+}
+//删除已经上传的图片修改时用
+function delAlbPicOld(picfile, pid) {
+	var tgobj = $Obj('albold' + pid);
+	fetch('swfupload.php?dopost=delold&picfile=' + picfile).then(resp => resp.text()).then((d) => {
+		tgobj.innerHTML = d;
+		$Obj('galleryedit').removeChild(tgobj);
+	});
+}
 function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 	var newobj = null;
 	if (f.value == '') return;
@@ -45,32 +73,4 @@ function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 	nForm.dopost.value = 'save';
 	nForm.target = '';
 	nForm.litpic.disabled = true;
-}
-function checkMuList(psid, cmid) {
-	if ($Obj('pagestyle3').checked) {
-		$Obj('cfgmulist').style.display = 'table-row';
-		$Obj('spagelist').style.display = 'none';
-	} else if ($Obj('pagestyle1').checked) {
-		$Obj('cfgmulist').style.display = 'none';
-		$Obj('spagelist').style.display = 'table-row';
-	} else {
-		$Obj('cfgmulist').style.display = 'none';
-		$Obj('spagelist').style.display = 'none';
-	}
-}
-//删除已经上传的图片
-function delAlbPic(pid) {
-	var tgobj = $Obj('atlasok' + pid);
-	fetch('swfupload.php?dopost=del&id=' + pid).then(resp=>resp.text()).then((d)=>{
-		tgobj.innerHTML = d;
-		$Obj('gallery').removeChild(tgobj);
-	});
-}
-//删除已经上传的图片修改时用
-function delAlbPicOld(picfile, pid) {
-	var tgobj = $Obj('albold' + pid);
-	fetch('swfupload.php?dopost=delold&picfile=' + picfile).then(resp=>resp.text()).then((d)=>{
-		tgobj.innerHTML = d;
-		$Obj('galleryedit').removeChild(tgobj);
-	});
 }

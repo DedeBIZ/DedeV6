@@ -781,7 +781,7 @@ class Archives
                 $i++;
             }
         } else {
-            $revalue = "<select id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+            $revalue = "<select class='form-control w-25' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     $revalue .= "<option value='".$this->NameFirst.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
@@ -890,7 +890,7 @@ class Archives
                 $i++;
             }
         } else {
-            $revalue = "<select class='form-control w-25' id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+            $revalue = "<select class='form-control w-25' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     if ($cfg_rewrite == 'Y') {
@@ -930,7 +930,7 @@ class Archives
      */
     function GetPagebreakDM($totalPage, $nowPage, $aid)
     {
-        global $cfg_rewrite,$cfg_cmsurl;
+        global $cfg_rewrite, $cfg_cmsurl;
         if ($totalPage == 1) {
             return "";
         }
