@@ -149,9 +149,9 @@
 				<tr>
 					<td>栏目列表选项：</td>
 					<td>
-						<label><input type="radio" name="isdefault" value="1" checked="checked"> 链接到默认页</label>
-						<label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
-						<label><input type="radio" name="isdefault" value="-1"> 使用动态页</label>
+						<label><input type="radio" name="isdefault" value="1" checked="checked"> 静态浏览</label>
+						<label><input type="radio" name="isdefault" value="-1"> 动态浏览</label>
+						<label><input type="radio" name="isdefault" value="0"> 浏览列表第一页</label>
 					</td>
 					<td>默认页的名称：</td>
 					<td><input type="text" name="defaultname" value="index.html" class="admin-input-lg"></td>
@@ -166,8 +166,8 @@
 					<td>栏目交叉：</td>
 					<td>
 						<label class="l-height-28"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" checked="checked"> 不交叉</label>
-						<label class="l-height-28"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()"> 自动获取同名栏目文档</label>
-						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 手工指定交叉栏目id（用英文逗号）</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()"> 自动获取同名栏目</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 指定交叉栏目id（英文逗号分开）</label>
 						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="display:none"></textarea>
 						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>

@@ -47,12 +47,9 @@ if ($dopost != 'save') {
             foreach ($dtp->CTags as $ctag) {
                 if ($ctag->GetName() == 'link') {
                     $islocal = $ctag->GetAtt('islocal');
-                    if ($islocal != 1) $needmsg = "<label><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
-                    else $needmsg = '<button name="sel1" class="btn btn-success btn-sm" type="button" id="sel1" onClick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选取</button>';
-                    $nForm .= "<div class='py-2'>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-lg'> 服务器名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'>
-                    <input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'>
-                    $needmsg
-                    </div>\r\n";
+                    if ($islocal != 1) $needmsg = "<label class='ml-2'><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
+                    else $needmsg = '<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm ml-2" onClick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选取</button>';
+                    $nForm .= "<div class='py-2'><label>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-lg'></label><label class='ml-2'>地址名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'></label><input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'>$needmsg</div>\r\n";
                     $newRowStart++;
                 }
             }
@@ -135,8 +132,8 @@ if ($dopost != 'save') {
                     continue;
                 }
                 $vs = explode(',', $v);
-                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //网页文本特殊处理
-                {
+                //网页文本特殊处理
+                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $litpic, $keywords, $vs[1]);
                 } else {
                     if (!isset(${$vs[0]})) {

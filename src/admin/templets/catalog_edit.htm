@@ -129,15 +129,15 @@
 				<tr>
 					<td>文件保存目录：</td>
 					<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-lg">（标签“{cmspath}”必填）</td>
-					<td>继承选项：</td>
-					<td><label><input type="checkbox" name="upnext" id="upnext" value="1"> 同时继承下级栏目浏览权限、文档类型、模板风格、命名规则等通用属性</label></td>
+					<td>是否继承选项：</td>
+					<td><label><input type="checkbox" name="upnext" id="upnext" value="1"> 子类栏目继承顶级栏目的浏览权限、文档类型、模板风格等属性</label></td>
 				</tr>
 				<tr>
 					<td>栏目列表选项：</td>
 					<td>
-						<label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo "checked='checked'";?>> 链接到默认页</label>
-						<label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo "checked='checked'";?>> 链接到列表第一页</label>
-						<label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo "checked='checked'";?>> 使用动态页</label>
+						<label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo "checked='checked'";?>> 静态浏览</label>
+						<label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo "checked='checked'";?>> 动态浏览</label>
+						<label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo "checked='checked'";?>> 浏览列表第一页</label>
 					</td>
 					<td>默认页的名称：</td>
 					<td><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="admin-input-lg"></td>
@@ -152,8 +152,8 @@
 					<td>栏目交叉：</td>
 					<td>
 						<label class="l-height-28"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" <?php if ($myrow['cross']==0) echo "checked='checked'";?>> 不交叉</label>
-						<label class="l-height-28"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='checked'";?>> 自动获取同名栏目文档</label>
-						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='checked'";?>> 手工指定交叉栏目id（用英文逗号）</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='checked'";?>> 自动获取同名栏目</label>
+						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='checked'";?>> 指定交叉栏目id（英文逗号分开）</label>
 						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
 						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
@@ -163,7 +163,7 @@
 					<td width="260">多站点支持：</td>
 					<td>
 						<label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo "checked='checked'";?>> 启用</label>
-						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='checked'";?>> 不启用</label>（只需要顶级栏目设置，子级栏目修改无效）
+						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='checked'";?>> 不启用</label>（仅顶级栏目启用，子类栏目无效）
 					</td>
 					<td>绑定域名：</td>
 					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-lg">（需要加http开头的链接）</td>
