@@ -399,8 +399,8 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="120" width="260">评论选项：</td>
-								<td width="260">
+								<td width="120">评论选项：</td>
+								<td width="360">
 									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='checked'";?>> 允许评论</label>
 									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='checked'";?>> 禁止评论</label>
 								</td>
@@ -418,7 +418,7 @@
 						<table>
 							<tr>
 								<td width="120">文档排序：</td>
-								<td width="260">
+								<td width="360">
 									<select name="sortup" id="sortup" class="admin-input-sm">
 										<option value="0" selected>默认排序</option>
 										<option value="7">置顶一周</option>
@@ -441,8 +441,8 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="120">阅读权限：</td>
-								<td width="260">
+								<td width="120">浏览权限：</td>
+								<td width="360">
 									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<option value="0">已审核状态</option>
 										<option value="-1">未审核状态</option>
@@ -459,7 +459,7 @@
 						<table>
 							<tr>
 								<td width="120">发布时间：</td>
-								<td width="260">
+								<td width="360">
 									<?php
 									$nowtime = GetDateTimeMk(time());
 									echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker admin-input-sm'>";

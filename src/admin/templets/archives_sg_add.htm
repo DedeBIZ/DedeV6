@@ -83,7 +83,7 @@
 						<table>
 							<tr>
 								<td width="120">发布栏目：</td>
-								<td>
+								<td width="360">
 									<span id="typeidct">
 										<?php
 										$typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
@@ -105,7 +105,7 @@
 						<table>
 							<tr>
 								<td width="120">浏览权限：</td>
-								<td>
+								<td width="360">
 									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<?php
 										$urank = $cuserLogin->getUserRank();
@@ -118,6 +118,7 @@
 										}
 										?>
 									</select>
+									<span>（不支持静态）</span>
 								</td>
 							</tr>
 						</table>

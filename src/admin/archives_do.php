@@ -518,7 +518,7 @@ else if ($dopost == 'quickEdit') {
         <td class="admin-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td width="120" class="admin-td">阅读权限：</td>
+        <td width="120" class="admin-td">浏览权限：</td>
         <td class="admin-td">
             <select name="arcrank" id="arcrank" class="admin-input-sm">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>

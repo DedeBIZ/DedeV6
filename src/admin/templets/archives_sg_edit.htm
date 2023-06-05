@@ -87,7 +87,7 @@
 						<table>
 							<tr>
 								<td width="120">发布栏目：</td>
-								<td>
+								<td width="360">
 									<?php
 									$typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
 									echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
@@ -106,7 +106,7 @@
 						<table>
 							<tr>
 								<td width="120">浏览权限：</td>
-								<td>
+								<td width="360">
 									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<option value='<?php echo $addRow["arcrank"];?>'><?php echo $addRow["rankname"];?></option>
 										<?php
@@ -118,6 +118,7 @@
 										}
 										?>
 									</select>
+									<span>（不支持静态）</span>
 								</td>
 							</tr>
 						</table>
