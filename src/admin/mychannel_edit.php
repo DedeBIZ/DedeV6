@@ -106,8 +106,7 @@ if ($dopost == "show") {
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
-    $win->AddTitle("导入文档模型规则：导入文档模型和原有文档模型冲突，建议导入后修改");
-    $win->AddMsgItem("<tr><td><textarea name='exconfig' class='form-control'></textarea></td></tr>");
+    $win->AddMsgItem("<tr><td><textarea name='exconfig' class='admin-textarea-xl'></textarea></td></tr>");
     $winform = $win->GetWindow("ok");
     $win->Display();
     exit();
@@ -120,7 +119,6 @@ if ($dopost == "show") {
         $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
         $win = new OxWindow();
         $win->Init();
-        $win->AddTitle("操作状态提示");
         $win->AddMsgItem($msg);
         $winform = $win->GetWindow("hand");
         $win->Display();
@@ -131,21 +129,20 @@ if ($dopost == "show") {
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('channel', '<', '>');
     $dtp->LoadSource($exconfig);
-    if (!is_array($dtp->CTags)) GotoStaMsg("文档模型规则不符合");
+    if (!is_array($dtp->CTags)) GotoStaMsg("<tr><td>文档模型规则出错</td></tr>");
     $fields = array();
     foreach ($dtp->CTags as $ctag) {
         $fname = $ctag->GetName('name');
         $fields[$fname] = trim($ctag->GetInnerText());
     }
     if (!isset($fields['nid']) || !isset($fields['fieldset'])) {
-        GotoStaMsg("文档模型规则不符合");
+        GotoStaMsg("<tr><td>文档模型规则出错</td></tr>");
     }
     //正常的导入过程
     $mysql_version = $dsql->GetVersion(true);
-
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE nid='{$fields['nid']}' ");
     if (is_array($row)) {
-        GotoStaMsg("系统中已经存在相同标识<span class='text-primary'>{$fields['nid']}</span>规则");
+        GotoStaMsg("<tr><td>已经存在相同的<span class='text-primary'>{$fields['nid']}</span>模型</td></tr>");
     }
     //创建表
     if ($fields['issystem'] != -1) {
@@ -160,7 +157,7 @@ if ($dopost == "show") {
     }
     $rs = $dsql->ExecuteNoneQuery($tabsql);
     if (!$rs) {
-        GotoStaMsg("创建表失败".$dsql->GetError());
+        GotoStaMsg("<tr><td>创建数据表失败</td></tr>");
         exit();
     }
     if ($fields['issystem'] == 1) $fields['issystem'] = 0;
@@ -175,7 +172,7 @@ if ($dopost == "show") {
     $fields['fieldset'] = addslashes($fields['fieldset']);
     $inquery = "INSERT INTO `#@__channeltype` (`id`,`nid`,`typename`,`addtable`,`addcon`,`mancon`,`editcon`,`useraddcon`,`usermancon`,`usereditcon`,`fieldset`,`listfields`,`issystem`,`isshow`,`issend`,`arcsta`,`usertype`,`sendrank`) VALUES ('{$fields['newid']}','{$fields['nid']}','{$fields['typename']}','{$fields['addtable']}','{$fields['addcon']}','{$fields['mancon']}','{$fields['editcon']}','{$fields['useraddcon']}','{$fields['usermancon']}','{$fields['usereditcon']}','{$fields['fieldset']}','{$fields['listfields']}','{$fields['issystem']}','{$fields['isshow']}','{$fields['issend']}','{$fields['arcsta']}','{$fields['usertype']}','{$fields['sendrank']}' ); ";
     $rs = $dsql->ExecuteNoneQuery($inquery);
-    if (!$rs) GotoStaMsg("导入文档模型时发生错误".$dsql->GetError());
+    if (!$rs) GotoStaMsg("<tr><td>导入文档模型时发生错误</td></tr>");
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($fieldset);
@@ -200,7 +197,7 @@ if ($dopost == "show") {
     if ($allfields != '') {
         $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET listfields='$allfields' WHERE id='{$fields['newid']}' ");
     }
-    GotoStaMsg("成功导入一个文档模型");
+    GotoStaMsg("<tr><td>成功导入一个文档模型</td></tr>");
 } else if ($dopost == "copysave") {
     $cid = intval($cid);
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$cid' ", MYSQL_ASSOC);
@@ -302,7 +299,7 @@ if ($dopost == "show") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确定要删除<span class='text-primary'>".$row['typename']."</span>栏目吗");
+        $win->AddTitle("您确定要删除<span class='text-primary'>".$row['typename']."</span>模型吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
