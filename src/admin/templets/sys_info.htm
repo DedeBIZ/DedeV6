@@ -109,7 +109,7 @@
 						<td width="260">变量名称</td>
 					</tr>
 					<?php
-					$dsql->SetQuery("SELECT * FROM `#@__sysconfig` where groupid='{$dls[0]}' order by aid asc");
+					$dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE groupid='{$dls[0]}' ORDER BY aid ASC");
 					$dsql->Execute();
 					$i = 1;
 					while($row = $dsql->GetArray()) {

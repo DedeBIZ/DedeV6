@@ -239,8 +239,8 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     else if ($orderby == 'lastpost') $ordersql = " ORDER BY arc.lastpost $orderWay";
     else if ($orderby == 'scores') $ordersql = " ORDER BY arc.scores $orderWay";
     //添加按好评数和差评数调用
-    else if ($orderby == 'goodpost') $ordersql = " order by arc.goodpost $orderWay";
-    else if ($orderby == 'badpost') $ordersql = " order by arc.badpost $orderWay";
+    else if ($orderby == 'goodpost') $ordersql = " ORDER BY arc.goodpost $orderWay";
+    else if ($orderby == 'badpost') $ordersql = " ORDER BY arc.badpost $orderWay";
     else if ($orderby == 'rand') $ordersql = " ORDER BY rand()";
     else $ordersql = " ORDER BY arc.sortrank $orderWay";
     //limit条件
