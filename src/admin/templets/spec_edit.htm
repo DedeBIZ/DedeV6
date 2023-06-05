@@ -291,7 +291,7 @@
 						<table>
 							<tr>
 								<td width="120">评论选项：</td>
-								<td width="260">
+								<td width="360">
 									<label><input type="radio" name="notpost" value="0" <?php if ($arcRow['notpost']==0) echo "checked='checked'";?>> 允许评论</label>
 									<label><input type="radio" name="notpost" value="1" <?php if ($arcRow['notpost']==1) echo "checked='checked'";?>> 禁止评论</label>
 								<td width="120">发布选项：</td>
@@ -308,7 +308,7 @@
 						<table>
 							<tr>
 								<td width="120">文档排序：</td>
-								<td width="260">
+								<td width="360">
 									<select name="sortup" id="sortup" class="admin-input-sm">
 										<?php
 										$subday = SubDay($arcRow["sortrank"],$arcRow["senddate"]);
@@ -336,7 +336,7 @@
 						<table>
 							<tr>
 								<td width="120">专题模板：</td>
-								<td width="260">
+								<td width="360">
 									<input type="text" name="templet" id="templet" value="<?php echo $addRow['templet']?>" class="admin-input-sm">
 									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
 								</td>
@@ -367,7 +367,7 @@
 						<table>
 							<tr>
 								<td width="120">更新时间：</td>
-								<td width="260">
+								<td width="360">
 									<?php
 									$nowtime = GetDateTimeMk($arcRow["pubdate"]);
 									echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker admin-input-sm'>";

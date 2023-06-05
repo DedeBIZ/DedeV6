@@ -357,7 +357,7 @@
 						<table>
 							<tr>
 								<td width="120">评论选项：</td>
-								<td width="260">
+								<td width="360">
 									<label><input type="radio" name="notpost" value="0" <?php if ($arcRow['notpost']==0) echo "checked='checked'";?>> 允许评论</label>
 									<label><input type="radio" name="notpost" value="1" <?php if ($arcRow['notpost']==1) echo "checked='checked'";?>> 禁止评论</label>
 								</td>
@@ -375,7 +375,7 @@
 						<table>
 							<tr>
 								<td width="120">文档排序：</td>
-								<td width="260">
+								<td width="360">
 									<select name="sortup" id="sortup" class="admin-input-sm">
 										<?php
 										$subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
@@ -403,7 +403,7 @@
 						<table>
 							<tr>
 								<td width="120">浏览权限：</td>
-								<td width="260">
+								<td width="360">
 									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<option value='<?php echo $arcRow["arcrank"];?>'>
 											<?php echo ($arcRow["arcrank"]==0 ? '已审核状态' : $arcRow["rankname"]);?>
@@ -424,7 +424,7 @@
 						<table>
 							<tr>
 								<td width="120">更新时间：</td>
-								<td width="260">
+								<td width="360">
 									<?php
 									$nowtime = GetDateTimeMk($arcRow["pubdate"]);
 									echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker admin-input-sm'>";
