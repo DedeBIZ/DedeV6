@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>联动类别管理</title>
+		<title>联动类型管理</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -167,7 +167,7 @@
 					<button type="button" name="gdel" id="gdel" class="btn btn-success btn-sm" onclick="DelType()">删除</button>
 					<button type="button" name="gview" id="gview" class="btn btn-success btn-sm" onclick="ViewType()">预览</button>
 					<button type="button" name="addnew" id="addnew" class="btn btn-success btn-sm" onclick="AddType()">新增类别组</button>
-					<a href="stepselect_main.php?action=upallcache" class="btn btn-success btn-sm">更新所有枚举缓存</a>
+					<a href="stepselect_main.php?action=upallcache" class="btn btn-success btn-sm">更新所有缓存</a>
 				</td>
 			</tr>
 		</table>
@@ -232,7 +232,7 @@
 			<input type="hidden" name="action" value="delenumAllSel">
 			<table align="center" class="table maintable">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="8"><a href="stepselect_main.php">联动类别管理</a> - <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> - 子分类列表</td>
+					<td bgcolor="#f5f5f5" colspan="8"><a href="stepselect_main.php">联动类型管理</a> - <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> - 子分类列表</td>
 				</tr>
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
@@ -301,15 +301,15 @@
 		?>
 		<table align="center" class="table maintable mb-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="7">联动类别管理</td>
+				<td bgcolor="#f5f5f5" colspan="7">联动类型管理</td>
 			</tr>
 			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">选择</td>
 				<td width="6%">id</td>
-				<td width="30%">组类别名</td>
+				<td width="30%">类别名</td>
 				<td width="10%">级数</td>
 				<td width="10%">系统</td>
-				<td width="10%">缓存组名</td>
+				<td width="10%">缓存名</td>
 				<td>操作</td>
 			</tr>
 			{dede:datalist}

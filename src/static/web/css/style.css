@@ -129,6 +129,9 @@ input[type=file] {
 .item-news i,.item-news span {
 	color:#999
 }
+.item-info a {
+	color:#1eb867
+}
 .list-article-img img {
 	width:100%;
 	height:260px
@@ -141,11 +144,6 @@ input[type=file] {
 }
 .list-article-body h2 a {
 	color:#393d49
-}
-.list-info-select a {
-	display:inline-block;
-	margin-right:10px;
-	color:#1eb867
 }
 .article-theme-title h1 {
 	margin-bottom:1rem;

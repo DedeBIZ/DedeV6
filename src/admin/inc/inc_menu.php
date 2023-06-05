@@ -45,7 +45,7 @@ if ($cuserLogin->getUserType() >= 10) {
 <m:top item='4_' name='模型管理' rank='t_List,t_AccList,c_List,temp_One' icon='fa fa-area-chart'>
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='文档模型管理' link='mychannel_main.php' rank='c_List' target='main' />")."
     <m:item name='文档单页管理' link='templets_one.php' rank='temp_One' target='main' />
-    <m:item name='联动类别管理' link='stepselect_main.php' rank='c_Stepseclect' target='main' />
+    <m:item name='联动类型管理' link='stepselect_main.php' rank='c_Stepseclect' target='main' />
     <m:item name='自由列表管理' link='freelist_main.php' rank='c_List' target='main' />
     <m:item name='自定义表单管理' link='diy_main.php' rank='c_List' target='main' />
 </m:top>";

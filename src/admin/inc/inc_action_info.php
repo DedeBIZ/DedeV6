@@ -100,8 +100,8 @@ $actionSearch[3] = array(
             'linkurl' => 'templets_one.php'
         ),
         2  =>  array(
-            'title' => '联动类别管理',
-            'description' => '创建和管理所有联动',
+            'title' => '联动类型管理',
+            'description' => '创建和管理所有联动类型',
             'purview' => 'c_Stepseclect',
             'linkurl' => 'stepselect_main.php?dopost=filemanager'
         ),

@@ -8,7 +8,7 @@
 >c_New>新建栏目
 >c_Edit>修改栏目
 >c_Del>删除栏目
->c_Stepselect>联动类别管理
+>c_Stepselect>联动类型管理
 
 >>栏目管理
 
