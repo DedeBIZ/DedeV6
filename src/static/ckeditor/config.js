@@ -5,17 +5,14 @@
 CKEDITOR.editorConfig = function (config) {
 	config.toolbarGroups = [
 		{ name: 'document', groups: ['mode', 'document', 'doctools'] },
-		{ name: 'clipboard', groups: ['clipboard', 'undo'] },
-		{ name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
-		{ name: 'forms', groups: ['forms'] },
-		{ name: 'basicstyles', groups: ['basicstyles', 'cleanup', 'list', 'indent', 'blocks'] },
-		'/',
-		{ name: 'paragraph', groups: ['align', 'bidi', 'paragraph','textindent'] },
-		{ name: 'links', groups: ['links'] },
-		{ name: 'insert', groups: ['insert'] },
-		'/',
+		{ name: 'clipboard', groups: ['undo', 'cleanup', 'clipboard'] },
 		{ name: 'styles', groups: ['styles'] },
 		{ name: 'colors', groups: ['colors'] },
+		{ name: 'paragraph', groups: ['align', 'paragraph', 'textindent', 'indent'] },
+		{ name: 'basicstyles', groups: ['basicstyles', 'list', 'bidi', 'blocks'] },
+		{ name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+		{ name: 'links', groups: ['links'] },
+		{ name: 'insert', groups: ['insert'] },
 		{ name: 'tools', groups: ['tools'] }
 	];
 	config.height = 360;
