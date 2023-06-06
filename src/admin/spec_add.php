@@ -183,7 +183,7 @@ if ($dopost != 'save') {
     $wecome_info = "专题管理 - 发布专题";
     $win = new OxWindow();
     $win->AddTitle("成功发布专题");
-    $win->AddMsgItem($msg);
+    $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("hand", FALSE);
     $win->Display();
 }

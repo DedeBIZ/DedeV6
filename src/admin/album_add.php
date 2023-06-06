@@ -233,7 +233,7 @@ if ($dopost != 'save') {
     $wecome_info = "文档管理 - 发布图片文档";
     $win = new OxWindow();
     $win->AddTitle("成功发布图片文档");
-    $win->AddMsgItem($msg);
+    $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("hand", FALSE);
     $win->Display();
 }

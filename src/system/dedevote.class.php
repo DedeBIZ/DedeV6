@@ -120,7 +120,7 @@ class DedeVote
             }
             $items .= "<tr><td>\r\n";
             $items .= "<input type='submit' name='vbt1' class='btn btn-success' value='投票'>\r\n";
-            $items .= "<input type='button' name='vbt2' class='btn btn-success' value='查看结果' onClick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."');>";
+            $items .= "<input type='button' name='vbt2' class='btn btn-success' value='查看结果' onclick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."');>";
             $items .= "</td></tr>\r\n";
         }
         $items .= "</form>\r\n</table>\r\n";

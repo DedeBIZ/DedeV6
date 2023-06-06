@@ -62,11 +62,11 @@ class OxWindow
         $this->myWin .= "<table width='100%'>";
     }
     /**
-     *  添加单列的标题
+     *  添加单列标题
      *
      * @access    public
      * @param     string  $title  标题
-     * @param     string  $col  列数
+     * @param     string  $col  列
      * @return    string
      */
     function AddTitle($title, $col = "2")
@@ -81,11 +81,10 @@ class OxWindow
         $this->myWinItem .= "</tr>";
     }
     /**
-     *  添加单列的消息
+     *  添加单列信息
      *
      * @access    public
-     * @param     string  $ivalue  消息行
-     * @param     string  $col  列数
+     * @param     string  $ivalue  信息
      * @return    void
      */
     function AddMsgItem($ivalue)
@@ -93,7 +92,7 @@ class OxWindow
         $this->myWinItem .= "$ivalue";
     }
     /**
-     *  添加两列
+     *  添加两列信息
      *
      * @access    public
      * @param     string  $iname  名称
@@ -170,12 +169,17 @@ class OxWindow
                 $this->myWin .= "<tr>
                     <td bgcolor='#f5f5f5' colspan='2' align='center'>
                     <button type='submit' class='btn btn-success btn-sm'>$tt</button>
-                    <button type='button' class='btn btn-outline-success btn-sm' onClick='history.go(-1);'>返回</button>
+                    <button type='button' class='btn btn-outline-success btn-sm' onclick='history.go(-1);'>返回</button>
                     </td>
                 </tr>";
             } else {
-                if ($msg != '') {
-                    $this->myWin .= "<tr><td>$msg</td></tr>";
+                if ($msg != "") {
+                    $this->myWin .= "<tr>
+                        <td>$msg</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor='#f5f5f5' colspan='2' align='center'><button type='button' class='btn btn-success btn-sm' onclick='history.go(-1);'>返回</button></td>
+                    </tr>";
                 } else {
                     $this->myWin .= '';
                 }
@@ -217,7 +221,7 @@ class OxWindow
  *  显示一个不带表单的普通提示
  *
  * @access    public
- * @param     string   $msg  消息提示信息
+ * @param     string   $msg  提示信息
  * @param     string   $title  提示标题
  * @return    string
  */

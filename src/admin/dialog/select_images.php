@@ -65,7 +65,7 @@ if (!empty($iseditor)) {
     <body>
         <div class="upload-bg">
             <div id="floater" class="napisdiv">
-                <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
+                <a href="javascript:nullLink();" onclick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
             </div>
             <table align="center" class="table icon">
                 <tr>
@@ -140,7 +140,7 @@ if (!empty($iseditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
+                            <a href=\"javascript:;\" onclick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
                             <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                         </td>
                         <td>$filesize KB</td>
@@ -155,7 +155,7 @@ if (!empty($iseditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
+                            <a href=\"javascript:;\" onclick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
                             <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                         </td>
                         <td>$filesize KB</td>

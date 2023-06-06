@@ -16,8 +16,7 @@ if (empty($pagesize)) $pagesize = 30;
 if (empty($pageno)) $pageno = 1;
 if (empty($dopost)) $dopost = '';
 if (empty($orderby)) $orderby = 'aid';
-if (empty($keyword))
-{
+if (empty($keyword)) {
     $keyword = '';
     $addget = '';
     $addsql = '';

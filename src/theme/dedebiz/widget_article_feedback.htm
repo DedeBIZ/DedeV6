@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="dcmp-submit"><button type="button" class="btn btn-success btn-md" onClick="SendFeedback()">发表评论</button></div>
+		<div class="dcmp-submit"><button type="button" class="btn btn-success btn-md" onclick="SendFeedback()">发表评论</button></div>
 	</div>
 	<div class="feedbacks">
 		{dede:feedback}
@@ -106,7 +106,7 @@
 		let replyPannel = `<div class="form-group">
 			<div class="input-group">
 				<input type="text" class="form-control iptReplyContent">
-				<button type="button" class="btn btn-success btn-send" onClick='SendReplyFeedback(${fid})'>评论</button>
+				<button type="button" class="btn btn-success btn-send" onclick='SendReplyFeedback(${fid})'>评论</button>
 			</div>
 		</div>`;
 		$.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {

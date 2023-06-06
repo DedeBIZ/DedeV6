@@ -15,7 +15,7 @@ function addImage(src, pid) {
 	newImgDiv.innerHTML = '<div class="atlas-head"><img src="' + src + '"></div>' + delstr;
 	if (typeof arctype != 'undefined' && arctype == 'article') {
 		if (pid != 0) {
-			newImgDiv.innerHTML = '<div class="atlas-head"><img src="' + src + '" onClick="addtoEdit(' + pid + ')"></div>' + delstr;
+			newImgDiv.innerHTML = '<div class="atlas-head"><img src="' + src + '" onclick="addtoEdit(' + pid + ')"></div>' + delstr;
 		}
 	}
 	newImgDiv.innerHTML += '<div class="atlas-foot"><input type="text" name="picinfo' + atlasimg+ '" class="atlas-input" placeholder="请输入图片注释"></div>';

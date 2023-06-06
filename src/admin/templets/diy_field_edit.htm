@@ -24,7 +24,7 @@
 					<td bgcolor="#f5f5f5" colspan="2">自定义表单管理</a> - 自定义表单修改字段</td>
 				</tr>
 				<tr>
-					<td>提示文字：</td>
+					<td>字段文字：</td>
 					<td>
 						<input type="text" name="itemname" id="itemname" class="admin-input-sm" value="<?php echo $ctag->GetAtt('itemname')?>">
 						<span>（发布时显示提示文字）</span>
@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td width="260">字段名称：</td>
-					<td><?php echo $fname?>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型的组名称）</td>
+					<td><?php echo $fname?>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型组名称）</td>
 				</tr>
 				<tr>
 					<td>是否使用分页符：</td>
@@ -40,7 +40,7 @@
 						<input type="hidden" name="isnull" value="1">
 						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='checked'";?>> 是</label>
 						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='checked'";?>> 否</label>
-						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符，实现文档分页，但仅允许一个字段）</span>
+						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符实现文档分页，但仅允许一个字段）</span>
 					</td>
 				</tr>
 				<tr>
@@ -75,7 +75,7 @@
 				<tr>
 					<td>默认值：</td>
 					<td>
-						<p>（如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目，英文逗号分开，如“DedeBIZ,得德”。如果为联动选框，这里填写联动选框项目名称）</p>
+						<p>（自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德）</p>
 						<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea>
 					</td>
 				</tr>

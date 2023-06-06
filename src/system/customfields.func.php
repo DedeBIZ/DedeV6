@@ -105,13 +105,13 @@ function GetFormItem($ctag, $admintype = 'admin')
         $innertext = "<input type='text' name='$fieldname' value='$nowtime' id='$fieldname' class='form-control admin-input-lg datepicker'>";
     } else if ($fieldType == 'img') {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择图片上传或填写图片地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择图片上传或填写图片地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onclick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($fieldType == 'media') {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择多媒体上传或填写多媒体地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectMedia('$fname.$fieldname')\">";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择多媒体上传或填写多媒体地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onclick=\"SelectMedia('$fname.$fieldname')\">";
     } else if ($fieldType == 'addon') {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择附件上传或填写附件地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectSoft('$fname.$fieldname')\">";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择附件上传或填写附件地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onclick=\"SelectSoft('$fname.$fieldname')\">";
     } else if ($fieldType == 'int' || $fieldType == 'float') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '0');
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-xs' value='$dfvalue'>";
@@ -370,17 +370,17 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         }
         $fvalue = empty($fvalue)? $tmpValue : $fvalue;
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectImage('$fname.$fieldname','big')\">";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onclick=\"SelectImage('$fname.$fieldname','big')\">";
     } else if ($ftype == "imgfile") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
         $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'>";
     } else if ($ftype == "media") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $selectStr = "<input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectMedia('$fname.$fieldname')\">";
+        $selectStr = "<input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onclick=\"SelectMedia('$fname.$fieldname')\">";
         $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control admin-input-lg'> $selectStr";
     } else if ($ftype == "addon") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
-        $selectStr = "<input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onClick=\"SelectSoft('$fname.$fieldname')\">";
+        $selectStr = "<input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onclick=\"SelectSoft('$fname.$fieldname')\">";
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control admin-input-lg'> $selectStr";
     } else if ($ftype == "int" || $ftype == "float") {
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-xs' value='$fvalue'>";

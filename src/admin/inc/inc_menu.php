@@ -85,7 +85,6 @@ $menusMain = "<m:top item='1_' name='常用功能' icon='fa fa-desktop'>
     $addset
 </m:top>
 <m:top item='3_' name='附件管理' rank='sys_Upload,sys_MyUpload,plus_文件管理器' icon='fa fa-folder'>
-    <m:item name='上传新文件' link='media_add.php' rank='' target='main' />
     <m:item name='附件管理' link='media_main.php' rank='sys_Upload,sys_MyUpload' target='main' />
     <m:item name='文件管理器' link='media_main.php?dopost=filemanager' rank='plus_文件管理器' target='main' />
 </m:top>

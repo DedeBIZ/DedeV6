@@ -28,12 +28,13 @@
 						<?php if ($cfg_money_scores > 0) {?>							
 						<?php $canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);?>
 						<div class="pb-3">
-							<p>积分兑换金币（<?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币{$canCav}";?>）</p>
+							<h3 class="mb-3">积分换金币</h3>
+							<p><?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币{$canCav}";?></p>
 							<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
 								<table class="table">
 									<tbody>
 										<tr>
-											<td width="20%">兑换数量：</td>
+											<td width="30%">兑换数量：</td>
 											<td><input type="text" name="money" id="money" class="form-control w-25" value="<?php echo $canCav;?>"></td>
 										</tr>
 										<tr>
@@ -46,19 +47,19 @@
 						</div>
 						<?php }?>
 						<div class="pb-3">
-							<h4 class="mb-3">积分充值</h4>
+							<h3 class="mb-3">积分充值</h3>
 							<form name="formrank" action="check_card.php" method="post">
 								<table class="table">
 									<tbody>
 										<tr>
-											<td width="20%">积分密码：</td>
+											<td width="30%">积分卡号：</td>
 											<td><input type="text" name="cardid" id="cardid" class="form-control w-25"></td>
 										</tr>
 										<tr>
 											<td>验证码</td>
 											<td>
 												<input type="text" name="vdcode" id="vdcode" class="form-control text-uppercase d-inline-block w-25">
-												<img src="/apps/vdimgck.php" title="验证码" onclick="this.src=this.src+'?'">
+												<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 											</td>
 										</tr>
 										<tr>
@@ -70,7 +71,7 @@
 							</form>
 						</div>
 						<div class="pb-3">
-							<h4 class="mb-3">购买金币</h4>
+							<h3 class="mb-3">购买金币</h3>
 							<form name="f1" action="buy_action.php" method="post">
 								<input type="hidden" name="product" value="card">
 								<table class="table">
@@ -88,7 +89,7 @@
 							</form>
 						</div>
 						<div>
-							<h4 class="mb-3">账号升级</h4>
+							<h3 class="mb-3">账号升级</h3>
 							<form name="f1" action="buy_action.php" method="post">
 								<input type="hidden" name="product" value="member">
 								<table class="table">

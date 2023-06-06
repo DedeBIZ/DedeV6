@@ -6,7 +6,7 @@ function kwArc(aid) {
 	var qstr=getCheckboxItem();
 	if (aid==0) aid = getOneItem();
 	if (qstr=='') {
-		ShowMsg('需要选择一个或多个文档');
+		ShowMsg('请选择一个或多个文档');
 		return;
 	}
 	location="archives_do.php?aid="+aid+"&dopost=makekw&qstr="+qstr;
@@ -28,7 +28,7 @@ function checkArc(aid) {
 function moveArc(e, obj, cid){
 	var qstr=getCheckboxItem();
 	if (qstr=='') {
-		ShowMsg('需要选择一个或多个文档');
+		ShowMsg('请选择一个或多个文档');
 		return;
 	}
 	LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr='+qstr+'&channelid='+cid+'&rnd='+Math.random(), 'moveArchives', 'auto', '180px');
@@ -43,7 +43,7 @@ function cAtts(jname, e, obj) {
 	var qstr=getCheckboxItem();
     var screeheight = document.body.clientHeight + 20;
 	if (qstr=='') {
-		ShowMsg('需要选择一个或多个文档');
+		ShowMsg('请选择一个或多个文档');
 		return;
 	}
 	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr='+qstr+'&dojob='+jname+'&rnd='+Math.random(), 'attsDlg', 'auto', '180px');

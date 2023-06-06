@@ -74,7 +74,7 @@
 					<div class="py-3">
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body item-article">
-								<h4 class="mb-3 userspace">用户空间<span class="info">（<?php echo $minfos['totaluse'];?>MB/<?php echo $cfg_mb_max;?>MB）</span></h4>
+								<h3 class="mb-3 userspace">用户空间<span class="info">（<?php echo $minfos['totaluse'];?>MB/<?php echo $cfg_mb_max;?>MB）</span></h3>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="<?php echo $ddsize;?>%" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $ddsize;?>%"><?php echo $ddsize;?>%</div>
 								</div>
@@ -85,7 +85,7 @@
 					<div class="pt-3">
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body item-article">
-								<h4 class="mb-3">最新文档</h4>
+								<h3 class="mb-3">最新文档</h3>
 								<ul>
 									<?php foreach ($archives as $archive) {?>
 									<li><a href="<?php echo $archive['htmlurl'];?>" title="<?php echo $archive['title'];?>"><?php echo $archive['title'];?></a></li>

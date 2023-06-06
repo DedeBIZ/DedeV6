@@ -72,7 +72,7 @@
 								}
 								?>
 							</select>
-							<span>（支持多选）</span>
+							<span>（请选栏目的信息联动类型支持多选）</span>
 						</div>
 					</td>
 					<td>上级目录：</td>
@@ -182,7 +182,7 @@
 						<label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>（需要绑定二级域名，系统变量中开启支持多站点）
 					</td>
 					<td>绑定域名：</td>
-					<td><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="admin-input-lg">（需要加http开头的链接）</td>
+					<td><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="admin-input-lg">（需要以http开头的链接）</td>
 				</tr>
 				<?php }?>
 				<tr>
@@ -244,24 +244,24 @@
 					<td>SEO标题：</td>
 					<td>
 						<input type="text" name="seotitle" id="seotitle" class="admin-input-lg">
-						<span>（标签“{dede:field.seotitle/}”调用）</span>
+						<span>（标签{dede:field.seotitle/}调用）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>关键词：</td>
 					<td>
 						<textarea name="keywords" id="keywords" class="admin-textarea-sm"></textarea>
-						<span>（标签“{dede:field.keywords/}”调用）</span>
+						<span>（标签{dede:field.keywords/}调用）</span>
 					</td>
 					<td>描述：</td>
 					<td>
 						<textarea name="description" id="description" class="admin-textarea-sm"></textarea>
-						<span>（标签“{dede:field.description/}”调用）</span>
+						<span>（标签{dede:field.description/}调用）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>栏目文档：</td>
-					<td>（标签“{dede:field.content/}”调用）</td>
+					<td>（标签{dede:field.content/}调用）</td>
 					<td>是否支持跨站调用：</td>
 					<td>
 						<input type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">

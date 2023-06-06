@@ -12,24 +12,30 @@
 		<form method="POST" enctype="multipart/form-data" action="file_manage_control.php" name="form1">
 			<input type="hidden" name="activepath" value="{dede:global name='activepath'/}">
 			<input type="hidden" name="fmdo" value="upload">
-			<table width="98%" align="center" class="my-3">
+			<table align="center" class="table maintable my-3">
 				<tr>
+					<td bgcolor="#f5f5f5" colspan="2">文件上传</td>
+				</tr>
+				<tr>
+					<td width="260">当前目录：</td>
+					<td>{dede:global name='activepath'/}</td>
+				</tr>
+				<tr>
+					<td>上传操作：</td>
 					<td>
-						<p>
-							<input type="button" name="bbb" class="btn btn-success btn-sm" onclick="make_upload();" value="添加上传框">
-							<a href="file_manage_main.php?activepath={dede:global name='activepath'/}" class="btn btn-outline-success btn-sm">返回{dede:global name='activepath'/}目录</a>
-						</p>
+						<button type="button" class="btn btn-success btn-sm" name="bbb" onclick="make_upload();">添加上传框</button>
+						<a href="file_manage_main.php?activepath={dede:global name='activepath'/}" class="btn btn-success btn-sm">返回目录</a>
 					</td>
 				</tr>
 				<tr>
-					<td id="upfield">
-						<p>文件1：<input type="file" name="upfile1" class="admin-input-lg"></p>
+					<td  colspan="2" id="upfield">
+						<div class="mb-3"><label>文件1：<input type="file" name="upfile1" class="admin-input-lg"></label></div>
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<input type="submit" class="btn btn-success btn-sm" value="上传文件" name="B1">
-						<input type="button" class="btn btn-success btn-sm" value="重设表单" name="B12" onclick="reset_upload();">
+					<td bgcolor="f5f5f5"  colspan="2" align="center">
+						<button type="submit" class="btn btn-success btn-sm" name="B1">上传文件</button>
+						<button type="button" class="btn btn-success btn-sm" name="B12" onclick="reset_upload();">重新上传</button>
 					</td>
 				</tr>
 			</table>
@@ -40,12 +46,12 @@
 			{
 				i++;
 				myob = document.getElementById("upfield");
-				myob.innerHTML+="<p>文件"+i+"：<input type='file' name='upfile"+i+"' class='admin-input-lg'></p>";
+				myob.innerHTML+="<div class='mb-3'><label>文件"+i+"：<input type='file' name='upfile"+i+"' class='admin-input-lg'></label></div>";
 			}
 			function reset_upload()
 			{
 				myob = document.getElementById("upfield");
-				myob.innerHTML="<p>文件1：<input type='file' name='upfile1' class='admin-input-lg'></p>";
+				myob.innerHTML="<div class='mb-3'><label>文件1：<input type='file' name='upfile1' class='admin-input-lg'></label></div>";
 			}
 		</script>
 	</body>

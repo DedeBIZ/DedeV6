@@ -208,7 +208,7 @@ if ($paytype === 0) {
             $wintitle = "使用微信支付";
             $wecome_info = "微信支付";//这个空格不要去
             $win = new OxWindow();
-            $win->AddMsgItem($msg);
+            $win->AddMsgItem("$msg");
             $winform = $win->GetWindow("hand", false);
             $win->Display(DEDEMEMBER."/templets/win_templet.htm");
         } catch (Exception $e) {
@@ -251,7 +251,7 @@ if ($paytype === 0) {
         $wintitle = "使用银行转账";
         $wecome_info = "银行转账";//这个空格不要去
         $win = new OxWindow();
-        $win->AddMsgItem($msg);
+        $win->AddMsgItem("$msg");
         $winform = $win->GetWindow("hand", false);
         $win->Display(DEDEMEMBER."/templets/win_templet.htm");
     } elseif ($paytype === 4) {

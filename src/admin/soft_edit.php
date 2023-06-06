@@ -48,7 +48,7 @@ if ($dopost != 'save') {
                 if ($ctag->GetName() == 'link') {
                     $islocal = $ctag->GetAtt('islocal');
                     if ($islocal != 1) $needmsg = "<label class='ml-2'><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
-                    else $needmsg = '<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm ml-2" onClick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选取</button>';
+                    else $needmsg = '<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm ml-2" onclick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选取</button>';
                     $nForm .= "<div class='py-2'><label>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-lg'></label><label class='ml-2'>地址名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'></label><input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'>$needmsg</div>\r\n";
                     $newRowStart++;
                 }
@@ -216,7 +216,7 @@ if ($dopost != 'save') {
     $wecome_info = "文档管理 - 修改软件文档";
     $win = new OxWindow();
     $win->AddTitle("成功修改软件文档");
-    $win->AddMsgItem($msg);
+    $win->AddMsgItem("$msg");
     $winform = $win->GetWindow("hand", FALSE);
     $win->Display();
 }

@@ -244,7 +244,7 @@ if ($action == '') {
         $rooturl = $cfg_basehost.$cfg_cmspath;
         $setupsql = preg_replace("#_ROOTURL_#i", $rooturl, $setupsql);
         $setupsql = preg_replace("#[\r\n]{1,}#", "\n", $setupsql);
-        $sqls = @split(";[ \t]{0,}\n", $setupsql);
+        $sqls = preg_split('/;[ \t]{0,}\n/', $setupsql);
         foreach ($sqls as $sql) {
             if (trim($sql) != '') $dsql->ExecuteNoneQuery($sql);
         }

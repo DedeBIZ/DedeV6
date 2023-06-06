@@ -390,7 +390,7 @@ function DedeConfirm(content = "", title = "确认提示") {
             reject("cancel");
             CloseModal(`DedeModal${modalID}`);
         }
-        let footer = `<button type="button" class="btn btn-outline-success btn-sm" onClick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onClick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
+        let footer = `<button type="button" class="btn btn-outline-success btn-sm" onclick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onclick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
         let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
         modal += `<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>`;
         modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
@@ -410,7 +410,7 @@ function ShowMsg(content, ...args) {
 	size = "";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
-	var footer = `<button type="button" class="btn btn-primary btn-sm" onClick="CloseModal(\'GKModal${modalID}\')">确定</button>`;
+	var footer = `<button type="button" class="btn btn-primary btn-sm" onclick="CloseModal(\'GKModal${modalID}\')">确定</button>`;
 	var noClose = false;
 	if (args.length == 1) {
 		//存在args参数

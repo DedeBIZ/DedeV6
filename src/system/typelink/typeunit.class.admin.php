@@ -110,7 +110,7 @@ class TypeUnit
             if ($ispart == 0) {
                 //列表栏目
                 echo "<tr>";
-                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
+                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
                 echo "</td>";
                 echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
@@ -122,7 +122,7 @@ class TypeUnit
             } else if ($ispart == 1) {
                 //封面栏目
                 echo "<tr>";
-                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
+                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                 echo "</td>";
                 echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
@@ -134,7 +134,7 @@ class TypeUnit
             } else if ($ispart == 2) {
                 //外部栏目
                 echo "<tr>";
-                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
+                echo "<td class='admin-td'><table width='100%'><tr><td width='50%'><i id='img".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                 echo "</td>";
                 echo "<td align='right'><a href='{$typeDir}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                 echo "<a href='catalog_add.php?id={$id}' title='添加' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i></a>";
@@ -194,7 +194,7 @@ class TypeUnit
                     //列表栏目
                     echo "<tr>";
                     echo "<td class='admin-td'><table width='100%'><tr><td width='50%'>";
-                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
+                    echo "$step<i id='img".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
                     echo "</td>";
                     echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
@@ -207,7 +207,7 @@ class TypeUnit
                     //封面栏目
                     echo "<tr>";
                     echo "<td class='admin-td'><table width='100%'><tr><td width='50%'>";
-                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
+                    echo "$step<i id='img".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                     echo "</td>";
                     echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='文档' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i></a>";
@@ -220,7 +220,7 @@ class TypeUnit
                     //外部栏目
                     echo "<tr>";
                     echo "<td class='admin-td'><table width='100%'><tr><td width='50%'>";
-                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
+                    echo "$step<i id='img".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mr-3 ml-3'>".$typeName."</a>[id：".$id."]";
                     echo "</td>";
                     echo "<td align='right'><a href='{$typeDir}' target='_blank' title='预览' class='btn btn-light btn-sm'><i class='fa fa-eye'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i></a>";

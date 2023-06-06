@@ -352,7 +352,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
             $gourl = 'javascript:;';
             $func .= "window.parent.document.getElementById('{$tgobj}').style.display='none';\r\n";
         }
-        $func .= "var pgo=0;function JumpUrl(){if (pgo==0){location='$gourl'; pgo=1;}}";
+        $func .= "var pgo=0;function JumpUrl(){if (pgo==0) {location='$gourl'; pgo=1;}}";
         $rmsg = $func;
         $rmsg .= "document.write(\"<div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div>\");";
         $rmsg .= "document.write(\"<div class='tips-body'>\");";

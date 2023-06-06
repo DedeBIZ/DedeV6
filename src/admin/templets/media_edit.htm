@@ -21,7 +21,7 @@
 					<td bgcolor="#f5f5f5" colspan="2">修改附件</td>
 				</tr>
 				<tr>
-					<td width="260">媒体类型：</td>
+					<td width="260">附件类型：</td>
 					<td>
 						<label><input type="radio" name="mediatype" value="1" <?php if ($myrow['mediatype']==1) echo "checked";?>> 图片</label>
 						<label><input type="radio" name="mediatype" value="2" <?php if ($myrow['mediatype']==2) echo "checked";?>> FLASH</label>
@@ -30,15 +30,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td>说明标题：</td>
+					<td>附件标题：</td>
 					<td><input type="text" name="title" id="title" value="<?php echo $myrow['title']?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>附加参数：</td>
 					<td>
-						<label>宽：<input type="text" name="mediawidth" id="mediawidth" value="<?php echo $myrow['width']?>" class="admin-input-sm">（像素）</label>
-						<label>高：<input type="text" name="mediaheight" id="mediaheight" value="<?php echo $myrow['height']?>" class="admin-input-sm">（像素）</label>
-						<label>播放时间：<input type="text" name="playtime" id="playtime" value="<?php echo $myrow['playtime']?>" class="admin-input-sm">（分钟）</label>
+						<label>宽：<input type="text" name="mediawidth" id="mediawidth" value="<?php echo $myrow['width']?>" class="admin-input-sm" placeholder="附件像素宽度"></label>
+						<label>高：<input type="text" name="mediaheight" id="mediaheight" value="<?php echo $myrow['height']?>" class="admin-input-sm" placeholder="附件像高宽度"></label>
+						<label>播放时间：<input type="text" name="playtime" id="playtime" value="<?php echo $myrow['playtime']?>" class="admin-input-sm"  placeholder="附件播放分钟"></label>
 					</td>
 				</tr>
 				<tr>
@@ -49,13 +49,12 @@
 					</td>
 				</tr>
 				<?php
-				if ($myrow['mediatype']==1)
-				{
+				if ($myrow['mediatype'] == 1) {
 					$fullfilename = $cfg_basedir.$myrow['url'];
-					if (file_exists($fullfilename)){
+					if (file_exists($fullfilename)) {
 						$info = "";
 						$sizes = getimagesize($fullfilename,$info);
-						if (is_array($sizes)){
+						if (is_array($sizes)) {
 							if ($sizes[0]>200) $w=200;
 							else $w = $sizes[0];
 				?>
@@ -65,7 +64,7 @@
 				</tr>
 				<?php }}}?>
 				<tr>
-					<td>修改文件：</td>
+					<td>修改附件：</td>
 					<td><input type="file" name="upfile" id="upfile" class="admin-input-lg"></td>
 				</tr>
 				<tr>

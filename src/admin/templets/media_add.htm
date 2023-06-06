@@ -20,7 +20,7 @@
 					<td bgcolor="#f5f5f5" colspan="2">添加附件</td>
 				</tr>
 				<tr>
-					<td width="260">媒体类型：</td>
+					<td width="260">附件类型：</td>
 					<td>
 						<label><input type="radio" name="mediatype" value="1" checked="checked"> 图片</label>
 						<label><input type="radio" name="mediatype" value="2"> FLASH</label>
@@ -29,19 +29,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td>说明标题：</td>
+					<td>附件标题：</td>
 					<td><input type="text" name="title" id="title" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>附加参数：</td>
 					<td>
-						<label>宽：<input type="text" name="mediawidth" id="mediawidth" class="admin-input-sm">（像素）</label>
-						<label><label>高：<input type="text" name="mediaheight" id="mediaheight" class="admin-input-sm">（像素）</label>
-						<label>播放时间：<input type="text" name="playtime" id="mediawidth3" class="admin-input-sm">（分钟）</label>
+						<label>宽：<input type="text" name="mediawidth" id="mediawidth" class="admin-input-sm" placeholder="附件像素宽度"></label>
+						<label>高：<input type="text" name="mediaheight" id="mediaheight" class="admin-input-sm" placeholder="附件像高宽度"></label>
+						<label>播放时间：<input type="text" name="playtime" id="mediawidth3" class="admin-input-sm" placeholder="附件播放分钟"></label>
 					</td>
 				</tr>
 				<tr>
-					<td>上传文件：</td>
+					<td>上传附件：</td>
 					<td>
 						<label>数量：<input type="text" name="picnum" id="picnum" value="5" class="admin-input-sm"></label>
 						<button type="button" name="Submit" class="btn btn-success btn-sm" onclick="MakeUpload()">添加</button>
@@ -50,16 +50,16 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<p><input type="file" name="upfile1" id="upfile1" class="admin-input-lg"></p>
-						<p><input type="file" name="upfile2" id="upfile2" class="admin-input-lg"></p>
-						<p><input type="file" name="upfile3" id="upfile3" class="admin-input-lg"></p>
-						<p><input type="file" name="upfile4" id="upfile4" class="admin-input-lg"></p>
-						<p><input type="file" name="upfile5" id="upfile5" class="admin-input-lg"></p>
-						<span id="uploadfield"></span>
+						<div class="mb-3"><label>附件1：<input type="file" name="upfile1" id="upfile1" class="admin-input-lg"></label></div>
+						<div class="mb-3"><label>附件2：<input type="file" name="upfile2" id="upfile2" class="admin-input-lg"></label></div>
+						<div class="mb-3"><label>附件3：<input type="file" name="upfile3" id="upfile3" class="admin-input-lg"></label></div>
+						<div class="mb-3"><label>附件4：<input type="file" name="upfile4" id="upfile4" class="admin-input-lg"></label></div>
+						<div class="mb-3"><label>附件5：<input type="file" name="upfile5" id="upfile5" class="admin-input-lg"></label></div>
+						<div id="uploadfield"></div>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">上传附件</button></td>
 				</tr>
 			</table>
 		</form>
@@ -77,9 +77,9 @@
 			function MakeUpload() {
 				var upfield = document.getElementById("uploadfield");
 				var endNum = Number(document.form1.picnum.value) + startNum;
-				if (endNum > 40) endNum = 40;
+				if (endNum > 30) endNum = 30;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<p><input type='file' name='upfile" + startNum + "' class='admin-input-lg'></p>";
+					upfield.innerHTML += "<div class='mb-3'><label>附件" + startNum + "：<input type='file' name='upfile" + startNum + "' class='admin-input-lg'></label></div>";
 				}
 			}
 			function ResetUpload() {
