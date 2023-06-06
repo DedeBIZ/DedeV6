@@ -407,7 +407,7 @@ if ($action == '') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 使用说明";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem("<tr><td>$msg</td></tr>");
     $winform = $win->GetWindow("hand");
     $win->Display();
     exit();
