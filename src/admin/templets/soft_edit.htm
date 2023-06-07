@@ -281,8 +281,11 @@
 							<tr>
 								<td width="120">官方网址：</td>
 								<td width="420"><input type="text" name="officialUrl" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" class="admin-input-lg"></td>
-								<td width="120">程序演示：</td>
-								<td><input type="text" name="officialDemo" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" class="admin-input-lg"></td>
+								<td width="120">演示网址：</td>
+								<td>
+									<input type="text" name="officialDemo" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" class="admin-input-lg">
+									<label><input type="checkbox" name="" id="" checked="checked"> 上传压缩包自动解压</label>
+								</td>
 							</tr>
 						</table>
 					</td>

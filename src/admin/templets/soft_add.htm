@@ -275,8 +275,11 @@
 							<tr>
 								<td width="120">官方网址：</td>
 								<td width="420"><input type="text" name="officialUrl" id="officialUrl" value="" class="admin-input-lg"></td>
-								<td width="120">演示地址：</td>
-								<td><input type="text" name="officialDemo" id="officialDemo" value="" class="admin-input-lg"></td>
+								<td width="120">演示网址：</td>
+								<td>
+									<input type="text" name="officialDemo" id="officialDemo" value="" class="admin-input-lg">
+									<label><input type="checkbox" name="" id="" checked="checked"> 上传压缩包自动解压</label>
+								</td>
 							</tr>
 						</table>
 					</td>
@@ -321,10 +324,9 @@
 						<table>
 							<tr>
 								<td width="120">本地上传：</td>
-								<td width="620">
+								<td width="460">
 									<input type="text" name="softurl1" id="softurl1" class="admin-input-lg">
 									<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm" onclick="SelectSoft('form1.softurl1')">选取</button>
-									<label><input type="checkbox" name="" id="" checked="checked"> 上传压缩包自动解压</label>
 								</td>
 								<td width="120">地址名称：</td>
 								<td><input type="text" name="servermsg1" id="servermsg1" value="本地下载" class="admin-input-sm"></td>
