@@ -99,16 +99,20 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
         document.addEventListener('drop', (e) => {
             e.stopPropagation();
             e.preventDefault();
-            if (!e.dataTransfer.files){return false;}
+            if (!e.dataTransfer.files) {
+                return false;
+            }
             var dropfiles = e.dataTransfer.files;
-            if (!(dropfiles.length > 0)){return false;}
+            if (!(dropfiles.length > 0)) {
+                return false;
+            }
             var exts='.png,.gif,.jpg,.jpeg'.replace(/(\s)+/g,'').toLowerCase().split(',');
             var files=[];
             for ( let file of dropfiles ) {
                 ext = file.name.split('.');
                 ext = '.'+ext[ext.length-1];
                 for (let s of exts) {
-                    if (s==ext){
+                    if (s==ext) {
                         files.push(file);
                         break;
                     }
@@ -153,9 +157,9 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
                 blobInfo.isWater = document.querySelector('#isWater').checked;
     			upload_handler(blobInfo,function(url) {
     				if (upload_base_path) {
-    					if (upload_base_path.slice(-1)=='/' && url.substr(0,1)=='/' ){
+    					if (upload_base_path.slice(-1)=='/' && url.substr(0,1)=='/') {
     						url = upload_base_path + url.slice(1);
-    					} else if (upload_base_path.slice(-1)!='/' && url.substr(0,1)!='/' ){
+    					} else if (upload_base_path.slice(-1)!='/' && url.substr(0,1)!='/') {
     						url = upload_base_path + '/' + url;
     					} else {
     						url = upload_base_path + url;
