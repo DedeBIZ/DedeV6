@@ -64,7 +64,7 @@
 					<td>
 						<?php
 						$MemberTypes = array();
-						$dsql->SetQuery("SELECT `rank`,membername From `#@__arcrank` where `rank`>0 ORDER BY `rank` ASC");
+						$dsql->SetQuery("SELECT `rank`,membername FROM `#@__arcrank` WHERE `rank` > 0 ORDER BY `rank` ASC");
 						$dsql->Execute('n');
 						$MemberTypes[0] = "限制会员";
 						while($nrow = $dsql->GetObject('n')){

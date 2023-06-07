@@ -26,11 +26,13 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
     	<ul id="file_list"></ul>
     </div>
     <script>
-    	var axupimgs={};
+    	var axupimgs = {};
     	axupimgs.res = [];//存放本地文件的数组
     	var blobInfo = {file:null}
-    	blobInfo.blob = function(){return this.file;}
-    	var upload_handler = async(blobInfo, succFun, failFun)=>{
+    	blobInfo.blob = function() {
+            return this.file;
+        }
+    	var upload_handler = async(blobInfo, succFun, failFun) => {
             var file = blobInfo.blob();
             formData = new FormData();
             formData.append('upload', file, file.name);
@@ -53,8 +55,8 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
         };
     	var upload_base_path = axupimgs.images_upload_base_path;
     	//为列表添加排序
-    	function reSort(){
-            document.querySelectorAll('#file_list li').forEach((el,i)=>{
+    	function reSort() {
+            document.querySelectorAll('#file_list li').forEach((el,i) => {
                 el.setAttribute('data-num',i);
             });
     	}
@@ -82,24 +84,24 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
             //reSort();
         }
         //清空列表
-        document.querySelector('#topbar .removeall').addEventListener('click',()=>{
+        document.querySelector('#topbar .removeall').addEventListener('click',() => {
             axupimgs.res=[]
-            document.querySelectorAll('#file_list li').forEach((el,i)=>{
+            document.querySelectorAll('#file_list li').forEach((el,i) => {
                 el.parentNode.removeChild(el)
             });
         });
         //拖拽添加
-        document.addEventListener('dragover', (e)=>{
+        document.addEventListener('dragover', (e) => {
             e.stopPropagation();
             e.preventDefault();
             e.dataTransfer.dropEffect = 'copy';
         });
-        document.addEventListener('drop', (e)=>{
+        document.addEventListener('drop', (e) => {
             e.stopPropagation();
             e.preventDefault();
             if (!e.dataTransfer.files){return false;}
             var dropfiles = e.dataTransfer.files;
-            if (!(dropfiles.length>0)){return false;}
+            if (!(dropfiles.length > 0)){return false;}
             var exts='.png,.gif,.jpg,.jpeg'.replace(/(\s)+/g,'').toLowerCase().split(',');
             var files=[];
             for ( let file of dropfiles ) {
@@ -112,10 +114,12 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
                     }
                 }
             }
-            if (files.length>0){ addList(files) }
+            if (files.length > 0) {
+                addList(files)
+            }
         });
         //添加文件
-        document.querySelector('#topbar .addfile').addEventListener('click',()=>{
+        document.querySelector('#topbar .addfile').addEventListener('click',() => {
             var input = document.createElement('input');
             input.setAttribute('type', 'file');
             input.setAttribute('multiple', 'multiple');
@@ -127,31 +131,31 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
             }
         });
     	var file_i = 0;
-    	function upAllFiles(n){
+    	function upAllFiles(n) {
     		var len = axupimgs.res.length;
     		file_i = n;
-    		if (len == n){
+    		if (len == n) {
     			file_i=0;
                 document.querySelector('#topbar .upall').innerText='全部上传';
                 //返回
-                axupimgs.res.forEach((v,k)=>{
-                    let addonHTML = `<img src='${v.url}'/>`;
+                axupimgs.res.forEach((v,k) => {
+                    let addonHTML = `<img src='${v.url}'>`;
                     window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
                 })
                 window.close();
     			return true;
     		}
-    		if ( axupimgs.res[n].url!='' ){
+    		if (axupimgs.res[n].url!='') {
     			n++;
     			upAllFiles(n)
     		} else {
     			blobInfo.file=axupimgs.res[n].file;
                 blobInfo.isWater = document.querySelector('#isWater').checked;
-    			upload_handler(blobInfo,function(url){
-    				if (upload_base_path){
+    			upload_handler(blobInfo,function(url) {
+    				if (upload_base_path) {
     					if (upload_base_path.slice(-1)=='/' && url.substr(0,1)=='/' ){
     						url = upload_base_path + url.slice(1);
-    					}else if (upload_base_path.slice(-1)!='/' && url.substr(0,1)!='/' ){
+    					} else if (upload_base_path.slice(-1)!='/' && url.substr(0,1)!='/' ){
     						url = upload_base_path + '/' + url;
     					} else {
     						url = upload_base_path + url;
@@ -164,29 +168,31 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
     				li.querySelector('.namebox span').innerText = filename;
     				n++
     				upAllFiles(n);
-    			},function(err){
+    			},function(err) {
                     document.querySelector('#topbar .upall').innerText='全部上传';
-                    document.querySelectorAll('#file_list li.up-now').forEach((el,i)=>{
+                    document.querySelectorAll('#file_list li.up-now').forEach((el,i) => {
                         el.setAttribute('class','up-no');
                     });
                     alert(err);
                 });
     		}	
     	}
-        document.querySelector('#topbar .upall').addEventListener('click',(e)=>{
-            if (e.target.innerText!='全部上传'){return false;}
-            if (axupimgs.res.length>0){
-                document.querySelectorAll('#file_list li.up-no').forEach((el,i)=>{
+        document.querySelector('#topbar .upall').addEventListener('click',(e) => {
+            if (e.target.innerText!='全部上传') {
+                return false;
+            }
+            if (axupimgs.res.length > 0) {
+                document.querySelectorAll('#file_list li.up-no').forEach((el,i) => {
                     el.classList ? el.classList.add('up-now') : el.className+=' up-now';
                 });
                 e.target.innerText='上传中';
                 upAllFiles(0);
             }
         });
-        var observ_flist = new MutationObserver( (muList,observe)=>{
-            if (muList[0].addedNodes.length>0){
-                muList[0].addedNodes.forEach((el)=>{
-                    el.querySelector('.remove').addEventListener('click',(e)=>{
+        var observ_flist = new MutationObserver( (muList,observe) => {
+            if (muList[0].addedNodes.length > 0) {
+                muList[0].addedNodes.forEach((el) => {
+                    el.querySelector('.remove').addEventListener('click',(e) => {
                         var li = e.target.parentNode.parentNode;
                         var n = li.getAttribute('data-num');
                         var el = document.querySelectorAll('#file_list li')[n];

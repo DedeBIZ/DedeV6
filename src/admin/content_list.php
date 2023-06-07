@@ -59,7 +59,7 @@ if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
     if (!empty($channelid) && empty($cid)) {
         $tinyQuerys[] = " channel = '$channelid' ";
     } else {
-        $tinyQuerys[] = " channel>0 ";
+        $tinyQuerys[] = " channel > 0 ";
     }
     if (!empty($arcrank)) {
         $tinyQuerys[] = " arcrank='$arcrank' ";
@@ -86,7 +86,7 @@ if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
 }
 if ($cid == 0) {
     if ($channelid == 0) {
-        $positionname = '所有栏目&gt;';
+        $positionname = '所有栏目 - ';
     } else {
         $row = $tl->dsql->GetOne("SELECT id,typename,maintable FROM `#@__channeltype` WHERE id='$channelid'");
         $positionname = $row['typename']." - ";
