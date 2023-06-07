@@ -13,11 +13,13 @@
 	scrollbar-width:thin
 }
 body {
+	margin:0;
 	line-height:1.6;
 	letter-spacing:.6px;
 	font-size:14px;
 	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
-	color:#545b62
+	color:#545b62;
+	background:#fff
 }
 a {
 	color:#545b62
@@ -448,20 +450,20 @@ input[type=file] {
 @media (max-width:480px) {
 	.m-pb-1 {
 	padding-bottom:1rem
-}
-.m-pb-2 {
-	padding-bottom:2rem
-}
-.login-from {
-	width:100%
-}
-.bannr-img,.item-theme-img img,.list-article-img img {
-	height:250px
-}
-.item-news-img img {
-	height:210px
-}
-.feedbacks .feedback-action {
-	float:none
-}
+	}
+	.m-pb-2 {
+		padding-bottom:2rem
+	}
+	.login-from {
+		width:100%
+	}
+	.bannr-img,.item-theme-img img,.list-article-img img {
+		height:250px
+	}
+	.item-news-img img {
+		height:210px
+	}
+	.feedbacks .feedback-action {
+		float:none
+	}
 }

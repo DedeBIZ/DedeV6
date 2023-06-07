@@ -87,7 +87,7 @@ else if ($fmdo == "upload") {
             $j++;
         }
     }
-    ShowMsg("成功上传<span class='text-primary'>$j</span>个文件到: $activepath", "file_manage_main.php?activepath=$activepath");
+    ShowMsg("成功上传<span class='text-primary'>$j</span>个文件到<span class='text-primary'>$activepath</span>", "file_manage_main.php?activepath=$activepath");
     exit();
 }
 //空间检查
@@ -97,9 +97,8 @@ else if ($fmdo == "space") {
     } else {
         $ecpath = $activepath;
     }
-    $titleinfo = "[<a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>]空间使用状况：<br>";
-    $wintitle = "检查空间大小";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 空间大小";
+    $wintitle = "指定空间检查大小";
+    $wecome_info = "文件管理器 - <a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>空间检查大小";
     $activepath = $cfg_basedir.$activepath;
     $space = new SpaceUse;
     $space->checksize($activepath);
@@ -108,8 +107,16 @@ else if ($fmdo == "space") {
     $totalmb = $space->setmb($total);
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "POST");
-    $win->AddTitle($titleinfo);
-    $win->AddMsgItem("<tr><td>$totalmb M<br>$totalkb KB<br>$total 字节</td></tr>");
+    $win->AddMsgItem("<tr>
+        <td>
+            <span>$totalkb</span>KB<br>
+            <span>$totalmb</span>M<br>
+            <span>$total</span>字节
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='file_manage_main.php';\">文件管理器</button></td>
+    </tr>");
     $winform = $win->GetWindow("");
     $win->Display();
 }
