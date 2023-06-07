@@ -22,7 +22,7 @@ if ($dopost == "save") {
     flock($fp, 3);
     fwrite($fp, $allsource);
     fclose($fp);
-    echo "<script>alert('已保存');</script>";
+    echo "<script>alert('成功保存字符串混淆');</script>";
 }
 //读出
 if (empty($allsource) && filesize($m_file) > 0) {

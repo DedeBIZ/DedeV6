@@ -19,22 +19,17 @@
 					<td bgcolor="#f5f5f5" colspan="2">软件下载设置</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<div class="alert alert-info mb-0">软件模型的附件下载方式都必须链接到中转页，否则无效</div>
-					</td>
-				</tr>
-				<tr>
 					<td width="260">链接显示方式：</td>
 					<td>
-						<label><input type="radio" name="downtype" value="0" <?php if ($row['downtype']==0) echo " checked='checked' ";?>> 直接显示地址列表</label>
-						<label><input type="radio" name="downtype" value="1" <?php if ($row['downtype']==1) echo " checked='checked' ";?>> 要求进入下载地址列表页</label>
+						<label><input type="radio" name="gotojump" value="0" <?php if ($row['gotojump']==0) echo " checked='checked' ";?>> 真实软件链接地址</label>
+						<label><input type="radio" name="gotojump" value="1" <?php if ($row['gotojump']==1) echo " checked='checked' ";?>> 字符软件链接地址</label>
 					</td>
 				</tr>
 				<tr>
-					<td>附件下载方式：</td>
+					<td>软件下载方式：</td>
 					<td>
-						<label><input type="radio" name="gotojump" value="0" <?php if ($row['gotojump']==0) echo " checked='checked' ";?>> 链接到真实软件地址</label>
-						<label><input type="radio" name="gotojump" value="1" <?php if ($row['gotojump']==1) echo " checked='checked' ";?>> 链接到跳转页面</label>
+						<label><input type="radio" name="downtype" value="0" <?php if ($row['downtype']==0) echo " checked='checked' ";?>> 当前软件发布页</label>
+						<label><input type="radio" name="downtype" value="1" <?php if ($row['downtype']==1) echo " checked='checked' ";?>> 链接到地址列表页</label>
 					</td>
 				</tr>
 				<tr>
@@ -54,8 +49,8 @@
 				<tr>
 					<td>镜像处理方式：</td>
 					<td>
-						<label><input type="radio" name="moresitedo" value="1" <?php if ($row['moresitedo']==1) echo " checked='checked' ";?>> 根据本地地址和服务器列表自动生成</label>
-						<label><input type="radio" name="moresitedo" value="0" <?php if ($row['moresitedo']==0) echo " checked='checked' ";?>> 发布时按服务器生成列表由我手工填写</label>
+						<label><input type="radio" name="moresitedo" value="1" <?php if ($row['moresitedo']==1) echo " checked='checked' ";?>> 本地地址和服务器列表自动生成</label>
+						<label><input type="radio" name="moresitedo" value="0" <?php if ($row['moresitedo']==0) echo " checked='checked' ";?>> 按服务器生成列表由我手工填写</label>
 					</td>
 				</tr>
 				<tr>
@@ -84,16 +79,16 @@
 				<tr>
 					<td>参数限制方式：</td>
 					<td>
-						<label><input type="radio" name="argrange" value="0" <?php if ($row['argrange']==0) echo " checked='checked' ";?>> 允许发布时重新选择权限</label>
-						<label><input type="radio" name="argrange" value="2" <?php if ($row['argrange']==1) echo " checked='checked' ";?>> 所有软件均使用此权限</label>
+						<label><input type="radio" name="argrange" value="0" <?php if ($row['argrange']==0) echo " checked='checked' ";?>> 所有软件重新选择权限</label>
+						<label><input type="radio" name="argrange" value="1" <?php if ($row['argrange']==1) echo " checked='checked' ";?>> 所有软件均使用此权限</label>
 					</td>
 				</tr>
 				<tr>
 					<td>镜像服务器列表：</td>
 					<td>
-						<label>服务器网址：<input type="text" name="serverurl" id="serverurl" value="http://"></label>
-						<label>服务器名称：<input type="text" name="servername" id="servername"></label>
-						<label>服务器类型：<input type="text" name="servertype" id="servertype" value="默认"></label>
+						<label>镜像域名：<input type="text" name="serverurl" id="serverurl" value=""></label>
+						<label>镜像目录：<input type="text" name="servername" id="servername"></label>
+						<label>镜像名称：<input type="text" name="servertype" id="servertype" value="默认下载地址"></label>
 						<button type="button" name="Submit" onclick="AddServer()" class="btn btn-success btn-sm">添加一项</button>
 					</td>
 				</tr>
@@ -116,9 +111,18 @@
 		</form>
 		<script>
 			function AddServer() {
-				if (document.form1.serverurl.value == "" || document.form1.serverurl.value == "http://") { ShowMsg('服务器网址不能为空'); return; }
-				if (document.form1.servername.value == "") { ShowMsg('服务器名称不能为空'); return; }
-				if (document.form1.servertype.value == "") { ShowMsg('服务器类型不能为空'); return; }
+				if (document.form1.serverurl.value == "" || document.form1.serverurl.value == "") {
+					ShowMsg('镜像域名不能为空');
+					return;
+				}
+				if (document.form1.servername.value == "") {
+					ShowMsg('镜像目录不能为空');
+					return;
+				}
+				if (document.form1.servertype.value == "") {
+					ShowMsg('镜像名称不能为空');
+					return;
+				}
 				document.form1.sites.value += document.form1.serverurl.value + " | " + document.form1.servername.value + " | " + document.form1.servertype.value + "";
 			}
 		</script>

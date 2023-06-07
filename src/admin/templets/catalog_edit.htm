@@ -326,6 +326,14 @@
 				else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
 				else return "OT";
 			}
+			function checkSubmit() {
+				if (document.form1.typename.value == "") {
+					alert("栏目名称不能为空");
+					document.form1.typename.focus();
+					return false;
+				}
+				return true;
+			}
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800,600);
 				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
@@ -371,14 +379,6 @@
 				} else {
 					tobj.style.display = "none";
 				}
-			}
-			function checkSubmit() {
-				if (document.form1.typename.value == "") {
-					alert("栏目名称不能为空");
-					document.form1.typename.focus();
-					return false;
-				}
-				return true;
 			}
 			function CheckCross() {
 				var cross2 = document.getElementById('cross2');

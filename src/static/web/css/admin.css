@@ -260,7 +260,6 @@ body.hidemenu .body-right {
 	right:5px;
 	height:20px;
 	line-height:20px;
-	font-size:12px;
 	color:#545b62;
 	background:0;
 	border:0
@@ -375,7 +374,7 @@ body.hidemenu .body-right {
 	padding:.5rem;
 	width:120px;
 	background:#fff;
-	border:2px solid #dee2e6;
+	border:1px solid #dee2e6;
 	z-index:10005
 }
 .wsselect {
@@ -385,7 +384,7 @@ body.hidemenu .body-right {
 }
 .pubdlg {
 	background:#fff;
-	border:2px solid #dee2e6;
+	border:1px solid #dee2e6;
 	z-index:8888
 }
 .pubdlg .title {
@@ -440,7 +439,7 @@ body.hidemenu .body-right {
 .mysource,.mywriter {
 	width:300px;
 	background:#fff;
-	border:2px solid #dee2e6;
+	border:1px solid #dee2e6;
 	z-index:10001
 }
 #uploadfield {
