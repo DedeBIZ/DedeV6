@@ -181,7 +181,7 @@
 							</tr>
 							<?php } else {?>
 							<tr>
-								<td colspan='5'>下面列出的字段是附加表的字段，除此外，它还包含主表archives的所有字段</td>
+								<td colspan='5'>下面是附加表字段，还包含主表archives所有字段</td>
 							</tr>
 							<?php
 							}
@@ -218,25 +218,19 @@
 									<?php
 									$ft = $ctag->GetAtt('autofield');
 									if ($ft=='' || $ft==0) {
-									echo "固化字段";
+										echo "固化字段";
 									} else {
-										echo "自动表单";
+										echo "自动字段";
 									}
 									?>
 								</td>
 								<td>
-									<?php
-									if ($ft==1) {
-									?>
+									<?php if ($ft==1) {?>
 									<a href="mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&issystem=<?php echo $row['issystem'];?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
 									<?php if ($row['issystem']!=1) {?>
 									<a href="javascript:;" onclick="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&action=delete');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 									<?php }?>
-									<?php
-									} else {
-									  echo "<span class='btn btn-danger btn-sm'><i class='fa fa-times'></i> 禁止</span>";
-									}
-									?>
+									<?php } else {echo "<span class='btn btn-danger btn-sm'><i class='fa fa-times'></i> 禁止</span>";}?>
 								</td>
 							</tr>
 							<?php }}?>
