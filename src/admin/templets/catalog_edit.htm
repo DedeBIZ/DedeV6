@@ -113,7 +113,7 @@
 					<td>
 						<select name="corank" id="corank" class="admin-input-sm">
 							<?php
-							$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0 ORDER BY `rank` ASC");
+							$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0 ORDER BY `rank` ASC");
 							$dsql->Execute('cc');
 							while($row = $dsql->GetObject('cc'))
 							{
@@ -167,7 +167,7 @@
 						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='checked'";?>> 不启用</label>（仅顶级栏目启用，子类栏目无效）
 					</td>
 					<td>绑定域名：</td>
-					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-lg">（需要以http开头的链接）</td>
+					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-lg">（请输入绑定域名http开头）</td>
 				</tr>
 				<tr>
 					<td>列表模板：</td>

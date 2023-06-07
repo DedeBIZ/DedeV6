@@ -82,9 +82,9 @@ input[type=file] {
 	vertical-align:middle
 }
 input[type=button],input[type=submit],input[type=reset] {
-	padding:.375rem .75rem;
-	height:auto;
-	font-size:12px;
+	padding:.25rem .5rem;
+	line-height:1.5;
+	font-size:.875rem;
 	color:#fff;
 	background:#1eb867;
 	border:0;
@@ -553,7 +553,8 @@ body.hidemenu .body-right {
 	height:60px
 }
 .admin-input-lg {
-	width:360px
+	width:360px;
+	height:28px
 }
 .admin-input-md {
 	width:260px

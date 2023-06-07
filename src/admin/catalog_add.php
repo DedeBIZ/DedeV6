@@ -155,7 +155,7 @@ if ($dopost == 'quick') {
         if ($siteurl != '') {
             $siteurl = preg_replace("#\/$#", "", $siteurl);
             if (!preg_match("#http:\/\/#i", $siteurl)) {
-                ShowMsg("您绑定的二级域名无效，需要以http开头的链接", "-1");
+                ShowMsg("您绑定的二级域名无效，请输入绑定域名http开头", "-1");
                 exit();
             }
             if (preg_match("#".$cfg_basehost."#i", $siteurl)) {
