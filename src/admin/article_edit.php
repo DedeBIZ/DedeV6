@@ -177,7 +177,7 @@ if ($dopost != 'save') {
     $wecome_info = "文档管理 - 修改文档";
     $win = new OxWindow();
     $win->AddTitle("成功修改文档");
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display();
 }

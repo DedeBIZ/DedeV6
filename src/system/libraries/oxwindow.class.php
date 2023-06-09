@@ -89,7 +89,7 @@ class OxWindow
      */
     function AddMsgItem($ivalue)
     {
-        $this->myWinItem .= "$ivalue";
+        $this->myWinItem .= $ivalue;
     }
     /**
      *  添加两列信息
@@ -231,7 +231,7 @@ function ShowMsgWin($msg, $title)
     $win->Init();
     $win->mainTitle = "系统提示";
     $win->AddTitle($title);
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand");
     $win->Display();
 }

@@ -196,7 +196,7 @@ if ($action == '') {
             <label><input type='radio' name='isreplace' value='0'> 保留旧文件</label>
         </td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -295,7 +295,7 @@ if ($action == '') {
     <tr>
         <td colspan='2'>删除模块仅删除模块安装后文件，用<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -360,7 +360,7 @@ if ($action == '') {
             <label><input type='radio' name='isreplace' value='2'> 删除模块的所有文件</label>
         </td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -470,7 +470,7 @@ if ($action == '') {
     <tr>
         <td colspan='2'><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display();
     $dm->Clear();

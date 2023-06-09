@@ -156,7 +156,7 @@ if (empty($dopost)) {
     $wintitle = "成功发布分类文档";
     $wecome_info = "文档管理 - 发布分类文档";
     $win = new OxWindow();
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }

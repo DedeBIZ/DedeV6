@@ -80,7 +80,7 @@ else if ($fmdo == "del") {
         $msg = "<tr><td>您确定要删除<span class='text-primary'>$filename</span>文件吗</td></tr>";
     }
     $win->AddTitle("删除文件确认");
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("ok");
     $win->Display();
 }

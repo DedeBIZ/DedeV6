@@ -68,7 +68,7 @@ if ($action == 'upload') {
         <td>选择文件：</td>
         <td><input type='file' name='upfile' id='upfile' class='admin-input-lg'></td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow('ok', '');
     $win->Display();
     exit();

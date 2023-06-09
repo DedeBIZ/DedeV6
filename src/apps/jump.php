@@ -25,7 +25,7 @@ if (preg_match("#^http#", $url)) {
         $wecome_info = "页面跳转提示";
         $win = new OxWindow();
         $win->AddTitle("您将要访问的链接不属于当前站点，请关注您的账号安全。");
-        $win->AddMsgItem("$msg");
+        $win->AddMsgItem($msg);
         $winform = $win->GetWindow("hand", false);
         $win->Display();
     } else {

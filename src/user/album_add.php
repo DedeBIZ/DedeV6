@@ -153,7 +153,7 @@ if (empty($dopost)) {
     $wintitle = "成功发布图片文档";
     $wecome_info = "图片管理 - 发布图片文档";
     $win = new OxWindow();
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }

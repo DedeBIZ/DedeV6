@@ -167,7 +167,7 @@ if (empty($dopost)) {
     $wintitle = "成功修改软件文档";
     $wecome_info = "软件管理 - 修改软件文档";
     $win = new OxWindow();
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }

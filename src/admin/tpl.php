@@ -121,7 +121,7 @@ else if ($action == 'upload') {
                 <input name='upfile' type='file' id='upfile' class='admin-input-lg'>
             </td>
         </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow('ok', '');
     $win->Display();
     exit();
@@ -207,7 +207,7 @@ else if ($action == 'savetagfile') {
     $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> - 新建修改标签";
     $win = new OxWindow();
     $win->AddTitle("新建修改标签");
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();

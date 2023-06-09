@@ -28,7 +28,7 @@ if (empty($dopost)) {
     <tr>
         <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=1' class='btn btn-success btn-sm'>开始检测</a></td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
@@ -49,7 +49,7 @@ else if ($dopost == 1) {
     <tr>
         <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=2' class='btn btn-success btn-sm'>下一步</a></td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
@@ -114,7 +114,7 @@ else if ($dopost == 2) {
     <tr>
         <td bgcolor='#f5f5f5' align='center'>{$errall}</td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
@@ -160,7 +160,7 @@ else if ($dopost == 3) {
     <tr>
         <td bgcolor='#f5f5f5' align='center'><a href='index_body.php' class='btn btn-success btn-sm'>完成修复</a></td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();

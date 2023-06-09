@@ -255,7 +255,7 @@ if ($fmdo == 'sendMail') {
     $wintitle = "快来邀请好友赚积分啦";
     $wecome_info = "邀请好友赚积分";
     $win = new OxWindow();
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
     exit;

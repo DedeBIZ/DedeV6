@@ -75,7 +75,7 @@ if ($dopost == "show") {
             <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>
         </td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     exit();
@@ -119,7 +119,7 @@ if ($dopost == "show") {
         $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
         $win = new OxWindow();
         $win->Init();
-        $win->AddMsgItem("$msg");
+        $win->AddMsgItem($msg);
         $winform = $win->GetWindow("hand");
         $win->Display();
         exit();
@@ -307,7 +307,7 @@ if ($dopost == "show") {
             <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm' class='btn btn-success btn-sm'>修改</a>
         </td>
     </tr>";
-    $win->AddMsgItem("$msg");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "");
     $win->Display();
     exit();
