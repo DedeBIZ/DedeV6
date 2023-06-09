@@ -112,12 +112,12 @@
 				</tr>
 				<tr>
 					<td>排列顺序：</td>
-					<td><input type="text" name="sortrank" class="admin-input-sm">（由低 > 高）</td>
+					<td><input type="text" name="sortrank" class="admin-input-sm">（由低到高）</td>
 					<td>浏览权限：</td>
 					<td>
 						<select name="corank" id="corank" class="admin-input-sm">
 							<?php
-							$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0 ORDER BY `rank` ASC");
+							$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0 ORDER BY `rank` ASC");
 							$dsql->Execute('cc');
 							while($row = $dsql->GetObject('cc')) {
 								if ($corank==$row->rank) echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
@@ -171,7 +171,7 @@
 						<label class="l-height-28"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 指定交叉栏目id（英文逗号分开）</label>
 						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="display:none"></textarea>
-						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
+						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是大栏目与另一个非子栏目交叉的情况，相当于副栏目功能，需要在栏目里设置好</div>
 					</td>
 				</tr>
 				<?php if ($id==0) {?>
@@ -182,7 +182,7 @@
 						<label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>（需要绑定二级域名，系统变量中开启支持多站点）
 					</td>
 					<td>绑定域名：</td>
-					<td><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="admin-input-lg">（需要以http开头的链接）</td>
+					<td><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="admin-input-lg">（请输入绑定域名http开头）</td>
 				</tr>
 				<?php }?>
 				<tr>
@@ -295,6 +295,14 @@
 				else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
 				else return "OT";
 			}
+			function checkSubmit() {
+				if (document.form1.typename.value == "") {
+					alert("栏目名称不能为空");
+					document.form1.typename.focus();
+					return false;
+				}
+				return true;
+			}
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800,600);
 				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
@@ -340,14 +348,6 @@
 				} else {
 					tobj.style.display = "none";
 				}
-			}
-			function checkSubmit() {
-				if (document.form1.typename.value == "") {
-					alert("栏目名称不能为空");
-					document.form1.typename.focus();
-					return false;
-				}
-				return true;
 			}
 			function CheckPathSet() {
 				var surl = document.getElementById("siteurl");

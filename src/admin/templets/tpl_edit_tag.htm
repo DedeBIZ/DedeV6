@@ -30,14 +30,14 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">请先作好备份标签源码文件在进行修改，如果二次修改错误会导致标签无法解析。标签文件名为：标签名.lib.php接口函数定义为：function lib_标签名(&$ctag,&$refObj)，返回值是结果字符串，修改标签时为了防止出错，您也可以修改它的名称同时修改文件名和函数名，这样等同继承了原来标签的代码建立一个新的标签</div>
+						<div class="alert alert-danger mb-0">系统标签源码文件，修改不当会导致标签错误</div>
 					</td>
 				</tr>
 				<tr>
 					<td width="260">文件名称</td>
 					<td>
 						<input name="filename" value="<?php echo $filename;?>" class="admin-input-lg">
-						<span>（不可以用..符号表示路径）</span>
+						<span>（不可以用小数点..表示路径）</span>
 					</td>
 				</tr>
 				<tr>

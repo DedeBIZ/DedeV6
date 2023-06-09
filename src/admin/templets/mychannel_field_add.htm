@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-danger mb-0">修改时禁止输入双引号["]，则表单保存失败</div>
+						<div class="alert alert-danger mb-0">修改文档模型字段时禁止输入双引号"</div>
 					</td>
 				</tr>
 				<tr>
@@ -171,11 +171,11 @@
 					return false;
 				}
 				if (notAllow.indexOf(" "+fieldname+" ") >-1 ) {
-					ShowMsg("字段名称不合法，如下字段名已经存在，建议在名称后加上数字以区分：\n"+notAllow);
+					ShowMsg("字段名称不合法，字段名已经存在，建议在名称后加上数字以区分：\n"+notAllow);
 					return false;
 				}
 				if ((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="") {
-					ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用英文逗号分开）");
+					ShowMsg("自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德");
 					return false;
 				}
 				if (spage=="no") spage = "";

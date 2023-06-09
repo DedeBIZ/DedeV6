@@ -78,8 +78,8 @@
 							$dtp->SetNameSpace("field","<",">");
 							$dtp->LoadSource($fieldset);
 							if (is_array($dtp->CTags)){
-							foreach($dtp->CTags as $ctag)
-							{
+								foreach($dtp->CTags as $ctag)
+								{
 							?>
 							<tr align="center">
 								<td>
@@ -100,8 +100,8 @@
 								<td>
 									<?php 
 									$ft = $ctag->GetAtt('autofield');
-									if ($ft==''||$ft==0) echo "固化表单";
-									else  echo "自动表单";
+									if ($ft==''||$ft==0) echo "固化字段";
+									else  echo "自动字段";
 									?>
 								</td>
 								<td>

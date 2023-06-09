@@ -24,13 +24,13 @@
 				var endNum = parseInt(document.form1.picnum.value) + startNum - 1;
 				if (endNum > 30) endNum = 30;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<div class='py-2'><label>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='admin-input-lg'></label><label class='ml-2'>地址名称：<input type='text' name='servermsg" + startNum + "' class='admin-input-sm'></label></div>";
+					upfield.innerHTML += "<div class='py-2'><label>软件网址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='' class='admin-input-lg'></label><label class='ml-2'>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='admin-input-sm'></label></div>";
 				}
 			}
 			function ShowHideAddr() {
 				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
 				document.getElementById('morelink').style.height = '100%';
-				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏地址' : '显示地址');
+				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏网址' : '显示网址');
 			}
 		</script>
 	</head>
@@ -274,9 +274,13 @@
 						<table>
 							<tr>
 								<td width="120">官方网址：</td>
-								<td width="370"><input type="text" name="officialUrl" id="officialUrl" value="http://" class="admin-input-lg"></td>
-								<td width="120">演示地址：</td>
-								<td><input type="text" name="officialDemo" id="officialDemo" value="http://" class="admin-input-lg"></td>
+								<td width="420"><input type="text" name="officialUrl" id="officialUrl" value="" class="admin-input-lg" placeholder="请输入演示网址http开头"></td>
+								<td width="120">演示网址：</td>
+								<td>
+									<input type="text" name="officialDemo" id="officialDemo" value="" class="admin-input-lg" placeholder="请选择网页上传或填写演示网址">
+									<button type="button" name="" id="" class="btn btn-success btn-sm" onclick="">选择</button>
+									<label><input type="checkbox" name="" id="" checked="checked"> 上传压缩包自动解压</label>
+								</td>
 							</tr>
 						</table>
 					</td>
@@ -286,20 +290,20 @@
 						<table>
 							<tr>
 								<td width="120">软件大小：</td>
-								<td width="310">
+								<td width="370">
 									<input type="text" name="softsize" id="softsize" class="admin-input-sm">
 									<select name="unit" id="unit">
 										<option value="MB" selected>MB</option>
 										<option value="KB">KB</option>
 										<option value="GB">GB</option>
 									</select>
-									<label><input type="checkbox" name="autosize" id="autosize" value="1" checked="checked">自动获取</label>
+									<label><input type="checkbox" name="autosize" id="autosize" value="1" checked="checked"> 自动获取</label>
 								</td>
 								<td width="120">需会员权限：</td>
 								<td align="left">
 									<select name="daccess" id="daccess" class="admin-input-sm">
 										<?php
-										$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank`>=0 ");
+										$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0 ");
 										$dsql->Execute();
 										while($row = $dsql->GetArray())
 										{
@@ -320,20 +324,42 @@
 					<td class="admin-td">
 						<table>
 							<tr>
-								<td width="120">本地地址：</td>
-								<td width="410">
+								<td width="120">本地上传：</td>
+								<td width="460">
 									<input type="text" name="softurl1" id="softurl1" class="admin-input-lg">
-									<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm" onclick="SelectSoft('form1.softurl1')">选取</button>
+									<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm" onclick="SelectSoft('form1.softurl1')">选择</button>
 								</td>
-								<td width="120">地址名称：</td>
+								<td width="120">下载名称：</td>
 								<td><input type="text" name="servermsg1" id="servermsg1" value="本地下载" class="admin-input-sm"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
+				<tr>
+					<td class="admin-td">
+						<table>
+							<tr>
+								<td width="120">链接上传：</td>
+								<td>
+									<input type="text" name="picnum" id="picnum" value="5" class="admin-input-sm">
+									<button type="button" name="kkkup" id="kkkup2" class="btn btn-success btn-sm" onclick="MakeUpload();">添加网址</button>
+									<button type="button" name="Submit3" id="btsh3" class="btn btn-success btn-sm" onclick="ShowHideAddr();">隐藏网址</button>
+								</td>
+							</tr>
+						</table>
+						<div id="morelink" style="display:block">
+							<div id="uploadfield"></div>
+						</div>
+					</td>
+				</tr>
 				<?php if ($softconfig['moresitedo'] == 0 && trim($softconfig['sites']) != '') {?>
 				<tr>
 					<td class="admin-td">
+						<table>
+							<tr>
+								<td width="120">镜像上传：</td>
+							</tr>
+						</table>
 						<?php
 						$sites = explode("\n", $softconfig['sites']);
 						$startNum = 2;
@@ -347,10 +373,10 @@
 						?>
 						<div class="py-2">
 							<input type="hidden" name="forconfig<?php echo $startNum;?>" value="1">
-							<label>填写域名：<input type="text" name="softurlfirst<?php echo $startNum;?>" class="admin-input-lg" value="<?php echo $siteurl;?>"></label>
-							<label>填写目录：<input type="text" name="softurl<?php echo $startNum;?>" class="admin-input-sm"></label>
-							<label>地址名称：<input type="text" name="servermsg<?php echo $startNum;?>" class="admin-input-sm" value="<?php echo $sitename;?>"></label>
-							<label><input type="checkbox" name="need<?php echo $startNum;?>" value="1" checked="checked"> 启用</label>
+							<label>镜像域名：<input type="text" name="softurlfirst<?php echo $startNum;?>" class="admin-input-lg" value="<?php echo $siteurl;?>"></label>
+							<label>镜像目录：<input type="text" name="softurl<?php echo $startNum;?>" class="admin-input-sm"></label>
+							<label>镜像名称：<input type="text" name="servermsg<?php echo $startNum;?>" class="admin-input-sm" value="<?php echo $sitename;?>"></label>
+							<label><input type="checkbox" name="need<?php echo $startNum;?>" value="1"> 启用</label>
 						</div>
 						<?php
 						$startNum++;
@@ -360,23 +386,6 @@
 					</td>
 				</tr>
 				<?php }?>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">其它地址：</td>
-								<td>
-									<input type="text" name="picnum" id="picnum" value="5" class="admin-input-sm">
-									<button type="button" name="kkkup" class="btn btn-success btn-sm" id="kkkup2" onclick="MakeUpload();">添加地址</button>
-									<button type="button" class="btn btn-success btn-sm" name="Submit3" id="btsh3" onclick="ShowHideAddr();">隐藏地址</button>
-								</td>
-							</tr>
-						</table>
-						<div id="morelink" style="display:block">
-							<div id="uploadfield"></div>
-						</div>
-					</td>
-				</tr>
 				<tr>
 					<td class="admin-td">
 						<table>
@@ -431,7 +440,7 @@
 								<td width="120">标题颜色：</td>
 								<td>
 									<input type="text" name="color" id="color" class="admin-input-sm">
-									<button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onclick="ShowColor(event,this)">选取</button>
+									<button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onclick="ShowColor(event,this)">选择</button>
 								</td>
 							</tr>
 						</table>

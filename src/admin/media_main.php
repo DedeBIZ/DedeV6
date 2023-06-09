@@ -29,9 +29,9 @@ if (empty($membertype)) {
     $membertype = 0;
 }
 if ($membertype == 1) {
-    $addsql .= " AND u.mid>0 ";
+    $addsql .= " AND u.mid > 0 ";
 } else if ($membertype == 2) {
-    $addsql .= " AND u.mid>0 ";
+    $addsql .= " AND u.mid > 0 ";
 }
 
 if (empty($mediatype)) {

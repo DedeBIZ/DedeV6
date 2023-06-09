@@ -62,7 +62,7 @@
 						<?php
 						echo "<select name='channel' class='admin-input-sm'>";
 						echo "<option value='0' selected>不限模型</option>";
-						$tl->dsql->SetQuery("Select id,typename From `#@__channeltype` where id>0");
+						$tl->dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` WHRER id > 0");
 						$tl->dsql->Execute();
 						while($row = $tl->dsql->GetObject())
 						{

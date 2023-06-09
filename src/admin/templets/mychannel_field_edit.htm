@@ -26,7 +26,7 @@
 				<?php if ($row['issystem'] == 1) {?>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-danger mb-0">修改系统模型有风险，请不要随便修改系统模型的字段相关属性</div>
+						<div class="alert alert-danger mb-0">系统模型字段参数配置，修改不当会导致模型出错</div>
 					</td>
 				</tr>
 				<?php }?>
@@ -167,7 +167,7 @@
 					return false;
 				}
 				if ((dtype == "radio" || dtype == "select" || dtype == "checkbox") && vdefault == "") {
-					ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用英文逗号分开）");
+					ShowMsg("自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德");
 					return false;
 				}
 				if (spage == "no") spage = "";

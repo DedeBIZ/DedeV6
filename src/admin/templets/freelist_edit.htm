@@ -28,7 +28,7 @@
 
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">自由列表标记说明：自由列表标记（freelist）的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成按自定义排序规则的文档列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成网页或浏览速度</div>
+						<div class="alert alert-info mb-0">自由列表说明：freelist功能基本等同于arclist标签，区别是freelist标签支持分页，按自定义排序规则的文档列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，不会影响系统生成网页或浏览速度</div>
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +76,7 @@
 						$typeid = $ctag->GetAtt('typeid');
 						echo "<select name='typeid' class='admin-input-sm'>";
 						echo "<option value='0'>不限栏目</option>";
-						$dsql->SetQuery("Select id,typename, channeltype From `#@__arctype`");
+						$dsql->SetQuery("SELECT id,typename, channeltype FROM `#@__arctype`");
 						$dsql->Execute();
 						while($lrow = $dsql->GetObject()){
 							$disable = '';
@@ -93,7 +93,7 @@
 						<?php
 						$channel  = $ctag->GetAtt('channel');
 						echo "<select name='channel' class='admin-input-sm'><option value='0'>不限模型</option>";
-						$dsql->SetQuery("Select id,typename From `#@__channeltype` where id>0");
+						$dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` WHERE id > 0");
 						$dsql->Execute();
 						while($nrow = $dsql->GetObject())
 						{

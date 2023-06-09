@@ -23,7 +23,7 @@ else if ($action == 'getfields') {
     AjaxHead();
     $dsql->GetTableFields($exptable);
     echo "<div class='alert alert-info mb-0'>";
-    echo "表<span class='text-primary'>".$exptable."</span>含有的字段：<br>";
+    echo "<p>表<span class='text-primary'>".$exptable."</span>含有的字段：</p>";
     while ($row = $dsql->GetFieldObject()) {
         echo "<a href=\"javascript:pf('{$row->name}')\">".$row->name."</a>\r\n";
     }
@@ -35,7 +35,7 @@ else if ($action == 'apply') {
     $validate = empty($validate) ? '' : strtolower($validate);
     $svali = GetCkVdValue();
     if ($validate == "" || $validate != $svali) {
-        ShowMsg("安全确认码不正确", "javascript:;");
+        ShowMsg("验证码不正确", "javascript:;");
         exit();
     }
     if ($exptable == '' || $rpfield == '') {
