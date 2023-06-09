@@ -56,7 +56,7 @@ function lib_likearticle(&$ctag, &$refObj)
             $n++;
         }
     }
-    $arcid = (!empty($refObj->Fields['id']) ? $refObj->Fields['aid'] : 0);
+    $arcid = (!empty($refObj->Fields['id']) ? $refObj->Fields['id'] : 0);
     if (empty($arcid) || $byabs == 0) {
         $orderquery = " ORDER BY arc.id DESC ";
     } else {
