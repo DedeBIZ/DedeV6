@@ -122,7 +122,7 @@ if ($cfg_mb_open == 'N') {
             die('');
         }
     } else {
-        ShowMsg("网站关闭了会员功能，您无法浏览此页面", "javascript:;");
+        ShowMsg("网站关闭了会员功能，您无法浏览此页面", "../index.php");
         exit();
     }
 }
