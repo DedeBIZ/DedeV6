@@ -150,7 +150,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
             if ($GLOBALS['cfg_db_language']=="utf8mb4") {
                 $emoji = ",emoji";
             }
-            $addConfig = ",{allowedContent:true,pasteFilter:null,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,html5audio,dedepagebreak,ddfilebrowser,mimage,textindent,codesnippet{$emoji}',codeSnippet_theme: 'default'}";
+            $addConfig = ",{allowedContent:true,pasteFilter:null,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,html5audio,dedepagebreak,ddfilebrowser,mimage,textindent,tabletools,tableresize,tableselection,codesnippet{$emoji}',codeSnippet_theme: 'default'}";
         }
         if (defined('DEDEUSER')) {
             $addConfig = ",{filebrowserImageUploadUrl:'api.php?action=upload&type=litpic&ck=1',filebrowserUploadUrl:'api.php?action=upload&type=media&ck=1',extraPlugins:'html5video,html5audio,textindent',filebrowserImageBrowseDisabled:true}";
