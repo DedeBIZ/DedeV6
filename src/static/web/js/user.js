@@ -37,7 +37,7 @@ function SelectFile(sform, stype) {
                     if (result.code === 0) {
                         $(ipt).val(result.data);
                     } else {
-                        ShowMsg("文件上传失败，错误原因："+result.msg);
+                        ShowMsg("文件上传失败，错误原因："+result.error.message);
                     }
                 },
                 error: function (xhr, status, error) {

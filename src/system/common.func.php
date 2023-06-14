@@ -326,6 +326,15 @@ if (!function_exists('file_put_contents')) {
  */
 function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
 {
+    if (defined('DEDE_DIALOG_UPLOAD') && !isset($GLOBALS['noeditor'])) {
+        echo json_encode(array(
+            "uploaded"=>0,
+            "error"=>array(
+                "message" => $msg,
+            ),
+        ));
+        return;
+    }
     if (isset($GLOBALS['format']) && strtolower($GLOBALS['format'])==='json') {
         echo json_encode(array(
             "code"=>0,

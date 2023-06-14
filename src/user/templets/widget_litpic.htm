@@ -18,7 +18,7 @@
 						$("#imgLitpic").attr('src', result.data);
 						$("#litpic").val(result.data);
 					} else {
-						ShowMsg(result.msg);
+						ShowMsg(result.error.message);
 					}
 				},
 				error: function (xhr, status, error) {

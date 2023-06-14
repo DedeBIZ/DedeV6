@@ -62,16 +62,20 @@ if ($action === 'is_need_check_code') {
     if (!$cfg_ml->IsLogin()) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "请登录会员中心",
-            "data" => null,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "请登录会员中心",
+            ),
         ));
         exit;
     }
     if ($cfg_ml->CheckUserSpaceIsFull()) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "您的空间已满，禁止上传新文件",
-            "data" => null,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "您的空间已满，禁止上传新文件",
+            ),
         ));
         exit;
     }
@@ -101,20 +105,35 @@ if ($action === 'is_need_check_code') {
     } else {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "未定义文件类型",
-            "data" => null,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "未定义文件类型",
+            ),
         ));
         exit;
     }
     $ff = isset($_FILES['file'])? $_FILES['file'] : $_FILES['imgfile'];
     $uploadedFile = $ff['tmp_name'];
+    if (!function_exists('mime_content_type')) {
+        echo json_encode(array(
+            "code" => -1,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "系统不支持fileinfo组件，建议php.ini中开启",
+            ),
+        ));
+        exit;
+    }
     $fileType = mime_content_type($uploadedFile);
     if (!in_array($fileType, $allowedTypes)) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "不支持该文件格式",
-            "data" => null,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "不支持该文件格式",
+            ),
         ));
+
         exit;
     }
     //获取扩展名
@@ -126,8 +145,10 @@ if ($action === 'is_need_check_code') {
         if (!$imgSize) {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "无法获取图片正常尺寸",
-                "data" => null,
+                "uploaded" => 0,
+                "error" => array(
+                    "message" => "无法获取图片正常尺寸",
+                ),
             ));
             exit;
         }
@@ -146,7 +167,10 @@ if ($action === 'is_need_check_code') {
         if ($fsize > ($cfg_max_face * 1024)) {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "上传头像不能超过{$cfg_max_face}KB",
+                "uploaded" => 0,
+                "error" => array(
+                    "message" => "上传头像不能超过{$cfg_max_face}KB",
+                ),
                 $rkey => null,
             ));
             exit;
@@ -155,7 +179,10 @@ if ($action === 'is_need_check_code') {
         if ($fsize > ($cfg_mb_upload_size * 1024)) {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "上传文件不能超过{$cfg_mb_upload_size}KB",
+                "uploaded" => 0,
+                "error" => array(
+                    "message" => "上传头像不能超过{$cfg_max_face}KB",
+                ),
                 $rkey => null,
             ));
             exit;
@@ -196,7 +223,10 @@ if ($action === 'is_need_check_code') {
             } catch (ImageResizeException $e) {
                 echo json_encode(array(
                     "code" => -1,
-                    "msg" => "自动裁剪图片失败",
+                    "uploaded" => 0,
+                    "error" => array(
+                        "message" => "自动裁剪图片失败",
+                    ),
                     $rkey => null,
                 ));
             }
@@ -211,7 +241,10 @@ if ($action === 'is_need_check_code') {
     } else {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "上传失败",
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "上传失败",
+            ),
             $rkey => null,
         ));
     }

@@ -358,13 +358,25 @@ if ($action === 'is_need_check_code') {
     $activepath = $cfg_image_dir;
     $allowedTypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
     $uploadedFile = $_FILES['file']['tmp_name'];
+    if (!function_exists('mime_content_type')) {
+        echo json_encode(array(
+            "code" => -1,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "系统不支持fileinfo组件，建议php.ini中开启",
+            ),
+        ));
+        exit;
+    }
     $fileType = mime_content_type($uploadedFile);
     $imgSize = getimagesize($uploadedFile);
     if (!in_array($fileType, $allowedTypes) || !$imgSize) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "仅支持图片格式文件",
-            "data" => null,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "仅支持图片格式文件",
+            ),
         ));
         exit;
     }
@@ -384,8 +396,10 @@ if ($action === 'is_need_check_code') {
     $fullfilename = $cfg_basedir.$activepath."/".$filename;
     move_uploaded_file($_FILES["file"]["tmp_name"], $fullfilename) or die(json_encode(array(
         "code" => -1,
-        "msg" => "上传失败",
-        "data" => null,
+        "uploaded" => 0,
+        "error" => array(
+            "message" => "上传失败",
+        ),
     )));
     $info = '';
     $sizes[0] = 0;

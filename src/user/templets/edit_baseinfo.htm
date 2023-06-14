@@ -158,7 +158,7 @@
 								$("#face").attr('src', result.data);
 								$("#newface").val(result.data);
 							} else {
-								ShowMsg(result.msg);
+								ShowMsg(result.error.message);
 							}
 						},
 						error: function (xhr, status, error) {

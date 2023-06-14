@@ -404,10 +404,12 @@
 								// console.log(result)
 								addImage(result.data, 0);
 								$("#iptAlbumImages").val('');
+							} else {
+								ShowMsg(result.error.message);
 							}
 						},
 						error: function (xhr, status, error) {
-							alert(error); //处理上传失败后的回调
+							ShowMsg(error); //处理上传失败后的回调
 						}
 					});
 				}
