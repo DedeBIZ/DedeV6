@@ -13,7 +13,7 @@ helper('cache');
 function lib_flink(&$ctag, &$refObj)
 {
     global $dsql, $cfg_soft_lang;
-    $attlist = "type|textall,row|30,titlelen|30,linktype|1,typeid|0";
+    $attlist = "type|textall,row|30,titlelen|30,linktype|,typeid|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $totalrow = $row;
@@ -21,7 +21,16 @@ function lib_flink(&$ctag, &$refObj)
     if (isset($GLOBALS['envs']['flinkid'])) {
         $typeid = $GLOBALS['envs']['flinkid'];
     }
-    $wsql = " where ischeck >= '$linktype' ";
+    if (!empty($linktype)) {
+        $wsql = " where ischeck = '$linktype' ";
+    } else {
+        if (defined('DEDEINDEX')) {
+            $wsql = " where ischeck = 2 ";
+        } else {
+            $wsql = " where ischeck = 1 ";
+        }
+    }
+    
     if ($typeid == 0) {
         $wsql .= '';
     } else {
