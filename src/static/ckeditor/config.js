@@ -4,16 +4,14 @@
  */
 CKEDITOR.editorConfig = function (config) {
 	config.toolbarGroups = [
-		{ name: 'document', groups: ['mode', 'document', 'doctools'] },
-		{ name: 'clipboard', groups: ['undo', 'cleanup', 'clipboard'] },
+		{ name: 'mode', groups: ['mode', 'document', 'doctools'] },
+		{ name: 'cleanup', groups: ['undo', 'cleanup'] },
 		{ name: 'styles', groups: ['styles'] },
 		{ name: 'colors', groups: ['colors'] },
 		{ name: 'paragraph', groups: ['align', 'paragraph', 'textindent', 'indent'] },
-		{ name: 'basicstyles', groups: ['basicstyles', 'list', 'bidi', 'blocks'] },
-		{ name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+		{ name: 'editing', groups: ['find', 'selection', 'editing'] },
 		{ name: 'links', groups: ['links'] },
 		{ name: 'insert', groups: ['insert'] },
-		{ name: 'tools', groups: ['tools'] }
 	];
 	config.height = 360;
 	config.removePlugins = 'exportpdf';
