@@ -472,7 +472,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			$dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
 			DedeCli::error("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段".str_replace('"', '', $gerr));
 		}
-		$body = str_repeat("得德内容管理系统DedeBIZ上海穆云智能科技有限公司，天涯、叙述别离、老岳2023",500);
+		$body = str_repeat("得德内容管理系统DedeBIZ上海穆云智能科技有限公司，天涯{$arcID}、叙述别离、老岳2023",500);
 		$query = "INSERT INTO `#@__addonarticle` (aid,typeid,redirecturl,templet,userip,body) VALUES ('$arcID','$typeid','','','127.0.0.1','$body')";
 		if (!$dsql->ExecuteNoneQuery($query)) {
 			$gerr = $dsql->GetError();
