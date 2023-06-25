@@ -9,12 +9,13 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'styles', groups: ['styles'] },
 		{ name: 'colors', groups: ['colors'] },
 		{ name: 'paragraph', groups: ['align', 'paragraph', 'textindent', 'indent'] },
+		{ name: 'basicstyles', groups: ['basicstyles', 'list','blocks'] },
 		{ name: 'editing', groups: ['find', 'selection', 'editing'] },
 		{ name: 'links', groups: ['links'] },
 		{ name: 'insert', groups: ['insert'] },
 	];
 	config.height = 360;
-	config.removePlugins = 'exportpdf';
+	config.removePlugins = 'exportpdf,div';
 	config.extraPlugins = 'html5video,dedepagebreak,textindent';
-	config.removeButtons = 'Save,NewPage,Print,Preview,Templates,Smiley,About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
+	config.removeButtons = 'Save,Styles,Font,NewPage,Print,Preview,Templates,Smiley,About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
 };
