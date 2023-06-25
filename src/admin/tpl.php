@@ -60,9 +60,11 @@ if ($action == 'edit' || $action == 'newfile') {
     foreach ($dtags as $tag) {
         //$helpContent = file_get_contents($tagHelpDir.$tag.'.txt');
         $fp = fopen($tagHelpDir.$tag.'.txt', 'r');
-        $helpContent = fread($fp, filesize($tagHelpDir.$tag.'.txt'));
-        fclose($fp);
-        $helps[$tag] = explode('>>dede>>', $helpContent);
+        if ($fp) {
+            $helpContent = fread($fp, filesize($tagHelpDir.$tag.'.txt'));
+            fclose($fp);
+            $helps[$tag] = explode('>>dede>>', $helpContent);
+        }
     }
 
     make_hash();
