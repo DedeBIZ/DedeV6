@@ -15,7 +15,7 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'insert', groups: ['insert'] },
 	];
 	config.height = 360;
-	config.removePlugins = 'exportpdf,div';
+	config.removePlugins = 'exportpdf,div,scayt';
 	config.extraPlugins = 'html5video,dedepagebreak,textindent';
 	config.removeButtons = 'Save,Styles,Font,NewPage,Print,Preview,Templates,Smiley,About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
 };
