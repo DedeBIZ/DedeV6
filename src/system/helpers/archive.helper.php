@@ -155,8 +155,12 @@ if (!function_exists('UpIndexKey')) {
     {
         global $dsql, $typeid2;
         if (empty($typeid2)) $typeid2 = 0;
-        $addtime = time();
-        $query = "UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank' WHERE id = '$id' ";
+        $indexedsql = "";
+        //商业全文检索组件索引
+        if (TableHasField("#@__arctiny", "indexed")) {
+            $indexedsql = ",`indexed`=2 ";
+        }
+        $query = "UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank'{$indexedsql} WHERE id = '$id' ";
         $dsql->ExecuteNoneQuery($query);
         //处理修改后的tag
         if ($tags != '') {
