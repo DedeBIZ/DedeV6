@@ -84,7 +84,7 @@ input[type=file] {
 input[type=button],input[type=submit],input[type=reset] {
 	padding:.375rem .55rem;
 	height:30px;
-	line-height:1.6;
+	line-height:1.5;
 	font-size:12px;
 	color:#fff;
 	background:#1eb867;
@@ -526,11 +526,11 @@ body.hidemenu .body-right {
 .btn-sm {
 	padding:.375rem .55rem;
 	height:30px;
-	line-height:1.4;
+	line-height:1.5;
 	font-size:12px
 }
 .btn-xs {
-	padding:.2rem;
+	padding:.22rem;
 	height:20px;
 	line-height:1;
 	font-size:12px
