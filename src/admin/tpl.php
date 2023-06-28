@@ -66,7 +66,6 @@ if ($action == 'edit' || $action == 'newfile') {
             $helps[$tag] = explode('>>dede>>', $helpContent);
         }
     }
-
     make_hash();
     include DEDEADMIN.'/templets/tpl_edit.htm';
     exit();
@@ -201,14 +200,15 @@ else if ($action == 'savetagfile') {
     fwrite($fp, $content);
     fclose($fp);
     $msg = "<form name='form1' action='tag_test_action.php' target='blank' method='post'>
-        <div class='mb-3'><label><input type='hidden' name='dopost' value='make'> 标签测试（环境变量标签不支持测试）</label></div>
-        <div class='mb-3'><textarea name='partcode' cols='150' rows='6' class='admin-textarea-xl'>{dede:{$tagname}}{/dede:{$tagname}}</textarea></div>
-        <div class='text-center'><button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button></div>
+        <tr>
+            <td><textarea name='partcode' class='admin-textarea-xl'>{dede:{$tagname}}{/dede:{$tagname}}</textarea></td>
+        </tr>
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'><button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button></td>
+        </tr>
     </form>";
-    $wintitle = "新建修改标签碎片";
     $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> - 新建修改标签";
     $win = new OxWindow();
-    $win->AddTitle("新建修改标签");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display();
