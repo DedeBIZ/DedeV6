@@ -137,9 +137,9 @@
 						if ($setype=='') $setype = 'X';
 						?>
 						<span>高级筛选：</span>
-						<label class="l-height-28"><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo ' checked';?>> 带缩略图</label>
-						<label class="l-height-28"><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo ' checked';?>> 推荐</label>
-						<label class="l-height-28"><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo ' checked';?>> 专题</label>
+						<label class="l-height-30"><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo ' checked';?>> 带缩略图</label>
+						<label class="l-height-30"><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo ' checked';?>> 推荐</label>
+						<label class="l-height-30"><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo ' checked';?>> 专题</label>
 						<label>关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号分开）</label>
 					</td>
 				</tr>
@@ -167,8 +167,8 @@
 							<option value="lastpost">最后评论时间</option>
 							<option value="postnum">评论总数</option>
 						</select>
-						<label class="l-height-28"><input type="radio" name="order" value="desc" <?php if ($ctag->GetAtt('orderway')=='desc') echo "checked";?>> 由高到低</label>
-						<label class="l-height-28"><input type="radio" name="order" value="asc" <?php if ($ctag->GetAtt('orderway')=='asc') echo "checked";?>> 由低到高</label>
+						<label class="l-height-30"><input type="radio" name="order" value="desc" <?php if ($ctag->GetAtt('orderway')=='desc') echo "checked";?>> 由高到低</label>
+						<label class="l-height-30"><input type="radio" name="order" value="asc" <?php if ($ctag->GetAtt('orderway')=='asc') echo "checked";?>> 由低到高</label>
 					</td>
 				</tr>
 				<tr>

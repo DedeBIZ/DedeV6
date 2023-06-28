@@ -107,7 +107,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
     }
 }
 /**
- *  查询会员信息，mail会员输入邮箱地址，userid会员名
+ *  查询会员信息，mail会员输入邮箱地址，userid账号
  *
  * @param     string  $mail  邮件
  * @param     string  $userid  会员id
@@ -130,7 +130,7 @@ function member($mail, $userid)
  *  查询是否发送过验证码
  *
  * @param     string  $mid  会员id
- * @param     string  $userid  会员名称
+ * @param     string  $userid  账号
  * @param     string  $mailto  发送邮件地址
  * @param     string  $send  为Y发送邮件,为N不发送邮件默认为Y
  * @return    string

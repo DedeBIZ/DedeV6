@@ -34,17 +34,17 @@ if ($step == 1) {
         $pMid = isset($pRow['mid'])? intval($pRow['mid']) : 0;
         $pwd = trim($userpwd);
         $pwdc = trim($userpwdok);
-        $rs = CheckUserID($userid, '会员名');
+        $rs = CheckUserID($userid, '账号');
         if ($rs != 'ok') {
             ShowMsg($rs, '-1');
             exit();
         }
         if (strlen($userid) > 20 || strlen($uname) > 36) {
-            ShowMsg('您的会员名或会员名称过长，不允许注册', '-1');
+            ShowMsg('您的账号或账号过长，不允许注册', '-1');
             exit();
         }
         if (strlen($userid) < $cfg_mb_idmin || strlen($pwd) < $cfg_mb_pwdmin) {
-            ShowMsg("您的会员名或密码过短，不允许注册", "-1");
+            ShowMsg("您的账号或密码过短，不允许注册", "-1");
             exit();
         }
         if ($pwdc != $pwd) {
@@ -53,10 +53,10 @@ if ($step == 1) {
         }
         $uname = HtmlReplace($uname, 1);
         $userid = HtmlReplace($userid, 1);
-        //检测会员名是否存在
+        //检测账号是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的会员名<span class='text-primary'>{$userid}</span>已存在，请使用别的会员名", "-1");
+            ShowMsg("您指定的账号<span class='text-primary'>{$userid}</span>已存在，请使用别的账号", "-1");
             exit();
         }
         //会员的默认金币

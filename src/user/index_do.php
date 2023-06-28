@@ -70,15 +70,15 @@ if ($fmdo == 'sendMail') {
     ShowMsg('会员缓存已清理', 'login.php');
     exit();
 } else if ($fmdo == 'user') {
-    //检查会员名是否存在
+    //检查账号是否存在
     if ($dopost == "checkuser") {
         AjaxHead();
         $msg = '';
         $uid = trim($uid);
         if ($cktype == 0) {
-            $msgtitle = '会员名';
+            $msgtitle = '账号';
         } else {
-            $msgtitle = '会员名';
+            $msgtitle = '账号';
         }
         if ($cktype != 0 || $cfg_mb_wnameone == 'N') {
             $msg = CheckUserID($uid, $msgtitle);
@@ -106,7 +106,7 @@ if ($fmdo == 'sendMail') {
                 if (!is_array($row)) {
                     $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
                 } else {
-                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个会员占用</span>";
+                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个账户占用</span>";
                 }
             }
         }
@@ -156,7 +156,7 @@ if ($fmdo == 'sendMail') {
         }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();
-            ShowMsg("您输入的会员名<span class='text-primary'>{$userid}</span>已禁止", "index.php");
+            ShowMsg("您输入的账号<span class='text-primary'>{$userid}</span>已禁止", "index.php");
             exit();
         }
         if ($pwd == '') {

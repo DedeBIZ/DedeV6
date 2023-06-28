@@ -25,12 +25,12 @@
 								<input type="hidden" name="keeptime" value="604800">
 								<input type="hidden" name="gourl" value="<?php if (!empty($gourl)) echo $gourl;?>">
 								<div class="form-group">
-									<label>会员账号</label>
-									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入登录会员账号" required="required">
+									<label>账号</label>
+									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入登录账号" required="required">
 								</div>
 								<div class="form-group">
-									<label>会员密码</label>
-									<input type="password" name="pwd" id="iptPwd" class="form-control" placeholder="请输入登录会员密码" required="required">
+									<label>密码</label>
+									<input type="password" name="pwd" id="iptPwd" class="form-control" placeholder="请输入登录密码" required="required">
 								</div>
 								<div id="vdimgck" class="form-group" style="display:none">
 									<label>验证码</label>
@@ -39,7 +39,7 @@
 										<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 									</div>
 								</div>
-								<div class="form-group"><a href="<?php echo $cfg_memberurl;?>/resetpassword.php">忘记会员密码？</a></div>
+								<div class="form-group"><a href="<?php echo $cfg_memberurl;?>/resetpassword.php">忘记密码？</a></div>
 								<div class="form-group"><button type="submit" class="btn btn-success btn-md btn-block">登录</button></div>
 								<div><a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success btn-md btn-block">注册</a></div>
 							</form>

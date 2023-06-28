@@ -47,12 +47,12 @@ if ($dopost == 'saveedit') {
     if ($olduserid !== $userid) {
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的会员名<span class='text-primary'>{$userid}</span>已存在，请使用别的会员名", "-1");
+            ShowMsg("您指定的账号<span class='text-primary'>{$userid}</span>已存在，请使用别的账号", "-1");
             exit();
         }
         $row = $dsql->GetOne("SELECT id FROM `#@__admin` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的会员名<span class='text-primary'>{$userid}</span>已存在，请使用别的会员名", "-1");
+            ShowMsg("您指定的账号<span class='text-primary'>{$userid}</span>已存在，请使用别的账号", "-1");
             exit();
         }
         $usql = ",userid='$userid'";
@@ -65,7 +65,7 @@ if ($dopost == 'saveedit') {
     $dsql->ExecuteNoneQuery($query);
     $query = "UPDATE `#@__member` SET uname='$uname',email='$email'$pwdm $usql WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功修改一个用户", "sys_admin_user.php");
+    ShowMsg("成功修改一个账户", "sys_admin_user.php");
     exit();
 } else if ($dopost == 'delete') {
     if (empty($userok)) $userok = "";

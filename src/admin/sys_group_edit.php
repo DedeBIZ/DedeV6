@@ -28,7 +28,7 @@ if ($dopost == 'save') {
     exit();
 } else if ($dopost == 'del') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__admintype` WHERE CONCAT(`rank`)='$rank' AND `system`='0';");
-    ShowMsg("成功删除一个会员组", "sys_group.php");
+    ShowMsg("成功删除一个账户组", "sys_group.php");
     exit();
 }
 $groupRanks = array();

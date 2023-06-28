@@ -78,7 +78,7 @@ if (!function_exists('PostHost')) {
 	}
 }
 if (!function_exists('TestAdminPWD')) {
-	//返回结果，1没有修改默认管理员名称，2没有修改默认管理员会员名和密码，3没有发现默认账号
+	//返回结果，1没有修改默认管理员名称，2没有修改默认管理员账号和密码，3没有发现默认账号
 	function TestAdminPWD()
 	{
 		global $dsql;

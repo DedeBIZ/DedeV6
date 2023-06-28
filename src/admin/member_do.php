@@ -52,7 +52,7 @@ if ($dopost == "delmember") {
                 exit();
             }
         }
-        ShowMsg("成功删除一个会员", $ENV_GOBACK_URL);
+        ShowMsg("成功删除一个账户", $ENV_GOBACK_URL);
         exit();
     }
     $randcode = mt_rand(10000, 99999);
@@ -124,11 +124,11 @@ else if ($dopost == "recommend") {
     $id = preg_replace("#[^0-9]#", "", $id);
     if ($matt == 0) {
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt=1 WHERE mid='$id' AND matt<>10 LIMIT 1");
-        ShowMsg("成功设置一个会员推荐", $ENV_GOBACK_URL);
+        ShowMsg("成功设置一个账户推荐", $ENV_GOBACK_URL);
         exit();
     } else {
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt=0 WHERE mid='$id' AND matt<>10 LIMIT 1");
-        ShowMsg("成功取消一个会员推荐", $ENV_GOBACK_URL);
+        ShowMsg("成功取消一个账户推荐", $ENV_GOBACK_URL);
         exit();
     }
 }

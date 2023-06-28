@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  */
 helper('cache');
 /**
- *  检查会员名的合法性
+ *  检查账号的合法性
  *
  * @access    public
  * @param     string  $uid  会员UID
@@ -19,7 +19,7 @@ helper('cache');
  * @param     string  $ckhas  检查是否存在
  * @return    string
  */
-function CheckUserID($uid, $msgtitle = '会员名', $ckhas = TRUE)
+function CheckUserID($uid, $msgtitle = '账号', $ckhas = TRUE)
 {
     global $cfg_mb_notallow, $cfg_mb_idmin, $cfg_md_idurl, $cfg_soft_lang, $dsql;
     if ($cfg_mb_notallow != '') {
@@ -394,15 +394,15 @@ class MemberLogin
      *  检查会员是否合法
      *
      * @access    public
-     * @param     string  $loginuser  登录会员名
-     * @param     string  $loginpwd  会员密码
+     * @param     string  $loginuser  登录账号
+     * @param     string  $loginpwd  密码
      * @return    string
      */
     function CheckUser(&$loginuser, $loginpwd)
     {
-        //检测会员名的合法性
-        $rs = CheckUserID($loginuser, '会员名', FALSE);
-        //会员名不正确时返回验证错误，原登录名通过引用返回错误提示信息
+        //检测账号的合法性
+        $rs = CheckUserID($loginuser, '账号', FALSE);
+        //账号不正确时返回验证错误，原登录名通过引用返回错误提示信息
         if ($rs != 'ok') {
             $loginuser = $rs;
             return '0';
@@ -454,8 +454,8 @@ class MemberLogin
      */
     function getLoginError($loginuser)
     {
-        $rs = CheckUserID($loginuser, '会员名', FALSE);
-        //会员名不正确时返回验证错误，原登录名通过引用返回错误提示信息
+        $rs = CheckUserID($loginuser, '账号', FALSE);
+        //账号不正确时返回验证错误，原登录名通过引用返回错误提示信息
         if ($rs != 'ok') {
             return -1;
         }
@@ -477,8 +477,8 @@ class MemberLogin
      */
     function loginError($loginuser)
     {
-        $rs = CheckUserID($loginuser, '会员名', FALSE);
-        //会员名不正确时返回验证错误，原登录名通过引用返回错误提示信息
+        $rs = CheckUserID($loginuser, '账号', FALSE);
+        //账号不正确时返回验证错误，原登录名通过引用返回错误提示信息
         if ($rs != 'ok') {
             return;
         }

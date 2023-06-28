@@ -138,7 +138,7 @@ function DedeInclude($filename, $isabs = FALSE)
     return $isabs ? $filename : DEDEADMIN.'/'.$filename;
 }
 /**
- *  根据会员mid获取会员名称
+ *  根据会员mid获取账号
  *
  * @access    public
  * @param     int  $mid   会员id

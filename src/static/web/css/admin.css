@@ -68,7 +68,7 @@ form,label {
 }
 input {
 	padding:.375rem .75rem;
-	height:28px;
+	height:30px;
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
@@ -82,9 +82,10 @@ input[type=file] {
 	vertical-align:middle
 }
 input[type=button],input[type=submit],input[type=reset] {
-	padding:.25rem .5rem;
-	line-height:1.5;
-	font-size:.875rem;
+	padding:.375rem .55rem;
+	height:30px;
+	line-height:1.6;
+	font-size:12px;
 	color:#fff;
 	background:#1eb867;
 	border:0;
@@ -98,7 +99,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 }
 select {
 	padding:.375rem .75rem;
-	height:28px;
+	height:30px;
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
@@ -107,6 +108,12 @@ select {
 }
 select[multiple=yes] {
 	height:180px
+}
+option {
+	display:flex;
+	padding:0;
+	height:30px;
+	align-items:center
 }
 textarea {
 	padding:.375rem .75rem;
@@ -423,7 +430,7 @@ body.hidemenu .body-right {
 }
 .quickselitem {
 	display:block;
-	line-height:28px
+	line-height:30px
 }
 .quickselitem .topcat {
 	margin-bottom:1rem;
@@ -510,15 +517,22 @@ body.hidemenu .body-right {
 	color:inherit;
 	cursor:pointer
 }
-.l-height-28 {
-	line-height:28px
+.l-height-30 {
+	line-height:30px
 }
 .list-group-item {
 	padding:.5rem 0
 }
+.btn-sm {
+	padding:.375rem .55rem;
+	height:30px;
+	line-height:1.4;
+	font-size:12px
+}
 .btn-xs {
 	padding:.2rem;
-	line-height:12px;
+	height:20px;
+	line-height:1;
 	font-size:12px
 }
 .btn+.btn {
@@ -553,8 +567,7 @@ body.hidemenu .body-right {
 	height:60px
 }
 .admin-input-lg {
-	width:360px;
-	height:28px
+	width:360px
 }
 .admin-input-md {
 	width:260px
@@ -656,7 +669,7 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 }
 @media (max-width:480px) {
 	.web-info {
-	word-break:break-all
+		word-break:break-all
 	}
 	.tips {
 		padding:0 15px
@@ -670,6 +683,6 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 }
 @media (min-width:480px) {
 	.modal-dialog {
-	max-width:500px
+		max-width:500px
 	}
 }

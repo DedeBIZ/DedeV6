@@ -20,7 +20,7 @@
 					<td bgcolor="#f5f5f5" colspan="2">添加管理员</td>
 				</tr>
 				<tr>
-					<td width="260">会员名：</td>
+					<td width="260">账号：</td>
 					<td>
 						<input type="text" name="userid" id="userid" class="admin-input-sm">
 						<span>（使用[0-9a-zA-Z_@!.-]范围以内字符）</span>
@@ -89,7 +89,7 @@
 		<script>
 			function checkSubmit() {
 				if (document.form1.userid.value == "") {
-					ShowMsg("会员名不能为空");
+					ShowMsg("账号不能为空");
 					return false;
 				}
 				if (document.form1.uname.value == "") {
@@ -97,7 +97,7 @@
 					return false;
 				}
 				if (document.form1.pwd.value == "") {
-					ShowMsg("会员密码不能为空");
+					ShowMsg("密码不能为空");
 					return false;
 				}
 				return true;

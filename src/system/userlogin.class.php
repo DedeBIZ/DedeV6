@@ -203,14 +203,14 @@ class userLogin
      *  检验会员是否正确
      *
      * @access    public
-     * @param     string    $username  会员名
+     * @param     string    $username  账号
      * @param     string    $userpwd  密码
      * @return    string
      */
     function checkUser($username, $userpwd)
     {
         global $dsql;
-        //只允许会员名和密码用0-9,a-z,A-Z,'@','_','.','-'这些字符
+        //只允许账号和密码用0-9,a-z,A-Z,'@','_','.','-'这些字符
         $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
         $this->userPwd = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userpwd);
         $pwd = substr(md5($this->userPwd), 5, 20);
