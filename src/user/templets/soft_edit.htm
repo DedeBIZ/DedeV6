@@ -11,7 +11,7 @@
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.js"></script>
 		<script>
-			var startNum = 2;
+			var startNum = parseInt('<?php echo $newRowStart;?>');
 			function MakeUpload() {
 				var upfield = document.getElementById("uploadfield");
 				var morelinkobj = document.getElementById("morelink");

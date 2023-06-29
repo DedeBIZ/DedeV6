@@ -130,6 +130,7 @@ if (empty($dopost)) {
     }
     //软件链接列表
     $urls = '';
+    $nums = 2;
     for ($i = 1; $i <= 9; $i++) {
         if (!empty(${'softurl'.$i})) {
             $servermsg = str_replace("'", '', stripslashes(${'servermsg'.$i}));
@@ -142,6 +143,7 @@ if (empty($dopost)) {
             if ($softurl != '' && $softurl != 'http://') {
                 $urls .= "{dede:link text='$servermsg'} $softurl {/dede:link}\r\n";
             }
+            $nums++;
         }
     }
     $urls = addslashes($urls);
