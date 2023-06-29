@@ -142,6 +142,10 @@ else if ($dopost == 'edituser') {
     $rank = isset($rank)? intval($rank) : 0;
     $id = isset($id)? intval($id) : 0;
     $email = isset($email)? HtmlReplace($email,1) : '';
+    if (!CheckEmail($email)) {
+        ShowMsg("邮箱格式错误", "-1");
+        exit();
+    }
     $uname = isset($uname)? HtmlReplace($uname,1) : '';
     $spacesta = isset($spacesta)? HtmlReplace($spacesta,1) : '';
     $exptime = isset($exptime)? HtmlReplace($exptime,1) : '';
