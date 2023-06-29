@@ -20,6 +20,10 @@ if ($dopost == 'saveedit') {
         ShowMsg('密码不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
         exit();
     }
+    if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
+        ShowMsg('账号不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
+        exit();
+    }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
         ShowMsg("请填写正确的验证安全码", "sys_admin_user_edit.php?id={$id}&dopost=edit");
