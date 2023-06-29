@@ -27,11 +27,9 @@ if ($fmdo == 'sendMail') {
     $url = $proto.preg_replace("#\/\/#i", '/', $url);
     $mailtitle = "{$cfg_webname}，会员邮件验证通知";
     $mailbody = '';
-    $mailbody .= "尊敬的会员<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，您好：\r\n";
-    $mailbody .= "欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
+    $mailbody .= "尊敬的会员<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
     $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏浏览这地址：\r\n";
     $mailbody .= "{$url}\r\n";
-    $mailbody .= "Powered by DedeBIZ开发团队\r\n";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient();
@@ -63,24 +61,24 @@ if ($fmdo == 'sendMail') {
         exit();
     }
     if ($row['spacesta'] != -10) {
-        ShowMsg('您的帐号不在邮件验证状态，本操作无效', '-1');
+        ShowMsg('操作无效，您的帐号不在邮件验证状态', '-1');
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET spacesta=0 WHERE mid='{$mid}' ");
     //清除会员缓存
     $cfg_ml->DelCache($mid);
-    ShowMsg('操作成功，请重新登录系统', 'login.php');
+    ShowMsg('会员缓存已清理', 'login.php');
     exit();
 } else if ($fmdo == 'user') {
-    //检查会员名是否存在
+    //检查账号是否存在
     if ($dopost == "checkuser") {
         AjaxHead();
         $msg = '';
         $uid = trim($uid);
         if ($cktype == 0) {
-            $msgtitle = '会员名称';
+            $msgtitle = '账号';
         } else {
-            $msgtitle = '会员名';
+            $msgtitle = '账号';
         }
         if ($cktype != 0 || $cfg_mb_wnameone == 'N') {
             $msg = CheckUserID($uid, $msgtitle);
@@ -108,7 +106,7 @@ if ($fmdo == 'sendMail') {
                 if (!is_array($row)) {
                     $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
                 } else {
-                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个帐号占用</span>";
+                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个账户占用</span>";
                 }
             }
         }
@@ -123,7 +121,7 @@ if ($fmdo == 'sendMail') {
     }
     //积分换金币
     else if ($dopost == "money2s") {
-        CheckRank(0, 0);
+        CheckRank(0, 0);//禁止游客操作
         if ($cfg_money_scores == 0) {
             ShowMsg('系统禁用了积分与金币兑换功能', '-1');
             exit();
@@ -158,7 +156,7 @@ if ($fmdo == 'sendMail') {
         }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();
-            ShowMsg("您输入的会员名<span class='text-primary'>{$userid}</span>不合法", "index.php");
+            ShowMsg("您输入的账号<span class='text-primary'>{$userid}</span>已禁止", "index.php");
             exit();
         }
         if ($pwd == '') {
@@ -179,7 +177,7 @@ if ($fmdo == 'sendMail') {
         $rs = $cfg_ml->CheckUser($userid, $pwd);
         if ($rs == 0) {
             ResetVdValue();
-            ShowMsg("您的账号不存在", "index.php", 0, 2000);
+            ShowMsg("您的账号错误", "index.php", 0, 2000);
             exit();
         } else if ($rs == -1) {
             ResetVdValue();
@@ -193,10 +191,10 @@ if ($fmdo == 'sendMail') {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg("成功登录，正在跳转会员首页", "index.php", 0, 2000);
+                ShowMsg("正在登录会员中心，请稍等", "index.php", 0, 2000);
             } else {
                 $gourl = str_replace('^', '&', $gourl);
-                ShowMsg("成功登录，正在跳转指定页面", $gourl, 0, 2000);
+                ShowMsg("正在前往指定页面，请稍等", $gourl, 0, 2000);
             }
             exit();
         }
@@ -204,10 +202,64 @@ if ($fmdo == 'sendMail') {
     //退出登录
     else if ($dopost == "exit") {
         $cfg_ml->ExitCookie();
-        ShowMsg("已退出登录", "index.php", 0, 2000);
+        ShowMsg("已退出会员中心", "index.php", 0, 2000);
         exit();
     }
+} else if ($fmdo == 'purl'){
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
+    CheckRank(0, 0);//禁止游客操作
+    $row = $dsql->GetOne("SELECT count(*) as dd FROM `#@__member` WHERE `pmid`='{$cfg_ml->M_ID}' ");
+    $msg = "<p>您已经邀请了{$row['dd']}人：</p>
+    <div class='media mb-3'>
+        <span class='btn btn-primary btn-sm mr-2'>链</span>
+        <div class='media-body pb-3 border-bottom border-gray'>
+            <div class='d-flex justify-content-between align-items-center w-100'>
+                <h5>链接邀请</h5>
+                <a href='javascript:Copylink()' class='btn btn-outline-primary btn-sm'>复制链接</a>
+            </div>
+            <span class='d-block'>复制链接分享给其他人，对方通过链接注册后双方均可获得{$cfg_userad_adds}积分<span id='text' style='font-size:0'>{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}</span>
+        </div>
+    </div>
+    <div class='media mb-3'>
+        <span class='btn btn-success btn-sm mr-2'>码</span>
+        <div class='media-body pb-3 border-bottom border-gray'>
+            <div class='d-flex justify-content-between align-items-center w-100'>
+                <h5>二维码邀请</h5>
+                <a href='javascript:ShowQrcode()' class='btn btn-outline-success btn-sm'>查看二维码</a>
+            </div>
+            <span class='d-block'>分享二维码到移动设备，通过二维码扫码注册，双方均可获得{$cfg_userad_adds}积分</span>
+        </div>
+    </div>
+    <div class='text-center'><a href='index.php' class='btn btn-success btn-sm'>返回</a></div>
+    <div id='qrcode'></div>
+    <style>.modal-body img{margin:0 auto}#qrcode{display:none;margin:15px auto;width:200px;height:200px}</style>
+    <script>
+        var qrcode = new QRCode(document.getElementById(\"qrcode\"), {
+            width : 200,
+            height : 200,
+            correctLevel : 3
+        });
+        qrcode.makeCode('{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}');
+    </script>
+    <script>
+        function Copylink() {
+            var val = document.getElementById('text');
+            window.getSelection().selectAllChildren(val);
+            document.execCommand(\"Copy\");
+            ShowMsg(\"复制推广链接成功\");
+        }
+        function ShowQrcode(){
+            ShowMsg(document.getElementById('qrcode').innerHTML);
+        }
+    </script>";
+    $wintitle = "快来邀请好友赚积分啦";
+    $wecome_info = "邀请好友赚积分";
+    $win = new OxWindow();
+    $win->AddMsgItem($msg);
+    $winform = $win->GetWindow("hand", false);
+    $win->Display(DEDEMEMBER."/templets/win_templet.htm");
+    exit;
 } else {
-    ShowMsg("本页面禁止返回", "index.php");
+    ShowMsg("操作失败", "index.php");
 }
 ?>

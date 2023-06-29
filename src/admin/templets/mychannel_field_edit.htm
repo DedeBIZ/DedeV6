@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>模型修改字段</title>
+		<title>修改文档模型字段</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -11,6 +11,141 @@
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
 		<style>.nw{float:left;width:160px}.cls{clear:both}</style>
+	</head>
+	<body>
+		<form name="form1" action="mychannel_field_edit.php" method="post" onSubmit="return GetFields();">
+			<input type="hidden" name="action" value="save">
+			<input type="hidden" name="id" value="<?php echo $id?>">
+			<input type="hidden" name="fname" value="<?php echo $fname?>">
+			<input type="hidden" name="issystem" value="<?php echo $issystem?>">
+			<input type="hidden" name="fieldstring" value="">
+			<table wcellpadding="1" align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2">文档模型管理</a> - 修改文档模型字段</td>
+				</tr>
+				<?php if ($row['issystem'] == 1) {?>
+				<tr>
+					<td colspan="2">
+						<div class="alert alert-danger mb-0">系统模型字段参数配置，修改不当会导致模型出错</div>
+					</td>
+				</tr>
+				<?php }?>
+				<tr>
+					<td>字段文字：</td>
+					<td>
+						<input type="text" name="itemname" id="itemname" class="admin-input-sm" value="<?php echo $ctag->GetAtt('itemname')?>">
+						<span>（发布文档时显示的项名字）</span>
+					</td>
+				</tr>
+				<tr>
+					<td width="260">字段名称：</td>
+					<td><?php echo $fname?>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型组名称）</td>
+				</tr>
+				<tr>
+					<td>字段类型：</td>
+					<td>
+						<label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");?>> 自动字段</label>
+						<label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");?>> 固化字段</label>
+					</td>
+				</tr>
+				<tr>
+					<td>前台参数：</td>
+					<td>
+						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");?>> 投稿和采集禁用字段</label>
+						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 添加到列表附加字段</label>
+						<span>（列表模板{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}中，标签[field:name/]调用）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>是否使用分页符：</td>
+					<td>
+						<input name="isnull" type="hidden" value="1">
+						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='checked'";?>> 是</label>
+						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='checked'";?>> 否</label>
+						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符实现文档分页，但仅允许一个字段）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>数据类型：</td>
+					<td>
+						<select name="dtype" id="type" class="admin-input-sm">
+							<?php 
+							$dtype = $ctag->GetAtt('type');
+							if ($dtype!='' && isset($fieldtypes[$dtype])) {
+								echo "<option value='{$dtype}'>{$fieldtypes[$dtype]}</option>";
+								$canchange = true;
+							} else {
+								echo "<option value='{$dtype}'>系统专用类型</option>";
+								$canchange = false;
+							}
+							if ($canchange) {
+							?>
+							<option value="text">单行文本(varchar)</option>
+							<option value="textchar">单行文本(char)</option>
+							<option value="multitext">多行文本</option>
+							<option value="htmltext">网页文本</option>
+							<option value="textdata">文本保存网页数据</option>
+							<option value="int">整数类型</option>
+							<option value="float">小数类型</option>
+							<option value="datetime">时间类型</option>
+							<option value="img">图片类型</option>
+							<option value="media">多媒体文件</option>
+							<option value="addon">附件类型</option>
+							<option value="select">option下拉框</option>
+							<option value="radio">radio选项卡</option>
+							<option value="checkbox">checkbox多选框</option>
+							<option value="stepselect">联动类型</option>
+							<option value="relation">关联文档</option>
+							<?php }?>
+						</select>
+					</td>
+				</tr>
+				<tr id="_relation" <?php echo $dtype=="relation"? '' : 'style="display:none"';?>>
+					<td>文档模型：</td>
+					<td>
+						<select name="channeltype" id="channeltype" class="admin-input-sm">
+							<?php
+							$channelid = $ctag->GetAtt('channel') == "" ? 1 : $ctag->GetAtt('channel');
+							foreach($channelArray as $k=>$arr)
+							{
+								if ($k==$channelid) {
+									$nid = $arr['nid'];
+									echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
+								} else {
+									echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
+								}
+							}
+							?>
+						</select>
+						<label class="l-height-30"><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时自动更新关联文档</label>
+					</td>
+				</tr>
+				<tr>
+					<td>默认值：</td>
+					<td>
+						<p>（自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德）</p>
+						<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>自定义网页表单：</td>
+					<td>
+						<p>（自定义网页表单用~name~表示提示文字，~form~表示表单元素）</p>
+						<textarea name="vinnertext" id="vinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText();?></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>最大长度：</td>
+					<td><input type="text" name="maxlength" id="maxlength" class="admin-input-xs" value="<?php echo $ctag->GetAtt('maxlength')?>">（文本数据必须填写，大于255为text类型）</td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center">
+						<button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
+						<button type="reset" name="button3" id="button3" class="btn btn-outline-success btn-sm">重置</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			function GetFields() {
 				var theform = document.form1;
@@ -32,7 +167,7 @@
 					return false;
 				}
 				if ((dtype == "radio" || dtype == "select" || dtype == "checkbox") && vdefault == "") {
-					ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用英文逗号分开）");
+					ShowMsg("自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德");
 					return false;
 				}
 				if (spage == "no") spage = "";
@@ -56,140 +191,5 @@
 				})
 			});
 		</script>
-	</head>
-	<body>
-		<table wcellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="form1" action="mychannel_field_edit.php" method="post" onSubmit="return GetFields();">
-				<input type="hidden" name="action" value="save">
-				<input type="hidden" name="id" value="<?php echo $id?>">
-				<input type="hidden" name="fname" value="<?php echo $fname?>">
-				<input type="hidden" name="issystem" value="<?php echo $issystem?>">
-				<input type="hidden" name="fieldstring" value="">
-				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">文档模型管理</a> &gt; 模型修改字段</td>
-				</tr>
-				<?php if ($row['issystem']==1) {?>
-				<tr>
-					<td colspan="2">
-						<div class="alert alert-danger mb-0">您当前操作的字段属于系统模型字段：修改系统模型有风险，请不要随便改动系统模型的字段相关的属性</div>
-					</td>
-				</tr>
-				<?php }?>
-				<tr>
-					<td>提示文字：</td>
-					<td><input type="text" name="itemname" id="itemname" class="admin-input-sm" value="<?php echo $ctag->GetAtt('itemname')?>">（发布文档时显示的项名字）</td>
-				</tr>
-				<tr>
-					<td width="260">字段名称：</td>
-					<td><?php echo $fname?>（只能用英文字母或数字，数据表的真实字段名）</td>
-				</tr>
-				<tr>
-					<td>字段类型：</td>
-					<td>
-						<label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");?>> 系统自动生成表单字段</label>
-						<label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");?>> 已经固化在发布表单中字段</label>
-					</td>
-				</tr>
-				<tr>
-					<td>前台参数：</td>
-					<td>
-						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 使字段可以在列表的底层模板中获得（自定义字段默认仅能在文档模板显示，启用此选项使列表查询变慢，如无必要请不要选择）</label><br>
-						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");?>> 前台投稿及采集规则禁用本字段</label>
-					</td>
-				</tr>
-				<tr>
-					<td>数据类型：</td>
-					<td>
-						<select name="dtype" id="type" class="admin-input-sm">
-							<?php 
-							$dtype = $ctag->GetAtt('type');
-							if ($dtype!='' && isset($fieldtypes[$dtype]))
-							{
-								echo "<option value='{$dtype}'>{$fieldtypes[$dtype]}</option>";
-								$canchange = true;
-							} else {
-								echo "<option value='{$dtype}'>系统专用类型</option>";
-								$canchange = false;
-							}
-							if ($canchange)
-							{
-							?>
-							<option value="text">单行文本(varchar)</option>
-							<option value="textchar">单行文本(char)</option>
-							<option value="multitext">多行文本</option>
-							<option value="htmltext">网页文本</option>
-							<option value="textdata">文本保存网页数据</option>
-							<option value="int">整数类型</option>
-							<option value="float">小数类型</option>
-							<option value="datetime">时间类型</option>
-							<option value="img">图片</option>
-							<option value="imgfile">图片(仅网址)</option>
-							<option value="media">多媒体文件</option>
-							<option value="addon">附件类型</option>
-							<option value="select">option下拉框</option>
-							<option value="radio">radio选项卡</option>
-							<option value="checkbox">checkbox多选框</option>
-							<option value="stepselect">联动类型</option>
-							<option value="relation">关联文档</option>
-							<?php }?>
-						</select>
-					</td>
-				</tr>
-				<tr id="_relation" <?php echo $dtype=="relation"? '' : 'style="display:none"';?>>
-					<td>文档模型：</td>
-					<td>
-						<select name="channeltype" id="channeltype" class="admin-input-md">
-							<?php
-							$channelid = $ctag->GetAtt('channel') == "" ? 1 : $ctag->GetAtt('channel');
-							foreach($channelArray as $k=>$arr)
-							{
-								if ($k==$channelid) {
-									$nid = $arr['nid'];
-									echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
-								} else {
-									echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
-								}
-							}
-							?>
-						</select>
-						<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时候自动更新关联网页文档</label>
-					</td>
-				</tr>
-				<tr>
-					<td>文档是否需要分页符：</td>
-					<td>
-						<input name="isnull" type="hidden" value="1">
-						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
-						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
-						<span>（如果文档需要分页符，不论何种文档，都可以用#P#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段）</span>
-					</td>
-				</tr>
-				<tr>
-					<td>默认值：</td>
-					<td>
-						<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea>
-						<span>（如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目，英文逗号分开，如“DedeBIZ,得德”。如果为联动选框，这里填写联动选框项目名称）</span>
-					</td>
-				</tr>
-				<tr>
-					<td>最大长度：</td>
-					<td><input type="text" name="maxlength" id="maxlength" class="admin-input-xs" value="<?php echo $ctag->GetAtt('maxlength')?>">（文本数据必须填写，大于255为text类型）</td>
-				</tr>
-				<tr>
-					<td>自定义网页表单：</td>
-					<td>自定义网页表单用~name~表示提示文字，~form~表示表单元素</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><textarea name="vinnertext" id="vinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText();?></textarea></td>
-				</tr>
-				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
-						<button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
-						<button type="reset" name="button3" id="button3" class="btn btn-outline-success btn-sm">重置</button>
-					</td>
-				</tr>
-			</form>
-		</table>
 	</body>
 </html>

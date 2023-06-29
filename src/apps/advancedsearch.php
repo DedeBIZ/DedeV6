@@ -179,10 +179,10 @@ $dlist = new DataListCP();
 $dlist->pagesize = 30;
 $dlist->SetParameter("hash", $sqlhash);
 $dlist->SetParameter("mid", $mid);
-if (file_exists(DEDEROOT."/theme/templets/$template")) {
-    $templatefile = DEDEROOT."/theme/templets/$template";
+if (file_exists(DEDEROOT."/theme/dedebiz/$template")) {
+    $templatefile = DEDEROOT."/theme/dedebiz/$template";
 } else {
-    $templatefile = DEDEROOT."/theme/templets/advancedsearch.htm";
+    $templatefile = DEDEROOT."/theme/apps/advancedsearch.htm";
 }
 $dlist->SetTemplate($templatefile);
 $dlist->SetSource($query);

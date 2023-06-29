@@ -6,8 +6,7 @@ textdata,网页形式保存数据
 int,整数类型
 float,小数类型
 datetime,时间类型
-img,图片
-imgfile,图片(无格式)
+img,图片类型
 media,多媒体文件
 addon,附件类型
 select,select下拉框

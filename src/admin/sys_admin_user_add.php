@@ -15,7 +15,7 @@ if (empty($dopost)) $dopost = '';
 if ($dopost == 'add') {
     CheckCSRF();
     if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd) || preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
-        ShowMsg('密码或或会员名不合法，<br>只能用[0-9a-zA-Z_@!.-]以内范围的字符', '-1', 0, 3000);
+        ShowMsg('密码或账号不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
@@ -25,7 +25,7 @@ if ($dopost == 'add') {
     }
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__member` WHERE userid LIKE '$userid' ");
     if ($row['dd'] > 0) {
-        ShowMsg('会员名已存在', '-1');
+        ShowMsg('账号已存在', '-1');
         exit();
     }
     $pfd = "pwd";
@@ -60,23 +60,25 @@ if ($dopost == 'add') {
     $adminquery = "Insert Into `#@__member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`)
         VALUES ('$mid','10','0','{$uname}的空间','','person','',''); ";
     $dsql->ExecuteNoneQuery($adminquery);
-    ShowMsg('成功添加一个用户', 'sys_admin_user.php');
+    ShowMsg('成功添加一个账户', 'sys_admin_user.php');
     exit();
 }
 $randcode = mt_rand(10000, 99999);
 $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
 $typeOptions = '';
-$dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart=0 OR ispart=1) ");
-$dsql->Execute('op');
-while ($row = $dsql->GetObject('op')) {
-    $topc = $row->id;
-    $typeOptions .= "<option value='{$row->id}'>{$row->typename}</option>\r\n";
-    $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid={$row->id} AND (ispart=0 OR ispart=1) ");
-    $dsql->Execute('s');
-    while ($row = $dsql->GetObject('s')) {
-        $typeOptions .= "<option value='{$row->id}'>└─ {$row->typename}</option>\r\n";
+//递归获取分类
+function getTypeOptions($id=0,$sep="└")
+{
+    global $dsql,$typeOptions;
+    $dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid={$id} AND (ispart=0 OR ispart=1 OR ispart=2) ORDER BY sortrank");
+    $dsql->Execute($id);
+    while ($nrow = $dsql->GetObject($id)) {
+        $isDisabled = $nrow->ispart==2? " disabled" : "";
+        $typeOptions .= "<option value='{$nrow->id}'{$isDisabled}>{$sep} {$nrow->typename}</option>\r\n";
+        getTypeOptions($nrow->id, $sep."─");
     }
 }
+getTypeOptions(0);
 make_hash();
 include DedeInclude('templets/sys_admin_user_add.htm');
 ?>

@@ -8,6 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+define('DEDEUSER', true);
 //针对会员中心操作进行XSS过滤
 function XSSClean($val)
 {
@@ -121,7 +122,7 @@ if ($cfg_mb_open == 'N') {
             die('');
         }
     } else {
-        ShowMsg("网站关闭了会员功能，您无法浏览此页面", "javascript:;");
+        ShowMsg("网站关闭了会员功能，您无法浏览此页面", "../index.php");
         exit();
     }
 }
@@ -197,10 +198,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "注册会员";
                 }
             }
-            ShowMsg("需要<span class='text-primary'>$needname</span>才能浏览本页面<br>您目前等级是<span class='text-primary'>$myname</span>", "-1", 0, 5000);
+            ShowMsg("需要<span class='text-primary'>$needname</span>才能浏览本页面，您目前等级是<span class='text-primary'>$myname</span>", "-1", 0, 5000);
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("需要<span class='text-primary'>$money</span>金币才能浏览本页面<br>您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>个", "-1", 0, 5000);
+            ShowMsg("需要<span class='text-primary'>$money</span>金币才能浏览本页面，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>个", "-1", 0, 5000);
             exit();
         }
     }

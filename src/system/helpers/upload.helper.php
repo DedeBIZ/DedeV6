@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 上传处理小助手
+ * 上传处理助手
  *
  * @version        $id:upload.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers
@@ -17,8 +17,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @param     string  $ftype  文件类型
  * @param     string  $rnddd  后缀数字
  * @param     bool    $watermark  是否水印
- * @param     string  $filetype  image、media、addon $file_type='' 对于swfupload上传的文件，因为没有filetype，所以需指定，并且有些特殊之处不同
- * @return    int     -1没选定上传文件，0文件类型不允许, -2保存失败
+ * @param     string  $filetype image、media、addon $file_type='' 对于swfupload上传的文件，因为没有filetype，所以需指定，并且有些特殊之处不同
+ * @return    int     -1没选定上传文件，0文件类型不允许，-2保存失败
  */
 if (!function_exists('AdminUpload')) {
     function AdminUpload($uploadname, $ftype = 'image', $rnddd = 0, $watermark = TRUE, $filetype = '')
@@ -90,14 +90,12 @@ if (!function_exists('AdminUpload')) {
         return $fileurl;
     }
 }
-//前台会员通用上传函数
-//$upname 是文件上传框的表单名，而不是表单的变量
-//$handname 允许会员手工指定网址情况下的网址
+//前台会员通用上传函数：$upname是文件上传框的表单名，而不是表单的变量；$handname允许会员手工指定网址情况下的网址
 if (!function_exists('MemberUploads')) {
     function MemberUploads($upname, $handname, $userid = 0, $utype = 'image', $exname = '', $maxwidth = 0, $maxheight = 0, $water = false, $isadmin = false)
     {
         global $cfg_imgtype, $cfg_mb_addontype, $cfg_mediatype, $cfg_user_dir, $cfg_basedir, $cfg_dir_purview;
-        //当为游客投稿的情况下，这个 id 为 0
+        //当为游客投稿的情况下，这个id为0
         if (empty($userid)) $userid = 0;
         if (!is_dir($cfg_basedir.$cfg_user_dir."/$userid")) {
             MkdirAll($cfg_basedir.$cfg_user_dir."/$userid", $cfg_dir_purview);
@@ -112,23 +110,23 @@ if (!function_exists('MemberUploads')) {
             //源文件类型检查
             if ($utype == 'image') {
                 if (!preg_match("/\.(".$cfg_imgtype.")$/", $GLOBALS[$upname.'_name'])) {
-                    ShowMsg("您所上传的图片类型不在许可列表，请上传{$cfg_imgtype}类型", '-1');
+                    ShowMsg("您上传的图片类型错误，请上传{$cfg_imgtype}类型", "-1");
                     exit();
                 }
                 $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
                 $imgfile_type = strtolower(trim($GLOBALS[$upname.'_type']));
                 if (!in_array($imgfile_type, $sparr)) {
-                    ShowMsg('上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种', '-1');
+                    ShowMsg("您上传的图片格式错误，请使用jpg、png、gif、wbmp格式其中一种", "-1");
                     exit();
                 }
             } else if ($utype == 'flash' && !preg_match("/\.swf$/", $GLOBALS[$upname.'_name'])) {
-                ShowMsg('上传的文件必须为flash文件', '-1');
+                ShowMsg("上传的文件必须为flash文件", "-1");
                 exit();
             } else if ($utype == 'media' && !preg_match("/\.(".$cfg_mediatype.")$/", $GLOBALS[$upname.'_name'])) {
-                ShowMsg('您所上传的文件类型必须为：'.$cfg_mediatype, '-1');
+                ShowMsg("您上传的文件类型必须为：$cfg_mediatype", "-1");
                 exit();
             } else if (!preg_match("/\.(".$allAllowType.")$/", $GLOBALS[$upname.'_name'])) {
-                ShowMsg("您所上传的文件类型不被允许", '-1');
+                ShowMsg("您上传的文件类型不被允许", '-1');
                 exit();
             }
             //再次严格检测文件扩展名是否符合系统定义的类型
@@ -136,16 +134,16 @@ if (!function_exists('MemberUploads')) {
             $sname = $fs[count($fs) - 1];
             $alltypes = explode('|', $allAllowType);
             if (!in_array(strtolower($sname), $alltypes)) {
-                ShowMsg('您所上传的文件类型不被允许', '-1');
+                ShowMsg('您上传的文件类型不被允许', '-1');
                 exit();
             }
             //强制禁止的文件类型
             if (preg_match("/(asp|php|pl|cgi|shtm|js)$/", $sname)) {
-                ShowMsg('您上传的文件为系统禁止的类型', '-1');
+                ShowMsg("您上传的文件已被系统禁止", '-1');
                 exit();
             }
             if ($exname == '') {
-                $filename = $cfg_user_dir."/$userid/".dd2char($nowtme.'-'.mt_rand(1000, 9999)).'.'.$sname;
+                $filename = $cfg_user_dir."/$userid/".dd2char($nowtme.'-'.mt_rand(1000,9999)).'.'.$sname;
             } else {
                 $filename = $cfg_user_dir."/{$userid}/{$exname}.".$sname;
             }
@@ -162,7 +160,7 @@ if (!function_exists('MemberUploads')) {
             @unlink($GLOBALS[$upname]);
             if (@filesize($cfg_basedir.$filename) > $GLOBALS['cfg_mb_upload_size'] * 1024) {
                 @unlink($cfg_basedir.$filename);
-                ShowMsg('您上传的文件超出系统大小限制', '-1');
+                ShowMsg("您上传的文件超出系统大小限制", "-1");
                 exit();
             }
             //加水印或缩小图片
@@ -185,9 +183,7 @@ if (!function_exists('MemberUploads')) {
                 exit('Not allow filename for not safe!');
             } else if (!preg_match("/\.(".$allAllowType.")$/", $handname)) {
                 exit('Not allow filename for filetype!');
-            }
-            //2011-4-10 修复会员中心修改相册时候错误(by:jason123j)
-            else if (!preg_match('#^http:#', $handname) && !preg_match('#^'.$cfg_user_dir.'/'.$userid."#", $handname) && !$isadmin) {
+            } else if (!preg_match('#^http:#', $handname) && !preg_match('#^'.$cfg_user_dir.'/'.$userid."#", $handname) && !$isadmin) {
                 exit('Not allow filename for not userdir!');
             }
             return $handname;

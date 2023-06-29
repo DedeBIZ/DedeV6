@@ -1,6 +1,6 @@
 <?php
 /**
- * 修改系统权限组
+ * 修改系统会员组
  *
  * @version        $id:sys_group_edit.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -28,7 +28,7 @@ if ($dopost == 'save') {
     exit();
 } else if ($dopost == 'del') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__admintype` WHERE CONCAT(`rank`)='$rank' AND `system`='0';");
-    ShowMsg("成功删除一个会员组", "sys_group.php");
+    ShowMsg("成功删除一个账户组", "sys_group.php");
     exit();
 }
 $groupRanks = array();

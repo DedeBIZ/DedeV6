@@ -1,6 +1,6 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
-//用于DedeBIZ商业组件通信
+if (!defined('DEDEINC')) exit ('dedebiz');
+//DedeBIZ商业组件通信
 define("DEDEBIZ", true);
 class DedeBizClient
 {

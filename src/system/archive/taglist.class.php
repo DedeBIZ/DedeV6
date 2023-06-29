@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 标签列表类
+ * 标签列表
  *
  * @version        $id:taglist.class.php 18:17 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
@@ -71,7 +71,7 @@ class TagList
         //初始化模板
         $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style'].'/'.$this->Templet;
         if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "主题模板文件不存在，无法发布文档";
+            echo "标签主题模板文件不存在，无法更新标签";
             exit();
         }
         $this->dtp->LoadTemplate($tempfile);

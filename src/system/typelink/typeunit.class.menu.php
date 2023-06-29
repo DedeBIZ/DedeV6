@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 后台栏目管理
  *
@@ -98,7 +98,7 @@ class TypeUnit
                 continue;
             }
             echo "<dl>\r\n";
-            echo "<dd><img onClick=\"LoadSuns('suns{$id}',{$id});\" style='cursor:pointer'></dd>\r\n";
+            echo "<dd><img onclick=\"LoadSuns('suns{$id}',{$id});\" style='cursor:pointer'></dd>\r\n";
             echo "<dd><a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></dd>\r\n";
             echo "</dl>\r\n";
             echo "<div id='suns".$id."'>";

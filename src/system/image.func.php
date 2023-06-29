@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 图像处理相关函数
  *
@@ -52,6 +52,6 @@ if (function_exists("imagecreatefromwebp") && function_exists("imagewebp")) {
     $cfg_photo_typenames[] = "image/webp";
     $cfg_photo_support .= "WEBP ";
 }
-//引入图像处理小助手
+//引入图像处理助手
 helper('image');
 ?>

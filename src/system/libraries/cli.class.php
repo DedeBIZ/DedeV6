@@ -1,17 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
-//Copyright 2020 The DedeBiz Authors. All rights reserved.
-//license that can be found in the LICENSE file.
-
-//@copyright      Copyright (c) 2022 DedeBIZ.COM
-//@license        https://www.dedebiz.com/license
-//@link           https://www.dedebiz.com
-/*
-The MIT License (MIT)
-
-Copyright (c) 2014-2019 British Columbia Institute of Technology
-Copyright (c) 2019-2020 CodeIgniter Foundation
-*/
+if (!defined('DEDEINC')) exit ('dedebiz');
 function is_cli()
 {
     return (PHP_SAPI === 'cli' || defined('STDIN'));
@@ -54,8 +42,7 @@ class DedeCli
     ];
     public static function init()
     {
-        if (is_cli())
-		{
+        if (is_cli()) {
             static::$readline_support = extension_loaded('readline');
             static::parseCommandLine();
             static::$initialized = true;
@@ -66,22 +53,18 @@ class DedeCli
     private static function parseCommandLine()
     {
         $optionsFound = false;
-        for ($i=1; $i < $_SERVER['argc']; $i++)
-        {
-            if (! $optionsFound && strpos($_SERVER['argv'][$i], '-') === false)
-            {
+        for ($i=1; $i < $_SERVER['argc']; $i++) {
+            if (! $optionsFound && strpos($_SERVER['argv'][$i], '-') === false) {
                 static::$segments[] = $_SERVER['argv'][$i];
                 continue;
             }
             $optionsFound = true;
-            if (substr($_SERVER['argv'][$i], 0, 1) != '-')
-            {
+            if (substr($_SERVER['argv'][$i], 0, 1) != '-') {
                 continue;
             }
             $arg = str_replace('-', '', $_SERVER['argv'][$i]);
             $value = null;
-            if (isset($_SERVER['argv'][$i+1]) && substr($_SERVER['argv'][$i+1], 0, 1) != '-')
-            {
+            if (isset($_SERVER['argv'][$i+1]) && substr($_SERVER['argv'][$i+1], 0, 1) != '-') {
                 $value = $_SERVER['argv'][$i+1];
                 $i++;
             }
@@ -92,8 +75,7 @@ class DedeCli
     }
     public static function getOption(string $name)
     {
-        if (! array_key_exists($name, static::$options))
-        {
+        if (! array_key_exists($name, static::$options)) {
             return null;
         }
         $val = static::$options[$name] === null
@@ -107,15 +89,13 @@ class DedeCli
     }
     public static function getOptionString(): string
     {
-        if (! count(static::$options))
-        {
+        if (! count(static::$options)) {
             return '';
         }
         $out = '';
         foreach (static::$options as $name => $value)
         {
-            if (mb_strpos($value, ' ') !== false)
-            {
+            if (mb_strpos($value, ' ') !== false) {
                 $value = '"'.$value.'"';
             }
             $out .= "-{$name} $value ";
@@ -124,8 +104,7 @@ class DedeCli
     }
     public static function newLine(int $num = 1)
     {
-        for ($i = 0; $i < $num; $i++)
-        {
+        for ($i = 0; $i < $num; $i++) {
             static::write('');
         }
     }
@@ -135,25 +114,20 @@ class DedeCli
     }
     public static function color(string $text, string $foreground, string $background = null, string $format = null)
     {
-        if (static::isWindows() && ! isset($_SERVER['ANSICON']))
-        {
+        if (static::isWindows() && ! isset($_SERVER['ANSICON'])) {
             return $text;
         }
-        if ( ! array_key_exists($foreground, static::$foreground_colors))
-        {
+        if ( ! array_key_exists($foreground, static::$foreground_colors)) {
             throw new \RuntimeException('Invalid CLI foreground color: '.$foreground);
         }
-        if ($background !== null && ! array_key_exists($background, static::$background_colors))
-        {
+        if ($background !== null && ! array_key_exists($background, static::$background_colors)) {
             throw new \RuntimeException('Invalid CLI background color: '.$background);
         }
         $string = "\033[".static::$foreground_colors[$foreground]."m";
-        if ($background !== null)
-        {
+        if ($background !== null) {
             $string .= "\033[".static::$background_colors[$background]."m";
         }
-        if ($format === 'underline')
-        {
+        if ($format === 'underline') {
             $string .= "\033[4m";
         }
         $string .= $text."\033[0m";
@@ -161,16 +135,14 @@ class DedeCli
     }
     public static function getWidth(int $default = 80): int
     {
-        if (static::isWindows())
-        {
+        if (static::isWindows()) {
             return $default;
         }
         return (int)shell_exec('tput cols');
     }
     public static function getHeight(int $default = 32): int
     {
-        if (static::isWindows())
-        {
+        if (static::isWindows()) {
             return $default;
         }
         return (int)shell_exec('tput lines');
@@ -178,13 +150,11 @@ class DedeCli
     public static function showProgress($thisStep = 1, int $totalSteps = 10, int $pos = 0,int $total = 0)
     {
         static $inProgress = false;
-        if ($inProgress !== false && $inProgress <= $thisStep)
-        {
+        if ($inProgress !== false && $inProgress <= $thisStep) {
             fwrite(STDOUT, "\033[1A");
         }
         $inProgress = $thisStep;
-        if ($thisStep !== false)
-        {
+        if ($thisStep !== false) {
             $thisStep   = abs($thisStep);
             $totalSteps = $totalSteps < 1 ? 1 : $totalSteps;
             $percent = intval(($thisStep / $totalSteps) * 100);
@@ -201,28 +171,23 @@ class DedeCli
     }
     public static function wrap(string $string = null, int $max = 0, int $pad_left = 0): string
     {
-        if (empty($string))
-        {
+        if (empty($string)) {
             return '';
         }
-        if ($max == 0)
-        {
+        if ($max == 0) {
             $max = DedeCli::getWidth();
         }
-        if (DedeCli::getWidth() < $max)
-        {
+        if (DedeCli::getWidth() < $max) {
             $max = DedeCli::getWidth();
         }
         $max = $max - $pad_left;
         $lines = wordwrap($string, $max);
-        if ($pad_left > 0)
-        {
+        if ($pad_left > 0) {
             $lines = explode(PHP_EOL, $lines);
             $first = true;
             array_walk($lines, function (&$line, $index) use ($max, $pad_left, &$first)
             {
-                if ( ! $first)
-                {
+                if ( ! $first) {
                     $line = str_repeat(" ", $pad_left).$line;
                 } else {
                     $first = false;
@@ -240,25 +205,19 @@ class DedeCli
     }
     public static function input(string $prefix = null): string
     {
-        if (static::$readline_support)
-        {
+        if (static::$readline_support) {
             return readline($prefix);
         }
         echo $prefix;
         return fgets(STDIN);
     }
     /**
-     * 询问会员输入.这个可以1个或2个参数.
-     *
-     * 使用:
-     *
+     * 询问会员输入，可以1个或2个参数
+     * 
      * //等待任何输入
      * DedeCli::prompt();
-     *
      * $color = DedeCli::prompt('What is your favorite color?');
-     *
      * $color = DedeCli::prompt('What is your favourite color?', 'white');
-     *
      * $ready = DedeCli::prompt('Are you ready?', array('y','n'));
      *
      * @return    string    the user input
@@ -298,29 +257,21 @@ class DedeCli
                     $output = $args[0];
                 }
                 break;
-        }
-        if ($output !== '')
-        {
+        } if ($output !== '') {
             $extra_output = '';
-            if ($default !== null)
-            {
+            if ($default !== null) {
                 $extra_output = ' [ Default: "'.$default.'" ]';
-            }
-            elseif ($options !== [])
-            {
+            } elseif ($options !== []) {
                 $extra_output = ' [ '.implode(', ', $options).' ]';
             }
             fwrite(STDOUT, $output.$extra_output.': ');
         }
         $input = trim(static::input()) ? : $default;
-        if (empty($input) && $required === true)
-        {
+        if (empty($input) && $required === true) {
             static::write('This is required.');
             static::newLine();
             $input = forward_static_call_array([__CLASS__, 'prompt'], $args);
-        }
-        if ( ! empty($options) && ! in_array($input, $options))
-        {
+        } if (! empty($options) && ! in_array($input, $options)) {
             static::write('This is not a valid option. Please try again.');
             static::newLine();
             $input = forward_static_call_array([__CLASS__, 'prompt'], $args);
@@ -329,8 +280,7 @@ class DedeCli
     }
     public static function wait(int $seconds, bool $countdown = false)
     {
-        if ($countdown === true)
-        {
+        if ($countdown === true) {
             $time = $seconds;
             while ($time > 0)
             {
@@ -340,8 +290,7 @@ class DedeCli
             }
             static::write();
         } else {
-            if ($seconds > 0)
-            {
+            if ($seconds > 0) {
                 sleep($seconds);
             } else {
                 static::write(static::$wait_msg);
@@ -351,16 +300,14 @@ class DedeCli
     }
     public static function error(string $text, string $foreground = 'light_red', string $background = null)
     {
-        if ($foreground || $background)
-        {
+        if ($foreground || $background) {
             $text = static::color($text, $foreground, $background);
         }
         fwrite(STDERR, $text.PHP_EOL);
     }
     public static function write(string $text = '', string $foreground = null, string $background = null)
     {
-        if ($foreground || $background)
-        {
+        if ($foreground || $background) {
             $text = static::color($text, $foreground, $background);
         }
         fwrite(STDOUT, $text.PHP_EOL);

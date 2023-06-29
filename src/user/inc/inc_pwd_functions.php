@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 密码函数
  * 
@@ -76,17 +76,17 @@ function newmail($mid, $userid, $mailto, $type, $send)
     $randval = random(8);
     $mailtitle = $cfg_webname.":密码修改";
     $mailto = $mailto;
-    $headers = "From: ".$cfg_adminemail."\r\nReply-To: $cfg_adminemail";
-    $mailbody = "尊敬的会员".$userid."，临时登录密码：".$randval."\r\n请三天内修改登录密码：".$cfg_basehost."/resetpassword.php?dopost=getpasswd&id=".$mid;
+    $headers = "From:".$cfg_adminemail."\r\nReply-To:$cfg_adminemail";
+    $mailbody = "尊敬的".$userid."会员，临时登录密码：".$randval."\r\n请在三天内修改登录密码：".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
     if ($type == 'INSERT') {
         $key = md5($randval);
         $sql = "INSERT INTO `#@__pwd_tmp` (`mid` ,`membername` ,`pwd` ,`mailtime`) VALUES ('$mid', '$userid',  '$key', '$mailtime');";
         if ($db->ExecuteNoneQuery($sql)) {
             if ($send == 'Y') {
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
-                return ShowMsg('修改验证码已经发送到原来的邮箱请查收', 'login.php', '', '5000');
+                return ShowMsg('验证码已经发送到原来的邮箱，请注意查收', 'login.php', '', '5000');
             } else if ($send == 'N') {
-                return ShowMsg('稍后跳转修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
+                return ShowMsg('稍后前往密码修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid."&key=".$randval);
             }
         } else {
             return ShowMsg('修改失败，请联系管理员', 'login.php');
@@ -99,7 +99,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
                 ShowMsg('修改验证码已经发送到原来的邮箱请查收', 'login.php');
             } elseif ($send === 'N') {
-                return ShowMsg('稍后跳转修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
+                return ShowMsg('稍后前往密码修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid."&key=".$randval);
             }
         } else {
             ShowMsg('修改失败，请与管理员联系', 'login.php');
@@ -107,27 +107,32 @@ function newmail($mid, $userid, $mailto, $type, $send)
     }
 }
 /**
- *  查询会员信息，mail会员输入邮箱地址，userid会员名
+ *  查询会员信息，mail会员输入邮箱地址，userid账号
  *
  * @param     string  $mail  邮件
  * @param     string  $userid  会员id
- * @return    string
+ * @return    mixed
  */
 function member($mail, $userid)
 {
     global $db;
-    $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE email='$mail' AND userid = '$userid'";
+    $msql = empty($mail)? "1=1" : "email='$mail'";
+    $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE $msql AND userid = '$userid'";
     $row = $db->GetOne($sql);
-    if (!is_array($row)) return ShowMsg("会员id输入错误", "-1");
-    else return $row;
+    if (!is_array($row)) {
+        ShowMsg("会员id输入错误", "-1");
+        exit;
+    } else {
+        return $row;
+    }
 }
 /**
  *  查询是否发送过验证码
  *
  * @param     string  $mid  会员id
- * @param     string  $userid  会员名称
+ * @param     string  $userid  账号
  * @param     string  $mailto  发送邮件地址
- * @param     string  $send  为Y发送邮件,为N不发送邮件默认为Y
+ * @param     string  $send  邮件默认为Y，Y发送，N不发送
  * @return    string
  */
 function sn($mid, $userid, $mailto, $send = 'Y')
@@ -137,8 +142,8 @@ function sn($mid, $userid, $mailto, $send = 'Y')
     $dtime = time();
     $sql = "SELECT * FROM `#@__pwd_tmp` WHERE mid = '$mid'";
     $row = $db->GetOne($sql);
+    //发送新邮件
     if (!is_array($row)) {
-        //发送新邮件
         newmail($mid, $userid, $mailto, 'INSERT', $send);
     }
     //10分钟后可以再次发送新验证码

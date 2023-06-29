@@ -17,6 +17,10 @@ CheckPurview('t_Edit,t_AccEdit');
 //检查栏目操作许可
 CheckCatalog($id, '您无权修改本栏目');
 if ($dopost == "save") {
+    if ($apienabled == 1 && empty($apikey)) {
+        ShowMsg("跨站调用秘钥不能为空", "-1");
+        exit();
+    }
     $description = Html2Text($description, 1);
     $keywords = Html2Text($keywords, 1);
     $uptopsql = $smalltypes = '';
@@ -26,7 +30,7 @@ if ($dopost == "save") {
         $uptopsql = " ,siteurl='$siteurl',sitepath='$sitepath',ishidden='$ishidden' ";
     }
     if ($ispart != 0) $cross = 0;
-    $upquery = "UPDATE `#@__arctype` SET issend='$issend',sortrank='$sortrank',typename='$typename',cnoverview='$cnoverview',enname='$enname',enoverview='$enoverview',bigpic='$bigpic',litimg='$litimg',typedir='$typedir',isdefault='$isdefault',defaultname='$defaultname',issend='$issend',ishidden='$ishidden',channeltype='$channeltype',tempindex='$tempindex',templist='$templist',temparticle='$temparticle',namerule='$namerule',namerule2='$namerule2',ispart='$ispart',corank='$corank',description='$description',keywords='$keywords',seotitle='$seotitle',moresite='$moresite',`cross`='$cross',`content`='$content',`crossid`='$crossid',`smalltypes`='$smalltypes'$uptopsql WHERE id='$id' ";
+    $upquery = "UPDATE `#@__arctype` SET issend='$issend',sortrank='$sortrank',typename='$typename',cnoverview='$cnoverview',enname='$enname',enoverview='$enoverview',bigpic='$bigpic',litimg='$litimg',typedir='$typedir',isdefault='$isdefault',defaultname='$defaultname',issend='$issend',ishidden='$ishidden',channeltype='$channeltype',tempindex='$tempindex',templist='$templist',temparticle='$temparticle',namerule='$namerule',namerule2='$namerule2',ispart='$ispart',corank='$corank',description='$description',keywords='$keywords',seotitle='$seotitle',moresite='$moresite',`cross`='$cross',`content`='$content',`crossid`='$crossid',`smalltypes`='$smalltypes',`apienabled`='$apienabled',`apikey`='$apikey'$uptopsql WHERE id='$id' ";
     if (!$dsql->ExecuteNoneQuery($upquery)) {
         ShowMsg("保存栏目失败，请您检查栏目字段是否存在问题", "-1");
         exit();

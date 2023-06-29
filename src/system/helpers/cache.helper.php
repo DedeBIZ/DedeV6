@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 缓存小助手，支持文件和dedebiz cache
+ * 缓存助手，支持文件和dedebiz cache
  *
  * @version        $id:cache.helper.php 10:46 2011-3-2 tianya $
  * @package        DedeBIZ.Helpers

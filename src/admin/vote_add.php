@@ -1,6 +1,6 @@
 <?php
 /**
- * 添加投票模块
+ * 添加投票
  *
  * @version        $id:vote_add.php 23:54 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

@@ -17,7 +17,7 @@ if (!isset($dopost)) $dopost = '';
 $step = empty($step) ? 1 : intval($step);
 if ($step == 1) {
     if ($cfg_ml->IsLogin()) {
-        ShowMsg('操作成功，请重新登录系统', 'index.php');
+        ShowMsg('正在登录会员中心，请稍等', 'index.php');
         exit();
     }
     if ($dopost == 'regbase') {
@@ -28,19 +28,23 @@ if ($step == 1) {
             exit();
         }
         $userid = $uname = trim($userid);
+        $pid = HtmlReplace($pid, 1);
+        //推广pid
+        $pRow = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$pid'");
+        $pMid = isset($pRow['mid'])? intval($pRow['mid']) : 0;
         $pwd = trim($userpwd);
         $pwdc = trim($userpwdok);
-        $rs = CheckUserID($userid, '会员名');
+        $rs = CheckUserID($userid, '账号');
         if ($rs != 'ok') {
             ShowMsg($rs, '-1');
             exit();
         }
         if (strlen($userid) > 20 || strlen($uname) > 36) {
-            ShowMsg('您的会员名或会员名称过长，不允许注册', '-1');
+            ShowMsg('您的账号或账号过长，不允许注册', '-1');
             exit();
         }
         if (strlen($userid) < $cfg_mb_idmin || strlen($pwd) < $cfg_mb_pwdmin) {
-            ShowMsg("您的会员名或密码过短，不允许注册", "-1");
+            ShowMsg("您的账号或密码过短，不允许注册", "-1");
             exit();
         }
         if ($pwdc != $pwd) {
@@ -49,10 +53,10 @@ if ($step == 1) {
         }
         $uname = HtmlReplace($uname, 1);
         $userid = HtmlReplace($userid, 1);
-        //检测会员名是否存在
+        //检测账号是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的会员名<span class='text-primary'>{$userid}</span>已存在，请使用别的会员名", "-1");
+            ShowMsg("您指定的账号<span class='text-primary'>{$userid}</span>已存在，请使用别的账号", "-1");
             exit();
         }
         //会员的默认金币
@@ -62,6 +66,9 @@ if ($step == 1) {
         if (is_array($dfrank)) {
             $dfmoney = $dfrank['money'];
             $dfscores = $dfrank['scores'];
+        }
+        if ($pMid > 0) {
+            $dfscores = $dfscores + $cfg_userad_adds;
         }
         $jointime = time();
         $logintime = time();
@@ -75,18 +82,11 @@ if ($step == 1) {
             $pwd = md5($userpwd);
         }
         $mtype = '个人';
+        $space = 'person';
         $spaceSta = ($cfg_mb_spacesta < 0 ? $cfg_mb_spacesta : 0);
-        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`$pp`,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip`) VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip'); ";
+        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`$pp`,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip`, `pmid`) VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip', '$pMid'); ";
         if ($dsql->ExecuteNoneQuery($inQuery)) {
             $mid = $dsql->GetLastID();
-            //写入默认会员详细资料
-            if ($mtype == '个人') {
-                $space = 'person';
-            } else if ($mtype == '企业') {
-                $space = 'company';
-            } else {
-                $space = 'person';
-            }
             //写入默认统计数据
             $membertjquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('$mid','0','0','0','0','0','0','0','0'); ";
             $dsql->ExecuteNoneQuery($membertjquery);
@@ -98,20 +98,24 @@ if ($step == 1) {
             //模拟登录
             $cfg_ml = new MemberLogin(7 * 3600);
             $rs = $cfg_ml->CheckUser($userid, $userpwd);
-            ShowMsg('操作成功，请重新登录系统', 'index.php');
+            if ($pMid > 0) {
+                $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_userad_adds} WHERE mid='$pMid'");
+            }
+            ShowMsg('正在登录会员中心，请稍等', 'index.php');
             exit;
         } else {
             ShowMsg("注册失败，请检查资料是否有误或与管理员联系", "-1");
             exit();
         }
     }
+    $pid = HtmlReplace($pid, 1);
     require_once(DEDEMEMBER."/templets/reg-new.htm");
 } else {
     if (!$cfg_ml->IsLogin()) {
         ShowMsg("您未填写基本信息，请填写基本信息", "index_do.php?fmdo=user&dopost=regnew");
         exit;
     } else {
-        ShowMsg('操作成功，请重新登录系统', 'index.php');
+        ShowMsg('正在登录会员中心，请稍等', 'index.php');
         exit;
     }
 }

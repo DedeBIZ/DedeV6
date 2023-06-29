@@ -31,7 +31,7 @@ else if ($action == 'make') {
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
     if (($devInfo['auth_at'] + 60 * 60 * 24 * 365) < time()) {
-        ShowMsg("您的开发者账号已经过期，请登录www.dedebiz.com重新申请", "-1");
+        ShowMsg("您的开发者账号已经过期，登录DedeBIZ官网申请续费", "-1");
         exit();
     }
     $filelist = str_replace("\r", "\n", trim($filelist));
@@ -78,7 +78,7 @@ else if ($action == 'make') {
     $dm = new DedeModule($mdir);
     if ($dm->HasModule($hashcode)) {
         $dm->Clear();
-        ShowMsg("您指定同名模块已经存在，因此不能创建项目<br>如果您要更新这个模块，请先删除：module/{$hashcode}.xml", "-1");
+        ShowMsg("您指定同名模块已经存在，您要更新这个模块先删除：module/{$hashcode}.xml", "-1");
         exit();
     }
     $readmef = $setupf = $uninstallf = '';
@@ -162,7 +162,7 @@ $filelist
     fwrite($fp, "</modulefiles>\r\n");
     fwrite($fp, "</module>\r\n");
     fclose($fp);
-    ShowMsg("成功对一个新模块进行编译", "module_main.php");
+    ShowMsg("成功更新一个模块插件", "module_main.php");
     exit();
 }
 //修改项目
@@ -307,7 +307,7 @@ $filelist
         fwrite($fp, $fxml);
         fclose($fp);
     }
-    ShowMsg("成功对模块重新编译", "module_main.php");
+    ShowMsg("成功更新一个模块插件", "module_main.php");
     exit();
 }//ClearAllLink();
 ?>

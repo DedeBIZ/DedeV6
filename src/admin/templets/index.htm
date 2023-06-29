@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="robots" content="noindex,nofollow">
-		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<meta name="robots" content="noindex,nofollow">
 		<title><?php echo $cfg_webname;?>后台管理</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -15,10 +15,10 @@
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
 		<div id="browsehappy">
 			<span>您使用的浏览器已过时，请<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，提高后台操作体验</span>
-			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
+			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close"><i class="fa fa-times"></i></a>
 		</div>
 		<?php }?>
-		<div class="head">			
+		<div class="head shadow-sm">			
 			<div class="top-logo">
 				<span class="top-name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
 				<span class="top-version"><?php echo $cfg_version_detail;?></span>
@@ -32,18 +32,18 @@
 				<ul class="mb-0">
 					<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
 					<?php if ($cuserLogin->getUserType() >= 10) {?>
-					<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i></a></li>
-					<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
-					<li><a href="diy_main.php" target="main" title="自定义表单管理"><i class="fa fa-area-chart"></i></a></li>
+					<li class="d-none d-lg-block"><a href="sys_info.php" target="main" title="系统设置"><i class="fa fa-cog"></i></a></li>
+					<li class="d-none d-lg-block"><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
+					<li class="d-none d-lg-block"><a href="diy_main.php" target="main" title="自定义表单管理"><i class="fa fa-area-chart"></i></a></li>
 					<?php }?>
-					<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
-					<?php if (!DEDEBIZ_SAFE_MODE) {?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i></a></li><?php }?>
-					<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
+					<li class="d-none d-lg-block"><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
+					<?php if (!DEDEBIZ_SAFE_MODE) {?><li class="d-none d-lg-block"><a href="templets_main.php" target="main" title="主题管理"><i class="fa fa-cube"></i></a></li><?php }?>
+					<li class="d-none d-lg-block"><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
 					<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
-					<li><a href="../" target="_blank" title="预览首页"><i class="fa fa-home"></i></a></li>
-					<li>
+					<li class="d-none d-lg-block"><a href="../" target="_blank" title="预览首页"><i class="fa fa-home"></i></a></li>
+					<li class="d-none d-lg-block">
 						<form action="action_search.php" method="post" target="main">
-							<input type="text" name="keyword" placeholder="功能搜索" class="search-input">
+							<input type="text" name="keyword" placeholder="功能搜索" class="admin-input-sm">
 							<button type="submit" class="search"><i class="fa fa-search"></i> </button>
 						</form>
 					</li>
@@ -51,7 +51,7 @@
 			</nav>
 			<div class="top-admin">
 				<ul class="mb-0">
-					<li><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType()==10){echo "管理员";} else if ($cuserLogin->getUserType()==5) {echo "栏目员";} else {echo "文档员";}?></a></li>
+					<li class="d-none d-lg-block"><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType()==10){echo "<span class='btn btn-success btn-xs ml-2'>管理</span>";} else if ($cuserLogin->getUserType()==5) {echo "<span class='btn btn-success btn-xs ml-2'>栏目</span>";} else {echo "<span class='btn btn-success btn-xs ml-2'>文档</span>";}?></a></li>
 					<li><a href="exit.php">退了</a></li>
 				</ul>
 			</div>
@@ -76,7 +76,7 @@
 						$(this).html('<i class="fa fa-dedent"></i>');
 					}
 				});
-			};
+			}
 		</script>
 	</body>
 </html>

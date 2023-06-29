@@ -9,13 +9,13 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellspacing="1" cellpadding="0" align="center" class="table maintable my-3">
+		<table align="center" class="table maintable my-3">
 			<tr>
 				<td colspan="4" bgcolor="#f5f5f5">标签源码管理</td>
 			</tr>
 			<tr>
 				<td colspan="4">
-					<div class="alert alert-danger mb-0">修改系统标签有风险，请小心操作，文件存放在 ../system/taglib文件夹</div>
+					<div class="alert alert-danger mb-0">系统标签源码文件，修改不当会导致标签错误</div>
 				</td>
 			</tr>
 			<tr bgColor="#e9ecef" align="center">
@@ -35,9 +35,9 @@
 			?>
 			<tr align="center">
 				<td align="left"><img src="../static/web/img/icon_htm.png"><?php echo $filename;?></td>
-				<td><?php echo $fileinfo;?></td>
+				<td align="left"><?php echo $fileinfo;?></td>
 				<td><?php echo $filetime;?></td>
-				<td align="left"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a></td>
+				<td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a></td>
 			</tr>
 			<?php }?>
 			<tr>

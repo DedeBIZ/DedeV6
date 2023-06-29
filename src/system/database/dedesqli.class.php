@@ -1,8 +1,8 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 系统底层数据库核心类
- * 调用这个类前，请先设定这些外部变量
+ * 系统底层数据库核心，调用这个类前，请先设定这些外部变量
+ * 
  * $GLOBALS['cfg_dbhost'];
  * $GLOBALS['cfg_dbuser'];
  * $GLOBALS['cfg_dbpwd'];
@@ -109,7 +109,7 @@ class DedeSqli
                 mysqli_real_connect($this->linkID, $dbhost, $this->dbUser, $this->dbPwd, false, $dbport);
                 mysqli_errno($this->linkID) != 0 && $this->DisplayError('链接（'.$this->pconnect.'）到MySQL发生错误');
             } catch (Exception $e) {
-                $this->DisplayError("连接数据库失败，可能数据库密码不对或数据库服务器出错");
+                $this->DisplayError("连接数据库失败，数据库密码不对或数据库服务器出错");
                 exit;
             }
             
@@ -118,7 +118,7 @@ class DedeSqli
         }
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("连接数据库失败，可能数据库密码不对或数据库服务器出错");
+            $this->DisplayError("连接数据库失败，数据库密码不对或数据库服务器出错");
             exit();
         }
         $this->isInit = TRUE;
@@ -130,7 +130,7 @@ class DedeSqli
             mysqli_query($this->linkID, "SET sql_mode=''");
         }
         if ($this->dbName && !@mysqli_select_db($this->linkID, $this->dbName)) {
-            $this->DisplayError('连接数据库失败，可能数据库服务器奔溃');
+            $this->DisplayError('连接数据库失败，数据库服务器奔溃');
         }
         return TRUE;
     }
@@ -375,11 +375,14 @@ class DedeSqli
     function IsTable($tbname)
     {
         global $dsqli;
+        $prefix = "#@__";
+        $tbname = str_replace($prefix, $GLOBALS['cfg_dbprefix'], $tbname);
+        if (!preg_match('/^[\p{L}_][\p{L}\p{N}@$#\-_]*$/u', $tbname)) {
+            return FALSE;
+        }
         if (!$dsqli->isInit) {
             $this->Init($this->pconnect);
         }
-        $prefix = "#@__";
-        $tbname = str_replace($prefix, $GLOBALS['cfg_dbprefix'], $tbname);
         if (mysqli_num_rows(@mysqli_query($this->linkID, "SHOW TABLES LIKE '".$tbname."'"))) {
             return TRUE;
         }

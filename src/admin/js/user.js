@@ -8,12 +8,10 @@ function delArc(mid) {
 	location="member_do.php?id="+qstr+"&dopost=delmembers";
 }
 //获得选中文件的文件名
-function getCheckboxItem()
-{
+function getCheckboxItem() {
 	var allSel="";
 	if (document.form2.mid.value) return document.form2.mid.value;
-	for (i=0;i<document.form2.mid.length;i++)
-	{
+	for (i=0;i<document.form2.mid.length;i++) {
 		if (document.form2.mid[i].checked) {
 			if (allSel=="")
 				allSel=document.form2.mid[i].value;
@@ -24,8 +22,7 @@ function getCheckboxItem()
 	return allSel;
 }
 //获得选中其中一个的id
-function getOneItem()
-{
+function getOneItem() {
 	var allSel="";
 	if (document.form2.mid.value) return document.form2.mid.value;
 	for (i=0;i<document.form2.mid.length;i++) {
@@ -36,8 +33,7 @@ function getOneItem()
 	}
 	return allSel;
 }
-function selAll()
-{
+function selAll() {
 	if (typeof document.form2.mid.length === "undefined") {
 		document.form2.mid.checked = true;
 	}
@@ -47,8 +43,7 @@ function selAll()
 		}
 	}
 }
-function noSelAll()
-{
+function noSelAll() {
 	if (typeof document.form2.mid.length === "undefined") {
 		document.form2.mid.checked = false;
 	}

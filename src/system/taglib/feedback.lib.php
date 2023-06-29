@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 评论标签
  *
@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 function lib_feedback(&$ctag, &$refObj)
 {
     global $dsql;
-    $attlist = "row|12,titlelen|24,infolen|100,orderby|";
+    $attlist = "row|12,titlelen|30,infolen|100,orderby|";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = trim($ctag->GetInnerText());

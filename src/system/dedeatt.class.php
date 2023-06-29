@@ -99,7 +99,7 @@ class DedeAttParse
         }
     }
     /**
-     *  解析属性(私有成员，仅给SetSource调用)
+     *  解析属性，私有成员，仅给SetSource调用
      *
      * @access    private
      * @return    void
@@ -113,9 +113,7 @@ class DedeAttParse
         $ddtag = "";
         $notAttribute = TRUE;
         $strLen = strlen($this->SourceString);
-        //这里是获得Tag的名称,可视情况是否需要
-        //如果不在这个里解析,则在解析整个Tag时解析
-        //属性中不应该存在tagname这个名称
+        //这里是获得Tag的名称,可视情况是否需要，如果不在这个里解析,则在解析整个Tag时解析，属性中不应该存在tagname这个名称
         for ($i = 0; $i < $strLen; $i++) {
             $d = substr($this->SourceString, $i, 1);
             if ($d == ' ') {
@@ -155,7 +153,6 @@ class DedeAttParse
                 } else if ($startdd == 0) {
                     switch ($d) {
                         case ' ':
-                            //continue;
                             break;
                         case '\'':
                             $ddtag = '\'';
@@ -174,7 +171,7 @@ class DedeAttParse
                 } else if ($startdd == 1) {
                     if ($d == $ddtag) {
                         $this->CAtt->Count++;
-                        $this->CAtt->Items[$tmpatt] = trim($tmpvalue); //strtolower(trim($tmpvalue));
+                        $this->CAtt->Items[$tmpatt] = trim($tmpvalue);
                         $tmpatt = "";
                         $tmpvalue = "";
                         $startdd = -1;
@@ -185,10 +182,9 @@ class DedeAttParse
             }
             if ($tmpatt != "") {
                 $this->CAtt->Count++;
-                $this->CAtt->Items[$tmpatt] = trim($tmpvalue); //strtolower(trim($tmpvalue));
-            } //完成属性解析
-
-        } //for
-    } //has Attribute
-}//End DedeAttParse
+                $this->CAtt->Items[$tmpatt] = trim($tmpvalue);
+            }
+        }
+    }
+}
 ?>

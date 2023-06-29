@@ -1,6 +1,6 @@
 <?php
 /**
- * 图片选择
+ * 选择图片
  *
  * @version        $id:select_images.php 2022-07-01 tianya $
  * @package        DedeBIZ.Dialog
@@ -52,125 +52,59 @@ if (!empty($iseditor)) {
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>选择图片</title>
-    <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../static/web/css/admin.css">
-    <style>body{background:#f5f5f5}.upload-bg{margin:10px;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}</style>
-    <script>
-    function nullLink() {
-        return;
-    }
-    function ChangeImage(surl) {
-        document.getElementById('picview').src = surl;
-    }
-    </script>
-    <script src="../js/float.js"></script>
-    <script>
-    function nullLink() {
-        return;
-    }
-    function ChangeImage(surl) {
-        document.getElementById('floater').style.display = 'block';
-        document.getElementById('picview').src = surl;
-    }
-    function TNav() {
-        if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-        else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-        else return "OT";
-    }
-    //获取地址参数
-    function getUrlParam(paramName) {
-        var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i');
-        var match = window.location.search.match(reParam);
-        return (match && match.length > 1) ? match[1] : '';
-    }
-    function ReturnImg(reimg) {
-        var funcNum = getUrlParam('CKEditorFuncNum');
-        var iseditor = parseInt(getUrlParam('iseditor'));
-        if (funcNum > 1) {
-            var fileUrl = reimg;
-            window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
-        }
-        if (iseditor==1) {
-            let addonHTML = `<img src='${reimg}'>`;
-            window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
-        } else {
-            if (window.opener.document.<?php echo $f ?> != null) {
-                window.opener.document.<?php echo $f ?>.value = reimg;
-                if (window.opener.document.getElementById('div<?php echo $v ?>')) {
-                    if (TNav() == 'IE') {
-                        //window.opener.document.getElementById('div<?php echo $v ?>').filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = reimg;
-                        window.opener.document.getElementById('div<?php echo $v ?>').src = reimg;
-                        window.opener.document.getElementById('div<?php echo $v ?>').style.width = '150px';
-                        window.opener.document.getElementById('div<?php echo $v ?>').style.height = '100px';
-                    } else
-                        window.opener.document.getElementById('div<?php echo $v ?>').style.backgroundImage = "url(" + reimg + ")";
-                    } else if (window.opener.document.getElementById('<?php echo $v ?>')) {
-                    window.opener.document.getElementById('<?php echo $v ?>').src = reimg;
-                }
-                //适配新的缩略图
-                if (window.opener.document.getElementById('litPic')) {
-                    window.opener.document.getElementById('litPic').src = reimg;
-                }
-                if (document.all) window.opener = true;
-            } else if (typeof window.opener.CKEDITOR.instances["<?php echo $f ?>"] !== "undefined") {
-                let addonHTML = `<img src='${reimg}'>`;
-                window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
-            }
-        }
-        window.close();
-    }
-    </script>
-</head>
-<body>
-    <div class="upload-bg">
-        <div id="floater" class="napisdiv">
-            <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
-        </div>
-        <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless icon">
-            <tr>
-                <td colspan="4">
-                    <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
-                        <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
-                        <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
-                        <input type="hidden" name="f" value="<?php echo $f ?>">
-                        <input type="hidden" name="v" value="<?php echo $v ?>">
-                        <input type="hidden" name="iseditor" value="<?php echo $iseditor ?>">
-                        <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
-                        <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
-                        <input type="hidden" name="job" value="upload">
-                        <label>选择：<input type="file" name="imgfile" class="w-50"></label>
-                        <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?>> 水印</label>
-                        <label><input type="checkbox" name="resize" value="1"> 缩小</label>
-                        <label>宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs"></label>
-                        <label>高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="admin-input-xs"></label>
-                        <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td class="admin-td" colspan="4">点击图片预览，再点击图片关闭预览，点击文件名选择图片</td>
-            </tr>
-            <tr>
-                <td width="6%" class="admin-td">预览</td>
-                <td width="40%" class="admin-td">选择图片</td>
-                <td width="20%" class="admin-td">文件大小</td>
-                <td class="admin-td">修改时间</td>
-            </tr>
-            <?php
-            $dh = scandir($inpath);
-            $ty1 = "";
-            $ty2 = "";
-            foreach ($dh as $file) {
-                //计算文件大小和创建时间
-                if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
-                    $filesize = filesize("$inpath/$file");
-                    $filesize = $filesize / 1024;
-                    if ($filesize != "")
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <title>选择图片</title>
+        <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/web/css/admin.css">
+        <script src="../js/float.js"></script>
+    </head>
+    <body class="body-bg">
+        <div class="upload-bg shadow-sm">
+            <div id="floater" class="napisdiv">
+                <a href="javascript:nullLink();" onclick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
+            </div>
+            <table align="center" class="table icon">
+                <tr>
+                    <td colspan="3">
+                        <form name="myform" action="select_images_post.php" method="POST" enctype="multipart/form-data">
+                            <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
+                            <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
+                            <input type="hidden" name="f" value="<?php echo $f ?>">
+                            <input type="hidden" name="v" value="<?php echo $v ?>">
+                            <input type="hidden" name="iseditor" value="<?php echo $iseditor ?>">
+                            <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
+                            <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
+                            <input type="hidden" name="job" value="upload">
+                            <input type="file" name="imgfile" class="w-50">
+                            <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?>> 水印</label>
+                            <label><input type="checkbox" name="resize" value="1"> 缩小</label>
+                            <label>宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs"></label>
+                            <label>高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="admin-input-xs"></label>
+                            <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">点击图片预览，再点击图片关闭预览，点击文件名选择图片</td>
+                </tr>
+                <tr>
+                    <td width="40%">选择图片</td>
+                    <td width="26%">文件大小</td>
+                    <td>修改时间</td>
+                </tr>
+                <?php
+                $dh = scandir($inpath);
+                $ty1 = "";
+                $ty2 = "";
+                foreach ($dh as $file) {
+                    //计算文件大小和创建时间
+                    if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
+                        $filesize = filesize("$inpath/$file");
+                        $filesize = $filesize / 1024;
+                        if ($filesize != "")
                         if ($filesize < 0.1) {
                             @list($ty1, $ty2) = explode("\.", $filesize);
                             $filesize = $ty1.".".substr($ty2, 0, 2);
@@ -178,62 +112,116 @@ if (!empty($iseditor)) {
                             @list($ty1, $ty2) = explode("\.", $filesize);
                             $filesize = $ty1.".".substr($ty2, 0, 1);
                         }
-                    $filetime = filemtime("$inpath/$file");
-                    $filetime = MyDate("Y-m-d H:i:s", $filetime);
+                        $filetime = filemtime("$inpath/$file");
+                        $filetime = MyDate("Y-m-d H:i:s", $filetime);
+                    }
+                    if ($file == ".") continue;
+                    else if ($file == "..") {
+                        if ($activepath == "") continue;
+                        $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
+                        $line = "<tr>
+                        <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                        <td>当前目录：$activepath</td>
+                        </tr>";
+                        echo $line;
+                    } else if (is_dir("$inpath/$file")) {
+                        if (preg_match("#^_(.*)$#i", $file)) continue;
+                        if (preg_match("#^\.(.*)$#i", $file)) continue;
+                        $line = "<tr>
+                        <td colspan='3'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                        </tr>";
+                        echo "$line";
+                    } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
+                        $reurl = "$activeurl/$file";
+                        $reurl = preg_replace("#^\.\.#", "", $reurl);
+                        $reurl = $reurl;
+                        if ($file == $comeback) $lstyle = "class='text-danger'";
+                        else  $lstyle = "";
+                        $line = "<tr>
+                        <td>
+                            <a href=\"javascript:;\" onclick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
+                            <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+                        </td>
+                        <td>$filesize KB</td>
+                        <td>$filetime</td>
+                        </tr>";
+                        echo "$line";
+                    } else if (preg_match("#\.(jpg)#i", $file)) {
+                        $reurl = "$activeurl/$file";
+                        $reurl = preg_replace("#^\.\.#", "", $reurl);
+                        $reurl = $reurl;
+                        if ($file == $comeback) $lstyle = "class='text-danger'";
+                        else  $lstyle = "";
+                        $line = "<tr>
+                        <td>
+                            <a href=\"javascript:;\" onclick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
+                            <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+                        </td>
+                        <td>$filesize KB</td>
+                        <td>$filetime</td>
+                        </tr>";
+                        echo "$line";
+                    }
+                }//End Loop
+                ?>
+                </tr>
+            </table>
+        </div>
+        <script>
+        function nullLink() {
+            return;
+        }
+        function ChangeImage(surl) {
+            document.getElementById('floater').style.display = 'block';
+            document.getElementById('picview').src = surl;
+        }
+        function TNav() {
+            if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
+            else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+            else return "OT";
+        }
+        //获取地址参数
+        function getUrlParam(paramName) {
+            var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i');
+            var match = window.location.search.match(reParam);
+            return (match && match.length > 1) ? match[1] : '';
+        }
+        function ReturnImg(reimg) {
+            var funcNum = getUrlParam('CKEditorFuncNum');
+            var iseditor = parseInt(getUrlParam('iseditor'));
+            if (funcNum > 1) {
+                var fileUrl = reimg;
+                window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
+            }
+            if (iseditor==1) {
+                let addonHTML = `<img src='${reimg}'>`;
+                window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
+            } else {
+                if (window.opener.document.<?php echo $f ?> != null) {
+                    window.opener.document.<?php echo $f ?>.value = reimg;
+                    if (window.opener.document.getElementById('div<?php echo $v ?>')) {
+                        if (TNav() == 'IE') {
+                            //window.opener.document.getElementById('div<?php echo $v ?>').filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = reimg;
+                            window.opener.document.getElementById('div<?php echo $v ?>').src = reimg;
+                            window.opener.document.getElementById('div<?php echo $v ?>').style.width = '150px';
+                            window.opener.document.getElementById('div<?php echo $v ?>').style.height = '100px';
+                        } else
+                            window.opener.document.getElementById('div<?php echo $v ?>').style.backgroundImage = "url(" + reimg + ")";
+                        } else if (window.opener.document.getElementById('<?php echo $v ?>')) {
+                        window.opener.document.getElementById('<?php echo $v ?>').src = reimg;
+                    }
+                    //适配新的缩略图
+                    if (window.opener.document.getElementById('litPic')) {
+                        window.opener.document.getElementById('litPic').src = reimg;
+                    }
+                    if (document.all) window.opener = true;
+                } else if (typeof window.opener.CKEDITOR.instances["<?php echo $f ?>"] !== "undefined") {
+                    let addonHTML = `<img src='${reimg}'>`;
+                    window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
                 }
-                if ($file == ".") continue;
-                else if ($file == "..") {
-                    if ($activepath == "") continue;
-                    $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                    $line = "<tr>
-                    <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
-                    <td colspan='2' class='admin-td'>当前目录：$activepath</td>
-                    </tr>";
-                    echo $line;
-                } else if (is_dir("$inpath/$file")) {
-                    if (preg_match("#^_(.*)$#i", $file)) continue;
-                    if (preg_match("#^\.(.*)$#i", $file)) continue;
-                    $line = "<tr>
-                    <td colspan='2' class='admin-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
-                    <td class='admin-td'></td>
-                    <td class='admin-td'></td>
-                    </tr>";
-                    echo "$line";
-                } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
-                    $reurl = "$activeurl/$file";
-                    $reurl = preg_replace("#^\.\.#", "", $reurl);
-                    $reurl = $reurl;
-                    if ($file == $comeback) $lstyle = "class='text-danger'";
-                    else  $lstyle = "";
-                    $line = "<tr>
-                    <td colspan='2' class='admin-td'>
-                        <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
-                        <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
-                    </td>
-                    <td class='admin-td'>$filesize KB</td>
-                    <td class='admin-td'>$filetime</td>
-                    </tr>";
-                    echo "$line";
-                } else if (preg_match("#\.(jpg)#i", $file)) {
-                    $reurl = "$activeurl/$file";
-                    $reurl = preg_replace("#^\.\.#", "", $reurl);
-                    $reurl = $reurl;
-                    if ($file == $comeback) $lstyle = "class='text-danger'";
-                    else  $lstyle = "";
-                    $line = "<tr>
-                    <td colspan='2' class='admin-td'>
-                        <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
-                        <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
-                    </td>
-                    <td class='admin-td'>$filesize KB</td>
-                    <td class='admin-td'>$filetime</td>
-                    </tr>";
-                    echo "$line";
-                }
-            }//End Loop
-            ?>
-            </tr>
-        </table>
-    </div>
-</body>
+            }
+            window.close();
+        }
+        </script>
+    </body>
 </html>

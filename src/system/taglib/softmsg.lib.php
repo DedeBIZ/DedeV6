@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 下载说明标签
  *
@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 function lib_softmsg(&$ctag, &$refObj)
 {
     global $dsql;
-    //$attlist="type|textall,row|24,titlelen|24,linktype|1";
+    //$attlist="type|textall,row|30,titlelen|30,linktype|1";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';

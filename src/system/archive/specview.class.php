@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 专题视图类
+ * 专题视图
  *
  * @version        $id:specview.class.php 18:17 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
@@ -60,7 +60,7 @@ class SpecView
         $this->CountRecord();
         $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/list_spec.htm";
         if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "主题模板文件不存在，无法发布文档";
+            echo "专题主题模板文件不存在，无法更新专题";
             exit();
         }
         $this->dtp->LoadTemplate($tempfile);
@@ -329,7 +329,7 @@ class SpecView
         $this->dsql->Execute('al');
         $artlist = '';
         if ($col > 1) {
-            $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+            $artlist = "<table width='$tablewidth'>\r\n";
         }
         $this->dtp2->LoadSource($innertext);
         for ($i = 0; $i < $row; $i++) {

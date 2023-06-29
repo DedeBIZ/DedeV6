@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员权限管理
+ * 会员级别设置
  *
  * @version        $id:member_rank.php 12:37 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -37,7 +37,7 @@ if ($dopost == 'save') {
             $dsql->ExecuteNoneQuery($inquery);
         }
     }
-    echo "<script> alert('成功更新会员等级表'); </script>";
+    echo "<script>alert('成功更新会员等级表');</script>";
 }
 if ($dopost == 'del') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__arcrank` WHERE id='$id' AND `rank`<>10");

@@ -1,6 +1,6 @@
 <?php
 /**
- * 文件管理控制
+ * 文件管理器操作
  *
  * @version        $id:file_manage_control.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
@@ -21,6 +21,8 @@ else $inpath = $cfg_basedir.$activepath;
 $fmm = new FileManagement();
 $fmm->Init();
 if ($fmdo == "rename") {
+    $oldfilename = str_replace("..","",$oldfilename);
+    $newfilename = str_replace("..","",$newfilename);
     $fmm->RenameFile($oldfilename, $newfilename);
 }
 //新建目录
@@ -41,7 +43,7 @@ else if ($fmdo == "edit") {
     CheckCSRF();
     $filename = str_replace("..", "", $filename);
     if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
-        ShowMsg("指定的文件名已被系统禁止", "javascript:;");
+        ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
     $file = "$cfg_basedir$activepath/$filename";
@@ -52,30 +54,10 @@ else if ($fmdo == "edit") {
     if (empty($backurl)) {
         ShowMsg("成功保存一个文件", "file_manage_main.php?activepath=$activepath");
     } else {
-        ShowMsg("成功保存文件", $backurl);
+        ShowMsg("成功保存一个文件", $backurl);
     }
     exit();
 }
-/*
-文件修改，可视化模式
-function __saveEditView();
-else if ($fmdo=="editview")
-{
-    $filename = str_replace("..","",$filename);
-    $file = "$cfg_basedir$activepath/$filename";
-    $str = eregi_replace('&quot;','\\"',$str);
-    $str = stripslashes($str);
-    $fp = fopen($file,"w");
-    fputs($fp,$str);
-    fclose($fp);
-    if (empty($backurl))
-    {
-        $backurl = "file_manage_main.php?activepath=$activepath";
-    }
-    ShowMsg("成功保存文件",$backurl);
-    exit();
-}
-*/
 //文件上传
 else if ($fmdo == "upload") {
     $j = 0;
@@ -105,7 +87,7 @@ else if ($fmdo == "upload") {
             $j++;
         }
     }
-    ShowMsg("成功上传<span class='text-primary'>$j</span>个文件到: $activepath", "file_manage_main.php?activepath=$activepath");
+    ShowMsg("成功上传<span class='text-primary'>$j</span>个文件到<span class='text-primary'>$activepath</span>", "file_manage_main.php?activepath=$activepath");
     exit();
 }
 //空间检查
@@ -115,9 +97,8 @@ else if ($fmdo == "space") {
     } else {
         $ecpath = $activepath;
     }
-    $titleinfo = "[<a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>]空间使用状况：<br>";
-    $wintitle = "文件管理";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::空间大小检查";
+    $wintitle = "指定空间检查大小";
+    $wecome_info = "文件管理器 - <a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>空间检查大小";
     $activepath = $cfg_basedir.$activepath;
     $space = new SpaceUse;
     $space->checksize($activepath);
@@ -126,8 +107,16 @@ else if ($fmdo == "space") {
     $totalmb = $space->setmb($total);
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "POST");
-    $win->AddTitle($titleinfo);
-    $win->AddMsgItem("$totalmb M<br>$totalkb KB<br>$total 字节");
+    $win->AddMsgItem("<tr>
+        <td>
+            <span>$totalkb</span>KB<br>
+            <span>$totalmb</span>M<br>
+            <span>$total</span>字节
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='file_manage_main.php';\">文件管理器</button></td>
+    </tr>");
     $winform = $win->GetWindow("");
     $win->Display();
 }

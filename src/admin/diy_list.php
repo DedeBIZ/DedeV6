@@ -11,9 +11,9 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
-$action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete','excel')) ? $action : '';
+$action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete', 'excel')) ? $action : '';
 if (empty($diyid)) {
-    showMsg("非法操作", 'javascript:;');
+    showMsg("操作失败", 'javascript:;');
     exit();
 }
 require_once DEDEINC.'/diyform.class.php';
@@ -33,7 +33,7 @@ if ($action == 'post') {
         }
         $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         if (!is_array($diyform)) {
-            showmsg("自定义表单不存在", '-1');
+            showmsg("表单不存在，程序返回", '-1');
             exit();
         }
         $addvar = $addvalue = '';
@@ -80,13 +80,13 @@ if ($action == 'post') {
     if (empty($do)) {
         $id = isset($id) && is_numeric($id) ? $id : 0;
         if (empty($id)) {
-            showMsg('非法操作未指定id', 'javascript:;');
+            showMsg('操作失败，未指定id', 'javascript:;');
             exit();
         }
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";
         $row = $dsql->GetOne($query);
         if (!is_array($row)) {
-            showmsg("您浏览的记录不存在或未经审核", '-1');
+            showmsg("您浏览的记录不存在或未审核", '-1');
             exit();
         }
         $postform = $diy->getForm('edit', $row, 'admin');
@@ -99,7 +99,7 @@ if ($action == 'post') {
         $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         $diyco = $dsql->GetOne("SELECT * FROM `$diy->table` WHERE id='$id'");
         if (!is_array($diyform)) {
-            showmsg("自定义表单不存在", '-1');
+            showmsg("表单不存在，程序返回", '-1');
             exit();
         }
         $addsql = '';
@@ -137,7 +137,7 @@ if ($action == 'post') {
     if (is_array($id) && is_all_numeric($id)) {
         $ids = implode(',', $id);
     } else {
-        showmsg('未选中要操作的文档', '-1');
+        showmsg('未选中要操作的表单', '-1');
         exit();
     }
     $query = "UPDATE `$diy->table` SET ifcheck=1 WHERE id IN ($ids)";
@@ -151,7 +151,7 @@ if ($action == 'post') {
         if (is_array($id)) {
             $ids = implode(',', $id);
         } else {
-            showmsg('未选中要操作的文档', '-1');
+            showmsg('未选中要操作的表单', '-1');
             exit();
         }
         $query = "DELETE FROM `$diy->table` WHERE id IN ($ids)";
@@ -165,16 +165,15 @@ if ($action == 'post') {
         if (file_exists($cfg_basedir.$row[$name])) {
             unlink($cfg_basedir.$row[$name]);
             $dsql->ExecuteNoneQuery("UPDATE `$diy->table` SET $name='' WHERE id='$id'");
-            showmsg('文件删除成功', "diy_list.php?action=list&diyid={$diy->diyid}");
+            showmsg('删除成功', "diy_list.php?action=list&diyid={$diy->diyid}");
         } else {
-            showmsg('文件不存在', '-1');
+            showmsg('删除失败', '-1');
         }
     }
-} 
-elseif ($action == 'excel') {
-    ob_end_clean();//清除缓冲区,避免乱码
+} elseif ($action == 'excel') {
+    ob_end_clean();//清除缓冲区，避免乱码
     header("Content-type:application/vnd.ms-excel");
-    header("Content-Disposition:attachment;filename={$diy->name}_".date("Y-m-d").".xls");
+    header("Content-Disposition:attachment;filename={$diy->name}".date("Y-m-d").".xls");
     print(chr(0xEF).chr(0xBB).chr(0xBF));//清除bom
     $fieldlist = (array)$diy->getFieldList();
     echo "<table><tr>";
@@ -194,7 +193,7 @@ elseif ($action == 'excel') {
         {
             echo "<td>".$arr[$key]."</td>";
         }
-    $status = $arr['ifcheck'] == 1 ? '<span class="btn btn-success btn-sm">已审核</span>' : '<span class="btn btn-danger btn-sm">未审核</span>';
+    $status = $arr['ifcheck'] == 1 ? '已审核' : '未审核';
     echo "<td>".$status."</td>";
     echo "</tr>";
     }

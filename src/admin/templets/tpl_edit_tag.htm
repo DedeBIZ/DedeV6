@@ -18,33 +18,27 @@
 		<script src="js/mode/clike/clike.js"></script>
 		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function Post() {
-				if (document.form1.filename.value == "") {
-					ShowMsg("文件名不能为空");
-					document.form1.filename.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
 			<input type="hidden" name="actiondo" value="<?php echo $action;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="action" value="savetagfile">
-			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<table align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2"><?php echo $title;?></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">请先作好备份标签源码文件在进行修改，如果二次修改错误会导致标签无法解析。标签文件名为：标签名.lib.php接口函数定义为：function lib_标签名(&$ctag,&$refObj)，返回值是结果字符串，修改标签时为了防止出错，您也可以修改它的名称同时修改文件名和函数名，这样等同继承了原来标签的代码建立一个新的标签</div>
+						<div class="alert alert-danger mb-0">系统标签源码文件，修改不当会导致标签错误</div>
 					</td>
 				</tr>
 				<tr>
 					<td width="260">文件名称</td>
-					<td><input name="filename" value="<?php echo $filename;?>" class="admin-input-md">（不可以用“..”符号表示路径）</td>
+					<td>
+						<input name="filename" value="<?php echo $filename;?>" class="admin-input-lg">
+						<span>（不可以用小数点..表示路径）</span>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2" class="p-0"><textarea id="content" name="content" class="admin-textarea-xl"><?php echo $democode;?></textarea></td>
@@ -58,6 +52,13 @@
 			</table>
 		</form>
 		<script>
+			function Post() {
+				if (document.form1.filename.value == "") {
+					ShowMsg("文件名不能为空");
+					document.form1.filename.focus();
+					return false;
+				}
+			}
 			var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
 				lineNumbers: true,
 				lineWrapping: true,

@@ -1092,6 +1092,7 @@
 						type: 'button',
 						id: 'selectfile',
 						label: '选择服务器文件',
+						style: editor.config.filebrowserImageBrowseDisabled === true? 'display:none' : '',
 						size: 38,
                         onClick: function () {
 							var w = 800;

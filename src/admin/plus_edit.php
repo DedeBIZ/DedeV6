@@ -1,6 +1,6 @@
 <?php
 /**
- * 插件修改
+ * 修改插件
  *
  * @version        $id:plus_edit.php 15:46 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -13,37 +13,37 @@ CheckPurview('sys_plus');
 $aid = preg_replace("#[^0-9]#", "", $aid);
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=1 WHERE aid='$aid';");
-    ShowMsg("启用一个插件，请刷新侧边导航", "plus_main.php");
+    ShowMsg("启用一个插件", "plus_main.php");
     exit();
 } else if ($dopost == "hide") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=0 WHERE aid='$aid';");
-    ShowMsg("隐藏一个插件，请刷新侧边导航", "plus_main.php");
+    ShowMsg("隐藏一个插件", "plus_main.php");
     exit();
 } else if ($dopost == "delete") {
     if (empty($job)) $job = "";
-    if ($job == "") //确认提示
-    {
+    if ($job == "") {
+        //确认
         require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "删除插件";
-        $wecome_info = "<a href='plus_main.php'>插件管理</a>::删除插件";
+        $wintitle = "删除指定插件";
+        $wecome_info = "<a href='plus_main.php'>插件管理</a> - 删除插件";
         $win = new OxWindow();
         $win->Init("plus_edit.php", "js/blank.js", "POST");
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("aid", $aid);
         $win->AddTitle("您确定要删除<span class='text-primary'>".$title."</span>插件吗");
-        $win->AddMsgItem("提示：这里仅删除插件导航项，要干净删除请在模块管理处卸载删除，<a href='module_main.php?moduletype=plus'>模块管理</a>");
+        $win->AddMsgItem("<tr><td>提示：仅删除插件导航，前往<a href='module_main.php?moduletype=plus'>模块管理</a>卸载删除</td></tr>");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
-    } else if ($job == "yes") //操作
-    {
+    } else if ($job == "yes") {
+        //操作
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__plus` WHERE aid='$aid';");
-        ShowMsg("删除一个插件，请刷新侧边导航", "plus_main.php");
+        ShowMsg("删除一个插件", "plus_main.php");
         exit();
     }
-} else if ($dopost == "saveedit") //保存修改
-{
+} else if ($dopost == "saveedit") {
+    //保存
     $inquery = "UPDATE `#@__plus` SET plusname='$plusname',menustring='$menustring',filelist='$filelist' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg("完成修改插件配置", "plus_main.php");

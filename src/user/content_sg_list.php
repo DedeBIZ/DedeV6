@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEMEMBER."/inc/inc_list_functions.php");
@@ -35,9 +35,9 @@ if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
     exit();
 }
 if ($cid == 0) {
-    $positionname = $cInfos['typename']." &gt; ";
+    $positionname = $cInfos['typename']." - ";
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
+    $positionname = str_replace($cfg_list_symbol, " - ", $tl->GetPositionName())." - ";
 }
 $whereSql = " WHERE arc.channel = '$channelid' AND arc.mid='$mid' ";
 if ($keyword != '') {

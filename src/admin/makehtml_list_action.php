@@ -10,10 +10,11 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 require_once(DEDEINC."/channelunit.func.php");
 if (!isset($upnext)) $upnext = 1;
 if (empty($gotype)) $gotype = '';
+if (empty($gotype)) UpDateCatCache();
+require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 if (empty($pageno)) $pageno = 0;
 if (empty($mkpage)) $mkpage = 1;
 if (empty($typeid)) $typeid = 0;
@@ -41,6 +42,10 @@ else if ($gotype == 'mkall') {
     $idArray = array();
     if (file_exists($mkcachefile)) require_once($mkcachefile);
 }
+if (!$idArray) {
+    ShowMsg("暂无栏目", "javascript:;");
+    exit;
+}
 //当前更新栏目id
 $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
@@ -50,7 +55,7 @@ if (isset($idArray[$pageno])) {
         ShowMsg("完成所有栏目更新", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg("完成所有栏目更新，最后数据优化", "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目更新，数据已优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 }
@@ -62,7 +67,7 @@ $reurl = '';
 //更新数组所记录栏目
 if (!empty($tid)) {
     if (!isset($cfg_Cs[$tid])) {
-        ShowMsg('没有该栏目数据，可能缓存文件没有更新，请检查是否有写入权限', 'javascript:;');
+        ShowMsg('没有该栏目数据，缓存文件没有更新，请检查是否有写入权限', 'javascript:;');
         exit();
     }
     if ($cfg_Cs[$tid][1] > 0) {
@@ -94,21 +99,21 @@ if ($nextpage >= $totalpage && $finishType) {
         if (empty($reurl)) {
             $reurl = '../apps/list.php?tid='.$tid;
         }
-        ShowMsg("完成所有栏目更新，<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
+        ShowMsg("完成所有栏目更新，<a href='$reurl' target='_blank'>点击浏览</a>", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg("完成所有栏目更新，最后数据优化", "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目更新，数据已优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 } else {
     $typename = isset($cfg_Cs[$tid][3])? base64_decode($cfg_Cs[$tid][3]) : "";
     if ($finishType) {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage";
-        ShowMsg("更新栏目id：<span class='text-primary'>".$tid."</span>，栏目名称：<span class='text-primary'>{$typename}</span>，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新{$typename}栏目[id：".$tid."]，继续更新栏目", $gourl, 0, 100);
         exit();
     } else {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
-        ShowMsg("更新栏目id：<span class='text-primary'>".$tid."</span>，栏目名称：<span class='text-primary'>{$typename}</span>，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新{$typename}栏目[id：".$tid."]，继续更新栏目", $gourl, 0, 100);
         exit();
     }
 }

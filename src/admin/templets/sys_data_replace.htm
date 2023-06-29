@@ -11,6 +11,94 @@
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
+			<input type="hidden" name="action" value="apply">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2">数据库字段替换</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="alert alert-danger mb-0">数据库字段批量替换数据，操作不当会导致数据出错</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="260">选择数据表与字段：</td>
+					<td class="table-borderless p-0">
+						<table>
+							<tr>
+								<td id="tables">
+									<?php
+									$dsql->SetQuery("Show Tables");
+									$dsql->Execute('t');
+									if ($dsql->GetError()!=''){
+										echo "<span class='text-primary'>找不到您所指定的数据库 $dbname</span><br>";
+										echo $qbutton;
+									}
+									echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='admin-input-lg'>";
+									while($row = $dsql->GetArray('t',MYSQL_BOTH)){
+										echo "<option value='{$row[0]}'>{$row[0]}</option>";
+									}
+									echo "</select>";
+									$dsql->Close();
+									?>
+								</td>
+							</tr>
+							<tr>
+								<td id="fields"></td>
+							</tr>
+							<tr>
+								<td>
+									<input type="text" name="rpfield" id="rpfield" class="admin-input-sm">
+									<span>（选择替换字段）</span>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>主键字段：</td>
+					<td>
+						<input type="text" name="keyfield" id="keyfield" class="admin-input-sm">
+						<label><input type="radio" name="rptype" id="ot1" value="replace" checked="checked"> 普通替换</label>
+						<label><input type="radio" name="rptype" id="ot2" value="regex"> 正则表达式</label>
+						<span>（正则模式必须指定）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>被替换值：</td>
+					<td><textarea name="rpstring" id="rpstring" class="admin-textarea-xl"></textarea></td>
+				</tr>
+				<tr>
+					<td>值替换为：</td>
+					<td><textarea name="tostring" id="tostring" class="admin-textarea-xl"></textarea></td>
+				</tr>
+				<tr>
+					<td>替换条件：</td>
+					<td>
+						<input type="text" name="condition" id="condition" class="admin-input-sm">
+						<span>（空完全替换）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>验证码：</td>
+					<td>
+						<input type="text" name="validate" class="admin-input-sm text-uppercase">
+						<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">开始替换数据</button></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="mtd">
+						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			function ShowFields() {
 				var exptable = $DE('exptable').options[$DE('exptable').selectedIndex].value;
@@ -41,90 +129,5 @@
 				$DE('rpfield').value = v;
 			}
 		</script>
-	</head>
-	<body>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
-				<input type="hidden" name="action" value="apply">
-				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">数据库字段替换</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="alert alert-info mb-0">数据库字段批量替换中某字段值，操作不当导致数据库网站问题小心使用</div>
-					</td>
-				</tr>
-				<tr>
-					<td width="260">选择数据表与字段：</td>
-					<td class="table-borderless p-0">
-						<table width="98%" cellspacing="0" cellpadding="0">
-							<tr>
-								<td id="tables">
-									<?php
-									$dsql->SetQuery("Show Tables");
-									$dsql->Execute('t');
-									if ($dsql->GetError()!=''){
-										echo "<span class='text-primary'>找不到您所指定的数据库 $dbname</span><br>";
-										echo $qbutton;
-									}
-									echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='admin-input-md'>";
-									while($row = $dsql->GetArray('t',MYSQL_BOTH)){
-										echo "<option value='{$row[0]}'>{$row[0]}</option>";
-									}
-									echo "</select>";
-									$dsql->Close();
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td id="fields"></td>
-							</tr>
-							<tr>
-								<td><input type="text" name="rpfield" id="rpfield" class="admin-input-sm">（选择替换字段）</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td>主键字段：</td>
-					<td>
-						<input type="text" name="keyfield" id="keyfield" class="admin-input-sm">
-						<label><input type="radio" name="rptype" id="ot1" value="replace" checked="1"> 普通替换</label>
-						<label><input type="radio" name="rptype" id="ot2" value="regex"> 正则表达式</label>
-						（正则模式必须指定）
-					</td>
-				</tr>
-				<tr>
-					<td>被替换值：</td>
-					<td><textarea name="rpstring" id="rpstring" class="admin-textarea-xl"></textarea></td>
-				</tr>
-				<tr>
-					<td>值替换为：</td>
-					<td><textarea name="tostring" id="tostring" class="admin-textarea-xl"></textarea></td>
-				</tr>
-				<tr>
-					<td>替换条件：</td>
-					<td><input type="text" name="condition" id="condition" class="admin-input-sm">（空完全替换）</td>
-				</tr>
-				<tr>
-					<td>安全确认码：</td>
-					<td>
-						<input type="text" name="validate" class="admin-input-sm text-uppercase">
-						<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">开始替换数据</button></td>
-				</tr>
-			</form>
-			<tr>
-				<td colspan="2">结果：</td>
-			</tr>
-			<tr>
-				<td colspan="2" id="mtd">
-					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-				</td>
-			</tr>
-		</table>
 	</body>
 </html>

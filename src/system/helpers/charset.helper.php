@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * DedeBIZ中用到的字符编码转换的小助手函数
+ * DedeBIZ中字符编码转换助手
  *
  * @version        $id:charset.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers
@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 $UC2GBTABLE = $CODETABLE = $BIG5_DATA = $GB_DATA = '';
 $GbkUniDic = null;
 /**
- *  UTF-8 转GB编码
+ *  UTF-8转GB编码
  *
  * @access    public
  * @param     string  $utfstr  需要转换的字符串

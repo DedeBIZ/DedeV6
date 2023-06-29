@@ -45,18 +45,20 @@ if ($dopost != 'save') {
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
-    if (!isset($formhtml)) $formhtml = 0;
-    if (!isset($formzip)) $formzip = 0;
     if (!isset($ddisfirst)) $ddisfirst = 0;
     if (!isset($albums)) $albums = "";
     if (!isset($delzip)) $delzip = 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
-    if ($typeid == 0) {
-        ShowMsg("请指定文档的栏目", "-1");
+    if (trim($title) == '') {
+        ShowMsg("文档标题不能为空", "-1");
+        exit();
+    }
+    if (empty($typeid)) {
+        ShowMsg("请选择文档栏目", "-1");
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
+        ShowMsg("文档为非指定类型，请检查您发布文档是否正确", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -95,27 +97,11 @@ if ($dopost != 'save') {
     //生成文档id
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $adminid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
+        ShowMsg("获取主键失败，无法进行后续操作", "-1");
         exit();
     }
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$row' col='$col' value='$pagestyle'/}\r\n";
     $hasone = FALSE;
-    //处理并保存从网上复制的图片
-    if ($formhtml == 1) {
-        $imagebody = stripslashes($imagebody);
-        $imgurls .= GetCurContentAlbum($imagebody, $copysource, $litpicname);
-        if ($ddisfirst == 1 && $litpic == '' && !empty($litpicname)) {
-            $litpic = $litpicname;
-            $hasone = TRUE;
-        }
-    }
-    //处理从ZIP中解压的图片
-    if ($formzip == 1) {
-        include_once(DEDEADMIN."/file_class.php");
-        $zipfile = $cfg_basedir.str_replace($cfg_mainsite, '', $zipfile);
-        $tmpzipdir = DEDEDATA.'/ziptmp/'.cn_substr(md5(ExecTime()), 16);
-        $ntime = time();
-    }
     if ($albums !== "") {
         $albumsArr  = json_decode(stripslashes($albums), true);
         for ($i = 0; $i <= count($albumsArr) - 1; $i++) {
@@ -135,7 +121,7 @@ if ($dopost != 'save') {
                 $ntime = time();
                 $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
                 CreateDir($savepath);
-                $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+                $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
                 $fullUrl = $fullUrl.$ext;
                 file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
                 $info = '';
@@ -145,6 +131,9 @@ if ($dopost != 'save') {
                 $v = $album['img'];
                 $info = '';
                 $imginfos = GetImageSize($cfg_basedir.$v, $info);
+            }
+            if ($ddisfirst == 1) {
+                $litpic = $v;
             }
             $imginfo =  !empty($album['txt']) ? $album['txt'] : '';
             $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $v {/dede:img}\r\n";
@@ -196,7 +185,7 @@ if ($dopost != 'save') {
     if (!$dsql->ExecuteNoneQuery($query)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery(" DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
     //加入附加表
@@ -205,7 +194,7 @@ if ($dopost != 'save') {
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
+        ShowMsg("没找到模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
         exit();
     }
     $useip = GetIP();
@@ -214,7 +203,7 @@ if ($dopost != 'save') {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("数据保存到数据库附加表出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
     //生成网页
@@ -236,14 +225,16 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理图片文档</a>$backurl";
-    $msg = "<div>{$msg}</div>".GetUpdateTest();
+    $msg = "<tr>
+        <td bgcolor='#f5f5f5' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理图片文档</a>$backurl</td>
+    </tr>";
+    $msg = "{$msg}".GetUpdateTest();
     $wintitle = "成功发布图片文档";
-    $wecome_info = "文档管理::发布图片文档";
+    $wecome_info = "文档管理 - 发布图片文档";
     $win = new OxWindow();
     $win->AddTitle("成功发布图片文档");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
+    $winform = $win->GetWindow("hand", FALSE);
     $win->Display();
 }
 ?>

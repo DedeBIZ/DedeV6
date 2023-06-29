@@ -101,6 +101,10 @@ if ($dopost == 'bak') {
         $bakStr = '';
         //分析表里的字段信息
         $nowtable = str_replace("`", "", $nowtable);
+        if (!$dsql->IsTable($nowtable)) {
+            PutInfo("数据表名称错误", "");
+            exit();
+        }
         $dsql->GetTableFields($nowtable);
         $intable = "INSERT INTO `$nowtable` VALUES(";
         while ($r = $dsql->GetFieldObject()) {
@@ -251,7 +255,7 @@ else if ($dopost == 'redat') {
 function PutInfo($msg1, $msg2)
 {
     global $cfg_soft_lang;
-    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>系统提示</title><style>body{margin:0;line-height:1.6;letter-spacing:.6px;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#007bff;text-decoration:none}.tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:.5rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-body{padding:20px;min-height:130px;color:#545b62}.btn{margin-top:20px;text-align:center}.btn a{display:inline-block;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.5rem;text-align:center;transition:all .5s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(72,180,97,.5)}.text-primary{color:#007bff}@media (max-width:768px){.tips{padding:0 15px}.tips,.tips-box{width:100%}}</style></head><body><div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div><div class='tips-body'>{$msg1}{$msg2}</div></div></div>";
+    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='/static/web/css/bootstrap.min.css'><link rel='stylesheet' href='/static/web/css/admin.css'></head><base target='_self'><body class='body-bg'><div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div><div class='tips-body'>{$msg1}{$msg2}</div></div></div>";
     echo $msginfo."</body></html>";
 }
 function RpLine($str)

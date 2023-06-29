@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档关键词管理
+ * 文档关键词维护
  *
  * @version        $id:article_keywords_main.php 14:12 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -81,6 +81,6 @@ $dlist->Display();
 function GetSta($sta)
 {
     if ($sta == 1) return '';
-    else return 'checked="1"';
+    else return 'checked="checked"';
 }
 ?>

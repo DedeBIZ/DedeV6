@@ -1,15 +1,15 @@
 function checkSubmit(t) {
     if (document.addcontent.title.value == "") {
-        ShowMsg(`${t}不能为空`);
+        ShowMsg(`文档标题不能为空`);
         document.addcontent.title.focus();
         return false;
     }
     if (document.addcontent.typeid.value == 0) {
-        ShowMsg("请您选择文档所属栏目");
+        ShowMsg("请选择文档栏目");
         return false;
     }
 }
-function SelectImage(sform,stype) {
+function SelectFile(sform, stype) {
     let s = sform.split(".");
     if (s.length === 2) {
         let frm = document.getElementsByName(s[0]);
@@ -28,7 +28,7 @@ function SelectImage(sform,stype) {
             var fileData = f;
             formData.append('file', fileData);
             $.ajax({
-                url: 'api.php?action=upload&type=litpic',
+                url: 'api.php?action=upload&type='+stype,
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -37,7 +37,7 @@ function SelectImage(sform,stype) {
                     if (result.code === 0) {
                         $(ipt).val(result.data);
                     } else {
-                        ShowMsg("文件上传失败，错误原因："+result.msg);
+                        ShowMsg("文件上传失败，错误原因："+result.error.message);
                     }
                 },
                 error: function (xhr, status, error) {
@@ -46,4 +46,16 @@ function SelectImage(sform,stype) {
             });
         })
     }
+}
+function SelectImage(sform, stype) {
+    if (stype == 'big') {
+        stype = "litpic";
+    }
+    SelectFile(sform, stype);
+}
+function SelectSoft(sform, stype='soft') {
+    SelectFile(sform, stype);
+}
+function SelectMedia(sform, stype='media') {
+    SelectFile(sform, stype);
 }

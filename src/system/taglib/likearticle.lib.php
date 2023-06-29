@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 自动关连文档标签
  *
@@ -56,9 +56,9 @@ function lib_likearticle(&$ctag, &$refObj)
             $n++;
         }
     }
-    $arcid = (!empty($refObj->Fields['id']) ? $refObj->Fields['aid'] : 0);
+    $arcid = (!empty($refObj->Fields['id']) ? $refObj->Fields['id'] : 0);
     if (empty($arcid) || $byabs == 0) {
-        $orderquery = " ORDER BY arc.id desc ";
+        $orderquery = " ORDER BY arc.id DESC ";
     } else {
         $orderquery = " ORDER BY ABS(arc.id - ".$arcid.") ";
     }
@@ -79,7 +79,7 @@ function lib_likearticle(&$ctag, &$refObj)
     $dsql->Execute('al');
     $artlist = '';
     if ($col > 1) {
-        $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+        $artlist = "<table width='$tablewidth'>\r\n";
     }
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');

@@ -1,6 +1,6 @@
 <?php
 /**
- * 多媒体发送
+ * 选择多媒体发送
  *
  * @version        $id:select_media_post.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog

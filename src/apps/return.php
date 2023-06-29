@@ -35,7 +35,7 @@ if ($dopost === 'alipay') {
         $pay = \AliPay\Web::instance($config);
         unset($_REQUEST['dopost']);
         unset($_REQUEST['sign_type']);
-        $data = $pay->notify();
+        $data = $pay->notify(false, $_REQUEST);
         if (isset($data['trade_no']) && !empty($data['trade_no'])) {
             //$pay = \AliPay\Transfer::instance($config);
             $result = $pay->query($data['out_trade_no']);
@@ -73,11 +73,11 @@ if ($dopost === 'alipay') {
             exit;
         }
     } catch (Exception $e) {
-        ShowMsg("付款错误", "javascript:;");
+        ShowMsg("付款失败，请检查支付接口设置", "javascript:;");
         exit;
     }
 } else {
-    ShowMsg("未知支付方式", "javascript:;");
+    ShowMsg("未知付款，请检查支付接口设置", "javascript:;");
     exit;
 }
 ?>

@@ -2,15 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>购买文档-会员中心-<?php echo $cfg_webname;?></title>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="body-bg">
-		<?php pasterTempletDiy('top.htm');?>
+		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
 			<div class="row">
 				<?php
@@ -21,7 +22,7 @@
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
 						<div class="table-responsive">
-							<table width="100%" cellpadding="0" cellspacing="0" class="table">
+							<table class="table">
 								<thead>
 									<tr>
 										<th width="8%">选择</th>
@@ -38,7 +39,7 @@
 										<tr>
 											<td><input type="checkbox" name="deleteid" value="{dede:field.aid/}" /></td>
 											<td><?php echo $fields['aid'];?></td>
-											<td><?php echo '<a href="../apps/view.php?aid='.str_replace('ARCHIVE', '', $fields['buyid']).'" target="_blank">'.$fields['oldinfo'].'</a>';?></td>
+											<td><?php echo '<a href="/apps/view.php?aid='.str_replace('ARCHIVE', '', $fields['buyid']).'" target="_blank">'.$fields['oldinfo'].'</a>';?></td>
 											<td><?php echo $fields['money'];?></td>
 											<td><?php echo GetDateTimeMk($fields['mtime']);?></td>
 										</tr>
@@ -58,7 +59,7 @@
 				</div>
 			</div>
 		</main>
-		<?php pasterTempletDiy('foot.htm');?>
+		<?php obtaintheme('foot.htm');?>
 		<script>
 			//获得选中文件的文件名
 			function GetCheckfolderItem() {

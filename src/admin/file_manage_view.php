@@ -1,6 +1,6 @@
 <?php
 /**
- * 文件查看
+ * 文件管理器查看
  *
  * @version        $id:file_manage_view.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
@@ -16,21 +16,20 @@ $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = "";
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
-//显示控制层
 //修改文件名
 if ($fmdo == "rename") {
     if ($activepath == "") $ndirstring = "根目录";
     $ndirstring = $activepath;
-    $wintitle = "文件管理";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::修改文件名";
+    $wintitle = "修改指定文件名称";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 修改文件名称";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "js/blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
     $win->AddTitle("修改文件名，当前路径：$ndirstring");
-    $win->AddItem("旧名称：", "<input name='oldfilename' type='input' id='oldfilename' size='40' value='$filename'>");
-    $win->AddItem("新名称：", "<input name='newfilename' type='input' size='40' id='newfilename'>");
+    $win->AddItem("旧名称：", "<input type='input' name='oldfilename' id='oldfilename' class='admin-input-md' value='$filename'>");
+    $win->AddItem("新名称：", "<input type='input' name='newfilename' id='newfilename' class='admin-input-md'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
@@ -38,22 +37,22 @@ if ($fmdo == "rename") {
 else if ($fmdo == "newdir") {
     if ($activepath == "") $activepathname = "根目录";
     else $activepathname = $activepath;
-    $wintitle = "文件管理";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::新建目录";
+    $wintitle = "新建文件目录";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 新建目录";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "js/blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("token", make_hash());
     $win->AddTitle("当前目录 $activepathname ");
-    $win->AddItem("新目录：", "<input name='newpath' type='input' id='newpath'>");
+    $win->AddItem("新目录：", "<input type='input' name='newpath' id='newpath' class='admin-input-md'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
 //移动文件
 else if ($fmdo == "move") {
-    $wintitle = "文件管理";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::移动文件</a>";
+    $wintitle = "移动指定文件";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 移动文件</a>";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "js/blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
@@ -62,26 +61,26 @@ else if ($fmdo == "move") {
     $win->AddTitle("新位置前面不加'/'表示相对于当前位置，加'/'表示相对于根目录");
     $win->AddItem("被移动文件：", $filename);
     $win->AddItem("当前位置：", $activepath);
-    $win->AddItem("新位置：", "<input name='newpath' type='input' id='newpath' size='40'>");
+    $win->AddItem("新位置：", "<input type='input' name='newpath' id='newpath' class='admin-input-md'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
 //删除文件
 else if ($fmdo == "del") {
-    $wintitle = "文件管理";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::删除文件";
+    $wintitle = "删除指定文件";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 删除文件";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "js/blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
     if (@is_dir($cfg_basedir.$activepath."/$filename")) {
-        $wmsg = "您确定要删除<span class='text-primary'>$filename</span>目录吗";
+        $msg = "<tr><td>您确定要删除<span class='text-primary'>$filename</span>目录吗</td></tr>";
     } else {
-        $wmsg = "您确定要删除<span class='text-primary'>$filename</span>文件吗";
+        $msg = "<tr><td>您确定要删除<span class='text-primary'>$filename</span>文件吗</td></tr>";
     }
     $win->AddTitle("删除文件确认");
-    $win->AddMsgItem($wmsg, "50");
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("ok");
     $win->Display();
 }

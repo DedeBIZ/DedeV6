@@ -4,8 +4,8 @@
 		<meta charset="<?php echo $cfg_soft_lang; ?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>搜索关键词管理</title>
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
@@ -14,14 +14,14 @@
 		<script src="js/main.js"></script>
 		<script>
 		var pageno = 1;
-		var totalrow = <?php echo $totalRow?>;
-		var pagesize = <?php echo $pagesize?>;
-		var orderby = '<?php echo $orderby?>';
+		var totalrow = "<?php echo $totalRow?>";
+		var pagesize = "<?php echo $pagesize?>";
+		var orderby = "<?php echo $orderby?>";
 		//加载列表
 		function ReloadPage(ordertype) {
 			orderby = ordertype;
 			var listArea = $Obj('rslist');
-			var errMsg = "网络通信出错<br><a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
+			var errMsg = "网络通信出错，<a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
 			fetch("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype).then(resp=>{
 				if (resp.ok) {
 					return resp.text()
@@ -45,7 +45,7 @@
 			var kw = $Obj('keyword' + nid).value;
 			var kws = $Obj('spwords' + nid).value;
 			var ct = $Obj('count' + nid).value;
-			var errMsg = "网络通信出错<br><a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
+			var errMsg = "网络通信出错，<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
 			<?php
 			if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {
 			?>
@@ -82,7 +82,7 @@
 			totalrow = totalrow - 1;
 			var pagenum = Math.ceil(totalrow / pagesize);
 			if (pagenum <= pageno) pageno = pagenum;
-			var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
+			var errMsg = "网络通信出错，<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
 			fetch("search_keywords_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno + "&orderby=" + orderby).then(resp=>{
 				if (resp.ok) {
 					return resp.text()
@@ -136,7 +136,7 @@
 	</head>
 	<body>
 		<div id="rslist"><?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?></div>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
+		<table align="center" class="table maintable mb-3">
 			<tr>
 				<td bgcolor="#f5f5f5" align="center">
 					<span id="pagelist"></span>

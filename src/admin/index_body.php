@@ -8,12 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__).'/config.php');
-require(DEDEINC.'/image.func.php');
-require(DEDEINC.'/dedetag.class.php');
-//默认首页
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/image.func.php');
+require_once(DEDEINC.'/dedetag.class.php');
 if (empty($dopost)) {
-    require(DEDEINC.'/inc/inc_fun_funAdmin.php');
+    require_once(DEDEINC.'/inc/inc_fun_funAdmin.php');
     $verLockFile = DEDEDATA.'/admin/ver.txt';
     $fp = fopen($verLockFile, 'r');
     $upTime = trim(fread($fp, 64));
@@ -22,8 +21,7 @@ if (empty($dopost)) {
     $offUrl = SpGetNewInfo();
     include DedeInclude('templets/index_body.htm');
     exit();
-}
-else if ($dopost == 'setskin') {
+} else if ($dopost == 'setskin') {
     $cskin = empty($cskin) ? 1 : $cskin;
     $skin = !in_array($cskin, array(1, 2, 3, 4)) ? 1 : $cskin;
     $skinconfig = DEDEDATA.'/admin/skin.txt';
@@ -31,7 +29,7 @@ else if ($dopost == 'setskin') {
 } elseif ($dopost == 'get_seo') {
     //直接采用DedeBIZ重写方法
     exit;
-} elseif ($dopost == 'get_articles'){
+} elseif ($dopost == 'get_articles') {
 ?>
 <table class="table table-borderless">
     <?php
@@ -40,7 +38,7 @@ else if ($dopost == 'setskin') {
         $admin_catalog = join(',', $admin_catalogs);
         $userCatalogSql = "AND arc.typeid IN($admin_catalog) ";
     }
-    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,15";
+    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,13";
     $arcArr = array();
     $dsql->Execute('m', $query);
     while($row = $dsql->GetArray('m'))
@@ -57,7 +55,7 @@ else if ($dopost == 'setskin') {
             }
             $rowarcrank = $row['arcrank']==-1? "<span class='btn btn-danger btn-xs ml-2'>未审核</span>":"";
             $pubdate = GetDateMk($row['pubdate']);
-            echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
+            echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='100'>{$pubdate}</td></tr>";
         }
     } else {
     ?>
@@ -67,18 +65,43 @@ else if ($dopost == 'setskin') {
 <?php
     exit;
 } elseif ($dopost == "system_info") {
-    if (!extension_loaded("openssl")) {
+    if (empty(trim($cfg_auth_code))) {
+        $indexHTML = "";
+        if (file_exists(DEDEROOT."/index.html")) {
+            $indexHTML = file_get_contents(DEDEROOT."/index.html");
+        } else {
+            $row = $dsql->GetOne("SELECT * FROM `#@__homepageset`");
+            $row['templet'] = MfTemplet($row['templet']);
+            $pv = new PartView();
+            $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$row['templet']);
+            $row['showmod'] = isset($row['showmod']) ? $row['showmod'] : 0;
+            if ($row['showmod'] == 0) {
+                ob_start();
+                $pv->Display();
+                $indexHTML = ob_get_contents();
+                ob_end_clean();
+            }
+        }
+        $pattern = '/<a\s[^>]*href=["\']?([^"\'>\s]*)["\']?[^>]*>/is';
+        preg_match_all($pattern, $indexHTML, $matches);
+        $hasPowered = false;
+        foreach ($matches[1] as $href) {
+            if (preg_match("#^https://www.dedebiz.com#",$href)) {
+                $hasPowered = true;
+            }
+        }
+        $poweredStr = $hasPowered? "" : "请保留正确的<a href='https://www.dedebiz.com/powered_by_dedebiz' class='text-primary'>底部版权信息</a>，";
         echo json_encode(array(
-            "code" => -1001,
-            "msg" => "PHP不支持OpenSSL，无法完成商业版授权。",
+            "code" => -1002,
+            "msg" => "当前站点已授权社区版，{$poweredStr}获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>",
             "result" => null,
         ));
         exit;
     }
-    if (empty($cfg_auth_code)) {
+    if (!extension_loaded("openssl")) {
         echo json_encode(array(
-            "code" => -1002,
-            "msg" => "当前站点已授权社区版，获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>。",
+            "code" => -1001,
+            "msg" => "PHP不支持OpenSSL，无法完成商业版授权",
             "result" => null,
         ));
         exit;
@@ -99,7 +122,7 @@ else if ($dopost == 'setskin') {
                 "result" => array(
                     "domain" => $res->domain,
                     "title" => $res->title,
-                    "stype" => $res->stype == 1 ? "企业单位" : "个人",
+                    "stype" => $res->stype == 1 ? "企业" : "个人",
                     "auth_version" => $res->auth_version,
                     "auth_at" => date("Y-m-d", $res->auth_at),
                     "core" => $core_info,
@@ -109,7 +132,6 @@ else if ($dopost == 'setskin') {
     }
 } elseif ($dopost == 'get_statistics') {
     require_once(DEDEINC."/libraries/statistics.class.php");
-    //获取统计信息
     $sdate = empty($sdate) ? 0 : intval($sdate);
     $stat = new DedeStatistics;
     $rs = $stat->GetInfoByDate($sdate);
@@ -121,7 +143,6 @@ else if ($dopost == 'setskin') {
     exit;
 }  elseif ($dopost == 'get_statistics_multi') {
     require_once(DEDEINC."/libraries/statistics.class.php");
-    //获取统计信息
     $sdates = empty($sdates) ? array() : explode(",",preg_replace("[^\d\,]","",$sdates)) ;
     $stat = new DedeStatistics;
     $rs = $stat->GetInfoByDateMulti($sdates);

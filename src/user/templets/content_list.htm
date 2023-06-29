@@ -2,15 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>我的文档-会员中心-<?php echo $cfg_webname;?></title>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="body-bg">
-		<?php pasterTempletDiy('top.htm');?>
+		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
 			<div class="row">
 				<?php
@@ -28,12 +29,12 @@
 							<span class="navbar-text"><a class="btn btn-success btn-sm" href="archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>">发布</a></span>
 						</nav>
 						<div class="table-responsive">
-							<table width="100%" cellpadding="0" cellspacing="0" class="table">
+							<table class="table">
 								<thead>
 									<tr>
 										<th width="26%">文档标题</th>
 										<th width="16%">栏目</th>
-										<th width="12%">状态</th>
+										<th width="16%">状态</th>
 										<th width="16%">时间</th>
 										<th>操作</th>
 									</tr>
@@ -73,7 +74,7 @@
 				</div>
 			</div>
 		</main>
-		<?php pasterTempletDiy('foot.htm');?>
+		<?php obtaintheme('foot.htm');?>
 		<script>
 			function viewArc(aid) {
 				window.open("{dede:global.cfg_phpurl/}/view.php?aid=" + aid);

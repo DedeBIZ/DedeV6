@@ -1,6 +1,6 @@
 <?php
 namespace WeChat;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use WeChat\Contracts\BasicWePay;
 use WePay\Bill;
 use WePay\Order;

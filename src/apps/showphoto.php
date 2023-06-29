@@ -74,6 +74,6 @@ if ($nextSrc != '') {
 } else {
     $pageGuide .= " | 没有了";
 }
-require_once(DEDETEMPLATE.'/plus/showphoto.htm');
+require_once(DEDETEMPLATE.'/apps/showphoto.htm');
 exit();
 ?>

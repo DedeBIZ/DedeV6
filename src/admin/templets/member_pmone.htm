@@ -10,11 +10,11 @@
 	</head>
 	<body>
 		<form action="member_pm.php" name="form1" method="get">
-			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-				<tr bgcolor="#f5f5f5">
-					<td>
-						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-md mr-3">
-						<input type="text" name="username" id="username" placeholder="请输入会员名" class="admin-input-md mr-3">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5">
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
+						<input type="text" name="username" id="username" placeholder="请输入账号" class="admin-input-lg mr-3">
 						<select name="folder" id="folder" class="admin-input-sm mr-3">
 							<option value="inbox">收件箱</option>
 							<option value="outbox">发件箱</option>
@@ -24,38 +24,32 @@
 				</tr>
 			</table>
 		</form>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="7">
-					<a href="member_pm.php" class="btn btn-outline-success btn-sm">短信列表</a>
-					<a href="member_pmall.php" class="btn btn-outline-success btn-sm">群发短信</a>
-					<span id="cate_1" class="btn btn-success btn-sm">单独短信</span>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="7">
-					<form id="postall" method="post" action="member_pmone.php">
-						<input type="hidden" name="action" value="post">
-						<table width="100%" cellpadding="1" cellspacing="1">
-							<tr>
-								<td width="260">发送到：</td>
-								<td><input type="text" name="msgtoid" value="<?php echo empty($touid)? '' : $touid?>" class="admin-input-md"> 填写会员登录的id（网址uid=后面跟着的id）</td>
-							</tr>
-							<tr>
-								<td>标题：</td>
-								<td><input type="text" name="subject" id="subject" class="admin-input-md">（标题少于70个字符内）</td>
-							</tr>
-							<tr>
-								<td><label for="pm_textarea">文档：</label></td>
-								<td><textarea name="message" id="message" class="admin-textarea-xl"></textarea>（1000个字符以内）</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center"><input type="submit" value="提交" class="btn btn-success btn-sm"></td>
-							</tr>
-						</table>
-					</form>
-				</td>
-			</tr>
-		</table>
+		<form id="postall" method="post" action="member_pmone.php">
+			<input type="hidden" name="action" value="post">
+			<table align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2">
+						<a href="member_pm.php" class="btn btn-outline-success btn-sm">短信列表</a>
+						<a href="member_pmall.php" class="btn btn-outline-success btn-sm">群发短信</a>
+						<span id="cate_1" class="btn btn-success btn-sm">单独短信</span>
+					</td>
+				</tr>
+				<tr>
+					<td width="260">发送到：</td>
+					<td><input type="text" name="msgtoid" value="<?php echo empty($touid)? '' : $touid?>" class="admin-input-lg"> 填写会员登录的id（网址uid=后面跟着的id）</td>
+				</tr>
+				<tr>
+					<td>标题：</td>
+					<td><input type="text" name="subject" id="subject" class="admin-input-lg">（标题少于70个字符内）</td>
+				</tr>
+				<tr>
+					<td><label for="pm_textarea">文档：</label></td>
+					<td><textarea name="message" id="message" class="admin-textarea-xl"></textarea>（1000个字符以内）</td>
+				</tr>
+				<tr>
+					<td colspan="2" bgcolor="#f5f5f5" align="center"><input type="submit" value="提交" class="btn btn-success btn-sm"></td>
+				</tr>
+			</table>
+		</form>
 	</body>
 </html>

@@ -8,10 +8,313 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<form name="form1" action="catalog_edit.php" method="post" onSubmit="return checkSubmit()">
+			<input type="hidden" name="dopost" value="save">
+			<input type="hidden" name="id" value="<?php echo $id;?>">
+			<input type="hidden" name="topid" value="<?php echo $myrow['topid'];?>">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="4">修改栏目</td>
+				</tr>
+				<tr>
+					<td width="10%">是否支持投稿：</td>
+					<td width="40%">
+						<label><input type="radio" name="issend" value="1" <?php if ($myrow['issend']=="1") echo "checked='checked'";?>> 支持</label>
+						<label><input type="radio" name="issend" value="0" <?php if ($myrow['issend']=="0") echo "checked='checked'";?>> 不支持</label>
+					</td>
+					<td width="10%">是否隐藏栏目：</td>
+					<td width="40%">
+						<label><input type="radio" name="ishidden" value="0" <?php if ($myrow['ishidden']=="0") echo "checked='checked'";?>> 显示</label>
+						<label><input type="radio" name="ishidden" value="1" <?php if ($myrow['ishidden']=="1") echo "checked='checked'";?>> 隐藏</label>
+					</td>
+				</tr>
+				<tr>
+					<td>文档模型：</td>
+					<td>
+						<input type="hidden" value="{style}" name="dfstyle">
+						<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
+							<?php	
+							foreach($channelArray as $k=>$arr)
+							{
+								if ($k==$channelid) echo " <option value='{$k}' selected>{$arr['typename']} {$arr['nid']}</option>";
+								else  echo " <option value='{$k}'>{$arr['typename']} {$arr['nid']}</option>";
+							}
+							?>
+						</select>
+						<div id="smclass" class="mt-2" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
+							<select name="smalltype[]" multiple="yes" class="admin-input-lg">
+								<?php
+								$smtypes = explode(',',trim($myrow['smalltypes']));
+								$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC,evalue ASC ";
+								$dsql->Execute('s',$sql);
+								while($arr = $dsql->GetArray('s'))
+								{
+									if (in_array($arr['evalue'],$smtypes)) {
+										$selstr = " selected='1' ";
+									} else {
+										$selstr = '';
+									}
+									if ($arr['evalue']%500==0) {
+										echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
+									} else if (preg_match("#\.#", $arr['evalue'])) {
+										echo "<option value='{$arr['evalue']}'{$selstr}>└── {$arr['ename']}</option>";
+									} else {
+										echo "<option value='{$arr['evalue']}'{$selstr}>└─ {$arr['ename']}</option>";
+									}
+								}
+								?>
+							</select>
+							<span>（请选栏目的信息联动类型支持多选）</span>
+						</div>
+					</td>
+					<td>上级目录：</td>
+					<td>
+						<?php
+						$pardir = '{cmspath}'.$cfg_arcdir;
+						if (!empty($typedir)) $pardir = $typedir.'/';
+						$pardir = preg_replace("#\/{1,}#", '/', $pardir);
+						echo $pardir;
+						?>
+						<input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir?>">
+					</td>
+				</tr>
+				<tr>
+					<td>中文名称：</td>
+					<td><input type="text" name="typename" value="<?php echo $myrow['typename']?>" class="admin-input-lg"></td>
+					<td>中文概述：</td>
+					<td><input type="text" name="cnoverview" value="<?php echo $myrow['cnoverview']?>" class="admin-input-lg"></td>
+				</tr>
+				<tr>
+					<td>英文名称：</td>
+					<td><input type="text" name="enname" value="<?php echo $myrow['enname']?>" class="admin-input-lg"></td>
+					<td>英文概述：</td>
+					<td><input type="text" name="enoverview" value="<?php echo $myrow['enoverview']?>" class="admin-input-lg"></td>
+				</tr>
+				<tr>
+					<td>栏目大图：</td>
+					<td>
+						<input type="text" name="bigpic" value="<?php echo $myrow['bigpic']?>" class="admin-input-lg">
+						<input type="button" class="btn btn-success btn-sm" value="选择" onclick="SelectImage('form1.bigpic');">
+					</td>
+					<td>栏目小图：</td>
+					<td>
+						<input type="text" name="litimg" value="<?php echo $myrow['litimg']?>" class="admin-input-lg">
+						<input type="button" class="btn btn-success btn-sm" value="选择" onclick="SelectImage('form1.litimg');">
+					</td>
+				</tr>
+				<tr>
+					<td>排列顺序：</td>
+					<td><input type="text" name="sortrank" value="<?php echo $myrow['sortrank']?>" class="admin-input-sm">（由低到高）</td>
+					<td>浏览权限：</td>
+					<td>
+						<select name="corank" id="corank" class="admin-input-sm">
+							<?php
+							$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0 ORDER BY `rank` ASC");
+							$dsql->Execute('cc');
+							while($row = $dsql->GetObject('cc'))
+							{
+								if ($myrow['corank']==$row->rank)
+								echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
+								else
+								echo "<option value='".$row->rank."'>".$row->membername."</option>";
+							}
+							?>
+						</select>
+						<span>（不支持静态）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>文件保存目录：</td>
+					<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-lg">（标签{cmspath}”必填）</td>
+					<td>是否继承选项：</td>
+					<td><label><input type="checkbox" name="upnext" id="upnext" value="1"> 子类栏目继承顶级栏目的浏览权限、文档类型、模板风格等属性</label></td>
+				</tr>
+				<tr>
+					<td>栏目列表选项：</td>
+					<td>
+						<label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo "checked='checked'";?>> 静态浏览</label>
+						<label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo "checked='checked'";?>> 动态浏览</label>
+						<label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo "checked='checked'";?>> 浏览列表第一页</label>
+					</td>
+					<td>默认页的名称：</td>
+					<td><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="admin-input-lg"></td>
+				</tr>
+				<tr>
+					<td>栏目属性：</td>
+					<td>
+						<label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo "checked='checked'";?>> 列表栏目（允许发布）</label>
+						<label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo "checked='checked'";?>> 封面栏目（不允许发布）</label>
+						<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo "checked='checked'";?>> 外部栏目（文件保存目录填写链接）</label>
+					</td>
+					<td>栏目交叉：</td>
+					<td>
+						<label class="l-height-30"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" <?php if ($myrow['cross']==0) echo "checked='checked'";?>> 不交叉</label>
+						<label class="l-height-30"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='checked'";?>> 自动获取同名栏目</label>
+						<label class="l-height-30"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='checked'";?>> 指定交叉栏目id（英文逗号分开）</label>
+						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
+						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
+						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是大栏目与另一个非子栏目交叉的情况，相当于副栏目功能，需要在栏目里设置好</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="260">多站点支持：</td>
+					<td>
+						<label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo "checked='checked'";?>> 启用</label>
+						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='checked'";?>> 不启用</label>（仅顶级栏目启用，子类栏目无效）
+					</td>
+					<td>绑定域名：</td>
+					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-lg">（请输入绑定域名http开头）</td>
+				</tr>
+				<tr>
+					<td>列表模板：</td>
+					<td>
+						<input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="admin-input-lg">
+						<button type="button" name="set1" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templist')">选择</button>
+					</td>
+					<td>封面模板：</td>
+					<td>
+						<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-lg">
+						<button type="button" name="set2" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.tempindex')">选择</button>
+						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<div id="helpvar1" class="alert alert-info my-2" style="display:none">
+							<p>{tid} 栏目id</p>
+							<span>{cid} 栏目模型名字id</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>文档模板：</td>
+					<td>
+						<input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" class="admin-input-lg">
+						<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.temparticle')">选择</button>
+					</td>
+					<td>列表命名规则：</td>
+					<td>
+						<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-lg">
+						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<div id="helpvar2" class="alert alert-info my-2" style="display:none">
+							<p>静态规则</p>
+							<p>{tid} 栏目id</p>
+							<p>{page} 栏目页码数</p>
+							<p>伪静态规则（Nginx）</p>
+							<p>rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;</p>
+							<span>rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>文档命名规则：</td>
+					<td>
+						<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="admin-input-lg">
+						<span onclick="ShowHide('helpvar3')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<div id="helpvar3" class="alert alert-info my-2" style="display:none">
+							<p>静态规则</p>
+							<p>{Y}{M}{D} 年月日</p>
+							<p>{timestamp} INT类型的UNIX时间戳</p>
+							<p>{aid} 文档id</p>
+							<p>{pinyin} 拼音加文档id</p>
+							<p>{py} 拼音部首加文档id</p>
+							<p>{typedir} 栏目保存目录</p>
+							<p>{cc} 日期加混编id后用转换为适合字母</p>
+							<p>伪静态规则（Nginx）</p>
+							<p>rewrite ^/doc-([0-9]+).html$ /apps/view.php?arcID=$1;</p>
+							<span>rewrite ^/doc-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
+						</div>
+					</td>
+					<td>SEO标题：</td>
+					<td>
+						<input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="admin-input-lg">
+						<span>（标签{dede:field.seotitle/}调用）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>关键词：</td>
+					<td>
+						<textarea name="keywords" cid="keywords" class="admin-textarea-sm"><?php echo $myrow['keywords']?></textarea>
+						<span>（标签{dede:field.keywords/}调用）</span>
+					</td>
+					<td>描述：</td>
+					<td>
+						<textarea name="description" id="description" class="admin-textarea-sm"><?php echo $myrow['description']?></textarea>
+						<span>（标签{dede:field.description/}调用）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>栏目文档：</td>
+					<td>（标签{dede:field.content/}调用）</td>
+					<td>是否支持跨站调用：</td>
+					<td>
+						<input value="<?php echo $myrow['apikey']?>" type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
+						<label><input type="radio" name="apienabled" value="1" <?php if ($myrow['apienabled']=="1") echo "checked='checked'";?>> 支持</label>
+						<label><input type="radio" name="apienabled" value="0" <?php if ($myrow['apienabled']=="0") echo "checked='checked'";?>> 不支持</label>
+						<span class="btn btn-success btn-sm ml-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
+						<span class="btn btn-success btn-sm" title="秘钥标签" onclick="showAPI(<?php echo $id;?>)"><i class="fa fa-question-circle"></i></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4"><?php GetEditor("content",$myrow['content'],"400","Default","print","false");?></td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" align="center" colspan="4">
+						<button type="submit" class="btn btn-success btn-sm">保存</button>
+						<a href="catalog_main.php" class="btn btn-outline-success btn-sm">返回</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div id="mdlViewAPI" class="modal fade" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">跨站调用</h5>
+						<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<span>本功能主要用于移动客户端或第三方系统调用栏目数据进行展现。</span>
+							</div>
+							<div class="form-group">
+								<label for="iptAPICode" class="pb-3">代码调用</label>
+								<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									<button class="nav-link active" id="nav-php-tab" data-toggle="tab" data-target="#nav-php" type="button" role="tab" aria-controls="nav-php" aria-selected="true">PHP</button>
+									<button class="nav-link" id="nav-js-tab" data-toggle="tab" data-target="#nav-js" type="button" role="tab" aria-controls="nav-js" aria-selected="true">Javasctipt</button>
+									<button class="nav-link" id="nav-go-tab" data-toggle="tab" data-target="#nav-go" type="button" role="tab" aria-controls="nav-go" aria-selected="false">Go</button>
+									<button class="nav-link" id="nav-python-tab" data-toggle="tab" data-target="#nav-python" type="button" role="tab" aria-controls="nav-python" aria-selected="false">Python3</button>
+								</div>
+								<div class="tab-content" id="nav-tabContent">
+									<div class="tab-pane fade show active" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
+										<pre><code id="codephp"></code></pre></div>
+									<div class="tab-pane fade" id="nav-js" role="tabpanel" aria-labelledby="nav-js-tab">
+										<pre><code id="codejs"></code></pre>
+									</div>
+									<div class="tab-pane fade" id="nav-go" role="tabpanel" aria-labelledby="nav-go-tab">
+										<pre><code id="codego"></code></pre>
+									</div>
+									<div class="tab-pane fade" id="nav-python" role="tabpanel" aria-labelledby="nav-python-tab">
+										<pre><code id="codepython"></code></pre>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="iptAPITag" class="pb-3">标签调用</label>
+								<pre><code id="codetag"></code></pre>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="btnStep"><button id="btnGoStep4" type="button" class="btn btn-success btn-sm" data-dismiss="modal">关闭</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script>
 			var channelArray = new Array();
-			<?php    
+			<?php	
 			$i = 0;
 			foreach($channelArray as $k=> $arr)
 			{
@@ -22,6 +325,14 @@
 				if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
 				else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
 				else return "OT";
+			}
+			function checkSubmit() {
+				if (document.form1.typename.value == "") {
+					alert("栏目名称不能为空");
+					document.form1.typename.focus();
+					return false;
+				}
+				return true;
 			}
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800,600);
@@ -39,7 +350,7 @@
 			function ShowObj(objname) {
 				var obj = document.getElementById(objname);
 				if (Nav() == 'IE') obj.style.display = "block";
-				else obj.style.display = "table";
+				else obj.style.display = "block";
 			}
 			function HideObj(objname) {
 				var obj = document.getElementById(objname);
@@ -49,7 +360,7 @@
 				var upinyin = document.getElementById('upinyin');
 				var tpobj = document.getElementById('typedir');
 				if (upinyin.checked) tpobj.style.display = "none";
-				else tpobj.style.display = "block";
+				else tpobj.style.display = "inline-block";
 			}
 			function ParTemplet(obj) {
 				var sevvalue = channelArray[obj.value];
@@ -64,18 +375,10 @@
 				temparticle[0].value = dfstyleValue + "/article_" + sevvalue + ".htm";
 				if (obj.value < 0) {
 					if (Nav() == 'IE') tobj.style.display = "block";
-					else tobj.style.display = "table-row";
+					else tobj.style.display = "block";
 				} else {
 					tobj.style.display = "none";
 				}
-			}
-			function checkSubmit() {
-				if (document.form1.typename.value == "") {
-					alert("栏目名称不能为空");
-					document.form1.typename.focus();
-					return false;
-				}
-				return true;
 			}
 			function CheckCross() {
 				var cross2 = document.getElementById('cross2');
@@ -83,246 +386,25 @@
 				if (cross2.checked) crossid.style.display = 'block';
 				else crossid.style.display = 'none';
 			}
+			function makeAPIKey(){
+				var apikey = document.getElementById('apikey');
+				jQuery.get("sys_info.php?dopost=make_encode", function(data) {
+					jQuery("#apikey").val(data);
+				});
+			}
+			function showAPI(tid) {
+				fetch('catalog_do.php?dopost=viewAPI&typeid=' + tid).then(resp => resp.text()).then((d) => {
+					let data = JSON.parse(d);
+					if (data.code == 0) {
+						$("#codephp").html(data.data.phpcode);
+						$("#codego").html(data.data.gocode);
+						$("#codepython").html(data.data.pythoncode);
+						$("#codejs").html(data.data.jscode);
+						$("#codetag").html(data.data.tagcode);
+						$("#mdlViewAPI").modal('show');
+					}
+				});
+			}
 		</script>
-	</head>
-	<body>
-		<form name="form1" action="catalog_edit.php" method="post" onSubmit="return checkSubmit()">
-			<input type="hidden" name="dopost" value="save">
-			<input type="hidden" name="id" value="<?php echo $id;?>">
-			<input type="hidden" name="topid" value="<?php echo $myrow['topid'];?>">
-			<table cellspacing="0" cellpadding="0" align="center" class="table maintable my-3">
-				<tr>
-					<td bgcolor="#f5f5f5" colspan="4">修改栏目</td>
-				</tr>
-				<tr>
-					<td width="10%">是否支持投稿：</td>
-					<td width="40%">
-						<label><input type="radio" name="issend" value="1" <?php if ($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
-						<label><input type="radio" name="issend" value="0" <?php if ($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
-					</td>
-					<td width="10%">是否隐藏栏目：</td>
-					<td width="40%">
-						<label><input type="radio" name="ishidden" value="0" <?php if ($myrow['ishidden']=="0") echo "checked='1'";?>> 显示</label>
-						<label><input type="radio" name="ishidden" value="1" <?php if ($myrow['ishidden']=="1") echo "checked='1'";?>> 隐藏</label>
-					</td>
-				</tr>
-				<tr>
-					<td>文档模型：</td>
-					<td>
-						<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
-							<?php    
-							foreach($channelArray as $k=>$arr)
-							{
-								if ($k==$channelid) echo " <option value='{$k}' selected>{$arr['typename']} {$arr['nid']}</option>";
-								else  echo " <option value='{$k}'>{$arr['typename']} {$arr['nid']}</option>";
-							}
-							?>
-						</select>
-						<input type="hidden" value="{style}" name="dfstyle">
-					</td>
-					<td>上级目录：</td>
-					<td>
-						<?php
-						$pardir = '{cmspath}'.$cfg_arcdir;
-						if (!empty($typedir)) $pardir = $typedir.'/';
-						$pardir = preg_replace("#\/{1,}#", '/', $pardir);
-						echo $pardir;
-						?>
-						<input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir?>">
-					</td>
-				</tr>
-				<tr>
-					<td>中文名称：</td>
-					<td><input type="text" name="typename" value="<?php echo $myrow['typename']?>" class="admin-input-md"></td>
-					<td>中文概述：</td>
-					<td><input type="text" name="cnoverview" value="<?php echo $myrow['cnoverview']?>" class="admin-input-md"></td>
-				</tr>
-				<tr>
-					<td>英文名称：</td>
-					<td><input type="text" name="enname" value="<?php echo $myrow['enname']?>" class="admin-input-md"></td>
-					<td>英文概述：</td>
-					<td><input type="text" name="enoverview" value="<?php echo $myrow['enoverview']?>" class="admin-input-md"></td>
-				</tr>
-				<tr>
-					<td>栏目大图：</td>
-					<td>
-						<input type="text" name="bigpic" value="<?php echo $myrow['bigpic']?>" class="admin-input-md">
-						<input type="button" class="btn btn-success btn-sm" value="浏览" onclick="SelectImage('form1.bigpic');">
-					</td>
-					<td>栏目小图：</td>
-					<td>
-						<input type="text" name="litimg" value="<?php echo $myrow['litimg']?>" class="admin-input-md">
-						<input type="button" class="btn btn-success btn-sm" value="浏览" onclick="SelectImage('form1.litimg');">
-					</td>
-				</tr>
-				<tr>
-					<td>排列顺序：</td>
-					<td><input type="text" name="sortrank" value="<?php echo $myrow['sortrank']?>" class="admin-input-sm">（由低 &gt; 高）</td>
-					<td>浏览权限：</td>
-					<td>
-						<select name="corank" id="corank" class="admin-input-sm">
-							<?php
-							$dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0");
-							$dsql->Execute('cc');
-							while($row = $dsql->GetObject('cc'))
-							{
-								if ($myrow['corank']==$row->rank)
-								echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
-								else
-								echo "<option value='".$row->rank."'>".$row->membername."</option>";
-							}
-							?>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>文件保存目录：</td>
-					<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-md">（标签“{cmspath}”请勿删除）</td>
-					<td>继承选项：</td>
-					<td><label><input type="checkbox" name="upnext" id="upnext" value="1"> 同时继承下级栏目浏览权限、文档类型、模板风格、命名规则等通用属性</label></td>
-				</tr>
-				<tr>
-					<td>栏目列表选项：</td>
-					<td>
-						<label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo "checked='1'";?>> 链接到默认页</label>
-						<label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo "checked='1'";?>> 链接到列表第一页</label>
-						<label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo "checked='1'";?>> 使用动态页</label>
-					</td>
-					<td>默认页的名称：</td>
-					<td><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="admin-input-md"></td>
-				</tr>
-				<tr>
-					<td>栏目属性：</td>
-					<td>
-						<label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo "checked='1'";?>> 列表栏目（允许发布文档）</label>
-						<label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo "checked='1'";?>> 封面栏目（不允许发布文档）</label>
-						<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo "checked='1'";?>> 外部栏目（文件保存目录处填写链接）</label>
-					</td>
-					<td>栏目交叉：</td>
-					<td>
-						<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
-						<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目文档</label>
-						<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
-						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
-						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
-						<div id="helpvarco" class="alert alert-warning my-2" style="display:none">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好。注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</div>
-					</td>
-				</tr>
-				<tr>
-					<td width="260">多站点支持：</td>
-					<td>
-						<label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo "checked='1'";?>> 启用</label>
-						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>（绑名绑定仅需要在顶级栏目设定，子级栏目修改无效）
-					</td>
-					<td>绑定域名：</td>
-					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-md">（需要加http开头的链接）</td>
-				</tr>
-				<tr>
-					<td>列表模板：</td>
-					<td>
-						<input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="admin-input-md">
-						<button type="button" name="set1" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templist')">浏览</button>
-					</td>
-					<td>封面模板：</td>
-					<td>
-						<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-md">
-						<button type="button" name="set2" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.tempindex')">浏览</button>
-						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
-						<div id="helpvar1" class="alert alert-warning my-2" style="display:none">
-							{tid} 栏目id<br>
-							{cid} 栏目模型名字id
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>文档模板：</td>
-					<td>
-						<input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" class="admin-input-md">
-						<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.temparticle')">浏览</button>
-					</td>
-					<td>列表命名规则：</td>
-					<td>
-						<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-md">
-						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
-						<div id="helpvar2" class="alert alert-warning my-2" style="display:none">
-							静态规则<br>
-							{tid} 栏目id<br>
-							{page} 栏目页码数<br>
-							<hr>
-							伪静态规则（Nginx）<br>
-							rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
-							rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>文档命名规则：</td>
-					<td>
-						<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="admin-input-md">
-						<span onclick="ShowHide('helpvar3')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
-						<div id="helpvar3" class="alert alert-warning my-2" style="display:none">
-							静态规则<br>
-							{Y}{M}{D} 年月日<br>
-							{timestamp} INT类型的UNIX时间戳<br>
-							{aid} 文档id<br>
-							{pinyin} 拼音加文档id<br>
-							{py} 拼音部首加文档id<br>
-							{typedir} 栏目保存目录<br>
-							{cc} 日期加混编id后用转换为适合字母<br>
-							<hr>
-							伪静态规则（Nginx）<br>
-							rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
-							rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
-						</div>
-					</td>
-					<td>SEO标题：</td>
-					<td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="admin-input-md">（标签“{dede:field.seotitle/}”调用）</td>
-				</tr>
-				<tr>
-					<td>关键词：</td>
-					<td><textarea name="keywords" cid="keywords" class="admin-textarea-sm"><?php echo $myrow['keywords']?></textarea>（标签“{dede:field.keywords/}”调用）</td>
-					<td>栏目描述：</td>
-					<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $myrow['description']?></textarea>（标签“{dede:field.description/}”调用）</td>
-				</tr>
-				<tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
-					<td>绑定小分类：</td>
-					<td>
-						<select name="smalltype[]" multiple="yes" class="admin-input-md" style="height:200px">
-							<?php
-							$smtypes = explode(',',trim($myrow['smalltypes']));
-							$sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
-							$dsql->Execute('s',$sql);
-							while($arr = $dsql->GetArray('s'))
-							{
-								if (in_array($arr['evalue'],$smtypes)) {
-									$selstr = " selected='1' ";
-								} else {
-									$selstr = '';
-								}
-								if ($arr['evalue']%500==0) {
-									echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
-								} else if (preg_match("#\.#", $arr['evalue'])) {
-									echo "<option value='{$arr['evalue']}'{$selstr}>└─ {$arr['ename']}</option>";
-								} else {
-									echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
-								}
-							}
-							?>
-						</select>
-						<span>（支持多选）</span>
-					</td>
-					<td colspan="2"></td>
-				</tr>
-				<tr>
-					<td colspan="4"><?php GetEditor("content",$myrow['content'],"400","Default","print","false");?></td>
-				</tr>
-				<tr>
-					<td bgcolor="#f5f5f5" align="center" colspan="4">
-						<button type="submit" class="btn btn-success btn-sm">保存</button>
-						<a href="catalog_main.php" class="btn btn-outline-success btn-sm">返回</a>
-					</td>
-				</tr>
-			</table>
-		</form>
 	</body>
 </html>

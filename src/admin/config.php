@@ -1,6 +1,5 @@
 <?php
 /**
- * 管理目录配置
  *
  * @version        $id:config.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -139,7 +138,7 @@ function DedeInclude($filename, $isabs = FALSE)
     return $isabs ? $filename : DEDEADMIN.'/'.$filename;
 }
 /**
- *  根据会员mid获取会员名称
+ *  根据会员mid获取账号
  *
  * @access    public
  * @param     int  $mid   会员id

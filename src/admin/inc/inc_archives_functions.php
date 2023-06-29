@@ -17,7 +17,7 @@ if (!isset($_NOT_ARCHIVES)) {
     require_once(DEDEINC.'/customfields.func.php');
 }
 /**
- * 获得网页里的外部资源，针对图片
+ * 获得网页里图片外部资源
  *
  * @access    public
  * @param     string  $body  文档
@@ -138,7 +138,7 @@ function GetCurContent($body)
         } else {
             continue;
         }
-        $milliSecondN = dd2char($milliSecond.mt_rand(1000, 8000));
+        $milliSecondN = dd2char($milliSecond.mt_rand(1000,8000));
         $value = trim($value);
         $rndFileName = $imgPath.'/'.$milliSecondN.'-'.$key.$itype;
         $fileurl = $imgUrl.'/'.$milliSecondN.'-'.$key.$itype;
@@ -200,7 +200,7 @@ function GetRemoteImage($url, $uid = 0)
         } else {
             $itype = '.jpg';
         }
-        $rndname = dd2char($uid.'_'.MyDate('mdHis', time()).mt_rand(1000, 9999));
+        $rndname = dd2char($uid.'_'.MyDate('mdHis', time()).mt_rand(1000,9999));
         $rndtrueName = $imgPath.'/'.$rndname.$itype;
         $fileurl = $imgUrl.'/'.$rndname.$itype;
         $ok = $htd->SaveToBin($rndtrueName);
@@ -354,12 +354,12 @@ function GetDDImage($litpic, $picname, $isremote)
         $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png");
         $_FILES[$litpic]['type'] = strtolower(trim($_FILES[$litpic]['type']));
         if (!in_array($_FILES[$litpic]['type'], $sparr)) {
-            ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种", "-1");
+            ShowMsg("您上传的图片格式错误，请使用jpg、png、gif、wbmp格式其中一种", "-1");
             exit();
         }
         $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
         if (strtolower($_FILES[$litpic]['type']) == "image/gif") {
             $fullUrl = $fullUrl.".gif";
         } else if (strtolower($_FILES[$litpic]['type']) == "image/png") {
@@ -669,7 +669,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png");
         $_FILES[$upname]['type'] = strtolower(trim($_FILES[$upname]['type']));
         if (!in_array($_FILES[$upname]['type'], $sparr)) {
-            ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种", "-1");
+            ShowMsg("您上传的图片格式错误，请使用jpg、png、gif、wbmp格式其中一种", "-1");
             exit();
         }
         if (!empty($handurl) && !preg_match("#^http:\/\/#i", $handurl) && file_exists($cfg_basedir.$handurl)) {
@@ -681,7 +681,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         } else {
             $savepath = $cfg_image_dir.'/'.date("%Y-%m", $ntime);
             CreateDir($savepath);
-            $fullUrl = $savepath.'/'.date("%d", $ntime).dd2char(date("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000, 9999));
+            $fullUrl = $savepath.'/'.date("%d", $ntime).dd2char(date("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000,9999));
         }
         if (strtolower($_FILES[$upname]['type']) == "image/gif") {
             $fullUrl = $fullUrl.".gif";
@@ -750,8 +750,8 @@ function GetUpdateTest()
         if ($cfg_make_andcat == 'Y') $dolist .= empty($dolist) ? 'makeparenttype' : ',makeparenttype';
         $dolists = explode(',', $dolist);
         $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=".preg_replace("#".$dolists[0]."[,]{0,1}#", '', $dolist);
-        $revalue = "<table id='tgtable' class='maintable my-3'><tr><td bgcolor='#f8f8f8'>正在进行相关文档更新，请完成前不要进行其它操作：\r\n</td></tr>\r\n";
-        $revalue .= "<tr><td>\r\n<iframe name='stafrm' id='stafrm' frameborder='0' width='100%' height='200px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
+        $revalue = "<table id='tgtable' class='maintable my-3'><tr><td bgcolor='#f8f8f8'>正在进行相关文档更新，未完成前不要执行其它操作：\r\n</td></tr>\r\n";
+        $revalue .= "<tr><td>\r\n<iframe name='stafrm' id='stafrm' frameborder='0' width='100%' height='360px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
         $revalue .= "</table>";
     } else {
         $revalue = '';

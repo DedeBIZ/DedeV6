@@ -18,20 +18,22 @@ if ($dopost == "") {
     //验证验证码
     if (!isset($vdcode)) $vdcode = '';
     $svali = GetCkVdValue();
+    $type = intval($type);
+    $mail = HtmlReplace($mail, 0);
     if (strtolower($vdcode) != $svali || $svali == '') {
         ResetVdValue();
         ShowMsg("验证码输入错误", "-1");
         exit();
     }
-    //验证邮箱，会员名
+    //验证邮箱，账号
     if (empty($mail) && empty($userid)) {
-        showmsg('请输入会员名或邮箱', '-1');
+        showmsg('请输入账号或邮箱', '-1');
         exit;
-    } else if (!preg_match("#(.*)@(.*)\.(.*)#", $mail)) {
+    } else if (!empty($mail) && !preg_match("#(.*)@(.*)\.(.*)#", $mail)) {
         showmsg('请输入正确的邮箱格式', '-1');
         exit;
     } else if (CheckUserID($userid, '', false) != 'ok') {
-        ShowMsg("您输入的会员名<span class='text-primary'>{$userid}</span>不合法", "-1");
+        ShowMsg("您输入的账号<span class='text-primary'>{$userid}</span>不合法", "-1");
         exit();
     }
     $member = member($mail, $userid);
@@ -63,7 +65,7 @@ if ($dopost == "") {
         sn($mid, $row['userid'], $row['email'], 'N');
         exit();
     } else {
-        ShowMsg("您的安全问题或答案回答错误", "-1");
+        ShowMsg("您的安全问题或答案回答错误", "login.php");
         exit();
     }
 } else if ($dopost == "getpasswd") {

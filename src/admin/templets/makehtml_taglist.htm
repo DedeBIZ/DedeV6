@@ -11,15 +11,10 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/select2.min.js"></script>
 		<script src="../static/web/js/i18n/zh-CN.js"></script>
-		<script>
-			function onTagSubmit() {
-				document.form1.submit();
-			}
-		</script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="form1" action="makehtml_tag_action_list.php" method="get" target="stafrm">
+		<form name="form1" action="makehtml_tag_action_list.php" method="get" target="stafrm">
+			<table align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2">更新标签</td>
 				</tr>
@@ -36,20 +31,32 @@
 				<?php } else {?>
 				<tr>
 					<td width="260">起始id：</td>
-					<td><input type="text" name="startid" id="startid" class="admin-input-sm">（空或0表示从头开始）</td>
+					<td>
+						<input type="text" name="startid" id="startid" class="admin-input-sm">
+						<span>（空或0表示从头开始）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>结束id：</td>
-					<td><input type="text" name="endid" id="endid" class="admin-input-sm">（空或0表示直到结束id）</td>
+					<td>
+						<input type="text" name="endid" id="endid" class="admin-input-sm">
+						<span>（空或0表示直到结束id）</span>
+					</td>
 				</tr>
 				<?php }?>
 				<tr>
 					<td>更新位置：</td>
-					<td><input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" class="admin-input-sm" disabled>（系统设置中其他选项“标签生成目录”项进行调整）</td>
+					<td>
+						<input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" class="admin-input-sm" disabled>
+						<span>（系统设置中其他选项标签生成目录进行调整）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>每页更新：</td>
-					<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" class="admin-input-sm">（网页）</td>
+					<td>
+						<input type="text" name="maxpagesize" id="maxpagesize" value="50" class="admin-input-sm">
+						<span>（网页）</span>
+					</td>
 				</tr>
 				<tr>
 					<td bgcolor="#e9ecef" colspan="2" align="center">
@@ -57,15 +64,17 @@
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='tags_main.php';">标签管理</button>
 					</td>
 				</tr>
-			</form>
-			<tr>
-				<td colspan="2">结果：</td>
-			</tr>
-			<tr>
-				<td colspan="2" id="mtd">
-					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-				</td>
-			</tr>
-		</table>
+				<tr>
+					<td colspan="2" id="mtd">
+						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<script>
+			function onTagSubmit() {
+				document.form1.submit();
+			}
+		</script>
 	</body>
 </html>

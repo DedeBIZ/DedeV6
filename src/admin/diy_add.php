@@ -20,18 +20,18 @@ if (empty($action)) {
     include(DEDEADMIN."/templets/diy_add.htm");
 } else {
     if (preg_match("#[^0-9-]#", $diyid) || empty($diyid)) {
-        ShowMsg("<span class='text-primary'>'自定义表单id'</span>必须为数字", "-1");
+        ShowMsg("自定义表单id必须为数字", "-1");
         exit();
     }
     if ($table == "") {
-        ShowMsg("表名不能为空", "-1");
+        ShowMsg("自定义表单表名不能为空", "-1");
         exit();
     }
     $public = isset($public) && is_numeric($public) ? $public : 0;
     $name = dede_htmlspecialchars($name);
     $row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' OR `table` LIKE '$table' OR name LIKE '$name'");
     if (is_array($row)) {
-        ShowMsg("可能自定义表单的‘diyid’、‘名称’在数据库中已存在，不能重复使用", "-1");
+        ShowMsg("自定义表单diyid和自定义表单表名称数据库已存在，请重新填写", "-1");
         exit();
     }
     if ($cfg_dbtype=="sqlite") {
@@ -44,7 +44,7 @@ if (empty($action)) {
     while ($row = $dsql->GetArray("biz")) {
         if (empty($row[0])) $row[0] = '';
         if ($table == $row[0]) {
-            showmsg('指定的表在数据库中重复', '-1');
+            showmsg('指定的自定义表单称数据库已存在，请重新填写', '-1');
             exit();
         }
     }
@@ -53,16 +53,16 @@ if (empty($action)) {
     `ifcheck` tinyint(1) NOT NULL default '0',
     ";
     if ($mysql_version < 4.1) {
-        $sql .= " PRIMARY KEY  (`id`)\r\n) TYPE=MyISAM; ";
+        $sql .= " PRIMARY KEY (`id`)\r\n) TYPE=MyISAM; ";
     } else {
-        $sql .= " PRIMARY KEY  (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
+        $sql .= " PRIMARY KEY (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
     }
     if ($dsql->ExecuteNoneQuery($sql)) {
         $query = "INSERT INTO `#@__diyforms` (`diyid`,`name`,`table`,`info`,`listtemplate`,`viewtemplate`,`posttemplate`,`public` ) VALUES ('$diyid','$name','$table','','$listtemplate','$viewtemplate','$posttemplate','$public')";
         $dsql->ExecuteNoneQuery($query);
-        showmsg('自定义表单创建成功，请自行添加字段', 'diy_main.php');
+        showmsg('成功创建一个自定义表单', 'diy_main.php');
     } else {
-        showmsg('自定义表单创建失败', '-1');
+        showmsg('创建自定义表单失败', '-1');
     }
 }
 ?>

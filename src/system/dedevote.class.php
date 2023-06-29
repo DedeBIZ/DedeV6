@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 投票
  *
@@ -104,7 +104,7 @@ class DedeVote
         if ($itembgcolor == "") {
             $itembgcolor = "#ffffff";
         }
-        $items = "<table width='$tablewidth' cellspacing='1' cellpadding='1' id='voteitem' class='table'>\r\n";
+        $items = "<table width='$tablewidth' id='voteitem' class='table'>\r\n";
         $items .= "<form name='voteform' method='post' action='".$GLOBALS['cfg_phpurl']."/vote.php' target='_blank'>\r\n";
         $items .= "<input type='hidden' name='dopost' value='send' />\r\n";
         $items .= "<input type='hidden' name='aid' value='".$this->VoteID."' />\r\n";
@@ -120,7 +120,7 @@ class DedeVote
             }
             $items .= "<tr><td>\r\n";
             $items .= "<input type='submit' name='vbt1' class='btn btn-success' value='投票'>\r\n";
-            $items .= "<input type='button' name='vbt2' class='btn btn-success' value='查看结果' onClick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."');>";
+            $items .= "<input type='button' name='vbt2' class='btn btn-success' value='查看结果' onclick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."');>";
             $items .= "</td></tr>\r\n";
         }
         $items .= "</form>\r\n</table>\r\n";
@@ -225,7 +225,7 @@ class DedeVote
         if ($totalcount == 0) {
             $totalcount = 1;
         }
-        $res = "<table width='$tablewidth' cellspacing='1' cellpadding='1' class='table'>\r\n";
+        $res = "<table width='$tablewidth' class='table'>\r\n";
         $i = 1;
         foreach ($this->VoteNotes as $k => $arr) {
             $res .= "<tr><td width='260'>".$i."、".$arr['name']."</td>";

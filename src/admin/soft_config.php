@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统配置变量保存
+ * 软件下载设置
  *
  * @version        $id:soft_config.php 16:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -16,7 +16,7 @@ if ($dopost == "save") {
     if ($dfrank > 0 || $dfywboy > 0) $gotojump = 1;
     $query = "UPDATE `#@__softconfig` SET `downtype`='$downtype',`gotojump`='$gotojump',`ismoresite`='$ismoresite',`islocal`='$islocal',`sites`='$sites',`moresitedo`='$moresitedo',`dfrank`='$dfrank',`dfywboy`='$dfywboy',`argrange`='$argrange',downmsg='$downmsg' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg('成功保存参数', 'soft_config.php');
+    ShowMsg('成功保存软件下载设置', 'soft_config.php');
     exit();
 }
 //读取参数

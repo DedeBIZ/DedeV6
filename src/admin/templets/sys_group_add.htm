@@ -3,25 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>添加会员组</title>
+		<title>添加系统会员组</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="2" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="form1" action="sys_group_add.php" method="post">
-				<input type="hidden" name="dopost" value="save">
+		<form name="form1" action="sys_group_add.php" method="post">
+			<input type="hidden" name="dopost" value="save">
+			<table align="center" class="table maintable my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="sys_group.php">系统会员组管理</a> &gt; 添加会员组</td>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="sys_group.php">会员组管理</a> - 添加系统会员组</td>
 				</tr>
 				<tr>
-					<td width="90">组名称：</td>
+					<td width="120">组名称：</td>
 					<td><input type="text" name="groupname" id="groupname" class="admin-input-sm"></td>
 				</tr>
 				<tr>
 					<td>级别值：</td>
-					<td><input type="text" name="rankid" id="rankid" class="admin-input-sm">（系统已占用的级别值：<?php $dsql->SetQuery("Select `rank` From `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo '<span class="text-primary">'.$row->rank.'</span>';?>，级别值必须小于10，超过或等于10所有权限设置无效）
+					<td>
+						<input type="text" name="rankid" id="rankid" class="admin-input-sm">
+						<span>（系统已占用的级别值：<?php $dsql->SetQuery("Select `rank` From `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo '<span class="text-primary">'.$row->rank.'</span>';?>，级别值必须小于10，超过或等于10所有权限设置无效）</span>
 					</td>
 				</tr>
 				<?php
@@ -73,7 +75,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" onclick="DoSubmit('gettag')" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

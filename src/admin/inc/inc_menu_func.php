@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-$headTemplet = '<li><div class="link"><i class="fa ~icon~"></i>~channelname~<i class="fa fa-angle-down"></i></div><ul class="submenu">';
+$headTemplet = '<li><div class="link"><i class="~icon~"></i><span>~channelname~</span><i class="fa fa-angle-down"></i></div><ul class="submenu">';
 $footTemplet = "</ul></li>";
 $itemTemplet = "<li>~link~</li>";
 function GetMenus($userrank, $topos = 'main')
@@ -32,7 +32,7 @@ function GetMenus($userrank, $topos = 'main')
         if ($ctag->GetName() == 'top' && ($ctag->GetAtt('rank') == '' || TestPurview($ctag->GetAtt('rank')))) {
             if ($openitem != 999 && !preg_match("#".$openitem.'_'."#", $ctag->GetAtt('item')) && $openitem != 100) continue;
             $htmp = str_replace("~channelname~", $ctag->GetAtt("name"), $headTemplet);
-            $icon = 'fa-plug';
+            $icon = 'fa fa-plug';
             if ($ctag->GetAtt('icon') != '') {
                 $icon = $ctag->GetAtt('icon');
             }
@@ -47,10 +47,10 @@ function GetMenus($userrank, $topos = 'main')
                         if ($ctag2->GetAtt('addico') != '') {
                             $addico = $ctag2->GetAtt('addico');
                         } else {
-                            $addico = 'fa-plus-circle';
+                            $addico = 'fa fa-plus-circle';
                         }
                         $addalt = $ctag2->GetAtt('addalt');
-                        $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='submenu-right' target='".$ctag2->GetAtt('target')."'><span class='fa $addico' title='$addalt'></span></a>";
+                        $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='submenu-right' target='".$ctag2->GetAtt('target')."'><span class='$addico' title='$addalt'></span></a>";
                     } else {
                         $link .= "";
                     }

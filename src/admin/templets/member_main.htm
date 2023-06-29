@@ -12,10 +12,10 @@
 	</head>
 	<body>
 		<form action="member_main.php" name="form1" method="get">
-			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-				<tr bgcolor="#f5f5f5">
-					<td>
-						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="admin-input-md mr-3">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5">
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" class="admin-input-lg mr-3">
 						<select name="sortkey" id="sortkey" class="admin-input-sm mr-3">
 							{dede:global name='sortform'/}
 							<option value="mid">mid/注册时间</option>
@@ -50,19 +50,19 @@
 			</table>
 		</form>
 		<form name="form2">
-			<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
+			<table align="center" class="table maintable mb-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="9">所有会员列表</td>
 				</tr>
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">mid</td>
-					<td width="15%">头像/会员名</td>
+					<td width="12%">头像/账号</td>
 					<td width="8%">昵称</td>
-					<td width="6%">等级</td>
-					<td width="15%">钱包积分</td>
+					<td width="8%">等级</td>
+					<td width="16%">钱包积分</td>
+					<td width="18%">地址/时间</td>
 					<td width="6%">投稿限制</td>
-					<td width="15%">地址/时间</td>
 					<td>操作</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="9" align="center">暂无会员</td></tr>'}
@@ -80,15 +80,15 @@
 						<span class="mr-1">金币：{dede:field.money/}</span> 
 						<span>余额：{dede:field.user_money/}</span>
 					</td>
-					<td>{dede:field.send_max/}</td>
 					<td>
 						<span class="mr-1">{dede:field.loginip/}</span>
 						<span>{dede:field.logintime function="MyDate('Y-m-d H:i:s',@me)"/}</span>
 					</td>
+					<td>{dede:field.send_max/}</td>
 					<td>
 						<a href="member_toadmin.php?id={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-user-plus"></i> 提升</a>
 						<a href="content_list.php?mid={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-file-text"></i> 文档</a>
-						<a href="member_view.php?id={dede:field.mid/}" class="btn btn-light btn-sm"><i class="fa fa-eye"></i> 查看</a>
+						<a href="member_edit.php?id={dede:field.mid/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
 						<a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 					</td>
 				</tr>

@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>文档管理列表</title>
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<title>单表文档列表</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
@@ -17,7 +17,7 @@
 		<script src="js/list.js"></script>
 	</head>
 	<body>
-		<table cellspacing="0" cellpadding="0" align="center" class="table maintable my-3">
+		<table align="center" class="table maintable my-3">
 			<tr>
 				<td>
 					<button type="button" class="btn btn-success btn-sm" onclick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
@@ -36,25 +36,25 @@
 		<form name="form3" action="content_sg_list.php" method="get">
 			<input type="hidden" name="dopost" value="listArchives">
 			<input type="hidden" name="channelid" value="{dede:global.channelid/}">
-			<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
-				<tr bgcolor="#f5f5f5">
-					<td>
-						<input type="text" name="keyword" class="admin-input-md mr-3" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
+			<table align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5">
+						<input type="text" name="keyword" class="admin-input-lg mr-3" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
 						<select name="cid" class="admin-input-sm mr-3">
 							<option value="0">选择分类</option>
 							{dede:global.optionarr/}
 						</select>
-						<input type="text" name="timerange" autocomplete="off" value="<?php echo $strTimerange;?>" id="timerange" class="admin-input-sm mr-3">
+						<input type="text" name="timerange" autocomplete="off" id="timerange" class="admin-input-md mr-3" value="<?php echo $strTimerange;?>">
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
 				</tr>
 			</table>
 		</form>
-		<table cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="9">{dede:global.positionname/}文档列表</td>
-			</tr>
-			<form name="form2">
+		<form name="form2">
+			<table align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="9">{dede:global.positionname/}文档列表</td>
+				</tr>
 				<tr bgcolor="#e9ecef" align="center">
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
@@ -66,15 +66,15 @@
 					<td width="6%">发布人</td>
 					<td>操作</td>
 				</tr>
-				{dede:datalist empty='<tr><td colspan="9" align="center">暂无文档</td></tr>'}
+				{dede:datalist empty='<tr><td colspan="9" align="center">暂无记录</td></tr>'}
 				<tr align="center">
 					<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.aid/}"></td>
 					<td>{dede:field.id/}</td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.aid/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a></td>
 					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 					<td>{dede:field.typename/}</td>
-					<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
 					<td>{dede:field.click/}</td>
+					<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
 					<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 					<td>
 						<a href="javascript:;" class="btn btn-light btn-sm" onclick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-sliders"></i> 属性</a>
@@ -97,11 +97,11 @@
 						<?php }?>
 					</td>
 				</tr>
-			</form>
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			$(document).ready(function() {
 				$('#timerange').daterangepicker({

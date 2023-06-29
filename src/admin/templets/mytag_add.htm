@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>添加自定义标记</title>
+		<title>添加自定义宏标记</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -13,6 +13,65 @@
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
+			<input type="hidden" name="dopost" value="save">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="mytag_main.php">自定义宏标记</a> - 添加自定义宏标记</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="alert alert-info mb-0">自定义标记调用方法：{dede:mytag name='标记名称' ismake='是否含板块代码yes或no' typeid='栏目id'/} 1、name标记名称，该项是必须的属性；2、ismake默认是no表示设定的纯网页代码，yes表示含板块标记的代码；3、typeid表示所属栏目的id，默认为0，表示所有栏目通用的显示文档，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="260">所属栏目：</td>
+					<td>
+						<?php
+						$tl = new TypeLink(0);
+						$typeOptions = $tl->GetOptionArray(0,0,0);
+						echo "<select name='typeid' class='admin-input-lg'>";
+						echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
+						echo $typeOptions;
+						echo "</select>";
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td>标记名称：</td>
+					<td><input type="text" name="tagname" id="tagname"></td>
+				</tr>
+				<tr>
+					<td>时间限制：</td>
+					<td>
+						<label><input type="radio" name="timeset" value="0" checked="checked"> 永不过期</label>
+						<label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
+					</td>
+				</tr>
+				<tr>
+					<td>开始时间：</td>
+					<td><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker"></td>
+				</tr>
+				<tr>
+					<td>结束时间：</td>
+					<td><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker"></td>
+				</tr>
+				<tr>
+					<td>正常显示文档：</td>
+					<td><textarea name="normbody" id="normbody" class="admin-textarea-xl"></textarea></td>
+				</tr>
+				<tr>
+					<td>过期显示文档：</td>
+					<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"></textarea></td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			function checkSubmit() {
 				if (document.form1.tagname.value == "") {
@@ -50,64 +109,5 @@
 				});
 			})
 		</script>
-	</head>
-	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="2"><a href="mytag_main.php">自定义宏标记</a> &gt; 添加新标记</td>
-			</tr>
-			<form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
-				<input type="hidden" name="dopost" value="save">
-				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-				<tr>
-					<td colspan="2">
-						<div class="alert alert-info mb-0">自定义标记的调用方法：{dede:mytag name='标记名称' ismake='是否含板块代码（yes或no）' typeid='栏目id'/} 1、name标记名称，该项是必须的属性，以下2、3是可选属性；2、ismake默认是no表示设定的纯网页代码，yes表示含板块标记的代码；3、typeid表示所属栏目的id，默认为0，表示所有栏目通用的显示文档，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</div>
-					</td>
-				</tr>
-				<tr>
-					<td width="260">所属栏目：</td>
-					<td>
-						<?php
-						$tl = new TypeLink(0);
-						$typeOptions = $tl->GetOptionArray(0,0,0);
-						echo "<select name='typeid' class='admin-input-md'>";
-						echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
-						echo $typeOptions;
-						echo "</select>";
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>标记名称：</td>
-					<td><input type="text" name="tagname" id="tagname"></td>
-				</tr>
-				<tr>
-					<td>时间限制：</td>
-					<td>
-						<label><input type="radio" name="timeset" value="0" checked="1"> 永不过期</label>
-						<label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
-					</td>
-				</tr>
-				<tr>
-					<td>开始时间：</td>
-					<td><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker"></td>
-				</tr>
-				<tr>
-					<td>结束时间：</td>
-					<td><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker"></td>
-				</tr>
-				<tr>
-					<td>正常显示文档：</td>
-					<td><textarea name="normbody" id="normbody" class="admin-textarea-xl"></textarea></td>
-				</tr>
-				<tr>
-					<td>过期显示文档：</td>
-					<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"></textarea></td>
-				</tr>
-				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-				</tr>
-			</form>
-		</table>
 	</body>
 </html>

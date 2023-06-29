@@ -4,15 +4,15 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>插件管理器</title>
+		<title>插件管理</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr bgcolor="#f5f5f5">
-				<td colspan="4">插件管理器</td>
+		<table align="center" class="table maintable my-3">
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="4">插件管理</td>
 			</tr>
 			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">id</td>
@@ -20,7 +20,7 @@
 				<td width="26%">插件作者</td>
 				<td>操作</td>
 			</tr>
-			{dede:datalist empty='<tr><td colspan="4" align="center">暂无文档</td></tr>'}
+			{dede:datalist empty='<tr><td colspan="4" align="center">暂无记录</td></tr>'}
 			<tr align="center">
 				<td>{dede:field.aid/}</td>
 				<td>{dede:field.plusname/}</td>

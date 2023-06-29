@@ -1,6 +1,6 @@
 <?php
 /**
- * 添加模板
+ * 添加自定义页面
  *
  * @version        $id:templets_one_add.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -18,7 +18,7 @@ if ($dopost == "save") {
     $filename = preg_replace("#^\/#", "", $nfilename);
     if (DEDEBIZ_SAFE_MODE) $ismake = 0; //安全模式不允许编译
     if (!preg_match('#\.htm$#i', trim($template))) {
-        ShowMsg("指定的文件名已被系统禁止", "javascript:;");
+        ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
     if ($likeid == '') {
@@ -38,7 +38,7 @@ if ($dopost == "save") {
     include_once(DEDEINC."/archive/sgpage.class.php");
     $sg = new sgpage($id);
     $sg->SaveToHtml();
-    ShowMsg("成功添加一个页面", "templets_one.php");
+    ShowMsg("成功添加一个单页", "templets_one.php");
     exit();
 }
 $row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage`");

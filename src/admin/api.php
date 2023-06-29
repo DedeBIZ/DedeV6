@@ -13,10 +13,11 @@ define('IS_DEDEAPI', TRUE);
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
 require_once(DEDEADMIN.'/../system/common.inc.php');
 require_once(DEDEINC.'/userlogin.class.php');
+@set_time_limit(0);
 AjaxHead();
 helper('cache');
 $action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update', 'upload_image')) ? $action  : '';
-$curDir = dirname(GetCurUrl()); //当前目录
+$curDir = dirname(GetCurUrl());//当前目录
 /**
  * 登录鉴权
  *
@@ -28,7 +29,7 @@ function checkLogin()
     if ($cuserLogin->getUserID() <= 0 || $cuserLogin->getUserType() != 10) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "当前操作需要登录超级管理员账号",
+            "msg" => "此操作需要登录超级管理员权限",
             "data" => null,
         ));
         exit;
@@ -46,7 +47,7 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 } else if ($action === 'has_new_version') {
-    //判断版本更新差异sql
+    //判断版本SQL之间差异
     $unQueryVer = array();
     if (!TableHasField("#@__tagindex", "keywords")) {
         $unQueryVer[] = "6.0.2";
@@ -79,6 +80,9 @@ if ($action === 'is_need_check_code') {
     if (!$dsql->IsTable("#@__sys_payment")) {
         $unQueryVer[] = "6.2.5";
     }
+    if (!TableHasField("#@__arctype", "apienabled")) {
+        $unQueryVer[] = "6.2.7";
+    }
     if (count($unQueryVer) > 0) {
         $upsqls = GetUpdateSQL();
         foreach ($unQueryVer as $vv) {
@@ -94,7 +98,7 @@ if ($action === 'is_need_check_code') {
     }
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
     checkLogin();
-    //是否存在更新版本
+    //发现有新版本
     $phpv = phpversion();
     $sp_os = PHP_OS;
     $mysql_ver = $dsql->GetVersion();
@@ -112,6 +116,13 @@ if ($action === 'is_need_check_code') {
     $row2 = $dsql->GetOne($query);
     if ($row2) $add_query .= "&acount={$row2['dd']}";
     $offUrl = DEDEBIZURL."/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}&json=1";
+    if (strpos($_SERVER['SERVER_SOFTWARE'], 'Development Server') !== false && version_compare(phpversion(), '7.2', '<')) {
+        echo json_encode(array(
+            "code"=>-1,
+            "msg"=>'获取版本信息失败',
+        ));
+        exit;
+    }
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($offUrl);
     $data = $dhd->GetHtml();
@@ -176,8 +187,8 @@ if ($action === 'is_need_check_code') {
     mkdir($backupPath);
     foreach ($data as $file) {
         $realFile = DEDEROOT.str_replace("\\", '/', $file->filename);
+        //备份文件
         if (file_exists($realFile) && md5_file($realFile) !== $file->hash) {
-            //备份文件
             $dstFile = $backupPath.'/'.str_replace("\\", '/', $file->filename);
             @mkdir(dirname($dstFile), 0777, true);
             copy($realFile, $dstFile);
@@ -216,7 +227,7 @@ if ($action === 'is_need_check_code') {
     if (count($row) === 0) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "请先获取版本更新记录",
+            "msg" => "请获取版本更新记录",
             "data" => null,
         ));
         exit;
@@ -232,11 +243,17 @@ if ($action === 'is_need_check_code') {
             $fileList = $dhd->GetJSON();
             $dhd->Close();
             $backupVerPath = $backupPath.'/'.$ver->ver;
-            RmRecurse($backupVerPath);
-            mkdir($backupVerPath);
+            if (!is_dir($backupVerPath)) {
+                @mkdir($backupVerPath);
+            }
+            $i = 0;
             foreach ($fileList as $f) {
+                $realFile = $backupVerPath.$f->filename;
+                //忽略src之外的目录
                 if (!preg_match("/^\//", $f->filename)) {
-                    //忽略src之外的目录
+                    continue;
+                }
+                if (file_exists($realFile)) {
                     continue;
                 }
                 $fileUrl = DEDEBIZCDN.'/update/'.$ver->ver.'/src'.$f->filename;
@@ -245,9 +262,19 @@ if ($action === 'is_need_check_code') {
                 $fData = $dhd->GetHtml();
                 $dhd->Close();
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
-                $realFile = $backupVerPath.$f->filename;
                 @mkdir(dirname($realFile), 0777, true);
                 file_put_contents($realFile, $fData);
+                $i++;
+                if ($i === 10) {
+                    echo json_encode(array(
+                        "code" => 0,
+                        "msg" => "正在下载{$ver->ver}版本的{$f->filename}文件",
+                        "data" => array(
+                            "finish" => false,
+                        ),
+                    ));
+                    exit;
+                }
             }
             $sqlUrl = DEDEBIZCDN.'/update/'.$ver->ver.'/update.sql';
             $dhd = new DedeHttpDown();
@@ -262,7 +289,7 @@ if ($action === 'is_need_check_code') {
             SetCache('update', 'vers', $row);
             echo json_encode(array(
                 "code" => 0,
-                "msg" => "正在下载{$ver->ver}的版本更新文件",
+                "msg" => "正在下载{$ver->ver}版本更新文件",
                 "data" => array(
                     "finish" => false,
                 ),
@@ -291,8 +318,8 @@ if ($action === 'is_need_check_code') {
             //复制文件
             $fileList = json_decode(file_get_contents($backupVerPath.'/files.txt'));
             foreach ($fileList as $f) {
+                //忽略src之外的目录
                 if (!preg_match("/^\//", $f->filename)) {
-                    //忽略src之外的目录
                     continue;
                 }
                 $f->filename = preg_replace('/^\/admin/', $curDir, $f->filename);
@@ -309,7 +336,7 @@ if ($action === 'is_need_check_code') {
             RmRecurse($backupVerPath);
             echo json_encode(array(
                 "code" => 0,
-                "msg" => "正在应用{$ver->ver}的版本补丁文件",
+                "msg" => "正在更新{$ver->ver}版本补丁文件",
                 "data" => array(
                     "finish" => false,
                 ),
@@ -325,19 +352,31 @@ if ($action === 'is_need_check_code') {
         ),
     ));
     exit;
-} else if($action === 'upload_image'){
+} else if($action === 'upload_image') {
     checkLogin();
     $imgfile_name = $_FILES["file"]['name'];
     $activepath = $cfg_image_dir;
     $allowedTypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
     $uploadedFile = $_FILES['file']['tmp_name'];
+    if (!function_exists('mime_content_type')) {
+        echo json_encode(array(
+            "code" => -1,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "系统不支持fileinfo组件，建议php.ini中开启",
+            ),
+        ));
+        exit;
+    }
     $fileType = mime_content_type($uploadedFile);
     $imgSize = getimagesize($uploadedFile);
     if (!in_array($fileType, $allowedTypes) || !$imgSize) {
         echo json_encode(array(
             "code" => -1,
-            "msg" => "仅支持图片格式文件",
-            "data" => null,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "仅支持图片格式文件",
+            ),
         ));
         exit;
     }
@@ -357,8 +396,10 @@ if ($action === 'is_need_check_code') {
     $fullfilename = $cfg_basedir.$activepath."/".$filename;
     move_uploaded_file($_FILES["file"]["tmp_name"], $fullfilename) or die(json_encode(array(
         "code" => -1,
-        "msg" => "上传失败",
-        "data" => null,
+        "uploaded" => 0,
+        "error" => array(
+            "message" => "上传失败",
+        ),
     )));
     $info = '';
     $sizes[0] = 0;

@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档处理函数
+ * 文档批量维护操作
  *
  * @version        $id:content_batch_up.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -27,7 +27,6 @@ if ($action == "makehtml") {
     header("Location: $jumpurl");
     exit();
 }
-
 $gwhere = " WHERE 1 ";
 if ($startid > 0) $gwhere .= " AND id>= $startid ";
 if ($endid > $startid) $gwhere .= " AND id<= $endid ";

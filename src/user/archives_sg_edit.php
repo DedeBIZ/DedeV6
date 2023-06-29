@@ -9,31 +9,26 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
 require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
-CheckRank(0, 0);
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
-if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
-    exit();
-}
 if (empty($dopost)) {
     //读取归档信息
     $arcQuery = "SELECT ch.*,arc.* FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $cInfos = $dsql->GetOne($arcQuery);
     if (!is_array($cInfos)) {
-        ShowMsg("读取文档信息出错", "-1");
+        ShowMsg("读取文档信息出错", "index.php");
         exit();
     }
     $addRow = $dsql->GetOne("SELECT * FROM `{$cInfos['addtable']}` WHERE aid='$aid';");
     if ($addRow['mid'] != $cfg_ml->M_ID) {
-        ShowMsg("您没权限操作此文档", "-1");
+        ShowMsg("您没有操作此文档权限", "-1");
         exit();
     }
     $addRow['id'] = $addRow['aid'];
@@ -95,7 +90,7 @@ if (empty($dopost)) {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
-            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
+            ShowMsg("提交的信息有错误，请修改重新提交", "-1");
             exit();
         }
     }
@@ -103,7 +98,7 @@ if (empty($dopost)) {
         $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
         $upQuery = "UPDATE `$addtable` SET `title`='$title',`typeid`='$typeid',`arcrank`='$arcrank',litpic='$litpic',userip='$userip'{$inadd_f} WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -111,13 +106,12 @@ if (empty($dopost)) {
     $artUrl = MakeArt($aid, true);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改分类文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='content_sg_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理分类文档</a>";
+    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改分类文档</a><a href='content_sg_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理分类文档</a>";
     $wintitle = "成功修改分类文档";
-    $wecome_info = "文档管理::修改分类文档";
+    $wecome_info = "文档管理 - 修改分类文档";
     $win = new OxWindow();
-    $win->AddTitle("成功修改分类文档");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
 ?>

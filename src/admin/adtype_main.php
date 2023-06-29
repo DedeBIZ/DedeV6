@@ -1,6 +1,6 @@
 <?php
 /**
- * 友情链接类型
+ * 广告分类管理
  *
  * @version        $id:friendlink_type.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator

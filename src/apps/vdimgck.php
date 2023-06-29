@@ -149,6 +149,7 @@ function echo_validate_image($config = array())
     header("Pragma:no-cache\r\n");
     header("Cache-Control:no-cache\r\n");
     header("Expires:0\r\n");
+    ob_clean();
     if (function_exists("imagejpeg")) {
         header("content-type:image/jpeg\r\n");
         imagejpeg($im);

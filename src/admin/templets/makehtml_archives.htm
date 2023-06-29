@@ -9,11 +9,11 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="form2" action="content_list.php" method="get" target="stafrm">
-				<input type="hidden" name="nullfield" value="ok">
-			</form>
-			<form name="form1" action="makehtml_archives_action.php" method="get" target="stafrm">
+		<form name="form2" action="content_list.php" method="get" target="stafrm">
+			<input type="hidden" name="nullfield" value="ok">
+		</form>
+		<form name="form1" action="makehtml_archives_action.php" method="get" target="stafrm">
+			<table align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2">更新文档</td>
 				</tr>
@@ -33,15 +33,24 @@
 				</tr>
 				<tr>
 					<td>起始id：</td>
-					<td><input type="text" name="startid" id="startid" class="admin-input-sm">（空或0表示从头开始）</td>
+					<td>
+						<input type="text" name="startid" id="startid" class="admin-input-sm">
+						<span>（空或0表示从头开始）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>结束id：</td>
-					<td><input type="text" name="endid" id="endid" class="admin-input-sm">（空或0表示直到结束id）</td>
+					<td>
+						<input type="text" name="endid" id="endid" class="admin-input-sm">
+						<span>（空或0表示直到结束id）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>每页更新：</td>
-					<td> <input type="text" name="pagesize" id="pagesize" value="20" class="admin-input-sm">（网页）</td>
+					<td>
+						<input type="text" name="pagesize" id="pagesize" value="20" class="admin-input-sm">
+						<span>（网页）</span>
+					</td>
 				</tr>
 				<tr>
 					<td bgcolor="#e9ecef" colspan="2" align="center">
@@ -49,15 +58,12 @@
 						<button type="button" name="b113" class="btn btn-outline-success btn-sm" onclick="document.form2.submit();">所有文档</button>
 					</td>
 				</tr>
-			</form>
-			<tr>
-				<td colspan="2">结果：</td>
-			</tr>
-			<tr>
-				<td colspan="2" id="mtd">
-					<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-				</td>
-			</tr>
-		</table>
+				<tr>
+					<td colspan="2" id="mtd">
+						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</body>
 </html>

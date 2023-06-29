@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员短消息，发送一个消息
+ * 发送一个账户短消息
  *
  * @version        $id:member_pmone.php 11:24 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -10,8 +10,8 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Pm');
-//检查会员名的合法性
-function CheckUserID($uid, $msgtitle = '会员名', $ckhas = true)
+//检查账号的合法性
+function CheckUserID($uid, $msgtitle = '账号', $ckhas = true)
 {
     global $cfg_mb_notallow, $cfg_mb_idmin, $cfg_md_idurl, $cfg_soft_lang, $dsql;
     if ($cfg_mb_notallow != '') {
@@ -30,7 +30,7 @@ function CheckUserID($uid, $msgtitle = '会员名', $ckhas = true)
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
                 $i++;
             } else {
-                return $msgtitle.'可能含有乱码，建议您改用英文字母和数字组合';
+                return $msgtitle.'含有乱码，建议您改用英文字母和数字组合';
             }
         } else {
             if (preg_match("#[^0-9a-z@\.-]i#", $ck_uid[$i])) {
@@ -52,7 +52,7 @@ if ($action == "post") {
         ShowMsg("请填写信息标题", "-1");
         exit();
     }
-    $msg = CheckUserID($msgtoid, "会员名", false);
+    $msg = CheckUserID($msgtoid, "账号", false);
     if ($msg != 'ok') {
         ShowMsg($msg, "-1");
         exit();

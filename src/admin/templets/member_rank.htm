@@ -11,13 +11,13 @@
 	<body>
 		<form name="form1" action="member_rank.php" method="post">
 			<input type="hidden" name="dopost" value="save">
-			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<table align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="6">会员级别设置</td>
 				</tr>
 				<tr>
 					<td colspan="6">
-						<div class="alert alert-info mb-0">级别名称和级别值：注册会员这个级别不能删除，否则会员系统会无法正常使用某些功能</div>
+						<div class="alert alert-info mb-0">会员级别说明：注册会员级别不能删除，删除会影响会员功能无法使用某些功能</div>
 					</td>
 				</tr>
 				<tr align="center">
@@ -49,12 +49,12 @@
 				<input type="hidden" name="idend" value="<?php echo $k;?>">
 				<tr>
 					<td colspan="6">
-						<div class="alert alert-info mb-0">新增一个级别：由于会员升级是以级别值由低向高升级的，因此添加组别时需注意此值的设置，如果您添加新的会员组的级别值低于10，将自动被视为普通的注册会员</div>
+						<div class="alert alert-info mb-0">会员级别说明：由于会员级别值由低向高升级，因此添加组别时需注意此值，如果您添加会员组的级别值低于10，将自动被视为普通的注册会员</div>
 					</td>
 				</tr>
 				<tr align="center">
 					<td>级别名称</td>
-					<td>级别值（待审为0，注册会员为10）</td>
+					<td>级别值（待审为0、注册会员为10）</td>
 					<td>默认金币</td>
 					<td>默认积分</td>
 					<td>操作设置</td>
@@ -65,7 +65,7 @@
 					<td><input type="text" name="rank_new" id="rank_new" value="20"></td>
 					<td><input type="text" name="money_new" id="money_new" value="0"></td>
 					<td><input type="text" name="scores_new" id="scores_new" value="100"></td>
-					<td><input type="checkbox" name="check_new" id="check_new" value="1" checked> 添加等级</td>
+					<td><input type="checkbox" name="check_new" id="check_new" value="1" checked="checked"> 添加等级</td>
 					<td></td>
 				</tr>
 				<tr>

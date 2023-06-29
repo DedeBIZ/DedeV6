@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 动态分页
  *
@@ -306,10 +306,10 @@ class DataListCP
             $plist .= $endpage;
         }
         if (preg_match("#form#i", $atts['listitem'])) {
-            $plist .= " <form name='pagelist' action='".$this->GetCurUrl()."' style='float:left' class='pagelistform'>$hidenform";
+            $plist .= " <form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
             if ($totalpage > $total_list) {
-                $plist .= "<input type='text' name='pageno' style='padding:0;width:30px;height:18px' />\r\n";
-                $plist .= "<input type='submit' name='plistgo' value='GO' style='padding:0;width:30px;height:22px' />\r\n";
+                $plist .= "<input type='text' name='pageno'>\r\n";
+                $plist .= "<input type='submit' name='plistgo' value='GO'>\r\n";
             }
             $plist .= "</form>\n";
         }

@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * @version        $id:autoload.inc.php 17:44 2020-09-22 tianya $
  * @package        DedeBIZ.Libraries
@@ -27,7 +27,7 @@ function __autoload($classname)
             echo '</pre>';
             exit ();
         } else {
-            header ( "location:/404.html" );
+            header ("location:/404.html");
             die ();
         }
     }

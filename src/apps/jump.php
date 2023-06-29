@@ -1,6 +1,6 @@
 <?php
 /**
- * 用于地址跳转
+ * 地址跳转
  *
  * @version        $id:jump.php$
  * @package        DedeBIZ.Site
@@ -21,12 +21,12 @@ if (preg_match("#^http#", $url)) {
     if ($rur['host'] !== $loc['host']) {
         //如果不是本站点的，则需要点击进行跳转
         $wintitle = "将要访问";
-        $msg = "<code>$url</code><p><a href='$url' class='btn btn-success mt-2'>继续访问</a></p>";
+        $msg = "<code>$url</code><div class='mt-3'><a href='$url' class='btn btn-success btn-sm'>继续访问</a></div>";
         $wecome_info = "页面跳转提示";
         $win = new OxWindow();
         $win->AddTitle("您将要访问的链接不属于当前站点，请关注您的账号安全。");
         $win->AddMsgItem($msg);
-        $winform = $win->GetWindow("hand", "&nbsp;", false);
+        $winform = $win->GetWindow("hand", false);
         $win->Display();
     } else {
         header('HTTP/1.1 301 Moved Permanently');

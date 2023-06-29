@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 投票标签
  *
@@ -13,7 +13,7 @@ require_once(DEDEINC.'/dedevote.class.php');
 function lib_vote(&$ctag, &$refObj)
 {
     global $dsql;
-    $attlist = "id|0,lineheight|24,tablewidth|100%,titlebgcolor|#EDEDE2,titlebackgroup|,tablebg|#ffffff";
+    $attlist = "id|0,lineheight|30,tablewidth|100%,titlebgcolor|#EDEDE2,titlebackgroup|,tablebg|#ffffff";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
 

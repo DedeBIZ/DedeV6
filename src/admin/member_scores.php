@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员积分
+ * 积分头衔设置
  *
  * @version        $id:member_scores.php 11:24 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

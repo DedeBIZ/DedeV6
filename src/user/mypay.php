@@ -9,14 +9,14 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 $menutype = 'mydede';
 $menutype_son = 'op';
 require_once(DEDEINC.'/datalistcp.class.php');
 setcookie('ENV_GOBACK_URL', GetCurUrl(), time() + 3600, '/');
 if (!isset($dopost)) $dopost = '';
 if ($dopost == '') {
-    $query = "SELECT * FROM `#@__member_operation` WHERE mid='".$cfg_ml->M_ID."' And product='archive' order by aid desc";
+    $query = "SELECT * FROM `#@__member_operation` WHERE mid='".$cfg_ml->M_ID."' And product='archive' ORDER BY aid DESC";
     $dlist = new DataListCP();
     $dlist->pagesize = 10;
     $dlist->SetTemplate(DEDEMEMBER.'/templets/mypay.htm');

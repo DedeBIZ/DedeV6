@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
@@ -23,20 +23,20 @@ if (empty($dopost)) {
     $dsql->SetQuery($arcQuery);
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
-        ShowMsg("读取文档基本信息出错", "-1");
+        ShowMsg("读取文档信息出错", "index.php");
         exit();
     } else if ($row['arcrank'] >= 0) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，暂时无法修改", "-1");
+            ShowMsg("这篇文档已锁定，暂时无法修改", "-1");
             exit();
         }
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$row['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取栏目配置信息出错", "javascript:;");
+        ShowMsg("读取栏目信息出错", "index.php");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -50,8 +50,8 @@ if (empty($dopost)) {
         if (is_array($dtp->CTags)) {
             foreach ($dtp->CTags as $ctag) {
                 if ($ctag->GetName() == 'link') {
-                    $nForm .= "<p>软件地址".$newRowStart."：<input type='text' name='softurl".$newRowStart."' value='".trim($ctag->GetInnerText())."' class='form-control'></p>
-                    <p>服务器名称：<input type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."' class='form-control'></p>";
+                    $nForm .= "<div class='form-group'><label>下载地址".$newRowStart."：</label><div class='input-group mb-3'><input type='text' name='softurl".$newRowStart."' value='".trim($ctag->GetInnerText())."' class='form-control'><div class='input-group-append'><span class='btn btn-success btn-sm btn-send' onclick=\"SelectSoft('addcontent.softurl".$newRowStart."')\">选择</span></div></div>
+                    <label>下载名称：</label><input type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."' class='form-control'></div>";
                     $newRowStart++;
                 }
             }
@@ -117,7 +117,7 @@ if (empty($dopost)) {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
+            ShowMsg("提交的信息有错误，请修改重新提交", "-1");
             exit();
         }
     }
@@ -125,11 +125,12 @@ if (empty($dopost)) {
     $litpic = isset($litpic)? HtmlReplace($litpic, 1) : '';
     $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',flag='$flag',source='$source' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员", "-1");
+        ShowMsg("数据保存到数据库文档主表出错，请联系管理员", "-1");
         exit();
     }
     //软件链接列表
     $urls = '';
+    $nums = 2;
     for ($i = 1; $i <= 9; $i++) {
         if (!empty(${'softurl'.$i})) {
             $servermsg = str_replace("'", '', stripslashes(${'servermsg'.$i}));
@@ -142,6 +143,7 @@ if (empty($dopost)) {
             if ($softurl != '' && $softurl != 'http://') {
                 $urls .= "{dede:link text='$servermsg'} $softurl {/dede:link}\r\n";
             }
+            $nums++;
         }
     }
     $urls = addslashes($urls);
@@ -153,7 +155,7 @@ if (empty($dopost)) {
     if ($addtable != '') {
         $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl='$officialUrl',officialDemo='$officialDemo',softsize='$softsize',softlinks='$urls',userip='$userip',needmoney='$needmoney',introduce='$body' {$inadd_f} WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "-1");
+            ShowMsg("数据保存到数据库附加表出错，请联系管理员", "-1");
             exit();
         }
     }
@@ -163,13 +165,12 @@ if (empty($dopost)) {
         $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改软件文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理软件文档</a>";
+    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改软件文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理软件文档</a>";
     $wintitle = "成功修改软件文档";
-    $wecome_info = "软件管理::修改软件文档";
+    $wecome_info = "软件管理 - 修改软件文档";
     $win = new OxWindow();
-    $win->AddTitle("成功修改软件文档");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
 ?>

@@ -28,28 +28,28 @@ if ($dopost == "view") {
             if ($rs["admin_pwd_exists"] == "false") {
                 //设定dedebiz admin密码
                 if ($dedebiz_admin == "" || $dedebiz_admin !== $re_dedebiz_admin) {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
                     echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空或两次指定的密码不符</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminPWDCreate($dedebiz_admin);
                 if ($data->data != "ok") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
                     echo "<div class=\"alert alert-danger\">DedeBIZ设定操作密码失败：${$data}</div><br>";
                     $client->Close();
                     exit;
                 }
             } else {
                 if ($dedebiz_admin == "") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
                     echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminSetIndexLockState($dedebiz_admin, $lockindex);
                 if ($data->data != "ok") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
                     echo "<div class=\"alert alert-danger\">DedeBIZ操作密码失败，填写正确的操作密码</div><br>";
                     $client->Close();
                     exit;
@@ -61,7 +61,7 @@ if ($dopost == "view") {
     $remotepos = empty($remotepos) ? '/index.html' : $remotepos;
     $serviterm = empty($serviterm) ? "" : $serviterm;
     if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($position))) {
-        ShowMsg("指定的文件名已被系统禁止", "javascript:;");
+        ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
     $homeFile = DEDEADMIN."/".$position;
@@ -81,13 +81,11 @@ if ($dopost == "view") {
         $GLOBALS['_arclistEnv'] = 'index';
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
-        echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/admin.css\">";
-        echo "<div class=\"alert alert-success my-3\">更新首页模式：".$position." <a href='{$position}' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
+        ShowMsg("更新静态首页，<a href='$position' target='_blank'>点击浏览</a>", "javascript:;");
     } else {
         //动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);
-        echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/admin.css\">";
-        echo "<div class=\"alert alert-success my-3\">动态浏览模式：<a href='../index.php' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
+        ShowMsg("更新动态首页，<a href='../index.php' target='_blank'>点击浏览</a>", "javascript:;");
     }
     $iquery = "UPDATE `#@__homepageset` SET showmod='$showmod'";
     $dsql->ExecuteNoneQuery($iquery);

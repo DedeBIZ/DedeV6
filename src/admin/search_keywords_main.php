@@ -60,7 +60,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $start = ($pageno - 1) * $pagesize;
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
-    <table width='98%' align='center' cellpadding='1' cellspacing='1' class='table maintable my-3'>
+    <table align='center' class='table maintable my-3'>
     <tr>
         <td colspan='8' bgcolor='#f5f5f5'>搜索关键词维护</td>
     </tr>
@@ -68,7 +68,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
         <td width='6%'>选择</td>
         <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('aid')\">id</a></td>
         <td width='20%'>关键词</td>
-        <td width='30%'>分词结果</td>
+        <td width='20%'>分词结果</td>
         <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('count')\">频率</a></td>
         <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('result')\">结果</a></td>
         <td width='12%'><a href='javascript:;' onclick=\"ReloadPage('lasttime')\">搜索时间</a></td>
@@ -81,13 +81,13 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $line = "<tr align='center'>
-        <td><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
+        <td><input name=\"aids[]\" type=\"checkbox\" value=\"{$row['aid']}\"></td>
         <td>{$row['aid']}</td>
-        <td><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:96%'></td>
-        <td><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:96%'></td>
-        <td><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
+        <td><input type='text' name='keyword' id='keyword{$row['aid']}' value='{$row['keyword']}' class='admin-input-md'></td>
+        <td><input type='text' name='spwords' id='spwords{$row['aid']}' value='{$row['spwords']}' class='admin-input-md'></td>
+        <td><input type='text' name='count' id='count{$row['aid']}' value='{$row['count']}' class='admin-input-sm'></td>
         <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
-        <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
+        <td><span>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</span></td>
         <td>
             <a href='javascript:;' onclick='UpdateNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
             <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>

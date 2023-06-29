@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+		<table align="center" class="table maintable my-3">
 			<tr>
 				<td bgcolor="#f5f5f5" colspan="7">投票管理</td>
 			</tr>
@@ -23,7 +23,7 @@
 				<td width="10%">状态</td>
 				<td>操作</td>
 			</tr>
-			{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
+			{dede:datalist empty='<tr><td colspan="7" align="center">暂无投票</td></tr>'}
 			<tr align="center">
 				<td>{dede:field.aid/}</td>
 				<td><a href="{dede:global name='cfg_phpurl'/}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank"> {dede:field.votename/}</a></td>
@@ -32,17 +32,17 @@
 				<td>{dede:field.totalcount/}</td>
 				<td><?php if ($fields['isenable'] == 1){echo "<span class='text-primary'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
 				<td>
-					<a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-success btn-sm">代码</a>
-					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
-					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
+					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
+					<a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-light btn-sm"><i class="fa fa-code"></i> 代码</a>
+					<a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 				</td>
 			</tr>
 			{/dede:datalist}
 			<tr>
 				<td colspan="7"><a href="vote_add.php" class="btn btn-success btn-sm">添加一组投票</a></td>
 			</tr>
-			<tr bgcolor="#f5f5f5" align="center">
-				<td colspan="7">{dede:pagelist listsize='6'/}</td>
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</body>

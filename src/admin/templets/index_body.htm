@@ -12,7 +12,8 @@
 	<script src="../static/web/js/bootstrap.min.js"></script>
 	<script src="../static/web/js/webajax.js"></script>
 	<script src="../static/web/js/chart.min.js"></script>
-	<script src="js/indexbody.js"></script>
+	<script src="js/body.js"></script>
+	<script src="js/update.js"></script>
 	<script src="js/main.js"></script>
 	<base target="_self">
 </head>
@@ -35,11 +36,11 @@
 								<td width="20%" class="border-top-0">访问次数(VV)</td>
 							</tr>
 							<tr>
-								<td class="today">今日记录</td>
-								<td class="today" id="today_pv">0</td>
-								<td class="today" id="today_uv">0</td>
-								<td class="today" id="today_ip">0</td>
-								<td class="today" id="today_vv">0</td>
+								<td>今日记录</td>
+								<td id="today_pv">0</td>
+								<td id="today_uv">0</td>
+								<td id="today_ip">0</td>
+								<td id="today_vv">0</td>
 							</tr>
 							<tr>
 								<td>昨日记录</td>
@@ -49,7 +50,7 @@
 								<td id="yestoday_vv">0</td>
 							</tr>
 							<tr>
-								<td>历史记录</td>
+								<td>历史峰值</td>
 								<td id="total_pv">0</td>
 								<td id="total_uv">0</td>
 								<td id="total_ip">0</td>
@@ -63,42 +64,42 @@
 				<div class="card">
 					<div class="card-header">
 						<a href="javascript:Copyinfo()"><i class="fa fa-cogs"></i> 软件信息</a>
-						<span id="text">软件：<?php echo $cfg_version_detail;?>丨操作系统：<?php echo PHP_OS;?>丨Web服务器：<?php echo $_SERVER['SERVER_SOFTWARE'];?>丨PHP：<?php echo @phpversion();?>丨数据库：<?php echo $dsql->GetVersion();?>丨上传限制：<?php echo ini_get("post_max_size")?></span>
+						<span id="fz-0">软件：<?php echo $cfg_version_detail;?>丨操作系统：<?php echo PHP_OS;?>丨Web服务器：<?php echo $_SERVER['SERVER_SOFTWARE'];?>丨PHP：<?php echo @phpversion();?>丨数据库：<?php echo $dsql->GetVersion();?>丨上传限制：<?php echo ini_get("post_max_size")?></span>
 					</div>
 					<div class="card-body">
 						<table class="table table-borderless">
 							<tr>
-								<td>
+								<td width="16%">
 									<div class="web-info">
 										<p>操作系统</p>
 										<span><?php echo PHP_OS;?></span>
 									</div>
 								</td>
-								<td>
+								<td width="16%">
 									<div class="web-info">
 										<p>WEB服务器</p>
 										<span><?php echo GetSimpleServerSoftware();?></span>
 									</div>
 								</td>
-								<td>
+								<td width="16%">
 									<div class="web-info">
 										<p>IP地址</p>
 										<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
 									</div>
 								</td>
-								<td>
+								<td width="16%">
 									<div class="web-info">
 										<p>PHP版本</p>
 										<span><?php echo @phpversion();?></span>
 									</div>
 								</td>
-								<td>
+								<td width="16%">
 									<div class="web-info">
 										<p>数据库版本</p>
 										<span><?php echo $dsql->GetVersion();?></span>
 									</div>
 								</td>
-								<td>
+								<td width="16%">
 									<div class="web-info">
 										<p>上传限制</p>
 										<span><?php echo ini_get("post_max_size")?></span>
@@ -123,7 +124,7 @@
 					<div class="card-header">
 						<a name="statChart"><i class="fa fa-line-chart"></i> 流量统计图</a>
 					</div>
-					<div class="card-body py-3">
+					<div class="card-body p-3">
 						<canvas id="statChart"></canvas>
 					</div>
 				</div>
@@ -147,14 +148,14 @@
 				</div>
 				<div class="modal-body">
 					<div id="stepArea0" class="stepArea">
-						<span>获取服务器版本资源失败，无法正常升级，请联系DedeBIZ官方团队。</span>
+						<span>获取服务器版本资源失败，无法正常升级，请联系DedeBIZ官方团队</span>
 					</div>
 					<div id="stepArea1" class="stepArea">
 						<span class="spinner-border text-success" role="status"></span>
 						<span id="step1Msg">对比版本更改的文件</span>
 					</div>
 					<div id="stepArea2" class="stepArea">
-						<p>本更新提供了重要的安全性更新，建议所有会员升级，软件更新覆盖以下文件，请做好备份。</p>
+						<p>本更新提供了重要的安全性更新，建议所有会员升级，软件更新覆盖以下文件，请做好备份</p>
 						<div id="_fileList">正在加载</div>
 					</div>
 					<div id="stepArea3" class="stepArea">
@@ -168,163 +169,29 @@
 						</p>
 						<div id="_updateMsg">正在加载</div>
 					</div>
-					<div id="stepArea5" class="stepArea">已是最新软件版本。</div>
-					<div id="_msgInfo" class="mt-3"></div>
+					<div id="stepArea5" class="stepArea">已是最新软件版本</div>
+					<div id="_msgInfo" class="mt-2"></div>
 				</div>
 				<div class="modal-footer">
 					<div id="btnStep0" class="btnStep">
-						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">知道了</button>
+						<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">知道了</button>
 					</div>
 					<div id="btnStep1" class="btnStep"></div>
 					<div id="btnStep2" class="btnStep">
-						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-						<button id="btnBackup" type="button" class="btn btn-outline-success">备份</button>
-						<button id="btnGoStep3" type="button" class="btn btn-success">下一步</button>
+						<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">取消</button>
+						<button id="btnBackup" type="button" class="btn btn-outline-success btn-sm">备份</button>
+						<button id="btnGoStep3" type="button" class="btn btn-success btn-sm">下一步</button>
 					</div>
 					<div id="btnStep3" class="btnStep">
-						<button id="btnCancel" type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-						<button id="btnGoStep4" type="button" class="btn btn-success">下载</button>
+						<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">取消</button>
+						<button id="btnGoStep4" type="button" class="btn btn-success btn-sm">下载</button>
 					</div>
 					<div id="btnStep5" class="btnStep">
-						<button id="btnOK" type="button" class="btn btn-success" data-dismiss="modal">完成</button>
+						<button id="btnOK" type="button" class="btn btn-success btn-sm" data-dismiss="modal">完成</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script>
-		var currentStep = 1;
-		var hasNewVer = false;
-		//步骤
-		function dedeAlter(msg, t = 'info', loading = false) {
-			let loadingStr = loading ? '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>' : '';
-			return `<div class="alert alert-${t}">${loadingStr}
-				${msg}
-			</div>`;
-		}
-		//显示步骤区域
-		function showStepArea(step) {
-			$(".stepArea").hide();
-			$(".btnStep").hide();
-			$("#stepArea" + step).show();
-			$("#btnStep" + step).show();
-		}
-		function update() {
-			$.get("api.php?action=update", function (rs) {
-				if (rs.code === 0) {
-					$("#_updateMsg").html(rs.msg);
-					if (rs.data.finish === false) {
-						setTimeout(() => {
-							update();
-						}, 500);
-					} else {
-						currentStep++
-						$("#_msgInfo").html('');
-						$("#_msgInfo").hide();
-						showStepArea(currentStep);
-					}
-				}
-			})
-		}
-		function hasNewVersion() {
-			$.get("api.php?action=has_new_version", function (rs) {
-				try {
-					if (rs.code === 0) {
-						if (rs.result.HasNew === true) {
-							hasNewVer = true;
-							$(".updates-dot").show();
-						} else {
-							hasNewVer = false;
-							$(".updates-dot").hide();
-						}
-					} else {
-						$(".updates-dot").hide();
-						showStepArea(0);
-					}
-				} catch (error) {
-					console.log("获取软件信息失败")
-				}
-			})
-		}
-		$(document).ready(function () {
-			hasNewVersion();
-			$("#btnCancel").click(function () {
-				currentStep = 1;
-				$("#_fileList").html(``);
-			})
-			$("#btnBackup").click(function () {
-				let alertMsg = dedeAlter("正在备份差异文件", 'info', true);
-				$("#_msgInfo").html(alertMsg);
-				$("#_msgInfo").show();
-				$.get("api.php?action=update_backup", function (rs) {
-					if (rs.code === 0) {
-						alertMsg = dedeAlter(`成功备份差异文件，目录：${rs.data.backupdir}`, 'success');
-						$("#_msgInfo").html(alertMsg);
-					}
-				})
-			})
-			$("#systemUpdate").click(function () {
-				if (hasNewVer === false) {
-					currentStep = 5;
-					showStepArea(currentStep);
-					$('#mdlUpdate').modal('show');
-					return;
-				}
-				$('#mdlUpdate').modal('show');
-				showStepArea(currentStep);
-				currentStep++;
-				$.get("api.php?action=get_changed_files", function (rs) {
-					if (rs.code === 0) {
-						let fstr = '<ul class="list-group list-group-flush">';
-						let i = 1;
-						rs.data.files.forEach(file => {
-							fstr += `<li class='list-group-item'>第${i}个文件：${file['filename']}</li>`;
-							i++;
-						});
-						fstr += '</ul>';
-						$("#_fileList").html(fstr);
-						showStepArea(currentStep);
-					} else {
-						showStepArea(0);
-					}
-				})
-			})
-			$('#mdlUpdate').on('hidden.bs.modal', function (event) {
-				currentStep = 1;
-				$("#_msgInfo").html('');
-				$("#_msgInfo").hide();
-			})
-			$("#btnGoStep3").click(function () {
-				currentStep++
-				$("#_msgInfo").html('');
-				$("#_msgInfo").hide();
-				showStepArea(currentStep);
-				$.get("api.php?action=get_update_versions", function (rs) {
-					if (rs.code === 0) {
-						let fstr = '<ul class="list-group list-group-flush">';
-						let i = 1;
-						rs.result.Versions.forEach(ver => {
-							fstr += `<li class='list-group-item'>版本号：${ver.ver}，发布日期：${ver.r} <a href='https://www.zhelixie.com/DedeBIZ/DedeCMSV6/commits/tag/${ver.ver}' class='btn btn-outline-success float-right' target='_blank'>更新记录</a></li>`;
-							i++;
-						});
-						fstr += '</ul>';
-						$("#_verList").html(fstr);
-					} else {
-						showStepArea(0);
-					}
-				})
-			})
-			$("#btnGoStep4").click(function () {
-				currentStep++
-				$("#_msgInfo").html('');
-				$("#_msgInfo").hide();
-				showStepArea(currentStep);
-				update();
-			})
-			$("#btnOK").click(function () {
-				hasNewVersion();
-			})
-		})
-	</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 图像处理
  *
@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 class image
 {
     var $attachinfo;
-    var $targetfile;    //图片路径
+    var $targetfile; //图片路径
     var $imagecreatefromfunc;
     var $imagefunc;
     var $attach;
@@ -21,7 +21,7 @@ class image
     var $watermarktext;
     var $thumbstatus;
     var $watermarkstatus;
-    //析构函数,兼容PHP4
+    //析构函数，兼容PHP4
     function image($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach = array())
     {
         $this->__construct($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach);

@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 文件管理逻辑类
  *
@@ -13,8 +13,7 @@ class FileManagement
 {
     var $baseDir = "";
     var $activeDir = "";
-    //是否允许文件管理器删除目录；
-    //默认为不允许 0 ,如果希望可能管理整个目录,请把值设为 1 ；
+    //是否允许文件管理器删除目录，默认为不允许0，如果希望管理整个目录，请把值设为1
     var $allowDeleteDir = 0;
     //初始化系统
     function Init()
@@ -32,7 +31,7 @@ class FileManagement
         $newext = pathinfo($newname)['extension'];
         if ($oldext != $newext) {
             if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($newname))) {
-                ShowMsg("指定的文件名已被系统禁止", "javascript:;");
+                ShowMsg("文件扩展名已被系统禁止", "javascript:;");
                 exit();
             }
         }
@@ -87,7 +86,7 @@ class FileManagement
                 ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 1;
             } else {
-                ShowMsg("移动文件<span class='text-primary'>$oldfile</span>&gt;<span class='text-primary'>$truepath/$mfile</span>失败，可能是某个位置权限不足", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("移动文件<span class='text-primary'>$oldfile</span>&gt;<span class='text-primary'>$truepath/$mfile</span>失败，某个位置权限不足", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 0;
             }
         } else {
@@ -98,7 +97,7 @@ class FileManagement
     /**
      * 删除目录
      *
-     * @param unknown_type $indir
+     * @param string $indir
      */
     function RmDirFiles($indir)
     {
@@ -121,9 +120,9 @@ class FileManagement
     /**
      * 获得某目录合符规则的文件
      *
-     * @param unknown_type $indir
-     * @param unknown_type $fileexp
-     * @param unknown_type $filearr
+     * @param string $indir
+     * @param string $fileexp
+     * @param array $filearr
      */
     function GetMatchFiles($indir, $fileexp, &$filearr)
     {
@@ -143,8 +142,8 @@ class FileManagement
     /**
      * 删除文件
      *
-     * @param unknown_type $filename
-     * @return unknown
+     * @param string $filename
+     * @return int
      */
     function DeleteFile($filename)
     {

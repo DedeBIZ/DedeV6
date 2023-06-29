@@ -3,13 +3,86 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>提升管理员</title>
+		<title>提升会员</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<form name="form2" action="member_toadmin.php" method="post" onSubmit="return checkSubmit();">
+			<input type="hidden" name="dopost" value="toadmin">
+			<input type="hidden" name="userid" value="<?php echo $row['userid']?>">
+			<input type="hidden" name="id" value="<?php echo $id?>">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> - 提升会员</td>
+				</tr>
+				<?php if ($row['matt']==10) {echo '<tr><td colspan="2"><div class="alert alert-info mb-0">您已经是管理员，不要提升了</div></td></tr>';} else {?>
+				<tr>
+					<td width="260">账号：</td>
+					<td><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo "".$row['userid']."";?></td>
+				</tr>
+				<tr>
+					<td>昵称：</td>
+					<td><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="admin-input-sm">（发布文档后显示作者的名字）</td>
+				</tr>
+				<tr>
+					<td>密码：</td>
+					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，使用[0-9a-zA-Z_@!.-]范围以内字符）</td>
+				</tr>
+				<tr>
+					<td>类型：</td>
+					<td>
+						<select name="usertype" class="admin-input-sm">
+							<?php
+							$dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
+							$dsql->Execute("ut");
+							while($myrow = $dsql->GetObject("ut"))
+							{
+								if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+								else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
+							}
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>授权栏目：</td>
+					<td>
+						<select name="typeids[]" id="typeid" multiple="yes" class="admin-input-lg">
+							<option value="0" class='alltype'>所有栏目</option>
+							<?php echo $typeOptions?>
+						</select>
+						<span>（支持多选）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>真实姓名：</td>
+					<td><input type="text" name="tname" id="tname" class="admin-input-sm"></td>
+				</tr>
+				<tr>
+					<td>邮箱：</td>
+					<td><input type="text" name="email" id="email" class="admin-input-sm" value="<?php echo $row['email']?>"></td>
+				</tr>
+				<tr>
+					<td>验证安全码：</td>
+					<td>
+						<input type="text" name="safecode" id="safecode" class="admin-input-sm">
+						<input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class="text-primary"><?php echo $safecode;?></span>）
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2" align="center">
+						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
+						<button type="button" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
+					</td>
+				</tr>
+				<?php }?>
+			</table>
+		</form>
 		<script>
 			function checkSubmit() {
 				if (document.form2.email.value == "") {
@@ -24,81 +97,5 @@
 				}
 			}
 		</script>
-	</head>
-	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 提升管理员</td>
-			</tr>
-			<?php if ($row['matt']==10) {echo '<tr><td colspan="2"><div class="alert alert-info mb-0">您已经是管理员，不要提升了</div></td></tr>';} else {?>
-			<form name="form2" action="member_toadmin.php" method="post" onSubmit="return checkSubmit();">
-				<input type="hidden" name="dopost" value="toadmin">
-				<input type="hidden" name="userid" value="<?php echo $row['userid']?>">
-				<input type="hidden" name="id" value="<?php echo $id?>">
-				<tr>
-					<td width="260" class="admin-td">头像/会员名/类型：</td>
-					<td>
-						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo "".$row['userid']."";?></span>
-						<span class="btn btn-outline-success btn-sm"><?php echo $row['mtype'];?></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">公司名/昵称：</td>
-					<td class="admin-td"><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="admin-input-sm">（发布文档后显示作者的名字）</td>
-				</tr>
-				<tr>
-					<td class="admin-td">密码：</td>
-					<td class="admin-td"><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
-				</tr>
-				<tr>
-					<td class="admin-td">类型：</td>
-					<td class="admin-td">
-						<select name='usertype' class='admin-input-sm'>
-							<?php
-							$dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
-							$dsql->Execute("ut");
-							while($myrow = $dsql->GetObject("ut"))
-							{
-								if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
-								else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
-							}
-							?>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">授权栏目：</td>
-					<td class="admin-td">
-						<select name="typeids[]" id="typeid" multiple="true" class="admin-input-md" style="height:200px">
-							<option value="0" class='alltype'>所有栏目</option>
-							<?php echo $typeOptions?>
-						</select>
-						<span>（支持多选）</span>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">真实姓名：</td>
-					<td class="admin-td"><input type="text" name="tname" id="tname" class="admin-input-sm"></td>
-				</tr>
-				<tr>
-					<td class="admin-td">邮箱：</td>
-					<td class="admin-td"><input type="text" name="email" id="email" class="admin-input-sm" value="<?php echo $row['email']?>"></td>
-				</tr>
-				<tr>
-					<td class="admin-td">验证安全码：</td>
-					<td class="admin-td">
-						<input type="text" name="safecode" id="safecode" class="admin-input-sm">
-						<input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class="text-primary"><?php echo $safecode;?></span>）
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
-					</td>
-				</tr>
-			</form>
-			<?php }?>
-		</table>
 	</body>
 </html>

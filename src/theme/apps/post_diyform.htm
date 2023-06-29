@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title><?php echo $diy->name;?>-<?php echo $cfg_webname;?></title>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/daterangepicker.css">
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/moment.min.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/daterangepicker.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/diy.js"></script>
+	</head>
+	<body>
+		<?php obtaintheme('top.htm');?>
+		<main class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-expand-lg p-0">
+						<ul class="breadcrumb mr-auto">
+							<li class="breadcrumb-item"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>"><?php echo $diy->name;?>列表</a></li>
+							<li class="breadcrumb-item"><?php echo $diy->name;?>发布</li>
+						</ul>
+						<span class="navbar-text"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">返回列表</a></span>
+					</nav>
+					<form name="addcontent" action="<?php echo $cfg_cmspath;?>/apps/diy.php" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="action" value="post">
+						<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
+						<input type="hidden" name="do" value="2">
+						<table class="table mb-0">
+							<?php echo $postform;?>
+							<tr>
+								<td align="center">
+									<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
+									<button type="reset" name="reset" class="btn btn-outline-success btn-sm">重置</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</main>
+		<?php obtaintheme('foot.htm');?>
+	</body>
+</html>

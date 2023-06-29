@@ -2,20 +2,20 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-		<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css">
+		<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
+		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
+		<script src="{dede:global.cfg_cmsurl/}/static/web/js/bootstrap.min.js"></script>
 		<script src="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
 	</head>
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}
@@ -48,9 +48,9 @@
 						<nav class="py-3">
 							<ul class="pagination justify-content-center">{dede:pagebreak/}</ul>
 						</nav>
-						<div class="alert alert-warning mt-3">您会看到这个提示，那是因为您的系统无法识别某栏目的模型信息，或者您新建模型后，没为这个模型设计单独的模板不同模型的文档浏览页的模板为：article_模型名字标识.htm如“article_article.htm”，更多的信息您可以在栏目模型管理的地方查看</div>
+						<div class="alert alert-info mt-3">您会看到这个提示，因为系统无法识别某栏目的模型信息或者您新建模型后，没为模型设计单独的模板，不同模型的文档浏览页的模板为：article_模型名字标识.htm更多的信息您可以在栏目模型管理的地方查看</div>
 						{dede:fieldlist}
-						<table width="100%" cellpadding="1" cellspacing="1" bgcolor="#BED1AB" class="table">
+						<table class="table">
 							<tr>
 								<td width="30%" align="center" bgcolor="#FBFEF5">
 									[field:name/] 文档：<br>
@@ -72,32 +72,23 @@
 										<li><i class="fa fa-star-o mr-2"></i><a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
 										<li><i class="fa fa-bug mr-2"></i><a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a></li>
 										<li><i class="fa fa-thumbs-o-up mr-2"></i><a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
-										<li><i class="fa fa-print mr-2"></i><a href="javascript:;" onClick="window.print();">打印</a></li>
+										<li><i class="fa fa-print mr-2"></i><a href="javascript:;" onclick="window.print();">打印</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						{dede:include comment='文档顶踩模块' filename='widget_article_likes.htm'/}
-						{dede:include comment='文档评论模块' filename='widget_article_feedback.htm'/}
+						{dede:include filename='widget_article_likes.htm'/}
+						{dede:include filename='widget_article_feedback.htm'/}
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="pb-3">
-						<div class="item-hot bg-white shadow-sm rounded p-3">
-							<form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
-								<input type="hidden" name="kwtype" value="0">
-								<div class="input-group">
-									<input name="q" type="text" class="form-control" placeholder="请输入...">
-									<button type="submit" id="validateimg" class="btn btn-success"><i class="fa fa-search"></i></button>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="py-3">{dede:include comment='推荐栏目' filename='widget_menu.htm'/}</div>
-					<div class="pt-3">{dede:include comment='热门文档' filename='widget_hot.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
+					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
+					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
 				</div>
 			</div>
 		</main>
 		{dede:include filename='foot.htm'/}
+		<script>hljs.initHighlightingOnLoad();</script>
 	</body>
 </html>

@@ -238,7 +238,7 @@ else if ($action == 'send') {
     } else {
         echo json_encode(array(
             "code" => 200,
-            "msg" => "成功发表评论，现在跳转评论页面",
+            "msg" => "成功发表评论，正在前往评论页面",
             "data" => "ok",
         ));
     }

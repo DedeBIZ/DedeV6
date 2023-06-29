@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 if (empty($dopost)) {
-    ShowMsg("请指定栏目参数", "catalog_main.php");
+    ShowMsg("请指定一个栏目参数", "catalog_main.php");
     exit();
 }
 $cid = empty($cid) ? 0 : intval($cid);
@@ -32,10 +32,9 @@ if ($dopost == "addArchives") {
     }
     $gurl = $row["addcon"];
     if ($gurl == "") {
-        ShowMsg("您指的栏目可能有误", "catalog_main.php");
+        ShowMsg("操作失败，正在返回", "catalog_main.php");
         exit();
     }
-
     //跳转并传递参数
     header("location:{$gurl}?channelid={$channelid}&cid={$cid}");
     exit();
@@ -57,7 +56,7 @@ else if ($dopost == "listArchives") {
         $typename = $row["typename"];
         $channelname = $row["channelname"];
         if ($gurl == "") {
-            ShowMsg("您指的栏目可能有误", "catalog_main.php");
+            ShowMsg("操作失败，正在返回", "catalog_main.php");
             exit();
         }
     } else if ($channelid > 0) {
@@ -67,7 +66,6 @@ else if ($dopost == "listArchives") {
         $typename = "";
         $channelname = $row["typename"];
     }
-
     if (empty($gurl)) $gurl = 'content_list.php';
     header("location:{$gurl}?channelid={$channelid}&cid={$cid}");
     exit();
@@ -100,10 +98,11 @@ else if ($dopost == "upRank") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET sortrank='$sortrank' WHERE id='$cid'");
     }
     UpDateCatCache();
-    ShowMsg("操作成功，返回目录", "catalog_main.php");
+    ShowMsg("完成操作，正在返回栏目管理", "catalog_main.php");
     exit();
-} else if ($dopost == "upRankAll") {
-    //检查权限许可
+}
+//检查权限许可
+else if ($dopost == "upRankAll") {
     CheckPurview('t_Edit');
     $row = $dsql->GetOne("SELECT id FROM `#@__arctype` ORDER BY id DESC");
     if (is_array($row)) {
@@ -115,7 +114,7 @@ else if ($dopost == "upRank") {
         }
     }
     UpDateCatCache();
-    ShowMsg("操作成功，正在返回", "catalog_main.php");
+    ShowMsg("完成操作，正在返回栏目管理", "catalog_main.php");
     exit();
 }
 //更新栏目缓存
@@ -140,12 +139,7 @@ else if ($dopost == "upcatcache") {
             $doarray[$tb]  = 1;
         }
     }
-    ShowMsg("操作成功，正在返回", "catalog_main.php");
-    exit();
-}
-//获取js文件
-else if ($dopost == "GetJs") {
-    header("location:makehtml_js.php");
+    ShowMsg("完成更新，正在返回栏目管理", "catalog_main.php");
     exit();
 }
 //获得子类的文档
@@ -162,7 +156,7 @@ else if ($dopost == "GetSunListsMenu") {
     PutCookie('lastCid', $cid, 3600 * 24, "/");
     $tu = new TypeUnit();
     $tu->dsql = $dsql;
-    echo "<table width='100%' cellspacing='0' cellpadding='0'>\r\n";
+    echo "<table width='100%'>\r\n";
     $tu->LogicListAllSunType($cid, "　");
     echo "</table>\r\n";
     $tu->Close();
@@ -181,28 +175,27 @@ else if ($dopost == 'unitCatalog') {
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         if (!empty($row['dd'])) {
-            ShowMsg("栏目：$typename($typeid) 有子栏目，不能进行合并操作", '-1');
+            ShowMsg("栏目<span style='text-primary'>$typename（$typeid）</span>有子栏目，不能进行合并操作", '-1');
             exit();
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
-        $wintitle = '合并栏目';
-        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt; 合并栏目";
+        $wintitle = "合并指定栏目";
+        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 合并栏目";
         $win = new OxWindow();
         $win->Init('catalog_do.php', 'js/blank.js', 'POST');
         $win->AddHidden('dopost', 'unitCatalog');
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
-        $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档网页和列表网页");
-        $win->AddItem('您选择的栏目是：', "<span class='text-primary'>$typename($typeid)</span>");
+        $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档网页和列表网页，栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况");
+        $win->AddItem('您选择的栏目是：', "<span class='text-primary'>$typename（$typeid）</span>");
         $win->AddItem('您希望合并到那个栏目', "<select name='unittype'>{$typeOptions}</select>");
-        $win->AddItem('注意事项：', '栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况');
         $winform = $win->GetWindow('ok');
         $win->Display();
         exit();
     } else {
         if ($typeid == $unittype) {
-            ShowMsg("同一栏目无法合并,请后退重试", '-1');
+            ShowMsg("同一栏目无法合并，请重新合并", '-1');
             exit();
         }
         if (IsParent($unittype, $typeid)) {
@@ -235,18 +228,17 @@ else if ($dopost == 'moveCatalog') {
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
-        $wintitle = "移动栏目";
-        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt; 移动栏目";
+        $wintitle = "移动指定栏目";
+        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 移动栏目";
         $win = new OxWindow();
         $win->Init('catalog_do.php', 'js/blank.js', 'POST');
         $win->AddHidden('dopost', 'moveCatalog');
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
-        $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建网页");
-        $win->AddItem('您选择的栏目是：', "$typename($typeid)");
+        $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建网页，不允许从父级移动到子级目录，只允许子级到更高级或同级或不同父级的情况");
+        $win->AddItem('您选择的栏目是：', "$typename（$typeid）");
         $win->AddItem('您希望移动到那个栏目', "<select name='movetype'>\r\n<option value='0'>移动为顶级栏目</option>\r\n$typeOptions\r\n</select>");
-        $win->AddItem('注意事项：', '不允许从父级移动到子级目录，只允许子级到更高级或同级或不同父级的情况');
         $winform = $win->GetWindow('ok');
         $win->Display();
         exit();
@@ -265,5 +257,112 @@ else if ($dopost == 'moveCatalog') {
         ShowMsg('成功移动目录', 'catalog_main.php');
         exit();
     }
+}
+//查看跨站调用秘钥
+else if ($dopost == 'viewAPI') {
+    require_once(DEDEINC.'/typelink/typelink.class.php');
+    $typeid = isset($typeid) ? intval($typeid) : 0;
+    $tl = new TypeLink($typeid);
+    $phpCode = '<?php 
+    $typeid = '.$typeid.';
+    $row = 10;
+    $timestamp = time();
+    $apikey = \''.$tl->TypeInfos['apikey'].'\';
+    $sign = md5($typeid.$timestamp.$apikey.\'1\'.$row);
+    $durl = "'.$cfg_basehost.'/apps/list.php?tid={$typeid}&mod=1&timestamp={$timestamp}&PageNo=1&PageSize={$row}&sign={$sign}";
+    $data = json_decode(file_get_contents($durl),true);
+    if ($data[\'code\'] === 0) {
+    	var_dump($data);
+    }
+ ?>';
+    $gocode = 'package main
+import (
+    "crypto/md5"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "strconv"
+    "time"
+)
+func main() {
+    typeid := '.$typeid.'
+    row := 10
+    timestamp := strconv.FormatInt(time.Now().Unix(), 10)
+    apikey := "'.$tl->TypeInfos['apikey'].'"
+    sign := fmt.Sprintf("%x", md5.Sum([]byte(fmt.Sprintf("%d%s%s%d%d", typeid, timestamp, apikey, 1, row))))
+    durl := fmt.Sprintf("'.$cfg_basehost.'/apps/list.php?tid=%d&mod=1&timestamp=%s&PageNo=1&PageSize=%d&sign=%s", typeid, timestamp, row, sign)
+    resp, err := http.Get(durl)
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    var data map[string]interface{}
+    if err := json.Unmarshal(body, &data); err != nil {
+        fmt.Println(err)
+        return
+    }
+    if data["code"].(float64) == 0 {
+        fmt.Printf("%+v", data)
+    }
+}';
+    $pythoncode = 'import hashlib
+import json
+import time
+import urllib.request
+typeid = '.$typeid.'
+row = 10
+timestamp = int(time.time())
+apikey = \''.$tl->TypeInfos['apikey'].'\'
+sign = hashlib.md5((str(typeid) + str(timestamp) + apikey + \'1\' + str(row)).encode()).hexdigest()
+durl = f"'.$cfg_basehost.'/apps/list.php?tid={typeid}&mod=1&timestamp={timestamp}&PageNo=1&PageSize={row}&sign={sign}"
+with urllib.request.urlopen(durl) as url:
+    data = json.loads(url.read().decode())
+if data[\'code\'] == 0:
+    print(data)
+';
+    $jscode = 'const crypto = require(\'crypto\');
+const http = require(\'http\');
+const typeid = '.$typeid.';
+const row = 10;
+const timestamp = Math.floor(Date.now() / 1000);
+const apikey = \''.$tl->TypeInfos['apikey'].'\';
+const sign = crypto.createHash(\'md5\').update(typeid.toString() + timestamp.toString() + apikey + \'1\' + row.toString()).digest(\'hex\');
+const durl = `'.$cfg_basehost.'/apps/list.php?tid=${typeid}&mod=1&timestamp=${timestamp}&PageNo=1&PageSize=${row}&sign=${sign}`
+http.get(durl, (res) => {
+    let data = \'\';
+    res.on(\'data\', (chunk) => {
+        data += chunk;
+    });
+    res.on(\'end\', () => {
+        const result = JSON.parse(data);
+        if (result.code === 0) {
+            console.log(result);
+        }
+    });
+}).on(\'error\', (err) => {
+    console.log(err);
+});';
+    $tagcode = '<ul>
+    {dede:jsonq url="'.$cfg_basehost.'" row="10" typeid="'.$typeid.'" apikey="'.$tl->TypeInfos['apikey'].'"}
+    <li><a href="[field:arcurl/]">[field:fulltitle/]</a></li>
+    {/dede:jsonq}
+</ul>';
+    echo json_encode(array(
+        "code"=>0,
+        "data"=>array(
+            "phpcode"=>htmlspecialchars($phpCode),
+            "gocode"=>htmlspecialchars($gocode),
+            "pythoncode"=>htmlspecialchars($pythoncode),
+            "jscode"=>htmlspecialchars($jscode),
+            "tagcode"=>htmlspecialchars($tagcode),
+        )
+    ));
 }
 ?>

@@ -7,7 +7,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 $svali = GetCkVdValue();
 if (strtolower($vdcode) != $svali || $svali == "") {
     ShowMsg("验证码不正确", "-1");
@@ -15,7 +15,7 @@ if (strtolower($vdcode) != $svali || $svali == "") {
 }
 $cardid = preg_replace("#[^0-9A-Za-z-]#", "", $cardid);
 if (empty($cardid)) {
-    ShowMsg("卡号为空", "-1");
+    ShowMsg("卡号不能为空", "-1");
     exit();
 }
 $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_record` WHERE cardid='$cardid' ");
@@ -24,7 +24,7 @@ if (!is_array($row)) {
     exit();
 }
 if ($row['isexp'] == -1) {
-    ShowMsg("此卡号已经失效，不能再次使用", "-1");
+    ShowMsg("卡号已失效，不能再次使用", "-1");
     exit();
 }
 $hasMoney = $row['num'];

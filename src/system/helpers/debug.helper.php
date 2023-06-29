@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 验证小助手
+ * 验证助手
  *
  * @version        $id:validate.helper.php 2 13:56 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
@@ -10,7 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 /**
- * 浏览器友好的变量输出,便于调试时候使用
+ * 浏览器友好的变量输出，便于调试时候使用
  *
  * @param     mixed   $var       要输出查看的文档
  * @param     bool    $echo      是否直接输出

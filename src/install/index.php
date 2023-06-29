@@ -11,7 +11,7 @@ error_reporting(E_ALL || ~E_NOTICE);
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
-$cfg_version_detail = '6.2.6'; //详细版本号
+$cfg_version_detail = '6.2.10'; //详细版本号
 $errmsg = '';
 if (version_compare(PHP_VERSION, '8.0.0', '>=') && function_exists("mysqli_report")) {
     mysqli_report(MYSQLI_REPORT_OFF);
@@ -210,8 +210,7 @@ else if ($step==2) {
                 else $rs = mysql_query(str_replace('#~lang~#',$dblang,$query),$conn);
             }
             $query='';
-        } else if (!preg_match("#^(\/\/|--)#", $line))
-        {
+        } else if (!preg_match("#^(\/\/|--)#", $line)) {
             $query .= $line;
         }
     }
@@ -263,9 +262,8 @@ else if ($step==10) {
     header("Expires:0\r\n");
     $conn = @mysql_connect($dbhost,$dbuser,$dbpwd);
     $info = "";
-    if ($conn)
-    {
-		if (empty($dbname)){
+    if ($conn) {
+		if (empty($dbname)) {
 			$info = "信息正确";
 		} else {
 			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统覆盖数据库": "数据库不存在，系统自动创建";
@@ -276,9 +274,10 @@ else if ($step==10) {
         );
         echo json_encode($result);
     } else {
+        $err = mysql_error();
         $result = array(
             "code" => -1,
-            "data" => "数据库连接失败",
+            "data" => "数据库连接失败，错误信息：{$err}",
         );
         echo json_encode($result);
     }

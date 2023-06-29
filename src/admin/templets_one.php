@@ -1,6 +1,6 @@
 <?php
 /**
- * 模板编译
+ * 主题模板编译
  *
  * @version        $id:templets_one.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>绩效统计</title>
+		<title>管理员绩效统计</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -17,8 +17,8 @@
 				if (resp.ok) {
 					return resp.text()
 				}
-				throw new Error('载入失败');
-			}).then((d)=>{
+				throw new Error('加载失败');
+			}).then((d) => {
 				ajaxdiv.innerHTML = d;
 			}).catch((error) => {
 				ajaxdiv.innerHTML = errMsg;
@@ -27,19 +27,17 @@
 		</script>
 	</head>
 	<body>
-		
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+		<table align="center" class="table maintable my-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="7"><a href="sys_admin_user.php">管理员帐号</a> &gt; 绩效统计</td>
+				<td bgcolor="#f5f5f5"><a href="sys_admin_user.php">管理员帐号</a> - 管理员绩效统计</td>
 			</tr>
 			<tr>
-				<td >
+				<td>
 					<div id="loaddiv" class="text-center" style="display:none"><img src="../static/web/img/loadinglit.gif"></div>
 					<?php
 					$dsql->Execute('me', 'SELECT * FROM `#@__admin` ORDER BY id ASC');
-					while( $arr = $dsql->GetArray('me') )
-					{
-					  echo "<div id='userct{$arr['id']}'></div><script>LoadUser({$arr['id']});</script>";
+					while ($arr = $dsql->GetArray('me')) {
+						echo "<div id='userct{$arr['id']}' class='container-fluid'></div><script>LoadUser({$arr['id']});</script>";
 					}
 					?>
 				</td>

@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档列表
+ * 所有文档列表
  *
  * @version        $id:content_list.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -59,7 +59,7 @@ if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
     if (!empty($channelid) && empty($cid)) {
         $tinyQuerys[] = " channel = '$channelid' ";
     } else {
-        $tinyQuerys[] = " channel>0 ";
+        $tinyQuerys[] = " channel > 0 ";
     }
     if (!empty($arcrank)) {
         $tinyQuerys[] = " arcrank='$arcrank' ";
@@ -86,15 +86,15 @@ if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
 }
 if ($cid == 0) {
     if ($channelid == 0) {
-        $positionname = '所有栏目&gt;';
+        $positionname = '所有栏目 - ';
     } else {
         $row = $tl->dsql->GetOne("SELECT id,typename,maintable FROM `#@__channeltype` WHERE id='$channelid'");
-        $positionname = $row['typename']." &gt; ";
+        $positionname = $row['typename']." - ";
         $maintable = $row['maintable'];
         $channelid = $row['id'];
     }
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
+    $positionname = str_replace($cfg_list_symbol, " - ", $tl->GetPositionName())." - ";
 }
 //当选择的是自定义模型栏目时，直接跳转自定义模型管理区
 if (empty($channelid) && isset($tl->TypeInfos['channeltype'])) {
@@ -147,16 +147,16 @@ if ($stime > 0 && $etime > 0) {
 }
 if ($arcrank != '') {
     $whereSql .= " AND arc.arcrank = '$arcrank' ";
-    $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='catalog_do.php?cid=".$cid."&dopost=listArchives&gurl=content_list.php';\">所有文档</button>";
+    $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onclick=\"location='catalog_do.php?cid=".$cid."&dopost=listArchives&gurl=content_list.php';\">所有文档</button>";
 } else {
-    $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='catalog_do.php?cid=".$cid."&dopost=listArchives&arcrank=-1&gurl=content_list.php';\">稿件审核</button>";
+    $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onclick=\"location='catalog_do.php?cid=".$cid."&dopost=listArchives&arcrank=-1&gurl=content_list.php';\">稿件审核</button>";
 }
 $orderby = empty($orderby) ? 'id' : preg_replace("#[^a-z0-9]#", "", $orderby);
 $orderbyField = 'arc.'.$orderby;
 $query = "SELECT arc.id,arc.typeid,arc.senddate,arc.flag,arc.ismake,arc.channel,arc.arcrank,arc.click,arc.title,arc.color,arc.litpic,arc.pubdate,arc.mid FROM `$maintable` arc $whereSql ORDER BY $orderbyField DESC";
 if (empty($f) || !preg_match("#form#", $f)) $f = 'form1.arcid1';
-//初始化
 $dlist = new DataListCP();
+//文档列表数
 $dlist->pagesize = 30;
 //GET参数
 $dlist->SetParameter('dopost', 'listArchives');

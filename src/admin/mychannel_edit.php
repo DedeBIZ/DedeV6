@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档模型管理
+ * 修改文档模型
  *
  * @version        $id:mychannel_edit.php 14:49 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -16,11 +16,11 @@ if (empty($dopost)) $dopost = "";
 $id = isset($id) && is_numeric($id) ? $id : 0;
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=1 WHERE id='$id' ");
-    ShowMsg("操作成功", "mychannel_main.php");
+    ShowMsg("启用一个文档模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "hide") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id'");
-    ShowMsg("操作成功", "mychannel_main.php");
+    ShowMsg("隐藏一个文档模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "copystart") {
     if ($id == -1) {
@@ -44,72 +44,69 @@ if ($dopost == "show") {
         $idname = 'w'.($newid * -1);
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
-    $wintitle = "文档模型管理-文档模型复制";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::复制文档模型";
+    $wintitle = "复制指定文档模型";
+    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 复制文档模型";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddTitle("复制文档模型：<span class='text-primary'>".$row['typename']."</span>");
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
-    $msg = "<table cellspacing='0' cellpadding='0'>
-        <tr>
-            <td width='260'>新栏目id：</td>
-            <td><input name='newid' type='text' id='newid' size='6' value='{$newid}'></td>
-        </tr>
-        <tr>
-            <td>新栏目名称：</td>
-            <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' class='admin-input-md'></td>
-        </tr>
-        <tr>
-            <td>新栏目标识：</td>
-            <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' class='admin-input-md'></td>
-        </tr>
-        <tr>
-            <td>新附加表：</td>
-            <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' class='admin-input-md'></td>
-        </tr>
-        <tr>
-            <td>复制模板：</td>
-            <td>
-                <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked='checked'> 复制</label>
-                <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>
-            </td>
-        </tr>
-    </table>";
-    $win->AddMsgItem("$msg");
+    $msg = "<tr>
+        <td width='260'>新模型id：</td>
+        <td><input name='newid' type='text' id='newid' value='{$newid}' class='admin-input-sm'></td>
+    </tr>
+    <tr>
+        <td>新模型名称：</td>
+        <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' class='admin-input-lg'></td>
+    </tr>
+    <tr>
+        <td>新模型标识：</td>
+        <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' class='admin-input-lg'></td>
+    </tr>
+    <tr>
+        <td>新附加表：</td>
+        <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' class='admin-input-lg'></td>
+    </tr>
+    <tr>
+        <td>复制模板：</td>
+        <td>
+            <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked='checked'> 复制</label>
+            <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>
+        </td>
+    </tr>";
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     exit();
 } else if ($dopost == "export") {
     if ($id == -1) {
-        ShowMsg("专题文档模型不支持导出", "-1");
+        ShowMsg("专题模型不支持导出", "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' ");
     $channelconfig = '';
-    $row['maintable'] = preg_replace('#dede_#', '#@__', $row['maintable']);
-    $row['addtable'] = preg_replace('#dede_#', '#@__', $row['addtable']);
+    $row['maintable'] = preg_replace('#biz_#', '#@__', $row['maintable']);
+    $row['addtable'] = preg_replace('#biz_#', '#@__', $row['addtable']);
     foreach ($row as $k => $v) {
         if ($k == 'fieldset') $v = "\r\n$v\r\n";
         $channelconfig .= "<channel:{$k}>$v</channel:{$k}>\r\n";
     }
-    $wintitle = "导出文档模型规则";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::导出文档模型规则";
+    $wintitle = "导出指定文档模型规则";
+    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导出文档模型规则";
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("导出<span class='text-primary'>{$row['typename']}</span>文档模型规则");
-    $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:98%;height:300px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
+    $winform = $win->GetWindow("hand", "<link rel='stylesheet' href='css/codemirror.css'><script src='js/codemirror.js'></script><script src='js/mode/xml/xml.js'></script><script src='js/mode/javascript/javascript.js'></script><script src='js/mode/css/css.js'></script><script src='js/mode/htmlmixed/htmlmixed.js'></script><textarea name='config' id='content' class='form-control'>$channelconfig</textarea><script>var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
 } else if ($dopost == "exportin") {
-    $wintitle = "导入文档模型规则";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::导入文档模型规则";
+    $wintitle = "导入指定文档模型规则";
+    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
-    $win->AddTitle("导入文档模型规则：导入文档模型会和原有文档模型冲突，建议导入后修改");
-    $win->AddMsgItem("<textarea name='exconfig' style='width:98%;height:300px;word-wrap:break-word;word-break:break-all'></textarea>");
+    $win->AddMsgItem("<tr><td><textarea name='exconfig' class='admin-textarea-xl'></textarea></td></tr>");
     $winform = $win->GetWindow("ok");
     $win->Display();
     exit();
@@ -118,36 +115,49 @@ if ($dopost == "show") {
     function GotoStaMsg($msg)
     {
         global $wintitle, $wecome_info, $winform;
-        $wintitle = "导入文档模型规则";
-        $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::导入文档模型规则";
+        $wintitle = "导入指定文档模型规则";
+        $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
         $win = new OxWindow();
         $win->Init();
-        $win->AddTitle("操作状态提示");
         $win->AddMsgItem($msg);
         $winform = $win->GetWindow("hand");
         $win->Display();
         exit();
     }
-    $msg = "无信息";
+    $msg = "操作失败";
     $exconfig = stripslashes($exconfig);
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('channel', '<', '>');
     $dtp->LoadSource($exconfig);
-    if (!is_array($dtp->CTags)) GotoStaMsg("文档模型规则不符合");
+    if (!is_array($dtp->CTags)) GotoStaMsg("<tr>
+        <td>文档模型规则出错</td>
+    </tr>
+    <tr>
+        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+    </tr>");
     $fields = array();
     foreach ($dtp->CTags as $ctag) {
         $fname = $ctag->GetName('name');
         $fields[$fname] = trim($ctag->GetInnerText());
     }
     if (!isset($fields['nid']) || !isset($fields['fieldset'])) {
-        GotoStaMsg("文档模型规则不符合");
+        GotoStaMsg("<tr>
+            <td>文档模型规则出错</td>
+        </tr>
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        </tr>");
     }
     //正常的导入过程
     $mysql_version = $dsql->GetVersion(true);
-
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE nid='{$fields['nid']}' ");
     if (is_array($row)) {
-        GotoStaMsg("系统中已经存在相同标识<span class='text-primary'>{$fields['nid']}</span>规则");
+        GotoStaMsg("<tr>
+            <td>已经存在相同的<span class='text-primary'>{$fields['nid']}</span>模型</td>
+        </tr>
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        </tr>");
     }
     //创建表
     if ($fields['issystem'] != -1) {
@@ -156,13 +166,18 @@ if ($dopost == "show") {
         $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}`(`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',`click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL default '',`senddate` int(11) NOT NULL default '0',`flag` set('c','h','p','f','s','j','a','b') default NULL,";
     }
     if ($mysql_version < 4.1) {
-        $tabsql .= "PRIMARY KEY  (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM;";
+        $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM;";
     } else {
-        $tabsql .= "PRIMARY KEY  (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language.";";
+        $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language.";";
     }
     $rs = $dsql->ExecuteNoneQuery($tabsql);
     if (!$rs) {
-        GotoStaMsg("创建表失败!".$dsql->GetError());
+        GotoStaMsg("<tr>
+            <td>创建数据表失败：{$dsql->GetError()}</td>
+        </tr>
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        </tr>");
         exit();
     }
     if ($fields['issystem'] == 1) $fields['issystem'] = 0;
@@ -177,7 +192,12 @@ if ($dopost == "show") {
     $fields['fieldset'] = addslashes($fields['fieldset']);
     $inquery = "INSERT INTO `#@__channeltype` (`id`,`nid`,`typename`,`addtable`,`addcon`,`mancon`,`editcon`,`useraddcon`,`usermancon`,`usereditcon`,`fieldset`,`listfields`,`issystem`,`isshow`,`issend`,`arcsta`,`usertype`,`sendrank`) VALUES ('{$fields['newid']}','{$fields['nid']}','{$fields['typename']}','{$fields['addtable']}','{$fields['addcon']}','{$fields['mancon']}','{$fields['editcon']}','{$fields['useraddcon']}','{$fields['usermancon']}','{$fields['usereditcon']}','{$fields['fieldset']}','{$fields['listfields']}','{$fields['issystem']}','{$fields['isshow']}','{$fields['issend']}','{$fields['arcsta']}','{$fields['usertype']}','{$fields['sendrank']}' ); ";
     $rs = $dsql->ExecuteNoneQuery($inquery);
-    if (!$rs) GotoStaMsg("导入文档模型时发生错误".$dsql->GetError());
+    if (!$rs) GotoStaMsg("<tr>
+        <td>导入文档模型时发生错误：{$dsql->GetError()}</td>
+    </tr>
+    <tr>
+        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+    </tr>");
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($fieldset);
@@ -202,7 +222,12 @@ if ($dopost == "show") {
     if ($allfields != '') {
         $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET listfields='$allfields' WHERE id='{$fields['newid']}' ");
     }
-    GotoStaMsg("成功导入一个文档模型");
+    GotoStaMsg("<tr>
+        <td>成功导入一个文档模型</td>
+    </tr>
+    <tr>
+        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+    </tr>");
 } else if ($dopost == "copysave") {
     $cid = intval($cid);
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$cid' ", MYSQL_ASSOC);
@@ -227,11 +252,11 @@ if ($dopost == "show") {
     }
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if ($rs) {
-        ShowMsg("成功文档模型复制，正在跳转模型管理", "mychannel_edit.php?id={$newid}&dopost=edit");
+        ShowMsg("成功复制文档模型，正在前往模型管理", "mychannel_edit.php?id={$newid}&dopost=edit");
         exit();
     } else {
         $errv = $dsql->GetError();
-        ShowMsg("系统出错，请检查原因<br>错误提示：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
+        ShowMsg("复制文档模型失败，错误提示：$errv", "javascript:;");
         exit();
     }
 } else if ($dopost == "save") {
@@ -249,7 +274,7 @@ if ($dopost == "show") {
     }
     $trueTable = str_replace("#@__", $cfg_dbprefix, $addtable);
     if (!$dsql->IsTable($trueTable)) {
-        ShowMsg("系统找不到您所指定的表<span class='text-primary'>$trueTable</span>，请您创建这个表", "-1");
+        ShowMsg("系统找不到您所指定的<span class='text-primary'>$trueTable</span>表", "-1");
         exit();
     }
     $dsql->ExecuteNoneQuery($query);
@@ -258,25 +283,31 @@ if ($dopost == "show") {
 } else if ($dopost == "gettemplets") {
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
-    $wintitle = "文档模型管理-查看模板";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::查看模板";
+    $wintitle = "查看模型应用模板";
+    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 模型应用模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
     $win->AddTitle("栏目<span class='text-primary'>".$row['typename']."</span>默认模板文件说明");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
-    $msg = "<p>
-        <span>文档模板：{$defaulttemplate}/article_{$row['nid']}.htm</span>
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
-    </p>
-    <p>
-        <span>列表模板：{$defaulttemplate}/list_{$row['nid']}.htm</span>
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
-    </p>
-    <p>
-        <span>封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm</span>
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm' class='btn btn-success btn-xs'>修改</a>
-    </p>";
-    $win->AddMsgItem("$msg");
+    $msg = "<tr>
+        <td>
+            <span>文档模板：{$defaulttemplate}/article_{$row['nid']}.htm</span>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm' class='btn btn-success btn-sm'>修改</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>列表模板：{$defaulttemplate}/list_{$row['nid']}.htm</span>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm' class='btn btn-success btn-sm'>修改</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm</span>
+            <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm' class='btn btn-success btn-sm'>修改</a>
+        </td>
+    </tr>";
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "");
     $win->Display();
     exit();
@@ -288,17 +319,17 @@ if ($dopost == "show") {
         exit();
     }
     if (empty($job)) $job = "";
-    if ($job == "") //确认提示
-    {
+    //确认提示
+    if ($job == "") {
         require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "文档模型管理-删除文档模型";
-        $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::删除文档模型";
+        $wintitle = "删除指定文档模型";
+        $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 删除文档模型";
         $win = new OxWindow();
         $win->Init("mychannel_edit.php", "js/blank.js", "POST");
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确定要删除<span class='text-primary'>".$row['typename']."</span>栏目吗");
+        $win->AddTitle("您确定要删除<span class='text-primary'>".$row['typename']."</span>模型吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -395,7 +426,7 @@ if ($dopost == "show") {
                 $label = $ctag->GetAtt('itemname');
                 if (in_array($datatype, $searchtype)) {
                     $checked = in_array($value, $addonfieldsarr) ? 'checked' : '';
-                    $addonfields .= "<label><input type=\"checkbox\" name=\"addonfields[]\" $checked value=\"$value\"> $label</label> ";
+                    $addonfields .= "<label><input type='checkbox' name='addonfields[]' value='$value' $checked='checked'> $label</label> ";
                 }
             }
         }
@@ -407,10 +438,10 @@ if ($dopost == "show") {
             $addonfields = '';
         }
         $template = trim($template);
-        $forms = '<form action="'.$cfg_cmspath.'/apps/advancedsearch.php" method="post">';
+        $forms = "<form action=\"$cfg_cmspath/apps/advancedsearch.php\" method=\"post\">";
         $forms .= "<input type=\"hidden\" name=\"mid\" value=\"$mid\">";
         $forms .= "<input type=\"hidden\" name=\"dopost\" value=\"search\">";
-        $forms .= "关键词：<input type=\"text\" name=\"q\"><br>";
+        $forms .= "<label>关键词：<input type=\"text\" name=\"q\"></label><br>";
         $mainstring = '';
         if (!empty($mainfields) && is_array($mainfields)) {
             $mainstring = implode(',', $mainfields);
@@ -419,20 +450,20 @@ if ($dopost == "show") {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' class='admin-input-md'>\r\n";
-                    $forms .= "<option value='0' selected>不限栏目</option>\r\n";
+                    $forms .= "<select name=\"typeid\">\r\n";
+                    $forms .= "<option value=\"0\" selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
-                    $forms .= "</select>";
+                    $forms .= "</select><br>";
                     $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\"> 包含子栏目</label><br>";
                 } else if ($mainfield == 'iscommend') {
                     $forms .= "<label><input type=\"checkbox\" name=\"iscommend\" value=\"1\"> 推荐</label><br>";
                 } else if ($mainfield == 'writer') {
-                    $forms .= "作者：<input type=\"text\" name=\"writer\" value=\"\"><br>";
+                    $forms .= "<label>作者：<input type=\"text\" name=\"writer\" value=\"\"></label><br>";
                 } else if ($mainfield == 'source') {
-                    $forms .= "来源：<input type=\"text\" name=\"source\" value=\"\"><br>";
+                    $forms .= "<label>来源：<input type=\"text\" name=\"source\" value=\"\"></label><br>";
                 } else if ($mainfield == 'senddate') {
-                    $forms .= "开始时间：<input type=\"text\" name=\"startdate\" value=\"\"><br>";
-                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\"><br>";
+                    $forms .= "<label>开始时间：<input type=\"text\" name=\"startdate\" value=\"\"></label><br>";
+                    $forms .= "<label>结束时间：<input type=\"text\" name=\"enddate\" value=\"\"></label><br>";
                 }
             }
         }
@@ -445,15 +476,15 @@ if ($dopost == "show") {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' class='admin-input-md'>\r\n";
-                    $forms .= "<option value='0' selected>不限栏目</option>\r\n";
+                    $forms .= "<select name=\"typeid\">\r\n";
+                    $forms .= "<option value=\"0\" selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
-                    $forms .= "</select>";
+                    $forms .= "</select><br>";
                     $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\"> 包含子栏目</label><br>";
                     $addonstring .= 'typeid:int,';
                 } elseif ($addonfield == 'senddate') {
-                    $forms .= "开始时间：<input type=\"text\" name=\"startdate\" value=\"\"><br>";
-                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\"><br>";
+                    $forms .= "<label>开始时间：<input type=\"text\" name=\"startdate\" value=\"\"></label><br>";
+                    $forms .= "<label>结束时间：<input type=\"text\" name=\"enddate\" value=\"\"></label><br>";
                     $addonstring .= 'senddate:datetime,';
                 }
             }
@@ -482,22 +513,22 @@ if ($dopost == "show") {
                 $type = $typearr[$k];
                 $tmp = $name.':'.$type;
                 if (in_array($type, $intarr)) {
-                    $forms .= "<br>$itemname : <input type=\"text\" name=\"start".$name."\" value=\"\"> 到 <input type=\"text\" name=\"end".$name."\" value=\"\"><br>";
+                    $forms .= "$itemname：<input type=\"text\" name=\"start".$name."\" value=\"\"> 到 <input type=\"text\" name=\"end".$name."\" value=\"\"><br>";
                 } else if (in_array($type, $textarr)) {
-                    $forms .= "$itemname : <input type=\"text\" name=\"$name\" value=\"\"><br>";
+                    $forms .= "$itemname：<input type=\"text\" name=\"$name\" value=\"\"><br>";
                 } else if ($type == 'select') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br>$itemname : <select name=\"$name\" ><option value=\"\">不限</option>";
+                        $forms .= "$itemname：<select name=\"$name\"><option value=\"\">不限</option>";
                         foreach ($values as $value) {
                             $forms .= "<option value=\"$value\">$value</option>";
                         }
-                        $forms .= "</select>";
+                        $forms .= "</select><br>";
                     }
                 } else if ($type == 'radio') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br>$itemname : <label><input type=\"radio\" name=\"".$name."\" value=\"\" checked> 不限</label>";
+                        $forms .= "$itemname：<label><input type=\"radio\" name=\"".$name."\" value=\"\" checked=\"checked\"> 不限</label><br>";
                         foreach ($values as $value) {
                             $forms .= "<label><input type=\"radio\" name=\"".$name."\" value=\"$value\"> $value</label>";
                         }
@@ -505,33 +536,46 @@ if ($dopost == "show") {
                 } else if ($type == 'checkbox') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br>$itemname : ";
+                        $forms .= "$itemname：";
                         foreach ($values as $value) {
-                            $forms .= "<label><input type=\"checkbox\" name=\"".$name."[]\" value=\"$value\"> $value</label>";
+                            $forms .= "<label><input type=\"checkbox\" name=\"".$name."[]\" value=\"$value\"> $value</label><br>";
                         }
                     }
                 } elseif ($type == 'datetime') {
-                    $forms .= "<br>开始时间：<input type=\"text\" name=\"startdate\" value=\"\"><br>";
-                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\"><br>";
+                    $forms .= "<label>开始时间：<input type=\"text\" name=\"startdate\" value=\"\"></label><br>";
+                    $forms .= "<label>结束时间：<input type=\"text\" name=\"enddate\" value=\"\"></label><br>";
                 } else {
                     $tmp = '';
                 }
                 $addonstring .= $tmp.',';
             }
         }
-        $forms .= '<input type="submit" name="submit" value="开始搜索"></form>';
+        $forms .= "<input type=\"submit\" name=\"submit\" value=\"开始搜索\" class=\"btn btn-success btn-sm\"></form>";
         $formssql = addslashes($forms);
         $query = "REPLACE INTO `#@__advancedsearch` (mid, maintable, mainfields, addontable, addonfields, forms, template) VALUES ('$mid','$maintable','$mainstring','$addontable','$addonstring','$formssql', '$template')";
         $dsql->ExecuteNoneQuery($query);
         $formshtml = dede_htmlspecialchars($forms);
-        echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
-        echo "下面生成的网页表单，请自行复制，根据自己需求修改样式后粘贴到对应的模板中<br><br><textarea cols=\"100\" rows=\"10\">".$forms."</textarea>";
-        echo '<br>预览：<br><hr>';
+        echo '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/web/css/admin.css">
+        <link rel="stylesheet" href="css/codemirror.css">
+		<script src="js/codemirror.js"></script>
+		<script src="js/mode/xml/xml.js"></script>
+		<script src="js/mode/javascript/javascript.js"></script>
+		<script src="js/mode/css/css.js"></script>
+		<script src="js/mode/htmlmixed/htmlmixed.js"></script>';
+        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$cfg_soft_lang\">";
+        echo "<p>下面生成的网页表单，根据自己需求修改样式后粘贴到对应的模板中</p><textarea id='content' class='form-control'>$forms</textarea>";
+        echo "<hr>";
+        echo "<script>var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
+            lineNumbers: true,
+            lineWrapping: true,
+            mode: 'text/html'
+        });</script>";
         echo $forms;
     }
     exit;
 }
-//删除自定义搜索；
+//删除自定义搜索
 else if ($dopost == 'del') {
     $mid = intval($mid);
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__advancedsearch` WHERE mid = '$mid';");

@@ -9,9 +9,9 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="form1" action="member_type.php" method="post">
-				<input type="hidden" name="dopost" value="save">
+		<form name="form1" action="member_type.php" method="post">
+			<input type="hidden" name="dopost" value="save">
+			<table align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="5">会员等级分类</td>
 				</tr>
@@ -32,7 +32,7 @@
 				?>
 				<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
 				<tr align="center">
-					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" class="admin-input-md"></td>
+					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" class="admin-input-lg"></td>
 					<td>
 						<select name="rank_<?php echo $k?>" id="rank_<?php echo $k?>" class="admin-input-sm">
 							<?php
@@ -54,12 +54,12 @@
 							?>
 						</select>
 					</td>
-					<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> 保留</td>
+					<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="checked"> 保留</td>
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k?>">
 				<tr align="center">
-					<td><input type="text" name="pname_new" id="pname_new" class="admin-input-md"></td>
+					<td><input type="text" name="pname_new" id="pname_new" class="admin-input-lg"></td>
 					<td>
 						<select name="rank_new" id="rank_new" class="admin-input-sm">
 							<?php
@@ -79,12 +79,12 @@
 							?>
 						</select>
 					</td>
-					<td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> 新增</td>
+					<td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked="checked"> 新增</td>
 				</tr>
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="5" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

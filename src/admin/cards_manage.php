@@ -20,7 +20,7 @@ if ($dopost == "delete") {
     }
     if ($dquery != "") $dquery = " WHERE ".$dquery;
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__moneycard_record` $dquery");
-    ShowMsg("成功删除指定的记录", "cards_manage.php");
+    ShowMsg("成功删除指定积分", "cards_manage.php");
     exit();
 } else {
     $addsql = '';
@@ -45,7 +45,7 @@ function GetMemberID($mid)
     global $dsql;
     if ($mid == 0) return '0';
     $row = $dsql->GetOne("SELECT userid FROM `#@__member` WHERE mid='$mid' ");
-    if (is_array($row)) return "<a href='member_view.php?mid={$mid}'>".$row['userid']."</a>";
+    if (is_array($row)) return "<a href='member_edit.php?mid={$mid}'>".$row['userid']."</a>";
     else return '0';
 }
 function GetUseDate($time = 0)

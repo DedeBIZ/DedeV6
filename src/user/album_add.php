@@ -9,14 +9,13 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-//考虑安全原因不管是否开启游客投稿功能，都不允许会员对图片投稿
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了会员空间精简版，您浏览的功能不可用", "-1");
+    ShowMsg("系统开启精简会员空间，您浏览的功能不可用", "-1");
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("由于系统关闭了图片功能，您浏览的功能不可用", "-1");
+    ShowMsg("系统关闭了图片功能，您浏览的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -27,9 +26,8 @@ require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 2;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $menutype = 'content';
-if (empty($formhtml)) $formhtml = 0;
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("投稿失败，剩余次数：{$cfg_ml->M_SendMax}次", "-1", "0", 5000);
+    ShowMsg("投稿失败，每日投稿次数{$cfg_ml->M_SendMax}次，剩余0次，需要增加次数，请联系网站管理员", "index.php", "0", 5000);
     exit();
 }
 if (empty($dopost)) {
@@ -71,7 +69,7 @@ if (empty($dopost)) {
         }
         $f = ${'imgfile'.$i};
         $msg = isset(${'imgmsg'.$i}) ? ${'imgmsg'.$i} : "";
-        if (!empty($f) && filter_var($f, FILTER_VALIDATE_URL)) {
+        if (!empty($f)) {
             $u = str_replace(array("\"", "'"), "`", $f);
             $info = str_replace(array("\"", "'"), "`", $msg);
             $imgurls .= "{dede:img ddimg='' text='$info'} $u {/dede:img}\r\n";
@@ -80,9 +78,6 @@ if (empty($dopost)) {
     $imgurls = addslashes($imgurls);
     //分析处理附加表数据
     $isrm = 1;
-    if (!isset($formhtml)) {
-        $formhtml = 0;
-    }
     $inadd_f = $inadd_v = '';
     if (!empty($dede_addonfields)) {
         $addonfields = explode(';', $dede_addonfields);
@@ -105,14 +100,14 @@ if (empty($dopost)) {
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
+            ShowMsg("提交的信息有错误，请修改重新提交", "-1");
             exit();
         }
     }
     //生成文档id
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
+        ShowMsg("获取主键失败，无法进行后续操作", "-1");
         exit();
     }
     $description = HtmlReplace($description, -1);
@@ -123,7 +118,7 @@ if (empty($dopost)) {
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员", "javascript:;");
+        ShowMsg("数据保存到数据库文档主表出错，请联系管理员", "javascript:;");
         exit();
     }
     //保存到附加表
@@ -131,7 +126,7 @@ if (empty($dopost)) {
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
+        ShowMsg("没找到模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
         $body = HtmlReplace($body, -1);
@@ -140,7 +135,7 @@ if (empty($dopost)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("数据保存到数据库附加表时出错，请联系管理员".$gerr, "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请联系管理员".$gerr, "javascript:;");
             exit();
         }
     }
@@ -154,13 +149,12 @@ if (empty($dopost)) {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='album_edit.php?aid=".$arcID."&channelid=$channelid' class='btn btn-success btn-sm'>修改图片文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理图片文档</a>";
+    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='album_edit.php?aid=".$arcID."&channelid=$channelid' class='btn btn-success btn-sm'>修改图片文档</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理图片文档</a>";
     $wintitle = "成功发布图片文档";
-    $wecome_info = "图片管理::发布图片文档";
+    $wecome_info = "图片管理 - 发布图片文档";
     $win = new OxWindow();
-    $win->AddTitle("成功发布图片文档");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
 ?>

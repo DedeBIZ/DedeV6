@@ -8,12 +8,49 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<style>.admin-td{border-bottom:1px solid #dee2e6!important}</style>
+		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/global.js"></script>
+	</head>
+	<body>
+		<table align="center" class="table maintable my-3">
+			<tr>
+				<td>
+					<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">添加栏目</a>
+					<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量添加</a>
+					<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新缓存</a>
+					<button type="button" name="sb1" class="btn btn-success btn-sm" onclick="document.form1.submit();">更新排序</button>
+				</td>
+				<td align="right">
+					<?php if (!isset($exallct)) {?>
+					<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
+					<?php } else {?>
+					<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
+					<?php }?>
+				</td>
+			</tr>
+		</table>
+		<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
+			<table align="center" class="maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" class="admin-td">网站栏目管理</td>
+				</tr>
+				<tr>
+					<td>
+						<?php
+						if (empty($opendir)) $opendir=-1;
+						if ($userChannel>0) $opendir=$userChannel;
+						$tu = new TypeUnit();
+						$tu->ListAllType($userChannel,$opendir);
+						?>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			function LoadSuns(ctid, tid) {
 				if ($DE(ctid).innerHTML.length < 10) {
-					$DE('img' + tid).className = 'fa fa-minus-square-o';
+					$DE('img' + tid).className = 'fa fa-minus-square';
 					fetch('catalog_do.php?dopost=GetSunLists&cid=' + tid).then(resp => resp.text()).then((d) => {
 						$DE(ctid).innerHTML = d;
 					});
@@ -31,41 +68,5 @@
 				}
 			}
 		</script>
-	</head>
-	<body>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td>
-					<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">添加栏目</a>
-					<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量添加</a>
-					<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新缓存</a>
-					<button type="button" name="sb1" class="btn btn-success btn-sm" onclick="document.form1.submit();">更新排序</button>
-				</td>
-				<td align="right">
-					<?php if (!isset($exallct)) {?>
-					<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
-					<?php } else {?>
-					<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
-					<?php }?>
-				</td>
-			</tr>
-		</table>
-		<table cellpadding="1" cellspacing="1" align="center" class="maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" style="padding:.65rem;border-bottom:1px solid #dee2e6">网站栏目管理</td>
-			</tr>
-			<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
-				<tr>
-					<td>
-						<?php
-						if (empty($opendir)) $opendir=-1;
-						if ($userChannel>0) $opendir=$userChannel;
-						$tu = new TypeUnit();
-						$tu->ListAllType($userChannel,$opendir);
-						?>
-					</td>
-				</tr>
-			</form>
-		</table>
 	</body>
 </html>

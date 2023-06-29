@@ -1,4 +1,5 @@
-advancedsearch.htm,高级搜索模板
+top.htm,顶部模板
+head.htm,头部模板
 article_article.htm,文档模板
 article_default.htm,默认文档模板
 article_default_sg.htm,默认表单文档模板
@@ -6,8 +7,6 @@ article_image.htm,图片文档模板
 article_infos.htm,分类文档模板
 article_soft.htm,软件文档模板
 article_spec.htm,专题文档模板
-foot.htm,底部模板
-head.htm,头部模板
 index.htm,首页模板
 index_article.htm,文档封面模板
 index_default.htm,默认封面模板
@@ -24,6 +23,13 @@ list_infos.htm,分类列表模板
 list_soft.htm,软件列表模板
 list_spec.htm,专题列表模板
 search.htm,搜索模板
-top.htm,顶部模板
 tag.htm,标签首页模板
 taglist.htm,标签文档列表模板
+widget_article_feedback.htm,小部件评论模板
+widget_article_likes.htm,小部件点赞模板
+widget_hot.htm,小部件头条文档模板
+widget_menu.htm,小部件栏目模板
+widget_recommend.htm,小部件推荐栏目模板
+widget_search.htm,小部件搜索模板
+widget_vote.htm,小部件投票模板
+foot.htm,底部模板

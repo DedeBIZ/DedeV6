@@ -14,7 +14,7 @@ $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 //删除收藏
 if ($dopost == "delStow") {
-    CheckRank(0, 0);
+    CheckRank(0, 0);//禁止游客操作
     $type = empty($type) ? '' : HtmlReplace(trim($type), -1);
     $tupdate = '';
     if (!empty($type)) {
@@ -30,7 +30,7 @@ if ($dopost == "delStow") {
 }
 //添加投稿
 else if ($dopost == "addArc") {
-    CheckRank(0, 0);
+    CheckRank(0, 0);//禁止游客操作
     if ($channelid == 1) {
         $addcon = 'article_add.php?channelid='.$channelid;
     } else if ($channelid == 2) {
@@ -54,7 +54,7 @@ else if ($dopost == "addArc") {
 }
 //修改投稿
 else if ($dopost == "edit") {
-    CheckRank(0, 0);
+    CheckRank(0, 0);//禁止游客操作
     if ($channelid == 1) {
         $edit = 'article_edit.php?channelid='.$channelid;
     } else if ($channelid == 2) {
@@ -64,7 +64,7 @@ else if ($dopost == "edit") {
     } else {
         $row = $dsql->GetOne("SELECT usereditcon FROM `#@__channeltype` WHERE id='$channelid' ");
         if (!is_array($row)) {
-            ShowMsg("参数错误", "-1");
+            ShowMsg("操作失败", "-1");
             exit();
         }
         $edit = $row['usereditcon'];
@@ -78,7 +78,7 @@ else if ($dopost == "edit") {
 }
 //删除文档
 else if ($dopost == "delArc") {
-    CheckRank(0, 0);
+    CheckRank(0, 0);//禁止游客操作
     include_once(DEDEMEMBER."/inc/inc_batchup.php");
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'content_list.php?channelid=' : $_COOKIE['ENV_GOBACK_URL'];
     $equery = "SELECT arc.channel,arc.senddate,arc.arcrank,ch.maintable,ch.addtable,ch.issystem,ch.arcsta FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
@@ -134,7 +134,7 @@ else if ($dopost == "delArc") {
 }
 //查看文档
 else if ($dopost == "viewArchives") {
-    CheckRank(0, 0);
+    CheckRank(0, 0);//禁止游客操作
     if ($type == "") {
         header("location:".$cfg_phpurl."/view.php?aid=".$aid);
     } else {

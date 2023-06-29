@@ -1,6 +1,6 @@
 <?php
 namespace WeChat;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use WeChat\Contracts\BasicWeChat;
 /**
  * 会员标签管理

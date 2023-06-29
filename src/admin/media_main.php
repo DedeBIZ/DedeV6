@@ -18,7 +18,7 @@ if ($dopost == 'filemanager') {
     if (file_exists('./file_manage_main.php')) {
         header("location:file_manage_main.php?activepath=$cfg_medias_dir");
     } else {
-        ShowMsg("找不到文件管理器，可能已经卸载", "-1");
+        ShowMsg("找不到文件管理器", "-1");
     }
     exit();
 }
@@ -29,9 +29,9 @@ if (empty($membertype)) {
     $membertype = 0;
 }
 if ($membertype == 1) {
-    $addsql .= " AND u.mid>0 ";
+    $addsql .= " AND u.mid > 0 ";
 } else if ($membertype == 2) {
-    $addsql .= " AND u.mid>0 ";
+    $addsql .= " AND u.mid > 0 ";
 }
 
 if (empty($mediatype)) {

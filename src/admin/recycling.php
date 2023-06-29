@@ -1,6 +1,6 @@
 <?php
 /**
- * 回收站
+ * 文档回收站
  *
  * @version        $id:recycling.php 15:46 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

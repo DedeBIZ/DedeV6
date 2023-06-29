@@ -8,7 +8,7 @@
 >c_New>新建栏目
 >c_Edit>修改栏目
 >c_Del>删除栏目
->c_Stepselect>联动类别管理
+>c_Stepselect>联动类型管理
 
 >>栏目管理
 
@@ -60,11 +60,11 @@
 
 >>系统管理权限
 
->sys_User>系统会员管理
+>sys_User>管理员管理
 >sys_Group>系统组管理
 >sys_MdPwd>修改个人密码
 >sys_DelUpload>删除附件
->sys_Edit>修改系统参数
+>sys_Edit>修改系统变量
 >sys_Log>管理日志
 >sys_plus>插件管理
 >sys_Data>数据备份还原>unsafe

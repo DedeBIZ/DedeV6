@@ -2,4 +2,3 @@
 >>dede>>
 {dede:demotag/}
 >>dede>>
-无属性信息

@@ -10,29 +10,29 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+		<table align="center" class="table maintable my-3">
 			<tr>
 				<td>
 					<a href="mychannel_add.php" class="btn btn-success btn-sm">添加新模型</a>
-					<a href="mychannel_edit.php?dopost=exportin" class="btn btn-success btn-sm">导入模型</a>
-					<a href="stepselect_main.php" class="btn btn-success btn-sm">联动类别管理</a>
+					<a href="mychannel_edit.php?dopost=exportin" class="btn btn-success btn-sm">导入文档模型</a>
+					<a href="stepselect_main.php" class="btn btn-success btn-sm">联动类型管理</a>
 				</td>
 			</tr>
 		</table>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+		<table align="center" class="table maintable mb-3">
 			<tr>
 				<td bgcolor="#f5f5f5" colspan="7">文档模型管理</td>
 			</tr>
 			<tr bgcolor="#e9ecef" align="center">
 				<td width="6%">id</td>
-				<td width="16%">栏目名称</td>
-				<td width="10%">识别id</td>
+				<td width="16%">模型名称</td>
+				<td width="10%">识别标记</td>
 				<td width="16%">附加表</td>
 				<td width="10%">状态</td>
 				<td width="10%">模型</td>
 				<td>操作</td>
 			</tr>
-			{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
+			{dede:datalist empty='<tr><td colspan="7" align="center">暂无记录</td></tr>'}
 			<tr align="center">
 				<td>{dede:field.id/}</td>
 				<td><a href="mychannel_edit.php?id={dede:field.id/}&dopost=edit">{dede:field.typename/}</a></td>
@@ -50,8 +50,8 @@
 				</td>
 			</tr>
 			{/dede:datalist}
-			<tr bgcolor="#f5f5f5" align="center">
-				<td colspan="7">{dede:pagelist listsize='6'/}</td>
+			<tr>
+				<td bgcolor="#f5f5f5" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</body>

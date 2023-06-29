@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+		<table align="center" class="table maintable my-3">
 			<tr>
 				<td bgcolor="#f5f5f5" colspan="6">自定义宏标记</td>
 			</tr>
@@ -22,7 +22,7 @@
 				<td width="20%">结束时间</td>
 				<td width="20%">管理</td>
 			</tr>
-			{dede:datalist empty='<tr><td colspan="6" align="center">暂无文档</td></tr>'}
+			{dede:datalist empty='<tr><td colspan="6" align="center">暂无记录</td></tr>'}
 			<tr align="center">
 				<td>{dede:field.aid/}</td>
 				<td>{dede:field.tagname/}</td>
@@ -30,7 +30,7 @@
 				<td>{dede:field.timeset function='TimeSetValue(@me)'/}</td>
 				<td>{dede:field.endtime function='GetDateMk(@me)'/}</td>
 				<td>
-					<a href="mytag_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i>修改</a>
+					<a href="mytag_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
 					<a href="mytag_edit.php?aid={dede:field.aid/}&dopost=getjs" class="btn btn-light btn-sm"><i class="fa fa-code"></i> js调用</a>
 					<a href="mytag_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 				</td>
@@ -38,7 +38,7 @@
 			{/dede:datalist}
 			<tr>
 				<td colspan="6">
-					<a href="mytag_add.php" class="btn btn-success btn-sm">添加新标记</a>
+					<a href="mytag_add.php" class="btn btn-success btn-sm">添加标记</a>
 					<a href="mytag_tag_guide.php" class="btn btn-success btn-sm">智能标记向导</a>
 				</td>
 			</tr>

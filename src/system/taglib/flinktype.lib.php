@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 友情链接标签
  *
@@ -13,7 +13,7 @@ require_once(DEDEINC."/taglib/flink.lib.php");
 function lib_flinktype(&$ctag, &$refObj)
 {
     global $dsql;
-    $attlist = "row|24,titlelen|24";
+    $attlist = "row|30,titlelen|30";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $totalrow = $row;

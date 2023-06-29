@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 指定某个栏目标签
+ * 指定单个栏目数据标签
  *
  * @version        $id:type.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

@@ -37,7 +37,7 @@ if ($open == 0) {
     include_once(DEDEINC.'/taglib/channel/softlinks.lib.php');
     $ctag = '';
     $downlinks = ch_softlinks($row[$vname], $ctag, $cu, '', TRUE);
-    require_once(DEDETEMPLATE.'/plus/download_links_templet.htm');
+    require_once(DEDETEMPLATE.'/apps/download_links.htm');
     exit();
 }
 //提供软件给会员下载旧模式
@@ -114,8 +114,7 @@ else if ($open == 2) {
             //分析本地链接
             if (!isset($firstLink) && $islocal == 1) $firstLink = $link;
             if ($islocal == 1 && $softconfig['islocal'] != 1) continue;
-
-            //支持http,迅雷下载,ftp,flashget
+            //支持http、迅雷下载、ftp、flashget
             if (!preg_match("#^http:\/\/|^thunder:\/\/|^ftp:\/\/|^flashget:\/\/#i", $link)) {
                 $link = $cfg_mainsite.$link;
             }
@@ -164,14 +163,13 @@ else if ($open == 2) {
             while ($row = $dsql->GetObject('me')) {
                 $memberTypes[$row->rank] = $row->membername;
             }
-            $memberTypes[0] = "游客";
+            $memberTypes[0] = "游客或没权限会员";
             $msgtitle = "您没有权限下载软件：{$arctitle}";
-            $moremsg = "这个软件需要<span class='text-primary'>".$memberTypes[$needRank]."</span>才能下载，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>";
-            include_once(DEDETEMPLATE.'/plus/view_msg.htm');
+            $moremsg = "该软件需要等级<span class='text-primary'>".$memberTypes[$needRank]."</span>才能下载，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span><a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm ml-2'>升级会员</a>";
+            include_once(DEDETEMPLATE.'/apps/view_msg.htm');
             exit();
         }
-        //以下为正常情况，自动扣点数
-        //如果文档需要金币，检查会员是否浏览过本文档
+        //以下为正常情况，自动扣点数，如果文档需要金币，检查会员是否浏览过本文档
         if ($needMoney > 0  && $mid != $cfg_ml->M_ID) {
             $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE".$id."' AND mid='".$cfg_ml->M_ID."'";
             $row = $dsql->GetOne($sql);
@@ -180,15 +178,15 @@ else if ($open == 2) {
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {
                     $msgtitle = "您没有权限下载软件：{$arctitle}";
-                    $moremsg = "该软件需要<span class='text-primary'>".$needMoney."</span>金币才能下载，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span>";
-                    include_once(DEDETEMPLATE.'/plus/view_msg.htm');
+                    $moremsg = "该软件需要消费<span class='text-primary'>".$needMoney."</span>金币才能下载，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><a class='btn btn-success btn-sm ml-2' href='{$cfg_memberurl}/buy.php' target='_blank'>充值金币</a>";
+                    include_once(DEDETEMPLATE.'/apps/view_msg.htm');
                     exit(0);
                 }
                 //有足够金币，记录会员信息
                 $inquery = "INSERT INTO `#@__member_operation` (mid,oldinfo,money,mtime,buyid,product,pname,sta) VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."', 'ARCHIVE".$id."', 'archive','下载软件', 2); ";
                 //记录定单
                 if (!$dsql->ExecuteNoneQuery($inquery)) {
-                    ShowMsg('记录定单失败, 请返回', '-1');
+                    ShowMsg('记录定单失败，请返回', '-1');
                     exit(0);
                 }
                 //扣除金币

@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档小助手
+ * 文档助手
  *
  * @version        $id:archive.helper.php 2 23:00 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
@@ -74,8 +74,8 @@ if (!function_exists('GetOneArchive')) {
 /**
  *  获取模型的表信息
  *
- * @param     int   $id  模型id
- * @param     string   $formtype  表单类型
+ * @param     int  $id  模型id
+ * @param     string  $formtype  表单类型
  * @return    array
  */
 if (!function_exists('GetChannelTable')) {
@@ -96,7 +96,7 @@ if (!function_exists('GetChannelTable')) {
 /**
  *  获得某文档的所有tag
  *
- * @param     int     $aid  文档id
+ * @param     int  $aid  文档id
  * @return    string
  */
 if (!function_exists('GetTags')) {
@@ -140,7 +140,7 @@ if (!function_exists('GetIndexKey')) {
     }
 }
 /**
- *  更新微表key及Tag
+ *  更新微表key及tag
  *
  * @access    public
  * @param     int  $id  文档id
@@ -155,17 +155,21 @@ if (!function_exists('UpIndexKey')) {
     {
         global $dsql, $typeid2;
         if (empty($typeid2)) $typeid2 = 0;
-        $addtime = time();
-        $query = "UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank' WHERE id = '$id' ";
+        $indexedsql = "";
+        //商业全文检索组件索引
+        if (TableHasField("#@__arctiny", "indexed")) {
+            $indexedsql = ",`indexed`=2 ";
+        }
+        $query = "UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank'{$indexedsql} WHERE id = '$id' ";
         $dsql->ExecuteNoneQuery($query);
-        //处理修改后的Tag
+        //处理修改后的tag
         if ($tags != '') {
             $oldtag = GetTags($id);
             $oldtags = explode(',', $oldtag);
             $tagss = explode(',', $tags);
             foreach ($tagss as $tag) {
                 $tag = trim($tag);
-                if (isset($tag[12]) || $tag != stripslashes($tag)) {
+                if (isset($tag[255]) || $tag != stripslashes($tag)) {
                     continue;
                 }
                 if (!in_array($tag, $oldtags)) {
@@ -184,11 +188,11 @@ if (!function_exists('UpIndexKey')) {
     }
 }
 /**
- *  插入Tags
+ *  插入tags
  *
  * @access    public
  * @param     string  $tag  标签
- * @param     int  $aid  文档AID
+ * @param     int  $aid  文档aid
  * @return    void
  */
 if (!function_exists('InsertTags')) {
@@ -197,7 +201,7 @@ if (!function_exists('InsertTags')) {
         $tags = explode(',', $tag);
         foreach ($tags as $tag) {
             $tag = trim($tag);
-            if (isset($tag[20]) || $tag != stripslashes($tag)) {
+            if (isset($tag[255]) || $tag != stripslashes($tag)) {
                 continue;
             }
             InsertOneTag($tag, $aid);
@@ -205,11 +209,11 @@ if (!function_exists('InsertTags')) {
     }
 }
 /**
- *  插入一个tag
+ *  插入tag
  *
  * @access    public
  * @param     string  $tag  标签
- * @param     int  $aid  文档AID
+ * @param     int  $aid  文档aid
  * @return    void
  */
 if (!function_exists('InsertOneTag')) {

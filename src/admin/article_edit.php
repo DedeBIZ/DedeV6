@@ -25,13 +25,13 @@ if ($dopost != 'save') {
     $query = "SELECT ch.typename AS channelname,ar.membername AS rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($query);
     if (!is_array($arcRow)) {
-        ShowMsg("读取文档基本信息出错", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取栏目配置信息出错", "javascript:;");
+        ShowMsg("读取栏目信息出错", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -54,12 +54,16 @@ if ($dopost != 'save') {
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
+    if (trim($title) == '') {
+        ShowMsg("文档标题不能为空", "-1");
+        exit();
+    }
     if (empty($typeid)) {
-        ShowMsg("请指定文档的栏目", "-1");
+        ShowMsg("请选择文档栏目", "-1");
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
+        ShowMsg("文档为非指定类型，请检查您发布文档是否正确", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -79,7 +83,7 @@ if ($dopost != 'save') {
     $color =  cn_substrR($color, 7);
     $writer =  cn_substrR($writer, 20);
     $source = cn_substrR($source, 30);
-    $description = cn_substrR($description, 250);
+    $description = cn_substrR($description, 255);
     $keywords = trim(cn_substrR($keywords, 60));
     $filename = trim(cn_substrR($filename, 40));
     $isremote  = 0;
@@ -133,7 +137,7 @@ if ($dopost != 'save') {
     //更新数据库的SQL语句
     $query = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($query)) {
-        ShowMsg('数据保存到数据库主表`#@__archives`时出错，请检查数据库字段', -1);
+        ShowMsg('数据保存到数据库文档主表出错，请检查数据库字段', -1);
         exit();
     }
     $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
@@ -143,7 +147,7 @@ if ($dopost != 'save') {
         $templet = empty($templet) ? '' : $templet;
         $iquery = "UPDATE `$addtable` SET typeid='$typeid',body='$body'{$inadd_f},redirecturl='$redirecturl',templet='$templet',userip='$useip' WHERE aid='$id'";
         if (!$dsql->ExecuteNoneQuery($iquery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "javascript:;");
+            ShowMsg("数据保存到数据库附加表出错，请检查数据库字段", "javascript:;");
             exit();
         }
     }
@@ -166,13 +170,15 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理文档</a>$backurl";
+    $msg = "<tr>
+        <td bgcolor='#f5f5f5' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理文档</a>$backurl</td>
+    </tr>";
     $wintitle = "成功修改文档";
-    $wecome_info = "文档管理::修改文档";
+    $wecome_info = "文档管理 - 修改文档";
     $win = new OxWindow();
     $win->AddTitle("成功修改文档");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $winform = $win->GetWindow("hand", false);
     $win->Display();
 }
 ?>

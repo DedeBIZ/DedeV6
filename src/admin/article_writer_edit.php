@@ -21,7 +21,7 @@ if ($dopost == "save") {
     flock($fp, 3);
     fwrite($fp, $allwriter);
     fclose($fp);
-    echo "<script>alert('Save OK!');</script>";
+    echo "<script>alert('成功保存文档作者');</script>";
 }
 //读出
 if (empty($allwriter) && filesize($m_file) > 0) {
@@ -29,13 +29,12 @@ if (empty($allwriter) && filesize($m_file) > 0) {
     $allwriter = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wintitle = "文档作者管理";
 $wecome_info = "文档作者管理";
 $win = new OxWindow();
 $win->Init('article_writer_edit.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
-$win->AddTitle("把作者姓名用英文逗号分开");
-$win->AddMsgItem("<textarea name='allwriter' id='allwriter' class='admin-textarea-xl'>$allwriter</textarea>");
+$win->AddTitle("作者姓名用英文逗号分开");
+$win->AddMsgItem("<tr><td><textarea name='allwriter' id='allwriter' class='admin-textarea-xl'>$allwriter</textarea></td></tr>");
 $winform = $win->GetWindow('ok');
 $win->Display();
 ?>

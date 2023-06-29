@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 关联文档标签
  *
@@ -56,7 +56,7 @@ function lib_relation(&$ctag, &$refObj)
     $dsql->Execute('al');
     $artlist = '';
     if ($col > 1) {
-        $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+        $artlist = "<table width='$tablewidth'>\r\n";
     }
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');

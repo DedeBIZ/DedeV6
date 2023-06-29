@@ -9,8 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+CheckRank(0, 0);//禁止游客操作
 require_once(DEDEINC."/datalistcp.class.php");
-CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'op';
 setcookie("ENV_GOBACK_URL", GetCurUrl(), time() + 3600, "/");

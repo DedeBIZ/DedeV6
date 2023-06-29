@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 采集小助手
+ * 采集助手
  *
  * @version        $id:charset.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers

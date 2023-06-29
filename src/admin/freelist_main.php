@@ -16,8 +16,7 @@ if (empty($pagesize)) $pagesize = 30;
 if (empty($pageno)) $pageno = 1;
 if (empty($dopost)) $dopost = '';
 if (empty($orderby)) $orderby = 'aid';
-if (empty($keyword))
-{
+if (empty($keyword)) {
     $keyword = '';
     $addget = '';
     $addsql = '';
@@ -57,7 +56,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
 {
     global $cfg_phpurl, $addsql;
     $start = ($pageno-1) * $pagesize;
-    $printhead ="<table width='98%' cellpadding='1' cellspacing='1' align='center' class='table maintable my-3'>
+    $printhead ="<table align='center' class='table maintable my-3'>
         <tr>
             <td colspan='6' bgcolor='#f5f5f5'>自由列表管理</td>
         </tr>
@@ -82,8 +81,8 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
         <td>{$row['click']}</td>
         <td>".MyDate("y-m-d",$row['edtime'])."</td>
         <td>
-            <a href='javascript:;' onclick='EditNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>
             <a href='javascript:;' onclick='CreateNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
+            <a href='javascript:;' onclick='EditNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>
             <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
         </td>
     </tr>";

@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档小助手
+ * 文档助手
  *
  * @version        $id:channelunit.helper.php 16:49 2010年7月6日 tianya $
  * @package        DedeBIZ.Helpers
@@ -29,10 +29,7 @@ if (!function_exists('GetRankStar')) {
     }
 }
 /**
- *  获得文档网址
- *  如果要获得文件的路径，直接用
- *  GetFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)
- *  即是不指定站点参数则返回相当对根目录的真实路径
+ *  获得文档网址，如果要获得文件的路径，直接用GetFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)即是不指定站点参数则返回相当对根目录的真实路径
  *
  * @param     int  $aid  文档id
  * @param     int  $typeid  栏目id
@@ -83,7 +80,7 @@ if (!function_exists('GetFileUrl')) {
     }
 }
 /**
- *  获得新文件名(本函数会自动创建目录)
+ *  获得新文件名，本函数会自动创建目录
  *
  * @param     int  $aid  文档id
  * @param     int  $typeid  栏目id
@@ -122,70 +119,7 @@ if (!function_exists('GetFileNewName')) {
     }
 }
 /**
- *  获得文件相对于主站点根目录的物理文件名(动态网址返回url)
- *
- * @param     int  $aid  文档id
- * @param     int  $typeid  栏目id
- * @param     int  $timetag  时间戳
- * @param     string  $title  标题
- * @param     int  $ismake  是否生成
- * @param     int  $rank  阅读权限
- * @param     string  $namerule  名称规则
- * @param     string  $typedir  栏目dir
- * @param     string  $money  需要金币
- * @param     string  $filename  文件名称
- * @return    string
- */
-if (!function_exists('GetFileName')) {
-    function GetFileName($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '', $money = 0, $filename = '')
-    {
-        global $cfg_cmspath, $cfg_arcdir, $cfg_special, $cfg_arc_dirname, $cfg_rewrite;
-        //没指定栏目时用固定专题规则
-        if (empty($namerule)) {
-            $namerule = $cfg_special.'/{aid}.html';
-            $typeid = -1;
-        }
-        //伪静态文档
-        if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
-            if ($cfg_rewrite == 'Y') {
-                //目录版return "/article/".$aid."";
-                //网页版默认，文档形式：域名/1.html、域名/2.html，分页形式：域名/1-1.html、域名/1-2.html
-                return "/".$aid.".html";
-            } else {
-                return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
-            }
-        } else {
-            $articleDir = MfTypedir($typedir);
-            $articleRule = strtolower($namerule);
-            if ($articleRule == '') {
-                $articleRule = strtolower($GLOBALS['cfg_df_namerule']);
-            }
-            if ($typedir == '') {
-                $articleDir  = $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
-            }
-            $dtime = GetDateMk($timetag);
-            list($y, $m, $d) = explode('-', $dtime);
-            $arr_rpsource = array('{typedir}', '{y}', '{m}', '{d}', '{timestamp}', '{aid}', '{cc}');
-            $arr_rpvalues = array($articleDir, $y, $m, $d, $timetag, $aid, dd2char($m.$d.$aid.$y));
-            if ($filename != '') {
-                $articleRule = dirname($articleRule).'/'.$filename.$GLOBALS['cfg_df_ext'];
-            }
-            $articleRule = str_replace($arr_rpsource, $arr_rpvalues, $articleRule);
-            if (preg_match("/\{p/", $articleRule)) {
-                $articleRule = str_replace('{pinyin}', GetPinyin($title).'_'.$aid, $articleRule);
-                $articleRule = str_replace('{py}', GetPinyin($title, 1).'_'.$aid, $articleRule);
-            }
-            $articleUrl = '/'.preg_replace("/^\//", '', $articleRule);
-            if (preg_match("/index\.html/", $articleUrl) && $cfg_arc_dirname == 'Y') {
-                $articleUrl = str_replace('index.html', '', $articleUrl);
-            }
-            return $articleUrl;
-        }
-    }
-}
-/**
- *  获得指定栏目链接
- *  对于使用封面文件和单独页面的情况，强制使用默认页名称
+ *  获得栏目链接
  *
  * @param     int  $typeid  栏目id
  * @param     string  $typedir  栏目目录
@@ -204,18 +138,17 @@ if (!function_exists('GetTypeUrl')) {
         global $cfg_typedir_df, $cfg_rewrite;
         $typedir = MfTypedir($typedir);
         $sitepath = MfTypedir($sitepath);
-        //伪静态栏目
-        if ($isdefault==-1) {
-            //动态
+        //动态栏目
+        if ($isdefault == -1) {
             if ($cfg_rewrite == 'Y') {
-                //网页版return $GLOBALS['cfg_cmspath']."/list-".$typeid.".html";
-                //目录版默认，栏目形式：域名/list-1、域名/list-2，分页形式：域名/list-1-1、域名/list-1-2
+                //开启伪静态栏目/list-1、/list-2，则分页/list-1-1、/list-1-2
                 return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
             } else {
                 $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
             }
-        } else if ($ispart == 2) {
-            //跳转网址
+        }
+        //跳转网址
+        else if ($ispart == 2) {
             $reurl = $typedir;
             return $reurl;
         } else {
@@ -246,6 +179,67 @@ if (!function_exists('GetTypeUrl')) {
     }
 }
 /**
+ *  获得文档链接
+ *
+ * @param     int  $aid  文档id
+ * @param     int  $typeid  栏目id
+ * @param     int  $timetag  时间戳
+ * @param     string  $title  标题
+ * @param     int  $ismake  是否生成
+ * @param     int  $rank  阅读权限
+ * @param     string  $namerule  名称规则
+ * @param     string  $typedir  栏目dir
+ * @param     string  $money  需要金币
+ * @param     string  $filename  文件名称
+ * @return    string
+ */
+if (!function_exists('GetFileName')) {
+    function GetFileName($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '', $money = 0, $filename = '')
+    {
+        global $cfg_cmspath, $cfg_arcdir, $cfg_special, $cfg_arc_dirname, $cfg_rewrite;
+        //没指定栏目时用固定专题规则
+        if (empty($namerule)) {
+            $namerule = $cfg_special.'/{aid}.html';
+            $typeid = -1;
+        }
+        //动态文档
+        if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
+            if ($cfg_rewrite == 'Y') {
+                //开启伪静态文档/doc-1.html、/doc-2.html，则分页/doc-1-1.html、/doc-1-2.html
+                return $GLOBALS['cfg_cmspath']."/doc-".$aid.".html";
+            } else {
+                return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
+            }
+        } else {
+            $articleDir = MfTypedir($typedir);
+            $articleRule = strtolower($namerule);
+            if ($articleRule == '') {
+                $articleRule = strtolower($GLOBALS['cfg_df_namerule']);
+            }
+            if ($typedir == '') {
+                $articleDir  = $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
+            }
+            $dtime = GetDateMk($timetag);
+            list($y, $m, $d) = explode('-', $dtime);
+            $arr_rpsource = array('{typedir}', '{y}', '{m}', '{d}', '{timestamp}', '{aid}', '{cc}');
+            $arr_rpvalues = array($articleDir, $y, $m, $d, $timetag, $aid, dd2char($m.$d.$aid.$y));
+            if ($filename != '') {
+                $articleRule = dirname($articleRule).'/'.$filename.$GLOBALS['cfg_df_ext'];
+            }
+            $articleRule = str_replace($arr_rpsource, $arr_rpvalues, $articleRule);
+            if (preg_match("/\{p/", $articleRule)) {
+                $articleRule = str_replace('{pinyin}', GetPinyin($title).'-'.$aid, $articleRule);
+                $articleRule = str_replace('{py}', GetPinyin($title, 1).'-'.$aid, $articleRule);
+            }
+            $articleUrl = '/'.preg_replace("/^\//", '', $articleRule);
+            if (preg_match("/index\.html/", $articleUrl) && $cfg_arc_dirname == 'Y') {
+                $articleUrl = str_replace('index.html', '', $articleUrl);
+            }
+            return $articleUrl;
+        }
+    }
+}
+/**
  *  魔法变量，用于获取两个可变的值
  *
  * @param     string  $v1  第一个变量
@@ -272,7 +266,7 @@ if (!function_exists('GetTopids')) {
     }
 }
 /**
- *  获取上级ID列表
+ *  获取上级id列表
  *
  * @access    public
  * @param     string  $tid  栏目id
@@ -365,7 +359,7 @@ function GetSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
 /**
  *  栏目目录规则
  *
- * @param     string  $typedir   栏目目录
+ * @param     string  $typedir  栏目目录
  * @return    string
  */
 function MfTypedir($typedir)

@@ -12,7 +12,7 @@
 		<script src="js/mode/sql/sql.js"></script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+		<table align="center" class="table maintable my-3">
 			<tr>
 				<td bgcolor="#f5f5f5" colspan="2">SQL命令工具</td>
 			</tr>
@@ -21,7 +21,7 @@
 				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<tr>
 					<td width="370">
-						<select name="tablename" id="tablename" class="admin-input-md">
+						<select name="tablename" id="tablename" class="admin-input-lg">
 							<?php
 							if ($cfg_dbtype=="sqlite") {
 								$query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
@@ -55,12 +55,13 @@
 				</tr>
 			</form>
 			<form action="sys_sql_query.php" method="post" name="form1" target="stafrm">
-				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<input type="hidden" name="dopost" value="query">
+				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 				<tr>
-					<td colspan="2">运行SQL命令行：
-						<label><input type="radio" name="querytype" value="0"> 单行命令（支持简单查询）</label>
-						<label><input type="radio" name="querytype" value="2" checked> 多行命令</label>
+					<td colspan="2">
+						<span>运行SQL命令行：</span>
+						<label><input type="radio" name="querytype" value="0"> 单行命令</label>
+						<label><input type="radio" name="querytype" value="2" checked="checked"> 多行命令</label>
 					</td>
 				</tr>
 				<tr>

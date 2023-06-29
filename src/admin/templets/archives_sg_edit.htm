@@ -17,31 +17,22 @@
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script src="js/main.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
-		<script>
-			function checkSubmit() {
-				if (document.form1.title.value == "") {
-					ShowMsg("请输入文档标题");
-					document.form1.title.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
-		<form name="form1" action="archives_sg_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
+		<form name="form1" action="archives_sg_edit.php" method="post" enctype="multipart/form-data" onSubmit="return checkSubmit();">
 			<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 			<input type="hidden" name="id" value="<?php echo $aid;?>">
 			<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate'];?>">
 			<input type="hidden" name="dopost" value="save">
-			<table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="admin-border my-3">
-				<tr bgcolor="#f5f5f5">
-					<td class="admin-td">修改分类文档</td>
+			<table width="98%" align="center" id="needset" class="admin-border my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" class="admin-td">修改分类文档</td>
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
-								<td width="90"><?php echo $cInfos['titlename'];?>：</td>
+								<td width="120"><?php echo $cInfos['titlename'];?>：</td>
 								<td><input type="text" name="title" id="title" value="<?php echo $addRow['title'];?>" class="admin-input-lg"></td>
 							</tr>
 						</table>
@@ -49,9 +40,9 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
-								<td width="90">自定义属性：</td>
+								<td width="120">自定义属性：</td>
 								<td>
 									<?php
 									$dsql->SetQuery("SELECT * FROM `#@__arcatt` WHERE att<>'j' AND att<>'p' ORDER BY sortid ASC");
@@ -71,12 +62,12 @@
 				</tr>
 				<tr id="pictable" style="<?php if ($cInfos['needpic']==0) echo 'display:none';?>">
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
-								<td width="90">缩略图：</td>
-								<td width="620">
-									<input type="text" name="picname" id="picname" class="admin-input-md" value="<?php echo $addRow['litpic']?>">
-									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
+								<td width="120">缩略图：</td>
+								<td width="630">
+									<input type="text" name="picname" id="picname" class="admin-input-lg" value="<?php echo $addRow['litpic']?>">
+									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="l-height-30"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
@@ -93,18 +84,18 @@
 				?>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
-								<td width="90">发布栏目：</td>
-								<td>
+								<td width="120">发布栏目：</td>
+								<td width="360">
 									<?php
 									$typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
 									echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
-									if ($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
+									if ($addRow["typeid"]=="0") echo "<option value='0' selected>请选择文档栏目</option>";
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<i class="btn btn-sm fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>')" title="快捷选择"></i>
+									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>')" title="快捷选择"></i></span>
 								</td>
 							</tr>
 						</table>
@@ -112,10 +103,10 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<table cellspacing="0" cellpadding="0">
+						<table>
 							<tr>
-								<td width="90">浏览权限：</td>
-								<td>
+								<td width="120">浏览权限：</td>
+								<td width="360">
 									<select name="arcrank" id="arcrank" class="admin-input-sm">
 										<option value='<?php echo $addRow["arcrank"];?>'><?php echo $addRow["rankname"];?></option>
 										<?php
@@ -127,22 +118,30 @@
 										}
 										?>
 									</select>
+									<span>（不支持静态）</span>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<?php }?>
+				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 				<tr>
-					<td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
-				</tr>
-				<tr bgcolor="#f5f5f5">
-					<td align="center" class="admin-td">
+					<td bgcolor="#f5f5f5" align="center" class="admin-td">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 					</td>
 				</tr>
 			</table>
 		</form>
+		<script>
+			function checkSubmit() {
+				if (document.form1.title.value == '') {
+					ShowMsg("文档标题不能为空");
+					document.form1.title.focus();
+					return false;
+				}
+			}
+		</script>
 	</body>
 </html>

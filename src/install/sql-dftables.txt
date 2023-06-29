@@ -67,8 +67,8 @@ CREATE TABLE `#@__addonshop` (
 	`body` mediumtext,
 	`price` float NOT NULL default '0',
 	`trueprice` float NOT NULL default '0',
-	`brand` varchar(250) NOT NULL default '',
-	`units` varchar(250) NOT NULL default '',
+	`brand` varchar(255) NOT NULL default '',
+	`units` varchar(255) NOT NULL default '',
 	`templet` varchar(30) NOT NULL,
 	`userip` char(46) NOT NULL,
 	`redirecturl` varchar(255) NOT NULL,
@@ -271,6 +271,8 @@ CREATE TABLE `#@__arctype` (
 	`crossid` text,
 	`content` text,
 	`smalltypes` text,
+	`apienabled` tinyint unsigned DEFAULT '0',
+	`apikey` varchar(64) DEFAULT NULL,
 	PRIMARY KEY (`id`),
 	KEY `reid` (`reid`,`isdefault`,`channeltype`,`ispart`,`corank`,`topid`,`ishidden`),
 	KEY `sortrank` (`sortrank`)
@@ -317,18 +319,6 @@ CREATE TABLE `#@__channeltype` (
 	KEY `nid` (`nid`,`isshow`,`arcsta`,`sendrank`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__co_onepage`;
-CREATE TABLE `#@__co_onepage` (
-	`id` int(11) NOT NULL auto_increment,
-	`url` varchar(60) NOT NULL default '',
-	`title` varchar(60) NOT NULL default '',
-	`issource` smallint(6) NOT NULL default '1',
-	`lang` varchar(10) NOT NULL default 'gb2312',
-	`rule` text,
-	PRIMARY KEY (`id`),
-	KEY `url` (`url`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__diyforms`;
 CREATE TABLE `#@__diyforms` (
 	`diyid` int(10) unsigned NOT NULL auto_increment,
@@ -367,14 +357,14 @@ DROP TABLE IF EXISTS `#@__feedback`;
 CREATE TABLE `#@__feedback` (
 	`id` int(10) unsigned NOT NULL auto_increment,
 	`aid` mediumint(8) unsigned NOT NULL default '0',
-	`fid` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`fid` int(10) UNSIGNED NOT NULL DEFAULT '0',
 	`typeid` smallint(5) unsigned NOT NULL default '0',
 	`username` char(20) NOT NULL default '',
 	`arctitle` varchar(60) NOT NULL default '',
 	`ip` char(46) NOT NULL default '',
 	`ischeck` smallint(6) NOT NULL default '0',
 	`dtime` int(10) unsigned NOT NULL default '0',
-	`replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`replycount` int(10) UNSIGNED NOT NULL DEFAULT '0',
 	`mid` mediumint(8) unsigned NOT NULL default '0',
 	`bad` mediumint(8) unsigned NOT NULL default '0',
 	`good` mediumint(8) unsigned NOT NULL default '0',
@@ -387,9 +377,9 @@ CREATE TABLE `#@__feedback` (
 
 DROP TABLE IF EXISTS `#@__feedback_goodbad`;
 CREATE TABLE `#@__feedback_goodbad` (
-	`fgid` INT(11) NOT NULL AUTO_INCREMENT,
-	`mid` INT(11) NOT NULL DEFAULT '0',
-	`fid` INT(11) NOT NULL DEFAULT '0',
+	`fgid` int(11) NOT NULL AUTO_INCREMENT,
+	`mid` int(11) NOT NULL DEFAULT '0',
+	`fid` int(11) NOT NULL DEFAULT '0',
 	`fgtype` TINYINT(4) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`fgid`)
 ) TYPE=MyISAM;
@@ -430,7 +420,7 @@ CREATE TABLE `#@__freelist` (
 	`click` int(11) NOT NULL default '1',
 	`listtag` mediumtext,
 	`keywords` varchar(100) NOT NULL default '',
-	`description` varchar(250) NOT NULL default '',
+	`description` varchar(255) NOT NULL default '',
 	PRIMARY KEY (`aid`)
 ) TYPE=MyISAM;
 
@@ -492,6 +482,7 @@ CREATE TABLE `#@__member` (
 	`loginerr` tinyint NULL DEFAULT 0,
 	`send_max` int DEFAULT '1',
 	`user_money` decimal(10, 2) unsigned NULL default 0.00,
+	`pmid` int(8) UNSIGNED NULL DEFAULT 0,
 	PRIMARY KEY (`mid`),
 	KEY `userid` (`userid`,`sex`),
 	KEY `logintime` (`logintime`)
@@ -809,14 +800,14 @@ CREATE TABLE `#@__search_keywords` (
 DROP TABLE IF EXISTS `#@__search_limits`;
 CREATE TABLE `#@__search_limits` (
 	`ip` VARCHAR(200) NOT NULL,
-	`searchtime` INT(11) NULL DEFAULT NULL,
+	`searchtime` int(11) NULL DEFAULT NULL,
 	PRIMARY KEY (`ip`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__search_limits`;
 CREATE TABLE `#@__search_limits` (
 	`ip` VARCHAR(200) NOT NULL,
-	`searchtime` INT(11) NULL DEFAULT NULL,
+	`searchtime` int(11) NULL DEFAULT NULL,
 	PRIMARY KEY (`ip`)
 ) TYPE=MyISAM;
 
@@ -829,7 +820,7 @@ CREATE TABLE `#@__sgpage` (
 	`keywords` varchar(30) NOT NULL default '',
 	`template` varchar(30) NOT NULL default '',
 	`likeid` varchar(20) NOT NULL default '',
-	`description` varchar(250) NOT NULL default '',
+	`description` varchar(255) NOT NULL default '',
 	`uptime` int(10) unsigned NOT NULL default '0',
 	`body` mediumtext,
 	PRIMARY KEY (`aid`),
@@ -951,7 +942,7 @@ CREATE TABLE `#@__sys_task` (
 	`endtime` int(10) unsigned NOT NULL default '0',
 	`freq` tinyint(2) unsigned NOT NULL default '0',
 	`lastrun` int(10) unsigned NOT NULL default '0',
-	`description` varchar(250) NOT NULL,
+	`description` varchar(255) NOT NULL,
 	`parameter` text,
 	`settime` int(10) unsigned NOT NULL default '0',
 	`sta` enum('运行','成功','失败') default NULL,
@@ -971,21 +962,21 @@ CREATE TABLE `#@__sysconfig` (
 
 DROP TABLE IF EXISTS `#@__tagindex`;
 CREATE TABLE `#@__tagindex` (
-	`id` INT(10) NOT NULL AUTO_INCREMENT,
-	`tag` CHAR(12) NOT NULL DEFAULT '',
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`tag` varchar(255) NOT NULL DEFAULT '',
 	`keywords` varchar(255) DEFAULT NULL,
 	`description` varchar(255) DEFAULT NULL,
 	`title` varchar(255) DEFAULT NULL,
-	`typeid` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
-	`count` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-	`total` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-	`weekcc` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-	`monthcc` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-	`weekup` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-	`monthup` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-	`addtime` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-	`uptime` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-	`mktime` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`typeid` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+	`count` int(10) UNSIGNED NOT NULL DEFAULT '0',
+	`total` int(10) UNSIGNED NOT NULL DEFAULT '0',
+	`weekcc` int(10) UNSIGNED NOT NULL DEFAULT '0',
+	`monthcc` int(10) UNSIGNED NOT NULL DEFAULT '0',
+	`weekup` int(10) UNSIGNED NOT NULL DEFAULT '0',
+	`monthup` int(10) UNSIGNED NOT NULL DEFAULT '0',
+	`addtime` int(10) UNSIGNED NOT NULL DEFAULT '0',
+	`uptime` int(10) UNSIGNED NOT NULL DEFAULT '0',
+	`mktime` int(10) UNSIGNED NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
 
@@ -995,7 +986,7 @@ CREATE TABLE `#@__taglist` (
 	`aid` int(10) unsigned NOT NULL default '0',
 	`arcrank` smallint(6) NOT NULL default '0',
 	`typeid` smallint(5) unsigned NOT NULL default '0',
-	`tag` varchar(12) NOT NULL default '',
+	`tag` varchar(255) NOT NULL default '',
 	PRIMARY KEY (`tid`,`aid`)
 ) TYPE=MyISAM;
 

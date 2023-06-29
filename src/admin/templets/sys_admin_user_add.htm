@@ -10,46 +10,35 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function checkSubmit() {
-				if (document.form1.userid.value == "") {
-					ShowMsg("会员id不能为空");
-					document.form1.userid.focus();
-					return false;
-				}
-				if (document.form1.uname.value == "") {
-					ShowMsg("会员名不能为空");
-					document.form1.uname.focus();
-					return false;
-				}
-				if (document.form1.pwd.value == "") {
-					ShowMsg("会员密码不能为空");
-					document.form1.pwd.focus();
-					return false;
-				}
-				return true;
-			}
-		</script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="2">添加管理员</td>
-			</tr>
-			<form name="form1" action="sys_admin_user_add.php" onSubmit="return checkSubmit();" method="post">
-				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-				<input type="hidden" name="dopost" value="add">
+		<form name="form1" action="sys_admin_user_add.php" method="post" onSubmit="return checkSubmit();">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+			<input type="hidden" name="dopost" value="add">
+			<table align="center" class="table maintable my-3">
 				<tr>
-					<td width="260">会员名：</td>
-					<td><input type="text" name="userid" id="userid" class="admin-input-sm">（只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
+					<td bgcolor="#f5f5f5" colspan="2">添加管理员</td>
+				</tr>
+				<tr>
+					<td width="260">账号：</td>
+					<td>
+						<input type="text" name="userid" id="userid" class="admin-input-sm">
+						<span>（使用[0-9a-zA-Z_@!.-]范围以内字符）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>昵称：</td>
-					<td><input type="text" name="uname" id="uname" class="admin-input-sm">（发布文档后显示作者的名字）</td>
+					<td>
+						<input type="text" name="uname" id="uname" class="admin-input-sm">
+						<span>（发布文档后显示作者的名字）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>密码：</td>
-					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
+					<td>
+						<input type="text" name="pwd" id="pwd" class="admin-input-sm">
+						<span>（使用[0-9a-zA-Z_@!.-]范围以内字符）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>会员组：</td>
@@ -64,13 +53,13 @@
 							}
 							?>
 						</select>
-						<a href="sys_group.php" class="btn btn-success btn-sm">系统会员组管理</a>
+						<a href="sys_group.php" class="btn btn-success btn-sm">会员组管理</a>
 					</td>
 				</tr>
 				<tr>
 					<td>授权栏目：</td>
 					<td>
-						<select name="typeids[]" id="typeid" multiple="true" class="admin-input-md" style="height:200px">
+						<select name="typeids[]" id="typeid" multiple="yes" class="admin-input-lg">
 							<option value="0" selected>所有栏目</option>
 							<?php echo $typeOptions?>
 						</select>
@@ -95,7 +84,24 @@
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
+		<script>
+			function checkSubmit() {
+				if (document.form1.userid.value == "") {
+					ShowMsg("账号不能为空");
+					return false;
+				}
+				if (document.form1.uname.value == "") {
+					ShowMsg("昵称不能为空");
+					return false;
+				}
+				if (document.form1.pwd.value == "") {
+					ShowMsg("密码不能为空");
+					return false;
+				}
+				return true;
+			}
+		</script>
 	</body>
 </html>

@@ -111,6 +111,9 @@ if (preg_match('/windows/i', @getenv('OS'))) {
     $isSafeMode = false;
 }
 //系统配置参数
+if (!file_exists(DEDEDATA."/config.cache.inc.php")) {
+    die('DedeBIZ初始化失败，确保系统正确被安装');
+}
 require_once(DEDEDATA."/config.cache.inc.php");
 //Session保存路径
 $sessSaveHandler = @ini_get("session.save_handler");
@@ -121,7 +124,7 @@ $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
 $sessSavePath = DEDEDATA."/sessions_{$enkey}";
 if (!is_dir($sessSavePath)) mkdir($sessSavePath);
 if (is_writeable($sessSavePath) && is_readable($sessSavePath)) {
-    session_save_path($sessSavePath);
+    @session_save_path($sessSavePath);
 }
 //转换上传的文件相关的变量及安全处理，并引用前台通用的上传函数
 if ($_FILES) {
@@ -189,7 +192,7 @@ $cfg_soft_dir = $cfg_medias_dir.'/soft';
 $cfg_other_medias = $cfg_medias_dir.'/media';
 //软件摘要信息，请不要删除，否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
-$cfg_version_detail = '6.2.6';//详细版本号
+$cfg_version_detail = '6.2.10';//详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 $cfg_softname = '得德系统';
@@ -263,23 +266,23 @@ if ($GLOBALS['cfg_dbtype'] == 'mysql' || $GLOBALS['cfg_dbtype'] == 'mysqli') {
 } else {
     require_once(DEDEINC.'/database/dedesqlite.class.php');
 }
-//载入小助手配置，并对其进行默认初始化
+//载入助手配置，并对其进行默认初始化
 $cfg_helper_autoload = array(
-    'charset',    /* 编码小助手 */
-    'channelunit',/* 模型单元小助手 */
-    'string',     /* 字符串小助手 */
-    'time',       /* 日期小助手 */
-    'file',       /* 文件小助手 */
-    'util',       /* 单元小助手 */
-    'validate',   /* 数据验证小助手 */
-    'filter',     /* 过滤器小助手 */
-    'cookie',     /* cookies小助手 */
-    'debug',      /* 调试小助手 */
-    'archive',    /* 文档小助手 */
-    'upload',     /* 上传小助手 */
-    'extend',     /* 扩展小助手 */
-    'code',       /* 代码小助手 */
+    'charset',    /* 编码助手 */
+    'channelunit',/* 模型单元助手 */
+    'string',     /* 字符串助手 */
+    'time',       /* 日期助手 */
+    'file',       /* 文件助手 */
+    'util',       /* 单元助手 */
+    'validate',   /* 数据验证助手 */
+    'filter',     /* 过滤器助手 */
+    'cookie',     /* cookies助手 */
+    'debug',      /* 调试助手 */
+    'archive',    /* 文档助手 */
+    'upload',     /* 上传助手 */
+    'extend',     /* 扩展助手 */
+    'code',       /* 代码助手 */
 );
-//初始化小助手
+//初始化助手
 helper($cfg_helper_autoload);
 ?>

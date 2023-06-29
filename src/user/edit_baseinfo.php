@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckRank(0, 0);
+CheckRank(0, 0);//禁止游客操作
 $menutype = 'config';
 if (!isset($dopost)) $dopost = '';
 $pwd2 = (empty($pwd2)) ? "" : $pwd2;
@@ -21,17 +21,17 @@ if ($dopost == 'save') {
     CheckCSRF();
     if (function_exists('password_hash') && !empty($row['pwd_new'])) {
         if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
-            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', '-1');
+            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', 'edit_baseinfo.php');
             exit();
         }
     } else {
         if (!is_array($row) || $row['pwd'] != md5($oldpwd)) {
-            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', '-1');
+            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', 'edit_baseinfo.php');
             exit();
         }
     }
     if ($userpwd != $userpwdok) {
-        ShowMsg('您两次输入的新密码不一致', '-1');
+        ShowMsg('您两次输入的新密码不一致', 'edit_baseinfo.php');
         exit();
     }
     $addupquery = '';
@@ -71,14 +71,14 @@ if ($dopost == 'save') {
     //修改安全问题或邮箱
     if ($email != $row['email'] || ($newsafequestion != 0 && $newsafeanswer != '')) {
         if ($row['safequestion'] != 0 && ($row['safequestion'] != $safequestion || $row['safeanswer'] != $safeanswer)) {
-            ShowMsg('您的旧安全问题及答案不正确，不能修改邮箱或安全问题', '-1');
+            ShowMsg('您的旧安全问题及答案不正确，不能修改邮箱或安全问题', 'edit_baseinfo.php');
             exit();
         }
         //修改邮箱
         if (!empty($email)) {
             if ($email != $row['email']) {
                 if (!CheckEmail($email)) {
-                    ShowMsg('邮箱格式不正确', '-1');
+                    ShowMsg('邮箱格式不正确', 'edit_baseinfo.php');
                     exit();
                 } else {
                     $addupquery .= ",email='$email',spacesta='-10'";
@@ -88,7 +88,7 @@ if ($dopost == 'save') {
         //修改安全问题
         if ($newsafequestion != 0 && $newsafeanswer != '') {
             if (strlen($newsafeanswer) > 30) {
-                ShowMsg('您的新安全问题的答案太长了，请保持在30字节以内', '-1');
+                ShowMsg('您的新安全问题的答案太长了，请保持在30字节以内', 'edit_baseinfo.php');
                 exit();
             } else {
                 $newsafequestion = HtmlReplace($newsafequestion, 1);
@@ -101,14 +101,14 @@ if ($dopost == 'save') {
     if ($uname != $row['uname']) {
         $rs = CheckUserID($uname, '昵称或公司名称', FALSE);
         if ($rs != 'ok') {
-            ShowMsg($rs, '-1');
+            ShowMsg($rs, 'edit_baseinfo.php');
             exit();
         }
         $addupquery .= ",uname='$uname'";
     }
     //性别
     if (!in_array($sex, array('男', '女', '保密'))) {
-        ShowMsg('请选择正常的性别', '-1');
+        ShowMsg('请选择正常的性别', 'edit_baseinfo.php');
         exit();
     }
     $query1 = "UPDATE `#@__member` SET $pp='$pwd',sex='$sex'{$addupquery} WHERE mid='".$cfg_ml->M_ID."' ";

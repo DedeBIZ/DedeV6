@@ -3,44 +3,29 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>友情链接管理</title>
+		<title>添加友情链接</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function CheckSubmit()
-			{
-				if (document.form1.url.value=="http://"||document.form1.url.value=="") {
-					document.form1.url.focus();
-					ShowMsg("网址不能为空");
-					return false;
-				}
-				if (document.form1.webname.value=="") {
-					document.form1.webname.focus();
-					ShowMsg("网站名称不能为空");
-					return false;
-				}
-				return true;
-			}
-		</script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="2"><a href="friendlink_main.php">友情链接管理</a> &gt; 添加链接</td>
-			</tr>
-			<form action="friendlink_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return CheckSubmit();">
-				<input type="hidden" name="dopost" value="add">
+		<form name="form1" action="friendlink_add.php" method="post" enctype="multipart/form-data" onSubmit="return CheckSubmit();">
+			<input type="hidden" name="dopost" value="add">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="friendlink_main.php">友情链接管理</a> - 添加友情链接</td>
+				</tr>
+
 				<tr>
 					<td width="260">网址：</td>
-					<td><input type="text" name="url" id="url" value="http://" class="admin-input-md"></td>
+					<td><input type="text" name="url" id="url" value="http://" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>网站名称：</td>
-					<td><input type="text" name="webname" id="webname" size="30" class="admin-input-md"></td>
+					<td><input type="text" name="webname" id="webname" size="30" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>排列位置：</td>
@@ -48,11 +33,11 @@
 				</tr>
 				<tr>
 					<td>网站Logo：</td>
-					<td><input type="text" name="logo" id="logo" size="30" class="admin-input-md"></td>
+					<td><input type="text" name="logo" id="logo" size="30" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>上传Logo：</td>
-					<td><input type="file" name="logoimg" id="logoimg" class="admin-input-md"></td>
+					<td><input type="file" name="logoimg" id="logoimg" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>网站简况：</td>
@@ -60,7 +45,7 @@
 				</tr>
 				<tr>
 					<td>邮箱：</td>
-					<td><input type="text" name="email" id="email" class="admin-input-md"></td>
+					<td><input type="text" name="email" id="email" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>网站类型：</td>
@@ -80,7 +65,7 @@
 				<tr>
 					<td>链接位置：</td>
 					<td>
-						<label><input type="radio" name="ischeck" value="1" checked="1"> 内页</label>
+						<label><input type="radio" name="ischeck" value="1" checked="checked"> 内页</label>
 						<label><input type="radio" name="ischeck" value="2"> 首页</label>
 					</td>
 				</tr>
@@ -90,7 +75,23 @@
 						<button type="reset" name="Submit" class="btn btn-outline-success btn-sm" onclick="location.href='<?php echo $ENV_GOBACK_URL?>';">返回</button>
 					</td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
+		<script>
+			function CheckSubmit()
+			{
+				if (document.form1.url.value=="http://"||document.form1.url.value=="") {
+					document.form1.url.focus();
+					ShowMsg("网址不能为空");
+					return false;
+				}
+				if (document.form1.webname.value=="") {
+					document.form1.webname.focus();
+					ShowMsg("网站名称不能为空");
+					return false;
+				}
+				return true;
+			}
+		</script>
 	</body>
 </html>

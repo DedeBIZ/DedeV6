@@ -1,6 +1,6 @@
 <?php
 /**
- * 文件管理器
+ * 新建/修改模板
  *
  * @version        $id:tpl.php 23:44 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -27,7 +27,7 @@ if (preg_match("#\.#", $acdir)) {
 //修改模板
 if ($action == 'edit' || $action == 'newfile') {
     if ($filename == '' && $action == 'edit') {
-        ShowMsg('未指定要修改的文件', '-1');
+        ShowMsg('未指定要修改的模板', '-1');
         exit();
     }
     if (!file_exists($templetdird.'/'.$filename)  && $action == 'edit') {
@@ -60,11 +60,12 @@ if ($action == 'edit' || $action == 'newfile') {
     foreach ($dtags as $tag) {
         //$helpContent = file_get_contents($tagHelpDir.$tag.'.txt');
         $fp = fopen($tagHelpDir.$tag.'.txt', 'r');
-        $helpContent = fread($fp, filesize($tagHelpDir.$tag.'.txt'));
-        fclose($fp);
-        $helps[$tag] = explode('>>dede>>', $helpContent);
+        if ($fp) {
+            $helpContent = fread($fp, filesize($tagHelpDir.$tag.'.txt'));
+            fclose($fp);
+            $helps[$tag] = explode('>>dede>>', $helpContent);
+        }
     }
-
     make_hash();
     include DEDEADMIN.'/templets/tpl_edit.htm';
     exit();
@@ -77,7 +78,7 @@ else if ($action == 'saveedit') {
         exit();
     }
     if (!preg_match("#\.htm$#", $filename)) {
-        ShowMsg('DEDE模板文件，文件名必须用.htm结尾', '-1');
+        ShowMsg('模板只能用.htm扩展名', '-1');
         exit();
     }
     $content = stripslashes($content);
@@ -89,17 +90,17 @@ else if ($action == 'saveedit') {
     $fp = fopen($truefile, 'w');
     fwrite($fp, $content);
     fclose($fp);
-    ShowMsg('成功修改或新建文件', 'templets_main.php?acdir='.$acdir);
+    ShowMsg('修改或新建模板成功', 'templets_main.php?acdir='.$acdir);
     exit();
 }
 //删除模板
 else if ($action == 'del') {
     $truefile = $templetdird.'/'.$filename;
     if (unlink($truefile)) {
-        ShowMsg('删除文件成功', 'templets_main.php?acdir='.$acdir);
+        ShowMsg('删除模板成功', 'templets_main.php?acdir='.$acdir);
         exit();
     } else {
-        ShowMsg('删除文件失败', '-1');
+        ShowMsg('删除模板失败', '-1');
         exit();
     }
 }
@@ -110,23 +111,18 @@ else if ($action == 'upload') {
     $win = new OxWindow();
     make_hash();
     $win->Init("tpl.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
-    $win->mainTitle = "模块管理";
-    $wecome_info = "<a href='templets_main.php'>模板管理</a> &gt; 上传模板";
+    $wecome_info = "<a href='templets_main.php'>模板管理</a> - 上传模板";
     $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'uploadok');
-    $msg = "
-    <table cellspacing='0' cellpadding='0'>
-  <tr>
-    <td width='90'>选择文件：</td>
-    <td>
-        <input name='acdir' type='hidden' value='$acdir'  />
-        <input name='token' type='hidden' value='{$_SESSION['token']}'  />
-        <input name='upfile' type='file' id='upfile' class='admin-input-lg' />
-      </td>
-  </tr>
- </table>
-    ";
-    $win->AddMsgItem("$msg");
+    $msg = "<tr>
+            <td width='260'>选择文件：</td>
+            <td>
+                <input name='acdir' type='hidden' value='$acdir'>
+                <input name='token' type='hidden' value='{$_SESSION['token']}'>
+                <input name='upfile' type='file' id='upfile' class='admin-input-lg'>
+            </td>
+        </tr>";
+    $win->AddMsgItem($msg);
     $winform = $win->GetWindow('ok', '');
     $win->Display();
     exit();
@@ -135,11 +131,11 @@ else if ($action == 'upload') {
 else if ($action == 'uploadok') {
     CheckCSRF();
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("貌似您什么都没有上传哦", "javascript:;");
+        ShowMsg("请选择上传的模板文件", "javascript:;");
         exit();
     } else {
         if (!preg_match("#\.(htm|html)$#", $upfile_name)) {
-            ShowMsg("DedeBIZ模板只能用 .htm或.html扩展名", "-1");
+            ShowMsg("模板只能用.htm或.html扩展名", "-1");
             exit();
         }
         if (preg_match("#[\\\\\/]#", $upfile_name)) {
@@ -160,11 +156,11 @@ else if ($action == 'edittag' || $action == 'addnewtag') {
 if (!defined('DEDEINC')) {
     exit(\"Request Error!\");
 }
-function lib_demotag(&\$ctag,&\$refObj)
+function lib_demotag(\$ctag, \$refObj)
 {
-    global \$dsql,\$envs;
+    global \$dsql, \$envs;
     //属性处理
-    \$attlist=\"row|12,titlelen|24\";
+    \$attlist = \"row|12,titlelen|30\";
     FillAttsDefault(\$ctag->CAttribute->Items,\$attlist);
     extract(\$ctag->CAttribute->Items, EXTR_SKIP);
     \$revalue = '';
@@ -203,19 +199,18 @@ else if ($action == 'savetagfile') {
     $fp = fopen($truefile, 'w');
     fwrite($fp, $content);
     fclose($fp);
-    $msg = "
-    <form name='form1' action='tag_test_action.php' target='blank' method='post'>
-        <label><input type='hidden' name='dopost' value='make'> 标签测试（环境变量标签不支持测试）</label><br>
-        <textarea name='partcode' cols='150' rows='6' style='width:90%'>{dede:{$tagname}}{/dede:{$tagname}}</textarea><br>
-        <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
-    </form>
-    ";
-    $wintitle = "成功操作文件";
-    $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> &gt; 新建修改标签";
+    $msg = "<form name='form1' action='tag_test_action.php' target='blank' method='post'>
+        <tr>
+            <td><textarea name='partcode' class='admin-textarea-xl'>{dede:{$tagname}}{/dede:{$tagname}}</textarea></td>
+        </tr>
+        <tr>
+            <td bgcolor='#f5f5f5' align='center'><button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button></td>
+        </tr>
+    </form>";
+    $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> - 新建修改标签";
     $win = new OxWindow();
-    $win->AddTitle("新建修改标签");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $winform = $win->GetWindow("hand", false);
     $win->Display();
     exit();
 }

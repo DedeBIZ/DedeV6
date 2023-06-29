@@ -9,16 +9,16 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="form1" action="friendlink_type.php" method="post">
-				<input type="hidden" name="dopost" value="save">
+		<form name="form1" action="friendlink_type.php" method="post">
+			<input type="hidden" name="dopost" value="save">
+			<table align="center" class="table maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="3"><a href="friendlink_main.php">友情链接管理</a></td>
 				</tr>
-				<tr bgcolor="#e9ecef">
-					<td width="6%" align="center">id</td>
-					<td width="60%" align="center">网站名称</td>
-					<td width="34%" align="center">状态</td>
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">id</td>
+					<td width="60%">网站名称</td>
+					<td>状态</td>
 				</tr>
 				<?php
 				$dsql->SetQuery("SELECT * FROM `#@__flinktype`");
@@ -32,14 +32,14 @@
 				<tr>
 					<td><?php echo $row->id;?></td>
 					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" id="pname_<?php echo $k?>" style="width:90%"></td>
-					<td align="center"><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked='1'> 保留</label></td>
+					<td align="center"><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked='checked'> 保留</label></td>
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k?>">
 				<tr>
 					<td></td>
 					<td><input type="text" name="pname_new" id="pname_new" style="width:90%"></td>
-					<td align="center"><label><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> 新增</label></td>
+					<td align="center"><label><input type="checkbox" name="check_new" id="check_new" value="1" checked="checked"> 新增</label></td>
 				</tr>
 				<tr>
 					<td colspan="3">
@@ -50,7 +50,7 @@
 				<tr>
 					<td colspan="3" align="center" bgcolor="#f5f5f5"><input name="imageField" type="submit" class="btn btn-success btn-sm" value="确定"></td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</body>
 </html>

@@ -66,5 +66,5 @@ if ($arcRow['aid'] == '') {
 }
 extract($arcRow, EXTR_OVERWRITE);
 //显示模板简单PHP文件
-include(DEDETEMPLATE.'/plus/recommend.htm');
+include(DEDETEMPLATE.'/apps/recommend.htm');
 ?>

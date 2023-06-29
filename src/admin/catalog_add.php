@@ -129,8 +129,14 @@ if ($dopost == 'quick') {
     if (!isset($sitepath)) $sitepath = '';
     if ($topid == 0 && $reid > 0) $topid = $reid;
     if ($ispart != 0) $cross = 0;
+    $apienabled = ($apienabled == 0)? 0 : 1;
     $description = Html2Text($description, 1);
     $keywords = Html2Text($keywords, 1);
+    $apikey = Html2Text($apikey, 1);
+    if ($apienabled == 1 && empty($apikey)) {
+        ShowMsg("跨站调用秘钥不能为空", "-1");
+        exit();
+    }
     if ($ispart != 2) {
         //栏目的参照目录
         if ($referpath == 'cmspath') $nextdir = '{cmspath}';
@@ -149,7 +155,7 @@ if ($dopost == 'quick') {
         if ($siteurl != '') {
             $siteurl = preg_replace("#\/$#", "", $siteurl);
             if (!preg_match("#http:\/\/#i", $siteurl)) {
-                ShowMsg("您绑定的二级域名无效，需要加http开头的链接", "-1");
+                ShowMsg("您绑定的二级域名无效，请输入绑定域名http开头", "-1");
                 exit();
             }
             if (preg_match("#".$cfg_basehost."#i", $siteurl)) {
@@ -167,7 +173,7 @@ if ($dopost == 'quick') {
             exit();
         }
     }
-    $in_query = "INSERT INTO `#@__arctype` (reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`) VALUES ('$reid','$topid','$sortrank','$typename','$cnoverview','$enname','$enoverview','$bigpic','$litimg','$typedir','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','$ispart','$corank','$description','$keywords','$seotitle','$moresite','$siteurl','$sitepath','$ishidden','$cross','$crossid','$content','$smalltypes')";
+    $in_query = "INSERT INTO `#@__arctype` (reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`,`apienabled`,`apikey`) VALUES ('$reid','$topid','$sortrank','$typename','$cnoverview','$enname','$enoverview','$bigpic','$litimg','$typedir','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','$ispart','$corank','$description','$keywords','$seotitle','$moresite','$siteurl','$sitepath','$ishidden','$cross','$crossid','$content','$smalltypes','$apienabled','$apikey')";
     if (!$dsql->ExecuteNoneQuery($in_query)) {
         ShowMsg("保存目录数据时失败，请检查您的输入资料是否存在问题", "-1");
         exit();

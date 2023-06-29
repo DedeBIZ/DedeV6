@@ -7,6 +7,56 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
+	</head>
+	<body>
+		<table align="center" class="table maintable my-3">
+			<tr>
+				<td>
+					<button type="button" onclick="location='cards_manage.php';" class="btn btn-success btn-sm">全部</button>
+					<button type="button" onclick="location='cards_manage.php?isexp=0';" class="btn btn-success btn-sm">未使用</button>
+					<button type="button" onclick="location='cards_manage.php?isexp=1';" class="btn btn-success btn-sm">已售出</button>
+					<button type="button" onclick="location='cards_manage.php?isexp=-1';" class="btn btn-success btn-sm">已使用</button>
+					<button type="button" onclick="location='cards_make.php';" class="btn btn-success btn-sm">生成积分</button>
+					<button type="button" onclick="location='cards_type.php';" class="btn btn-success btn-sm">积分产品分类</button>
+				</td>
+			</tr>
+		</table>
+		<form name="form1">
+			<table align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="7">积分产品管理</td>
+				</tr>
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">选择</td>
+					<td width="26%">卡号</td>
+					<td width="16%">积分类型</td>
+					<td width="12%">生成日期</td>
+					<td width="12%">使用日期</td>
+					<td width="6%">状态</td>
+					<td>使用会员</td>
+				</tr>
+				{dede:datalist empty='<tr><td colspan="7" align="center">暂无记录</td></tr>'}
+				<tr align="center">
+					<td><input type="checkbox" name="aids" value="{dede:field.aid/}"></td>
+					<td>{dede:field.cardid/}</td>
+					<td><?php echo $TypeNames[$fields['ctid']]?></td>
+					<td>{dede:field.mtime function='GetDateMk(@me)'/}</td>
+					<td>{dede:field.utime function='GetUseDate(@me)'/}</td>
+					<td>{dede:field.isexp function='GetSta(@me)'/}</td>
+					<td>{dede:field.uid function='GetMemberID(@me)'/}</td>
+				</tr>
+				{/dede:datalist}
+				<tr>
+					<td colspan="7">
+						<button type="button" onclick="ReSel();" class="btn btn-success btn-sm">反选</button>
+						<button type="button" onclick="DelSel();" class="btn btn-danger btn-sm">删除</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="7" bgcolor="#f5f5f5" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			//获得选中项
 			function getCheckboxItem() {
@@ -37,55 +87,5 @@
 				 location.href = "cards_manage.php?dopost=delete&aids=" + nid;
 			}
 		</script>
-	</head>
-	<body>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-			<tr>
-				<td>
-					<button type="button" onclick="location='cards_manage.php';" class="btn btn-success btn-sm">全部</button>
-					<button type="button" onclick="location='cards_manage.php?isexp=0';" class="btn btn-success btn-sm">未使用</button>
-					<button type="button" onclick="location='cards_manage.php?isexp=1';" class="btn btn-success btn-sm">已售出</button>
-					<button type="button" onclick="location='cards_manage.php?isexp=-1';" class="btn btn-success btn-sm">已使用</button>
-					<button type="button" onclick="location='cards_make.php';" class="btn btn-success btn-sm">生成积分</button>
-					<button type="button" onclick="location='cards_type.php';" class="btn btn-success btn-sm">积分产品分类</button>
-				</td>
-			</tr>
-		</table>
-		<table cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
-			<tr>
-				<td bgcolor="#f5f5f5" colspan="7">积分产品管理</td>
-			</tr>
-			<tr bgcolor="#e9ecef" align="center">
-				<td width="6%">选择</td>
-				<td width="26%">卡号</td>
-				<td width="16%">积分类型</td>
-				<td width="12%">生成日期</td>
-				<td width="12%">使用日期</td>
-				<td width="6%">状态</td>
-				<td>使用会员</td>
-			</tr>
-			<form name="form1">
-				{dede:datalist empty='<tr><td colspan="7" align="center">暂无文档</td></tr>'}
-				<tr align="center">
-					<td><input type="checkbox" name="aids" value="{dede:field.aid/}"></td>
-					<td>{dede:field.cardid/}</td>
-					<td><?php echo $TypeNames[$fields['ctid']]?></td>
-					<td>{dede:field.mtime function='GetDateMk(@me)'/}</td>
-					<td>{dede:field.utime function='GetUseDate(@me)'/}</td>
-					<td>{dede:field.isexp function='GetSta(@me)'/}</td>
-					<td>{dede:field.uid function='GetMemberID(@me)'/}</td>
-				</tr>
-				{/dede:datalist}
-			</form>
-			<tr>
-				<td colspan="7">
-					<button type="button" onclick="ReSel();" class="btn btn-success btn-sm">反选</button>
-					<button type="button" onclick="DelSel();" class="btn btn-danger btn-sm">删除</button>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="7" bgcolor="#f5f5f5" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
-			</tr>
-		</table>
 	</body>
 </html>

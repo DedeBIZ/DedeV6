@@ -1,6 +1,6 @@
 <?php
 /**
- * 模板管理
+ * 主题模板管理
  *
  * @version        $id:templets_main.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -37,7 +37,7 @@ function GetInfoArray($filename)
 }
 $dirlists  = GetInfoArray($templetdir.'/templet-dirlist.inc');
 $filelists = GetInfoArray($templetdir.'/templet-filelist.inc');
-$pluslists = GetInfoArray($templetdir.'/templet-pluslist.inc');
+$pluslists = GetInfoArray($templetdir.'/templet-appslist.inc');
 $fileinfos = ($acdir == 'plus' ? $pluslists : $filelists);
 include DedeInclude('templets/templets_default.htm');
 ?>

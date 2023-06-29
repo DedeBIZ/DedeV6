@@ -30,9 +30,9 @@ if ($dopost == 'save') {
     exit;
 } elseif ($dopost == 'add') {
     //显示模板简单PHP文件
-    include_once(DEDETEMPLATE.'/plus/flink-add.htm');
+    include_once(DEDETEMPLATE.'/apps/flink_add.htm');
     exit;
 }
 //显示模板简单PHP文件
-include_once(DEDETEMPLATE.'/plus/flink-list.htm');
+include_once(DEDETEMPLATE.'/apps/flink_list.htm');
 ?>

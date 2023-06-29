@@ -1,6 +1,6 @@
 <?php
 /**
- * 软件发送
+ * 选择软件发送
  *
  * @version        $id:select_soft_post.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog
@@ -14,12 +14,13 @@ if (!isset($cfg_basedir)) {
 if (empty($uploadfile)) $uploadfile = '';
 if (empty($uploadmbtype)) $uploadmbtype = '软件类型';
 if (empty($bkurl)) $bkurl = 'select_soft.php';
+define("DEDE_DIALOG_UPLOAD", true);
 $CKEditorFuncNum = (isset($CKEditorFuncNum)) ? $CKEditorFuncNum : 1;
 $newname = (empty($newname) ? '' : preg_replace("#[\\ \"\*\?\t\r\n<>':\/|]#", "", $newname));
 $uploadfile = isset($imgfile) && empty($uploadfile) ? $imgfile : $uploadfile;
 $uploadfile_name = isset($imgfile_name) && empty($uploadfile_name) ? $imgfile_name : $uploadfile_name;
 if (!is_uploaded_file($uploadfile)) {
-    ShowMsg("您没有选择上传的文件或上传的文件大小被限制", "-1");
+    ShowMsg("您没有选择上传文件或上传的文件大小被限制", "-1");
     exit();
 }
 //软件类型所有支持的附件
@@ -27,7 +28,7 @@ $cfg_softtype = $cfg_softtype;
 $cfg_softtype = str_replace('||', '|', $cfg_softtype);
 $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
 if (!preg_match("#\.(".$cfg_softtype.")#i", $uploadfile_name)) {
-    ShowMsg("您所上传的<span class='text-primary'>{$uploadmbtype}</span>不在许可列表", "-1");
+    ShowMsg("您上传的<span class='text-primary'>{$uploadmbtype}</span>扩展名已被系统禁止", "-1");
     exit();
 }
 $nowtme = time();
@@ -45,7 +46,7 @@ if (!empty($newname)) {
     if (!preg_match("#\.#", $filename)) $fs = explode('.', $uploadfile_name);
     else $fs = explode('.', $filename);
     if (preg_match("#".$cfg_not_allowall."#", $fs[count($fs) - 1])) {
-        ShowMsg("指定的文件名已被系统禁止", "javascript:;");
+        ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
     if (!preg_match("#\.#", $filename)) $filename = $filename.'.'.$fs[count($fs) - 1];
@@ -53,13 +54,13 @@ if (!empty($newname)) {
     $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', $nowtme));
     $fs = explode('.', $uploadfile_name);
     if (preg_match("#".$cfg_not_allowall."#", $fs[count($fs) - 1])) {
-        ShowMsg("您上传的文件可能存在不安全因素，系统拒绝操作", "-1");
+        ShowMsg("您上传的文件失败，请重新上传", "-1");
         exit();
     }
     $filename = $filename.'.'.$fs[count($fs) - 1];
 }
 if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
-    ShowMsg("指定的文件名已被系统禁止", "javascript:;");
+    ShowMsg("文件扩展名已被系统禁止", "javascript:;");
     exit();
 }
 $fullfilename = $cfg_basedir.$activepath.'/'.$filename;

@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 获取当前栏目下级栏目的文档列表标签
+ * 当前栏目下级栏目文档列表标签
  *
  * @version        $id:channelartlist.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
@@ -14,7 +14,7 @@ function lib_channelartlist(&$ctag, &$refObj)
 {
     global $dsql, $envs, $_sys_globals;
     //添加不调用指定栏目参数notypeid
-    $attlist = 'typeid|0,row|20,cacheid|,notypeid|0';
+    $attlist = 'typeid|0,row|20,cacheid|,notypeid|0,currentstyle|';
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = trim($ctag->GetInnerText());
@@ -42,11 +42,11 @@ function lib_channelartlist(&$ctag, &$refObj)
             $tpsql = " id IN($typeid) AND ishidden<>1 ";
         }
     }
-    $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
     //否定指定栏目
     if ($notypeid!=0) {
         $tpsql = $tpsql."and not(id in($notypeid))";
     }
+    $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $typeids[] = $row;

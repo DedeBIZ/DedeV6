@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档类
+ * 文档
  *
  * @version        $id:archives.class.php 4 15:13 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
@@ -193,9 +193,11 @@ class Archives
             $this->Fields['body'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['body']);
             $this->Fields['body'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\" ",$this->Fields['body']);
             //图片模型正文图片注释自动为标题
-            $this->Fields['imgurls'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['imgurls']);
-            $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
-            $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
+            if (isset($this->Fields['imgurls']) && is_array($this->Fields['imgurls'])) {
+                $this->Fields['imgurls'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['imgurls']);
+                $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
+                $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
+            }
             //移除文档模型正文图片宽度和高度，适配自适应/响应式网站
             $this->Fields['body'] = preg_replace("/style=\"width\:(.*)\"/","",$this->Fields['body']);
         }
@@ -236,7 +238,7 @@ class Archives
             }
             $this->Fields['picname'] = $this->Fields['litpic'];
             //模板里直接使用{dede:field name='image'/}获取缩略图
-            $this->Fields['image'] = (!preg_match('/jpg|gif|png/i', $this->Fields['picname']) ? '' : "<img src='{$this->Fields['picname']}' />");
+            $this->Fields['image'] = (!preg_match('/jpg|gif|png/i', $this->Fields['picname']) ? '' : "<img src='{$this->Fields['picname']}'>");
         }
         //处理投票选项
         if (isset($this->Fields['voteid']) && !empty($this->Fields['voteid'])) {
@@ -350,8 +352,8 @@ class Archives
                     if ($i > 1) $this->Fields['title'] = $this->Fields['tmptitle']."($i)";
                 }
                 if ($i > 1) {
-                    $TRUEfilename = $this->GetTruePath().$fileFirst."_".$i.".".$this->ShortName;
-                    $URLFilename = $fileFirst."_".$i.".".$this->ShortName;
+                    $TRUEfilename = $this->GetTruePath().$fileFirst."-".$i.".".$this->ShortName;
+                    $URLFilename = $fileFirst."-".$i.".".$this->ShortName;
                 } else {
                     $TRUEfilename = $this->GetTruePath().$filename;
                     $URLFilename = $filename;
@@ -410,11 +412,11 @@ class Archives
      */
     function GetField($fname, $ctag)
     {
-        //所有Field数组 OR 普通Field
+        //所有Field数组OR普通Field
         if ($fname == 'array') {
             return $this->Fields;
         }
-        //指定了ID的节点
+        //指定了id的节点
         else if ($ctag->GetAtt('noteid') != '') {
             if (isset($this->Fields[$fname.'_'.$ctag->GetAtt('noteid')])) {
                 return $this->Fields[$fname.'_'.$ctag->GetAtt('noteid')];
@@ -487,7 +489,7 @@ class Archives
             if ($GLOBALS['cfg_jump_once'] == 'N') {
                 $pageHtml = "<html>\r\n<head>\r\n<meta charset=".$GLOBALS['cfg_soft_lang']."\">\r\n<title>".$this->Fields['title']."</title>\r\n";
                 $pageHtml .= "<meta http-equiv=\"refresh\" content=\"3;URL=".$this->Fields['redirecturl']."\">\r\n</head>\r\n<body>\r\n";
-                $pageHtml .= "正在跳转文档：".$this->Fields['title']."<br><br>\r\n文档描述：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
+                $pageHtml .= "<p>正在前往文档：".$this->Fields['title']."<p>\r\n<p>文档描述：".$this->Fields['description']."</p>\r\n</body>\r\n</html>";
                 echo $pageHtml;
             } else {
                 header("location:{$this->Fields['redirecturl']}");
@@ -509,8 +511,7 @@ class Archives
         if ($this->TempSource == '') {
             $tempfile = $this->GetTempletFile();
             if (!file_exists($tempfile) || !is_file($tempfile)) {
-                echo "文档id：{$this->Fields['id']} - {$this->TypeLink->TypeInfos['typename']} - {$this->Fields['title']}<br>";
-                echo "主题模板文件不存在，无法发布文档";
+                echo "文档id：{$this->Fields['id']}，标题：{$this->Fields['title']}，主题模板文件不存在，无法更新文档";
                 exit();
             }
             $this->dtp->LoadTemplate($tempfile);
@@ -749,174 +750,7 @@ class Archives
         return $rs;
     }
     /**
-     *  获得动态页面分页列表
-     *
-     * @access    public
-     * @param     int   $totalPage  总页数
-     * @param     int   $nowPage  当前页数
-     * @param     int   $aid  文档id
-     * @return    string
-     */
-    function GetPagebreakDM($totalPage, $nowPage, $aid)
-    {
-        global $cfg_rewrite;
-        if ($totalPage == 1) {
-            return "";
-        }
-        $PageList = "<li class='page-item disabled'><span class='page-link'>".$totalPage."页</span></li>";
-        $nPage = $nowPage - 1;
-        $lPage = $nowPage + 1;
-        if ($nowPage == 1) {
-            $PageList .= "<li class='page-item disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
-        } else {
-            if ($nPage == 1) {
-                $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid'>上一页</a></li>";
-                if ($cfg_rewrite == 'Y') {
-                    $PageList = preg_replace("#.php\?aid=(\d+)#i", '-\\1-1.html', $PageList);
-                }
-            } else {
-                $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid&pageno=$nPage'>上一页</a></li>";
-                if ($cfg_rewrite == 'Y') {
-                    $PageList = str_replace(".php?aid=", "-", $PageList);
-                    $PageList =  preg_replace("#&pageno=(\d+)#i", '-\\1.html', $PageList);
-                }
-            }
-        }
-        for ($i = 1; $i <= $totalPage; $i++) {
-            if ($i == 1) {
-                if ($nowPage != 1) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid'>1</a></li>";
-                    if ($cfg_rewrite == 'Y') {
-                        $PageList = preg_replace("#.php\?aid=(\d+)#i", '-\\1-1.html', $PageList);
-                    }
-                } else {
-                    $PageList .= "<li class=\"page-item active\"><a class='page-link'>1</a></li>";
-                }
-            } else {
-                $n = $i;
-                if ($nowPage != $i) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid&pageno=$i'>".$n."</a></li>";
-                    if ($cfg_rewrite == 'Y') {
-                        $PageList = str_replace(".php?aid=", "-", $PageList);
-                        $PageList =  preg_replace("#&pageno=(\d+)#i", '-\\1.html', $PageList);
-                    }
-                } else {
-                    $PageList .= "<li class=\"page-item active\"><span class='page-link'>{$n}</span></li>";
-                }
-            }
-        }
-        if ($lPage <= $totalPage) {
-            $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid&pageno=$lPage'>下一页</a></li>";
-            if ($cfg_rewrite == 'Y') {
-                $PageList = str_replace(".php?aid=", "-", $PageList);
-                $PageList =  preg_replace("#&pageno=(\d+)#i", '-\\1.html', $PageList);
-            }
-        } else {
-            $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
-        }
-        return $PageList;
-    }
-    /**
-     *  获得静态页面分页列表
-     *
-     * @access    public
-     * @param     int   $totalPage  总页数
-     * @param     int   $nowPage  当前页数
-     * @param     int   $aid  文档id
-     * @return    string
-     */
-    function GetPagebreak($totalPage, $nowPage, $aid)
-    {
-        if ($totalPage == 1) {
-            return "";
-        }
-        $PageList = "<li class='page-item disabled'><span class='page-link'>".$totalPage."页:</span></li>";
-        $nPage = $nowPage - 1;
-        $lPage = $nowPage + 1;
-        if ($nowPage == 1) {
-            $PageList .= "<li class='page-item disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
-        } else {
-            if ($nPage == 1) {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
-            } else {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$nPage.".".$this->ShortName."'>上一页</a></li>";
-            }
-        }
-        for ($i = 1; $i <= $totalPage; $i++) {
-            if ($i == 1) {
-                if ($nowPage != 1) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>1</a></li>";
-                } else {
-                    $PageList .= "<li class=\"page-item active\"><span class='page-link'>1</span></li>";
-                }
-            } else {
-                $n = $i;
-                if ($nowPage != $i) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$i.".".$this->ShortName."'>".$n."</a></li>";
-                } else {
-                    $PageList .= "<li class=\"page-item active\"><span class='page-link'>{$n}</span></li>";
-                }
-            }
-        }
-        if ($lPage <= $totalPage) {
-            $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$lPage.".".$this->ShortName."'>下一页</a></li>";
-        } else {
-            $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
-        }
-        return $PageList;
-    }
-    /**
-     *  获得动态页面小标题
-     *
-     * @access    public
-     * @param     string  $styleName  类型名称
-     * @param     string  $pageNo  页码数
-     * @return    string
-     */
-    function GetPageTitlesDM($styleName, $pageNo)
-    {
-        if ($this->TotalPage == 1) {
-            return "";
-        }
-        if (count($this->SplitTitles) == 0) {
-            return "";
-        }
-        $i = 1;
-        $aid = $this->ArcID;
-        if ($styleName == 'link') {
-            $revalue = "";
-            foreach ($this->SplitTitles as $k => $v) {
-                if ($i == 1) {
-                    $revalue .= "<a href='view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
-                } else {
-                    if ($pageNo == $i) {
-                        $revalue .= " $v \r\n";
-                    } else {
-                        $revalue .= "<a href='view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
-                    }
-                }
-                $i++;
-            }
-        } else {
-            $revalue = "<select id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
-            foreach ($this->SplitTitles as $k => $v) {
-                if ($i == 1) {
-                    $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
-                } else {
-                    if ($pageNo == $i) {
-                        $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>\r\n";
-                    } else {
-                        $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
-                    }
-                }
-                $i++;
-            }
-            $revalue .= "</select>\r\n";
-        }
-        return $revalue;
-    }
-    /**
-     *  获得静态页面小标题
+     *  获得静态文档分页标题
      *
      * @access    public
      * @param     string  $styleName  类型名称
@@ -941,21 +775,21 @@ class Archives
                     if ($pageNo == $i) {
                         $revalue .= " $v \r\n";
                     } else {
-                        $revalue .= "<a href='".$this->NameFirst."_".$i.".".$this->ShortName."'>$v</a>\r\n";
+                        $revalue .= "<a href='".$this->NameFirst."-".$i.".".$this->ShortName."'>$v</a>\r\n";
                     }
                 }
                 $i++;
             }
         } else {
-            $revalue = "<select id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+            $revalue = "<select class='form-control w-25' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     $revalue .= "<option value='".$this->NameFirst.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
                 } else {
                     if ($pageNo == $i) {
-                        $revalue .= "<option value='".$this->NameFirst."_".$i.".".$this->ShortName."' selected>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."' selected>{$i}、{$v}</option>\r\n";
                     } else {
-                        $revalue .= "<option value='".$this->NameFirst."_".$i.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
                     }
                 }
                 $i++;
@@ -965,7 +799,198 @@ class Archives
         return $revalue;
     }
     /**
-     * 高亮问题修正，排除alt title <a></a>直接的字符替换
+     *  获得静态文档分页列表
+     *
+     * @access    public
+     * @param     int   $totalPage  总页数
+     * @param     int   $nowPage  当前页数
+     * @param     int   $aid  文档id
+     * @return    string
+     */
+    function GetPagebreak($totalPage, $nowPage, $aid)
+    {
+        if ($totalPage == 1) {
+            return "";
+        }
+        $PageList = "<li class='page-item disabled'><span class='page-link'>".$totalPage."页</span></li>";
+        $nPage = $nowPage - 1;
+        $lPage = $nowPage + 1;
+        if ($nowPage == 1) {
+            $PageList .= "<li class='page-item disabled'><span class='page-link'>上一页</span></li>";
+        } else {
+            if ($nPage == 1) {
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
+            } else {
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$nPage.".".$this->ShortName."'>上一页</a></li>";
+            }
+        }
+        for ($i = 1; $i <= $totalPage; $i++) {
+            if ($i == 1) {
+                if ($nowPage != 1) {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>1</a></li>";
+                } else {
+                    $PageList .= "<li class='page-item active'><span class='page-link'>1</span></li>";
+                }
+            } else {
+                $n = $i;
+                if ($nowPage != $i) {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$i.".".$this->ShortName."'>{$n}</a></li>";
+                } else {
+                    $PageList .= "<li class='page-item active'><span class='page-link'>{$n}</span></li>";
+                }
+            }
+        }
+        if ($lPage <= $totalPage) {
+            $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$lPage.".".$this->ShortName."'>下一页</a></li>";
+        } else {
+            $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
+        }
+        return $PageList;
+    }
+    /**
+     *  获得动态文档分页标题
+     *
+     * @access    public
+     * @param     string  $styleName  类型名称
+     * @param     string  $pageNo  页码数
+     * @return    string
+     */
+    function GetPageTitlesDM($styleName, $pageNo)
+    {
+        global $cfg_rewrite;
+        if ($this->TotalPage == 1) {
+            return "";
+        }
+        if (count($this->SplitTitles) == 0) {
+            return "";
+        }
+        $i = 1;
+        $aid = $this->ArcID;
+        if ($styleName == 'link') {
+            $revalue = "";
+            foreach ($this->SplitTitles as $k => $v) {
+                if ($i == 1) {
+                    if ($cfg_rewrite == 'Y') {
+                        $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>\r\n";
+                    } else {
+                        $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
+                    }
+                } else {
+                    if ($pageNo == $i) {
+                        $revalue .= " $v \r\n";
+                    } else {
+                        if ($cfg_rewrite == 'Y') {
+                            $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>\r\n";
+                        } else {
+                            $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
+                        }
+                        
+                    }
+                }
+                $i++;
+            }
+        } else {
+            $revalue = "<select class='form-control w-25' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+            foreach ($this->SplitTitles as $k => $v) {
+                if ($i == 1) {
+                    if ($cfg_rewrite == 'Y') {
+                        $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>\r\n";
+                    } else {
+                        $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
+                    }
+                } else {
+                    if ($pageNo == $i) {
+                        if ($cfg_rewrite == 'Y') {
+                            $revalue .= "<option value='/doc-$aid-$i.html' selected>{$i}、{$v}</option>\r\n";
+                        } else {
+                            $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>\r\n";
+                        }
+                    } else {
+                        if ($cfg_rewrite == 'Y') {
+                            $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>\r\n";
+                        } else {
+                            $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
+                        }
+                    }
+                }
+                $i++;
+            }
+            $revalue .= "</select>\r\n";
+        }
+        return $revalue;
+    }
+    /**
+     *  获得动态文档分页列表
+     *
+     * @access    public
+     * @param     int   $totalPage  总页数
+     * @param     int   $nowPage  当前页数
+     * @param     int   $aid  文档id
+     * @return    string
+     */
+    function GetPagebreakDM($totalPage, $nowPage, $aid)
+    {
+        global $cfg_rewrite, $cfg_cmsurl;
+        if ($totalPage == 1) {
+            return "";
+        }
+        $PageList = "<li class='page-item disabled'><span class='page-link'>".$totalPage."页</span></li>";
+        $nPage = $nowPage - 1;
+        $lPage = $nowPage + 1;
+        if ($nowPage == 1) {
+            $PageList .= "<li class='page-item disabled'><span class='page-link'>上一页</span></li>";
+        } else {
+            if ($nPage == 1) {
+                if ($cfg_rewrite == 'Y') {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid.html'>上一页</a></li>";
+                } else {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>上一页</a></li>";
+                }
+            } else {
+                if ($cfg_rewrite == 'Y') {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$nPage.html'>上一页</a></li>";
+                } else {
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$nPage'>上一页</a></li>";
+                }
+            }
+        }
+        for ($i = 1; $i <= $totalPage; $i++) {
+            if ($i == 1) {
+                if ($nowPage != 1) {
+                    if ($cfg_rewrite == 'Y') {
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid.html'>1</a></li>";
+                    } else {
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>1</a></li>";
+                    }
+                } else {
+                    $PageList .= "<li class='page-item active'><span class='page-link'>1</span></li>";
+                }
+            } else {
+                $n = $i;
+                if ($nowPage != $i) {
+                    if ($cfg_rewrite == 'Y') {
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$i.html'>{$n}</a></li>";
+                    } else {
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$n}</a></li>";
+                    }
+                } else {
+                    $PageList .= "<li class='page-item active'><span class='page-link'>{$n}</span></li>";
+                }
+            }
+        }
+        if ($lPage <= $totalPage) {
+            if ($cfg_rewrite == 'Y') {
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$lPage.html'>下一页</a></li>";
+            } else {
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$lPage'>下一页</a></li>";
+            }
+        } else {
+            $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
+        }
+        return $PageList;
+    }
+    /**
+     * 高亮问题修正，排除alt、title、<a></a>直接的字符替换
      *
      * @param string $kw
      * @param string $body
@@ -997,7 +1022,7 @@ function _highlightkeywords($matches)
 {
     return _highlight($matches[2], $GLOBALS['_dd_karr'], $GLOBALS['_dd_kaarr'], $matches[1]);
 }
-//高亮专用，替换多次是可能不能达到最多次
+//高亮专用
 function _highlight($string, $words, $result, $pre)
 {
     global $cfg_replace_num;

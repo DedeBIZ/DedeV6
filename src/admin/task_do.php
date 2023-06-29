@@ -10,7 +10,7 @@
  */
 require(dirname(__FILE__).'/config.php');
 $dopost = (!isset($dopost) ? '' : $dopost);
-//返回到下一任务链接，特殊变量，除非知道作用，否则不能在任务传递中占用：f临时，仅为了方便网址结构，dopost当前任务指向下一个任务，由会员自行处理或在nextdo中自动获得，del上一次任务删除的变量，morejob设定后，表示当前任务需请求多次，会把 dopost和nextdo处理后转为doposttmp和nextdotmp，然后由会员自行处理
+//返回到下一任务链接，特殊变量，除非知道作用，否则不能在任务传递中占用：f临时，仅为了方便网址结构，dopost当前任务指向下一个任务，由会员自行处理或在nextdo中自动获得，del上一次任务删除的变量，morejob设定后，表示当前任务需请求多次，会把 dopost和nextdo处理后转为doposttmp和nextdotmp然后由会员自行处理
 function GetNextUrl($notallowArr = array('dopost', 'f', 'del'))
 {
     $reurl = "task_do.php?f=0";
@@ -57,11 +57,11 @@ if ($dopost == 'makeprenext') {
         $arc->MakeHtml();
     }
     if (empty($nextdo)) {
-        ShowMsg("完成上下篇文档更新任务完成所有更新任务", "close::tgtable");
+        ShowMsg("完成所有上下篇文档更新任务", "close::tgtable");
         exit();
     } else {
         $jumpurl = GetNextUrl();
-        ShowMsg("完成下篇文档更新任务 继续执行其它任务", $jumpurl, 0, 500);
+        ShowMsg("完成下篇文档更新任务，继续更新其它任务", $jumpurl, 0, 500);
         exit();
     }
 }
@@ -79,7 +79,7 @@ if ($dopost == 'makeindex') {
     fclose($fp);
     $tpl = $cfg_basedir.$cfg_templets_dir.'/'.$templet;
     if (!file_exists($tpl)) {
-        $tpl = $cfg_basedir.$cfg_templets_dir.'/default/index.htm';
+        $tpl = $cfg_basedir.$cfg_templets_dir.'/dedebiz/index.htm';
         if (!file_exists($tpl)) exit("无法找到首页模板：$tpl ");
     }
     $GLOBALS['_arclistEnv'] = 'index';
@@ -87,11 +87,11 @@ if ($dopost == 'makeindex') {
     $pv->SaveToHtml($homeFile);
     $pv->Close();
     if (empty($nextdo)) {
-        ShowMsg("完成首页更新任务完成所有更新任务", "close::tgtable");
+        ShowMsg("完成所有首页更新任务", "close::tgtable");
         exit();
     } else {
         $jumpurl = GetNextUrl();
-        ShowMsg("完成首页更新 现在跳转其它更新任务", $jumpurl, 0, 500);
+        ShowMsg("完成首页更新，正在前往其它更新任务", $jumpurl, 0, 500);
         exit();
     }
 }
@@ -102,7 +102,7 @@ else if ($dopost == 'makeparenttype') {
     $notallowArr = array('dopost', 'f', 'del', 'curpage', 'morejob');
     $jumpurl = GetNextUrl($notallowArr);
     if (empty($typeid)) {
-        ShowMsg("完成栏目更新任务完成所有更新任务", "close::tgtable");
+        ShowMsg("完成所有栏目更新任务", "close::tgtable");
         exit();
     }
     $topids = explode(',', GetTopids($typeid));
@@ -125,10 +125,10 @@ else if ($dopost == 'makeparenttype') {
         if (!empty($doposttmp)) {
             $jumpurl = preg_replace("#doposttmp|nextdotmp#", 'del', $jumpurl);
             $jumpurl .= "&dopost={$doposttmp}&nextdo={$nextdotmp}";
-            ShowMsg("完成栏目：{$tid}更新<br>完成栏目更新任务，继续执行后续任务", $jumpurl, 0, 500);
+            ShowMsg("完成栏目：{$tid}更新，继续更新后续任务", $jumpurl, 0, 500);
             exit();
         } else {
-            ShowMsg("完成栏目：{$tid}更新<br>完成栏目更新任务，完成所有更新任务", "close::tgtable");
+            ShowMsg("完成栏目：{$tid}更新，完成所有更新任务", "close::tgtable");
             exit();
         }
     } else {

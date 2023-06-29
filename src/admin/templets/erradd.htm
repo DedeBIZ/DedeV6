@@ -5,9 +5,50 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>文档错误管理</title>
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
+	</head>
+	<body>
+		<form name="form2">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="8">文档错误管理</td>
+				</tr>
+				<tr bgcolor="#e9ecef" align="center">
+					<td width="6%">选择</td>
+					<td width="6%">id</td>
+					<td width="16%">挑错人</td>
+					<td width="20%">文档名称</td>
+					<td width="10%">出错类型</td>
+					<td width="10%">挑错时间</td>
+					<td width="16%">错误文档</td>
+					<td>修改建议</td>
+				</tr>
+				{dede:datalist empty='<tr><td colspan="8" align="center">暂无记录</td></tr>'}
+				<tr align="center">
+					<td><input type="checkbox" name="id" id="id" value="{dede:field.id/}"></td>
+					<td>{dede:field.id/}</td>
+					<td>{dede:field.mid function='username(@me)'/}</td>
+					<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title/}</a></td>
+					<td>{dede:field.type function='typename(@me)'/}</td>
+					<td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
+					<td>{dede:field.errtxt/}</td>
+					<td>{dede:field.oktxt/}</td>
+				</tr>
+				{/dede:datalist}
+				<tr>
+					<td colspan="8">
+						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
+						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
+						<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
+					</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#f5f5f5" colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</form>
 		<script>
 			function getOneItem() {
 				var allSel = "";
@@ -52,46 +93,5 @@
 				location = "erraddsave.php?id=" + qstr + "&dopost=delete";
 			}
 		</script>
-	</head>
-	<body>
-		<form name="form2">
-			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-				<tr>
-					<td bgcolor="#f5f5f5" colspan="8">文档错误管理</td>
-				</tr>
-				<tr bgcolor="#e9ecef" align="center">
-					<td width="6%">选择</td>
-					<td width="6%">id</td>
-					<td width="16%">挑错人</td>
-					<td width="20%">文档名称</td>
-					<td width="10%">出错类型</td>
-					<td width="10%">挑错时间</td>
-					<td width="16%">错误文档</td>
-					<td>修改建议</td>
-				</tr>
-				{dede:datalist empty='<tr><td colspan="8" align="center">暂无文档</td></tr>'}
-				<tr align="center">
-					<td><input type="checkbox" name="id" id="id" value="{dede:field.id/}"></td>
-					<td>{dede:field.id/}</td>
-					<td>{dede:field.mid function='username(@me)'/}</td>
-					<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title/}</a></td>
-					<td>{dede:field.type function='typename(@me)'/}</td>
-					<td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
-					<td>{dede:field.errtxt/}</td>
-					<td>{dede:field.oktxt/}</td>
-				</tr>
-				{/dede:datalist}
-				<tr>
-					<td colspan="8">
-						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
-						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-						<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
-					</td>
-				</tr>
-				<tr bgcolor="#f5f5f5" align="center">
-					<td colspan="8">{dede:pagelist listsize='6'/}</td>
-				</tr>
-			</table>
-		</form>
 	</body>
 </html>

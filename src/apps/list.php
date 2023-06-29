@@ -11,6 +11,7 @@
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 $t1 = ExecTime();
 $tid = (isset($tid) && is_numeric($tid) ? $tid : 0);
+$mod = (isset($mod) && is_numeric($mod) ? $mod : 0);
 $channelid = (isset($channelid) && is_numeric($channelid) ? $channelid : 0);
 if ($tid == 0 && $channelid == 0) die("dedebiz");
 if (isset($TotalResult)) $TotalResult = intval(preg_replace("/[^\d]/", '', $TotalResult));
@@ -31,31 +32,31 @@ if ($tinfos['issystem'] == -1) {
     if (!empty($infotype)) $cArr['infotype'] = $infotype;
     if (!empty($keyword)) $cArr['keyword'] = $keyword;
     include(DEDEINC."/archive/sglistview.class.php");
-    $lv = new SgListView($tid, $cArr);
+    $lv = new SgListView($tid, $cArr, $mod);
 } else {
     include(DEDEINC."/archive/listview.class.php");
-    $lv = new ListView($tid);
-    //对设置了会员级别的栏目进行处理
-    if (isset($lv->Fields['corank']) && $lv->Fields['corank'] > 0) {
-        require_once(DEDEINC.'/memberlogin.class.php');
-        $cfg_ml = new MemberLogin();
-        if ($cfg_ml->M_Rank < $lv->Fields['corank']) {
-            $dsql->Execute('me', "SELECT * FROM `#@__arcrank`");
-            while ($row = $dsql->GetObject('me')) {
-                $memberTypes[$row->rank] = $row->membername;
-            }
-            $memberTypes[0] = "游客或没权限会员";
-            $msgtitle = "您没有权限浏览栏目：{$lv->Fields['typename']} ";
-            $moremsg = "该栏目需要<span class='text-primary'>".$memberTypes[$lv->Fields['corank']]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>";
-            include_once(DEDETEMPLATE.'/plus/view_msg_catalog.htm');
-            exit();
+    $lv = new ListView($tid, 1, $mod);
+}
+//对设置了会员级别的栏目进行处理
+if (isset($lv->Fields['corank']) && $lv->Fields['corank'] > 0) {
+    require_once(DEDEINC.'/memberlogin.class.php');
+    $cfg_ml = new MemberLogin();
+    if ($cfg_ml->M_Rank < $lv->Fields['corank']) {
+        $dsql->Execute('me', "SELECT * FROM `#@__arcrank`");
+        while ($row = $dsql->GetObject('me')) {
+            $memberTypes[$row->rank] = $row->membername;
         }
+        $memberTypes[0] = "游客或没权限会员";
+        $msgtitle = "您没有权限浏览栏目：{$lv->Fields['typename']}";
+        $moremsg = "该栏目需要等级<span class='text-primary'>".$memberTypes[$lv->Fields['corank']]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span><a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm ml-2'>升级会员</a>";
+        include_once(DEDETEMPLATE.'/apps/view_msg_catalog.htm');
+        exit();
     }
 }
 if ($lv->IsError) ParamError();
 $lv->Display();
 if (DEBUG_LEVEL === TRUE) {
     $queryTime = ExecTime() - $t1;
-    echo "<div style='width:98%;margin:1rem auto;color:#721c24;background:#f8d7da;border-color:#f5c6cb;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.5rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
+    echo DedeAlert("页面加载总消耗时间：{$queryTime}", ALERT_DANGER);
 }
 ?>

@@ -24,13 +24,13 @@ if ($dopost != 'save') {
     $dsql->SetQuery($arcQuery);
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取文档基本信息出错", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取栏目配置信息出错", "javascript:;");
+        ShowMsg("读取栏目信息出错", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -47,12 +47,9 @@ if ($dopost != 'save') {
             foreach ($dtp->CTags as $ctag) {
                 if ($ctag->GetName() == 'link') {
                     $islocal = $ctag->GetAtt('islocal');
-                    if ($islocal != 1) $needmsg = "<label><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
-                    else $needmsg = '<button name="sel1" class="btn btn-success btn-sm" type="button" id="sel1" onClick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选取</button>';
-                    $nForm .= "<div class='py-2'>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-md'> 服务器名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'>
-                    <input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'>
-                    $needmsg
-                    </div>\r\n";
+                    if ($islocal != 1) $needmsg = "<label class='ml-2'><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
+                    else $needmsg = '<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm ml-2" onclick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选择</button>';
+                    $nForm .= "<div class='py-2'><label>软件网址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-lg'></label><label class='ml-2'>下载名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'></label><input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'>$needmsg</div>\r\n";
                     $newRowStart++;
                 }
             }
@@ -75,12 +72,16 @@ if ($dopost != 'save') {
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
-    if ($typeid == 0) {
-        ShowMsg("请指定文档的栏目", "-1");
+    if (trim($title) == '') {
+        ShowMsg("文档标题不能为空", "-1");
+        exit();
+    }
+    if (empty($typeid)) {
+        ShowMsg("请选择文档栏目", "-1");
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
+        ShowMsg("文档为非指定类型，请检查您发布文档是否正确", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -131,8 +132,8 @@ if ($dopost != 'save') {
                     continue;
                 }
                 $vs = explode(',', $v);
-                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //网页文本特殊处理
-                {
+                //网页文本特殊处理
+                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $litpic, $keywords, $vs[1]);
                 } else {
                     if (!isset(${$vs[0]})) {
@@ -156,7 +157,7 @@ if ($dopost != 'save') {
     //修改主文档表
     $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',`money`='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段", "-1");
+        ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段", "-1");
         exit();
     }
     //软件链接列表
@@ -170,7 +171,7 @@ if ($dopost != 'save') {
             if ($servermsg == '') {
                 $servermsg = '下载地址'.$i;
             }
-            if ($softurl != 'http://') {
+            if ($softurl != '') {
                 if ($islocal == 1) $urls .= "{dede:link islocal='$islocal' text='{$servermsg}'} $softurl {/dede:link}\r\n";
                 else if ($isneed) $urls .= "{dede:link text='$servermsg'} $softurl {/dede:link}\r\n";
                 else continue;
@@ -185,7 +186,7 @@ if ($dopost != 'save') {
         $useip = GetIP();
         $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl ='$officialUrl',officialDemo ='$officialDemo',softsize='$softsize',softlinks='$urls',redirecturl='$redirecturl',userip='$useip',daccess='$daccess',needmoney='$needmoney',introduce='$body' {$inadd_f} WHERE aid='$id';";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
-            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "-1");
+            ShowMsg("数据保存到数据库附加表出错，请检查数据库字段", "-1");
             exit();
         }
     }
@@ -208,13 +209,15 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件文档</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理软件文档</a>";
+    $msg = "<tr>
+        <td bgcolor='#f5f5f5' align='center'><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理软件文档</a></td>
+    </tr>";
     $wintitle = "成功修改软件文档";
-    $wecome_info = "文档管理::修改软件文档";
+    $wecome_info = "文档管理 - 修改软件文档";
     $win = new OxWindow();
     $win->AddTitle("成功修改软件文档");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
+    $winform = $win->GetWindow("hand", FALSE);
     $win->Display();
 }
 ?>

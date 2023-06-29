@@ -75,7 +75,7 @@ if ($dopost != 'save') {
         echo $inQuery;
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
     //专题节点列表
@@ -154,7 +154,7 @@ if ($dopost != 'save') {
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
-        ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "-1");
+        ShowMsg("数据保存到数据库附加表出错，请检查数据库字段", "-1");
         exit();
     }
     //生成网页
@@ -176,13 +176,15 @@ if ($dopost != 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>管理专题</a>";
+    $msg = "<tr>
+        <td bgcolor='#f5f5f5' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>管理专题</a></td>
+    </tr>";
     $wintitle = "成功发布专题";
-    $wecome_info = "专题管理::发布专题";
+    $wecome_info = "专题管理 - 发布专题";
     $win = new OxWindow();
     $win->AddTitle("成功发布专题");
     $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
+    $winform = $win->GetWindow("hand", FALSE);
     $win->Display();
 }
 ?>

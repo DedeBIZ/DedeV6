@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 自由列表类
+ * 自由列表
  *
  * @version        $id:freelist.class.php 3 15:15 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
@@ -227,14 +227,12 @@ class FreeList
             }
             //保存文件
             $this->dtp->SaveTo($makeFile);
-            echo "<div class=\"alert alert-success\">成功创建：<a href='".preg_replace("#\/{1,}#", "/", $murl)."' target='_blank'>".preg_replace("#\/{1,}#", "/", $murl)."</a></div><br>";
         }
         if ($this->FLInfos['nodefault'] == 0) {
             $murl = '/'.str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $this->FLInfos['listdir']);
             $murl .= '/'.$this->FLInfos['defaultpage'];
             $indexfile = $GLOBALS['cfg_basedir'].$murl;
             $murl = preg_replace("#\/{1,}#", "/", $murl);
-            echo "<div class=\"alert alert-success\">复制：$firstFile 为 ".$this->FLInfos['defaultpage']."</div><br>";
             copy($firstFile, $indexfile);
         }
         $this->Close();
@@ -492,7 +490,7 @@ class FreeList
         $this->dsql->Execute("al");
         $artlist = "";
         if ($col > 1) {
-            $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+            $artlist = "<table width='$tablewidth'>\r\n";
         }
         $indtp = new DedeTagParse();
         $indtp->SetNameSpace("field", "[", "]");
@@ -783,8 +781,8 @@ class FreeList
         $plist  = "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
         $plist .= $maininfo.$indexpage.$prepage.$listdd.$nextpage.$endpage;
         if ($totalpage > $total_list) {
-            $plist .= "<input type='text' name='PageNo'  value='".$this->PageNo."' style='width:30px' />\r\n";
-            $plist .= "<input type='submit' name='plistgo' value='GO' />\r\n";
+            $plist .= "<input type='text' name='PageNo' value='".$this->PageNo."'>\r\n";
+            $plist .= "<input type='submit' name='plistgo' value='GO'>\r\n";
         }
         $plist .= "</form>\r\n";
         return $plist;

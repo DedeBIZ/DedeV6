@@ -7,85 +7,64 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			function $Obj(objname) {
-				return document.getElementById(objname);
-			}
-			function ShowHide2(objname) {
-				var obj = $Obj(objname);
-				if (obj.style.display != 'block') { obj.style.display = 'block' }
-				else { obj.style.display = 'none'; }
-			}
-			function PublicDefault() {
-				if ($Obj('is1').checked || $Obj('is2').checked) {
-					$Obj("addcon").value = "archives_add.php";
-					$Obj("editcon").value = "archives_edit.php";
-					$Obj("mancon").value = "content_list.php";
-					$Obj("useraddcon").value = "archives_add.php";
-					$Obj("usereditcon").value = "archives_edit.php";
-					$Obj("usermancon").value = "content_list.php";
-				} else {
-					$Obj("addcon").value = "archives_sg_add.php";
-					$Obj("editcon").value = "archives_sg_edit.php";
-					$Obj("mancon").value = "content_sg_list.php";
-					$Obj("useraddcon").value = "archives_sg_add.php";
-					$Obj("usereditcon").value = "archives_sg_edit.php";
-					$Obj("usermancon").value = "content_sg_list.php";
-				}
-			}
-		</script>
 	</head>
 	<body>
-		<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-			<form name="form1" action="mychannel_add.php" method="post">
-				<input type="hidden" name="action" value="add">
+		<form name="form1" action="mychannel_add.php" method="post">
+			<input type="hidden" name="action" value="add">
+			<table align="center" class="table maintable my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="mychannel_main.php">文档模型管理</a> &gt; 新增文档模型</td>
+					<td bgcolor="#f5f5f5" colspan="2"><a href="mychannel_main.php">文档模型管理</a> - 新增文档模型</td>
 				</tr>
 				<tr>
-					<td width="260">栏目id：</td>
-					<td><input type="text" name="id" id="id" class="admin-input-xs" value="<?php echo $newid;?>">（数字，创建后不可修改，并具有唯一性）</td>
+					<td width="260">模型性质：</td>
+					<td>
+						<label><input type="radio" name="issystem" id="is1" value="0" onclick="PublicDefault()" checked="checked"> 自动模型</label>
+						<label><input type="radio" name="issystem" id="is2" value="1" onclick="PublicDefault()"> 系统模型</label>
+						<label><input type="radio" name="issystem" id="is3" value="-1" onclick="PublicDefault()"> 独立模型</label>
+						<span>（系统模型禁止删除，独立模型具有单独主表，自动创建字段aid、栏目id、文档标题等，文档必须点击栏目进入列表管理）</span>
+					</td>
 				</tr>
 				<tr>
-					<td>名字标识：</td>
-					<td><input type="text" name="nid" id="nid" class="admin-input-sm" value="ch<?php echo $newid;?>">（与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，栏目默认文档模板是“default/article_名字标识.htm”，列表模板、封面模板类推）</td>
+					<td>模型id：</td>
+					<td>
+						<input type="text" name="id" id="id" class="admin-input-xs" value="<?php echo $newid;?>">
+						<span>（创建后不可修改，具有唯一性）</span>
+					</td>
 				</tr>
 				<tr>
-					<td>栏目名称：</td>
-					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="栏目<?php echo $newid;?>">（栏目的中文名称，在后台管理，前台发布等均使用此名字）</td>
+					<td>模型标识：</td>
+					<td>
+						<input type="text" name="nid" id="nid" class="admin-input-sm" value="model<?php echo $newid;?>">
+						<span>（建议由英文、数字或下划线组成，示例article_名字标识.htm，列表和封面模板类推）</span>
+					</td>
+				</tr>
+				<tr>
+					<td>模型名称：</td>
+					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="模型<?php echo $newid;?>">（后台管理和会员发布显示名称）</td>
 				</tr>
 				<tr>
 					<td>附加表：</td>
 					<td>
-						<input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $cfg_dbprefix,'addon',$newid;?>">
+						<input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $cfg_dbprefix,'new',$newid;?>">
 						<label><input type="checkbox" name="isdel" id="isdel" value="1"> 删除已有表</label>
-						（必须由英文、数字、下划线组成，栏目除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性：推荐、会员权限等，也可以使用完全以附加表作为存储数据）
-					</td>
-				</tr>
-				<tr>
-					<td>模型性质：</td>
-					<td>
-						<label><input type="radio" name="issystem" id="is1" value="0" onclick="PublicDefault()" checked="1"> 自动模型</label>
-						<label><input type="radio" name="issystem" id="is2" value="1" onclick="PublicDefault()"> 系统模型</label>
-						<label><input type="radio" name="issystem" id="is3" value="-1" onclick="PublicDefault()"> 独立模型，不使用主表</label>
-						（如果为系统模型禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid,typeid,senddate,title,mid,channel，独立模型的文档必须点击栏目进入列表才能管理）
+						<span>（#@__表示数据表前缀，文档模型主表外其它数据存放附加表）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>是否支持会员投稿：</td>
 					<td>
-						<label><input type="radio" name="issend" value="0" checked="1"> 不支持</label>
+						<label><input type="radio" name="issend" value="0" checked="checked"> 不支持</label>
 						<label><input type="radio" name="issend" value="1"> 支持</label>
 					</td>
 				</tr>
 				<tr>
-					<td>会员许可投稿级别：</td>
+					<td>会员投稿级别：</td>
 					<td>
 						<select name="sendrank" id="sendrank" class="admin-input-sm">
 							<option value="0">游客</option>
 							<?php
 							$urank = $cuserLogin->getUserRank();
-							$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' And `rank`>=10");
+							$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' And `rank` >= 10");
 							$dsql->Execute();
 							while($row2 = $dsql->GetObject())
 							{
@@ -93,10 +72,11 @@
 							}
 							?>
 						</select>
+						<span>（为了系统安全，游客投稿已禁止，开启游客投稿功能，到会员发布文件删除禁止游客操作）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>许可投稿会员组：</td>
+					<td>会员投稿组：</td>
 					<td>
 						<?php
 						$dsql->SetQuery("SELECT * FROM `#@__member_model`");
@@ -106,15 +86,15 @@
 							echo "<label><input type='radio' name='usertype' value=".$row3->name."> ".$row3->name."</label>";
 						}
 						?>
-						<label><input type="radio" name="usertype" value="" checked="1"> 不限</label>
+						<label><input type="radio" name="usertype" value="" checked="checked"> 不限</label>
 					</td>
 				</tr>
 				<tr>
-					<td>会员稿件默认状态：</td>
+					<td>会员投稿默认状态：</td>
 					<td>
-						<label><input type="radio" name="arcsta" value="-1" checked="1"> 未审核</label>
-						<label><input type="radio" name="arcsta" value="0"> 已审核（自动生成网页）</label>
-						<label><input type="radio" name="arcsta" value="1"> 已审核（仅使用动态文档）</label>
+						<label><input type="radio" name="arcsta" value="-1" checked="checked"> 未审核</label>
+						<label><input type="radio" name="arcsta" value="0"> 已审核（更新静态页）</label>
+						<label><input type="radio" name="arcsta" value="1"> 已审核（使用动态页）</label>
 					</td>
 				</tr>
 				<tr>
@@ -124,27 +104,27 @@
 				<tr>
 					<td>投稿是否使用摘要：</td>
 					<td>
-						<label><input type="radio" name="needdes" value="1" checked="1"> 使用</label>
+						<label><input type="radio" name="needdes" value="1" checked="checked"> 使用</label>
 						<label><input type="radio" name="needdes" value="0"> 不使用</label>
 					</td>
 				</tr>
 				<tr>
 					<td>投稿是否使用缩图：</td>
 					<td>
-						<label><input type="radio" name="needpic" value="1" checked="1"> 使用</label>
+						<label><input type="radio" name="needpic" value="1" checked="checked"> 使用</label>
 						<label><input type="radio" name="needpic" value="0"> 不使用</label>
 					</td>
 				</tr>
 				<tr>
 					<td>默认栏目id：</td>
-					<td><input type="text" name="dfcid" id="dfcid" class="admin-input-xs" value="0">（与投稿是唯一性结合可以用模型设计自定义表单）</td>
+					<td><input type="text" name="dfcid" id="dfcid" class="admin-input-xs" value="0">（与投稿唯一性结合可以用自定义模型）</td>
 				</tr>
 				<tr>
 					<td>投稿具有唯一性：</td>
 					<td>
 						<label><input type="radio" name="onlyone" value="1"> 是</label>
-						<label><input type="radio" name="onlyone" value="0" checked="1"> 不是</label>
-						（如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单）
+						<label><input type="radio" name="onlyone" value="0" checked="checked"> 不是</label>
+						<span>（与投稿唯一会员只能在该模型对应栏目中发布文档，其作用相当于自定义表单）</span>
 					</td>
 				</tr>
 				<tr>
@@ -177,7 +157,34 @@
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='mychannel_main.php';">返回</button>
 					</td>
 				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
+		<script>
+			function $Obj(objname) {
+				return document.getElementById(objname);
+			}
+			function ShowHide2(objname) {
+				var obj = $Obj(objname);
+				if (obj.style.display != 'block') { obj.style.display = 'block' }
+				else { obj.style.display = 'none'; }
+			}
+			function PublicDefault() {
+				if ($Obj('is1').checked || $Obj('is2').checked) {
+					$Obj("addcon").value = "archives_add.php";
+					$Obj("editcon").value = "archives_edit.php";
+					$Obj("mancon").value = "content_list.php";
+					$Obj("useraddcon").value = "archives_add.php";
+					$Obj("usereditcon").value = "archives_edit.php";
+					$Obj("usermancon").value = "content_list.php";
+				} else {
+					$Obj("addcon").value = "archives_sg_add.php";
+					$Obj("editcon").value = "archives_sg_edit.php";
+					$Obj("mancon").value = "content_sg_list.php";
+					$Obj("useraddcon").value = "archives_sg_add.php";
+					$Obj("usereditcon").value = "archives_sg_edit.php";
+					$Obj("usermancon").value = "content_sg_list.php";
+				}
+			}
+		</script>
 	</body>
 </html>

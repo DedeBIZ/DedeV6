@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * Unicode编码词典的php分词器
  *
@@ -201,9 +201,9 @@ class SplitWord
      */
     function LoadDict( $maindic='' )
     {
-		$this->addonDicFile = DEDEINC.'/'.$this->addonDicFile;
-		$this->mainDicFile = DEDEINC.'/'.$this->mainDicFile;
-		$this->mainDicFileZip = DEDEINC.'/'.$this->mainDicFileZip;
+		$this->addonDicFile = DEDEINC.'/libraries/'.$this->addonDicFile;
+		$this->mainDicFile = DEDEINC.'/libraries/'.$this->mainDicFile;
+		$this->mainDicFileZip = DEDEINC.'/libraries/'.$this->mainDicFileZip;
         $startt = microtime(TRUE);
         //正常读取文件
         $dicAddon = $this->addonDicFile;

@@ -1,6 +1,6 @@
 <?php
 /**
- * 标签测试操作
+ * 全局标记测试操作
  *
  * @version        $id:tag_test_action.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -16,7 +16,7 @@ CheckPurview('temp_Test');
 require_once(DEDEINC."/archive/partview.class.php");
 CheckCSRF();
 if (empty($partcode)) {
-    ShowMsg('错误请求', 'javascript:;');
+    ShowMsg('标签测试失败，请稍后重试', 'javascript:;');
     exit;
 }
 $partcode = stripslashes($partcode);
@@ -26,9 +26,8 @@ if ($typeid > 0) $pv = new PartView($typeid);
 else $pv = new PartView();
 $pv->SetTemplet($partcode, "string");
 if ($showsource == "" || $showsource == "yes") {
-    echo "模板代码:";
     echo "<span class='text-primary'><pre>".dede_htmlspecialchars($partcode)."</pre></span>";
-    echo "结果:<hr size='1' width='100%'>";
+    echo "<hr>";
 }
 $pv->Display();
 ?>

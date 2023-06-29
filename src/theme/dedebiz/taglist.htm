@@ -2,16 +2,17 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>{dede:field.title/}-{dede:pagelist listsize='0' listitem='pageno' function='html2text(@me)' runphp='yes'}if (@me>1) @me='第'.trim(@me).'页-';else @me='';{/dede:pagelist}{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-		<script>const currentNavTypeID = '{dede:field.id/}';</script>
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
+		<script>const currentNavTypeID = '{dede:field.id/}';</script>
+		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}

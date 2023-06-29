@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 当前位置面包屑
+ * 面包屑
  *
  * @version        $id:typelink.class.php 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
@@ -156,7 +156,7 @@ class TypeLink
             $typeinfos['sitepath']
         );
     }
-    //获得类别列表：hid是指默认选中栏目，0表示请选择栏目或不限栏目，oper是会员允许管理的栏目，0表示所有栏目，channeltype是指栏目的文档类型，0表示不限栏目
+    //获得类别列表：hid是指默认选中栏目，0表示请选择文档栏目或不限栏目，oper是会员允许管理的栏目，0表示所有栏目，channeltype是指栏目的文档类型，0表示不限栏目
     function GetOptionArray($hid = 0, $oper = 0, $channeltype = 0, $usersg = 0)
     {
         return $this->GetOptionList($hid, $oper, $channeltype, $usersg);
@@ -171,7 +171,7 @@ class TypeLink
             $row = $this->dsql->GetOne("SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE id='$hid'");
             $channeltype = $row['channeltype'];
             if ($row['ispart'] == 1) {
-                $this->OptionArrayList .= "<option value='".$row['id']."' style='background:#e9ecef;color:#545b62' selected>".$row['typename']."</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row['id']."' class='option1' selected>".$row['typename']."</option>\r\n";
             } else {
                 $this->OptionArrayList .= "<option value='".$row['id']."' selected>".$row['typename']."</option>\r\n";
             }
@@ -205,7 +205,7 @@ class TypeLink
         while ($row = $this->dsql->GetObject()) {
             if ($row->id != $hid) {
                 if ($row->ispart == 1) {
-                    $this->OptionArrayList .= "<option value='".$row->id."' style='background:#e9ecef;color:#545b62'>".$row->typename."</option>\r\n";
+                    $this->OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."</option>\r\n";
                 } else {
                     $this->OptionArrayList .= "<option value='".$row->id."'>".$row->typename."</option>\r\n";
                 }
@@ -234,7 +234,7 @@ class TypeLink
                 if (!in_array($row->id, $oper)) continue;
             }
             if ($row->ispart == 1) {
-                $this->OptionArrayList .= "<option value='".$row->id."' style='background:#e9ecef;color:#545b62'>└$step ".$row->typename."</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row->id."' class='option1'>└$step ".$row->typename."</option>\r\n";
             } else {
                 $this->OptionArrayList .= "<option value='".$row->id."'>└$step ".$row->typename."</option>\r\n";
             }
@@ -299,7 +299,7 @@ class TypeLink
         $line = $row;
         $GLOBALS['autoindex'] = 0;
         if ($col > 1) {
-            $likeType = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+            $likeType = "<table width='$tablewidth'>\r\n";
         }
         for ($i = 0; $i < $line; $i++) {
             if ($col > 1) {

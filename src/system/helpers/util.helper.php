@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 核心小助手
+ * 核心助手
  *
  * @version        $id:util.helper.php 4 19:20 2010年7月6日 tianya $
  * @package        DedeBIZ.Helpers
@@ -91,7 +91,7 @@ if (!function_exists('GetIP')) {
             } else if (isset($_SERVER['HTTP_CLIENT_IP'])) {
                 $realip = $_SERVER['HTTP_CLIENT_IP'];
             } else {
-                $realip = $_SERVER['REMOTE_ADDR'];
+                $realip = @$_SERVER['REMOTE_ADDR'];
             }
         } else {
             if (getenv('HTTP_X_FORWARDED_FOR')) {

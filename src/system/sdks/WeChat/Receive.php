@@ -1,6 +1,6 @@
 <?php
 namespace WeChat;
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 use WeChat\Contracts\BasicPushEvent;
 /**
  * 公众号推送管理

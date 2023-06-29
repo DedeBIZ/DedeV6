@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员管理
+ * 所有会员列表
  *
  * @version        $id:member_main.php 10:49 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -24,7 +24,7 @@ $sortkey = empty($sortkey) ? 'mid' : preg_replace("#[^a-z]#i", '', $sortkey);
 $staArr = array(-2 => '限制禁言会员', -1 => '未通过审核', 0 => '审核通过需要填写信息', 1 => '待补充完善信息', 2 => '正常使用');
 $staArrmatt = array(1 => '被推荐', 0 => '非普通 ');
 $MemberTypes = array();
-$dsql->SetQuery("SELECT `rank`,membername From `#@__arcrank` where `rank`>0 ");
+$dsql->SetQuery("SELECT `rank`,membername FROM `#@__arcrank` WHERE `rank` > 0 ");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $MemberTypes[$row->rank] = $row->membername;
@@ -82,7 +82,7 @@ function GetMemberName($rank, $mt)
 function GetMAtt($m)
 {
     if ($m < 1) return '';
-    else if ($m == 10) return " <span class='btn btn-success btn-sm'>管理</span>";
-    else return " <span class='btn btn-success btn-sm'>推荐</span>";
+    else if ($m == 10) return " <span class='btn btn-light btn-sm'>管理</span>";
+    else return " <span class='btn btn-light btn-sm'>推荐</span>";
 }
 ?>

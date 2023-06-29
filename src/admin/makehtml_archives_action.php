@@ -79,8 +79,8 @@ $ttime = time() - $sstime;
 $ttime = number_format(($ttime / 60), 2);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
-$tjsta = "<div style='margin:0 auto 20px;width:360px;height:16px;text-align:left;border:1px solid #1eb867;border-radius:.35rem'><div style='max-width:360px;width:$tjlen%;height:16px;background:#1eb867;border-radius:.35rem'></div></div>";
-$tjsta .= "到达位置<span class='text-primary'>".($startdd + $pagesize)."</span>，用时<span class='text-primary'>{$ttime}</span>分钟，完成更新文档总数<span class='text-primary'>$tjlen</span>%";
+$tjsta = "<div class='progress mb-3'><div class='progress-bar progress-bar-striped bg-success' role='progressbar' aria-valuenow='$tjlen%' aria-valuemin='0' aria-valuemax='100' style='width:$tjlen%'>$tjlen%</div></div>";
+$tjsta .= "更新文档[id：".($startdd + $pagesize)."]，用时<span class='text-primary'>{$ttime}</span>分钟，完成更新文档总数<span class='text-primary'>$tjlen%</span>";
 //速度测试
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";

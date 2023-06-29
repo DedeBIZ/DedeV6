@@ -7,46 +7,14 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script>
-			//获得选中文件的文件名
-			function SelKw(kw)
-			{
-				if (document.form2.keywords.value)
-				{
-					document.form2.keywords.value += ","+kw;
-				} else {
-					document.form2.keywords.value = kw;
-				}
-			}
-			function ReturnValue()
-			{
-				if (window.opener.document.<?php echo $f?>.value)
-				{
-				  window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
-				} else {
-				  window.opener.document.<?php echo $f?>.value = document.form2.keywords.value;
-				}
-				window.close();
-			}
-			function showHide(objname)
-			{
-				var obj = document.getElementById(objname);
-				if (obj.style.display=="none") obj.style.display = "block";
-				else obj.style.display="none";
-			}
-			function AddNewKw()
-			{
-				showHide("addnew");
-			}
-		</script>
 	</head>
 	<body>
 		<form name="form1" action="article_keywords_main.php">
 			<input type="hidden" name="dopost" value="add">
-			<table cellpadding="1" cellspacing="1" align="center" id="addnew" class="table maintable table-borderless mt-3" style="display:none">
-				<tr bgcolor="#f5f5f5">
-					<td>
-						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-md mr-3">
+			<table align="center" id="addnew" class="table maintable table-borderless mt-3" style="display:none">
+				<tr>
+					<td bgcolor="#f5f5f5">
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="admin-input-sm mr-3">
 						<input type="text" name="rank" id="rank" placeholder="请输入频率" class="admin-input-sm mr-3">
 						<input type="submit" name="Submit" value="保存" class="btn btn-success btn-sm">
@@ -55,10 +23,10 @@
 			</table>
 		</form>
 		<form name="form2">
-			<table cellpadding="1" cellspacing="1" align="center" class="table maintable my-3">
-				<tr bgcolor="#f5f5f5">
-					<td>
-						<input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" class="admin-input-md mr-3">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f5f5f5">
+						<input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<button type="button" class="btn btn-success btn-sm" name="Submit" onclick="ReturnValue()">选用</button>
 						<button type="button" class="btn btn-success btn-sm" name="kwa" onclick="AddNewKw()">新增关键词</button>
 						<button type="button" class="btn btn-success btn-sm" name="kwm" onclick="location='article_keywords_main.php';">关键词管理</button>
@@ -76,5 +44,35 @@
 				</tr>
 			</table>
 		</form>
+		<script>
+			//获得选中文件的文件名
+			function SelKw(kw)
+			{
+				if (document.form2.keywords.value) {
+					document.form2.keywords.value += ","+kw;
+				} else {
+					document.form2.keywords.value = kw;
+				}
+			}
+			function ReturnValue()
+			{
+				if (window.opener.document.<?php echo $f?>.value) {
+				  window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
+				} else {
+				  window.opener.document.<?php echo $f?>.value = document.form2.keywords.value;
+				}
+				window.close();
+			}
+			function showHide(objname)
+			{
+				var obj = document.getElementById(objname);
+				if (obj.style.display=="none") obj.style.display = "block";
+				else obj.style.display="none";
+			}
+			function AddNewKw()
+			{
+				showHide("addnew");
+			}
+		</script>
 	</body>
 </html>

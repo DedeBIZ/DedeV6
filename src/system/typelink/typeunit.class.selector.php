@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 后台栏目管理
  *
@@ -76,7 +76,7 @@ class TypeUnitSelector
             $soncat = '';
             $this->LogicListAllSunType($id, $channel, $soncat);
             if ($chackRadio == '' && $soncat == '') continue;
-            echo "<div class='quickselItem'>\r\n";
+            echo "<div class='quickselitem'>\r\n";
             echo "<div class='topcat'><label>{$chackRadio} {$typeName}</label></div>\r\n";
             if ($soncat != '') echo "<div class='soncat'>{$soncat}</div>\r\n";
             echo "</div>\r\n";

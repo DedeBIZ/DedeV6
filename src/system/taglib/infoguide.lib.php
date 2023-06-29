@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 分类信息地区与小分类搜索
+ * 分类信息地区与小分类搜索标签
  *
  * @version        $id:infoguide.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
@@ -13,7 +13,7 @@ function lib_infoguide(&$ctag, &$refObj)
 {
     global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite;
     //属性处理
-    //$attlist="row|12,titlelen|24";
+    //$attlist="row|12,titlelen|30";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
     $cmspath = ((empty($cfg_cmspath) || preg_match('#[/$]#', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
@@ -42,7 +42,7 @@ function lib_infoguide(&$ctag, &$refObj)
     if (empty($infotype)) $infotype = 0;
     $fields['nativeplace'] .= "<input type='hidden' id='hidden_nativeplace' name='nativeplace' value='{$nativeplace}' />\r\n";
     $fields['nativeplace'] .= "<span class='infosearchtxt'>地区：</span><span id='span_nativeplace'></span>\r\n";
-    $fields['nativeplace'] .= "<span id='span_nativeplace_son'></span>\r\n<span id='span_nativeplace_sec'></span><br>\r\n";
+    $fields['nativeplace'] .= "<span id='span_nativeplace_son'></span>\r\n<span id='span_nativeplace_sec'></span>\r\n";
     $fields['nativeplace'] .= "<script>
         var em_nativeplaces = [];
         fetch('{$cmspath}static/enums/nativeplace.json').then((resp)=>resp.json()).then((d)=>{
@@ -54,7 +54,7 @@ function lib_infoguide(&$ctag, &$refObj)
         </script>\r\n";
     $fields['infotype'] .= "<input type='hidden' id='hidden_infotype' name='infotype' value='{$infotype}' />\r\n";
     $fields['infotype'] .= "<span class='infosearchtxt'>类型：</span><span id='span_infotype'></span>\r\n";
-    $fields['infotype'] .= "<span id='span_infotype_son'></span><span id='span_infotype_sec'></span><br>\r\n";
+    $fields['infotype'] .= "<span id='span_infotype_son'></span><span id='span_infotype_sec'></span>\r\n";
     $fields['infotype'] .= "<script>
         var em_infotypes = [];
         fetch('{$cmspath}static/enums/infotype.json').then((resp)=>resp.json()).then((d)=>{

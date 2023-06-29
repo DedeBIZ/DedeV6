@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 获取二级枚举的值
+ * 获取二级枚举值
  *
  * @version        $id:stepselect.lib.php 16:24 2010年7月26日 tianya $
  * @package        DedeBIZ.Taglib

@@ -33,7 +33,7 @@ if ($dopost == 'editArchives') {
         $ntime = time();
         $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
         $fullUrl = $fullUrl.".png";
         file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
         //加水印
@@ -128,35 +128,35 @@ else if ($dopost == "uploadLitpic") {
     $upfile = AdminUpload('litpic', 'imagelit', 0, false);
     if ($upfile == '-1') {
         $msg = "<script>
-                parent.document.getElementById('uploadwait').style.display = 'none';
-                alert('您没指定要上传文件或文件大小超过限制');
-            </script>";
+            parent.document.getElementById('uploadwait').style.display = 'none';
+            alert('您没指定要上传文件或文件大小超过限制');
+        </script>";
     } else if ($upfile == '-2') {
         $msg = "<script>
-                parent.document.getElementById('uploadwait').style.display = 'none';
-                alert('上传文件失败，请检查原因');
-            </script>";
+            parent.document.getElementById('uploadwait').style.display = 'none';
+            alert('上传文件失败，请检查原因');
+        </script>";
     } else if ($upfile == '0') {
         $msg = "<script>
-                parent.document.getElementById('uploadwait').style.display = 'none';
-                alert('文件类型不正确');
-            </script>";
+            parent.document.getElementById('uploadwait').style.display = 'none';
+            alert('文件类型不正确');
+        </script>";
     } else {
         if (!empty($cfg_uplitpic_cut) && $cfg_uplitpic_cut == 'N') {
             $msg = "<script>
-                    parent.document.getElementById('uploadwait').style.display = 'none';
-                    parent.document.getElementById('picname').value = '{$upfile}';
-                    if (parent.document.getElementById('divpicview'))
-                    {
-                        parent.document.getElementById('divpicview').style.width = '150px';
-                        parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}?n' width='150'>\";
-                    }
-                </script>";
+                parent.document.getElementById('uploadwait').style.display = 'none';
+                parent.document.getElementById('picname').value = '{$upfile}';
+                if (parent.document.getElementById('divpicview'))
+                {
+                    parent.document.getElementById('divpicview').style.width = '150px';
+                    parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}?n' width='150'>\";
+                }
+            </script>";
         } else {
             $msg = "<script>
-                    parent.document.getElementById('uploadwait').style.display = 'none';
-                    window.open('imagecut.php?f=picname&isupload=yes&file={$upfile}', 'popUpImagesWin', 'scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=150, top=50');
-                </script>";
+                parent.document.getElementById('uploadwait').style.display = 'none';
+                window.open('imagecut.php?f=picname&isupload=yes&file={$upfile}', 'popUpImagesWin', 'scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=150, top=50');
+            </script>";
         }
     }
     echo $msg;
@@ -169,7 +169,7 @@ else if ($dopost == "commendArchives") {
         $qstr = $aid;
     }
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
@@ -217,7 +217,7 @@ else if ($dopost == "checkArchives") {
     require_once(DEDEADMIN."/inc/inc_archives_functions.php");
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
@@ -257,21 +257,18 @@ else if ($dopost == "checkArchives") {
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-        echo "<table width='100%'>";
+        echo "<table>";
         ?>
         <tr>
-            <td width="90" class="admin-td">目标栏目：</td>
+            <td width="120" class="admin-td">目标栏目：</td>
             <td class="admin-td"><?php echo $typeOptions;?></td>
         </tr>
         <tr>
-            <td width="90" class="admin-td">文档id：</td>
-            <td class="admin-td">
-                <input type="text" name="tmpids" class="admin-input-md" value="<?php echo $qstr;?>"><br>
-                移动栏目必须和选定文档栏目类型一致，否则自动过滤不相关文档
-            </td>
+            <td width="120" class="admin-td">文档id：</td>
+            <td class="admin-td"><input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"></td>
         </tr>
         <tr>
-            <td colspan="2" align="center" class="py-2">
+            <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
                 <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
             </td>
@@ -332,7 +329,7 @@ else if ($dopost == 'return') {
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
 
     if ($qstr == '') {
-        ShowMsg("参数无效", "recycling.php");
+        ShowMsg("操作失败", "recycling.php");
         exit();
     }
     $qstrs = explode('`', $qstr);
@@ -353,7 +350,7 @@ else if ($dopost == "delArchives") {
             $qstr = $aid;
         }
         if ($qstr == '') {
-            ShowMsg("参数无效", $ENV_GOBACK_URL);
+            ShowMsg("操作失败", $ENV_GOBACK_URL);
             exit();
         }
         $qstrs = explode('`', $qstr);
@@ -368,8 +365,8 @@ else if ($dopost == "delArchives") {
         ShowMsg("成功删除指定文档", $ENV_GOBACK_URL);
         exit();
     } else {
-        $wintitle = "文档管理-删除文档";
-        $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a>::删除文档";
+        $wintitle = "删除指定文档";
+        $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a> - 删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -390,7 +387,7 @@ else if ($dopost == 'clear') {
     if ($fmdo == 'yes') {
         if (!empty($aid) && empty($qstr)) $qstr = $aid;
         if ($qstr == '') {
-            ShowMsg("参数无效", "recycling.php");
+            ShowMsg("操作失败", "recycling.php");
             exit();
         }
         $qstrs = explode('`', $qstr);
@@ -418,8 +415,8 @@ else if ($dopost == 'clear') {
             ShowMsg("未发现相关文档", "recycling.php");
             exit();
         }
-        $wintitle = "文档管理-清空所有文档";
-        $wecome_info = "<a href='recycling.php'>文档回收站</a>::清空所有文档";
+        $wintitle = "清空回收站所有文档";
+        $wecome_info = "<a href='recycling.php'>文档回收站</a> - 清空所有文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -441,7 +438,7 @@ else if ($dopost == 'del') {
     if ($fmdo == 'yes') {
         if (!empty($aid) && empty($qstr)) $qstr = $aid;
         if ($qstr == '') {
-            ShowMsg("参数无效", "recycling.php");
+            ShowMsg("操作失败", "recycling.php");
             exit();
         }
         $qstrs = explode('`', $qstr);
@@ -456,8 +453,8 @@ else if ($dopost == 'del') {
         ShowMsg("成功删除指定文档", "recycling.php");
         exit();
     } else {
-        $wintitle = "文档管理-删除文档";
-        $wecome_info = "<a href='recycling.php'>文档管理</a>::删除文档";
+        $wintitle = "删除指定文档";
+        $wecome_info = "<a href='recycling.php'>文档管理</a> - 删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -481,22 +478,22 @@ else if ($dopost == 'quickEdit') {
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
-    echo "<table width='100%'>";
+    echo "<table>";
     ?>
     <tr>
-        <td width="90" class="admin-td">所属栏目：</td>
+        <td width="120" class="admin-td">所属栏目：</td>
         <td class="admin-td">
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
             echo "<select name='typeid' class='admin-input-sm'>";
-            if ($arcRow["typeid"] == "0") echo "<option value='0' selected>请选择栏目</option>";
+            if ($arcRow["typeid"] == "0") echo "<option value='0' selected>请选择文档栏目</option>";
             echo $typeOptions;
             echo "</select>";
             ?>
         </td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">属性：</td>
+        <td width="120" class="admin-td">属性：</td>
         <td class="admin-td">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
@@ -513,37 +510,38 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">标题：</td>
-        <td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-md"></td>
+        <td width="120" class="admin-td">标题：</td>
+        <td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">简略标题：</td>
-        <td class="admin-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-md"></td>
+        <td width="120" class="admin-td">简略标题：</td>
+        <td class="admin-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">阅读权限：</td>
+        <td width="120" class="admin-td">浏览权限：</td>
         <td class="admin-td">
             <select name="arcrank" id="arcrank" class="admin-input-sm">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>
                 <?php echo $arcRow["rankname"] ?> </option>
                 <?php
                 $urank = $cuserLogin->getUserRank();
-                $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank'");
+                $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank' ORDER BY `rank` ASC");
                 $dsql->Execute();
                 while ($row = $dsql->GetObject()) {
-                    echo "<option value='".$row->rank."'>".$row->membername."</option>";
+                    $selected = $row->rank == 0 ? ' selected' : '';
+                    echo "<option value='".$row->rank."'{$selected}>".$row->membername."</option>";
                 }
                 ?>
             </select>
-            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-xs">
+            <label>需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-xs"></label>
         </td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">关键词：</td>
-        <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-md"></td>
+        <td width="120" class="admin-td">关键词：</td>
+        <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td colspan="2" align="center" class="py-2">
+        <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>
@@ -586,7 +584,7 @@ else if ($dopost == 'quickEditSave') {
     //更新网页
     $artUrl = MakeArt($aid, TRUE, TRUE);
     $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '-1';
-    ShowMsg('成功更新一篇文档基本信息', $backurl);
+    ShowMsg('成功更新一篇文档指定属性', $backurl);
     exit();
 }
 //分析并自动获取文档关键词
@@ -594,7 +592,7 @@ else if ($dopost == "makekw") {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
@@ -677,7 +675,7 @@ else if ($dopost == 'attsAdd') {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     if (empty($flagname)) {
@@ -710,7 +708,7 @@ else if ($dopost == 'attsDel') {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
-        ShowMsg("参数无效", $ENV_GOBACK_URL);
+        ShowMsg("操作失败", $ENV_GOBACK_URL);
         exit();
     }
     if (empty($flagname)) {
@@ -759,10 +757,10 @@ else if ($dopost == 'attsDlg') {
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-    echo "<table width='100%'>";
-?>
+    echo "<table>";
+    ?>
     <tr>
-        <td width="90" class="admin-td">属性：</td>
+        <td width="120" class="admin-td">属性：</td>
         <td class="admin-td">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
@@ -776,11 +774,11 @@ else if ($dopost == 'attsDlg') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="admin-td">文档id：</td>
+        <td width="120" class="admin-td">文档id：</td>
         <td class="admin-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
     </tr>
     <tr>
-        <td colspan="2" align="center" class="py-2">
+        <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>

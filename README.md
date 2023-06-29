@@ -6,6 +6,8 @@ DedeBIZ系统基于PHP7版本开发，具有很强的可扩展性，并且完全
 
 DedeV6.x是一个LTS版本，支持将到2025年10月截止，目前DedeV6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取
 
+![DedeBIZ](docs/dedebiz.png)
+
 ## 参与开源
 
 访问[代码托管](https://www.dedebiz.com/git)，可以看到我们已经将代码托管在几个知名代码托管平台，可以通过提交Pull requests的方式来贡献您的力量
@@ -89,15 +91,17 @@ Sockets：支持接入DedeBIZ商业组件模块
 
 ```
 NAME:
-	DedeBIZ Cli Tools
+	DedeBIZ命令行工具
 USAGE:
 	php ./dedebiz command [arguments...]
 COMMANDS:
-	serv,s Run cli web server for DedeBIZ
-	make,m Make DedeBIZ HTML
-	update,u Update to latest system
-	help,h Shows a list of commands or help
-	quick,q Quick start a development environment
+	serv,s 运行DedeBIZ开发服务
+	make,m 更新网页
+	update,u 更新到最新系统
+	help,h Shows 帮助
+	quick,q 快速开始一个开发环境
+	tdata 生成测试数据
+	pwd 更改管理员密码
 WEBSITE:
 	https://www.dedebiz.com/help/
 ```

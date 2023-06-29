@@ -2,15 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>{dede:field.title/}-{dede:pagelist listsize='0' listitem='pageno' function='html2text(@me)' runphp='yes'}if (@me>1) @me='第'.trim(@me).'页-';else @me='';{/dede:pagelist}{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
+		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}
@@ -47,19 +48,9 @@
 					<ul class="pagination">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 				</div>
 				<div class="col-md-3">
-					<div class="pb-3">
-						<div class="item-hot bg-white shadow-sm rounded p-3">
-							<form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
-								<input type="hidden" name="kwtype" value="0">
-								<div class="input-group">
-									<input name="q" type="text" class="form-control" placeholder="请输入...">
-									<button type="submit" id="validateimg" class="btn btn-success"><i class="fa fa-search"></i></button>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="py-3">{dede:include comment='推荐栏目' filename='widget_menu.htm'/}</div>
-					<div class="pt-3">{dede:include comment='热门文档' filename='widget_hot.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
+					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
+					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
 				</div>
 			</div>
 		</main>

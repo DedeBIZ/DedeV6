@@ -2,15 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>收藏夹-会员中心-<?php echo $cfg_webname;?></title>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="body-bg">
-		<?php pasterTempletDiy('top.htm');?>
+		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
 			<div class="row">
 				<?php
@@ -19,22 +20,29 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<ul class="nav nav-tabs">
-							<li class="nav-item"><a class="nav-link <?php echo $rank===''? 'active' : '';?>" href="mystow.php">我的收藏</a></li>
-							<li class="nav-item"><a class="nav-link <?php echo $rank==='top'? 'active' : '';?>" href="mystow.php?rank=top">收藏排行</a></li>
-						</ul>
-						<table width="100%" cellpadding="0" cellspacing="0" class="table">
+						<nav class="navbar navbar-expand-lg p-0">
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item"><a class="nav-link <?php echo $rank===''? 'active' : '';?>" href="mystow.php">我的收藏</a></li>
+								<li class="nav-item"><a class="nav-link <?php echo $rank==='top'? 'active' : '';?>" href="mystow.php?rank=top">收藏排行</a></li>
+							</ul>
+						</nav>
+						<table class="table">
 							<tbody>
+								<thead>
+									<tr>
+										<th>标题</th>
+										<th width="26%">收藏时间</th>
+										<th width="26%">操作</th>
+									</tr>
+								</thead>
 								{dede:datalist}
 								<tr>
-									<td colspan="5"><a href="archives_do.php?dopost=viewArchives&aid={dede:field.aid/}" target="_blank">{dede:field.title/}</a></td>
-									<td width="25%" align="center">
-										<a href="../apps/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}" target="_blank" class="btn btn-success btn-sm">推荐</a>
+									<td><a href="archives_do.php?dopost=viewArchives&aid={dede:field.aid/}" target="_blank">{dede:field.title/}</a></td>
+									<td><?php echo MyDate('Y-m-d H:i:s', $fields['addtime']);?></td>
+									<td>
+										<a href="/apps/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}" target="_blank" class="btn btn-success btn-sm">推荐</a>
 									 	<a href="archives_do.php?dopost=delStow&type={dede:field.type/}&aid={dede:field.aid/}" class="btn btn-danger btn-sm">删除</a>
 									</td>
-								</tr>
-								<tr>
-									<td colspan="6">收藏时间：<?php echo MyDate('Y-m-d H:i:s', $fields['addtime']);?></td>
 								</tr>
 								{/dede:datalist}
 							</tbody>
@@ -44,6 +52,6 @@
 				</div>
 			</div>
 		</main>
-		<?php pasterTempletDiy('foot.htm');?>
+		<?php obtaintheme('foot.htm');?>
 	</body>
 </html>

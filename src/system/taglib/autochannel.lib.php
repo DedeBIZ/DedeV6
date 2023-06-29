@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 按排序位置获取单个栏目的链接信息
+ * 按排序位置获取单个栏目链接
  *
  * @version        $id:autochannel.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

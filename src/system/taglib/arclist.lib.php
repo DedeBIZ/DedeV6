@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 文档列表标签
  *
@@ -215,12 +215,12 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         if (!empty($channelid)) $orwheres[] = " And arc.channel = '$channelid' ";
         if (!empty($noflag)) {
             if (!preg_match('#,#', $noflag)) {
-                $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
+                $orwheres[] = " FIND_IN_SET('$noflag', arc.flag) < 1 ";
             } else {
                 $noflags = explode(',', $noflag);
                 foreach ($noflags as $noflag) {
                     if (trim($noflag) == '') continue;
-                    $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
+                    $orwheres[] = " FIND_IN_SET('$noflag', arc.flag) < 1 ";
                 }
             }
         }
@@ -229,8 +229,6 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         if (!empty($notypeid)) {
             $orwheres[] = "and arc.typeid NOT IN (".GetSonIds($notypeid).")";
         }
-        //由于这个条件会导致缓存功能失去意义，因此取消
-        //if ($arcid!=0) $orwheres[] = " arc.id<>'$arcid' ";
     }
     //文档排序的方式
     $ordersql = '';
@@ -241,8 +239,8 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     else if ($orderby == 'lastpost') $ordersql = " ORDER BY arc.lastpost $orderWay";
     else if ($orderby == 'scores') $ordersql = " ORDER BY arc.scores $orderWay";
     //添加按好评数和差评数调用
-    else if ($orderby == 'goodpost') $ordersql = " order by arc.goodpost $orderWay";
-    else if ($orderby == 'badpost') $ordersql = " order by arc.badpost $orderWay";
+    else if ($orderby == 'goodpost') $ordersql = " ORDER BY arc.goodpost $orderWay";
+    else if ($orderby == 'badpost') $ordersql = " ORDER BY arc.badpost $orderWay";
     else if ($orderby == 'rand') $ordersql = " ORDER BY rand()";
     else $ordersql = " ORDER BY arc.sortrank $orderWay";
     //limit条件
@@ -258,7 +256,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         $orwhere = preg_replace("#^ And#is", '', $orwhere);
         $orwhere = preg_replace("#And[ ]{1,}And#is", 'And ', $orwhere);
     }
-    if ($orwhere != '') $orwhere = " WHERE $orwhere and tp.ishidden != 1 ";
+    if ($orwhere != '') $orwhere = "WHERE $orwhere and tp.ishidden != 1";
     //获取附加表信息
     $addfield = trim($ctag->GetAtt('addfields'));
     $addfieldsSql = '';
@@ -300,7 +298,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     $dsql->Execute('al');
     $artlist = '';
     if ($pagesize > 0)  $artlist .= "<div id='{$tagid}'>\r\n";
-    if ($col > 1) $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+    if ($col > 1) $artlist = "<table width='$tablewidth'>\r\n";
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');
     $dtp2->LoadString($innertext);

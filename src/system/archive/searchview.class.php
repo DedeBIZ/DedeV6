@@ -1,7 +1,7 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 搜索视图类
+ * 搜索视图
  *
  * @version        $id:searchview.class.php 15:26 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
@@ -110,7 +110,7 @@ class SearchView
         $this->CountRecord();
         $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/search.htm";
         if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "模板文件不存在，无法解析";
+            echo "搜索模板文件不存在，无法更新搜索";
             exit();
         }
         $this->dtp->LoadTemplate($tempfile);
@@ -273,9 +273,9 @@ class SearchView
             $this->dsql->Execute('l');
             while ($row = $this->dsql->GetArray('l')) {
                 if ($row['count'] > 1000) {
-                    $fstyle = " style='font-size:11pt;color:red'";
+                    $fstyle = " style='color:red'";
                 } else if ($row['count'] > 300) {
-                    $fstyle = " style='font-size:10pt;color:green'";
+                    $fstyle = " style='color:green'";
                 } else {
                     $style = "";
                 }
@@ -285,7 +285,7 @@ class SearchView
         }
     }
     /**
-     *  加粗关键词
+     *  关键词加粗标红
      *
      * @access    private
      * @param     string  $fstr  关键词字符
@@ -302,9 +302,9 @@ class SearchView
             if (ord($k[0]) > 0x80 && strlen($k) < 2) {
                 continue;
             }
-            //这里不区分大小写进行关键词替换
-            $fstr = str_ireplace($k, "<span class='text-danger'>$k</span>", $fstr);
-            //速度更快，效率更高$fstr = str_replace($k, "<span class='text-danger'>$k</span>", $fstr);
+            //不区分大小$fstr = str_ireplace($k, "<strong style='color:red'>$k</strong>", $fstr);
+            //速度效率更快
+            $fstr = str_replace($k, "<strong style='color:red'>$k</strong>", $fstr);
         }
         return $fstr;
     }
@@ -528,7 +528,7 @@ class SearchView
         $this->dsql->Execute("al");
         $artlist = "";
         if ($col > 1) {
-            $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
+            $artlist = "<table width='$tablewidth'>\r\n";
         }
         $this->dtp2->LoadSource($innertext);
         for ($i = 0; $i < $row; $i++) {

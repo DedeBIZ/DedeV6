@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 管理员后台基本函数
  *
@@ -104,7 +104,7 @@ function SpCreateDir($spath)
                 $isok = ChmodAll($truepath, $cfg_dir_purview);
             }
             if (!$isok) {
-                echo "创建或修改目录<span class='text-primary'>".$truepath."</span>失败<br>";
+                echo "创建或修改目录<span class='text-primary'>".$truepath."</span>失败";
                 CloseFtp();
                 return false;
             }
@@ -123,7 +123,7 @@ function jsScript($js)
     return $out;
 }
 /**
- *  获取修改器
+ *  获取富文本
  *
  * @access    public
  * @param     string  $fname 表单名称
@@ -150,11 +150,14 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
             if ($GLOBALS['cfg_db_language']=="utf8mb4") {
                 $emoji = ",emoji";
             }
-            $addConfig = ",{allowedContent:true,pasteFilter:null,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,dedepagebreak,ddfilebrowser,mimage,textindent,codesnippet{$emoji}',codeSnippet_theme: 'default'}";
+            $addConfig = ",{allowedContent:true,pasteFilter:null,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,html5audio,dedepagebreak,ddfilebrowser,mimage,textindent,tabletools,tableresize,tableselection,codesnippet{$emoji}',codeSnippet_theme: 'default'}";
+        }
+        if (defined('DEDEUSER')) {
+            $addConfig = ",{filebrowserImageUploadUrl:'api.php?action=upload&type=litpic&ck=1',filebrowserUploadUrl:'api.php?action=upload&type=media&ck=1',extraPlugins:'html5video,html5audio,textindent',filebrowserImageBrowseDisabled:true}";
         }
         $code = <<<EOT
 <script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
-<textarea id="{$fname}" name="{$fname}" rows="8" cols="60">{$fvalue}</textarea>
+<textarea id="{$fname}" name="{$fname}">{$fvalue}</textarea>
 <script>var editor = CKEDITOR.replace('{$fname}'{$addConfig});</script>
 EOT;
         if ($gtype == "print") {

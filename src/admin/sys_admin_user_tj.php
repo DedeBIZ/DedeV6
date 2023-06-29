@@ -1,6 +1,6 @@
 <?php
 /**
- * 获取管理员统计信息
+ * 管理员绩效统计
  *
  * @version        $id:sys_admin_user_edit.php 16:22 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
@@ -63,7 +63,7 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid';");
     $ddm = $row['dd'] + $ddm;
     $ccm = $row['cc'] + $ccm;
-    //本周
+    //七天
     $starttime = $y."-{$m}-{$d} 00:00:00";
     $istarttime = GetMkTime($starttime) - (7 * 24 * 3600);
     $sql = "SELECT addtable FROM `#@__channeltype` WHERE issystem='-1'";
@@ -93,12 +93,14 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid';");
     $ddd = $row['dd'] + $ddd;
     $ccd = $row['cc'] + $ccd;
-    $msg = "<span class='mr-3'>管理员：{$userid}</span>
-        <span class='mr-3'>文档/点击：{$dd}/{$cc}</span>
-        <span class='mr-3'>季度：{$dds}/{$ccs}</span>
-        <span class='mr-3'>当月：{$ddm}/{$ccm}</span>
-        <span class='mr-3'>近七天：{$ddw}/{$ccw}</span>
-        <span>当天：{$ddd}/{$ccd}</span>";
+    $msg = "<div class='row'>
+        <div class='col-2'>管理员：{$userid}</div>
+        <div class='col-2'>文档/点击：{$dd}/{$cc}</div>
+        <div class='col-2'>季度：{$dds}/{$ccs}</div>
+        <div class='col-2'>当月：{$ddm}/{$ccm}</div>
+        <div class='col-2'>七天：{$ddw}/{$ccw}</div>
+        <div class='col-2'>当天：{$ddd}/{$ccd}</div>
+    </div>";
     AjaxHead();
     echo $msg;
     exit();

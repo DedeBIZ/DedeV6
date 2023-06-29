@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit ('dedebiz');
 require_once(DEDEINC."/libraries/agent.class.php");
 /**
  * 轻量级流量统计
@@ -137,16 +137,13 @@ class DedeStatistics {
     {
         global $dsql;
         if ($d == -1) {
-            $pv = $dsql->GetOne("SELECT SUM(pv) as total FROM `#@__statistics`");
-            $uv = $dsql->GetOne("SELECT SUM(uv) as total FROM `#@__statistics`");
-            $ip = $dsql->GetOne("SELECT SUM(ip) as total FROM `#@__statistics`");
-            $vv = $dsql->GetOne("SELECT SUM(vv) as total FROM `#@__statistics`");
+            $row = $dsql->GetOne("SELECT * FROM `#@__statistics`ORDER BY pv DESC ");
             return array(
                 "sdate" => $d,
-                "pv" => $pv['total'],
-                "uv" => $uv['total'],
-                "ip" => $ip['total'],
-                "vv" => $vv['total'],
+                "pv" => $row['pv'],
+                "uv" => $row['uv'],
+                "ip" => $row['ip'],
+                "vv" => $row['vv'],
             );
         }
         $today = MyDate("Ymd",time());

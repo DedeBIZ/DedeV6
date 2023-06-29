@@ -18,32 +18,29 @@
 		<script src="js/mode/clike/clike.js"></script>
 		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function Post() {
-				if (document.form1.filename.value == "") {
-					ShowMsg("文件名不能为空");
-					document.form1.filename.focus();
-					return false;
-				}
-			}
-		</script>
 	</head>
 	<body>
 		<form method="POST" action="file_manage_control.php" name=form1 onSubmit="return Post()">
 			<input type="hidden" name="fmdo" value="edit">
 			<input type="hidden" name="backurl" value="{dede:global name='backurl' function='urlencode(@me)'/}">
 			<input type="hidden" name="_csrf_token" value="{dede:global name='csrf_token'/}">
-			<table cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+			<table align="center" class="table maintable my-3">
 				<tr>
 					<td colspan="2" bgcolor="#f5f5f5">新建/修改文件</td>
 				</tr>
 				<tr>
 					<td>工作目录</td>
-					<td><input name="activepath" value="{dede:global name='activepath'/}" class="admin-input-md">（空白表示根目录，不可以用“..”符号表示路径）</td>
+					<td>
+						<input name="activepath" value="{dede:global name='activepath'/}" class="admin-input-lg">
+						<span>（空白表示根目录，不可以用小数点..表示路径）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>文件名称</td>
-					<td><input name="filename" value="{dede:global name='filename'/}" class="admin-input-md">（不可以用“..”符号表示路径）</td>
+					<td>
+						<input name="filename" value="{dede:global name='filename'/}" class="admin-input-lg">
+						<span>（不可以用小数点..表示路径）</span>
+					</td>
 				</tr>
 				<tr class="table">
 					<td colspan="2" class="p-0">{dede:global name='contentView'/}</td>
@@ -57,6 +54,13 @@
 			</table>
 		</form>
 		<script>
+			function Post() {
+				if (document.form1.filename.value == "") {
+					ShowMsg("文件名不能为空");
+					document.form1.filename.focus();
+					return false;
+				}
+			}
 			var editor = CodeMirror.fromTextArea(document.getElementById('str'), {
 				lineNumbers: true,
 				lineWrapping: true,
