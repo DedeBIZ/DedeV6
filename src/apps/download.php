@@ -165,7 +165,7 @@ else if ($open == 2) {
             }
             $memberTypes[0] = "游客或没权限会员";
             $msgtitle = "您没有权限下载软件：{$arctitle}";
-            $moremsg = "该软件需要等级<span class='text-primary'>".$memberTypes[$needRank]."</span>才能下载，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span><a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm ml-2'>升级会员</button>";
+            $moremsg = "该软件需要等级<span class='text-primary'>".$memberTypes[$needRank]."</span>才能下载，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span><a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm ml-2'>升级会员</a>";
             include_once(DEDETEMPLATE.'/apps/view_msg.htm');
             exit();
         }

@@ -328,7 +328,7 @@ function GetCurContent(&$body)
                 $itype = '.jpg';
             }
         }
-        $milliSecondN = dd2char($milliSecond.'-'.mt_rand(1000, 8000));
+        $milliSecondN = dd2char($milliSecond.'-'.mt_rand(1000,8000));
         $value = trim($value);
         $rndFileName = $imgPath."/".$milliSecondN.'-'.$key.$itype;
         $fileurl = $imgUrl."/".$milliSecondN.'-'.$key.$itype;

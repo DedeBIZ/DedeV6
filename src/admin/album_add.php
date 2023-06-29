@@ -121,7 +121,7 @@ if ($dopost != 'save') {
                 $ntime = time();
                 $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
                 CreateDir($savepath);
-                $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+                $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
                 $fullUrl = $fullUrl.$ext;
                 file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
                 $info = '';

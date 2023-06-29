@@ -19,7 +19,7 @@ if ($dopost == "add") {
         if (!preg_match("#(jpg|gif|png)$#", $shortname)) {
             $shortname = '.gif';
         }
-        $filename = MyDate("ymdHis", time()).mt_rand(1000, 9999).$shortname;
+        $filename = MyDate("ymdHis", time()).mt_rand(1000,9999).$shortname;
         $imgurl = $cfg_medias_dir."/flink";
         if (!is_dir($cfg_basedir.$imgurl)) {
             MkdirAll($cfg_basedir.$imgurl, $cfg_dir_purview);

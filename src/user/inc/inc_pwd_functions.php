@@ -132,7 +132,7 @@ function member($mail, $userid)
  * @param     string  $mid  会员id
  * @param     string  $userid  账号
  * @param     string  $mailto  发送邮件地址
- * @param     string  $send  为Y发送邮件,为N不发送邮件默认为Y
+ * @param     string  $send  邮件默认为Y，Y发送，N不发送
  * @return    string
  */
 function sn($mid, $userid, $mailto, $send = 'Y')

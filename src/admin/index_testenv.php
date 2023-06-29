@@ -123,7 +123,7 @@ if (!function_exists('IsWritable')) {
 $safeMsg = array();
 $dirname = str_replace('index_body.php', '', strtolower($_SERVER['PHP_SELF']));
 if (!DEDEBIZ_SAFE_MODE) {
-	$safeMsg[] = '系统运行环境为开发模式，建议您启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-xs">详情</a>';
+	$safeMsg[] = '系统运行环境为开发模式，建议您启用安全模式<a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-xs ml-2">详情</a>';
 }
 if (!IsSSL()) {
 	$safeMsg[] = '检测到网址非安全链接，建议您部署https';
@@ -139,13 +139,13 @@ if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
-	$linkurl = '<a href="sys_admin_user.php" class="btn btn-success btn-xs">修改</a>';
+	$linkurl = '<a href="sys_admin_user.php" class="btn btn-success btn-xs ml-2">修改</a>';
 	switch ($rs) {
 		case -1:
-			$msg = "检测到管理员默认名称没有修改，建议您修改 {$linkurl}";
+			$msg = "检测到默认账号没有修改，建议您修改{$linkurl}";
 			break;
 		case -2:
-			$msg = "检测到管理员默认名称和密码没有修改，建议您修改 {$linkurl}";
+			$msg = "检测到默认账号和密码没有修改，建议您修改{$linkurl}";
 			break;
 	}
 	$safeMsg[] = $msg;

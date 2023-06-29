@@ -143,7 +143,7 @@ if (!function_exists('MemberUploads')) {
                 exit();
             }
             if ($exname == '') {
-                $filename = $cfg_user_dir."/$userid/".dd2char($nowtme.'-'.mt_rand(1000, 9999)).'.'.$sname;
+                $filename = $cfg_user_dir."/$userid/".dd2char($nowtme.'-'.mt_rand(1000,9999)).'.'.$sname;
             } else {
                 $filename = $cfg_user_dir."/{$userid}/{$exname}.".$sname;
             }

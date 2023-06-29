@@ -81,7 +81,6 @@ if ($dopost == "view") {
         $GLOBALS['_arclistEnv'] = 'index';
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
-        echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/admin.css\">";
         ShowMsg("更新静态首页，<a href='$position' target='_blank'>点击浏览</a>", "javascript:;");
     } else {
         //动态浏览

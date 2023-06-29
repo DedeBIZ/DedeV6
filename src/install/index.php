@@ -210,8 +210,7 @@ else if ($step==2) {
                 else $rs = mysql_query(str_replace('#~lang~#',$dblang,$query),$conn);
             }
             $query='';
-        } else if (!preg_match("#^(\/\/|--)#", $line))
-        {
+        } else if (!preg_match("#^(\/\/|--)#", $line)) {
             $query .= $line;
         }
     }
@@ -263,9 +262,8 @@ else if ($step==10) {
     header("Expires:0\r\n");
     $conn = @mysql_connect($dbhost,$dbuser,$dbpwd);
     $info = "";
-    if ($conn)
-    {
-		if (empty($dbname)){
+    if ($conn) {
+		if (empty($dbname)) {
 			$info = "信息正确";
 		} else {
 			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统覆盖数据库": "数据库不存在，系统自动创建";

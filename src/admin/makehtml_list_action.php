@@ -43,7 +43,7 @@ else if ($gotype == 'mkall') {
     if (file_exists($mkcachefile)) require_once($mkcachefile);
 }
 if (!$idArray) {
-    ShowMsg("暂无栏目，请添加栏目", "javascript:;");
+    ShowMsg("暂无栏目", "javascript:;");
     exit;
 }
 //当前更新栏目id
