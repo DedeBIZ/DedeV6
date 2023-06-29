@@ -10,9 +10,10 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'colors', groups: ['colors'] },
 		{ name: 'paragraph', groups: ['align', 'paragraph', 'textindent', 'indent'] },
 		{ name: 'basicstyles', groups: ['basicstyles', 'list','blocks'] },
-		{ name: 'editing', groups: ['find', 'selection', 'editing'] },
+		{ name: 'editing', groups: ['find', 'editing'] },
 		{ name: 'links', groups: ['links'] },
 		{ name: 'insert', groups: ['insert'] },
+		{ name: 'tools', groups: ['tools'] }
 	];
 	config.height = 360;
 	config.removePlugins = 'exportpdf,div,scayt';
