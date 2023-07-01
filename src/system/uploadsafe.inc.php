@@ -7,7 +7,7 @@ if (isset($_FILES['GLOBALS'])) exit ('Request not allow!');
  * @version        $id:uploadsafe.inc.php 15:59 2020年8月19日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 //为了防止会员通过注入，这里强制限定的某些文件类型禁止上传

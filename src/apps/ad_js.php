@@ -5,7 +5,7 @@
  * @version        $id:ad_js.php 20:30 2010年7月8日 tianya $
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");

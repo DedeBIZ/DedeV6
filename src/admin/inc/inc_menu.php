@@ -5,7 +5,7 @@
  * @version        $id:inc_menu.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../config.php");

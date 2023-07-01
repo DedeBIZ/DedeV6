@@ -7,7 +7,7 @@ require_once(DEDEINC."/libraries/agent.class.php");
  * @version        $id:statistics.class.php 11:42 2022年03月26日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 class DedeStatistics {

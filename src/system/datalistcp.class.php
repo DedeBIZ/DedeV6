@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:datalistcp.class.php 3 17:02 2010年7月9日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/dedetemplate.class.php');

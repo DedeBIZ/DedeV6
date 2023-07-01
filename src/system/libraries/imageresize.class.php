@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:imageresize.class.php 2022年1月16日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  * maintained by Gumlet.com
  */

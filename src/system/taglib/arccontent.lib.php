@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:arccontent.lib.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.class.php");

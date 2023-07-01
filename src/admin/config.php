@@ -4,7 +4,7 @@
  * @version        $id:config.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));

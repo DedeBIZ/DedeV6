@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:arclist.lib.php 3 9:19 2010年7月13日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**

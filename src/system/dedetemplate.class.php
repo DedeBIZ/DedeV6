@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:dedetemplate.class.php 3 15:44 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 function MakePublicTag($atts = array(), $refObj = '', $fields = array())

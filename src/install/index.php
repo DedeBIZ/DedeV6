@@ -3,7 +3,7 @@
  * @version        $id:index.php 2022-01-03 tianya $
  * @package        DedeBIZ.Install
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);

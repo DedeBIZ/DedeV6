@@ -5,7 +5,7 @@
  * @version        $id:vote_edit.php 23:54 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");

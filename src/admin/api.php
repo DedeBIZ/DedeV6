@@ -5,7 +5,7 @@
  * @version        $id:api.php 8:26 2022年11月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 define('AJAXLOGIN', TRUE);

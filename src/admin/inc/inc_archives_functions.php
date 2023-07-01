@@ -5,7 +5,7 @@
  * @version        $id:inc_archives_functions.php 9:56 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/libraries/dedehttpdown.class.php');

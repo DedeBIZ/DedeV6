@@ -3,7 +3,7 @@
  * @version        $id:common.inc.php 3 17:44 2010-11-23 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 //系统默认运行模式为安全模式，模板管理、标签管理、数据库管理、模块管理等功能已暂停，如果您需要这些功能，DEDEBIZ_SAFE_MODE后面值`TRUE`改为`FALSE`恢复使用

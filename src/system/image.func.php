@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:image.func.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 include(DEDEDATA.'/mark/inc_photowatermark_config.php');
