@@ -126,3 +126,6 @@ ALTER TABLE `#@__member` ADD COLUMN `user_money` decimal(10, 2) UNSIGNED NULL DE
 -- 6.2.7
 ALTER TABLE `#@__arctype` ADD COLUMN `apienabled` tinyint UNSIGNED NULL DEFAULT 0 AFTER `smalltypes`,ADD COLUMN `apikey` varchar(64) NULL AFTER `apienabled`;
 ALTER TABLE `#@__member` ADD COLUMN `pmid` INT(8) UNSIGNED NULL DEFAULT 0 AFTER `user_money`;
+
+-- 6.2.11
+UPDATE `#@__channeltype` SET `useraddcon` = 'soft_add.php', `usermancon` = 'content_list.php', `usereditcon` = 'soft_edit.php' WHERE `id` = 3
