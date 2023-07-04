@@ -3,13 +3,13 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 图像处理
  *
- * @version        $id:image.class.php 18:10 2010年7月5日 tianya $
+ * @version        $id:dedeimage.class.php 18:10 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
-class image
+class DedeImage
 {
     var $attachinfo;
     var $targetfile; //图片路径
@@ -21,8 +21,12 @@ class image
     var $watermarktext;
     var $thumbstatus;
     var $watermarkstatus;
+    var $watermarkminwidth;
+    var $watermarkminheight;
+    var $watermarktype;
+    var $watermarktrans;
     //析构函数，兼容PHP4
-    function image($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach = array())
+    function DedeImage($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach = array())
     {
         $this->__construct($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach);
     }
@@ -76,7 +80,7 @@ class image
     {
         $this->thumb_gd($thumbwidth, $thumbheight, $preview);
         if ($this->thumbstatus == 2 && $this->watermarkstatus) {
-            $this->image(
+            $this->DedeImage(
                 $this->targetfile,
                 $this->attach,
                 $this->watermarktext,

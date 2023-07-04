@@ -76,7 +76,7 @@ if (!function_exists('WaterImg')) {
     function WaterImg($srcFile, $fromGo = 'up')
     {
         include(DEDEDATA.'/mark/inc_photowatermark_config.php');
-        require_once(DEDEINC.'/image.class.php');
+        require_once(DEDEINC.'/dedeimage.class.php');
         if (isset($GLOBALS['needwatermark'])) {
             $photo_markup = $photo_markdown = empty($GLOBALS['needwatermark']) ? '0' : '1';
         }
@@ -119,7 +119,7 @@ if (!function_exists('WaterImg')) {
         $cfg_watermarktext['shadowy'] = '0';
         $cfg_watermarktext['shadowcolor'] = '0,0,0';
         $photo_marktrans = 85;
-        $img = new image($srcFile, 0, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $photo_marktype, $photo_marktrans, $TRUEMarkimg);
+        $img = new DedeImage($srcFile, 0, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $photo_marktype, $photo_marktrans, $TRUEMarkimg);
         $img->watermark(0);
     }
 }

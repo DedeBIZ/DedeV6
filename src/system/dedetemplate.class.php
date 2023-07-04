@@ -30,7 +30,7 @@ function MakePublicTag($atts = array(), $refObj = '', $fields = array())
  *
  * @access    public
  * @param     array    $atts  属性
- * @param     array    $attlist  属性列表
+ * @param     string    $attlist  属性列表
  * @return    void
  */
 function FillAtts(&$atts, $attlist="")
@@ -485,7 +485,7 @@ class DedeTemplate
             return;
         }
         $cAtt = new TagAttributeParse();
-        $cAtt->CharToLow = TRUE;
+        $cAtt->charToLow = TRUE;
         //遍历模板字符串，请取标记及其属性信息
         $t = 0;
         $preTag = '';
@@ -883,7 +883,7 @@ class DedeTemplate
      *  编译if标记
      *
      * @access    public
-     * @param     string  $cTag  标签
+     * @param     object  $cTag  标签
      * @return    string
      */
     function Compilerif ($cTag)
