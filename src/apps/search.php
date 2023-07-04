@@ -60,7 +60,7 @@ if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $keyword)) {
     ShowMsg("您的搜索关键词中存在非法文档，被系统禁止", "-1");
     exit();
 }
-if (($keyword == '' || strlen($keyword) < 2) && empty($typeid)) {
+if (($keyword != '' && strlen($keyword) < 2) && empty($typeid)) {
     ShowMsg('关键词不能小于2个字节', '-1');
     exit();
 }
