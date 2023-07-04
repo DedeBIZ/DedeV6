@@ -42,7 +42,6 @@ if (!in_array($imgfile_type, $sparr)) {
 $mdir = MyDate($cfg_addon_savetype, $nowtme);
 if (!is_dir($cfg_basedir.$activepath."/$mdir")) {
     MkdirAll($cfg_basedir.$activepath."/$mdir", $cfg_dir_purview);
-    CloseFtp();
 }
 $iseditor = isset($iseditor)? intval($iseditor) : 0;
 $filename_name = $cuserLogin->getUserID().'-'.dd2char(MyDate("ymdHis", $nowtme).mt_rand(100, 999));

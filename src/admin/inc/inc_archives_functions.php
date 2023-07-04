@@ -41,7 +41,6 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
     $imgPath = $cfg_basedir.$imgUrl;
     if (!is_dir($imgPath.'/')) {
         MkdirAll($imgPath, $GLOBALS['cfg_dir_purview']);
-        CloseFtp();
     }
     $milliSecond = 'co'.dd2char(MyDate('ymdHis', time()));
     foreach ($img_array as $key => $value) {
@@ -104,7 +103,6 @@ function GetCurContent($body)
     $imgPath = $cfg_basedir.$imgUrl;
     if (!is_dir($imgPath.'/')) {
         MkdirAll($imgPath, $GLOBALS['cfg_dir_purview']);
-        CloseFtp();
     }
     $milliSecond = MyDate('His', time());
     foreach ($img_array as $key => $value) {

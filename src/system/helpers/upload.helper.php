@@ -59,7 +59,6 @@ if (!function_exists('AdminUpload')) {
         }
         if (!is_dir(DEDEROOT.$filedir)) {
             MkdirAll($cfg_basedir.$filedir, $cfg_dir_purview);
-            CloseFtp();
         }
         $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', time())).$rnddd;
         if ($ftype == 'imagelit') $filename .= '-L';
@@ -99,7 +98,6 @@ if (!function_exists('MemberUploads')) {
         if (empty($userid)) $userid = 0;
         if (!is_dir($cfg_basedir.$cfg_user_dir."/$userid")) {
             MkdirAll($cfg_basedir.$cfg_user_dir."/$userid", $cfg_dir_purview);
-            CloseFtp();
         }
         //有上传文件
         $allAllowType = str_replace('||', '|', $cfg_imgtype.'|'.$cfg_mediatype.'|'.$cfg_mb_addontype);

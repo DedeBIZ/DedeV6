@@ -106,10 +106,6 @@ if (!isset($needFilter)) {
 }
 $registerGlobals = @ini_get("register_globals");
 $isUrlOpen = @ini_get("allow_url_fopen");
-$isSafeMode = @ini_get("safe_mode");
-if (preg_match('/windows/i', @getenv('OS'))) {
-    $isSafeMode = false;
-}
 //系统配置参数
 if (!file_exists(DEDEDATA."/config.cache.inc.php")) {
     die('DedeBIZ初始化失败，确保系统正确被安装');
@@ -202,11 +198,7 @@ $cfg_soft_devteam = 'DedeBIZ';
 $art_shortname = $cfg_df_ext = '.html';
 $cfg_df_namerule = '{typedir}/{aid}'.$cfg_df_ext;
 //新建目录的权限，如果您使用别的属性，本程不保证程序能顺利在Linux或Unix系统运行
-if (isset($cfg_ftp_mkdir) && $cfg_ftp_mkdir == 'Y') {
-    $cfg_dir_purview = '0755';
-} else {
-    $cfg_dir_purview = 0755;
-}
+$cfg_dir_purview = 0755;
 //会员是否使用精简模式
 $cfg_mb_lit = 'N';
 //特殊全局变量

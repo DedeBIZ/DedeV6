@@ -384,7 +384,6 @@ if ($action === 'is_need_check_code') {
     $mdir = MyDate($cfg_addon_savetype, $nowtme);
     if (!is_dir($cfg_basedir.$activepath."/$mdir")) {
         MkdirAll($cfg_basedir.$activepath."/$mdir", $cfg_dir_purview);
-        CloseFtp();
     }
     $cuserLogin = new userLogin();
     $iseditor = isset($iseditor)? intval($iseditor) : 0;

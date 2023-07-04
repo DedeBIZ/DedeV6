@@ -37,7 +37,6 @@ if ($activepath == $cfg_soft_dir) {
     $activepath = $activepath.'/'.$newdir;
     if (!is_dir($cfg_basedir.$activepath)) {
         MkdirAll($cfg_basedir.$activepath, $cfg_dir_purview);
-        CloseFtp();
     }
 }
 //文件名前为手工指定，后者自动处理

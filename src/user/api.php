@@ -157,7 +157,6 @@ if ($action === 'is_need_check_code') {
     }
     if (!is_dir($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}")) {
         MkdirAll($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}", $cfg_dir_purview);
-        CloseFtp();
     }
     //头像特殊处理
     $fsize = filesize($ff["tmp_name"]);

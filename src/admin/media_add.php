@@ -50,7 +50,6 @@ if ($dopost == "upload") {
             $filename = $savePath."/".$filename;
             if (!is_dir($cfg_basedir.$savePath)) {
                 MkdirAll($cfg_basedir.$savePath, 777);
-                CloseFtp();
             }
             if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($newname))) { 
                 ShowMsg("文件扩展名已被系统禁止", "javascript:;"); 

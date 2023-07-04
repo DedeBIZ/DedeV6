@@ -48,7 +48,6 @@ class FileManagement
         $dirname = $this->baseDir.$this->activeDir."/".$dirname;
         if (is_writable($this->baseDir.$this->activeDir)) {
             MkdirAll($dirname, $GLOBALS['cfg_dir_purview']);
-            CloseFtp();
             ShowMsg("成功创建一个新目录", "file_manage_main.php?activepath=".$this->activeDir."/".$newdir);
             return 1;
         } else {
@@ -79,7 +78,6 @@ class FileManagement
                     copy($oldfile, $truepath."/$mfile");
                 } else {
                     MkdirAll($truepath, $GLOBALS['cfg_dir_purview']);
-                    CloseFtp();
                     copy($oldfile, $truepath."/$mfile");
                 }
                 unlink($oldfile);

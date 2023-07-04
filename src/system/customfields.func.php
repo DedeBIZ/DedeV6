@@ -218,7 +218,6 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         $fp = fopen($cfg_basedir.$filename, "w");
         fwrite($fp, stripslashes($dvalue));
         fclose($fp);
-        CloseFtp();
         return $filename;
     } else if ($dtype == 'img' || $dtype == 'imgfile') {
         return addslashes($dvalue);

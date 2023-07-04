@@ -395,8 +395,8 @@ function FormatScript($atme)
  *  给属性默认值
  *
  * @param     array  $atts  属性
- * @param     array  $attlist  属性列表
- * @return    string
+ * @param     string  $attlist  属性列表
+ * @return    void
  */
 function FillAttsDefault(&$atts, $attlist)
 {

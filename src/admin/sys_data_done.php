@@ -29,7 +29,6 @@ if ($dopost == 'bak') {
     }
     if (!is_dir($bkdir)) {
         MkdirAll($bkdir, $cfg_dir_purview);
-        CloseFtp();
     }
     //初始化使用到的变量
     $tables = explode(',', $tablearr);

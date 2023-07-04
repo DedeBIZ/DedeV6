@@ -128,4 +128,11 @@ ALTER TABLE `#@__arctype` ADD COLUMN `apienabled` tinyint UNSIGNED NULL DEFAULT 
 ALTER TABLE `#@__member` ADD COLUMN `pmid` INT(8) UNSIGNED NULL DEFAULT 0 AFTER `user_money`;
 
 -- 6.2.11
-UPDATE `#@__channeltype` SET `useraddcon` = 'soft_add.php', `usermancon` = 'content_list.php', `usereditcon` = 'soft_edit.php' WHERE `id` = 3
+UPDATE `#@__channeltype` SET `useraddcon` = 'soft_add.php', `usermancon` = 'content_list.php', `usereditcon` = 'soft_edit.php' WHERE `id` = 3;
+DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_mkdir';
+DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_host';
+DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_port';
+DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_user';
+DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_pwd';
+DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_root';
+DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_mkdir';

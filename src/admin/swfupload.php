@@ -21,7 +21,6 @@ if (empty($dopost)) {
     $tmpdir = DEDEDATA.'/uploadtmp';
     if (!is_dir($tmpdir)) {
         MkdirAll($tmpdir, $cfg_dir_purview);
-        CloseFtp();
         if (!is_dir($tmpdir)) {
             echo "ERROR: Create {$tmpdir} dir Error! ";
             exit(0);
@@ -75,7 +74,6 @@ if (empty($dopost)) {
     $filedir = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, time());
     if (!is_dir(DEDEROOT.$filedir)) {
         MkdirAll($cfg_basedir.$filedir, $cfg_dir_purview);
-        CloseFtp();
     }
     $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', time()));
     if (file_exists($cfg_basedir.$filedir.'/'.$filename.$sname)) {

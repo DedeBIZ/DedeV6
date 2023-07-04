@@ -23,7 +23,6 @@ if ($dopost == "add") {
         $imgurl = $cfg_medias_dir."/flink";
         if (!is_dir($cfg_basedir.$imgurl)) {
             MkdirAll($cfg_basedir.$imgurl, $cfg_dir_purview);
-            CloseFtp();
         }
         $imgurl = $imgurl."/".$filename;
         $mime = get_mime_type($logoimg);

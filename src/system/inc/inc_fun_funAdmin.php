@@ -82,7 +82,7 @@ function SpGetPinyin($str, $ishead = 0, $isclose = 1)
  */
 function SpCreateDir($spath)
 {
-    global $cfg_dir_purview, $cfg_basedir, $cfg_ftp_mkdir, $isSafeMode;
+    global $cfg_dir_purview, $cfg_basedir;
     if ($spath == '') {
         return true;
     }
@@ -105,12 +105,10 @@ function SpCreateDir($spath)
             }
             if (!$isok) {
                 echo "创建或修改目录<span class='text-primary'>".$truepath."</span>失败";
-                CloseFtp();
                 return false;
             }
         }
     }
-    CloseFtp();
     return true;
 }
 function jsScript($js)
