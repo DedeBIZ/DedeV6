@@ -69,7 +69,7 @@ function lib_relation(&$ctag, &$refObj)
             if ($col > 1) $artlist .= "<td width='$colWidth'>\r\n";
             if ($row = $dsql->GetArray("al")) {
                 if ($channelid > 0) {
-                    $row['id'] =  $row['id'];
+                    $row['aid'] =  $row['id'];
                 } else {
                     $row['id'] =  $row['aid'];
                 }

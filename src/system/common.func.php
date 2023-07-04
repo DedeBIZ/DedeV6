@@ -73,7 +73,7 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
         }
     }
     if (!function_exists('mysql_error') and function_exists('mysqli_connect_error')) {
-        function mysql_error($link='')
+        function mysql_error($link)
         {
             if (mysqli_connect_errno()) {
                 return mysqli_connect_error();
@@ -293,7 +293,7 @@ function dede_htmlspecialchars($str)
  *
  * @access    public
  * @param     string
- * @return    string
+ * @return    void
  */
 function helpers($helpers)
 {
@@ -569,8 +569,8 @@ if (!function_exists('obtainimgs')) {
     {
         preg_match_all("/<img([^>]*)\s*src=('|\")([^'\"]+)('|\")/", $string, $matches);
         $imgsrc_arr = array_unique($matches[3]);
-        $count = count($imgsrc_arr);
         $i = 0;
+        $result = "";
         foreach($imgsrc_arr as $imgsrc)
         {
             if ($i == $num) break;

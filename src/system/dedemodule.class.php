@@ -525,7 +525,6 @@ class DedeModule
         if (isset($this->fileListNames[$f])) return;
         else if (preg_match("/Thumbs\.db/i", $f)) return;
         else $this->fileListNames[$f] = 1;
-        $fileList = '';
         if (!file_exists($filename)) {
             ShowMsg("文件或文件夹<span class='text-primary'>{$filename}</span>不存在，无法进行编译", "-1");
             exit();
@@ -581,7 +580,6 @@ class DedeModule
     function Clear()
     {
         unset($this->modules);
-        unset($this->fileList);
         unset($this->fileListNames);
     }
 }//End Class

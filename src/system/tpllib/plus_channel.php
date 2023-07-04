@@ -10,6 +10,14 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/channelunit.func.php');
+/**
+ * plus_channel
+ *
+ * @param  array $atts
+ * @param  object $refObj
+ * @param  mixed $fields
+ * @return array
+ */
 function plus_channel(&$atts, &$refObj, &$fields)
 {
     global $dsql, $_vars;
@@ -37,7 +45,6 @@ function plus_channel(&$atts, &$refObj, &$fields)
         $typeid = $row2['id'];
         $reid = $row2['reid'];
         $topid = $row2['topid'];
-        $issetInfos = true;
     }
     if ($type == '' || $type == 'sun') $type = 'son';
     if ($type == 'top') {

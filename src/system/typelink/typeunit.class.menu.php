@@ -99,7 +99,7 @@ class TypeUnit
             }
             echo "<dl>\r\n";
             echo "<dd><img onclick=\"LoadSuns('suns{$id}',{$id});\" style='cursor:pointer'></dd>\r\n";
-            echo "<dd><a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></dd>\r\n";
+            echo "<dd><a href='catalog_do.php?cid=".$id."&dopost=listArchives'>".$typeName."</a></dd>\r\n";
             echo "</dl>\r\n";
             echo "<div id='suns".$id."'>";
             if ($lastid == $id || $cfg_admin_channel == 'array') {
@@ -156,7 +156,7 @@ class TypeUnit
                     }
                     echo "<table>\r\n";
                     echo "<tr>\r\n";
-                    echo "<td align='left'>".$step.$timg."<a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></td>\r\n";
+                    echo "<td align='left'>".$step."<a href='catalog_do.php?cid=".$id."&dopost=listArchives'>".$typeName."</a></td>\r\n";
                     echo "</tr>\r\n";
                     echo "</table>\r\n";
                     $this->LogicListAllSunType($id, $step."　", false);

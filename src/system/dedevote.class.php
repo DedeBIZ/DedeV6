@@ -67,7 +67,7 @@ class DedeVote
      *
      * @access    public
      * @param     int    $aid  投票ID
-     * @return    string
+     * @return    void
      */
     function AddVoteCount($aid)
     {

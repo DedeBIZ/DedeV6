@@ -313,7 +313,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 $ids[] = $row['id'];
                 //处理一些特殊字段
                 $row['info'] = $row['infos'] = cn_substr($row['description'], $infolen);
-                $row['id'] =  $row['id'];
+                $row['aid'] =  $row['id'];
                 if ($row['corank'] > 0 && $row['arcrank'] == 0) {
                     $row['arcrank'] = $row['corank'];
                 }
@@ -476,7 +476,7 @@ function lib_GetAutoChannelID($sortid, $topid)
  * @param     array     $list 查询结果
  * @param     string    $field 排序的字段名
  * @param     array     $sortby 排序类型 asc正向排序 desc逆向排序 nat自然排序
- * @return    array
+ * @return    mixed
  */
 function list_sort_by($list, $field, $sortby = 'asc')
 {
