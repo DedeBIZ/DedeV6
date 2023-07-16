@@ -32,7 +32,7 @@ if ($dopost == "saveedit") {
     if ($likeidsel != $oldlikeid) {
         $likeid = $likeidsel;
     }
-    $inQuery = "UPDATE `#@__sgpage` SETtitle='$title',keywords='$keywords',description='$description',likeid='$likeid',ismake='$ismake',filename='$filename',template='$template',uptime='$uptime',body='$body' WHERE aid='$aid'; ";
+    $inQuery = "UPDATE `#@__sgpage` SET title='$title',keywords='$keywords',description='$description',likeid='$likeid',ismake='$ismake',filename='$filename',template='$template',uptime='$uptime',body='$body' WHERE aid='$aid'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         ShowMsg("更新页面数据时失败，请检查长相是否有问题", "-1");
         exit();
