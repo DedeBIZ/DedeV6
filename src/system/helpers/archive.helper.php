@@ -102,12 +102,25 @@ if (!function_exists('GetChannelTable')) {
 if (!function_exists('GetTags')) {
     function GetTags($aid)
     {
+        $tarr = GetTagsArray($aid);
+        return count($tarr) > 0? implode(",", $tarr) : '';
+    }
+}
+/**
+ *  获得某文档的所有tag数组
+ *
+ * @param     int  $aid  文档id
+ * @return    array
+ */
+if (!function_exists('GetTagsArray')) {
+    function GetTagsArray($aid)
+    {
         global $dsql;
-        $tags = '';
+        $tags = array();
         $query = "SELECT tag FROM `#@__taglist` WHERE aid='$aid' ";
         $dsql->Execute('tag', $query);
         while ($row = $dsql->GetArray('tag')) {
-            $tags .= ($tags == '' ? $row['tag'] : ','.$row['tag']);
+            $tags[] =  $row['tag'];
         }
         return $tags;
     }
@@ -164,8 +177,7 @@ if (!function_exists('UpIndexKey')) {
         $dsql->ExecuteNoneQuery($query);
         //处理修改后的tag
         if ($tags != '') {
-            $oldtag = GetTags($id);
-            $oldtags = explode(',', $oldtag);
+            $oldtags = GetTagsArray($id);
             $tagss = explode(',', $tags);
             foreach ($tagss as $tag) {
                 $tag = trim($tag);
@@ -183,6 +195,12 @@ if (!function_exists('UpIndexKey')) {
                 } else {
                     $dsql->ExecuteNoneQuery("UPDATE `#@__taglist` SET `arcrank` = '$arcrank', `typeid` = '$typeid' WHERE tag LIKE '$tag' ");
                 }
+            }
+        } else {
+            $oldtags = GetTagsArray($id);
+            foreach ($oldtags as $tag) {
+                $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist` WHERE aid='$id' AND tag LIKE '$tag' ");
+                $dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET total=total-1 WHERE tag LIKE '$tag' ");
             }
         }
     }
