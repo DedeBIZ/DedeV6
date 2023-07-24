@@ -93,6 +93,11 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
         $filenameh = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
         if (@is_file($filenameh)) @unlink($filenameh);
     }
+    if ($dsql->IsTable('#@__search_sync')) {
+        $intime = time();
+        $insql = "INSERT INTO `#@__search_sync` (`aid`, `add_at`) VALUES ({$aid}, $intime)";
+        $dsql->ExecuteNoneQuery($insql);
+    }
     if (empty($arcRow['money'])) $arcRow['money'] = 0;
     if (empty($arcRow['ismake'])) $arcRow['ismake'] = 1;
     if (empty($arcRow['arcrank'])) $arcRow['arcrank'] = 0;

@@ -136,3 +136,11 @@ DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_user';
 DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_pwd';
 DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_root';
 DELETE FROM `#@__sysconfig` WHERE `varname` = 'cfg_ftp_mkdir';
+CREATE TABLE `#@__search_sync`  (
+  `id` int unsigned NOT NULL auto_increment,
+  `aid` int NULL DEFAULT NULL,
+  `sync_status` tinyint NULL DEFAULT 0,
+  `add_at` int NULL DEFAULT NULL,
+  `update_at` int NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) TYPE = MyISAM;
