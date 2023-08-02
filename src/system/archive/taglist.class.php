@@ -572,32 +572,34 @@ class TagList
             MkdirAll($this->GetTruePath().$this->tagsDir, $cfg_dir_purview);
             $this->dtp->SaveTo($this->GetTruePath().$this->tagsDir."/index.html");
         } else {
-            $totalpage = ceil($this->TotalResult / $this->pagesize);
-            if ($totalpage == 0) {
-                $totalpage = 1;
-            }
-            if ($makepagesize > 0) {
-                $endpage = $startpage + $makepagesize;
-            } else {
-                $endpage = ($totalpage + 1);
-            }
-            if ($endpage >= $totalpage + 1) {
-                $endpage = $totalpage + 1;
-            }
-            if ($endpage == 1) {
-                $endpage = 2;
-            }
-            $makeDir = $this->GetTruePath().$this->tagsDir.'/'.$this->TagInfos['id']."/";
-            MkdirAll($makeDir, $cfg_dir_purview);
-            for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
-                $this->ParseDMFields($this->PageNo, 1);
-                $fileDir = $makeDir."/".$this->PageNo;
-                MkdirAll($fileDir, $cfg_dir_purview);
-                $this->dtp->SaveTo($fileDir."/index.html");
-            }
-            if ($startpage == 1) {
-                $list_1 = $makeDir."/1/index.html";
-                copy($list_1, $makeDir."/index.html");
+            if ($this->TagInfos) {
+                $totalpage = ceil($this->TotalResult / $this->pagesize);
+                if ($totalpage == 0) {
+                    $totalpage = 1;
+                }
+                if ($makepagesize > 0) {
+                    $endpage = $startpage + $makepagesize;
+                } else {
+                    $endpage = ($totalpage + 1);
+                }
+                if ($endpage >= $totalpage + 1) {
+                    $endpage = $totalpage + 1;
+                }
+                if ($endpage == 1) {
+                    $endpage = 2;
+                }
+                $makeDir = $this->GetTruePath().$this->tagsDir.'/'.$this->TagInfos['id']."/";
+                MkdirAll($makeDir, $cfg_dir_purview);
+                for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
+                    $this->ParseDMFields($this->PageNo, 1);
+                    $fileDir = $makeDir."/".$this->PageNo;
+                    MkdirAll($fileDir, $cfg_dir_purview);
+                    $this->dtp->SaveTo($fileDir."/index.html");
+                }
+                if ($startpage == 1) {
+                    $list_1 = $makeDir."/1/index.html";
+                    copy($list_1, $makeDir."/index.html");
+                }
             }
         }
     }
