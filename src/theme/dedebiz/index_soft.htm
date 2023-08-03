@@ -40,8 +40,8 @@
 						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
 						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
 						<div class="mb-3">
-							<img src="[field:face/]" class="user-img-xs mr-1">
-							<span class="mr-1">[field:uname/]</span>
+							<a href="[field:userurl/]" target="_blank"><img src="[field:face/]" class="user-img-xs mr-1"></a>
+							<a href="[field:userurl/]" target="_blank"><span class="mr-1">[field:uname/]</span></a>
 							<i class="fa fa-calendar mr-1"></i>
 							<span>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 						</div>

@@ -295,7 +295,7 @@ class TagList
         } else {
             $ordersql = " ORDER BY se.id $orderWay";
         }
-        $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id LEFT JOIN `#@__member` mb on se.mid = mb.mid WHERE $orwhere $ordersql ";
+        $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id LEFT JOIN `#@__member` mb on se.mid = mb.mid WHERE $orwhere $ordersql ";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $row = $this->pagesize / $col;
@@ -361,6 +361,7 @@ class TagList
                     $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
+                    $row['userurl'] = $GLOBALS['cfg_memberurl'].'/index.php?uid='.$row['userid'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
                     $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                     if (is_array($this->dtp2->CTags)) {

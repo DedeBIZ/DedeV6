@@ -42,5 +42,31 @@ if ($uid == '') {
         $dpl->LoadTemplate($tpl);
         $dpl->display();
     }
+} else {
+    $_vars = array();
+    $uid = HtmlReplace($uid, -1);
+    $userid = preg_replace("#[\r\n\t \*%]#", '', $uid);
+    $query = "SELECT MB.mid,MB.mtype,MB.userid,MB.uname,MB.sex,MB.rank,MB.email,MB.scores,
+                            MB.spacesta,MB.face,MB.logintime,
+                            MS.*,MT.*,MB.matt,MR.membername
+                  From `#@__member` MB
+                  LEFT JOIN `#@__member_space` MS on MS.mid=MB.mid
+                  LEFT JOIN `#@__member_tj` MT on MT.mid=MB.mid
+                  LEFT JOIN `#@__arcrank` MR on MR.rank=MB.rank
+                  where MB.userid like '$uid' ";
+    $_vars = $dsql->GetOne($query);
+    if(!is_array($_vars))
+    {
+        ShowMsg("你访问的用户可能已经被删除！","javascript:;");
+        exit();
+    }
+    $_vars['face'] = empty($_vars['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $_vars['face'];
+    $_vars['userid_e'] = urlencode($_vars['userid']);
+    $_vars['userurl'] = $cfg_memberurl."/index.php?uid=".$_vars['userid_e'];
+    if($_vars['membername']=='开放浏览') $_vars['membername'] = '限制会员';
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET homecount=homecount+1 WHERE mid='{$_vars['mid']}' ");
+    $tpl = new DedeTemplate();
+    $tpl->LoadTemplate(dirname(__FILE__)."/templets/space.htm");
+    $tpl->display();
 }
 ?>

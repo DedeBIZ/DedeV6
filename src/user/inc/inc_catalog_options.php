@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 自定义模型发布
  * 
- * @version        $id:archives_sg_add.php 13:52 2010年7月9日 tianya $
+ * @version        $id:inc_catalog_options.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)

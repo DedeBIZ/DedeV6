@@ -46,6 +46,7 @@ function lib_feedback(&$ctag, &$refObj)
     $dsql->Execute('fb', $equery);
     while ($arr = $dsql->GetArray('fb')) {
         $arr['face'] = empty($arr['mface']) ? $GLOBALS['cfg_cmspath'].'/static/web/img/admin.png' : $arr['mface'];
+        $arr['userurl'] = $GLOBALS['cfg_memberurl'].'/index.php?uid='.$arr['userid'];
         $arr['title'] = cn_substr($arr['arctitle'], $titlelen);
         $arr['msg'] = jsTrim(Html2Text($arr['msg']), $infolen);
         foreach ($ctp->CTags as $tagid => $ctag) {

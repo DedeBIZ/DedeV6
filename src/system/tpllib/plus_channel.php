@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 动态模板channel标签
  *
- * @version        $id:plus_ask.php 13:58 2010年7月5日 tianya $
+ * @version        $id:plus_channel.php 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Tpllib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)

@@ -246,7 +246,7 @@ else if ($step==2) {
     $dbtype == 'sqlite'? $db->exec($adminquery) : mysql_query($adminquery,$conn);
     $adminquery = "INSERT INTO `{$dbprefix}member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('1','0','0','0','0','0','0','0','0'); ";
     $dbtype == 'sqlite'? $db->exec($adminquery): mysql_query($adminquery,$conn);
-    $adminquery = "INSERT INTO `{$dbprefix}member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`) VALUES ('1','10','0','{$adminuser}的空间','','person','',''); ";
+    $adminquery = "INSERT INTO `{$dbprefix}member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`) VALUES ('1','10','0','{$adminuser}的个人主页','','person','',''); ";
     $dbtype == 'sqlite'? $db->exec($adminquery) : mysql_query($adminquery,$conn);
     //锁定程序安装
     $fp = fopen(INSLOCKFILE,'w');

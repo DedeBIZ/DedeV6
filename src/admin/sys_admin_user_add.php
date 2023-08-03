@@ -58,7 +58,7 @@ if ($dopost == 'add') {
         VALUES ('$mid','0','0','0','0','0','0','0','0'); ";
     $dsql->ExecuteNoneQuery($adminquery);
     $adminquery = "Insert Into `#@__member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`)
-        VALUES ('$mid','10','0','{$uname}的空间','','person','',''); ";
+        VALUES ('$mid','10','0','{$uname}的主页','','person','',''); ";
     $dsql->ExecuteNoneQuery($adminquery);
     ShowMsg('成功添加一个账户', 'sys_admin_user.php');
     exit();

@@ -166,6 +166,9 @@ class SpecView
         }
         $this->dtp->Display();
     }
+    function DisplayPartTemplets(){
+        
+    }
     /**
      *  开始创建列表
      *
@@ -324,7 +327,7 @@ class SpecView
         } else {
             $ordersql = " ORDER BY arc.sortrank desc";
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,arc.money,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE $orwhere $ordersql LIMIT $limitstart,$row ";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,arc.money,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE $orwhere $ordersql LIMIT $limitstart,$row ";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $artlist = '';
@@ -378,6 +381,7 @@ class SpecView
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
+                    $row['userurl'] = $GLOBALS['cfg_memberurl'].'/index.php?uid='.$row['userid'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
                     //编译附加表里的数据
                     foreach ($this->ChannelUnit->ChannelFields as $k => $arr) {

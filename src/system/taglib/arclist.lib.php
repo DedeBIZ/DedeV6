@@ -271,7 +271,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             $addfieldsSqlJoin = " LEFT JOIN `$addtable` addf ON addf.aid = arc.id ";
         }
     }
-    $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face $addfieldsSql FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addfieldsSqlJoin $orwhere $ordersql $limitsql";
+    $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.userid,mb.uname,mb.face $addfieldsSql FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addfieldsSqlJoin $orwhere $ordersql $limitsql";
     //统一hash
     $taghash = md5(serialize($ctag).$typeid);
     $needSaveCache = true;
@@ -292,7 +292,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     }
     //指定了id或使用缓存中的id
     if ($idlist != '') {
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addfieldsSql FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id $addfieldsSqlJoin WHERE arc.id in($idlist) $ordersql ";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.userid,mb.uname,mb.face $addfieldsSql FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addfieldsSqlJoin WHERE arc.id in($idlist) $ordersql ";
     }
     $dsql->SetQuery($query);
     $dsql->Execute('al');
@@ -362,6 +362,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
+                $row['userurl'] = $GLOBALS['cfg_memberurl'].'/index.php?uid='.$row['userid'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
                 $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                 if (is_array($dtp2->CTags)) {
