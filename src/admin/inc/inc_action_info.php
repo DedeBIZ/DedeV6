@@ -87,7 +87,7 @@ $actionSearch[3] = array(
     'title' => '文档模型',
     'description' => '所有文档模型管理',
     'soniterm' => array(
-        0  =>  array(
+        0  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => '文档模型管理',
             'description' => '网站文档、图片、软件、专题、分类等模型管理',
             'purview' => 'c_List',
@@ -159,7 +159,7 @@ $actionSearch[4] = array(
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_description_main.php'
         ),
-        6  =>  array(
+        6  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => '数据库字段替换',
             'description' => '网站数据库字段批量替换',
             'purview' => 'sys_ArcBatch',
@@ -363,7 +363,7 @@ $actionSearch[9] = array(
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_string_mix.php'
         ),
-        8  =>  array(
+        8  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => '数据库备份还原',
             'description' => '数据库备份和还原数据备份',
             'purview' => 'sys_data',

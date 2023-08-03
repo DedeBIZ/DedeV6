@@ -76,11 +76,15 @@ class ActionSearch
             foreach ($text as $key => $value) {
                 if ($key == 'title' || $key == 'description') {
                     //仅对title,description进行数组替换
-                    $text[$key] = str_replace($this->keyword, '<span class="text-primary">'.$this->keyword.'</span>', $text[$key]);
+                    if ($key == 'description') {
+                        $text[$key] = str_replace($this->keyword, '<span class="text-primary"><small>'.$this->keyword.'</small></span>', $text[$key]);
+                    } else {
+                        $text[$key] = str_replace($this->keyword, '<span class="text-primary">'.$this->keyword.'</span>', $text[$key]);
+                    }
                 }
             }
         } else {
-            $text = str_replace($this->keyword, '<span class="text-primary">'.$this->keyword.'</span>', $text);
+            $text = str_replace($this->keyword, '<span class="text-primary"><small>'.$this->keyword.'</small></span>', $text);
         }
         return $text;
     }

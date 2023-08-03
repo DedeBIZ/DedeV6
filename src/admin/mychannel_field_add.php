@@ -9,6 +9,9 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+if (DEDEBIZ_SAFE_MODE) {
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
+}
 CheckPurview('c_New');
 require_once(DEDEADMIN."/inc/inc_admin_channel.php");
 require_once(DEDEINC."/dedetag.class.php");
