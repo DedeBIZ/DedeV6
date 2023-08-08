@@ -16,7 +16,7 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
     $dtp->LoadSource($fvalue);
     if (!is_array($dtp->CTags)) {
         $dtp->Clear();
-        return "无图片信息";
+        return $fvalue;
     }
     $pagestyle = $cfg_album_style;
     $maxwidth = $cfg_album_width;

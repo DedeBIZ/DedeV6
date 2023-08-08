@@ -480,6 +480,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			$dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
 			DedeCli::error("数据保存到数据库附加表时出错，请检查数据库字段".str_replace('"', '', $gerr));
 		}
+		InsertTags("天涯{$arcID},穆云智能", $arcID);
 	}
 	DedeCli::write("成功生成所有测试数据");
 }  else if(count($argv) > 1 && ($argv[1] =="pwd")){
