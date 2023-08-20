@@ -76,8 +76,8 @@ else if ($dopost == 'delsel') {
 }
 //向导页
 $channelinfos = array();
-$dsql->setquery("SELECT id,typename,maintable,addtable FROM `#@__channeltype`");
-$dsql->execute();
-while ($row = $dsql->getarray()) $channelinfos[] = $row;
+$dsql->SetQuery("SELECT id,typename,maintable,addtable FROM `#@__channeltype`");
+$dsql->Execute();
+while ($row = $dsql->GetArray()) $channelinfos[] = $row;
 include DedeInclude('templets/article_test_same.htm');
 ?>

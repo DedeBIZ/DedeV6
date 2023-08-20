@@ -84,7 +84,7 @@ if ($dopost == "") {
         $tptim = (60 * 60 * 24 * 3);
         $dtime = time();
         if ($dtime - $tptim > $row['mailtime']) {
-            $db->executenonequery("DELETE FROM `#@__pwd_tmp` WHERE `md` = '$id';");
+            $db->ExecuteNoneQuery("DELETE FROM `#@__pwd_tmp` WHERE `md` = '$id';");
             ShowMsg("临时密码修改期限已过期", "login.php");
             exit();
         }
@@ -103,9 +103,9 @@ if ($dopost == "") {
                         $pwdok = md5($pwdok);
                     }
                     $sql = "DELETE FROM `#@__pwd_tmp` WHERE `mid` = '$id';";
-                    $db->executenonequery($sql);
+                    $db->ExecuteNoneQuery($sql);
                     $sql = "UPDATE `#@__member` SET `$pp` = '$pwdok' WHERE `mid` = '$id';";
-                    if ($db->executenonequery($sql)) {
+                    if ($db->ExecuteNoneQuery($sql)) {
                         ShowMsg('修改密码成功，请牢记新密码', 'login.php');
                         exit;
                     }

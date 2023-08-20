@@ -135,7 +135,7 @@ else if ($dopost == "upcatcache") {
             continue;
         } else {
             $sql = "INSERT INTO `#@__arctiny` (id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid) SELECT aid, typeid, 0, arcrank, channel, senddate, 0, mid FROM `$tb` ";
-            $rs = $dsql->executenonequery($sql);
+            $rs = $dsql->ExecuteNoneQuery($sql);
             $doarray[$tb]  = 1;
         }
     }

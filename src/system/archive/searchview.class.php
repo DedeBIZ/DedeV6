@@ -363,10 +363,10 @@ class SearchView
         } else {
             if ($this->TotalResult == -1) {
                 $this->dsql->SetQuery($cquery);
-                $this->dsql->execute();
+                $this->dsql->Execute();
                 $aidarr = array();
                 $aidarr[] = 0;
-                while ($row = $this->dsql->getarray()) {
+                while ($row = $this->dsql->GetArray()) {
                     if ($this->ChannelType < 0 || $this->ChannelTypeid < 0) $aidarr[] = $row['aid'];
                     else $aidarr[] = $row['id'];
                 }
@@ -374,10 +374,10 @@ class SearchView
                 $aids = implode(',', $aidarr);
                 $delete = "DELETE FROM `#@__arccache` WHERE uptime<".(time() - 3600 * 24);
                 $this->dsql->SetQuery($delete);
-                $this->dsql->executenonequery();
+                $this->dsql->ExecuteNoneQuery();
                 $insert = "INSERT INTO `#@__arccache` (`md5hash`,`uptime`,`cachedata`) VALUES ('$hascode','$uptime','$aids')";
                 $this->dsql->SetQuery($insert);
-                $this->dsql->executenonequery();
+                $this->dsql->ExecuteNoneQuery();
                 $this->TotalResult = $nums;
             }
         }

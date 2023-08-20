@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 验证助手
  *
- * @version        $id:validate.helper.php 2 13:56 2010年7月5日 tianya $
+ * @version        $id:debug.helper.php 2 13:56 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)

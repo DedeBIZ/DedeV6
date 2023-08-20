@@ -32,7 +32,7 @@ if ($action == 'post') {
                 exit();
             }
         }
-        $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' ");
+        $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' ");
         if (!is_array($diyform)) {
             showmsg('表单不存在，程序返回', '-1');
             exit();
