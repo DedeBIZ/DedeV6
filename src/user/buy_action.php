@@ -79,7 +79,7 @@ if ($dopost === "bank_ok") {
             $memrank = $dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE `rank`='$rank'");
             //更新会员信息
             $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' WHERE mid='".$moRow['mid']."'";
-            $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='{$moRow['pid']}' ";
+            $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='{$buyid}' ";
             if (!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo))) {
                 ShowMsg("升级会员失败", "javascript:;");
                 exit;
