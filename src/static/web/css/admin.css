@@ -33,7 +33,10 @@ a:hover {
 img {
 	margin-right:10px;
 	max-width:100%;
-	border-radius:.5rem
+	border-radius:0.5rem
+}
+p {
+	margin-bottom:10px
 }
 ul,ol,li {
 	margin:0;
@@ -48,32 +51,36 @@ table {
 	border-collapse:separate
 }
 table tr:first-child td:first-child {
-	border-top-left-radius:.5rem;
+	border-top-left-radius:0.5rem;
 	border-top:0
 }
 table tr:first-child td:last-child {
-	border-top-right-radius:.5rem;
+	border-top-right-radius:0.5rem;
 	border-top:0
 }
 table tr:last-child td:first-child {
-	border-bottom-left-radius:.5rem;
+	border-bottom-left-radius:0.5rem;
 	border-bottom:0
 }
 table tr:last-child td:last-child {
-	border-bottom-right-radius:.5rem;
+	border-bottom-right-radius:0.5rem;
 	border-bottom:0
+}
+td {
+	word-break:break-all;
+	word-wrap:break-word
 }
 form,label {
 	margin-bottom:0
 }
 input {
-	padding:.375rem .75rem;
+	padding:0.375rem 0.75rem;
 	height:30px;
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
 	vertical-align:middle;
-	transition:all .5s
+	transition:all 0.5s
 }
 input[type=file] {
 	padding:0;
@@ -82,29 +89,30 @@ input[type=file] {
 	vertical-align:middle
 }
 input[type=button],input[type=submit],input[type=reset] {
-	padding:.375rem .55rem;
+	padding:0.375rem 0.55rem;
 	height:30px;
 	line-height:1.5;
 	font-size:12px;
 	color:#fff;
 	background:#1eb867;
 	border:0;
-	transition:all .5s
+	transition:all 0.5s
 }
 input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkbox]:focus {
-	height:auto;
+	width:14px;
+	height:14px;
 	outline:none;
 	box-shadow:none;
 	vertical-align:text-top
 }
 select {
-	padding:.375rem .75rem;
+	padding:0.375rem 0.75rem;
 	height:30px;
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
 	vertical-align:middle;
-	transition:all .5s
+	transition:all 0.5s
 }
 select[multiple=yes] {
 	height:180px
@@ -116,12 +124,12 @@ option {
 	align-items:center
 }
 textarea {
-	padding:.375rem .75rem;
+	padding:0.375rem 0.75rem;
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
 	vertical-align:middle;
-	transition:all .5s
+	transition:all 0.5s
 }
 input:focus,select:focus,textarea:focus {
 	color:#495057;
@@ -141,11 +149,11 @@ body.hidemenu .body-left {
 }
 body.showmenu .body-right {
 	left:220px;
-	transition:all .5s
+	transition:all 0.5s
 }
 body.hidemenu .body-right {
 	left:0;
-	transition:all .5s
+	transition:all 0.5s
 }
 .body-left {
 	position:absolute;
@@ -182,7 +190,7 @@ body.hidemenu .body-right {
 .menu-body {
 	width:100%;
 	background:#fff;
-	box-shadow:0 .125rem .25rem rgba(0,0,0,.075)
+	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)
 }
 .item-menu .link {
 	position:relative;
@@ -191,7 +199,7 @@ body.hidemenu .body-right {
 	height:42px;
 	line-height:42px;
 	cursor:pointer;
-	transition:all .5s
+	transition:all 0.5s
 }
 .item-menu li:last-child .link {
 	border-bottom:0
@@ -258,7 +266,6 @@ body.hidemenu .body-right {
 	line-height:60px
 }
 .top-item ul li a,.top-admin ul li a {
-	font-size:14px;
 	color:#fff
 }
 .top-item ul li a:hover,.top-admin ul li a:hover {
@@ -305,7 +312,7 @@ body.hidemenu .body-right {
 .submenu li {
 	height:40px;
 	line-height:40px;
-	transition:all .5s
+	transition:all 0.5s
 }
 .submenu li:hover {
 	background:#009688
@@ -323,8 +330,14 @@ body.hidemenu .body-right {
 	float:right!important;
 	padding:0 20px 0 10px!important
 }
+.card-header {
+	padding:0.5rem 1rem
+}
 .card-body {
-	padding:.5rem
+	padding:0.5rem
+}
+.card-body canvas {
+	height:360px!important
 }
 .web-info {
 	padding:10px;
@@ -368,27 +381,27 @@ body.hidemenu .body-right {
 	right:20px
 }
 .coolbg {
-	padding:.375rem .75rem;
+	padding:0.375rem 0.75rem;
 	background:#f5f5f5;
 	border-bottom:1px solid #dee2e6;
 	border:0;
 	cursor:pointer
 }
 .coolbg2 {
-	padding:.5rem;
+	padding:0.5rem;
 	background:#fff;
 	border-bottom:1px solid #dee2e6;
 	text-align:right
 }
 .colordlg {
-	padding:.5rem;
+	padding:0.5rem;
 	width:120px;
 	background:#fff;
 	border:1px solid #dee2e6;
 	z-index:10005
 }
 .wsselect {
-	padding:.5rem;
+	padding:0.5rem;
 	background:#fff;
 	overflow:auto
 }
@@ -398,7 +411,7 @@ body.hidemenu .body-right {
 	z-index:8888
 }
 .pubdlg .title {
-	padding:0 .5rem;
+	padding:0 0.5rem;
 	height:30px;
 	line-height:30px;
 	color:#545b62;
@@ -424,7 +437,7 @@ body.hidemenu .body-right {
 	z-index:10005
 }
 .quickselfoot {
-	padding:.5rem;
+	padding:0.5rem;
 	background:#f5f5f5;
 	border-top:1px solid #dee2e6
 }
@@ -467,13 +480,16 @@ body.hidemenu .body-right {
 .option3 {
 	background:#fff
 }
+.modal-title {
+	font-size:16px
+}
 .tips-box {
 	margin:70px auto 0;
 	width:500px;
 	height:auto;
 	background:#fff;
-	border-radius:.5rem;
-	box-shadow:0 .125rem .25rem rgba(0,0,0,.075)
+	border-radius:0.5rem;
+	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)
 }
 .tips-head {
 	margin:0 20px;
@@ -494,9 +510,6 @@ body.hidemenu .body-right {
 	word-break:break-all;
 	word-wrap:break-word
 }
-.modal-title {
-	font-size:16px
-}
 .maintable {
 	width:98%!important;
 	border:1px solid #dee2e6!important
@@ -506,7 +519,7 @@ body.hidemenu .body-right {
 	color:#545b62
 }
 .table td,.table th {
-	padding:.5rem;
+	padding:0.5rem;
 	vertical-align:middle
 }
 .form-control {
@@ -521,10 +534,10 @@ body.hidemenu .body-right {
 	line-height:30px
 }
 .list-group-item {
-	padding:.5rem 0
+	padding:0.5rem 0
 }
 .btn-sm {
-	padding:.375rem .55rem;
+	padding:0.375rem 0.55rem;
 	height:30px;
 	line-height:1.5;
 	font-size:12px
@@ -555,7 +568,7 @@ body.hidemenu .body-right {
 	text-align:center
 }
 .admin-td {
-	padding:.5rem;
+	padding:0.5rem;
 	border-bottom:1px solid #dee2e6
 }
 .admin-textarea-xl {
@@ -622,24 +635,24 @@ span.page-link {
 	background:#1eb867
 }
 table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.colordlg,.quickselitem .topcat,.web-info,.upload-bg,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded,#edsta {
-	border-radius:.5rem!important
+	border-radius:0.5rem!important
 }
 .btn-xs {
-	border-radius:.35rem!important
+	border-radius:0.35rem!important
 }
 .coolbg2,.pubdlg .title,.cke_top {
-	border-radius:.5rem .5rem 0 0!important
+	border-radius:0.5rem 0.5rem 0 0!important
 }
 .submenu,.wsselect,.cke_bottom {
-	border-radius:0 0 .5rem .5rem!important
+	border-radius:0 0 0.5rem 0.5rem!important
 }
 .page-item:first-child .page-link {
-	border-top-left-radius:.5rem!important;
-	border-bottom-left-radius:.5rem!important
+	border-top-left-radius:0.5rem!important;
+	border-bottom-left-radius:0.5rem!important
 }
 .page-item:last-child .page-link {
-	border-top-right-radius:.5rem!important;
-	border-bottom-right-radius:.5rem!important
+	border-top-right-radius:0.5rem!important;
+	border-bottom-right-radius:0.5rem!important
 }
 #selColor {
 	padding:0;
@@ -647,7 +660,7 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 }
 #edsta {
 	display:none;
-	padding:.5rem;
+	padding:0.5rem;
 	position:absolute;
 	top:100px;
 	left:200px;
@@ -658,19 +671,14 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 }
 #browsehappy {
 	padding:1rem 30px;
-	font-size:14px;
 	color:#856404;
 	background:#fff3cd
 }
 .browsehappy-close {
 	float:right;
-	font-size:14px;
 	cursor:pointer
 }
-@media (max-width:480px) {
-	.web-info {
-		word-break:break-all
-	}
+@media (max-width:768px) {
 	.tips {
 		padding:0 15px
 	}
@@ -678,7 +686,11 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 		width:100%
 	}
 }
-@media (min-width:480px) {
+@media (min-width:1200px) {
+	.web-info {
+		text-overflow:ellipsis;
+		white-space:nowrap
+	}
 	.modal-dialog {
 		max-width:500px
 	}

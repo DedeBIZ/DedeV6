@@ -39,51 +39,48 @@
 					<a href="javascript:;" onclick="ShowHide('addvar')" class="btn btn-success btn-sm">添加变量</a>
 				</td>
 			</tr>
-			<tr id="addvar" style="display:none">
-				<td colspan="2" class="p-0">
-					<form name="fadd" action="sys_info.php" method="post">
-						<input type="hidden" name="dopost" value="add">
-						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-						<table class="table-borderless w-100">
-							<tr>
-								<td width="120">变量说明：</td>
-								<td width="370"><input type="text" name="varmsg" id="varmsg" class="admin-input-lg"></td>
-								<td width="120">变量值：</td>
-								<td width="370"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td width="120">变量名称：</td>
-								<td colspan="3"><input type="text" name="nvarname" id="nvarname" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td width="120">变量类型：</td>
-								<td width="370">
-									<label><input type="radio" name="vartype" value="string" checked="checked"> 文本</label>
-									<label><input type="radio" name="vartype" value="number"> 数字</label>
-									<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
-									<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
-									<label><input type="radio" name="vartype" value="img"> 图片</label>
-								</td>
-								<td width="120">变量所属：</td>
-								<td width="170">
-									<?php
-									echo "<select name='vargroup' class='admin-input-sm'>";
-									foreach($ds as $dl){
-										$dl = trim($dl);
-										if (empty($dl)) continue;
-										$dls = explode(',',$dl);
-										echo "<option value='{$dls[0]}'>{$dls[1]}</option>";
-									}
-									echo "</select>";
-									?>
-									<button type="submit" class="btn btn-success btn-sm">保存变量</button>
-								</td>
-							</tr>
-						</table>
-					</form>
-				</td>
-			</tr>
 		</table>
+		<form name="fadd" action="sys_info.php" method="post" id="addvar" style="display:none">
+			<input type="hidden" name="dopost" value="add">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+			<table align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f5f5f5" colspan="6">添加变量</td>
+				</tr>
+				<tr>
+					<td width="120">变量说明：</td>
+					<td width="370"><input type="text" name="varmsg" id="varmsg" class="admin-input-lg"></td>
+					<td width="120">变量值：</td>
+					<td width="370"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-lg"></td>
+					<td width="120">变量名称：</td>
+					<td><input type="text" name="nvarname" id="nvarname" class="admin-input-lg"></td>
+				</tr>
+				<tr>
+					<td width="120">变量类型：</td>
+					<td width="370">
+						<label><input type="radio" name="vartype" value="string" checked="checked"> 文本</label>
+						<label><input type="radio" name="vartype" value="number"> 数字</label>
+						<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
+						<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
+						<label><input type="radio" name="vartype" value="img"> 图片</label>
+					</td>
+					<td width="120">变量所属：</td>
+					<td colspan="4">
+						<?php
+						echo "<select name='vargroup' class='admin-input-sm'>";
+						foreach($ds as $dl){
+							$dl = trim($dl);
+							if (empty($dl)) continue;
+							$dls = explode(',',$dl);
+							echo "<option value='{$dls[0]}'>{$dls[1]}</option>";
+						}
+						echo "</select>";
+						?>
+						<button type="submit" class="btn btn-success btn-sm">保存变量</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<form action="sys_info.php" method="post" name="form1">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="dopost" value="save">
@@ -132,7 +129,7 @@
 								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-75'>";
 							} else if ($row['type']=='img') {
 								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-50'> <input type='button' name='set9' class='btn btn-success btn-sm' onclick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." value='选择'>";
-									if ($row['value']){
+									if ($row['value']) {
 										echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail-md'>";
 									} else {
 									echo " <img src='../static/web/img/thumbnail.jpg' id='idd_{$row['varname']}' class='thumbnail-md'>";
@@ -164,8 +161,7 @@
 		<script>
 			var searchconfig = false;
 			function Nav() {
-				if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-				else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+				if (window.navigator.userAgent.indexOf("Firefox") >= 1) return "FF";
 				else return "OT";
 			}
 			function $Obj(objname) {
@@ -174,36 +170,36 @@
 			function ShowConfig(em, allgr) {
 				if (searchconfig) location.reload();
 				for (var i = 1; i <= allgr; i++) {
-					if ($Obj('td' + i)) {
-						if (i == em) $Obj('td' + i).style.display = (Nav() == 'IE' ? 'block' : 'table');
-						else $Obj('td' + i).style.display = 'none';
+					if ($Obj("td" + i)) {
+						if (i == em) $Obj("td" + i).style.display = "table";
+						else $Obj("td" + i).style.display = "none";
 					}
 				}
-				$Obj('addvar').style.display = 'none';
+				$Obj("addvar").style.display = "none";
 			}
 			function ShowHide(objname) {
 				var obj = $Obj(objname);
 				if (obj.style.display != "none") obj.style.display = "none";
-				else obj.style.display = (Nav() == 'IE' ? 'block' : 'table-row');
+				else obj.style.display = "block";
 			}
 			function backSearch() {
 				location.reload();
 			}
 			function getSearch() {
-				var searchKeywords = $Obj('keywds').value;
+				var searchKeywords = $Obj("keywds").value;
 				searchKeywords = searchKeywords.replace(/^cfg_/, "");
 				fetch('sys_info.php?dopost=search&keywords=' + searchKeywords).then(resp => {
 					if (resp.ok) {
-						$("#btnClear").removeClass('d-none').show();
+						$("#btnClear").removeClass("d-none").show();
 						return resp.text()
 					}
-					throw new Error('系统错误，无法获取数据');
+					throw new Error("系统错误，无法获取数据");
 				}).then((d) => {
-					$Obj('_search').innerHTML = d;
+					$Obj("_search").innerHTML = d;
 				}).catch((error) => {
-					$Obj('_search').innerHTML = errMsg;
+					$Obj("_search").innerHTML = errMsg;
 				});
-				$Obj('_mainsearch').innerHTML = '';
+				$Obj("_mainsearch").innerHTML = "";
 				searchconfig = true;
 			}
 			function resetCookieEncode() {
@@ -212,7 +208,7 @@
 				});
 			}
 			$(document).ready(function () {
-				$("#btnClear").click(()=>{
+				$("#btnClear").click(() => {
 					location.reload();
 				})
 			});

@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
 	</head>
 	<body>
@@ -297,11 +298,9 @@
 			}
 			function checkSubmit() {
 				if (document.form1.typename.value == "") {
-					alert("栏目名称不能为空");
-					document.form1.typename.focus();
+					ShowMsg("栏目名称不能为空");
 					return false;
 				}
-				return true;
 			}
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800,600);

@@ -198,6 +198,7 @@ async function LoadStatChart() {
 		type: 'line',
 		options: {
 			responsive: true,
+			maintainAspectRatio: false,
 			plugins: {
 				legend: {
 					position: 'right',
@@ -212,28 +213,28 @@ async function LoadStatChart() {
 					data: pvs,
 					lineTension: .5,
 					borderColor: 'rgba(54, 162, 235, 1)',
-					backgroundColor: 'rgba(54, 162, 235, 0.2)',
+					backgroundColor: 'rgba(54, 162, 235, 0.1)',
 					borderWidth: 2
 				}, {
 					label: 'UV',
 					data: uvs,
 					lineTension: .5,
 					borderColor: 'rgba(255, 206, 86, 1)',
-					backgroundColor: 'rgba(255, 206, 86, 0.2)',
+					backgroundColor: 'rgba(255, 206, 86, 0.1)',
 					borderWidth: 2
 				}, {
 					label: 'IP',
 					data: ips,
 					lineTension: .5,
 					borderColor: 'rgba(255, 99, 132, 1)',
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					backgroundColor: 'rgba(255, 99, 132, 0.1)',
 					borderWidth: 2
 				}, {
 					label: 'VV',
 					data: vvs,
 					lineTension: .5,
 					borderColor: 'rgba(75, 192, 192, 1)',
-					backgroundColor: 'rgba(75, 192, 192, 0.2)',
+					backgroundColor: 'rgba(75, 192, 192, 0.1)',
 					borderWidth: 2
 				}
 			]
