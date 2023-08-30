@@ -4036,8 +4036,6 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('112','cfg_addon_domainbind','是否绑定附件目录为指定的二级域名','7','bool','N'),
 ('113','cfg_addon_domain','附件目录的二级域名','7','string',''),
 ('114','cfg_df_dutyadmin','默认作者名称','7','string','网站管理员'),
-('115','cfg_mb_allowncarc','是否允许会员空间显示未审核文档','4','bool','Y'),
-('116','cfg_mb_spaceallarc','会员空间中所有文档的栏目ID（不限为0）','4','number','0'),
 ('117','cfg_face_adds','上传头像增加积分','5','number','10'),
 ('118','cfg_moreinfo_adds','填写详细资料增加积分','5','number','20'),
 ('119','cfg_money_scores','多少积分可以兑换一个金币','5','number','50'),

@@ -48,6 +48,10 @@ if ($uid == '') {
     $userid = preg_replace("#[\r\n\t \*%]#", '', $uid);
     $query = "SELECT MB.mid,MB.mtype,MB.userid,MB.uname,MB.sex,MB.rank,MB.email,MB.scores,MB.spacesta,MB.face,MB.logintime,MS.*,MT.*,MB.matt,MR.membername FROM `#@__member` MB LEFT JOIN `#@__member_space` MS on MS.mid=MB.mid LEFT JOIN `#@__member_tj` MT on MT.mid=MB.mid LEFT JOIN `#@__arcrank` MR on MR.rank=MB.rank WHERE MB.userid like '$uid' ";
     $_vars = $dsql->GetOne($query);
+    if ($cfg_mb_adminlock == "Y" && $_vars['rank']==10) {
+        ShowMsg("无法浏览管理员用户的空间","javascript:;");
+        exit();
+    }
     if (!is_array($_vars)) {
         ShowMsg("你访问的用户可能已经被删除","javascript:;");
         exit();

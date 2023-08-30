@@ -812,7 +812,7 @@ CREATE TABLE `#@__search_sync`  (
   `add_at` int NULL DEFAULT NULL,
   `update_at` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) TYPE = MyISAM;
+) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__sgpage`;
 CREATE TABLE `#@__sgpage` (
