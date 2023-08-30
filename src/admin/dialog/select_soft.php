@@ -12,6 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 if (empty($activepath)) {
     $activepath = '';
 }
+$noeditor = isset($noeditor) ? $noeditor : '';
 $activepath = str_replace('.', '', $activepath);
 $activepath = preg_replace("#\/{1,}#", '/', $activepath);
 if (strlen($activepath) < strlen($cfg_soft_dir)) {
@@ -56,6 +57,7 @@ if (!empty($noeditor)) {
                     <td colspan="3">
                         <form name="myform"  action="select_soft_post.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
+                            <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
                             <input type="hidden" name="f" value="<?php echo $f ?>">
                             <input type="hidden" name="job" value="upload">
                             <input type="file" name="uploadfile" class="w-50">

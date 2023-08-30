@@ -143,4 +143,4 @@ CREATE TABLE `#@__search_sync`  (
   `add_at` int NULL DEFAULT NULL,
   `update_at` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) TYPE = MyISAM;
+) TYPE=MyISAM;

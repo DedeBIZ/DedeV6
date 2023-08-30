@@ -53,15 +53,15 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 }
 function SelectFlash() {
 	var pos = GetWinPos(800,600);
-	window.open("./dialog/select_media.php?f=form1.flashurl", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+	window.open("./dialog/select_media.php?f=form1.flashurl&noeditor=yes", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectMedia(fname) {
 	var pos = GetWinPos(800,600);
-	window.open("./dialog/select_media.php?f=" + fname, "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+	window.open("./dialog/select_media.php?f=" + fname + "&noeditor=yes", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectSoft(fname) {
 	var pos = GetWinPos(800,600);
-	window.open("./dialog/select_soft.php?f=" + fname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+	window.open("./dialog/select_soft.php?f=" + fname+ "&noeditor=yes", "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectImage(fname, stype, imgsel="") {
 	var pos = GetWinPos(800,600);
