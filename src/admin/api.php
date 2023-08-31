@@ -393,6 +393,16 @@ if ($action === 'is_need_check_code') {
     $filename = $filename.'.'.$fs[count($fs) - 1];
     $filename_name = $filename_name.'.'.$fs[count($fs) - 1];
     $fullfilename = $cfg_basedir.$activepath."/".$filename;
+    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($fullfilename))) {
+        echo json_encode(array(
+            "code" => -1,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "文件扩展名已被系统禁止",
+            ),
+        ));
+        exit;
+    }
     move_uploaded_file($_FILES["file"]["tmp_name"], $fullfilename) or die(json_encode(array(
         "code" => -1,
         "uploaded" => 0,
