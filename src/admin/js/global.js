@@ -1,6 +1,6 @@
 var BROWSER = {};
 var USERAGENT = navigator.userAgent.toLowerCase();
-browserVersion({'ie':'msie','firefox':'','chrome':'','opera':'','safari':'','maxthon':'','mozilla':'','webkit':''});
+browserVersion({'firefox':'','chrome':'','opera':'','safari':'','maxthon':'','mozilla':'','webkit':''});
 if (BROWSER.safari) {
 	BROWSER.firefox = true;
 }

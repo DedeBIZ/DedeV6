@@ -63,20 +63,15 @@
 			<div class="main"><iframe name="main" src="index_body.php"></iframe></div>
 		</div>
 		<script>
-			$(function() {
-				LeftMenuToggle();
+			$("#togglemenu").click(function() {
+				if ($("body").attr("class") === "showmenu") {
+					$("body").attr("class", "hidemenu");
+					$(this).html('<i class="fa fa-indent"></i>');
+				} else {
+					$("body").attr("class", "showmenu");
+					$(this).html('<i class="fa fa-dedent"></i>');
+				}
 			});
-			function LeftMenuToggle() {
-				$("#togglemenu").click(function() {
-					if ($("body").attr("class") == "showmenu") {
-						$("body").attr("class", "hidemenu");
-						$(this).html('<i class="fa fa-indent"></i>');
-					} else {
-						$("body").attr("class", "showmenu");
-						$(this).html('<i class="fa fa-dedent"></i>');
-					}
-				});
-			}
 		</script>
 	</body>
 </html>

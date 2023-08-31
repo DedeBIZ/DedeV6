@@ -1,7 +1,16 @@
-//滚动到页面顶部
-function gotop() {
-	$('html, body').animate({ scrollTop: 0 }, 'slow');
-}
+//返回顶部
+$(function() {
+	$(window).on('scroll', function() {
+		var scrolled = $(window).scrollTop();
+		if (scrolled > 10) $('#returntop').show();
+		if (scrolled < 10) $('#returntop').hide();
+	});
+	$('#returntop').on('click', function() {
+		$('html, body').animate({
+			scrollTop: '0'
+		}, 500);
+	});
+});
 //读写cookie函数
 function GetCookie(c_name) {
 	if (document.cookie.length > 0) {
@@ -183,14 +192,3 @@ function ErrorAddSave(id, title) {
 		'footer': footer,
 	});
 }
-//页面加载触发
-$(document).ready(function () {
-	window.onscroll = function () { scrollFunction() };
-	function scrollFunction() {
-		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-			$("#returntop").show();
-		} else {
-			$("#returntop").hide();
-		}
-	}
-});
