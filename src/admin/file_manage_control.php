@@ -69,6 +69,10 @@ else if ($fmdo == "upload") {
         }
         $upfile = ${$upfile};
         $upfile_name = ${$upfile_name};
+        if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($upfile_name))) {
+            ShowMsg("文件扩展名已被系统禁止", "javascript:;");
+            exit();
+        }
         if (is_uploaded_file($upfile)) {
             //检查文件类型
             $mime = get_mime_type($upfile);
