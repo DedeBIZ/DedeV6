@@ -145,6 +145,7 @@ class FileManagement
      */
     function DeleteFile($filename)
     {
+        $filename = str_replace("..", "", $filename);
         $filename = $this->baseDir.$this->activeDir."/$filename";
         if (is_file($filename)) {
             @unlink($filename);
