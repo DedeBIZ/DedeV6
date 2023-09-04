@@ -2,8 +2,8 @@
 $(function() {
 	$(window).on('scroll', function() {
 		var scrolled = $(window).scrollTop();
-		if (scrolled > 10) $('#returntop').show();
-		if (scrolled < 10) $('#returntop').hide();
+		if (scrolled > 100) $('#returntop').show();
+		if (scrolled < 100) $('#returntop').hide();
 	});
 	$('#returntop').on('click', function() {
 		$('html, body').animate({
