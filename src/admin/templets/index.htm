@@ -51,7 +51,7 @@
 			</nav>
 			<div class="top-admin">
 				<ul class="mb-0">
-					<li class="d-none d-lg-block"><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType()==10){echo "<span class='btn btn-success btn-xs ml-2'>管理</span>";} else if ($cuserLogin->getUserType()==5) {echo "<span class='btn btn-success btn-xs ml-2'>栏目</span>";} else {echo "<span class='btn btn-success btn-xs ml-2'>文档</span>";}?></a></li>
+					<li class="d-none d-lg-block"><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType() == 10){echo "<span class='btn btn-success btn-xs ml-2'>管理员</span>";} else if ($cuserLogin->getUserType() == 5) {echo "<span class='btn btn-success btn-xs ml-2'>栏目员</span>";} else {echo "<span class='btn btn-success btn-xs ml-2'>文档员</span>";}?></a></li>
 					<li><a href="exit.php">退了</a></li>
 				</ul>
 			</div>
@@ -64,7 +64,7 @@
 		</div>
 		<script>
 			$("#togglemenu").click(function() {
-				if ($("body").attr("class") === "showmenu") {
+				if ($("body").attr("class") == "showmenu") {
 					$("body").attr("class", "hidemenu");
 					$(this).html('<i class="fa fa-indent"></i>');
 				} else {
