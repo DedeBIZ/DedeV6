@@ -219,7 +219,7 @@ if (!empty($iseditor)) {
             var x = 10;
             var y = 20;
             $("a.toolimg").mouseover(function(e) {
-                var toolimg = "<div id='toolimg'><img src='" + this.href + "'><\/div>";
+                var toolimg = "<div id='toolimg'><img src='" + this.href + "'></div>";
                 $("body").append(toolimg);
                 $("#toolimg").css({
                     "top": (e.pageY + y) + "px",
