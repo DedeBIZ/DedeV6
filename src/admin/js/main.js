@@ -299,35 +299,35 @@ function guid() {
 var _DedeConfirmFuncs = {};
 var _DedeConfirmFuncsClose = {};
 function __DedeConfirmRun(modalID) {
-    _DedeConfirmFuncs[modalID]();
+	_DedeConfirmFuncs[modalID]();
 }
 function __DedeConfirmRunClose(modalID) {
-    _DedeConfirmFuncsClose[modalID]();
+	_DedeConfirmFuncsClose[modalID]();
 }
 function DedeConfirm(content = "", title = "确认提示") {
-    let modalID = guid();
-    return new Promise((resolve, reject) => {
-        _DedeConfirmFuncs[modalID] = ()=>{
-            resolve("success");
-            CloseModal(`DedeModal${modalID}`);
-        }
-        _DedeConfirmFuncsClose[modalID] = ()=>{
-            reject("cancel");
-            CloseModal(`DedeModal${modalID}`);
-        }
-        let footer = `<button type="button" class="btn btn-outline-success btn-sm" onclick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onclick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
-        let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
-        modal += `<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>`;
-        modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
-        $("body").append(modal)
-        $("#DedeModal" + modalID).modal({
-            backdrop: 'static',
-            show: true
-        });
-        $("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
-            $("#DedeModal" + modalID).remove();
-        })
-    })
+	let modalID = guid();
+	return new Promise((resolve, reject) => {
+		_DedeConfirmFuncs[modalID] = ()=>{
+			resolve("success");
+			CloseModal(`DedeModal${modalID}`);
+		}
+		_DedeConfirmFuncsClose[modalID] = ()=>{
+			reject("cancel");
+			CloseModal(`DedeModal${modalID}`);
+		}
+		let footer = `<button type="button" class="btn btn-outline-success btn-sm" onclick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onclick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
+		let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
+		modal += `<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>`;
+		modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
+		$("body").append(modal)
+		$("#DedeModal" + modalID).modal({
+			backdrop: 'static',
+			show: true
+		});
+		$("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
+			$("#DedeModal" + modalID).remove();
+		})
+	})
 }
 //函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
@@ -466,6 +466,29 @@ $(document).ready(function() {
 			$(this).html('<i class="fa fa-dedent"></i>');
 		}
 	});
+	$(function() {
+		var menu = function(el, multiple) {
+			this.el = el || {};
+			this.multiple = multiple || false;
+			var links = this.el.find('.link');
+			links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+		}
+		menu.prototype.dropdown = function(e) {
+			var $el = e.data.el;
+				$this = $(this),
+				$next = $this.next();
+				$next.slideToggle();
+				$this.parent().toggleClass('open');
+			if (!e.data.multiple) {
+				$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+			};
+		}	
+		var menu = new menu($('#menu'), false);
+		$(".submenu li a").click(function(e) {
+			$(".submenu li").removeClass('active');
+			$(this).parent().addClass('active');
+		})
+	});
 	$("#btnClearAll").click(function(event) {
 		litpicImgSrc = "";
 		litpicImg = "";
@@ -529,6 +552,6 @@ $(document).ready(function() {
 				picker.drops = 'down';
 			}
 			picker.move();
-		})
+		});
 	}
 });
