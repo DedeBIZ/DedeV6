@@ -1,16 +1,3 @@
-//返回顶部
-$(function() {
-	$(window).on('scroll', function() {
-		var scrolled = $(window).scrollTop();
-		if (scrolled > 100) $('#returntop').show();
-		if (scrolled < 100) $('#returntop').hide();
-	});
-	$('#returntop').on('click', function() {
-		$('html, body').animate({
-			scrollTop: '0'
-		}, 500);
-	});
-});
 //读写cookie函数
 function GetCookie(c_name) {
 	if (document.cookie.length > 0) {
@@ -192,3 +179,15 @@ function ErrorAddSave(id, title) {
 		'footer': footer,
 	});
 }
+$(function() {
+	$(window).on('scroll', function() {
+		var scrolled = $(window).scrollTop();
+		if (scrolled > 100) $('#returntop').show();
+		if (scrolled < 100) $('#returntop').hide();
+	});
+	$('#returntop').on('click', function() {
+		$('html, body').animate({
+			scrollTop: '0'
+		}, 500);
+	});
+});

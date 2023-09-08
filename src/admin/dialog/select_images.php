@@ -59,13 +59,10 @@ if (!empty($iseditor)) {
         <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
         <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../static/web/css/admin.css">
-        <script src="../js/float.js"></script>
+        <script src="../../static/web/js/jquery.min.js"></script>
     </head>
     <body class="body-bg">
         <div class="upload-bg shadow-sm">
-            <div id="floater" class="napisdiv">
-                <a href="javascript:nullLink();" onclick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
-            </div>
             <table align="center" class="table icon">
                 <tr>
                     <td colspan="3">
@@ -139,7 +136,7 @@ if (!empty($iseditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <a href=\"javascript:;\" onclick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
+                            <a href=\"$reurl\" class=\"toolimg\"><img src='$reurl' title='$file'></a>
                             <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                         </td>
                         <td>$filesize KB</td>
@@ -154,7 +151,7 @@ if (!empty($iseditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <a href=\"javascript:;\" onclick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
+                            <a href=\"$reurl\" class=\"toolimg\"><img src='$reurl' title='$file'></a>
                             <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                         </td>
                         <td>$filesize KB</td>
@@ -170,10 +167,6 @@ if (!empty($iseditor)) {
         <script>
         function nullLink() {
             return;
-        }
-        function ChangeImage(surl) {
-            document.getElementById('floater').style.display = 'block';
-            document.getElementById('picview').src = surl;
         }
         function TNav() {
             if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
@@ -222,6 +215,25 @@ if (!empty($iseditor)) {
             }
             window.close();
         }
+        $(function() {
+            var x = 10;
+            var y = 20;
+            $("a.toolimg").mouseover(function(e) {
+                var toolimg = "<div id='toolimg'><img src='" + this.href + "'><\/div>";
+                $("body").append(toolimg);
+                $("#toolimg").css({
+                    "top": (e.pageY + y) + "px",
+                    "left": (e.pageX + x) + "px"
+                }).show("fast");
+            }).mouseout(function() {
+                $("#toolimg").remove();
+            }).mousemove(function(e) {
+                $("#toolimg").css({
+                    "top": (e.pageY + y) + "px",
+                    "left": (e.pageX + x) + "px"
+                });
+            });
+        });
         </script>
     </body>
 </html>

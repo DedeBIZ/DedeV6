@@ -1,60 +1,3 @@
-var fixupPos = false;
-var canMove = false;
-var leftLeaning = 0;
-var nForm = null;
-var nFrame = null;
-var picnameObj = null;
-var vImg = null;
-function GetWinPos(w, h) {
-	var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
-	var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
-	var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
-	var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
-	var systemZoom = width / window.screen.availWidth;
-	var left = (width - w) / 2 / systemZoom + dualScreenLeft;
-	var top = (height - h) / 2 / systemZoom + dualScreenTop;
-	return { left: left, top: top };
-}
-function SeePicNew(f, imgdid, frname, hpos, acname) {
-	var newobj = null;
-	if (f.value == '') return;
-	vImg = $Obj(imgdid);
-	picnameObj = document.getElementById('picname');
-	nFrame = $Nav() == 'IE' ? eval('document.frames.' + frname) : $Obj(frname);
-	nForm = f.form;
-	//修改form的action等参数
-	if (nForm.detachEvent) nForm.detachEvent("onsubmit", checkSubmit);
-	else nForm.removeEventListener("submit", checkSubmit, false);
-	nForm.action = 'archives_do.php';
-	nForm.target = frname;
-	nForm.dopost.value = 'uploadLitpic';
-	nForm.submit();
-	picnameObj.value = '';
-	newobj = $Obj('uploadwait');
-	if (!newobj) {
-		newobj = document.createElement("div");
-		newobj.id = 'uploadwait';
-		newobj.style.position = 'absolute';
-		newobj.className = 'uploadwait';
-		newobj.style.width = 120;
-		newobj.style.height = 20;
-		newobj.style.top = hpos;
-		newobj.style.left = 100;
-		newobj.style.display = 'block';
-		document.body.appendChild(newobj);
-		newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
-	}
-	newobj.style.display = 'block';
-	//提交后还原form的action等参数
-	nForm.action = acname;
-	nForm.dopost.value = 'save';
-	nForm.target = '';
-	nForm.litpic.disabled = true;
-}
-function SelectFlash() {
-	var pos = GetWinPos(800,600);
-	window.open("./dialog/select_media.php?f=form1.flashurl&noeditor=yes", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-}
 function SelectMedia(fname) {
 	var pos = GetWinPos(800,600);
 	window.open("./dialog/select_media.php?f=" + fname + "&noeditor=yes", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
@@ -84,10 +27,6 @@ function OpenMyWin(surl) {
 	var pos = GetWinPos(800,600);
 	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
-function OpenMyWinCoOne(surl) {
-	var pos = GetWinPos(800,600);
-	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-}
 function InitPage() {
 	var selsource = $Obj('selsource');
 	var selwriter = $Obj('selwriter');
@@ -96,8 +35,7 @@ function InitPage() {
 	if (selwriter) { selwriter.onmousedown = function(e) { SelectWriter(e); } }
 }
 function $Nav() {
-	if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-	else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+	if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
 	else return "OT";
 }
 function $Obj(objname) {
@@ -126,11 +64,11 @@ function ShowHide(objname) {
 function ShowObj(objname) {
 	var obj = $Obj(objname);
 	if (obj == null) return false;
-	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
+	obj.style.display = "table-row";
 }
 function ShowObjRow(objname) {
 	var obj = $Obj(objname);
-	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
+	obj.style.display = "table-row";
 }
 function AddTypeid2() {
 	ShowObjRow('typeid2tr');
@@ -146,36 +84,36 @@ function SeePic(img, f) {
 function PutSource(str) {
 	var osource = $Obj('source');
 	if (osource) osource.value = str;
-	$Obj('mysource').style.display = 'none';
-	ChangeFullDiv('hide');
+	$Obj("mysource").style.display = "none";
+	ChangeFullDiv("hide");
 }
 function PutWriter(str) {
-	var owriter = $Obj('writer');
+	var owriter = $Obj("writer");
 	if (owriter) owriter.value = str;
-	$Obj('mywriter').style.display = 'none';
-	ChangeFullDiv('hide');
+	$Obj("mywriter").style.display = "none";
+	ChangeFullDiv("hide");
 }
 function ClearDivCt(objname) {
 	if (!$Obj(objname)) return;
-	$Obj(objname).innerHTML = '';
-	$Obj(objname).style.display = 'none';
+	$Obj(objname).innerHTML = "";
+	$Obj(objname).style.display = "none";
 	ChangeFullDiv("hide");
 }
 function ChangeFullDiv(showhide, screenheigt) {
-	var newobj = $Obj('fullpagediv');
-	if (showhide == 'show') {
+	var newobj = $Obj("fullpagediv");
+	if (showhide == "show") {
 		if (!newobj) {
 			newobj = document.createElement("div");
-			newobj.id = 'fullpagediv';
-			newobj.style.position = 'absolute';
-			newobj.className = 'fullpagediv';
-			newobj.style.height = document.body.clientHeight + 50 + 'px';
+			newobj.id = "fullpagediv";
+			newobj.style.position = "absolute";
+			newobj.className = "fullpagediv";
+			newobj.style.height = document.body.clientHeight + 50 + "px";
 			document.body.appendChild(newobj);
 		} else {
-			newobj.style.display = 'block';
+			newobj.style.display = "block";
 		}
 	} else {
-		if (newobj) newobj.style.display = 'none';
+		if (newobj) newobj.style.display = "none";
 	}
 }
 function SelectSource(e) {
@@ -186,26 +124,14 @@ function SelectWriter(e) {
 }
 function LoadNewDiv(e, surl, oname) {
 	var pxStr = '';
-	if ($Nav() == 'IE') {
-		var posLeft = window.event.clientX - 20;
-		var posTop = window.event.clientY - 30;
-		//IE下scrollTop的兼容性问题
-		var scrollTop = document.documentElement.scrollTop || window.pageYOffset;
-		if (typeof (scrollTop) == 'undefined') scrollTop = document.body.scrollTop;
-		posTop += scrollTop;
-	} else {
-		var posLeft = e.pageX - 20;
-		var posTop = e.pageY - 30;
-		pxStr = 'px';
-	}
 	posLeft = posLeft - 100;
 	var newobj = $Obj(oname);
 	if (!newobj) {
 		newobj = document.createElement("div");
 		newobj.id = oname;
-		newobj.style.position = 'absolute';
+		newobj.style.position = "absolute";
 		newobj.className = oname;
-		newobj.className += ' dlgws';
+		newobj.className += " dlgws";
 		newobj.style.top = posTop + pxStr;
 		newobj.style.left = posLeft + pxStr;
 		document.body.appendChild(newobj);
@@ -255,52 +181,6 @@ function ShowUrlTrEdit() {
 	var rurl = $Obj('redirecturl');
 	if (!jumpTest.checked) rurl.value = "";
 }
-function CkRemote() {
-	document.getElementById('picname').value = '';
-}
-//复制文档到剪切板
-function copyToClipboard(txt) {
-	if (txt == null || txt == '') {
-		alert("没有选择任何文档");
-		return;
-	}
-	if (window.clipboardData) {
-		window.clipboardData.clearData();
-		window.clipboardData.setData("Text", txt);
-	} else if (navigator.userAgent.indexOf('Opera') != -1) {
-		window.location = txt;
-	} else {
-		try {
-			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-		} catch (e) {
-			alert("浏览器已拒绝，请稍后重试");
-		}
-		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
-		if (!clip) return;
-		var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
-		if (!trans) return;
-		trans.addDataFlavor('text/unicode');
-		var str = new Object();
-		var len = new Object();
-		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-		var copytext = txt;
-		str.data = copytext;
-		trans.setTransferData("text/unicode", str, copytext.length * 2);
-		var clipid = Components.interfaces.nsIClipboard;
-		if (!clip) return false;
-		clip.setData(trans, null, clipid.kGlobalClipboard);
-	}
-}
-function getSelTxt() {
-	var g, r;
-	if (document.all) {
-		g = document.selection.createRange().text;
-	} else {
-		g = document.getSelection();
-	}
-	return g;
-}
-//文档列表快捷属性弹出
 function LoadQuickDiv(e, surl, oname, w, h) {
 	var newobj = $Obj(oname);
 	if (!newobj) {
@@ -320,11 +200,9 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
 	});
-	fixupPos = false;
+	
 }
-//显示副栏目
 function ShowCatMap(e, obj, cid, targetId, oldvalue) {
-	fixupPos = true;
 	LoadQuickDiv(e, 'archives_do.php?dopost=getCatMap&targetid=' + targetId + '&channelid=' + cid + '&oldvalue=' + oldvalue + '&rnd=' + Math.random(), 'getCatMap', '700px', '500px');
 	ChangeFullDiv('show');
 }
@@ -332,7 +210,6 @@ function getSelCat(targetId) {
 	var selBox = document.quicksel.seltypeid;
 	var targetObj = $Obj(targetId);
 	var selvalue = '';
-	//副栏目多选
 	if (targetId == 'typeid2') {
 		var j = 0;
 		for (var i = 0; i < selBox.length; i++) {
@@ -344,7 +221,6 @@ function getSelCat(targetId) {
 		}
 		if (targetObj) targetObj.value = selvalue;
 	} else {
-		//主栏目单选
 		if (selBox) {
 			for (var i = 0; i < selBox.length; i++) {
 				if (selBox[i].checked) selvalue = selBox[i].value;
@@ -454,76 +330,76 @@ function CloseModal(modalID) {
 	})
 }
 //获取缩略图
-var litpicImgSrc = "";
-var litpicImg = "";
-var currentCID = 0;
-var mdlCropperID = "";
-var pubAt = 0;
-var optCropper = {
-	preview: ".pv",
-	crop: function(e) {
-		$("#cropWidth").text(Math.round(e.detail.height));
-		$("#cropHeight").text(Math.round(e.detail.width));
-		if ($(this).cropper("getCroppedCanvas")) {
+$(function() {
+	var litpicImgSrc = "";
+	var litpicImg = "";
+	var currentCID = 0;
+	var mdlCropperID = "";
+	var pubAt = 0;
+	var optCropper = {
+		preview: ".pv",
+		crop: function(e) {
+			$("#cropWidth").text(Math.round(e.detail.height));
+			$("#cropHeight").text(Math.round(e.detail.width));
+			if ($(this).cropper("getCroppedCanvas")) {
+				var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
+				litpicImg = dataUrl;
+				$("#litPic").attr("src", litpicImg);	
+			}
+		},
+		aspectRatio: 4 / 3,
+		//拖动截取缩略图后，截取的缩略图更新到imageItems中
+		cropend: function(data) {
+			//这里的id要单独取出来
 			var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
 			litpicImg = dataUrl;
-			$("#litPic").attr("src", litpicImg);	
+			$("#litPic").attr("src", litpicImg);
+			$("#litpic_b64").val(litpicImg);
 		}
-	},
-	aspectRatio: 4 / 3,
-	//拖动截取缩略图后，截取的缩略图更新到imageItems中
-	cropend: function(data) {
-		//这里的id要单独取出来
-		var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
-		litpicImg = dataUrl;
-		$("#litPic").attr("src", litpicImg);
-		$("#litpic_b64").val(litpicImg);
 	}
-}
-var cropperAspectRatio = {
-	0: 16 / 9,
-	1: 4 / 3,
-	2: 1 / 1,
-	3: 2 / 3,
-	4: NaN,
-}
-function setAspectRatio(ar) {
-	var opts = optCropper;
-	opts.aspectRatio = cropperAspectRatio[ar];
-	$("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
-}
-function okImage(modalID) {
-	uploadImage(litpicImg);
-	$("#litPic").attr("src", litpicImg);
-	CloseModal('GKModal' + modalID);
-}
-function useDefault(modalID) {
-	uploadImage(litpicImgSrc);
-	$("#litPic").attr("src", litpicImgSrc);
-	CloseModal('GKModal' + modalID);
-}
-function uploadImage(litpicImgSrc) {
-	const formData = new FormData()
-	formData.append('litpic_b64', litpicImgSrc);
-	fetch('archives_do.php?dopost=upload_base64_image', {
-		method: 'POST',
-		body: formData
-	})
-	.then(r => {
-		if (r.ok) {
-			return r.json()
-		}
-		throw new Error(errMsg);
-	})
-	.then(d => {
-		if (d.code == 200) {
-			$("#picname").val(d.data.image_url);
-		}
-	}).catch((error) => {
-		alert("上传缩略图错误");
-	});
-}
-$(document).ready(function() {
+	var cropperAspectRatio = {
+		0: 16 / 9,
+		1: 4 / 3,
+		2: 1 / 1,
+		3: 2 / 3,
+		4: NaN,
+	}
+	function setAspectRatio(ar) {
+		var opts = optCropper;
+		opts.aspectRatio = cropperAspectRatio[ar];
+		$("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
+	}
+	function okImage(modalID) {
+		uploadImage(litpicImg);
+		$("#litPic").attr("src", litpicImg);
+		CloseModal('GKModal' + modalID);
+	}
+	function useDefault(modalID) {
+		uploadImage(litpicImgSrc);
+		$("#litPic").attr("src", litpicImgSrc);
+		CloseModal('GKModal' + modalID);
+	}
+	function uploadImage(litpicImgSrc) {
+		const formData = new FormData()
+		formData.append('litpic_b64', litpicImgSrc);
+		fetch('archives_do.php?dopost=upload_base64_image', {
+			method: 'POST',
+			body: formData
+		})
+		.then(r => {
+			if (r.ok) {
+				return r.json()
+			}
+			throw new Error(errMsg);
+		})
+		.then(d => {
+			if (d.code == 200) {
+				$("#picname").val(d.data.image_url);
+			}
+		}).catch((error) => {
+			alert("上传缩略图错误");
+		});
+	}
 	$("#btnClearAll").click(function(event) {
 		litpicImgSrc = "";
 		litpicImg = "";
@@ -568,6 +444,8 @@ $(document).ready(function() {
 			$("#cropImg" + mdlCropperID).cropper(optCropper);
 		}, 500);
 	}
+});
+$(document).ready(function() {
 	if ($.fn.daterangepicker) {
 		$('.datepicker').daterangepicker({
 			"singleDatePicker": true,

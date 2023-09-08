@@ -1,92 +1,3 @@
-var dedebizInfo;
-function ViewDedeBIZ() {
-	if (dedebizInfo === false) {
-		ShowMsg("启动商业组件失败");
-		return;
-	}
-	ShowMsg(`<table class="table table-borderless">
-		<tr>
-			<td width="25%">
-				<div class="web-info">
-					<p>版本号</p>
-					<span>${dedebizInfo.result.server_version}</span>
-				</div>
-			</td>
-			<td width="25%">
-				<div class="web-info">
-					<p>服务器系统</p>
-					<span>${dedebizInfo.result.server_goos}</span>
-				</div>
-			</td>
-			<td width="25%">
-				<div class="web-info">
-					<p>运行时间</p>
-					<span>${dedebizInfo.result.server_run_time}</span>
-				</div>
-			</td>
-			<td width="25%">
-				<div class="web-info">
-					<p>内存占用</p>
-					<span>${dedebizInfo.result.server_memory_usage}%</span>
-				</div>
-			</td>
-		</tr>
-	</table>`);
-}
-function LoadServer() {
-	$.get("index_body.php?dopost=system_info",function(data) {
-		let rsp = JSON.parse(data);
-		if (rsp.code === 200) {
-			if (rsp.result.core.code === 200) {
-				dedebizInfo = JSON.parse(rsp.result.core.data);
-			} else {
-				dedebizInfo = false;
-			}
-			let infoStr = `<table class="table table-borderless">`;
-			if (typeof rsp.result.domain !== "undefined") {
-				infoStr += `<tr>
-					<td width="25%">
-						<div class="web-info">
-							<p>授权域名</p>
-							<span>${rsp.result.domain}</span>
-						</div>
-					</td>
-					<td width="25%">
-						<div class="web-info">
-							<p>站点名称</p>
-							<span>${rsp.result.title}</span>
-						</div>
-					</td>
-					<td width="25%">
-						<div class="web-info">
-							<p>站点证书</p>
-							<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
-						</div>
-					</td>
-					<td width="25%">
-						<div class="web-info">
-							<p>商业组件</p>
-							<span><a href="javascript:ViewDedeBIZ()">组件状态</a></span>
-						</div>
-					</td>
-				</tr>`;
-			}
-			infoStr += "</table>";
-			$("#system-info").html(infoStr);
-		} else {
-			$("#system-info").html(`<table class="table table-borderless">
-				<tr>
-					<td>
-						<div class="web-info">
-							<p>${rsp.msg}</p>
-							<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息</span>
-						</div>
-					</td>
-				</tr>
-			</table>`);
-		}
-	});
-}
 Date.prototype.Format = function(fmt) {
 	var o = {
 		"M+" : this.getMonth() + 1, //月份 
@@ -235,10 +146,61 @@ $(document).ready(function() {
 			}
 		});
 	});
-	LoadServer();
+	$(function() {
+		var dedebizInfo;
+		$.get("index_body.php?dopost=system_info",function(data) {
+			let rsp = JSON.parse(data);
+			if (rsp.code === 200) {
+				if (rsp.result.core.code === 200) {
+					dedebizInfo = JSON.parse(rsp.result.core.data);
+				} else {
+					dedebizInfo = false;
+				}
+				let infoStr = `<table class="table table-borderless">`;
+				if (typeof rsp.result.domain !== "undefined") {
+					infoStr += `<tr>
+						<td width="25%">
+							<div class="web-info">
+								<p>授权域名</p>
+								<span>${rsp.result.domain}</span>
+							</div>
+						</td>
+						<td width="25%">
+							<div class="web-info">
+								<p>站点名称</p>
+								<span>${rsp.result.title}</span>
+							</div>
+						</td>
+						<td width="25%">
+							<div class="web-info">
+								<p>授权证书</p>
+								<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
+							</div>
+						</td>
+						<td width="25%">
+							<div class="web-info">
+								<p>授权时间</p>
+								<span>${rsp.result.auth_at}</span>
+							</div>
+						</td>
+					</tr>`;
+				}
+				infoStr += "</table>";
+				$("#system-info").html(infoStr);
+			} else {
+				$("#system-info").html(`<table class="table table-borderless">
+					<tr>
+						<td>
+							<div class="web-info">
+								<p>${rsp.msg}</p>
+								<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息</span>
+							</div>
+						</td>
+					</tr>
+				</table>`);
+			}
+		});
+	});
 	LoadStat();
 	LoadStatChart();
-	setInterval(function() {
-		LoadServer();
-	}, 3000)
 });
