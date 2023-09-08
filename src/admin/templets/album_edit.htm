@@ -138,7 +138,7 @@
 									echo $typeOptions;
 									echo '</select>';
 									?>
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>')" title="快捷选择"></i></span>
+									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>')" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 								</td>
 								<td width="120">需要金币：</td>
 								<td><input type="text" name="money" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
@@ -155,7 +155,7 @@
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" class="admin-input-sm">
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目"></i></span>
+									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 								</td>
 							</tr>
 						</table>

@@ -140,7 +140,7 @@
 										echo "</select>";
 										?>
 									</span>
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择"></i></span>
+									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 									<?php
 									if ($cfg_need_typeid2=='Y') {
 										echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
@@ -161,7 +161,7 @@
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="" class="admin-input-sm">
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2')" title="选择副栏目"></i></span>
+									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2')" title="选择副栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 								</td>
 							</tr>
 						</table>
