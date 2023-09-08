@@ -343,9 +343,6 @@ body.hidemenu .body-right {
 	padding:10px;
 	background:#f5f5f5
 }
-#fz-0 {
-	font-size:0
-}
 #_fileList,#_verList {
 	height:360px;
 	overflow-y:auto

@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="js/main.js"></script>
 	</head>
 	<body class="showmenu">
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
@@ -62,16 +63,5 @@
 		<div class="body-right">
 			<div class="main"><iframe name="main" src="index_body.php"></iframe></div>
 		</div>
-		<script>
-			$("#togglemenu").click(function() {
-				if ($("body").attr("class") == "showmenu") {
-					$("body").attr("class", "hidemenu");
-					$(this).html('<i class="fa fa-indent"></i>');
-				} else {
-					$("body").attr("class", "showmenu");
-					$(this).html('<i class="fa fa-dedent"></i>');
-				}
-			});
-		</script>
 	</body>
 </html>

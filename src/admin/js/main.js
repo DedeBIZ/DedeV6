@@ -1,3 +1,53 @@
+var nForm = null;
+var nFrame = null;
+var picnameObj = null;
+var vImg = null;
+function GetWinPos(w, h) {
+	var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
+	var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
+	var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+	var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+	var systemZoom = width / window.screen.availWidth;
+	var left = (width - w) / 2 / systemZoom + dualScreenLeft;
+	var top = (height - h) / 2 / systemZoom + dualScreenTop;
+	return { left: left, top: top };
+}
+function SeePicNew(f, imgdid, frname, hpos, acname) {
+	var newobj = null;
+	if (f.value == '') return;
+	vImg = $Obj(imgdid);
+	picnameObj = document.getElementById('picname');
+	nFrame = $Nav() == 'IE' ? eval('document.frames.' + frname) : $Obj(frname);
+	nForm = f.form;
+	//修改form的action等参数
+	if (nForm.detachEvent) nForm.detachEvent("onsubmit", checkSubmit);
+	else nForm.removeEventListener("submit", checkSubmit, false);
+	nForm.action = 'archives_do.php';
+	nForm.target = frname;
+	nForm.dopost.value = 'uploadLitpic';
+	nForm.submit();
+	picnameObj.value = '';
+	newobj = $Obj('uploadwait');
+	if (!newobj) {
+		newobj = document.createElement("div");
+		newobj.id = 'uploadwait';
+		newobj.style.position = 'absolute';
+		newobj.className = 'uploadwait';
+		newobj.style.width = 120;
+		newobj.style.height = 20;
+		newobj.style.top = hpos;
+		newobj.style.left = 100;
+		newobj.style.display = 'block';
+		document.body.appendChild(newobj);
+		newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
+	}
+	newobj.style.display = 'block';
+	//提交后还原form的action等参数
+	nForm.action = acname;
+	nForm.dopost.value = 'save';
+	nForm.target = '';
+	nForm.litpic.disabled = true;
+}
 function SelectMedia(fname) {
 	var pos = GetWinPos(800,600);
 	window.open("./dialog/select_media.php?f=" + fname + "&noeditor=yes", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
@@ -200,7 +250,6 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
 	});
-	
 }
 function ShowCatMap(e, obj, cid, targetId, oldvalue) {
 	LoadQuickDiv(e, 'archives_do.php?dopost=getCatMap&targetid=' + targetId + '&channelid=' + cid + '&oldvalue=' + oldvalue + '&rnd=' + Math.random(), 'getCatMap', '700px', '500px');
@@ -330,91 +379,105 @@ function CloseModal(modalID) {
 	})
 }
 //获取缩略图
-$(function() {
-	var litpicImgSrc = "";
-	var litpicImg = "";
-	var currentCID = 0;
-	var mdlCropperID = "";
-	var pubAt = 0;
-	var optCropper = {
-		preview: ".pv",
-		crop: function(e) {
-			$("#cropWidth").text(Math.round(e.detail.height));
-			$("#cropHeight").text(Math.round(e.detail.width));
-			if ($(this).cropper("getCroppedCanvas")) {
-				var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
-				litpicImg = dataUrl;
-				$("#litPic").attr("src", litpicImg);	
-			}
-		},
-		aspectRatio: 4 / 3,
-		//拖动截取缩略图后，截取的缩略图更新到imageItems中
-		cropend: function(data) {
-			//这里的id要单独取出来
+var litpicImgSrc = "";
+var litpicImg = "";
+var mdlCropperID = "";
+var optCropper = {
+	preview: ".pv",
+	crop: function(e) {
+		$("#cropWidth").text(Math.round(e.detail.height));
+		$("#cropHeight").text(Math.round(e.detail.width));
+		if ($(this).cropper("getCroppedCanvas")) {
 			var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
 			litpicImg = dataUrl;
-			$("#litPic").attr("src", litpicImg);
-			$("#litpic_b64").val(litpicImg);
+			$("#litPic").attr("src", litpicImg);	
 		}
-	}
-	var cropperAspectRatio = {
-		0: 16 / 9,
-		1: 4 / 3,
-		2: 1 / 1,
-		3: 2 / 3,
-		4: NaN,
-	}
-	function setAspectRatio(ar) {
-		var opts = optCropper;
-		opts.aspectRatio = cropperAspectRatio[ar];
-		$("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
-	}
-	function okImage(modalID) {
-		uploadImage(litpicImg);
+	},
+	aspectRatio: 4 / 3,
+	cropend: function(data) {
+		var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
+		litpicImg = dataUrl;
 		$("#litPic").attr("src", litpicImg);
-		CloseModal('GKModal' + modalID);
+		$("#litpic_b64").val(litpicImg);
 	}
-	function useDefault(modalID) {
-		uploadImage(litpicImgSrc);
-		$("#litPic").attr("src", litpicImgSrc);
-		CloseModal('GKModal' + modalID);
-	}
-	function uploadImage(litpicImgSrc) {
-		const formData = new FormData()
-		formData.append('litpic_b64', litpicImgSrc);
-		fetch('archives_do.php?dopost=upload_base64_image', {
-			method: 'POST',
-			body: formData
-		})
-		.then(r => {
-			if (r.ok) {
-				return r.json()
-			}
-			throw new Error(errMsg);
-		})
-		.then(d => {
-			if (d.code == 200) {
-				$("#picname").val(d.data.image_url);
-			}
-		}).catch((error) => {
-			alert("上传缩略图错误");
-		});
-	}
+}
+var cropperAspectRatio = {
+	0: 16 / 9,
+	1: 4 / 3,
+	2: 1 / 1,
+	3: 2 / 3,
+	4: NaN,
+}
+function setAspectRatio(ar) {
+	var opts = optCropper;
+	opts.aspectRatio = cropperAspectRatio[ar];
+	$("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
+}
+function okImage(modalID) {
+	uploadImage(litpicImg);
+	$("#litPic").attr("src", litpicImg);
+	CloseModal('GKModal' + modalID);
+}
+function useDefault(modalID) {
+	uploadImage(litpicImgSrc);
+	$("#litPic").attr("src", litpicImgSrc);
+	CloseModal('GKModal' + modalID);
+}
+function uploadImage(litpicImgSrc) {
+	const formData = new FormData()
+	formData.append('litpic_b64', litpicImgSrc);
+	fetch('archives_do.php?dopost=upload_base64_image', {
+		method: 'POST',
+		body: formData
+	})
+	.then(r => {
+		if (r.ok) {
+			return r.json()
+		}
+		throw new Error(errMsg);
+	})
+	.then(d => {
+		if (d.code == 200) {
+			$("#picname").val(d.data.image_url);
+		}
+	}).catch((error) => {
+		alert("上传缩略图错误");
+	});
+}
+function SetThumb(srcURL) {
+	var footer = "<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a><a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
+	var optButton = `<p><label for="aspectRatio">比例</label><select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)"><option>16:9</option><option selected>4:3</option><option>1:1</option><option>2:3</option><option>自定义</option></select></p>`;
+	mdlCropperID = ShowMsg('<div class="float-left" style="width:320px"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden"></div>', {
+		footer: footer,
+		noClose: false,
+		title: '图片裁剪',
+	});
+	setTimeout(function() {
+		$("#cropImg" + mdlCropperID).cropper(optCropper);
+	}, 500);
+}
+$(document).ready(function() {
+	$("#togglemenu").click(function() {
+		if ($("body").attr("class") == "showmenu") {
+			$("body").attr("class", "hidemenu");
+			$(this).html('<i class="fa fa-indent"></i>');
+		} else {
+			$("body").attr("class", "showmenu");
+			$(this).html('<i class="fa fa-dedent"></i>');
+		}
+	});
 	$("#btnClearAll").click(function(event) {
 		litpicImgSrc = "";
 		litpicImg = "";
 		$("#picname").val(litpicImg);
 		$("#litPic").attr("src", "/static/web/img/thumbnail.jpg");
 	})
-	//添加图片
 	$("#iptAddImages").change(function(event) {
 		var files = event.target.files;
 		for (var i = 0, f; f = files[i]; i++) {
-			//如果不是图片忽略
 			if (!f.type.match('image.*')) {
 				continue;
 			}
-			//将图片渲染到浏览器
 			var reader = new FileReader();
 			reader.onload = (function(theFile) {
 				return function(e) {
@@ -431,21 +494,6 @@ $(function() {
 		}
 		$("#iptAddImages").val("");
 	});
-	//截取缩略图
-	function SetThumb(srcURL) {
-		var footer = "<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a><a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
-		var optButton = `<p><label for="aspectRatio">比例</label><select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)"><option>16:9</option><option selected>4:3</option><option>1:1</option><option>2:3</option><option>自定义</option></select></p>`;
-		mdlCropperID = ShowMsg('<div class="float-left" style="width:320px"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden"></div>', {
-			footer: footer,
-			noClose: false,
-			title: '图片裁剪',
-		});
-		setTimeout(function() {
-			$("#cropImg" + mdlCropperID).cropper(optCropper);
-		}, 500);
-	}
-});
-$(document).ready(function() {
 	if ($.fn.daterangepicker) {
 		$('.datepicker').daterangepicker({
 			"singleDatePicker": true,
