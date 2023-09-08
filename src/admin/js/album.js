@@ -1,7 +1,7 @@
 function checkSubmitAlb() {
 	if ($("#gallery .atlas").length > 0) {
 		//这里从gallery中取出图片元素信息
-		$("#gallery .atlas").each(function () {
+		$("#gallery .atlas").each(function() {
 			albums.push({
 				"img": $(this).find("img").attr("src"),
 				"txt": $(this).find("input").val()

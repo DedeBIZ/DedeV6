@@ -85,7 +85,7 @@ if ($dopost == "") {
         $dtime = time();
         if ($dtime - $tptim > $row['mailtime']) {
             $db->ExecuteNoneQuery("DELETE FROM `#@__pwd_tmp` WHERE `md` = '$id';");
-            ShowMsg("临时密码修改期限已过期", "login.php");
+            ShowMsg("临时验证码修改期限已过期", "login.php");
             exit();
         }
         require_once(dirname(__FILE__)."/templets/resetpassword2.htm");
@@ -114,7 +114,7 @@ if ($dopost == "") {
             ShowMsg('新密码为空或填写不一致', '-1');
             exit;
         }
-        ShowMsg('临时密码错误', '-1');
+        ShowMsg('临时验证码错误', '-1');
         exit;
     }
 }

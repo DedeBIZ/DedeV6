@@ -15,7 +15,7 @@ function showStepArea(step) {
 	$("#btnStep" + step).show();
 }
 function update() {
-	$.get("api.php?action=update", function (rs) {
+	$.get("api.php?action=update", function(rs) {
 		if (rs.code === 0) {
 			$("#_updateMsg").html(rs.msg);
 			if (rs.data.finish === false) {
@@ -32,7 +32,7 @@ function update() {
 	})
 }
 function hasNewVersion() {
-	$.get("api.php?action=has_new_version", function (rs) {
+	$.get("api.php?action=has_new_version", function(rs) {
 		try {
 			if (rs.code === 0) {
 				if (rs.result.HasNew === true) {
@@ -51,24 +51,24 @@ function hasNewVersion() {
 		}
 	})
 }
-$(document).ready(function () {
+$(document).ready(function() {
 	hasNewVersion();
-	$("#btnCancel").click(function () {
+	$("#btnCancel").click(function() {
 		currentStep = 1;
 		$("#_fileList").html(``);
 	})
-	$("#btnBackup").click(function () {
+	$("#btnBackup").click(function() {
 		let alertMsg = dedeAlter("正在备份差异文件", 'info', true);
 		$("#_msgInfo").html(alertMsg);
 		$("#_msgInfo").show();
-		$.get("api.php?action=update_backup", function (rs) {
+		$.get("api.php?action=update_backup", function(rs) {
 			if (rs.code === 0) {
 				alertMsg = dedeAlter(`成功备份差异文件，目录：${rs.data.backupdir}`, 'success');
 				$("#_msgInfo").html(alertMsg);
 			}
 		})
 	})
-	$("#systemUpdate").click(function () {
+	$("#systemUpdate").click(function() {
 		if (hasNewVer === false) {
 			currentStep = 5;
 			showStepArea(currentStep);
@@ -78,7 +78,7 @@ $(document).ready(function () {
 		$('#mdlUpdate').modal('show');
 		showStepArea(currentStep);
 		currentStep++;
-		$.get("api.php?action=get_changed_files", function (rs) {
+		$.get("api.php?action=get_changed_files", function(rs) {
 			if (rs.code === 0) {
 				let fstr = '<ul class="list-group list-group-flush">';
 				let i = 1;
@@ -94,17 +94,17 @@ $(document).ready(function () {
 			}
 		})
 	})
-	$('#mdlUpdate').on('hidden.bs.modal', function (event) {
+	$('#mdlUpdate').on('hidden.bs.modal', function(event) {
 		currentStep = 1;
 		$("#_msgInfo").html('');
 		$("#_msgInfo").hide();
 	})
-	$("#btnGoStep3").click(function () {
+	$("#btnGoStep3").click(function() {
 		currentStep++
 		$("#_msgInfo").html('');
 		$("#_msgInfo").hide();
 		showStepArea(currentStep);
-		$.get("api.php?action=get_update_versions", function (rs) {
+		$.get("api.php?action=get_update_versions", function(rs) {
 			if (rs.code === 0) {
 				let fstr = '<ul class="list-group list-group-flush">';
 				let i = 1;
@@ -119,14 +119,14 @@ $(document).ready(function () {
 			}
 		})
 	})
-	$("#btnGoStep4").click(function () {
+	$("#btnGoStep4").click(function() {
 		currentStep++
 		$("#_msgInfo").html('');
 		$("#_msgInfo").hide();
 		showStepArea(currentStep);
 		update();
 	})
-	$("#btnOK").click(function () {
+	$("#btnOK").click(function() {
 		hasNewVersion();
 	})
 })

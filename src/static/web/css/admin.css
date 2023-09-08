@@ -141,10 +141,10 @@ input:focus,select:focus,textarea:focus {
 body.hidemenu {
 	background:none
 }
-body.showmenu .body-left {
+body.showmenu .menu-left {
 	display:block
 }
-body.hidemenu .body-left {
+body.hidemenu .menu-left {
 	display:none
 }
 body.showmenu .body-right {
@@ -155,7 +155,7 @@ body.hidemenu .body-right {
 	left:0;
 	transition:all 0.5s
 }
-.body-left {
+.menu-left {
 	position:absolute;
 	top:60px;
 	left:0;

@@ -92,8 +92,8 @@ function InitPage() {
 	var selsource = $Obj('selsource');
 	var selwriter = $Obj('selwriter');
 	var colorbt = $Obj('color');
-	if (selsource) { selsource.onmousedown = function (e) { SelectSource(e); } }
-	if (selwriter) { selwriter.onmousedown = function (e) { SelectWriter(e); } }
+	if (selsource) { selsource.onmousedown = function(e) { SelectSource(e); } }
+	if (selwriter) { selwriter.onmousedown = function(e) { SelectWriter(e); } }
 }
 function $Nav() {
 	if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
@@ -399,7 +399,7 @@ function DedeConfirm(content = "", title = "确认提示") {
             backdrop: 'static',
             show: true
         });
-        $("#DedeModal" + modalID).on('hidden.bs.modal', function (e) {
+        $("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
             $("#DedeModal" + modalID).remove();
         })
     })
@@ -439,7 +439,7 @@ function ShowMsg(content, ...args) {
 		backdrop: 'static',
 		show: true
 	});
-	$("#GKModal" + modalID).on('hidden.bs.modal', function (e) {
+	$("#GKModal" + modalID).on('hidden.bs.modal', function(e) {
 		$("#GKModal" + modalID).remove();
 	})
 	return modalID;
@@ -447,7 +447,7 @@ function ShowMsg(content, ...args) {
 //隐藏并销毁modal
 function CloseModal(modalID) {
 	$("#" + modalID).modal('hide');
-	$("#" + modalID).on('hidden.bs.modal', function (e) {
+	$("#" + modalID).on('hidden.bs.modal', function(e) {
 		if ($("#" + modalID).length > 0) {
 			$("#" + modalID).remove();
 		}
@@ -461,7 +461,7 @@ var mdlCropperID = "";
 var pubAt = 0;
 var optCropper = {
 	preview: ".pv",
-	crop: function (e) {
+	crop: function(e) {
 		$("#cropWidth").text(Math.round(e.detail.height));
 		$("#cropHeight").text(Math.round(e.detail.width));
 		if ($(this).cropper("getCroppedCanvas")) {
@@ -472,7 +472,7 @@ var optCropper = {
 	},
 	aspectRatio: 4 / 3,
 	//拖动截取缩略图后，截取的缩略图更新到imageItems中
-	cropend: function (data) {
+	cropend: function(data) {
 		//这里的id要单独取出来
 		var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
 		litpicImg = dataUrl;
@@ -523,15 +523,15 @@ function uploadImage(litpicImgSrc) {
 		alert("上传缩略图错误");
 	});
 }
-$(document).ready(function () {
-	$("#btnClearAll").click(function (event) {
+$(document).ready(function() {
+	$("#btnClearAll").click(function(event) {
 		litpicImgSrc = "";
 		litpicImg = "";
 		$("#picname").val(litpicImg);
 		$("#litPic").attr("src", "/static/web/img/thumbnail.jpg");
 	})
 	//添加图片
-	$("#iptAddImages").change(function (event) {
+	$("#iptAddImages").change(function(event) {
 		var files = event.target.files;
 		for (var i = 0, f; f = files[i]; i++) {
 			//如果不是图片忽略
@@ -540,8 +540,8 @@ $(document).ready(function () {
 			}
 			//将图片渲染到浏览器
 			var reader = new FileReader();
-			reader.onload = (function (theFile) {
-				return function (e) {
+			reader.onload = (function(theFile) {
+				return function(e) {
 					litpicImgSrc = e.target.result;
 					if (cfg_uplitpic_cut == 'Y') {
 						SetThumb(litpicImgSrc);
@@ -564,7 +564,7 @@ $(document).ready(function () {
 			noClose: false,
 			title: '图片裁剪',
 		});
-		setTimeout(function () {
+		setTimeout(function() {
 			$("#cropImg" + mdlCropperID).cropper(optCropper);
 		}, 500);
 	}
@@ -593,10 +593,10 @@ $(document).ready(function () {
 				monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
 				firstDay: 1
 			}
-		}, function (start) {
+		}, function(start) {
 			$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
 		});
-		$('.datepicker').on('show.daterangepicker', function (ev, picker) {
+		$('.datepicker').on('show.daterangepicker', function(ev, picker) {
 			if (picker.element.offset().top - $(window).scrollTop() + picker.container.outerHeight() > $(window).height()) {
 				picker.drops = 'up';
 			} else {

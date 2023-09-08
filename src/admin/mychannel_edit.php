@@ -249,9 +249,9 @@ if ($dopost == "show") {
     }
     if ($copytemplet == 1) {
         $tmpletdir = $cfg_basedir.$cfg_templets_dir.'/'.$cfg_df_style;
-        copy("{$tmpletdir}/article_{$nid}.htm", "{$tmpletdir}/{$newnid}_article.htm");
-        copy("{$tmpletdir}/list_{$nid}.htm", "{$tmpletdir}/{$newnid}_list.htm");
-        copy("{$tmpletdir}/index_{$nid}.htm", "{$tmpletdir}/{$newnid}_index.htm");
+        copy("{$tmpletdir}/article_{$nid}.htm", "{$tmpletdir}/article_{$newnid}.htm");
+        copy("{$tmpletdir}/list_{$nid}.htm", "{$tmpletdir}/list_{$newnid}.htm");
+        copy("{$tmpletdir}/index_{$nid}.htm", "{$tmpletdir}/index_{$newnid}.htm");
     }
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if ($rs) {

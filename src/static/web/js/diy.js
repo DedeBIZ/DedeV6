@@ -36,7 +36,7 @@ function SelectImage(sform, stype) {
         })
     }
 }
-$(document).ready(function () {
+$(document).ready(function() {
     $('.datepicker').daterangepicker({
         "singleDatePicker": true,
         "autoApply": true,
@@ -63,4 +63,4 @@ $(document).ready(function () {
     }, function (start) {
         $(this).val(start.format("YYYY-MM-DD HH:mm"));
     });
-})
+});
