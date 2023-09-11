@@ -8,25 +8,6 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.js"></script>
-		<script>
-			var startNum = 2;
-			function MakeUpload() {
-				var upfield = document.getElementById("uploadfield");
-				var morelinkobj = document.getElementById("morelink");
-				var endNum = parseInt(document.addcontent.picnum.value) + startNum - 1;
-				morelinkobj.style.display = "block";
-				if (endNum > 12) endNum = 12;
-				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<div class='form-group'><label>软件网址" + startNum + "：</label><div class='input-group mb-3'><input type='text' name='softurl" + startNum + "' value='' class='form-control' placeholder='请选择软件上传或填写软件网址'><div class='input-group-append'><span class='btn btn-success btn-sm btn-send' onclick=\"SelectSoft('addcontent.softurl"+startNum+"')\">选择</span></div></div><label>下载名称" + startNum + "：</label><input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='form-control'></div>";
-				}
-			}
-			function ShowHideAddr() {
-				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
-				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏网址' : '显示网址');
-			}
-		</script>
 	</head>
 	<body class="body-bg">
 		<?php obtaintheme('top.htm');?>
@@ -202,6 +183,24 @@
 			</div>
 		</main>
 		<?php obtaintheme('foot.htm');?>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.js"></script>
+		<script>
+			var startNum = 2;
+			function MakeUpload() {
+				var upfield = document.getElementById("uploadfield");
+				var morelinkobj = document.getElementById("morelink");
+				var endNum = parseInt(document.addcontent.picnum.value) + startNum - 1;
+				morelinkobj.style.display = "block";
+				if (endNum > 12) endNum = 12;
+				for (startNum; startNum <= endNum; startNum++) {
+					upfield.innerHTML += "<div class='form-group'><label>软件网址" + startNum + "：</label><div class='input-group mb-3'><input type='text' name='softurl" + startNum + "' value='' class='form-control' placeholder='请选择软件上传或填写软件网址'><div class='input-group-append'><span class='btn btn-success btn-sm btn-send' onclick=\"SelectSoft('addcontent.softurl"+startNum+"')\">选择</span></div></div><label>下载名称" + startNum + "：</label><input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='form-control'></div>";
+				}
+			}
+			function ShowHideAddr() {
+				document.getElementById('morelink').style.display = (document.getElementById('morelink').style.display == 'block' ? 'none' : 'block');
+				document.getElementById('btsh3').value = (document.getElementById('morelink').style.display == 'block' ? '隐藏网址' : '显示网址');
+			}
+		</script>
 		<?php include(DEDEMEMBER."/templets/widget_litpic.htm");?>
 	</body>
 </html>

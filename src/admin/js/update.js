@@ -29,7 +29,7 @@ function update() {
 				showStepArea(currentStep);
 			}
 		}
-	})
+	});
 }
 function hasNewVersion() {
 	$.get("api.php?action=has_new_version", function(rs) {
@@ -47,9 +47,9 @@ function hasNewVersion() {
 				showStepArea(0);
 			}
 		} catch (error) {
-			console.log("获取软件信息失败")
+			console.log("获取软件信息失败");
 		}
-	})
+	});
 }
 $(document).ready(function() {
 	hasNewVersion();
@@ -66,16 +66,16 @@ $(document).ready(function() {
 				alertMsg = dedeAlter(`成功备份差异文件，目录：${rs.data.backupdir}`, 'success');
 				$("#_msgInfo").html(alertMsg);
 			}
-		})
-	})
+		});
+	});
 	$("#systemUpdate").click(function() {
 		if (hasNewVer === false) {
 			currentStep = 5;
 			showStepArea(currentStep);
-			$('#mdlUpdate').modal('show');
+			$("#mdlUpdate").modal("show");
 			return;
 		}
-		$('#mdlUpdate').modal('show');
+		$("#mdlUpdate").modal("show");
 		showStepArea(currentStep);
 		currentStep++;
 		$.get("api.php?action=get_changed_files", function(rs) {
@@ -92,8 +92,8 @@ $(document).ready(function() {
 			} else {
 				showStepArea(0);
 			}
-		})
-	})
+		});
+	});
 	$('#mdlUpdate').on('hidden.bs.modal', function(event) {
 		currentStep = 1;
 		$("#_msgInfo").html('');
@@ -117,8 +117,8 @@ $(document).ready(function() {
 			} else {
 				showStepArea(0);
 			}
-		})
-	})
+		});
+	});
 	$("#btnGoStep4").click(function() {
 		currentStep++
 		$("#_msgInfo").html('');
@@ -128,5 +128,5 @@ $(document).ready(function() {
 	})
 	$("#btnOK").click(function() {
 		hasNewVersion();
-	})
-})
+	});
+});

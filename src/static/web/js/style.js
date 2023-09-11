@@ -16,7 +16,7 @@ function GetCookie(c_name) {
 function SetCookie(c_name, value, expiredays) {
 	var exdate = new Date();
 	exdate.setDate(exdate.getDate() + expiredays);
-	document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()); //使设置的有效时间正确。添加toGMTString()
+	document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
 }
 //全局消息提示框，生成一个随机id
 function guid() {
@@ -180,13 +180,13 @@ function ErrorAddSave(id, title) {
 	});
 }
 $(function() {
-	$(window).on('scroll', function() {
+	$(window).on("scroll", function() {
 		var scrolled = $(window).scrollTop();
-		if (scrolled > 100) $('#returntop').show();
-		if (scrolled < 100) $('#returntop').hide();
+		if (scrolled > 100) $("#returntop").show();
+		if (scrolled < 100) $("#returntop").hide();
 	});
-	$('#returntop').on('click', function() {
-		$('html, body').animate({
+	$("#returntop").on("click", function() {
+		$("html, body").animate({
 			scrollTop: '0'
 		}, 500);
 	});
