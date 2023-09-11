@@ -681,17 +681,18 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 }
 @media (max-width:768px) {
 	.tips {
-	padding:0 15px
+		padding:0 15px
+	}
+	.tips-box {
+		width:100%
+	}
 }
-.tips-box {
-	width:100%
-}
-}@media (min-width:1200px) {
+@media (min-width:1200px) {
 	.web-info {
-	text-overflow:ellipsis;
-	white-space:nowrap
-}
-.modal-dialog {
-	max-width:500px
-}
+		text-overflow:ellipsis;
+		white-space:nowrap
+	}
+	.modal-dialog {
+		max-width:500px
+	}
 }
