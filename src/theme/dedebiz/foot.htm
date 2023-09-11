@@ -7,13 +7,14 @@
 <div class="scroll-top">
 	<button id="returntop" title="返回顶部"><i class="fa fa-chevron-up"></i> </button>
 </div>
-<script src="/static/web/js/bootstrap.min.js"></script>
-<script src="/static/web/js/style.js"></script>
+<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
+<script src="{dede:global.cfg_cmsurl/}/static/web/js/bootstrap.min.js"></script>
+<script src="{dede:global.cfg_cmsurl/}/static/web/js/style.js"></script>
 {dede:statistics/}
 <script>
-	$.get("/user/api.php?format=json",function(result) {
+	$.get("{dede:global.cfg_memberurl/}/api.php?format=json",function(result) {
 		if (result.code === 200) {
-			$("#_login").html(`<a href="/user" class="mr-3"><img src="${result.data.facepic}" alt="${result.data.username}" title="${result.data.username}" class="user-img-xs mr-1">${result.data.username}</a><a href="/user/pm.php" class="btn btn-primary btn-sm rounded-circle"><i class="fa fa-bell"></i></a><a href="/user/index_do.php?fmdo=login&dopost=exit" class="btn btn-success btn-sm rounded-circle"><i class="fa fa-sign-out"></i></a>`);
+			$("#_login").html(`<a href="{dede:global.cfg_memberurl/}/" class="mr-3"><img src="${result.data.facepic}" alt="${result.data.username}" title="${result.data.username}" class="user-img-xs mr-1">${result.data.username}</a><a href="{dede:global.cfg_memberurl/}/pm.php" class="btn btn-primary btn-sm rounded-circle"><i class="fa fa-bell"></i></a><a href="{dede:global.cfg_memberurl/}/index_do.php?fmdo=login&dopost=exit" class="btn btn-success btn-sm rounded-circle"><i class="fa fa-sign-out"></i></a>`);
 			$("#iptUsername").val(result.data.username);
 			$("#iptUsername").attr("disabled", "disabled");
 			$(".areaValidate").hide();

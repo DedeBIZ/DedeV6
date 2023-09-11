@@ -12,9 +12,6 @@
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css">
-		<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
-		<script src="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
 	</head>
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}
@@ -75,7 +72,178 @@
 				</div>
 			</div>
 		</main>
+		<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
 		{dede:include filename='foot.htm'/}
+		<script src="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
+		<script>
+			//获取顶踩数据
+			function GetDigg(aid,cid) {
+				let url = `{dede:global.cfg_phpurl/}/digg_ajax.php?id=${aid}&cid=${cid}&format=json`;
+				$.get(url, function (data) {
+					let reval = JSON.parse(data);
+					if (reval.code === 200) {
+						$("#goodpost").html(reval.data.goodpost);
+						$("#badpost").html(reval.data.badpost);
+						$("#goodper").css("width", `${reval.data.goodper}%`)
+						$("#badper").css("width", `${reval.data.badper}%`)
+					}
+				})
+			}
+			function PostDigg(ftype, aid) {
+				var saveid = GetCookie('diggid');
+				if (saveid != null) {
+					var saveids = saveid.split(',');
+					var hasid = false;
+					saveid = '';
+					j = 1;
+					for (i = saveids.length - 1; i >= 0; i--) {
+						if (saveids[i] == aid && hasid) continue;
+						else {
+							if (saveids[i] == aid && !hasid) hasid = true;
+							saveid += (saveid == '' ? saveids[i] : ',' + saveids[i]);
+							j++;
+							if (j == 20 && hasid) break;
+							if (j == 19 && !hasid) break;
+						}
+					}
+					if (hasid) { ShowMsg("您已经顶过该帖，请不要重复顶帖 "); return; }
+					else saveid += ',' + aid;
+					SetCookie('diggid', saveid, 1);
+				}
+				else {
+					SetCookie('diggid', aid, 1);
+				}
+				let url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action=" + ftype + "&id=" + aid + "&format=json&cid={dede:field.channel/}";
+				$.get(url, function (data) {
+					let reval = JSON.parse(data);
+					if (reval.code === 200) {
+						$("#goodpost").html(reval.data.goodpost);
+						$("#badpost").html(reval.data.badpost);
+						$("#goodper").css("width", `${reval.data.goodper}%`)
+						$("#badper").css("width", `${reval.data.badper}%`)
+					}
+				});
+			}
+			GetDigg("{dede:field.id/}", "{dede:field.channel/}");
+			//发表评论
+			function SendFeedback() {
+				let feedback = {
+					action: "send",
+					comtype: "comments",
+					aid: "{dede:field name='id'/}",
+					msg: $("#iptMsg").val(),
+					username: $("#iptUsername").val(),
+					validate: $("#iptValidate").val(),
+					notuser: $("#iptAny").is(":checked") ? "1" : "",
+				};
+				$.post("{dede:field name='phpurl'/}/feedback.php", feedback, function (data) {
+					let result = JSON.parse(data);
+					if (result.code === 200) {
+						ShowAlert("#feedback-alert", result.msg, "success");
+						$("#iptMsg").val("");
+						$("#iptValidate").val("");
+						($("#iptUsername").attr("disabled") !== "disabled") && $("#iptUsername").val("");
+						$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+					} else {
+						ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
+						$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+					}
+				});
+			}
+			//进行回复，回复必须登录
+			function SendReplyFeedback(fid) {
+				let content = $(`._feedback_reply[for="${fid}"]`).find(".iptReplyContent").val();
+				let reply = {
+					action : "send",
+					comtype : "reply",
+					fid : fid,
+					aid : "{dede:field name='id'/}",
+					msg : content,
+				}
+				$.post("{dede:field name='phpurl'/}/feedback.php", reply, function (data) {
+					let result = JSON.parse(data);
+					if (result.code === 200) {
+						ShowAlert(`._feedback_reply[for="${fid}"]`, result.msg, "success");
+					} else {
+						ShowAlert(`._feedback_reply[for="${fid}"]`, `评论失败：${result.msg}`, "danger");
+					}
+				})
+				$(`._feedback_reply[for="${fid}"]`).find(".btn-send").attr("disabled", "disabled");
+			}
+			//回复某个评论
+			function ReplyFeedback(fid) {
+				let replyPannel = `<div class="form-group">
+					<div class="input-group">
+						<input type="text" class="form-control iptReplyContent">
+						<button type="button" class="btn btn-success btn-send" onclick='SendReplyFeedback(${fid})'>评论</button>
+					</div>
+				</div>`;
+				$.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {
+					if (result.code !== 200) {
+						$(`._feedback_reply`).html("");
+						ShowAlert(`._feedback_reply[for="${fid}"]`, '回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/user/login.php">点击登录</a>后再来回复', 'warning', 5000);
+					} else {
+						$(`._feedback_reply`).html("");
+						$(`._feedback_reply[for="${fid}"]`).html(replyPannel);
+					}
+				});
+				$(`._feedback_reply[for="${fid}"]`).html('<i class="fa fa-spinner"></i>');
+			}
+			//加载回复评论
+			function LoadReplyFeedbacks(fid) {
+				$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner"></i>');
+				$.get("{dede:field name='phpurl'/}/feedback.php", {
+					"aid" : "{dede:field name='id'/}",
+					"fid" : fid,
+				}, function (data) {
+					let result = JSON.parse(data);
+					let tpl = `<div class="media py-3">
+						<img src="~face~" class="face mr-3">
+						<div class="media-body">
+							<div class="feedback-infos pb-3">
+								<div class="feedback-basic">
+									<span>~username~</span>
+									<span>~dtimestr~</span>
+								</div>
+								<div class="feedback-action">
+									<a href="javascript:GoodFeedback(~id~, ~good~)">
+										<i class="fa fa-thumbs-up"></i>
+										<i id="feedbackGood~id~">~good~</i>
+									</a>
+								</div>
+							</div>
+							<div class="feedback-content">~msg~</div>
+						</div>
+					</div>`;
+					if (result.code === 200) {
+						$(`.feedback_replies[for="${fid}"]`).html("");
+						for (let i = 0; i < result.data.length; i++) {
+							const feedback = result.data[i];
+							let rs = tpl;
+							for (const key in feedback) {
+								if (feedback.hasOwnProperty(key)) {
+									rs = rs.replace(new RegExp(`~${key}~`,"gm"), feedback[key])
+								}
+							}
+							$(`.feedback_replies[for="${fid}"]`).append(rs);
+						}
+					}
+				})
+			}
+			//赞
+			function GoodFeedback(fid, g) {
+				let good = {
+					action : "send",
+					feedbacktype : "good",
+					good : g,
+					fid : fid,
+				}
+				$.post("{dede:field name='phpurl'/}/feedback.php", good, function (data) {
+					let result = JSON.parse(data);
+					$(`#feedbackGood${fid}`).html(result.data);
+				})
+			}
+		</script>
 	</body>
 </html>
