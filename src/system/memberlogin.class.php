@@ -539,11 +539,11 @@ class MemberLogin
             $sta .= "您目前等级是：".$row['membername'];
             $rs = $this->dsql->GetOne("SELECT id FROM `#@__admin` WHERE userid='".$this->M_LoginID."'");
             if (!is_array($rs)) {
-                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= "，剩余<span class='text-primary'>".$this->M_HasDay."</span>天";
+                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= "，剩余".$this->M_HasDay."天";
                 elseif ($this->M_Rank > 10) $sta .= "，<span class='text-danger'>会员已到期</span>";
             }
         }
-        $sta .= "，积分<span class='text-primary'>{$this->M_Scores}</span>分，金币<span class='text-primary'>{$this->M_Money}</span>个，余额<span class='text-primary'>{$this->M_UserMoney}</span>元";
+        $sta .= "，积分{$this->M_Scores}分，金币{$this->M_Money}个，余额{$this->M_UserMoney}元";
         return $sta;
     }
     //获取能够发布文档的栏目

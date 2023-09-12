@@ -267,7 +267,7 @@ class DedeSqlite
             //echo $this->queryString."--{$queryTime}<hr/>\r\n";
         }
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError($this->linkID->lastErrorMsg()."<br>Error sql:<span class='text-primary'>".$this->queryString."</span>");
+            $this->DisplayError($this->linkID->lastErrorMsg()."<br>Error sql:".$this->queryString."");
         }
     }
     function Query($id = "me", $sql = '')

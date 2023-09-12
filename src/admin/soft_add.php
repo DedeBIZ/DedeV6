@@ -63,7 +63,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (!TestPurview('a_New')) {
-        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>权限");
+        CheckCatalog($typeid, "您没有操作栏目{$typeid}权限");
     }
     //对保存的文档进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();
@@ -198,7 +198,7 @@ if ($dopost != 'save') {
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
+        ShowMsg("没找到模型{$channelid}主表信息，无法完成操作", "javascript:;");
         exit();
     }
     $daccess = isset($daccess) && is_numeric($daccess) ? $daccess : 0;

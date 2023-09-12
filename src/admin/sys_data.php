@@ -41,9 +41,9 @@ else if ($dopost == "opimize") {
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
         if ($rs) {
-            echo "执行优化表<span class='text-primary'>$tablename</span>完成<br>";
+            echo "执行优化表<b>$tablename</b>完成";
         } else {
-            echo "执行优化表<span class='text-primary'>$tablename</span>失败，原因是：".$dsql->GetError();
+            echo "<br>执行优化表<b>$tablename</b>失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';
@@ -57,9 +57,9 @@ else if ($dopost == "repair") {
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
         if ($rs) {
-            echo "修复表<span class='text-primary'>$tablename</span>完成<br>";
+            echo "修复表<b>$tablename</b>完成";
         } else {
-            echo "修复表<span class='text-primary'>$tablename</span>失败，原因是：".$dsql->GetError();
+            echo "<br>修复表<b>$tablename</b>失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';

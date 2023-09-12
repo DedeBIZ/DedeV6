@@ -91,7 +91,7 @@ else if ($fmdo == "upload") {
             $j++;
         }
     }
-    ShowMsg("成功上传<span class='text-primary'>$j</span>个文件到<span class='text-primary'>$activepath</span>", "file_manage_main.php?activepath=$activepath");
+    ShowMsg("成功上传<b>$j</b>个文件到<b>$activepath</b>", "file_manage_main.php?activepath=$activepath");
     exit();
 }
 //空间检查

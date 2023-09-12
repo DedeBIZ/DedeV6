@@ -26,7 +26,10 @@
 				<?php if ($tagid > 0) {$row = $dsql->GetOne("SELECT tag FROM `#@__tagindex` WHERE id = '$tagid' ");?>
 				<tr>
 					<td width="260">输入标签：</td>
-					<td><input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-primary" href="makehtml_taglist.php">重新选择</a></td>
+					<td>
+						<input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?>
+						<a href="makehtml_taglist.php" class="btn btn-success btn-sm">重新选择</a>
+					</td>
 				</tr>
 				<?php } else {?>
 				<tr>

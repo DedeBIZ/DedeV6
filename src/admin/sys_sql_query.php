@@ -35,8 +35,8 @@ else if ($dopost == "opimize") {
         echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
-        if ($rs)  echo "执行优化表<span class='text-primary'>$tablename</span>完成<br>";
-        else echo "执行优化表<span class='text-primary'>$tablename</span>失败，原因是：".$dsql->GetError();
+        if ($rs)  echo "执行优化表<b>$tablename</b>完成";
+        else echo "<br>执行优化表<b>$tablename</b>失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -48,9 +48,9 @@ else if ($dopost == "opimizeAll") {
     while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `{$row[0]}`");
         if ($rs) {
-            echo "优化表<span class='text-primary'>{$row[0]}</span>完成<br>";
+            echo "优化表{$row[0]}完成";
         } else {
-            echo "优化表<span class='text-primary'>{$row[0]}</span>失败，原因是: ".$dsql->GetError()."<br>";
+            echo "<br>优化表{$row[0]}失败，原因是: ".$dsql->GetError();
         }
     }
     exit();
@@ -62,8 +62,8 @@ else if ($dopost == "repair") {
         echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
-        if ($rs) echo "修复表<span class='text-primary'>$tablename</span>完成<br>";
-        else echo "修复表<span class='text-primary'>$tablename</span>失败，原因是：".$dsql->GetError();
+        if ($rs) echo "修复表<b>$tablename</b>完成";
+        else echo "<br>修复表<b>$tablename</b>失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -75,9 +75,9 @@ else if ($dopost == "repairAll") {
     while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `{$row[0]}`");
         if ($rs) {
-            echo "修复表<span class='text-primary'>{$row[0]}</span>完成<br>";
+            echo "修复表{$row[0]}完成";
         } else {
-            echo "修复表<span class='text-primary'>{$row[0]}</span>失败，原因是: ".$dsql->GetError()."<br><br>";
+            echo "<br>修复表{$row[0]}失败，原因是: ".$dsql->GetError();
         }
     }
     exit();
@@ -96,9 +96,9 @@ else if ($dopost == "query") {
         $dsql->SetQuery($sqlquery);
         $dsql->Execute();
         if ($dsql->GetTotalRow() <= 0) {
-            echo "运行SQL：<span class='text-primary'>{$sqlquery}</span>，无返回记录<br>";
+            echo "运行SQL：{$sqlquery}无返回记录<br>";
         } else {
-            echo "运行SQL：<span class='text-primary'>{$sqlquery}</span>，共有<span class='text-primary'>".$dsql->GetTotalRow()."</span>条记录，最大返回100条<br>";
+            echo "运行SQL：{$sqlquery}共有".$dsql->GetTotalRow()."条记录，最大返回100条";
         }
         $j = 0;
         while ($row = $dsql->GetArray()) {
@@ -106,11 +106,11 @@ else if ($dopost == "query") {
             if ($j > 100) {
                 break;
             }
-            echo "<hr size=1 width='100%'/>";
-            echo "记录：<span class='text-primary'>$j</span>";
-            echo "<hr size=1 width='100%'/>";
+            echo "<hr>";
+            echo "记录：$j";
+            echo "<hr>";
             foreach ($row as $k => $v) {
-                echo "<span class='text-primary'>{$k}：</span>{$v}<br>\r\n";
+                echo "<b>{$k}：</b>{$v}<br>\r\n";
             }
         }
         exit();
@@ -131,15 +131,15 @@ else if ($dopost == "query") {
             if ($errCode == "") {
                 $i++;
             } else {
-                $nerrCode .= "执行<span class='text-primary'>$q</span>出错，错误提示：<span class='text-primary'>".$errCode."</span><br>";
+                $nerrCode .= "执行<b>$q</b>出错，错误提示：".$errCode."";
             }
         }
-        echo "成功执行<span class='text-primary'>{$i}</span>个SQL语句<br>";
+        echo "成功执行{$i}个SQL语句";
         echo $nerrCode;
     } else {
         $dsql->ExecuteNoneQuery($sqlquery);
         $nerrCode = trim($dsql->GetError());
-        echo "成功执行1个SQL语句<br>";
+        echo "成功执行1个SQL语句";
         echo $nerrCode;
     }
     exit();

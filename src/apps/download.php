@@ -165,7 +165,7 @@ else if ($open == 2) {
             }
             $memberTypes[0] = "游客或没权限会员";
             $msgtitle = "您没有权限下载软件：{$arctitle}";
-            $moremsg = "该软件需要等级<span class='text-primary'>".$memberTypes[$needRank]."</span>才能下载，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span><a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm ml-2'>升级会员</a>";
+            $moremsg = "该软件需要等级".$memberTypes[$needRank]."才能下载，您目前等级是".$memberTypes[$cfg_ml->M_Rank]." <a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm'>升级会员</a>";
             include_once(DEDETEMPLATE.'/apps/view_msg.htm');
             exit();
         }
@@ -178,7 +178,7 @@ else if ($open == 2) {
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {
                     $msgtitle = "您没有权限下载软件：{$arctitle}";
-                    $moremsg = "该软件需要消费<span class='text-primary'>".$needMoney."</span>金币才能下载，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><a class='btn btn-success btn-sm ml-2' href='{$cfg_memberurl}/buy.php' target='_blank'>充值金币</a>";
+                    $moremsg = "该软件需要消费".$needMoney."金币才能下载，您目前金币".$cfg_ml->M_Money." <a class='btn btn-success btn-sm' href='{$cfg_memberurl}/buy.php' target='_blank'>充值金币</a>";
                     include_once(DEDETEMPLATE.'/apps/view_msg.htm');
                     exit(0);
                 }

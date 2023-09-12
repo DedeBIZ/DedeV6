@@ -154,7 +154,7 @@ if ($fmdo == 'sendMail') {
         }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();
-            ShowMsg("您输入的账号<span class='text-primary'>{$userid}</span>已禁止", "index.php");
+            ShowMsg("您输入的账号{$userid}已禁止", "index.php");
             exit();
         }
         if ($pwd == '') {

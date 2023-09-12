@@ -33,7 +33,7 @@ if ($dopost == "") {
         showmsg('请输入正确的邮箱格式', '-1');
         exit;
     } else if (CheckUserID($userid, '', false) != 'ok') {
-        ShowMsg("您输入的账号<span class='text-primary'>{$userid}</span>不合法", "-1");
+        ShowMsg("您输入的账号{$userid}不合法", "-1");
         exit();
     }
     $member = member($mail, $userid);

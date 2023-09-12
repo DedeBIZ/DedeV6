@@ -208,7 +208,7 @@ else if ($dopost == "makeArchives") {
         $i++;
         $pageurl = MakeArt($aid, false);
     }
-    ShowMsg("成功更新指定<span class='text-primary'>$i</span>个文件", $ENV_GOBACK_URL);
+    ShowMsg("成功更新指定<b>$i</b>个文件", $ENV_GOBACK_URL);
     exit();
 }
 //审核文档
@@ -317,7 +317,7 @@ else if ($dopost == "checkArchives") {
             $arc = new Archives($aid);
             $arc->MakeHtml();
         }
-        ShowMsg("成功移动<span class='text-primary'>$j</span>个文档", $ENV_GOBACK_URL);
+        ShowMsg("成功移动<b>$j</b>个文档", $ENV_GOBACK_URL);
         exit();
     }
 }
@@ -373,7 +373,7 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("您确定删除，序号<span class='text-primary'>$qstr</span>文档吗");
+        $win->AddTitle("您确定删除，序号<b>$qstr</b>文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -424,7 +424,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("清空回收站<span class='text-primary'>$num</span>篇文档<br>您确定删除，序号<span class='text-primary'>$qstr</span>文档吗");
+        $win->AddTitle("清空回收站<b>$num</b>篇文档<br>您确定删除，序号<b>$qstr</b>文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -462,7 +462,7 @@ else if ($dopost == 'del') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确要删除，序号<span class='text-primary'>$qstr</span>文档吗");
+        $win->AddTitle("您确要删除，序号<b>$qstr</b>文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -556,7 +556,7 @@ else if ($dopost == 'quickEditSave') {
     require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
     //权限检测
     if (!TestPurview('a_Edit')) {
-        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
+        CheckCatalog($typeid, "您没有操作栏目{$typeid}文档权限");
     }
     $title = dede_htmlspecialchars(cn_substrR($title, $cfg_title_maxlen));
     $shorttitle = cn_substrR($shorttitle, 36);

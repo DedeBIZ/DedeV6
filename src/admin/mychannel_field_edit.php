@@ -50,7 +50,7 @@ if ($action == 'save') {
     $dfvalue = $vdefault;
     if (preg_match("#^(select|radio|checkbox)#", $dtype)) {
         if (!preg_match("#,#", $dfvalue)) {
-            ShowMsg("您设定了字段为<span class='text-primary'>{$dtype}</span>类型，必须在默认值中指定元素列表，如：'a,b,c' ", "-1");
+            ShowMsg("您设定了字段为{$dtype}类型，必须在默认值中指定元素列表，如：'a,b,c' ", "-1");
             exit();
         }
     }

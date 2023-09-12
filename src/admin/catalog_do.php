@@ -175,7 +175,7 @@ else if ($dopost == 'unitCatalog') {
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         if (!empty($row['dd'])) {
-            ShowMsg("栏目<span style='text-primary'>$typename（$typeid）</span>有子栏目，不能进行合并操作", '-1');
+            ShowMsg("栏目<b>$typename</b>有子栏目，不能进行合并操作", '-1');
             exit();
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
@@ -188,7 +188,7 @@ else if ($dopost == 'unitCatalog') {
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
         $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档网页和列表网页，栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况");
-        $win->AddItem('您选择的栏目是：', "<span class='text-primary'>$typename（$typeid）</span>");
+        $win->AddItem('您选择的栏目是：', "<b>$typename</b>");
         $win->AddItem('您希望合并到那个栏目', "<select name='unittype'>{$typeOptions}</select>");
         $winform = $win->GetWindow('ok');
         $win->Display();

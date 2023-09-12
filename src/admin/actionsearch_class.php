@@ -77,14 +77,14 @@ class ActionSearch
                 if ($key == 'title' || $key == 'description') {
                     //仅对title,description进行数组替换
                     if ($key == 'description') {
-                        $text[$key] = str_replace($this->keyword, '<span class="text-primary"><small>'.$this->keyword.'</small></span>', $text[$key]);
+                        $text[$key] = str_replace($this->keyword, '<b>'.$this->keyword.'</b>', $text[$key]);
                     } else {
-                        $text[$key] = str_replace($this->keyword, '<span class="text-primary">'.$this->keyword.'</span>', $text[$key]);
+                        $text[$key] = str_replace($this->keyword, '<b>'.$this->keyword.'</b>', $text[$key]);
                     }
                 }
             }
         } else {
-            $text = str_replace($this->keyword, '<span class="text-primary"><small>'.$this->keyword.'</small></span>', $text);
+            $text = str_replace($this->keyword, '<b>'.$this->keyword.'</b>', $text);
         }
         return $text;
     }

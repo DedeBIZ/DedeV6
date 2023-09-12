@@ -71,7 +71,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (!TestPurview('a_Edit')) {
-        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
+        CheckCatalog($typeid, "您没有操作栏目{$typeid}文档权限");
     }
     //对保存的文档进行处理
     $pubdate = GetMkTime($pubdate);

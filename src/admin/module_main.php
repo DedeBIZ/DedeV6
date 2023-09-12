@@ -36,7 +36,7 @@ function ReWriteConfigAuto()
     global $dsql;
     $configfile = DEDEDATA.'/config.cache.inc.php';
     if (!is_writeable($configfile)) {
-        echo "配置文件<span class='text-primary'>{$configfile}</span>不支持写入，无法修改系统配置参数";
+        echo "配置文件{$configfile}不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
@@ -203,7 +203,7 @@ if ($action == '') {
     exit();
 } else if ($action == 'setupstart') {
     if (!is_writeable($mdir)) {
-        ShowMsg("目录<span class='text-primary'>{$mdir}</span>不支持写入，这导致程序安装没法正常创建", "-1");
+        ShowMsg("目录{$mdir}不支持写入，这导致程序安装没法正常创建", "-1");
         exit();
     }
     $dm = new DedeModule($mdir);
@@ -303,7 +303,7 @@ if ($action == '') {
     } else if ($action == 'delok') {
     $dm = new DedeModule($mdir);
     $modfile = $mdir."/".$dm->GetHashFile($hash);
-    unlink($modfile) or die("删除文件<span class='text-primary'>{$modfile}</span>失败");
+    unlink($modfile) or die("删除文件{$modfile}失败");
     ShowMsg("成功删除一个模块文件", "module_main.php");
     exit();
 } else if ($action == 'uninstall') {
