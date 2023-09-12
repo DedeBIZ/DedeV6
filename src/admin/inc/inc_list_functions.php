@@ -77,11 +77,11 @@ function CheckPic($picname)
 function IsHtmlArchives($ismake)
 {
     if ($ismake == 1) {
-        return ' <span class="btn btn-warning btn-sm">已生成</span>';
+        return '已生成';
     } else if ($ismake == -1) {
-        return ' <span class="btn btn-warning btn-sm">仅动态</span>';
+        return '仅动态';
     } else {
-        return ' <span class="btn btn-danger btn-sm">未生成</span>';
+        return '未生成';
     }
 }
 //获得文档的限定级别名称
