@@ -1,13 +1,11 @@
 var currentStep = 1;
 var hasNewVer = false;
-//步骤
 function dedeAlter(msg, t = 'info', loading = false) {
 	let loadingStr = loading ? '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>' : '';
 	return `<div class="alert alert-${t}">${loadingStr}
 		${msg}
 	</div>`;
 }
-//显示步骤区域
 function showStepArea(step) {
 	$(".stepArea").hide();
 	$(".btnStep").hide();

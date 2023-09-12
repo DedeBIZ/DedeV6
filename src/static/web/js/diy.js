@@ -4,18 +4,18 @@ function SelectImage(sform, stype) {
         let frm = document.getElementsByName(s[0]);
         let ipt = document.getElementsByName(s[1]);
         let tmp = document.createElement("input");
-        tmp.id = 'field'+s[1];
+        tmp.id = "field" + s[1];
         tmp.type = "file";
-        tmp.style.display = 'none';
+        tmp.style.display = "none";
         if ($(`#${tmp.id}`).length === 0) {
             $(frm).append(tmp);
         }
         $(`#${tmp.id}`).click();
-        $(`#${tmp.id}`).off('change').change(function (val) {
+        $(`#${tmp.id}`).off("change").change(function (val) {
             const f = val.target.files[0];
             var formData = new FormData();
             var fileData = f;
-            formData.append('file', fileData);
+            formData.append("file", fileData);
             $.ajax({
                 url: '../user/api.php?action=upload&type=litpic',
                 type: 'POST',
@@ -44,7 +44,6 @@ $(document).ready(function() {
         "linkedCalendars": false,
         "timePicker": true,
         "timePicker24Hour": true,
-        //"timePickerSeconds": true,
         "showCustomRangeLabel": false,
         ranges: {
             '今日': [moment(), moment()],

@@ -31,7 +31,7 @@ function moveArc(e, obj, cid){
 		ShowMsg('请选择一个或多个文档');
 		return;
 	}
-	LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr=' + qstr + '&channelid=' + cid + '&rnd=' + Math.random(), 'moveArchives', 'auto', '180px');
+	LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr=' + qstr + '&channelid=' + cid + '&rnd=' + Math.random(), 'moveArchives', 'auto', '300px');
 	ChangeFullDiv('show');
 }
 function adArc(aid) {
@@ -46,7 +46,7 @@ function cAtts(jname, e, obj) {
 		ShowMsg('请选择一个或多个文档');
 		return;
 	}
-	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr=' + qstr + '&dojob=' + jname + '&rnd=' + Math.random(), 'attsDlg', 'auto', '180px');
+	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr=' + qstr + '&dojob=' + jname + '&rnd=' + Math.random(), 'attsDlg', 'auto', '300px');
 	ChangeFullDiv('show', screeheight);
 }
 function delArc(aid) {
@@ -58,7 +58,6 @@ function QuickEdit(aid, e, obj) {
 	LoadQuickDiv(e, 'archives_do.php?dopost=quickEdit&aid=' + aid + '&rnd=' + Math.random(), 'quickEdit', 'auto', '300px');
 	ChangeFullDiv('show');
 }
-//获得选中文件的文件名
 function getCheckboxItem() {
 	var allSel = "";
 	if (document.form2.arcID.value) return document.form2.arcID.value;
@@ -72,7 +71,6 @@ function getCheckboxItem() {
 	}
 	return allSel;
 }
-//获得选中其中一个的id
 function getOneItem() {
 	var allSel = '';
 	if (document.form2.arcID.value) return document.form2.arcID.value;

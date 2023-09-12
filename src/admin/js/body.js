@@ -6,7 +6,7 @@ Date.prototype.Format = function(fmt) {
 		"m+" : this.getMinutes(), //分 
 		"s+" : this.getSeconds(), //秒 
 		"q+" : Math.floor((this.getMonth() + 3) / 3), //季度 
-		"S" : this.getMilliseconds() //毫秒 
+		"S" : this.getMilliseconds(), //毫秒 
 	};
 	if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
 	for (var k in o)
@@ -106,28 +106,28 @@ async function LoadStatChart() {
 					lineTension: .5,
 					borderColor: 'rgba(54, 162, 235, 1)',
 					backgroundColor: 'rgba(54, 162, 235, 0.1)',
-					borderWidth: 2
+					borderWidth: 2,
 				}, {
 					label: 'UV',
 					data: uvs,
 					lineTension: .5,
 					borderColor: 'rgba(255, 206, 86, 1)',
 					backgroundColor: 'rgba(255, 206, 86, 0.1)',
-					borderWidth: 2
+					borderWidth: 2,
 				}, {
 					label: 'IP',
 					data: ips,
 					lineTension: .5,
 					borderColor: 'rgba(255, 99, 132, 1)',
 					backgroundColor: 'rgba(255, 99, 132, 0.1)',
-					borderWidth: 2
+					borderWidth: 2,
 				}, {
 					label: 'VV',
 					data: vvs,
 					lineTension: .5,
 					borderColor: 'rgba(75, 192, 192, 1)',
 					backgroundColor: 'rgba(75, 192, 192, 0.1)',
-					borderWidth: 2
+					borderWidth: 2,
 				}
 			]
 		},

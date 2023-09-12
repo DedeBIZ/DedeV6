@@ -1,5 +1,4 @@
 var BROWSER = {};
-var USERAGENT = navigator.userAgent.toLowerCase();
 if (BROWSER.safari) {
 	BROWSER.firefox = true;
 }

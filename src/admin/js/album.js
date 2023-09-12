@@ -15,9 +15,9 @@ function checkSubmitAlb() {
 		$("#gallery .atlas").each(function() {
 			albums.push({
 				"img": $(this).find("img").attr("src"),
-				"txt": $(this).find("input").val()
-			})
-		})
+				"txt": $(this).find("input").val(),
+			});
+		});
 	}
 	$("#albums").val(JSON.stringify(albums));
 	return true;
