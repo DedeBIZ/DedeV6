@@ -110,7 +110,7 @@ else if ($dopost == "query") {
             echo "记录：$j";
             echo "<hr>";
             foreach ($row as $k => $v) {
-                echo "<b>{$k}：</b>{$v}<br>\r\n";
+                echo "{$k}：{$v}<br>\r\n";
             }
         }
         exit();
