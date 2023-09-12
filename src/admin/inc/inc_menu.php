@@ -64,7 +64,6 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='图片水印设置' link='sys_info_mark.php' rank='sys_Edit' target='main' />
     <m:item name='自定义文档属性' link='content_att.php' rank='sys_Att' target='main' />
     <m:item name='软件下载设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
-    <m:item name='防采集工具' link='article_string_mix.php' rank='sys_StringMix' target='main' />
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据备份还原' link='sys_data.php' rank='sys_Data' target='main' />")."
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='SQL命令工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
     <m:item name='文件扫描工具' link='sys_safetest.php' rank='sys_verify' target='main' />

@@ -13,41 +13,34 @@ $cuserLogin = new userLogin();
 //后台功能操作配置项
 $actionSearch[0] = array(
     'title'  => '常用操作',
-    'description' => '后台常用操作',
     'soniterm' =>  array(
         0  =>  array(
             'title' => '网站栏目管理',
-            'description' => '网站所有栏目管理',
             'purview' => 't_List,t_AccList',
             'linkurl' => 'catalog_main.php'
         ),
         1  =>  array(
             'title' => '待审核的文档',
-            'description' => '所有文档模型发表未审核列表',
             'purview' => 'a_Check,a_AccCheck',
             'linkurl' => 'content_list.php?arcrank=-1'
         ),
         2  =>  array(
             'title' => '我发布的文档',
-            'description' => '后台管理登录所发表的文档',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'content_list.php?mid=$cuserLogin->userID'
         ),
         3  =>  array(
             'title' => '标签管理',
-            'description' => '网站所有标签管理',
             'purview' => 'sys_Keyword',
             'linkurl' => 'tags_main.php'
         ),
         4  =>  array(
             'title' => '评论管理',
-            'description' => '网站所有评论管理',
             'purview' => 'sys_Feedback',
             'linkurl' => 'feedback_main.php'
         ),
         5  =>  array(
             'title' => '专题管理',
-            'description' => '网站所有专题管理',
             'purview' => 'spec_New',
             'linkurl' => 'content_s_list.php'
         ),
@@ -61,23 +54,14 @@ $actionSearch[0] = array(
 );
 $actionSearch[2] = array(
     'title' => '附件管理',
-    'description' => '网站所有附件管理',
     'soniterm' => array(
         0  =>  array(
-            'title' => '上传新文件',
-            'description' => '上传图片、FLASH、视频音频、附件等其它附件',
-            'purview' => '',
-            'linkurl' => 'media_add.php'
-        ),
-        1  =>  array(
             'title' => '附件管理',
-            'description' => '网站所有附件管理',
             'purview' => 'sys_Upload,sys_MyUpload',
             'linkurl' => 'media_main.php'
         ),
-        2  =>  array(
+        1  =>  array(
             'title' => '文件管理器',
-            'description' => '文件浏览式附件管理',
             'purview' => 'plus_文件管理器',
             'linkurl' => 'media_main.php?dopost=filemanager'
         ),
@@ -85,41 +69,34 @@ $actionSearch[2] = array(
 );
 $actionSearch[3] = array(
     'title' => '文档模型',
-    'description' => '所有文档模型管理',
     'soniterm' => array(
         0  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => '文档模型管理',
-            'description' => '网站文档、图片、软件、专题、分类等模型管理',
             'purview' => 'c_List',
             'linkurl' => 'mychannel_main.php'
         ),
         1  =>  array(
             'title' => '文档单页管理',
-            'description' => '创建和管理单页面',
             'purview' => 'temp_One',
             'linkurl' => 'templets_one.php'
         ),
         2  =>  array(
             'title' => '联动类型管理',
-            'description' => '创建和管理所有联动类型',
             'purview' => 'c_Stepseclect',
             'linkurl' => 'stepselect_main.php?dopost=filemanager'
         ),
         3  =>  array(
             'title' => '自由列表管理',
-            'description' => '创建不同的列表形式',
             'purview' => 'c_List',
             'linkurl' => 'freelist_main.php'
         ),
         3  =>  array(
             'title' => '自定义文档属性',
-            'description' => '自定义文档属性管理',
             'purview' => 'sys_Att',
             'linkurl' => 'content_att.php'
         ),
         4  =>  array(
             'title' => '自定义表单管理',
-            'description' => '创建和管理自定义表单',
             'purview' => 'c_List',
             'linkurl' => 'diy_main.php'
         ),
@@ -127,41 +104,34 @@ $actionSearch[3] = array(
 );
 $actionSearch[4] = array(
     'title' => '批量维护',
-    'description' => '网站数据维护',
     'soniterm' => array(
         0  =>  array(
             'title' => '文档批量维护',
-            'description' => '某个栏目或者全部栏目的文档进行批量审核文档、更新网页、移动文档、删除文档',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'content_batch_up.php'
         ),
         1  =>  array(
             'title' => '文档重复检测',
-            'description' => '网站重复标题文档处理',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'article_test_same.php'
         ),
         3  =>  array(
             'title' => '文档关键词维护',
-            'description' => '所有文档关键词批量维护',
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_keywords_main.php'
         ),
         4  =>  array(
             'title' => '搜索关键词维护',
-            'description' => '所有搜索关键词管理',
             'purview' => 'sys_Keyword',
             'linkurl' => 'search_keywords_main.php?dopost=filemanager'
         ),
         5  =>  array(
             'title' => '自动摘要分页',
-            'description' => '没有填写描述的文档或没分页的文档的自动分页标识自动更新',
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_description_main.php'
         ),
         6  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => '数据库字段替换',
-            'description' => '网站数据库字段批量替换',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_data_replace.php'
         ),
@@ -169,29 +139,24 @@ $actionSearch[4] = array(
 );
 $actionSearch[5] = array(
     'title' => '会员管理',
-    'description' => '网站所有会员管理',
     'soniterm' => array(
         0  =>  array(
             'title' => '所有会员列表',
-            'description' => '所有会员修改删除，查看会员文档以及提升管理员',
             'purview' => 'member_List',
             'linkurl' => 'member_main.php'
         ),
         1  =>  array(
             'title' => '会员短信管理',
-            'description' => '会员发送的短消息，其中包含群发短消息和对单个会员发送短消息两种',
             'purview' => 'member_Type',
             'linkurl' => 'member_pm.php'
         ),
         2  =>  array(
             'title' => '会员级别设置',
-            'description' => '会员级别设置，通过不同会员的浏览权限来对会员级别进行一个扩展',
             'purview' => 'member_Type',
             'linkurl' => 'member_rank.php'
         ),
         3  =>  array(
             'title' => '积分头衔设置',
-            'description' => '会员积分等级设置，根据活动积分对会员进行头衔管理',
             'purview' => 'member_Type',
             'linkurl' => 'member_scores.php'
         ),
@@ -199,35 +164,29 @@ $actionSearch[5] = array(
 );
 $actionSearch[6] = array(
     'title' => '支付工具',
-    'description' => '配置支付方式',
     'soniterm' => array(
         0  =>  array(
             'title' => '积分产品管理',
-            'description' => '网站积分产品管理，生成积分以及查看积分使用状态',
             'purview' => 'sys_Data',
             'linkurl' => 'cards_manage.php'
         ),
         1  =>  array(
             'title' => '积分产品分类',
-            'description' => '网站积分产品分类，添加不同点数的积分产品类型',
             'purview' => 'sys_Data',
             'linkurl' => 'cards_type.php'
         ),
         2  =>  array(
             'title' => '会员消费记录',
-            'description' => '会员消费记录，查看消费充值订单的付款情况',
             'purview' => 'sys_Data',
             'linkurl' => 'member_operations.php'
         ),
         3  =>  array(
             'title' => '会员等级分类',
-            'description' => '会员等级分类划分，设置网站会员等级',
             'purview' => 'sys_Data',
             'linkurl' => 'member_type.php'
         ),
         4  =>  array(
             'title' => '支付接口设置',
-            'description' => '网站支付接口配置',
             'purview' => 'sys_Data',
             'linkurl' => 'sys_payment.php'
         ),
@@ -235,41 +194,34 @@ $actionSearch[6] = array(
 );
 $actionSearch[7] = array(
     'title' => '更新任务',
-    'description' => '一键生成静态管理',
     'soniterm' => array(
         0  =>  array(
             'title' => '更新网站',
-            'description' => '生成所有静态页面',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_all.php'
         ),
         1  =>  array(
             'title' => '更新首页',
-            'description' => '生成网站首页面',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_homepage.php'
         ),
         2  =>  array(
             'title' => '更新栏目',
-            'description' => '生成栏目页面',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_list.php'
         ),
         3  =>  array(
             'title' => '更新文档',
-            'description' => '生成文档页面',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_archives.php'
         ),
         4  =>  array(
             'title' => '更新专题',
-            'description' => '生成专题页面',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_spec.php'
         ),
         5  =>  array(
             'title' => '更新缓存',
-            'description' => '更新栏目缓存、更新枚举缓存、清理文档调用缓存、清理过期会员浏览历史、删除过期会员短信',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_cache_up.php'
         ),
@@ -277,35 +229,29 @@ $actionSearch[7] = array(
 );
 $actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
     'title' => '模板管理',
-    'description' => '网站主题模板管理',
     'soniterm' => array(
         0  => array(
             'title' => '默认模板管理',
-            'description' => '网站主题模板文件管理',
             'purview' => 'temp_All',
             'linkurl' => 'templets_main.php'
         ),
         1  => array(
             'title' => '标签源码管理',
-            'description' => '系统标签文件修改',
             'purview' => 'temp_All',
             'linkurl' => 'templets_tagsource.php'
         ),
         2  =>  array(
             'title' => '自定义宏标记',
-            'description' => '所有自定义标记管理',
             'purview' => 'temp_MyTag',
             'linkurl' => 'mytag_main.php'
         ),
         3  =>  array(
             'title' => '智能标记向导',
-            'description' => '根据需要生成相应的调用标签',
             'purview' => 'temp_Other',
             'linkurl' => 'mytag_tag_guide.php'
         ),
         4  =>  array(
             'title' => '全局标记测试',
-            'description' => '全局标签调用测试',
             'purview' => 'temp_Test',
             'linkurl' => 'tag_test.php'
         ),
@@ -313,77 +259,54 @@ $actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
 );
 $actionSearch[9] = array(
     'title' => '系统设置',
-    'description' => '后台系统设置',
     'soniterm' => array(
         0  =>  array(
             'title' => '系统设置',
-            'description' => '站点设置、核心设置、附件设置、会员设置、互动设置、性能选项、其它选项、添加新变量等功能设置',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info.php'
         ),
         1  =>  array(
             'title' => '管理员管理',
-            'description' => '网站管理员管理',
             'purview' => 'sys_User',
             'linkurl' => 'sys_admin_user.php'
         ),
         2  =>  array(
             'title' => '会员组管理',
-            'description' => '网站管理员组权限管理',
             'purview' => 'sys_Group',
             'linkurl' => 'sys_group.php'
         ),
         3  =>  array(
             'title' => '日志管理',
-            'description' => '登录后台管理员操作进行记录',
             'purview' => 'sys_Log',
             'linkurl' => 'log_list.php'
         ),
         5  =>  array(
             'title' => '图片水印设置',
-            'description' => '上传图片添加水印设置',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info_mark.php'
         ),
-        /*5  =>  array(
-            'title' => '云服务设置',
-            'description' => '主流云服务平台支持',
-            'purview' => 'sys_Edit',
-            'linkurl' => 'sys_cloud.php'
-        ),*/
         6  =>  array(
             'title' => '软件下载设置',
-            'description' => '软件下载连接显示方式，下载方式等配置',
             'purview' => 'sys_SoftConfig',
             'linkurl' => 'soft_config.php'
         ),
-        7  =>  array(
-            'title' => '防采集工具',
-            'description' => '网站防采集工具',
-            'purview' => 'sys_StringMix',
-            'linkurl' => 'article_string_mix.php'
-        ),
-        8  => DEDEBIZ_SAFE_MODE? null : array(
+        7  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => '数据库备份还原',
-            'description' => '数据库备份和还原数据备份',
             'purview' => 'sys_data',
             'linkurl' => 'sys_data.php'
         ),
-        9  => DEDEBIZ_SAFE_MODE? null : array(
+        8  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => 'SQL命令工具',
-            'description' => '数据表执行单行或者多行的SQL语句',
             'purview' => 'sys_data',
             'linkurl' => 'sys_sql_query.php'
         ),
-        10  =>  array(
+        9  =>  array(
             'title' => '文件扫描工具',
-            'description' => '以DedeBIZ开发模式为标准对现有的文件进行扫描判断',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_safetest.php'
         ),
-        11  =>  array(
+        10  =>  array(
             'title' => '系统修复工具',
-            'description' => '手动和自动升级错误处理',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_repair.php'
         ),

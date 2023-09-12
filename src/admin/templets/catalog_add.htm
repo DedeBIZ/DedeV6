@@ -167,9 +167,9 @@
 					</td>
 					<td>栏目交叉：</td>
 					<td>
-						<label class="l-height-30"><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" checked="checked"> 不交叉</label>
-						<label class="l-height-30"><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()"> 自动获取同名栏目</label>
-						<label class="l-height-30"><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 指定交叉栏目id（英文逗号分开）</label>
+						<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" checked="checked"> 不交叉</label>
+						<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()"> 自动获取同名栏目</label>
+						<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 指定交叉栏目id（英文逗号分开）</label>
 						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="display:none"></textarea>
 						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是大栏目与另一个非子栏目交叉的情况，相当于副栏目功能，需要在栏目里设置好</div>
@@ -266,9 +266,9 @@
 					<td>是否支持跨站调用：</td>
 					<td>
 						<input type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
-						<label class="l-height-30"><input type="radio" name="apienabled" value="1"> 支持</label>
-						<label class="l-height-30"><input type="radio" name="apienabled" value="0" checked="checked"> 不支持</label>
-						<span class="btn btn-success btn-sm ml-2" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
+						<label><input type="radio" name="apienabled" value="1"> 支持</label>
+						<label><input type="radio" name="apienabled" value="0" checked="checked"> 不支持</label>
+						<span class="btn btn-success btn-sm" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
 					</td>
 				</tr>
 				<tr>

@@ -49,11 +49,10 @@ class ActionSearch
                     //进行权限判断
                     if (TestPurview($val['purview'])) {
                         //如果有操作权限
-                        if ($this->_strpos($val['title'], $this->keyword) !== false || $this->_strpos($val['description'], $this->keyword) !== false) {
+                        if ($this->_strpos($val['title'], $this->keyword) !== false) {
                             //一级项目匹配
                             $this->result[$i]['toptitle'] = $this->redColorKeyword($this->asarray[$key]['toptitle']);
                             $this->result[$i]['title'] = $this->redColorKeyword($this->asarray[$key]['title']);
-                            $this->result[$i]['description'] = $this->redColorKeyword($this->asarray[$key]['description']);
                             //二级项目匹配
                             $this->result[$i]['soniterm'][] = $this->redColorKeyword($val);
                         }
@@ -74,13 +73,8 @@ class ActionSearch
     {
         if (is_array($text)) {
             foreach ($text as $key => $value) {
-                if ($key == 'title' || $key == 'description') {
-                    //仅对title,description进行数组替换
-                    if ($key == 'description') {
-                        $text[$key] = str_replace($this->keyword, '<b>'.$this->keyword.'</b>', $text[$key]);
-                    } else {
-                        $text[$key] = str_replace($this->keyword, '<b>'.$this->keyword.'</b>', $text[$key]);
-                    }
+                if ($key == 'title') {
+                    $text[$key] = str_replace($this->keyword, '<b>'.$this->keyword.'</b>', $text[$key]);
                 }
             }
         } else {

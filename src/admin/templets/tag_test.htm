@@ -29,7 +29,7 @@
 						if (empty($cid)) $cid="0";
 						$tl = new TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
-						echo "<select name='typeid' class='admin-input-sm ml-2'>";
+						echo "<select name='typeid' class='admin-input-sm'>";
 						if ($cid=="0") echo "<option value='0' selected>不使用环境</option>";
 						echo $typeOptions;
 						echo "</select>";

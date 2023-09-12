@@ -190,9 +190,6 @@
 		?>
 		<table align="center" class="table maintable mb-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="8">联动枚举组管理</td>
-			</tr>
-			<tr>
 				<td bgcolor="#f5f5f5" colspan="8">
 					<span class="float-left"><?php echo $selgroup;?> - 子分类管理</span>
 					<span class="float-right">
@@ -210,14 +207,14 @@
 						<input type="hidden" name="action" value="addenum_save">
 						<input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
 						<input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
-						<span class="float-left ml-2">隶属分类：
-							<select name="topvalue" onChange="ChangePage2(this)" class="admin-input-sm">
-								<option value="0"><?php echo $selgroup;?></option>
-								<?php echo $options;?>
-							</select>
-						</span>
-						<span class="float-left ml-2">分类名称：<input type="text" name="ename" class="admin-input-lg"></span>
-						<span class="float-left ml-2"><button type="submit" name="sb2" class="btn btn-success btn-sm">添加分类</button></span>
+						<span>隶属分类：</span>
+						<select name="topvalue" onChange="ChangePage2(this)" class="admin-input-sm">
+							<option value="0"><?php echo $selgroup;?></option>
+							<?php echo $options;?>
+						</select>
+						<span>分类名称：</span>
+						<input type="text" name="ename" class="admin-input-lg"></span>
+						<button type="submit" name="sb2" class="btn btn-success btn-sm">添加分类</button>
 					</form>
 				</td>
 			</tr>
