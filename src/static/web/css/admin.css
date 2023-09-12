@@ -562,6 +562,7 @@ body.hidemenu .body-right {
 }
 .admin-main-sort {
 	margin-left:1rem;
+	padding:0;
 	width:30px;
 	text-align:center
 }
