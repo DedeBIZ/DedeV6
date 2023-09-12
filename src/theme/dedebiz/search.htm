@@ -27,7 +27,7 @@
 				<div class="col-12 m-pb-2">
 					<div class="row">{dede:list pagesize='10'}
 						<div class="col-md-12 mb-3">
-							<div class="list-article mb-3">
+							<article class="list-article mb-3">
 								<div class="list-article-body bg-white rounded shadow-sm p-3">
 									<h2 class="mb-3"><a href="[field:arcurl/]">[field:title/]</a></h2>
 									<div class="mb-3">
@@ -36,7 +36,7 @@
 									</div>
 									<p>[field:description function='cn_substr(Html2text("@me"),180)'/]...</p>
 								</div>
-							</div>
+							</article>
 						</div>{/dede:list}
 					</div>
 					<ul class="pagination">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>

@@ -31,7 +31,7 @@
 		<main class="container py-3">
 			<div class="row">
 				<div class="col-md-9">
-					<div class="article-main bg-white shadow-sm rounded p-3">
+					<article class="article-main bg-white shadow-sm rounded p-3">
 						<h2>{dede:field.title/}</h2>
 						<div class="article-meta">
 							<a href="{dede:field.userurl/}" target="_blank"><span><img src="{dede:field.face/}" class="user-img-xs mr-1">{dede:field.uname/}</span></a>
@@ -63,13 +63,13 @@
 						</div>
 						{dede:include filename='widget_article_likes.htm'/}
 						{dede:include filename='widget_article_feedback.htm'/}
-					</div>
+					</article>
 				</div>
-				<div class="col-md-3">
+				<aside class="col-md-3">
 					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
 					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
 					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
-				</div>
+				</aside>
 			</div>
 		</main>
 		<script>const PHPURL = '{dede:field name="phpurl"/}';</script>

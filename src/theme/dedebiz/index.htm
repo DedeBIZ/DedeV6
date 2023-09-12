@@ -15,7 +15,7 @@
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
-		<div class="container py-3">
+		<section class="container py-3">
 			<div class="row">
 				<div class="col-md-3 m-pb-2">{dede:include comment='栏目列表' filename='widget_menu.htm'/}</div>
 				<div class="col-md-6 m-pb-2">
@@ -46,8 +46,8 @@
 				</div>
 				<div class="col-md-3">{dede:include comment='推荐文档' filename='widget_recommend.htm'/}</div>
 			</div>
-		</div>
-		<div class="container py-3">
+		</section>
+		<section class="container py-3">
 			<div class="row biz-mb">{dede:channelartlist typeid='1,1'}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
@@ -55,7 +55,7 @@
 					</div>
 				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
-					<div class="item-theme bg-white shadow-sm rounded">
+					<article class="item-theme bg-white shadow-sm rounded">
 						<div class="item-theme-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
 						<div class="item-theme-box">
 							<h4 class="mb-3"><a href="[field:arcurl/]" target="_blank">[field:flag runphp='yes']if (stristr(@me,"h")) @me="<span class='btn btn-success btn-sm mr-2'>头条</span>";else if(stristr(@me,"c")) @me="<span class='btn btn-success btn-sm mr-2'>推荐</span>";else @me="";[/field:flag][field:title/]</a></h4>
@@ -70,11 +70,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</article>
 				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
-		</div><!--该布局适用于软件模型-->
-		<div class="container py-3">
+		</section><!--该布局适用于软件模型-->
+		<section class="container py-3">
 			<div class="row biz-mb">{dede:channelartlist typeid='2,2'}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
@@ -82,7 +82,7 @@
 					</div>
 				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
-					<div class="item-news bg-white shadow-sm rounded">
+					<article class="item-news bg-white shadow-sm rounded">
 						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
 						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
 						<div class="mb-3">
@@ -92,38 +92,38 @@
 							<span>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 						</div>
 						<p>[field:description function="cn_substr(@me,180)"/]... </p>
-					</div>
+					</article>
 				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
-		</div><!--该布局适用于文档和图片模型-->
-		<div class="container py-3">
+		</section><!--该布局适用于文档和图片模型-->
+		<section class="container py-3">
 			<div class="row">{dede:channelartlist typeid='3,3'}
 				<div class="col-md-4 m-pb-2">
-					<div class="item-article bg-white shadow-sm rounded p-3">
+					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
 						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
-					</div>
+					</article>
 				</div>{/dede:channelartlist}{dede:channelartlist typeid='4,4'}
 				<div class="col-md-4">
-					<div class="item-article bg-white shadow-sm rounded p-3">
+					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
 						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
-					</div>
+					</article>
 				</div>{/dede:channelartlist}{dede:channelartlist typeid='5,5'}
 				<div class="col-md-4">
-					<div class="item-article bg-white shadow-sm rounded p-3">
+					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
 						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
-					</div>
+					</article>
 				</div>{/dede:channelartlist}
 			</div>
-		</div><!--该布局适用于文档和图片模型-->
+		</section><!--该布局适用于文档和图片模型-->
 		{dede:include filename='foot.htm'/}
 	</body>
 </html>

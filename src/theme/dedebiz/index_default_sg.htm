@@ -33,20 +33,20 @@
 					<div class="row">
 						{dede:channelartlist}
 						<div class="col-md-6 mb-3">
-							<div class="item-article bg-white shadow-sm rounded mb-3 p-3">
+							<article class="item-article bg-white shadow-sm rounded mb-3 p-3">
 								<h2 class="mb-3">{dede:field.typename/}</h2>
 								<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
 									<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 								</ul>
-							</div>
+							</article>
 						</div>{/dede:channelartlist}
 					</div>
 				</div>
-				<div class="col-md-3">
+				<aside class="col-md-3">
 					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
 					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
 					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
-				</div>
+				</aside>
 			</div>
 		</main>
 		{dede:include filename='foot.htm'/}

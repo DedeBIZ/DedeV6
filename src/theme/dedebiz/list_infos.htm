@@ -42,7 +42,7 @@
 						{/dede:infolink}
 						{dede:list pagesize='10'}
 						<div class="col-md-12 mb-3">
-							<div class="list-article mb-3">
+							<article class="list-article mb-3">
 								<div class="list-article-body bg-white rounded shadow-sm p-3">
 									<h2 class="mb-3"><a href="[field:arcurl/]">[field:title/]</a></h2>
 									<div class="mb-3">
@@ -51,12 +51,12 @@
 									</div>
 									<p>[field:description function="cn_substr(@me,180)"/]...</p>
 								</div>
-							</div>
+							</article>
 						</div>{/dede:list}
 					</div>
 					<ul class="pagination">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 				</div>
-				<div class="col-md-3">
+				<aside class="col-md-3">
 					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
 					<div class="py-3">
 						<div class="list-info-search bg-white shadow-sm rounded p-3">
@@ -79,7 +79,7 @@
 					</div>
 					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
 					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
-				</div>
+				</aside>
 			</div>
 		</main>
 		{dede:include filename='foot.htm'/}

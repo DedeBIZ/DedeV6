@@ -35,7 +35,7 @@
 					</div>
 				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
-					<div class="item-news bg-white shadow-sm rounded">
+					<article class="item-news bg-white shadow-sm rounded">
 						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
 						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
 						<div class="mb-3">
@@ -48,7 +48,7 @@
 						<div>
 							<span class="mr-2">下载次数：<script src="/apps/disdls.php?aid=[field:id/]"></script></span>
 						</div>
-					</div>
+					</article>
 				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
 		</main>
