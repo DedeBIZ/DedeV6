@@ -84,9 +84,9 @@ if ($fmdo == 'sendMail') {
             $msg = CheckUserID($uid, $msgtitle, false);
         }
         if ($msg == 'ok') {
-            $msg = "<span class='text-success'><i class='fa fa-check'></i> {$msgtitle}可以使用</span>";
+            $msg = "{$msgtitle}可以使用";
         } else {
-            $msg = "<span class='text-danger'><i class='fa fa-times'></i> {$msg}</span>";
+            $msg = "{$msg}";
         }
         echo $msg;
         exit();
@@ -95,16 +95,16 @@ if ($fmdo == 'sendMail') {
     else  if ($dopost == "checkmail") {
         AjaxHead();
         if ($cfg_md_mailtest == 'N') {
-            $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
+            $msg = "可以使用";
         } else {
             if (!CheckEmail($email)) {
-                $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱格式有误</span>";
+                $msg = "邮箱格式有误";
             } else {
                 $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE email LIKE '$email' LIMIT 1");
                 if (!is_array($row)) {
-                    $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
+                    $msg = "可以使用";
                 } else {
-                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个账户占用</span>";
+                    $msg = "邮箱已经被另一个账号占用";
                 }
             }
         }
