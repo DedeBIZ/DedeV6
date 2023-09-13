@@ -114,7 +114,7 @@ $adminMenu1
     <m:item name='积分头衔设置' link='member_scores.php' rank='member_Type' target='main' />
 </m:top>
 $adminMenu2
-<m:top item='12_' name='系统帮助' icon='fa fa-info-circle'>
+<m:top item='12_' name='系统帮助' icon='fa fa-question-circle'>
     <m:item name='系统概况' link='$cfg_biz_helpUrl' rank='' target='_blank' />
     <m:item name='代码托管' link='$cfg_biz_gitUrl' rank='' target='_blank' />
 </m:top>";

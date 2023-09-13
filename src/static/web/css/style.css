@@ -21,15 +21,16 @@ body {
 	background:#fff
 }
 a {
-	color:#545b62
+	color:#545b62;
+	text-decoration:none
 }
 a:hover {
-	color:#ff8400;
+	color:#007bff;
 	text-decoration:none
 }
 img {
 	max-width:100%;
-	border-radius:.5rem
+	border-radius:0.5rem
 }
 ul,ol,li {
 	margin:0;
@@ -89,8 +90,7 @@ input[type=file] {
 	margin-bottom:0
 }
 .item-theme {
-	margin-bottom:2rem;
-	transition:all .5s
+	margin-bottom:2rem
 }
 .item-theme-box {
 	padding:1.5rem
@@ -110,15 +110,15 @@ input[type=file] {
 }
 .item-news {
 	margin-bottom:2rem;
-	padding:1.5rem;
-	transition:all .5s
+	padding:1.5rem
 }
 .item-theme:hover,.item-news:hover {
 	box-shadow:0 14px 30px -16px rgba(0,36,100,.25);
-	transform:translateY(-6px)
+	transform:translateY(-6px);
+	transition:all 0.5s
 }
 .item-news h4 {
-	margin:20px 0 16px;
+	margin:20px 0 15px;
 	overflow:hidden;
 	text-overflow:ellipsis;
 	white-space:nowrap
@@ -356,7 +356,7 @@ input[type=file] {
 	color:#545b62
 }
 .table td,.table th {
-	padding:.65rem;
+	padding:0.5rem;
 	vertical-align:middle
 }
 .form-control {
@@ -364,11 +364,8 @@ input[type=file] {
 	height:36px
 }
 .form-control,.fa {
-	font-size:14px!important
-}
-.fa {
-	color:inherit;
-	cursor:pointer
+	font-size:14px!important;
+	color:inherit
 }
 .btn+.btn {
 	margin-left:10px
@@ -394,30 +391,30 @@ input[type=file] {
 	width:60px
 }
 .navbar-toggler,.dropdown-menu,.breadcrumb,.cke_chrome,.cke_inner,.pagination,.form-control,.btn-md,.btn-sm,.alert,.rounded {
-	border-radius:.5rem!important
+	border-radius:0.5rem!important
 }
 .btn-xs {
-	border-radius:.35rem!important
+	border-radius:0.35rem!important
 }
 .cke_top,.item-theme-img img,.list-article-img img,.article-hot-img img {
-	border-radius:.5rem .5rem 0 0!important
+	border-radius:0.5rem 0.5rem 0 0!important
 }
 .cke_bottom,.list-article-radius {
-	border-radius:0 0 .5rem .5rem!important
+	border-radius:0 0 0.5rem 0.5rem!important
 }
 #validateimg,.btn-send {
-	border-radius:0 .5rem .5rem 0!important
+	border-radius:0 0.5rem 0.5rem 0!important
 }
 .rounded-circle {
 	border-radius:50%!important
 }
 .page-item:first-child .page-link {
-	border-top-left-radius:.5rem!important;
-	border-bottom-left-radius:.5rem!important
+	border-top-left-radius:0.5rem!important;
+	border-bottom-left-radius:0.5rem!important
 }
 .page-item:last-child .page-link {
-	border-top-right-radius:.5rem!important;
-	border-bottom-right-radius:.5rem!important
+	border-top-right-radius:0.5rem!important;
+	border-bottom-right-radius:0.5rem!important
 }
 .input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label,.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,.input-group:not(.has-validation)>.custom-select:not(:last-child),.input-group:not(.has-validation)>.form-control:not(:last-child) {
 	border-top-right-radius:0!important;
@@ -436,7 +433,7 @@ input[type=file] {
 	color:#fff;
 	cursor:pointer;
 	background:#ec982c;
-	border-radius:.5rem;
+	border-radius:0.5rem;
 	border:0;
 	z-index:9998
 }

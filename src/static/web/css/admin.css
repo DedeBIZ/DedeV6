@@ -26,7 +26,7 @@ a {
 	text-decoration:none
 }
 a:hover {
-	color:#ff8400;
+	color:#007bff;
 	text-decoration:none
 }
 img {
@@ -78,8 +78,7 @@ input {
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
-	vertical-align:middle;
-	transition:all 0.5s
+	vertical-align:middle
 }
 input[type=file] {
 	padding:0;
@@ -94,8 +93,7 @@ input[type=button],input[type=submit],input[type=reset] {
 	font-size:12px;
 	color:#fff;
 	background:#1eb867;
-	border:0;
-	transition:all 0.5s
+	border:0
 }
 input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkbox]:focus {
 	width:14px;
@@ -110,8 +108,7 @@ select {
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
-	vertical-align:middle;
-	transition:all 0.5s
+	vertical-align:middle
 }
 select[multiple=yes] {
 	height:180px
@@ -127,8 +124,7 @@ textarea {
 	color:#545b62;
 	background:#fff;
 	border:1px solid #dee2e6;
-	vertical-align:middle;
-	transition:all 0.5s
+	vertical-align:middle
 }
 input:focus,select:focus,textarea:focus {
 	color:#495057;
@@ -197,8 +193,7 @@ body.hidemenu .body-right {
 	display:block;
 	height:42px;
 	line-height:42px;
-	cursor:pointer;
-	transition:all 0.5s
+	cursor:pointer
 }
 .item-menu li:last-child .link {
 	border-bottom:0
@@ -310,11 +305,11 @@ body.hidemenu .body-right {
 }
 .submenu li {
 	height:40px;
-	line-height:40px;
-	transition:all 0.5s
+	line-height:40px
 }
 .submenu li:hover {
-	background:#009688
+	background:#009688;
+	transition:all 0.5s
 }
 .submenu a {
 	float:left;
@@ -527,8 +522,7 @@ body.hidemenu .body-right {
 }
 .fa {
 	font-size:14px!important;
-	color:inherit;
-	cursor:pointer
+	color:inherit
 }
 .list-group-item {
 	padding:0.5rem 0
@@ -676,14 +670,6 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 	float:right;
 	cursor:pointer
 }
-@media (max-width:768px) {
-	.tips {
-		padding:0 15px
-	}
-	.tips-box {
-		width:100%
-	}
-}
 @media (min-width:1200px) {
 	.web-info {
 		text-overflow:ellipsis;
@@ -691,5 +677,13 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 	}
 	.modal-dialog {
 		max-width:500px
+	}
+}
+@media (max-width:768px) {
+	.tips {
+		padding:0 15px
+	}
+	.tips-box {
+		width:100%
 	}
 }
