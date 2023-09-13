@@ -87,13 +87,13 @@
 			function ShowHideTime() {
 				var selBox = document.getElementById('seltime');
 				var obj = document.getElementById('seltimeField');
-				if (selBox.checked) obj.style.display = "block";
+				if (selBox.checked) obj.style.display = "inline-block";
 				else obj.style.display = "none";
 			}
 			function ShowHideMove() {
 				var selBox = document.getElementById('moveradio');
-				var obj = document.querySelectorAll('.moveField').forEach(v=>{
-					if (selBox.checked) v.style.display = "block";
+				var obj = document.querySelectorAll('.moveField').forEach(v => {
+					if (selBox.checked) v.style.display = "inline-block";
 					else v.style.display = "none";
 				})
 			}
