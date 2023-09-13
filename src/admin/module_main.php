@@ -87,7 +87,7 @@ if ($action == '') {
     $authAt = date("Y-m-d", $devInfo['auth_at']);
     if (!isset($info['dev_id'])) {
         $devInfo['dev_name'] = $info['team']."<span class='btn btn-warning btn-sm'>未认证</span>";
-        $authAt = "未知";
+        $authAt = "<span class='btn btn-warning btn-sm'>未知</span>";
     }
     ShowMsg("开发者名称：{$devInfo['dev_name']}<br>开发者id：{$devInfo['dev_id']}<br>认证于：{$authAt}", "-1");
     exit;
