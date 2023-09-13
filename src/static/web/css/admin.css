@@ -591,22 +591,13 @@ body.hidemenu .body-right {
 	max-width:80px;
 	max-height:80px
 }
-.icon img {
-	width:20px;
-	height:20px
-}
 .upload-bg {
 	margin:10px;
 	background:#fff
 }
-.napisdiv {
-	position:absolute;
-	left:10;
-	top:10;
-	display:none;
-	width:150px;
-	height:100px;
-	z-index:9998
+.icon img {
+	width:20px;
+	height:20px
 }
 .fileinput-button {
 	display:inline-block;
