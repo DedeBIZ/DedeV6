@@ -173,14 +173,13 @@
 			</table>
 		</form>
 		<script>
-			function checkSubmit()
-			{
-				if (document.form2.email.value=="") {
+			function checkSubmit() {
+				if (document.form2.email.value == "") {
 					document.form2.email.focus();
 					ShowMsg("邮箱不能为空");
 					return false;
 				}
-				if (document.form2.uname.value=="") {
+				if (document.form2.uname.value == "") {
 					document.form2.uname.focus();
 					ShowMsg("会员昵称不能为空");
 					return false;

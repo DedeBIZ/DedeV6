@@ -115,7 +115,7 @@
 					return false;
 				}
 			}
-			$(document).ready(function () {
+			$(document).ready(function() {
 				$('.datepicker1').daterangepicker({
 					"singleDatePicker": true,
 					"autoApply": true,
@@ -123,7 +123,6 @@
 					"linkedCalendars": false,
 					"timePicker": true,
 					"timePicker24Hour": true,
-					//"timePickerSeconds": true,
 					"showCustomRangeLabel": false,
 					ranges: {
 						'今日': [moment(), moment()],
@@ -139,10 +138,10 @@
 						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
 						firstDay: 1
 					}
-				}, function (start) {
+				}, function(start) {
 					$(this).val(start.format("YYYY-MM-DD HH:mm"));
 				});
-			})
+			});
 		</script>
 	</body>
 </html>

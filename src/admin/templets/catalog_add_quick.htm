@@ -171,40 +171,33 @@
 		</form>
 		<script>
 			var $ = jQuery;
-			$(document).ready(function () {
+			$(document).ready(function() {
 				//删除按钮事件
-				$("#addQuick .del").click(function () {
+				$("#addQuick .del").click(function() {
 					$(this).parents(".repeat").remove();
 				});
 				//添加按钮事件
-				$("#add").click(function () {
+				$("#add").click(function() {
 					var id = $("#addQuick tr").prevAll("tr").length + 1;
 					$("#addQuick tr:eq(1)").clone(true).addClass("repeat")
-					.find(".rank input")
-					.attr("value", function () { return id })
-					.end()
-					.find(".pubinputs")
-					.attr("name", function () { return this.name + id })
-					.attr("id", function () { return this.id + id })
-					.end()
-					.appendTo($("#addQuick"));
+					.find(".rank input").attr("value", function() {
+						return id
+					}).end().find(".pubinputs").attr("name", function() {
+						return this.name + id
+					}).attr("id", function() { return this.id + id }).end().appendTo($("#addQuick"));
 				});
 				//删除按钮事件
-				$("#addQuickRel .del").click(function () {
+				$("#addQuickRel .del").click(function() {
 					$(this).parents(".repeat").remove();
 				});
 				//添加按钮事件
-				$("#addrel").click(function () {
+				$("#addrel").click(function() {
 					var id = $("#addQuickRel tr").prevAll("tr").length + 1;
-					$("#addQuickRel tr:eq(1)").clone(true).addClass("repeat")
-					.find(".rank input")
-					.attr("value", function () { return id })
-					.end()
-					.find(".pubinputs")
-					.attr("name", function () { return this.name + id })
-					.attr("id", function () { return this.id + id })
-					.end()
-					.appendTo($("#addQuickRel"));
+					$("#addQuickRel tr:eq(1)").clone(true).addClass("repeat").find(".rank input").attr("value", function() {
+						return id
+					}).end().find(".pubinputs").attr("name", function() { return this.name + id }).attr("id", function() {
+						return this.id + id
+					}).end().appendTo($("#addQuickRel"));
 				});
 			});
 			function ShowHide(objname) {

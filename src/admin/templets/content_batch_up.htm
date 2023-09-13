@@ -51,8 +51,8 @@
 					<td>
 						<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
 						<div id="seltimeField" style="display:none">
-							<label>开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" class="admin-input-sm" value="<?php echo $nowtime;?>"></label>
-							<label>结束：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" class="admin-input-sm" value="<?php echo $nowtime;?>"></label>
+							<label>开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
+							<label>结束：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
 						</div>
 					</td>
 				</tr>
@@ -124,7 +124,7 @@
 				}, function (start) {
 					$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
 				});
-			})
+			});
 		</script>
 	</body>
 </html>

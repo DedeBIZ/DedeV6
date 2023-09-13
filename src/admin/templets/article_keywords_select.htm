@@ -46,16 +46,14 @@
 		</form>
 		<script>
 			//获得选中文件的文件名
-			function SelKw(kw)
-			{
+			function SelKw(kw) {
 				if (document.form2.keywords.value) {
 					document.form2.keywords.value += ","+kw;
 				} else {
 					document.form2.keywords.value = kw;
 				}
 			}
-			function ReturnValue()
-			{
+			function ReturnValue() {
 				if (window.opener.document.<?php echo $f?>.value) {
 				  window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
 				} else {
@@ -63,14 +61,12 @@
 				}
 				window.close();
 			}
-			function showHide(objname)
-			{
+			function showHide(objname) {
 				var obj = document.getElementById(objname);
 				if (obj.style.display=="none") obj.style.display = "block";
 				else obj.style.display="none";
 			}
-			function AddNewKw()
-			{
+			function AddNewKw() {
 				showHide("addnew");
 			}
 		</script>

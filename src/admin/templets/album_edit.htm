@@ -446,7 +446,7 @@
 						ShowMsg(error); //处理上传失败后的回调
 					}
 				});
-			})
+			});
 			$("#iptAlbumImages").change(function(val) {
 				for (let i = 0; i < val.target.files.length; i++) {
 					const f = val.target.files[i];
@@ -473,7 +473,7 @@
 						}
 					});
 				}
-			})
+			});
 		</script>
 		<script>InitPage();</script>
 	</body>

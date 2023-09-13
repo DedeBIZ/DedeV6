@@ -135,7 +135,7 @@
 			</tr>
 		</table>
 		<script>
-		$('.custom-file-input').on('change', function () {
+		$('.custom-file-input').on('change', function() {
 			let fileName = $(this).val().split('\\').pop();
 			$(this).siblings('.custom-file-label').addClass("selected").html(fileName);
 		});
@@ -173,7 +173,7 @@
 		}
 		//加载系统config
 		function getPayments() {
-			$.get("sys_payment.php?dopost=get_payments", function (data) {
+			$.get("sys_payment.php?dopost=get_payments", function(data) {
 				if (data.code === 0) {
 					for (const key in data.data) {
 						if (Object.hasOwnProperty.call(data.data, key)) {
@@ -208,7 +208,7 @@
 						}
 					}
 				}
-			})
+			});
 		}
 		//更新config
 		function updateConfig() {
@@ -240,7 +240,7 @@
 				data: JSON.stringify(config),
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
-				success: function (data) {
+				success: function(data) {
 					if (data.code === 0) {
 						ShowMsg("保存支付配置成功");
 					} else {
@@ -249,13 +249,13 @@
 				}
 			})
 		}
-		$(document).ready(function () {
+		$(document).ready(function() {
 			getPayments();
 			$("#btnSave").click(() => {
 				updateConfig()
 				saveConfig();
-			})
-		})
+			});
+		});
 		</script>
 	</body>
 </html>

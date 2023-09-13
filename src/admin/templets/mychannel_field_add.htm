@@ -139,8 +139,7 @@
 		</form>
 		<script>
 			var notAllow = "<?php echo $f;?>";
-			function GetFields()
-			{
+			function GetFields() {
 				var theform = document.form1;
 				var fieldname = theform.fieldname.value;
 				var itemname = theform.itemname.value;
@@ -189,7 +188,7 @@
 				document.form1.fieldstring.value = revalue;
 				return true;
 			}
-			$(document).ready(function () {
+			$(document).ready(function() {
 				$("#dataType input").click(function(ele){
 					if ($(ele.currentTarget).val() === "relation") {
 						$("#_relation").show();

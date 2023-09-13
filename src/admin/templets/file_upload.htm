@@ -41,15 +41,13 @@
 			</table>
 		</form>
 		<script>
-			var i=1;
-			function make_upload()
-			{
+			var i = 1;
+			function make_upload() {
 				i++;
 				myob = document.getElementById("upfield");
 				myob.innerHTML+="<div class='mb-3'><label>文件"+i+"：<input type='file' name='upfile"+i+"' class='admin-input-lg'></label></div>";
 			}
-			function reset_upload()
-			{
+			function reset_upload() {
 				myob = document.getElementById("upfield");
 				myob.innerHTML="<div class='mb-3'><label>文件1：<input type='file' name='upfile1' class='admin-input-lg'></label></div>";
 			}

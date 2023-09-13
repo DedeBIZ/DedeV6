@@ -9,8 +9,7 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/webajax.js"></script>
 		<script>
-		function LoadUser(uid)
-		{
+		function LoadUser(uid) {
 			var loadhtml = $DE('loaddiv').innerHTML;
 			var ajaxdiv = $DE('userct'+uid);
 			fetch('sys_admin_user_tj.php?dopost=getone&uid='+uid).then(resp=>{

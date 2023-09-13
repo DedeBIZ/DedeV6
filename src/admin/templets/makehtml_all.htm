@@ -29,7 +29,7 @@
 				</tr>
 				<tr id="seltime">
 					<td>起始时间：</td>
-					<td><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time());?>" class="datepicker" class="admin-input-sm"></td>
+					<td><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time());?>" class="datepicker admin-input-sm"></td>
 				</tr>
 				<tr id="selid" style="display:none">
 					<td>起始id：</td>
@@ -92,7 +92,7 @@
 				}, function(start) {
 					$(this).val(start.format("YYYY-MM-DD HH:mm"));
 				});
-			})
+			});
 		</script>
 	</body>
 </html>
