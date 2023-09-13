@@ -86,7 +86,7 @@ if ($dopost == 'saveedit') {
         $win->AddHidden("randcode", $randcode);
         $win->AddHidden("safecode", $safecode);
         $win->AddHidden("id", $id);
-        $win->AddMsgItem("<tr><td>您确定要删除id<b>$userid</b>管理员吗</td></tr>");
+        $win->AddMsgItem("<tr><td>您确定要删除id".$userid."管理员吗</td></tr>");
         $win->AddMsgItem("<tr><td>验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-lg'>（安全码：$safecode）</td></tr>");
         $winform = $win->GetWindow("ok");
         $win->Display();

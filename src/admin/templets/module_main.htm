@@ -58,7 +58,7 @@
 					<td><?php echo $v['time'];?></td>
 					<td>
 						<?php
-						if ($cfg_soft_lang != $v['lang']) echo "<b>".$v['lang']."</b>";
+						if ($cfg_soft_lang != $v['lang']) echo $v['lang'];
 						else  echo $v['lang'];
 						?>
 					</td>
@@ -70,7 +70,7 @@
 							if (file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
 								echo "<span class='btn btn-success btn-sm'>已安装</span><a href='module_main.php?action=uninstall&hash={$v['hash']}' class='btn btn-outline-danger btn-sm'>卸载</a>";
 							} else {
-								echo "<span class='btn btn-danger btn-sm'>未安装</span><a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
+								echo "<span class='btn btn-warning btn-sm'>未安装</span><a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
 							}
 						} else {
 							echo "<div id=\"status_{$v['hash']}\"><a href=\"javascript:getmodule('download','{$v['hash']}')\" class=\"btn btn-outline-warning btn-sm\">下载</a></div>";

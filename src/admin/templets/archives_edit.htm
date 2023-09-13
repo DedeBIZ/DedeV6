@@ -227,7 +227,7 @@
 										<?php
 										$subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
 										echo "<option value='0'>正常排序</option>";
-										if ($subday>0) echo "<option value='$subday' selected>置顶<b>$subday</b>天</option>";
+										if ($subday>0) echo "<option value='$subday' selected>置顶".$subday."天</option>";
 										?>
 										<option value="7">置顶一周</option>
 										<option value="30">置顶一个月</option>

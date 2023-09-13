@@ -74,11 +74,11 @@ class ActionSearch
         if (is_array($text)) {
             foreach ($text as $key => $value) {
                 if ($key == 'title') {
-                    $text[$key] = str_replace($this->keyword, '<b>'.$this->keyword.'</b>', $text[$key]);
+                    $text[$key] = str_replace($this->keyword, '<b class="text-danger">'.$this->keyword.'</b>', $text[$key]);
                 }
             }
         } else {
-            $text = str_replace($this->keyword, '<b>'.$this->keyword.'</b>', $text);
+            $text = str_replace($this->keyword, '<b class="text-danger">'.$this->keyword.'</b>', $text);
         }
         return $text;
     }

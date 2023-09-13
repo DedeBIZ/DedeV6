@@ -73,7 +73,7 @@ if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
     ShowMsg("仅支持媒体文件及应用程序上传", -1);
     exit;
 }
-move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到<b>$fullfilename</b>失败");
+move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到".$fullfilename."失败");
 @unlink($uploadfile);
 if ($uploadfile_type == 'application/x-shockwave-flash') {
     $mediatype = 2;

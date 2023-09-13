@@ -175,7 +175,7 @@ else if ($dopost == 'unitCatalog') {
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         if (!empty($row['dd'])) {
-            ShowMsg("栏目<b>$typename</b>有子栏目，不能进行合并操作", '-1');
+            ShowMsg("栏目".$typename."有子栏目，不能进行合并操作", '-1');
             exit();
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);

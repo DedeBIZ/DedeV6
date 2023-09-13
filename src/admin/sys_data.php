@@ -15,7 +15,7 @@ if (DEDEBIZ_SAFE_MODE) {
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
 if ($cfg_dbtype == 'sqlite') {
-    showMsg('备份系统根目录下/data/'.$cfg_dbname.'.db文件即可', 'javascript:;');
+    showMsg("备份系统根目录下/data/".$cfg_dbname.".db文件即可", "javascript:;");
     exit();
 }
 //查看表结构
@@ -41,9 +41,9 @@ else if ($dopost == "opimize") {
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
         if ($rs) {
-            echo "执行优化表<b>$tablename</b>完成";
+            echo "执行优化表".$tablename."完成<br>";
         } else {
-            echo "<br>执行优化表<b>$tablename</b>失败，原因是：".$dsql->GetError();
+            echo "执行优化表".$tablename."失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';
@@ -57,9 +57,9 @@ else if ($dopost == "repair") {
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
         if ($rs) {
-            echo "修复表<b>$tablename</b>完成";
+            echo "修复表".$tablename."完成<br>";
         } else {
-            echo "<br>修复表<b>$tablename</b>失败，原因是：".$dsql->GetError();
+            echo "修复表".$tablename."失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';

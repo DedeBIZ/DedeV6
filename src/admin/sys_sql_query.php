@@ -35,8 +35,8 @@ else if ($dopost == "opimize") {
         echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
-        if ($rs)  echo "执行优化表<b>$tablename</b>完成";
-        else echo "<br>执行优化表<b>$tablename</b>失败，原因是：".$dsql->GetError();
+        if ($rs)  echo "执行优化表".$tablename."完成<br>";
+        else echo "执行优化表".$tablename."失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -48,9 +48,9 @@ else if ($dopost == "opimizeAll") {
     while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `{$row[0]}`");
         if ($rs) {
-            echo "优化表{$row[0]}完成";
+            echo "优化表{$row[0]}完成<br>";
         } else {
-            echo "<br>优化表{$row[0]}失败，原因是: ".$dsql->GetError();
+            echo "优化表{$row[0]}失败，原因是: ".$dsql->GetError();
         }
     }
     exit();
@@ -62,8 +62,8 @@ else if ($dopost == "repair") {
         echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
-        if ($rs) echo "修复表<b>$tablename</b>完成";
-        else echo "<br>修复表<b>$tablename</b>失败，原因是：".$dsql->GetError();
+        if ($rs) echo "修复表".$tablename."完成<br>";
+        else echo "修复表".$tablename."失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -75,9 +75,9 @@ else if ($dopost == "repairAll") {
     while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `{$row[0]}`");
         if ($rs) {
-            echo "修复表{$row[0]}完成";
+            echo "修复表{$row[0]}完成<br>";
         } else {
-            echo "<br>修复表{$row[0]}失败，原因是: ".$dsql->GetError();
+            echo "修复表{$row[0]}失败，原因是: ".$dsql->GetError();
         }
     }
     exit();
@@ -131,7 +131,7 @@ else if ($dopost == "query") {
             if ($errCode == "") {
                 $i++;
             } else {
-                $nerrCode .= "执行<b>$q</b>出错，错误提示：".$errCode."";
+                $nerrCode .= "执行".$q."出错，错误提示：".$errCode."";
             }
         }
         echo "成功执行{$i}个SQL语句";

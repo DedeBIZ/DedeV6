@@ -34,7 +34,7 @@ if ($filename == '' || !preg_match("#\.(".$cfg_txttype.")#i", $filename)) {
     exit();
 }
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
-move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到<b>$fullfilename</b>失败");
+move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到".$fullfilename."失败");
 @unlink($uploadfile);
 ShowMsg("成功上传文件", "select_templets.php?comeback=".urlencode($filename)."&f=$f&activepath=".urlencode($activepath)."&d=".time());
 exit();

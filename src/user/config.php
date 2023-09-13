@@ -198,10 +198,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "注册会员";
                 }
             }
-            ShowMsg("需要<b>$needname</b>才能浏览本页面，您目前等级是<b>$myname</b>", "-1", 0, 5000);
+            ShowMsg("需要".$needname."才能浏览本页面，您目前等级是".$myname."", "-1", 0, 5000);
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("需要<b>$money</b>金币才能浏览本页面，您目前金币<b>".$cfg_ml->M_Money."</b>个", "-1", 0, 5000);
+            ShowMsg("需要".$money."金币才能浏览本页面，您目前金币".$cfg_ml->M_Money."个", "-1", 0, 5000);
             exit();
         }
     }

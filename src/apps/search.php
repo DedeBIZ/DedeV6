@@ -70,7 +70,7 @@ $now = time();
 $row = $dsql->GetOne("SELECT * FROM `#@__search_limits` WHERE ip='{$ip}'");
 if (is_array($row)) {
     if (($now - $row['searchtime']) < $cfg_search_time) {
-        ShowMsg("搜索间隔为<b>$cfg_search_time</b>秒，请稍后重试", "-1");
+        ShowMsg("搜索间隔为".$cfg_search_time."秒，请稍后重试", "-1");
         exit;
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__search_limits` SET `searchtime`='{$now}' WHERE `ip`='{$ip}';");

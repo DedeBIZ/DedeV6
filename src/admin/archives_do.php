@@ -190,7 +190,7 @@ else if ($dopost == "commendArchives") {
             $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
-    ShowMsg("成功把所选文档设为推荐", $ENV_GOBACK_URL);
+    ShowMsg("成功把文档设为推荐", $ENV_GOBACK_URL);
     exit();
 }
 //生成网页
@@ -208,7 +208,7 @@ else if ($dopost == "makeArchives") {
         $i++;
         $pageurl = MakeArt($aid, false);
     }
-    ShowMsg("成功更新指定<b>$i</b>个文件", $ENV_GOBACK_URL);
+    ShowMsg("成功更新指定".$i."个文档", $ENV_GOBACK_URL);
     exit();
 }
 //审核文档
@@ -317,7 +317,7 @@ else if ($dopost == "checkArchives") {
             $arc = new Archives($aid);
             $arc->MakeHtml();
         }
-        ShowMsg("成功移动<b>$j</b>个文档", $ENV_GOBACK_URL);
+        ShowMsg("成功移动".$j."个文档", $ENV_GOBACK_URL);
         exit();
     }
 }
@@ -373,7 +373,7 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("您确定删除，序号<b>$qstr</b>文档吗");
+        $win->AddTitle("您确定删除，序号".$qstr."文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -424,7 +424,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("清空回收站<b>$num</b>篇文档<br>您确定删除，序号<b>$qstr</b>文档吗");
+        $win->AddTitle("清空回收站".$num."篇文档<br>您确定删除，序号".$qstr."文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -462,7 +462,7 @@ else if ($dopost == 'del') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确要删除，序号<b>$qstr</b>文档吗");
+        $win->AddTitle("您确要删除，序号".$qstr."文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -584,7 +584,7 @@ else if ($dopost == 'quickEditSave') {
     //更新网页
     $artUrl = MakeArt($aid, TRUE, TRUE);
     $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '-1';
-    ShowMsg('成功更新一篇文档指定属性', $backurl);
+    ShowMsg('成功更新一篇文档属性', $backurl);
     exit();
 }
 //分析并自动获取文档关键词
@@ -700,7 +700,7 @@ else if ($dopost == 'attsAdd') {
             $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
-    ShowMsg("成功对选中文档添加指定属性", $ENV_GOBACK_URL);
+    ShowMsg("成功添加文档指定属性", $ENV_GOBACK_URL);
     exit();
 }
 //批量删除属性
@@ -743,7 +743,7 @@ else if ($dopost == 'attsDel') {
         $flag = trim(join(',', $okflags));
         $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET `flag`='$flag' WHERE {$idname}='{$aid}' ");
     }
-    ShowMsg("成功对选中文档删除指定属性", $ENV_GOBACK_URL);
+    ShowMsg("成功删除文档指定属性", $ENV_GOBACK_URL);
     exit();
 }
 //获得批量属性处理Ajax窗体

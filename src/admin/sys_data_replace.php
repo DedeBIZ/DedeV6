@@ -79,7 +79,7 @@ else if ($action == 'apply') {
             }
         }
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
-        ShowMsg("共找到<b>$tt</b>条记录，成功替换了<b>$oo</b>条", "javascript:;");
+        ShowMsg("共找到".$tt."条记录，成功替换了".$oo."条", "javascript:;");
         exit();
     }
 }

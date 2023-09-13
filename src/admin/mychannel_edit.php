@@ -277,7 +277,7 @@ if ($dopost == "show") {
     }
     $trueTable = str_replace("#@__", $cfg_dbprefix, $addtable);
     if (!$dsql->IsTable($trueTable)) {
-        ShowMsg("系统找不到您所指定的<b>$trueTable</b>表", "-1");
+        ShowMsg("系统找不到您所指定的".$trueTable."表", "-1");
         exit();
     }
     $dsql->ExecuteNoneQuery($query);
