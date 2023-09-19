@@ -25,7 +25,8 @@
 				return selvalue;
 			}
 			function AddType() {
-				fetch('stepselect_main.php?action=addnew').then(resp=>{
+				$DE('edsta').style.display = 'block';
+				fetch('stepselect_main.php?action=addnew').then(resp => {
 					if (resp.ok) {
 						return resp.text()
 					}
@@ -42,7 +43,7 @@
 					ShowMsg("必须选择一个类别");
 					return false;
 				}
-				fetch('stepselect_main.php?action=addenum&id=' + id).then(resp=>{
+				fetch('stepselect_main.php?action=addenum&id=' + id).then(resp => {
 					if (resp.ok) {
 						return resp.text()
 					}
@@ -60,7 +61,8 @@
 					ShowMsg("必须选择一个类别");
 					return false;
 				}
-				fetch('stepselect_main.php?action=edit&id=' + id).then(resp=>{
+				$DE('edsta').style.display = 'block';
+				fetch('stepselect_main.php?action=edit&id=' + id).then(resp => {
 					if (resp.ok) {
 						return resp.text()
 					}
@@ -77,7 +79,8 @@
 					ShowMsg("必须选择一个类别");
 					return false;
 				}
-				fetch('stepselect_main.php?action=view&id=' + id).then(resp=>{
+				$DE('edsta').style.display = 'block';
+				fetch('stepselect_main.php?action=view&id=' + id).then(resp => {
 					if (resp.ok) {
 						return resp.text()
 					}
@@ -99,6 +102,9 @@
 				}).catch((e) => {
 					console.log(e)
 				});
+			}
+			function CloseTWin() {
+				$DE('edsta').style.display = 'none';
 			}
 			function ChangePage(sobj) {
 				var ntxt = sobj.options[sobj.selectedIndex].text;
@@ -333,5 +339,6 @@
 			</tr>
 		</table>
 		<?php }?>
+		<div id="edsta"></div>
 	</body>
 </html>
