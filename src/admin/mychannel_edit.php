@@ -572,7 +572,7 @@ if ($dopost == "show") {
         echo "<script>var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
             lineNumbers: true,
             lineWrapping: true,
-            mode: 'text/html'
+            mode: 'text/html',
         });</script>";
         echo $forms;
     }
