@@ -40,16 +40,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td id="messagetd">
-					<div id="loaddiv" class="text-center" style="display:none"><img src="../static/web/img/loadinglit.gif"></div>
-				</td>
+				<td id="messagetd"></td>
 			</tr>
 		</table>
 		<script>
 			function LoadCtTest() {
 				var filetype = $Obj('filetype').value;
 				var info = $Obj('info').value;
-				$Obj('loaddiv').style.display = 'block';
 				fetch('sys_safetest.php?action=test&filetype=' + filetype + "&info=" + info).then(resp => {
 					if (resp.ok) {
 					   return resp.text()
@@ -57,13 +54,11 @@
 					throw new Error('系统错误，无法获取数据');
 				}).then((d) => {
 					$DE('messagetd').innerHTML = d;
-					$Obj('loaddiv').style.display = 'none';
 				}).catch((error) => {
 					console.log(error);
 				});
 			}
 			function LoadCtClear() {
-				$Obj('loaddiv').style.display = 'block';
 				fetch('sys_safetest.php?action=clear').then(resp => {
 					if (resp.ok) {
 						return resp.text()
@@ -71,7 +66,6 @@
 					throw new Error('系统错误，无法获取数据');
 				}).then((d) => {
 					$DE('messagetd').innerHTML = d;
-					$Obj('loaddiv').style.display = 'none';
 				}).catch((error) => {
 					$DE('messagetd').innerHTML = errMsg;
 				});

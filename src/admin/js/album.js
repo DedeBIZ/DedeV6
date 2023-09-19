@@ -61,7 +61,6 @@ function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 		newobj.style.top = hpos;
 		newobj.style.left = 100;
 		document.body.appendChild(newobj);
-		newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
 	}
 	newobj.style.display = "block";
 	nForm.action = acname;

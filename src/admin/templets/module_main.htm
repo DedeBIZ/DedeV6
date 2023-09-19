@@ -12,7 +12,6 @@
 		<script src="../static/web/js/webajax.js"></script>
 		<script>
 			function getmodule(action, hash) {
-				$DE('status_' + hash).innerHTML = '<img src="../static/web/img/loadinglit.gif">';
 				fetch('module_main.php?action=download&hash=' + hash).then(resp => resp.text()).then((d) => {
 					$DE('status_' + hash).innerHTML = d;
 				});

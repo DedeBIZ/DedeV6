@@ -38,7 +38,6 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 		newobj.style.left = 100;
 		newobj.style.display = "block";
 		document.body.appendChild(newobj);
-		newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
 	}
 	newobj.style.display = "block";
 	nForm.action = acname;
@@ -252,7 +251,6 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	newobj.style.left = "50%";
 	newobj.style.display = "block";
 	newobj.style.transform = "translate(-50%, -201px)";
-	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
 	});

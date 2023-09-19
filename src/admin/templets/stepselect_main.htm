@@ -13,7 +13,6 @@
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/main.js"></script>
 		<script>
-			var loadhtml = "<img src='../static/web/img/loadinglit.gif'>";
 			function updateItem(aid) {
 				var upenumf = document.getElementById('upenumf');
 				upenumf.ename.value = $DE('ename' + aid).value;
@@ -26,13 +25,12 @@
 				return selvalue;
 			}
 			function AddType() {
-				$DE('edsta').style.display = 'block';
 				fetch('stepselect_main.php?action=addnew').then(resp=>{
 					if (resp.ok) {
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
+				}).then((d) => {
 					$DE('edsta').innerHTML = d;
 				}).catch((error) => {
 					$DE('edsta').innerHTML = errMsg;
@@ -49,7 +47,7 @@
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
+				}).then((d) => {
 					$DE('edsta').innerHTML = d;
 				}).catch((error) => {
 					$DE('edsta').innerHTML = errMsg;
@@ -62,13 +60,12 @@
 					ShowMsg("必须选择一个类别");
 					return false;
 				}
-				$DE('edsta').style.display = 'block';
 				fetch('stepselect_main.php?action=edit&id=' + id).then(resp=>{
 					if (resp.ok) {
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
+				}).then((d) => {
 					$DE('edsta').innerHTML = d;
 				}).catch((error) => {
 					$DE('edsta').innerHTML = errMsg;
@@ -80,33 +77,28 @@
 					ShowMsg("必须选择一个类别");
 					return false;
 				}
-				$DE('edsta').style.display = 'block';
 				fetch('stepselect_main.php?action=view&id=' + id).then(resp=>{
 					if (resp.ok) {
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
+				}).then((d) => {
 					$DE('edsta').innerHTML = d;
 				}).catch((error) => {
 					$DE('edsta').innerHTML = errMsg;
 				});
 			}
 			function DelType() {
-				DedeConfirm("您确实要删除这个分类吗").then((v)=>{
+				DedeConfirm("您确实要删除这个分类吗").then((v) => {
 					var id = GetSelType();
 					if (id == 0) {
 						ShowMsg("必须选择一个类别");
 						return false;
 					}
 					location.href = 'stepselect_main.php?action=del&id=' + id;
-				}).catch((e)=>{
+				}).catch((e) => {
 					console.log(e)
 				});
-			}
-			function CloseTWin() {
-				$DE('edsta').innerHTML = loadhtml;
-				$DE('edsta').style.display = 'none';
 			}
 			function ChangePage(sobj) {
 				var ntxt = sobj.options[sobj.selectedIndex].text;
@@ -125,9 +117,9 @@
 				}
 			}
 			function DelSel() {
-				DedeConfirm("您确实要删除这些分类吗").then((v)=>{
+				DedeConfirm("您确实要删除这些分类吗").then((v) => {
 					document.form1.submit();
-				}).catch((e)=>{
+				}).catch((e) => {
 					console.log(e)
 				});
 			}
@@ -142,7 +134,6 @@
 		</script>
 	</head>
 	<body>
-		<div id="edsta"><img src="../static/web/img/loadinglit.gif"></div>
 		<table align="center" class="table maintable my-3">
 			<tr>
 				<td bgcolor="#f5f5f5">
