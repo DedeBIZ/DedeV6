@@ -257,8 +257,7 @@
 		</form>
 		<script>
 			function Nav() {
-				if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-				else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+				if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
 				else return "OT";
 			}
 			function $Obj(objname) {
@@ -285,7 +284,7 @@
 				var obj = document.getElementById(objname);
 				obj.style.display = "none";
 			}
-			var editor = CodeMirror.fromTextArea(document.getElementById('fieldset'), {
+			var editor = CodeMirror.fromTextArea(document.getElementById("fieldset"), {
 				lineNumbers: true,
 				lineWrapping: true,
 				mode: 'text/html'

@@ -111,26 +111,26 @@
 								<td width="6%" class="border-top-0">排序</td>
 								<td width="16%" class="border-top-0">顶级栏目名称</td>
 								<td width="60%" class="border-top-0">子栏目名称（名称1,名称2）</td>
-								<td class="border-top-0"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
+								<td class="border-top-0"><button type="button" class="btn btn-success btn-sm add">添加</button></td>
 							</tr>
 							<tr align="center">
 								<td class="rank">
 									<input type="hidden" name="posttype" value="" class="pubinputs">
-									<input type="text" name="rank" id="rank" value="1" class="pubinputs admin-input-xs">
+									<input type="text" name="rank" value="1" class="pubinputs admin-input-xs">
 								</td>
-								<td><input type="text" name="toptype" id="toptype" class="pubinputs admin-input-sm"></td>
-								<td><input type="text" name="sontype" id="sontype" class="pubinputs w-100"></td>
-								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="toptype" class="pubinputs admin-input-sm"></td>
+								<td><input type="text" name="sontype" class="pubinputs w-100"></td>
+								<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php for($i=2;$i<=10;$i++) {?>
 							<tr align="center" class="repeat">
 								<td class="rank">
 									<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-									<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
+									<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
 								</td>
-								<td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
-								<td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
-								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="toptype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
+								<td><input type="text" name="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
+								<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php }?>
 						</table>
@@ -138,24 +138,24 @@
 							<tr bgcolor="#e9ecef" align="center">
 								<td width="6%">排序</td>
 								<td width="16%">栏目名称</td>
-								<td><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
+								<td><button type="button" class="btn btn-success btn-sm addrel">添加</button></td>
 							</tr>
 							<tr align="center">
 								<td class="rank">
 									<input type="hidden" name="posttype" value="" class="pubinputs">
-									<input type="text" name="rank" id="rank" value="1" class="pubinputs admin-input-xs">
+									<input type="text" name="rank" value="1" class="pubinputs admin-input-xs">
 								</td>
-								<td><input type="text" name="reltype" id="reltype" class="pubinputs admin-input-sm"></td>
-								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="reltype" class="pubinputs admin-input-sm"></td>
+								<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php for($i=2;$i<=10;$i++) {?>
 							<tr align="center" class="repeat">
 								<td class="rank">
 									<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-									<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
+									<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
 								</td>
-								<td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
-								<td><button type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="reltype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
+								<td><button type="button" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php }?>
 						</table>
@@ -172,31 +172,31 @@
 		<script>
 			var $ = jQuery;
 			$(document).ready(function() {
-				//删除按钮事件
-				$("#addQuick .del").click(function() {
-					$(this).parents(".repeat").remove();
-				});
 				//添加按钮事件
-				$("#add").click(function() {
+				$("#addQuick .add").click(function() {
 					var id = $("#addQuick tr").prevAll("tr").length + 1;
 					$("#addQuick tr:eq(1)").clone(true).addClass("repeat")
 					.find(".rank input").attr("value", function() {
-						return id
+						return id;
 					}).end().find(".pubinputs").attr("name", function() {
-						return this.name + id
-					}).attr("id", function() { return this.id + id }).end().appendTo($("#addQuick"));
+						return this.name + id;
+					}).end().appendTo($("#addQuick"));
+				});
+				//删除按钮事件
+				$("#addQuick .del").click(function() {
+					$(this).parents(".repeat").remove();
 				});
 				//删除按钮事件
 				$("#addQuickRel .del").click(function() {
 					$(this).parents(".repeat").remove();
 				});
 				//添加按钮事件
-				$("#addrel").click(function() {
+				$("#addQuickRel .addrel").click(function() {
 					var id = $("#addQuickRel tr").prevAll("tr").length + 1;
 					$("#addQuickRel tr:eq(1)").clone(true).addClass("repeat").find(".rank input").attr("value", function() {
-						return id
-					}).end().find(".pubinputs").attr("name", function() { return this.name + id }).attr("id", function() {
-						return this.id + id
+						return id;
+					}).end().find(".pubinputs").attr("name", function() {
+						return this.name + id;
 					}).end().appendTo($("#addQuickRel"));
 				});
 			});

@@ -41,7 +41,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" class="p-0"><textarea id="content" name="content" class="admin-textarea-xl"><?php echo $democode;?></textarea></td>
+					<td colspan="2" class="p-0"><textarea name="content" id="content"><?php echo $democode;?></textarea></td>
 				</tr>
 				<tr>
 					<td bgcolor="#f5f5f5" colspan="2" align="center">
@@ -59,7 +59,7 @@
 					return false;
 				}
 			}
-			var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
+			var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
 				lineNumbers: true,
 				lineWrapping: true,
 				mode: 'text/x-php'
