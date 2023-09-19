@@ -134,7 +134,7 @@ function ErrAddSaveDo(modalID) {
 	};
 	$("#btnsubmit").attr("disabled", "disabled");
 	if (typeof PHPURL === "undefined") {
-		const PHPURL = "/plus";
+		const PHPURL = "/apps";
 	}
 	$.post(PHPURL + "/erraddsave.php", parms, function (data) {
 		let result = JSON.parse(data);
