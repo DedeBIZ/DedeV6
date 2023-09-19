@@ -36,38 +36,6 @@ function delAlbPicOld(picfile, pid) {
 		$Obj("galleryedit").removeChild(tgobj);
 	});
 }
-function seePicNewAlb(f, imgdid, frname, hpos, acname) {
-	var newobj = null;
-	if (f.value == '') return;
-	vImg = $Obj(imgdid);
-	picnameObj = document.getElementById("picname");
-	nFrame = $Nav() == $Obj(frname);
-	nForm = f.form;
-	if (nForm.detachEvent) nForm.detachEvent("onsubmit", checkSubmitAlb);
-	else nForm.removeEventListener("submit", checkSubmitAlb, false);
-	nForm.action = "archives_do.php";
-	nForm.target = frname;
-	nForm.dopost.value = "uploadLitpic";
-	nForm.submit();
-	picnameObj.value = '';
-	newobj = $Obj("uploadwait");
-	if (!newobj) {
-		newobj = document.createElement("div");
-		newobj.id = "uploadwait";
-		newobj.style.position = "absolute";
-		newobj.className = "uploadwait";
-		newobj.style.width = 120;
-		newobj.style.height = 20;
-		newobj.style.top = hpos;
-		newobj.style.left = 100;
-		document.body.appendChild(newobj);
-	}
-	newobj.style.display = "block";
-	nForm.action = acname;
-	nForm.dopost.value = "save";
-	nForm.target = '';
-	nForm.litpic.disabled = true;
-}
 var atlasimg = 0;
 function addImage(src, pid) {
 	var newImgDiv = document.createElement("div");

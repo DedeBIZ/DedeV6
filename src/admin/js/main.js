@@ -1,7 +1,3 @@
-var nForm = null;
-var nFrame = null;
-var picnameObj = null;
-var vImg = null;
 function GetWinPos(w, h) {
 	var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
 	var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
@@ -11,39 +7,6 @@ function GetWinPos(w, h) {
 	var left = (width - w) / 2 / systemZoom + dualScreenLeft;
 	var top = (height - h) / 2 / systemZoom + dualScreenTop;
 	return { left: left, top: top };
-}
-function SeePicNew(f, imgdid, frname, hpos, acname) {
-	var newobj = null;
-	if (f.value == '') return;
-	vImg = $Obj(imgdid);
-	picnameObj = document.getElementById('picname');
-	nFrame = $Nav() == $Obj(frname);
-	nForm = f.form;
-	if (nForm.detachEvent) nForm.detachEvent("onsubmit", checkSubmit);
-	else nForm.removeEventListener("submit", checkSubmit, false);
-	nForm.action = "archives_do.php";
-	nForm.target = frname;
-	nForm.dopost.value = "uploadLitpic";
-	nForm.submit();
-	picnameObj.value = '';
-	newobj = $Obj("uploadwait");
-	if (!newobj) {
-		newobj = document.createElement("div");
-		newobj.id = "uploadwait";
-		newobj.style.position = "absolute";
-		newobj.className = "uploadwait";
-		newobj.style.width = 120;
-		newobj.style.height = 20;
-		newobj.style.top = hpos;
-		newobj.style.left = 100;
-		newobj.style.display = "block";
-		document.body.appendChild(newobj);
-	}
-	newobj.style.display = "block";
-	nForm.action = acname;
-	nForm.dopost.value = "save";
-	nForm.target = '';
-	nForm.litpic.disabled = true;
 }
 function SelectMedia(fname) {
 	var pos = GetWinPos(800,600);
@@ -74,6 +37,9 @@ function OpenMyWin(surl) {
 	var pos = GetWinPos(800,600);
 	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
+function $Obj(objname) {
+	return document.getElementById(objname);
+}
 function InitPage() {
 	var selsource = $Obj("selsource");
 	var selwriter = $Obj("selwriter");
@@ -88,13 +54,6 @@ function InitPage() {
 			SelectWriter(e);
 		}
 	}
-}
-function $Nav() {
-	if (window.navigator.userAgent.indexOf("Firefox") >= 1) return "FF";
-	else return "OT";
-}
-function $Obj(objname) {
-	return document.getElementById(objname);
 }
 function ColorSel(c, oname) {
 	var tobj = $Obj(oname);
@@ -132,9 +91,6 @@ function HideObj(objname) {
 	var obj = $Obj(objname);
 	if (obj == null) return false;
 	obj.style.display = "none";
-}
-function SeePic(img, f) {
-	if (f.value != '') img.src = f.value;
 }
 function PutSource(str) {
 	var osource = $Obj("source");
@@ -179,14 +135,16 @@ function SelectWriter(e) {
 }
 function LoadNewDiv(e, surl, oname) {
 	var pxStr = '';
-	posLeft = posLeft - 100;
+	var posLeft = e.pageX - 20;
+	var posTop = e.pageY - 30;
+	pxStr = 'px';
 	var newobj = $Obj(oname);
 	if (!newobj) {
 		newobj = document.createElement("div");
 		newobj.id = oname;
-		newobj.style.position = "absolute";
+		newobj.style.position = 'absolute';
 		newobj.className = oname;
-		newobj.className += " dlgws";
+		newobj.className += ' dlgws';
 		newobj.style.top = posTop + pxStr;
 		newobj.style.left = posLeft + pxStr;
 		document.body.appendChild(newobj);
@@ -194,31 +152,10 @@ function LoadNewDiv(e, surl, oname) {
 		newobj.style.display = "block";
 	}
 	if (newobj.innerHTML.length < 10) {
-		fetch(surl).then(resp => resp.text()).then((d) => { newobj.innerHTML = d });
+		fetch(surl).then(resp => resp.text()).then((d) => {
+			newobj.innerHTML = d;
+		});
 	}
-}
-function LoadNewDiv2(e, surl, oname, dlgcls) {
-	var posLeft = 300;
-	var posTop = 50;
-	var newobj = $Obj(oname);
-	if (!newobj) {
-		newobj = document.createElement("div");
-		newobj.id = oname;
-		newobj.style.position = "absolute";
-		newobj.className = dlgcls;
-		newobj.style.top = posTop;
-		newobj.style.left = posLeft;
-		newobj.style.display = "none";
-		document.body.appendChild(newobj);
-	}
-	newobj.innerHTML = '';
-	fetch(surl).then(resp => resp.text()).then((d) => {
-		newobj.innerHTML = d;
-	});
-	if (newobj.innerHTML == '') newobj.style.display = "none";
-	else newobj.style.display = "block";
-	jQuery(newobj).css("top", "50px").css("left", "300px");
-	DedeXHTTP = null;
 }
 function ShowUrlTr() {
 	var jumpTest = $Obj("flagsj");
