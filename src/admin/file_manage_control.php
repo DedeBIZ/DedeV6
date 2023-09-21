@@ -17,10 +17,32 @@ $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = "";
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
+$files = json_decode(file_get_contents(DEDEDATA.'/admin/files.txt'));
+$currentFolder = basename(__DIR__);
+$realFiles = array();
+foreach ($files as $ff) {
+    $rfi = preg_replace("#^admin/#",$currentFolder.'/',$ff->filename);
+    $realFiles[] = $rfi;
+}
+function realdir($path) {
+    return dirname(realpath($path));
+}
+
 //文件管理器交互与逻辑控制文件
 $fmm = new FileManagement();
 $fmm->Init();
 if ($fmdo == "rename") {
+    $f = str_replace("..", "", $oldfilename);
+    $f = $cfg_basedir.$activepath."/$oldfilename";
+    if (!file_exists(dirname(__FILE__).'/../license.txt')) {
+        ShowMsg("许可协议不存在，无法重名文件", "javascript:;");
+        exit();
+    }
+    $f = str_replace(realdir(dirname(__FILE__).'/../license.txt').'/', "", $f);
+    if (in_array($f,$realFiles)) {
+        ShowMsg("系统文件禁止重名", "javascript:;");
+        exit();
+    }
     $oldfilename = str_replace("..","",$oldfilename);
     $newfilename = str_replace("..","",$newfilename);
     $fmm->RenameFile($oldfilename, $newfilename);
@@ -32,10 +54,32 @@ else if ($fmdo == "newdir") {
 }
 //移动文件
 else if ($fmdo == "move") {
+    $f = str_replace("..", "", $filename);
+    $f = $cfg_basedir.$activepath."/$filename";
+    if (!file_exists(dirname(__FILE__).'/../license.txt')) {
+        ShowMsg("许可协议不存在，无法移动文件", "javascript:;");
+        exit();
+    }
+    $f = str_replace(realdir(dirname(__FILE__).'/../license.txt').'/', "", $f);
+    if (in_array($f,$realFiles)) {
+        ShowMsg("系统文件禁止移动", "javascript:;");
+        exit();
+    }
     $fmm->MoveFile($filename, $newpath);
 }
 //删除文件
 else if ($fmdo == "del") {
+    $f = str_replace("..", "", $filename);
+    $f = $cfg_basedir.$activepath."/$filename";
+    if (!file_exists(dirname(__FILE__).'/../license.txt')) {
+        ShowMsg("许可协议不存在，无法删除", "javascript:;");
+        exit();
+    }
+    $f = str_replace(realdir(dirname(__FILE__).'/../license.txt').'/', "", $f);
+    if (in_array($f,$realFiles)) {
+        ShowMsg("系统文件禁止删除", "javascript:;");
+        exit();
+    }
     $fmm->DeleteFile($filename);
 }
 //文件修改

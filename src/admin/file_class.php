@@ -30,7 +30,7 @@ class FileManagement
         $oldext = pathinfo($oldname)['extension'];
         $newext = pathinfo($newname)['extension'];
         if ($oldext != $newext) {
-            if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($newname))) {
+            if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|inc|htm)$#i', trim($newname))) {
                 ShowMsg("文件扩展名已被系统禁止", "javascript:;");
                 exit();
             }
