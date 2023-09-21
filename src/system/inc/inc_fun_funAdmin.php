@@ -155,7 +155,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
         }
         $code = <<<EOT
 <script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
-<textarea id="{$fname}" name="{$fname}">{$fvalue}</textarea>
+<div id="{$fname}" name="{$fname}">{$fvalue}</div>
 <script>var editor = CKEDITOR.replace('{$fname}'{$addConfig});</script>
 EOT;
         if ($gtype == "print") {
