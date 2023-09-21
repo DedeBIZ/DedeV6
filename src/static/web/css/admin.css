@@ -386,7 +386,6 @@ body.hidemenu .body-right {
 }
 .colordlg {
 	padding:0.5rem;
-	width:120px;
 	background:#fff;
 	border:1px solid #dee2e6;
 	z-index:10005
@@ -638,8 +637,8 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 	border-bottom-right-radius:0.5rem!important
 }
 #selColor {
-	padding:0;
-	width:40px
+	padding:5px;
+	width:35px
 }
 #edsta {
 	display:none;

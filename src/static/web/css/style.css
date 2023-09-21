@@ -440,7 +440,7 @@ input[type=file] {
 #returntop:hover {
 	background:#e77817
 }
-@media (max-width:480px) {
+@media (max-width:768px) {
 	.m-pb-1 {
 		padding-bottom:1rem
 	}
