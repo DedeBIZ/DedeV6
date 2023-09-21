@@ -21,6 +21,10 @@ if ($dopost == "save") {
         ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
+    if (!preg_match('#\.html$#i', trim($filename))) {
+        ShowMsg("文件扩展名已被系统禁止", "javascript:;");
+        exit();
+    }
     if ($likeid == '') {
         $likeid = $likeidsel;
     }

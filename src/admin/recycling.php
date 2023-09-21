@@ -15,6 +15,7 @@ if (empty($cid)) {
     $cid = '0';
     $whereSql = '';
 }
+$cid = intval($cid);
 if ($cid != 0) {
     require_once(DEDEINC.'/channelunit.func.php');
     $whereSql = " AND arc.typeid IN (".GetSonIds($cid).")";

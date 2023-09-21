@@ -14,6 +14,16 @@ if (empty($dopost)) $dopost = "";
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 if ($dopost == "saveedit") {
     include_once(DEDEINC."/archive/sgpage.class.php");
+    $files = json_decode(file_get_contents(DEDEDATA.'/admin/files.txt'));
+    $currentFolder = basename(__DIR__);
+    $realFiles = array();
+    foreach ($files as $ff) {
+        $rfi = preg_replace("#^admin/#",$currentFolder.'/',$ff->filename);
+        $realFiles[] = $rfi;
+    }
+    function realdir($path) {
+        return dirname(realpath($path));
+    }
     $uptime = time();
     $body = str_replace('&quot;', '\\"', $body);
     $filename = preg_replace("#^\/#", "", $nfilename);
@@ -24,6 +34,17 @@ if ($dopost == "saveedit") {
     }
     //如果修改了文件名，删除旧文件
     if ($oldfilename != $filename) {
+        $f = str_replace("..", "", $oldfilename);
+        $f = $cfg_basedir.$activepath."/$oldfilename";
+        if (!file_exists(dirname(__FILE__).'/../license.txt')) {
+            ShowMsg("许可协议不存在，无法重名文件", "javascript:;");
+            exit();
+        }
+        $f = str_replace(realdir(dirname(__FILE__).'/../license.txt').'/', "", $f);
+        if (in_array($f,$realFiles)) {
+            ShowMsg("系统文件禁止重名", "javascript:;");
+            exit();
+        }
         $oldfilename = $cfg_basedir.$cfg_cmspath."/".$oldfilename;
         if (is_file($oldfilename)) {
             unlink($oldfilename);

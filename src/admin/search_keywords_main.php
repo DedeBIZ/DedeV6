@@ -14,6 +14,9 @@ if (empty($pagesize)) $pagesize = 30;
 if (empty($pageno)) $pageno = 1;
 if (empty($dopost)) $dopost = '';
 if (empty($orderby)) $orderby = 'aid';
+$orderby = HtmlReplace($orderby, -1);
+$pageno = intval($pageno);
+$pagesize = intval($pagesize);
 //重载列表
 if ($dopost == 'getlist') {
     AjaxHead();
