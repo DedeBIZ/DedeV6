@@ -51,7 +51,7 @@ if ($dopost == "show") {
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 复制文档模型";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
-    $win->AddTitle("复制文档模型：<span class='text-primary'>".$row['typename']."</span>");
+    $win->AddTitle("复制文档模型：".$row['typename']."");
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
@@ -99,7 +99,7 @@ if ($dopost == "show") {
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导出文档模型规则";
     $win = new OxWindow();
     $win->Init();
-    $win->AddTitle("导出<span class='text-primary'>{$row['typename']}</span>文档模型规则");
+    $win->AddTitle("导出{$row['typename']}文档模型规则");
     $winform = $win->GetWindow("hand", "<link rel='stylesheet' href='css/codemirror.css'><script src='js/codemirror.js'></script><script src='js/mode/xml/xml.js'></script><script src='js/mode/javascript/javascript.js'></script><script src='js/mode/css/css.js'></script><script src='js/mode/htmlmixed/htmlmixed.js'></script><textarea name='config' id='content' class='form-control'>$channelconfig</textarea><script>var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
@@ -156,7 +156,7 @@ if ($dopost == "show") {
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE nid='{$fields['nid']}' ");
     if (is_array($row)) {
         GotoStaMsg("<tr>
-            <td>已经存在相同的<span class='text-primary'>{$fields['nid']}</span>模型</td>
+            <td>已经存在相同的{$fields['nid']}模型</td>
         </tr>
         <tr>
             <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
@@ -249,9 +249,9 @@ if ($dopost == "show") {
     }
     if ($copytemplet == 1) {
         $tmpletdir = $cfg_basedir.$cfg_templets_dir.'/'.$cfg_df_style;
-        copy("{$tmpletdir}/article_{$nid}.htm", "{$tmpletdir}/{$newnid}_article.htm");
-        copy("{$tmpletdir}/list_{$nid}.htm", "{$tmpletdir}/{$newnid}_list.htm");
-        copy("{$tmpletdir}/index_{$nid}.htm", "{$tmpletdir}/{$newnid}_index.htm");
+        copy("{$tmpletdir}/article_{$nid}.htm", "{$tmpletdir}/article_{$newnid}.htm");
+        copy("{$tmpletdir}/list_{$nid}.htm", "{$tmpletdir}/list_{$newnid}.htm");
+        copy("{$tmpletdir}/index_{$nid}.htm", "{$tmpletdir}/index_{$newnid}.htm");
     }
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if ($rs) {
@@ -277,7 +277,7 @@ if ($dopost == "show") {
     }
     $trueTable = str_replace("#@__", $cfg_dbprefix, $addtable);
     if (!$dsql->IsTable($trueTable)) {
-        ShowMsg("系统找不到您所指定的<span class='text-primary'>$trueTable</span>表", "-1");
+        ShowMsg("系统找不到您所指定的".$trueTable."表", "-1");
         exit();
     }
     $dsql->ExecuteNoneQuery($query);
@@ -290,7 +290,7 @@ if ($dopost == "show") {
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 模型应用模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
-    $win->AddTitle("栏目<span class='text-primary'>".$row['typename']."</span>默认模板文件说明");
+    $win->AddTitle("栏目".$row['typename']."默认模板文件说明");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "<tr>
         <td>
@@ -332,7 +332,7 @@ if ($dopost == "show") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确定要删除<span class='text-primary'>".$row['typename']."</span>模型吗");
+        $win->AddTitle("您确定要删除".$row['typename']."模型吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -572,7 +572,7 @@ if ($dopost == "show") {
         echo "<script>var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
             lineNumbers: true,
             lineWrapping: true,
-            mode: 'text/html'
+            mode: 'text/html',
         });</script>";
         echo $forms;
     }

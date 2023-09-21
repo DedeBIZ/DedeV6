@@ -11,7 +11,6 @@
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}
@@ -38,11 +37,11 @@
 					</div>
 					<ul class="pagination">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 				</div>
-				<div class="col-md-3">
+				<aside class="col-md-3">
 					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
 					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
 					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
-				</div>
+				</aside>
 			</div>
 		</main>
 		{dede:include filename='foot.htm'/}

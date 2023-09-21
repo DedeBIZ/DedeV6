@@ -104,7 +104,7 @@ function SpCreateDir($spath)
                 $isok = ChmodAll($truepath, $cfg_dir_purview);
             }
             if (!$isok) {
-                echo "创建或修改目录<span class='text-primary'>".$truepath."</span>失败";
+                echo "创建或修改目录".$truepath."失败";
                 return false;
             }
         }
@@ -135,9 +135,6 @@ function jsScript($js)
 function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype = "print", $isfullpage = "false", $bbcode = false)
 {
     global $cfg_ckeditor_initialized;
-    if (!isset($GLOBALS['cfg_html_editor'])) {
-        $GLOBALS['cfg_html_editor'] = 'fck';
-    }
     if ($gtype == "") {
         $gtype = "print";
     }
@@ -145,7 +142,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
         $addConfig = "";
         if (defined("DEDEADMIN")) {
             $emoji = "";
-            if ($GLOBALS['cfg_db_language']=="utf8mb4") {
+            if ($GLOBALS['cfg_db_language'] == "utf8mb4") {
                 $emoji = ",emoji";
             }
             $addConfig = ",{allowedContent:true,pasteFilter:null,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,html5audio,dedepagebreak,ddfilebrowser,mimage,textindent,tabletools,tableresize,tableselection,codesnippet{$emoji}',codeSnippet_theme: 'default'}";

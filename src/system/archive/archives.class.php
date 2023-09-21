@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  */
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/channelunit.class.php");
-require_once(DEDEINC."/downmix.inc.php");
 @set_time_limit(0);
 class Archives
 {

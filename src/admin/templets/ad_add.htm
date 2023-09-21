@@ -71,8 +71,8 @@
 				<tr>
 					<td>投放时间：</td>
 					<td>
-						<label>从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="admin-input-sm"></label>
-						<label>到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="admin-input-sm"></label>
+						<label>从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker admin-input-sm"></label>
+						<label>到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker admin-input-sm"></label>
 					</td>
 				</tr>
 				<tr>
@@ -177,7 +177,7 @@
 					return false;
 				}
 			}
-			$(document).ready(function () {
+			$(document).ready(function() {
 				$('.datepicker').daterangepicker({
 					"singleDatePicker": true,
 					"autoApply": true,
@@ -185,7 +185,6 @@
 					"linkedCalendars": false,
 					"timePicker": true,
 					"timePicker24Hour": true,
-					//"timePickerSeconds": true,
 					"showCustomRangeLabel": false,
 					ranges: {
 						'今日': [moment(), moment()],
@@ -201,13 +200,13 @@
 						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
 						firstDay: 1
 					}
-				}, function (start) {
+				}, function(start) {
 					$(this).val(start.format("YYYY-MM-DD HH:mm"));
 				});
 			})
 		</script>
 		<script>
-			(function ($) {
+			(function($) {
 				function showcode(idName) {
 					$("#advert").html("").html($("#formtxt>#" + idName).html());
 					$("#adstyle").val(idName);

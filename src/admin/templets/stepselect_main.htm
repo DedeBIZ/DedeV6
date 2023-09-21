@@ -13,7 +13,6 @@
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="js/main.js"></script>
 		<script>
-			var loadhtml = "<img src='../static/web/img/loadinglit.gif'>";
 			function updateItem(aid) {
 				var upenumf = document.getElementById('upenumf');
 				upenumf.ename.value = $DE('ename' + aid).value;
@@ -27,12 +26,12 @@
 			}
 			function AddType() {
 				$DE('edsta').style.display = 'block';
-				fetch('stepselect_main.php?action=addnew').then(resp=>{
+				fetch('stepselect_main.php?action=addnew').then(resp => {
 					if (resp.ok) {
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
+				}).then((d) => {
 					$DE('edsta').innerHTML = d;
 				}).catch((error) => {
 					$DE('edsta').innerHTML = errMsg;
@@ -44,12 +43,12 @@
 					ShowMsg("必须选择一个类别");
 					return false;
 				}
-				fetch('stepselect_main.php?action=addenum&id=' + id).then(resp=>{
+				fetch('stepselect_main.php?action=addenum&id=' + id).then(resp => {
 					if (resp.ok) {
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
+				}).then((d) => {
 					$DE('edsta').innerHTML = d;
 				}).catch((error) => {
 					$DE('edsta').innerHTML = errMsg;
@@ -63,12 +62,12 @@
 					return false;
 				}
 				$DE('edsta').style.display = 'block';
-				fetch('stepselect_main.php?action=edit&id=' + id).then(resp=>{
+				fetch('stepselect_main.php?action=edit&id=' + id).then(resp => {
 					if (resp.ok) {
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
+				}).then((d) => {
 					$DE('edsta').innerHTML = d;
 				}).catch((error) => {
 					$DE('edsta').innerHTML = errMsg;
@@ -81,31 +80,30 @@
 					return false;
 				}
 				$DE('edsta').style.display = 'block';
-				fetch('stepselect_main.php?action=view&id=' + id).then(resp=>{
+				fetch('stepselect_main.php?action=view&id=' + id).then(resp => {
 					if (resp.ok) {
 						return resp.text()
 					}
 					throw new Error('系统错误，无法获取数据');
-				}).then((d)=>{
+				}).then((d) => {
 					$DE('edsta').innerHTML = d;
 				}).catch((error) => {
 					$DE('edsta').innerHTML = errMsg;
 				});
 			}
 			function DelType() {
-				DedeConfirm("您确实要删除这个分类吗").then((v)=>{
+				DedeConfirm("您确实要删除这个分类吗").then((v) => {
 					var id = GetSelType();
 					if (id == 0) {
 						ShowMsg("必须选择一个类别");
 						return false;
 					}
 					location.href = 'stepselect_main.php?action=del&id=' + id;
-				}).catch((e)=>{
+				}).catch((e) => {
 					console.log(e)
 				});
 			}
 			function CloseTWin() {
-				$DE('edsta').innerHTML = loadhtml;
 				$DE('edsta').style.display = 'none';
 			}
 			function ChangePage(sobj) {
@@ -125,9 +123,9 @@
 				}
 			}
 			function DelSel() {
-				DedeConfirm("您确实要删除这些分类吗").then((v)=>{
+				DedeConfirm("您确实要删除这些分类吗").then((v) => {
 					document.form1.submit();
-				}).catch((e)=>{
+				}).catch((e) => {
 					console.log(e)
 				});
 			}
@@ -142,7 +140,6 @@
 		</script>
 	</head>
 	<body>
-		<div id="edsta"><img src="../static/web/img/loadinglit.gif"></div>
 		<table align="center" class="table maintable my-3">
 			<tr>
 				<td bgcolor="#f5f5f5">
@@ -190,9 +187,6 @@
 		?>
 		<table align="center" class="table maintable mb-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="8">联动枚举组管理</td>
-			</tr>
-			<tr>
 				<td bgcolor="#f5f5f5" colspan="8">
 					<span class="float-left"><?php echo $selgroup;?> - 子分类管理</span>
 					<span class="float-right">
@@ -210,14 +204,14 @@
 						<input type="hidden" name="action" value="addenum_save">
 						<input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
 						<input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
-						<span class="float-left ml-2">隶属分类：
-							<select name="topvalue" onChange="ChangePage2(this)" class="admin-input-sm">
-								<option value="0"><?php echo $selgroup;?></option>
-								<?php echo $options;?>
-							</select>
-						</span>
-						<span class="float-left ml-2">分类名称：<input type="text" name="ename" class="admin-input-lg"></span>
-						<span class="float-left ml-2"><button type="submit" name="sb2" class="btn btn-success btn-sm">添加分类</button></span>
+						<span>隶属分类：</span>
+						<select name="topvalue" onChange="ChangePage2(this)" class="admin-input-sm">
+							<option value="0"><?php echo $selgroup;?></option>
+							<?php echo $options;?>
+						</select>
+						<span>分类名称：</span>
+						<input type="text" name="ename" class="admin-input-lg"></span>
+						<button type="submit" name="sb2" class="btn btn-success btn-sm">添加分类</button>
 					</form>
 				</td>
 			</tr>
@@ -345,5 +339,6 @@
 			</tr>
 		</table>
 		<?php }?>
+		<div id="edsta"></div>
 	</body>
 </html>

@@ -56,7 +56,7 @@ if ($step == 1) {
         //检测账号是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的账号<span class='text-primary'>{$userid}</span>已存在，请使用别的账号", "-1");
+            ShowMsg("您指定的账号{$userid}已存在，请使用别的账号", "-1");
             exit();
         }
         //会员的默认金币

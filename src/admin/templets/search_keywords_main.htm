@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/key.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
+		<script src="js/search.js"></script>
 		<script src="js/main.js"></script>
 		<script>
 		var pageno = 1;
@@ -21,7 +21,7 @@
 		function ReloadPage(ordertype) {
 			orderby = ordertype;
 			var listArea = $Obj('rslist');
-			var errMsg = "网络通信出错，<a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
+			var errMsg = "<a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
 			fetch("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype).then(resp=>{
 				if (resp.ok) {
 					return resp.text()
@@ -45,7 +45,7 @@
 			var kw = $Obj('keyword' + nid).value;
 			var kws = $Obj('spwords' + nid).value;
 			var ct = $Obj('count' + nid).value;
-			var errMsg = "网络通信出错，<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
+			var errMsg = "<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
 			<?php
 			if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {
 			?>

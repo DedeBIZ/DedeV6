@@ -26,7 +26,7 @@ if ($typeid > 0) $pv = new PartView($typeid);
 else $pv = new PartView();
 $pv->SetTemplet($partcode, "string");
 if ($showsource == "" || $showsource == "yes") {
-    echo "<span class='text-primary'><pre>".dede_htmlspecialchars($partcode)."</pre></span>";
+    echo "<pre>".dede_htmlspecialchars($partcode)."</pre>";
     echo "<hr>";
 }
 $pv->Display();

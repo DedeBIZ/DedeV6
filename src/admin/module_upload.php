@@ -24,7 +24,7 @@ if ($action == 'upload') {
     } else {
         include_once(DEDEINC."/libraries/zip.class.php");
         $tmpfilename = $mdir.'/'.ExecTime().mt_rand(10000, 50000).'.tmp';
-        move_uploaded_file($upfile, $tmpfilename) or die("上传文件移动到<span class='text-primary'>{$tmpfilename}</span>时失败，请检查<span class='text-primary'>{$mdir}</span>目录是否有写入权限");
+        move_uploaded_file($upfile, $tmpfilename) or die("上传文件移动到{$tmpfilename}时失败，请检查{$mdir}目录是否有写入权限");
         $dm = new DedeModule($mdir);
         $infos = $dm->GetModuleInfo($tmpfilename, 'file');
         if (empty($infos['hash'])) {

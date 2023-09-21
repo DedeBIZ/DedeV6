@@ -8,9 +8,6 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.js"></script>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.album.js"></script>
 	</head>
 	<body class="body-bg">
 		<?php obtaintheme('top.htm');?>
@@ -128,6 +125,8 @@
 			</div>
 		</main>
 		<?php obtaintheme('foot.htm');?>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.album.js"></script>
 		<script>startNum = <?php echo $j;?>;</script>
 		<?php include(DEDEMEMBER."/templets/widget_litpic.htm");?>
 	</body>

@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 	</head>
 	<body>
 		<?php obtaintheme('top.htm');?>
@@ -26,7 +25,7 @@
 						<?php
 						if (!empty($fields)) {
 							echo "<tbody>";
-							echo '<tr><td bgcolor="#e9ecef">表单'.$fields['id'].'<a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank" class="btn btn-light btn-sm ml-2">详细</a></td></tr></td>';
+							echo '<tr><td bgcolor="#e9ecef">表单'.$fields['id'].' <a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank" class="btn btn-light btn-sm">详细</a></td></tr></td>';
 							foreach($fieldlist as $field=>$fielddata)
 							{
 								if ($fields[$field]=='') continue;

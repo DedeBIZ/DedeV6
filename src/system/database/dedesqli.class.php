@@ -306,7 +306,7 @@ class DedeSqli
             }
         }
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError(mysqli_error($this->linkID)." <br>Error sql:<span class='text-primary'>".$this->queryString."</span>");
+            $this->DisplayError(mysqli_error($this->linkID)." <br>Error sql:".$this->queryString."");
         }
     }
     function Query($id = "me", $sql = '')

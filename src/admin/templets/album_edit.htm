@@ -16,10 +16,9 @@
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
+		<script src="../static/web/js/cropper.min.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/album.js"></script>
-		<script src="js/handlers.js"></script>
-		<script src="../static/web/js/cropper.min.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="album_edit.php" method="post" enctype="multipart/form-data" onSubmit="return checkSubmitAlb();">
@@ -97,7 +96,7 @@
 								<td width="120">缩略图：</td>
 								<td width="630">
 									<input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-lg">
-									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="l-height-30"> 远程</label>
+									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
@@ -138,7 +137,7 @@
 									echo $typeOptions;
 									echo '</select>';
 									?>
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>')" title="快捷选择"></i></span>
+									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>')" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 								</td>
 								<td width="120">需要金币：</td>
 								<td><input type="text" name="money" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
@@ -155,7 +154,7 @@
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" class="admin-input-sm">
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目"></i></span>
+									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 								</td>
 							</tr>
 						</table>
@@ -341,7 +340,7 @@
 										<?php
 										$subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
 										echo "<option value='0'>正常排序</option>";
-										if ($subday>0) echo "<option value='$subday' selected>置顶<span class='text-primary'>$subday</span>天</option>";
+										if ($subday>0) echo "<option value='$subday' selected>置顶".$subday."天</option>";
 										?>
 										<option value="7">置顶一周</option>
 										<option value="30">置顶一个月</option>
@@ -447,7 +446,7 @@
 						ShowMsg(error); //处理上传失败后的回调
 					}
 				});
-			})
+			});
 			$("#iptAlbumImages").change(function(val) {
 				for (let i = 0; i < val.target.files.length; i++) {
 					const f = val.target.files[i];
@@ -474,7 +473,7 @@
 						}
 					});
 				}
-			})
+			});
 		</script>
 		<script>InitPage();</script>
 	</body>

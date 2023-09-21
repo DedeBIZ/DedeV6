@@ -67,7 +67,7 @@
 				</tr>
 				{dede:datalist empty='<tr><td colspan="9" align="center">暂无会员</td></tr>'}
 				<tr align="center">
-					<td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
+					<td><input type="checkbox" name="mid" value="{dede:field.mid/}"></td>
 					<td>{dede:field.mid/}</td>
 					<td align="left">
 						<span class="mr-1"><?php if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img-sm'>";};echo ''.$fields['userid'].'';if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";?></span>

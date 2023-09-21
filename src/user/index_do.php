@@ -13,11 +13,11 @@ if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
 if ($fmdo == 'sendMail') {
     if (!CheckEmail($cfg_ml->fields['email'])) {
-        ShowMsg('您的邮箱格式有错误', '-1');
+        ShowMsg('您的邮箱格式有错误', 'index.php');
         exit();
     }
     if ($cfg_ml->fields['spacesta'] != -10) {
-        ShowMsg('您的帐号不在邮件验证状态，本操作无效', '-1');
+        ShowMsg('您的帐号不在邮件验证状态，本操作无效', 'index.php');
         exit();
     }
     $userhash = md5($cfg_cookie_encode.'--'.$cfg_ml->fields['mid'].'--'.$cfg_ml->fields['email']);
@@ -25,11 +25,9 @@ if ($fmdo == 'sendMail') {
     $url = preg_replace("#http:\/\/#i", '', $url);
     $proto = IsSSL()? "https://" : "http://";
     $url = $proto.preg_replace("#\/\/#i", '/', $url);
-    $mailtitle = "{$cfg_webname}，会员邮件验证通知";
+    $mailtitle = "来自{$cfg_webname}：邮件验证通知";
     $mailbody = '';
-    $mailbody .= "尊敬的会员<span class='text-primary'>{$cfg_ml->fields['uname']}</span>，欢迎注册成为<span class='text-primary'>{$cfg_webname}</span>会员\r\n";
-    $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏浏览这地址：\r\n";
-    $mailbody .= "{$url}\r\n";
+    $mailbody .= "尊敬的{$cfg_ml->fields['uname']}会员，欢迎成为{$cfg_webname}会员！\r\n通过注册还须进行最后一步操作，请点击链接或复制链接到地址栏访问：{$url}";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient();
@@ -51,23 +49,23 @@ if ($fmdo == 'sendMail') {
 } else if ($fmdo == 'checkMail') {
     $mid = intval($mid);
     if (empty($mid)) {
-        ShowMsg('您的效验串不合法', '-1');
+        ShowMsg('您的效验串不合法', 'index.php');
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}' ");
     $needUserhash = md5($cfg_cookie_encode.'--'.$mid.'--'.$row['email']);
     if ($needUserhash != $userhash) {
-        ShowMsg('您的效验串不合法', '-1');
+        ShowMsg('您的效验串不合法', 'index.php');
         exit();
     }
     if ($row['spacesta'] != -10) {
-        ShowMsg('操作无效，您的帐号不在邮件验证状态', '-1');
+        ShowMsg('操作无效，您的帐号不在邮件验证状态', 'index.php');
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET spacesta=0 WHERE mid='{$mid}' ");
     //清除会员缓存
     $cfg_ml->DelCache($mid);
-    ShowMsg('会员缓存已清理', 'login.php');
+    ShowMsg('正在验证中', 'login.php');
     exit();
 } else if ($fmdo == 'user') {
     //检查账号是否存在
@@ -86,9 +84,9 @@ if ($fmdo == 'sendMail') {
             $msg = CheckUserID($uid, $msgtitle, false);
         }
         if ($msg == 'ok') {
-            $msg = "<span class='text-success'><i class='fa fa-check'></i> {$msgtitle}可以使用</span>";
+            $msg = "{$msgtitle}可以使用";
         } else {
-            $msg = "<span class='text-danger'><i class='fa fa-times'></i> {$msg}</span>";
+            $msg = "{$msg}";
         }
         echo $msg;
         exit();
@@ -97,16 +95,16 @@ if ($fmdo == 'sendMail') {
     else  if ($dopost == "checkmail") {
         AjaxHead();
         if ($cfg_md_mailtest == 'N') {
-            $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
+            $msg = "可以使用";
         } else {
             if (!CheckEmail($email)) {
-                $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱格式有误</span>";
+                $msg = "邮箱格式有误";
             } else {
                 $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE email LIKE '$email' LIMIT 1");
                 if (!is_array($row)) {
-                    $msg = "<span class='text-success'><i class='fa fa-check'></i> 可以使用</span>";
+                    $msg = "可以使用";
                 } else {
-                    $msg = "<span class='text-danger'><i class='fa fa-times'></i> 邮箱已经被另一个账户占用</span>";
+                    $msg = "邮箱已经被另一个账号占用";
                 }
             }
         }
@@ -123,17 +121,17 @@ if ($fmdo == 'sendMail') {
     else if ($dopost == "money2s") {
         CheckRank(0, 0);//禁止游客操作
         if ($cfg_money_scores == 0) {
-            ShowMsg('系统禁用了积分与金币兑换功能', '-1');
+            ShowMsg('系统禁用了积分与金币兑换功能', 'index.php');
             exit();
         }
         $money = empty($money) ? "" : abs(intval($money));
         if (empty($money)) {
-            ShowMsg('您没指定要兑换多少金币', '-1');
+            ShowMsg('您没指定要兑换多少金币', 'index.php');
             exit();
         }
         $needscores = $money * $cfg_money_scores;
         if ($cfg_ml->fields['scores'] < $needscores) {
-            ShowMsg('您积分不足，不能换取这么多的金币', '-1');
+            ShowMsg('您积分不足，不能换取这么多的金币', 'index.php');
             exit();
         }
         $litmitscores = $cfg_ml->fields['scores'] - $needscores;
@@ -156,12 +154,12 @@ if ($fmdo == 'sendMail') {
         }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();
-            ShowMsg("您输入的账号<span class='text-primary'>{$userid}</span>已禁止", "index.php");
+            ShowMsg("您输入的账号{$userid}已禁止", "index.php");
             exit();
         }
         if ($pwd == '') {
             ResetVdValue();
-            ShowMsg("密码不能为空", "-1", 0, 2000);
+            ShowMsg('密码不能为空', 'index.php', 0, 2000);
             exit();
         }
         $isNeed = $cfg_ml->isNeedCheckCode($userid);
@@ -177,24 +175,24 @@ if ($fmdo == 'sendMail') {
         $rs = $cfg_ml->CheckUser($userid, $pwd);
         if ($rs == 0) {
             ResetVdValue();
-            ShowMsg("您的账号错误", "index.php", 0, 2000);
+            ShowMsg('您的账号错误', 'index.php', 0, 2000);
             exit();
         } else if ($rs == -1) {
             ResetVdValue();
-            ShowMsg("您的密码错误", "index.php", 0, 2000);
+            ShowMsg('您的密码错误', 'index.php', 0, 2000);
             exit();
         } else if ($rs == -2) {
             ResetVdValue();
-            ShowMsg("管理员帐号不允许从前台登录", "index.php", 0, 2000);
+            ShowMsg('管理员帐号不允许从前台登录', 'index.php', 0, 2000);
             exit();
         } else {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg("正在登录会员中心，请稍等", "index.php", 0, 2000);
+                ShowMsg('正在登录会员中心，请稍等', 'index.php', 0, 2000);
             } else {
                 $gourl = str_replace('^', '&', $gourl);
-                ShowMsg("正在前往指定页面，请稍等", $gourl, 0, 2000);
+                ShowMsg('正在前往指定页面，请稍等', $gourl, 0, 2000);
             }
             exit();
         }
@@ -202,7 +200,7 @@ if ($fmdo == 'sendMail') {
     //退出登录
     else if ($dopost == "exit") {
         $cfg_ml->ExitCookie();
-        ShowMsg("已退出会员中心", "index.php", 0, 2000);
+        ShowMsg('已退出会员中心', 'index.php', 0, 2000);
         exit();
     }
 } else if ($fmdo == 'purl'){
@@ -260,6 +258,6 @@ if ($fmdo == 'sendMail') {
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
     exit;
 } else {
-    ShowMsg("操作失败", "index.php");
+    ShowMsg('操作失败', 'index.php');
 }
 ?>

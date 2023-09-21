@@ -13,7 +13,7 @@
 		<script src="js/mode/javascript/javascript.js"></script>
 		<script src="js/mode/css/css.js"></script>
 		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
-		<style>.selbt{float:left;display:inline-block;margin:6px 6px 6px 0;text-align:center;border-radius:.5rem}.helpdiv{float:left;display:none;padding:10px;width:100%;background:#f5f5f5;border:1px solid #dee2e6;border-radius:.5rem}</style>
+		<style>.helpinfo{float:left;display:none;padding:10px;width:100%;background:#f5f5f5;border:1px solid #dee2e6;border-radius:0.5rem}</style>
 	</head>
 	<body>
 		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
@@ -35,7 +35,7 @@
 					<td colspan="2">
 					<?php
 					foreach ($helps as $key => $help) {
-						echo '<div title="'.trim($help[0]).'" class="selbt"><a href="javascript:;" onclick="showdiv(\''.$key.'\');" class="btn btn-light btn-sm">'.$key.'</a></div>'."";
+						echo '<a href="javascript:;" onclick="showdiv(\''.$key.'\');" title="'.trim($help[0]).'" class="btn btn-light btn-sm">'.$key.'</a>'."";
 					}
 					?>
 					</td>
@@ -44,7 +44,7 @@
 					<td colspan="2">
 						<?php
 						foreach ($helps as $key => $help) {
-							echo '<div name="help111" id="'.$key.'" class="helpdiv"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></span><p>标签名称：'.$key.'</p><p>标签说明：'.trim($help[0]).'</p><p><textarea class="admin-textarea-xl">'.trim($help[1]).'</textarea></p><span>'."";
+							echo '<div id="'.$key.'" class="helpinfo"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></span><p>标签名称：'.$key.'</p><p>标签说明：'.trim($help[0]).'</p><p><textarea id="'.$key.'" class="admin-textarea-xl">'.trim($help[1]).'</textarea></p><span>'."";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
 							{
@@ -59,7 +59,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="p-0">
-						<textarea id="content" name="content" class="admin-textarea-xl"><?php echo $content;?></textarea>
+						<textarea name="content" id="content"><?php echo $content;?></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -79,7 +79,7 @@
 				}
 			}
 			function showdiv(id) {
-				hideobj = GETNAMES("help111");
+				hideobj = GETNAMES("helpinfo");
 				for (i = 0; i < hideobj.length; i++) {
 					hideobj[i].style.display = "none";
 				}
@@ -88,10 +88,10 @@
 				}
 			}
 			function GETNAMES(name) {
-				var returns = document.getElementsByName(name);
+				var returns = document.getElementsByClassName(name);
 				if (returns.length > 0) return returns;
 				returns = new Array();
-				var e = document.getElementsByTagName('div');
+				var e = document.getElementsByTagName("div");
 				for (i = 0; i < e.length; i++) {
 					if (e[i].getAttribute("name") == name) {
 						returns[returns.length] = e[i];
@@ -99,10 +99,10 @@
 				}
 				return returns;
 			}
-			var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
+			var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
 				lineNumbers: true,
 				lineWrapping: true,
-				mode: 'text/html'
+				mode: 'text/html',
 			});
 		</script>
 	</body>

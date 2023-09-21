@@ -1,112 +1,4 @@
-$(function () {
-	$.get("index_testenv.php",function (data) {
-		if (data !== '') {
-			$("#body-tips").html(data);
-		}
-	});
-	$.get("index_body.php?dopost=get_articles",function (data) {
-		if (data !== '') {
-			$("#system-word").html(data);
-		}
-	});
-});
-function Copyinfo() {
-	var val = document.getElementById('fz-0');
-	window.getSelection().selectAllChildren(val);
-	document.execCommand("Copy");
-	ShowMsg("成功复制环境配置信息");
-}
-//Dedebiz info
-var dedebizInfo;
-function ViewDedeBIZ() {
-	if (dedebizInfo === false) {
-		ShowMsg("启动商业组件失败");
-		return;
-	}
-	ShowMsg(`<table class="table table-borderless">
-		<tr>
-			<td width="25%">
-				<div class="web-info">
-					<p>版本号</p>
-					<span>${dedebizInfo.result.server_version}</span>
-				</div>
-			</td>
-			<td width="25%">
-				<div class="web-info">
-					<p>服务器系统</p>
-					<span>${dedebizInfo.result.server_goos}</span>
-				</div>
-			</td>
-			<td width="25%">
-				<div class="web-info">
-					<p>运行时间</p>
-					<span>${dedebizInfo.result.server_run_time}</span>
-				</div>
-			</td>
-			<td width="25%">
-				<div class="web-info">
-					<p>内存占用</p>
-					<span>${dedebizInfo.result.server_memory_usage}%</span>
-				</div>
-			</td>
-		</tr>
-	</table>`);
-}
-function LoadServer() {
-	$.get("index_body.php?dopost=system_info",function (data) {
-		let rsp = JSON.parse(data);
-		if (rsp.code === 200) {
-			if (rsp.result.core.code === 200) {
-				dedebizInfo = JSON.parse(rsp.result.core.data);
-			} else {
-				dedebizInfo = false;
-			}
-			let infoStr = `<table class="table table-borderless">`;
-			if (typeof rsp.result.domain !== "undefined") {
-				infoStr += `<tr>
-					<td width="25%">
-						<div class="web-info">
-							<p>授权域名</p>
-							<span>${rsp.result.domain}</span>
-						</div>
-					</td>
-					<td width="25%">
-						<div class="web-info">
-							<p>站点名称</p>
-							<span>${rsp.result.title}</span>
-						</div>
-					</td>
-					<td width="25%">
-						<div class="web-info">
-							<p>站点证书</p>
-							<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
-						</div>
-					</td>
-					<td width="25%">
-						<div class="web-info">
-							<p>商业组件</p>
-							<span><a href="javascript:ViewDedeBIZ()">组件状态</a></span>
-						</div>
-					</td>
-				</tr>`;
-			}
-			infoStr += "</table>";
-			$("#system-info").html(infoStr);
-		} else {
-			$("#system-info").html(`<table class="table table-borderless">
-				<tr>
-					<td>
-						<div class="web-info">
-							<p>${rsp.msg}</p>
-							<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息</span>
-						</div>
-					</td>
-				</tr>
-			</table>`);
-		}
-	});
-}
-Date.prototype.Format = function (fmt) {
+Date.prototype.Format = function(fmt) {
 	var o = {
 		"M+" : this.getMonth() + 1, //月份 
 		"d+" : this.getDate(), //日 
@@ -114,7 +6,7 @@ Date.prototype.Format = function (fmt) {
 		"m+" : this.getMinutes(), //分 
 		"s+" : this.getSeconds(), //秒 
 		"q+" : Math.floor((this.getMonth() + 3) / 3), //季度 
-		"S" : this.getMilliseconds() //毫秒 
+		"S" : this.getMilliseconds(), //毫秒 
 	};
 	if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
 	for (var k in o)
@@ -122,7 +14,7 @@ Date.prototype.Format = function (fmt) {
 	return fmt;
 }
 function LoadStat() {
-	$.get("index_body.php?dopost=get_statistics",function (data) {
+	$.get("index_body.php?dopost=get_statistics",function(data) {
 		try {
 			let rsp = JSON.parse(data);
 			if (rsp.code == 200) {
@@ -134,7 +26,7 @@ function LoadStat() {
 				$("#today_uv").html(tuv);
 				$("#today_ip").html(tip);
 				$("#today_vv").html(tvv);
-				$.get("index_body.php?dopost=get_statistics&sdate=-1",function (data) {
+				$.get("index_body.php?dopost=get_statistics&sdate=-1",function(data) {
 					let rsp = JSON.parse(data);
 					if (rsp.code == 200) {
 						$("#total_pv").html(parseInt(rsp.result.pv) + tpv);
@@ -152,7 +44,7 @@ function LoadStat() {
 	d.setDate(d.getDate() - 1);
 	var s = d.Format("yyyy-MM-dd");
 	s = s.replaceAll("-", "");
-	$.get("index_body.php?dopost=get_statistics&sdate=" + s,function (data) {
+	$.get("index_body.php?dopost=get_statistics&sdate=" + s,function(data) {
 		try {
 			let rsp = JSON.parse(data);
 			if (rsp.code == 200) {
@@ -214,38 +106,101 @@ async function LoadStatChart() {
 					lineTension: .5,
 					borderColor: 'rgba(54, 162, 235, 1)',
 					backgroundColor: 'rgba(54, 162, 235, 0.1)',
-					borderWidth: 2
+					borderWidth: 2,
 				}, {
 					label: 'UV',
 					data: uvs,
 					lineTension: .5,
 					borderColor: 'rgba(255, 206, 86, 1)',
 					backgroundColor: 'rgba(255, 206, 86, 0.1)',
-					borderWidth: 2
+					borderWidth: 2,
 				}, {
 					label: 'IP',
 					data: ips,
 					lineTension: .5,
 					borderColor: 'rgba(255, 99, 132, 1)',
 					backgroundColor: 'rgba(255, 99, 132, 0.1)',
-					borderWidth: 2
+					borderWidth: 2,
 				}, {
 					label: 'VV',
 					data: vvs,
 					lineTension: .5,
 					borderColor: 'rgba(75, 192, 192, 1)',
 					backgroundColor: 'rgba(75, 192, 192, 0.1)',
-					borderWidth: 2
+					borderWidth: 2,
 				}
 			]
 		},
 	});
 }
-$(document).ready(function () {
-	LoadServer();
+$(document).ready(function() {
+	$(function() {
+		$.get("index_testenv.php",function(data) {
+			if (data !== '') {
+				$("#body-tips").html(data);
+			}
+		});
+		$.get("index_body.php?dopost=get_articles",function(data) {
+			if (data !== '') {
+				$("#system-word").html(data);
+			}
+		});
+	});
+	$(function() {
+		var dedebizInfo;
+		$.get("index_body.php?dopost=system_info",function(data) {
+			let rsp = JSON.parse(data);
+			if (rsp.code === 200) {
+				if (rsp.result.core.code === 200) {
+					dedebizInfo = JSON.parse(rsp.result.core.data);
+				} else {
+					dedebizInfo = false;
+				}
+				let infoStr = `<table class="table table-borderless">`;
+				if (typeof rsp.result.domain !== "undefined") {
+					infoStr += `<tr>
+						<td width="25%">
+							<div class="web-info">
+								<p>授权域名</p>
+								<span>${rsp.result.domain}</span>
+							</div>
+						</td>
+						<td width="25%">
+							<div class="web-info">
+								<p>站点名称</p>
+								<span>${rsp.result.title}</span>
+							</div>
+						</td>
+						<td width="25%">
+							<div class="web-info">
+								<p>授权证书</p>
+								<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
+							</div>
+						</td>
+						<td width="25%">
+							<div class="web-info">
+								<p>授权时间</p>
+								<span>${rsp.result.auth_at}</span>
+							</div>
+						</td>
+					</tr>`;
+				}
+				infoStr += "</table>";
+				$("#system-info").html(infoStr);
+			} else {
+				$("#system-info").html(`<table class="table table-borderless">
+					<tr>
+						<td>
+							<div class="web-info">
+								<p>${rsp.msg}</p>
+								<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息</span>
+							</div>
+						</td>
+					</tr>
+				</table>`);
+			}
+		});
+	});
 	LoadStat();
 	LoadStatChart();
-	setInterval(function () {
-		LoadServer();
-	}, 60000)
 });

@@ -51,12 +51,12 @@ if ($dopost == 'saveedit') {
     if ($olduserid !== $userid) {
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的账号<span class='text-primary'>{$userid}</span>已存在，请使用别的账号", "-1");
+            ShowMsg("您指定的账号{$userid}已存在，请使用别的账号", "-1");
             exit();
         }
         $row = $dsql->GetOne("SELECT id FROM `#@__admin` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的账号<span class='text-primary'>{$userid}</span>已存在，请使用别的账号", "-1");
+            ShowMsg("您指定的账号{$userid}已存在，请使用别的账号", "-1");
             exit();
         }
         $usql = ",userid='$userid'";
@@ -86,8 +86,8 @@ if ($dopost == 'saveedit') {
         $win->AddHidden("randcode", $randcode);
         $win->AddHidden("safecode", $safecode);
         $win->AddHidden("id", $id);
-        $win->AddMsgItem("<tr><td>您确定要删除id<span class='text-primary'>$userid</span>管理员吗</td></tr>");
-        $win->AddMsgItem("<tr><td>验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-lg'>（安全码：<span class='text-primary'>$safecode</span>）</td></tr>");
+        $win->AddMsgItem("<tr><td>您确定要删除id".$userid."管理员吗</td></tr>");
+        $win->AddMsgItem("<tr><td>验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-lg'>（安全码：$safecode）</td></tr>");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

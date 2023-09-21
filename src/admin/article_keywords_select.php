@@ -23,11 +23,11 @@ $dlist->Display();
 function GetSta($sta)
 {
     if ($sta == 1) return " <span class='btn btn-success btn-sm'>已启用</span>";
-    else return " <span class='btn btn-outline-danger btn-sm'>禁用</span>";
+    else return " <span class='btn btn-outline-warning btn-sm'>禁用</span>";
 }
 function GetMan($sta)
 {
-    if ($sta == 1) return " <span class='btn btn-danger btn-sm'>已禁用</span>";
+    if ($sta == 1) return " <span class='btn btn-warning btn-sm'>已禁用</span>";
     else return " <span class='btn btn-outline-success btn-sm'>启用</span>";
 }
 ?>

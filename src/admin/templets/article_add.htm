@@ -15,9 +15,8 @@
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/handlers.js"></script>
 		<script src="../static/web/js/cropper.min.js"></script>
+		<script src="js/main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="article_add.php" method="post" enctype="multipart/form-data" onSubmit="return checkSubmit()">
@@ -90,7 +89,7 @@
 								<td width="120">缩略图：</td>
 								<td width="630">
 									<input type="text" name="picname" id="picname" class="admin-input-lg">
-									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="l-height-30"> 远程</label>
+									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
@@ -133,7 +132,7 @@
 										echo "</select>";
 										?>
 									</span>
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择"></i></span>
+									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 									<?php
 									if ($cfg_need_typeid2=='Y') {
 										echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
@@ -154,7 +153,7 @@
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="" class="admin-input-sm">
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2')" title="选择副栏目"></i></span>
+									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2')" title="选择副栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 								</td>
 							</tr>
 						</table>
@@ -208,8 +207,8 @@
 							<tr>
 								<td width="120">分页方式：</td>
 								<td>
-									<label class="l-height-30"><input type="radio" name="sptype" value="hand" <?php if ($cfg_arcautosp=='N') echo "checked='checked'"?>> 手动</label>
-									<label class="l-height-30"><input type="radio" name="sptype" value="auto" <?php if ($cfg_arcautosp=='Y') echo "checked='checked'"?>> 自动</label>
+									<label><input type="radio" name="sptype" value="hand" <?php if ($cfg_arcautosp=='N') echo "checked='checked'"?>> 手动</label>
+									<label><input type="radio" name="sptype" value="auto" <?php if ($cfg_arcautosp=='Y') echo "checked='checked'"?>> 自动</label>
 									<label>大小：<input name="spsize" type="text" id="spsize" value="<?php echo $cfg_arcautosp_size?>" class="admin-input-xs"> K（分页符为：#p#分页标题#e#）</label>
 								</td>
 							</tr>

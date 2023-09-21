@@ -10,7 +10,7 @@
 		<style>.admin-td{border-bottom:1px solid #dee2e6!important}</style>
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
-		<script src="js/global.js"></script>
+		<script src="js/catalog.js"></script>
 	</head>
 	<body>
 		<table align="center" class="table maintable my-3">
@@ -47,26 +47,5 @@
 				</tr>
 			</table>
 		</form>
-		<script>
-			function LoadSuns(ctid, tid) {
-				if ($DE(ctid).innerHTML.length < 10) {
-					$DE('img' + tid).className = 'fa fa-minus-square';
-					fetch('catalog_do.php?dopost=GetSunLists&cid=' + tid).then(resp => resp.text()).then((d) => {
-						$DE(ctid).innerHTML = d;
-					});
-				} else {
-					showHide(ctid, tid);
-				}
-			}
-			function showHide(objname, tid) {
-				if ($DE(objname).style.display == "none") {
-					$DE('img' + tid).className = 'fa fa-minus-square';
-					$DE(objname).style.display = BROWSER.firefox ? "" : "block";
-				} else {
-					$DE('img' + tid).className = 'fa fa-plus-square';
-					$DE(objname).style.display = "none";
-				}
-			}
-		</script>
 	</body>
 </html>

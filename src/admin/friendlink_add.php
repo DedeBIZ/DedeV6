@@ -34,7 +34,7 @@ if ($dopost == "add") {
             ShowMsg("非图片格式文件，无法正常上传", -1);
             exit;
         }
-        move_uploaded_file($logoimg, $cfg_basedir.$imgurl) or die("复制文件到<span class='text-primary'>".$cfg_basedir.$imgurl."</span>失败");
+        move_uploaded_file($logoimg, $cfg_basedir.$imgurl) or die("复制文件到".$cfg_basedir.$imgurl."失败");
         @unlink($logoimg);
     } else {
         $imgurl = $logo;

@@ -1,7 +1,3 @@
-//滚动到页面顶部
-function gotop() {
-	$('html, body').animate({ scrollTop: 0 }, 'slow');
-}
 //读写cookie函数
 function GetCookie(c_name) {
 	if (document.cookie.length > 0) {
@@ -20,7 +16,7 @@ function GetCookie(c_name) {
 function SetCookie(c_name, value, expiredays) {
 	var exdate = new Date();
 	exdate.setDate(exdate.getDate() + expiredays);
-	document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()); //使设置的有效时间正确。添加toGMTString()
+	document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
 }
 //全局消息提示框，生成一个随机id
 function guid() {
@@ -138,7 +134,7 @@ function ErrAddSaveDo(modalID) {
 	};
 	$("#btnsubmit").attr("disabled", "disabled");
 	if (typeof PHPURL === "undefined") {
-		const PHPURL = "/plus";
+		const PHPURL = "/apps";
 	}
 	$.post(PHPURL + "/erraddsave.php", parms, function (data) {
 		let result = JSON.parse(data);
@@ -183,14 +179,15 @@ function ErrorAddSave(id, title) {
 		'footer': footer,
 	});
 }
-//页面加载触发
-$(document).ready(function () {
-	window.onscroll = function () { scrollFunction() };
-	function scrollFunction() {
-		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-			$("#returntop").show();
-		} else {
-			$("#returntop").hide();
-		}
-	}
+$(function() {
+	$(window).on("scroll", function() {
+		var scrolled = $(window).scrollTop();
+		if (scrolled > 100) $("#returntop").show();
+		if (scrolled < 100) $("#returntop").hide();
+	});
+	$("#returntop").on("click", function() {
+		$("html, body").animate({
+			scrollTop: '0'
+		}, 500);
+	});
 });

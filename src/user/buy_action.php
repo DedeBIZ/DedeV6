@@ -25,11 +25,11 @@ $buyid = isset($buyid)? HtmlReplace($buyid, 1) : '';
 if ($dopost === "bank_ok") {
     $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid' AND mid={$mid}");
     if (empty($moRow)) {
-        ShowMsg("订单查询错误，请确保是您自己发起的订单", "javascript:;");
+        ShowMsg("订单查询错误，请确保是您自己发起的订单", "operation.php");
         exit;
     }
     if ($moRow['sta'] == 2) {
-        ShowMsg("已完成支付，无需重复付款", "javascript:;");
+        ShowMsg("已完成支付，无需重复付款", "buy.php");
         exit;
     }
     $query = "UPDATE `#@__member_operation` SET sta = '1' WHERE buyid = '{$moRow['buyid']}'";
@@ -39,7 +39,7 @@ if ($dopost === "bank_ok") {
 } else if ($dopost === "wechat_ok") {
     $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid' AND mid={$mid}");
     if (empty($moRow)) {
-        ShowMsg("订单查询错误，请确保是您自己发起的订单", "javascript:;");
+        ShowMsg("订单查询错误，请确保是您自己发起的订单", "operation.php");
         exit;
     }
     $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = 1");
@@ -56,7 +56,7 @@ if ($dopost === "bank_ok") {
         );
         $result = $wechat->queryOrder($options);
     } catch (Exception $e) {
-        ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
+        ShowMsg("生成微信支付信息失败，请联系网站管理员", "buy.php");
         exit;
     }
     if ($result['return_code'] === "SUCCESS" && $result['trade_state'] === "SUCCESS") {
@@ -81,14 +81,14 @@ if ($dopost === "bank_ok") {
             $sqlm =  "UPDATE `#@__member` SET `rank`='$rank',`money`=`money`+'{$memrank['money']}',scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' WHERE mid='".$moRow['mid']."'";
             $sqlmo = "UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功' WHERE buyid='{$buyid}' ";
             if (!($dsql->ExecuteNoneQuery($sqlm) && $dsql->ExecuteNoneQuery($sqlmo))) {
-                ShowMsg("升级会员失败", "javascript:;");
+                ShowMsg("升级会员失败", "buy.php");
                 exit;
             }
         }
-        ShowMsg("已经完成付款", "index.php");
+        ShowMsg("已经完成付款", "operation.php");
         exit;
     } else {
-        ShowMsg("尚未完成付款操作", "index.php");
+        ShowMsg("尚未完成付款操作", "buy.php");
         exit;
     }
 }
@@ -98,11 +98,11 @@ if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cook
     $pid = preg_replace("#[^0-9a-z]#i", "", $result->pid);
     $row  = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE mid='$mid' AND sta=0 AND product='$product'");
     if (!isset($row['buyid'])) {
-        ShowMsg("请不要重复提交表单", 'javascript:;');
+        ShowMsg("请不要重复提交表单", "buy.php");
         exit();
     }
     if ($paytype === 0) {
-        ShowMsg("请选择支付方式", 'javascript:;');
+        ShowMsg("请选择支付方式", "buy.php");
         exit();
     }
     $buyid = $row['buyid'];
@@ -114,7 +114,7 @@ if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cook
     }
 }
 if (empty($product)) {
-    ShowMsg("请选择一个产品", 'javascript:;');
+    ShowMsg("请选择一个产品", "buy.php");
     exit();
 }
 $pid = isset($pid) && is_numeric($pid) ? $pid : 0;
@@ -122,7 +122,7 @@ if ($product == 'member') {
     $ptype = "会员升级";
     $row = $dsql->GetOne("SELECT * FROM `#@__member_type` WHERE aid='{$pid}'");
     if (!is_array($row)) {
-        ShowMsg("无法识别您的订单", 'javascript:;');
+        ShowMsg("无法识别您的订单", "operation.php");
         exit();
     }
     $pname = $row['pname'];
@@ -131,7 +131,7 @@ if ($product == 'member') {
     $ptype = "积分购买";
     $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid='{$pid}'");
     if (!is_array($row)) {
-        ShowMsg("无法识别您的订单", 'javascript:;');
+        ShowMsg("无法识别您的订单", "operation.php");
         exit();
     }
     $pname = $row['pname'];
@@ -173,7 +173,7 @@ if ($paytype === 0) {
 } else {
     $moRow = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE buyid='$buyid'");
     if ($moRow['sta'] == 2) {
-        ShowMsg("已完成支付，无需重复付款", "javascript:;");
+        ShowMsg("已完成支付，无需重复付款", "buy.php");
         exit;
     }
     if ($paytype === 1) {
@@ -212,7 +212,7 @@ if ($paytype === 0) {
             $winform = $win->GetWindow("hand", false);
             $win->Display(DEDEMEMBER."/templets/win_templet.htm");
         } catch (Exception $e) {
-            ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
+            ShowMsg("生成微信支付信息失败，请联系网站管理员", "buy.php");
             exit;
         }
     } elseif ($paytype === 2) {
@@ -239,7 +239,7 @@ if ($paytype === 0) {
             ));
             echo $result;
         } catch (Exception $e) {
-            ShowMsg("生成微信支付信息失败，请联系网站管理员", "javascript:;");
+            ShowMsg("生成微信支付信息失败，请联系网站管理员", "buy.php");
             exit;
         }
     }  elseif ($paytype === 3) {
@@ -257,7 +257,7 @@ if ($paytype === 0) {
     } elseif ($paytype === 4) {
         //余额付款
         if ($cfg_ml->M_UserMoney < $row['money']) {
-            ShowMsg("余额不足，请确保当前账户有足够金币支付", "javascript:;");
+            ShowMsg("余额不足，请确保当前账户有足够金币支付", "buy.php");
             exit;
         }
         $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE buyid = '$buyid'";
@@ -285,11 +285,11 @@ if ($paytype === 0) {
                 exit;
             }
         }
-        ShowMsg("成功使用余额付款", "javascript:;");
+        ShowMsg("成功使用余额付款", "buy.php");
         exit;
     } elseif ($paytype === 5) {
         //货到付款
-        ShowMsg("虚拟物品，不支持货到付款", "javascript:;");
+        ShowMsg("虚拟物品，不支持货到付款", "buy.php");
         exit;
     }
 }

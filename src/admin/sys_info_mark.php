@@ -58,7 +58,7 @@ if ($action == "save") {
     }
     $configstr .= "\$photo_markimg = '{$photo_markimg}';\r\n";
     $configstr = "<"."?php\r\n".$configstr."?".">\r\n";
-    $fp = fopen($ImageWaterConfigFile, "w") or die("写入文件<span class='text-primary'>$ImageWaterConfigFile</span>失败，请检查权限");
+    $fp = fopen($ImageWaterConfigFile, "w") or die("写入文件".$ImageWaterConfigFile."失败，请检查权限");
     fwrite($fp, $configstr);
     fclose($fp);
     echo "<script>alert('修改配置成功');</script>\r\n";

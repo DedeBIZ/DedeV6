@@ -65,7 +65,7 @@
 					<td>目录默认页名称：</td>
 					<td>
 						<input type="text" name="defaultpage" id="defaultpage" value="index.html" class="admin-input-lg">
-						<label class="l-height-30"><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认首页</label>
+						<label><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认首页</label>
 					</td>
 				</tr>
 				<tr>
@@ -144,9 +144,9 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<label class="l-height-30">高级筛选：<input type="checkbox" name="types[]" id="type1" value="image"> 带缩略图</label>
-						<label class="l-height-30"><input type="checkbox" name="types[]" id="type2" value="commend"> 推荐</label>
-						<label class="l-height-30"><input type="checkbox" name="types[]" id="type3" value="spec"> 专题</label>
+						<label>高级筛选：<input type="checkbox" name="types[]" id="type1" value="image"> 带缩略图</label>
+						<label><input type="checkbox" name="types[]" id="type2" value="commend"> 推荐</label>
+						<label><input type="checkbox" name="types[]" id="type3" value="spec"> 专题</label>
 						<label>关键词：<input type="text" name="keywordarc" id="keywordarc">（英文逗号分开）</label>
 					</td>
 				</tr>
@@ -162,8 +162,8 @@
 							<option value="lastpost">最后评论时间</option>
 							<option value="postnum">评论总数</option>
 						</select>
-						<label class="l-height-30"><input type="radio" name="order" value="desc" checked="checked"> 由高到低</label>
-						<label class="l-height-30"><input type="radio" name="order" value="asc"> 由低到高</label>
+						<label><input type="radio" name="order" value="desc" checked="checked"> 由高到低</label>
+						<label><input type="radio" name="order" value="asc"> 由低到高</label>
 					</td>
 				</tr>
 				<tr>
@@ -211,10 +211,10 @@
 				var pos = GetWinPos(800,600);
 				window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 			}
-			var editor = CodeMirror.fromTextArea(document.getElementById('myinnertext'), {
+			var editor = CodeMirror.fromTextArea(document.getElementById("myinnertext"), {
 				lineNumbers: true,
 				lineWrapping: true,
-				 mode: 'text/html'
+				mode: 'text/html',
 			});
 		</script>
 	</body>

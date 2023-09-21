@@ -17,7 +17,6 @@ $lang_index_page = '首页';
 $lang_end_page = '末页';
 $lang_record_number = '条';
 $lang_page = '页';
-$lang_total = '共';
 /**
  * DataListCP
  *
@@ -222,7 +221,7 @@ class DataListCP
     //获取分页导航列表
     function GetPageList($atts, $refObj = '', $fields = array())
     {
-        global $lang_pre_page, $lang_next_page, $lang_index_page, $lang_end_page, $lang_record_number, $lang_page, $lang_total;
+        global $lang_pre_page, $lang_next_page, $lang_index_page, $lang_end_page, $lang_record_number, $lang_page;
         $prepage = $nextpage = $geturl = $hidenform = '';
         $purl = $this->GetCurUrl();
         $prepagenum = $this->pageNO - 1;
@@ -237,12 +236,12 @@ class DataListCP
         //echo " {$totalpage}=={$this->totalResult}=={$this->pagesize}";
         //无结果或只有一页的情况
         if ($totalpage <= 1 && $this->totalResult > 0) {
-            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>{$lang_total}1{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
+            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>1{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
         if ($this->totalResult == 0) {
-            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>{$lang_total}0{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
+            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>0{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
-        $infos = "<li class='page-item disabled'><span class='page-link'>{$lang_total}{$totalpage}{$lang_page}/{$this->totalResult}{$lang_record_number}</span></li>";
+        $infos = "<li class='page-item disabled'><span class='page-link'>{$totalpage}{$lang_page}/{$this->totalResult}{$lang_record_number}</span></li>";
         if ($this->totalResult != 0) {
             $this->getValues['totalresult'] = $this->totalResult;
         }

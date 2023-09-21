@@ -43,7 +43,7 @@ if ($needMoney > 0 || $needRank > 1) {
         }
         $memberTypes[0] = "游客或没权限会员";
         $msgtitle = "您没有权限浏览文档：{$arctitle}";
-        $moremsg = "该文档需要消费<span class='text-primary'>".$memberTypes[$needRank]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span>";
+        $moremsg = "该文档需要消费".$memberTypes[$needRank]."才能浏览，您目前等级是".$memberTypes[$cfg_ml->M_Rank]."";
         include_once(DEDETEMPLATE.'/apps/view_msg.htm');
         exit();
     }
@@ -54,8 +54,8 @@ if ($needMoney > 0 || $needRank > 1) {
         //未购买过此文档
         if (!is_array($row)) {
             if ($cfg_ml->M_Money == '' || $needMoney > $cfg_ml->M_Money) {
-                $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-                $moremsg = "该文档需要消费<span class='text-primary'>".$needMoney."</span>金币才能浏览，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><a class='btn btn-success btn-sm ml-2' href='{$cfg_memberurl}/buy.php' target='_blank'>充值金币</a>";
+                $msgtitle = "您没有权限浏览文档：{$arctitle}";
+                $moremsg = "该文档需要消费".$needMoney."</span>金币才能浏览，您目前金币".$cfg_ml->M_Money." <a class='btn btn-success btn-sm' href='{$cfg_memberurl}/buy.php' target='_blank'>充值金币</a>";
                 include_once(DEDETEMPLATE.'/apps/view_msg.htm');
                 $arc->Close();
                 exit();
@@ -76,7 +76,7 @@ if ($needMoney > 0 || $needRank > 1) {
                     }
                 }
                 $msgtitle = "扣金币购买阅读";
-                $moremsg = "该文档需要消费<span class='text-primary'>".$needMoney."</span>金币才能浏览，您目前金币<span class='text-primary'>".$cfg_ml->M_Money."</span><a href='/apps/view.php?aid=".$aid."&dopost=buy' target='_blank' class='btn btn-success btn-sm ml-2'>确认阅读</a>";
+                $moremsg = "该文档需要消费".$needMoney."金币才能浏览，您目前金币".$cfg_ml->M_Money." <a href='/apps/view.php?aid=".$aid."&dopost=buy' target='_blank' class='btn btn-success btn-sm'>确认阅读</a>";
                 include_once($cfg_basedir.$cfg_templets_dir."/apps/view_msg.htm");
                 $arc->Close();
                 exit();

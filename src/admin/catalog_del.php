@@ -32,7 +32,7 @@ $win = new OxWindow();
 $win->Init('catalog_del.php', 'js/blank.js', 'POST');
 $win->AddHidden('id', $id);
 $win->AddHidden('dopost', 'ok');
-$win->AddTitle("您要确定要删除<span class='text-primary'>{$row['typename']}</span>栏目吗");
+$win->AddTitle("您要确定要删除{$row['typename']}栏目吗");
 $win->AddItem('栏目的文件保存目录：', $row['typedir']);
 $winform = $win->GetWindow('ok');
 $win->Display();

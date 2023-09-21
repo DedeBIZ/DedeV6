@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="shortcut icon" href="../static/web/img/favicon.ico">
 		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/popper.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/style.js"></script>
 		<style>body{line-height:1.6;letter-spacing:.6px;font-size:14px;font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#545b62}a:hover{color:#ff8400;text-decoration:none}h2,legend{line-height:1.6;font-size:18px;font-weight:600;color:#393d49}label{margin-bottom:10px;line-height:18px}input,select,.btn{font-size:14px!important}.install-box{margin:0 auto;width:800px}.admin-head{padding:1rem 0;background:#fff}.admin-nav{height:36px;line-height:36px}.admin-nav-a{padding-right:30px}.dropdown-menu{min-width:8rem;font-size:14px}.dropdown-item{padding:0 1rem;height:36px;line-height:36px;font-size:14px;color:#545b62!important}.fa{font-size:14px!important;color:inherit;cursor:pointer}.logo,.form-control{height:36px}.form-control,.btn-md,.card,.alert,.rounded{border-radius:.5rem!important}.card-header:first-child{border-radius:.5rem .5rem 0 0}.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label,.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,.input-group:not(.has-validation)>.custom-select:not(:last-child),.input-group:not(.has-validation)>.form-control:not(:last-child){border-top-right-radius:0!important;border-bottom-right-radius:0!important}.input-group>.input-group-append>.btn,.input-group>.input-group-append>.input-group-text,.input-group>.input-group-prepend:first-child>.btn:not(:first-child),.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),.input-group>.input-group-prepend:not(:first-child)>.btn,.input-group>.input-group-prepend:not(:first-child)>.input-group-text{border-top-left-radius:0!important;border-bottom-left-radius:0!important}@media (max-width:760px){.install-box{width:100%}.admin-head{padding:1rem 15px}.admin-nav-a{display:none!important}}</style>
@@ -31,7 +30,7 @@
 					<?php if (count($arrMsg) > 0) {foreach($arrMsg as $msg){?>
 					<div class="alert alert-warning"><?php echo $msg ?></div>
 					<?php }}?>
-					<div class="alert alert-warning">请先阅读<a href="https://www.dedebiz.com/license?from=install" target="_blank" class="text-primary">《站点授权协议》</a></div>
+					<div class="alert alert-warning">请先阅读<a href="https://www.dedebiz.com/license?from=install" target="_blank">《站点授权协议》</a></div>
 					<div class="card shadow-sm mb-3">
 						<div class="card-header bg-success">
 							<h2 class="text-center text-white my-0">安装DedeV<?php echo $cfg_version_detail;?></h2>

@@ -1,10 +1,3 @@
-var fixupPos = false;
-var canMove = false;
-var leftLeaning = 0;
-var nForm = null;
-var nFrame = null;
-var picnameObj = null;
-var vImg = null;
 function GetWinPos(w, h) {
 	var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
 	var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
@@ -14,46 +7,6 @@ function GetWinPos(w, h) {
 	var left = (width - w) / 2 / systemZoom + dualScreenLeft;
 	var top = (height - h) / 2 / systemZoom + dualScreenTop;
 	return { left: left, top: top };
-}
-function SeePicNew(f, imgdid, frname, hpos, acname) {
-	var newobj = null;
-	if (f.value == '') return;
-	vImg = $Obj(imgdid);
-	picnameObj = document.getElementById('picname');
-	nFrame = $Nav() == 'IE' ? eval('document.frames.' + frname) : $Obj(frname);
-	nForm = f.form;
-	//修改form的action等参数
-	if (nForm.detachEvent) nForm.detachEvent("onsubmit", checkSubmit);
-	else nForm.removeEventListener("submit", checkSubmit, false);
-	nForm.action = 'archives_do.php';
-	nForm.target = frname;
-	nForm.dopost.value = 'uploadLitpic';
-	nForm.submit();
-	picnameObj.value = '';
-	newobj = $Obj('uploadwait');
-	if (!newobj) {
-		newobj = document.createElement("div");
-		newobj.id = 'uploadwait';
-		newobj.style.position = 'absolute';
-		newobj.className = 'uploadwait';
-		newobj.style.width = 120;
-		newobj.style.height = 20;
-		newobj.style.top = hpos;
-		newobj.style.left = 100;
-		newobj.style.display = 'block';
-		document.body.appendChild(newobj);
-		newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
-	}
-	newobj.style.display = 'block';
-	//提交后还原form的action等参数
-	nForm.action = acname;
-	nForm.dopost.value = 'save';
-	nForm.target = '';
-	nForm.litpic.disabled = true;
-}
-function SelectFlash() {
-	var pos = GetWinPos(800,600);
-	window.open("./dialog/select_media.php?f=form1.flashurl&noeditor=yes", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectMedia(fname) {
 	var pos = GetWinPos(800,600);
@@ -65,14 +18,14 @@ function SelectSoft(fname) {
 }
 function SelectImage(fname, stype, imgsel="") {
 	var pos = GetWinPos(800,600);
-	if (!fname) fname = 'form1.picname';
-	if (imgsel) imgsel = '&noeditor=yes';
-	if (!stype) stype = 'small';
+	if (!fname) fname = "form1.picname";
+	if (imgsel) imgsel = "&noeditor=yes";
+	if (!stype) stype = "small";
 	window.open("./dialog/select_images.php?f=" + fname + "&noeditor=yes&imgstick=" + stype + imgsel, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectImageN(fname, stype, vname) {
 	var pos = GetWinPos(800,600);
-	if (!fname) fname = 'form1.picname';
+	if (!fname) fname = "form1.picname";
 	if (!stype) stype = '';
 	window.open("./dialog/select_images.php?f=" + fname + "&imgstick=" + stype + "&v=" + vname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
@@ -84,39 +37,38 @@ function OpenMyWin(surl) {
 	var pos = GetWinPos(800,600);
 	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
-function OpenMyWinCoOne(surl) {
-	var pos = GetWinPos(800,600);
-	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-}
-function InitPage() {
-	var selsource = $Obj('selsource');
-	var selwriter = $Obj('selwriter');
-	var colorbt = $Obj('color');
-	if (selsource) { selsource.onmousedown = function (e) { SelectSource(e); } }
-	if (selwriter) { selwriter.onmousedown = function (e) { SelectWriter(e); } }
-}
-function $Nav() {
-	if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-	else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-	else return "OT";
-}
 function $Obj(objname) {
 	return document.getElementById(objname);
 }
+function InitPage() {
+	var selsource = $Obj("selsource");
+	var selwriter = $Obj("selwriter");
+	var colorbt = $Obj("color");
+	if (selsource) {
+		selsource.onmousedown = function(e) {
+			SelectSource(e);
+		}
+	}
+	if (selwriter) {
+		selwriter.onmousedown = function(e) {
+			SelectWriter(e);
+		}
+	}
+}
 function ColorSel(c, oname) {
 	var tobj = $Obj(oname);
-	if (!tobj) tobj = eval('document.form1.' + oname);
+	if (!tobj) tobj = eval("document.form1." + oname);
 	if (!tobj) {
-		$Obj('colordlg').style.display = 'none';
+		$Obj("colordlg").style.display = "none";
 		return false;
 	} else {
 		tobj.value = c;
-		$Obj('colordlg').style.display = 'none';
+		$Obj("colordlg").style.display = "none";
 		return true;
 	}
 }
 function ShowColor(e, o) {
-	LoadNewDiv(e, '../../static/web/img/colornew.htm', 'colordlg');
+	LoadNewDiv(e, "../../static/web/img/colornew.htm", "colordlg");
 }
 function ShowHide(objname) {
 	var obj = $Obj(objname);
@@ -126,79 +78,66 @@ function ShowHide(objname) {
 function ShowObj(objname) {
 	var obj = $Obj(objname);
 	if (obj == null) return false;
-	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
+	obj.style.display = "table-row";
 }
 function ShowObjRow(objname) {
 	var obj = $Obj(objname);
-	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
+	obj.style.display = "table-row";
 }
 function AddTypeid2() {
-	ShowObjRow('typeid2tr');
+	ShowObjRow("typeid2tr");
 }
 function HideObj(objname) {
 	var obj = $Obj(objname);
 	if (obj == null) return false;
 	obj.style.display = "none";
 }
-function SeePic(img, f) {
-	if (f.value != '') img.src = f.value;
-}
 function PutSource(str) {
-	var osource = $Obj('source');
+	var osource = $Obj("source");
 	if (osource) osource.value = str;
-	$Obj('mysource').style.display = 'none';
-	ChangeFullDiv('hide');
+	$Obj("mysource").style.display = "none";
+	ChangeFullDiv("hide");
 }
 function PutWriter(str) {
-	var owriter = $Obj('writer');
+	var owriter = $Obj("writer");
 	if (owriter) owriter.value = str;
-	$Obj('mywriter').style.display = 'none';
-	ChangeFullDiv('hide');
+	$Obj("mywriter").style.display = "none";
+	ChangeFullDiv("hide");
 }
 function ClearDivCt(objname) {
 	if (!$Obj(objname)) return;
 	$Obj(objname).innerHTML = '';
-	$Obj(objname).style.display = 'none';
+	$Obj(objname).style.display = "none";
 	ChangeFullDiv("hide");
 }
 function ChangeFullDiv(showhide, screenheigt) {
-	var newobj = $Obj('fullpagediv');
-	if (showhide == 'show') {
+	var newobj = $Obj("fullpagediv");
+	if (showhide == "show") {
 		if (!newobj) {
 			newobj = document.createElement("div");
-			newobj.id = 'fullpagediv';
-			newobj.style.position = 'absolute';
-			newobj.className = 'fullpagediv';
-			newobj.style.height = document.body.clientHeight + 50 + 'px';
+			newobj.id = "fullpagediv";
+			newobj.style.position = "absolute";
+			newobj.className = "fullpagediv";
+			newobj.style.height = document.body.clientHeight + 50 + "px";
 			document.body.appendChild(newobj);
 		} else {
-			newobj.style.display = 'block';
+			newobj.style.display = "block";
 		}
 	} else {
-		if (newobj) newobj.style.display = 'none';
+		if (newobj) newobj.style.display = "none";
 	}
 }
 function SelectSource(e) {
-	LoadNewDiv(e, 'article_select_sw.php?t=source&k=8&rnd=' + Math.random(), 'mysource');
+	LoadNewDiv(e, "article_select_sw.php?t=source&k=8&rnd=" + Math.random(), "mysource");
 }
 function SelectWriter(e) {
-	LoadNewDiv(e, 'article_select_sw.php?t=writer&k=8&rnd=' + Math.random(), 'mywriter');
+	LoadNewDiv(e, "article_select_sw.php?t=writer&k=8&rnd=" + Math.random(), "mywriter");
 }
 function LoadNewDiv(e, surl, oname) {
 	var pxStr = '';
-	if ($Nav() == 'IE') {
-		var posLeft = window.event.clientX - 20;
-		var posTop = window.event.clientY - 30;
-		//IE下scrollTop的兼容性问题
-		var scrollTop = document.documentElement.scrollTop || window.pageYOffset;
-		if (typeof (scrollTop) == 'undefined') scrollTop = document.body.scrollTop;
-		posTop += scrollTop;
-	} else {
-		var posLeft = e.pageX - 20;
-		var posTop = e.pageY - 30;
-		pxStr = 'px';
-	}
-	posLeft = posLeft - 100;
+	var posLeft = e.pageX - 20;
+	var posTop = e.pageY - 30;
+	pxStr = 'px';
 	var newobj = $Obj(oname);
 	if (!newobj) {
 		newobj = document.createElement("div");
@@ -213,36 +152,15 @@ function LoadNewDiv(e, surl, oname) {
 		newobj.style.display = "block";
 	}
 	if (newobj.innerHTML.length < 10) {
-		fetch(surl).then(resp => resp.text()).then((d) => { newobj.innerHTML = d });
+		fetch(surl).then(resp => resp.text()).then((d) => {
+			newobj.innerHTML = d;
+		});
 	}
-}
-function LoadNewDiv2(e, surl, oname, dlgcls) {
-	var posLeft = 300;
-	var posTop = 50;
-	var newobj = $Obj(oname);
-	if (!newobj) {
-		newobj = document.createElement("div");
-		newobj.id = oname;
-		newobj.style.position = 'absolute';
-		newobj.className = dlgcls;
-		newobj.style.top = posTop;
-		newobj.style.left = posLeft;
-		newobj.style.display = 'none';
-		document.body.appendChild(newobj);
-	}
-	newobj.innerHTML = '';
-	fetch(surl).then(resp => resp.text()).then((d) => {
-		newobj.innerHTML = d;
-	});
-	if (newobj.innerHTML == '') newobj.style.display = 'none';
-	else newobj.style.display = 'block';
-	jQuery(newobj).css('top', '50px').css('left', '300px');
-	DedeXHTTP = null;
 }
 function ShowUrlTr() {
-	var jumpTest = $Obj('flagsj');
-	var jtr = $Obj('redirecturltr');
-	var jf = $Obj('redirecturl');
+	var jumpTest = $Obj("flagsj");
+	var jtr = $Obj("redirecturltr");
+	var jf = $Obj("redirecturl");
 	if (jumpTest.checked) jtr.style.display = "block";
 	else {
 		jf.value = '';
@@ -251,88 +169,37 @@ function ShowUrlTr() {
 }
 function ShowUrlTrEdit() {
 	ShowUrlTr();
-	var jumpTest = $Obj('isjump');
-	var rurl = $Obj('redirecturl');
+	var jumpTest = $Obj("isjump");
+	var rurl = $Obj("redirecturl");
 	if (!jumpTest.checked) rurl.value = "";
 }
-function CkRemote() {
-	document.getElementById('picname').value = '';
-}
-//复制文档到剪切板
-function copyToClipboard(txt) {
-	if (txt == null || txt == '') {
-		alert("没有选择任何文档");
-		return;
-	}
-	if (window.clipboardData) {
-		window.clipboardData.clearData();
-		window.clipboardData.setData("Text", txt);
-	} else if (navigator.userAgent.indexOf('Opera') != -1) {
-		window.location = txt;
-	} else {
-		try {
-			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-		} catch (e) {
-			alert("浏览器已拒绝，请稍后重试");
-		}
-		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
-		if (!clip) return;
-		var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
-		if (!trans) return;
-		trans.addDataFlavor('text/unicode');
-		var str = new Object();
-		var len = new Object();
-		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-		var copytext = txt;
-		str.data = copytext;
-		trans.setTransferData("text/unicode", str, copytext.length * 2);
-		var clipid = Components.interfaces.nsIClipboard;
-		if (!clip) return false;
-		clip.setData(trans, null, clipid.kGlobalClipboard);
-	}
-}
-function getSelTxt() {
-	var g, r;
-	if (document.all) {
-		g = document.selection.createRange().text;
-	} else {
-		g = document.getSelection();
-	}
-	return g;
-}
-//文档列表快捷属性弹出
 function LoadQuickDiv(e, surl, oname, w, h) {
 	var newobj = $Obj(oname);
 	if (!newobj) {
 		newobj = document.createElement("div");
 		newobj.id = oname;
-		newobj.style.position = 'fixed';
-		newobj.className = 'pubdlg';
+		newobj.style.position = "fixed";
+		newobj.className = "pubdlg";
 		newobj.style.width = w;
 		newobj.style.height = h + 30;
 		document.body.appendChild(newobj);
 	}
 	newobj.style.top = "50%";
 	newobj.style.left = "50%";
-	newobj.style.display = 'block';
+	newobj.style.display = "block";
 	newobj.style.transform = "translate(-50%, -201px)";
-	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
 	});
-	fixupPos = false;
 }
-//显示副栏目
 function ShowCatMap(e, obj, cid, targetId, oldvalue) {
-	fixupPos = true;
-	LoadQuickDiv(e, 'archives_do.php?dopost=getCatMap&targetid=' + targetId + '&channelid=' + cid + '&oldvalue=' + oldvalue + '&rnd=' + Math.random(), 'getCatMap', '700px', '500px');
-	ChangeFullDiv('show');
+	LoadQuickDiv(e, "archives_do.php?dopost=getCatMap&targetid=" + targetId + "&channelid=" + cid + "&oldvalue=" + oldvalue + "&rnd=" + Math.random(), "getCatMap", "700px", "500px");
+	ChangeFullDiv("show");
 }
 function getSelCat(targetId) {
 	var selBox = document.quicksel.seltypeid;
 	var targetObj = $Obj(targetId);
 	var selvalue = '';
-	//副栏目多选
 	if (targetId == 'typeid2') {
 		var j = 0;
 		for (var i = 0; i < selBox.length; i++) {
@@ -344,14 +211,13 @@ function getSelCat(targetId) {
 		}
 		if (targetObj) targetObj.value = selvalue;
 	} else {
-		//主栏目单选
 		if (selBox) {
 			for (var i = 0; i < selBox.length; i++) {
 				if (selBox[i].checked) selvalue = selBox[i].value;
 			}
 		}
 		if (selvalue == '') {
-			alert('您没有选中任何栏目');
+			alert("您没有选中任何栏目");
 			return;
 		}
 		if (targetObj) {
@@ -374,35 +240,35 @@ function guid() {
 var _DedeConfirmFuncs = {};
 var _DedeConfirmFuncsClose = {};
 function __DedeConfirmRun(modalID) {
-    _DedeConfirmFuncs[modalID]();
+	_DedeConfirmFuncs[modalID]();
 }
 function __DedeConfirmRunClose(modalID) {
-    _DedeConfirmFuncsClose[modalID]();
+	_DedeConfirmFuncsClose[modalID]();
 }
 function DedeConfirm(content = "", title = "确认提示") {
-    let modalID = guid();
-    return new Promise((resolve, reject) => {
-        _DedeConfirmFuncs[modalID] = ()=>{
-            resolve("success");
-            CloseModal(`DedeModal${modalID}`);
-        }
-        _DedeConfirmFuncsClose[modalID] = ()=>{
-            reject("cancel");
-            CloseModal(`DedeModal${modalID}`);
-        }
-        let footer = `<button type="button" class="btn btn-outline-success btn-sm" onclick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onclick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
-        let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
-        modal += `<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>`;
-        modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
-        $("body").append(modal)
-        $("#DedeModal" + modalID).modal({
-            backdrop: 'static',
-            show: true
-        });
-        $("#DedeModal" + modalID).on('hidden.bs.modal', function (e) {
-            $("#DedeModal" + modalID).remove();
-        })
-    })
+	let modalID = guid();
+	return new Promise((resolve, reject) => {
+		_DedeConfirmFuncs[modalID] = ()=>{
+			resolve("success");
+			CloseModal(`DedeModal${modalID}`);
+		}
+		_DedeConfirmFuncsClose[modalID] = ()=>{
+			reject("cancel");
+			CloseModal(`DedeModal${modalID}`);
+		}
+		let footer = `<button type="button" class="btn btn-outline-success btn-sm" onclick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onclick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
+		let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
+		modal += `<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>`;
+		modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
+		$("body").append(modal)
+		$("#DedeModal" + modalID).modal({
+			backdrop: 'static',
+			show: true
+		});
+		$("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
+			$("#DedeModal" + modalID).remove();
+		})
+	})
 }
 //函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
@@ -439,7 +305,7 @@ function ShowMsg(content, ...args) {
 		backdrop: 'static',
 		show: true
 	});
-	$("#GKModal" + modalID).on('hidden.bs.modal', function (e) {
+	$("#GKModal" + modalID).on('hidden.bs.modal', function(e) {
 		$("#GKModal" + modalID).remove();
 	})
 	return modalID;
@@ -447,7 +313,7 @@ function ShowMsg(content, ...args) {
 //隐藏并销毁modal
 function CloseModal(modalID) {
 	$("#" + modalID).modal('hide');
-	$("#" + modalID).on('hidden.bs.modal', function (e) {
+	$("#" + modalID).on('hidden.bs.modal', function(e) {
 		if ($("#" + modalID).length > 0) {
 			$("#" + modalID).remove();
 		}
@@ -456,12 +322,10 @@ function CloseModal(modalID) {
 //获取缩略图
 var litpicImgSrc = "";
 var litpicImg = "";
-var currentCID = 0;
 var mdlCropperID = "";
-var pubAt = 0;
 var optCropper = {
 	preview: ".pv",
-	crop: function (e) {
+	crop: function(e) {
 		$("#cropWidth").text(Math.round(e.detail.height));
 		$("#cropHeight").text(Math.round(e.detail.width));
 		if ($(this).cropper("getCroppedCanvas")) {
@@ -471,9 +335,7 @@ var optCropper = {
 		}
 	},
 	aspectRatio: 4 / 3,
-	//拖动截取缩略图后，截取的缩略图更新到imageItems中
-	cropend: function (data) {
-		//这里的id要单独取出来
+	cropend: function(data) {
 		var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
 		litpicImg = dataUrl;
 		$("#litPic").attr("src", litpicImg);
@@ -490,22 +352,22 @@ var cropperAspectRatio = {
 function setAspectRatio(ar) {
 	var opts = optCropper;
 	opts.aspectRatio = cropperAspectRatio[ar];
-	$("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
+	$("#cropImg" + mdlCropperID).cropper("destroy").cropper(opts);
 }
 function okImage(modalID) {
 	uploadImage(litpicImg);
 	$("#litPic").attr("src", litpicImg);
-	CloseModal('GKModal' + modalID);
+	CloseModal("GKModal" + modalID);
 }
 function useDefault(modalID) {
 	uploadImage(litpicImgSrc);
 	$("#litPic").attr("src", litpicImgSrc);
-	CloseModal('GKModal' + modalID);
+	CloseModal("GKModal" + modalID);
 }
 function uploadImage(litpicImgSrc) {
 	const formData = new FormData()
-	formData.append('litpic_b64', litpicImgSrc);
-	fetch('archives_do.php?dopost=upload_base64_image', {
+	formData.append("litpic_b64", litpicImgSrc);
+	fetch("archives_do.php?dopost=upload_base64_image", {
 		method: 'POST',
 		body: formData
 	})
@@ -523,25 +385,70 @@ function uploadImage(litpicImgSrc) {
 		alert("上传缩略图错误");
 	});
 }
-$(document).ready(function () {
-	$("#btnClearAll").click(function (event) {
-		litpicImgSrc = "";
-		litpicImg = "";
+function SetThumb(srcURL) {
+	var footer = "<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a><a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
+	var optButton = `<p><label for="aspectRatio">比例</label><select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)"><option>16:9</option><option selected>4:3</option><option>1:1</option><option>2:3</option><option>自定义</option></select></p>`;
+	mdlCropperID = ShowMsg('<div class="float-left" style="width:320px"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden"></div>', {
+		footer: footer,
+		noClose: false,
+		title: '图片裁剪',
+	});
+	setTimeout(function() {
+		$("#cropImg" + mdlCropperID).cropper(optCropper);
+	}, 500);
+}
+$(document).ready(function() {
+	$("#togglemenu").click(function() {
+		if ($("body").attr("class") == "showmenu") {
+			$("body").attr("class", "hidemenu");
+			$(this).html('<i class="fa fa-indent"></i>');
+		} else {
+			$("body").attr("class", "showmenu");
+			$(this).html('<i class="fa fa-dedent"></i>');
+		}
+	});
+	$(function() {
+		var menu = function(el, multiple) {
+			this.el = el || {};
+			this.multiple = multiple || false;
+			var links = this.el.find(".link");
+			links.on("click", {
+				el: this.el,
+				multiple: this.multiple,
+			},
+			this.dropdown);
+		}
+		menu.prototype.dropdown = function(e) {
+			var $el = e.data.el;
+			$this = $(this),
+			$next = $this.next();
+			$next.slideToggle();
+			$this.parent().toggleClass("open");
+			if (!e.data.multiple) {
+				$el.find(".submenu").not($next).slideUp().parent().removeClass("open");
+			}
+		}
+		var menu = new menu($('#menu'), false);
+		$(".submenu li a").click(function(e) {
+			$(".submenu li").removeClass("active");
+			$(this).parent().addClass("active");
+		});
+	});
+	$("#btnClearAll").click(function(event) {
+		litpicImgSrc = '';
+		litpicImg = '';
 		$("#picname").val(litpicImg);
 		$("#litPic").attr("src", "/static/web/img/thumbnail.jpg");
 	})
-	//添加图片
-	$("#iptAddImages").change(function (event) {
+	$("#iptAddImages").change(function(event) {
 		var files = event.target.files;
 		for (var i = 0, f; f = files[i]; i++) {
-			//如果不是图片忽略
 			if (!f.type.match('image.*')) {
 				continue;
 			}
-			//将图片渲染到浏览器
 			var reader = new FileReader();
-			reader.onload = (function (theFile) {
-				return function (e) {
+			reader.onload = (function(theFile) {
+				return function(e) {
 					litpicImgSrc = e.target.result;
 					if (cfg_uplitpic_cut == 'Y') {
 						SetThumb(litpicImgSrc);
@@ -555,21 +462,8 @@ $(document).ready(function () {
 		}
 		$("#iptAddImages").val("");
 	});
-	//截取缩略图
-	function SetThumb(srcURL) {
-		var footer = "<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success btn-sm'>使用原图</a><a href='javascript:okImage(\"~modalID~\")' class='btn btn-success btn-sm'>确定</a></p>";
-		var optButton = `<p><label for="aspectRatio">比例</label><select id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)"><option>16:9</option><option selected>4:3</option><option>1:1</option><option>2:3</option><option>自定义</option></select></p>`;
-		mdlCropperID = ShowMsg('<div class="float-left" style="width:320px"><p><img id="cropImg~modalID~" src="' + srcURL + '"></p><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:200px;height:100px;overflow:hidden"></div>', {
-			footer: footer,
-			noClose: false,
-			title: '图片裁剪',
-		});
-		setTimeout(function () {
-			$("#cropImg" + mdlCropperID).cropper(optCropper);
-		}, 500);
-	}
 	if ($.fn.daterangepicker) {
-		$('.datepicker').daterangepicker({
+		$(".datepicker").daterangepicker({
 			"singleDatePicker": true,
 			"autoApply": true,
 			"showDropdowns": true,
@@ -593,16 +487,16 @@ $(document).ready(function () {
 				monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
 				firstDay: 1
 			}
-		}, function (start) {
+		}, function(start) {
 			$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
 		});
-		$('.datepicker').on('show.daterangepicker', function (ev, picker) {
+		$(".datepicker").on("show.daterangepicker", function(ev, picker) {
 			if (picker.element.offset().top - $(window).scrollTop() + picker.container.outerHeight() > $(window).height()) {
-				picker.drops = 'up';
+				picker.drops = "up";
 			} else {
-				picker.drops = 'down';
+				picker.drops = "down";
 			}
 			picker.move();
-		})
+		});
 	}
 });

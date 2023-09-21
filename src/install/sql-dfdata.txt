@@ -3950,7 +3950,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('20','cfg_notallowstr','禁用关键词，用|分开，但不要在结尾加|','5','bstring','乡巴佬|傻子'),
 ('21','cfg_feedbackcheck','是否需审核评论及留言','5','bool','Y'),
 ('22','cfg_keyword_replace','是否使用关键词替换功能，开启影响文档生成速度','2','bool','Y'),
-('23','cfg_rewrite','是否使用伪静态，参考栏目修改中提示默认规则','1','bool','N'),
+('23','cfg_rewrite','是否启用伪静态，参考栏目修改提示里默认规则','1','bool','N'),
 ('24','cfg_df_style','默认主题模板风格','1','string','dedebiz'),
 ('25','cfg_multi_site','是否支持多站点，开启此项后附件栏目连接arclist文档启用绝对网址','2','bool','N'),
 ('26','cfg_rm_remote','下载远程图片和资源','7','bool','Y'),

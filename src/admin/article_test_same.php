@@ -71,7 +71,7 @@ else if ($dopost == 'delsel') {
         }
     }
     $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `$maintable`;");
-    ShowMsg("一共删除了<span class='text-primary'>{$totalarc}</span>篇重复的文档", "javascript:;");
+    ShowMsg("成功删除{$totalarc}篇重复文档", "javascript:;");
     exit();
 }
 //向导页

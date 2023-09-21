@@ -36,7 +36,7 @@ function ReWriteConfigAuto()
     global $dsql;
     $configfile = DEDEDATA.'/config.cache.inc.php';
     if (!is_writeable($configfile)) {
-        echo "配置文件<span class='text-primary'>{$configfile}</span>不支持写入，无法修改系统配置参数";
+        echo "配置文件{$configfile}不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
@@ -86,8 +86,8 @@ if ($action == '') {
     }
     $authAt = date("Y-m-d", $devInfo['auth_at']);
     if (!isset($info['dev_id'])) {
-        $devInfo['dev_name'] = $info['team']."<span class='btn btn-danger btn-sm'>未认证</span>";
-        $authAt = "未知";
+        $devInfo['dev_name'] = $info['team']."<span class='btn btn-warning btn-sm'>未认证</span>";
+        $authAt = "<span class='btn btn-warning btn-sm'>未知</span>";
     }
     ShowMsg("开发者名称：{$devInfo['dev_name']}<br>开发者id：{$devInfo['dev_id']}<br>认证于：{$authAt}", "-1");
     exit;
@@ -153,7 +153,7 @@ if ($action == '') {
     $win->AddHidden("action", 'setupstart');
     $msg = "<tr>
         <td colspan='2'>
-            <div class='alert alert-danger mb-0'>文件列表中涉及的目录权限可写入，后台管理目录和主题目录也权限可写入</div>
+            <div class='alert alert-warning mb-0'>文件列表中涉及的目录权限可写入，后台管理目录和主题目录也权限可写入</div>
         </td>
     </tr>
     <tr>
@@ -203,7 +203,7 @@ if ($action == '') {
     exit();
 } else if ($action == 'setupstart') {
     if (!is_writeable($mdir)) {
-        ShowMsg("目录<span class='text-primary'>{$mdir}</span>不支持写入，这导致程序安装没法正常创建", "-1");
+        ShowMsg("目录{$mdir}不支持写入，这导致程序安装没法正常创建", "-1");
         exit();
     }
     $dm = new DedeModule($mdir);
@@ -262,7 +262,7 @@ if ($action == '') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
-    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 删除{$infos['name']}";
@@ -303,7 +303,7 @@ if ($action == '') {
     } else if ($action == 'delok') {
     $dm = new DedeModule($mdir);
     $modfile = $mdir."/".$dm->GetHashFile($hash);
-    unlink($modfile) or die("删除文件<span class='text-primary'>{$modfile}</span>失败");
+    unlink($modfile) or die("删除文件{$modfile}失败");
     ShowMsg("成功删除一个模块文件", "module_main.php");
     exit();
 } else if ($action == 'uninstall') {
@@ -319,7 +319,7 @@ if ($action == '') {
         else $v['type'] = '文件';
         $filelist .= "{$v['type']}|{$v['name']}\r\n";
     }
-    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 卸载{$infos['name']}";

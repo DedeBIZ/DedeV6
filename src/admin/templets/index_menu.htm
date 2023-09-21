@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="js/main.js"></script>
 	</head>
 	<body class="menu-box">
 		<div class="menu-body">
@@ -17,30 +18,5 @@
 				?>
 			</ul>
 		</div>
-		<script>
-			$(function() {
-				var menu = function(el, multiple) {
-					this.el = el || {};
-					this.multiple = multiple || false;
-					var links = this.el.find('.link');
-					links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-				}
-				menu.prototype.dropdown = function(e) {
-					var $el = e.data.el;
-						$this = $(this),
-						$next = $this.next();
-						$next.slideToggle();
-						$this.parent().toggleClass('open');
-					if (!e.data.multiple) {
-						$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-					};
-				}	
-				var menu = new menu($('#menu'), false);
-				$(".submenu li a").click(function(e) {
-					$(".submenu li").removeClass('active');
-					$(this).parent().addClass('active');
-				})
-			});
-		</script>
 	</body>
 </html>

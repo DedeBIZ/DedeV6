@@ -17,7 +17,7 @@ function ReWriteConfig()
 {
     global $dsql, $configfile;
     if (!is_writeable($configfile)) {
-        echo "配置文件<span class='text-primary'>{$configfile}</span>不支持写入，无法修改系统配置参数";
+        echo "配置文件{$configfile}不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
@@ -86,7 +86,7 @@ else if ($dopost == 'add') {
         exit();
     }
     if (!is_writeable($configfile)) {
-        ShowMsg("成功保存变量，但由于<span class='text-primary'>$configfile</span>无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功保存变量，但由于".$configfile."无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
         exit();
     } else {
         ReWriteConfig();
@@ -114,11 +114,10 @@ EOT;
         $dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE info LIKE '%$keywords%' OR varname LIKE '%$keywords%' ORDER BY aid ASC");
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
-            $bgcolor = ($i++ % 2 == 0) ? "#f5f5f5" : "#ffffff";
-            $row['info'] = preg_replace("#{$keywords}#", '<span class="text-primary">'.$keywords.'</span>', $row['info']);
-            $row['varname'] = preg_replace("#{$keywords}#", '<span class="text-primary">'.$keywords.'</span>', $row['varname']);
+            $row['info'] = preg_replace("#{$keywords}#", '<b class="text-danger">'.$keywords.'</b>', $row['info']);
+            $row['varname'] = preg_replace("#{$keywords}#", '<b class="text-danger">'.$keywords.'</b>', $row['varname']);
     ?>
-    <tr align="center" bgcolor="<?php echo $bgcolor ?>">
+    <tr align="center">
         <td width="300"><?php echo $row['info'];?>：</td>
         <td align="left">
             <?php

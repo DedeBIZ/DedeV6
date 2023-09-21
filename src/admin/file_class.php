@@ -84,7 +84,7 @@ class FileManagement
                 ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 1;
             } else {
-                ShowMsg("移动文件<span class='text-primary'>$oldfile</span>&gt;<span class='text-primary'>$truepath/$mfile</span>失败，某个位置权限不足", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("移动文件".$oldfile." - ".$truepath."/".$mfile."失败", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 0;
             }
         } else {

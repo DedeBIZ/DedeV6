@@ -35,7 +35,7 @@ if ($dopost == "save") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("diyid", $diyid);
-        $win->AddTitle("删除自定义表单包括数据，您确定要删除<span class='text-primary'>".$row['name']."</span>自定义表单吗");
+        $win->AddTitle("删除自定义表单包括数据，您确定要删除".$row['name']."自定义表单吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

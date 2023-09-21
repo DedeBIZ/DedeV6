@@ -20,7 +20,7 @@
 			function ReloadPage(ordertype) {
 				orderby = ordertype;
 				var listArea = $Obj('rslist');
-				var errMsg = "网络通信出错<br><a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
+				var errMsg = "<a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
 				fetch("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget).then(resp=>resp.text()).then((d)=>{
 					listArea.innerHTML = d;
 				}).catch((error) => {
@@ -48,7 +48,7 @@
 					totalrow = totalrow - 1;
 					var pagenum = Math.ceil(totalrow / pagesize);
 					if (pagenum <= pageno) pageno = pagenum;
-					var errMsg = "网络通信出错<br><a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
+					var errMsg = "<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
 					fetch("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno).then(resp=>{
 						if (resp.ok) {
 							return resp.text()

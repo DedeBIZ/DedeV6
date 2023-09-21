@@ -24,7 +24,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">自定义标记调用方法：{dede:mytag name='标记名称' ismake='是否含板块代码yes或no' typeid='栏目id'/} 1、name标记名称，该项是必须的属性；2、ismake默认是no表示设定的纯网页代码，yes表示含板块标记的代码；3、typeid表示所属栏目的id，默认为0，表示所有栏目通用的显示文档，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</div>
+						<div class="alert alert-info mb-0">自定义标记调用方法：{dede:mytag name='标记名称' ismake='是否含板块代码yes或no' typeid='栏目id'/}name标记名称，该项是必须的属性；ismake默认是no表示设定的纯网页代码，yes表示含板块标记的代码；typeid表示所属栏目的id，默认为0，表示所有栏目通用的显示文档，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</div>
 					</td>
 				</tr>
 				<tr>
@@ -33,7 +33,7 @@
 						<?php
 						$tl = new TypeLink(0);
 						$typeOptions = $tl->GetOptionArray(0,0,0);
-						echo "<select name='typeid' class='admin-input-lg'>";
+						echo "<select name='typeid' class='admin-input-md'>";
 						echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
 						echo $typeOptions;
 						echo "</select>";
@@ -42,7 +42,7 @@
 				</tr>
 				<tr>
 					<td>标记名称：</td>
-					<td><input type="text" name="tagname" id="tagname"></td>
+					<td><input type="text" name="tagname" id="tagname" class="admin-input-md"></td>
 				</tr>
 				<tr>
 					<td>时间限制：</td>
@@ -53,11 +53,11 @@
 				</tr>
 				<tr>
 					<td>开始时间：</td>
-					<td><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker"></td>
+					<td><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker admin-input-md"></td>
 				</tr>
 				<tr>
 					<td>结束时间：</td>
-					<td><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker"></td>
+					<td><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker admin-input-md"></td>
 				</tr>
 				<tr>
 					<td>正常显示文档：</td>
@@ -80,7 +80,7 @@
 					return false;
 				}
 			}
-			$(document).ready(function () {
+			$(document).ready(function() {
 				$('.datepicker').daterangepicker({
 					"singleDatePicker": true,
 					"autoApply": true,
@@ -88,7 +88,6 @@
 					"linkedCalendars": false,
 					"timePicker": true,
 					"timePicker24Hour": true,
-					//"timePickerSeconds": true,
 					"showCustomRangeLabel": false,
 					ranges: {
 						'今日': [moment(), moment()],
@@ -104,10 +103,10 @@
 						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
 						firstDay: 1
 					}
-				}, function (start) {
+				}, function(start) {
 					$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
 				});
-			})
+			});
 		</script>
 	</body>
 </html>

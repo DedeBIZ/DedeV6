@@ -58,7 +58,7 @@ if ($dopost == "delete") {
         }
         $logoimg_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $logoimg_name));
         $fullfilename = DEDEROOT.'static/flink/'.$logoimg_name;
-        move_uploaded_file($logoimg, $fullfilename) or die("上传文件到<span class='text-primary'>$fullfilename</span>失败");
+        move_uploaded_file($logoimg, $fullfilename) or die("上传文件到".$fullfilename."失败");
         @unlink($logoimg);
         $logo = $cfg_cmspath.'/static/flink/'.$logoimg_name;
     }
