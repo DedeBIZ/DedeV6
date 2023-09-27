@@ -140,6 +140,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
     }
     if ($GLOBALS['cfg_html_editor'] == 'ckeditor') {
         $addConfig = "";
+        $fvalue = htmlspecialchars($fvalue);
         if (defined("DEDEADMIN")) {
             $emoji = "";
             if ($GLOBALS['cfg_db_language'] == "utf8mb4") {
@@ -152,7 +153,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
         }
         $code = <<<EOT
 <script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
-<div id="{$fname}" name="{$fname}">{$fvalue}</div>
+<textarea id="{$fname}" name="{$fname}">{$fvalue}</textarea>
 <script>var editor = CKEDITOR.replace('{$fname}'{$addConfig});</script>
 EOT;
         if ($gtype == "print") {
@@ -165,7 +166,7 @@ EOT;
 /**
  *  获取更新信息
  *
- * @return    void
+ * @return    string
  */
 function SpGetNewInfo()
 {
