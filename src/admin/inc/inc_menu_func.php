@@ -49,8 +49,7 @@ function GetMenus($userrank, $topos = 'main')
                         } else {
                             $addico = 'fa fa-plus-circle';
                         }
-                        $addalt = $ctag2->GetAtt('addalt');
-                        $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='submenu-right' target='".$ctag2->GetAtt('target')."'><span class='$addico' title='$addalt'></span></a>";
+                        $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='submenu-right' target='".$ctag2->GetAtt('target')."'><span class='$addico'></span></a>";
                     } else {
                         $link .= "";
                     }
