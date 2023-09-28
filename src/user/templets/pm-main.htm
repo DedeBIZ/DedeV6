@@ -122,7 +122,7 @@
 					return false;
 				}
 				DedeConfirm("您确定要删除这些消息吗").then((v)=>{
-					$.get("pm.php?dopost=remove&ids=" + selid + "&folder=" + myfolder,function (data) {
+					$.get("pm.php?dopost=remove&ids=" + selid + "&folder=" + myfolder,function(data) {
 						let result = JSON.parse(data);
 						if (result.code === 200) {
 							location.reload();

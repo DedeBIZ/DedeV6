@@ -21,7 +21,7 @@ ol,ul,dl {
 }
 h1,h2,h3,h4,h5,h6 {
 	font-weight:600;
-	line-height:1.6
+	line-height:1.2
 }
 hr {
 	border:0px;
@@ -49,7 +49,7 @@ figure > figcaption {
 	display:block
 }
 img {
-	border-radius:.5rem
+	border-radius:0.5rem
 }
 a > img {
 	padding:1px;

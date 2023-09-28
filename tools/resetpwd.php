@@ -18,7 +18,7 @@ define('DEDEBIZ_REPWD_VER', '1.0.0');
  */
 function ToolAlert($content, $colors = array('#cfe2ff', '#b6d4fe', '#084298'))
 {
-    define('TOOLS_ALERT_TPL', '<div style="position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;width:auto;font-size:14px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:.5rem">~content~</div>');
+    define('TOOLS_ALERT_TPL', '<div style="position:relative;padding:0.75rem 1.25rem;margin-bottom:1rem;width:auto;font-size:14px;color:~color~;background:~background~;border-color:~border~;border:1px solid transparent;border-radius:0.5rem">~content~</div>');
     list($background, $border, $color) = $colors;
     return str_replace(array('~color~', '~background~', '~border~', '~content~'), array($color, $background, $border, $content), TOOLS_ALERT_TPL);
 }
@@ -67,7 +67,6 @@ if ($dopost === 'change') {
     ShowMsg("管理员密码成功修改为<code>{$newpwd}</code>，请务必删除当前文件！", 'javascript:;');
     exit;
 }
-
 $wintitle = "DedeBIZ修改密码工具";
 $wecome_info = "DedeBIZ修改密码工具 V" . DEDEBIZ_REPWD_VER;
 $win = new OxWindow();

@@ -152,8 +152,8 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
             $addConfig = ",{filebrowserImageUploadUrl:'api.php?action=upload&type=litpic&ck=1',filebrowserUploadUrl:'api.php?action=upload&type=media&ck=1',extraPlugins:'html5video,html5audio,textindent',filebrowserImageBrowseDisabled:true}";
         }
         $code = <<<EOT
-<script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
 <textarea id="{$fname}" name="{$fname}">{$fvalue}</textarea>
+<script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
 <script>var editor = CKEDITOR.replace('{$fname}'{$addConfig});</script>
 EOT;
         if ($gtype == "print") {

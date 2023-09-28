@@ -19,17 +19,6 @@ $newface = isset($newface)? $newface : '';
 if ($dopost == 'save') {
     //校验CSRF
     CheckCSRF();
-    if (function_exists('password_hash') && !empty($row['pwd_new'])) {
-        if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
-            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', 'edit_baseinfo.php');
-            exit();
-        }
-    } else {
-        if (!is_array($row) || $row['pwd'] != md5($oldpwd)) {
-            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', 'edit_baseinfo.php');
-            exit();
-        }
-    }
     if ($userpwd != $userpwdok) {
         ShowMsg('您两次输入的新密码不一致', 'edit_baseinfo.php');
         exit();

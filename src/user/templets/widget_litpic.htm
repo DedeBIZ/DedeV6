@@ -1,9 +1,9 @@
 <script>
-	$(document).ready(function () {
+	$(document).ready(function() {
 		$("#btnUploadLitpic").click(function(){
 			$("#iptLitpic").click();
 		})
-		$("#iptLitpic").change(function (val) {
+		$("#iptLitpic").change(function(val) {
 			var formData = new FormData();
 			var fileData = $('#iptLitpic')[0].files[0];
 			formData.append('file', fileData);
@@ -13,7 +13,7 @@
 				data: formData,
 				processData: false,
 				contentType: false,
-				success: function (result) {
+				success: function(result) {
 					if (result.code === 0) {
 						$("#imgLitpic").attr('src', result.data);
 						$("#litpic").val(result.data);
@@ -21,7 +21,7 @@
 						ShowMsg(result.error.message);
 					}
 				},
-				error: function (xhr, status, error) {
+				error: function(xhr, status, error) {
 					ShowMsg("文件上传失败");//处理上传失败后的回调
 				}
 			});
