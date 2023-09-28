@@ -77,7 +77,7 @@ $menusMain = "<m:top item='1_' name='常用功能' icon='fa fa-desktop'>
     <m:item name='我发布的文档' link='content_list.php?mid=".$cuserLogin->getUserID()."' rank='a_List,a_AccList,a_MyList' target='main' />
     <m:item name='标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
     <m:item name='评论管理' link='feedback_main.php' rank='sys_Feedback' target='main' />
-    <m:item name='专题管理' ischannel='1' link='content_s_list.php' linkadd='spec_add.php' channelid='-1' rank='spec_New' target='main' />
+    <m:item name='专题管理' link='content_s_list.php' ischannel='1' channelid='-1' linkadd='spec_add.php' rank='spec_New' target='main' />
     <m:item name='文档回收站' link='recycling.php' ischannel='1' addico='fa fa-minus-circle' linkadd='archives_do.php?dopost=clear&aid=no&recycle=1' rank='a_List,a_AccList,a_MyList' target='main' />
 </m:top>
 <m:top item='2_' name='文档管理' icon='fa fa-file-text'>
