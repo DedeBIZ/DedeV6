@@ -30,7 +30,7 @@ if (is_dir(dirname(__FILE__).'/../install')) {
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if (preg_match('/admin/', $cururl)) {
-    $redmsg = '<div class="alert alert-warning">后台管理目录名称中包含admin，强烈建议后台管理目录修改为其它名称</div>';
+    $redmsg = '<div class="alert alert-warning">检测到后台管理目录名称中包含admin，强烈建议后台管理目录修改为其它名称</div>';
 } else {
     $redmsg = '';
 }
