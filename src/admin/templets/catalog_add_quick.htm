@@ -110,7 +110,7 @@
 							<tr bgcolor="#e9ecef" align="center">
 								<td width="6%" class="border-top-0">排序</td>
 								<td width="16%" class="border-top-0">顶级栏目名称</td>
-								<td width="60%" class="border-top-0">子栏目名称（名称1,名称2）</td>
+								<td width="60%" class="border-top-0">子栏目名称（英文逗号分开，如：栏目一,栏目二）</td>
 								<td class="border-top-0"><button type="button" class="btn btn-success btn-sm add">添加</button></td>
 							</tr>
 							<tr align="center">
@@ -171,6 +171,34 @@
 		</form>
 		<script>
 			var $ = jQuery;
+			function ShowHide(objname) {
+				var obj = document.getElementById(objname);
+				if (obj.style.display == "block")
+					obj.style.display = "none";
+				else
+					obj.style.display = "block";
+			};
+			function ShowObj(objname) {
+				var obj = document.getElementById(objname);
+				obj.style.display = "block";
+			};
+			function HideObj(objname) {
+				var obj = document.getElementById(objname);
+				obj.style.display = "none";
+			};
+			function showSeltype(objname) {
+				if (objname.value != 0) {
+					$("#addQuickRel").show();
+					$("#pathtype").show();
+					$("#addQuick").hide();
+					$("#savetype").val('rel');
+				} else {
+					$("#addQuickRel").hide();
+					$("#addQuick").show();
+					$("#pathtype").hide();
+					$("#savetype").val('');
+				}
+			};
 			$(document).ready(function() {
 				//添加按钮事件
 				$("#addQuick .add").click(function() {
@@ -200,34 +228,6 @@
 					}).end().appendTo($("#addQuickRel"));
 				});
 			});
-			function ShowHide(objname) {
-				var obj = document.getElementById(objname);
-				if (obj.style.display == "block")
-					obj.style.display = "none";
-				else
-					obj.style.display = "block";
-			};
-			function ShowObj(objname) {
-				var obj = document.getElementById(objname);
-				obj.style.display = "block";
-			};
-			function HideObj(objname) {
-				var obj = document.getElementById(objname);
-				obj.style.display = "none";
-			};
-			function showSeltype(objname) {
-				if (objname.value != 0) {
-					$("#addQuickRel").show();
-					$("#pathtype").show();
-					$("#addQuick").hide();
-					$("#savetype").val('rel');
-				} else {
-					$("#addQuickRel").hide();
-					$("#addQuick").show();
-					$("#pathtype").hide();
-					$("#savetype").val('');
-				}
-			};
 		</script>
 	</body>
 </html>
