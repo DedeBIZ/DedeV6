@@ -20,7 +20,7 @@ function MakeUpload(mnum) {
 		}
 		fhtml = '';
 		fhtml += "<div class='mb-3'><label class='mb-0'><input type='checkbox' name='isokcheck" + startNum + "' id='isokcheck" + startNum + "' value='1' "+dsel+" onClick='CheckSelTable(" + startNum + ")'> 显示图片" + startNum + "上传框</label></div>";
-		fhtml += "<div id=\"seltb" + startNum + "\" class='form-group' style=\"" + dplay + "\"><label>图片" + startNum + "上传：</label><div class='input-group mb-3'><input type='text' name='imgfile" + startNum + "' class='form-control' placeholder='请选择图片上传或填写图片地址'><div class='input-group-append'><span class='btn btn-success btn-sm btn-send' onClick=\"SelectImage('addcontent.imgfile" + startNum + "', 'big')\">选择</span></div></div><label>图片" + startNum + "简介：</label><textarea name='imgmsg" + startNum + "' class='form-control'></textarea></div>";
+		fhtml += "<div id=\"seltb" + startNum + "\" class='form-group' style=\"" + dplay + "\"><span>图片" + startNum + "上传：</span><div class='input-group mb-3'><input type='text' name='imgfile" + startNum + "' class='form-control' placeholder='请选择图片上传或填写图片地址'><div class='input-group-append'><span class='btn btn-success btn-sm btn-send' onClick=\"SelectImage('addcontent.imgfile" + startNum + "', 'big')\">选择</span></div></div><span>图片" + startNum + "简介：</span><textarea name='imgmsg" + startNum + "' class='form-control'></textarea></div>";
 		upfield.innerHTML += fhtml;
 	}
 }

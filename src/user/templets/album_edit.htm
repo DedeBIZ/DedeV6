@@ -99,12 +99,12 @@
 							</div>
 							<div id="seltb<?php echo $j;?>" class="mb-3">
 								<div class="mb-3"><img src="<?php echo trim($ctag->GetInnerText());?>" class="thumbnail-md"></div>
-								<label>图片<?php echo $j;?>上传：</label>
+								<span>图片<?php echo $j;?>上传：</span>
 								<div class="input-group mb-3">
 									<input type="text" name="imgfile<?php echo $j;?>" class="form-control" value="<?php echo trim($ctag->GetInnerText());?>" placeholder="请输入网址">
 									<div class="input-group-append"><span class="btn btn-success btn-sm btn-send" onclick="SelectImage('addcontent.imgfile<?php echo $j;?>', 'big')">选择</span></div>
 								</div>
-								<label>图片<?php echo $j;?>简介：</label>
+								<span>图片<?php echo $j;?>简介：</span>
 								<textarea name="imgmsg<?php echo $j;?>" class="form-control"><?php echo trim($ctag->GetAtt('text'))?></textarea>
 							</div>
 							<?php
