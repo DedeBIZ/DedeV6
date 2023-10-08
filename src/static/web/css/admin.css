@@ -87,7 +87,7 @@ input[type=file] {
 	vertical-align:middle
 }
 input[type=button],input[type=submit],input[type=reset] {
-	padding:0.375rem 0.55rem;
+	padding:0.375rem 0.75rem;
 	height:30px;
 	line-height:1.5;
 	font-size:12px;
@@ -375,8 +375,7 @@ body.hidemenu .body-right {
 	padding:0.375rem 0.75rem;
 	background:#f5f5f5;
 	border-bottom:1px solid #dee2e6;
-	border:0;
-	cursor:pointer
+	border:0
 }
 .coolbg2 {
 	padding:0.5rem;
@@ -533,10 +532,11 @@ body.hidemenu .body-right {
 	font-size:12px
 }
 .btn-xs {
-	padding:.22rem;
+	padding:0.2rem;
 	height:20px;
 	line-height:1;
-	font-size:12px
+	font-size:12px;
+	border-radius:0.35rem!important
 }
 .btn+.btn {
 	margin-left:10px
@@ -618,9 +618,6 @@ span.page-link {
 }
 table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.colordlg,.quickselitem .topcat,.web-info,.upload-bg,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded,#edsta {
 	border-radius:0.5rem!important
-}
-.btn-xs {
-	border-radius:0.35rem!important
 }
 .coolbg2,.pubdlg .title,.cke_top {
 	border-radius:0.5rem 0.5rem 0 0!important
