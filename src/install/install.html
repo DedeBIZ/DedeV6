@@ -6,20 +6,24 @@
 		<title>安装DedeV<?php echo $cfg_version_detail;?></title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<link rel="shortcut icon" href="../static/web/img/favicon.ico">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.min.js"></script>
 		<script src="../static/web/js/style.js"></script>
-		<style>body{line-height:1.6;letter-spacing:0.5px;font-size:14px;font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f5f5f5}a{color:#545b62;text-decoration:none}a:hover{color:#007bff;text-decoration:none}h2,legend{line-height:1.2;font-size:18px;font-weight:600;color:#393d49}label{margin-bottom:10px;line-height:18px}input,select,.btn{font-size:14px!important}.install-box{margin:0 auto;width:800px}.admin-head{padding:1rem 0;background:#fff}.admin-nav{height:36px;line-height:36px}.admin-nav-a{padding-right:30px}.dropdown-menu{min-width:8rem;font-size:14px}.dropdown-item{padding:0 1rem;height:36px;line-height:36px;font-size:14px;color:#545b62!important}.fa{font-size:14px!important;color:inherit;cursor:pointer}.logo,.form-control{height:36px}.form-control,.btn-md,.card,.alert,.rounded{border-radius:0.5rem!important}.card-header:first-child{border-radius:0.5rem 0.5rem 0 0}.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label,.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,.input-group:not(.has-validation)>.custom-select:not(:last-child),.input-group:not(.has-validation)>.form-control:not(:last-child){border-top-right-radius:0!important;border-bottom-right-radius:0!important}.input-group>.input-group-append>.btn,.input-group>.input-group-append>.input-group-text,.input-group>.input-group-prepend:first-child>.btn:not(:first-child),.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),.input-group>.input-group-prepend:not(:first-child)>.btn,.input-group>.input-group-prepend:not(:first-child)>.input-group-text{border-top-left-radius:0!important;border-bottom-left-radius:0!important}@media (max-width:760px){.install-box{width:100%}.admin-nav-a{display:none!important}}</style>
 	</head>
-	<body>
-		<div class="admin-head shadow-sm mb-3">
+	<body class="body-bg">
+		<div class="login-head shadow-sm mb-3">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-6 col-md-4"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
-					<div class="col-6 col-md-8 text-right d-flex justify-content-end admin-nav">
-						<a href="https://www.dedebiz.com/help" target="_blank" class="admin-nav-a"><i class="fa fa-info-circle"></i> 帮助中心</a>
-						<a href="https://www.dedebiz.com/service" target="_blank" class="admin-nav-a"><i class="fa fa-handshake-o"></i> 技术服务</a>
+					<div class="col-6 col-md-4">
+						<a href="/" target="_blank" class="logo"><img src="../static/web/img/logo.png"></a>
+					</div>
+					<div class="col-6 col-md-8">
+						<div class="d-flex justify-content-end text-right">
+							<a href="https://www.dedebiz.com/help" target="_blank"><i class="fa fa-info-circle"></i> 帮助中心</a>
+							<a href="https://www.dedebiz.com/service" target="_blank" class="ml-3 d-none d-lg-block"><i class="fa fa-handshake-o"></i> 技术服务</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -59,7 +63,7 @@
 									<input type="text" name="dbuser" id="dbuser" class="form-control" placeholder="root">
 								</div>
 								<div class="form-group server">
-									<label for="exampleInputPassword1" class="form-label">数据库密码</label>
+									<label for="dbpwd" class="form-label">数据库密码</label>
 									<input type="text" name="dbpwd" id="dbpwd" class="form-control" placeholder="请输入数据库密码">
 								</div>
 								<div class="form-group">
@@ -110,27 +114,27 @@
 		</div>
 		<script>
 			$("#btnCheckConnect").click(function() {
-			    let dbhost = $('#dbhost').val();
-			    let dbuser = $('#dbuser').val();
-			    let dbpwd = $('#dbpwd').val();
-			    if (!dbhost) dbhost = "localhost";
-			    if (!dbuser) dbuser = "root";
-			    $.get('index.php?step=10&dbhost=' + dbhost + '&dbuser=' + dbuser + '&dbpwd=' + dbpwd,
-			    function(rs) {
-			        let result = JSON.parse(rs);
-			        if (result.code === 200) {
-			            ShowAlert("#alertConnect", result.data, "success", 5000)
-			        } else {
-			            ShowAlert("#alertConnect", result.data, "danger", 5000)
-			        }
-			    })
+				let dbhost = $('#dbhost').val();
+				let dbuser = $('#dbuser').val();
+				let dbpwd = $('#dbpwd').val();
+				if (!dbhost) dbhost = "localhost";
+				if (!dbuser) dbuser = "root";
+				$.get('index.php?step=10&dbhost=' + dbhost + '&dbuser=' + dbuser + '&dbpwd=' + dbpwd,function(rs) {
+					console.log(rs);
+					let result = JSON.parse(rs);
+					if (result.code === 200) {
+						ShowAlert("#alertConnect", result.data, "success", 5000);
+					} else {
+						ShowAlert("#alertConnect", result.data, "danger", 5000);
+					}
+				})
 			});
 			$("#dbtype").change(function() {
-			    if ($(this).val() === 'sqlite') {
-			        $(".form-group.server").hide()
-			    } else {
-			        $(".form-group.server").show()
-			    }
+				if ($(this).val() === 'sqlite') {
+					$(".form-group.server").hide()
+				} else {
+					$(".form-group.server").show()
+				}
 			});
 		</script>
 	</body>

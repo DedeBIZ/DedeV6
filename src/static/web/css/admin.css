@@ -37,7 +37,7 @@ img {
 p {
 	margin-bottom:10px
 }
-ul,ol,li {
+ul,ol,li,form {
 	margin:0;
 	padding:0
 }
@@ -68,9 +68,6 @@ table tr:last-child td:last-child {
 td {
 	word-break:break-all;
 	word-wrap:break-word
-}
-form,label {
-	margin-bottom:0
 }
 input {
 	padding:0.375rem 0.75rem;
@@ -133,20 +130,53 @@ input:focus,select:focus,textarea:focus {
 	box-shadow:0 0 0 0.2rem rgba(0,123,255,.25);
 	outline:0
 }
-body.hidemenu {
-	background:none
+.login-head {
+	padding:1rem 0;
+	background:#fff
 }
-body.showmenu .menu-left {
+.login-head .logo {
+	font-size:18px;
+	color:#393d49;
+	font-weight:600
+}
+.login-head .logo img {
+	height:36px
+}
+.install-box {
+	margin:0 auto;
+	width:800px
+}
+.install-box .card-header,.install-box .card-body {
+	padding:1.25rem
+}
+.install-box h2,.install-box legend,.login-box h2 {
+	line-height:1.2;
+	font-size:18px;
+	font-weight:600;
+	color:#393d49
+}
+.install-box .form-control,.login-box .form-control {
+	height:36px
+}
+.login-from {
+	margin:5rem auto;
+	width:500px
+}
+.login-box {
+	padding:1.25rem;
+	background:#fff
+}
+body.menu-show .menu-left {
 	display:block
 }
-body.hidemenu .menu-left {
-	display:none
+body.menu-hide,body.menu-hide .menu-left {
+	background:none
 }
-body.showmenu .body-right {
+body.menu-show .body-right {
 	left:220px;
 	transition:all 0.5s
 }
-body.hidemenu .body-right {
+body.menu-hide .body-right {
 	left:0;
 	transition:all 0.5s
 }
@@ -162,9 +192,6 @@ body.hidemenu .body-right {
 	top:60px;
 	right:0;
 	bottom:0
-}
-.body-bg {
-	background:#f5f5f5
 }
 .main,.menu {
 	width:100%;
@@ -214,17 +241,17 @@ body.hidemenu .body-right {
 .item-menu li.open i.fa-angle-down {
 	transform:rotate(180deg)
 }
-.head {
+.admin-head {
 	width:100%;
 	height:60px;
 	background:linear-gradient(45deg,#1eb867,#009688 80%)
 }
-.top-logo {
+.admin-head .logo {
 	float:left;
 	padding-left:30px;
 	width:220px
 }
-.top-name a {
+.admin-head .logo .name a {
 	float:left;
 	height:60px;
 	line-height:60px;
@@ -232,7 +259,7 @@ body.hidemenu .body-right {
 	font-weight:600;
 	color:#fff
 }
-.top-version a {
+.admin-head .logo .version a {
 	float:left;
 	height:60px;
 	line-height:60px;
@@ -240,32 +267,33 @@ body.hidemenu .body-right {
 	font-weight:600;
 	color:#fff
 }
-.top-version {
+.admin-head .logo .version {
 	float:left;
 	margin-top:18px;
 	margin-left:5px;
 	font-size:12px;
 	color:#fff
 }
-.btn-version {
-	float:left;
-	margin-top:18px;
-	margin-left:5px
+.admin-head .item ul,.admin-head .admin ul {
+	margin:0
 }
-.top-item ul li {
+.admin-head .item ul li {
 	float:left;
 	position:relative;
 	padding-left:30px;
 	height:60px;
 	line-height:60px
 }
-.top-item ul li a,.top-admin ul li a {
+.admin-head .item ul li:first-child {
+	padding-left:1rem
+}
+.admin-head .item ul li a,.admin-head .admin ul li a {
 	color:#fff
 }
-.top-item ul li a:hover,.top-admin ul li a:hover {
+.admin-head .item ul li a:hover,.admin-head .admin ul li a:hover {
 	color:#dee2e6
 }
-.search {
+.admin-head .item .search {
 	position:absolute;
 	top:20px;
 	right:5px;
@@ -275,52 +303,49 @@ body.hidemenu .body-right {
 	background:0;
 	border:0
 }
-.top-admin {
+.admin-head .admin {
 	float:right;
 	margin-right:30px;
 	height:60px;
 	line-height:60px
 }
-.top-admin img {
+.admin-head .admin img {
 	width:30px;
 	height:30px;
 	border-radius:50%
 }
-.top-admin ul li {
+.admin-head .admin ul li {
 	float:left;
 	padding-left:30px;
 	height:60px;
 	line-height:60px
 }
-.user-img-sm {
-	width:30px;
-	height:30px;
-	border-radius:50%;
-	border:1px solid #eee
+.admin-head .admin ul li:first-child {
+	padding-left:0
 }
-.submenu {
+.sidemenu {
 	display:none;
 	padding:5px 0;
 	background:#adb5bd
 }
-.submenu li {
+.sidemenu li {
 	height:40px;
 	line-height:40px
 }
-.submenu li:hover {
+.sidemenu li:hover {
 	background:#009688;
 	transition:all 0.5s
 }
-.submenu a {
+.sidemenu a {
 	float:left;
 	display:block;
 	padding:0 10px 0 50px;
 	color:#fff
 }
-.submenu .active {
+.sidemenu .active {
 	background:#1eb867
 }
-.submenu-right {
+.sidemenu-right {
 	float:right!important;
 	padding:0 20px 0 10px!important
 }
@@ -473,8 +498,12 @@ body.hidemenu .body-right {
 .option3 {
 	background:#fff
 }
-.modal-title {
-	font-size:16px
+.body-bg {
+	background:#f5f5f5
+}
+.upload-bg {
+	margin:10px;
+	background:#fff
 }
 .tips-box {
 	margin:70px auto 0;
@@ -503,6 +532,44 @@ body.hidemenu .body-right {
 	word-break:break-all;
 	word-wrap:break-word
 }
+.user-img-sm {
+	width:30px;
+	height:30px;
+	border-radius:50%;
+	border:1px solid #eee
+}
+.thumbnail-md {
+	max-width:200px;
+	max-height:120px
+}
+.thumbnail-sm {
+	max-width:80px;
+	max-height:80px
+}
+.icon img {
+	width:20px;
+	height:20px
+}
+.list-group-item {
+	padding:0.5rem 0
+}
+.modal-title {
+	font-size:16px
+}
+.fileinput-button {
+	display:inline-block;
+	position:relative;
+	overflow:hidden
+}
+.fileinput-button input {
+	position:absolute;
+	top:0;
+	right:0;
+	margin:0;
+	opacity:0;
+	direction:ltr;
+	cursor:pointer
+}
 .maintable {
 	width:98%!important;
 	border:1px solid #dee2e6!important
@@ -521,25 +588,6 @@ body.hidemenu .body-right {
 .fa {
 	font-size:14px!important;
 	color:inherit
-}
-.list-group-item {
-	padding:0.5rem 0
-}
-.btn-sm {
-	padding:0.375rem 0.55rem;
-	height:30px;
-	line-height:1.5;
-	font-size:12px
-}
-.btn-xs {
-	padding:0.22rem;
-	height:20px;
-	line-height:1;
-	font-size:12px;
-	border-radius:0.35rem!important
-}
-.btn+.btn {
-	margin-left:10px
 }
 .admin-win {
 	background:#f5f5f5;
@@ -582,47 +630,17 @@ body.hidemenu .body-right {
 .admin-input-xs {
 	width:60px
 }
-.thumbnail-md {
-	max-width:200px;
-	max-height:120px
-}
-.thumbnail-sm {
-	max-width:80px;
-	max-height:80px
-}
-.upload-bg {
-	margin:10px;
-	background:#fff
-}
-.icon img {
-	width:20px;
-	height:20px
-}
-.fileinput-button {
-	display:inline-block;
-	position:relative;
-	overflow:hidden
-}
-.fileinput-button input {
-	position:absolute;
-	top:0;
-	right:0;
-	margin:0;
-	opacity:0;
-	direction:ltr;
-	cursor:pointer
-}
 span.page-link {
 	color:#fff;
 	background:#1eb867
 }
-table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.colordlg,.quickselitem .topcat,.web-info,.upload-bg,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn-sm,.alert,.rounded,#edsta {
+table,input,select,textarea,.login-box,.menu-body,.coolbg,.mysource,.mywriter,.pubdlg,.colordlg,.quickselitem .topcat,.web-info,.upload-bg,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded,#edsta {
 	border-radius:0.5rem!important
 }
 .coolbg2,.pubdlg .title,.cke_top {
 	border-radius:0.5rem 0.5rem 0 0!important
 }
-.submenu,.wsselect,.cke_bottom {
+.sidemenu,.wsselect,.cke_bottom {
 	border-radius:0 0 0.5rem 0.5rem!important
 }
 .page-item:first-child .page-link {
@@ -632,6 +650,39 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 .page-item:last-child .page-link {
 	border-top-right-radius:0.5rem!important;
 	border-bottom-right-radius:0.5rem!important
+}
+.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label,.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,.input-group:not(.has-validation)>.custom-select:not(:last-child),.input-group:not(.has-validation)>.form-control:not(:last-child) {
+	border-top-right-radius:0!important;
+	border-bottom-right-radius:0!important
+}
+.input-group>.input-group-append>.btn,.input-group>.input-group-append>.input-group-text,.input-group>.input-group-prepend:first-child>.btn:not(:first-child),.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),.input-group>.input-group-prepend:not(:first-child)>.btn,.input-group>.input-group-prepend:not(:first-child)>.input-group-text {
+	border-top-left-radius:0!important;
+	border-bottom-left-radius:0!important
+}
+.btn-sm {
+	padding:0.375rem 0.55rem;
+	height:30px;
+	line-height:1.5;
+	font-size:12px
+}
+.btn-xs {
+	padding:0.22rem;
+	height:20px;
+	line-height:1;
+	font-size:12px;
+	border-radius:0.35rem!important
+}
+.btn+.btn {
+	margin-left:10px
+}
+.btn-version {
+	float:left;
+	margin-top:18px;
+	margin-left:5px
+}
+#validateimg {
+	border-radius:0 0.5rem 0.5rem 0;
+	cursor:pointer
 }
 #selColor {
 	padding:5px;
@@ -667,10 +718,10 @@ table,input,select,textarea,.search,.menu-body,.coolbg,.mysource,.mywriter,.pubd
 	}
 }
 @media (max-width:768px) {
+	.install-box,.login-from,.tips-box {
+		width:100%
+	}
 	.tips {
 		padding:0 15px
-	}
-	.tips-box {
-		width:100%
 	}
 }
