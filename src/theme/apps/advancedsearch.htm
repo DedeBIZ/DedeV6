@@ -10,35 +10,27 @@
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 	</head>
 	<body>
-		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="row">
-						{dede:datalist}
-						<?php
-						$fields['stime'] = GetDateTimeMk($fields['senddate']);
-						$fields['arcurl'] = GetArcUrl($fields['aid'],$fields['typeid'],$fields['senddate'],$fields['title'],$fields['ismake'],$fields['arcrank'],$fields['namerule'],$fields['typedir'],$fields['money']);
-						$fields['typeurl'] = GetTypeUrl($fields['typeid'],MfTypedir($fields['typedir']),$fields['isdefault'],$fields['defaultname'],
-						$fields['ispart'],$fields['namerule2'],$fields['moresite'],$fields['siteurl'],$fields['sitepath']);
-						?>
-						<div class="col-md-12 mb-3">
-							<div class="list-article mb-3">
-								<div class="list-article-body bg-white rounded shadow-sm p-3">
-									<h2 class="mb-3"><a href="{dede:field.arcurl/}">{dede:field.title/}</a></h2>
-									<div class="mb-3">
-										<span><i class="fa fa-bars mr-1"></i><a href="{dede:field.typeurl/}" target="_blank">{dede:field.typename/}</a></span>
-										<span><i class="fa fa-eye mr-1"></i>{dede:field.click/}</span>
-										<span><i class="fa fa-calendar mr-1"></i>{dede:field.stime/}</span>
-									</div>
-									<p>{dede:field.description1/}</p>
-								</div>
-							</div>
-						</div>
-						{/dede:datalist}
+		<main class="container py-3">				
+			{dede:datalist}
+			<?php
+			$fields['stime'] = GetDateTimeMk($fields['senddate']);
+			$fields['arcurl'] = GetArcUrl($fields['aid'],$fields['typeid'],$fields['senddate'],$fields['title'],$fields['ismake'],$fields['arcrank'],$fields['namerule'],$fields['typedir'],$fields['money']);
+			$fields['typeurl'] = GetTypeUrl($fields['typeid'],MfTypedir($fields['typedir']),$fields['isdefault'],$fields['defaultname'],
+			$fields['ispart'],$fields['namerule2'],$fields['moresite'],$fields['siteurl'],$fields['sitepath']);
+			?>			
+			<div class="list-article mb-3">
+				<div class="list-article-body bg-white rounded shadow-sm p-3">
+					<h2 class="mb-3"><a href="{dede:field.arcurl/}">{dede:field.title/}</a></h2>
+					<div class="mb-3">
+						<span><i class="fa fa-bars mr-1"></i><a href="{dede:field.typeurl/}" target="_blank">{dede:field.typename/}</a></span>
+						<span><i class="fa fa-eye mr-1"></i>{dede:field.click/}</span>
+						<span><i class="fa fa-calendar mr-1"></i>{dede:field.stime/}</span>
 					</div>
-					<ul class="pagination">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
+					<p>{dede:field.description1/}</p>
 				</div>
 			</div>
+			{/dede:datalist}
+			<ul class="pagination">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 		</main>
 	</body>
 </html>

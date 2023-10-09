@@ -12,171 +12,167 @@
 	<body class="body-bg">
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg p-0">
-							<ul class="breadcrumb mr-auto">
-								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
-								<li class="breadcrumb-item">修改<?php echo $row['title']?></li></li>
-							</ul>
-							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
-						</nav>
-						<form name="addcontent" action="soft_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
-							<input type="hidden" name="dopost" value="save">
-							<input type="hidden" name="aid" value="<?php echo $row['id'];?>">
-							<input type="hidden" name="channelid" value="<?php echo $row['channel'];?>">
-							<input type="hidden" name="oldlitpic" value="<?php echo $row['litpic'];?>">
-							<input type="hidden" name="sortrank" value="<?php echo $row['sortrank'];?>">
-							<input type="hidden" id="litpic" name="litpic" value="<?php echo $row['litpic'];?>">		
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">标题</label>
-								<div class="col-sm-10"><input type="text" name="title" id="title" class="form-control" value="<?php echo $row['title']?>"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">标签</label>
-								<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">缩略图</label>
-								<div class="col-sm-10">
-									<img id="imgLitpic" src="<?php echo empty($row['litpic'])? $cfg_staticurl.'/web/img/thumbnail.jpg' : $row['litpic'];?>" class="thumbnail-md mr-3">
-									<span class="btn btn-success btn-sm" id="btnUploadLitpic">修改缩略图</span>
-									<input id="iptLitpic" type="file" name="iptLitpic" class="d-none">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">作者</label>
-								<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">发布栏目</label>
-								<div class="col-sm-10">
-									<?php
-									$typeOptions = GetOptionList($row["typeid"],$row["channel"]);
-									echo "<select name='typeid' class='form-control'>";
-									echo $typeOptions;
-									echo "</select>";
-									?>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">描述</label>
-								<div class="col-sm-10"><textarea name="description" id="description" class="form-control"><?php echo $row["description"];?></textarea></div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="filetype">文件类型</label>
-									<select name="filetype" id="filetype" class="form-control">
-										<?php if ($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\" selected>".$addRow["filetype"]."</option>";?>
-										<option value=".exe">.exe</option>
-										<option value=".zip">.zip</option>
-										<option value=".rar">.rar</option>
-										<option value=".iso">.iso</option>
-										<option value=".gz">.gz</option>
-										<option value="其它">其它</option>
-									</select>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="language">界面语言</label>
-									<select name="language" id="language" class="form-control">
-										<?php if ($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\" selected>".$addRow["language"]."</option>";?>
-										<option value="简体中文">简体中文</option>
-										<option value="英文软件">英文软件</option>
-										<option value="繁体中文">繁体中文</option>
-										<option value="其它类型">其它类型</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="softtype">软件类型</label>
-									<select name="softtype" id="softtype" class="form-control">
-										<?php if ($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\" selected>".$addRow["softtype"]."</option>";?>
-										<option value="国产软件" selected="selected">国产软件</option>
-										<option value="国外软件">国外软件</option>
-										<option value="汉化补丁">汉化补丁</option>
-									</select>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="accredit">授权方式</label>
-									<select name="accredit" id="accredit" class="form-control">
-										<?php if ($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\" selected>".$addRow["accredit"]."</option>";?>
-										<option value="共享软件">共享软件</option>
-										<option value="免费软件">免费软件</option>
-										<option value="开源软件">开源软件</option>
-										<option value="商业软件">商业软件</option>
-										<option value="破解软件">破解软件</option>
-										<option value="游戏外挂">游戏外挂</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="os">运行环境</label>
-									<input type="text" id="os" name="os" value="<?php echo isset($addRow['os'])? $addRow['os'] : '';?>" class="form-control">
-								</div>
-								<div class="form-group col-md-6">
-									<label for="softrank">软件等级</label>
-									<select name="softrank" id="softrank" class="form-control">
-										<?php if ($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\" selected>".$addRow["softrank"]."星</option>";?>
-										<option value="1">一星</option>
-										<option value="2">二星</option>
-										<option value="3">三星 </option>
-										<option value="4">四星</option>
-										<option value="5">五星</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="officialUrl">官方网址</label>
-									<input type="text" name="officialUrl" value="<?php echo isset($addRow['officialUrl'])? $addRow['officialUrl'] : '';?>" id="officialUrl" class="form-control">
-								</div>
-								<div class="form-group col-md-6">
-									<label for="officialDemo">演示网址</label>
-									<input type="text" name="officialDemo" value="<?php echo isset($addRow['officialDemo'])? $addRow['officialDemo'] : '';?>" id="officialDemo" class="form-control">
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="softsize">软件大小</label>
-									<div class="input-group "><input type="text" name="softsize" id="softsize" value="<?php echo isset($addRow['softsize'])? $addRow['softsize'] : '';?>" class="form-control"></div>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="source">软件来源</label>
-									<input type="text" name="source" id="source" value="<?php echo $row['source'] ?>" class="form-control">
-								</div>
-							</div>
-							<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">正文</label>
-								<div class="col-sm-10">
-									<?php 
-									$addRow["introduce"] = isset($addRow["introduce"])? $addRow["introduce"] : '';
-									GetEditor("body",$addRow["introduce"],400,"Small");
-									?>
-								</div>
-							</div>
-							<div class="form-group">
-								<span>链接上传：</span>
-								<input type="text" name="picnum" id="picnum" value="5" class="form-control w-25">
-								<button type="button" name="kkkup" id="kkkup2" onclick="MakeUpload();" class="btn btn-success btn-sm">添加网址</button>
-								<button type="button" name="Submit3" id="btsh3" onclick="ShowHideAddr();" class="btn btn-success btn-sm">隐藏网址</button>
-							</div>
-							<div id="morelink">
-								<?php
-								echo $nForm;
-								echo "<div id='uploadfield'></div>";
-								?>
-							</div>
-							<div class="text-center">
-								<button type="submit" class="btn btn-success btn-sm">提交</button>
-								<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
-							</div>
+			<div class="pannel-main-container shadow-sm rounded">
+				<nav class="navbar navbar-expand-lg p-0">
+					<ul class="breadcrumb mr-auto">
+						<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
+						<li class="breadcrumb-item">修改<?php echo $row['title']?></li></li>
+					</ul>
+					<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
+				</nav>
+				<form name="addcontent" action="soft_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
+					<input type="hidden" name="dopost" value="save">
+					<input type="hidden" name="aid" value="<?php echo $row['id'];?>">
+					<input type="hidden" name="channelid" value="<?php echo $row['channel'];?>">
+					<input type="hidden" name="oldlitpic" value="<?php echo $row['litpic'];?>">
+					<input type="hidden" name="sortrank" value="<?php echo $row['sortrank'];?>">
+					<input type="hidden" id="litpic" name="litpic" value="<?php echo $row['litpic'];?>">		
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">标题</label>
+						<div class="col-sm-10"><input type="text" name="title" id="title" class="form-control" value="<?php echo $row['title']?>"></div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">标签</label>
+						<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">缩略图</label>
+						<div class="col-sm-10">
+							<img id="imgLitpic" src="<?php echo empty($row['litpic'])? $cfg_staticurl.'/web/img/thumbnail.jpg' : $row['litpic'];?>" class="thumbnail-md mr-3">
+							<span class="btn btn-success btn-sm" id="btnUploadLitpic">修改缩略图</span>
+							<input id="iptLitpic" type="file" name="iptLitpic" class="d-none">
 						</div>
-					</form>
-				</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">作者</label>
+						<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">发布栏目</label>
+						<div class="col-sm-10">
+							<?php
+							$typeOptions = GetOptionList($row["typeid"],$row["channel"]);
+							echo "<select name='typeid' class='form-control'>";
+							echo $typeOptions;
+							echo "</select>";
+							?>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">描述</label>
+						<div class="col-sm-10"><textarea name="description" id="description" class="form-control"><?php echo $row["description"];?></textarea></div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="filetype">文件类型</label>
+							<select name="filetype" id="filetype" class="form-control">
+								<?php if ($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\" selected>".$addRow["filetype"]."</option>";?>
+								<option value=".exe">.exe</option>
+								<option value=".zip">.zip</option>
+								<option value=".rar">.rar</option>
+								<option value=".iso">.iso</option>
+								<option value=".gz">.gz</option>
+								<option value="其它">其它</option>
+							</select>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="language">界面语言</label>
+							<select name="language" id="language" class="form-control">
+								<?php if ($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\" selected>".$addRow["language"]."</option>";?>
+								<option value="简体中文">简体中文</option>
+								<option value="英文软件">英文软件</option>
+								<option value="繁体中文">繁体中文</option>
+								<option value="其它类型">其它类型</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="softtype">软件类型</label>
+							<select name="softtype" id="softtype" class="form-control">
+								<?php if ($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\" selected>".$addRow["softtype"]."</option>";?>
+								<option value="国产软件" selected="selected">国产软件</option>
+								<option value="国外软件">国外软件</option>
+								<option value="汉化补丁">汉化补丁</option>
+							</select>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="accredit">授权方式</label>
+							<select name="accredit" id="accredit" class="form-control">
+								<?php if ($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\" selected>".$addRow["accredit"]."</option>";?>
+								<option value="共享软件">共享软件</option>
+								<option value="免费软件">免费软件</option>
+								<option value="开源软件">开源软件</option>
+								<option value="商业软件">商业软件</option>
+								<option value="破解软件">破解软件</option>
+								<option value="游戏外挂">游戏外挂</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="os">运行环境</label>
+							<input type="text" id="os" name="os" value="<?php echo isset($addRow['os'])? $addRow['os'] : '';?>" class="form-control">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="softrank">软件等级</label>
+							<select name="softrank" id="softrank" class="form-control">
+								<?php if ($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\" selected>".$addRow["softrank"]."星</option>";?>
+								<option value="1">一星</option>
+								<option value="2">二星</option>
+								<option value="3">三星 </option>
+								<option value="4">四星</option>
+								<option value="5">五星</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="officialUrl">官方网址</label>
+							<input type="text" name="officialUrl" value="<?php echo isset($addRow['officialUrl'])? $addRow['officialUrl'] : '';?>" id="officialUrl" class="form-control">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="officialDemo">演示网址</label>
+							<input type="text" name="officialDemo" value="<?php echo isset($addRow['officialDemo'])? $addRow['officialDemo'] : '';?>" id="officialDemo" class="form-control">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="softsize">软件大小</label>
+							<div class="input-group "><input type="text" name="softsize" id="softsize" value="<?php echo isset($addRow['softsize'])? $addRow['softsize'] : '';?>" class="form-control"></div>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="source">软件来源</label>
+							<input type="text" name="source" id="source" value="<?php echo $row['source'] ?>" class="form-control">
+						</div>
+					</div>
+					<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">正文</label>
+						<div class="col-sm-10">
+							<?php 
+							$addRow["introduce"] = isset($addRow["introduce"])? $addRow["introduce"] : '';
+							GetEditor("body",$addRow["introduce"],400,"Small");
+							?>
+						</div>
+					</div>
+					<div class="form-group">
+						<span>链接上传：</span>
+						<input type="text" name="picnum" id="picnum" value="5" class="form-control w-25">
+						<button type="button" name="kkkup" id="kkkup2" onclick="MakeUpload();" class="btn btn-success btn-sm">添加网址</button>
+						<button type="button" name="Submit3" id="btsh3" onclick="ShowHideAddr();" class="btn btn-success btn-sm">隐藏网址</button>
+					</div>
+					<div id="morelink">
+						<?php
+						echo $nForm;
+						echo "<div id='uploadfield'></div>";
+						?>
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-success btn-sm">提交</button>
+						<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
+					</div>
+				</form>
 			</div>
 		</main>
 		<?php obtaintheme('foot.htm');?>

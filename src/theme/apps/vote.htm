@@ -12,22 +12,16 @@
 	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<nav class="navbar navbar-expand-lg p-0">
-						<ul class="breadcrumb mr-auto">
-							<li class="breadcrumb-item"><?php echo $voname?></li>
-						</ul>
-					</nav>
-					<div class="mb-3">
-						<span>投票开始时间：<?php echo $starttime;?></span>
-						<span>投票结束时间：<?php echo $endtime;?></span>
-						<span>投票人数：<?php echo $totalcount;?></span>
-					</div>
-					<div class="mb-3"><?php echo $rsmsg;?></div>
-					<div><?php echo $votelist;?></div>
-				</div>
-			</div>
+			<nav class="navbar navbar-expand-lg p-0">
+				<ul class="breadcrumb mr-auto">
+					<li class="breadcrumb-item"><?php echo $voname?></li>
+				</ul>
+			</nav>
+			<p>投票开始时间：<?php echo $starttime;?></p>
+			<p>投票结束时间：<?php echo $endtime;?></p>
+			<p>投票人数：<?php echo $totalcount;?></p>
+			<p><?php echo $rsmsg;?></p>
+			<p><?php echo $votelist;?></p>
 		</main>
 		<?php obtaintheme('foot.htm');?>
 	</body>

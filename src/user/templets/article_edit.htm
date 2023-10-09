@@ -12,71 +12,67 @@
 	<body class="body-bg">
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg p-0">
-							<ul class="breadcrumb mr-auto">
-								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
-								<li class="breadcrumb-item">修改<?php echo $row['title']?></li></li>
-							</ul>
-							<span class="navbar-text"><a href="javascript:location.href='content_list.php?channelid=<?php echo $channelid;?>'" class="btn btn-outline-success btn-sm">返回</a></span>
-						</nav>
-						<form name="addcontent" action="article_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit(`<?php echo $cInfos['titlename'];?>`);">
-							<input type="hidden" name="dopost" value="save">
-							<input type="hidden" name="aid" value="<?php echo $row['id'];?>">
-							<input type="hidden" name="idhash" value="<?php echo hash('sha256', $row['id'].$cfg_cookie_encode);?>">
-							<input type="hidden" name="channelid" value="<?php echo $row['channel'];?>">
-							<input type="hidden" name="oldlitpic" value="<?php echo $row['litpic'];?>">
-							<input type="hidden" name="sortrank" value="<?php echo $row['sortrank'];?>">
-							<input type="hidden" id="litpic" name="litpic" value="<?php echo $row['litpic'];?>">
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">标题</label>
-								<div class="col-sm-10"><input type="text" name="title" id="title" class="form-control" value="<?php echo $row['title']?>"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">标签</label>
-								<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">缩略图</label>
-								<div class="col-sm-10">
-									<img id="imgLitpic" src="<?php echo empty($row['litpic'])? $cfg_staticurl.'/web/img/thumbnail.jpg' : $row['litpic'];?>" class="thumbnail-md mr-3">
-									<span class="btn btn-success btn-sm" id="btnUploadLitpic">修改缩略图</span>
-									<input id="iptLitpic" type="file" name="iptLitpic" class="d-none">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">作者</label>
-								<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">发布栏目</label>
-								<div class="col-sm-10">
-									<?php
-									$typeOptions = GetOptionList($row["typeid"], $row["channel"]);
-									echo "<select name='typeid' class='form-control'>";
-									echo $typeOptions;
-									echo "</select>";
-									?>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">描述</label>
-								<div class="col-sm-10"><textarea name="description" id="description" class="form-control"><?php echo $row["description"];?></textarea></div>
-							</div>
-							<?php PrintAutoFieldsEdit($row['fieldset'],$addRow,'autofield');?>
-							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">正文</label>
-								<div class="col-sm-10"><?php GetEditor("body",$addRow['body'],400,"Member");?></div>
-							</div>
-							<div class="text-center">
-								<button type="submit" class="btn btn-success btn-sm">提交</button>
-								<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
-							</div>
-						</form>
+			<div class="pannel-main-container shadow-sm rounded">
+				<nav class="navbar navbar-expand-lg p-0">
+					<ul class="breadcrumb mr-auto">
+						<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
+						<li class="breadcrumb-item">修改<?php echo $row['title']?></li></li>
+					</ul>
+					<span class="navbar-text"><a href="javascript:location.href='content_list.php?channelid=<?php echo $channelid;?>'" class="btn btn-outline-success btn-sm">返回</a></span>
+				</nav>
+				<form name="addcontent" action="article_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit(`<?php echo $cInfos['titlename'];?>`);">
+					<input type="hidden" name="dopost" value="save">
+					<input type="hidden" name="aid" value="<?php echo $row['id'];?>">
+					<input type="hidden" name="idhash" value="<?php echo hash('sha256', $row['id'].$cfg_cookie_encode);?>">
+					<input type="hidden" name="channelid" value="<?php echo $row['channel'];?>">
+					<input type="hidden" name="oldlitpic" value="<?php echo $row['litpic'];?>">
+					<input type="hidden" name="sortrank" value="<?php echo $row['sortrank'];?>">
+					<input type="hidden" id="litpic" name="litpic" value="<?php echo $row['litpic'];?>">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">标题</label>
+						<div class="col-sm-10"><input type="text" name="title" id="title" class="form-control" value="<?php echo $row['title']?>"></div>
 					</div>
-				</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">标签</label>
+						<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">缩略图</label>
+						<div class="col-sm-10">
+							<img id="imgLitpic" src="<?php echo empty($row['litpic'])? $cfg_staticurl.'/web/img/thumbnail.jpg' : $row['litpic'];?>" class="thumbnail-md mr-3">
+							<span class="btn btn-success btn-sm" id="btnUploadLitpic">修改缩略图</span>
+							<input id="iptLitpic" type="file" name="iptLitpic" class="d-none">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">作者</label>
+						<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">发布栏目</label>
+						<div class="col-sm-10">
+							<?php
+							$typeOptions = GetOptionList($row["typeid"], $row["channel"]);
+							echo "<select name='typeid' class='form-control'>";
+							echo $typeOptions;
+							echo "</select>";
+							?>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">描述</label>
+						<div class="col-sm-10"><textarea name="description" id="description" class="form-control"><?php echo $row["description"];?></textarea></div>
+					</div>
+					<?php PrintAutoFieldsEdit($row['fieldset'],$addRow,'autofield');?>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">正文</label>
+						<div class="col-sm-10"><?php GetEditor("body",$addRow['body'],400,"Member");?></div>
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-success btn-sm">提交</button>
+						<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
+					</div>
+				</form>
 			</div>
 		</main>
 		<?php obtaintheme('foot.htm');?>

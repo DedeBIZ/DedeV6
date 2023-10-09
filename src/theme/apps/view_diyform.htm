@@ -12,30 +12,26 @@
 	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<nav class="navbar navbar-expand-lg p-0">
-						<ul class="breadcrumb mr-auto">
-							<li class="breadcrumb-item"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>"><?php echo $diy->name;?>列表</a></li>
-							<li class="breadcrumb-item"><?php echo $diy->name;?>查看</li>
-						</ul>
-						<span class="navbar-text"><a href="/apps/diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
-					</nav>
-					<table class="table mb-0">
-						<?php
-						echo '<tbody>';
-						echo '<tr><td bgcolor="#f5f5f5">id'.$row['id'].'</td></tr>';
-						$allowhtml = array('htmltext');
-						foreach($fieldlist as $field=>$fielddata)
-						{
-							if ($row[$field]=='') continue;
-						}
-						echo '<tr><td>'.$fielddata[0].'</td></tr><tr><td>'.$row[$field].'</td></tr>';
-						echo '</tbody>';
-						?>
-					</table>
-				</div>
-			</div>
+			<nav class="navbar navbar-expand-lg p-0">
+				<ul class="breadcrumb mr-auto">
+					<li class="breadcrumb-item"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>"><?php echo $diy->name;?>列表</a></li>
+					<li class="breadcrumb-item"><?php echo $diy->name;?>查看</li>
+				</ul>
+				<span class="navbar-text"><a href="/apps/diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
+			</nav>
+			<table class="table mb-0">
+				<?php
+				echo '<tbody>';
+				echo '<tr><td bgcolor="#f5f5f5">id'.$row['id'].'</td></tr>';
+				$allowhtml = array('htmltext');
+				foreach($fieldlist as $field=>$fielddata)
+				{
+					if ($row[$field]=='') continue;
+				}
+				echo '<tr><td>'.$fielddata[0].'</td></tr><tr><td>'.$row[$field].'</td></tr>';
+				echo '</tbody>';
+				?>
+			</table>
 		</main>
 		<?php obtaintheme('foot.htm');?>
 	</body>
