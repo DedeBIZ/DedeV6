@@ -60,7 +60,7 @@ if ($dopost == "delmember") {
     $wintitle = "删除指定会员";
     $wecome_info = "<a href='".$ENV_GOBACK_URL."'>会员管理</a> - 删除会员";
     $win = new OxWindow();
-    $win->Init("member_do.php", "js/blank.js", "POST");
+    $win->Init("member_do.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", "yes");
     $win->AddHidden("dopost", $dopost);
     $win->AddHidden("id", $id);
@@ -107,7 +107,7 @@ if ($dopost == "delmember") {
     $wintitle = "删除指定会员";
     $wecome_info = "<a href='".$ENV_GOBACK_URL."'>会员管理</a> - 删除会员";
     $win = new OxWindow();
-    $win->Init("member_do.php", "js/blank.js", "POST");
+    $win->Init("member_do.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", "yes");
     $win->AddHidden("dopost", $dopost);
     $win->AddHidden("id", $id);

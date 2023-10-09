@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-$headTemplet = '<li><div class="link"><i class="~icon~"></i><span>~channelname~</span><i class="fa fa-angle-down"></i></div><ul class="submenu">';
+$headTemplet = '<li><div class="link"><i class="~icon~"></i><span>~channelname~</span><i class="fa fa-angle-down"></i></div><ul class="sidemenu">';
 $footTemplet = "</ul></li>";
 $itemTemplet = "<li>~link~</li>";
 function GetMenus($userrank, $topos = 'main')
@@ -49,7 +49,7 @@ function GetMenus($userrank, $topos = 'main')
                         } else {
                             $addico = 'fa fa-plus-circle';
                         }
-                        $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='submenu-right' target='".$ctag2->GetAtt('target')."'><span class='$addico'></span></a>";
+                        $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='sidemenu-right' target='".$ctag2->GetAtt('target')."'><span class='$addico'></span></a>";
                     } else {
                         $link .= "";
                     }

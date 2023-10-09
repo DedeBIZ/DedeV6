@@ -80,7 +80,7 @@ if ($dopost == 'saveedit') {
         $wintitle = "删除指定管理员";
         $wecome_info = "<a href='sys_admin_user.php'>系统帐号管理</a> - 删除管理员";
         $win = new OxWindow();
-        $win->Init("sys_admin_user_edit.php", "js/blank.js", "POST");
+        $win->Init("sys_admin_user_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("userok", "yes");
         $win->AddHidden("randcode", $randcode);

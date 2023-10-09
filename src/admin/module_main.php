@@ -138,7 +138,7 @@ if ($action == '') {
     }
     $prvdir .= "</table>";
     $win = new OxWindow();
-    $win->Init("module_main.php", "js/blank.js", "post");
+    $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 安装{$infos['name']}";
     $devURL = DEDECDNURL."/developers/{$infos['dev_id']}.json";
     $dhd = new DedeHttpDown();
@@ -264,7 +264,7 @@ if ($action == '') {
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
-    $win->Init("module_main.php", "js/blank.js", "post");
+    $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 删除{$infos['name']}";
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", "delok");
@@ -321,7 +321,7 @@ if ($action == '') {
     }
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
-    $win->Init("module_main.php", "js/blank.js", "post");
+    $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 卸载{$infos['name']}";
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
@@ -405,7 +405,7 @@ if ($action == '') {
     $msg = preg_replace("/<\/body>(.*)/isU", "", $msg);
     $dm->Clear();
     $win = new OxWindow();
-    $win->Init("module_main.php", "js/blank.js", "post");
+    $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 使用说明";
     $win->AddMsgItem("<tr><td>$msg</td></tr>");
     $winform = $win->GetWindow("hand");
@@ -441,7 +441,7 @@ if ($action == '') {
     }
     $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-warning btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='module_main.php?action=setup&hash={$hash}' class='btn btn-warning btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a>";
     $win = new OxWindow();
-    $win->Init("", "js/blank.js", "");
+    $win->Init("", "/static/web/js/admin.blank.js", "");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - {$infos['name']}";
     $msg = "<tr>
         <td width='260'>模块名称：</td>

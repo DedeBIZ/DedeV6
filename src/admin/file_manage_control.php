@@ -154,7 +154,7 @@ else if ($fmdo == "space") {
     $totalkb = $space->setkb($total);
     $totalmb = $space->setmb($total);
     $win = new OxWindow();
-    $win->Init("", "js/blank.js", "POST");
+    $win->Init("", "/static/web/js/admin.blank.js", "POST");
     $win->AddMsgItem("<tr>
         <td>
             <span>$totalkb</span>KB<br>

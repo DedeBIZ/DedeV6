@@ -27,7 +27,7 @@ if ($dopost == "show") {
         $wintitle = "删除指定插件";
         $wecome_info = "<a href='plus_main.php'>插件管理</a> - 删除插件";
         $win = new OxWindow();
-        $win->Init("plus_edit.php", "js/blank.js", "POST");
+        $win->Init("plus_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("aid", $aid);

@@ -12,9 +12,9 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="format-detection" content="telephone=no">
         <title>插入多图</title>
-        <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../static/web/css/admin.css">
+        <link rel="stylesheet" href="/static/web/font/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/web/css/admin.css">
         <style>#wrap{padding:10px}#topbar{padding:10px 0;border-bottom:1px solid #ccc;text-align:right}#file_list{display:grid;grid-gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));padding-top:10px}#file_list:empty:after{content:'拖拽图片到此处上传'}#file_list li{display:block;position:relative;padding:10px;vertical-align:top;border-radius:0.5rem}#file_list li:hover{background:#f5f5f5}#file_list li .picbox{display:flex;flex:0 0 auto;position:relative;padding-top:90%;width:100%;align-items:center;justify-content:center;overflow:hidden}#file_list li .picbox img{display:block;max-width:100%;max-height:100%;position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);border-radius:0.5rem}#file_list li .namebox{display:flex;padding:10px;justify-content:center;align-items:flex-start}#file_list li.up-over .picbox:after{position:absolute;bottom:10px;right:0;font-family:'FontAwesome';font-size:18px;color:#1eb867;content:'\f058';z-index:9}#file_list li .tools{display:none;position:absolute;bottom:12px;right:10px;z-index:99}#file_list li:hover .tools{display:block}#file_list li .tools .remove{cursor:pointer}#file_list li .tools .remove:after{font-family:'FontAwesome';font-size:18px;color:#dc3545;content:'\f1f8'}</style>
     </head>
     <body>

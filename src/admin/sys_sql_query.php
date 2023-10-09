@@ -90,7 +90,7 @@ else if ($dopost == "query") {
         echo "删除数据表或数据库的语句不允许在这里执行";
         exit();
     }
-    echo '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">';
+    echo '<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">';
     //运行查询语句
     if (preg_match("#^select #i", $sqlquery)) {
         $dsql->SetQuery($sqlquery);

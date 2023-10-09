@@ -68,7 +68,7 @@ function ColorSel(c, oname) {
 	}
 }
 function ShowColor(e, o) {
-	LoadNewDiv(e, "../../static/web/img/colornew.htm", "colordlg");
+	LoadNewDiv(e, "/static/web/img/colornew.htm", "colordlg");
 }
 function ShowHide(objname) {
 	var obj = $Obj(objname);
@@ -399,11 +399,11 @@ function SetThumb(srcURL) {
 }
 $(document).ready(function() {
 	$("#togglemenu").click(function() {
-		if ($("body").attr("class") == "showmenu") {
-			$("body").attr("class", "hidemenu");
+		if ($("body").attr("class") == "menu-show") {
+			$("body").attr("class", "menu-hide");
 			$(this).html('<i class="fa fa-indent"></i>');
 		} else {
-			$("body").attr("class", "showmenu");
+			$("body").attr("class", "menu-show");
 			$(this).html('<i class="fa fa-dedent"></i>');
 		}
 	});
@@ -425,12 +425,12 @@ $(document).ready(function() {
 			$next.slideToggle();
 			$this.parent().toggleClass("open");
 			if (!e.data.multiple) {
-				$el.find(".submenu").not($next).slideUp().parent().removeClass("open");
+				$el.find(".sidemenu").not($next).slideUp().parent().removeClass("open");
 			}
 		}
 		var menu = new menu($('#menu'), false);
-		$(".submenu li a").click(function(e) {
-			$(".submenu li").removeClass("active");
+		$(".sidemenu li a").click(function(e) {
+			$(".sidemenu li").removeClass("active");
 			$(this).parent().addClass("active");
 		});
 	});
