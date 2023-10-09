@@ -16,9 +16,9 @@ table tr:last-child td:first-child{border-bottom-left-radius:0.5rem;border-botto
 table tr:last-child td:last-child{border-bottom-right-radius:0.5rem;border-bottom:0}
 td{word-break:break-all;word-wrap:break-word}
 input{padding:0.375rem 0.75rem;height:30px;color:#545b62;background:#fff;border:1px solid #dee2e6;vertical-align:middle}
-input[type=file]{padding:0;height:auto;border:0;vertical-align:middle}
+input[type=file]{padding:0;height:auto;border:0;border-radius:0!important;vertical-align:middle}
 input[type=button],input[type=submit],input[type=reset]{padding:0.375rem 0.75rem;height:30px;line-height:1.5;font-size:12px;color:#fff;background:#1eb867;border:0}
-input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkbox]:focus{width:14px;height:14px;outline:none;box-shadow:none;vertical-align:text-top}
+input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkbox]:focus{width:14px;height:14px;outline:none;box-shadow:none;vertical-align:middle}
 select{padding:0.375rem 0.75rem;height:30px;color:#545b62;background:#fff;border:1px solid #dee2e6;vertical-align:middle}
 select[multiple=yes]{height:180px}
 option{display:flex;padding:0;height:30px;align-items:center}
