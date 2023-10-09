@@ -67,7 +67,7 @@ if ($action == '') {
     $dm->Clear();
     exit();
 } else if ($action == 'view_developoer') {
-    //检验开发者信息
+    //检验贡献者信息
     $dm = new DedeModule($mdir);
     $info = $dm->GetModuleInfo($hash);
     if ($info == null) {
@@ -89,7 +89,7 @@ if ($action == '') {
         $devInfo['dev_name'] = $info['team']."<span class='btn btn-warning btn-sm'>未认证</span>";
         $authAt = "<span class='btn btn-warning btn-sm'>未知</span>";
     }
-    ShowMsg("开发者名称：{$devInfo['dev_name']}<br>开发者id：{$devInfo['dev_id']}<br>认证于：{$authAt}", "-1");
+    ShowMsg("贡献者名称：{$devInfo['dev_name']}<br>贡献者id：{$devInfo['dev_id']}<br>认证于：{$authAt}", "-1");
     exit;
 } else if ($action == 'setup') {
     $dm = new DedeModule($mdir);
@@ -98,7 +98,7 @@ if ($action == '') {
         ShowMsg("获取模块信息错误，模块文件错误", -1);
         exit;
     }
-    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
+    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向贡献者确认它的兼容性');
     $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     $prvdirs = array();
@@ -169,7 +169,7 @@ if ($action == '') {
         <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td>开发者id：</td>
+        <td>贡献者id：</td>
         <td>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a></td>
     </tr>
     <tr>
@@ -261,7 +261,7 @@ if ($action == '') {
 } else if ($action == 'del') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
-    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
+    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向贡献者确认它的兼容性');
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
@@ -281,7 +281,7 @@ if ($action == '') {
         <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td>开发者id：</td>
+        <td>贡献者id：</td>
         <td>{$dev_id}</td>
     </tr>
     <tr>
@@ -310,7 +310,7 @@ if ($action == '') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     if ($infos['url'] == '') $infos['url'] = ' ';
-    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
+    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向贡献者确认它的兼容性');
     $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     foreach ($filelists as $v) {
@@ -338,7 +338,7 @@ if ($action == '') {
         <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td>开发者id：</td>
+        <td>贡献者id：</td>
         <td>{$dev_id}</td>
     </tr>
     <tr>
@@ -415,7 +415,7 @@ if ($action == '') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     if ($infos['url'] == '') $infos['url'] = ' ';
-    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性');
+    $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向贡献者确认它的兼容性');
     $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     $setupinfo = '';
@@ -456,7 +456,7 @@ if ($action == '') {
         <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td>开发者id：</td>
+        <td>贡献者id：</td>
         <td>{$dev_id}</td>
     </tr>
     <tr>
