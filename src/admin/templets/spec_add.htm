@@ -75,7 +75,7 @@
 						<table>
 							<tr>
 								<td width="120">专题名称：</td>
-								<td width="400"><input type="text" name="title" id="title" value="" class="admin-input-lg"></td>
+								<td width="400"><input type="text" name="title" id="title" class="admin-input-lg"></td>
 								<td width="120">简略标题：</td>
 								<td><input type="text" name="shorttitle" id="shorttitle" class="admin-input-sm"></td>
 							</tr>
@@ -108,9 +108,9 @@
 						<table>
 							<tr>
 								<td width="120">缩略图：</td>
-								<td width="630">
+								<td width="670">
 									<input type="text" name="picname" id="picname" class="admin-input-lg">
-									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
+									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
@@ -154,11 +154,11 @@
 						<table>
 							<tr>
 								<td width="120">关键词：</td>
-								<td width="410">
-									<input type="text" name="keywords" id="keywords" value="" class="admin-input-lg">
+								<td>
+									<input type="text" name="keywords" id="keywords" class="admin-input-lg">
+									<label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="checked"';?>> 自动获取</label>
 									<button type="button" name="Submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
 								</td>
-								<td><label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="checked"';?>> 自动获取</label></td>
 							</tr>
 						</table>
 					</td>
@@ -207,7 +207,7 @@
 								<td class="admin-td">文档来源：</td>
 								<td class="admin-td">
 									<label>栏目id：<input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" class="admin-input-sm"></label>
-									<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" value="" class="admin-input-lg">（英文逗号分开）</label>
+									<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" class="admin-input-lg">（英文逗号分开）</label>
 									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked="checked"> 按文档列表</label>
 									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
 								</td>

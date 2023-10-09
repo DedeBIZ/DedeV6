@@ -24,7 +24,7 @@
 				var endNum = parseInt(document.form1.picnum.value) + startNum;
 				if (endNum > 30) endNum = 30;
 				for (startNum; startNum < endNum; startNum++) {
-					upfield.innerHTML += "<div class='py-2'><label>软件网址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='' class='admin-input-lg'></label><label class='ml-2'>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='admin-input-sm'><label></div>";
+					upfield.innerHTML += "<div class='py-2'><label>软件网址" + startNum + "：<input type='text' name='softurl" + startNum + "' class='admin-input-lg'></label><label class='ml-2'>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='admin-input-sm'><label></div>";
 				}
 			}
 			function ShowHideAddr() {
@@ -106,9 +106,9 @@
 						<table>
 							<tr>
 								<td width="120">缩略图：</td>
-								<td width="630">
+								<td width="670">
 									<input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-lg">
-									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
+									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
 									<button type="button" name="Submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>

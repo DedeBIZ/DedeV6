@@ -310,7 +310,7 @@ class DedeTemplate
             //echo ExecTime() - $t1;
         } else {
             //如果存在config文件，则载入此文件，该文件用于保存 $this->tpCfgs的文档，以供扩展用途
-            //模板中用“{tag:config name='' value=''/}”来设定该值
+            //模板中用“{tag:config name=''/}”来设定该值
             if (file_exists($this->configFile)) {
                 include($this->configFile);
             }

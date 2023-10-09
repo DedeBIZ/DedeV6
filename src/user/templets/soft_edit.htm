@@ -186,7 +186,7 @@
 				morelinkobj.style.display = "block";
 				if (endNum > 12) endNum = 12;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<div class='form-group'><label>软件网址" + startNum + "：</label><div class='input-group mb-3'><input type='text' name='softurl" + startNum + "' value='' class='form-control' placeholder='请选择软件上传或填写软件网址'><div class='input-group-append'><span class='btn btn-success btn-sm btn-send' onclick=\"SelectSoft('addcontent.softurl"+startNum+"')\">选择</span></div></div><label>下载名称" + startNum + "：</label><input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='form-control'></div>";
+					upfield.innerHTML += "<div class='form-group'><label>软件网址" + startNum + "：</label><div class='input-group mb-3'><input type='text' name='softurl" + startNum + "' class='form-control' placeholder='请选择软件上传或填写软件网址'><div class='input-group-append'><span class='btn btn-success btn-sm btn-send' onclick=\"SelectSoft('addcontent.softurl"+startNum+"')\">选择</span></div></div><label>下载名称" + startNum + "：</label><input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='form-control'></div>";
 				}
 			}
 			function ShowHideAddr() {

@@ -23,7 +23,7 @@
 						<form name="form2" action="edit_baseinfo.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="save">
-							<input type="hidden" id="newface" name="newface" value="">
+							<input type="hidden" id="newface" name="newface">
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">账号：</label>
 								<div class="col-sm-9 input-text"><?php echo $cfg_ml->M_LoginID;?></div>
