@@ -26,15 +26,15 @@ textarea{padding:0.375rem 0.75rem;color:#6c757d;background:#fff;border:1px solid
 input:focus,select:focus,textarea:focus{color:#6c757d;background:#fff;border-color:#80bdff;box-shadow:0 0 0 0.2rem rgba(0,123,255,.25);outline:0}
 .install-box{margin:0 auto;width:800px}
 .install-box .card-header,.install-box .card-body{padding:1.25rem}
-.install-box h2,.install-box legend{margin:0;line-height:1.2;font-size:18px;font-weight:600;color:#393d49}
+.install-box h2,.install-box legend{margin:0;line-height:1.2;font-size:18px;font-weight:600;color:#343a40}
 .install-box label,.login-box label{margin-bottom:5px}
 .install-box .form-control,.login-box .form-control{height:36px}
 .login-head{padding:1rem 0;background:#fff}
-.login-head .logo{font-size:18px;color:#393d49;font-weight:600}
+.login-head .logo{font-size:18px;color:#343a40;font-weight:600}
 .login-head .logo img{height:32px}
 .login-from{margin:5rem auto;width:500px}
 .login-box{padding:1.25rem;background:#fff}
-.login-box h2{margin:0;line-height:1.2;font-size:24px;font-weight:600;color:#393d49}
+.login-box h2{margin:0;line-height:1.2;font-size:24px;font-weight:600;color:#343a40}
 body.menu-show .menu-left{display:block}
 body.menu-hide,body.menu-hide .menu-left{background:none}
 body.menu-show .body-right{left:220px;transition:all 0.5s}
@@ -110,7 +110,7 @@ body.menu-hide .body-right{left:0;transition:all 0.5s}
 .upload-bg{margin:10px;background:#fff}
 .tips-box{margin:70px auto 0;width:500px;height:auto;background:#fff;border-radius:0.5rem;box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)}
 .tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}
-.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #ff8400}
+.tips-head p{margin:0;padding-left:10px;line-height:16px;color:#343a40;text-align:left;border-left:3px solid #ff8400}
 .tips-body{padding:20px;min-height:160px;color:#6c757d;word-break:break-all;word-wrap:break-word}
 .user-img-sm{width:30px;height:30px;border-radius:50%;border:1px solid #eee}
 .thumbnail-md{max-width:200px;max-height:120px}
