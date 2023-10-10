@@ -66,7 +66,7 @@ input[type=file]{padding:0;height:auto;border:0}
 .feedbacks ._feedback_reply .alert{margin-bottom:0}
 .nav-item .active{color:#ff8400}
 .logo img{height:40px}
-.login-from{margin:5rem 0;width:500px}
+.login-from{margin:5rem auto;width:500px}
 .login-box{padding:1.25rem;background:#fff}
 .user-login,.user-actions{line-height:40px}
 .user-actions{text-align:right}
