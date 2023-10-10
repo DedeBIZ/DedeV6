@@ -151,6 +151,20 @@ table,input,select,textarea,.login-box,.menu-body,.coolbg,.mysource,.mywriter,.p
 .btn+.btn{margin-left:10px}
 .btn-version{float:left;margin-top:18px;margin-left:5px}
 #validateimg{border-radius:0 0.5rem 0.5rem 0;cursor:pointer}
+#wrap{padding:10px}
+#topbar{padding:10px 0;border-bottom:1px solid #ccc;text-align:right}
+#file_list{display:grid;grid-gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));padding-top:10px}
+#file_list:empty:after{content:'拖拽图片到此处上传'}
+#file_list li{display:block;position:relative;padding:10px;vertical-align:top;border-radius:0.5rem}
+#file_list li:hover{background:#f5f5f5}
+#file_list li .picbox{display:flex;flex:0 0 auto;position:relative;padding-top:90%;width:100%;align-items:center;justify-content:center;overflow:hidden}
+#file_list li .picbox img{display:block;max-width:100%;max-height:100%;position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);border-radius:0.5rem}
+#file_list li .namebox{display:flex;padding:10px;justify-content:center;align-items:flex-start}
+#file_list li.up-over .picbox:after{position:absolute;bottom:10px;right:0;font-family:'FontAwesome';font-size:18px;color:#1eb867;content:'\f058';z-index:9}
+#file_list li .tools{display:none;position:absolute;bottom:12px;right:10px;z-index:99}
+#file_list li:hover .tools{display:block}
+#file_list li .tools .remove{cursor:pointer}
+#file_list li .tools .remove:after{font-family:'FontAwesome';font-size:18px;color:#dc3545;content:'\f1f8'}
 #selColor{padding:5px;width:35px}
 #edsta{display:none;padding:0.5rem;position:absolute;top:100px;left:200px;width:450px;height:auto;background:#f5f5f5;border:1px solid #dee2e6}
 #browsehappy{padding:1rem 30px;color:#856404;background:#fff3cd}
