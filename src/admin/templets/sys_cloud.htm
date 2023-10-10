@@ -102,7 +102,7 @@
 			tencent_secret_key: '',
 		};
 		function LoadConfig() {
-			$.get("sys_cloud.php?dopost=cloud_get", function (data) {
+			$.get("sys_cloud.php?dopost=cloud_get", function(data) {
 				try {
 					rs = JSON.parse(data);
 					if (rs.code === 0) {
@@ -134,8 +134,8 @@
 				}
 			});
 		}
-		$(document).ready(function () {
-			$("#btnSave").click(function () {
+		$(document).ready(function() {
+			$("#btnSave").click(function() {
 				if ($("#cloudType1").is(":checked")) {
 					cloudConfig.aliyun_enabled = true;
 				} else {
@@ -157,7 +157,7 @@
 				}
 				cloudConfig.tencent_secret_id = $("#iptTencentSecretId").val();
 				cloudConfig.tencent_secret_key = $("#iptTencentSecretKey").val();
-				$.post("sys_cloud.php?dopost=cloud_set", cloudConfig, function (result) {
+				$.post("sys_cloud.php?dopost=cloud_set", cloudConfig, function(result) {
 					let data = JSON.parse(result);
 					if (data.code === 0) {
 						ShowMsg("云服务设置成功");

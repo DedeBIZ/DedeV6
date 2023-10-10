@@ -11,7 +11,6 @@
 		<script src="/static/web/js/jquery.min.js"></script>
 		<script src="/static/web/js/moment.min.js"></script>
 		<script src="/static/web/js/daterangepicker.js"></script>
-		<style>.typetab{text-align:left}.typetab ul li{float:left;width:60px;height:28px;line-height:28px;border-radius:0.5rem 0.5rem 0 0;text-align:center;cursor:pointer}.typetab ul .act{background:#f5f5f5}</style>
 	</head>
 	<body>
 		<form name="form1" action="ad_add.php" method="post" onSubmit="return checkSubmit()">
@@ -78,9 +77,9 @@
 				<tr>
 					<td>广告文档：</td>
 					<td>
-						<div class="typetab">
+						<div class="add-tab">
 							<ul id="changeTab">
-								<li id="t_code" class="act">代码</li>
+								<li id="t_code" class="active">代码</li>
 								<li id="t_txt">文字</li>
 								<li id="t_img">图片</li>
 								<li id="t_flash">Flash</li>
@@ -177,7 +176,23 @@
 					return false;
 				}
 			}
+			function showcode(idName) {
+				$("#advert").html("").html($("#formtxt>#" + idName).html());
+				$("#adstyle").val(idName);
+			}
+			showcode('code');
 			$(document).ready(function() {
+				$("#changeTab>li").click(function() {
+					var tabLi = $(this);
+					var thistab = tabLi[0].id;
+					$(".content").each(function() {
+						if ("t_" + $(this)[0].id == thistab) {
+							$("#changeTab>li").removeClass("active");
+							$("#t_" + $(this)[0].id).addClass("active");
+							showcode($(this)[0].id);
+						}
+					})
+				});
 				$('.datepicker').daterangepicker({
 					"singleDatePicker": true,
 					"autoApply": true,
@@ -203,27 +218,7 @@
 				}, function(start) {
 					$(this).val(start.format("YYYY-MM-DD HH:mm"));
 				});
-			})
-		</script>
-		<script>
-			(function($) {
-				function showcode(idName) {
-					$("#advert").html("").html($("#formtxt>#" + idName).html());
-					$("#adstyle").val(idName);
-				}
-				showcode('code');
-				$("#changeTab>li").click(function () {
-					var tabLi = $(this);
-					var thistab = tabLi[0].id;
-					$(".content").each(function () {
-						if ("t_" + $(this)[0].id == thistab) {
-							$("#changeTab>li").removeClass("act");
-							$("#t_" + $(this)[0].id).addClass("act");
-							showcode($(this)[0].id);
-						}
-					})
-				})
-			})(jQuery);
+			});
 		</script>
 	</body>
 </html>
