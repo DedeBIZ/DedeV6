@@ -58,7 +58,12 @@
 			</div>
 		</div>
 		<div class="menu-left">
-			<div class="menu"><iframe name="menu" src="index_menu.php"></iframe></div>
+			<ul id="menu" class="item-menu shadow-sm">
+				<?php 
+				$openitem=100;
+				GetMenus($cuserLogin->getUserRank(),'main'); 
+				?>
+			</ul>
 		</div>
 		<div class="body-right">
 			<div class="main"><iframe name="main" src="index_body.php"></iframe></div>

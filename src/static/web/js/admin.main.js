@@ -425,12 +425,12 @@ $(document).ready(function() {
 			$next.slideToggle();
 			$this.parent().toggleClass("open");
 			if (!e.data.multiple) {
-				$el.find(".sidemenu").not($next).slideUp().parent().removeClass("open");
+				$el.find(".submenu").not($next).slideUp().parent().removeClass("open");
 			}
 		}
 		var menu = new menu($('#menu'), false);
-		$(".sidemenu li a").click(function(e) {
-			$(".sidemenu li").removeClass("active");
+		$(".submenu li a").click(function(e) {
+			$(".submenu li").removeClass("active");
 			$(this).parent().addClass("active");
 		});
 	});
