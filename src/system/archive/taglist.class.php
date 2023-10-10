@@ -61,7 +61,7 @@ class TagList
         if (!empty($this->Tag)) {
             $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` where id = '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
-                ShowMsg('当前标签不存在，系统自动返回标签首页', 'tags.php');
+                ShowMsg('当前标签不存在，系统自动返回主页', '/');
                 exit();
             }
             $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->TagInfos['tag'] : $this->TagInfos['title'];
