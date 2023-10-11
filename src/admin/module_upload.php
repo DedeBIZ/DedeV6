@@ -52,7 +52,7 @@ if ($action == 'upload') {
     }
 } else {
     $win = new OxWindow();
-    $win->Init("module_upload.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data");
+    $win->Init("module_upload.php", "../static/web/js/admin.blank.js", "POST' enctype='multipart/form-data");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 上传模块插件";
     $win->AddTitle('请选择上传的模块插件文件');
     $win->AddHidden("action", 'upload');

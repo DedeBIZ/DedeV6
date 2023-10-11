@@ -182,7 +182,7 @@ else if ($dopost == 'unitCatalog') {
         $wintitle = "合并指定栏目";
         $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 合并栏目";
         $win = new OxWindow();
-        $win->Init('catalog_do.php', '/static/web/js/admin.blank.js', 'POST');
+        $win->Init('catalog_do.php', '../static/web/js/admin.blank.js', 'POST');
         $win->AddHidden('dopost', 'unitCatalog');
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
@@ -231,7 +231,7 @@ else if ($dopost == 'moveCatalog') {
         $wintitle = "移动指定栏目";
         $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 移动栏目";
         $win = new OxWindow();
-        $win->Init('catalog_do.php', '/static/web/js/admin.blank.js', 'POST');
+        $win->Init('catalog_do.php', '../static/web/js/admin.blank.js', 'POST');
         $win->AddHidden('dopost', 'moveCatalog');
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);

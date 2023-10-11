@@ -12,9 +12,9 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="format-detection" content="telephone=no">
         <title>插入多图</title>
-        <link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/web/css/admin.css">
+        <link rel="stylesheet" href="../../static/web/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/web/css/admin.css">
     </head>
     <body>
         <div id="wrap">

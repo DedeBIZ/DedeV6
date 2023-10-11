@@ -65,7 +65,7 @@ if ($action == '' || $action == 'show') {
     $dsql->Execute('fb', $querystring." LIMIT 20 ");
     $data = array();
     while ($row = $dsql->GetArray('fb')) {
-        $row['face'] = empty($row['mface']) ? $GLOBALS['cfg_cmspath'].'/static/web/img/admin.png' : $row['mface'];
+        $row['face'] = empty($row['mface']) ? $GLOBALS['cfg_cmspath'].'../static/web/img/admin.png' : $row['mface'];
         $row['dtimestr'] = MyDate('Y-m-d', $row['dtime']);
         unset($row['ip']);
         $data[] = $row;

@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>文件管理器</title>
-		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 	</head>
 	<body>
 		<table align="center" class="table maintable icon my-3">
@@ -48,7 +48,7 @@
 				}
 				$tmp = preg_replace("#[\/][^\/]*$#i","",$activepath);
 				$line = "\n<tr>
-					<td><a href='file_manage_main.php?activepath=".urlencode($tmp)."'><img src='/static/web/img/icon_dir2.png'>上级目录</a></td>
+					<td><a href='file_manage_main.php?activepath=".urlencode($tmp)."'><img src='../static/web/img/icon_dir2.png'>上级目录</a></td>
 					<td colspan='3'>当前目录：$activepath</td>
 				</tr>";
 				$dirs[] = $line;
@@ -56,7 +56,7 @@
 				if (preg_match("#^_(.*)$#i",$file)) continue;
 				if (preg_match("#^\.(.*)$#i",$file)) continue;
 				$line = "\n<tr>
-					<td><a href='file_manage_main.php?activepath=".urlencode("$activepath/$file")."'><img src='/static/web/img/icon_dir.png'>$file</a></td>
+					<td><a href='file_manage_main.php?activepath=".urlencode("$activepath/$file")."'><img src='../static/web/img/icon_dir.png'>$file</a></td>
 					<td></td>
 					<td></td>
 					<td align='left'>
@@ -91,7 +91,7 @@
 				$files[] = $line;
 			} else if (preg_match("#\.(swf|fla|fly)#i",$file)) {
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_flash.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_flash.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -103,7 +103,7 @@
 				$files[] = $line;
 			} else if (preg_match("#\.(zip|rar|tar.gz)#i",$file)) {
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_zip.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_zip.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -115,7 +115,7 @@
 				$files[] = $line;
 			} else if (preg_match("#\.(exe)#i",$file)) {
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_exe.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_exe.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -127,7 +127,7 @@
 				$files[] = $line;
 			} else if (preg_match("#\.(mp3|wma)#i",$file)) {
 				$line = "\n<tr >
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_music.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_music.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -139,7 +139,7 @@
 				$files[] = $line;
 			} else if (preg_match("#\.(wmv|api)#i",$file)) {
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_video.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_video.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -151,7 +151,7 @@
 				$files[] = $line;
 			} else if (preg_match("#\.(rm|rmvb)#i",$file)) {
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_rm.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_rm.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -164,7 +164,7 @@
 			} else if (preg_match("#\.(txt|inc|pl|cgi|asp|xml|xsl|aspx|cfm)#",$file)) {
 				$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_text.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_text.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -178,7 +178,7 @@
 			} else if (preg_match("#\.(htm|html)#i",$file)) {
 				$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_htm.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_htm.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -192,7 +192,7 @@
 			} else if (preg_match("#\.(php)#i",$file)) {
 				$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_php.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_php.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -206,7 +206,7 @@
 			} else if (preg_match("#\.(js)#i",$file)) {
 				$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_js.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_js.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>
@@ -220,7 +220,7 @@
 			} else if (preg_match("#\.(css)#i",$file)) {
 				$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
 				$line = "\n<tr>
-					<td><a href='$activeurl/$file' target='_blank'><img src='/static/web/img/icon_css.png'>$file</a></td>
+					<td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/icon_css.png'>$file</a></td>
 					<td>$filesize KB</td>
 					<td>$filetime</td>
 					<td align='left'>

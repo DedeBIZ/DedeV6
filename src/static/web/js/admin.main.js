@@ -68,7 +68,7 @@ function ColorSel(c, oname) {
 	}
 }
 function ShowColor(e, o) {
-	LoadNewDiv(e, "/static/web/img/colornew.htm", "colordlg");
+	LoadNewDiv(e, "../static/web/img/colornew.htm", "colordlg");
 }
 function ShowHide(objname) {
 	var obj = $Obj(objname);
@@ -438,7 +438,7 @@ $(document).ready(function() {
 		litpicImgSrc = '';
 		litpicImg = '';
 		$("#picname").val(litpicImg);
-		$("#litPic").attr("src", "/static/web/img/thumbnail.jpg");
+		$("#litPic").attr("src", "../static/web/img/thumbnail.jpg");
 	})
 	$("#iptAddImages").change(function(event) {
 		var files = event.target.files;

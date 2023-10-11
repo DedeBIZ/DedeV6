@@ -56,10 +56,10 @@ if (!empty($iseditor)) {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
         <title>选择图片</title>
-        <link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/web/css/admin.css">
-        <script src="/static/web/js/jquery.min.js"></script>
+        <link rel="stylesheet" href="../../static/web/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/web/css/admin.css">
+        <script src="../../static/web/js/jquery.min.js"></script>
     </head>
     <body class="body-bg">
         <div class="upload-bg shadow-sm">
@@ -117,7 +117,7 @@ if (!empty($iseditor)) {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                         $line = "<tr>
-                        <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'>上级目录</a></td>
+                        <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
                         <td>当前目录：$activepath</td>
                         </tr>";
                         echo $line;
@@ -125,7 +125,7 @@ if (!empty($iseditor)) {
                         if (preg_match("#^_(.*)$#i", $file)) continue;
                         if (preg_match("#^\.(.*)$#i", $file)) continue;
                         $line = "<tr>
-                        <td colspan='3'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='/static/web/img/icon_dir.png'>$file</a></td>
+                        <td colspan='3'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
                         </tr>";
                         echo "$line";
                     } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {

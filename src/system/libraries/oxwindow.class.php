@@ -27,7 +27,7 @@ class OxWindow
      * @param     string  $formname  表单名称
      * @return    void
      */
-    function Init($formaction = "", $checkScript = "/static/web/js/admin.blank.js", $formmethod = "POST", $formname = "myform")
+    function Init($formaction = "", $checkScript = "../static/web/js/admin.blank.js", $formmethod = "POST", $formname = "myform")
     {
         $this->myWin .= "<script>";
         if ($checkScript != "" && file_exists($checkScript)) {
