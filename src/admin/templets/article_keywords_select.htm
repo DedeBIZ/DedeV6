@@ -16,8 +16,8 @@
 					<td bgcolor="#f5f5f5">
 						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="admin-input-sm mr-3">
-						<input type="text" name="rank" id="rank" placeholder="请输入频率" class="admin-input-sm mr-3">
-						<input type="submit" name="Submit" value="保存" class="btn btn-success btn-sm">
+						<input type="text" name="rank" id="rank" placeholder="请输入频率" class="admin-input-sm">
+						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
 				</tr>
 			</table>
@@ -27,7 +27,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5">
 						<input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" class="admin-input-lg mr-3">
-						<button type="button" class="btn btn-success btn-sm" name="Submit" onclick="ReturnValue()">选用</button>
+						<button type="button" class="btn btn-success btn-sm" name="submit" onclick="ReturnValue()">选用</button>
 						<button type="button" class="btn btn-success btn-sm" name="kwa" onclick="AddNewKw()">新增关键词</button>
 						<button type="button" class="btn btn-success btn-sm" name="kwm" onclick="location='article_keywords_main.php';">关键词管理</button>
 					</td>

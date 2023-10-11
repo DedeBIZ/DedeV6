@@ -18,7 +18,7 @@
 				<tr>
 					<td bgcolor="#f5f5f5">
 						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" class="admin-input-lg mr-3">
-						<select name="ischeck" id="ischeck" class="admin-input-sm mr-3">
+						<select name="ischeck" id="ischeck" class="admin-input-sm">
 							<?php
 							foreach($selCheckArr as $k=>$v)
 							{
@@ -27,7 +27,7 @@
 							}
 							?>
 						</select>
-						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
 						<a href="friendlink_add.php" class="btn btn-success btn-sm">添加链接</a>
 						<a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
 						<a href="{dede:global name=' cfg_phpurl'/}/flink.php" target="_blank" class="btn btn-success btn-sm">友情链接预览</a>

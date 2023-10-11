@@ -17,7 +17,7 @@
 						<input type="text" name="keyword" value="<?php if (!empty($keyword)) $keyword = '';?>" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<?php
 						$likeid = (!isset($likeid) ? '' : $likeid);
-						echo "<select name='likeid' id='likeid' class='admin-input-sm mr-3'>";
+						echo "<select name='likeid' id='likeid' class='admin-input-sm'>";
 						$dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
 						echo "<option>不限</option>";
 						while($arr = $dsql->GetArray('s'))
@@ -27,7 +27,7 @@
 						}
 						echo "</select>";
 						?>
-						<button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button>
+						<button type="submit" name="button1" class="btn btn-success btn-sm">搜索</button>
 						<a href="templets_one_add.php" class="btn btn-success btn-sm">添加一个单页</a>
 						<a href="javascript:;" onclick="document.form1.submit();" class="btn btn-success btn-sm">更新选中单页</a>
 						<a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm">更新所有单页</a>

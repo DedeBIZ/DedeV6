@@ -29,7 +29,7 @@
 							<option value="女">女</option>
 							<option value="保密">保密</option>
 						</select>
-						<select name="spacesta" id="spacesta" class="admin-input-sm mr-3">
+						<select name="spacesta" id="spacesta" class="admin-input-sm">
 							<option value="-10">会员状态</option>
 							<?php
 							foreach($staArr as $k=>$v)
@@ -39,7 +39,7 @@
 							}
 							?>
 						</select>
-						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
 						<a href="member_main.php" class="btn btn-success btn-sm">所有会员</a>
 						<a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">禁言会员</a>
 						<a href="member_main.php?matt=1" class="btn btn-success btn-sm">推荐会员</a>

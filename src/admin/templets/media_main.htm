@@ -21,12 +21,12 @@
 							<option value="3" <?php if ($mediatype==3) echo "selected"?>>视频音频</option>
 							<option value="4" <?php if ($mediatype==4) echo "selected"?>>其它附件</option>
 						</select>
-						<select name="membertype" class="admin-input-sm mr-3">
+						<select name="membertype" class="admin-input-sm">
 							<option value="0">会员组</option>
 							<option value="1" <?php if ($membertype==1) echo "selected"?>>管理员</option>
 							<option value="2" <?php if ($membertype==2) echo "selected"?>>外部会员</option>
 						</select>
-						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
 						<a href="media_add.php" class="btn btn-success btn-sm">添加附件</a>
 					</td>
 				</tr>
