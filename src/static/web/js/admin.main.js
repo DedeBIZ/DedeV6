@@ -428,7 +428,7 @@ $(document).ready(function() {
 				$el.find(".submenu").not($next).slideUp().parent().removeClass("open");
 			}
 		}
-		var menu = new menu($('#menu'), false);
+		var menu = new menu($("#sidemenu"), false);
 		$(".submenu li a").click(function(e) {
 			$(".submenu li").removeClass("active");
 			$(this).parent().addClass("active");

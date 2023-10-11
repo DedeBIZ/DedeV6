@@ -25,15 +25,15 @@
 					<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 					<input type="hidden" id="litpic" name="litpic" value="<?php echo $addRow['litpic'];?>">
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">标题</label>
+						<label class="col-sm-2 col-form-label" for="title">标题</label>
 						<div class="col-sm-10"><input type="text" name="title" id="title" class="form-control"  value="<?php echo $addRow['title']?>"></div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">标签</label>
+						<label class="col-sm-2 col-form-label" for="tags">标签</label>
 						<div class="col-sm-10"><input type="text" name="tags" id="tags" class="form-control" value="<?php echo GetTags($row['id']);?>"></div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">缩略图</label>
+						<span class="col-sm-2 col-form-label">缩略图</span>
 						<div class="col-sm-10">
 							<img id="imgLitpic" src="<?php echo empty($addRow['litpic'])? $cfg_staticurl.'/web/img/thumbnail.jpg' : $addRow['litpic'];?>" class="thumbnail-md mr-3">
 							<span class="btn btn-success btn-sm" id="btnUploadLitpic">修改缩略图</span>
@@ -41,15 +41,15 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">作者</label>
+						<label class="col-sm-2 col-form-label" for="writer">作者</label>
 						<div class="col-sm-10"><input type="text" name="writer" id="writer" class="form-control" value="<?php echo $cfg_ml->M_UserName?>"></div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">发布栏目</label>
+						<label class="col-sm-2 col-form-label" for="typeid">发布栏目</label>
 						<div class="col-sm-10">
 							<?php
 							$typeOptions = GetOptionList($addRow["typeid"],$addRow["channel"]);
-							echo "<select name='typeid' class='form-control'>";
+							echo "<select name='typeid' id='typeid' class='form-control'>";
 							echo $typeOptions;
 							echo "</select>";
 							?>

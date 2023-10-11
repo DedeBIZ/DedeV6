@@ -24,54 +24,48 @@
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="save">
 							<input type="hidden" id="newface" name="newface">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">账号：</label>
-								<div class="col-sm-9 input-text"><?php echo $cfg_ml->M_LoginID;?></div>
+							<div class="mb-5 text-center">
+								<input id="iptNewface" type="file" name="iptNewface" class="d-none">
+								<p class="mb-2"><img id="face" src="<?php echo empty($row['face'])? $cfg_staticurl.'/web/img/admin.png' : $row['face'];?>" class="user-img-md"></p>
+								<p class="mb-2"><?php echo $cfg_ml->M_LoginID;?></p>
+								<span class="btn btn-success btn-sm" id="btnChangeFace">修改</span>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">昵称：</label>
-								<div class="col-sm-9"><input type="text" name="uname" id="iptUname" class="form-control w-75" value="<?php echo $row['uname'];?>" required="required" placeholder="请输入昵称"></div>
+								<label class="col-sm-3 col-form-label" for="iptUname">昵称：</label>
+								<div class="col-sm-9"><input type="text" name="uname" id="iptUname" class="form-control" value="<?php echo $row['uname'];?>" required="required" placeholder="请输入昵称"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">头像：</label>
-								<div class="col-sm-9">
-									<input id="iptNewface" type="file" name="iptNewface" class="d-none">
-									<img id="face" src="<?php echo empty($row['face'])? $cfg_staticurl.'/web/img/admin.png' : $row['face'];?>" class="user-img-sm mr-3">
-									<span class="btn btn-success btn-sm" id="btnChangeFace">修改</span>
-								</div>
+								<label class="col-sm-3 col-form-label" for="iptUserpwd">新密码：</label>
+								<div class="col-sm-9"><input type="password" name="userpwd" id="iptUserpwd"	class="form-control" placeholder="修改密码，无需修改忽略"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">新密码：</label>
-								<div class="col-sm-9"><input type="password" name="userpwd" id="iptUserpwd"	class="form-control w-75" placeholder="修改密码，无需修改忽略"></div>
+								<label class="col-sm-3 col-form-label" for="iptUserpwdok">确认新密码：</label>
+								<div class="col-sm-9"><input type="password" name="userpwdok" id="iptUserpwdok"	class="form-control" placeholder="请再次输入修改密码，无需修改忽略"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">确认新密码：</label>
-								<div class="col-sm-9"><input type="password" name="userpwdok" id="iptUserpwdok"	class="form-control w-75" placeholder="请再次输入修改密码，无需修改忽略"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">新安全问题：</label>
+								<label class="col-sm-3 col-form-label" for="newsafequestion">新安全问题：</label>
 								<div class="col-sm-9"><?php echo GetSafequestion(0,'newsafequestion');?></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">新问题答案：</label>
+								<label class="col-sm-3 col-form-label" for="iptNewsafeanswer">新问题答案：</label>
 								<div class="col-sm-9"><input type="text" name="newsafeanswer" id="iptNewsafeanswer" class="form-control" placeholder="请设置或回答安全问题，无需修改忽略"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">修改安全问题：</label>
+								<label class="col-sm-3 col-form-label" for="safequestion">修改安全问题：</label>
 								<div class="col-sm-9"><?php echo GetSafequestion($row['safequestion'],'safequestion');?></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">修改问题答案：</label>
+								<label class="col-sm-3 col-form-label" for="iptSafeanswer">修改问题答案：</label>
 								<div class="col-sm-9"><input type="text" name="safeanswer" id="iptSafeanswer" class="form-control" placeholder="请选择安全问题后设置新安全问题，无需修改忽略"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">邮箱：</label>
+								<label class="col-sm-3 col-form-label" for="iptEmail">邮箱：</label>
 								<div class="col-sm-9">
-									<input type="email" name="email" id="iptEmail" class="form-control" value="<?php echo $row['email'];?>" required="required" placeholder="请输入邮箱，绑定会员账号">
+									<input type="email" name="email" id="iptEmail" autocomplete="off" class="form-control" value="<?php echo $row['email'];?>" required="required" placeholder="请输入邮箱，绑定会员账号">
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="iptEmail" class="col-sm-3 col-form-label">性别：</label>
+								<span class="col-sm-3 col-form-label">性别：</span>
 								<div class="col-sm-9 input-text">
 									<label><input type="radio" name="sex" value="男" <?php if ($row['sex']=='男') echo "checked='checked'" ;?>> 男</label>
 									<label><input type="radio" name="sex" value="女" <?php if ($row['sex']=='女') echo "checked='checked'" ;?>> 女</label>

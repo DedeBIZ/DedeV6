@@ -176,7 +176,7 @@ function CheckRank($rank = 0, $money = 0)
                     ShowMsg("邮箱地址为空，请设置一个邮箱地址", "edit_baseinfo.php", 0, 5000);
                     exit;
                 }
-                $msg = "您未进行邮件验证，发送验证邮件后请登录邮箱进行确认</br>发送验证邮件请点击<a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail' class='btn btn-success'>发送</a>，或者点击<a href='javascript:history.go(-1)'>返回</a>取消当前操作";
+                $msg = "<p>您未进行邮件验证，发送验证邮件后请登录邮箱进行确认</p><a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail' class='btn btn-success btn-sm'>发送</a><a href='javascript:history.go(-1)' class='btn btn-outline-success btn-sm'>返回</a>";
                 ShowMsg($msg, "javascript:;", 0, 5000);
                 exit;
             }

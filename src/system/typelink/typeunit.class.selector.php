@@ -119,10 +119,10 @@ class TypeUnitSelector
                 continue;
             }
             if ($chackRadio != '') {
-                $soncat .= "<div class='item'><label>".$chackRadio .' '. $typeName."</label></div>\r\n";
+                $soncat .= "<div class='list'><label>".$chackRadio .' '. $typeName."</label></div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
             } else {
-                $soncat .= "<div class='item'>".$typeName."</div>\r\n";
+                $soncat .= "<div class='list'>".$typeName."</div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
             }
         }
