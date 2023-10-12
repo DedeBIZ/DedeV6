@@ -339,7 +339,7 @@ function GetSonIds($id, $channel = 0, $addthis = true)
     }
     GetSonIdsLogic($id, $cfg_Cs, $channel, $addthis);
     $rquery = join(',', $GLOBALS['idArray']);
-    $rquery = preg_replace("/,$/", '', $rquery);
+    $rquery = preg_replace("/,$/", "", $rquery);
     return $rquery;
 }
 //递归逻辑
@@ -365,7 +365,7 @@ function GetSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
 function MfTypedir($typedir)
 {
     if (preg_match("/^(http|https|ftp):/i", $typedir)) return $typedir;
-    $typedir = str_replace("{cmspath}", $typedir);
+    $typedir = str_replace("{cmspath}", "/", $typedir);
     $typedir = preg_replace("/\/{1,}/", "/", $typedir);
     return $typedir;
 }
