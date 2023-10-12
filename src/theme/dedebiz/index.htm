@@ -7,17 +7,17 @@
 		<title>{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:global.cfg_keywords/}">
 		<meta name="description" content="{dede:global.cfg_description/}">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
+		<link rel="shortcut icon" href="/static/web/img/favicon.ico">
 	</head>
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<section class="container py-3">
 			<div class="row">
-				<div class="col-md-3 m-pb-2">{dede:include comment='栏目列表' filename='widget_menu.htm'/}</div>
+				<div class="col-md-3 m-pb-2">{dede:include comment='推荐文档' filename='widget_recommend.htm'/}</div>
 				<div class="col-md-6 m-pb-2">
 					<div class="row">
 						<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
@@ -44,7 +44,20 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">{dede:include comment='推荐文档' filename='widget_recommend.htm'/}</div>
+				<div class="col-md-3">
+					<div id="loginWin" class="item-admin text-center bg-white shadow-sm rounded">
+						<div class="form-group">
+							<p><img src="/static/web/img/admin.png" alt="请先登录" title="请先登录" class="user-img-md"></p>
+							<h2>Hi，请先登录</h2>
+						</div>
+						<div class="form-group">
+							<a href="{dede:global.cfg_memberurl/}" class="btn btn-success btn-sm btn-block">登录</a>
+						</div>
+						<div class="form-group mb-0">
+							<a href="{dede:global.cfg_memberurl/}/index_do.php?fmdo=user&dopost=regnew" class="btn btn-success btn-sm btn-block">注册</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 		<section class="container py-3">

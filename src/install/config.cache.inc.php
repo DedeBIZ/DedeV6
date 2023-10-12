@@ -1,6 +1,5 @@
 <?php
 $cfg_basehost = '~baseurl~';
-$cfg_cmspath = '~basepath~';
 $cfg_cookie_encode = '~cookieEncode~';
 $cfg_indexurl = '~indexurl~';
 $cfg_backup_dir = 'backupdata';

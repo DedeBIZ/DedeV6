@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>主题模板管理</title>
-		<link rel="stylesheet" href="../static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<table align="center" class="table maintable my-3">
@@ -34,7 +34,7 @@
 				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 			?>
 			<tr align="center">
-				<td align="left"><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="../static/web/img/icon_htm.png"><?php echo $filename;?></a></td>
+				<td align="left"><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="/static/web/img/icon_htm.png"><?php echo $filename;?></a></td>
 				<td align="left"><?php echo $fileinfo;?></td>
 				<td><?php echo $filetime;?></td>
 				<td align="center">

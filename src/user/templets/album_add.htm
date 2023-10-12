@@ -5,9 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>发布<?php echo $cInfos['typename'];?>-会员中心-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
 	<body class="body-bg">
 		<?php obtaintheme('top.htm');?>
@@ -36,7 +36,7 @@
 					<div class="form-group row">
 						<span class="col-sm-2 col-form-label">缩略图</span>
 						<div class="col-sm-10">
-							<img id="imgLitpic" src="../static/web/img/thumbnail.jpg" class="thumbnail-md mr-3">
+							<img id="imgLitpic" src="/static/web/img/thumbnail.jpg" class="thumbnail-md mr-3">
 							<span class="btn btn-success btn-sm" id="btnUploadLitpic">上传缩略图</span>
 							<input id="iptLitpic" type="file" name="iptLitpic" class="d-none">
 						</div>
@@ -94,8 +94,8 @@
 			</div>
 		</main>
 		<?php obtaintheme('foot.htm');?>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.js"></script>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/user.album.js"></script>
+		<script src="/static/web/js/user.js"></script>
+		<script src="/static/web/js/user.album.js"></script>
 		<?php include(DEDEMEMBER."/templets/widget_litpic.htm");?>
 	</body>
 </html>

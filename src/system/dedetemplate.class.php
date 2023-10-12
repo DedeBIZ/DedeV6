@@ -945,8 +945,8 @@ class DedeTemplate
             $okfile = $filename;
         } else if (@file_exists($this->refDir.$filename)) {
             $okfile = $this->refDir.$filename;
-        } else if (@file_exists($this->refDir."../".$filename)) {
-            $okfile = $this->refDir."../".$filename;
+        } else if (@file_exists($this->refDir."/".$filename)) {
+            $okfile = $this->refDir.'/'.$filename;
         }
         if ($okfile == '') return 0;
         if (!$isload) return 1;

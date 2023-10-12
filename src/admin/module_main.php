@@ -138,7 +138,7 @@ if ($action == '') {
     }
     $prvdir .= "</table>";
     $win = new OxWindow();
-    $win->Init("module_main.php", "../static/web/js/admin.blank.js", "post");
+    $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 安装{$infos['name']}";
     $devURL = DEDECDNURL."/developers/{$infos['dev_id']}.json";
     $dhd = new DedeHttpDown();
@@ -181,7 +181,7 @@ if ($action == '') {
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-        <td>目录权限说明：<br>../为根目录<br>./表示当前目录</td>
+        <td>目录权限说明：<br>/为根目录<br>./表示当前目录</td>
         <td>$prvdir</td>
     </tr>
     <tr>
@@ -240,8 +240,7 @@ if ($action == '') {
             $setupsql = preg_replace("#TYPE=MyISAM#i", $sql41tmp, $setupsql);
         }
         //_ROOTURL_
-        if ($cfg_cmspath == '/') $cfg_cmspath = '';
-        $rooturl = $cfg_basehost.$cfg_cmspath;
+        $rooturl = $cfg_basehost;
         $setupsql = preg_replace("#_ROOTURL_#i", $rooturl, $setupsql);
         $setupsql = preg_replace("#[\r\n]{1,}#", "\n", $setupsql);
         $sqls = preg_split('/;[ \t]{0,}\n/', $setupsql);
@@ -264,7 +263,7 @@ if ($action == '') {
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>该模块的语言编码与您系统的编码不一致，请向贡献者确认它的兼容性');
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
-    $win->Init("module_main.php", "../static/web/js/admin.blank.js", "post");
+    $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 删除{$infos['name']}";
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", "delok");
@@ -321,7 +320,7 @@ if ($action == '') {
     }
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
-    $win->Init("module_main.php", "../static/web/js/admin.blank.js", "post");
+    $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 卸载{$infos['name']}";
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
@@ -405,7 +404,7 @@ if ($action == '') {
     $msg = preg_replace("/<\/body>(.*)/isU", "", $msg);
     $dm->Clear();
     $win = new OxWindow();
-    $win->Init("module_main.php", "../static/web/js/admin.blank.js", "post");
+    $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 使用说明";
     $win->AddMsgItem("<tr><td>$msg</td></tr>");
     $winform = $win->GetWindow("hand");
@@ -441,7 +440,7 @@ if ($action == '') {
     }
     $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-warning btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='module_main.php?action=setup&hash={$hash}' class='btn btn-warning btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a>";
     $win = new OxWindow();
-    $win->Init("", "../static/web/js/admin.blank.js", "");
+    $win->Init("", "/static/web/js/admin.blank.js", "");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - {$infos['name']}";
     $msg = "<tr>
         <td width='260'>模块名称：</td>

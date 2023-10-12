@@ -20,7 +20,7 @@ if (is_dir(dirname(__FILE__).'/../install')) {
         fwrite($fp, 'ok');
         fclose($fp);
     }
-    $fileindex = "../install/index.html";
+    $fileindex = "/install/index.html";
     if (!file_exists($fileindex)) {
         $fp = @fopen($fileindex, 'w');
         fwrite($fp, 'dir');

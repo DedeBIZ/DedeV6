@@ -66,16 +66,12 @@ if ($action == 'post') {
         $query = "INSERT INTO `{$diy->table}` (`id`, `ifcheck` $addvar) VALUES (NULL, 0 $addvalue); ";
         if ($dsql->ExecuteNoneQuery($query)) {
             $id = $dsql->GetLastID();
-            if ($diy->public == 2)
-            {
+            if ($diy->public == 2) {
                 $goto = "diy.php?action=list&diyid={$diy->diyid}";
                 $bkmsg = '发布成功，正在前往表单列表';
             } else {
-                $goto = !empty($cfg_cmspath) ? $cfg_cmspath : '/';
+                $goto = '/';
                 $bkmsg = '发布成功，请等待管理员处理';
-                //提交后返回提交页面
-                ShowMsg('提交成功', '-1');
-                exit;
             }
             ShowMsg($bkmsg, $goto);
         }

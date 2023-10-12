@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>模块打包</title>
-		<link rel="stylesheet" href="../static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/webajax.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/webajax.js"></script>
 	</head>
 	<body>
 		<form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
@@ -57,7 +57,7 @@
 						<div id="rboxct" style="display:none">
 							<label>导航使用名称：<input type="text" name="indexname" id="indexname" class="admin-input-sm"></label><br>
 							<label>导航使用网址：<input type="text" name="indexurl" id="indexurl" class="admin-input-sm"></label>
-							<span>（用相对于会员中心的网址，如：../ask）</span>
+							<span>（用相对于会员中心的网址，如：/ask）</span>
 						</div>
 					</td>
 				</tr>
@@ -104,7 +104,7 @@
 				<tr>
 					<td>文件列表：</td>
 					<td>
-						<p>（每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件，如：如果已经指定了../book则不需要再指定目录里的../book/index.php 等文件或目录，系统会自动索引整个目录，对于不需要索引整个目录的，请不要指定这个目录，否则会把不必要的文件也放进模块中）</p>
+						<p>（每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件，如：如果已经指定了/book则不需要再指定目录里的/book/index.php 等文件或目录，系统会自动索引整个目录，对于不需要索引整个目录的，请不要指定这个目录，否则会把不必要的文件也放进模块中）</p>
 						<textarea name="filelist" id="filelist" class="admin-textarea-xl"></textarea>
 					</td>
 				</tr>

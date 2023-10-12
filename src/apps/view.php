@@ -68,7 +68,7 @@ if ($needMoney > 0 || $needRank > 1) {
                             showmsg('购买失败, 请返回', -1);
                             exit;
                         }
-                        showmsg('购买成功，购买扣点不会重扣金币', $GLOBALS['cfg_cmsurl'].'/apps/view.php?aid='.$aid);
+                        showmsg('购买成功，购买扣点不会重扣金币', '/apps/view.php?aid='.$aid);
                         exit;
                     } else {
                         showmsg('购买失败，请返回', -1);

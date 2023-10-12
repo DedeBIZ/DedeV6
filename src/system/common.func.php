@@ -347,7 +347,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         return;
     }
     if (empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
-    $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='../static/web/css/bootstrap.min.css'><link rel='stylesheet' href='../static/web/css/admin.css'></head><base target='_self'><body class='body-bg'><script>";
+    $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='/static/web/css/bootstrap.min.css'><link rel='stylesheet' href='/static/web/css/admin.css'></head><base target='_self'><body class='body-bg'><script>";
     $htmlfoot  = "</script></body></html>";
     $litime = ($limittime == 0 ? 1000 : $limittime);
     $func = '';
@@ -555,12 +555,12 @@ if (!function_exists('obtaintheme')) {
 if (!function_exists('obtaintags')) {
     function obtaintags($aid, $num = 3)
     {
-        global $dsql, $cfg_cmspath;
+        global $dsql;
         $tags = '';
         $query = "SELECT * FROM `#@__taglist` WHERE aid='$aid' LIMIT $num";
         $dsql->Execute('tag',$query);
         while($row = $dsql->GetArray('tag')) {
-            $link = $cfg_cmspath."/apps/tags.php?/{$row['tid']}";
+            $link = "/apps/tags.php?/{$row['tid']}";
             $tags .= ($tags==''?"<a href='{$link}'>{$row['tag']}</a>" : "<a href='{$link}'>{$row['tag']}</a>");
         }
         return $tags;
@@ -594,7 +594,7 @@ function obtainfilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0,
         $tid = $toptid==0 ? $tidsq["typeid"] : $tidsq["topid"];
     }
     $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".$_REQUEST['PageNo'] : '');
-    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
+    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : "/apps/list.php?tid=".$tid);
     $cInfos = $dsql->GetOne("SELECT * FROM  `#@__channeltype` WHERE id='$channelid'");
     $fieldset=$cInfos['fieldset'];
     $dtp = new DedeTagParse();

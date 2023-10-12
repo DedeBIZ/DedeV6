@@ -25,7 +25,7 @@ if ($cuserLogin->getUserID() <= 0) {
         exit();
     }
     $adminDirHand = HtmlReplace($adminDirHand, 1);
-    $gurl = "../../{$adminDirHand}/login.php?gotopage=".urlencode($dedeNowurl);
+    $gurl = "/../{$adminDirHand}/login.php?gotopage=".urlencode($dedeNowurl);
     echo "<script>location='$gurl';</script>";
     exit();
 }

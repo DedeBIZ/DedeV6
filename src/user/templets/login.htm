@@ -5,9 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>会员登录-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
 	<body class="body-bg">
 		<?php obtaintheme('top.htm');?>
@@ -32,7 +32,7 @@
 							<label for="iptValidate">验证码</label>
 							<div class="input-group">
 								<input type="text" name="vdcode" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
-								<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+								<img src="/apps/vdimgck.php" id="validateimg" onclick="this.src='/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 							</div>
 						</div>
 						<div class="form-group"><a href="<?php echo $cfg_memberurl;?>/resetpassword.php">忘记密码？</a></div>
@@ -43,6 +43,6 @@
 			</div>
 		</main>
 		<?php obtaintheme('foot.htm');?>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/login.js"></script>
+		<script src="/static/web/js/login.js"></script>
 	</body>
 </html>

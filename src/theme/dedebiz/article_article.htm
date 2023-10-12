@@ -7,11 +7,11 @@
 		<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
+		<link rel="shortcut icon" href="/static/web/img/favicon.ico">
+		<link rel="stylesheet" href="/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css">
 	</head>
 	<body class="body-bg">
 		{dede:include filename='top.htm'/}
@@ -71,7 +71,7 @@
 		</main>
 		<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
 		{dede:include filename='foot.htm'/}
-		<script src="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+		<script src="/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 		<script>
 			//获取顶踩数据
@@ -141,10 +141,10 @@
 						$("#iptMsg").val("");
 						$("#iptValidate").val("");
 						($("#iptUsername").attr("disabled") !== "disabled") && $("#iptUsername").val("");
-						$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+						$("#validateimg").attr("src", '/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
 					} else {
 						ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
-						$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+						$("#validateimg").attr("src", '/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
 					}
 				});
 			}
@@ -176,10 +176,10 @@
 						<button type="button" class="btn btn-success btn-send" onclick='SendReplyFeedback(${fid})'>评论</button>
 					</div>
 				</div>`;
-				$.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {
+				$.get("{dede:global.cfg_memberurl/}/api.php?format=json", function(result) {
 					if (result.code !== 200) {
 						$(`._feedback_reply`).html("");
-						ShowAlert(`._feedback_reply[for="${fid}"]`, '回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/user/login.php">点击登录</a>后再来回复', 'warning', 5000);
+						ShowAlert(`._feedback_reply[for="${fid}"]`, '回复需要登录会员中心，您可以<a href="{dede:global.cfg_memberurl/}/login.php">点击登录</a>后再来回复', 'warning', 5000);
 					} else {
 						$(`._feedback_reply`).html("");
 						$(`._feedback_reply[for="${fid}"]`).html(replyPannel);

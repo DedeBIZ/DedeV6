@@ -26,7 +26,7 @@ function lib_memberlist(&$ctag, &$refObj)
     $ctp->LoadSource($innerText);
     $dsql->Execute('mb', $sql);
     while ($row = $dsql->GetArray('mb')) {
-        $row['userurl'] = $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/user/index.php?uid='.$row['userid'];
+        $row['userurl'] = $row['spaceurl'] = $GLOBALS['cfg_basehost'].$GLOBALS['cfg_memberurl'].'/index.php?uid='.$row['userid'];
         $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
         foreach ($ctp->CTags as $tagid => $ctag) {
             if (isset($row[$ctag->GetName()])) {

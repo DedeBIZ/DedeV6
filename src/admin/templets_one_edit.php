@@ -45,7 +45,7 @@ if ($dopost == "saveedit") {
             ShowMsg("系统文件禁止重名", "javascript:;");
             exit();
         }
-        $oldfilename = $cfg_basedir.$cfg_cmspath."/".$oldfilename;
+        $oldfilename = $cfg_basedir.'/'.$oldfilename;
         if (is_file($oldfilename)) {
             unlink($oldfilename);
         }
@@ -64,7 +64,7 @@ if ($dopost == "saveedit") {
     exit();
 } else if ($dopost == "delete") {
     $row = $dsql->GetOne("SELECT filename FROM `#@__sgpage` WHERE aid='$aid'");
-    $filename = preg_replace("#\/{1,}#", "/", $cfg_basedir.$cfg_cmspath."/".$row['filename']);
+    $filename = preg_replace("#\/{1,}#", "/", $cfg_basedir."/".$row['filename']);
     $dsql->ExecuteNoneQuery(" DELETE FROM `#@__sgpage` WHERE aid='$aid' ");
     if (is_file($filename)) {
         unlink($filename);

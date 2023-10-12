@@ -254,7 +254,7 @@ else if ($dopost == 'redat') {
 function PutInfo($msg1, $msg2)
 {
     global $cfg_soft_lang;
-    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='../static/web/css/bootstrap.min.css'><link rel='stylesheet' href='../static/web/css/admin.css'></head><base target='_self'><body class='body-bg'><div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div><div class='tips-body'>{$msg1}{$msg2}</div></div></div>";
+    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='/static/web/css/bootstrap.min.css'><link rel='stylesheet' href='/static/web/css/admin.css'></head><base target='_self'><body class='body-bg'><div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div><div class='tips-body'>{$msg1}{$msg2}</div></div></div>";
     echo $msginfo."</body></html>";
 }
 function RpLine($str)

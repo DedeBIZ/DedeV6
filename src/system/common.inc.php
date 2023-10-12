@@ -148,35 +148,35 @@ if (PHP_SAPI === 'cli') {
     $cfg_clihost = 'http://'.$_SERVER['HTTP_HOST'];
 }
 //站点根目录
-$cfg_basedir = preg_replace('#'.$cfg_cmspath.'\/system$#i', '', DEDEINC);
+$cfg_basedir = preg_replace('#'.'\/system$#i', '', DEDEINC);
 if ($cfg_multi_site == 'Y') {
     $cfg_mainsite = $cfg_basehost;
 } else {
     $cfg_mainsite = '';
 }
 //模板存放目录
-$cfg_templets_dir = $cfg_cmspath.'/theme';
+$cfg_templets_dir = '/theme';
 $cfg_templeturl = $cfg_mainsite.$cfg_templets_dir;
 $cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/templets" : $cfg_mainsite.$cfg_templets_dir."/$cfg_df_style";
 //安装目录网址
-$cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
+$cfg_cmsurl = $cfg_mainsite;
 //模块插件目录
-$cfg_plus_dir = $cfg_cmspath.'/apps';
+$cfg_plus_dir = '/apps';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
-$cfg_static_dir = $cfg_cmspath.'/static';
+$cfg_static_dir = '/static';
 $cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
-$cfg_mobile_dir = $cfg_cmspath.'/m';
+$cfg_mobile_dir = '/m';
 $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
-$cfg_data_dir = $cfg_cmspath.'/data';
+$cfg_data_dir = '/data';
 $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
 //会员会员目录
-$cfg_member_dir = $cfg_cmspath.'/user';
+$cfg_member_dir = '/user';
 $cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
 //专题存放目录
-$cfg_special = $cfg_cmspath.'/a/special';
+$cfg_special = '/a/special';
 $cfg_specialurl = $cfg_mainsite.$cfg_special;
 //附件目录
-$cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;
+$cfg_medias_dir = $cfg_medias_dir;
 $cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
 //上传图片存放目录，建议按默认
 $cfg_image_dir = $cfg_medias_dir.'/allimg';

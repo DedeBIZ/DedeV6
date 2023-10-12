@@ -60,7 +60,7 @@ if ($dopost == "delmember") {
     $wintitle = "删除指定会员";
     $wecome_info = "<a href='".$ENV_GOBACK_URL."'>会员管理</a> - 删除会员";
     $win = new OxWindow();
-    $win->Init("member_do.php", "../static/web/js/admin.blank.js", "POST");
+    $win->Init("member_do.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", "yes");
     $win->AddHidden("dopost", $dopost);
     $win->AddHidden("id", $id);
@@ -107,7 +107,7 @@ if ($dopost == "delmember") {
     $wintitle = "删除指定会员";
     $wecome_info = "<a href='".$ENV_GOBACK_URL."'>会员管理</a> - 删除会员";
     $win = new OxWindow();
-    $win->Init("member_do.php", "../static/web/js/admin.blank.js", "POST");
+    $win->Init("member_do.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", "yes");
     $win->AddHidden("dopost", $dopost);
     $win->AddHidden("id", $id);
@@ -177,7 +177,7 @@ else if ($dopost == "memberlogin") {
     CheckPurview('member_Edit');
     PutCookie('DedeUserID', $id, 1800);
     PutCookie('DedeLoginTime', time(), 1800);
-    if (empty($jumpurl)) header("location:../user/index.php");
+    if (empty($jumpurl)) header("location:$cfg_memberurl/index.php");
     else header("location:$jumpurl");
 } else if ($dopost == "deoperations") {
     $nid = preg_replace('#[^0-9,]#', '', preg_replace('#`#', ',', $nid));

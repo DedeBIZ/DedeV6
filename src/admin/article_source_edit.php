@@ -31,7 +31,7 @@ if (empty($allsource) && filesize($m_file) > 0) {
 }
 $wecome_info = "文档来源管理";
 $win = new OxWindow();
-$win->Init('article_source_edit.php', '../static/web/js/admin.blank.js', 'POST');
+$win->Init('article_source_edit.php', '/static/web/js/admin.blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
 $win->AddTitle("一行填写一个地址");
 $win->AddMsgItem("<tr><td><textarea name='allsource' id='allsource' class='admin-textarea-xl'>$allsource</textarea></td></tr>");

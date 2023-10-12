@@ -128,7 +128,7 @@ else if ($step==2) {
     $configStr1 = str_replace("~dbprefix~",$dbprefix,$configStr1);
     $configStr1 = str_replace("~dblang~",$dblang,$configStr1);
     @chmod(DEDEDATA,0777);
-    $fp = fopen(DEDEDATA."/common.inc.php","w") or die("<script>alert('写入配置失败，请检查../data目录是否可写入');history.go(-1);</script>");
+    $fp = fopen(DEDEDATA."/common.inc.php","w") or die("<script>alert('写入配置失败，请检查/data目录是否可写入');history.go(-1);</script>");
     fwrite($fp,$configStr1);
     fclose($fp);
     //config.cache.inc.php
@@ -218,8 +218,6 @@ else if ($step==2) {
     //更新配置
     $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$baseurl}' WHERE varname='cfg_basehost';";
     $dbtype == 'sqlite'?  $db->exec($cquery) : mysql_query($cquery,$conn);
-    $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$cmspath}' WHERE varname='cfg_cmspath';";
-    $dbtype == 'sqlite'?  $db->exec($cquery) : mysql_query($cquery,$conn);
     $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$indexUrl}' WHERE varname='cfg_indexurl';";
     $dbtype == 'sqlite'?  $db->exec($cquery) : mysql_query($cquery,$conn);
     $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$cookieencode}' WHERE varname='cfg_cookie_encode';";
@@ -252,7 +250,7 @@ else if ($step==2) {
     $fp = fopen(INSLOCKFILE,'w');
     fwrite($fp,'ok');
     fclose($fp);
-    header('Location:../admin/index.php');
+    header('Location:/admin/index.php');
     exit();
 }
 //检测数据库是否有效

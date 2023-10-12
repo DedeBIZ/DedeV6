@@ -6,11 +6,11 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<meta name="robots" content="noindex,nofollow">
 		<title><?php echo $cfg_webname;?>后台管理</title>
-		<link rel="stylesheet" href="../static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/admin.main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body class="menu-show">
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
@@ -19,7 +19,7 @@
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close"><i class="fa fa-times"></i></a>
 		</div>
 		<?php }?>
-		<div class="admin-head shadow-sm">			
+		<div class="head shadow-sm">			
 			<div class="logo">
 				<span class="name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
 				<span class="version"><?php echo $cfg_version_detail;?></span>
@@ -40,8 +40,8 @@
 					<li class="d-none d-lg-block"><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
 					<?php if (!DEDEBIZ_SAFE_MODE) {?><li class="d-none d-lg-block"><a href="templets_main.php" target="main" title="主题管理"><i class="fa fa-cube"></i></a></li><?php }?>
 					<li class="d-none d-lg-block"><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
-					<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
-					<li class="d-none d-lg-block"><a href="../" target="_blank" title="预览首页"><i class="fa fa-home"></i></a></li>
+					<?php echo ($cfg_mb_open=='Y')?'<li><a href="/user/" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
+					<li class="d-none d-lg-block"><a href="/" target="_blank" title="预览首页"><i class="fa fa-home"></i></a></li>
 					<li class="d-none d-lg-block">
 						<form action="action_search.php" method="post" target="main">
 							<input type="text" name="keyword" placeholder="功能搜索" class="admin-input-sm">

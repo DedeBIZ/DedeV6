@@ -74,7 +74,7 @@ if ($dopost == "delete") {
         $wintitle = "删除文档错误";
         $wecome_info = "<a href='erraddsave.php'>错误管理</a> - 删除错误";
         $win = new OxWindow();
-        $win->Init("erraddsave.php", "../static/web/js/admin.blank.js", "POST");
+        $win->Init("erraddsave.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);

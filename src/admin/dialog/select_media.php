@@ -46,9 +46,9 @@ if (!empty($noeditor)) {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
         <title>选择多媒体</title>
-        <link rel="stylesheet" href="../../static/web/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../static/web/css/admin.css">
+        <link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/web/css/admin.css">
     </head>
     <body class="body-bg">
         <div class="upload-bg shadow-sm">
@@ -97,7 +97,7 @@ if (!empty($noeditor)) {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                         $line = "<tr>
-                        <td><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                        <td><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'>上级目录</a></td>
                         <td colspan='2'>当前目录：$activepath</td>
                         </tr>";
                         echo $line;
@@ -105,7 +105,7 @@ if (!empty($noeditor)) {
                         if (preg_match("#^_(.*)$#i", $file)) continue;
                         if (preg_match("#^\.(.*)$#i", $file)) continue;
                         $line = "<tr>
-                        <td colspan='3'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                        <td colspan='3'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='/static/web/img/icon_dir.png'>$file</a></td>
                         </tr>";
                         echo "$line";
                     } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {
@@ -116,7 +116,7 @@ if (!empty($noeditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <img src='../../static/web/img/icon_flash.png'>
+                            <img src='/static/web/img/icon_flash.png'>
                             <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                         </td>
                         <td>$filesize KB</td>
@@ -131,7 +131,7 @@ if (!empty($noeditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <img src='../../static/web/img/icon_video.png'>
+                            <img src='/static/web/img/icon_video.png'>
                             <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                         </td>
                         <td>$filesize KB</td>
@@ -146,7 +146,7 @@ if (!empty($noeditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <img src='../../static/web/img/icon_rm.png'>
+                            <img src='/static/web/img/icon_rm.png'>
                             <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                         </td>
                         <td>$filesize KB</td>
@@ -161,7 +161,7 @@ if (!empty($noeditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <img src='../../static/web/img/icon_music.png'>
+                            <img src='/static/web/img/icon_music.png'>
                             <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                         </td>
                         <td>$filesize KB</td>

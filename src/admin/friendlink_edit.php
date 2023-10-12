@@ -57,10 +57,10 @@ if ($dopost == "delete") {
             exit;
         }
         $logoimg_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $logoimg_name));
-        $fullfilename = DEDEROOT.'static/flink/'.$logoimg_name;
+        $fullfilename = DEDEROOT.'/static/flink/'.$logoimg_name;
         move_uploaded_file($logoimg, $fullfilename) or die("上传文件到".$fullfilename."失败");
         @unlink($logoimg);
-        $logo = $cfg_cmspath.'/static/flink/'.$logoimg_name;
+        $logo = '/static/flink/'.$logoimg_name;
     }
     $sortrank = isset($sortrank)? intval($sortrank) : 1;
     $url = isset($url)? HtmlReplace($url, -1) : '';

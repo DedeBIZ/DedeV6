@@ -22,7 +22,7 @@ function lib_statistics(&$ctag, &$refObj)
     $pms['typeid'] = isset($envs['typeid'])? $envs['typeid'] : 0;
     $pms['aid'] = isset($envs['aid'])? $envs['aid'] : 0;
     $pms['value'] = isset($envs['value'])? $envs['value'] : '';
-    $revalue = '<script async src="'.$GLOBALS['cfg_cmspath'].'/apps/statistics.php?'.http_build_query($pms).'"></script>';
+    $revalue = '<script async src="'.'/apps/statistics.php?'.http_build_query($pms).'"></script>';
     return $revalue;
 }
 ?>

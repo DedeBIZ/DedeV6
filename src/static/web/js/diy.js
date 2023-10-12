@@ -17,7 +17,7 @@ function SelectImage(sform, stype) {
             var fileData = f;
             formData.append("file", fileData);
             $.ajax({
-                url: '../user/api.php?action=upload&type=litpic',
+                url: '/user/api.php?action=upload&type=litpic',
                 type: 'POST',
                 data: formData,
                 processData: false,

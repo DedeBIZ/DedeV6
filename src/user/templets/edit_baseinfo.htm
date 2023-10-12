@@ -5,9 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>资料修改-会员中心-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
 	<body class="body-bg">
 		<?php obtaintheme('top.htm');?>
@@ -111,7 +111,7 @@
 					var fileData = $('#iptNewface')[0].files[0];
 					formData.append('file', fileData);
 					$.ajax({
-						url: '<?php echo $cfg_cmsurl;?>/user/api.php?action=upload&type=face',
+						url: '<?php echo $cfg_memberurl;?>/api.php?action=upload&type=face',
 						type: 'POST',
 						data: formData,
 						processData: false,

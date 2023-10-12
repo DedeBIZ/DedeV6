@@ -229,7 +229,7 @@ class FreeList
             $this->dtp->SaveTo($makeFile);
         }
         if ($this->FLInfos['nodefault'] == 0) {
-            $murl = '/'.str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $this->FLInfos['listdir']);
+            $murl = '/'.str_replace('{cmspath}', $this->FLInfos['listdir']);
             $murl .= '/'.$this->FLInfos['defaultpage'];
             $indexfile = $GLOBALS['cfg_basedir'].$murl;
             $murl = preg_replace("#\/{1,}#", "/", $murl);
@@ -355,7 +355,7 @@ class FreeList
         $okfile = '';
         $namerule = $this->FLInfos['namerule'];
         $listdir = $this->FLInfos['listdir'];
-        $listdir = str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $listdir);
+        $listdir = str_replace('{cmspath}', $listdir);
         $okfile = str_replace('{listid}', $this->FLInfos['aid'], $namerule);
         $okfile = str_replace('{listdir}', $listdir, $okfile);
         $okfile = str_replace("\\", "/", $okfile);
@@ -540,7 +540,7 @@ class FreeList
                     }
                     $row['description'] = cn_substr($row['description'], $infolen);
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                        $row['litpic'] = '/static/web/img/thumbnail.jpg';
                     }
                     if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];

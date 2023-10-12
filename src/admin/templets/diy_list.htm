@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title><?php echo $diy->name;?></title>
-		<link rel="stylesheet" href="../static/web/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form action="diy_list.php" method="post">
@@ -41,7 +41,7 @@
 						<label class="mr-2"><input type="radio" name="action" value="check"> 审核</label>
 						<label class="mr-2"><input type="radio" name="action" value="delete"> 删除</label>
 						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
-						<a href="../apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
+						<a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
 					</td>
 				</tr>
 				<tr>

@@ -8,7 +8,7 @@
 			var fileData = $('#iptLitpic')[0].files[0];
 			formData.append('file', fileData);
 			$.ajax({
-				url: '<?php echo $cfg_cmsurl;?>/user/api.php?action=upload&type=litpic',
+				url: '<?php echo $cfg_memberurl;?>/api.php?action=upload&type=litpic',
 				type: 'POST',
 				data: formData,
 				processData: false,
