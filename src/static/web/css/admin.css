@@ -109,6 +109,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid #f5f5f5}
 .tips-head p{margin:0;padding-left:10px;line-height:16px;color:#343a40;text-align:left;border-left:3px solid #ff8400}
 .tips-body{padding:20px;min-height:160px;color:#6c757d;word-break:break-all;word-wrap:break-word}
+.user-img-md{width:60px;height:60px;border-radius:50%;border:1px solid #eee}
 .user-img-sm{width:30px;height:30px;border-radius:50%;border:1px solid #eee}
 .thumbnail-md{max-width:200px;max-height:120px}
 .thumbnail-sm{max-width:80px;max-height:80px}
@@ -172,5 +173,5 @@ table,input,select,textarea,.login-box,.colordlg,.pubdlg,.quickselitem .topcat,.
 }
 @media (max-width:768px){
 .install-box,.login-from,.tips-box{width:100%}
-.tips{padding:0 15px}
+.tips{padding:0 1rem}
 }
