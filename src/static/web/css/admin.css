@@ -31,7 +31,7 @@ input:focus,select:focus,textarea:focus{color:#6c757d;background:#fff;border-col
 .install-box .form-control,.login-box .form-control{height:36px}
 .login-head{padding:1rem 0;background:#fff}
 .login-head .logo{font-size:18px;color:#343a40;font-weight:600}
-.login-head .logo img{height:32px}
+.login-head .logo img{margin-right:0.5rem;height:32px}
 .login-from{margin:5rem auto;width:500px}
 .login-box{padding:1.25rem;background:#fff}
 .login-box h2{margin:0;line-height:1.2;font-size:24px;font-weight:600;color:#343a40}
