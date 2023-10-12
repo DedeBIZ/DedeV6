@@ -117,7 +117,7 @@ if (!empty($iseditor)) {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                         $line = "<tr>
-                        <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'>上级目录</a></td>
+                        <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
                         <td>当前目录：$activepath</td>
                         </tr>";
                         echo $line;
@@ -125,7 +125,7 @@ if (!empty($iseditor)) {
                         if (preg_match("#^_(.*)$#i", $file)) continue;
                         if (preg_match("#^\.(.*)$#i", $file)) continue;
                         $line = "<tr>
-                        <td colspan='3'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='/static/web/img/icon_dir.png'>$file</a></td>
+                        <td colspan='3'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='/static/web/img/icon_dir.png'> $file</a></td>
                         </tr>";
                         echo "$line";
                     } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
@@ -136,8 +136,7 @@ if (!empty($iseditor)) {
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <a href=\"$reurl\" class=\"toolimg\"><img src='$reurl' title='$file'></a>
-                            <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+                            <a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg\" $lstyle><img src='$reurl' title='$file'> $file</a>
                         </td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
@@ -150,10 +149,7 @@ if (!empty($iseditor)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else  $lstyle = "";
                         $line = "<tr>
-                        <td>
-                            <a href=\"$reurl\" class=\"toolimg\"><img src='$reurl' title='$file'></a>
-                            <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg\" $lstyle><img src='$reurl' title='$file'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -167,11 +163,6 @@ if (!empty($iseditor)) {
         <script>
         function nullLink() {
             return;
-        }
-        function TNav() {
-            if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-            else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-            else return "OT";
         }
         //获取地址参数
         function getUrlParam(paramName) {
@@ -193,14 +184,6 @@ if (!empty($iseditor)) {
                 if (window.opener.document.<?php echo $f ?> != null) {
                     window.opener.document.<?php echo $f ?>.value = reimg;
                     if (window.opener.document.getElementById('div<?php echo $v ?>')) {
-                        if (TNav() == 'IE') {
-                            //window.opener.document.getElementById('div<?php echo $v ?>').filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = reimg;
-                            window.opener.document.getElementById('div<?php echo $v ?>').src = reimg;
-                            window.opener.document.getElementById('div<?php echo $v ?>').style.width = '150px';
-                            window.opener.document.getElementById('div<?php echo $v ?>').style.height = '100px';
-                        } else
-                            window.opener.document.getElementById('div<?php echo $v ?>').style.backgroundImage = "url(" + reimg + ")";
-                        } else if (window.opener.document.getElementById('<?php echo $v ?>')) {
                         window.opener.document.getElementById('<?php echo $v ?>').src = reimg;
                     }
                     //适配新的缩略图
@@ -217,8 +200,8 @@ if (!empty($iseditor)) {
         }
         $(function() {
             var x = 10;
-            var y = 20;
-            $("a.toolimg").mouseover(function(e) {
+            var y = 10;
+            $(".tipsimg").mouseover(function(e) {
                 var toolimg = "<div id='toolimg'><img src='" + this.href + "'></div>";
                 $("body").append(toolimg);
                 $("#toolimg").css({

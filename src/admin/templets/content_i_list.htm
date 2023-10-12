@@ -81,8 +81,7 @@
 						<td width="6%"><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
 						<td width="6%">{dede:field.id/}</td>
 						<td width="26%" align="left">
-							<img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm">
-							<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a>
+							<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives"><img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm"> {dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a>
 						</td>
 						<td width="10%">{dede:field.senddate function='GetDateTimeMk(@me)'/}</td>
 						<td width="12%">{dede:field.typeid function='GetTypename(@me)'/}</td>

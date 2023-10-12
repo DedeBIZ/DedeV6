@@ -22,7 +22,7 @@
 				<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">该会员关连网站管理员，修改不当会导致无法登录</div></td></tr>';?>
 				<tr>
 					<td colspan="2" align="center">
-						<?php if ($row['face']!='') {echo "<p><img src='{$row['face']}' class='user-img-md m-0'></p>";};echo "<p>".$row['userid']."</p>";?>
+						<?php if ($row['face']!='') {echo "<p><img src='{$row['face']}' class='user-img-md'></p>";};echo "<p>".$row['userid']."</p>";?>
 						<p class="m-0">
 							<span class="btn btn-outline-success btn-sm"><?php echo GetMemberTypeName($row['rank']);?></span>
 							<span class="btn btn-outline-warning btn-sm"><?php echo GetHonor($row['scores']);?></span>

@@ -97,7 +97,7 @@ if (!empty($noeditor)) {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                         $line = "<tr>
-                        <td><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'>上级目录</a></td>
+                        <td><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
                         <td colspan='2'>当前目录：$activepath</td>
                         </tr>";
                         echo $line;
@@ -105,7 +105,7 @@ if (!empty($noeditor)) {
                         if (preg_match("#^_(.*)$#i", $file)) continue;
                         if (preg_match("#^\.(.*)$#i", $file)) continue;
                         $line = "<tr>
-                        <td colspan='3'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='/static/web/img/icon_dir.png'>$file</a></td>
+                        <td colspan='3'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='/static/web/img/icon_dir.png'> $file</a></td>
                         </tr>";
                         echo "$line";
                     } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {
@@ -115,10 +115,7 @@ if (!empty($noeditor)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else  $lstyle = "";
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_flash.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_flash.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td align='center'>$filetime</td>
                         </tr>";
@@ -130,10 +127,7 @@ if (!empty($noeditor)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else  $lstyle = "";
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_video.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_video.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td align='center'>$filetime</td>
                         </tr>";
@@ -145,10 +139,7 @@ if (!empty($noeditor)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else  $lstyle = "";
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_rm.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_rm.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td align='center'>$filetime</td>
                         </tr>";
@@ -160,10 +151,7 @@ if (!empty($noeditor)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else  $lstyle = "";
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_music.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_music.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td align='center'>$filetime</td>
                         </tr>";

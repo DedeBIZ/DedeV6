@@ -99,7 +99,7 @@ if (!empty($noeditor)) {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                         $line = "<tr>
-                        <td><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'>上级目录</a></td>
+                        <td><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
                         <td colspan='2'>当前目录：$activepath</td>
                         </tr>\r\n";
                         echo $line;
@@ -107,7 +107,7 @@ if (!empty($noeditor)) {
                         if (preg_match("#^_(.*)$#i", $file)) continue;
                         if (preg_match("#^\.(.*)$#i", $file)) continue;
                         $line = "<tr>
-                        <td colspan='3'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='/static/web/img/icon_dir.png'>$file</a></td>
+                        <td colspan='3'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='/static/web/img/icon_dir.png'> $file</a></td>
                         </tr>";
                         echo "$line";
                     } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
@@ -117,10 +117,7 @@ if (!empty($noeditor)) {
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_zip.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_zip.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -132,10 +129,7 @@ if (!empty($noeditor)) {
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_exe.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_exe.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -155,7 +149,7 @@ if (!empty($noeditor)) {
                 window.opener.CKEDITOR.tools.callFunction(funcNum, reimg);
             }
             if (typeof window.opener.CKEDITOR.instances["<?php echo $f ?>"] !== "undefined") {
-                let addonHTML = `<a href='${reimg}' target='_blank'><img src='/static/web/img/icon_addon.png'>附件：${reimg}</a>`;
+                let addonHTML = `<a href='${reimg}' target='_blank'><img src='/static/web/img/icon_addon.png'> 附件：${reimg}</a>`;
                 window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
             }
             if (window.opener.document.<?php echo $f ?> != null) {

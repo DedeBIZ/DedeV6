@@ -39,7 +39,7 @@ if ($dopost == "save") {
         } else {
             $height = "height=\"{$normbody['height']}\"";
         }
-        $normbody = "<a href=\"{$link}\"><img src=\"{$normbody['url']}\"$width $height border=\"0\" /></a>";
+        $normbody = "<a href=\"{$link}\"><img src=\"{$normbody['url']}\"$width $height></a>";
     } else {
         if (empty($normbody['width'])) {
             $width = "";

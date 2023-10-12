@@ -87,7 +87,7 @@ if (empty($comeback)) {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#", "", $activepath);
                         $line = "<tr>
-                        <td><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='/static/web/img/icon_dir2.png'>上级目录</a></td>
+                        <td><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
                         <td colspan='2'>当前目录：$activepath</td>
                         </tr>\r\n";
                           echo $line;
@@ -95,7 +95,7 @@ if (empty($comeback)) {
                         if (preg_match("#^_(.*)$#i", $file)) continue;
                         if (preg_match("#^\.(.*)$#i", $file)) continue;
                         $line = "<tr>
-                        <td colspan='3'><a href=select_templets.php?f=$f&activepath=".urlencode("$activepath/$file")."><img src='/static/web/img/icon_dir.png'>$file</a></td>
+                        <td colspan='3'><a href=select_templets.php?f=$f&activepath=".urlencode("$activepath/$file")."><img src='/static/web/img/icon_dir.png'> $file</a></td>
                         </tr>";
                         echo "$line";
                     } else if (preg_match("#\.(htm|html)#i", $file)) {
@@ -105,10 +105,7 @@ if (empty($comeback)) {
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_htm.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_htm.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -120,10 +117,7 @@ if (empty($comeback)) {
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_css.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_css.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -135,10 +129,7 @@ if (empty($comeback)) {
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_js.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_js.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -150,10 +141,7 @@ if (empty($comeback)) {
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                         $line = "<tr>
-                        <td>
-                            <img src='$reurl'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='$reurl'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -165,10 +153,7 @@ if (empty($comeback)) {
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                         $line = "<tr>
-                        <td>
-                            <img src='$reurl'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='$reurl'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -180,10 +165,7 @@ if (empty($comeback)) {
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                         $line = "<tr>
-                        <td>
-                            <img src='/static/web/img/icon_text.png'>
-                            <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_text.png'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td></tr>";
                         echo "$line";

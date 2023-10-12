@@ -149,7 +149,7 @@ else if ($dopost == "uploadLitpic") {
                 if (parent.document.getElementById('divpicview'))
                 {
                     parent.document.getElementById('divpicview').style.width = '150px';
-                    parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}?n' width='150'>\";
+                    parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}'>\";
                 }
             </script>";
         } else {
