@@ -1,7 +1,6 @@
 <div class="comment pt-3">
-	<h4>发表评论</h4>
 	<div id="feedback-alert"></div>
-	<div class="content pb-3"><textarea id="iptMsg" name="msg" class="form-control" placeholder="请输入..."></textarea></div>
+	<div class="content pb-3"><textarea id="iptMsg" name="msg" class="form-control" placeholder="请输入评论"></textarea></div>
 	<div class="post pb-3">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
 			<div class="form-group">
@@ -14,7 +13,7 @@
 						<label for="iptValidate">验证码</label>
 						<div class="input-group">
 							<input type="text" class="form-control text-uppercase" id="iptValidate">
-							<img src="/apps/vdimgck.php" id="validateimg" onclick="this.src='/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+							<img src="{dede:global.cfg_phpurl/}/vdimgck.php" id="validateimg" onclick="this.src='{dede:global.cfg_phpurl/}/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 						</div>
 					</div>
 				</div>
