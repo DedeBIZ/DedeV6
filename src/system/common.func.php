@@ -577,7 +577,7 @@ if (!function_exists('obtainimgs')) {
         foreach($imgsrc_arr as $imgsrc)
         {
             if ($i == $num) break;
-            $result .= "<img src=\"$imgsrc\">";
+            $result .= "$imgsrc";
             $i++;
         }
         return $result;
@@ -594,7 +594,7 @@ function obtainfilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0,
         $tid = $toptid==0 ? $tidsq["typeid"] : $tidsq["topid"];
     }
     $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".$_REQUEST['PageNo'] : '');
-    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : "/apps/list.php?tid=".$tid);
+    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
     $cInfos = $dsql->GetOne("SELECT * FROM  `#@__channeltype` WHERE id='$channelid'");
     $fieldset=$cInfos['fieldset'];
     $dtp = new DedeTagParse();
