@@ -58,7 +58,7 @@ else if ($fmdo == "move") {
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
-    $win->AddTitle("新位置前面不加'/'表示相对于当前位置，加'/'表示相对于根目录");
+    $win->AddTitle("新位置前面不加斜杆/表示相对于当前位置，加斜杆/表示相对于根目录");
     $win->AddItem("被移动文件：", $filename);
     $win->AddItem("当前位置：", $activepath);
     $win->AddItem("新位置：", "<input type='input' name='newpath' id='newpath' class='admin-input-md'>");
