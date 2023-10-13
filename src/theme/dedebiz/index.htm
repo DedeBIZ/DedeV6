@@ -20,11 +20,11 @@
 				<div class="col-md-3 m-pb-2">{dede:include filename='widget_recommend.htm'/}</div>
 				<div class="col-md-6 m-pb-2">
 					<div class="row">
-						<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
+						<div id="carouselDede" class="col-12 carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">{dede:arclist row='5' flag='f' orderby='id'}
-								<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>{/dede:arclist}
+								<li data-target="#carouselDede" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>{/dede:arclist}
 							</ol>
-							<div class="carousel-inner">{dede:arclist row='5' orderby='id'}
+							<div class="carousel-inner">{dede:arclist row='5' flag='f' orderby='id'}
 								<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
 									<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" alt="[field:fulltitle/]" class="bannr-img"></a>
 									<div class="carousel-caption d-none d-md-block">
@@ -33,11 +33,11 @@
 									</div>
 								</div>{/dede:arclist}
 							</div>
-							<a href="#carouselIndex" class="carousel-control-prev" role="button" data-slide="prev">
+							<a href="#carouselDede" class="carousel-control-prev" role="button" data-slide="prev">
 								<span class="carousel-control-prev-icon"></span>
 								<span class="sr-only">上篇</span>
 							</a>
-							<a href="#carouselIndex" class="carousel-control-next" role="button" data-slide="next">
+							<a href="#carouselDede" class="carousel-control-next" role="button" data-slide="next">
 								<span class="carousel-control-next-icon"></span>
 								<span class="sr-only">下篇</span>
 							</a>
@@ -72,10 +72,10 @@
 						<div class="item-theme-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
 						<div class="item-theme-box">
 							<h5 class="title mb-3"><a href="[field:arcurl/]">[field:flag runphp='yes']if (stristr(@me,"h")) @me="<span class='btn btn-success btn-sm mr-2'>头条</span>";else if(stristr(@me,"c")) @me="<span class='btn btn-success btn-sm mr-2'>推荐</span>";else @me="";[/field:flag][field:title/]</a></h5>
-							<div class="row">
+							<div class="row align-items-center">
 								<div class="col-4 text-left text-danger">
 									<i class="fa fa-download mr-1"></i>
-									<span><script src="{dede:global.cfg_phpurl/}/disdls.php?aid=[field:id/]"></script></span>
+									<span><script src="/apps/disdls.php?aid=[field:id/]"></script></span>
 								</div>
 								<div class="col-8 text-right">
 									<a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1"></a>
