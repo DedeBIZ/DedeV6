@@ -522,12 +522,11 @@ INSERT INTO `#@__flinktype` VALUES ('1','综合网站'),
 ('7','论坛类'),
 ('8','其它类型');
 
-INSERT INTO `#@__freelist` VALUES ('1','测试文档','{listdir}/index_{listid}_{page}.html','{cmspath}/freelist/','index.html','1','{style}/list_free.htm','1289712633','100','0','{dede:list pagesize="30" col="1" titlelen="60" orderby="pubdate" orderway="desc" typeid="1" channel="1" }<li>[field:imglink/] [field:textlink/] <span class=info><small>日期：</small>[field:pubdate function="getdatemk(@me)"/] <small>浏览：</small>[field:click/] <small>好评：</small>[field:scores/] </span>\t\n<p class=intro>[field:description/]</p></li>{/dede:list}','测试','测试文档'),
-('10','Google SiteMap 生成器','{listdir}googlemap_{page}.xml','{cmspath}','index.html','1','{style}/googlemap.htm','1226884666','100','0','{dede:list pagesize="500" col="1" titlelen="60" orderby="pubdate" orderway="desc"\t\nchannel="1" keyword=""}<url>\t\n<loc>[field:arcurl function="Gmapurl(@me)"/]</loc>\t\n<title>[field:title function="HtmlReplace(@me)"/]</title>\t\n<news:news>\t\n<news:keywords>[field:keywords/]</news:keywords>\t\n<news:publication_date>[field:senddate function="strftime('%Y-%m-%d',@me)"/]</news:publication_date>\t\n</news:news>\t\n</url>{/dede:list}','','');
+INSERT INTO `#@__freelist` VALUES ('1','测试文档','{listdir}/index_{listid}_{page}.html','{cmspath}/freelist/','index.html','1','{style}/list_free.htm','1289712633','100','0','{dede:list pagesize="30" col="1" titlelen="60" orderby="pubdate" orderway="desc" typeid="1" channel="1" }<li>[field:imglink/] [field:textlink/] <span class=info><small>日期：</small>[field:pubdate function="getdatemk(@me)"/] <small>浏览：</small>[field:click/] <small>好评：</small>[field:scores/] </span>\t\n<p class=intro>[field:description/]</p></li>{/dede:list}','测试','测试文档');
 
 INSERT INTO `#@__member_type` VALUES ('1','50','中级会员半年','100','30');
 
-INSERT INTO `#@__homepageset` VALUES ('{style}/index.htm','/index.html','0');
+INSERT INTO `#@__homepageset` VALUES ('{style}/index.htm','../index.html','0');
 
 INSERT INTO `#@__moneycard_type` VALUES ('1','100','30','金币套餐一'),
 ('2','200','55','金币套餐二'),
