@@ -35,8 +35,8 @@ input:focus,select:focus,textarea:focus{color:#6c757d;background:#fff;border-col
 .login-from{margin:5rem auto;width:500px}
 .login-box{padding:1.25rem;background:#fff}
 .login-box h2{margin:0;line-height:1.2;font-size:24px;font-weight:600;color:#343a40}
-.admin-head{padding:0 25px;width:100%;height:60px;background:linear-gradient(45deg,#1eb867,#009688 100%)}
-.admin-head .logo{float:left;height:60px;line-height:60px;width:200px}
+.admin-head{width:100%;height:60px;background:linear-gradient(45deg,#1eb867,#009688 100%)}
+.admin-head .logo{float:left;padding-left:25px;height:60px;line-height:60px;width:220px}
 .admin-head .logo .name a{font-size:18px;font-weight:600;color:#fff;vertical-align:middle}
 .admin-head .logo .version{margin-left:5px;font-size:12px;color:#fff;vertical-align:top}
 .admin-head .logo .btn-version{margin-left:5px}
@@ -44,7 +44,7 @@ input:focus,select:focus,textarea:focus{color:#6c757d;background:#fff;border-col
 .admin-head .item li a,.admin-head .user li a{color:#fff}
 .admin-head .item li a:hover,.admin-head .user li a:hover{color:#dee2e6}
 .admin-head .item .search{position:absolute;top:20px;right:20px;height:20px;line-height:20px;color:#6c757d;background:0;border:0}
-.admin-head .user{float:right;height:60px;line-height:60px}
+.admin-head .user{float:right;padding-right:25px;height:60px;line-height:60px}
 .admin-head .user li{float:left;padding:0 1rem;height:60px;line-height:60px}
 .admin-head .user li:last-child{padding-right:0}
 .admin-head .user li img{margin-right:0.5rem;width:30px;height:30px;border-radius:50%}
