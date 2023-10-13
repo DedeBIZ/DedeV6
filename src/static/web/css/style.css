@@ -91,7 +91,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .table{color:#6c757d}
 .table td,.table th{padding:0.5rem;vertical-align:middle}
 .form-control{display:inline-block;height:36px}
-.form-control,.fa,.dropdown-menu{font-size:14px!important;color:inherit}
+.form-control,.fa,.btn,.dropdown-menu{font-size:14px!important}
 .btn+.btn{margin-left:10px}
 .input-text{height:36px;line-height:36px}
 .thumbnail-md{max-width:280px;max-height:168px}
@@ -99,7 +99,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .admin-input-lg{width:60%}
 .admin-input-sm{width:160px}
 .admin-input-xs{width:60px}
-.navbar-toggler,.dropdown-menu,.breadcrumb,.cke_chrome,.cke_inner,.pagination,.form-control,.btn-md,.btn-sm,.alert,.rounded{border-radius:0.5rem!important}
+.navbar-toggler,.dropdown-menu,.breadcrumb,.cke_chrome,.cke_inner,.pagination,.form-control,.btn,.alert,.rounded{border-radius:0.5rem!important}
 .cke_top,.item-theme-img img,.list-article-img img,.article-hot-img img{border-radius:0.5rem 0.5rem 0 0!important}
 .cke_bottom,.list-article-radius{border-radius:0 0 0.5rem 0.5rem!important}
 .rounded-circle{border-radius:50%!important}
