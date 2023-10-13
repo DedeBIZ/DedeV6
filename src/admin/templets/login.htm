@@ -27,7 +27,8 @@
 					</div>
 					<div class="col-6 col-md-8">
 						<div class="d-flex justify-content-end text-right">
-							<a href="/" target="_blank"><i class="fa fa-home"></i> 网站首页</a>
+							<a href="https://www.dedebiz.com/service" target="_blank"><i class="fa fa-handshake-o"></i> 技术服务</a>
+							<a href="/" target="_blank" class="ml-3 d-none d-lg-block"><i class="fa fa-home"></i> 网站首页</a>
 						</div>
 					</div>
 				</div>
@@ -54,7 +55,7 @@
 							<label for="iptValidate">验证码</label>
 							<div class="input-group">
 								<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
-								<img src="/apps/vdimgck.php" onclick="this.src='/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
+								<img src="<?php echo $cfg_phpurl;?>/vdimgck.php" onclick="this.src='<?php echo $cfg_phpurl;?>/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
 							</div>
 						</div>
 						<div><button type="submit" class="btn btn-success btn-block">登录</button></div>

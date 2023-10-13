@@ -24,28 +24,28 @@
 	 			<table class="table mb-0">
 					<tr>
 						<td>网址：</td>
-						<td><input name="url" type="text" id="url" value="http://" size="30"></td>
+						<td><input name="url" type="text" id="url" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>网站名称：</td>
-						<td><input name="webname" type="text" id="webname" size="30"></td>
+						<td><input name="webname" type="text" id="webname" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>网站Logo：</td>
-						<td><input name="logo" type="text" id="logo" size="30">（88*31 gif或jpg）</td>
+						<td><input name="logo" type="text" id="logo" class="form-control">（88*31 gif或jpg）</td>
 					</tr>
 					<tr>
 						<td>网站简况：</td>
-						<td><textarea name="msg" cols="40" rows="4" id="msg"></textarea></td>
+						<td><textarea name="msg" id="msg" class="form-control"></textarea></td>
 					</tr>
 					<tr>
 						<td>邮箱：</td>
-						<td><input name="email" type="text" id="email" autocomplete="off" size="30"></td>
+						<td><input name="email" type="text" id="email" autocomplete="off" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>网站类型：</td>
 						<td>
-							<select name="typeid" id="typeid">
+							<select name="typeid" id="typeid" class="form-control">
 							<?php
 							$dsql->SetQuery("SELECT * FROM `#@__flinktype`");
 							$dsql->Execute();
@@ -60,8 +60,10 @@
 					<tr>
 						<td>验证码：</td>
 						<td>
-							<input name="validate" type="text" id="vdcode2" size="10" class="text-uppercase">
-							<img src="/apps/vdimgck.php" onclick="this.src=this.src+'?'" title="验证码">
+							<div class="input-group">
+								<input name="validate" type="text" id="vdcode2" class="form-control">
+								<img src="/apps/vdimgck.php" onclick="this.src=this.src+'?'" title="验证码" id="validateimg">
+							</div>
 						</td>
 					</tr>
 					<tr>
