@@ -24,10 +24,6 @@ if (empty($dopost)) {
         ShowMsg("请输入自由列表标题", "-1");
         exit();
     }
-    if (empty($channel)) {
-        showmsg("请选择一个限定模型", "-1");
-        exit();
-    }
     if (is_array($types)) {
         foreach ($types as $v) $ntype .= $v.' ';
     }
