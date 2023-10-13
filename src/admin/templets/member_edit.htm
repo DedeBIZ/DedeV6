@@ -55,8 +55,8 @@
 				<tr>
 					<td>钱包积分：</td>
 					<td>
-						<span class="mr-1">金币：<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>"></span>
-						<span class="mr-1">积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>"></span>
+						<span>金币：<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>"></span>
+						<span>积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>"></span>
 						<span>余额：<input type="text" name="user_money" id="user_money" class="admin-input-xs" value="<?php echo $row['user_money'];?>"></span>
 					</td>
 				</tr>
@@ -147,14 +147,14 @@
 				<tr>
 					<td>注册时间/地址：</td>
 					<td>
-						<span class="mr-1"><?php echo GetDateTimeMk($row['jointime'])?></span>
+						<span><?php echo GetDateTimeMk($row['jointime'])?></span>
 						<span><?php echo $row['joinip']?></span>
 					</td>
 				</tr>
 				<tr>
 					<td>最近时间/地址：</td>
 					<td>
-						<span class="mr-1"><?php echo GetDateTimeMk($row['logintime'])?></span>
+						<span><?php echo GetDateTimeMk($row['logintime'])?></span>
 						<span><?php echo $row['loginip']?></span>
 					</td>
 				</tr>

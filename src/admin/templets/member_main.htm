@@ -69,18 +69,18 @@
 					<td><input type="checkbox" name="mid" value="{dede:field.mid/}"></td>
 					<td>{dede:field.mid/}</td>
 					<td align="left">
-						<span class="mr-1"><?php if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img-sm'>";};echo ''.$fields['userid'].'';if ($fields['spacesta']==-2) echo " <span class='btn btn-outline-danger btn-sm'>禁言</span>";if ($fields['spacesta']==-1) echo " <span class='btn btn-outline-danger btn-sm'>未审核</span>";?></span>
+						<?php if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img-sm'>";};echo ' <span>'.$fields['userid'].'</span>';if ($fields['spacesta']==-2) echo ' <span class="btn btn-danger btn-sm">禁言</span>';if ($fields['spacesta']==-1) echo ' <span class="btn btn-danger btn-sm">未审核</span>';?>
 						<span>{dede:field.matt function="GetMAtt(@me)"/}</span>
 					</td>
 					<td>{dede:field.uname/}</td>
 					<td>{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</td>
 					<td>
-						<span class="mr-1">积分：{dede:field.scores/}</span>
-						<span class="mr-1">金币：{dede:field.money/}</span> 
+						<span>积分：{dede:field.scores/}</span>
+						<span>金币：{dede:field.money/}</span> 
 						<span>余额：{dede:field.user_money/}</span>
 					</td>
 					<td>
-						<span class="mr-1">{dede:field.loginip/}</span>
+						<span>{dede:field.loginip/}</span>
 						<span>{dede:field.logintime function="MyDate('Y-m-d H:i:s',@me)"/}</span>
 					</td>
 					<td>{dede:field.send_max/}</td>
