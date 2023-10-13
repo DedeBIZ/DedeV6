@@ -42,7 +42,7 @@ if (empty($comeback)) {
         <link rel="stylesheet" href="/static/web/css/admin.css">
     </head>
     <body  class="body-bg">
-        <div class="upload-bg shadow-sm">
+        <div class="upload-box shadow-sm">
             <table align="center" class="table icon">
                 <tr>
                     <td colspan="3">

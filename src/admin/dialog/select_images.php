@@ -62,7 +62,7 @@ if (!empty($iseditor)) {
         <script src="/static/web/js/jquery.min.js"></script>
     </head>
     <body class="body-bg">
-        <div class="upload-bg shadow-sm">
+        <div class="upload-box shadow-sm">
             <table align="center" class="table icon">
                 <tr>
                     <td colspan="3">
