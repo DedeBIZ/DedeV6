@@ -35,20 +35,19 @@ input:focus,select:focus,textarea:focus{color:#6c757d;background:#fff;border-col
 .login-from{margin:5rem auto;width:500px}
 .login-box{padding:1.25rem;background:#fff}
 .login-box h2{margin:0;line-height:1.2;font-size:24px;font-weight:600;color:#343a40}
-.admin-head{width:100%;height:60px;background:linear-gradient(45deg,#1eb867,#009688 80%)}
-.admin-head .logo{float:left;padding-left:30px;width:220px}
-.admin-head .logo .name a{float:left;height:60px;line-height:60px;font-size:18px;font-weight:600;color:#fff}
-.admin-head .logo .version a{float:left;height:60px;line-height:60px;font-size:18px;font-weight:600;color:#fff}
-.admin-head .logo .version{float:left;margin-top:18px;margin-left:5px;font-size:12px;color:#fff}
-.admin-head .item ul li{float:left;position:relative;padding-left:30px;height:60px;line-height:60px}
-.admin-head .item ul li:first-child{padding-left:1rem}
-.admin-head .item ul li a,.admin-head .user ul li a{color:#fff}
-.admin-head .item ul li a:hover,.admin-head .user ul li a:hover{color:#dee2e6}
-.admin-head .item .search{position:absolute;top:20px;right:5px;height:20px;line-height:20px;color:#6c757d;background:0;border:0}
-.admin-head .user{float:right;margin-right:30px;height:60px;line-height:60px}
-.admin-head .user img{margin-right:0.5rem;width:30px;height:30px;border-radius:50%}
-.admin-head .user ul li{float:left;padding-left:30px;height:60px;line-height:60px}
-.admin-head .user ul li:first-child{padding-left:0}
+.admin-head{width:100%;height:60px;background:linear-gradient(45deg,#1eb867,#009688 100%)}
+.admin-head .logo{float:left;padding-left:20px;height:60px;line-height:60px;width:220px}
+.admin-head .logo .name a{font-size:18px;font-weight:600;color:#fff;vertical-align:middle}
+.admin-head .logo .version{margin-left:5px;font-size:12px;color:#fff;vertical-align:top}
+.admin-head .logo .btn-version{margin-left:5px}
+.admin-head .item li{float:left;position:relative;padding:0 1rem;height:60px;line-height:60px}
+.admin-head .item li a,.admin-head .user li a{color:#fff}
+.admin-head .item li a:hover,.admin-head .user li a:hover{color:#dee2e6}
+.admin-head .item .search{position:absolute;top:20px;right:20px;height:20px;line-height:20px;color:#6c757d;background:0;border:0}
+.admin-head .user{float:right;margin-right:20px;height:60px;line-height:60px}
+.admin-head .user li{float:left;padding:0 1rem;height:60px;line-height:60px}
+.admin-head .user li:last-child{padding-right:0}
+.admin-head .user li img{margin-right:0.5rem;width:30px;height:30px;border-radius:50%}
 body.menu-hide .menu-left{display:none}
 body.menu-hide .body-right{left:0;transition:all 0.5s}
 body.menu-show .menu-left{display:block}
@@ -91,8 +90,8 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .quickselfoot{padding:0.5rem;background:#f5f5f5;border-top:1px solid #dee2e6}
 .mysource,.mywriter{width:300px;background:#fff;border:1px solid #dee2e6;z-index:10001}
 .column .admin-td{border-bottom:1px solid #dee2e6!important}
-.add-tab ul li{float:left;width:60px;line-height:30px;cursor:pointer}
 .add-tab ul .active{color:#007bff}
+.add-tab li{float:left;width:60px;line-height:30px;cursor:pointer}
 .nw{float:left;width:160px}
 .cls{clear:both}
 .helpinfo{float:left;display:none;padding:10px;width:100%;background:#f5f5f5;border:1px solid #dee2e6;border-radius:0.5rem}
@@ -116,7 +115,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .list-group-item{padding:0.5rem 0}
 .modal-title{font-size:16px}
 .card-header{padding:0.5rem 1rem}
-.card-body{padding:0.5rem}
+.card-body{padding:0.5rem;overflow-x:auto}
 .card-body canvas{height:360px!important}
 .fileinput-button{display:inline-block;position:relative;overflow:hidden}
 .fileinput-button input{position:absolute;top:0;right:0;margin:0;opacity:0;direction:ltr;cursor:pointer}
@@ -146,7 +145,6 @@ table,input,select,textarea,.login-box,.colordlg,.pubdlg,.quickselitem .topcat,.
 .btn-sm{padding:0.375rem 0.6rem;height:30px;line-height:1.5;font-size:12px}
 .btn-xs{padding:0.22rem;height:20px;line-height:1;font-size:12px;border-radius:0.35rem!important}
 .btn+.btn{margin-left:10px}
-.btn-version{float:left;margin-top:18px;margin-left:5px}
 #validateimg{border-radius:0 0.5rem 0.5rem 0;cursor:pointer}
 #wrap{padding:10px}
 #topbar{padding:10px 0;border-bottom:1px solid #ccc;text-align:right}
@@ -167,10 +165,10 @@ table,input,select,textarea,.login-box,.colordlg,.pubdlg,.quickselitem .topcat,.
 #browsehappy{padding:1rem 30px;color:#856404;background:#fff3cd}
 .browsehappy-close{float:right;cursor:pointer}
 @media (min-width:1200px){
-.web-info{text-overflow:ellipsis;white-space:nowrap}
 .modal-dialog{max-width:500px}
 }
 @media (max-width:768px){
+td{text-overflow:ellipsis;white-space:nowrap}
 .install-box,.login-from,.tips-box{width:100%}
 .tips{padding:0 1rem}
 }

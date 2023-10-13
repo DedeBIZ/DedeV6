@@ -30,11 +30,11 @@
 	<div class="feedbacks">
 		{dede:feedback}
 		<div class="media pt-3">
-			<a href="[field:userurl/]" target="_blank"><img src="[field:face/]" class="face mr-3"></a>
+			<a href="[field:userurl/]"><img src="[field:face/]" class="face mr-3"></a>
 			<div class="media-body">
 				<div class="feedback-infos pb-3">
 					<div class="feedback-basic">
-						<a href="[field:userurl/]" target="_blank"><span>[field:username function="(@me=='guest' ? '游客' : @me)"/]</span></a>
+						<a href="[field:userurl/]"><span>[field:username function="(@me=='guest' ? '游客' : @me)"/]</span></a>
 						<span>[field:dtime function="MyDate('Y-m-d',@me)"/]</span>
 					</div>
 					<div class="feedback-action pb-3">

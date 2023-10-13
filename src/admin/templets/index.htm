@@ -21,7 +21,7 @@
 		<?php }?>
 		<div class="admin-head shadow-sm">			
 			<div class="logo">
-				<span class="name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
+				<span class="name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,10);?></a></span>
 				<span class="version"><?php echo $cfg_version_detail;?></span>
 				<?php if (DEDEBIZ_SAFE_MODE) {?>
 				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs btn-version">安全</a>
@@ -29,7 +29,7 @@
 				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs btn-version">开发</a>
 				<?php }?>
 			</div>
-			<div class="item">
+			<nav class="item">
 				<ul>
 					<li><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
 					<?php if ($cuserLogin->getUserType() >= 10) {?>
@@ -49,7 +49,7 @@
 						</form>
 					</li>
 				</ul>
-			</div>
+			</nav>
 			<div class="user">
 				<ul>
 					<li class="d-none d-lg-block"><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType() == 10){echo "<span class='btn btn-success btn-xs ml-2'>管理员</span>";} else if ($cuserLogin->getUserType() == 5) {echo "<span class='btn btn-success btn-xs ml-2'>栏目员</span>";} else {echo "<span class='btn btn-success btn-xs ml-2'>文档员</span>";}?></a></li>

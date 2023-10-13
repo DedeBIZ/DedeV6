@@ -31,7 +31,7 @@
 							<h1>{dede:field.title/}</h1>
 						</div>
 						<div class="meta py-3">
-							<a href="{dede:field.userurl/}" target="_blank"><span><img src="{dede:field.face/}" class="user-img-xs mr-1">{dede:field.uname/}</span></a>
+							<a href="{dede:field.userurl/}"><span><img src="{dede:field.face/}" class="user-img-xs mr-1">{dede:field.uname/}</span></a>
 							<span><i class="fa fa-calendar mr-1"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
 							<span><i class="fa fa-globe mr-1"></i>{dede:field.source/}</span>
 							<span><i class="fa fa-user mr-1"></i>{dede:field.writer/}</span>
@@ -61,9 +61,9 @@
 							<div class="col-md-8">
 								<div class="row actbox">
 									<ul>
-										<li><i class="fa fa-star-o mr-2"></i><a href="{dede:global.cfg_phpurl/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
+										<li><i class="fa fa-star-o mr-2"></i><a href="{dede:global.cfg_phpurl/}/stow.php?aid={dede:field.id/}">收藏</a></li>
 										<li><i class="fa fa-bug mr-2"></i><a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a></li>
-										<li><i class="fa fa-thumbs-o-up mr-2"></i><a href="{dede:global.cfg_phpurl/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
+										<li><i class="fa fa-thumbs-o-up mr-2"></i><a href="{dede:global.cfg_phpurl/}/recommend.php?aid={dede:field.id/}">推荐</a></li>
 										<li><i class="fa fa-print mr-2"></i><a href="javascript:;" onclick="window.print();">打印</a></li>
 									</ul>
 								</div>

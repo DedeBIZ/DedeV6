@@ -69,17 +69,17 @@
 				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
 					<article class="item-theme bg-white shadow-sm rounded">
-						<div class="item-theme-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
+						<div class="item-theme-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
 						<div class="item-theme-box">
-							<h5 class="title mb-3"><a href="[field:arcurl/]" target="_blank">[field:flag runphp='yes']if (stristr(@me,"h")) @me="<span class='btn btn-success btn-sm mr-2'>头条</span>";else if(stristr(@me,"c")) @me="<span class='btn btn-success btn-sm mr-2'>推荐</span>";else @me="";[/field:flag][field:title/]</a></h5>
+							<h5 class="title mb-3"><a href="[field:arcurl/]">[field:flag runphp='yes']if (stristr(@me,"h")) @me="<span class='btn btn-success btn-sm mr-2'>头条</span>";else if(stristr(@me,"c")) @me="<span class='btn btn-success btn-sm mr-2'>推荐</span>";else @me="";[/field:flag][field:title/]</a></h5>
 							<div class="row">
 								<div class="col-4 text-left text-danger">
 									<i class="fa fa-download mr-1"></i>
 									<span><script src="{dede:global.cfg_phpurl/}/disdls.php?aid=[field:id/]"></script></span>
 								</div>
 								<div class="col-8 text-right">
-									<a href="[field:userurl/]" target="_blank"><img src="[field:face/]" class="user-img-xs mr-1"></a>
-									<a href="[field:userurl/]" target="_blank"><span>[field:uname/]</span></a>
+									<a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1"></a>
+									<a href="[field:userurl/]"><span>[field:uname/]</span></a>
 								</div>
 							</div>
 						</div>
@@ -96,11 +96,11 @@
 				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
 					<article class="item-news bg-white shadow-sm rounded">
-						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
-						<div class="title"><h5><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h5></div>
+						<div class="item-news-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<div class="title"><h5><a href="[field:arcurl/]">[field:title/]</a></h5></div>
 						<div class="meta mb-3">
-							<a href="[field:userurl/]" target="_blank"><img src="[field:face/]" class="user-img-xs mr-1"></a>
-							<a href="[field:userurl/]" target="_blank"><span class="mr-1">[field:uname/]</span></a>
+							<a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1"></a>
+							<a href="[field:userurl/]"><span class="mr-1">[field:uname/]</span></a>
 							<i class="fa fa-calendar mr-1"></i>
 							<span>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 						</div>

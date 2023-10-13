@@ -29,11 +29,11 @@
 					<div class="row">{dede:list pagesize='10'}
 						<div class="col-md-6 mb-3">
 							<article class="list-article rounded mb-3">
-								<div class="list-article-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
-								<div class="list-article-body bg-white shadow-sm p-3">
+								<div class="list-article-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
+								<div class="list-article-body list-article-radius bg-white shadow-sm p-3">
 									<h2 class="mb-3"><a href="[field:arcurl/]">[field:title/]</a></h2>
 									<div class="mb-3">
-										<a href="[field:userurl/]" target="_blank"><span class="mr-3"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</span></a>
+										<a href="[field:userurl/]"><span class="mr-3"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</span></a>
 										<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 									</div>
 									<p class="mb-3">[field:description function="cn_substr(@me,120)"/]...</p>

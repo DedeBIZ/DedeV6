@@ -26,7 +26,7 @@
 						</nav>
 						<div class="alert alert-success">您申请购买的产品如下，确认无误后请点击购买并支付按钮，进行网上支付，如果支付失败，请与管理员联系其它支付方式</div>
 						<h3 class="py-3">订单确认</h3>
-						<form method="post" name="E_FORM" action="buy_action.php" target="_blank">
+						<form method="post" name="E_FORM" action="buy_action.php">
 							<input type="hidden" name="pd_encode" value="<?php echo $pr_encode;?>">
 							<input type="hidden" name="pd_verify" value="<?php echo $pr_verify;?>">
 							<input type="hidden" name="aid" value="<?php echo $buyid;?>">

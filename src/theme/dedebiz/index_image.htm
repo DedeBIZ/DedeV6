@@ -32,11 +32,11 @@
 				</div>{dede:arclist row='3' orderby='rand'}
 				<div class="col-md-4">
 					<article class="item-news bg-white shadow-sm rounded">
-						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
-						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
+						<div class="item-news-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<h4><a href="[field:arcurl/]">[field:title/]</a></h4>
 						<div class="mb-3">
-							<a href="[field:userurl/]" target="_blank"><img src="[field:face/]" class="user-img-xs mr-1"></a>
-							<a href="[field:userurl/]" target="_blank"><span class="mr-1">[field:uname/]</span></a>
+							<a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1"></a>
+							<a href="[field:userurl/]"><span class="mr-1">[field:uname/]</span></a>
 							<i class="fa fa-calendar mr-1"></i>
 							<span>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 						</div>
