@@ -132,11 +132,11 @@ if (!empty($iseditor)) {
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
-                        if ($file == $comeback) $lstyle = "class='text-danger'";
+                        if ($file == $comeback) $lstyle = "text-danger";
                         else  $lstyle = "";
                         $line = "<tr>
                         <td>
-                            <a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg\" $lstyle><img src='$reurl' title='$file'> $file</a>
+                            <a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg $lstyle\"><img src='$reurl' title='$file'> $file</a>
                         </td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
@@ -146,10 +146,10 @@ if (!empty($iseditor)) {
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
-                        if ($file == $comeback) $lstyle = "class='text-danger'";
+                        if ($file == $comeback) $lstyle = "text-danger";
                         else  $lstyle = "";
                         $line = "<tr>
-                        <td><a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg\" $lstyle><img src='$reurl' title='$file'> $file</a></td>
+                        <td><a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg $lstyle\"><img src='$reurl' title='$file'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
