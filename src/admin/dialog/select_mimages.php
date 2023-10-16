@@ -19,7 +19,7 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
     <body>
         <div id="wrap">
             <div id="topbar">
-                <label class="mr-2"><input type="checkbox" name="isWater" id="isWater" <?php if ($photo_markup == '1') echo "checked";?>> 是否水印</label>
+                <label><input type="checkbox" name="isWater" id="isWater" <?php if ($photo_markup == '1') echo "checked";?>> 是否水印</label>
                 <button class="btn btn-success btn-sm addfile">添加图片</button>
                 <button class="btn btn-success btn-sm removeall">清空图片</button>
                 <button class="btn btn-success btn-sm upall">全部上传</button>
