@@ -45,9 +45,9 @@
 										<td><?php echo $fields['typename'];?></td>
 										<td>
 											<?php
-											if ($fields['arcrank']>=0) echo '<span class="btn btn-outline-success btn-sm">已审核</span>';
-											else if ($fields['arcrank']==-2) echo '<span class="btn btn-outline-danger btn-sm">审核失败</span>';
-											else echo '<span class="btn btn-outline-danger btn-sm">未审核</span>';
+											if ($fields['arcrank'] >= 0) echo '已审核';
+											else if ($fields['arcrank'] == -2) echo '审核失败';
+											else echo '未审核';
 											?>
 										</td>
 										<td><?php echo GetDateMk($fields['senddate']);?></td>

@@ -19,8 +19,8 @@
 				<?php 
 				if (!empty($fields)) {
 					$allowhtml = array('htmltext');
-					$fields['sta'] = $fields['ifcheck'] == 1 ? '<span class="btn btn-success btn-sm">已审核</span>':'<span class="btn btn-danger btn-sm">未审核</span>';
-					echo '<tr bgcolor="#e9ecef"><td width="16%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="ml-2">表单'.$fields['id'].'</a></td><td align="right">'.$fields['sta'].'<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i></a></td></tr>';
+					$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
+					echo '<tr bgcolor="#e9ecef"><td width="16%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"><span>'.$fields['id'].'表单'.$fields['sta'].'</span></td><td align="right"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i></a></td></tr>';
 					foreach($fieldlist as $field=>$fielddata)
 					{
 						if ($fields[$field]=='') continue;
@@ -36,10 +36,10 @@
 				{/dede:datalist}
 				<tr>
 					<td colspan="3">
-						<input type="button" name="select" onclick="selAll()" class="btn btn-success btn-sm" value="全选">
-						<input type="button" name="select" onclick="noSelAll()" class="btn btn-success btn-sm mr-2" value="取消">
 						<label class="mr-2"><input type="radio" name="action" value="check"> 审核</label>
 						<label class="mr-2"><input type="radio" name="action" value="delete"> 删除</label>
+						<input type="button" name="select" onclick="selAll()" class="btn btn-success btn-sm" value="全选">
+						<input type="button" name="select" onclick="noSelAll()" class="btn btn-success btn-sm" value="取消">
 						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
 						<a href="<?php echo $cfg_phpurl;?>/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
 					</td>

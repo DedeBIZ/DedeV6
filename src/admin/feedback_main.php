@@ -16,7 +16,7 @@ require_once(DEDEINC."/typelink/typelink.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 function IsCheck($st)
 {
-    return $st == 1 ? '<span class="btn btn-success btn-sm">已审核</span>' : '<span class="btn btn-warning btn-sm">未审核</span>';
+    return $st == 1 ? '已审核':'未审核';
 }
 function jsTrimjajx($str, $len)
 {
