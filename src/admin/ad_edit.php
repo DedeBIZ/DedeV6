@@ -21,8 +21,8 @@ if ($dopost == 'delete') {
 } else if ($dopost == "gettag") {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $row = $dsql->GetOne("SELECT tagname from `#@__myad` WHERE aid='$aid' ");
-    $tagcode = '{'."dede:myad name='{$row['tagname']}'/".'} <script src="{$cfg_phpurl}/ad_js.php?aid=$aid"></script>';
-    $showhtml = "<p>两种标签调用示例</p><xmp>$tagcode</xmp>";
+    $tagcode = "{dede:myad name='{$row['tagname']}'/} <script src='{$cfg_phpurl}/ad_js.php?aid=$aid'></script>";
+    $showhtml = "<p>2种标签调用示例</p><xmp>$tagcode</xmp>";
     $showhtml .= "<p>前台调用效果</p><iframe name='testfrm' frameborder='0' src='ad_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='350'></iframe>";
     $wecome_info = "<a href='ad_main.php'>广告管理</a> - 调用实例";
     $win = new OxWindow();
