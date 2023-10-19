@@ -19,7 +19,7 @@
 		<script src="/static/web/js/admin.main.js"></script>
 		<script>
 			function checkSubmit() {
-				if (document.form1.title.value == '') {
+				if (document.form1.title.value == "") {
 					ShowMsg("请输入专题标题");
 					return false;
 				}
@@ -33,7 +33,7 @@
 			function CheckVal(id) {
 				var notename = $DE('notename' + id);
 				var arcid = $DE('arcid' + id);
-				if (arcid.value != "") {
+				if (arcid.value != '') {
 					if (notename.value == "") {
 						$DE('notename' + id).focus();
 						ShowMsg('请输入' + id + '名称');
@@ -61,7 +61,7 @@
 			<input type="hidden" name="channelid" value="<?php echo $channelid?>">
 			<input type="hidden" name="arcrank" value="0">
 			<input type="hidden" name="source" value="本站">
-			<table width="98%" align="center" id="needset" class="maintable my-3">
+			<table width="98%" align="center" class="maintable my-3">
 				<tr>
 					<td bgcolor="#f5f5f5" class="admin-td">发布专题</td>
 				</tr>

@@ -92,11 +92,11 @@
 				var str = '';
 				for (var i = 0; i < document.getElementsByName('aids').length; i++) {
 					if (document.getElementsByName('aids')[i].checked) {
-						if (str == '') str += document.getElementsByName('aids')[i].value;
+						if (str == "") str += document.getElementsByName('aids')[i].value;
 						else str += ',' + document.getElementsByName('aids')[i].value;
 					}
 				}
-				if (str == '') {
+				if (str == "") {
 					ShowMsg('您没选择任何文档');
 					return false;
 				} else {
