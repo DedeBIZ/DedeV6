@@ -114,7 +114,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .icon img{width:20px;height:20px}
 .list-group-item{padding:0.5rem 0}
 .modal-title{font-size:16px}
-.card-header{padding:0.5rem 1rem}
+.card-header{padding:0.5rem 1rem;background-color:rgba(0,0,0,.02)}
 .card-body{padding:0.5rem}
 .card-body canvas{height:360px!important}
 .fileinput-button{display:inline-block;position:relative;overflow:hidden}

@@ -167,7 +167,7 @@ class OxWindow
         if ($wintype != "") {
             if ($wintype != "hand") {
                 $this->myWin .= "<tr>
-                    <td bgcolor='#f5f5f5' colspan='2' align='center'>
+                    <td bgcolor='#f8fafb' colspan='2' align='center'>
                     <button type='submit' class='btn btn-success btn-sm'>$tt</button>
                     <button type='button' class='btn btn-outline-success btn-sm' onclick='history.go(-1);'>返回</button>
                     </td>
@@ -178,7 +178,7 @@ class OxWindow
                         <td>$msg</td>
                     </tr>
                     <tr>
-                        <td bgcolor='#f5f5f5' colspan='2' align='center'><button type='button' class='btn btn-success btn-sm' onclick='history.go(-1);'>返回</button></td>
+                        <td bgcolor='#f8fafb' colspan='2' align='center'><button type='button' class='btn btn-success btn-sm' onclick='history.go(-1);'>返回</button></td>
                     </tr>";
                 } else {
                     $this->myWin .= '';

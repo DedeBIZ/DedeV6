@@ -26,7 +26,7 @@ if (empty($dopost)) {
         </td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=1' class='btn btn-success btn-sm'>开始检测</a></td>
+        <td bgcolor='#f8fafb' align='center'><a href='sys_repair.php?dopost=1' class='btn btn-success btn-sm'>开始检测</a></td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
@@ -47,7 +47,7 @@ else if ($dopost == 1) {
             3、列表显示数据目与实际文档数不一致
         </td>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=2' class='btn btn-success btn-sm'>下一步</a></td>
+        <td bgcolor='#f8fafb' align='center'><a href='sys_repair.php?dopost=2' class='btn btn-success btn-sm'>下一步</a></td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
@@ -112,7 +112,7 @@ else if ($dopost == 2) {
         <td>{$msg}</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'>{$errall}</td>
+        <td bgcolor='#f8fafb' align='center'>{$errall}</td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
@@ -158,7 +158,7 @@ else if ($dopost == 3) {
         <td>完成所有修复操作，移除错误记录{$errnum}条</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='index_body.php' class='btn btn-success btn-sm'>完成修复</a></td>
+        <td bgcolor='#f8fafb' align='center'><a href='index_body.php' class='btn btn-success btn-sm'>完成修复</a></td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);

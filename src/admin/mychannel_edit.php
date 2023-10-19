@@ -136,7 +136,7 @@ if ($dopost == "show") {
         <td>文档模型规则出错</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        <td bgcolor='#f8fafb' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
     </tr>");
     $fields = array();
     foreach ($dtp->CTags as $ctag) {
@@ -148,7 +148,7 @@ if ($dopost == "show") {
             <td>文档模型规则出错</td>
         </tr>
         <tr>
-            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+            <td bgcolor='#f8fafb' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
         </tr>");
     }
     //正常的导入过程
@@ -159,7 +159,7 @@ if ($dopost == "show") {
             <td>已经存在相同的{$fields['nid']}模型</td>
         </tr>
         <tr>
-            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+            <td bgcolor='#f8fafb' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
         </tr>");
     }
     //创建表
@@ -179,7 +179,7 @@ if ($dopost == "show") {
             <td>创建数据表失败：{$dsql->GetError()}</td>
         </tr>
         <tr>
-            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+            <td bgcolor='#f8fafb' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
         </tr>");
         exit();
     }
@@ -199,7 +199,7 @@ if ($dopost == "show") {
         <td>导入文档模型时发生错误：{$dsql->GetError()}</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        <td bgcolor='#f8fafb' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
     </tr>");
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
@@ -229,7 +229,7 @@ if ($dopost == "show") {
         <td>成功导入一个文档模型</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        <td bgcolor='#f8fafb' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
     </tr>");
 } else if ($dopost == "copysave") {
     $cid = intval($cid);

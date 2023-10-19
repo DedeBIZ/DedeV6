@@ -268,7 +268,7 @@ else if ($dopost == "checkArchives") {
             <td class="admin-td"><input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"></td>
         </tr>
         <tr>
-            <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
+            <td bgcolor="#f8fafb" colspan="2" align="center" class="py-2">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
                 <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
             </td>
@@ -541,7 +541,7 @@ else if ($dopost == 'quickEdit') {
         <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
+        <td bgcolor="#f8fafb" colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>
@@ -778,7 +778,7 @@ else if ($dopost == 'attsDlg') {
         <td class="admin-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
     </tr>
     <tr>
-        <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
+        <td bgcolor="#f8fafb" colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>

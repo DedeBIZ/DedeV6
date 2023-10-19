@@ -101,9 +101,9 @@ else if ($dopost == 'search') {
     $configstr = <<<EOT
 <table align="center" id="tdSearch" class="table maintable my-3">
     <tr>
-        <td bgcolor="#f5f5f5" colspan="3">系统设置搜索</td>
+        <td bgcolor="#f8fafb" colspan="3">系统设置搜索</td>
     </tr>
-    <tr bgcolor="#e9ecef" align="center">
+    <tr bgcolor="#f8f9fa" align="center">
         <td width="360">参数说明</td>
         <td>参数值</td>
         <td width="260">变量名</td>
@@ -146,7 +146,7 @@ EOT;
 exit;
 }
 if ($i == 1) {
-    echo '<tr><td bgcolor="#f5f5f5" colspan="3" align="center">搜索不到参数</td></tr></table>';
+    echo '<tr><td bgcolor="#f8fafb" colspan="3" align="center">搜索不到参数</td></tr></table>';
 }
 exit;
 } else if ($dopost == 'make_encode') {

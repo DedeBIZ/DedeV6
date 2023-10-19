@@ -127,7 +127,7 @@ if ($dopost != 'save') {
     ClearMyAddon($arcID, $title);
     //返回成功信息
     $msg = "<tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改分类文档</a><a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>管理分类文档</a>$backurl</td>
+        <td bgcolor='#f8fafb' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改分类文档</a><a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>管理分类文档</a>$backurl</td>
     </tr>";
     $wintitle = "成功发布分类文档";
     $wecome_info = "文档管理 - 发布分类文档";
