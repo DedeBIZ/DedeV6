@@ -224,7 +224,7 @@ if ($action == '') {
     if (!isset($autodel) || $autodel == 0) $dm->WriteSystemFile($hash, 'uninstall');
     $dm->WriteSystemFile($hash, 'readme');
     $dm->Clear();
-    //用模块的程序安装安装
+    //用模块的程序安装
     if (!isset($autosetup) || $autosetup == 0) {
         include(DEDEDATA.'/module/'.$filename);
         exit();
@@ -438,7 +438,7 @@ if ($action == '') {
     } else {
         $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
     }
-    $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-warning btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='module_main.php?action=setup&hash={$hash}' class='btn btn-warning btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-outline-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='module_main.php?action=setup&hash={$hash}' class='btn btn-outline-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a>";
     $win = new OxWindow();
     $win->Init("", "/static/web/js/admin.blank.js", "");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - {$infos['name']}";
