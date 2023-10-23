@@ -50,9 +50,9 @@
 									while($trow = $dsql->GetObject())
 									{
 										if (preg_match("#".$trow->att."#", $addRow['flag']))
-											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
 										else
-											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
 									}
 									?>
 								</td>
