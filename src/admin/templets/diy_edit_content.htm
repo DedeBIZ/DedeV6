@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>修改自定义表单数据</title>
+		<title>修改<?php echo $diy->name;?>数据</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
@@ -14,7 +14,7 @@
 			<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 			<table align="center" class="table maintable my-3">
 				<tr>
-					<td bgcolor="#f8fafb" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">自定义表单管理</a> - 修改自定义表单数据</td>
+					<td bgcolor="#f8fafb" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">自定义表单管理</a> - 修改<?php echo $diy->name;?>数据</td>
 				</tr>
 				<?php
 				$formfields = '';

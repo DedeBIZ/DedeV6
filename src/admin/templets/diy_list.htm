@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo $diy->name;?></title>
+		<title><?php echo $diy->name;?>列表</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
@@ -13,14 +13,14 @@
 			<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 			<table align="center" class="table maintable my-3">
 				<tr>
-					<td colspan="3" bgcolor="#f8fafb">自定义表单管理</a> - <?php echo $diy->name;?></td>
+					<td colspan="2" bgcolor="#f8fafb">自定义表单管理</a> - <?php echo $diy->name;?>列表</td>
 				</tr>
 				{dede:datalist}
 				<?php 
 				if (!empty($fields)) {
 					$allowhtml = array('htmltext');
 					$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
-					echo '<tr bgcolor="#f8f9fa">
+					echo '<tr>
 						<td width="16%">
 							<label><input type="checkbox" name="id[]" value="'.$fields['id'].'"> '.$fields['id'].'表单'.$fields['sta'].'</label>
 						</td>
@@ -28,10 +28,10 @@
 							<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i></a>
 						</td>
 					</tr>';
-					foreach($fieldlist as $field=>$fielddata)
+					foreach($fieldlist as $field => $fielddata)
 					{
-						if ($fields[$field]=='') continue;
-						if (!in_array($fielddata[1],$allowhtml)) {
+						if ($fields[$field] == '') continue;
+						if (!in_array($fielddata[1], $allowhtml)) {
 							$fields[$field] = dede_htmlspecialchars($fields[$field]);
 						}
 						echo '<tr><td>'.$fielddata[0].'</td><td>'.$fields[$field].'</td></tr>';
@@ -42,7 +42,7 @@
 				?>
 				{/dede:datalist}
 				<tr>
-					<td colspan="3">
+					<td colspan="2">
 						<label><input type="radio" name="action" value="check"> 审核</label>
 						<label><input type="radio" name="action" value="delete"> 删除</label>
 						<button type="button" name="select" onclick="selAll()" class="btn btn-success btn-sm">全选</button>
@@ -52,18 +52,18 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" bgcolor="#f8fafb">{dede:pagelist listsize='6'/}</td>
+					<td colspan="2" bgcolor="#f8fafb">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
 		<script>
-		function selAll(){
+		function selAll() {
 			var a = document.getElementsByTagName("input");
 			for (var i = 0; i < a.length; i++){
 				if (a[i].type == "checkbox") a[i].checked = true;
 			}
 		}
-		function noSelAll(){
+		function noSelAll() {
 			var a = document.getElementsByTagName("input");
 			for (var i = 0; i < a.length; i++){
 				if (a[i].type == "checkbox") a[i].checked = false;
