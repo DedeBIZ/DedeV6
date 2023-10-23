@@ -116,7 +116,7 @@ else if ($open == 2) {
             if ($islocal == 1 && $softconfig['islocal'] != 1) continue;
             //支持http、迅雷下载、ftp、flashget
             if (!preg_match("#^http:\/\/|^thunder:\/\/|^ftp:\/\/|^flashget:\/\/#i", $link)) {
-                $link = $cfg_mainsite.$link;
+                $link = $link;
             }
             $dbhash = substr(md5($link), 0, 24);
             if ($uhash == $dbhash) $softUrl = $link;

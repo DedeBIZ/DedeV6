@@ -36,7 +36,7 @@
 							<span><i class="fa fa-user mr-1"></i>{dede:field.writer/}</span>
 							<span><i class="fa fa-eye mr-1"></i><script src="{dede:global.cfg_phpurl/}/count.php?view=yes&aid={dede:field.id/}&mid={dede:field name='mid'/}"></script>次</span>
 						</div>
-						<div class="img py-3">{dede:field name='image'/}</div>
+						<div class="img py-3">{dede:field.image/}</div>
 						<div class="info py-3">
 							<p>软件类型：{dede:field.softtype/}</p>
 							<p>授权方式：{dede:field.accredit/}</p>
@@ -50,11 +50,11 @@
 							<p>演示网址：{dede:field.officialdemo/}</p>
 							<p>下载次数：<script src="{dede:field.phpurl/}/disdls.php?aid={dede:field.id/}"></script></p>
 						</div>
-						<div class="tips py-3">{dede:field name='introduce'/}</div>
+						<div class="tips py-3">{dede:field.introduce/}</div>
 						<div class="download py-3">
 							<h4>下载地址</h4>
 							<ul class="downurllist">
-								{dede:field name='softlinks'/}
+								{dede:field.softlinks/}
 							</ul>
 						</div>
 						<div class="alert alert-success my-3">{dede:softmsg/}</div>

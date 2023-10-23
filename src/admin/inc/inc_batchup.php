@@ -106,7 +106,7 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
     if ($arcRow['ismake'] == -1 || $arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0 || $arcRow['money'] > 0) {
         return TRUE;
     }
-    //强制转换非多站点模式，以便统一方式获得实际HTML文件
+    //强制转换非多站点模式，以便统一方式获得实际网页文件
     $GLOBALS['cfg_multi_site'] = 'N';
     $arcurl = GetFileUrl(
         $arcRow['aid'],

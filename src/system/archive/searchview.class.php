@@ -570,9 +570,9 @@ class SearchView
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
                         $row['litpic'] = '/static/web/img/thumbnail.jpg';
                     }
-                    if (!preg_match("/^(http|https):\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                    /*if (!preg_match("/^(http|https):\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
-                    }
+                    }*/
                     $row['picname'] = $row['litpic'];
                     $row["typeurl"] = GetTypeUrl($row["typeid"], $row["typedir"], $row["isdefault"], $row["defaultname"], $row["ispart"], $row["namerule2"], $row["moresite"], $row["siteurl"], $row["sitepath"]);
                     $row["info"] = $row["description"];

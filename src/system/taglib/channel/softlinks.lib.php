@@ -54,7 +54,6 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
         $sites = explode("\n", trim($row['sites']));
         foreach ($sites as $site) {
             if (trim($site) == '') continue;
-
             @list($link, $serverName, $serverType) = explode('|', $site);
             $sertype_arr[trim($serverName)] = trim($serverType);
         }
@@ -72,7 +71,7 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
             if ($islocal == 1 && $row['islocal'] != 1) continue;
             //支持http,迅雷下载,ftp,flashget
             if (!preg_match("#^http:\/\/|^thunder:\/\/|^ftp:\/\/|^flashget:\/\/#i", $link)) {
-                $link = $GLOBALS['cfg_mainsite'].$link;
+                $link = $link;
             }
             $downloads = getDownloads($link);
             $uhash = substr(md5($link), 0, 24);
@@ -86,8 +85,7 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
         }
     }
     $dtp->Clear();
-    //获取镜像功能的地址
-    //必须设置为：[根据本地地址和服务器列表自动生成] 的情况
+    //获取镜像功能的地址，必须设置为：根据本地地址和服务器列表自动生成
     $linkCount = 1;
     if ($row['ismoresite'] == 1 && $row['moresitedo'] == 1 && trim($row['sites']) != '' && isset($firstLink)) {
         $firstLink = preg_replace("#http:\/\/([^\/]*)\/#i", '/', $firstLink);

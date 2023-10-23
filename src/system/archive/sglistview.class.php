@@ -433,9 +433,9 @@ class SgListView
             if ($row['litpic'] == '-' || $row['litpic'] == '') {
                 $row['litpic'] = '/static/web/img/thumbnail.jpg';
             }
-            if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+            /*if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                 $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
-            }
+            }*/
             $row['picname'] = $row['litpic'];
             $row['pubdate'] = $row['senddate'];
             $row['stime'] = GetDateMK($row['pubdate']);

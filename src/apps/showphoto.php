@@ -62,17 +62,17 @@ if ($cfg_multi_site == 'Y') {
     if (!preg_match("/^(http|https):/i", $nextSrc) && !empty($nextSrc)) $nextSrc = $cfg_basehost.$nextSrc;
 }
 if ($preSrc != '') {
-    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($preSrc)."&npos=".($npos - 1)."'>&lt;&lt;上一幅图片</a> ";
+    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($preSrc)."&npos=".($npos - 1)."'>上一幅图片</a> ";
 } else {
-    $pageGuide .= "这是开始";
+    $pageGuide .= "开始";
 }
 $nextlink = 'javascript:;';
 if ($nextSrc != '') {
     $nextlink = "showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1);
     if ($pageGuide != "") $pageGuide .= " | ";
-    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1)."'>下一幅图片&gt;</a>";
+    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1)."'>下一幅图片</a> ";
 } else {
-    $pageGuide .= " | 没有了";
+    $pageGuide .= "结束";
 }
 require_once(DEDETEMPLATE.'/apps/showphoto.htm');
 exit();
