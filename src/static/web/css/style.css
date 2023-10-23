@@ -81,7 +81,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .user-img-xs{width:30px;height:30px;border-radius:50%;border:1px solid var(--gray-300)}
 .user-meter i{font-size:24px!important;color:var(--green)}
 .userspace .info{font-size:14px;font-weight:300;color:var(--gray)}
-.logo img{height:40px}
+.logo img{height:36px}
 .nav-item .active{color:var(--warning)}
 .nav-link{padding:0 10px;height:36px;line-height:36px}
 .navbar-dark .navbar-nav .nav-link{color:var(--gray-300)}
