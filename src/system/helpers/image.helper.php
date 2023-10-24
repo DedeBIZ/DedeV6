@@ -11,8 +11,7 @@ require_once DEDEINC."/libraries/imageresize.class.php";
  * @link           https://www.dedebiz.com
  */
 /**
- *  缩图片自动生成函数，来源支持bmp、gif、jpg、png
- *  但生成的小图只用jpg或png格式
+ *  缩图片自动生成函数，来源支持bmp、gif、jpg、png但生成的小图只用jpg或png格式
  *
  * @access    public
  * @param     string  $srcFile  图片路径
@@ -24,7 +23,7 @@ require_once DEDEINC."/libraries/imageresize.class.php";
 if (!function_exists('ImageResize')) {
     function ImageResize($srcFile, $toW, $toH, $toFile = "")
     {
-        try{
+        try {
             $image = new ImageResize($srcFile);
             $image->resizeToBestFit($toW, $toH);
             $image->save($toFile);
@@ -137,7 +136,7 @@ if (!function_exists('WaterImg')) {
 if (!function_exists('ImageResizeNew')) {
     function ImageResizeNew($srcFile, $toW, $toH, $toFile = '', $issave = TRUE)
     {
-        try{
+        try {
             $image = new ImageResize($srcFile);
             $image->resizeToBestFit($toW, $toH);
             if ($issave) {
@@ -151,3 +150,4 @@ if (!function_exists('ImageResizeNew')) {
         }
     }
 }
+?>

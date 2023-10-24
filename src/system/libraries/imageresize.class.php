@@ -264,7 +264,6 @@ class ImageResize
             imagecolortransparent($dest_image, $background);
             imagefill($dest_image, 0, 0, $background);
             break;
-
         case IMAGETYPE_BMP:
             if (version_compare(PHP_VERSION, '7.2.0', '<')) {
                 throw new ImageResizeException('For WebP support PHP >= 7.2.0 is required');
@@ -651,3 +650,4 @@ class ImageResize
         return $this;
     }
 }
+?>

@@ -316,7 +316,6 @@ function FillUrl($refurl, $surl)
     $surl = trim($surl);
     $urls = @parse_url($refurl);
     $basehost = ((!isset($urls['port']) || $urls['port'] == '80') ? $urls['host'] : $urls['host'].':'.$urls['port']);
-    //$basepath = $basehost.(!isset($urls['path']) ? '' : '/'.$urls['path']);
     //由于直接获得的path在处理 http://xxxx/nnn/aaa?fdsafd 这种情况时会有错误，因此用其它方式处理
     $basepath = $basehost;
     $paths = explode('/', preg_replace("/^http:\/\//i", "", $refurl));
@@ -413,8 +412,7 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                     }
                 }
             }
-            //匹配多个栏目
-            //规则表达式 [(#)=>(#)匹配的网址; (*)=>(*)的范围，如：1-20; typeid=>栏目id; addurl=>附加的网址(用|分开多个)]
+            //匹配多个栏目，规则表达式[(#)=>(#)匹配的网址; (*)=>(*)的范围，如：1-20;typeid=>栏目id;addurl=>附加的网址(用|分开多个)]
             else {
                 $nrules = explode(']', trim($batchrule));
                 foreach ($nrules as $nrule) {

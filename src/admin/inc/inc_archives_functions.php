@@ -396,7 +396,7 @@ function GetDDImage($litpic, $picname, $isremote)
                 $oldpic = $cfg_basedir.$picname;
                 $litpic = str_replace('.', '-ty.', $picname);
                 @ImageResizeNew($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
-                if (!is_file($cfg_basedir.$litpic)) $litpic = '';
+                if (!is_file($cfg_basedir.$litpic)) $litpic = $litpic = strstr($oldpic,"/static");
             } else {
                 $litpic = $picname;
                 return $litpic;
