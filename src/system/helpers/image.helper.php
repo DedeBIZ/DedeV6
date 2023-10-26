@@ -2,7 +2,7 @@
 if (!defined('DEDEINC')) exit ('dedebiz');
 require_once DEDEINC."/libraries/imageresize.class.php";
 /**
- * 图像处理相关函数
+ * 图像处理函数
  *
  * @version        $id:image.func.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers

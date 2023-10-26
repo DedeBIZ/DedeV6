@@ -1,6 +1,6 @@
 <?php
 /**
- * 模型解析相关函数
+ * 模型解析函数
  *
  * @version        $id:inc_archives_all.php 9:56 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator

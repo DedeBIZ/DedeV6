@@ -1,6 +1,6 @@
 <?php
 /**
- * 管理菜单函数
+ * 后台侧边菜单函数
  *
  * @version        $id:inc_menu_func.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator

@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档操作相关函数
+ * 文档操作函数
  *
  * @version        $id:inc_archives_functions.php 9:56 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator

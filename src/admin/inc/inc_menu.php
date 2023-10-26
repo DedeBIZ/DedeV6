@@ -1,6 +1,6 @@
 <?php
 /**
- * 后台管理菜单项
+ * 后台侧边菜单
  *
  * @version        $id:inc_menu.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator

@@ -1,6 +1,6 @@
 <?php
 /**
- * 模块菜单
+ * 模块插件
  *
  * @version        $id:inc_menu_module.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
@@ -21,7 +21,7 @@ $plusset = '';
 $dsql->SetQuery("SELECT * FROM `#@__plus` WHERE isshow=1 ORDER BY aid ASC");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
-    $row->menustring = str_replace('plus_友情链接', 'plus_友情链接模块', $row->menustring);
+    $row->menustring = str_replace('plus_友情链接', '', $row->menustring);
     $plusset .= $row->menustring."\r\n";
 }
 $adminMenu = '';

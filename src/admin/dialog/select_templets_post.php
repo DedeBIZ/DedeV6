@@ -1,6 +1,6 @@
 <?php
 /**
- * 选择模板发送
+ * 选择模板操作
  *
  * @version        $id:select_templets_post.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog

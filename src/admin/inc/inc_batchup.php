@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档函数相关操作
+ * 文档操作
  *
  * @version        $id:inc_batchup.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
