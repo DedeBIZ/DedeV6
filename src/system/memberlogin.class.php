@@ -182,7 +182,7 @@ class MemberLogin
         $this->__construct($kptime);
     }
     /**
-     *  删除缓存,每次登录时和在修改会员资料的地方会清除
+     *  删除缓存，每次登录时和在修改会员资料的地方会清除
      *
      * @access    public
      * @param     string
