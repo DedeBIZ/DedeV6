@@ -21,7 +21,7 @@ $plusset = '';
 $dsql->SetQuery("SELECT * FROM `#@__plus` WHERE isshow=1 ORDER BY aid ASC");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
-    $row->menustring = str_replace('plus_友情链接', '', $row->menustring);
+    $row->menustring = str_replace('', '', $row->menustring);
     $plusset .= $row->menustring."\r\n";
 }
 $adminMenu = '';

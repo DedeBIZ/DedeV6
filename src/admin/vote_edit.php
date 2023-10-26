@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
-CheckPurview('plus_投票模块');
+CheckPurview('plus_投票管理');
 require_once(DEDEINC."/dedetag.class.php");
 if (empty($dopost)) $dopost = "";
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;

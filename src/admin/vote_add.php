@@ -11,7 +11,7 @@
 require(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/dedevote.class.php");
 require_once(DEDEINC."/helpers/filter.helper.php");
-CheckPurview('plus_投票模块');
+CheckPurview('plus_投票管理');
 if (empty($dopost)) $dopost = "";
 if (empty($isarc))  $isarc = 0;
 if ($dopost == "save" && $isarc == 0) {

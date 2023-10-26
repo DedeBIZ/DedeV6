@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档错误管理
+ * 挑错管理
  *
  * @version        $id:erraddsave.php 19:09 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

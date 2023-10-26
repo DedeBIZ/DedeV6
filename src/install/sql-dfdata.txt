@@ -1,5 +1,5 @@
 INSERT INTO `#@__admintype` VALUES ('1','文档员','1','t_AccList a_AccNew a_AccList a_MyList a_MyEdit a_MyDel sys_MdPwd sys_ArcBatch sys_MakeHtml sys_Feedback sys_MyUpload plus_友情链接'),
-('5','栏目员','1','t_AccList t_AccNew t_AccEdit t_AccDel a_AccNew a_AccList a_AccEdit a_AccDel a_AccCheck a_MyList a_MyEdit a_MyDel a_MyCheck spec_New spec_List spec_Edit sys_MdPwd sys_ArcBatch sys_Log sys_ArcTj sys_Source sys_Writer sys_Keyword sys_MakeHtml sys_Feedback sys_Upload sys_MyUpload member_List member_Edit plus_友情链接 plus_投票模块 plus_广告管理'),
+('5','栏目员','1','t_AccList t_AccNew t_AccEdit t_AccDel a_AccNew a_AccList a_AccEdit a_AccDel a_AccCheck a_MyList a_MyEdit a_MyDel a_MyCheck spec_New spec_List spec_Edit sys_MdPwd sys_ArcBatch sys_Log sys_ArcTj sys_Source sys_Writer sys_Keyword sys_MakeHtml sys_Feedback sys_Upload sys_MyUpload member_List member_Edit plus_友情链接 plus_投票管理 plus_广告管理'),
 ('10','管理员','1','admin_AllowAll');
 
 INSERT INTO `#@__arcatt` VALUES ('1','h','头条'),
@@ -4068,7 +4068,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 INSERT INTO `#@__sys_module` VALUES(1, '1f35620fb42d452fa2bdc1dee1690f92', '文件管理器', '', '', 0, ''),
 (2, 'b437d85a7a7bc778c9c79b5ec36ab9aa', '友情链接', '', '', 0, ''),
 (3, '72ffa6fabe3c236f9238a2b281bc0f93', '广告管理', '', '', 0, ''),
-(4, 'acb8b88eb4a6d4bfc375c18534f9439e', '投票模块', '', '', 0, ''),
+(4, 'acb8b88eb4a6d4bfc375c18534f9439e', '投票管理', '', '', 0, ''),
 (5, '572606600345b1a4bb8c810bbae434cc', '挑错管理', '', '', 0, '');
 
 INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `config`, `status`) VALUES (1, 'Wechat', '微信支付', '微信', 0, '{"AppID":"","MchID":"","APIv2Secret":""}', 0);
@@ -4081,7 +4081,7 @@ INSERT INTO `#@__sys_payment`(`id`, `code`, `name`, `short_name`, `sortrank`, `c
 INSERT INTO `#@__plus` VALUES(1, '文件管理器', '<m:item name=''文件管理器'' link=''file_manage_main.php'' rank=''plus_文件管理器'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (2, '友情链接模块', '<m:item name=''友情链接'' link=''friendlink_main.php'' rank=''plus_友情链接'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (3, '广告管理', '<m:item name=''广告管理'' link=''ad_main.php'' rank=''plus_广告管理'' target=''main'' />', '', 'DedeBIZ', 1, ''),
-(4, '投票模块', '<m:item name=''投票模块'' link=''vote_main.php'' rank=''plus_投票模块'' target=''main'' />', '', 'DedeBIZ', 1, ''),
+(4, '投票管理', '<m:item name=''投票管理'' link=''vote_main.php'' rank=''plus_投票管理'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (5, '挑错管理', '<m:item name=''挑错管理'' link=''erraddsave.php'' rank=''plus_挑错管理'' target=''main'' />', '', 'DedeBIZ', 1, '<m:item name=''挑错管理'' link=''catalog_do.php?dopost=erraddsave.php'' rank=''plus_挑错管理'' target=''main'' />');
 
 ALTER TABLE `#@__arctiny` ADD INDEX `idx_typeid_arcrank_sortrank` (`typeid`, `arcrank`, `sortrank`);
