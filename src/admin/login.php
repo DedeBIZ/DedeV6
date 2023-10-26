@@ -46,7 +46,7 @@ if ($dopost == 'login') {
             $svali = strtolower(GetCkVdValue());
             if ($validate == '' || $validate != $svali) {
                 ResetVdValue();
-                ShowMsg('验证码不正确', 'login.php', 0, 1000);
+                ShowMsg('验证码不正确', 'login.php');
                 exit;
             }
         }
@@ -62,16 +62,16 @@ if ($dopost == 'login') {
             }
         } else if ($res == -1) {
             ResetVdValue();
-            ShowMsg('管理员账号错误', 'login.php', 0, 1000);
+            ShowMsg('管理员账号错误', 'login.php');
             exit;
         } else {
             ResetVdValue();
-            ShowMsg('管理员密码错误', 'login.php', 0, 1000);
+            ShowMsg('管理员密码错误', 'login.php');
             exit;
         }
     } else {
         ResetVdValue();
-        ShowMsg('管理员账号和密码没填完整', 'login.php', 0, 1000);
+        ShowMsg('管理员账号和密码没填完整', 'login.php');
         exit;
     }
 }

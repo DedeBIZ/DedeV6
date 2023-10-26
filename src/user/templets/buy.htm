@@ -16,12 +16,12 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg p-0">
-							<ul class="breadcrumb mr-auto">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">首页</a></li>
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 								<li class="breadcrumb-item">积分钱包</li></li>
-							</ul>
-							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
+							</ol>
 						</nav>
 						<div class="alert alert-success"><?php echo $cfg_ml->GetSta();?></div>
 						<?php if ($cfg_money_scores > 0) {?>							
@@ -29,7 +29,7 @@
 						<div class="pb-3">
 							<h3 class="mb-3">积分换金币</h3>
 							<p><?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币{$canCav}";?></p>
-							<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
+							<form name="formrank" action="<?php echo $cfg_memberurl;?>/index_do.php?dopost=money2s&fmdo=user" method="post">
 								<table class="table">
 									<tbody>
 										<tr>
@@ -47,7 +47,7 @@
 						<?php }?>
 						<div class="pb-3">
 							<h3 class="mb-3">积分充值</h3>
-							<form name="formrank" action="check_card.php" method="post">
+							<form name="formrank" action="<?php echo $cfg_memberurl;?>/check_card.php" method="post">
 								<table class="table">
 									<tbody>
 										<tr>
@@ -71,7 +71,7 @@
 						</div>
 						<div class="pb-3">
 							<h3 class="mb-3">购买金币</h3>
-							<form name="f1" action="buy_action.php" method="post">
+							<form name="f1" action="<?php echo $cfg_memberurl;?>/buy_action.php" method="post">
 								<input type="hidden" name="product" value="card">
 								<table class="table">
 									<tr>
@@ -89,7 +89,7 @@
 						</div>
 						<div>
 							<h3 class="mb-3">账号升级</h3>
-							<form name="f1" action="buy_action.php" method="post">
+							<form name="f1" action="<?php echo $cfg_memberurl;?>/buy_action.php" method="post">
 								<input type="hidden" name="product" value="member">
 								<table class="table">
 									<tr>

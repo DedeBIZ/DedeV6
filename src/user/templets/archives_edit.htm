@@ -13,14 +13,14 @@
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
 			<div class="pannel-main-container shadow-sm rounded">
-				<nav class="navbar navbar-expand-lg p-0">
-					<ul class="breadcrumb mr-auto">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/">首页</a></li>
 						<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 						<li class="breadcrumb-item">修改<?php echo $row['title']?></li></li>
-					</ul>
-					<span class="navbar-text"><a href="javascript:location.href='content_list.php?channelid=<?php echo $channelid;?>'" class="btn btn-outline-success btn-sm">返回</a></span>
+					</ol>
 				</nav>
-				<form name="addcontent" action="archives_edit.php?aid=<?php echo $aid;?>" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit(`<?php echo $cInfos['titlename'];?>`);">
+				<form name="addcontent" action="<?php echo $cfg_memberurl;?>/archives_edit.php?aid=<?php echo $aid;?>" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit(`<?php echo $cInfos['titlename'];?>`);">
 					<input type="hidden" name="dopost" value="save">
 					<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 					<input type="hidden" id="litpic" name="litpic" value="<?php echo $row['litpic'];?>">
@@ -63,6 +63,7 @@
 					<div class="text-center">
 						<button type="submit" class="btn btn-success btn-sm">提交</button>
 						<button type="reset" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
+						<a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=<?php echo $channelid;?>" class="btn btn-outline-success btn-sm">返回</a>
 					</div>
 				</form>
 			</div>

@@ -378,7 +378,7 @@ class MemberLogin
     {
         $arr = $this->dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__arctiny` WHERE mid='{$this->M_ID}'");
         if (is_array($arr)) {
-            if ($this->M_SendMax < 1) {
+            if ($this->M_SendMax < 0) {
                 return false;
             }
             if ($arr['dd'] >= $this->M_SendMax) {

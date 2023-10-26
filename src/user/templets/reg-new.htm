@@ -15,7 +15,7 @@
 			<div class="login-from">
 				<div class="login-box shadow-sm rounded">
 					<h2 class="text-center mb-3">会员注册</h2>
-					<form name="form2" action="reg_new.php" method="post" id="regUser">
+					<form name="form2" action="<?php echo $cfg_memberurl;?>/reg_new.php" method="post" id="regUser">
 						<input type="hidden" name="dopost" value="regbase">
 						<input type="hidden" name="step" value="1">
 						<input type="hidden" name="mtype" value="个人">

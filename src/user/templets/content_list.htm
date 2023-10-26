@@ -19,18 +19,17 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg p-0">
-							<ul class="navbar-nav mr-auto">
-								<li class="nav-item"><a class="nav-link <?php echo ($arcrank=='')? 'active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>">全部</a></li>
-								<li class="nav-item"><a class="nav-link<?php echo ($arcrank=='1')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=1">已审核</a></li>
-								<li class="nav-item"><a class="nav-link<?php echo ($arcrank=='-1')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=-1">未审核</a></li>
-							</ul>
-							<span class="navbar-text"><a class="btn btn-success btn-sm" href="archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>">发布</a></span>
-						</nav>
+						<ul class="nav mb-3">
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=<?php echo $channelid;?>" class="nav-link <?php echo ($arcrank=='') ? 'active':'';?>">全部</a></li>
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=<?php echo $channelid;?>&arcrank=1" class="nav-link <?php echo ($arcrank=='1') ? 'active':'';?>">已审核</a></li>
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=<?php echo $channelid;?>&arcrank=-1" class="nav-link <?php echo ($arcrank=='-1') ? 'active':'';?>">未审核</a></li>
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>" class="nav-link">发布</a></li>
+						</ul>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
 									<tr>
+										<th width="8%">#</th>
 										<th width="26%">文档标题</th>
 										<th width="16%">栏目</th>
 										<th width="16%">状态</th>
@@ -41,12 +40,13 @@
 								<tbody>
 									{dede:datalist}
 									<tr>
+										<td><?php echo $fields['id'];?></td>
 										<td><a href="<?php echo $cfg_phpurl;?>/view.php?aid=<?php echo $fields['id'];?>"><?php echo $fields['title'];?><?php echo IsPicArchives($fields['flag']);?></a></td>
 										<td><?php echo $fields['typename'];?></td>
 										<td>
 											<?php
 											if ($fields['arcrank']>=0) echo '已审核';
-											else if ($fields['arcrank']==-2) echo '审核失败';
+											else if ($fields['arcrank']==-2) echo '失败';
 											else echo '未审核';
 											?>
 										</td>

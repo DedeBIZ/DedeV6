@@ -17,11 +17,11 @@ if ($dopost == 'saveedit') {
     CheckCSRF();
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
-        ShowMsg('密码不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
+        ShowMsg('密码不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1');
         exit();
     }
     if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
-        ShowMsg('账号不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
+        ShowMsg('账号不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1');
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
@@ -104,7 +104,7 @@ if ($dopost == 'saveedit') {
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt='0' WHERE mid='$id' LIMIT 1");
         ShowMsg("成功删除一个帐户", "sys_admin_user.php");
     } else {
-        ShowMsg("不能删除id为1的创建人帐号，不能删除自己", "sys_admin_user.php", 0, 3000);
+        ShowMsg("不能删除id为1的创建人帐号，不能删除自己", "sys_admin_user.php");
     }
     exit();
 }

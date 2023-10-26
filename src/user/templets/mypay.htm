@@ -24,20 +24,20 @@
 							<table class="table">
 								<thead>
 									<tr>
+										<th width="8%">#</th>
 										<th width="8%">选择</th>
-										<th width="8%">id</th>
 										<th>标题</th>
 										<th width="16%">需要金币</th>
 										<th width="16%">消费时间</th>
 									</tr>
 								</thead>
-								<form name="form1" action="mypay.php" method="post">
+								<form name="form1" action="<?php echo $cfg_memberurl;?>/mypay.php" method="post">
 									<input type="hidden" name="dopost" value="del">
 									<tbody>
 										{dede:datalist}
 										<tr>
-											<td><input type="checkbox" name="deleteid" value="{dede:field.aid/}" /></td>
 											<td><?php echo $fields['aid'];?></td>
+											<td><input type="checkbox" name="deleteid" value="{dede:field.aid/}"></td>
 											<td><?php echo '<a href="<?php echo $cfg_phpurl;?>/view.php?aid='.str_replace('ARCHIVE', '', $fields['buyid']).'">'.$fields['oldinfo'].'</a>';?></td>
 											<td><?php echo $fields['money'];?></td>
 											<td><?php echo GetDateTimeMk($fields['mtime']);?></td>

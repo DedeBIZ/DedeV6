@@ -109,7 +109,7 @@ if ($dopost == 'save') {
     }
     //清除会员缓存
     $cfg_ml->DelCache($cfg_ml->M_ID);
-    ShowMsg('成功更新您的基本资料', 'edit_baseinfo.php', 0, 5000);
+    ShowMsg('成功更新您的基本资料', 'edit_baseinfo.php');
     exit();
 }
 include(DEDEMEMBER."/templets/edit_baseinfo.htm");

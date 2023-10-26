@@ -20,21 +20,20 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg p-0">
-							<ul class="navbar-nav mr-auto">
-								<li class="nav-item"><a class="nav-link<?php if ($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a></li>
-								<li class="nav-item"><a class="nav-link<?php if ($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a></li>
-								<li class="nav-item"><a class="nav-link<?php if ($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a></li>
-							</ul>
-							<span class="navbar-text"><button type="button" class="btn btn-danger btn-sm" onclick="DoSubmit('<?php echo $folder;?>')">删除</button></span>
-						</nav>
+						<ul class="nav mb-3">
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=<?php echo $folder;?>" class="nav-link <?php if ($state === 0) echo 'active';?>">全部</a></li>
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=<?php echo $folder;?>&state=1" class="nav-link <?php if ($state === 1) echo 'active';?>">已阅读</a></li>
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=<?php echo $folder;?>&state=-1" class="nav-link <?php if ($state === -1) echo 'active';?>">未阅读</a></li>
+							<li class="nav-item"><a href="javascript:;" class="nav-link" onclick="DoSubmit('<?php echo $folder;?>')">删除</a></li>
+						</ul>
 						<div class="table-responsive">
-							<form action="pm.php" method="post" name="form1">
+							<form action="<?php echo $cfg_memberurl;?>/pm.php" method="post" name="form1">
 								<input type="hidden" name="dopost" value="del">
 								<div id="feedback-alert"></div>
 								<table class="table">
 									<thead>
 										<tr>
+											<th width="8%">#</th>
 											<th width="8%">选择</th>
 											<th>标题</th>
 											<th width="16%">
@@ -50,6 +49,7 @@
 									<tbody>
 										{dede:datalist}
 										<tr>
+											<td>{dede:field.id/}</td>
 											<td><input type="checkbox" name="deleteid" value="{dede:field.id/}"></td>
 											<td>
 												<?php

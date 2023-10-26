@@ -24,6 +24,7 @@
 							<table class="table">
 								<thead>
 									<tr>
+										<th width="8%">#</th>
 										<th width="8%">选择</th>
 										<th width="16%">订单号</th>
 										<th>产品</th>
@@ -33,10 +34,11 @@
 									</tr>
 								</thead>
 								<tbody>
-									<form name="form1" action="operation.php" method="post">
+									<form name="form1" action="<?php echo $cfg_memberurl;?>/operation.php" method="post">
 										<input type="hidden" name="ftype" value="del">
 										{dede:datalist}
 										<tr>
+											<td>{dede:field.aid/}</td>
 											<td><input type="checkbox" name="deleteid" value="{dede:field.aid/}"></td>
 											<td>{dede:field.buyid/}</td>
 											<td><?php echo $fields['pname']; ?></td>

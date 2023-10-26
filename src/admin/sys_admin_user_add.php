@@ -15,12 +15,12 @@ if (empty($dopost)) $dopost = '';
 if ($dopost == 'add') {
     CheckCSRF();
     if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd) || preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
-        ShowMsg('密码或账号不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
+        ShowMsg('密码或账号不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1');
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecode != $safecodeok) {
-        ShowMsg('请填写验证安全码', '-1', 0, 3000);
+        ShowMsg('请填写验证安全码', '-1');
         exit();
     }
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__member` WHERE userid LIKE '$userid' ");

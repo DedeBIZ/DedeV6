@@ -159,7 +159,7 @@ if ($fmdo == 'sendMail') {
         }
         if ($pwd == '') {
             ResetVdValue();
-            ShowMsg('密码不能为空', 'index.php', 0, 2000);
+            ShowMsg('密码不能为空', 'index.php');
             exit();
         }
         $isNeed = $cfg_ml->isNeedCheckCode($userid);
@@ -175,24 +175,24 @@ if ($fmdo == 'sendMail') {
         $rs = $cfg_ml->CheckUser($userid, $pwd);
         if ($rs == 0) {
             ResetVdValue();
-            ShowMsg('您的账号错误', 'index.php', 0, 2000);
+            ShowMsg('您的账号错误', 'index.php');
             exit();
         } else if ($rs == -1) {
             ResetVdValue();
-            ShowMsg('您的密码错误', 'index.php', 0, 2000);
+            ShowMsg('您的密码错误', 'index.php');
             exit();
         } else if ($rs == -2) {
             ResetVdValue();
-            ShowMsg('管理员帐号不允许从前台登录', 'index.php', 0, 2000);
+            ShowMsg('管理员帐号不允许从前台登录', 'index.php');
             exit();
         } else {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg('正在登录会员中心，请稍等', 'index.php', 0, 2000);
+                ShowMsg('正在登录会员中心，请稍等', 'index.php');
             } else {
                 $gourl = str_replace('^', '&', $gourl);
-                ShowMsg('正在前往指定页面，请稍等', $gourl, 0, 2000);
+                ShowMsg('正在前往指定页面，请稍等', $gourl);
             }
             exit();
         }
@@ -200,7 +200,7 @@ if ($fmdo == 'sendMail') {
     //退出登录
     else if ($dopost == "exit") {
         $cfg_ml->ExitCookie();
-        ShowMsg('已退出会员中心', 'index.php', 0, 2000);
+        ShowMsg('已退出会员中心', 'index.php');
         exit();
     }
 } else if ($fmdo == 'purl'){

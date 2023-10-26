@@ -13,14 +13,17 @@
 	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<nav class="navbar navbar-expand-lg p-0">
-				<ul class="breadcrumb mr-auto">
-					<li class="breadcrumb-item"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>"><?php echo $diy->name;?>列表</a></li>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">首页</a></li>
+					<li class="breadcrumb-item"><a href="<?php echo $cfg_phpurl?>/diy.php?action=list&diyid=<?php echo $diy->diyid;?>"><?php echo $diy->name;?>列表</a></li>
 					<li class="breadcrumb-item"><?php echo $diy->name;?>发布</li>
-				</ul>
-				<span class="navbar-text"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">返回列表</a></span>
+				</ol>
 			</nav>
-			<form name="addcontent" action="/apps/diy.php" method="post" enctype="multipart/form-data">
+			<div class="mb-3">
+				<a href="<?php echo $cfg_phpurl?>/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">返回列表</a>
+			</div>
+			<form name="addcontent" action="<?php echo $cfg_phpurl?>/diy.php" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="action" value="post">
 				<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 				<input type="hidden" name="do" value="2">

@@ -81,14 +81,14 @@ class FileManagement
                     copy($oldfile, $truepath."/$mfile");
                 }
                 unlink($oldfile);
-                ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath");
                 return 1;
             } else {
-                ShowMsg("移动文件".$oldfile." - ".$truepath."/".$mfile."失败", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("移动文件".$oldfile." - ".$truepath."/".$mfile."失败", "file_manage_main.php?activepath=$mpath");
                 return 0;
             }
         } else {
-            ShowMsg("您移动的路径不合法", "-1", 0, 5000);
+            ShowMsg("您移动的路径不合法", "-1");
             return 0;
         }
     }

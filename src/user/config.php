@@ -173,11 +173,11 @@ function CheckRank($rank = 0, $money = 0)
             //如果启用注册邮件验证
             if ($cfg_ml->fields['spacesta'] == '-10' && !preg_match("#edit_baseinfo.php$#", GetCurUrl())) {
                 if (empty($cfg_ml->fields['email'])) {
-                    ShowMsg("邮箱地址为空，请设置一个邮箱地址", "edit_baseinfo.php", 0, 5000);
+                    ShowMsg("邮箱地址为空，请设置一个邮箱地址", "edit_baseinfo.php");
                     exit;
                 }
                 $msg = "<p>您未进行邮件验证，发送验证邮件后请登录邮箱进行确认</p><a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail' class='btn btn-success btn-sm'>发送</a><a href='javascript:history.go(-1)' class='btn btn-outline-success btn-sm'>返回</a>";
-                ShowMsg($msg, "javascript:;", 0, 5000);
+                ShowMsg($msg, "javascript:;");
                 exit;
             }
         }
@@ -198,10 +198,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "注册会员";
                 }
             }
-            ShowMsg("需要".$needname."才能浏览本页面，您目前等级是".$myname."", "-1", 0, 5000);
+            ShowMsg("需要".$needname."才能浏览本页面，您目前等级是".$myname."", "-1");
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("需要".$money."金币才能浏览本页面，您目前金币".$cfg_ml->M_Money."个", "-1", 0, 5000);
+            ShowMsg("需要".$money."金币才能浏览本页面，您目前金币".$cfg_ml->M_Money."个", "-1");
             exit();
         }
     }

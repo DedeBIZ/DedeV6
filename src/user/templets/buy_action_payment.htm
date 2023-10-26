@@ -16,17 +16,17 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg p-0">
-							<ul class="breadcrumb mr-auto">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">首页</a></li>
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/buy.php">积分钱包</a></li>
 								<li class="breadcrumb-item">确认订单</li></li>
-							</ul>
-							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
+							</ol>
 						</nav>
 						<div class="alert alert-success">您申请购买的产品如下，确认无误后请点击购买并支付按钮，进行网上支付，如果支付失败，请与管理员联系其它支付方式</div>
 						<h3 class="py-3">订单确认</h3>
-						<form method="post" name="E_FORM" action="buy_action.php">
+						<form name="E_FORM" action="<?php echo $cfg_memberurl;?>/buy_action.php" method="post">
 							<input type="hidden" name="pd_encode" value="<?php echo $pr_encode;?>">
 							<input type="hidden" name="pd_verify" value="<?php echo $pr_verify;?>">
 							<input type="hidden" name="aid" value="<?php echo $buyid;?>">

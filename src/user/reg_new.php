@@ -47,6 +47,10 @@ if ($step == 1) {
             ShowMsg("您的账号或密码过短，不允许注册", "-1");
             exit();
         }
+        if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
+            ShowMsg('账号不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1');
+            exit();
+        }
         if ($pwdc != $pwd) {
             ShowMsg('您两次输入的密码不一致', '-1');
             exit();
