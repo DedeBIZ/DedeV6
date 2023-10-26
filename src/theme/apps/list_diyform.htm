@@ -26,7 +26,7 @@
 				<?php
 				if (!empty($fields)) {
 					echo "<tbody>";
-					echo '<tr><td bgcolor="#f8f9fa">表单'.$fields['id'].' <a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank" class="btn btn-light btn-sm">详细</a></td></tr></td>';
+					echo '<tr><td>表单'.$fields['id'].' <a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank" class="btn btn-light btn-sm">详细</a></td></tr></td>';
 					foreach($fieldlist as $field=>$fielddata)
 					{
 						if ($fields[$field]=='') continue;
