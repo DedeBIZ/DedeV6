@@ -497,7 +497,7 @@ class MemberLogin
     function PutLoginInfo($uid, $logintime = 0)
     {
         global $cfg_login_adds;
-        //登录添加积分(上一次登录时间必须大于两小时)
+        //登录添加积分，上一次登录时间必须大于两小时
         if (time() - $logintime > 7200 && $cfg_login_adds > 0) {
             $this->dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=`scores`+{$cfg_login_adds} WHERE mid='$uid' ");
         }
