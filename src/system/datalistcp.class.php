@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 系统后台分页
+ * 系统列表分页
  *
  * @version        $id:datalistcp.class.php 3 17:02 2010年7月9日 tianya $
  * @package        DedeBIZ.Libraries

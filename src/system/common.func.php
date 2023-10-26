@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 系统核心函数存放
+ * 系统相关函数
  * 
  * @version        $id:common.func.php 4 16:39 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
