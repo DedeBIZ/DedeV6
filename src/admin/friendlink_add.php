@@ -56,7 +56,7 @@ if ($dopost == "add") {
     $rs = $dsql->ExecuteNoneQuery($query);
     $burl = empty($_COOKIE['ENV_GOBACK_URL']) ? "friendlink_main.php" : $_COOKIE['ENV_GOBACK_URL'];
     if ($rs) {
-        ShowMsg("成功添加一个链接", $burl, 0, 500);
+        ShowMsg("成功添加一个链接", $burl);
         exit();
     } else {
         ShowMsg("添加链接时出错，原因：".$dsql->GetError(), "javascript:;");

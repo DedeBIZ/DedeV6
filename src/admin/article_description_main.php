@@ -82,7 +82,7 @@ if ($dojob == '') {
             $tjsta = "<div class='progress mb-3'><div class='progress-bar progress-bar-striped bg-success' role='progressbar' aria-valuenow='$dvlen%' aria-valuemin='0' aria-valuemax='100' style='width:$dvlen%'>$dvlen%</div></div>";  
             $tjsta .= "完成更新文档总数$tjlen%";
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd={$startdd}&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
-            ShowMsg($tjsta, $nurl, 0, 500);
+            ShowMsg($tjsta, $nurl);
             exit();
         } else {
             ShowMsg('完成所有任务', 'javascript:;');
@@ -143,7 +143,7 @@ if ($dojob == '') {
         $tjsta .= "完成更新文档总数$tjlen%";
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
-            ShowMsg($tjsta, $nurl, 0, 500);
+            ShowMsg($tjsta, $nurl);
             exit();
         } else {
             ShowMsg('完成所有任务', 'javascript:;');
