@@ -52,7 +52,7 @@ function DedeConfirm(content = "", title = "确认提示") {
 			backdrop: 'static',
 			show: true
 		});
-		$("#DedeModal" + modalID).on('hidden.bs.modal', function (e) {
+		$("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
 			$("#DedeModal" + modalID).remove();
 		})
 	})
@@ -76,7 +76,7 @@ function ShowMsg(content, ...args) {
 			noClose = true;
 		}
 	}
-	String.prototype.replaceAll = function (s1, s2) {
+	String.prototype.replaceAll = function(s1, s2) {
 		return this.replace(new RegExp(s1, "gm"), s2);
 	}
 	footer = footer.replaceAll("~modalID~", modalID);
@@ -91,7 +91,7 @@ function ShowMsg(content, ...args) {
 		backdrop: 'static',
 		show: true
 	});
-	$("#DedeModal" + modalID).on('hidden.bs.modal', function (e) {
+	$("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
 		$("#DedeModal" + modalID).remove();
 	})
 	return modalID;
@@ -99,7 +99,7 @@ function ShowMsg(content, ...args) {
 //隐藏并销毁modal
 function CloseModal(modalID) {
 	$("#" + modalID).modal('hide');
-	$("#" + modalID).on('hidden.bs.modal', function (e) {
+	$("#" + modalID).on('hidden.bs.modal', function(e) {
 		if ($("#" + modalID).length > 0) {
 			$("#" + modalID).remove();
 		}
@@ -136,7 +136,7 @@ function ErrAddSaveDo(modalID) {
 	if (typeof PHPURL === "undefined") {
 		const PHPURL = "/apps";
 	}
-	$.post(PHPURL + "/erraddsave.php", parms, function (data) {
+	$.post(PHPURL + "/erraddsave.php", parms, function(data) {
 		let result = JSON.parse(data);
 		if (result.code === 200) {
 			CloseModal(modalID);

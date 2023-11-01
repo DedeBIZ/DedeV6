@@ -91,6 +91,12 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .quickselfoot{padding:0.5rem;background:var(--bg);border-top:1px solid var(--gray-300)}
 .mysource,.mywriter{width:300px;background:var(--white);border:1px solid var(--gray-300);z-index:10001}
 .column .admin-td{border-bottom:1px solid var(--gray-300)!important}
+.atlas{float:left;margin-right:10px;margin-bottom:10px;width:220px;height:auto;background:var(--bg);text-align:center;border-radius:0.5rem}
+.atlas-head{height:120px}
+.atlas-head img{margin:0;max-width:220px;max-height:120px;border-radius:0.5rem 0.5rem 0 0!important}
+.atlas-input{width:220px}
+.atlas-box{margin:0.5rem 0}
+.atlas-foot input[type=text]{border-radius:0 0 0.5rem 0.5rem!important}
 .add-tab ul .active{color:var(--blue)}
 .add-tab li{float:left;width:60px;line-height:30px;cursor:pointer}
 .nw{float:left;width:160px}

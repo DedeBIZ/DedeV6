@@ -8,7 +8,7 @@ pre{white-space:pre-wrap;word-wrap:break-word;-moz-tab-size:4;tab-size:4}
 span[lang]{font-style:italic}
 figure{text-align:center;outline:solid 1px #ccc;background:rgba(0,0,0,0.05);padding:10px;margin:10px 20px;display:inline-block}
 figure > figcaption{text-align:center;display:block}
-img{max-width:100%;border-radius:.5rem}
+img{max-width:100%;border-radius:0.5rem}
 a > img{padding:1px;margin:1px;border:none;outline:1px solid #0782C1}
 img.right{border:1px solid #ccc;float:right;margin-left:15px;padding:5px}
 img.left{border:1px solid #ccc;float:left;margin-right:15px;padding:5px}
