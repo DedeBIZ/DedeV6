@@ -80,7 +80,7 @@ function obtainfilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0,
                 $fields_value = $href2[0];
                 switch ($type) {
                     case 1:
-                        $biz_addonfields .= '<div class="mb-3">';
+                        $biz_addonfields .= '<p>';
                         $biz_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" class="btn btn-outline-success btn-sm">全部</a>' : '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" class="btn btn-success btn-sm">全部</a>');
                         $addonfields_items = explode(",",$ctag->GetAtt('default'));
                         for ($i=0; $i<count($addonfields_items); $i++)
@@ -88,7 +88,7 @@ function obtainfilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0,
                             $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
                             $biz_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'" class="btn btn-outline-success btn-sm">'.$addonfields_items[$i].'</a>' : '<a href="'.$href.'" class="btn btn-success btn-sm">'.$addonfields_items[$i].'</a>');
                         }
-                        $biz_addonfields .= '</div>';
+                        $biz_addonfields .= '</p>';
                     break;
                     case 2:
                         $biz_addonfields .= '<select name="filter'.$ctag->GetName().'" onchange="window.location=this.options[this.selectedIndex].value" class="form-control w-25 mr-3">
@@ -103,7 +103,7 @@ function obtainfilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0,
                         $biz_addonfields .= '</select>';
                     break;
                     case 3:
-                        $biz_addonfields .= '<div class="mb-3">';
+                        $biz_addonfields .= '<p>';
                         $biz_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" onclick="window.location=this.value">全部</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked="checked">全部</span>');
                         $addonfields_items = explode(",",$ctag->GetAtt('default'));
                         for ($i=0; $i<count($addonfields_items); $i++)
@@ -111,7 +111,7 @@ function obtainfilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0,
                             $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
                             $biz_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.$href.'" onclick="window.location=this.value">'.$addonfields_items[$i].'</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked="checked">'.$addonfields_items[$i].'</span>');
                         }
-                        $biz_addonfields .= '</div>';
+                        $biz_addonfields .= '</p>';
                     break;
                 }
             }

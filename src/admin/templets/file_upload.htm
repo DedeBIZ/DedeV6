@@ -28,8 +28,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td  colspan="2" id="upfield">
-						<div class="mb-3"><label>文件1：<input type="file" name="upfile1" class="admin-input-lg"></label></div>
+					<td colspan="2" id="upfield">
+						<p><label>文件1：<input type="file" name="upfile1" class="admin-input-lg"></label></p>
 					</td>
 				</tr>
 				<tr>
@@ -45,11 +45,11 @@
 			function make_upload() {
 				i++;
 				myob = document.getElementById("upfield");
-				myob.innerHTML+="<div class='mb-3'><label>文件"+i+"：<input type='file' name='upfile"+i+"' class='admin-input-lg'></label></div>";
+				myob.innerHTML+="<p><label>文件"+i+"：<input type='file' name='upfile"+i+"' class='admin-input-lg'></label></p>";
 			}
 			function reset_upload() {
 				myob = document.getElementById("upfield");
-				myob.innerHTML="<div class='mb-3'><label>文件1：<input type='file' name='upfile1' class='admin-input-lg'></label></div>";
+				myob.innerHTML="<p><label>文件1：<input type='file' name='upfile1' class='admin-input-lg'></label></p>";
 			}
 		</script>
 	</body>

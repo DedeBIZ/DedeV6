@@ -26,16 +26,16 @@
 			<div class="row">
 				<div class="col-md-9 m-pb-2">
 					<div class="row">{dede:list pagesize='10' titlelen='230'}
-						<div class="col-md-6 mb-3">
+						<div class="col-md-6">
 							<article class="list-article rounded mb-3">
 								<div class="list-article-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
 								<div class="list-article-body list-article-radius bg-white shadow-sm p-3">
 									<h2 class="mb-3"><a href="[field:arcurl/]">[field:title/]</a></h2>
-									<div class="mb-3">
-										<a href="[field:userurl/]"><span class="mr-3"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</span></a>
-										<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+									<p>[field:description function="cn_substr(@me,130)"/]...</p>
+									<div class="meta">
+										<span class="author mr-3"><a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a></span>
+										<span class="date"><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 									</div>
-									<p>[field:description function="cn_substr(@me,120)"/]...</p>
 								</div>
 							</article>
 						</div>{/dede:list}
@@ -44,8 +44,8 @@
 				</div>
 				<aside class="col-md-3">
 					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
-					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
-					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_menu.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_hot.htm'/}</div>
 				</aside>
 			</div>
 		</main>

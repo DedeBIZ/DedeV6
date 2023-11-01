@@ -97,11 +97,11 @@
 					<article class="item-news bg-white shadow-sm rounded">
 						<div class="item-news-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
 						<div class="title"><h5><a href="[field:arcurl/]">[field:title/]</a></h5></div>
-						<div class="meta mb-3">
-							<a href="[field:userurl/]" class="mr-1"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a>
-							<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+						<p>[field:description function="cn_substr(@me,130)"/]...</p>
+						<div class="meta">
+							<span class="author mr-3"><a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a></span>
+							<span class="date"><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 						</div>
-						<p>[field:description function="cn_substr(@me,180)"/]... </p>
 					</article>
 				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
@@ -111,7 +111,7 @@
 				<div class="col-md-4 m-pb-2">
 					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='130' orderby='id'}
+						<ul>{dede:arclist row='10' titlelen='110' orderby='id'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</article>
@@ -119,7 +119,7 @@
 				<div class="col-md-4 m-pb-2">
 					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='130' orderby='id'}
+						<ul>{dede:arclist row='10' titlelen='110' orderby='id'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</article>
@@ -127,7 +127,7 @@
 				<div class="col-md-4">
 					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='130' orderby='id'}
+						<ul>{dede:arclist row='10' titlelen='110' orderby='id'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
 					</article>

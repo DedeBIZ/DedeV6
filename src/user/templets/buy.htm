@@ -26,7 +26,7 @@
 						<div class="alert alert-success"><?php echo $cfg_ml->GetSta();?></div>
 						<?php if ($cfg_money_scores > 0) {?>							
 						<?php $canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);?>
-						<div class="pb-3">
+						<div class="change pb-3">
 							<h3 class="mb-3">积分换金币</h3>
 							<p><?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币{$canCav}";?></p>
 							<form name="formrank" action="<?php echo $cfg_memberurl;?>/index_do.php?dopost=money2s&fmdo=user" method="post">
@@ -45,7 +45,7 @@
 							</form>
 						</div>
 						<?php }?>
-						<div class="pb-3">
+						<div class="pay pb-3">
 							<h3 class="mb-3">积分充值</h3>
 							<form name="formrank" action="<?php echo $cfg_memberurl;?>/check_card.php" method="post">
 								<table class="table">
@@ -69,7 +69,7 @@
 								</table>
 							</form>
 						</div>
-						<div class="pb-3">
+						<div class="buy pb-3">
 							<h3 class="mb-3">购买金币</h3>
 							<form name="f1" action="<?php echo $cfg_memberurl;?>/buy_action.php" method="post">
 								<input type="hidden" name="product" value="card">
@@ -87,7 +87,7 @@
 								<div class="text-center"><button type="submit" class="btn btn-success btn-sm">购买</button></div>
 							</form>
 						</div>
-						<div>
+						<div class="upgrade">
 							<h3 class="mb-3">账号升级</h3>
 							<form name="f1" action="<?php echo $cfg_memberurl;?>/buy_action.php" method="post">
 								<input type="hidden" name="product" value="member">

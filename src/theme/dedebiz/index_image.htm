@@ -22,7 +22,7 @@
 				</ol>
 			</nav>
 		</div>
-		<main class="container py-3">
+		<section class="container py-3">
 			<div class="row biz-mb">{dede:channelartlist}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
@@ -32,16 +32,16 @@
 				<div class="col-md-4">
 					<article class="item-news bg-white shadow-sm rounded">
 						<div class="item-news-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
-						<h4><a href="[field:arcurl/]">[field:title/]</a></h4>
-						<div class="mb-3">
-							<a href="[field:userurl/]" class="mr-1"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a>
-							<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+						<div class="title"><h5><a href="[field:arcurl/]">[field:title/]</a></h5></div>
+						<p>[field:description function="cn_substr(@me,130)"/]...</p>
+						<div class="meta">
+							<span class="author mr-3"><a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a></span>
+							<span class="date"><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 						</div>
-						<p>[field:description function="cn_substr(@me,180)"/]... </p>
 					</article>
 				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
-		</main>
+		</section>
 		{dede:include filename='foot.htm'/}
 	</body>
 </html>

@@ -14,50 +14,44 @@
 		<main class="container py-3">
 			<div class="row">
 				<div class="col-md-3 m-pb-2">
-					<div class="pb-3">
-						<div class="pannel-main-container shadow-sm rounded">
-							<div class="media-body row">
-								<div class="col-12 text-center">
-									<img src="{dede:var.face/}" title="{dede:var.membername/}" class="user-img-md">
-									<div class="my-3">
-										<h3 class="d-inline-block mr-2" style="vertical-align:middle">{dede:var.spacename/}</h3>
-										<span class="btn btn-outline-success btn-sm mt-2">{dede:var.membername/}</span>
-									</div>
-									<p class="mb-0">
-										<span>积分：{dede:var.scores/}</span>
-									</p>
+					<div class="pannel-main-container shadow-sm rounded">
+						<div class="media-body mb-3">
+							<div class="text-center">
+								<img src="{dede:var.face/}" title="{dede:var.membername/}" class="user-img-md">
+								<div class="my-3">
+									<h3 class="d-inline-block mb-3" style="vertical-align:middle">{dede:var.spacename/}</h3>
+									<span class="btn btn-outline-success btn-sm">{dede:var.membername/}</span>
 								</div>
+								<span>积分：{dede:var.scores/}</span>
 							</div>
-							<div class="row pt-3 text-center">
-								<div class="col-md-4">
-									{dede:var.article/}
-									<p>文章</p>
-								</div>
-								<div class="col-md-4">
-									{dede:var.stow/}
-									<p>收藏</p>
-								</div>
-								<div class="col-md-4">
-									{dede:var.homecount/}
-									<p>访问数</p>
-								</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-md-4">
+								{dede:var.article/}
+								<p>文章</p>
+							</div>
+							<div class="col-md-4">
+								{dede:var.stow/}
+								<p>收藏</p>
+							</div>
+							<div class="col-md-4">
+								{dede:var.homecount/}
+								<p>访问数</p>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-9">
 					{dede:userarclist row=20 titlelen=60 infolen=200}
-					<div class="mb-3">
-						<div class="list-article mb-3">
-							<div class="list-article-body bg-white rounded shadow-sm p-3">
-								<h2 class="mb-3"><a href="{dede:field.arcurl/}">{dede:field.title/}</a></h2>
-								<div class="mb-3">
-									<span><i class="fa fa-calendar mr-1"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
-								</div>
-								<p>{dede:field.description/}...</p>
+					<article class="list-article mb-3">
+						<div class="list-article-body bg-white rounded shadow-sm p-3">
+							<h2 class="mb-3"><a href="{dede:field.arcurl/}">{dede:field.title/}</a></h2>
+							<p>{dede:field.description/}...</p>
+							<div class="meta">
+								<span class="date"><i class="fa fa-calendar mr-1"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
 							</div>
 						</div>
-					</div>
+					</article>
 					{/dede:userarclist}
 				</div>
 			</div>
