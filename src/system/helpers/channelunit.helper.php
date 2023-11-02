@@ -142,7 +142,7 @@ if (!function_exists('GetTypeUrl')) {
         if ($isdefault == -1) {
             if ($cfg_rewrite == 'Y') {
                 //开启伪静态栏目/list-1、/list-2，则分页/list-1-1、/list-1-2
-                return "/list-".$typeid."";
+                $reurl = "/list-".$typeid."";
             } else {
                 $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
             }
