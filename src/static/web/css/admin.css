@@ -54,7 +54,7 @@ body.menu-show .menu-left{display:block}
 body.menu-show .body-right{left:220px;transition:all 0.5s}
 .menu-left{padding:1rem 5px;position:absolute;top:60px;left:0;bottom:0;width:220px;overflow-y:auto}
 .sidemenu{background:var(--white);border-radius:0.5rem}
-.sidemenu .link{position:relative;padding-left:45px;display:block;height:42px;line-height:42px;cursor:pointer}
+.sidemenu .link{display:block;position:relative;padding-left:45px;height:40px;line-height:40px;cursor:pointer}
 .sidemenu li:last-child .link{border-bottom:0}
 .sidemenu li i{position:absolute;top:14px;left:20px;color:var(--gray)}
 .sidemenu li i.fa-angle-down{right:20px;left:auto}
@@ -63,7 +63,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .sidemenu .submenu{display:none;padding:5px 0;background:var(--gray-500)}
 .sidemenu .submenu li{height:40px;line-height:40px}
 .sidemenu .submenu li:hover{background:var(--success-900);transition:all 0.5s}
-.sidemenu .submenu a{float:left;display:block;padding:0 0 0 45px;color:var(--white)}
+.sidemenu .submenu a{display:block;float:left;padding:0 0 0 45px;color:var(--white)}
 .sidemenu .submenu .active{background:var(--green)}
 .sidemenu .submenu-right{float:right!important;padding:0 20px 0 0!important}
 .body-right{position:absolute;top:60px;right:0;bottom:0}
