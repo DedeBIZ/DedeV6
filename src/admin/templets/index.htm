@@ -21,12 +21,12 @@
 		<?php }?>
 		<div class="admin-head shadow-sm">			
 			<div class="logo">
-				<span class="name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,10);?></a></span>
+				<a href="index_body.php" target="main" class="name"><?php echo cn_substr($cfg_webname, 12);?></a>
 				<span class="version"><?php echo $cfg_version_detail;?></span>
 				<?php if (DEDEBIZ_SAFE_MODE) {?>
-				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs btn-version">安全</a>
+				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs">安全</a>
 				<?php } else {?>
-				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs btn-version">开发</a>
+				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs">开发</a>
 				<?php }?>
 			</div>
 			<nav class="item">
@@ -53,7 +53,10 @@
 					<li class="d-none d-lg-block"><a href="/" target="_blank" title="预览首页"><i class="fa fa-home"></i></a></li>
 					<?php echo ($cfg_mb_open=='Y')?'<li><a href="/user/" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
 					<li class="d-none d-lg-block"><a href="javascript:document.getElementById('main').contentWindow.location.reload(true);" title="刷新页面"><i class="fa fa-refresh"></i></a></li>
-					<li class="d-none d-lg-block"><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType() == 10){echo "<span class='btn btn-success btn-xs ml-2'>管理员</span>";} else if ($cuserLogin->getUserType() == 5) {echo "<span class='btn btn-success btn-xs ml-2'>栏目员</span>";} else {echo "<span class='btn btn-success btn-xs ml-2'>文档员</span>";}?></a></li>
+					<li class="d-none d-lg-block">
+						<a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?></a>
+						<?php if ($cuserLogin->getUserType() == 10){echo "<span class='btn btn-success btn-xs'>管理员</span>";} else if ($cuserLogin->getUserType() == 5) {echo "<span class='btn btn-success btn-xs'>栏目员</span>";} else {echo "<span class='btn btn-success btn-xs'>文档员</span>";}?>
+					</li>
 					<li><a href="exit.php" title="退出后台"><i class="fa fa-power-off"></i></a></li>
 				</ul>
 			</div>
