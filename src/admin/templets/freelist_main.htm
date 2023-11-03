@@ -106,16 +106,18 @@
 		</script>
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
-			<tr>
-				<td bgcolor="#f8fafb">
-					<input type="text" name="keyword" id="keyword" value="<?php echo $keyword?>" class="admin-input-lg">
-					<button type="submit" name="submit2" class="btn btn-success btn-sm">搜索</button>
-					<button type="button" name="bt1" onclick="location='freelist_add.php';" class="btn btn-success btn-sm">添加自由列表</button>
-					<button type="button" name="bt2" onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm">更新所有列表</button>
-				</td>
-			</tr>
-		</table>
+		<form action="freelist_main.php" name="form1" id="form1">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f8fafb">
+						<input type="text" name="keyword" id="keyword" value="<?php echo $keyword?>" class="admin-input-lg" placeholder="请输入关键词">
+						<button type="submit" name="submit2" class="btn btn-success btn-sm">搜索</button>
+						<button type="button" name="bt1" onclick="location='freelist_add.php';" class="btn btn-success btn-sm">添加自由列表</button>
+						<button type="button" name="bt2" onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm">更新所有列表</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<div id="rslist"><?php GetTagList($dsql,$pageno,$pagesize,$orderby);?></div>
 		<table align="center" class="table maintable mb-3">
 			<tr>

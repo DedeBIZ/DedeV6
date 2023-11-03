@@ -15,7 +15,7 @@
 	<body class="menu-show">
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
 		<div id="browsehappy">
-			<span>您使用的浏览器已过时，请<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，提高后台操作体验</span>
+			<span>您使用的浏览器已过时，请<a href="https://www.dedebiz.com/browsehappy" target="_blank">更换浏览器</a>，提高后台操作体验</span>
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close"><i class="fa fa-times"></i></a>
 		</div>
 		<?php }?>
@@ -32,12 +32,15 @@
 			<nav class="item">
 				<ul>
 					<li><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
-					<?php if ($cuserLogin->getUserType() >= 10) {?>
+					<?php if ($cuserLogin->getUserType() >= 5) {?>
 					<li class="d-none d-lg-block"><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
+					<li class="d-none d-lg-block"><a href="tags_main.php" target="main" title="标签管理"><i class="fa fa-tags"></i></a></li>
 					<li class="d-none d-lg-block"><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
 					<li class="d-none d-lg-block"><a href="diy_main.php" target="main" title="自定义表单管理"><i class="fa fa-area-chart"></i></a></li>
 					<?php }?>
-					<?php if (!DEDEBIZ_SAFE_MODE) {?><li class="d-none d-lg-block"><a href="templets_main.php" target="main" title="主题模板"><i class="fa fa-cube"></i></a></li><?php }?>
+					<?php if (!DEDEBIZ_SAFE_MODE) {?>
+					<li class="d-none d-lg-block"><a href="templets_main.php" target="main" title="主题模板"><i class="fa fa-cube"></i></a></li>
+					<?php }?>
 					<li class="d-none d-lg-block"><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
 					<li class="d-none d-lg-block"><a href="sys_info.php" target="main" title="系统设置"><i class="fa fa-cog"></i></a></li>
 					<li class="d-none d-lg-block">
@@ -51,11 +54,11 @@
 			<div class="user">
 				<ul>
 					<li class="d-none d-lg-block"><a href="/" target="_blank" title="预览首页"><i class="fa fa-home"></i></a></li>
-					<?php echo ($cfg_mb_open=='Y')?'<li><a href="/user/" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
+					<?php echo ($cfg_mb_open == 'Y') ? '<li><a href="/user/" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
 					<li class="d-none d-lg-block"><a href="javascript:document.getElementById('main').contentWindow.location.reload(true);" title="刷新页面"><i class="fa fa-refresh"></i></a></li>
 					<li class="d-none d-lg-block">
 						<a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?></a>
-						<?php if ($cuserLogin->getUserType() == 10){echo "<span class='btn btn-success btn-xs'>管理员</span>";} else if ($cuserLogin->getUserType() == 5) {echo "<span class='btn btn-success btn-xs'>栏目员</span>";} else {echo "<span class='btn btn-success btn-xs'>文档员</span>";}?>
+						<?php if ($cuserLogin->getUserType() == 10) {echo '<span class="btn btn-success btn-xs">管理员</span>';} else if ($cuserLogin->getUserType() == 5) {echo '<span class="btn btn-success btn-xs">栏目员</span>';} else {echo '<span class="btn btn-success btn-xs">文档员</span>';}?>
 					</li>
 					<li><a href="exit.php" title="退出后台"><i class="fa fa-power-off"></i></a></li>
 				</ul>
@@ -64,8 +67,8 @@
 		<div class="menu-left">
 			<ul id="sidemenu" class="sidemenu shadow-sm">
 				<?php 
-				$openitem=100;
-				GetMenus($cuserLogin->getUserRank(),'main'); 
+				$openitem = 100;
+				GetMenus($cuserLogin->getUserRank(), 'main'); 
 				?>
 			</ul>
 		</div>

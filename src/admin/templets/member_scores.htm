@@ -19,7 +19,7 @@
 					<td colspan="5" bgcolor="#f8fafb">积分头衔设置</td>
 				</tr>
 				<tr bgcolor="#f8f9fa" align="center">
-					<td width="6%"><input type="checkbox" name="chkall" id="chkall" onclick="CheckAll(this.form)"> 反选</td>
+					<td width="6%">选择</td>
 					<td width="26%">积分大于</td>
 					<td width="26%">星星数</td>
 					<td width="26%">级别头衔</td>
@@ -53,18 +53,25 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="5" bgcolor="#f8fafb" align="center"><button type="submit" class="btn btn-success btn-sm">提交</button></td>
+					<td colspan="5" bgcolor="#f8fafb" align="center">
+						<button type="button" name="select" onclick="selAll()" class="btn btn-success btn-sm">全选</button>
+						<button type="button" name="select" onclick="noSelAll()" class="btn btn-success btn-sm">取消</button>
+						<button type="submit" class="btn btn-success btn-sm">提交</button>
+					</td>
 				</tr>
 			</table>
 		</form>
 		<script>
-			function CheckAll(form, prefix, checkall) {
-				var checkall = checkall ? checkall : 'chkall';
-				for (var i = 0; i < form.elements.length; i++) {
-					var e = form.elements[i];
-					if (e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix)))) {
-						e.checked = form.elements[checkall].checked;
-					}
+			function selAll() {
+				var a = document.getElementsByTagName("input");
+				for (var i = 0; i < a.length; i++){
+					if (a[i].type == "checkbox") a[i].checked = true;
+				}
+			}
+			function noSelAll() {
+				var a = document.getElementsByTagName("input");
+				for (var i = 0; i < a.length; i++){
+					if (a[i].type == "checkbox") a[i].checked = false;
 				}
 			}
 		</script>
