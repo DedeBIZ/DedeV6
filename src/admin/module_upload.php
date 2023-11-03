@@ -19,7 +19,7 @@ if (empty($action)) $action = '';
 $mdir = DEDEDATA.'/module';
 if ($action == 'upload') {
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("请选择上传的模块插件文件", "javascript:;");
+        ShowMsg("请选择上传的模块插件文件", "-1");
         exit();
     } else {
         include_once(DEDEINC."/libraries/zip.class.php");
@@ -30,7 +30,7 @@ if ($action == 'upload') {
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的插件不是正常模块格式文件", "javascript:;");
+            ShowMsg("您上传的插件不是正常模块格式文件", "-1");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -40,7 +40,7 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的模块已存在，请删除原模块文件或强制同名模块上传", "javascript:;");
+            ShowMsg("您上传的模块已存在，请删除原模块文件或强制同名模块上传", "-1");
             exit();
         }
         @unlink($okfile);
