@@ -67,11 +67,19 @@ if ($action == 'post') {
     }
 } else if ($action == 'list') {
     include_once DEDEINC.'/datalistcp.class.php';
-    $query = "SELECT * FROM {$diy->table} ORDER BY id DESC";
+    if (empty($keyword)) {
+        $keyword = '';
+        $addquery = '';
+    } else {
+        $addquery = " WHERE {$field} LIKE '%".trim($keyword)."%' ";
+    }
+    $query = "SELECT * FROM {$diy->table} $addquery ORDER BY id DESC";
     $datalist = new DataListCP();
     $datalist->pagesize = 30;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
+    $datalist->SetParameter('keyword', $keyword);
+    $datalist->SetParameter('field', $field);
     $datalist->SetTemplate(DEDEADMIN.'/templets/diy_list.htm');
     $datalist->SetSource($query);
     $fieldlist = $diy->getFieldList();

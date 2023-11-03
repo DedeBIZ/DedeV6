@@ -24,13 +24,23 @@
 				</tr>
 			</table>
 		</form>
+		<form name="form2" action="tags_main.php">
+			<table align="center" class="table maintable mb-3">
+				<tr>
+					<td bgcolor="#f8fafb">
+						<input type="text" name="tag" value="<?php echo $tag;?>" placeholder="请输入标签" class="admin-input-lg">
+						<button type="submit" name="sb" class="btn btn-success btn-sm">搜索</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<form name="form3" action="tags_main.php?action=delete" method="post">
 			<table align="center" class="table maintable mb-3">
 				<tr>
 					<td colspan="8" bgcolor="#f8fafb">标签管理</td>
 				</tr>
 				<tr align="center" bgcolor="#f8f9fa">
-					<td width="6%"><input type="checkbox" name="chkall" id="chkall" onclick="CheckAll(this.form)"> 反选</td>
+					<td width="6%">选择</td>
 					<td width="6%">id</td>
 					<td width="20%">标签</td>
 					<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=count&orderway=<?php echo $neworderway;?>">点击</a></td>
@@ -62,7 +72,11 @@
 				</tr>
 				{/dede:datalist}
 				<tr>
-					<td colspan="8"><button type="button" onclick="document.form3.submit()" class="btn btn-danger btn-sm">删除</button></td>
+					<td colspan="8">
+						<button type="button" name="select" onclick="selAll()" class="btn btn-success btn-sm">全选</button>
+						<button type="button" name="select" onclick="noSelAll()" class="btn btn-success btn-sm">取消</button>
+						<button type="button" onclick="document.form3.submit()" class="btn btn-danger btn-sm">删除</button>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="8" bgcolor="#f8fafb" align="center">{dede:pagelist/}</td>
@@ -70,13 +84,16 @@
 			</table>
 		</form>
 		<script>
-			function CheckAll(form, prefix, checkall) {
-				var checkall = checkall ? checkall : 'chkall';
-				for (var i = 0; i < form.elements.length; i++) {
-					var e = form.elements[i];
-					if (e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix)))) {
-						e.checked = form.elements[checkall].checked;
-					}
+			function selAll() {
+				var a = document.getElementsByTagName("input");
+				for (var i = 0; i < a.length; i++){
+					if (a[i].type == "checkbox") a[i].checked = true;
+				}
+			}
+			function noSelAll() {
+				var a = document.getElementsByTagName("input");
+				for (var i = 0; i < a.length; i++){
+					if (a[i].type == "checkbox") a[i].checked = false;
 				}
 			}
 			function UpdateOne(tid) {

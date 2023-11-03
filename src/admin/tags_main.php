@@ -31,9 +31,7 @@ if (empty($action)) {
     $dlist->Display();
     exit();
 }
-/*
-function update()
-*/
+//function update()
 else if ($action == 'update') {
     $tid = (empty($tid) ? 0 : intval($tid));
     $count = (empty($count) ? 0 : intval($count));
@@ -46,9 +44,7 @@ else if ($action == 'update') {
     ShowMsg("成功保存标签的点击信息", 'tags_main.php');
     exit();
 }
-/*
-function delete()
-*/
+//function delete()
 else if ($action == 'delete') {
     if (@is_array($ids)) {
         $stringids = implode(',', $ids);
@@ -81,9 +77,7 @@ else if ($action == 'delete') {
     $dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET title='{$title}',keywords='{$kw}',`description`='{$des}',`uptime`='{$now}' WHERE id = {$tid}");
     echo json_encode(array('code' => 200, 'result' => true));
 }
-/*
-function fetch()
-*/
+//function fetch()
 else if ($action == 'fetch') {
     $wheresql = '';
     $start = isset($start) && is_numeric($start) ? $start : 0;

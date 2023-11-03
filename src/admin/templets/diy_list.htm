@@ -9,9 +9,33 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
+        <form name="form1" action="diy_list.php">
+            <input type="hidden" name="action" value="list">
+            <input type="hidden" name="diyid" value="<?php echo $diy->diyid; ?>">
+			<table align="center" class="table maintable my-3">
+				<tr>
+					<td bgcolor="#f8fafb">
+						<input type="text" name="keyword" class="admin-input-lg mr-3" value="<?php echo $keyword; ?>" placeholder="请输入关键词">
+			            <select name="field" class="admin-input-sm">
+			            <?php
+			            foreach($fieldlist as $k=>$fielddata)
+			            {
+			            	if ($k==$field) {
+			            		echo "<option value='{$k}' selected>{$fielddata[0]}</option>\r\n";
+			            	} else {
+			            		echo "<option value='{$k}'>{$fielddata[0]}</option>\r\n";
+			            	}
+			            }
+			            ?>
+			            </select>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<form action="diy_list.php" method="post">
 			<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
-			<table align="center" class="table maintable my-3">
+			<table align="center" class="table maintable mb-3">
 				<tr>
 					<td colspan="2" bgcolor="#f8fafb">自定义表单管理</a> - <?php echo $diy->name;?>列表</td>
 				</tr>
