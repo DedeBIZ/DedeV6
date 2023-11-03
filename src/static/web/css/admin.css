@@ -56,7 +56,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .sidemenu{background:var(--white);border-radius:0.5rem}
 .sidemenu .link{display:block;position:relative;padding-left:45px;height:40px;line-height:40px;cursor:pointer}
 .sidemenu li:last-child .link{border-bottom:0}
-.sidemenu li i{position:absolute;top:14px;left:20px;color:var(--gray)}
+.sidemenu li i{position:absolute;top:13px;left:20px;color:var(--gray)}
 .sidemenu li i.fa-angle-down{right:20px;left:auto}
 .sidemenu li.open .link,.sidemenu li.open i{color:var(--green)}
 .sidemenu li.open i.fa-angle-down{transform:rotate(180deg)}
