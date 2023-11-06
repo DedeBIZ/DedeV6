@@ -500,7 +500,7 @@ else if ($dopost == 'quickEdit') {
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
-                if ($trow->att == 'j' || $trow->att == 'p') continue;
+                if ($trow->att == 'j') continue;
                 if (preg_match("#".$trow->att."#", $arcRow['flag']))
                 echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}]</label> ";
                 else
@@ -767,7 +767,7 @@ else if ($dopost == 'attsDlg') {
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
-                if ($trow->att == 'j' || $trow->att == 'p') continue;
+                if ($trow->att == 'j') continue;
                 echo "<label><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
             }
             ?>
