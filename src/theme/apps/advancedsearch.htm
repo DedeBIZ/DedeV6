@@ -10,14 +10,14 @@
 		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
 	<body>
-		<main class="container py-3">				
+		<main class="container py-3">
 			{dede:datalist}
 			<?php
 			$fields['stime'] = GetDateTimeMk($fields['senddate']);
 			$fields['arcurl'] = GetArcUrl($fields['aid'],$fields['typeid'],$fields['senddate'],$fields['title'],$fields['ismake'],$fields['arcrank'],$fields['namerule'],$fields['typedir'],$fields['money']);
 			$fields['typeurl'] = GetTypeUrl($fields['typeid'],MfTypedir($fields['typedir']),$fields['isdefault'],$fields['defaultname'],
 			$fields['ispart'],$fields['namerule2'],$fields['moresite'],$fields['siteurl'],$fields['sitepath']);
-			?>			
+			?>
 			<div class="list-article mb-3">
 				<div class="list-article-body bg-white rounded shadow-sm p-3">
 					<h2 class="mb-3"><a href="{dede:field.arcurl/}">{dede:field.title/}</a></h2>
