@@ -35,7 +35,7 @@
 					<?php if ($cuserLogin->getUserType() >= 5) {?>
 					<li class="d-none d-lg-block"><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
 					<li class="d-none d-lg-block"><a href="tags_main.php" target="main" title="标签管理"><i class="fa fa-tags"></i></a></li>
-					<li class="d-none d-lg-block"><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
+					<li class="d-none d-lg-block"><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE ? '?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
 					<li class="d-none d-lg-block"><a href="diy_main.php" target="main" title="自定义表单管理"><i class="fa fa-area-chart"></i></a></li>
 					<?php }?>
 					<?php if (!DEDEBIZ_SAFE_MODE) {?>
