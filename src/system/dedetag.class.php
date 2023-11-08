@@ -874,7 +874,7 @@ class DedeTagParse
 class DedeAttribute
 {
     var $Count = -1;
-    var $Items = ""; //属性元素的集合
+    var $Items = array(); //属性元素的集合
     //获得某个属性
     function GetAtt($str)
     {
