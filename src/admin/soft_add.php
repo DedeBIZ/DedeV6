@@ -40,7 +40,7 @@ if ($dopost != 'save') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     if (!isset($typeid2)) $typeid2 = 0;
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
@@ -73,7 +73,7 @@ if ($dopost != 'save') {
     $sortrank = AddDay($pubdate, $sortup);
     if ($ishtml == 0) $ismake = -1;
     else $ismake = 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     $title = preg_replace('#"#', '＂', $title);
     $title = cn_substrR($title, $cfg_title_maxlen);
     $shorttitle = cn_substrR($shorttitle, 36);

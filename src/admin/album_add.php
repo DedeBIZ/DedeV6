@@ -39,7 +39,7 @@ if ($dopost != 'save') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     if (!isset($typeid2)) $typeid2 = 0;
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
@@ -48,7 +48,7 @@ if ($dopost != 'save') {
     if (!isset($ddisfirst)) $ddisfirst = 0;
     if (!isset($albums)) $albums = "";
     if (!isset($delzip)) $delzip = 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     if (trim($title) == '') {
         ShowMsg("文档标题不能为空", "-1");
         exit();
@@ -121,7 +121,7 @@ if ($dopost != 'save') {
                 $ntime = time();
                 $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
                 CreateDir($savepath);
-                $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
+                $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
                 $fullUrl = $fullUrl.$ext;
                 file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
                 $info = '';

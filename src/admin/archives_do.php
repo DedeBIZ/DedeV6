@@ -33,7 +33,7 @@ if ($dopost == 'editArchives') {
         $ntime = time();
         $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         $fullUrl = $fullUrl.".png";
         file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
         //加水印
@@ -608,7 +608,7 @@ else if ($dopost == "makekw") {
             $keywords = '';
             $title = $row['title'];
             $description = $row['description'];
-            $body = cn_substr($row['body'], 5000);
+            $body = cn_substr($row['body'], 3000);
             $data = $client->Spliteword($title.Html2Text($body));
             $keywords = $data->data;
             $description = str_replace('　', ' ', trim($description));
@@ -631,7 +631,7 @@ else if ($dopost == "makekw") {
             $keywords = '';
             $title = $row['title'];
             $description = $row['description'];
-            $body = cn_substr($row['body'], 5000);
+            $body = cn_substr($row['body'], 3000);
             $sp->SetSource($title, $cfg_soft_lang, $cfg_soft_lang);
             $sp->StartAnalysis();
             $titleindexs = preg_replace("/#p#|#e#/", '', $sp->GetFinallyIndex());

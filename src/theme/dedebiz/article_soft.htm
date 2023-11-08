@@ -195,7 +195,7 @@
 				$.get("{dede:global.cfg_memberurl/}/api.php?format=json", function(result) {
 					if (result.code !== 200) {
 						$(`._feedback_reply`).html("");
-						ShowAlert(`._feedback_reply[for="${fid}"]`, '回复需要登录会员中心，您可以<a href="{dede:global.cfg_memberurl/}/login.php">点击登录</a>后再来回复', 'warning', 5000);
+						ShowAlert(`._feedback_reply[for="${fid}"]`, '回复需要登录会员中心，您可以<a href="{dede:global.cfg_memberurl/}/login.php">点击登录</a>后再来回复', 'warning', 3000);
 					} else {
 						$(`._feedback_reply`).html("");
 						$(`._feedback_reply[for="${fid}"]`).html(replyPannel);

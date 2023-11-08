@@ -36,12 +36,12 @@ else if ($action == 'update') {
     $tid = (empty($tid) ? 0 : intval($tid));
     $count = (empty($count) ? 0 : intval($count));
     if (empty($tid)) {
-        ShowMsg('没有选择要删除的标签', '-1');
+        ShowMsg('请选择需要删除的标签', '-1');
         exit();
     }
     $query = "UPDATE `#@__tagindex` SET `count`='$count' WHERE id='$tid' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功保存标签的点击信息", 'tags_main.php');
+    ShowMsg("成功保存标签点击信息", 'tags_main.php');
     exit();
 }
 //function delete()
@@ -51,16 +51,16 @@ else if ($action == 'delete') {
     } else if (!empty($ids)) {
         $stringids = $ids;
     } else {
-        ShowMsg('没有选择要删除的标签', '-1');
+        ShowMsg('请选择需要删除的标签', '-1');
         exit();
     }
     $query = "DELETE FROM `#@__tagindex` WHERE id IN ($stringids)";
     if ($dsql->ExecuteNoneQuery($query)) {
         $query = "DELETE FROM `#@__taglist` WHERE tid IN ($stringids)";
         $dsql->ExecuteNoneQuery($query);
-        ShowMsg("删除tags [$stringids] 成功", 'tags_main.php');
+        ShowMsg("删除[$stringids]标签成功", 'tags_main.php');
     } else {
-        ShowMsg("删除tags [$stringids] 失败", 'tags_main.php');
+        ShowMsg("删除[$stringids]标签失败", 'tags_main.php');
     }
     exit();
 } else if ($action == 'get_one') {
@@ -112,14 +112,13 @@ else if ($action == 'fetch') {
         }
         foreach ($keyarr as $keyword) {
             $keyword = trim($keyword);
-            if ($keyword != '' && strlen($keyword) < 13) {
+            if ($keyword != '' && strlen($keyword) < 24) {
                 $keyword = addslashes($keyword);
                 $row = $dsql->GetOne("SELECT id,total FROM `#@__tagindex` WHERE tag LIKE '$keyword'");
                 if (is_array($row)) {
                     $tid = $row['id'];
                     $trow = $dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__taglist` WHERE tag LIKE '$keyword'");
                     if (intval($trow['dd']) != $row['total']) {
-
                         $query = "UPDATE `#@__tagindex` SET `total`=".$trow['dd'].",uptime=$now WHERE id='$tid' ";
                         $dsql->ExecuteNoneQuery($query);
                     }
@@ -135,12 +134,12 @@ else if ($action == 'fetch') {
         $complete = FALSE;
     }
     if ($complete) {
-        ShowMsg("tags获取完成", 'tags_main.php');
+        ShowMsg('完成标签获取', 'tags_main.php');
         exit();
     }
     $start = $start + 100;
     $goto = "tags_main.php?action=fetch&startaid=$startaid&endaid=$endaid&start=$start";
-    ShowMsg('继续获取tags ', $goto);
+    ShowMsg('正在获取标签', $goto);
     exit();
 }
 ?>

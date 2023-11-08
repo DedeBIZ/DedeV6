@@ -114,9 +114,9 @@
 					console.log(rs);
 					let result = JSON.parse(rs);
 					if (result.code === 200) {
-						ShowAlert("#alertConnect", result.data, "success", 5000);
+						ShowAlert("#alertConnect", result.data, "success", 3000);
 					} else {
-						ShowAlert("#alertConnect", result.data, "danger", 5000);
+						ShowAlert("#alertConnect", result.data, "danger", 3000);
 					}
 				})
 			});

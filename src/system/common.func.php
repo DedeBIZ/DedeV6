@@ -352,7 +352,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
     $litime = ($limittime == 0 ? 1000 : $limittime);
     $func = '';
     if ($gourl == '-1') {
-        if ($limittime == 0) $litime = 5000;
+        if ($limittime == 0) $litime = 3000;
         $gourl = "javascript:history.go(-1);";
     }
     if ($gourl == '' || $onlymsg == 1) {

@@ -37,8 +37,8 @@ function GetBackAlert($msg, $isstop = 0)
 {
     global $s_lang;
     $msg = str_replace('"', '`', $msg);
-    if ($isstop == 1) $msg = "<script>\r\n<!--\r\n alert(\"{$msg}\");\r\n-->\r\n</script>\r\n";
-    else $msg = "<script>\r\n<!--\r\n alert(\"{$msg}\");history.go(-1);\r\n-->\r\n</script>\r\n";
+    if ($isstop == 1) $msg = "<script><!--alert(\"{$msg}\");--></script>";
+    else $msg = "<script><!--alert(\"{$msg}\");javascript:history.go(-1);--></script>";
     $msg = "<meta http-equiv=content-type content='text/html; charset={$s_lang}'>\r\n".$msg;
     return $msg;
 }

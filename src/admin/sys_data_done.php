@@ -64,7 +64,7 @@ if ($dopost == 'bak') {
         $dh->close();
         $tmsg .= "完成备份目录旧数据清理";
         if ($isstruct == 1) {
-            $bkfile = $bkdir."/tables_struct_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
+            $bkfile = $bkdir."/tables_struct_".substr(md5(time().mt_rand(1000, 6000).$cfg_cookie_encode), 0, 16).".txt";
             $mysql_version = $dsql->GetVersion();
             $fp = fopen($bkfile, "w");
             foreach ($tables as $t) {
@@ -115,7 +115,7 @@ if ($dopost == 'bak') {
         $dsql->SetQuery("SELECT * FROM `$nowtable`");
         $dsql->Execute();
         $m = 0;
-        $bakfilename = "$bkdir/{$nowtable}_{$startpos}_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
+        $bakfilename = "$bkdir/{$nowtable}_{$startpos}_".substr(md5(time().mt_rand(1000, 6000).$cfg_cookie_encode), 0, 16).".txt";
         while ($row2 = $dsql->GetArray()) {
             if ($m < $startpos) {
                 $m++;

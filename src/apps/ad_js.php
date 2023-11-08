@@ -29,7 +29,7 @@ if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile
     $adbody = str_replace('"', '\"', $adbody);
     $adbody = str_replace("\r", "\\r", $adbody);
     $adbody = str_replace("\n", "\\n", $adbody);
-    $adbody = "<!--\r\ndocument.write(\"{$adbody}\");\r\n-->\r\n";
+    $adbody = "<!--document.write(\"{$adbody}\");-->";
     $fp = fopen($cacheFile, 'w');
     fwrite($fp, $adbody);
     fclose($fp);

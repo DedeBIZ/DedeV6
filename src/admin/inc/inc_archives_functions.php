@@ -134,7 +134,7 @@ function GetCurContent($body)
         } else {
             continue;
         }
-        $milliSecondN = dd2char($milliSecond.mt_rand(1000,8000));
+        $milliSecondN = dd2char($milliSecond.mt_rand(1000, 9999));
         $value = trim($value);
         $rndFileName = $imgPath.'/'.$milliSecondN.'-'.$key.$itype;
         $fileurl = $imgUrl.'/'.$milliSecondN.'-'.$key.$itype;
@@ -196,7 +196,7 @@ function GetRemoteImage($url, $uid = 0)
         } else {
             $itype = '.jpg';
         }
-        $rndname = dd2char($uid.'_'.MyDate('mdHis', time()).mt_rand(1000,9999));
+        $rndname = dd2char($uid.'_'.MyDate('mdHis', time()).mt_rand(1000, 9999));
         $rndtrueName = $imgPath.'/'.$rndname.$itype;
         $fileurl = $imgUrl.'/'.$rndname.$itype;
         $ok = $htd->SaveToBin($rndtrueName);
@@ -355,7 +355,7 @@ function GetDDImage($litpic, $picname, $isremote)
         }
         $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         if (strtolower($_FILES[$litpic]['type']) == "image/gif") {
             $fullUrl = $fullUrl.".gif";
         } else if (strtolower($_FILES[$litpic]['type']) == "image/png") {
@@ -677,7 +677,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         } else {
             $savepath = $cfg_image_dir.'/'.date("%Y-%m", $ntime);
             CreateDir($savepath);
-            $fullUrl = $savepath.'/'.date("%d", $ntime).dd2char(date("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000,9999));
+            $fullUrl = $savepath.'/'.date("%d", $ntime).dd2char(date("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000, 9999));
         }
         if (strtolower($_FILES[$upname]['type']) == "image/gif") {
             $fullUrl = $fullUrl.".gif";
