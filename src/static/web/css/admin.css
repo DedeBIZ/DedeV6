@@ -101,6 +101,10 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .nw{float:left;width:160px}
 .cls{clear:both}
 .helpinfo{float:left;display:none;padding:10px;width:100%;background:var(--bg);border:1px solid var(--gray-300);border-radius:0.5rem}
+.tips-box{margin:70px auto 0;width:500px;height:auto;background:var(--white);border-radius:0.5rem;box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)}
+.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid var(--bg)}
+.tips-head p{margin:0;padding-left:10px;line-height:16px;color:var(--gray-dark);text-align:left;border-left:3px solid var(--yellow)}
+.tips-body{padding:20px;min-height:160px;color:var(--gray);word-break:break-all;word-wrap:break-word}
 #toolimg{position:absolute;display:none}
 #uploadfield{float:left}
 #uploadwait{z-index:19999}
@@ -128,10 +132,6 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .option3{background:var(--white)}
 .body-bg{background:var(--bg)}
 .upload-box{margin:10px;background:var(--white)}
-.tips-box{margin:70px auto 0;width:500px;height:auto;background:var(--white);border-radius:0.5rem;box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)}
-.tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid var(--bg)}
-.tips-head p{margin:0;padding-left:10px;line-height:16px;color:var(--gray-dark);text-align:left;border-left:3px solid var(--yellow)}
-.tips-body{padding:20px;min-height:160px;color:var(--gray);word-break:break-all;word-wrap:break-word}
 .user-img-md{width:60px;height:60px;border-radius:50%;border:1px solid var(--light)}
 .user-img-sm{width:30px;height:30px;border-radius:50%;border:1px solid var(--light)}
 .thumbnail-md{max-width:200px;max-height:120px}

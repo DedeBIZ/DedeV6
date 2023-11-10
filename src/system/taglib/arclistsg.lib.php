@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 自定义列表标签
+ * 自定义模型列表标签
  *
  * @version        $id:arclistsg.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

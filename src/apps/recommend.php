@@ -1,6 +1,6 @@
 <?php
 /**
- * 信息推荐
+ * 文档推荐
  *
  * @version        $id:recommend.php$
  * @package        DedeBIZ.Site

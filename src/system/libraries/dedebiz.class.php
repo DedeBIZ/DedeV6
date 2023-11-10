@@ -1,6 +1,14 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
-//DedeBIZ商业组件通信
+/**
+ * DedeBIZ商业组件通信
+ *
+ * @version        $id:dedebiz.class.php 11:42 2010年7月6日 tianya $
+ * @package        DedeBIZ.Libraries
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
+ * @link           https://www.dedebiz.com
+ */
 define("DEDEBIZ", true);
 class DedeBizClient
 {

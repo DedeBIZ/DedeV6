@@ -2,6 +2,7 @@
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * 扩展函数
+ * 
  * @version        $id:extend.func.php 2 20:50 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM

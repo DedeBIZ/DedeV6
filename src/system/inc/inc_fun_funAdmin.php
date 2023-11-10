@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 管理员后台基本函数
+ * 后台管理函数
  *
  * @version        $id:inc_fun_funAdmin.php 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries

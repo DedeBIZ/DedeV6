@@ -1,4 +1,4 @@
-自定义模型文档列表标签
+自定义模型列表标签
 >>dede>>
 {dede:arclistsg typeid='' row='' col='' titlelen='' flag='h' orderway='' keyword='' limit='0,1'}
 	<a href='[field:arcurl/]'>[field:title/]</a>

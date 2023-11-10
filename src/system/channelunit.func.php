@@ -10,6 +10,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @link           https://www.dedebiz.com
  */
 if (!isset($cfg_mainsite)) extract($GLOBALS, EXTR_SKIP);
+helper('channelunit');
 global $PubFields, $pTypeArrays, $idArrary, $envs, $v1, $v2;
 $pTypeArrays = $idArrary = $PubFields = $envs = array();
 $PubFields['phpurl'] = $cfg_phpurl;
@@ -24,5 +25,4 @@ $envs['reid'] = 0;
 $envs['aid'] = 0;
 $envs['keyword'] = '';
 $envs['idlist'] = '';
-helper('channelunit');
 ?>

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 软件相关标签
+ * 软件标签
  *
  * @version        $id:softlinks.lib.php 9:33 2010年7月8日 tianya $
  * @package        DedeBIZ.Taglib

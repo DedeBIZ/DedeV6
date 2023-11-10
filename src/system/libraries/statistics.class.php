@@ -2,7 +2,7 @@
 if (!defined('DEDEINC')) exit ('dedebiz');
 require_once(DEDEINC."/libraries/agent.class.php");
 /**
- * 轻量级流量统计
+ * 流量统计操作
  *
  * @version        $id:statistics.class.php 11:42 2022年03月26日 tianya $
  * @package        DedeBIZ.Libraries

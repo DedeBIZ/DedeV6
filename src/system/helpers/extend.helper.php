@@ -29,7 +29,7 @@ if (!function_exists('ParCv')) {
 if (!function_exists('ParamError')) {
     function ParamError()
     {
-        ShowMsg('当前网页不存在，系统自动返回主页', '/');
+        ShowMsg('当前页面不存在，系统自动返回主页', '/');
         exit();
     }
 }

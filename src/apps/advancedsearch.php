@@ -1,6 +1,6 @@
 <?php
 /**
- * 高级搜索
+ * 高级搜索操作
  *
  * @version        $id:advancedsearch.php 15:38 2010年7月8日 tianya $
  * @package        DedeBIZ.Site

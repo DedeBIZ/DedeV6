@@ -72,20 +72,20 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .user-actions{text-align:right}
 .copyright{padding:1.5rem;background:var(--gray-dark)}
 .flink,.flink a,.copyright,.copyright a{color:var(--white)}
+.user-meter i{font-size:24px!important;color:var(--green)}
+.userspace .info{font-size:14px;font-weight:300;color:var(--gray)}
+.logo img{height:36px}
+.pannel-main-container{padding:1.5rem;background:var(--white)}
 .biz-mb{margin-bottom:-2rem}
 .bannr-img{width:100%;height:340px}
 .user-img-md{width:60px;height:60px;border-radius:50%;border:1px solid var(--gray-300)}
 .user-img-sm{width:36px;height:36px;border-radius:50%;border:1px solid var(--gray-300)}
 .user-img-xs{width:30px;height:30px;border-radius:50%;border:1px solid var(--gray-300)}
-.user-meter i{font-size:24px!important;color:var(--green)}
-.userspace .info{font-size:14px;font-weight:300;color:var(--gray)}
-.logo img{height:36px}
 .nav-item .active{color:var(--warning)}
 .nav-link{padding:0 10px;height:36px;line-height:36px}
 .navbar-dark .navbar-nav .nav-link{color:var(--gray-300)}
 .list-group-item.active a{color:var(--white)}
 .list-group-flush>.list-group-item{cursor:pointer}
-.pannel-main-container{padding:1.5rem;background:var(--white)}
 .input-group-append .btn-sm{line-height:1.8}
 .table{color:var(--gray)}
 .table td,.table th{padding:0.5rem;vertical-align:middle}

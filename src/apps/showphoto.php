@@ -1,6 +1,6 @@
 <?php
 /**
- * 显示图片
+ * 图片操作
  *
  * @version        $id:showphoto.php$
  * @package        DedeBIZ.Site

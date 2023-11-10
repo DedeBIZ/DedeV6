@@ -1,4 +1,4 @@
-获取栏目列表标签
+栏目列表标签
 >>dede>>
 {dede:channel type='top' typeid='' row='8' currentstyle="<li><a href='~typelink~' class='thisclass'>~typename~</a></li>"}
     <li><a href='[field:typelink/]'>[field:typename/]</a></li>

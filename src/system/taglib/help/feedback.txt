@@ -1,4 +1,4 @@
-调用最新评论标签
+评论标签
 >>dede>>
 {dede:feedback}
 	[field:username function="(@me=='guest' ? '游客' : @me)"/]对[field:title/]的评论

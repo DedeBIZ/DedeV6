@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义标签js调用
+ * 自定义标签js
  *
  * @version        $id:mytag_js.php$
  * @package        DedeBIZ.Site
