@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 模型列表函数
+ * 文档列表函数
  * 
  * @version        $id:inc_list_functions.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User

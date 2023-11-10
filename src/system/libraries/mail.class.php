@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * SMTP邮件操作类
+ * SMTP邮件操作
  *
  * @version        $id:mail.class.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
