@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档处理
+ * 文档操作
  * 
  * @version        $id:inc_batchup.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User

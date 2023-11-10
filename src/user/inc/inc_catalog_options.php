@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 栏目选项
+ * 栏目选项函数
  * 
  * @version        $id:inc_catalog_options.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
