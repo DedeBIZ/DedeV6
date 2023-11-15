@@ -770,31 +770,31 @@ class Archives
             $revalue = '';
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<a href='".$this->NameFirst.".".$this->ShortName."'>$v</a>\r\n";
+                    $revalue .= "<a href='".$this->NameFirst.".".$this->ShortName."'>$v</a>";
                 } else {
                     if ($pageNo == $i) {
-                        $revalue .= " $v \r\n";
+                        $revalue .= "$v";
                     } else {
-                        $revalue .= "<a href='".$this->NameFirst."-".$i.".".$this->ShortName."'>$v</a>\r\n";
+                        $revalue .= "<a href='".$this->NameFirst."-".$i.".".$this->ShortName."'>$v</a>";
                     }
                 }
                 $i++;
             }
         } else {
-            $revalue = "<select class='form-control w-25' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+            $revalue = "<select class='form-control w-25' onchange='location.href=this.options[this.selectedIndex].value;'>";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<option value='".$this->NameFirst.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
+                    $revalue .= "<option value='".$this->NameFirst.".".$this->ShortName."'>{$i}、{$v}</option>";
                 } else {
                     if ($pageNo == $i) {
-                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."' selected>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."' selected>{$i}、{$v}</option>";
                     } else {
-                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->NameFirst."-".$i.".".$this->ShortName."'>{$i}、{$v}</option>";
                     }
                 }
                 $i++;
             }
-            $revalue .= "</select>\r\n";
+            $revalue .= "</select>";
         }
         return $revalue;
     }
@@ -871,18 +871,18 @@ class Archives
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     if ($cfg_rewrite == 'Y') {
-                        $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>\r\n";
+                        $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>";
                     } else {
-                        $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
+                        $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>";
                     }
                 } else {
                     if ($pageNo == $i) {
-                        $revalue .= " $v \r\n";
+                        $revalue .= " $v ";
                     } else {
                         if ($cfg_rewrite == 'Y') {
-                            $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>\r\n";
+                            $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>";
                         } else {
-                            $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>\r\n";
+                            $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>";
                         }
                         
                     }
@@ -890,32 +890,32 @@ class Archives
                 $i++;
             }
         } else {
-            $revalue = "<select class='form-control w-25' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+            $revalue = "<select class='form-control w-25' onchange='location.href=this.options[this.selectedIndex].value;'>";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     if ($cfg_rewrite == 'Y') {
-                        $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>";
                     } else {
-                        $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>";
                     }
                 } else {
                     if ($pageNo == $i) {
                         if ($cfg_rewrite == 'Y') {
-                            $revalue .= "<option value='/doc-$aid-$i.html' selected>{$i}、{$v}</option>\r\n";
+                            $revalue .= "<option value='/doc-$aid-$i.html' selected>{$i}、{$v}</option>";
                         } else {
-                            $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>\r\n";
+                            $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>";
                         }
                     } else {
                         if ($cfg_rewrite == 'Y') {
-                            $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>\r\n";
+                            $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>";
                         } else {
-                            $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
+                            $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>";
                         }
                     }
                 }
                 $i++;
             }
-            $revalue .= "</select>\r\n";
+            $revalue .= "</select>";
         }
         return $revalue;
     }

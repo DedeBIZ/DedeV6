@@ -1023,28 +1023,28 @@ class ListView
         }
         $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>\r\n";
+            return "<li class='page-item disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>\r\n";
+            return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
         $purl = $this->GetCurUrl();
-        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
+        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $tnamerule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
         $tnamerule = preg_replace("/^(.*)\//", '', $tnamerule);
         //获得上页和首页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         //下页和未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下页</a></li>";
+            $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
         //option链接
         $optionlist = '';
@@ -1052,15 +1052,15 @@ class ListView
         $optionlen = $optionlen * 12 + 18;
         if ($optionlen < 36) $optionlen = 36;
         if ($optionlen > 100) $optionlen = 100;
-        $optionlist = "<li><select name='sldd' style='width:{$optionlen}px' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+        $optionlist = "<li><select name='sldd' style='width:{$optionlen}px' onchange='location.href=this.options[this.selectedIndex].value;'>";
         for ($mjj = 1; $mjj <= $totalpage; $mjj++) {
             if ($mjj == $this->PageNo) {
-                $optionlist .= "<option value='".str_replace("{page}", $mjj, $tnamerule)."' selected>$mjj</option>\r\n";
+                $optionlist .= "<option value='".str_replace("{page}", $mjj, $tnamerule)."' selected>$mjj</option>";
             } else {
-                $optionlist .= "<option value='".str_replace("{page}", $mjj, $tnamerule)."'>$mjj</option>\r\n";
+                $optionlist .= "<option value='".str_replace("{page}", $mjj, $tnamerule)."'>$mjj</option>";
             }
         }
-        $optionlist .= "</select></li>\r\n";
+        $optionlist .= "</select></li>";
         //获得数字链接
         $listdd = '';
         $total_list = $list_len * 2 + 1;
@@ -1101,9 +1101,9 @@ class ListView
                 continue;
             }
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>$j</a></li>";
             }
         }
         $plist = '';
@@ -1135,12 +1135,12 @@ class ListView
         }
         $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>\r\n";
+            return "<li class='page-item disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>\r\n";
+            return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
-        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
+        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $purl = $this->GetCurUrl();
         //开启伪静态对规则替换
         if ($cfg_rewrite == 'Y') {
@@ -1159,16 +1159,16 @@ class ListView
         }
         //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum".$pageaddurl."' class='page-link'>上页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1".$pageaddurl."' class='page-link'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum".$pageaddurl."' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1".$pageaddurl."' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum".$pageaddurl."' class='page-link'>下页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a href='".$purl."PageNo=$totalpage".$pageaddurl."' class='page-link'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum".$pageaddurl."' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$purl."PageNo=$totalpage".$pageaddurl."' class='page-link'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
         //获得数字链接
         $listdd = '';
@@ -1210,9 +1210,9 @@ class ListView
                 continue;
             }
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j".$pageaddurl."' class='page-link'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j".$pageaddurl."' class='page-link'>$j</a></li>";
             }
         }
         $plist = '';
