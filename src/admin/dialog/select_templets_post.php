@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 $cfg_txttype = "htm|html|tpl|txt";
 if (empty($uploadfile)) {
-    $uploadfile = "";
+    $uploadfile = '';
 }
 if (!is_uploaded_file($uploadfile)) {
     ShowMsg("您没有选择上传文件", "-1");

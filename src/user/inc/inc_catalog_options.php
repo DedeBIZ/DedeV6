@@ -25,7 +25,7 @@ function GetOptionList($selid = 0, $channeltype = 0)
     while ($row = $dsql->GetObject('opt')) {
         $channels[$row->id] = $row->typename;
     }
-    $OptionArrayList = "";
+    $OptionArrayList = '';
     $query = "SELECT id,typename,ispart,channeltype,issend FROM `#@__arctype` WHERE ispart<2 AND reid=0 ORDER BY sortrank ASC";
     $dsql->SetQuery($query);
     $dsql->Execute('arr');

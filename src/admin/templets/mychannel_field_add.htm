@@ -176,8 +176,8 @@
 					ShowMsg("自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德");
 					return false;
 				}
-				if (spage=="no") spage = "";
-				relstr = "";
+				if (spage=="no") spage = '';
+				relstr = '';
 				if (dtype==="relation") {
 				  relstr = " automake=\""+automake+"\" channel=\""+$("#channeltype").val()+"\"";
 				}

@@ -843,8 +843,8 @@ class SgListView
      */
     function GetPageListST($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -876,9 +876,9 @@ class SgListView
             $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>";
         }
         //option链接
-        $optionlist = "";
+        $optionlist = '';
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -899,7 +899,7 @@ class SgListView
                 $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
             }
         }
-        $plist = "";
+        $plist = '';
         if (preg_match('/info/i', $listitem)) {
             $plist .= $maininfo.' ';
         }
@@ -979,7 +979,7 @@ class SgListView
             $endpage = "<li class='page-item disabled'><a class='page-link'>末页</a></li>";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;

@@ -10,7 +10,7 @@
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_One');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 if ($dopost == "save") {
     require_once(DEDEINC."/archive/partview.class.php");
     $uptime = time();

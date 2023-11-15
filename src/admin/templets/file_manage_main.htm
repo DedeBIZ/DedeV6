@@ -21,8 +21,8 @@
 			</tr>
 			<?php
 			$dh = scandir($inpath);
-			$ty1 = "";
-			$ty2 = "";
+			$ty1 = '';
+			$ty2 = '';
 			$files = $dirs = array();
 			foreach ($dh as $file) {
 				if ($file!="." && $file!=".." && !is_dir("$inpath/$file")) {

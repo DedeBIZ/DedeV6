@@ -193,7 +193,7 @@ class FreeList
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
         $this->LoadTemplet();
-        $murl = "";
+        $murl = '';
         if (empty($startpage)) {
             $startpage = 1;
         }
@@ -444,7 +444,7 @@ class FreeList
         $orderby = $this->ListObj->GetAtt('orderby');
         $orderWay = $this->ListObj->GetAtt('orderway');
         //排序方式
-        $ordersql = "";
+        $ordersql = '';
         if ($orderby == "senddate") {
             $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "pubdate") {
@@ -463,13 +463,13 @@ class FreeList
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }
         //获得附加表的相关信息
-        $addField = "";
-        $addJoin = "";
+        $addField = '';
+        $addJoin = '';
         if (is_object($this->ChannelUnit)) {
             $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
             if ($addtable != "") {
                 $addJoin = " LEFT JOIN $addtable ON arc.id = ".$addtable.".aid ";
-                $addField = "";
+                $addField = '';
                 $fields = explode(",", $this->ChannelUnit->ChannelInfos['listfields']);
                 foreach ($fields as $k => $v) {
                     $nfields[$v] = $k;
@@ -488,7 +488,7 @@ class FreeList
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid $addField FROM {$this->maintable} arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addJoin WHERE $orwhere $ordersql LIMIT $limitstart,".$this->pagesize;
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
-        $artlist = "";
+        $artlist = '';
         if ($col > 1) {
             $artlist = "<table width='$tablewidth'>\r\n";
         }
@@ -597,7 +597,7 @@ class FreeList
                     $artlist .= $indtp->GetResult();
                 } //if hasRow
                 else {
-                    $artlist .= "";
+                    $artlist .= '';
                 }
                 if ($col > 1) {
                     $artlist .= "</td>\r\n";
@@ -626,8 +626,8 @@ class FreeList
      */
     function GetPageListST($list_len, $listitem = "info,index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("#[^0-9]#", $list_len)) {
@@ -673,7 +673,7 @@ class FreeList
         }
         $optionlist .= "</select>";
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -694,7 +694,7 @@ class FreeList
                 $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
             }
         }
-        $plist = "";
+        $plist = '';
         if (preg_match('#info#i', $listitem)) {
             $plist .= $maininfo.' ';
         }
@@ -728,8 +728,8 @@ class FreeList
      */
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -762,7 +762,7 @@ class FreeList
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;

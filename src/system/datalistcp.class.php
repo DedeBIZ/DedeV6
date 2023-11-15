@@ -267,7 +267,7 @@ class DataListCP
             $endpage = " <li class='page-item disabled'><span class='page-link'>$lang_end_page</span></li> \n";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $atts['listsize'] * 2 + 1;
         if ($this->pageNO >= $total_list) {
             $j = $this->pageNO - $atts['listsize'];

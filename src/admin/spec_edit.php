@@ -132,7 +132,7 @@ if ($dopost != 'save') {
             if (isset(${'keywords'.$i})) {
                 $keywords = str_replace("'", "", trim(${'keywords'.$i}));
             } else {
-                $keywords = "";
+                $keywords = '';
             }
             if (!empty(${'typeid'.$i})) {
                 $ttypeid = trim(${'typeid'.$i});
@@ -146,7 +146,7 @@ if ($dopost != 'save') {
             }
             $arcid = preg_replace("#[^0-9,]#", "", $arcid);
             $ids = explode(",", $arcid);
-            $okids = "";
+            $okids = '';
             if (is_array($ids)) {
                 foreach ($ids as $mid) {
                     $mid = trim($mid);

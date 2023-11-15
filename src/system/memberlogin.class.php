@@ -293,10 +293,10 @@ class MemberLogin
         $this->M_ID = 0;
         $this->M_LoginID = '';
         $this->M_Rank = 0;
-        $this->M_Face = "";
+        $this->M_Face = '';
         $this->M_Money = 0;
         $this->M_UserMoney = 0;
-        $this->M_UserName = "";
+        $this->M_UserName = '';
         $this->M_LoginTime = 0;
         $this->M_MbType = '';
         $this->M_Scores = 0;

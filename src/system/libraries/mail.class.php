@@ -24,7 +24,7 @@ class smtp
         $this->user       = $user;
         $this->pass       = $pass;
         $this->host_name  = "localhost";
-        $this->log_file   = "";
+        $this->log_file   = '';
         $this->sock       = FALSE;
     }
     /**

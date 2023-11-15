@@ -17,7 +17,7 @@ require_once(DEDEINC."/dedemodule.class.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($action)) $action = '';
 $mdir = DEDEDATA.'/module';
-$mdurl = "";
+$mdurl = '';
 function TestWriteAble($d)
 {
     $tfile = '_dedet.txt';
@@ -80,7 +80,7 @@ if ($action == '') {
     $dhd->OpenUrl($devURL);
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
-    $offUrl = "";
+    $offUrl = '';
     if ($devInfo['dev_type'] == 1) {
         $offUrl = "官方网址：<code>{$devInfo['offurl']}</code><br>";
     }

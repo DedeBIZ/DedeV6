@@ -226,7 +226,7 @@ class userLogin
             $this->loginError($row->id);
             return -2;
         } else {
-            $upsql = "";
+            $upsql = '';
             if (empty($row->pwd_new) && function_exists('password_hash')) {
                 //升级密码
                 $newpwd = password_hash($this->userPwd, PASSWORD_BCRYPT);

@@ -14,7 +14,7 @@ if (DEDEBIZ_SAFE_MODE) {
 }
 CheckPurview('temp_Other');
 require_once(DEDEINC."/typelink/typelink.class.php");
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 if ($dopost == "save") {
     CheckCSRF();
     $tagname = trim($tagname);

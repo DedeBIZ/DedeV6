@@ -27,8 +27,8 @@ function lib_arclistsg(&$ctag, &$refObj)
     $line = $row;
     $orderby = strtolower($sort);
     if ($col == '') $col = 1;
-    if (empty($imgwidth)) $imgwidth = "";
-    if (empty($imgheight)) $imgheight = "";
+    if (empty($imgwidth)) $imgwidth = '';
+    if (empty($imgheight)) $imgheight = '';
     $innertext = trim($ctag->GetInnerText());
     if ($innertext == '') $innertext = GetSysTemplets("part_arclistsg.htm");
     if (empty($channelid) && isset($GLOBALS['envs']['channelid'])) {
@@ -141,7 +141,7 @@ function lib_arclistsg(&$ctag, &$refObj)
     }
     $dsql->SetQuery($query);
     $dsql->Execute("al");
-    $artlist = "";
+    $artlist = '';
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace("field", "[", "]");
     $dtp2->LoadString($innertext);

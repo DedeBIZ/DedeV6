@@ -12,13 +12,13 @@ require(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/dedevote.class.php");
 require_once(DEDEINC."/helpers/filter.helper.php");
 CheckPurview('plus_投票管理');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 if (empty($isarc))  $isarc = 0;
 if ($dopost == "save" && $isarc == 0) {
     CheckCSRF();
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
-    $voteitems = "";
+    $voteitems = '';
     $j = 0;
     for ($i = 1; $i <= 15; $i++) {
         if (!empty(${"voteitem".$i})) {
@@ -43,7 +43,7 @@ if ($dopost == "save" && $isarc == 0) {
 } else if ($dopost == "save" && $isarc == 1) {
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
-    $voteitems = "";
+    $voteitems = '';
     $j = 0;
     for ($i = 1; $i <= 15; $i++) {
         if (!empty(${"voteitem".$i})) {

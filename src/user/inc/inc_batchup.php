@@ -49,7 +49,7 @@ function DelArc($aid)
                     $nid = "body";
                     break;
                 default:
-                    $nid = "";
+                    $nid = '';
                     break;
             }
             if ($nid != "") {

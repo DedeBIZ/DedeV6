@@ -51,7 +51,7 @@ function GetMenus($userrank, $topos = 'main')
                         }
                         $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='submenu-right' target='".$ctag2->GetAtt('target')."'><span class='$addico'></span></a>";
                     } else {
-                        $link .= "";
+                        $link .= '';
                     }
                     $itemtmp = str_replace('~link~', $link, $itemTemplet);
                     echo $itemtmp;

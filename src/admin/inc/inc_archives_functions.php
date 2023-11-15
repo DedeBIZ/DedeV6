@@ -482,7 +482,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($fieldset);
-    $dede_addonfields = "";
+    $dede_addonfields = '';
     if (is_array($dtp->CTags)) {
         foreach ($dtp->CTags as $tid => $ctag) {
             if (
@@ -710,7 +710,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         if ($isremote == 1 && preg_match("#^http[s]?:\/\/#i", $handurl)) {
             $ddinfos = GetRemoteImage($handurl, $cuserLogin->getUserID());
             if (!is_array($ddinfos)) {
-                $litpic = "";
+                $litpic = '';
             } else {
                 $filename = $ddinfos[0];
             }
@@ -722,7 +722,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
     }
     $imgfile = $cfg_basedir.$filename;
     if (is_file($imgfile) && $isrm_up && $filename != '') {
-        $info = "";
+        $info = '';
         $imginfos = GetImageSize($imgfile, $info);
         //把新上传的图片信息保存到媒体文档管理文档中
         $inquery = "INSERT INTO `#@__uploads` (title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$title','$filename','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".time()."','".$cuserLogin->getUserID()."');";

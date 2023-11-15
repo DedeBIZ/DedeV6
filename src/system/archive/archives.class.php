@@ -703,7 +703,7 @@ class Archives
                 $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$preRow['title']}\" title=\"{$preRow['title']}\"></a> ";
             } else {
                 $this->PreNext['pre'] = "上一篇：暂无";
-                $this->PreNext['preimg'] = "";
+                $this->PreNext['preimg'] = '';
             }
             if (is_array($nextRow)) {
                 $mlink = GetFileUrl(
@@ -731,7 +731,7 @@ class Archives
                 $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$nextRow['title']}\"></a> ";
             } else {
                 $this->PreNext['next'] = "下一篇：暂无";
-                $this->PreNext['nextimg'] = "";
+                $this->PreNext['nextimg'] = '';
             }
         }
         if ($gtype=='diy') {
@@ -767,7 +767,7 @@ class Archives
         }
         $i = 1;
         if ($styleName == 'link') {
-            $revalue = "";
+            $revalue = '';
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     $revalue .= "<a href='".$this->NameFirst.".".$this->ShortName."'>$v</a>\r\n";
@@ -867,7 +867,7 @@ class Archives
         $i = 1;
         $aid = $this->ArcID;
         if ($styleName == 'link') {
-            $revalue = "";
+            $revalue = '';
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     if ($cfg_rewrite == 'Y') {

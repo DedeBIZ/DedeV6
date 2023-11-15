@@ -14,7 +14,7 @@ require(DEDEINC."/libraries/oxwindow.class.php");
 require_once(DEDEADMIN.'/file_class.php');
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
-if ($activepath == "/") $activepath = "";
+if ($activepath == "/") $activepath = '';
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
 $files = json_decode(file_get_contents(DEDEDATA.'/admin/files.txt'));

@@ -65,7 +65,7 @@ function GetFormItem($ctag)
         }
     }
     if ($ctag->GetAtt("type") == "htmltext" || $ctag->GetAtt("type") == "textdata") {
-        $formitem = "";
+        $formitem = '';
         $formitem .= "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td><td>";
         $formitem .= GetEditor($fieldname, '', 350, 'Basic', 'string');
         $formitem .= "</td></tr></table>\r\n";
@@ -109,7 +109,7 @@ function GetFormItem($ctag)
         return $formitem;
     } else {
         if ($ctag->GetAtt('default') != "") $dfvalue = $ctag->GetAtt('default');
-        else $dfvalue = "";
+        else $dfvalue = '';
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='admin-input-lg' value='$dfvalue'>\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
@@ -178,7 +178,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
         $imgurl = "{dede:img text='' width='' height=''} ".$iurl." {/dede:img}";
         if (preg_match("#^(http|https):\/\/#i", $iurl) && $GLOBALS['isUrlOpen']) {
             //远程图片
-            $reimgs = "";
+            $reimgs = '';
             if ($isUrlOpen) {
                 $reimgs = GetRemoteImage($iurl, $GLOBALS['adminid']);
                 if (is_array($reimgs)) {
@@ -265,13 +265,13 @@ function GetFormItemValue($ctag, $fvalue)
     if ($ctag->GetAtt("type") == "textdata") {
         if (is_file($GLOBALS['cfg_basedir'].$fvalue)) {
             $fp = fopen($GLOBALS['cfg_basedir'].$fvalue, 'r');
-            $okfvalue = "";
+            $okfvalue = '';
             while (!feof($fp)) {
                 $okfvalue .= fgets($fp, 1024);
             }
             fclose($fp);
         } else {
-            $okfvalue = "";
+            $okfvalue = '';
         }
         $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td>\r\n";
         $formitem .= "<td>\r\n".GetEditor($fieldname, $okfvalue, 350, 'Basic', 'string')."</td>\r\n";

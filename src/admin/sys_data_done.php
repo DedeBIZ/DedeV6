@@ -189,7 +189,7 @@ else if ($dopost == 'redat') {
     $bakfilesTmp = $bakfiles;
     $bakfiles = explode(',', $bakfiles);
     if (empty($structfile)) {
-        $structfile = "";
+        $structfile = '';
     }
     if (empty($delfile)) {
         $delfile = 0;

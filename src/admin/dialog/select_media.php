@@ -73,8 +73,8 @@ if (!empty($noeditor)) {
                 </tr>
                 <?php
                 $dh = scandir($inpath);
-                $ty1 = "";
-                $ty2 = "";
+                $ty1 = '';
+                $ty2 = '';
                 foreach ($dh as $file) {
                     //计算文件大小和创建时间
                     if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
@@ -113,7 +113,7 @@ if (!empty($noeditor)) {
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $line = "<tr>
                         <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_flash.png'> $file</a></td>
                         <td>$filesize KB</td>
@@ -125,7 +125,7 @@ if (!empty($noeditor)) {
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $line = "<tr>
                         <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_video.png'> $file</a></td>
                         <td>$filesize KB</td>
@@ -137,7 +137,7 @@ if (!empty($noeditor)) {
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $line = "<tr>
                         <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_rm.png'> $file</a></td>
                         <td>$filesize KB</td>
@@ -149,7 +149,7 @@ if (!empty($noeditor)) {
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $line = "<tr>
                         <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_music.png'> $file</a></td>
                         <td>$filesize KB</td>

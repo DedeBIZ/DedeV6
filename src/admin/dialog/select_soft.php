@@ -76,7 +76,7 @@ if (!empty($noeditor)) {
                 </tr>
                 <?php
         		$dh = scandir($inpath);
-        		$ty1 = $ty2 = "";
+        		$ty1 = $ty2 = '';
         		foreach ($dh as $file) {
                     //计算文件大小和创建时间
                     if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
@@ -112,7 +112,7 @@ if (!empty($noeditor)) {
                         echo "$line";
                     } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;

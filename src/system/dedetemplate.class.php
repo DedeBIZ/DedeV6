@@ -85,12 +85,12 @@ function FillFields(&$atts, &$refObj, &$fields)
 class Tag
 {
     var $isCompiler = FALSE;   //标记是否已被替代，供解析器使用
-    var $tagName = "";         //标记名称
-    var $innerText = "";       //标记之间的文本
+    var $tagName = '';         //标记名称
+    var $innerText = '';       //标记之间的文本
     var $startPos = 0;         //标记起始位置
     var $endPos = 0;           //标记结束位置
     var $cAtt;            //标记属性描述,即是class TagAttribute
-    var $tagValue = "";        //标记的值
+    var $tagValue = '';        //标记的值
     var $tagID = 0;
     /**
      *  获取标记的名称和值
@@ -662,7 +662,7 @@ class DedeTemplate
         $cTag->isCompiler = TRUE;
         $tagname = $cTag->tagName;
         $varname = $cTag->GetAtt('name');
-        $rsvalue = "";
+        $rsvalue = '';
         //用于在模板中设置一个变量以提供作扩展用途
         //此变量直接提交到 this->tpCfgs 中，并会生成与模板对应的缓存文件 ***_config.php 文件
         if ($tagname == 'config') {
@@ -1042,7 +1042,7 @@ class TagAttribute
  */
 class TagAttributeParse
 {
-    var $sourceString = "";
+    var $sourceString = '';
     var $sourceMaxSize = 1024;
     var $cAttributes;
     var $charToLow = TRUE;

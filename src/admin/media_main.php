@@ -23,7 +23,7 @@ if ($dopost == 'filemanager') {
     exit();
 }
 //数据库管理
-if (empty($keyword)) $keyword = "";
+if (empty($keyword)) $keyword = '';
 $addsql = " WHERE (u.title LIKE '%$keyword%' OR u.url LIKE '%$keyword%') ";
 if (empty($membertype)) {
     $membertype = 0;

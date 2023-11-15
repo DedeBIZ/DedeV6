@@ -382,7 +382,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                         $liststr = $dtp2->GetResult();
                         $artlist .= $liststr."\r\n";
                     } else {
-                        $artlist .= "";
+                        $artlist .= '';
                         $orderWeight[] = array(
                             'weight'  => $row['weight'],
                             'arclist' => ''

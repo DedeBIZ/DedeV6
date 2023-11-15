@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $f = RemoveXSS($f);
-if (empty($keywords)) $keywords = "";
+if (empty($keywords)) $keywords = '';
 $sql = "SELECT * FROM `#@__keywords` ORDER BY `rank` DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplate(DEDEADMIN."/templets/article_keywords_select.htm");

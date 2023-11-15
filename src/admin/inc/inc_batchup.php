@@ -25,7 +25,7 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
     $aid = preg_replace("#[^0-9]#i", '', $aid);
     $arctitle = $arcurl = '';
     if ($recycle == 1) $whererecycle = "AND arcrank = '-2'";
-    else $whererecycle = "";
+    else $whererecycle = '';
     //查询表信息
     $query = "SELECT ch.maintable,ch.addtable,ch.nid,ch.issystem FROM `#@__arctiny` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $row = $dsql->GetOne($query);

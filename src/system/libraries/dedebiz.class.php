@@ -21,7 +21,7 @@ class DedeBizClient
         global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
         $this->appid = $cfg_bizcore_appid;
         $this->key = $cfg_bizcore_key;
-        $this->err = "";
+        $this->err = '';
         if (!function_exists("socket_create")) {
             $this->err = (object)array(
                 "code" => -1,
@@ -58,7 +58,7 @@ class DedeBizClient
         if (!empty($this->err)) {
             return $this->err;
         }
-        $msg = "";
+        $msg = '';
         while (($str = socket_read($this->socket, 1024)) !== FALSE) {
             $msg .= $str;
             if (strlen($str) < 1024) {

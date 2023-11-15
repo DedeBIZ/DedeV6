@@ -10,13 +10,13 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Group');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 if ($dopost == 'save') {
     if ($rank == 10) {
         ShowMsg('超级管理员的权限不允许修改!', 'sys_group.php');
         exit();
     }
-    $purview = "";
+    $purview = '';
     if (is_array($purviews)) {
         foreach ($purviews as $p) {
             $purview .= "$p ";

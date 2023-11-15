@@ -20,7 +20,7 @@ if ($dopost == "show") {
     ShowMsg("隐藏一个插件", "plus_main.php");
     exit();
 } else if ($dopost == "delete") {
-    if (empty($job)) $job = "";
+    if (empty($job)) $job = '';
     if ($job == "") {
         //确认
         require_once(DEDEINC."/libraries/oxwindow.class.php");

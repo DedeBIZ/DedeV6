@@ -489,7 +489,7 @@ function GetUpdateSQL()
     $sql4tmp = "ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language;
     $fp = fopen(DEDEROOT.'/install/update.txt','r');
     $sqls = array();
-    $current_ver = "";
+    $current_ver = '';
     while(!feof($fp))
     {
         $line = rtrim(fgets($fp,1024));

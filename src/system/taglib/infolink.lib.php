@@ -94,7 +94,7 @@ function lib_infolink(&$ctag, &$refObj)
             //2级分类
             $fields['nativeplace'] .= "<span>{$em_nativeplaces[$sontype]}</span>";
             $i = 0;
-            $ff = "";
+            $ff = '';
             foreach ($em_nativeplaces as $eid => $em) {
                 if ($eid < $sontype + 1 && $eid > $sontype) {
                     if (is_str_float($eid)) {
@@ -178,7 +178,7 @@ function lib_infolink(&$ctag, &$refObj)
             //2级分类
             $fields['infotype'] .= "<span>{$em_infotypes[$sontype]}</span>";
             $i = 0;
-            $ff = "";
+            $ff = '';
             foreach ($em_infotypes as $eid => $em) {
                 if ($eid < $sontype + 1 && $eid > $sontype) {
                     if (is_str_float($eid)) {

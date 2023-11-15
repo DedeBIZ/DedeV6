@@ -14,7 +14,7 @@ if (DEDEBIZ_SAFE_MODE) {
 }
 CheckPurview('temp_Other');
 //根据生成条件标记
-$attlist = "";
+$attlist = '';
 $attlist .= " row='".$row."'";
 $attlist .= " titlelen='".$titlelen."'";
 if ($orderby != 'senddate') $attlist .= " orderby='".$orderby."'";

@@ -399,8 +399,8 @@ class TagList
      */
     function GetPageListDM($list_len, $listitem = "info,index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -430,7 +430,7 @@ class TagList
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -474,8 +474,8 @@ class TagList
     }
     function GetPageListST($list_len, $listitem = "info,index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = intval($this->PageNo) - 1;
         $nextpagenum = intval($this->PageNo) + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -504,7 +504,7 @@ class TagList
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -525,7 +525,7 @@ class TagList
                 $listdd .= "<li class='page-item'><a href='".$purl."/$j/' class='page-link'>".$j."</a></li>\r\n";
             }
         }
-        $plist = "";
+        $plist = '';
         if (preg_match('/info/i', $listitem)) {
             $plist .= $maininfo.' ';
         }

@@ -33,7 +33,7 @@ function lib_relation(&$ctag, &$refObj)
     $colWidth = $colWidth."%";
     $ids = array();
     $channelid = $refObj->ChannelUnit->ChannelFields[$name]["channel"];
-    $odb = "";
+    $odb = '';
     if ($channelid > 0) {
         $odb = " ORDER BY arc.sortrank DESC";
     } else {

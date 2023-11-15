@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('plus_友情链接');
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'friendlink_main.php' : $_COOKIE['ENV_GOBACK_URL'];
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $id = isset($id)? intval($id) : 0;
 if (isset($allid)) {
     $aids = explode(',', $allid);

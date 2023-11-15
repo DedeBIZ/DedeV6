@@ -62,10 +62,10 @@ class TypeLink
     function SETtypeid($typeid)
     {
         $this->TypeID = $typeid;
-        $this->valuePosition = "";
-        $this->valuePositionName = "";
-        $this->typeDir = "";
-        $this->OptionArrayList = "";
+        $this->valuePosition = '';
+        $this->valuePositionName = '';
+        $this->typeDir = '';
+        $this->OptionArrayList = '';
         //载入栏目信息
         $query = "SELECT `#@__arctype`.*,`#@__channeltype`.typename as ctypename FROM `#@__arctype` LEFT JOIN `#@__channeltype` on `#@__channeltype`.id=`#@__arctype`.channeltype WHERE `#@__arctype`.id='$typeid'";
         $this->dsql->SetQuery($query);
@@ -283,7 +283,7 @@ class TypeLink
                 $reid = $dbrow['reid'];
             }
         }
-        $likeType = "";
+        $likeType = '';
         if ($typetype == "top") {
             $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         } else if ($typetype == "sun" || $typetype == "son") {

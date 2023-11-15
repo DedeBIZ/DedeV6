@@ -259,7 +259,7 @@ else if ($step==10) {
     header("Cache-Control:no-cache\r\n");
     header("Expires:0\r\n");
     $conn = @mysql_connect($dbhost, $dbuser, $dbpwd);
-    $info = "";
+    $info = '';
     if ($conn) {
 		if (empty($dbname)) {
 			$info = "数据库连接正确";

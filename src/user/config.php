@@ -182,7 +182,7 @@ function CheckRank($rank = 0, $money = 0)
             }
         }
         if ($cfg_ml->M_Rank < $rank) {
-            $needname = "";
+            $needname = '';
             if ($cfg_ml->M_Rank == 0) {
                 $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='$rank'");
                 $myname = "注册会员";

@@ -11,7 +11,7 @@
 require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_投票管理');
 require_once(DEDEINC."/dedetag.class.php");
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "vote_main.php" : $_COOKIE['ENV_GOBACK_URL'];
 if ($dopost == "delete") {

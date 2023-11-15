@@ -46,7 +46,7 @@ if ($dopost != 'save') {
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
     if (!isset($ddisfirst)) $ddisfirst = 0;
-    if (!isset($albums)) $albums = "";
+    if (!isset($albums)) $albums = '';
     if (!isset($delzip)) $delzip = 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     if (trim($title) == '') {

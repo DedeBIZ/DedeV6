@@ -43,7 +43,7 @@ if (!function_exists('obtainimgs')) {
         preg_match_all("/<img([^>]*)\s*src=('|\")([^'\"]+)('|\")/", $string, $matches);
         $imgsrc_arr = array_unique($matches[3]);
         $i = 0;
-        $result = "";
+        $result = '';
         foreach($imgsrc_arr as $imgsrc)
         {
             if ($i == $num) break;

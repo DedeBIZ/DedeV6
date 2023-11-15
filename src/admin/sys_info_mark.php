@@ -16,7 +16,7 @@ if ($cfg_photo_support == '') {
     exit();
 }
 $ImageWaterConfigFile = DEDEDATA."/mark/inc_photowatermark_config.php";
-if (empty($action)) $action = "";
+if (empty($action)) $action = '';
 $allow_mark_types = array(
     'image/gif',
     'image/xpng',
@@ -24,7 +24,7 @@ $allow_mark_types = array(
 );
 if ($action == "save") {
     $vars = array('photo_markup', 'photo_markdown', 'photo_marktype', 'photo_wwidth', 'photo_wheight', 'photo_waterpos', 'photo_watertext', 'photo_fontsize', 'photo_fontcolor', 'photo_marktrans', 'photo_diaphaneity');
-    $configstr = $shortname = "";
+    $configstr = $shortname = '';
     foreach ($vars as $v) {
         $tmp = stripslashes(${'get_'.$v});
         ${$v} = addslashes(str_replace("'", "", $tmp));

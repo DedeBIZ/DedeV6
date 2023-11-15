@@ -90,7 +90,7 @@ function SpCreateDir($spath)
     $truepath = $cfg_basedir;
     $truepath = str_replace("\\", "/", $truepath);
     $spaths = explode("/", $spath);
-    $spath = "";
+    $spath = '';
     foreach ($spaths as $spath) {
         if ($spath == "") {
             continue;
@@ -139,10 +139,10 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
         $gtype = "print";
     }
     if ($GLOBALS['cfg_html_editor'] == 'ckeditor') {
-        $addConfig = "";
+        $addConfig = '';
         $fvalue = htmlspecialchars($fvalue);
         if (defined("DEDEADMIN")) {
-            $emoji = "";
+            $emoji = '';
             if ($GLOBALS['cfg_db_language'] == "utf8mb4") {
                 $emoji = ",emoji";
             }

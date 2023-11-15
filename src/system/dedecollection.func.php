@@ -44,8 +44,8 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
         $sessionQuery .= $gcookie."\r\n";
     }
     $sessionQuery .= "Connection: Keep-Alive\r\n\r\n";
-    $errno = "";
-    $errstr = "";
+    $errno = '';
+    $errstr = '';
     $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10);
     fwrite($m_fp, $sessionQuery);
     $lnum = 0;
@@ -59,8 +59,8 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
         if ($line == "" || $lnum > 100) {
             break;
         }
-        $hkey = "";
-        $hvalue = "";
+        $hkey = '';
+        $hvalue = '';
         $v = 0;
         for ($i = 0; $i < strlen($line); $i++) {
             if ($v == 1) {
@@ -97,7 +97,7 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
     //保存文件
     $fp = fopen($filename, "w") or die("写入文件：{$filename} 失败");
     $i = 0;
-    $okdata = "";
+    $okdata = '';
     $starttime = time();
     while (!feof($m_fp)) {
         $okdata .= fgetc($m_fp);
@@ -150,13 +150,13 @@ function RefurlCookie($gurl)
     $sessionQuery .= "Accept: */*\r\n";
     $sessionQuery .= "User-Agent: Mozilla/4.0 (compatible; MSIE 5.00; Windows 98)\r\n";
     $sessionQuery .= "Connection: Close\r\n\r\n";
-    $errno = "";
-    $errstr = "";
+    $errno = '';
+    $errstr = '';
     $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10) or die($ghost.'<br>');
     fwrite($m_fp, $sessionQuery);
     $lnum = 0;
     //获取详细应答头
-    $gcookie = "";
+    $gcookie = '';
     while (!feof($m_fp)) {
         $line = trim(fgets($m_fp, 256));
         if ($line == "" || $lnum > 100) {

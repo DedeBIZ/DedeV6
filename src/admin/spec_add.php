@@ -99,7 +99,7 @@ if ($dopost != 'save') {
             else $rownum = 0;
             $arcid = preg_replace("#[^0-9,]#", "", $arcid);
             $ids = explode(",", $arcid);
-            $okids = "";
+            $okids = '';
             if (is_array($ids)) {
                 foreach ($ids as $mid) {
                     $mid = trim($mid);

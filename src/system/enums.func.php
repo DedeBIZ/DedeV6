@@ -138,7 +138,7 @@ function GetEnumsJs($egroup)
     foreach ($data as $key => $value) {
         ${'em_'.$egroup.'s'}[$key] = $value;
     }
-    $jsCode = "";
+    $jsCode = '';
     $jsCode .= "em_{$egroup}s=new Array();\r\n";
     foreach (${'em_'.$egroup.'s'} as $k => $v) {
         //js中3级栏目存放到第二个key中去

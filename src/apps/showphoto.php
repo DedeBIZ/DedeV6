@@ -41,7 +41,7 @@ if (is_array($arcRow)) {
     exit();
 }
 if (empty($mx)) $mx = $cfg_album_width;
-$pageGuide = "";
+$pageGuide = '';
 //获取上下幅图片链接
 $row = $dsql->GetOne("SELECT imgurls FROM `#@__addonimages` WHERE aid='{$aid}'");
 $i = 0;

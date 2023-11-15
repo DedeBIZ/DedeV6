@@ -60,7 +60,7 @@ function DedeConfirm(content = "", title = "确认提示") {
 //函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
-	if (typeof content == "undefined") content = "";
+	if (typeof content == "undefined") content = '';
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-success btn-sm" onClick="CloseModal(\'DedeModal${modalID}\')">确定</button>`;
 	var noClose = false;

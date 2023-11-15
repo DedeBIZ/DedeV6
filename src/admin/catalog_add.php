@@ -137,7 +137,7 @@ if ($dopost == 'quick') {
         ShowMsg("跨站调用秘钥不能为空", "-1");
         exit();
     }
-    if ($ispart != 2) {
+    if ($ispart != 2 && $isdefault != -1) {
         //栏目的参照目录
         if ($referpath == 'cmspath') $nextdir = '{cmspath}';
         if ($referpath == 'basepath') $nextdir = '';

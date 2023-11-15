@@ -13,7 +13,7 @@ CheckPurview('plus_文件管理器');
 require_once(DEDEINC."/libraries/oxwindow.class.php");
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
-if ($activepath == "/") $activepath = "";
+if ($activepath == "/") $activepath = '';
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
 //修改文件名
@@ -87,12 +87,12 @@ else if ($fmdo == "del") {
 //修改文件
 else if ($fmdo == "edit") {
     if (!isset($backurl)) {
-        $backurl = "";
+        $backurl = '';
     }
     $activepath = str_replace("..", "", $activepath);
     $filename = str_replace("..", "", $filename);
     $file = "$cfg_basedir$activepath/$filename";
-    $content = "";
+    $content = '';
     if (is_file($file)) {
         $fp = fopen($file, "r");
         $content = fread($fp, filesize($file));
@@ -117,7 +117,7 @@ else if ($fmdo == "edit") {
 }
 //新建文件
 else if ($fmdo == "newfile") {
-    $content = "";
+    $content = '';
     $GLOBALS['filename'] = "newfile.txt";
     $GLOBALS['extension'] = 'text/html';
     $contentView = "<textarea id='str' name='str' class='admin-textarea-xl'></textarea>\r\n";

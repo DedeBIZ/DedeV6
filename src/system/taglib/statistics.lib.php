@@ -14,7 +14,7 @@ function lib_statistics(&$ctag, &$refObj)
 {
     global $envs;
     //属性处理
-    $attlist = "";
+    $attlist = '';
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $pms = array();

@@ -31,7 +31,7 @@ if ($dojob == '') {
     //获取自动摘要
     if ($dojob == 'des') {
         if (empty($totalnum)) {
-            $addquery  = "";
+            $addquery  = '';
             if ($sid != 0) {
                 $addquery  .= " AND id>='$sid' ";
             }
@@ -43,7 +43,7 @@ if ($dojob == '') {
             $totalnum = $row['dd'];
         }
         if ($totalnum > 0) {
-            $addquery  = "";
+            $addquery  = '';
             if ($sid != 0) {
                 $addquery  .= " AND `#@__archives`.id>='$sid' ";
             }
@@ -92,7 +92,7 @@ if ($dojob == '') {
     //更新自动分页
     if ($dojob == 'page') {
         require_once(DEDEADMIN."/inc/inc_archives_functions.php");
-        $addquery  = "";
+        $addquery  = '';
         if ($sid != 0) {
             $addquery  .= " and aid>='$sid' ";
         }
@@ -111,7 +111,7 @@ if ($dojob == '') {
         } else if (($totalnum - $startdd) > 0) {
             $limitSql = " LIMIT $startdd,".($totalnum - $startdd);
         } else {
-            $limitSql = "";
+            $limitSql = '';
         }
         $tjnum = $startdd;
         if ($limitSql != "") {

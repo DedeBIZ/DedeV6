@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Edit');
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $diyid = (empty($diyid) ? 0 : intval($diyid));
 if ($dopost == "save") {
     $public = isset($public) && is_numeric($public) ? $public : 0;
@@ -25,7 +25,7 @@ if ($dopost == "save") {
     @set_time_limit(0);
     CheckPurview('c_Del');
     $row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid'");
-    if (empty($job)) $job = "";
+    if (empty($job)) $job = '';
     //确认提示
     if ($job == "") {
         $wintitle = "删除所有自定义表";

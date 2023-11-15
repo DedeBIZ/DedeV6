@@ -94,8 +94,8 @@ if (!empty($iseditor)) {
                 </tr>
                 <?php
                 $dh = scandir($inpath);
-                $ty1 = "";
-                $ty2 = "";
+                $ty1 = '';
+                $ty2 = '';
                 foreach ($dh as $file) {
                     //计算文件大小和创建时间
                     if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
@@ -133,7 +133,7 @@ if (!empty($iseditor)) {
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
                         if ($file == $comeback) $lstyle = "text-danger";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $line = "<tr>
                         <td>
                             <a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg $lstyle\"><img src='$reurl' title='$file'> $file</a>
@@ -147,7 +147,7 @@ if (!empty($iseditor)) {
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
                         if ($file == $comeback) $lstyle = "text-danger";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $line = "<tr>
                         <td><a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg $lstyle\"><img src='$reurl' title='$file'> $file</a></td>
                         <td>$filesize KB</td>

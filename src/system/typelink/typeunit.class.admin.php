@@ -250,7 +250,7 @@ class TypeUnit
         if ($channel != 0) {
             $csql = " And channeltype=$channel ";
         } else {
-            $csql = "";
+            $csql = '';
         }
         $this->dsql->SetQuery("SELECT id FROM `#@__arctype` WHERE reid=$id $csql");
         $this->dsql->Execute("gs".$fid);

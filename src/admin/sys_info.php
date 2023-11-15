@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $configfile = DEDEDATA.'/config.cache.inc.php';
 //更新配置函数
 function ReWriteConfig()

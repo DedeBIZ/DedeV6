@@ -52,7 +52,7 @@
 				if ($myrow['mediatype'] == 1) {
 					$fullfilename = $cfg_basedir.$myrow['url'];
 					if (file_exists($fullfilename)) {
-						$info = "";
+						$info = '';
 						$sizes = getimagesize($fullfilename,$info);
 						if (is_array($sizes)) {
 							if ($sizes[0]>200) $w=200;

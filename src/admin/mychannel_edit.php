@@ -15,7 +15,7 @@ if (DEDEBIZ_SAFE_MODE) {
 CheckPurview('c_Edit');
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $id = isset($id) && is_numeric($id) ? $id : 0;
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=1 WHERE id='$id' ");
@@ -321,7 +321,7 @@ if ($dopost == "show") {
         ShowMsg("系统文档模型不允许删除", "mychannel_main.php");
         exit();
     }
-    if (empty($job)) $job = "";
+    if (empty($job)) $job = '';
     //确认提示
     if ($job == "") {
         require_once(DEDEINC."/libraries/oxwindow.class.php");

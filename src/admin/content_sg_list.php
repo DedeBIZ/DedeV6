@@ -80,7 +80,7 @@ $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);
 $dlist->SetParameter("channelid", $channelid);
-$strTimerange = "";
+$strTimerange = '';
 if ($stime > 0 && $etime > 0) {
     $strTimerange = implode(" - ",array(MyDate("Y-m-d H:i:s",$stime),MyDate("Y-m-d H:i:s",$etime)));
     $dlist->SetParameter('timerange', $strTimerange);

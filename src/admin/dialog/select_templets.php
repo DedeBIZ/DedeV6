@@ -63,8 +63,8 @@ if (empty($comeback)) {
                 </tr>
                 <?php
                 $dh = scandir($inpath);
-                $ty1 = "";
-                $ty2 = "";
+                $ty1 = '';
+                $ty2 = '';
                 foreach ($dh as $file) {
                     //计算文件大小和创建时间
                     if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
@@ -100,7 +100,7 @@ if (empty($comeback)) {
                         echo "$line";
                     } else if (preg_match("#\.(htm|html)#i", $file)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
@@ -112,7 +112,7 @@ if (empty($comeback)) {
                         echo "$line";
                     } else if (preg_match("#\.(css)#i", $file)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
@@ -124,7 +124,7 @@ if (empty($comeback)) {
                         echo "$line";
                     } else if (preg_match("#\.(js)#i", $file)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
@@ -136,7 +136,7 @@ if (empty($comeback)) {
                         echo "$line";
                     } else if (preg_match("#\.(jpg)#i", $file)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
@@ -148,7 +148,7 @@ if (empty($comeback)) {
                         echo "$line";
                     } else if (preg_match("#\.(gif|png)#i", $file)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
@@ -160,7 +160,7 @@ if (empty($comeback)) {
                         echo "$line";
                     } else if (preg_match("#\.(txt)#i", $file)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#\.\.#", "", $reurl);
                         $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);

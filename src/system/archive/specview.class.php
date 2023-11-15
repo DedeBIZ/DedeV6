@@ -108,7 +108,7 @@ class SpecView
             if ($this->StartTime > 0) {
                 $timesql = " AND #@__archives.senddate>'".$this->StartTime."'";
             } else {
-                $timesql = "";
+                $timesql = '';
             }
             $row = $this->dsql->GetOne("SELECT count(*) AS dd FROM `#@__archives` WHERE `#@__archives`.arcrank > -1 AND channel=-1 $timesql");
             if (is_array($row)) {
@@ -185,7 +185,7 @@ class SpecView
             $totalpage = 1;
         }
         CreateDir($GLOBALS['cfg_special']);
-        $murl = "";
+        $murl = '';
         for ($this->PageNo = 1; $this->PageNo <= $totalpage; $this->PageNo++) {
             foreach ($this->dtp->CTags as $tagid => $ctag) {
                 if ($ctag->GetName() == "list") {
@@ -405,7 +405,7 @@ class SpecView
                     $artlist .= $this->dtp2->GetResult();
                 }//if hasRow
                 else {
-                    $artlist .= "";
+                    $artlist .= '';
                 }
                 if ($col > 1) {
                     $artlist .= "</td>\r\n";
@@ -430,8 +430,8 @@ class SpecView
      */
     function GetPageListST($list_len)
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -460,7 +460,7 @@ class SpecView
             $endpage = "<li><a>末页</a></li>\r\n";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -494,8 +494,8 @@ class SpecView
 
     function GetPageListDM($list_len)
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -527,7 +527,7 @@ class SpecView
             $endpage = "<li><a>末页</a></li>";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;

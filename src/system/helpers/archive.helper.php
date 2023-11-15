@@ -168,7 +168,7 @@ if (!function_exists('UpIndexKey')) {
     {
         global $dsql, $typeid2;
         if (empty($typeid2)) $typeid2 = 0;
-        $indexedsql = "";
+        $indexedsql = '';
         //商业全文检索组件索引
         if (TableHasField("#@__arctiny", "indexed")) {
             $indexedsql = ",`indexed`=2 ";

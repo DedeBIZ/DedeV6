@@ -22,7 +22,7 @@ $offFiles = array();
 foreach ($filelist as $key => $ff) {
     $offFiles[$ff->filename] = $ff->hash;
 }
-$alter = "";
+$alter = '';
 if (count($offFiles) == 0) {
     $alter = DedeAlert('官方文件服务器通信失败，无法保证本地文件和同官方文件服务器是否一致', ALERT_DANGER);
 }
@@ -83,7 +83,7 @@ if ($action == 'test') {
     $del->OpenUrl($baseFile);
     $base = $del->GetHTML();
     $file = "$cfg_basedir/$filename";
-    $new = "";
+    $new = '';
     if (is_file($file)) {
         $fp = fopen($file, "r");
         $new = fread($fp, filesize($file));

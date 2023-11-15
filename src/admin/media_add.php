@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 //添加权限检查
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 //上传
 if ($dopost == "upload") {
     CheckCSRF();

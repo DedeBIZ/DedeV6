@@ -18,7 +18,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 if (!function_exists('GetRankStar')) {
     function GetRankStar($rank)
     {
-        $nstar = "";
+        $nstar = '';
         for ($i = 1; $i <= $rank; $i++) {
             $nstar .= "★";
         }
@@ -114,7 +114,7 @@ if (!function_exists('GetFileNewName')) {
             }
         }
         $okdir = substr($articlename, 0, $subpos);
-        CreateDir($okdir);
+        if ($ismake != -1 || $cfg_rewrite == 'N') CreateDir($okdir);
         return $articlename;
     }
 }
@@ -598,7 +598,7 @@ function GetHotKeywords(&$dsql, $num = 8, $nday = 365, $klen = 16, $orderby = 'c
     }
     $dsql->SetQuery("SELECT keyword FROM `#@__search_keywords` WHERE lasttime>$mintime AND length(keyword)<$klen ORDER BY $orderby DESC LIMIT 0,$num");
     $dsql->Execute('hw');
-    $hotword = "";
+    $hotword = '';
     while ($row = $dsql->GetArray('hw')) {
         $hotword .= "　<a href='".$cfg_phpurl."/search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'>".$row['keyword']."</a> ";
     }

@@ -63,7 +63,7 @@ else if ($dopost == "listArchives") {
         $row = $dsql->GetOne("SELECT typename,id,mancon FROM `#@__channeltype` WHERE id='$channelid'");
         $gurl = $row["mancon"];
         $channelid = $row["id"];
-        $typename = "";
+        $typename = '';
         $channelname = $row["typename"];
     }
     if (empty($gurl)) $gurl = 'content_list.php';

@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('member_Type');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 //保存修改
 if ($dopost == "save") {
     $startID = 1;

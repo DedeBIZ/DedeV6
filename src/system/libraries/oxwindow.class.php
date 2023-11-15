@@ -12,10 +12,10 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 require_once(DEDEINC."/dedetag.class.php");
 class OxWindow
 {
-    var $myWin = "";
-    var $myWinItem = "";
-    var $checkCode = "";
-    var $formName = "";
+    var $myWin = '';
+    var $myWinItem = '';
+    var $checkCode = '';
+    var $formName = '';
     var $tmpCode = "//checkcode";
     var $hasStart = false;
     /**
@@ -74,7 +74,7 @@ class OxWindow
         if ($col != "" && $col != "0") {
             $colspan = "colspan='$col'";
         } else {
-            $colspan = "";
+            $colspan = '';
         }
         $this->myWinItem .= "<tr>";
         $this->myWinItem .= "<td $colspan>$title</td>";
@@ -146,7 +146,7 @@ class OxWindow
         global $cfg_static_dir;
         $this->StartWin();
         $this->myWin .= $this->myWinItem;
-        $tt = "";
+        $tt = '';
         switch ($wintype) {
             case 'back':
                 $tt = "返回";

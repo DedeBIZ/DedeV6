@@ -74,9 +74,9 @@ function ChangeSon() {
     }
     if (j > 0) {
         document.getElementById('span_' + emname + '_sec').appendChild(oj);
-        document.getElementById('span_' + emname + '_sec').style.display = "initial"
+        document.getElementById('span_' + emname + '_sec').style.display = "initial";
     } else {
-        document.getElementById('span_' + emname + '_sec').innerHTML = "";
+        document.getElementById('span_' + emname + '_sec').innerHTML = '';
     }
 }
 //改变第三级的事件
@@ -135,10 +135,10 @@ function selNextSon() {
         count = count + 1;
     }
     if (count > 0) {
-        document.getElementById('span_' + emname + '_son').style.display = "initial"
+        document.getElementById('span_' + emname + '_son').style.display = "initial";
         document.getElementById('span_' + emname + '_son').appendChild(oj);
     } else {
-        document.getElementById('span_' + emname + '_son').style.display = "none"
+        document.getElementById('span_' + emname + '_son').style.display = "none";
     }
     
 }

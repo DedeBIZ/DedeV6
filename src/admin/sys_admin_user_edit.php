@@ -47,7 +47,7 @@ if ($dopost == 'saveedit') {
     }
     $olduserid = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $olduserid);
     $userid = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userid);
-    $usql = "";
+    $usql = '';
     if ($olduserid !== $userid) {
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
@@ -72,7 +72,7 @@ if ($dopost == 'saveedit') {
     ShowMsg("成功修改一个账户", "sys_admin_user.php");
     exit();
 } else if ($dopost == 'delete') {
-    if (empty($userok)) $userok = "";
+    if (empty($userok)) $userok = '';
     if ($userok != "yes") {
         $randcode = mt_rand(10000, 99999);
         $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);

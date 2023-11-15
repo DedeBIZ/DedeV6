@@ -22,7 +22,7 @@ if ($dopost == "clear") {
 } else if ($dopost == "del") {
     $bkurl = isset($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : "log_list.php";
     $ids = explode('`', $ids);
-    $dquery = "";
+    $dquery = '';
     foreach ($ids as $id) {
         if ($dquery == "") {
             $dquery .= " lid='$id' ";

@@ -130,7 +130,7 @@
 					ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用英文逗号）");
 					return false;
 				}
-				if (spage=="no") spage = "";
+				if (spage=="no") spage = '';
 				revalue =  "<field:"+fieldname+" itemname=\""+itemname+"\" autofield=\"1\" type=\""+dtype+"\" isnull=\""+sisnull+"\" default=\""+vdefault+"\" ";
 				revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">"+vinnertext+"</field:"+fieldname+">";
 				document.form1.fieldstring.value = revalue;

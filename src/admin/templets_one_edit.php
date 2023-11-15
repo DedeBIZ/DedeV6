@@ -10,7 +10,7 @@
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_One');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 if ($dopost == "saveedit") {
     include_once(DEDEINC."/archive/sgpage.class.php");

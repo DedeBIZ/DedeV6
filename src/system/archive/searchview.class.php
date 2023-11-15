@@ -277,7 +277,7 @@ class SearchView
                 } else if ($row['count'] > 300) {
                     $fstyle = " style='color:green'";
                 } else {
-                    $style = "";
+                    $style = '';
                 }
                 $likeword .= "　<a href='search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'".$style.">".$row['keyword']."</a> ";
             }
@@ -526,7 +526,7 @@ class SearchView
         $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath,mb.uname,mb.face,mb.userid FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
-        $artlist = "";
+        $artlist = '';
         if ($col > 1) {
             $artlist = "<table width='$tablewidth'>\r\n";
         }
@@ -604,7 +604,7 @@ class SearchView
                     $artlist .= $this->dtp2->GetResult();
                 } //if hasRow
                 else {
-                    $artlist .= "";
+                    $artlist .= '';
                 }
                 if ($col > 1) $artlist .= "</td>\r\n";
             } //Loop Col
@@ -629,8 +629,8 @@ class SearchView
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
         global $oldkeyword;
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -676,7 +676,7 @@ class SearchView
             $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>\r\n";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -697,7 +697,7 @@ class SearchView
                 $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
             }
         }
-		$plist = "";
+		$plist = '';
         $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."' class='d-flex'>$hidenform";
         $plist .= preg_match('/info/i', $listitem)? $infos : "";
         $plist .= preg_match('/index/i', $listitem)? $indexpage : "";

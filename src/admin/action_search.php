@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 require_once(dirname(__FILE__)."/actionsearch_class.php");
 //添加权限检查
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $keyword = empty($keyword) ? "" : RemoveXss($keyword);
 $actsearch = new ActionSearch($keyword);
 $asresult = $actsearch->Search();

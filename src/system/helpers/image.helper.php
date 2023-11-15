@@ -97,7 +97,7 @@ if (!function_exists('WaterImg')) {
         }
         $TRUEMarkimg = DEDEDATA.'/mark/'.$photo_markimg;
         if (!file_exists($TRUEMarkimg) || empty($photo_markimg)) {
-            $TRUEMarkimg = "";
+            $TRUEMarkimg = '';
         }
         if ($photo_waterpos == 0) {
             $photo_waterpos = rand(1, 9);

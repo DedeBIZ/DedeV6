@@ -66,7 +66,7 @@ if (empty($dopost)) {
     exit;
 } elseif ($dopost == "system_info") {
     if (empty(trim($cfg_auth_code))) {
-        $indexHTML = "";
+        $indexHTML = '';
         if (file_exists(DEDEROOT."/index.html")) {
             $indexHTML = file_get_contents(DEDEROOT."/index.html");
         } else {
