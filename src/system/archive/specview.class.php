@@ -446,15 +446,15 @@ class SpecView
         }
         $purl = $this->GetCurUrl();
         $tnamerule = "spec_";
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li><a href='".$tnamerule."$prepagenum".$GLOBALS['art_shortname']."'>上一页</a></li>\r\n";
+            $prepage .= "<li><a href='".$tnamerule."$prepagenum".$GLOBALS['art_shortname']."'>上页</a></li>\r\n";
             $indexpage = "<li><a href='".$tnamerule."1".$GLOBALS['art_shortname']."'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li><a>首页</a></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li><a href='".$tnamerule."$nextpagenum".$GLOBALS['art_shortname']."'>下一页</a></li>\r\n";
+            $nextpage .= "<li><a href='".$tnamerule."$nextpagenum".$GLOBALS['art_shortname']."'>下页</a></li>\r\n";
             $endpage = "<li><a href='".$tnamerule."$totalpage".$GLOBALS['art_shortname']."'>末页</a></li>\r\n";
         } else {
             $endpage = "<li><a>末页</a></li>\r\n";
@@ -513,15 +513,15 @@ class SpecView
         $hidenform = "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
         $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
         $purl .= "?".$geturl;
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li><a href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
+            $prepage .= "<li><a href='".$purl."PageNo=$prepagenum'>上页</a></li>\r\n";
             $indexpage = "<li><a href='".$purl."PageNo=1'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li><a>首页</a></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li><a href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
+            $nextpage .= "<li><a href='".$purl."PageNo=$nextpagenum'>下页</a></li>\r\n";
             $endpage = "<li><a href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
         } else {
             $endpage = "<li><a>末页</a></li>";

@@ -861,16 +861,16 @@ class SgListView
         $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $tnamerule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
         $tnamerule = preg_replace("/^(.*)\//", '', $tnamerule);
-        //获得上一页和首页的链接
+        //获得上页和首页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上页</a></li>\r\n";
             $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li class='page-item'>首页</li>\r\n";
         }
-        //下一页和未页的链接
+        //下页和未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下页</a></li>\r\n";
             $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>\r\n";
         } else {
             $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>";
@@ -965,15 +965,15 @@ class SgListView
         $hidenform = "<input type='hidden' name='keyword' value='$keyword' />\r\n";
         $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."' />\r\n";
         $purl .= "?tid=".$this->TypeID."&";
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum{$geturl}'>上一页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum{$geturl}'>上页</a></li>\r\n";
             $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1{$geturl}'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li class='page-item disabled'><a class='page-link'>首页</a></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum{$geturl}'>下一页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum{$geturl}'>下页</a></li>\r\n";
             $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage{$geturl}'>末页</a></li>\r\n";
         } else {
             $endpage = "<li class='page-item disabled'><a class='page-link'>末页</a></li>";

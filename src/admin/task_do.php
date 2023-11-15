@@ -40,7 +40,7 @@ function GetNextUrl($notallowArr = array('dopost', 'f', 'del'))
     }
     return $reurl;
 }
-//更新上一篇和下一篇
+//更新上篇和下篇
 if ($dopost == 'makeprenext') {
     require_once(DEDEINC.'/archive/archives.class.php');
     $aid = intval($aid);
@@ -75,12 +75,12 @@ if ($dopost == 'makeindex') {
     $templet = str_replace("{style}", $cfg_df_style, $row['templet']);
     $homeFile = dirname(__FILE__).'/'.$row['position'];
     $homeFile = str_replace("//", "/", str_replace("\\", "/", $homeFile));
-    $fp = fopen($homeFile, 'w') or die("无法更新网站首页到：$homeFile 位置");
+    $fp = fopen($homeFile, 'w') or die("无法更新网站首页到：".$homeFile."位置");
     fclose($fp);
     $tpl = $cfg_basedir.$cfg_templets_dir.'/'.$templet;
     if (!file_exists($tpl)) {
         $tpl = $cfg_basedir.$cfg_templets_dir.'/dedebiz/index.htm';
-        if (!file_exists($tpl)) exit("无法找到首页模板：$tpl ");
+        if (!file_exists($tpl)) exit("无法找到首页模板：$tpl");
     }
     $GLOBALS['_arclistEnv'] = 'index';
     $pv->SetTemplet($tpl);

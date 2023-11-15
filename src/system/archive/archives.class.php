@@ -58,7 +58,7 @@ class Archives
             $this->TypeLink = new TypeLink($arr['typeid']);
             if ($this->ChannelUnit->ChannelInfos['issystem'] != -1) {
                 //如果当前文档不是系统模型，为自定义模型
-                $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable,mb.uname,mb.face,mb.userid FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid LEFT JOIN `#@__channeltype` as ch on arc.channel = ch.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE arc.id='$aid' ";
+                $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable,mb.uname,mb.face,mb.userid,mb.sex FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid LEFT JOIN `#@__channeltype` as ch on arc.channel = ch.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE arc.id='$aid' ";
                 $this->Fields = $this->dsql->GetOne($query);
             } else {
                 $this->Fields['title'] = '';
@@ -98,7 +98,7 @@ class Archives
             //为了减少重复查询，这里直接把附加表查询记录放在$this->addTableRow中，在ParAddTable()不再查询
             if ($this->ChannelUnit->ChannelInfos['addtable'] != '') {
                 if ($this->ChannelUnit->ChannelID < -1) {
-                    $query = "SELECT tb.*,mb.uname,mb.face,mb.userid FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` tb LEFT JOIN `#@__member` mb on tb.mid = mb.mid WHERE tb.`aid` = '$aid'";
+                    $query = "SELECT tb.*,mb.uname,mb.face,mb.userid,mb.sex FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` tb LEFT JOIN `#@__member` mb on tb.mid = mb.mid WHERE tb.`aid` = '$aid'";
                 } else {
                     $query = "SELECT * FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` WHERE `aid` = '$aid'";
                 }
@@ -198,7 +198,7 @@ class Archives
                 $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
                 $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
             }
-            //移除文档模型正文图片宽度和高度，适配自适应/响应式网站
+            //移除文档模型正文图片宽度和高度，适配响应式网站
             $this->Fields['body'] = preg_replace("/style=\"width\:(.*)\"/","",$this->Fields['body']);
         }
         //完成附加表信息读取
@@ -586,7 +586,7 @@ class Archives
                 } else if ($ctag->GetName() == 'prenext') {
                     $this->dtp->Assign($i, $this->GetPreNext($ctag->GetAtt('get')));
                 }
-                //添加上一篇下一篇标签{dede:prenextdiy get='pre'}{/dede:prenextdiy}{dede:prenextdiy get='next'}{/dede:prenextdiy}
+                //添加上篇下篇标签{dede:prenextdiy get='pre'}{/dede:prenextdiy}{dede:prenextdiy get='next'}{/dede:prenextdiy}
                 else if ($ctag->GetName()=='prenextdiy')
                 {
                     $innertext = trim($ctag->GetInnerText());
@@ -659,10 +659,10 @@ class Archives
         $this->Fields = '';
     }
     /**
-     *  获取上一篇和下一篇链接
+     *  获取上篇和下篇链接
      *
      * @access    public
-     * @param     string  $gtype  pre为上一篇，preimg为上一篇图片，next为下一篇，nextimg为下一篇图片
+     * @param     string  $gtype  pre为上篇，preimg为上篇图片，next为下篇，nextimg为下篇图片
      * @return    string
      */
     function GetPreNext($gtype = '')
@@ -699,10 +699,10 @@ class Archives
                 $this->PreNext['diy']['pre']['title'] = $preRow['title'];
                 $this->PreNext['diy']['pre']['litpic'] = $preRow['litpic'];
                 $this->PreNext['diy']['pre']['pubdate'] = $preRow['senddate'];
-                $this->PreNext['pre'] = "上一篇：<a href='$mlink'>{$preRow['title']}</a>";
+                $this->PreNext['pre'] = "上篇：<a href='$mlink'>{$preRow['title']}</a>";
                 $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$preRow['title']}\" title=\"{$preRow['title']}\"></a> ";
             } else {
-                $this->PreNext['pre'] = "上一篇：暂无";
+                $this->PreNext['pre'] = "上篇：暂无";
                 $this->PreNext['preimg'] = '';
             }
             if (is_array($nextRow)) {
@@ -727,10 +727,10 @@ class Archives
                 $this->PreNext['diy']['next']['title'] = $nextRow['title'];
                 $this->PreNext['diy']['next']['litpic'] = $nextRow['litpic'];
                 $this->PreNext['diy']['next']['pubdate'] = $nextRow['senddate'];
-                $this->PreNext['next'] = "下一篇：<a href='$mlink'>{$nextRow['title']}</a> ";
+                $this->PreNext['next'] = "下篇：<a href='$mlink'>{$nextRow['title']}</a> ";
                 $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\" title=\"{$nextRow['title']}\"></a> ";
             } else {
-                $this->PreNext['next'] = "下一篇：暂无";
+                $this->PreNext['next'] = "下篇：暂无";
                 $this->PreNext['nextimg'] = '';
             }
         }
@@ -816,12 +816,12 @@ class Archives
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
-            $PageList .= "<li class='page-item disabled'><span class='page-link'>上一页</span></li>";
+            $PageList .= "<li class='page-item disabled'><span class='page-link'>上页</span></li>";
         } else {
             if ($nPage == 1) {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上页</a></li>";
             } else {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$nPage.".".$this->ShortName."'>上一页</a></li>";
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$nPage.".".$this->ShortName."'>上页</a></li>";
             }
         }
         for ($i = 1; $i <= $totalPage; $i++) {
@@ -841,9 +841,9 @@ class Archives
             }
         }
         if ($lPage <= $totalPage) {
-            $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$lPage.".".$this->ShortName."'>下一页</a></li>";
+            $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."-".$lPage.".".$this->ShortName."'>下页</a></li>";
         } else {
-            $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
+            $PageList .= "<li class='page-item'><span class='page-link'>下页</span></li>";
         }
         return $PageList;
     }
@@ -938,19 +938,19 @@ class Archives
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
-            $PageList .= "<li class='page-item disabled'><span class='page-link'>上一页</span></li>";
+            $PageList .= "<li class='page-item disabled'><span class='page-link'>上页</span></li>";
         } else {
             if ($nPage == 1) {
                 if ($cfg_rewrite == 'Y') {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid.html'>上一页</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid.html'>上页</a></li>";
                 } else {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>上一页</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>上页</a></li>";
                 }
             } else {
                 if ($cfg_rewrite == 'Y') {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$nPage.html'>上一页</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$nPage.html'>上页</a></li>";
                 } else {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$nPage'>上一页</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$nPage'>上页</a></li>";
                 }
             }
         }
@@ -980,12 +980,12 @@ class Archives
         }
         if ($lPage <= $totalPage) {
             if ($cfg_rewrite == 'Y') {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$lPage.html'>下一页</a></li>";
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$lPage.html'>下页</a></li>";
             } else {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$lPage'>下一页</a></li>";
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$lPage'>下页</a></li>";
             }
         } else {
-            $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
+            $PageList .= "<li class='page-item'><span class='page-link'>下页</span></li>";
         }
         return $PageList;
     }
