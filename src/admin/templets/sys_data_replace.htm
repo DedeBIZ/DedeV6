@@ -26,36 +26,23 @@
 				</tr>
 				<tr>
 					<td width="260">选择数据表与字段：</td>
-					<td class="table-borderless p-0">
-						<table>
-							<tr>
-								<td id="tables">
-									<?php
-									$dsql->SetQuery("Show Tables");
-									$dsql->Execute('t');
-									if ($dsql->GetError()!=''){
-										echo "找不到您所指定的数据库".$dbname."";
-										echo $qbutton;
-									}
-									echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='admin-input-lg'>";
-									while($row = $dsql->GetArray('t',MYSQL_BOTH)){
-										echo "<option value='{$row[0]}'>{$row[0]}</option>";
-									}
-									echo "</select>";
-									$dsql->Close();
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td id="fields"></td>
-							</tr>
-							<tr>
-								<td>
-									<input type="text" name="rpfield" id="rpfield" class="admin-input-sm">
-									<span>（选择替换字段）</span>
-								</td>
-							</tr>
-						</table>
+					<td>
+						<?php
+						$dsql->SetQuery("Show Tables");
+						$dsql->Execute('t');
+						if ($dsql->GetError()!=''){
+							echo "找不到您所指定的数据库".$dbname."";
+							echo $qbutton;
+						}
+						echo "<select name='exptable' multiple='yes' onchange='ShowFields();' id='exptable' class='admin-input-lg mb-3'>";
+						while($row = $dsql->GetArray('t',MYSQL_BOTH)){
+							echo "<option value='{$row[0]}'>{$row[0]}</option>";
+						}
+						echo "</select>";
+						$dsql->Close();
+						?>
+						<div id="fields"></div>
+						<input type="text" name="rpfield" id="rpfield" class="admin-input-sm">
 					</td>
 				</tr>
 				<tr>
@@ -64,7 +51,6 @@
 						<input type="text" name="keyfield" id="keyfield" class="admin-input-sm">
 						<label><input type="radio" name="rptype" id="ot1" value="replace" checked="checked"> 普通替换</label>
 						<label><input type="radio" name="rptype" id="ot2" value="regex"> 正则表达式</label>
-						<span>（正则模式必须指定）</span>
 					</td>
 				</tr>
 				<tr>
