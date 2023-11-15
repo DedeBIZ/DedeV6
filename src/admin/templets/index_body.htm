@@ -69,37 +69,37 @@
 						<table class="table table-borderless">
 							<tr>
 								<td width="16%">
-									<div class="web-info">
+									<div class="web-info no-wrap">
 										<p>操作系统</p>
 										<span><?php echo PHP_OS;?></span>
 									</div>
 								</td>
 								<td width="16%">
-									<div class="web-info">
+									<div class="web-info no-wrap">
 										<p>WEB服务器</p>
 										<span><?php echo GetSimpleServerSoftware();?></span>
 									</div>
 								</td>
 								<td width="16%">
-									<div class="web-info">
+									<div class="web-info no-wrap">
 										<p>IP地址</p>
 										<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
 									</div>
 								</td>
 								<td width="16%">
-									<div class="web-info">
+									<div class="web-info no-wrap">
 										<p>PHP版本</p>
 										<span><?php echo @phpversion();?></span>
 									</div>
 								</td>
 								<td width="16%">
-									<div class="web-info">
+									<div class="web-info no-wrap">
 										<p>数据库版本</p>
 										<span><?php echo $dsql->GetVersion();?></span>
 									</div>
 								</td>
 								<td width="16%">
-									<div class="web-info">
+									<div class="web-info no-wrap">
 										<p>上传限制</p>
 										<span><?php echo ini_get("post_max_size")?></span>
 									</div>

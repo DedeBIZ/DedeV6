@@ -16,8 +16,8 @@
 		{dede:include filename='head.htm'/}
 		<section class="container py-3">
 			<div class="row">
-				<div class="col-md-3 m-pb-2">{dede:include filename='widget_recommend.htm'/}</div>
-				<div class="col-md-6 m-pb-2">
+				<div class="col-md-3 pb-m-3">{dede:include filename='widget_recommend.htm'/}</div>
+				<div class="col-md-6 pb-m-3">
 					<div class="row">
 						<div id="carouselDede" class="col-12 carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">{dede:arclist row='5' flag='f' orderby='id'}
@@ -108,7 +108,7 @@
 		</section><!--该布局适用于文档和图片模型-->
 		<section class="container py-3">
 			<div class="row">{dede:channelartlist typeid='3,3'}
-				<div class="col-md-4 m-pb-2">
+				<div class="col-md-4 pb-m-3">
 					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
 						<ul>{dede:arclist row='10' titlelen='110' orderby='id'}
@@ -116,7 +116,7 @@
 						</ul>
 					</article>
 				</div>{/dede:channelartlist}{dede:channelartlist typeid='4,4'}
-				<div class="col-md-4 m-pb-2">
+				<div class="col-md-4 pb-m-3">
 					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
 						<ul>{dede:arclist row='10' titlelen='110' orderby='id'}

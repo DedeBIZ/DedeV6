@@ -21,7 +21,7 @@ if (empty($ischeck)) {
     else $ischeckSql = " And ischeck='$ischeck' ";
 }
 $keyword = HtmlReplace($keyword, -1);
-$selCheckArr = array(0 => '不限类型', -1 => '未审核', 1 => '内页', 2 => '首页');
+$selCheckArr = array(0 => '不限类型', -1 => '待审核', 1 => '内页', 2 => '首页');
 $sql = "SELECT * FROM `#@__flink` WHERE CONCAT(`url`,`webname`,`email`) LIKE '%$keyword%' $ischeckSql ORDER BY dtime DESC";
 $dlist = new DataListCP();
 $dlist->SetParameter('keyword', $keyword);
@@ -38,6 +38,6 @@ function GetSta($sta)
 {
     if ($sta == 1) return '内页';
     if ($sta == 2) return '首页';
-    else return '未审核';
+    else return '待审核';
 }
 ?>

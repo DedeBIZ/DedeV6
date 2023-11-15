@@ -43,7 +43,7 @@
 				<?php 
 				if (!empty($fields)) {
 					$allowhtml = array('htmltext');
-					$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
+					$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'待审核';
 					echo '<tr>
 						<td width="16%">
 							<label><input type="checkbox" name="id[]" value="'.$fields['id'].'"> '.$fields['id'].'表单'.$fields['sta'].'</label>

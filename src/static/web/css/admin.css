@@ -68,7 +68,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .sidemenu .submenu-right{float:right!important;padding:0 20px 0 0!important}
 .body-right{position:absolute;top:60px;right:0;bottom:0}
 .body-right iframe{width:100%;height:99%;border:0}
-.web-info{padding:10px;background:var(--light);text-overflow:ellipsis;white-space:nowrap}
+.web-info{padding:10px;background:var(--light)}
 #_fileList,#_verList{height:350px;overflow-y:auto}
 #_msgInfo{display:none}
 .update-close{background:var(--white);border:0}
@@ -142,6 +142,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .card-header{padding:0.5rem 1rem;background-color:rgba(0,0,0,.02)}
 .card-body{padding:0.5rem}
 .card-body canvas{height:360px!important}
+.no-wrap{white-space:nowrap}
 .fileinput-button{display:inline-block;position:relative;overflow:hidden}
 .fileinput-button input{position:absolute;top:0;right:0;margin:0;opacity:0;direction:ltr;cursor:pointer}
 .maintable{width:98%!important;border:1px solid var(--gray-300)!important}
@@ -172,7 +173,7 @@ table,input,select,textarea,.login-box,.colordlg,.pubdlg,.quickselitem .topcat,.
 .btn+.btn{margin-left:10px}
 @media (min-width:1200px){.modal-dialog{max-width:500px}
 }
-@media (max-width:768px){td{text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:768px){td{white-space:nowrap}
 .install-box,.login-from,.tips-box{width:100%}
 .tips{padding:0 1rem}
 }

@@ -134,17 +134,15 @@ async function LoadStatChart() {
 	});
 }
 $(document).ready(function() {
-	$(function() {
-		$.get("index_testenv.php",function(data) {
-			if (data !== '') {
-				$("#body-tips").html(data);
-			}
-		});
-		$.get("index_body.php?dopost=get_articles",function(data) {
-			if (data !== '') {
-				$("#system-word").html(data);
-			}
-		});
+	$.get("index_testenv.php",function(data) {
+		if (data !== '') {
+			$("#body-tips").html(data);
+		}
+	});
+	$.get("index_body.php?dopost=get_articles",function(data) {
+		if (data !== '') {
+			$("#system-word").html(data);
+		}
 	});
 	$(function() {
 		var dedebizInfo;
@@ -160,25 +158,25 @@ $(document).ready(function() {
 				if (typeof rsp.result.domain !== "undefined") {
 					infoStr += `<tr>
 						<td width="25%">
-							<div class="web-info">
+							<div class="web-info no-wrap">
 								<p>授权域名</p>
 								<span>${rsp.result.domain}</span>
 							</div>
 						</td>
 						<td width="25%">
-							<div class="web-info">
+							<div class="web-info no-wrap">
 								<p>站点名称</p>
 								<span>${rsp.result.title}</span>
 							</div>
 						</td>
 						<td width="25%">
-							<div class="web-info">
+							<div class="web-info no-wrap">
 								<p>授权证书</p>
 								<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
 							</div>
 						</td>
 						<td width="25%">
-							<div class="web-info">
+							<div class="web-info no-wrap">
 								<p>授权时间</p>
 								<span>${rsp.result.auth_at}</span>
 							</div>
@@ -191,7 +189,7 @@ $(document).ready(function() {
 				$("#system-info").html(`<table class="table table-borderless">
 					<tr>
 						<td>
-							<div class="web-info">
+							<div class="web-info no-wrap">
 								<p>${rsp.msg}</p>
 								<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息</span>
 							</div>

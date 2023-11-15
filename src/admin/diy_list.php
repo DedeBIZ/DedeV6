@@ -94,7 +94,7 @@ if ($action == 'post') {
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";
         $row = $dsql->GetOne($query);
         if (!is_array($row)) {
-            showmsg("您浏览的记录不存在或未审核", '-1');
+            showmsg("您浏览的记录不存在或待审核", '-1');
             exit();
         }
         $postform = $diy->getForm('edit', $row, 'admin');
@@ -201,7 +201,7 @@ if ($action == 'post') {
         {
             echo "<td>".$arr[$key]."</td>";
         }
-    $status = $arr['ifcheck'] == 1 ? '已审核' : '未审核';
+    $status = $arr['ifcheck'] == 1 ? '已审核' : '待审核';
     echo "<td>".$status."</td>";
     echo "</tr>";
     }

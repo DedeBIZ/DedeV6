@@ -111,7 +111,7 @@ if ($action == 'post') {
     $row = $dsql->GetOne($query);
 
     if (!is_array($row)) {
-        showmsg('您浏览的记录不存在或未审核', '-1');
+        showmsg('您浏览的记录不存在或待审核', '-1');
         exit();
     }
     $fieldlist = $diy->getFieldList();
