@@ -47,7 +47,7 @@ if ($action == 'upload') {
         copy($tmpfilename, $okfile);
         @unlink($tmpfilename);
         $dm->Clear();
-        ShowMsg("成功上传一个新的模块", "module_main.php?action=view&hash={$infos['hash']}");
+        ShowMsg("成功上传一个新模块", "module_main.php?action=view&hash={$infos['hash']}");
         exit();
     }
 } else {
