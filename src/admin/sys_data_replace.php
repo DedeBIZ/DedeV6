@@ -23,7 +23,7 @@ else if ($action == 'getfields') {
     AjaxHead();
     $dsql->GetTableFields($exptable);
     echo "<div class='alert alert-info'>";
-    echo "<p>请选择".$exptable."表下方替换字段</p>";
+    echo "<p>请选择".$exptable."表下面字段</p>";
     while ($row = $dsql->GetFieldObject()) {
         echo "<a href=\"javascript:pf('{$row->name}')\">".$row->name."</a> ";
     }
