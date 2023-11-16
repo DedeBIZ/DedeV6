@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>模块打包</title>
+		<title>模块修改</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
@@ -84,7 +84,7 @@
 						<label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" <?php if (isset($autosetup) && $autosetup==1) echo "checked='checked'";?>> 自动生成</label><br>
 						<div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input type="file" name="setup" id="setup" class="admin-input-lg"></div>
 						<div style="display:<?php if (isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
-							<p>（由系统自动处理安装，请使用MySQL4.0版本格式的SQL语句：MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=*，改为TYPE=MyISAM，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束，如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php）</p>
+							<p>（由系统自动处理安装，请使用MySQL4.0版本格式的SQL语句：MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=*，改为TYPE=MyISAM，SQL语句允许换行，但必须用;表示一条SQL语句结束，如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php）</p>
 							<textarea name="setupsql40" id="setupsql40" class="admin-textarea-xl"><?php echo $setupsql40;?></textarea>
 						</div>
 					</td>
@@ -95,7 +95,7 @@
 						<label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if (isset($autodel) && $autodel==1) echo "checked='checked'";?>> 自动生成</label><br>
 						<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input type="file" name="uninstall" id="uninstall" class="admin-input-lg"></div>
 						<div style="display:<?php if (isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>" id="autodelct">
-							<p>（由系统自动处理卸载，卸载时执行SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）</p>
+							<p>（由系统自动处理卸载，卸载时执行SQL允许换行，但必须用;表示一条SQL语句结束）</p>
 							<textarea name="delsql" id="delsql" class="admin-textarea-xl"><?php echo $delsql;?></textarea>
 						</div>
 					</td>
