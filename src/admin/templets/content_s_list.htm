@@ -50,11 +50,11 @@
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
 					<td width="26%">文档标题</td>
-					<td width="10%">更新时间</td>
 					<td width="12%">栏目</td>
-					<td width="6%">点击</td>
 					<td width="6%">网页</td>
 					<td width="6%">权限</td>
+					<td width="10%">更新时间</td>
+					<td width="6%">点击</td>
 					<td>操作</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="9" align="center">暂无记录</td></tr>'}
@@ -62,11 +62,11 @@
 					<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
 					<td>{dede:field.id/}</td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
-					<td><?php echo MyDate("Y-m-d H:i:s",$fields['senddate'])?></td>
 					<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
-					<td>{dede:field.click/}</td>
 					<td><?php echo IsHtmlArchives($fields['ismake'])?></td>
 					<td><?php echo GetRankName($fields['arcrank'])?></td>
+					<td><?php echo MyDate("Y-m-d H:i:s",$fields['senddate'])?></td>
+					<td>{dede:field.click/}</td>
 					<td>
 						<a href="javascript:;" class="btn btn-light btn-sm" onclick="editArc({dede:field.id/});"><i class="fa fa-pencil-square"></i> 修改</a>
 						<a href="javascript:;" class="btn btn-light btn-sm" onclick="viewArc({dede:field.id/});"><i class="fa fa-eye"></i> 预览</a>

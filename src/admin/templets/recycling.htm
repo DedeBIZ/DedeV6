@@ -18,8 +18,8 @@
 					<td width="6%">id</td>
 					<td width="6%">选择</td>
 					<td width="26%">文档标题</td>
-					<td width="10%">更新时间</td>
 					<td width="10%">栏目</td>
+					<td width="10%">更新时间</td>
 					<td width="6%">点击</td>
 					<td>操作</td>
 				</tr>
@@ -28,8 +28,8 @@
 					<td>{dede:field.id/}</td>
 					<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
-					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 					<td>{dede:field.typename/}</td>
+					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 					<td>{dede:field.click/}</td>
 					<td>
 						<a href="javascript:moveArc({dede:field.id/})" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 还原</a>

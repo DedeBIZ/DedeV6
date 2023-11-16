@@ -33,11 +33,11 @@
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
 					<td width="26%">文档标题</td>
-					<td width="10%">更新时间</td>
 					<td width="12%">栏目</td>
-					<td width="6%">点击</td>
 					<td width="6%">网页</td>
 					<td width="6%">权限</td>
+					<td width="10%">更新时间</td>
+					<td width="6%">点击</td>
 					<td>属性</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="9" align="center">暂无记录</td></tr>'}
@@ -45,12 +45,12 @@
 					<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
 					<td>{dede:field.id/}</td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
-					<td>{dede:field.senddate function="GetDateMk(@me)"/}</td>
 					<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
+					<td>{dede:field.ismake function='IsHtmlArchives(@me)'/}</td>
+					<td>{dede:field.arcrank function='GetRankName(@me)'/}</td>
+					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 					<td>{dede:field.click/}</td>
-					<td>{dede:field.ismake function="IsHtmlArchives(@me)"/}</td>
-					<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
-					<td>{dede:field.flag function="IsCommendArchives(@me)"/}</td>
+					<td>{dede:field.flag function='IsCommendArchives(@me)'/}</td>
 				</tr>
 				{/dede:datalist}
 				<tr>
