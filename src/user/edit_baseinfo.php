@@ -60,7 +60,7 @@ if ($dopost == 'save') {
     //修改安全问题或邮箱
     if ($email != $row['email'] || ($newsafequestion != 0 && $newsafeanswer != '')) {
         if ($row['safequestion'] != 0 && ($row['safequestion'] != $safequestion || $row['safeanswer'] != $safeanswer)) {
-            ShowMsg('您的旧安全问题及答案不正确，不能修改邮箱或安全问题', 'edit_baseinfo.php');
+            ShowMsg('旧安全问题及答案不正确，不能修改邮箱或安全问题', 'edit_baseinfo.php');
             exit();
         }
         //修改邮箱
@@ -77,7 +77,7 @@ if ($dopost == 'save') {
         //修改安全问题
         if ($newsafequestion != 0 && $newsafeanswer != '') {
             if (strlen($newsafeanswer) > 30) {
-                ShowMsg('您的新安全问题的答案太长了，请保持在30字节以内', 'edit_baseinfo.php');
+                ShowMsg('新安全问题的答案太长了，请保持在30字节以内', 'edit_baseinfo.php');
                 exit();
             } else {
                 $newsafequestion = HtmlReplace($newsafequestion, 1);
@@ -109,7 +109,7 @@ if ($dopost == 'save') {
     }
     //清除会员缓存
     $cfg_ml->DelCache($cfg_ml->M_ID);
-    ShowMsg('成功更新您的基本资料', 'edit_baseinfo.php');
+    ShowMsg('成功更新账号基本资料', 'edit_baseinfo.php');
     exit();
 }
 include(DEDEMEMBER."/templets/edit_baseinfo.htm");

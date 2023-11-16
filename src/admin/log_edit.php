@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Log');
 if (empty($dopost)) {
-    ShowMsg("您没指定任何参数", "javascript:;");
+    ShowMsg("请选择一项记录", "log_list.php");
     exit();
 }
 //清空所有日志
@@ -32,10 +32,10 @@ if ($dopost == "clear") {
     }
     if ($dquery != "") $dquery = " where ".$dquery;
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__log` $dquery");
-    ShowMsg("成功删除指定的日志", $bkurl);
+    ShowMsg("成功删除指定日志", $bkurl);
     exit();
 } else {
-    ShowMsg("无法识别您的请求", "javascript:;");
+    ShowMsg("系统无法识别请求", "log_list.php");
     exit();
 }
 ?>

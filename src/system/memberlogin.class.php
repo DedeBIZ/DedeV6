@@ -68,10 +68,10 @@ function CheckNotAllow()
         ShowMsg("您已经被禁言，请与管理员联系", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta == -10) {
-        ShowMsg("系统开启了邮件审核机制，您的帐号需要审核后才能发信息", "-1");
+        ShowMsg("系统开启了邮件审核机制，帐号需要审核后才能发信息", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta < 0) {
-        ShowMsg('系统开启了审核机制，您的帐号需要管理员审核后才能发信息', '-1');
+        ShowMsg('系统开启了审核机制，帐号需要管理员审核后才能发信息', '-1');
         exit();
     }
 }

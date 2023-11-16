@@ -40,11 +40,11 @@ if ($step == 1) {
             exit();
         }
         if (strlen($userid) > 20 || strlen($uname) > 36) {
-            ShowMsg('您的账号或账号过长，不允许注册', '-1');
+            ShowMsg('账号或账号过长，不允许注册', '-1');
             exit();
         }
         if (strlen($userid) < $cfg_mb_idmin || strlen($pwd) < $cfg_mb_pwdmin) {
-            ShowMsg("您的账号或密码过短，不允许注册", "-1");
+            ShowMsg("账号或密码过短，不允许注册", "-1");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
@@ -63,7 +63,7 @@ if ($step == 1) {
             ShowMsg("您指定的账号{$userid}已存在，请使用别的账号", "-1");
             exit();
         }
-        //会员的默认金币
+        //会员默认金币
         $dfscores = 0;
         $dfmoney = 0;
         $dfrank = $dsql->GetOne("SELECT `money`,scores FROM `#@__arcrank` WHERE `rank`='10' ");

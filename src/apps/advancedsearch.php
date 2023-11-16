@@ -43,7 +43,7 @@ if (empty($sql)) {
     $q = stripslashes($q);
     $q = preg_replace("#[\|\"\r\n\t%\*\?\(\)\$;,'%<>]#", " ", trim($q));
     if (($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $q)) || ($cfg_replacestr != '' && preg_match("#".$cfg_replacestr."#i", $q))) {
-        echo "您的信息中存在违规文档，被系统禁止";
+        echo "信息中存在违规文档，被系统禁止";
         exit();
     }
     $q = addslashes($q);

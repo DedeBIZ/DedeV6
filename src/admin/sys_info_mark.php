@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
 require_once(DEDEINC."/image.func.php");
 if ($cfg_photo_support == '') {
-    echo "您的系统没安装GD库，不允许使用本功能";
+    echo "未安装GD库，不允许使用该功能";
     exit();
 }
 $ImageWaterConfigFile = DEDEDATA."/mark/inc_photowatermark_config.php";

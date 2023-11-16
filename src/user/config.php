@@ -100,7 +100,7 @@ if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
 if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
     PutCookie('dede_csrf_token', $GLOBALS['csrf_token'], 7200, '/');
 }
-//获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行修改这个选项
+//获得当前脚本名称，如果系统被禁用了$_SERVER变量，请自行修改这个选项
 $dedeNowurl = $s_scriptName = '';
 $dedeNowurl = GetCurUrl();
 $dedeNowurls = explode('?', $dedeNowurl);

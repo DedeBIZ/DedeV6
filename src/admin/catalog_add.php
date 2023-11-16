@@ -169,13 +169,13 @@ if ($dopost == 'quick') {
         $true_typedir = str_replace("{cmspath}", "", $typedir);
         $true_typedir = preg_replace("#\/{1,}#", "/", $true_typedir);
         if (!CreateDir($true_typedir)) {
-            ShowMsg("创建目录{$true_typedir}失败，请检查您的路径是否存在问题", "-1");
+            ShowMsg("创建目录{$true_typedir}失败，请检查路径是否存在问题", "-1");
             exit();
         }
     }
     $in_query = "INSERT INTO `#@__arctype` (reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`,`apienabled`,`apikey`) VALUES ('$reid','$topid','$sortrank','$typename','$cnoverview','$enname','$enoverview','$bigpic','$litimg','$typedir','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','$ispart','$corank','$description','$keywords','$seotitle','$moresite','$siteurl','$sitepath','$ishidden','$cross','$crossid','$content','$smalltypes','$apienabled','$apikey')";
     if (!$dsql->ExecuteNoneQuery($in_query)) {
-        ShowMsg("保存目录数据时失败，请检查您的输入资料是否存在问题", "-1");
+        ShowMsg("保存目录数据时失败，请检查输入资料是否存在问题", "-1");
         exit();
     }
     UpDateCatCache();

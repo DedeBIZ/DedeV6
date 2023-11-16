@@ -13,11 +13,11 @@ if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
 if ($fmdo == 'sendMail') {
     if (!CheckEmail($cfg_ml->fields['email'])) {
-        ShowMsg('您的邮箱格式有错误', 'index.php');
+        ShowMsg('邮箱格式有错误', 'index.php');
         exit();
     }
     if ($cfg_ml->fields['spacesta'] != -10) {
-        ShowMsg('您的帐号不在邮件验证状态，本操作无效', 'index.php');
+        ShowMsg('帐号不在邮件验证状态，本操作无效', 'index.php');
         exit();
     }
     $userhash = md5($cfg_cookie_encode.'--'.$cfg_ml->fields['mid'].'--'.$cfg_ml->fields['email']);
@@ -44,22 +44,22 @@ if ($fmdo == 'sendMail') {
             @mail($cfg_ml->fields['email'], $mailtitle, $mailbody, $headers);
         }
     }
-    ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收', 'index.php');
+    ShowMsg('成功发送邮件，请稍后登录邮箱进行接收', 'index.php');
     exit();
 } else if ($fmdo == 'checkMail') {
     $mid = intval($mid);
     if (empty($mid)) {
-        ShowMsg('您的效验串不合法', 'index.php');
+        ShowMsg('效验串不合法', 'index.php');
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}' ");
     $needUserhash = md5($cfg_cookie_encode.'--'.$mid.'--'.$row['email']);
     if ($needUserhash != $userhash) {
-        ShowMsg('您的效验串不合法', 'index.php');
+        ShowMsg('效验串不合法', 'index.php');
         exit();
     }
     if ($row['spacesta'] != -10) {
-        ShowMsg('操作无效，您的帐号不在邮件验证状态', 'index.php');
+        ShowMsg('操作无效，帐号不在邮件验证状态', 'index.php');
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET spacesta=0 WHERE mid='{$mid}' ");
@@ -175,11 +175,11 @@ if ($fmdo == 'sendMail') {
         $rs = $cfg_ml->CheckUser($userid, $pwd);
         if ($rs == 0) {
             ResetVdValue();
-            ShowMsg('您的账号错误', 'index.php');
+            ShowMsg('账号输入错误', 'index.php');
             exit();
         } else if ($rs == -1) {
             ResetVdValue();
-            ShowMsg('您的密码错误', 'index.php');
+            ShowMsg('密码输入错误', 'index.php');
             exit();
         } else if ($rs == -2) {
             ResetVdValue();
