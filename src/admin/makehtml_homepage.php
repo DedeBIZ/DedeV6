@@ -50,7 +50,7 @@ if ($dopost == "view") {
                 $data = $client->AdminSetIndexLockState($dedebiz_admin, $lockindex);
                 if ($data->data != "ok") {
                     echo "<link rel=\"stylesheet\" href=\"/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
-                    echo "<div class=\"alert alert-warning\">密码输入错误，请填写正确的密码</div><br>";
+                    echo "<div class=\"alert alert-warning\">密码输入错误，请填写正确密码</div><br>";
                     $client->Close();
                     exit;
                 }
