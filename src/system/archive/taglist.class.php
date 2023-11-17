@@ -448,7 +448,7 @@ class TagList
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."/$j/'>".$j."</a></li>";
+                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."/$j/'>$j</a></li>";
             }
         }
         $plist = '';
@@ -557,7 +557,7 @@ class TagList
         if ($dir == "") $dir = str_replace("{cmspath}", "", $cfg_tags_dir);
         $this->tagsDir = $dir;
     }
-    //生成静态Tag
+    //生成静态标签
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
         global $cfg_dir_purview, $envs, $cfg_tags_dir, $cfg_cmsurl;

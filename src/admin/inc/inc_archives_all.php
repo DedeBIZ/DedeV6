@@ -18,10 +18,10 @@
 function GetFormItem($ctag)
 {
     $fieldname = $ctag->GetName();
-    $formitem = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+    $formitem = "<table width=\"98%\" border=\"0\">
        <tr>
-        <td width=\"80\">~name~</td>
-        <td width=\"720\">~form~</td>
+        <td width=\"120\">~name~</td>
+        <td>~form~</td>
        </tr>
     </table>\r\n";
     $innertext = trim($ctag->GetInnerText());
@@ -116,7 +116,6 @@ function GetFormItem($ctag)
         return $formitem;
     }
 }
-
 /**
  * 处理不同类型的数据
  *
@@ -200,7 +199,6 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
         return $dvalue;
     }
 }
-
 /**
  * 获得带值的表单修改时用
  *
@@ -212,10 +210,10 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
 function GetFormItemValue($ctag, $fvalue)
 {
     $fieldname = $ctag->GetName();
-    $formitem = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+    $formitem = "<table width=\"98%\" border=\"0\">
        <tr>
-        <td width=\"80\">~name~</td>
-        <td width=\"720\">~form~</td>
+        <td width=\"120\">~name~</td>
+        <td>~form~</td>
        </tr>
     </table>\r\n";
     $innertext = trim($ctag->GetInnerText());

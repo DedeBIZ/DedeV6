@@ -439,25 +439,25 @@ class SpecView
         }
         $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<span class='pageinfo'>1页".$this->TotalResult."条</span>";
+            return "<li class='page-item disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class='pageinfo'>0页".$this->TotalResult."条</span>";
+            return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
         $purl = $this->GetCurUrl();
         $tnamerule = "spec_";
         //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li><a href='".$tnamerule."$prepagenum".$GLOBALS['art_shortname']."'>上页</a></li>";
-            $indexpage = "<li><a href='".$tnamerule."1".$GLOBALS['art_shortname']."'>首页</a></li>";
+            $prepage .= "<li class='page-item'><a href='".$tnamerule."$prepagenum".$GLOBALS['art_shortname']."' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$tnamerule."1".$GLOBALS['art_shortname']."' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li><a>首页</a></li>";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li><a href='".$tnamerule."$nextpagenum".$GLOBALS['art_shortname']."'>下页</a></li>";
-            $endpage = "<li><a href='".$tnamerule."$totalpage".$GLOBALS['art_shortname']."'>末页</a></li>";
+            $nextpage .= "<li class='page-item'><a href='".$tnamerule."$nextpagenum".$GLOBALS['art_shortname']."'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$tnamerule."$totalpage".$GLOBALS['art_shortname']."'>末页</a></li>";
         } else {
-            $endpage = "<li><a>末页</a></li>";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
         //获得数字链接
         $listdd = '';
@@ -476,9 +476,9 @@ class SpecView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='thisclass'><a>$j</a></li>";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li><a href='".$tnamerule."$j".$GLOBALS['art_shortname']."'>".$j."</a></li>";
+                $listdd .= "<li class='page-item'><a href='".$tnamerule."$j".$GLOBALS['art_shortname']."'class='page-link'>$j</a></li>";
             }
         }
         $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;
@@ -545,7 +545,7 @@ class SpecView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j'>$j</a></li>";
+                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j'class='page-link'>$j</a></li>";
             }
         }
         $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;

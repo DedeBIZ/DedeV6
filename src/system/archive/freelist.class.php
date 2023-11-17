@@ -275,7 +275,7 @@ class FreeList
             if (is_file($tmpdir."/".$tempfile)) {
                 $this->PartView->SetTemplet($tmpdir."/".$tempfile);
             } else {
-                $this->PartView->SetTemplet("这是没有使用模板的单独页", "string");
+                $this->PartView->SetTemplet("未使用单独页模板", "string");
                 $nmfa = 1;
             }
         }

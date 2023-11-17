@@ -391,8 +391,7 @@ class ListView
                 ));
             }
         }
-    }    
-    
+    }
     /**
      * GetAPIList
      *
@@ -467,7 +466,7 @@ class ListView
         if (preg_match('/hot|click|lastpost/', $orderby)) {
             $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb ON arc.mid=mb.mid $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
         }
-        //普通情况先从arctiny表查出id，然后按di查询速度非常快
+        //普通情况先从arctiny表查出id，然后按id查询速度非常快
         else {
             $t1 = ExecTime();
             $ids = array();
@@ -1034,15 +1033,15 @@ class ListView
         $tnamerule = preg_replace("/^(.*)\//", '', $tnamerule);
         //获得上页和首页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上页</a></li>";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>";
+            $prepage .= "<li class='page-item'><a href='".str_replace("{page}", $prepagenum, $tnamerule)."' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".str_replace("{page}", 1, $tnamerule)."' class='page-link'>首页</a></li>";
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         //下页和未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下页</a></li>";
-            $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>";
+            $nextpage .= "<li class='page-item'><a href='".str_replace("{page}", $nextpagenum, $tnamerule)."' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".str_replace("{page}", $totalpage, $tnamerule)."' class='page-link'>末页</a></li>";
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
@@ -1103,7 +1102,7 @@ class ListView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>$j</a></li>";
+                $listdd .= "<li class='page-item'><a href='".str_replace("{page}", $j, $tnamerule)."' class='page-link'>$j</a></li>";
             }
         }
         $plist = '';

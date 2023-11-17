@@ -896,7 +896,7 @@ class SgListView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>";
+                $listdd .= "<li class='page-item'><a href='".str_replace("{page}", $j, $tnamerule)."' class='page-link'>$j</a></li>";
             }
         }
         $plist = '';
@@ -997,7 +997,7 @@ class SgListView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j{$geturl}'>$j</a></li>";
+                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j{$geturl}' class='page-link'>$j</a></li>";
             }
         }
         $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;

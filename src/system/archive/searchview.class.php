@@ -667,7 +667,7 @@ class SearchView
             $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum' class='page-link'>上页</a></li>";
             $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item disabled'><a class='page-link'>首页</a></li>";
+            $indexpage = "<li class='page-item'><a class='page-link'>首页</a></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
             $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum' class='page-link'>下页</a></li>";
@@ -698,7 +698,7 @@ class SearchView
             }
         }
 		$plist = '';
-        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."' class='d-flex'>$hidenform";
+        $plist .= "<form action='".$this->GetCurUrl()."' name='pagelist' class='d-flex'>$hidenform";
         $plist .= preg_match('/info/i', $listitem)? $infos : "";
         $plist .= preg_match('/index/i', $listitem)? $indexpage : "";
         $plist .= preg_match('/pre/i', $listitem)? $prepage : "";
