@@ -169,19 +169,19 @@
 					<td colspan="2">
 						<table align="center" class="table maintable">
 							<tr bgcolor="#f8f9fa" align="center">
-								<td width="16%" class="border-top-0">提示文字</td>
 								<td width="16%" class="border-top-0">字段名称</td>
+								<td width="16%" class="border-top-0">字段标识</td>
 								<td width="16%" class="border-top-0">数据类型</td>
-								<td width="16%" class="border-top-0">表单类型</td>
+								<td width="16%" class="border-top-0">字段类型</td>
 								<td class="border-top-0">操作</td>
 							</tr>
 							<?php if ($row['issystem']==-1){?>
 							<tr>
-								<td colspan='5'>aid和typeid是强制使用字段，这里不列出</td>
+								<td colspan='5'>不列出aid和typeid强制使用字段</td>
 							</tr>
 							<?php } else {?>
 							<tr>
-								<td colspan='5'>下面是附加表字段，还包含主表archives所有字段</td>
+								<td colspan='5'>下面是附加表字段，包含主表archives所有字段</td>
 							</tr>
 							<?php
 							}

@@ -48,15 +48,15 @@ if ($action == 'post') {
                         ${$fieldinfo[0]} = FilterSearch(stripslashes(${$fieldinfo[0]}));
                         ${$fieldinfo[0]} = addslashes(${$fieldinfo[0]});
                     }
-                    //获取提交链接，表单添加字段文字为链接，字段名称默认为link，数据类型为单行文本后模板里用<input type="hidden" name="link">使用
+                    //获取提交链接，表单添加字段名称为链接，字段标识默认为link，数据类型为单行文本后模板里用<input type="hidden" name="link">使用
                     if ($fieldinfo[0] == 'link') {
                         ${$fieldinfo[0]} = $_SERVER['HTTP_REFERER'];
                     }
-                    //获取提交地址，表单添加字段文字为地址，字段名称默认为ip，数据类型为单行文本后模板里用<input type="hidden" name="ip">使用
+                    //获取提交地址，表单添加字段名称为地址，字段标识默认为ip，数据类型为单行文本后模板里用<input type="hidden" name="ip">使用
                     if ($fieldinfo[0] == 'ip') {
                         ${$fieldinfo[0]} = GetIP();
                     }
-                    //获取提交日期，表单添加字段文字为日期，字段名称默认为date，数据类型为单行文本后模板里用<input type="hidden" name="date">使用
+                    //获取提交日期，表单添加字段名称为日期，字段标识默认为date，数据类型为单行文本后模板里用<input type="hidden" name="date">使用
                     if ($fieldinfo[0] == 'date') {
                         ${$fieldinfo[0]} = date("Y-m-d H:i:s");
                     } else {
