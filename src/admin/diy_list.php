@@ -13,7 +13,7 @@ CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete', 'excel')) ? $action : '';
 if (empty($diyid)) {
-    showMsg("操作失败", 'javascript:;');
+    showMsg('操作失败', '-1');
     exit();
 }
 require_once DEDEINC.'/diyform.class.php';
@@ -27,13 +27,13 @@ if ($action == 'post') {
         $dede_fieldshash = empty($dede_fieldshash) ? '' : trim($dede_fieldshash);
         if (!empty($dede_fields)) {
             if ($dede_fieldshash != md5($dede_fields.$cfg_cookie_encode)) {
-                showMsg("数据校验不对，程序返回", '-1');
+                showMsg('数据校验不对', '-1');
                 exit();
             }
         }
         $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         if (!is_array($diyform)) {
-            showmsg("表单不存在，程序返回", '-1');
+            showmsg('表单不存在', '-1');
             exit();
         }
         $addvar = $addvalue = '';
@@ -88,13 +88,13 @@ if ($action == 'post') {
     if (empty($do)) {
         $id = isset($id) && is_numeric($id) ? $id : 0;
         if (empty($id)) {
-            showMsg('操作失败，未指定id', 'javascript:;');
+            showMsg('操作失败，未指定id', '-1');
             exit();
         }
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";
         $row = $dsql->GetOne($query);
         if (!is_array($row)) {
-            showmsg("您浏览的记录不存在或待审核", '-1');
+            showmsg('您浏览的记录不存在或待审核', '-1');
             exit();
         }
         $postform = $diy->getForm('edit', $row, 'admin');
@@ -107,7 +107,7 @@ if ($action == 'post') {
         $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         $diyco = $dsql->GetOne("SELECT * FROM `$diy->table` WHERE id='$id'");
         if (!is_array($diyform)) {
-            showmsg("表单不存在，程序返回", '-1');
+            showmsg("表单不存在", '-1');
             exit();
         }
         $addsql = '';
@@ -207,6 +207,6 @@ if ($action == 'post') {
     }
     echo "</table>";
 } else {
-    showmsg('未定义操作', "-1");
+    showmsg('未定义操作', '-1');
 }
 ?>
