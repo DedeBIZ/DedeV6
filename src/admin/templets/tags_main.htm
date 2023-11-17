@@ -114,17 +114,17 @@
 					</div>
 					<div class="form-group row">
 						<label for="iptKw" class="col-sm-3 col-form-label">标题</label>
-						<div class="col-sm-9"><input type="text" name="title" class="form-control" id="iptTitle" placeholder="例如：DedeBIZ商业组件" value="${title}"></div>
+						<div class="col-sm-9"><input type="text" name="title" id="iptTitle" class="form-control" placeholder="例如：DedeBIZ管理系统" value="${title}"></div>
 					</div>
 					<div class="form-group row">
 						<label for="iptKw" class="col-sm-3 col-form-label">关键词</label>
-						<div class="col-sm-9"><input type="text" name="kw" class="form-control" id="iptKw" placeholder="例如：DedeBIZ,Dede商业" value="${keywords}"></div>
+						<div class="col-sm-9"><input type="text" name="kw" id="iptKw" class="form-control" placeholder="例如：dedebiz" value="${keywords}"></div>
 					</div>
 					<div class="form-group row">
 						<label for="iptDes" class="col-sm-3 col-form-label">描述</label>
-						<div class="col-sm-9"><textarea id="iptDes" name="des" class="form-control" placeholder="例如：DedeBIZ系统基于PHP7版本开发，具有很强的可扩展性，并且完全开放源代码。">${description}</textarea></div>
+						<div class="col-sm-9"><textarea name="des" id="iptDes" class="form-control" placeholder="例如：DedeBIZ系统基于PHP7版本开发，具有很强的可扩展性，并且采用GPLv2协议完全开放源代码。">${description}</textarea></div>
 					</div>`, {
-						footer: `<button type="button" class="btn btn-success btn-sm" onclick="UpdateKwDesDo(${tid}, '~modalID~')">设置</button>`,
+						footer: `<button type="button" class="btn btn-success btn-sm" onclick="UpdateKwDesDo(${tid}, '~modalID~')">保存</button>`,
 					});
 				})
 			}
