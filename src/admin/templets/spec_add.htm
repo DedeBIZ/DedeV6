@@ -156,7 +156,7 @@
 								<td width="120">关键词：</td>
 								<td>
 									<input type="text" name="keywords" id="keywords" class="admin-input-lg">
-									<label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="checked"';?>> 自动获取</label>
+									<label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked';?>> 自动获取</label>
 									<button type="button" name="submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
 								</td>
 							</tr>
@@ -208,7 +208,7 @@
 								<td class="admin-td">
 									<label>栏目id：<input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" class="admin-input-sm"></label>
 									<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" class="admin-input-lg">（英文逗号隔开）</label>
-									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked="checked"> 按文档列表</label>
+									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文档列表</label>
 									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
 								</td>
 							</tr>
@@ -244,12 +244,12 @@
 							<tr>
 								<td width="120">评论选项：</td>
 								<td width="360">
-									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='checked'";?>> 允许评论</label>
-									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='checked'";?>> 禁止评论</label>
+									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo 'checked';?>> 允许评论</label>
+									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo 'checked';?>> 禁止评论</label>
 								</td>
 								<td width="120">发布选项：</td>
 								<td>
-									<label><input type="radio" name="ishtml" value="1" checked="checked"> 生成网页</label>
+									<label><input type="radio" name="ishtml" value="1" checked> 生成网页</label>
 									<label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
 								</td>
 							</tr>

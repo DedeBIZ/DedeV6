@@ -31,7 +31,7 @@ if (!function_exists('obtaintags')) {
         $dsql->Execute('tag',$query);
         while($row = $dsql->GetArray('tag')) {
             $link = "/apps/tags.php?/{$row['tid']}";
-            $tags .= ($tags == '' ? "<a href='{$link}'>{$row['tag']}</a>":"<a href='{$link}'>{$row['tag']}</a>");
+            $tags .= ($tags == '' ? "<a href='{$link}'>{$row['tag']}</a>" : "<a href='{$link}'>{$row['tag']}</a>");
         }
         return $tags;
     }
@@ -105,12 +105,12 @@ function obtainfilter($channelid, $type = 1, $fieldsnamef = '', $defaulttid = 0,
                     break;
                     case 3:
                         $biz_addonfields .= '<p>';
-                        $biz_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" onclick="window.location=this.value">全部</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked="checked">全部</span>');
+                        $biz_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" onclick="window.location=this.value">全部</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked>全部</span>');
                         $addonfields_items = explode(",",$ctag->GetAtt('default'));
                         for ($i=0; $i<count($addonfields_items); $i++)
                         {
                             $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
-                            $biz_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.$href.'" onclick="window.location=this.value">'.$addonfields_items[$i].'</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked="checked">'.$addonfields_items[$i].'</span>');
+                            $biz_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.$href.'" onclick="window.location=this.value">'.$addonfields_items[$i].'</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked>'.$addonfields_items[$i].'</span>');
                         }
                         $biz_addonfields .= '</p>';
                     break;

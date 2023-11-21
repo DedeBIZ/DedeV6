@@ -37,14 +37,14 @@
 					<td>相关选项：</td>
 					<td>
 						<label><input type="radio" name="saveset" value="0"> 不保存当前选项</label>
-						<label><input type="radio" name="saveset" value="1" checked="checked"> 保存当前选项</label>
+						<label><input type="radio" name="saveset" value="1" checked> 保存当前选项</label>
 					</td>
 				</tr>
 				<tr>
 					<td>首页模式:</td>
 					<td>
-						<label><input type="radio" name="showmod" value="0" <?php echo ($row['showmod']==0)? "checked='checked'" : "";?>> 动态浏览</label>
-						<label><input type="radio" name="showmod" value="1" <?php echo ($row['showmod']==1)? "checked='checked'" : "";?>> 生成静态</label>
+						<label><input type="radio" name="showmod" value="0" <?php echo ($row['showmod']==0)? "checked" : "";?>> 动态浏览</label>
+						<label><input type="radio" name="showmod" value="1" <?php echo ($row['showmod']==1)? "checked" : "";?>> 生成静态</label>
 					</td>
 				</tr>
 				<?php
@@ -78,8 +78,8 @@
 				<tr>
 					<td>首页状态：</td>
 					<td>
-						<label><input type="radio" name="lockindex" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?>> 解锁</label>
-						<label><input type="radio" name="lockindex" value="lock" <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?>> 锁定</label>
+						<label><input type="radio" name="lockindex" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked" : "";?>> 解锁</label>
+						<label><input type="radio" name="lockindex" value="lock" <?php echo ($row['index_lock_state']==false)? "checked" : "";?>> 锁定</label>
 					</td>
 				</tr>
 				<?php }}} else {?>

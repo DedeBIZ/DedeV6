@@ -53,7 +53,7 @@ if (empty($dopost)) {
             if (trim($row['editcon']) == '') {
                 $row['editcon'] = 'archives_edit.php';
             }
-            $rowarcrank = $row['arcrank'] == -1 ? '待审核':'已审核';
+            $rowarcrank = $row['arcrank']==-1 ? '待审核' : '已审核';
             $pubdate = GetDateMk($row['pubdate']);
             echo "<tr class='no-wrap'>
             <td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a></td><td width='70'>{$rowarcrank}</td><td width='110'>{$pubdate}</td></tr>";

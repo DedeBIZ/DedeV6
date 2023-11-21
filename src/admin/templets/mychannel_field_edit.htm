@@ -43,15 +43,15 @@
 				<tr>
 					<td>字段类型：</td>
 					<td>
-						<label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");?>> 自动字段</label>
-						<label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");?>> 固化字段</label>
+						<label><input type="radio" name="autofield" value="1" checked <?php echo ($ctag->GetAtt('autofield')==1 ? "checked" : "");?>> 自动字段</label>
+						<label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? "checked" : "");?>> 固化字段</label>
 					</td>
 				</tr>
 				<tr>
 					<td>前台参数：</td>
 					<td>
-						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");?>> 投稿和采集禁用字段</label>
-						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 添加到列表附加字段</label>
+						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? "checked" : "");?>> 投稿和采集禁用字段</label>
+						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? "checked" : "");?>> 添加到列表附加字段</label>
 						<span>（列表模板{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}中，标签[field:name/]调用）</span>
 					</td>
 				</tr>
@@ -59,8 +59,8 @@
 					<td>是否使用分页符：</td>
 					<td>
 						<input name="isnull" type="hidden" value="1">
-						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='checked'";?>> 是</label>
-						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='checked'";?>> 否</label>
+						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo 'checked';?>> 是</label>
+						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo 'checked';?>> 否</label>
 						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符实现文档分页，但仅允许一个字段）</span>
 					</td>
 				</tr>
@@ -116,7 +116,7 @@
 							}
 							?>
 						</select>
-						<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时自动更新关联文档</label>
+						<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1 ? "checked" : "";?>> 发布时自动更新关联文档</label>
 					</td>
 				</tr>
 				<tr>

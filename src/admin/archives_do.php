@@ -502,7 +502,7 @@ else if ($dopost == 'quickEdit') {
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j') continue;
                 if (preg_match("#".$trow->att."#", $arcRow['flag']))
-                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}]</label> ";
+                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked> {$trow->attname}{$trow->att}[{$trow->att}]</label> ";
                 else
                 echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
             }

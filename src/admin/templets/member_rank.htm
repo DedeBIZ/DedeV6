@@ -43,7 +43,7 @@
 					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money;?>" id="money_<?php echo $k?>"></td>
 					<td><input type="text" name="scores_<?php echo $k?>" value="<?php echo $row->scores;?>" id="scores_<?php echo $k?>"></td>
 					<td><?php if ($row->id<=5) { echo "系统"; } else {echo "会员";}?></td>
-					<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if ($row->id == 3) echo 'disabled="disabled"';?> value="1" checked="checked"> 正在使用</td>
+					<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if ($row->id == 3) echo 'disabled="disabled"';?> value="1" checked> 正在使用</td>
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k;?>">
@@ -65,7 +65,7 @@
 					<td><input type="text" name="rank_new" id="rank_new" value="20"></td>
 					<td><input type="text" name="money_new" id="money_new" value="0"></td>
 					<td><input type="text" name="scores_new" id="scores_new" value="100"></td>
-					<td><input type="checkbox" name="check_new" id="check_new" value="1" checked="checked"> 添加等级</td>
+					<td><input type="checkbox" name="check_new" id="check_new" value="1" checked> 添加等级</td>
 					<td></td>
 				</tr>
 				<tr>

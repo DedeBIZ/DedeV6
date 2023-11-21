@@ -30,14 +30,14 @@
 				<tr>
 					<td><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"><?php echo $row->id;?></td>
 					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" id="pname_<?php echo $k?>" class="w-100"></td>
-					<td><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="checked"> 保留</label></td>
+					<td><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</label></td>
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k?>">
 				<tr>
 					<td></td>
 					<td><input type="text" name="pname_new" id="pname_new"class="w-100"></td>
-					<td><label><input type="checkbox" name="check_new" id="check_new" value="1" checked="checked"> 新增</label></td>
+					<td><label><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</label></td>
 				</tr>
 				<tr>
 					<td bgcolor="#f8fafb" colspan="3" align="center"><input name="submit" type="submit" class="btn btn-success btn-sm" value="确定"></td>

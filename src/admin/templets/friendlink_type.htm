@@ -32,14 +32,14 @@
 				<tr>
 					<td><?php echo $row->id;?></td>
 					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" id="pname_<?php echo $k?>" style="width:90%"></td>
-					<td align="center"><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked='checked'> 保留</label></td>
+					<td align="center"><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</label></td>
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k?>">
 				<tr>
 					<td></td>
 					<td><input type="text" name="pname_new" id="pname_new" style="width:90%"></td>
-					<td align="center"><label><input type="checkbox" name="check_new" id="check_new" value="1" checked="checked"> 新增</label></td>
+					<td align="center"><label><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</label></td>
 				</tr>
 				<tr>
 					<td colspan="3">

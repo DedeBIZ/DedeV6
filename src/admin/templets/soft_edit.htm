@@ -68,7 +68,7 @@
 										if ($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
 										else $jumpclick = '';
 										if (preg_match("#".$trow->att."#",$arcRow['flag']))
-											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
+											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked> {$trow->attname}[{$trow->att}]</label> ";
 										else
 											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick}> {$trow->attname}[{$trow->att}]</label> ";
 									}
@@ -79,8 +79,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="admin-td" id="redirecturltr"
-					 style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
+					<td class="admin-td" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
 						<table>
 							<tr>
 								<td width="120">跳转网址：</td>
@@ -197,12 +196,23 @@
 					<td class="admin-td">
 						<table>
 							<tr>
+								<td width="120">附加选项：</td>
+								<td>
+									<label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo 'checked';?>> 下载远程图片和资源</label>
+									<label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked';?>> 提取第一个图片为缩略图</label>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="admin-td">
+						<table>
+							<tr>
 								<td width="120">文件类型：</td>
 								<td width="170">
 									<select name="filetype" id="filetype" class="admin-input-sm">
-										<?php
-										if ($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\">".$addRow['filetype']."</option>";
-										?>
+										<?php if ($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\">".$addRow['filetype']."</option>";?>
 										<option value=".exe">.exe</option>
 										<option value=".zip">.zip</option>
 										<option value=".rar">.rar</option>
@@ -214,9 +224,7 @@
 								<td width="120">软件等级：</td>
 								<td width="170">
 									<select name="softrank" id="softrank" class="admin-input-sm">
-										<?php
-										if ($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\">".$addRow['softrank']."星</option>";
-										?>
+										<?php if ($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\">".$addRow['softrank']."星</option>";?>
 										<option value="1">一星</option>
 										<option value="2">二星</option>
 										<option value="3">三星 </option>
@@ -227,9 +235,7 @@
 								<td width="120">软件类型：</td>
 								<td width="170">
 									<select name="softtype" id="softtype" class="admin-input-sm">
-										<?php
-										if ($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\">".$addRow['softtype']."</option>";
-										?>
+										<?php if ($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\">".$addRow['softtype']."</option>";?>
 										<option value="国产软件">国产软件</option>
 										<option value="国外软件">国外软件</option>
 										<option value="汉化补丁">汉化补丁</option>
@@ -238,9 +244,7 @@
 								<td width="120">界面语言：</td>
 								<td width="170">
 									<select name="language" id="language" class="admin-input-sm">
-										<?php
-										if ($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\">".$addRow['language']."</option>";
-										?>
+										<?php if ($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\">".$addRow['language']."</option>";?>
 										<option value="简体中文">简体中文</option>
 										<option value="英文软件">英文软件</option>
 										<option value="繁体中文">繁体中文</option>
@@ -250,9 +254,7 @@
 								<td width="120">授权方式：</td>
 								<td width="170">
 									<select name="accredit" id="accredit" class="admin-input-sm">
-										<?php
-										if ($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\">".$addRow['accredit']."</option>";
-										?>
+										<?php if ($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\">".$addRow['accredit']."</option>";?>
 										<option value="共享软件">共享软件</option>
 										<option value="免费软件">免费软件</option>
 										<option value="开源软件">开源软件</option>
@@ -315,7 +317,6 @@
 						</table>
 					</td>
 				</tr>
-				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 				<tr>
 					<td class="admin-td">
 						<table>
@@ -338,21 +339,9 @@
 						</div>
 					</td>
 				</tr>
+				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">附加选项：</td>
-								<td>
-									<label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo 'checked="checked"';?>> 下载远程图片和资源</label>
-									<label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked="checked"';?>> 提取第一个图片为缩略图</label>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td"><?php GetEditor("body",$addRow["introduce"],400,"Small");?></td>
+					<td class="admin-td"><?php GetEditor('body',$addRow['introduce'],350,'Small');?></td>
 				</tr>
 				<tr>
 					<td class="admin-td">
@@ -360,13 +349,13 @@
 							<tr>
 								<td width="120">评论选项：</td>
 								<td width="360">
-									<label><input type="radio" name="notpost" value="0" <?php if ($arcRow['notpost']==0) echo "checked='checked'";?>> 允许评论</label>
-									<label><input type="radio" name="notpost" value="1" <?php if ($arcRow['notpost']==1) echo "checked='checked'";?>> 禁止评论</label>
+									<label><input type="radio" name="notpost" value="0" <?php if ($arcRow['notpost']==0) echo 'checked';?>> 允许评论</label>
+									<label><input type="radio" name="notpost" value="1" <?php if ($arcRow['notpost']==1) echo 'checked';?>> 禁止评论</label>
 								</td>
 								<td width="120">发布选项：</td>
 								<td>
-									<label><input type="radio" name="ishtml" value="1" <?php if ($arcRow["ismake"]!=-1) echo "checked";?>> 生成网页</label>
-									<label><input type="radio" name="ishtml" value="0" <?php if ($arcRow["ismake"]==-1) echo "checked";?>> 仅动态浏览</label>
+									<label><input type="radio" name="ishtml" value="1" <?php if ($arcRow["ismake"]!=-1) echo 'checked';?>> 生成网页</label>
+									<label><input type="radio" name="ishtml" value="0" <?php if ($arcRow["ismake"]==-1) echo 'checked';?>> 仅动态浏览</label>
 								</td>
 							</tr>
 						</table>

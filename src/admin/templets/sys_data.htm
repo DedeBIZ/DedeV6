@@ -46,7 +46,7 @@
 					$t = $dedeSysTables[$i];
 					echo "<tr align='center'>";
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked="checked"></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked></td>
 				<td><?php echo $t;?></td>
 				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
@@ -59,7 +59,7 @@
 				if (isset($dedeSysTables[$i])) {
 					$t = $dedeSysTables[$i];
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked="checked"></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked></td>
 				<td><?php echo $t;?></td>
 				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
@@ -124,9 +124,9 @@
 				<tr>
 					<td colspan="8">
 						分卷大小：<input name="fsize" type="text" id="fsize" value="2048" class="admin-input-sm"> K
-						<label><input type="checkbox" name="isstruct" id="isstruct" value="1" checked="checked"> 备份结构</label>
+						<label><input type="checkbox" name="isstruct" id="isstruct" value="1" checked> 备份结构</label>
 						<?php if (@function_exists('gzcompress') && false) {?>
-						<label><input type="checkbox" name="iszip" id="iszip" value="1" checked="checked"> 完成后压缩成ZIP</label>
+						<label><input type="checkbox" name="iszip" id="iszip" value="1" checked> 完成后压缩成ZIP</label>
 						<?php }?>
 						<button name="b1" type="button" id="b1" class="btn btn-success btn-sm" onclick="SelAll();">全选</button>
 						<button name="b2" type="button" id="b2" class="btn btn-success btn-sm" onclick="ReSel();">反选</button>

@@ -74,7 +74,7 @@ if ($dopost == "show") {
     <tr>
         <td>复制模板：</td>
         <td>
-            <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked='checked'> 复制</label>
+            <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked> 复制</label>
             <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>
         </td>
     </tr>";
@@ -429,7 +429,7 @@ if ($dopost == "show") {
                 $label = $ctag->GetAtt('itemname');
                 if (in_array($datatype, $searchtype)) {
                     $checked = in_array($value, $addonfieldsarr) ? 'checked' : '';
-                    $addonfields .= "<label><input type='checkbox' name='addonfields[]' value='$value' $checked='checked'> $label</label> ";
+                    $addonfields .= "<label><input type='checkbox' name='addonfields[]' value='$value' $checked> $label</label> ";
                 }
             }
         }
@@ -531,7 +531,7 @@ if ($dopost == "show") {
                 } else if ($type == 'radio') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "$itemname：<label><input type=\"radio\" name=\"".$name."\" value=\"\" checked=\"checked\"> 不限</label><br>";
+                        $forms .= "$itemname：<label><input type=\"radio\" name=\"".$name."\" value=\"\" checked> 不限</label><br>";
                         foreach ($values as $value) {
                             $forms .= "<label><input type=\"radio\" name=\"".$name."\" value=\"$value\"> $value</label>";
                         }

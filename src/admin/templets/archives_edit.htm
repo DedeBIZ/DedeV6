@@ -53,7 +53,7 @@
 										if ($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
 										else $jumpclick = '';
 										if (preg_match("#".$trow->att."#", $arcRow['flag']))
-										echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
+										echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked> {$trow->attname}[{$trow->att}]</label> ";
 										else
 										echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick}> {$trow->attname}[{$trow->att}]</label> ";
 									}
@@ -165,6 +165,7 @@
 						</table>
 					</td>
 				</tr>
+				<?php }}?>
 				<tr>
 					<td class="admin-td">
 						<table>
@@ -185,34 +186,33 @@
 						</table>
 					</td>
 				</tr>
-				<?php }}?>
-				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow);?>
 				<tr>
 					<td class="admin-td">
 						<table>
 							<tr>
 								<td width="120">附加选项：</td>
 								<td>
-									<label><input name="remote" type="checkbox" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo ' checked="checked" ';?>> 下载远程图片和资源</label>
-									<label><input name="autolitpic" type="checkbox" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo ' checked="checked" ';?>> 提取第一个图片为缩略图</label>
+									<label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo 'checked';?>> 下载远程图片和资源</label>
+									<label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked';?>> 提取第一个图片为缩略图</label>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
+				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow);?>
 				<tr>
 					<td class="admin-td">
 						<table>
 							<tr>
 								<td width="120">评论选项：</td>
 								<td width="360">
-									<label><input type='radio' name='notpost' value='0' <?php if ($arcRow['notpost']==0) echo " checked='checked' ";?>> 允许评论</label>
-									<label><input type='radio' name='notpost' value='1' <?php if ($arcRow['notpost']==1) echo " checked='checked' ";?>> 禁止评论</label>
+									<label><input type='radio' name='notpost' value='0' <?php if ($arcRow['notpost']==0) echo " checked ";?>> 允许评论</label>
+									<label><input type='radio' name='notpost' value='1' <?php if ($arcRow['notpost']==1) echo " checked ";?>> 禁止评论</label>
 								</td>
 								<td width="120">发布选项：</td>
 								<td>
-									<label><input name="ishtml" type="radio" value="1" <?php if ($arcRow["ismake"]!=-1) echo " checked";?>> 生成网页</label>
-									<label><input type="radio" name="ishtml" value="0" <?php if ($arcRow["ismake"]==-1) echo " checked";?>> 仅动态浏览</label>
+									<label><input name="ishtml" type="radio" value="1" <?php if ($arcRow["ismake"]!=-1) echo 'checked';?>> 生成网页</label>
+									<label><input type="radio" name="ishtml" value="0" <?php if ($arcRow["ismake"]==-1) echo 'checked';?>> 仅动态浏览</label>
 								</td>
 							</tr>
 						</table>

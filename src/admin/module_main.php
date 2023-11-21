@@ -191,7 +191,7 @@ if ($action == '') {
     <tr>
         <td>对于已存在文件处理方法：</td>
         <td>
-            <label><input type='radio' name='isreplace' value='1' checked='checked'> 覆盖</label>
+            <label><input type='radio' name='isreplace' value='1' checked> 覆盖</label>
             <label><input type='radio' name='isreplace' value='3'> 覆盖，保留副本</label>
             <label><input type='radio' name='isreplace' value='0'> 保留旧文件</label>
         </td>
@@ -355,7 +355,7 @@ if ($action == '') {
     <tr>
         <td>对于模块的文件处理方法：</td>
         <td>
-            <label><input type='radio' name='isreplace' value='0' checked='checked'> 手工删除文件，仅运行卸载程序</label>
+            <label><input type='radio' name='isreplace' value='0' checked> 手工删除文件，仅运行卸载程序</label>
             <label><input type='radio' name='isreplace' value='2'> 删除模块的所有文件</label>
         </td>
     </tr>";

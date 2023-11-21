@@ -31,11 +31,11 @@
 				for ($i=0;$i<count($filelists);$i++)
 				{
 					echo "<tr align='center'>";
-					$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='checked'></td><td width='40%'>{$filelists[$i]}</td>";
+					$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked></td><td width='40%'>{$filelists[$i]}</td>";
 					echo $mtd;
 					if (isset($filelists[$i+1])) {
 						$i++;
-						$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='checked'></td><td width='40%'>{$filelists[$i]}</td>";
+						$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked></td><td width='40%'>{$filelists[$i]}</td>";
 						echo $mtd;
 					} else {
 						echo "<td></td><td></td>";
@@ -45,7 +45,7 @@
 				?>
 				<tr>
 					<td colspan="4">
-						<label><input name="structfile" type="checkbox" id="structfile" value="<?php echo $structfile?>" checked="checked"> 还原表结构信息（<?php echo $structfile?>）</label>
+						<label><input name="structfile" type="checkbox" id="structfile" value="<?php echo $structfile?>" checked> 还原表结构信息（<?php echo $structfile?>）</label>
 						<label><input name="delfile" type="checkbox" id="delfile" value="1"> 还原后删除备份文件</label>
 						<button name="b1" type="button" id="b1" onclick="SelAll();" class="btn btn-success btn-sm">全选</button>
 						<button name="b2" type="button" id="b2" onclick="ReSel();" class="btn btn-success btn-sm">反选</button>
