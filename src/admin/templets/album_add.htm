@@ -264,14 +264,7 @@
 				</tr>
 				<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
 				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">正文：</td>
-								<td><?php GetEditor('body','',350,'Diy');?></td>
-							</tr>
-						</table>
-					</td>
+					<td class="admin-td"><?php GetEditor('body','',350,'Diy');?></td>
 				</tr>
 				<tr>
 					<td class="admin-td">
@@ -336,7 +329,10 @@
 									<span>（暂不支持静态）</span>
 								</td>
 								<td width="120">文件名称：</td>
-								<td><input type="text" name="filename" id="filename" class="admin-input-sm">（不包括后缀名，如：.html）</td>
+								<td>
+									<input type="text" name="filename" id="filename" class="admin-input-sm">
+									<span>（不包括后缀名，如：.html）</span>
+								</td>
 							</tr>
 						</table>
 					</td>
