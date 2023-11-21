@@ -12,7 +12,7 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
+		<form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="reid" id="reid" value="<?php echo $id;?>">
 			<input type="hidden" name="topid" id="topid" value="<?php echo $topid;?>">
@@ -43,7 +43,7 @@
 					<td>文档模型：</td>
 					<td>
 						<input type="hidden" value="{style}" name="dfstyle">
-						<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
+						<select name="channeltype" id="channeltype" onChange="ParTemplet(this);" class="admin-input-sm">
 							<?php
 							foreach($channelArray as $k=>$arr)
 							{
@@ -103,12 +103,12 @@
 					<td>栏目大图：</td>
 					<td>
 						<input type="text" name="bigpic" class="admin-input-lg">
-						<input type="button" class="btn btn-success btn-sm" value="选择" onclick="SelectImage('form1.bigpic');">
+						<button type="button" class="btn btn-success btn-sm" onclick="SelectImage('form1.bigpic');">选择</button>
 					</td>
 					<td>栏目小图：</td>
 					<td>
 						<input type="text" name="litimg" class="admin-input-lg">
-						<input type="button" class="btn btn-success btn-sm" value="选择" onclick="SelectImage('form1.litimg');">
+						<button type="button" class="btn btn-success btn-sm" onclick="SelectImage('form1.litimg');">选择</button>
 					</td>
 				</tr>
 				<tr>
@@ -130,14 +130,14 @@
 							}
 							?>
 						</select>
-						<span>（不支持静态）</span>
+						<span>（暂不支持静态）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>文件保存目录：</td>
 					<td>
 						<input type="text" name="typedir" id="typedir" class="admin-input-lg">
-						<label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onclick="CheckTypeDir()"> 拼音</label>
+						<label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onclick="CheckTypeDir();"> 拼音</label>
 					</td>
 					<td>目录相对位置：</td>
 					<td>
@@ -167,10 +167,10 @@
 					</td>
 					<td>栏目交叉：</td>
 					<td>
-						<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" checked="checked"> 不交叉</label>
-						<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()"> 自动获取同名栏目</label>
-						<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 指定交叉栏目id（英文逗号分开）</label>
-						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
+						<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross();" checked="checked"> 不交叉</label>
+						<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross();"> 自动获取同名栏目</label>
+						<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross();"> 指定交叉栏目id（英文逗号隔开）</label>
+						<a href="javascript:ShowHide('helpvarco');" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></a><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="display:none"></textarea>
 						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是大栏目与另一个非子栏目交叉的情况，相当于副栏目功能，需要在栏目里设置好</div>
 					</td>
@@ -196,7 +196,7 @@
 					<td>
 						<input type="text" name="tempindex" value="{style}/index_<?php echo $nid?>.htm" class="admin-input-lg">
 						<button type="button" name="set2" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.tempindex')">选择</button>
-						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar1');" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></a>
 						<div id="helpvar1" class="alert alert-info my-2" style="display:none">
 							<p>{tid} 栏目id</p>
 							<span>{cid} 栏目模型名字id</span>
@@ -212,7 +212,7 @@
 					<td>列表命名规则：</td>
 					<td>
 						<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-lg">
-						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar2');" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></a>
 						<div id="helpvar2" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{tid} 栏目id</p>
@@ -227,7 +227,7 @@
 					<td>文档命名规则：</td>
 					<td>
 						<input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule;?>" class="admin-input-lg">
-						<span onclick="ShowHide('helpvar3')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar3');" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></a>
 						<div id="helpvar3" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{Y}{M}{D} 年月日</p>
@@ -268,7 +268,7 @@
 						<input type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
 						<label><input type="radio" name="apienabled" value="1"> 支持</label>
 						<label><input type="radio" name="apienabled" value="0" checked="checked"> 不支持</label>
-						<span class="btn btn-success btn-sm" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
+						<a href="javascript:makeAPIKey();" class="btn btn-success btn-sm" title="更新秘钥"><i class="fa fa-repeat"></i></a>
 					</td>
 				</tr>
 				<tr>

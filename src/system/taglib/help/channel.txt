@@ -4,7 +4,7 @@
     <li><a href='[field:typelink/]'>[field:typename/]</a></li>
 {/dede:channel}
 >>dede>>
-typeid='' 调用栏目id，用英文逗号分开表示多个栏目
+typeid='' 调用栏目id，用英文逗号隔开表示多个栏目
 reid='0' 调用上级栏目id
 row='100' 调用栏目数 
 col='1'  分多少列显示（默认为单列）

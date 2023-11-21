@@ -125,8 +125,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 #file_list li .tools .remove:after{font-family:'FontAwesome';font-size:18px;color:var(--danger);content:'\f1f8'}
 #selColor{padding:0.22rem;width:45px}
 #edsta{display:none;padding:0.5rem;position:absolute;top:100px;left:200px;width:450px;height:auto;background:var(--bg);border:1px solid var(--gray-300)}
-#browsehappy{padding:1rem 30px;color:var(--orange);background:var(--yellow)}
-.browsehappy-close{float:right;cursor:pointer}
+.browsehappy{padding:1rem 30px;color:var(--orange);background:var(--yellow)}
 .option1{background:var(--gray-300)}
 .option2{background:var(--gray-500)}
 .option3{background:var(--white)}

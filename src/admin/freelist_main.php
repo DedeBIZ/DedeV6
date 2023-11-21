@@ -61,10 +61,10 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
             <td colspan='6' bgcolor='#f8fafb'>自由列表管理</td>
         </tr>
         <tr align='center' bgcolor='#f8f9fa'>
-            <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('aid')\">id</a></td>
+            <td width='6%'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
             <td width='20%'>列表名称</td>
             <td width='20%'>模板文件</td>
-            <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('click')\">点击</a></td>
+            <td width='6%'><a href=\"javascript:ReloadPage('click');\">点击</a></td>
             <td width='12%'>创建时间</td>
             <td>操作</td>
         </tr>";
@@ -81,9 +81,9 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
         <td>{$row['click']}</td>
         <td>".MyDate("y-m-d",$row['edtime'])."</td>
         <td>
-            <a href='javascript:;' onclick='CreateNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
-            <a href='javascript:;' onclick='EditNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>
-            <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href=\"javascript:CreateNote({$row['aid']});\" class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
+            <a href=\"javascript:EditNote({$row['aid']});\" class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>
+            <a href=\"javascript:DelNote({$row['aid']});\" class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
         </td>
     </tr>";
         echo $line;

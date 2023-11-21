@@ -14,19 +14,19 @@ header("Expires:0");
 if ($t == 'source') {
     $m_file = DEDEDATA."/admin/source.txt";
     $allsources = file($m_file);
-    echo "<div class='coolbg'><a href=\"javascript:OpenMyWin('article_source_edit.php');ClearDivCt('mysource');\" class='btn btn-success btn-sm'>设置</a><a href='javascript:;' onclick='javascript:HideObj(\"mysource\");ChangeFullDiv(\"hide\");' class='btn btn-success btn-sm'>关闭</a></div>\r\n";
+    echo "<div class='coolbg'><a href=\"javascript:OpenMyWin('article_source_edit.php');ClearDivCt('mysource');\" class='btn btn-success btn-sm'>设置</a><a href=\"javascript:HideObj('mysource');ChangeFullDiv('hide');\" class='btn btn-success btn-sm'>关闭</a></div>\r\n";
     echo "<div class='coolbg-box'>\r\n";
     foreach ($allsources as $v) {
         $v = trim($v);
         if ($v != "") {
-            echo "<a href='javascript:;' onclick='javascript:PutSource(\"$v\")'>$v</a> | \r\n";
+            echo "<a href=\"javascript:PutSource('$v');\">$v</a> | \r\n";
         }
     }
     echo "</div>";
 } else {
     //作者列表
     $m_file = DEDEDATA."/admin/writer.txt";
-    echo "<div class='coolbg'><a href=\"javascript:OpenMyWin('article_writer_edit.php');ClearDivCt('mywriter');\" class='btn btn-success btn-sm'>设置</a><a href='javascript:;' onclick='javascript:HideObj(\"mywriter\");ChangeFullDiv(\"hide\");' class='btn btn-success btn-sm'>关闭</a></div>\r\n";
+    echo "<div class='coolbg'><a href=\"javascript:OpenMyWin('article_writer_edit.php');ClearDivCt('mywriter');\" class='btn btn-success btn-sm'>设置</a><a href=\"javascript:HideObj('mywriter');ChangeFullDiv('hide');\" class='btn btn-success btn-sm'>关闭</a></div>\r\n";
     echo "<div class='coolbg-box'>\r\n";
     if (filesize($m_file) > 0) {
         $fp = fopen($m_file, 'r');
@@ -36,7 +36,7 @@ if ($t == 'source') {
         foreach ($strs as $str) {
             $str = trim($str);
             if ($str != "") {
-                echo "<a href='javascript:;' onclick='javascript:PutWriter(\"$str\")'>$str</a> | ";
+                echo "<a href='javascript:PutWriter(\"$str\");'>$str</a> | ";
             }
         }
     }

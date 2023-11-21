@@ -42,7 +42,7 @@
 				<tr>
 					<td>所属栏目：</td>
 					<td>
-						<select name="reid" onchange="showSeltype(this)" class="admin-input-sm">
+						<select name="reid" onchange="showSeltype(this);" class="admin-input-sm">
 							<option value="0">选择所属栏目</option>
 							<?php echo $typeOptions;?>
 						</select>
@@ -50,7 +50,7 @@
 					</td>
 					<td>文档模型：</td>
 					<td>
-						<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
+						<select name="channeltype" id="channeltype" onChange="ParTemplet(this);" class="admin-input-sm">
 							<?php
 							foreach($channelArray as $k=>$arr)
 							{
@@ -71,7 +71,7 @@
 					<td>列表命名规则：</td>
 					<td>
 						<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-lg">
-						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar1');" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></a>
 						<div id="helpvar1" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{tid} 栏目id</p>
@@ -86,7 +86,7 @@
 					<td>文档命名规则：</td>
 					<td>
 						<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-lg">
-						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar2');" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></a>
 						<div id="helpvar2" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{Y}{M}{D} 年月日</p>
@@ -110,7 +110,7 @@
 							<tr bgcolor="#f8f9fa" align="center">
 								<td width="6%" class="border-top-0">排序</td>
 								<td width="16%" class="border-top-0">顶级栏目名称</td>
-								<td width="60%" class="border-top-0">子栏目名称（英文逗号分开，如：栏目一,栏目二）</td>
+								<td width="60%" class="border-top-0">子栏目名称（英文逗号隔开，如：栏目一,栏目二）</td>
 								<td class="border-top-0"><button type="button" class="btn btn-success btn-sm add">添加</button></td>
 							</tr>
 							<tr align="center">

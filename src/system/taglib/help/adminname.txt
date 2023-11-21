@@ -1,4 +1,4 @@
-责任编辑标签
+编辑标签
 >>dede>>
 {dede:adminname/}
 >>dede>>

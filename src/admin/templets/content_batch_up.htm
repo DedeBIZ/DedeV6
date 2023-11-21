@@ -49,7 +49,7 @@
 				<tr>
 					<td>文档发布时间：</td>
 					<td>
-						<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
+						<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime();"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
 						<div id="seltimeField" style="display:none">
 							<label>开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
 							<label>结束：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
@@ -59,10 +59,10 @@
 				<tr>
 					<td>文档操作：</td>
 					<td>
-						<label><input type="radio" name="action" value="check" onclick="ShowHideMove()" checked="checked"> 审核文档</label>
-						<label><input type="radio" name="action" value="makehtml" onclick="ShowHideMove()"> 更新网页</label>
-						<label><input type="radio" name="action" value="move" onclick="ShowHideMove()"> 移动文档</label>
-						<label><input type="radio" name="action" value="del" onclick="ShowHideMove()"> 删除文档</label>
+						<label><input type="radio" name="action" value="check" onclick="ShowHideMove();" checked="checked"> 审核文档</label>
+						<label><input type="radio" name="action" value="makehtml" onclick="ShowHideMove();"> 更新网页</label>
+						<label><input type="radio" name="action" value="move" onclick="ShowHideMove();"> 移动文档</label>
+						<label><input type="radio" name="action" value="del" onclick="ShowHideMove();"> 删除文档</label>
 					</td>
 				</tr>
 				<tr>

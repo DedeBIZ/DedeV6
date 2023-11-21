@@ -21,7 +21,7 @@
 				</td>
 			</tr>
 		</table>
-		<form name="form1" onSubmit="checkSubmit()" action="sys_data_done.php?dopost=bak" method="post" target="stafrm">
+		<form name="form1" onSubmit="checkSubmit();" action="sys_data_done.php?dopost=bak" method="post" target="stafrm">
 			<input type="hidden" name="tablearr">
 			<table align="center" class="table maintable my-3">
 				<tr>
@@ -50,9 +50,9 @@
 				<td><?php echo $t;?></td>
 				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
-					<a href="javascript:;" onclick="LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">优化</a>
-					<a href="javascript:;" onclick="LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">修复</a>
-					<a href="javascript:;" onclick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">结构</a>
+					<a href="javascript:LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">优化</a>
+					<a href="javascript:LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">修复</a>
+					<a href="javascript:LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">结构</a>
 				</td>
 				<?php
 				$i++;
@@ -63,9 +63,9 @@
 				<td><?php echo $t;?></td>
 				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
-					<a href="javascript:;" onclick="LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">优化</a>
-					<a href="javascript:;" onclick="LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">修复</a>
-					<a href="javascript:;" onclick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">结构</a>
+					<a href="javascript:LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">优化</a>
+					<a href="javascript:LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">修复</a>
+					<a href="javascript:LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">结构</a>
 				</td>
 				<?php
 				} else {
@@ -97,9 +97,9 @@
 				<td><?php echo $t;?></td>
 				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
-					<a href="javascript:;" onclick="LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">优化</a>
-					<a href="javascript:;" onclick="LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">修复</a>
-					<a href="javascript:;" onclick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">结构</a>
+					<a href="javascript:LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">优化</a>
+					<a href="javascript:LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">修复</a>
+					<a href="javascript:LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">结构</a>
 				</td>
 				<?php
 				$i++;
@@ -110,9 +110,9 @@
 				<td><?php echo $t;?></td>
 				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
-					<a href="javascript:;" onclick="LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">优化</a>
-					<a href="javascript:;" onclick="LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">修复</a>
-					<a href="javascript:;" onclick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">结构</a>
+					<a href="javascript:LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">优化</a>
+					<a href="javascript:LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">修复</a>
+					<a href="javascript:LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-light btn-sm">结构</a>
 				</td>
 				<?php
 				} else {
@@ -128,9 +128,9 @@
 						<?php if (@function_exists('gzcompress') && false) {?>
 						<label><input type="checkbox" name="iszip" id="iszip" value="1" checked="checked"> 完成后压缩成ZIP</label>
 						<?php }?>
-						<button name="b1" type="button" id="b1" class="btn btn-success btn-sm" onclick="SelAll()">全选</button>
-						<button name="b2" type="button" id="b2" class="btn btn-success btn-sm" onclick="ReSel()">反选</button>
-						<button name="b3" type="button" id="b3" class="btn btn-success btn-sm" onclick="NoneSel()">取消</button>
+						<button name="b1" type="button" id="b1" class="btn btn-success btn-sm" onclick="SelAll();">全选</button>
+						<button name="b2" type="button" id="b2" class="btn btn-success btn-sm" onclick="ReSel();">反选</button>
+						<button name="b3" type="button" id="b3" class="btn btn-success btn-sm" onclick="NoneSel();">取消</button>
 						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
 					</td>
 				</tr>

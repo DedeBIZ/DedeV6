@@ -99,16 +99,16 @@
 				{/dede:datalist}
 				<tr>
 					<td colspan="10">
-						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
-						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-						<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
-						<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
-						<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
-						<a href="javascript:;" onclick="moveArc(event,this,<?php echo (empty($channelid)?0:$channelid);?>)" class="btn btn-success btn-sm">移动</a>
-						<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
+						<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+						<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
+						<a href="javascript:updateArc(0);" class="btn btn-success btn-sm">更新</a>
+						<a href="javascript:checkArc(0);" class="btn btn-success btn-sm">审核</a>
+						<a href="javascript:adArc(0);" class="btn btn-success btn-sm">推荐</a>
+						<a href="javascript:moveArc(event,this,<?php echo (empty($channelid)?0:$channelid);?>);" class="btn btn-success btn-sm">移动</a>
+						<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
 						<?php if ($channelid==1) echo "<a href='javascript:kwArc(0)' class='btn btn-success btn-sm'>自动关键词</a>";?>
-						<a href="javascript:;" onclick="cAtts('attsAdd',event,this)" class="btn btn-success btn-sm">添加属性</a>
-						<a href="javascript:;" onclick="cAtts('attsDel',event,this)" class="btn btn-danger btn-sm">删除属性</a>
+						<a href="javascript:cAtts('attsAdd',event,this);" class="btn btn-success btn-sm">添加属性</a>
+						<a href="javascript:cAtts('attsDel',event,this);" class="btn btn-danger btn-sm">删除属性</a>
 					</td>
 				</tr>
 				<tr>

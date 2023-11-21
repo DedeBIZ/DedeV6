@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="dcmp-submit"><button type="button" class="btn btn-success" onclick="SendFeedback()">发表评论</button></div>
+		<div class="dcmp-submit"><button type="button" class="btn btn-success" onclick="SendFeedback();">发表评论</button></div>
 	</div>
 	<div class="feedbacks">
 		{dede:feedback}
@@ -38,12 +38,12 @@
 						<span>[field:dtime function="MyDate('Y-m-d',@me)"/]</span>
 					</div>
 					<div class="feedback-action pb-3">
-						<a href="javascript:LoadReplyFeedbacks([field:id/])" class="btn btn-outline-success btn-sm">[field:replycount/]条回复</a>
-						<a href="javascript:GoodFeedback([field:id/], [field:good/])" class="btn btn-outline-success btn-sm">
+						<a href="javascript:LoadReplyFeedbacks([field:id/]);" class="btn btn-outline-success btn-sm">[field:replycount/]条回复</a>
+						<a href="javascript:GoodFeedback([field:id/], [field:good/]);" class="btn btn-outline-success btn-sm">
 							<i class="fa fa-thumbs-up"></i>
 							<i id="feedbackGood[field:id/]">[field:good/]</i>
 						</a>
-						<a href="javascript:ReplyFeedback([field:id/])" class="btn btn-success btn-sm">回复</a>
+						<a href="javascript:ReplyFeedback([field:id/]);" class="btn btn-success btn-sm">回复</a>
 					</div>
 				</div>
 				<div class="feedback-content pb-3">[field:msg/]</div>

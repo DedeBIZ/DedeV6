@@ -85,15 +85,15 @@
 				{/dede:datalist}
 				<tr>
 					<td colspan="9">
-						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
-						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-						<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
-						<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
-						<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
-						<a href="javascript:;" onclick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>)" class="btn btn-success btn-sm">移动</a>
-						<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
+						<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+						<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
+						<a href="javascript:updateArc(0);" class="btn btn-success btn-sm">更新</a>
+						<a href="javascript:checkArc(0);" class="btn btn-success btn-sm">审核</a>
+						<a href="javascript:adArc(0);" class="btn btn-success btn-sm">推荐</a>
+						<a href="javascript:moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>);" class="btn btn-success btn-sm">移动</a>
+						<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
 						<?php if (!empty($f)) {?>
-						<a href="javascript:ReturnValue()" class="btn btn-success btn-sm">选定值加到列表</a>
+						<a href="javascript:ReturnValue();" class="btn btn-success btn-sm">选定值加到列表</a>
 						<?php }?>
 					</td>
 				</tr>

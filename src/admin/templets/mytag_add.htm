@@ -15,7 +15,7 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
+		<form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<table align="center" class="table maintable my-3">

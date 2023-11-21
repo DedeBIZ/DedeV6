@@ -15,7 +15,7 @@
 		<script src="/static/web/js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
-		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
+		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post();">
 			<input type="hidden" name="action" value="saveedit">
 			<input type="hidden" name="acdir" value="<?php echo $acdir;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
@@ -34,7 +34,7 @@
 					<td colspan="2">
 					<?php
 					foreach ($helps as $key => $help) {
-						echo '<a href="javascript:;" onclick="showdiv(\''.$key.'\');" title="'.trim($help[0]).'" class="btn btn-light btn-sm">'.$key.'</a>'."";
+						echo '<a href="javascript:showdiv(\''.$key.'\');" title="'.trim($help[0]).'" class="btn btn-light btn-sm">'.$key.'</a>'."";
 					}
 					?>
 					</td>
@@ -43,7 +43,7 @@
 					<td colspan="2">
 						<?php
 						foreach ($helps as $key => $help) {
-							echo '<div id="'.$key.'" class="helpinfo"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></span><p>标签名称：'.$key.'</p><p>标签说明：'.trim($help[0]).'</p><p><textarea id="'.$key.'" class="admin-textarea-xl">'.trim($help[1]).'</textarea></p><span>'."";
+							echo '<div id="'.$key.'" class="helpinfo"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\');" class="btn btn-success btn-sm">关闭</a></span><p>标签名称：'.$key.'</p><p>标签说明：'.trim($help[0]).'</p><p><textarea id="'.$key.'" class="admin-textarea-xl">'.trim($help[1]).'</textarea></p><span>'."";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
 							{

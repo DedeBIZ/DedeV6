@@ -122,7 +122,7 @@
 				<tr>
 					<td>默认值：</td>
 					<td>
-						<p>（自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德）</p>
+						<p>（自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号隔开，如：DedeBIZ,得德）</p>
 						<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea>
 					</td>
 				</tr>
@@ -166,7 +166,7 @@
 					return false;
 				}
 				if ((dtype == "radio" || dtype == "select" || dtype == "checkbox") && vdefault == "") {
-					ShowMsg("自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德");
+					ShowMsg("自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号隔开，如：DedeBIZ,得德");
 					return false;
 				}
 				if (spage == "no") spage = '';

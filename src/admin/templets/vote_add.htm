@@ -32,7 +32,7 @@
 		</script>
 	</head>
 	<body>
-		<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
+		<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="isarc" value="<?php echo $isarc;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
@@ -103,7 +103,7 @@
 				<tr>
 					<td bgcolor="#f8fafb" colspan="2" align="center">
 						<button type="submit" name="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="submit" class="btn btn-outline-success btn-sm" onclick="history.back()">返回</button>
+						<button type="button" name="submit" class="btn btn-outline-success btn-sm" onclick="history.back();">返回</button>
 					</td>
 				</tr>
 			</table>

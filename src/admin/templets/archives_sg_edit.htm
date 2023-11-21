@@ -65,11 +65,11 @@
 						<table>
 							<tr>
 								<td width="120">缩略图：</td>
-								<td width="670">
+								<td width="660">
 									<input type="text" name="picname" id="picname" class="admin-input-lg" value="<?php echo $addRow['litpic']?>">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
-									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
-									<button type="button" name="submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
+									<span class="btn btn-success btn-sm fileinput-button">上传<input type="file" name="files[]" id="iptAddImages"></span>
+									<button type="button" name="submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
 								</td>
 								<td><img src="<?php if ($addRow['litpic']!='') echo $addRow['litpic']; else echo '/static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
@@ -95,7 +95,7 @@
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>')" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
+									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>');" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 								</td>
 							</tr>
 						</table>
@@ -118,7 +118,7 @@
 										}
 										?>
 									</select>
-									<span>（不支持静态）</span>
+									<span>（暂不支持静态）</span>
 								</td>
 							</tr>
 						</table>
