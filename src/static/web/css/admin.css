@@ -62,7 +62,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .sidemenu li.open i.fa-angle-down{transform:rotate(180deg)}
 .sidemenu .submenu{display:none;padding:5px 0;background:var(--gray-500)}
 .sidemenu .submenu li{height:40px;line-height:40px}
-.sidemenu .submenu li:hover{background:var(--success-900);transition:all 0.5s}
+.sidemenu .submenu li:hover{background:var(--success-800);transition:all 0.5s}
 .sidemenu .submenu a{display:block;float:left;padding:0 0 0 45px;color:var(--white)}
 .sidemenu .submenu .active{background:var(--green)}
 .sidemenu .submenu-right{float:right!important;padding:0 20px 0 0!important}
