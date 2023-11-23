@@ -588,9 +588,7 @@ class ListView
             //跳转网址
             return $this->Fields['typedir'];
         }
-        if ($this->TypeLink->TypeInfos['isdefault'] != -1) {
-            CreateDir(MfTypedir($this->Fields['typedir']));
-        }
+        CreateDir(MfTypedir($this->Fields['typedir']));
         $makeUrl = $this->GetMakeFileRule($this->Fields['id'], "index", MfTypedir($this->Fields['typedir']), $this->Fields['defaultname'], $this->Fields['namerule2']);
         $makeUrl = preg_replace("/\/{1,}/", "/", $makeUrl);
         $makeFile = $this->GetTruePath().$makeUrl;
@@ -631,9 +629,7 @@ class ListView
             header("Location:$gotourl");
             exit();
         }
-        if ($this->TypeLink->TypeInfos['isdefault'] != -1) {
-            CreateDir(MfTypedir($this->Fields['typedir']));
-        }
+        CreateDir(MfTypedir($this->Fields['typedir']));
         $makeUrl = $this->GetMakeFileRule($this->Fields['id'], "index", MfTypedir($this->Fields['typedir']), $this->Fields['defaultname'], $this->Fields['namerule2']);
         $makeFile = $this->GetTruePath().$makeUrl;
         if ($nmfa == 0) {
@@ -1063,21 +1059,6 @@ class ListView
         //获得数字链接
         $listdd = '';
         $total_list = $list_len * 2 + 1;
-        //获得省略号
-        if ($totalpage > $total_list) {
-            $half = floor(($total_list-4) / 2);
-            $half_start = $this->PageNo-$half + 1;
-        if ($total_list % 2 !== 0) --$half_start;
-            $half_end = $this->PageNo + $half;
-        }
-        if (($totalpage-$this->PageNo) < ($total_list-3)) {
-            $half_start = $totalpage-$total_list + 3;
-            unset($half_end);
-        }
-        if ($this->PageNo <= ($total_list-3)) {
-            $half_end = $total_list-2;
-            unset($half_start);
-        }
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
             $total_list = $this->PageNo + $list_len;
@@ -1090,15 +1071,7 @@ class ListView
                 $total_list = $totalpage;
             }
         }
-        for ($j = 1; $j <= $totalpage; $j++) {
-            if (isset($half_start) && $j < $half_start && $j > 1) {
-            if ($j == 2) $listdd .= "<li class='page-item'><span class='page-link'>...</span></li>";
-                continue;
-            }
-            if (isset($half_end) && $j > $half_end && $j < $totalpage) {
-            if ($j == ($half_end + 1)) $listdd .= "<li class='page-item'><span class='page-link'>...</span></li>";
-                continue;
-            }
+        for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
@@ -1172,21 +1145,6 @@ class ListView
         //获得数字链接
         $listdd = '';
         $total_list = $list_len * 2 + 1;
-        //获得省略号
-        if ($totalpage > $total_list) {
-            $half = floor(($total_list-4) / 2);
-            $half_start = $this->PageNo-$half + 1;
-        if ($total_list % 2 !== 0) --$half_start;
-            $half_end = $this->PageNo + $half;
-        }
-        if (($totalpage-$this->PageNo) < ($total_list-3)) {
-            $half_start = $totalpage-$total_list + 3;
-            unset($half_end);
-        }
-        if ($this->PageNo <= ($total_list-3)) {
-            $half_end = $total_list-2;
-            unset($half_start);
-        }
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
             $total_list = $this->PageNo + $list_len;
@@ -1199,15 +1157,7 @@ class ListView
                 $total_list = $totalpage;
             }
         }
-        for ($j = 1; $j <= $totalpage; $j++) {
-            if (isset($half_start) && $j < $half_start && $j > 1) {
-            if ($j == 2) $listdd .= "<li class='page-item'><span class='page-link'>...</span></li>";
-                continue;
-            }
-            if (isset($half_end) && $j > $half_end && $j < $totalpage) {
-            if ($j == ($half_end + 1)) $listdd .= "<li class='page-item'><span class='page-link'>...</span></li>";
-                continue;
-            }
+        for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
