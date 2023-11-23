@@ -746,9 +746,9 @@ function GetUpdateTest()
         if ($cfg_make_andcat == 'Y') $dolist .= empty($dolist) ? 'makeparenttype' : ',makeparenttype';
         $dolists = explode(',', $dolist);
         $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=".preg_replace("#".$dolists[0]."[,]{0,1}#", '', $dolist);
-        $revalue = "<table id='tgtable' class='maintable my-3'><tr><td bgcolor='#f8f8f8'>正在进行相关文档更新，未完成前不要执行其它操作：\r\n</td></tr>\r\n";
-        $revalue .= "<tr><td>\r\n<iframe name='stafrm' id='stafrm' frameborder='0' width='100%' height='360px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
-        $revalue .= "</table>";
+        $revalue = "<tr><td>";
+        $revalue .= "<div id='tgtable' class='admin-win-iframe'><iframe src='$jumpUrl' name='stafrm' frameborder='0' id='stafrm' width='100%' height='100%'></iframe></div>";
+        $revalue .= "</td></tr>";
     } else {
         $revalue = '';
     }

@@ -424,7 +424,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("清空回收站".$num."篇文档<br>您确定删除，序号".$qstr."文档吗");
+        $win->AddTitle("您确定删除".$num."篇文档，序号".$qstr."文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
