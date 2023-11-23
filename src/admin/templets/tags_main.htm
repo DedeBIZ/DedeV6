@@ -12,28 +12,24 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="tags_main.php?action=fetch" method="post">
-			<table align="center" class="table maintable my-3">
-				<tr>
-					<td bgcolor="#f8fafb">
+		<table align="center" class="table maintable my-3">
+			<tr bgcolor="#f8fafb">
+				<td width="460">
+					<form name="form2" action="tags_main.php">
+						<input type="text" name="tag" value="<?php echo $tag;?>" placeholder="请输入标签" class="admin-input-lg">
+						<button type="submit" name="sb" class="btn btn-success btn-sm">搜索</button>
+					</form>
+				</td>
+				<td>
+					<form name="form1" action="tags_main.php?action=fetch" method="post">
 						<input type="text" name="startaid" placeholder="请输入标签id开始" class="admin-input-sm mr-3">
 						<input type="text" name="endaid" placeholder="请输入标签id结束" class="admin-input-sm">
 						<button name="submit" type="submit" class="btn btn-success btn-sm">获取标签</button>
 						<a href="makehtml_taglist.php" name="sb" class="btn btn-success btn-sm">更新标签</a>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form name="form2" action="tags_main.php">
-			<table align="center" class="table maintable mb-3">
-				<tr>
-					<td bgcolor="#f8fafb">
-						<input type="text" name="tag" value="<?php echo $tag;?>" placeholder="请输入标签" class="admin-input-lg">
-						<button type="submit" name="sb" class="btn btn-success btn-sm">搜索</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+					</form>
+				</td>
+			</tr>
+		</table>
 		<form name="form3" action="tags_main.php?action=delete" method="post">
 			<table align="center" class="table maintable mb-3">
 				<tr>
