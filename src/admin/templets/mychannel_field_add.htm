@@ -179,16 +179,16 @@
 				if (spage=="no") spage = '';
 				relstr = '';
 				if (dtype==="relation") {
-				  relstr = " automake=\""+automake+"\" channel=\""+$("#channeltype").val()+"\"";
+				  relstr = " automake=\"" + automake + "\" channel=\"" + $("#channeltype").val() + "\"";
 				}
-				revalue =  "<field:"+fieldname+" itemname=\""+itemname+"\" autofield=\""+autofield+"\" notsend=\""+notsend+"\" type=\""+dtype+"\"";
-				revalue += relstr + " isnull=\""+sisnull+"\" islist=\""+islist+"\" default=\""+vdefault+"\" ";
-				revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">"+vinnertext+"</field:"+fieldname+">";
+				revalue =  "<field:" + fieldname + " itemname=\"" + itemname + "\" autofield=\"" + autofield + "\" notsend=\"" + notsend + "\" type=\"" + dtype + "\"";
+				revalue += relstr + " isnull=\"" + sisnull + "\" islist=\"" + islist + "\" default=\"" + vdefault + "\" ";
+				revalue += " maxlength=\"" + maxlength + "\" page=\"" + spage + "\">" + vinnertext + "</field:" + fieldname + ">";
 				document.form1.fieldstring.value = revalue;
 				return true;
 			}
 			$(document).ready(function() {
-				$("#dataType input").click(function(ele){
+				$("#dataType input").click(function(ele) {
 					if ($(ele.currentTarget).val() === "relation") {
 						$("#_relation").show();
 					} else {

@@ -22,7 +22,7 @@ if ($dopost == "show") {
     ShowMsg("启用一个文档模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "hide") {
-    $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id'");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id' ");
     ShowMsg("隐藏一个文档模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "copystart") {
@@ -164,14 +164,14 @@ if ($dopost == "show") {
     }
     //创建表
     if ($fields['issystem'] != -1) {
-        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}` (`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`redirecturl` varchar(255) NOT NULL default '',`templet` varchar(30) NOT NULL default '',`userip` char(46) NOT NULL default '',";
+        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}` (`aid` int(11) NOT NULL DEFAULT '0',`typeid` int(11) NOT NULL DEFAULT '0',`redirecturl` varchar(255) NOT NULL DEFAULT '',`templet` varchar(30) NOT NULL DEFAULT '',`userip` char(46) NOT NULL DEFAULT '',";
     } else {
-        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}`(`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',`click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL default '',`senddate` int(11) NOT NULL default '0',`flag` set('c','h','p','f','s','j','a','b') default NULL,";
+        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}` (`aid` int(11) NOT NULL DEFAULT '0',`typeid` int(11) NOT NULL DEFAULT '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',`click` INT(10) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL DEFAULT '',`senddate` int(11) NOT NULL DEFAULT '0',`flag` set('c','h','p','f','s','j','a','b') DEFAULT NULL,";
     }
     if ($mysql_version < 4.1) {
-        $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM;";
+        $tabsql .= " PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM; ";
     } else {
-        $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language.";";
+        $tabsql .= " PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
     }
     $rs = $dsql->ExecuteNoneQuery($tabsql);
     if (!$rs) {
@@ -193,7 +193,7 @@ if ($dopost == "show") {
     }
     $fieldset = $fields['fieldset'];
     $fields['fieldset'] = addslashes($fields['fieldset']);
-    $inquery = "INSERT INTO `#@__channeltype` (`id`,`nid`,`typename`,`addtable`,`addcon`,`mancon`,`editcon`,`useraddcon`,`usermancon`,`usereditcon`,`fieldset`,`listfields`,`issystem`,`isshow`,`issend`,`arcsta`,`usertype`,`sendrank`) VALUES ('{$fields['newid']}','{$fields['nid']}','{$fields['typename']}','{$fields['addtable']}','{$fields['addcon']}','{$fields['mancon']}','{$fields['editcon']}','{$fields['useraddcon']}','{$fields['usermancon']}','{$fields['usereditcon']}','{$fields['fieldset']}','{$fields['listfields']}','{$fields['issystem']}','{$fields['isshow']}','{$fields['issend']}','{$fields['arcsta']}','{$fields['usertype']}','{$fields['sendrank']}' ); ";
+    $inquery = "INSERT INTO `#@__channeltype` (`id`,`nid`,`typename`,`addtable`,`addcon`,`mancon`,`editcon`,`useraddcon`,`usermancon`,`usereditcon`,`fieldset`,`listfields`,`issystem`,`isshow`,`issend`,`arcsta`,`usertype`,`sendrank`) VALUES ('{$fields['newid']}','{$fields['nid']}','{$fields['typename']}','{$fields['addtable']}','{$fields['addcon']}','{$fields['mancon']}','{$fields['editcon']}','{$fields['useraddcon']}','{$fields['usermancon']}','{$fields['usereditcon']}','{$fields['fieldset']}','{$fields['listfields']}','{$fields['issystem']}','{$fields['isshow']}','{$fields['issend']}','{$fields['arcsta']}','{$fields['usertype']}','{$fields['sendrank']}'); ";
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if (!$rs) GotoStaMsg("<tr>
         <td>导入文档模型时发生错误：{$dsql->GetError()}</td>
@@ -219,7 +219,7 @@ if ($dopost == "show") {
             if ($islist != '') {
                 $allfields .= ($allfields == '' ? $fieldname : ','.$fieldname);
             }
-            $dsql->ExecuteNoneQuery(" ALTER TABLE `{$fields['addtable']}` ADD  $ntabsql ");
+            $dsql->ExecuteNoneQuery(" ALTER TABLE `{$fields['addtable']}` ADD $ntabsql ");
         }
     }
     if ($allfields != '') {
