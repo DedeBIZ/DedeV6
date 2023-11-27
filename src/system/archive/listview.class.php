@@ -588,7 +588,9 @@ class ListView
             //跳转网址
             return $this->Fields['typedir'];
         }
-        CreateDir(MfTypedir($this->Fields['typedir']));
+        if ($this->TypeLink->TypeInfos['isdefault'] != -1) {
+            CreateDir(MfTypedir($this->Fields['typedir']));
+        }
         $makeUrl = $this->GetMakeFileRule($this->Fields['id'], "index", MfTypedir($this->Fields['typedir']), $this->Fields['defaultname'], $this->Fields['namerule2']);
         $makeUrl = preg_replace("/\/{1,}/", "/", $makeUrl);
         $makeFile = $this->GetTruePath().$makeUrl;
@@ -629,7 +631,9 @@ class ListView
             header("Location:$gotourl");
             exit();
         }
-        CreateDir(MfTypedir($this->Fields['typedir']));
+        if ($this->TypeLink->TypeInfos['isdefault'] != -1) {
+            CreateDir(MfTypedir($this->Fields['typedir']));
+        }
         $makeUrl = $this->GetMakeFileRule($this->Fields['id'], "index", MfTypedir($this->Fields['typedir']), $this->Fields['defaultname'], $this->Fields['namerule2']);
         $makeFile = $this->GetTruePath().$makeUrl;
         if ($nmfa == 0) {
