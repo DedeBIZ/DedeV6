@@ -10,7 +10,7 @@
  */
 require(dirname(__FILE__).'/config.php');
 $dopost = (!isset($dopost) ? '' : $dopost);
-//返回到下一任务链接，特殊变量，除非知道作用，否则不能在任务传递中占用：f临时，仅为了方便网址结构，dopost当前任务指向下一个任务，由会员自行处理或在nextdo中自动获得，del上一次任务删除的变量，morejob设定后，表示当前任务需请求多次，会把 dopost和nextdo处理后转为doposttmp和nextdotmp然后由会员自行处理
+//返回到下一任务链接，特殊变量，除非知道作用，否则不能在任务传递中占用：f临时，仅为了方便网址结构，dopost当前任务指向下一个任务，由会员自行处理或在nextdo中自动获得，del上一次任务删除的变量，morejob设定后，表示当前任务需请求多次，会把dopost和nextdo处理后转为doposttmp和nextdotmp然后由会员自行处理
 function GetNextUrl($notallowArr = array('dopost', 'f', 'del'))
 {
     $reurl = "task_do.php?f=0";
