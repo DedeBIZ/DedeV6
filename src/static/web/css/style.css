@@ -29,7 +29,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .item-theme-img img{width:100%;height:250px}
 .item-theme p,.item-news p{color:var(--gray-500);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .item-news{margin-bottom:2rem;padding:1.5rem}
-.item-theme:hover,.item-news:hover{box-shadow:0 14px 30px -16px rgba(0,36,100,.25);transform:translateY(-5px);transition:all 0.5s}
+.item-theme:hover,.item-news:hover{box-shadow:0 14px 30px -16px rgba(0,36,100,0.25);transform:translateY(-5px);transition:all 0.5s}
 .item-news .title{margin:20px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .item-news-img img{width:100%;height:200px}
 .item-vote .table,.article-theme-body p:last-child,.article-hot:last-child{margin-bottom:0}

@@ -22,7 +22,7 @@ select{padding:0.375rem 0.75rem;height:30px;color:var(--gray);background:var(--w
 select[multiple=yes]{height:180px}
 option{padding:0;height:30px}
 textarea{padding:0.375rem 0.75rem;color:var(--gray);background:var(--white);border:1px solid var(--gray-300);vertical-align:middle}
-input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white);border-color:var(--blue-300);box-shadow:0 0 0 0.2rem rgba(0,123,255,.25);outline:0}
+input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white);border-color:var(--blue-300);box-shadow:0 0 0 0.2rem rgba(0,123,255,0.25);outline:0}
 .install-box{margin:0 auto;width:800px}
 .install-box .card-header,.install-box .card-body{padding:1.25rem}
 .install-box h2,.install-box legend{margin:0;line-height:1.2;font-size:18px;font-weight:600;color:var(--gray-dark)}
@@ -99,7 +99,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .nw{float:left;width:160px}
 .cls{clear:both}
 .helpinfo{float:left;display:none;padding:10px;width:100%;background:var(--bg);border:1px solid var(--gray-300);border-radius:0.5rem}
-.tips-box{margin:70px auto 0;width:500px;height:auto;background:var(--white);border-radius:0.5rem;box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)}
+.tips-box{margin:70px auto 0;width:500px;height:auto;background:var(--white);border-radius:0.5rem;box-shadow:0 0.125rem 0.25rem rgba(0,0,0,0.075)}
 .tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid var(--bg)}
 .tips-head p{margin:0;padding-left:10px;line-height:16px;color:var(--gray-dark);text-align:left;border-left:3px solid var(--yellow)}
 .tips-body{padding:20px;min-height:160px;color:var(--gray);word-break:break-all;word-wrap:break-word}
