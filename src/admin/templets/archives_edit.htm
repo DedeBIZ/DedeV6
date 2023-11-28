@@ -78,9 +78,9 @@
 						<table>
 							<tr>
 								<td width="120">标签：</td>
-								<td><input name="tags" type="text" id="tags" value="<?php echo $tags;?>" class="admin-input-lg">（英文逗号隔开，如：DedeBIZ,得德）</td>
+								<td width="620"><input type="text" name="tags" id="tags" value="<?php echo $tags;?>" class="admin-input-lg">（英文逗号隔开，如：DedeBIZ,得德）</td>
 								<td width="60">权重：</td>
-								<td><input name="weight" type="text" id="weight" value="<?php echo $arcRow['weight'];?>" class="admin-input-sm">（越小越靠前）</td>
+								<td><input type="text" name="weight" id="weight" value="<?php echo $arcRow['weight'];?>" class="admin-input-sm">（越小越靠前）</td>
 							</tr>
 						</table>
 					</td>
@@ -108,13 +108,13 @@
 							<tr>
 								<td width="120">来源：</td>
 								<td width="260">
-									<input name="source" type="text" id="source" value="<?php echo $arcRow['source']?>" class="admin-input-sm">
-									<button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
+									<input type="text" name="source" id="source" value="<?php echo $arcRow['source']?>" class="admin-input-sm">
+									<button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
 								</td>
 								<td width="60">编辑：</td>
 								<td>
-									<input name="writer" type="text" id="writer" value="<?php echo $arcRow['writer']?>" class="admin-input-sm">
-									<button class="btn btn-success btn-sm" name="selwriter" type="button" id="selwriter">选择</button>
+									<input type="text" name="writer" id="writer" value="<?php echo $arcRow['writer']?>" class="admin-input-sm">
+									<button type="button" class="btn btn-success btn-sm" name="selwriter" id="selwriter">选择</button>
 								</td>
 							</tr>
 						</table>
@@ -145,7 +145,7 @@
 									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid');" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
 								</td>
 								<td width="120">需要金币：</td>
-								<td><input name="money" type="text" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
+								<td><input type="text" name="money" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
 							</tr>
 						</table>
 					</td>
