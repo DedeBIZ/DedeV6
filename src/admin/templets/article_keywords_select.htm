@@ -11,7 +11,7 @@
 	<body>
 		<form name="form1" action="article_keywords_main.php">
 			<input type="hidden" name="dopost" value="add">
-			<table align="center" id="addnew" class="table maintable table-borderless mt-3" style="display:none">
+			<table id="addnew" class="table border table-borderless mt-3" style="display:none">
 				<tr>
 					<td bgcolor="#f8fafb">
 						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
@@ -23,7 +23,7 @@
 			</table>
 		</form>
 		<form name="form2">
-			<table align="center" class="table maintable my-3">
+			<table class="table border my-3">
 				<tr>
 					<td bgcolor="#f8fafb">
 						<input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" class="admin-input-lg mr-3">

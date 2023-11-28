@@ -17,7 +17,7 @@
 		<script src="/static/web/js/admin.list.js"></script>
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
+		<table class="table border my-3">
 			<tr>
 				<td>
 					<button type="button" class="btn btn-success btn-sm" onclick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
@@ -37,7 +37,7 @@
 		<form name="form3" action="content_i_list.php" method="get">
 			<input type="hidden" name="dopost" value="listArchives">
 			<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
-			<table align="center" class="table maintable mb-3">
+			<table class="table border mb-3">
 				<tr>
 					<td bgcolor="#f8fafb">
 						<input type="text" name="keyword" class="admin-input-lg mr-3" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
@@ -60,7 +60,7 @@
 			</table>
 		</form>
 		<form name="form2">
-			<table align="center" class="table maintable mb-3">
+			<table class="table border mb-3">
 				<tr>
 					<td colspan="10" bgcolor="#f8fafb">{dede:global.positionname/}文档列表</td>
 				</tr>
@@ -98,7 +98,7 @@
 				{/dede:datalist}
 			</table>
 		</form>
-		<table align="center" class="table maintable mb-3">
+		<table class="table border mb-3">
 			<tr>
 				<td>
 					<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>

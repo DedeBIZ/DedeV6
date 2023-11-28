@@ -140,7 +140,7 @@
 		</script>
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
+		<table class="table border my-3">
 			<tr>
 				<td bgcolor="#f8fafb">
 					<select name="egroup1" id="egroup1" onChange="ChangePage(this);" class="admin-input-sm">
@@ -185,7 +185,7 @@
 			//如果添加3级之类
 			if ($topvalue % 500 != 0) $arr['issign'] = 2;
 		?>
-		<table align="center" class="table maintable mb-3">
+		<table class="table border mb-3">
 			<tr>
 				<td bgcolor="#f8fafb" colspan="8">
 					<span class="float-left"><?php echo $selgroup;?> - 子分类管理</span>
@@ -224,7 +224,7 @@
 		</form>
 		<form name="form1" action="stepselect_main.php" method="post">
 			<input type="hidden" name="action" value="delenumAllSel">
-			<table align="center" class="table maintable">
+			<table class="table border">
 				<tr>
 					<td bgcolor="#f8fafb" colspan="8"><a href="stepselect_main.php">联动类型管理</a> - <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> - 子分类列表</td>
 				</tr>
@@ -293,7 +293,7 @@
 		<?php
 		} else {
 		?>
-		<table align="center" class="table maintable mb-3">
+		<table class="table border mb-3">
 			<tr>
 				<td bgcolor="#f8fafb" colspan="7">联动类型管理</td>
 			</tr>

@@ -12,7 +12,7 @@
         <form name="form1" action="diy_list.php">
             <input type="hidden" name="action" value="list">
             <input type="hidden" name="diyid" value="<?php echo $diy->diyid; ?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table border my-3">
 				<tr>
 					<td bgcolor="#f8fafb">
 						<input type="text" name="keyword" class="admin-input-lg mr-3" value="<?php echo $keyword; ?>" placeholder="请输入关键词">
@@ -35,7 +35,7 @@
 		</form>
 		<form action="diy_list.php" method="post">
 			<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
-			<table align="center" class="table maintable mb-3">
+			<table class="table border mb-3">
 				<tr>
 					<td colspan="2" bgcolor="#f8fafb">自定义表单管理</a> - <?php echo $diy->name;?>列表</td>
 				</tr>

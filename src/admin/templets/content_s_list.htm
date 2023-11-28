@@ -14,7 +14,7 @@
 		<script src="/static/web/js/admin.list.js"></script>
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
+		<table class="table border my-3">
 			<tr>
 				<td>
 					<button type="button" class="btn btn-success btn-sm" onclick="location='spec_add.php';">添加专题</button>
@@ -27,7 +27,7 @@
 		<form name="form3" action="content_s_list.php" method="get">
 			<input type="hidden" name="dopost" value="listArchives">
 			<input type="hidden" name="channelid" value="3">
-			<table align="center" class="table maintable my-3">
+			<table class="table border my-3">
 				<tr>
 					<td bgcolor="#f8fafb">
 						<input type="text" name="keyword" class="admin-input-lg mr-3" value="<?php echo $keyword?>" placeholder="请输入文档标题或文档id">
@@ -42,7 +42,7 @@
 			</table>
 		</form>
 		<form name="form2">
-			<table align="center" class="table maintable mb-3">
+			<table class="table border mb-3">
 				<tr>
 					<td colspan="9" bgcolor="#f8fafb">专题列表</td>
 				</tr>

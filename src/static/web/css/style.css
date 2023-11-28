@@ -1,5 +1,5 @@
 :root{--bg:#f8fafb;--gray-300:#dee2e6;--gray-500:#adb5bd}
-::-webkit-scrollbar{width:8px;height:10px}
+::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--gray-300)}
 *{scrollbar-width:thin}

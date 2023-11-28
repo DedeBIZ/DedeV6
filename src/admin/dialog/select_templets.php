@@ -43,7 +43,7 @@ if (empty($comeback)) {
     </head>
     <body  class="body-bg">
         <div class="upload-box shadow-sm">
-            <table align="center" class="table icon">
+            <table class="table icon">
                 <tr>
                     <td colspan="3">
                         <form name="myform" action="select_templets_post.php" method="POST" enctype="multipart/form-data">

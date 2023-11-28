@@ -12,7 +12,7 @@
 		<form name="form1" method="post" enctype="multipart/form-data" action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
 			<input type="hidden" name="dopost" value="edit">
 			<input type="hidden" name="id" value="<?php echo $row['id'];?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table border my-3">
 				<tr>
 					<td bgcolor="#f8fafb" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">自定义表单管理</a> - 修改<?php echo $diy->name;?>数据</td>
 				</tr>
