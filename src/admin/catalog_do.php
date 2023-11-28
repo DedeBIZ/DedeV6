@@ -98,7 +98,7 @@ else if ($dopost == "upRank") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET sortrank='$sortrank' WHERE id='$cid'");
     }
     UpDateCatCache();
-    ShowMsg("完成操作，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目排序", "catalog_main.php");
     exit();
 }
 //检查权限许可
@@ -114,7 +114,7 @@ else if ($dopost == "upRankAll") {
         }
     }
     UpDateCatCache();
-    ShowMsg("完成操作，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目排序", "catalog_main.php");
     exit();
 }
 //更新栏目缓存
@@ -139,7 +139,7 @@ else if ($dopost == "upcatcache") {
             $doarray[$tb]  = 1;
         }
     }
-    ShowMsg("完成更新，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目缓存", "catalog_main.php");
     exit();
 }
 //获得子类的文档
