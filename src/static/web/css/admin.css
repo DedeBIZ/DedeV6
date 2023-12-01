@@ -141,7 +141,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .card-body{padding:0.5rem}
 .card-body canvas{height:360px!important}
 .table{margin-bottom:0;color:var(--gray)}
-.table td,.table th{padding:0.5rem;vertical-align:middle}
+.table th,.table td{padding:0.5rem;vertical-align:middle}
 .icon img{width:20px;height:20px}
 .form-control{display:inline-block}
 .fa{font-size:14px!important;color:inherit}
