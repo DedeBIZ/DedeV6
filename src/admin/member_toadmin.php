@@ -18,7 +18,7 @@ $row = array();
 if ($dopost == "toadmin") {
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
-        ShowMsg('密码不合法，仅限使用[0-9a-zA-Z_@!.-]', '-1');
+        ShowMsg('密码不合法，请使用数字0-9小写a-z大写A-Z符号_@!.-', '-1');
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);

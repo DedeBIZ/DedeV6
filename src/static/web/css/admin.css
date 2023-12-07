@@ -25,8 +25,8 @@ textarea{padding:0.375rem 0.75rem;color:var(--gray);background:var(--white);bord
 input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white);border-color:var(--blue-300);box-shadow:0 0 0 0.2rem rgba(0,123,255,0.25);outline:0}
 .install-box{margin:0 auto;width:800px}
 .install-box .card-header,.install-box .card-body{padding:1.25rem}
-.install-box h1,.install-box legend{margin:0;line-height:1.2;font-size:18px;font-weight:600;color:var(--gray-dark)}
-.install-box label,.login-box label{margin-bottom:5px}
+.install-box h1{margin:0;line-height:1.2;font-size:18px;font-weight:600;color:var(--gray-dark)}
+.install-box label,.login-box label{margin-bottom:0.25rem}
 .install-box .form-control,.login-box .form-control{height:36px}
 .login-head{padding:1rem 0;background:var(--white)}
 .login-head .logo{font-size:18px;font-weight:600;color:var(--gray-dark)}

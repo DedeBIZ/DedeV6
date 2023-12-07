@@ -45,7 +45,7 @@ function CheckUserID($uid, $msgtitle = '账号', $ckhas = TRUE)
             }
         } else {
             if (preg_match("/[^0-9a-z@\.-]/i", $ck_uid[$i])) {
-                return $msgtitle.'仅限使用[0-9a-zA-Z_@!.-]';
+                return $msgtitle.'请使用数字0-9小写a-z大写A-Z符号_@!.-';
             }
         }
     }

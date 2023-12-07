@@ -48,7 +48,7 @@ if ($step == 1) {
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
-            ShowMsg('账号不合法，仅限使用[0-9a-zA-Z_@!.-]', '-1');
+            ShowMsg('账号不合法，请使用数字0-9小写a-z大写A-Z符号_@!.-', '-1');
             exit();
         }
         if ($pwdc != $pwd) {
