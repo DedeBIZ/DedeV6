@@ -1,7 +1,7 @@
 :root{--bg:#f8fafb;--gray-300:#dee2e6;--gray-500:#adb5bd;--blue-300:#80bdff;--success-800:#009688}
 ::-webkit-scrollbar{display:none}
 *{font-size:14px;scrollbar-width:none}
-body{line-height:1.6;letter-spacing:0.5px;font-size:14px;font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:var(--gray);background:var(--bg);scrollbar-width:none}
+body{line-height:1.6;letter-spacing:0.5px;font-size:14px;font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:var(--gray);background:var(--bg)}
 a{color:var(--gray);text-decoration:none}
 a:hover{color:var(--blue);text-decoration:none}
 img{max-width:100%;border-radius:0.5rem}
@@ -51,7 +51,7 @@ body.menu-hide .body-right{left:0;transition:all 0.5s}
 body.menu-show .menu-left{display:block}
 body.menu-show .body-right{left:220px;transition:all 0.5s}
 .menu-left{position:absolute;top:60px;left:0;bottom:0;width:220px;overflow-y:auto}
-.sidemenu{padding:1rem 0;height:100%;background:var(--white)}
+.sidemenu{padding:1rem 0;min-height:100%;background:var(--white)}
 .sidemenu .link{display:block;position:relative;padding-left:45px;height:40px;line-height:40px;cursor:pointer}
 .sidemenu li:last-child .link{border-bottom:0}
 .sidemenu li i{position:absolute;top:13px;left:20px;color:var(--gray)}
