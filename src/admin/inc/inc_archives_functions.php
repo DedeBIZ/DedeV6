@@ -746,8 +746,8 @@ function GetUpdateTest()
         if ($cfg_make_andcat == 'Y') $dolist .= empty($dolist) ? 'makeparenttype' : ',makeparenttype';
         $dolists = explode(',', $dolist);
         $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=".preg_replace("#".$dolists[0]."[,]{0,1}#", '', $dolist);
-        $revalue = "<tr><td>";
-        $revalue .= "<div id='tgtable' class='admin-win-iframe'><iframe src='$jumpUrl' name='stafrm' frameborder='0' id='stafrm' width='100%' height='100%'></iframe></div>";
+        $revalue = "<tr id='tgtable'><td>";
+        $revalue .= "<div class='admin-win-iframe'><iframe src='$jumpUrl' name='stafrm' frameborder='0' id='stafrm' width='100%' height='100%'></iframe></div>";
         $revalue .= "</td></tr>";
     } else {
         $revalue = '';

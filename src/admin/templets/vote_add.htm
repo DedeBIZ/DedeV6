@@ -38,7 +38,7 @@
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<table class="table border my-3">
 				<tr>
-					<td bgcolor="#f8fafb" colspan="2"><a href='vote_main.php'>投票管理</a> - 添加投票</td>
+					<td colspan="2"><a href='vote_main.php'>投票管理</a> - 添加投票</td>
 				</tr>
 				<tr>
 					<td width="260">投票名称：</td>
@@ -90,7 +90,7 @@
 				<tr>
 					<td></td>
 					<td>
-						<div id="voteitem" class="py-2">选项1：<input type="text" name="voteitem1" id="voteitem1" class="admin-input-lg"></div>
+						<div id="voteitem">选项1：<input type="text" name="voteitem1" id="voteitem1" class="admin-input-lg"></div>
 					</td>
 				</tr>
 				<tr>
@@ -101,7 +101,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f8fafb" colspan="2" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" name="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" name="submit" class="btn btn-outline-success btn-sm" onclick="history.back();">返回</button>
 					</td>

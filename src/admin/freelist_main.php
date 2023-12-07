@@ -58,9 +58,9 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     $start = ($pageno-1) * $pagesize;
     $printhead ="<table class='table border my-3'>
         <tr>
-            <td colspan='6' bgcolor='#f8fafb'>自由列表管理</td>
+            <td colspan='6'>自由列表管理</td>
         </tr>
-        <tr align='center' bgcolor='#f8f9fa'>
+        <tr align='center'>
             <td width='6%'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
             <td width='20%'>列表名称</td>
             <td width='20%'>模板文件</td>

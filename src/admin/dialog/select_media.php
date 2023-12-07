@@ -50,7 +50,7 @@ if (!empty($noeditor)) {
         <link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
         <link rel="stylesheet" href="/static/web/css/admin.css">
     </head>
-    <body class="body-bg">
+    <body>
         <div class="upload-box shadow-sm">
             <table class="table icon">
                 <tr>

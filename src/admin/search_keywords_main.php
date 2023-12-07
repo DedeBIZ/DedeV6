@@ -65,9 +65,9 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     <input name=\"dopost\" type=\"hidden\" value=\"\">
     <table class='table border my-3'>
     <tr>
-        <td colspan='8' bgcolor='#f8fafb'>搜索关键词维护</td>
+        <td colspan='8'>搜索关键词维护</td>
     </tr>
-    <tr align='center' bgcolor='#f8f9fa'>
+    <tr align='center'>
         <td width='6%'>选择</td>
         <td width='6%'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
         <td width='20%'>关键词</td>

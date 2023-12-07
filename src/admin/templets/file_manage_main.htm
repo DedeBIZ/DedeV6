@@ -11,9 +11,9 @@
 	<body>
 		<table class="table border icon my-3">
 			<tr>
-				<td bgcolor="#f8fafb" colspan="4">文件管理器</td>
+				<td colspan="4">文件管理器</td>
 			</tr>
-			<tr bgcolor="#f8f9fa" align="center">
+			<tr align="center">
 				<td width="26%">文件名称</td>
 				<td width="26%">文件大小</td>
 				<td width="26%">修改时间</td>
@@ -253,7 +253,7 @@
 			}
 			?>
 			<tr>
-			  <td bgcolor="#f8fafb" colspan="4" align="center">
+			  <td colspan="4" align="center">
 				<?php if (!DEDEBIZ_SAFE_MODE) {?><a href="file_manage_main.php" class="btn btn-success btn-sm">根目录</a><?php }?>
 				<a href="file_manage_view.php?fmdo=newfile&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">新建文件</a>
 				<a href="file_manage_view.php?fmdo=newdir&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">新建目录</a>

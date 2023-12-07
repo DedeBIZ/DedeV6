@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<table class="table border my-3">
-			<tr bgcolor="#f8fafb">
+			<tr>
 				<td width="460">
 					<form name="form2" action="tags_main.php">
 						<input type="text" name="tag" value="<?php echo $tag;?>" placeholder="请输入标签" class="admin-input-lg">
@@ -33,9 +33,9 @@
 		<form name="form3" action="tags_main.php?action=delete" method="post">
 			<table class="table border mb-3">
 				<tr>
-					<td colspan="8" bgcolor="#f8fafb">标签管理</td>
+					<td colspan="8">标签管理</td>
 				</tr>
-				<tr align="center" bgcolor="#f8f9fa">
+				<tr align="center">
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
 					<td width="20%">标签</td>
@@ -75,7 +75,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="8" bgcolor="#f8fafb" align="center">{dede:pagelist/}</td>
+					<td colspan="8" align="center">{dede:pagelist/}</td>
 				</tr>
 			</table>
 		</form>

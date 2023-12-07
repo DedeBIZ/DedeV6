@@ -14,7 +14,7 @@
 			<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 			<table class="table border my-3">
 				<tr>
-					<td bgcolor="#f8fafb" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">自定义表单管理</a> - 修改<?php echo $diy->name;?>数据</td>
+					<td colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">自定义表单管理</a> - 修改<?php echo $diy->name;?>数据</td>
 				</tr>
 				<?php
 				$formfields = '';
@@ -32,7 +32,7 @@
 				echo "<input type='hidden' name='dede_fields' value='".$formfields."'>";
 				?>
 				<tr>
-					<td colspan="2" bgcolor="#f8fafb" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" name="submit1" class="btn btn-success btn-sm">保存</button>
 						<button type="button" name="submit2" class="btn btn-outline-success btn-sm" onclick="location='<?php echo $ENV_GOBACK_URL;?>';">返回</button>
 					</td>

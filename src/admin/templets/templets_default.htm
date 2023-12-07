@@ -11,7 +11,7 @@
 	<body>
 		<table class="table border my-3">
 			<tr>
-				<td colspan="4" bgcolor="#f8fafb">
+				<td colspan="4">
 					<?php
 					if ($acdir=='plus') echo '插件模板';
 					else if ($acdir=='system') echo '系统模板';
@@ -19,7 +19,7 @@
 					?>
 				</td>
 			</tr>
-			<tr bgcolor="#f8f9fa" align="center">
+			<tr align="center">
 				<td width="26%">模板名</td>
 				<td width="26%">模板描述</td>
 				<td width="26%">修改时间</td>
@@ -46,7 +46,7 @@
 			</tr>
 			<?php }?>
 			<tr>
-				<td bgcolor="#f8fafb" colspan="4" align="center">
+				<td colspan="4" align="center">
 					<a class="btn btn-success btn-sm" href="templets_main.php">默认模板</a>
 					<a class="btn btn-success btn-sm" href="templets_main.php?acdir=apps">插件模板</a>
 					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir;?>">新建模板</a>

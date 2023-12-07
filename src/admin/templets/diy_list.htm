@@ -14,7 +14,7 @@
             <input type="hidden" name="diyid" value="<?php echo $diy->diyid; ?>">
 			<table class="table border my-3">
 				<tr>
-					<td bgcolor="#f8fafb">
+					<td>
 						<input type="text" name="keyword" class="admin-input-lg mr-3" value="<?php echo $keyword; ?>" placeholder="请输入关键词">
 			            <select name="field" class="admin-input-sm">
 			            <?php
@@ -37,7 +37,7 @@
 			<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 			<table class="table border mb-3">
 				<tr>
-					<td colspan="2" bgcolor="#f8fafb">自定义表单管理</a> - <?php echo $diy->name;?>列表</td>
+					<td colspan="2">自定义表单管理</a> - <?php echo $diy->name;?>列表</td>
 				</tr>
 				{dede:datalist}
 				<?php 
@@ -76,7 +76,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" bgcolor="#f8fafb">{dede:pagelist listsize='6'/}</td>
+					<td colspan="2">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>

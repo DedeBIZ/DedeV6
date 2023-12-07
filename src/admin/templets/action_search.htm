@@ -11,11 +11,11 @@
 	<body>
 		<table class="table border my-3">
 			<tr>
-				<td bgcolor="#f8fafb">当前位置 - <?php echo $keyword;?>搜索结果</td>
+				<td>当前位置 - <?php echo $keyword;?>搜索结果</td>
 			</tr>
 			<?php foreach ($asresult as $row) {?>
 			<tr>
-				<td bgcolor="#f8f9fa"><?php echo $row['title'] ?></td>
+				<td><?php echo $row['title'] ?></td>
 			</tr>
 			<?php foreach ($row['soniterm'] as $rows) {?>
 			<tr>

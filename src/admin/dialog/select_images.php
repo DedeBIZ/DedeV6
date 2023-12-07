@@ -61,7 +61,7 @@ if (!empty($iseditor)) {
         <link rel="stylesheet" href="/static/web/css/admin.css">
         <script src="/static/web/js/jquery.min.js"></script>
     </head>
-    <body class="body-bg">
+    <body>
         <div class="upload-box shadow-sm">
             <table class="table icon">
                 <tr>

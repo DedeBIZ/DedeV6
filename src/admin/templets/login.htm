@@ -12,7 +12,7 @@
 		<script src="/static/web/js/jquery.min.js"></script>
 		<script src="/static/web/js/login.js"></script>
 	</head>
-	<body class="body-bg">
+	<body>
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
 		<div class="browsehappy">
 			<span>您使用的浏览器已过时，请<a href="https://www.dedebiz.com/browsehappy" target="_blank">更换浏览器</a>，提高后台操作体验</span>
@@ -37,7 +37,7 @@
 			<div class="login-from">
 				<?php echo $redmsg;?>
 				<div class="login-box shadow-sm mb-3">
-					<h2 class="text-center mb-3">后台登录</h2>
+					<h1>后台登录</h1>
 					<form name="form1" method="post" action="login.php">
 						<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
 						<input type="hidden" name="dopost" value="login">

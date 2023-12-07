@@ -204,7 +204,7 @@ else if ($action == 'savetagfile') {
             <td><textarea name='partcode' class='admin-textarea-xl'>{dede:{$tagname}}{/dede:{$tagname}}</textarea></td>
         </tr>
         <tr>
-            <td bgcolor='#f8fafb' align='center'><button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button></td>
+            <td align='center'><button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button></td>
         </tr>
     </form>";
     $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> - 新建修改标签";

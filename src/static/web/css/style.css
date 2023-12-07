@@ -3,7 +3,7 @@
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--gray-300)}
 *{scrollbar-width:thin}
-body{line-height:1.6;letter-spacing:0.5px;font-size:14px;font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:var(--gray);background:var(--white)}
+body{line-height:1.6;letter-spacing:0.5px;font-size:14px;font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:var(--gray);background:var(--bg)}
 a{color:var(--gray);text-decoration:none}
 a:hover{color:var(--blue);text-decoration:none}
 img{max-width:100%;border-radius:0.5rem}

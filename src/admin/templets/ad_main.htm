@@ -13,7 +13,7 @@
 		<form name="form3" action="ad_main.php" method="get" id="form3">
 			<input type="hidden" name="dopost" value="listArchives">
 			<table class="table border my-3">
-				<tr bgcolor="#f8fafb">
+				<tr>
 					<td>
 						<input type="text" name="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<select name="clsid" id="clsid" class="admin-input-sm">
@@ -29,9 +29,9 @@
 		</form>
 		<table class="table border mb-3">
 			<tr>
-				<td bgcolor="#f8fafb" colspan="7">广告管理</td>
+				<td colspan="7">广告管理</td>
 			</tr>
-			<tr bgcolor="#f8f9fa" align="center">
+			<tr align="center">
 				<td width="6%">id</td>
 				<td width="20%">分类</td>
 				<td width="20%">广告名称</td>
@@ -56,7 +56,7 @@
 			</tr>
 			{/dede:datalist}
 			<tr>
-				<td bgcolor="#f8fafb" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
+				<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</body>

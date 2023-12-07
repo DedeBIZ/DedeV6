@@ -163,7 +163,7 @@ else if ($fmdo == "space") {
         </td>
     </tr>
     <tr>
-        <td bgcolor='#f8fafb' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='file_manage_main.php';\">文件管理器</button></td>
+        <td align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='file_manage_main.php';\">文件管理器</button></td>
     </tr>");
     $winform = $win->GetWindow("");
     $win->Display();

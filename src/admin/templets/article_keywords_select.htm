@@ -13,7 +13,7 @@
 			<input type="hidden" name="dopost" value="add">
 			<table id="addnew" class="table border table-borderless mt-3" style="display:none">
 				<tr>
-					<td bgcolor="#f8fafb">
+					<td>
 						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="admin-input-sm mr-3">
 						<input type="text" name="rank" id="rank" placeholder="请输入频率" class="admin-input-sm">
@@ -25,7 +25,7 @@
 		<form name="form2">
 			<table class="table border my-3">
 				<tr>
-					<td bgcolor="#f8fafb">
+					<td>
 						<input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" class="admin-input-lg mr-3">
 						<button type="button" class="btn btn-success btn-sm" name="submit" onclick="ReturnValue();">选用</button>
 						<button type="button" class="btn btn-success btn-sm" name="kwa" onclick="AddNewKw();">新增关键词</button>
@@ -40,7 +40,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f8fafb" colspan="2" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="2" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>

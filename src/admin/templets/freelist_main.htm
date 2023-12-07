@@ -109,7 +109,7 @@
 		<form action="freelist_main.php" name="form1" id="form1">
 			<table class="table border my-3">
 				<tr>
-					<td bgcolor="#f8fafb">
+					<td>
 						<input type="text" name="keyword" id="keyword" value="<?php echo $keyword?>" class="admin-input-lg" placeholder="请输入关键词">
 						<button type="submit" name="submit2" class="btn btn-success btn-sm">搜索</button>
 						<button type="button" name="bt1" onclick="location='freelist_add.php';" class="btn btn-success btn-sm">添加自由列表</button>
@@ -121,7 +121,7 @@
 		<div id="rslist"><?php GetTagList($dsql,$pageno,$pagesize,$orderby);?></div>
 		<table class="table border mb-3">
 			<tr>
-				<td bgcolor="#f8fafb">
+				<td>
 					<div id="pagelist">
 						<script>ReloadPageNum(1);</script>
 					</div>

@@ -18,7 +18,7 @@
 			<input type="hidden" name="id" value="<?php echo $id?>">
 			<table class="table border my-3">
 				<tr>
-					<td bgcolor="#f8fafb" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> - 提升会员</td>
+					<td colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> - 提升会员</td>
 				</tr>
 				<?php if ($row['matt']==10) {echo '<tr><td colspan="2"><div class="alert alert-info mb-0">您已经是管理员，不要提升了</div></td></tr>';} else {?>
 				<tr>
@@ -76,7 +76,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f8fafb" colspan="2" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" name="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='member_main.php';">返回</button>
 					</td>
