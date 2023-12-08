@@ -12,7 +12,7 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<table class="table border my-3">
+		<table class="table shadow-sm my-3">
 			<tr>
 				<td>
 					<span class="sys-search d-inline-block">
@@ -43,7 +43,7 @@
 		<form name="fadd" action="sys_info.php" method="post" id="addvar" style="display:none">
 			<input type="hidden" name="dopost" value="add">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table class="table border mb-3">
+			<table class="table shadow-sm mb-3">
 				<tr>
 					<td colspan="6">添加变量</td>
 				</tr>
@@ -96,7 +96,7 @@
 					$dls = explode(',',$dl);
 					$n++;
 				?>
-				<table id="td<?php echo $n?>" class="table border mb-3" style="<?php if ($n!=$gp) echo 'display:none';?>">
+				<table id="td<?php echo $n?>" class="table shadow-sm mb-3" style="<?php if ($n!=$gp) echo 'display:none';?>">
 					<tr>
 						<td colspan="3">系统设置</td>
 					</tr>
@@ -149,7 +149,7 @@
 				</table>
 				<?php }?>
 			</div>
-			<table class="table border mb-3">
+			<table class="table shadow-sm mb-3">
 				<tr>
 					<td align="center" colspan="3">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>

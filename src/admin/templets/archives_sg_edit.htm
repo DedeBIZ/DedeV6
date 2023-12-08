@@ -24,7 +24,7 @@
 			<input type="hidden" name="id" value="<?php echo $aid;?>">
 			<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate'];?>">
 			<input type="hidden" name="dopost" value="save">
-			<table class="border my-3">
+			<table class="shadow-sm my-3">
 				<tr>
 					<td class="admin-td">修改分类文档</td>
 				</tr>
@@ -95,7 +95,7 @@
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>');" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
+									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>');" class="btn btn-success btn-sm">选择</a>
 								</td>
 							</tr>
 						</table>

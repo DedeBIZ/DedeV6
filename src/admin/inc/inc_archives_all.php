@@ -18,7 +18,7 @@
 function GetFormItem($ctag)
 {
     $fieldname = $ctag->GetName();
-    $formitem = "<table width=\"98%\" border=\"0\">
+    $formitem = "<table>
        <tr>
         <td width=\"120\">~name~</td>
         <td>~form~</td>
@@ -66,7 +66,7 @@ function GetFormItem($ctag)
     }
     if ($ctag->GetAtt("type") == "htmltext" || $ctag->GetAtt("type") == "textdata") {
         $formitem = '';
-        $formitem .= "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td><td>";
+        $formitem .= "<table><tr><td width=\"120\">".$ctag->GetAtt('itemname')."</td><td>";
         $formitem .= GetEditor($fieldname, '', 350, 'Basic', 'string');
         $formitem .= "</td></tr></table>\r\n";
         return $formitem;
@@ -210,7 +210,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
 function GetFormItemValue($ctag, $fvalue)
 {
     $fieldname = $ctag->GetName();
-    $formitem = "<table width=\"98%\" border=\"0\">
+    $formitem = "<table>
        <tr>
         <td width=\"120\">~name~</td>
         <td>~form~</td>
@@ -271,13 +271,13 @@ function GetFormItemValue($ctag, $fvalue)
         } else {
             $okfvalue = '';
         }
-        $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td>\r\n";
+        $formitem  = "<table><tr><td width=\"120\">".$ctag->GetAtt('itemname')."</td>\r\n";
         $formitem .= "<td>\r\n".GetEditor($fieldname, $okfvalue, 350, 'Basic', 'string')."</td>\r\n";
         $formitem .= "</tr></table>\r\n";
         $formitem .= "<input type='hidden' name='{$fieldname}_file' value='{$fvalue}'>\r\n";
         return $formitem;
     } else if ($ctag->GetAtt("type") == "htmltext") {
-        $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td>\r\n";
+        $formitem  = "<table><tr><td width=\"120\">".$ctag->GetAtt('itemname')."</td>\r\n";
         $formitem .= "<td>\r\n".GetEditor($fieldname, $fvalue, 350, 'Basic', 'string')."</td>\r\n";
         $formitem .= "</tr></table>\r\n";
         return $formitem;

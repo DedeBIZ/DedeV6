@@ -59,7 +59,7 @@ class OxWindow
      */
     function StartWin()
     {
-        $this->myWin .= "<table width='100%'>";
+        $this->myWin .= "<table>";
     }
     /**
      *  添加单列标题

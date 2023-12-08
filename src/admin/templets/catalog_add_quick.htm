@@ -15,7 +15,7 @@
 		<form name="form1" action="catalog_add.php" method="post">
 			<input type="hidden" name="dopost" value="savequick">
 			<input type="hidden" name="savetype" id="savetype">
-			<table class="table border my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
 					<td colspan="4">批量添加栏目</td>
 				</tr>
@@ -71,7 +71,7 @@
 					<td>列表命名规则：</td>
 					<td>
 						<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-lg">
-						<a href="javascript:ShowHide('helpvar1');" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></a>
+						<a href="javascript:ShowHide('helpvar1');" class="btn btn-success btn-sm">说明</a>
 						<div id="helpvar1" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{tid} 栏目id</p>
@@ -86,7 +86,7 @@
 					<td>文档命名规则：</td>
 					<td>
 						<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-lg">
-						<a href="javascript:ShowHide('helpvar2');" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></a>
+						<a href="javascript:ShowHide('helpvar2');" class="btn btn-success btn-sm">说明</a>
 						<div id="helpvar2" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{Y}{M}{D} 年月日</p>
@@ -106,7 +106,7 @@
 				</tr>
 				<tr>
 					<td colspan="4">
-						<table id="addQuick" align="center" class="table border">
+						<table id="addQuick" align="center" class="table">
 							<tr align="center">
 								<td width="6%" class="border-top-0">排序</td>
 								<td width="16%" class="border-top-0">顶级栏目名称</td>
@@ -134,7 +134,7 @@
 							</tr>
 							<?php }?>
 						</table>
-						<table id="addQuickRel" align="center" class="table border" style="display:none">
+						<table id="addQuickRel" align="center" class="table" style="display:none">
 							<tr align="center">
 								<td width="6%">排序</td>
 								<td width="16%">栏目名称</td>

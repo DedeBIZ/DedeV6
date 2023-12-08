@@ -26,7 +26,7 @@
 			<input type="hidden" name="imagebody">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" id="albums" name="albums">
-			<table class="border my-3">
+			<table class="shadow-sm my-3">
 				<tr>
 					<td class="admin-td">修改图片文档</td>
 				</tr>
@@ -136,7 +136,7 @@
 									echo $typeOptions;
 									echo '</select>';
 									?>
-									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>');" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
+									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>');" class="btn btn-success btn-sm">选择</a>
 								</td>
 								<td width="120">需要金币：</td>
 								<td><input type="text" name="money" id="money" value="<?php echo $arcRow['money']?>" class="admin-input-sm"></td>
@@ -153,7 +153,7 @@
 								<td>
 									<span id="typeid2ct"></span>
 									<input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" class="admin-input-sm">
-									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>');" title="副栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
+									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>');" class="btn btn-success btn-sm">选择</a>
 								</td>
 							</tr>
 						</table>

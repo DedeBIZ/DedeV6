@@ -85,9 +85,8 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .quickselitem .topcat{margin-bottom:1rem;padding:0 10px;background:var(--light);clear:both}
 .quickselitem .soncat{margin-bottom:1rem;padding:0 10px}
 .quickselitem .list{display:inline-block;padding-left:10px}
-.quickselfoot{padding:0.5rem;background:var(--bg);border-top:1px solid var(--gray-300)}
+.quickselfoot{padding:0.5rem;border-top:1px solid var(--gray-300)}
 .mysource,.mywriter{width:300px;background:var(--white);border:1px solid var(--gray-300);z-index:10001}
-.column .admin-td{border-bottom:1px solid var(--gray-300)!important}
 .atlas{float:left;margin-right:10px;margin-bottom:10px;width:220px;height:auto;background:var(--bg);text-align:center;border-radius:0.5rem}
 .atlas-head{height:120px}
 .atlas-head img{margin:0;max-width:220px;max-height:120px;border-radius:0.5rem 0.5rem 0 0!important}
@@ -133,9 +132,9 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .thumbnail-md{max-width:200px;max-height:120px}
 .thumbnail-sm{max-width:80px;max-height:80px}
 .no-wrap{white-space:nowrap}
-.border{border:1px solid var(--gray-300)!important}
 .list-group-item{padding:0.5rem 0}
 .modal-title{font-size:16px}
+.card,.modal-content{border:none}
 .card-header{padding:0.5rem 1rem;background-color:rgba(0,0,0,0)}
 .card-body{padding:0.5rem}
 .card-body canvas{height:360px!important}
@@ -159,7 +158,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 span.page-link{color:var(--white);background:var(--green)}
 table,input,select,textarea,.login-box,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.web-info,.upload-box,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded,#edsta{border-radius:0.5rem!important}
 .coolbg,.pubdlg .title,.cke_top{border-radius:0.5rem 0.5rem 0 0!important}
-.submenu,.coolbg-box,.cke_bottom{border-radius:0 0 0.5rem 0.5rem!important}
+.submenu,.quickselfoot,.coolbg-box,.cke_bottom{border-radius:0 0 0.5rem 0.5rem!important}
 .page-item:first-child .page-link{border-top-left-radius:0.5rem!important;border-bottom-left-radius:0.5rem!important}
 .page-item:last-child .page-link{border-top-right-radius:0.5rem!important;border-bottom-right-radius:0.5rem!important}
 .input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label,.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,.input-group:not(.has-validation)>.custom-select:not(:last-child),.input-group:not(.has-validation)>.form-control:not(:last-child){border-top-right-radius:0!important;border-bottom-right-radius:0!important}

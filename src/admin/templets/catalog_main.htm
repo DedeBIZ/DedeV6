@@ -12,7 +12,7 @@
 		<script src="/static/web/js/admin.catalog.js"></script>
 	</head>
 	<body>
-		<table class="table border my-3">
+		<table class="table shadow-sm my-3">
 			<tr>
 				<td>
 					<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">添加栏目</a>
@@ -30,12 +30,12 @@
 			</tr>
 		</table>
 		<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
-			<table class="border column mb-3">
+			<table class="shadow-sm mb-3">
 				<tr>
 					<td class="admin-td">网站栏目管理</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="admin-td">
 						<?php
 						if (empty($opendir)) $opendir=-1;
 						if ($userChannel>0) $opendir=$userChannel;

@@ -59,7 +59,7 @@
 			<input type="hidden" name="arcrank" value="<?php echo $arcRow['arcrank']?>">
 			<input type="hidden" name="source" value="本站">
 			<input type="hidden" name="dopost" value="save">
-			<table class="border my-3">
+			<table class="shadow-sm my-3">
 				<tr>
 					<td class="admin-td">发布专题</td>
 				</tr>
@@ -143,7 +143,7 @@
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<a href="javascript:ShowCatMap(event,this,0,'typeid');" class="btn btn-success btn-sm" title="选择主栏目"><i class="fa fa-search"></i></a>
+									<a href="javascript:ShowCatMap(event,this,0,'typeid');" class="btn btn-success btn-sm">选择</a>
 								</td>
 							</tr>
 						</table>
@@ -172,7 +172,7 @@
 				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 				<tr>
 					<td class="admin-td">
-						<table width="100%">
+						<table>
 							<?php
 							$speclisttmp = GetSysTemplets("spec_arclist.htm");
 							$i = 1;

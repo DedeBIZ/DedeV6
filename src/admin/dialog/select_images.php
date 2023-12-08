@@ -62,8 +62,8 @@ if (!empty($iseditor)) {
         <script src="/static/web/js/jquery.min.js"></script>
     </head>
     <body>
-        <div class="upload-box shadow-sm">
-            <table class="table icon">
+        <div class="upload-box">
+            <table class="table shadow-sm icon">
                 <tr>
                     <td colspan="3">
                         <form name="myform" action="select_images_post.php" method="POST" enctype="multipart/form-data">

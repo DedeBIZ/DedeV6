@@ -17,7 +17,7 @@
 			<input type="hidden" name="normbody[style]" value="code" id="adstyle">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="dopost" value="save">
-			<table class="table border my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
 					<td colspan="2"><a href="ad_main.php">广告管理</a> - 添加广告</td>
 				</tr>
@@ -100,7 +100,7 @@
 		</form>
 		<div id="formtxt" style="display:none">
 			<div class="content" id="code" style="display:none">
-				<table class="border">
+				<table>
 					<tr>
 						<td width="260">广告代码：请填写广告代码，支持网页代码</td>
 						<td><textarea name="normbody[htmlcode]" class="admin-textarea-xl"></textarea></td>
@@ -108,7 +108,7 @@
 				</table>
 			</div>
 			<div id="txt" class="content" style="display:none">
-				<table class="border">
+				<table>
 					<tr>
 						<td width="260">文字文档</td>
 						<td><input type="text" name="normbody[title]" class="admin-input-lg"></td>
@@ -128,7 +128,7 @@
 				</table>
 			</div>
 			<div id="img" class="content" style="display:none">
-				<table class="border">
+				<table>
 					<tr>
 						<td width="260">图片地址</td>
 						<td><input type="text" name="normbody[url]" class="admin-input-lg"></td>
@@ -152,7 +152,7 @@
 				</table>
 			</div>
 			<div id="flash" class="content" style="display:none">
-				<table class="border">
+				<table>
 					<tr>
 						<td width="260">flash链接</td>
 						<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>

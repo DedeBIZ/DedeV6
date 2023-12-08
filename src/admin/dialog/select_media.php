@@ -51,8 +51,8 @@ if (!empty($noeditor)) {
         <link rel="stylesheet" href="/static/web/css/admin.css">
     </head>
     <body>
-        <div class="upload-box shadow-sm">
-            <table class="table icon">
+        <div class="upload-box">
+            <table class="table shadow-sm icon">
                 <tr>
                     <td colspan="3">
                         <form name="myform" action="select_media_post.php" method="POST" enctype="multipart/form-data">

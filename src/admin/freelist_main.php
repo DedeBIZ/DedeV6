@@ -56,7 +56,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
 {
     global $cfg_phpurl, $addsql;
     $start = ($pageno-1) * $pagesize;
-    $printhead ="<table class='table border my-3'>
+    $printhead ="<table class='table shadow-sm my-3'>
         <tr>
             <td colspan='6'>自由列表管理</td>
         </tr>
