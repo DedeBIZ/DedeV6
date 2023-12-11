@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>会员登录-<?php echo $cfg_webname;?></title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
@@ -22,11 +21,11 @@
 						<input type="hidden" name="gourl" value="<?php if (!empty($gourl)) echo $gourl;?>">
 						<div class="form-group">
 							<label for="iptUserid">账号</label>
-							<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入登录账号" required="required">
+							<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入登录账号" required>
 						</div>
 						<div class="form-group">
 							<label for="iptPwd">密码</label>
-							<input type="password" name="pwd" id="iptPwd" class="form-control" placeholder="请输入登录密码" required="required">
+							<input type="password" name="pwd" id="iptPwd" class="form-control" placeholder="请输入登录密码" autocomplete="off" required>
 						</div>
 						<div id="vdimgck" class="form-group" style="display:none">
 							<label for="iptValidate">验证码</label>
