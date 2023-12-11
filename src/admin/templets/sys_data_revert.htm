@@ -25,7 +25,7 @@
 					<td colspan="4">数据还原</td>
 				</tr>
 				<tr>
-					<td colspan="4">发现的备份文件：<?php if (count($filelists)==0) echo " 没找到任何备份文件 ";?></td>
+					<td colspan="4">备份文件：<?php if (count($filelists)==0) echo "没找到任何备份文件";?></td>
 				</tr>
 				<?php
 				for ($i=0;$i<count($filelists);$i++)
@@ -45,7 +45,7 @@
 				?>
 				<tr>
 					<td colspan="4">
-						<label><input name="structfile" type="checkbox" id="structfile" value="<?php echo $structfile?>" checked> 还原表结构信息（<?php echo $structfile?>）</label>
+						<label><input name="structfile" type="checkbox" id="structfile" value="<?php echo $structfile?>" checked> 还原数据表结构信息（<?php echo $structfile?>）</label>
 						<label><input name="delfile" type="checkbox" id="delfile" value="1"> 还原后删除备份文件</label>
 						<button name="b1" type="button" id="b1" onclick="SelAll();" class="btn btn-success btn-sm">全选</button>
 						<button name="b2" type="button" id="b2" onclick="ReSel();" class="btn btn-success btn-sm">反选</button>
