@@ -347,8 +347,8 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         return;
     }
     if (empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
-    $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='/static/web/css/bootstrap.min.css'><link rel='stylesheet' href='/static/web/css/admin.css'></head><base target='_self'><body><script>";
-    $htmlfoot  = "</script></body></html>";
+    $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='/static/web/css/bootstrap.min.css'><link rel='stylesheet' href='/static/web/css/admin.css'></head><base target='_self'><body>";
+    $htmlfoot  = "</body></html>";
     $litime = ($limittime == 0 ? 1000 : $limittime);
     $func = '';
     if ($gourl == '-1') {
@@ -362,23 +362,23 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         if (preg_match('/close::/', $gourl)) {
             $tgobj = trim(preg_replace('/close::/', '', $gourl));
             $gourl = 'javascript:;';
-            $func .= "window.parent.document.getElementById('{$tgobj}').style.display='none';\r\n";
+            $func .= "<script>window.parent.document.getElementById('{$tgobj}').style.display='none';</script>";
         }
-        $func .= "var pgo=0;function JumpUrl(){if (pgo==0) {location='$gourl'; pgo=1;}}";
+        $func .= "<script>var pgo=0;function JumpUrl(){if (pgo==0) {location='$gourl'; pgo=1;}}</script>";
         $rmsg = $func;
-        $rmsg .= "document.write(\"<div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div>\");";
-        $rmsg .= "document.write(\"<div class='tips-body'>\");";
-        $rmsg .= "document.write(\"".str_replace("\"", "“", $msg)."\");";
-        $rmsg .= "document.write(\"";
+        $rmsg .= "<div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div>";
+        $rmsg .= "<div class='tips-body'>";
+        $rmsg .= "".str_replace("\"", "“", $msg)."";
+        $rmsg .= "";
         if ($onlymsg == 0) {
             if ($gourl != 'javascript:;' && $gourl != '') {
-                $rmsg .= "<div class='text-center mt-3'><a href='{$gourl}' class='btn btn-success btn-sm'>点击反应</a></div>\");";
-                $rmsg .= "setTimeout('JumpUrl()', $litime);";
+                $rmsg .= "<div class='text-center mt-3'><a href='{$gourl}' class='btn btn-success btn-sm'>点击反应</a></div>";
+                $rmsg .= "<script>setTimeout('JumpUrl()', $litime);</script>";
             } else {
-                $rmsg .= "</div>\");";
+                $rmsg .= "</div>";
             }
         } else {
-            $rmsg .= "</div></div>\");";
+            $rmsg .= "</div></div>";
         }
         $msg  = $htmlhead.$rmsg.$htmlfoot;
     }
