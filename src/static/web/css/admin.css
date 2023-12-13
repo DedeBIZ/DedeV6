@@ -81,13 +81,13 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .pubdlg{background:var(--white);border:1px solid var(--gray-300);z-index:8888}
 .pubdlg .title{padding:0 0.5rem;height:30px;line-height:30px;color:var(--gray-dark);background:var(--bg);border-bottom:1px solid var(--gray-300)}
 .fullpagediv{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--bg);opacity:0.6;z-index:1999}
-.quicksel{margin-left:10px;margin-top:10px;width:680px;height:420px;overflow-y:auto;z-index:10005}
-.quickselitem{display:block;line-height:30px}
-.quickselitem .topcat{margin-bottom:1rem;padding:0 10px;background:var(--light);clear:both}
+.quicksel{padding:0.5rem;height:350px;overflow-y:auto;z-index:10005}
+.quickselitem{line-height:30px}
+.quickselitem .topcat{margin-bottom:1rem;padding:0 10px;background:var(--light)}
 .quickselitem .soncat{margin-bottom:1rem;padding:0 10px}
-.quickselitem .list{display:inline-block;padding-left:10px}
+.quickselitem .list{display:inline-block;padding-right:0.25rem}
 .quickselfoot{padding:0.5rem;border-top:1px solid var(--gray-300)}
-.mysource,.mywriter{width:300px;background:var(--white);border:1px solid var(--gray-300);z-index:10001}
+.mysource,.mywriter{width:500px;background:var(--white);border:1px solid var(--gray-300);z-index:10001}
 .atlas{float:left;margin-right:10px;margin-bottom:10px;width:220px;height:auto;background:var(--bg);text-align:center;border-radius:0.5rem}
 .atlas-head{height:120px}
 .atlas-head img{margin:0;max-width:220px;max-height:120px;border-radius:0.5rem 0.5rem 0 0!important}
@@ -122,7 +122,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 #file_list li .tools .remove{cursor:pointer}
 #file_list li .tools .remove:after{font-family:'FontAwesome';font-size:18px;color:var(--danger);content:'\f1f8'}
 #selColor{padding:0.22rem;width:45px}
-#edsta{display:none;padding:0.5rem;position:absolute;top:100px;left:200px;width:450px;height:auto;background:var(--bg);border:1px solid var(--gray-300)}
+#edsta{display:none;padding:0.5rem;position:absolute;top:100px;left:200px;width:500px;height:auto;background:var(--bg);border:1px solid var(--gray-300)}
 .browsehappy{padding:1rem 30px;color:var(--orange);background:var(--yellow)}
 .no-wrap{white-space:nowrap}
 .modal-title{font-size:16px}
