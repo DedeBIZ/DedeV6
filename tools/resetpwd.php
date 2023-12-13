@@ -1,6 +1,6 @@
 <?php
 /**
- * DedeBIZ密码修改工具，改完即删，别留着过年，老铁们～
+ * DedeBIZ后台账号密码修改工具，改完即删，别留着过年，老铁们～
  * 
  * @version        $id:resetpwd.php tianya $
  * @package        DedeBIZ.Tools
@@ -23,12 +23,11 @@ function ToolAlert($content, $colors = array('#cfe2ff', '#b6d4fe', '#084298'))
     return str_replace(array('~color~', '~background~', '~border~', '~content~'), array($color, $background, $border, $content), TOOLS_ALERT_TPL);
 }
 if (!file_exists(dirname(__FILE__) . '/system/common.inc.php')) {
-    echo ToolAlert("请将当前文件放置到DedeBIZ根目录下，通过`http://网站域名/dedebiz_repwd.php`可以访问");
+    echo ToolAlert("请把当前文件放置到DedeBIZ根目录下，通过`http://网站域名/dedebiz_repwd.php`进行操作");
     exit;
 }
 require_once dirname(__FILE__) . '/system/common.inc.php';
 require_once(DEDEINC.'/libraries/oxwindow.class.php');
-
 $dopost = isset($dopost)? $dopost : '';
 $adminname = isset($adminname)? HtmlReplace($adminname, -1) : '';
 $newpwd = isset($newpwd)? $newpwd : '';
@@ -64,16 +63,16 @@ if ($dopost === 'change') {
     $dsql->ExecuteNoneQuery($query);
     $query = "UPDATE `#@__member` SET $pwdm WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("管理员密码成功修改为<code>{$newpwd}</code>，请务必删除当前文件！", 'javascript:;');
+    ShowMsg("管理员密码成功修改为<code>{$newpwd}</code>，请务必删除当前文件", 'javascript:;');
     exit;
 }
-$wintitle = "DedeBIZ修改密码工具";
-$wecome_info = "DedeBIZ修改密码工具 V" . DEDEBIZ_REPWD_VER;
+$wintitle = "DedeBIZ后台账号密码修改工具";
+$wecome_info = "DedeBIZ后台账号密码修改工具 V" . DEDEBIZ_REPWD_VER;
 $win = new OxWindow();
 $win->Init(basename(__FILE__), 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'change');
 $win->AddHidden('token', $_SESSION['token']);
-$win->AddTitle("<div class='alert alert-info mb-0'>本工具为站点管理员忘记后台登录账号信息使用，如需技术服务或者商业工具请<a href='https://www.dedebiz.com/service' target='_blank'>联系官方</a></div>");
+$win->AddTitle("<div class='alert alert-info mb-0'>需要技术服务或商业工具，请<a href='https://www.dedebiz.com/service' target='_blank'>联系官方</a></div>");
 $win->AddMsgItem('
 <tr>
     <td width="260">管理员账号：</td>
