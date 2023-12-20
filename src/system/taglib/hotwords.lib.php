@@ -25,7 +25,7 @@ function lib_hotwords(&$ctag, &$refObj)
     $dsql->Execute('hw');
     $hotword = '';
     while ($row = $dsql->GetArray('hw')) {
-        $hotword .= " <a href='".$cfg_phpurl."/search.php?keyword=".urlencode($row['keyword'])."'>".$row['keyword']."</a>";
+        $hotword .= "<a href='".$cfg_phpurl."/search.php?keyword=".urlencode($row['keyword'])."'>".$row['keyword']."</a> ";
     }
     return $hotword;
 }
