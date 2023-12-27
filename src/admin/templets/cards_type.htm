@@ -31,17 +31,17 @@
 				?>
 				<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
 				<tr align="center">
-					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" style="width:90%"></td>
-					<td><input type="text" name="num_<?php echo $k?>" value="<?php echo $row->num?>" id="num_<?php echo $k?>" style="width:80%"></td>
-					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" style="width:80%">（元）</td>
+					<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" class="w-100" id="pname_<?php echo $k?>"></td>
+					<td><input type="text" name="num_<?php echo $k?>" value="<?php echo $row->num?>" class="w-100" id="num_<?php echo $k?>"></td>
+					<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" class="w-75" id="money_<?php echo $k?>">（元）</td>
 					<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</td>
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k?>">
 				<tr align="center">
-					<td><input type="text" name="pname_new" id="pname_new" style="width:90%"></td>
-					<td><input type="text" name="num_new" id="num_new" style="width:80%" value="100"></td>
-					<td><input type="text" name="money_new" id="money_new" style="width:80%" value="30">（元）</td>
+					<td><input type="text" name="pname_new" class="w-100" id="pname_new"></td>
+					<td><input type="text" name="num_new" class="w-100" id="num_new" value="100"></td>
+					<td><input type="text" name="money_new" class="w-75" id="money_new" value="30">（元）</td>
 					<td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</td>
 				</tr>
 				<tr>
