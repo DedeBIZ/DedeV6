@@ -53,7 +53,7 @@ $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;
 $tagsDir = str_replace("{cmspath}", "", $cfg_tags_dir);
 MkdirAll($cfg_basedir.$tagsDir, $cfg_dir_purview);
 if (is_array($tag) && count($tag) > 0) {
-    $dlist = new TagList($tag['id'], 'taglist.htm');
+    $dlist = new TagList($tag['id'], 'tag_list.htm');
     $dlist->CountRecord();
     $dlist->SetTagsDir($tagsdir);
     $ntotalpage = $dlist->TotalPage;
