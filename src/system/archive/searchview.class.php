@@ -694,7 +694,7 @@ class SearchView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>$j</a></li>";
+                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j' class='page-link'>$j</a></li>";
             }
         }
 		$plist = '';

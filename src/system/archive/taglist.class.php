@@ -418,14 +418,14 @@ class TagList
         $purl .= "?/".urlencode($this->Tag);
         //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."/$prepagenum/'>上页</a></li>";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."/1/'>首页</a></li>";
+            $prepage .= "<li class='page-item'><a href='".$purl."/$prepagenum/' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$purl."/1/' class='page-link'>首页</a></li>";
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."/$nextpagenum/'>下页</a></li>";
-            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."/$totalpage/'>末页</a></li>";
+            $nextpage .= "<li class='page-item'><a href='".$purl."/$nextpagenum/' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$purl."/$totalpage/' class='page-link'>末页</a></li>";
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
@@ -448,7 +448,7 @@ class TagList
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."/$j/'>$j</a></li>";
+                $listdd .= "<li class='page-item'><a href='".$purl."/$j/' class='page-link'>$j</a></li>";
             }
         }
         $plist = '';
