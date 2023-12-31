@@ -1,6 +1,6 @@
 <?php
 /**
- * 统计程序
+ * 流量统计
  *
  * @version        $id:statistics.php$
  * @package        DedeBIZ.Site

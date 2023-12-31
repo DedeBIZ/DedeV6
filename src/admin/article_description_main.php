@@ -31,7 +31,7 @@ if ($dojob == '') {
     //获取自动摘要
     if ($dojob == 'des') {
         if (empty($totalnum)) {
-            $addquery  = "";
+            $addquery  = '';
             if ($sid != 0) {
                 $addquery  .= " AND id>='$sid' ";
             }
@@ -43,7 +43,7 @@ if ($dojob == '') {
             $totalnum = $row['dd'];
         }
         if ($totalnum > 0) {
-            $addquery  = "";
+            $addquery  = '';
             if ($sid != 0) {
                 $addquery  .= " AND `#@__archives`.id>='$sid' ";
             }
@@ -82,7 +82,7 @@ if ($dojob == '') {
             $tjsta = "<div class='progress mb-3'><div class='progress-bar progress-bar-striped bg-success' role='progressbar' aria-valuenow='$dvlen%' aria-valuemin='0' aria-valuemax='100' style='width:$dvlen%'>$dvlen%</div></div>";  
             $tjsta .= "完成更新文档总数$tjlen%";
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd={$startdd}&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
-            ShowMsg($tjsta, $nurl, 0, 500);
+            ShowMsg($tjsta, $nurl);
             exit();
         } else {
             ShowMsg('完成所有任务', 'javascript:;');
@@ -92,7 +92,7 @@ if ($dojob == '') {
     //更新自动分页
     if ($dojob == 'page') {
         require_once(DEDEADMIN."/inc/inc_archives_functions.php");
-        $addquery  = "";
+        $addquery  = '';
         if ($sid != 0) {
             $addquery  .= " and aid>='$sid' ";
         }
@@ -111,7 +111,7 @@ if ($dojob == '') {
         } else if (($totalnum - $startdd) > 0) {
             $limitSql = " LIMIT $startdd,".($totalnum - $startdd);
         } else {
-            $limitSql = "";
+            $limitSql = '';
         }
         $tjnum = $startdd;
         if ($limitSql != "") {
@@ -143,7 +143,7 @@ if ($dojob == '') {
         $tjsta .= "完成更新文档总数$tjlen%";
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
-            ShowMsg($tjsta, $nurl, 0, 500);
+            ShowMsg($tjsta, $nurl);
             exit();
         } else {
             ShowMsg('完成所有任务', 'javascript:;');

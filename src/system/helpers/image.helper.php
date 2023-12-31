@@ -2,7 +2,7 @@
 if (!defined('DEDEINC')) exit ('dedebiz');
 require_once DEDEINC."/libraries/imageresize.class.php";
 /**
- * 图像处理相关函数
+ * 图像处理助手
  *
  * @version        $id:image.func.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
@@ -11,8 +11,7 @@ require_once DEDEINC."/libraries/imageresize.class.php";
  * @link           https://www.dedebiz.com
  */
 /**
- *  缩图片自动生成函数，来源支持bmp、gif、jpg、png
- *  但生成的小图只用jpg或png格式
+ *  缩图片自动生成函数，来源支持bmp、gif、jpg、png但生成的小图只用jpg或png格式
  *
  * @access    public
  * @param     string  $srcFile  图片路径
@@ -24,7 +23,7 @@ require_once DEDEINC."/libraries/imageresize.class.php";
 if (!function_exists('ImageResize')) {
     function ImageResize($srcFile, $toW, $toH, $toFile = "")
     {
-        try{
+        try {
             $image = new ImageResize($srcFile);
             $image->resizeToBestFit($toW, $toH);
             $image->save($toFile);
@@ -98,7 +97,7 @@ if (!function_exists('WaterImg')) {
         }
         $TRUEMarkimg = DEDEDATA.'/mark/'.$photo_markimg;
         if (!file_exists($TRUEMarkimg) || empty($photo_markimg)) {
-            $TRUEMarkimg = "";
+            $TRUEMarkimg = '';
         }
         if ($photo_waterpos == 0) {
             $photo_waterpos = rand(1, 9);
@@ -137,7 +136,7 @@ if (!function_exists('WaterImg')) {
 if (!function_exists('ImageResizeNew')) {
     function ImageResizeNew($srcFile, $toW, $toH, $toFile = '', $issave = TRUE)
     {
-        try{
+        try {
             $image = new ImageResize($srcFile);
             $image->resizeToBestFit($toW, $toH);
             if ($issave) {
@@ -151,3 +150,4 @@ if (!function_exists('ImageResizeNew')) {
         }
     }
 }
+?>

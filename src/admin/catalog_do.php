@@ -63,7 +63,7 @@ else if ($dopost == "listArchives") {
         $row = $dsql->GetOne("SELECT typename,id,mancon FROM `#@__channeltype` WHERE id='$channelid'");
         $gurl = $row["mancon"];
         $channelid = $row["id"];
-        $typename = "";
+        $typename = '';
         $channelname = $row["typename"];
     }
     if (empty($gurl)) $gurl = 'content_list.php';
@@ -98,7 +98,7 @@ else if ($dopost == "upRank") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET sortrank='$sortrank' WHERE id='$cid'");
     }
     UpDateCatCache();
-    ShowMsg("完成操作，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目排序", "catalog_main.php");
     exit();
 }
 //检查权限许可
@@ -114,7 +114,7 @@ else if ($dopost == "upRankAll") {
         }
     }
     UpDateCatCache();
-    ShowMsg("完成操作，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目排序", "catalog_main.php");
     exit();
 }
 //更新栏目缓存
@@ -139,7 +139,7 @@ else if ($dopost == "upcatcache") {
             $doarray[$tb]  = 1;
         }
     }
-    ShowMsg("完成更新，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目缓存", "catalog_main.php");
     exit();
 }
 //获得子类的文档
@@ -156,7 +156,7 @@ else if ($dopost == "GetSunListsMenu") {
     PutCookie('lastCid', $cid, 3600 * 24, "/");
     $tu = new TypeUnit();
     $tu->dsql = $dsql;
-    echo "<table width='100%'>\r\n";
+    echo "<table>\r\n";
     $tu->LogicListAllSunType($cid, "　");
     echo "</table>\r\n";
     $tu->Close();
@@ -182,7 +182,7 @@ else if ($dopost == 'unitCatalog') {
         $wintitle = "合并指定栏目";
         $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 合并栏目";
         $win = new OxWindow();
-        $win->Init('catalog_do.php', 'js/blank.js', 'POST');
+        $win->Init('catalog_do.php', '/static/web/js/admin.blank.js', 'POST');
         $win->AddHidden('dopost', 'unitCatalog');
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
@@ -231,7 +231,7 @@ else if ($dopost == 'moveCatalog') {
         $wintitle = "移动指定栏目";
         $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 移动栏目";
         $win = new OxWindow();
-        $win->Init('catalog_do.php', 'js/blank.js', 'POST');
+        $win->Init('catalog_do.php', '/static/web/js/admin.blank.js', 'POST');
         $win->AddHidden('dopost', 'moveCatalog');
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);

@@ -13,15 +13,15 @@ if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
 if ($fmdo == 'sendMail') {
     if (!CheckEmail($cfg_ml->fields['email'])) {
-        ShowMsg('您的邮箱格式有错误', 'index.php');
+        ShowMsg('邮箱格式有错误', 'index.php');
         exit();
     }
     if ($cfg_ml->fields['spacesta'] != -10) {
-        ShowMsg('您的帐号不在邮件验证状态，本操作无效', 'index.php');
+        ShowMsg('帐号不在邮件验证状态，本操作无效', 'index.php');
         exit();
     }
     $userhash = md5($cfg_cookie_encode.'--'.$cfg_ml->fields['mid'].'--'.$cfg_ml->fields['email']);
-    $url = $cfg_basehost.(empty($cfg_cmspath) ? '/' : $cfg_cmspath)."/user/index_do.php?fmdo=checkMail&mid={$cfg_ml->fields['mid']}&userhash={$userhash}&do=1";
+    $url = $cfg_basehost.$cfg_memberurl."/index_do.php?fmdo=checkMail&mid={$cfg_ml->fields['mid']}&userhash={$userhash}&do=1";
     $url = preg_replace("#http:\/\/#i", '', $url);
     $proto = IsSSL()? "https://" : "http://";
     $url = $proto.preg_replace("#\/\/#i", '/', $url);
@@ -44,22 +44,22 @@ if ($fmdo == 'sendMail') {
             @mail($cfg_ml->fields['email'], $mailtitle, $mailbody, $headers);
         }
     }
-    ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收', 'index.php');
+    ShowMsg('成功发送邮件，请稍后登录邮箱进行接收', 'index.php');
     exit();
 } else if ($fmdo == 'checkMail') {
     $mid = intval($mid);
     if (empty($mid)) {
-        ShowMsg('您的效验串不合法', 'index.php');
+        ShowMsg('效验串不合法', 'index.php');
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}' ");
     $needUserhash = md5($cfg_cookie_encode.'--'.$mid.'--'.$row['email']);
     if ($needUserhash != $userhash) {
-        ShowMsg('您的效验串不合法', 'index.php');
+        ShowMsg('效验串不合法', 'index.php');
         exit();
     }
     if ($row['spacesta'] != -10) {
-        ShowMsg('操作无效，您的帐号不在邮件验证状态', 'index.php');
+        ShowMsg('操作无效，帐号不在邮件验证状态', 'index.php');
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET spacesta=0 WHERE mid='{$mid}' ");
@@ -159,7 +159,7 @@ if ($fmdo == 'sendMail') {
         }
         if ($pwd == '') {
             ResetVdValue();
-            ShowMsg('密码不能为空', 'index.php', 0, 2000);
+            ShowMsg('密码不能为空', 'index.php');
             exit();
         }
         $isNeed = $cfg_ml->isNeedCheckCode($userid);
@@ -175,24 +175,24 @@ if ($fmdo == 'sendMail') {
         $rs = $cfg_ml->CheckUser($userid, $pwd);
         if ($rs == 0) {
             ResetVdValue();
-            ShowMsg('您的账号错误', 'index.php', 0, 2000);
+            ShowMsg('账号输入错误', 'index.php');
             exit();
         } else if ($rs == -1) {
             ResetVdValue();
-            ShowMsg('您的密码错误', 'index.php', 0, 2000);
+            ShowMsg('密码输入错误', 'index.php');
             exit();
         } else if ($rs == -2) {
             ResetVdValue();
-            ShowMsg('管理员帐号不允许从前台登录', 'index.php', 0, 2000);
+            ShowMsg('管理员帐号不允许从前台登录', 'index.php');
             exit();
         } else {
             //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
-                ShowMsg('正在登录会员中心，请稍等', 'index.php', 0, 2000);
+                ShowMsg('正在登录会员中心，请稍等', 'index.php');
             } else {
                 $gourl = str_replace('^', '&', $gourl);
-                ShowMsg('正在前往指定页面，请稍等', $gourl, 0, 2000);
+                ShowMsg('正在前往指定页面，请稍等', $gourl);
             }
             exit();
         }
@@ -200,7 +200,7 @@ if ($fmdo == 'sendMail') {
     //退出登录
     else if ($dopost == "exit") {
         $cfg_ml->ExitCookie();
-        ShowMsg('已退出会员中心', 'index.php', 0, 2000);
+        ShowMsg('已退出会员中心', 'index.php');
         exit();
     }
 } else if ($fmdo == 'purl'){
@@ -215,7 +215,7 @@ if ($fmdo == 'sendMail') {
                 <h5>链接邀请</h5>
                 <a href='javascript:Copylink()' class='btn btn-outline-primary btn-sm'>复制链接</a>
             </div>
-            <span class='d-block'>复制链接分享给其他人，对方通过链接注册后双方均可获得{$cfg_userad_adds}积分<span id='text' style='font-size:0'>{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}</span>
+            <span class='d-block'>复制链接分享给其他人，对方通过链接注册后双方均可获得{$cfg_userad_adds}积分<span id='text' style='font-size:0'>{$cfg_basehost}{$cfg_memberurl}/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}</span>
         </div>
     </div>
     <div class='media mb-3'>
@@ -237,7 +237,7 @@ if ($fmdo == 'sendMail') {
             height : 200,
             correctLevel : 3
         });
-        qrcode.makeCode('{$cfg_basehost}/user/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}');
+        qrcode.makeCode('{$cfg_basehost}{$cfg_memberurl}/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}');
     </script>
     <script>
         function Copylink() {

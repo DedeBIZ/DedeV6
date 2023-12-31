@@ -247,7 +247,7 @@ class SgListView
         }
         //创建封面模板文件
         if ($this->TypeLink->TypeInfos['isdefault'] == -1) {
-            return '../apps/list.php?tid='.$this->TypeLink->TypeInfos['id'];
+            return '/apps/list.php?tid='.$this->TypeLink->TypeInfos['id'];
         }
         //单独页面
         else if ($this->TypeLink->TypeInfos['ispart'] > 0) {
@@ -431,11 +431,11 @@ class SgListView
                 $row['sitepath']
             );
             if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                $row['litpic'] = '/static/web/img/thumbnail.jpg';
             }
-            if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+            /*if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                 $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
-            }
+            }*/
             $row['picname'] = $row['litpic'];
             $row['pubdate'] = $row['senddate'];
             $row['stime'] = GetDateMK($row['pubdate']);
@@ -742,7 +742,7 @@ class SgListView
         $GLOBALS['autoindex'] = 0;
         for ($i = 0; $i < $row; $i++) {
             if ($col > 1) {
-                $artlist .= "<div>\r\n";
+                $artlist .= "<div>";
             }
             for ($j = 0; $j < $col; $j++) {
                 if ($row = $this->dsql->GetArray("al")) {
@@ -780,7 +780,7 @@ class SgListView
                         $row['sitepath']
                     );
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                        $row['litpic'] = '/static/web/img/thumbnail.jpg';
                     }
                     if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
@@ -826,7 +826,7 @@ class SgListView
             }//Loop Col
             if ($col > 1) {
                 $i += $col - 1;
-                $artlist .= "</div>\r\n";
+                $artlist .= "</div>";
             }
         }//Loop Line
         $t3 = ExecTime();
@@ -843,8 +843,8 @@ class SgListView
      */
     function GetPageListST($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -861,24 +861,24 @@ class SgListView
         $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $tnamerule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
         $tnamerule = preg_replace("/^(.*)\//", '', $tnamerule);
-        //获得上一页和首页的链接
+        //获得上页和首页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".str_replace("{page}", $prepagenum, $tnamerule)."' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".str_replace("{page}", 1, $tnamerule)."' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item'>首页</li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
-        //下一页和未页的链接
+        //下页和未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".str_replace("{page}", $nextpagenum, $tnamerule)."' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".str_replace("{page}", $totalpage, $tnamerule)."' class='page-link'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
         //option链接
-        $optionlist = "";
+        $optionlist = '';
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -894,12 +894,12 @@ class SgListView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><a class='page-link'>$j</a></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".str_replace("{page}", $j, $tnamerule)."' class='page-link'>$j</a></li>";
             }
         }
-        $plist = "";
+        $plist = '';
         if (preg_match('/info/i', $listitem)) {
             $plist .= $maininfo.' ';
         }
@@ -959,27 +959,27 @@ class SgListView
             $purl = $nowurls[0];
         }
         $geturl = "&TotalResult=".$this->TotalResult."&nativeplace=$nativeplace&infotype=$infotype&keyword=".urlencode($keyword)."&";
-        $hidenform = "<input type='hidden' name='tid' value='".$this->TypeID."' />\r\n";
-        $hidenform = "<input type='hidden' name='nativeplace' value='$nativeplace' />\r\n";
-        $hidenform = "<input type='hidden' name='infotype' value='$infotype' />\r\n";
-        $hidenform = "<input type='hidden' name='keyword' value='$keyword' />\r\n";
-        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."' />\r\n";
+        $hidenform = "<input type='hidden' name='tid' value='".$this->TypeID."' />";
+        $hidenform = "<input type='hidden' name='nativeplace' value='$nativeplace' />";
+        $hidenform = "<input type='hidden' name='infotype' value='$infotype' />";
+        $hidenform = "<input type='hidden' name='keyword' value='$keyword' />";
+        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."' />";
         $purl .= "?tid=".$this->TypeID."&";
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum{$geturl}'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1{$geturl}'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum{$geturl}' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1{$geturl}' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item disabled'><a class='page-link'>首页</a></li>\r\n";
+            $indexpage = "<li class='page-item disabled'><span class='page-link'>首页</span></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum{$geturl}'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage{$geturl}'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum{$geturl}' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$purl."PageNo=$totalpage{$geturl}' class='page-link'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item disabled'><a class='page-link'>末页</a></li>";
+            $endpage = "<li class='page-item disabled'><span class='page-link'>末页</span></li>";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -995,9 +995,9 @@ class SgListView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><a class='page-link'>$j</a></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j{$geturl}'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j{$geturl}' class='page-link'>$j</a></li>";
             }
         }
         $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;

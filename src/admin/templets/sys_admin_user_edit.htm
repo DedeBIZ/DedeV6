@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改管理员</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form name="form1" action="sys_admin_user_edit.php" method="post">
@@ -14,9 +14,9 @@
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="id" value="<?php echo $row['id']?>">
 			<input type="hidden" name="olduserid" value="<?php echo $row['userid']?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">修改管理员</td>
+					<td colspan="2">修改管理员</td>
 				</tr>
 				<tr>
 					<td width="260">账号：</td>
@@ -33,7 +33,7 @@
 					<td>密码：</td>
 					<td>
 						<input type="text" name="pwd" id="pwd" class="admin-input-sm">
-						<span>（留空则不修改，使用[0-9a-zA-Z_@!.-]范围以内字符）</span>
+						<span>（留空则不修改，请使用数字0-9小写a-z大写A-Z符号_@!.-）</span>
 					</td>
 				</tr>
 				<tr>
@@ -68,7 +68,7 @@
 				</tr>
 				<tr>
 					<td>邮箱：</td>
-					<td><input type="text" name="email" id="email" value="<?php echo $row['email']?>" class="admin-input-sm" pattern="[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}"></td>
+					<td><input type="text" name="email" id="email" autocomplete="off" value="<?php echo $row['email']?>" class="admin-input-sm"></td>
 				</tr>
 				<tr>
 					<td>验证安全码：</td>
@@ -79,9 +79,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
+					<td colspan="2" align="center">
+						<button type="submit" name="submit" class="btn btn-success btn-sm">保存</button>
+						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='sys_admin_user.php';">返回</button>
 					</td>
 				</tr>
 			</table>

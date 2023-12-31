@@ -2,19 +2,19 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>文件扫描工具</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/webajax.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
+		<table class="table shadow-sm my-3">
 			<tr>
-				<td bgcolor="#f5f5f5">文件扫描工具</td>
+				<td>文件扫描工具</td>
 			</tr>
 			<tr>
 				<td>
@@ -22,7 +22,7 @@
 					<div class="alert alert-info mb-0">
 						<ul>
 							<li>检测结果：结果仅供参考，请务必查看源码后才删除非法文件</li>
-							<li>安全建议：1、有条件的会员把data、system、theme修改为不可对外浏览，static、a目录设置为不允许执行脚本，其它目录禁止写入，系统更安全；2、本检测程以开发模式为标准，如果您的网站目录包含其它系统，此检测程序会产生错误判断；3、检测程序会跳过对模板缓存目录的检测，为了安全起见，检测完成后建议清空模板缓存</li>
+							<li>安全建议：1、有条件的会员把data、system、theme修改为不可对外浏览，static、a目录设置为不允许执行脚本，其它目录禁止写入，系统更安全；2、本检测程以开发模式为标准，如果网站目录包含其它系统，此检测程序会产生错误判断；3、检测程序会跳过对模板缓存目录的检测，为了安全起见，检测完成后建议清空模板缓存</li>
 						</ul>
 					</div>
 				</td>
@@ -34,7 +34,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="center" bgcolor="#e9ecef">
+				<td align="center">
 					<button type="button" name="bt1" class="btn btn-success btn-sm" onclick="LoadCtTest();">开始检测</button>
 					<button type="button" name="bt2" class="btn btn-outline-success btn-sm" onclick="LoadCtClear();">清空模板缓存</button>
 				</td>

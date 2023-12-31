@@ -2,60 +2,61 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改会员</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
 			<input type="hidden" name="dopost" value="edituser">
 			<input type="hidden" name="id" value="<?php echo $id?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> - 修改会员</td>
+					<td colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> - 修改会员</td>
 				</tr>
 				<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">该会员关连网站管理员，修改不当会导致无法登录</div></td></tr>';?>
 				<tr>
-					<td width="260">头像/账号：</td>
-					<td>
-						<span class="mr-1"><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo "".$row['userid']."";?></span>
-						<span class="btn btn-outline-success btn-sm"><?php echo GetMemberTypeName($row['rank']);?></span>
-						<span class="btn btn-outline-warning btn-sm"><?php echo GetHonor($row['scores']);?></span>
+					<td colspan="2" align="center">
+						<?php if ($row['face']!='') {echo "<p><img src='{$row['face']}' class='user-img-md'></p>";};echo "<p>".$row['userid']."</p>";?>
+						<p class="m-0">
+							<span class="btn btn-outline-success btn-sm"><?php echo GetMemberTypeName($row['rank']);?></span>
+							<span class="btn btn-outline-warning btn-sm"><?php echo GetHonor($row['scores']);?></span>
+						</p>
 					</td>
 				</tr>
 				<tr>
-					<td>昵称：</td>
+					<td width="260">昵称：</td>
 					<td><input type="text" name="uname" id="uname" class="admin-input-sm" value="<?php echo $row['uname']?>"></td>
 				</tr>
 				<tr>
 					<td>密码：</td>
 					<td>
 						<input type="text" name="pwd" id="pwd" class="admin-input-sm">
-						<span>（留空则不修改，使用[0-9a-zA-Z_@!.-]范围以内字符）</span>
+						<span>（留空则不修改，请使用数字0-9小写a-z大写A-Z符号_@!.-）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>邮箱：</td>
-					<td><input type="text" name="email" id="email" class="admin-input-sm" value="<?php echo $row['email']?>" pattern="[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}"></td>
+					<td><input type="text" name="email" id="email" autocomplete="off" class="admin-input-sm" value="<?php echo $row['email']?>"></td>
 				</tr>
 				<tr>
 					<td>性别：</td>
 					<td>
-						<label><input type="radio" name="sex" value="男" <?php if ($row['sex']=="男" ) echo" checked='checked'" ;?>> 男</label>
-						<label><input type="radio" name="sex" value="女" <?php if ($row['sex']=="女" ) echo" checked='checked'" ;?>> 女</label>
-						<label><input type="radio" name="sex" value="" <?php if ($row['sex']=="" ) echo" checked='checked'" ;?>> 保密</label>
+						<label><input type="radio" name="sex" value="男" <?php if ($row['sex']=='男') echo 'checked';?>> 男</label>
+						<label><input type="radio" name="sex" value="女" <?php if ($row['sex']=='女') echo 'checked';?>> 女</label>
+						<label><input type="radio" name="sex" <?php if ($row['sex']=='') echo 'checked';?>> 保密</label>
 					</td>
 				</tr>
 				<tr>
 					<td>钱包积分：</td>
 					<td>
-						<span class="mr-1">金币：<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>"></span>
-						<span class="mr-1">积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>"></span>
+						<span>金币：<input type="text" name="money" id="money" class="admin-input-xs" value="<?php echo $row['money'];?>"></span>
+						<span>积分：<input type="text" name="scores" id="scores" class="admin-input-xs" value="<?php echo $row['scores'];?>"></span>
 						<span>余额：<input type="text" name="user_money" id="user_money" class="admin-input-xs" value="<?php echo $row['user_money'];?>"></span>
 					</td>
 				</tr>
@@ -146,28 +147,28 @@
 				<tr>
 					<td>注册时间/地址：</td>
 					<td>
-						<span class="mr-1"><?php echo GetDateTimeMk($row['jointime'])?></span>
+						<span><?php echo GetDateTimeMk($row['jointime'])?></span>
 						<span><?php echo $row['joinip']?></span>
 					</td>
 				</tr>
 				<tr>
 					<td>最近时间/地址：</td>
 					<td>
-						<span class="mr-1"><?php echo GetDateTimeMk($row['logintime'])?></span>
+						<span><?php echo GetDateTimeMk($row['logintime'])?></span>
 						<span><?php echo $row['loginip']?></span>
 					</td>
 				</tr>
 				<tr>
 					<td>操作：</td>
 					<td>
-						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>&jumpurl=../user/edit_baseinfo.php" target="_blank" class="btn btn-success btn-sm">修改资料</a>
+						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>&jumpurl=<?php echo $cfg_memberurl;?>/edit_baseinfo.php" target="_blank" class="btn btn-success btn-sm">修改资料</a>
 						<a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid'];?>" target="_blank" class="btn btn-success btn-sm">会员面板</a>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
+					<td colspan="2" align="center">
+						<button type="submit" name="submit" class="btn btn-success btn-sm">保存</button>
+						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='member_main.php';">返回</button>
 					</td>
 				</tr>
 			</table>

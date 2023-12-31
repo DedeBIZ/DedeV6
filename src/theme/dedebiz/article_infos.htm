@@ -2,44 +2,41 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
-			<div class="row">
-				<div class="col-md-12">	
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb mb-0">
-							<li class="breadcrumb-item">当前位置</li>
-							{dede:field name='position'/}
-						</ol>
-					</nav>
-				</div>
-			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb mb-0">
+					<li class="breadcrumb-item">当前位置</li>
+					{dede:field name='position'/}
+				</ol>
+			</nav>
 		</div>
 		<main class="container py-3">
 			<div class="row">
 				<div class="col-md-9">
 					<article class="article-main bg-white shadow-sm rounded p-3">
-						<h2>{dede:field.title/}</h2>
-						<div class="article-meta">
-							<a href="{dede:field.userurl/}" target="_blank"><span><img src="{dede:field.face/}" class="user-img-xs mr-1">{dede:field.uname/}</span></a>
+						<div class="title">
+							<h1>{dede:field.title/}</h1>
+						</div>
+						<div class="meta py-3">
+							<a href="{dede:field.userurl/}"><span><img src="{dede:field.face/}" class="user-img-xs mr-1">{dede:field.uname/}</span></a>
 							<span><i class="fa fa-calendar mr-1"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
 							<span><i class="fa fa-globe mr-1"></i>{dede:field.source/}</span>
-							<span><i class="fa fa-eye mr-1"></i><script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}&cid={dede:field name='channel'/}"></script>次</span>
+							<span><i class="fa fa-user mr-1"></i>{dede:field.writer/}</span>
+							<span><i class="fa fa-eye mr-1"></i><script src="{dede:global.cfg_phpurl/}/count.php?view=yes&aid={dede:field.id/}&mid={dede:field name='mid'/}"></script>次</span>
 						</div>
-						<div class="py-3">{dede:field name='image'/}</div>
-						<div class="py-3">
+						<div class="img py-3">{dede:field name='image'/}</div>
+						<div class="info py-3">
 							<p>所属区域：{dede:field.nativeplace/}</p>
 							<p>信息类型：{dede:field.infotype/}</p>
 							<p>发布时间：{dede:field.pubdate function="MyDate('Y-m-d H:i:s',@me)"/}</p>
@@ -49,10 +46,12 @@
 							<p>邮箱：{dede:field.email/}</p>
 							<p>地址：{dede:field.address/}</p>
 						</div>
-						<div class="py-3">{dede:field.body/}</div>
-						<div class="py-3">责任编辑：{dede:adminname/}</div>
-						<div class="clearfix"></div>
-						<div class="row">
+						<div class="body py-3">{dede:field.body/}</div>
+						<div class="edit py-3">责任编辑：{dede:adminname/}</div>
+						<nav class="column-page py-3">
+							<ul class="pagination justify-content-center">{dede:pagebreak/}</ul>
+						</nav>
+						<div class="page py-3 row">
 							<div class="col-md-4 prenext">
 								<div class="pagination-previous mb-3">{dede:prenext get='pre'/}</div>
 								<div class="pagination-next">{dede:prenext get='next'/}</div>
@@ -60,9 +59,9 @@
 							<div class="col-md-8">
 								<div class="row actbox">
 									<ul>
-										<li><i class="fa fa-star-o mr-2"></i><a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
+										<li><i class="fa fa-star-o mr-2"></i><a href="{dede:global.cfg_phpurl/}/stow.php?aid={dede:field.id/}">收藏</a></li>
 										<li><i class="fa fa-bug mr-2"></i><a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a></li>
-										<li><i class="fa fa-thumbs-o-up mr-2"></i><a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
+										<li><i class="fa fa-thumbs-o-up mr-2"></i><a href="{dede:global.cfg_phpurl/}/recommend.php?aid={dede:field.id/}">推荐</a></li>
 										<li><i class="fa fa-print mr-2"></i><a href="javascript:;" onclick="window.print();">打印</a></li>
 									</ul>
 								</div>
@@ -74,12 +73,12 @@
 				</div>
 				<aside class="col-md-3">
 					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
-					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
-					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_menu.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_hot.htm'/}</div>
 				</aside>
 			</div>
 		</main>
-		<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
+		<script>const PHPURL = '{dede:global.cfg_phpurl/}';</script>
 		{dede:include filename='foot.htm'/}
 		<script>
 			//获取顶踩数据
@@ -112,7 +111,7 @@
 							if (j == 19 && !hasid) break;
 						}
 					}
-					if (hasid) { ShowMsg("您已经顶过该帖，请不要重复顶帖 "); return; }
+					if (hasid) { ShowMsg("您已经顶过该帖，请不要重复顶帖"); return; }
 					else saveid += ',' + aid;
 					SetCookie('diggid', saveid, 1);
 				}
@@ -136,23 +135,23 @@
 				let feedback = {
 					action: "send",
 					comtype: "comments",
-					aid: "{dede:field name='id'/}",
+					aid: "{dede:field.id/}",
 					msg: $("#iptMsg").val(),
 					username: $("#iptUsername").val(),
 					validate: $("#iptValidate").val(),
 					notuser: $("#iptAny").is(":checked") ? "1" : "",
 				};
-				$.post("{dede:field name='phpurl'/}/feedback.php", feedback, function (data) {
+				$.post("{dede:global.cfg_phpurl/}/feedback.php", feedback, function (data) {
 					let result = JSON.parse(data);
 					if (result.code === 200) {
 						ShowAlert("#feedback-alert", result.msg, "success");
 						$("#iptMsg").val("");
 						$("#iptValidate").val("");
 						($("#iptUsername").attr("disabled") !== "disabled") && $("#iptUsername").val("");
-						$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+						$("#validateimg").attr("src", '{dede:global.cfg_phpurl/}/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
 					} else {
 						ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
-						$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+						$("#validateimg").attr("src", '{dede:global.cfg_phpurl/}/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
 					}
 				});
 			}
@@ -163,10 +162,10 @@
 					action : "send",
 					comtype : "reply",
 					fid : fid,
-					aid : "{dede:field name='id'/}",
+					aid : "{dede:field.id/}",
 					msg : content,
 				}
-				$.post("{dede:field name='phpurl'/}/feedback.php", reply, function (data) {
+				$.post("{dede:global.cfg_phpurl/}/feedback.php", reply, function (data) {
 					let result = JSON.parse(data);
 					if (result.code === 200) {
 						ShowAlert(`._feedback_reply[for="${fid}"]`, result.msg, "success");
@@ -184,10 +183,10 @@
 						<button type="button" class="btn btn-success btn-send" onclick='SendReplyFeedback(${fid})'>评论</button>
 					</div>
 				</div>`;
-				$.get("{dede:global.cfg_cmsurl/}/user/api.php?format=json", function(result) {
+				$.get("{dede:global.cfg_memberurl/}/api.php?format=json", function(result) {
 					if (result.code !== 200) {
 						$(`._feedback_reply`).html("");
-						ShowAlert(`._feedback_reply[for="${fid}"]`, '回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/user/login.php">点击登录</a>后再来回复', 'warning', 5000);
+						ShowAlert(`._feedback_reply[for="${fid}"]`, '回复需要登录会员中心，您可以<a href="{dede:global.cfg_memberurl/}/login.php">点击登录</a>后再来回复', 'warning', 3000);
 					} else {
 						$(`._feedback_reply`).html("");
 						$(`._feedback_reply[for="${fid}"]`).html(replyPannel);
@@ -198,8 +197,8 @@
 			//加载回复评论
 			function LoadReplyFeedbacks(fid) {
 				$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner"></i>');
-				$.get("{dede:field name='phpurl'/}/feedback.php", {
-					"aid" : "{dede:field name='id'/}",
+				$.get("{dede:global.cfg_phpurl/}/feedback.php", {
+					"aid" : "{dede:field.id/}",
 					"fid" : fid,
 				}, function (data) {
 					let result = JSON.parse(data);
@@ -244,7 +243,7 @@
 					good : g,
 					fid : fid,
 				}
-				$.post("{dede:field name='phpurl'/}/feedback.php", good, function (data) {
+				$.post("{dede:global.cfg_phpurl/}/feedback.php", good, function (data) {
 					let result = JSON.parse(data);
 					$(`#feedbackGood${fid}`).html(result.data);
 				})

@@ -2,17 +2,17 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>添加投票</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="../static/web/js/moment.min.js"></script>
-		<script src="../static/web/js/daterangepicker.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/daterangepicker.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/moment.min.js"></script>
+		<script src="/static/web/js/daterangepicker.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 		<script>
 			var i = 1;
 			function AddItem() {
@@ -32,14 +32,14 @@
 		</script>
 	</head>
 	<body>
-		<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
+		<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="isarc" value="<?php echo $isarc;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href='vote_main.php'>投票管理</a> - 添加投票</td>
-				</tr>		
+					<td colspan="2"><a href='vote_main.php'>投票管理</a> - 添加投票</td>
+				</tr>
 				<tr>
 					<td width="260">投票名称：</td>
 					<td><input type="text" name="votename" id="votename" class="admin-input-lg"></td>
@@ -56,27 +56,27 @@
 					<td>是否允许游客投票：</td>
 					<td>
 						<label><input type="radio" name="isallow" value="0"> 是</label>
-						<label><input type="radio" name="isallow" value="1" checked="checked"> 否</label>
+						<label><input type="radio" name="isallow" value="1" checked> 否</label>
 					</td>
 				</tr>
 				<tr>
 					<td>是否允许查看投票：</td>
 					<td>
 						<label><input type="radio" name="view" value="0"> 是</label>
-						<label><input type="radio" name="view" value="1" checked="checked"> 否</label>
+						<label><input type="radio" name="view" value="1" checked> 否</label>
 					</td>
 				</tr>
 				<tr>
 					<td>投票时间间隔：</td>
 					<td>
-						<input type="text" name="spec" value="" class="admin-input-lg">
+						<input type="text" name="spec" class="admin-input-lg">
 						<span>（N天后可再次投票，0表示此ip地址只能投一次）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>是否多选：</td>
 					<td>
-						<label><input type="radio" name="ismore" value="0" checked="checked"> 单选</label>
+						<label><input type="radio" name="ismore" value="0" checked> 单选</label>
 						<label><input type="radio" name="ismore" value="1"> 多选</label>
 					</td>
 				</tr>
@@ -90,20 +90,20 @@
 				<tr>
 					<td></td>
 					<td>
-						<div id="voteitem" class="py-2">选项1：<input type="text" name="voteitem1" id="voteitem1" class="admin-input-lg"></div>
+						<div id="voteitem">选项1：<input type="text" name="voteitem1" id="voteitem1" class="admin-input-lg"></div>
 					</td>
 				</tr>
 				<tr>
 					<td>是否启用：</td>
 					<td>
-						<label><input type="radio" name="isenable" value="0" checked="checked"> 是</label>
+						<label><input type="radio" name="isenable" value="0" checked> 是</label>
 						<label><input type="radio" name="isenable" value="1"> 否</label>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="Submit" class="btn btn-outline-success btn-sm" onclick="history.back()">返回</button>
+					<td colspan="2" align="center">
+						<button type="submit" name="submit" class="btn btn-success btn-sm">保存</button>
+						<button type="button" name="submit" class="btn btn-outline-success btn-sm" onclick="history.back();">返回</button>
 					</td>
 				</tr>
 			</table>

@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../../system/common.inc.php");
 require_once(DEDEINC."/userlogin.class.php");
-//获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行修改这个选项
+//获得当前脚本名称，如果系统被禁用了$_SERVER变量，请自行修改这个选项
 $dedeNowurl   =  '';
 $s_scriptName = '';
 $isUrlOpen = @ini_get('allow_url_fopen');
@@ -25,7 +25,7 @@ if ($cuserLogin->getUserID() <= 0) {
         exit();
     }
     $adminDirHand = HtmlReplace($adminDirHand, 1);
-    $gurl = "../../{$adminDirHand}/login.php?gotopage=".urlencode($dedeNowurl);
+    $gurl = "/../{$adminDirHand}/login.php?gotopage=".urlencode($dedeNowurl);
     echo "<script>location='$gurl';</script>";
     exit();
 }

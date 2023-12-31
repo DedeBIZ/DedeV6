@@ -1,7 +1,6 @@
 <div class="comment pt-3">
-	<h4>发表评论</h4>
 	<div id="feedback-alert"></div>
-	<div class="content pb-3"><textarea id="iptMsg" name="msg" class="form-control" placeholder="请输入..."></textarea></div>
+	<div class="content pb-3"><textarea id="iptMsg" name="msg" class="form-control" placeholder="请输入评论"></textarea></div>
 	<div class="post pb-3">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
 			<div class="form-group">
@@ -14,7 +13,7 @@
 						<label for="iptValidate">验证码</label>
 						<div class="input-group">
 							<input type="text" class="form-control text-uppercase" id="iptValidate">
-							<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+							<img src="{dede:global.cfg_phpurl/}/vdimgck.php" id="validateimg" onclick="this.src='{dede:global.cfg_phpurl/}/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 						</div>
 					</div>
 				</div>
@@ -26,25 +25,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="dcmp-submit"><button type="button" class="btn btn-success btn-md" onclick="SendFeedback()">发表评论</button></div>
+		<div class="dcmp-submit"><button type="button" class="btn btn-success" onclick="SendFeedback();">发表评论</button></div>
 	</div>
 	<div class="feedbacks">
 		{dede:feedback}
 		<div class="media pt-3">
-			<a href="[field:userurl/]" target="_blank"><img src="[field:face/]" class="face mr-3"></a>
+			<a href="[field:userurl/]"><img src="[field:face/]" class="face mr-3"></a>
 			<div class="media-body">
 				<div class="feedback-infos pb-3">
 					<div class="feedback-basic">
-						<a href="[field:userurl/]" target="_blank"><span>[field:username function="(@me=='guest' ? '游客' : @me)"/]</span></a>
+						<a href="[field:userurl/]"><span>[field:username function="(@me=='guest' ? '游客' : @me)"/]</span></a>
 						<span>[field:dtime function="MyDate('Y-m-d',@me)"/]</span>
 					</div>
 					<div class="feedback-action pb-3">
-						<a href="javascript:LoadReplyFeedbacks([field:id/])" class="btn btn-outline-success btn-sm">[field:replycount/]条回复</a>
-						<a href="javascript:GoodFeedback([field:id/], [field:good/])" class="btn btn-outline-success btn-sm">
+						<a href="javascript:LoadReplyFeedbacks([field:id/]);" class="btn btn-outline-success btn-sm">[field:replycount/]条回复</a>
+						<a href="javascript:GoodFeedback([field:id/], [field:good/]);" class="btn btn-outline-success btn-sm">
 							<i class="fa fa-thumbs-up"></i>
 							<i id="feedbackGood[field:id/]">[field:good/]</i>
 						</a>
-						<a href="javascript:ReplyFeedback([field:id/])" class="btn btn-success btn-sm">回复</a>
+						<a href="javascript:ReplyFeedback([field:id/]);" class="btn btn-success btn-sm">回复</a>
 					</div>
 				</div>
 				<div class="feedback-content pb-3">[field:msg/]</div>

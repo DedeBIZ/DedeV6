@@ -2,32 +2,32 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>图片水印设置</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form action="sys_info_mark.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="action" value="save">
 			<input type="hidden" name="get_photo_markimg" value="<?php echo $photo_markimg?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">图片水印设置</td>
+					<td colspan="2">图片水印设置</td>
 				</tr>
 				<tr>
 					<td width="260">图片上传是否使用图片水印功能：</td>
 					<td>
-						<label><input type="radio" value="1" name="get_photo_markup" <?php if ($photo_markup=='1') echo ' checked';?>> 开启</label>
-						<label><input type="radio" value="0" name="get_photo_markup" <?php if ($photo_markup=='0') echo ' checked';?>> 关闭</label>
+						<label><input type="radio" value="1" name="get_photo_markup" <?php if ($photo_markup=='1') echo 'checked';?>> 开启</label>
+						<label><input type="radio" value="0" name="get_photo_markup" <?php if ($photo_markup=='0') echo 'checked';?>> 关闭</label>
 					</td>
 				</tr>
 				<tr>
 					<td>图片采集是否使用图片水印功能：</td>
 					<td>
-						<label><input type="radio" value="1" name="get_photo_markdown" <?php if ($photo_markdown=='1') echo ' checked';?>> 开启</label>
-						<label><input type="radio" value="0" name="get_photo_markdown" <?php if ($photo_markdown=='0') echo ' checked';?>> 关闭</label>
+						<label><input type="radio" value="1" name="get_photo_markdown" <?php if ($photo_markdown=='1') echo 'checked';?>> 开启</label>
+						<label><input type="radio" value="0" name="get_photo_markdown" <?php if ($photo_markdown=='0') echo 'checked';?>> 关闭</label>
 					</td>
 				</tr>
 				<tr>
@@ -49,7 +49,7 @@
 				<tr>
 					<td>水印图片文件名：</td>
 					<td>
-						<img src="../data/mark/<?php echo $photo_markimg;?>">
+						<img src="/data/mark/<?php echo $photo_markimg;?>">
 						<span>（如果不存在，则使用文字水印）</span>
 					</td>
 				</tr>
@@ -91,49 +91,49 @@
 				</tr>
 				<tr>
 					<td>水印位置：</td>
-					<td class="table-borderless p-0">
-						<table width="300">
+					<td>
+						<table class="w-50 table-borderless">
 							<tr>
 								<td width="33%">
-									<label><input type="radio" name="get_photo_waterpos" value="1" <?php if ($photo_waterpos==1) echo ' checked';?>> 顶部居左</label>
+									<label><input type="radio" name="get_photo_waterpos" value="1" <?php if ($photo_waterpos==1) echo 'checked';?>> 顶部居左</label>
 								</td>
 								<td width="33%">
-									<label><input type="radio" name="get_photo_waterpos" value="2" <?php if ($photo_waterpos==2) echo ' checked';?>> 顶部居中</label>
+									<label><input type="radio" name="get_photo_waterpos" value="2" <?php if ($photo_waterpos==2) echo 'checked';?>> 顶部居中</label>
 								</td>
 								<td>
-									<label><input type="radio" name="get_photo_waterpos" value="3" <?php if ($photo_waterpos==3) echo ' checked';?>> 顶部居右</label>
+									<label><input type="radio" name="get_photo_waterpos" value="3" <?php if ($photo_waterpos==3) echo 'checked';?>> 顶部居右</label>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<label><input type="radio" name="get_photo_waterpos" value="4" <?php if ($photo_waterpos==4) echo ' checked';?>> 左边居中</label>
+									<label><input type="radio" name="get_photo_waterpos" value="4" <?php if ($photo_waterpos==4) echo 'checked';?>> 左边居中</label>
 								</td>
 								<td>
-									<label><input type="radio" name="get_photo_waterpos" value="5" <?php if ($photo_waterpos==5) echo ' checked';?>> 图片中心</label>
+									<label><input type="radio" name="get_photo_waterpos" value="5" <?php if ($photo_waterpos==5) echo 'checked';?>> 图片中心</label>
 								</td>
 								<td>
-									<label><input type="radio" name="get_photo_waterpos" value="6" <?php if ($photo_waterpos==6) echo ' checked';?>> 右边居中</label>
+									<label><input type="radio" name="get_photo_waterpos" value="6" <?php if ($photo_waterpos==6) echo 'checked';?>> 右边居中</label>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<label><input type="radio" name="get_photo_waterpos" value="7" <?php if ($photo_waterpos==7) echo ' checked';?>> 底部居左</label>
+									<label><input type="radio" name="get_photo_waterpos" value="7" <?php if ($photo_waterpos==7) echo 'checked';?>> 底部居左</label>
 								</td>
 								<td>
-									<label><input type="radio" name="get_photo_waterpos" value="8" <?php if ($photo_waterpos==8) echo ' checked';?>> 底部居中</label>
+									<label><input type="radio" name="get_photo_waterpos" value="8" <?php if ($photo_waterpos==8) echo 'checked';?>> 底部居中</label>
 								</td>
 								<td>
-									<label><input type="radio" name="get_photo_waterpos" value="9" <?php if ($photo_waterpos==9) echo ' checked';?>> 底部居右</label>
+									<label><input type="radio" name="get_photo_waterpos" value="9" <?php if ($photo_waterpos==9) echo 'checked';?>> 底部居右</label>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="3"><label><input type="radio" name="get_photo_waterpos" value="0" <?php if ($photo_waterpos==0) echo ' checked';?>> 随机位置</label></td>
+								<td colspan="3"><label><input type="radio" name="get_photo_waterpos" value="0" <?php if ($photo_waterpos==0) echo 'checked';?>> 随机位置</label></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
 					</td>

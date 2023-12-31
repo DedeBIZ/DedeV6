@@ -2,47 +2,38 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>{dede:field.title/}-{dede:pagelist listsize='0' listitem='pageno' function='html2text(@me)' runphp='yes'}if (@me>1) @me='第'.trim(@me).'页-';else @me='';{/dede:pagelist}{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
-			<div class="row">
-				<div class="col-md-12">	
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb mb-0">
-							<li class="breadcrumb-item">当前位置</li>
-							{dede:field name='position'/}
-						</ol>
-					</nav>
-				</div>
-			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb mb-0">
+					<li class="breadcrumb-item">当前位置</li>
+					{dede:field name='position'/}
+				</ol>
+			</nav>
 		</div>
 		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-9 m-pb-2">
-					<div class="row">{dede:list pagesize='10'}
-						<div class="col-md-6 mb-3">
+				<div class="col-md-9 pb-m-3">
+					<div class="row">{dede:list pagesize='10' titlelen='230'}
+						<div class="col-md-6">
 							<article class="list-article rounded mb-3">
-								<div class="list-article-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
-								<div class="list-article-body bg-white shadow-sm p-3">
+								<div class="list-article-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
+								<div class="list-article-body list-article-radius bg-white shadow-sm p-3">
 									<h2 class="mb-3"><a href="[field:arcurl/]">[field:title/]</a></h2>
-									<div class="mb-3">
-										<a href="[field:userurl/]" target="_blank"><span class="mr-3"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</span></a>
-										<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
-									</div>
-									<p class="mb-3">[field:description function="cn_substr(@me,120)"/]...</p>
-									<div>
-										<span class="mr-2">下载次数：<script src="/apps/disdls.php?aid=[field:id/]"></script></span>
+									<p>[field:description function="cn_substr(@me,130)"/]...</p>
+									<div class="meta">
+										<span class="author mr-3"><a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a></span>
+										<span class="date"><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 									</div>
 								</div>
 							</article>
@@ -52,8 +43,8 @@
 				</div>
 				<aside class="col-md-3">
 					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
-					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
-					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_menu.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_hot.htm'/}</div>
 				</aside>
 			</div>
 		</main>

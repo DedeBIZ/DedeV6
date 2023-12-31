@@ -87,7 +87,7 @@ function GetFieldMake($dtype, $fieldname, $dfvalue, $mxlen)
 function GetAddFieldList(&$dtp,&$oksetting)
 {
     $oklist = '';
-    $dtp->SetNameSpace("field","<",">");
+    $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($oksetting);
     if (is_array($dtp->CTags)) {
         foreach($dtp->CTags as $tagid=>$ctag)

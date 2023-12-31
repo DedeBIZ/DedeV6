@@ -59,7 +59,7 @@ function QuickEdit(aid, e, obj) {
 	ChangeFullDiv('show');
 }
 function getCheckboxItem() {
-	var allSel = "";
+	var allSel = '';
 	if (document.form2.arcID.value) return document.form2.arcID.value;
 	for (i = 0;i<document.form2.arcID.length;i++) {
 		if (document.form2.arcID[i].checked) {

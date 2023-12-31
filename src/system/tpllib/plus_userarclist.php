@@ -34,10 +34,8 @@ function plus_userarclist(&$atts, &$refObj, &$fields)
         $row['infos'] = cn_substr($row['description'],$infolen);
         $row['arcurl'] = GetFileUrl($row['id'],$row['typeid'],$row['senddate'],$row['title'],$row['ismake'],
         $row['arcrank'],$row['namerule'],$row['typedir'],$row['money'],$row['filename'],$row['moresite'],$row['siteurl'],$row['sitepath']);
-
         $row['typeurl'] = GetTypeUrl($row['typeid'],$row['typedir'],$row['isdefault'],$row['defaultname'],$row['ispart'],
         $row['namerule2'],$row['moresite'],$row['siteurl'],$row['sitepath']);
-
         if($row['litpic']=='') $row['litpic'] = '/images/defaultpic.gif';
         if(!preg_match("#^(http|https):\/\/#i", $row['litpic']))
         {

@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>文档重复检测</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form name="form2" method="POST" action="article_test_same.php">
@@ -15,12 +15,12 @@
 			<input type="hidden" name="pagesize" value="<?php echo $pagesize;?>">
 			<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 			<input type="hidden" name="maintable" value="<?php echo $maintable;?>">
-			<input type="hidden" name="titles" value="">
-			<table class="table maintable my-3">
+			<input type="hidden" name="titles">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="3">重复文档列表</td>
+					<td colspan="3">重复文档列表</td>
 				</tr>
-				<tr bgcolor="#e9ecef" align="center">
+				<tr align="center">
 					<td width="10%">选择</td>
 					<td width="10%">重复数量</td>
 					<td width="80%">文档标题</td>
@@ -42,10 +42,10 @@
 				</tr>
 				<?php }?>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="3">
-						<input type="button" name="bt1" onclick="selAll()" value="全选" class="btn btn-success btn-sm">
-						<input type="button" name="bt2" onclick="noSelAll()" value="反选" class="btn btn-success btn-sm">
-						<input type="button" name="bt3" onclick="delArc()" value="删除" class="btn btn-success btn-sm">
+					<td colspan="3">
+						<input type="button" name="bt1" onclick="selAll();" value="全选" class="btn btn-success btn-sm">
+						<input type="button" name="bt2" onclick="noSelAll();" value="反选" class="btn btn-success btn-sm">
+						<input type="button" name="bt3" onclick="delArc();" value="删除" class="btn btn-success btn-sm">
 					</td>
 				</tr>
 			</table>
@@ -53,7 +53,7 @@
 		<script>
 			//获得选中文件的文件名
 			function getCheckboxItem() {
-				var allSel = "";
+				var allSel = '';
 				if (document.form2.arcTitle.value) return document.form2.arcTitle.value;
 				for (i = 0; i < document.form2.arcTitle.length; i++) {
 					if (document.form2.arcTitle[i].checked) {

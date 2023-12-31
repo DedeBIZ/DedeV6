@@ -2,22 +2,22 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改自定义页面</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form action="templets_one_edit.php" method="post" name="form1" onSubmit="return checkSubmit()">
+		<form action="templets_one_edit.php" method="post" name="form1" onSubmit="return checkSubmit();">
 			<input type="hidden" name="dopost" value="saveedit">
 			<input type="hidden" name="aid" value="<?php echo $aid?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="templets_one.php">文档单页管理</a> - 修改自定义页面</td>
+					<td colspan="2"><a href="templets_one.php">文档单页管理</a> - 修改自定义页面</td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -67,15 +67,15 @@
 				<tr>
 					<td>是否编译文档：</td>
 					<td>
-						<?php if (!DEDEBIZ_SAFE_MODE) {?> <label><input type="radio" name="ismake" value="1" <?php if ($row['ismake']==1) echo "checked";?>> 含模板标记，要编译</label> <?php }?>
-						<label><input type="radio" name="ismake" value="0" <?php if ($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo "checked";?>> 不含模板标记，不需要编译</label>
+						<?php if (!DEDEBIZ_SAFE_MODE) {?> <label><input type="radio" name="ismake" value="1" <?php if ($row['ismake']==1) echo 'checked';?>> 含模板标记，要编译</label> <?php }?>
+						<label><input type="radio" name="ismake" value="0" <?php if ($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo 'checked';?>> 不含模板标记，不需要编译</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2"><?php GetEditor("body",$row['body'],"400","Default","print","false");?></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset();">重置</button>
 					</td>
@@ -84,7 +84,7 @@
 		</form>
 		<script>
 			function checkSubmit() {
-				if (document.form1.title.value == '') {
+				if (document.form1.title.value == "") {
 					ShowMsg("页面名称不能为空");
 					document.form1.title.focus();
 					return false;

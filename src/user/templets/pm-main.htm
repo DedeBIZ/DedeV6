@@ -2,14 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>消息管理-会员中心-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
 			<div class="row">
@@ -20,21 +19,20 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg p-0">
-							<ul class="navbar-nav mr-auto">
-								<li class="nav-item"><a class="nav-link<?php if ($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a></li>
-								<li class="nav-item"><a class="nav-link<?php if ($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a></li>
-								<li class="nav-item"><a class="nav-link<?php if ($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a></li>
-							</ul>
-							<span class="navbar-text"><button type="button" class="btn btn-danger btn-sm" onclick="DoSubmit('<?php echo $folder;?>')">删除</button></span>
-						</nav>
+						<ul class="nav mb-3">
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=<?php echo $folder;?>" class="nav-link <?php if ($state === 0) echo 'active';?>">全部</a></li>
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=<?php echo $folder;?>&state=1" class="nav-link <?php if ($state === 1) echo 'active';?>">已阅读</a></li>
+							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=<?php echo $folder;?>&state=-1" class="nav-link <?php if ($state === -1) echo 'active';?>">未阅读</a></li>
+							<li class="nav-item"><a href="javascript:;" class="nav-link" onclick="DoSubmit('<?php echo $folder;?>')">删除</a></li>
+						</ul>
 						<div class="table-responsive">
-							<form action="pm.php" method="post" name="form1">
+							<form action="<?php echo $cfg_memberurl;?>/pm.php" method="post" name="form1">
 								<input type="hidden" name="dopost" value="del">
 								<div id="feedback-alert"></div>
 								<table class="table">
 									<thead>
 										<tr>
+											<th width="8%">#</th>
 											<th width="8%">选择</th>
 											<th>标题</th>
 											<th width="16%">
@@ -50,6 +48,7 @@
 									<tbody>
 										{dede:datalist}
 										<tr>
+											<td>{dede:field.id/}</td>
 											<td><input type="checkbox" name="deleteid" value="{dede:field.id/}"></td>
 											<td>
 												<?php
@@ -86,7 +85,7 @@
 			</div>
 		</main>
 		<?php obtaintheme('foot.htm');?>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/style.js"></script>
+		<script src="/static/web/js/style.js"></script>
 		<script>
 			//阅读消息
 			function ReadMsg(id) {
@@ -122,7 +121,7 @@
 					return false;
 				}
 				DedeConfirm("您确定要删除这些消息吗").then((v)=>{
-					$.get("pm.php?dopost=remove&ids=" + selid + "&folder=" + myfolder,function (data) {
+					$.get("pm.php?dopost=remove&ids=" + selid + "&folder=" + myfolder,function(data) {
 						let result = JSON.parse(data);
 						if (result.code === 200) {
 							location.reload();

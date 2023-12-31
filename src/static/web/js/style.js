@@ -52,7 +52,7 @@ function DedeConfirm(content = "", title = "确认提示") {
 			backdrop: 'static',
 			show: true
 		});
-		$("#DedeModal" + modalID).on('hidden.bs.modal', function (e) {
+		$("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
 			$("#DedeModal" + modalID).remove();
 		})
 	})
@@ -60,7 +60,7 @@ function DedeConfirm(content = "", title = "确认提示") {
 //函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
-	if (typeof content == "undefined") content = "";
+	if (typeof content == "undefined") content = '';
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-success btn-sm" onClick="CloseModal(\'DedeModal${modalID}\')">确定</button>`;
 	var noClose = false;
@@ -76,14 +76,14 @@ function ShowMsg(content, ...args) {
 			noClose = true;
 		}
 	}
-	String.prototype.replaceAll = function (s1, s2) {
+	String.prototype.replaceAll = function(s1, s2) {
 		return this.replace(new RegExp(s1, "gm"), s2);
 	}
 	footer = footer.replaceAll("~modalID~", modalID);
 	content = content.replaceAll("~modalID~", modalID);
 	var modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
 	if (!noClose) {
-		modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>`;
+		modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>`;
 	}
 	modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
 	$("body").append(modal)
@@ -91,7 +91,7 @@ function ShowMsg(content, ...args) {
 		backdrop: 'static',
 		show: true
 	});
-	$("#DedeModal" + modalID).on('hidden.bs.modal', function (e) {
+	$("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
 		$("#DedeModal" + modalID).remove();
 	})
 	return modalID;
@@ -99,7 +99,7 @@ function ShowMsg(content, ...args) {
 //隐藏并销毁modal
 function CloseModal(modalID) {
 	$("#" + modalID).modal('hide');
-	$("#" + modalID).on('hidden.bs.modal', function (e) {
+	$("#" + modalID).on('hidden.bs.modal', function(e) {
 		if ($("#" + modalID).length > 0) {
 			$("#" + modalID).remove();
 		}
@@ -136,7 +136,7 @@ function ErrAddSaveDo(modalID) {
 	if (typeof PHPURL === "undefined") {
 		const PHPURL = "/apps";
 	}
-	$.post(PHPURL + "/erraddsave.php", parms, function (data) {
+	$.post(PHPURL + "/erraddsave.php", parms, function(data) {
 		let result = JSON.parse(data);
 		if (result.code === 200) {
 			CloseModal(modalID);

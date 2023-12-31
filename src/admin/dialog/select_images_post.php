@@ -1,6 +1,6 @@
 <?php
 /**
- * 选择图片发送
+ * 选择图片操作
  *
  * @version        $id:select_images_post.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog
@@ -44,7 +44,7 @@ if (!is_dir($cfg_basedir.$activepath."/$mdir")) {
     MkdirAll($cfg_basedir.$activepath."/$mdir", $cfg_dir_purview);
 }
 $iseditor = isset($iseditor)? intval($iseditor) : 0;
-$filename_name = $cuserLogin->getUserID().'-'.dd2char(MyDate("ymdHis", $nowtme).mt_rand(100, 999));
+$filename_name = $cuserLogin->getUserID().'-'.dd2char(MyDate("ymdHis", $nowtme).mt_rand(1000, 6000));
 $filename = $mdir.'/'.$filename_name;
 $fs = explode('.', $imgfile_name);
 $filename = $filename.'.'.$fs[count($fs) - 1];

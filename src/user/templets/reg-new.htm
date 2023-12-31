@@ -2,54 +2,49 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>会员注册-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<div class="login-from d-inline-block">
-						<div class="login-box shadow-sm rounded text-left">
-							<h2 class="text-center mb-3">会员注册</h2>
-							<form name="form2" action="reg_new.php" method="post" id="regUser">
-								<input type="hidden" name="dopost" value="regbase">
-								<input type="hidden" name="step" value="1">
-								<input type="hidden" name="mtype" value="个人">
-								<input type="hidden" name="pid" value="<?php echo $pid;?>">
-								<div class="form-group">
-									<label>账号</label>
-									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入账号" required="required">
-								</div>
-								<div class="form-group">
-									<label>密码</label>
-									<input type="password" name="userpwd" id="iptUserpwd" class="form-control" placeholder="请输入密码" required="required">
-								</div>
-								<div class="form-group">
-									<label>确认密码</label>
-									<input type="password" name="userpwdok" id="iptUserpwdok" class="form-control" placeholder="请输入确认密码" required="required">
-								</div>
-								<div class="form-group">
-									<label>验证码</label>
-									<div class="input-group">
-										<input type="text" name="vdcode" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码" required="required">
-										<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
-									</div>
-								</div>
-								<div class="form-group form-check">
-									<input type="checkbox" id="iptLicence" class="form-check-input" checked="false">
-									<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《会员注册条款》</a>和<a href="">《隐私保护条例》</a></label>
-								</div>
-								<div class="form-group"><button type="submit" class="btn btn-success btn-md btn-block">注册</button></div>
-								<div><a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btn-md btn-block">登录</a></div>
-							</form>
+			<div class="login-from">
+				<div class="login-box shadow-sm rounded">
+					<h2 class="text-center mb-3">会员注册</h2>
+					<form name="form2" action="<?php echo $cfg_memberurl;?>/reg_new.php" method="post" id="regUser">
+						<input type="hidden" name="dopost" value="regbase">
+						<input type="hidden" name="step" value="1">
+						<input type="hidden" name="mtype" value="个人">
+						<input type="hidden" name="pid" value="<?php echo $pid;?>">
+						<div class="form-group">
+							<label for="iptUserid">账号</label>
+							<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入账号" required>
 						</div>
-					</div>
+						<div class="form-group">
+							<label for="iptUserpwd">密码</label>
+							<input type="password" name="userpwd" id="iptUserpwd" class="form-control" placeholder="请输入密码" autocomplete="off" required>
+						</div>
+						<div class="form-group">
+							<label for="iptUserpwdok">确认密码</label>
+							<input type="password" name="userpwdok" id="iptUserpwdok" class="form-control" placeholder="请输入确认密码" autocomplete="off" required>
+						</div>
+						<div class="form-group">
+							<label for="iptValidate">验证码</label>
+							<div class="input-group">
+								<input type="text" name="vdcode" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码" required>
+								<img src="<?php echo $cfg_phpurl;?>/vdimgck.php" id="validateimg" onclick="this.src='<?php echo $cfg_phpurl;?>/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+							</div>
+						</div>
+						<div class="form-group form-check">
+							<input type="checkbox" id="iptLicence" class="form-check-input" checked="false">
+							<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《会员注册条款》</a>和<a href="">《隐私保护条例》</a></label>
+						</div>
+						<div class="form-group"><button type="submit" class="btn btn-success btn-block">注册</button></div>
+						<div><a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btn-block">登录</a></div>
+					</form>
 				</div>
 			</div>
 		</main>

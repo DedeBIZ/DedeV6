@@ -1,4 +1,4 @@
-<table width="100" border="0">
+<table width="100" border="0" class="mb-2">
 	<tr> 
 		<td bgcolor="#FF0000" onClick="ColorSel('#FF0000', 'color');" width="20%">&nbsp;</td>
 		<td bgcolor="#0000FF" onClick="ColorSel('#0000FF', 'color');" width="20%">&nbsp;</td>
@@ -28,5 +28,5 @@
 		<td bgcolor="#FFFF00" onClick="ColorSel('#FFFF00', 'color');">&nbsp;</td>
 	</tr>
 </table>
-<p class="my-2">自定义：<input type="color" id="selColor"></p>
-<button onclick="ColorSel(document.querySelector('#selColor').value, 'color')" class="btn btn-sm btn-success">确定</button>
+<input type="color" id="selColor">
+<button onclick="ColorSel(document.querySelector('#selColor').value, 'color');" class="btn btn-sm btn-success">确定</button>

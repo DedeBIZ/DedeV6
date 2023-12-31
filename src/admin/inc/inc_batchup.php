@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档函数相关操作
+ * 文档操作
  *
  * @version        $id:inc_batchup.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
@@ -25,7 +25,7 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
     $aid = preg_replace("#[^0-9]#i", '', $aid);
     $arctitle = $arcurl = '';
     if ($recycle == 1) $whererecycle = "AND arcrank = '-2'";
-    else $whererecycle = "";
+    else $whererecycle = '';
     //查询表信息
     $query = "SELECT ch.maintable,ch.addtable,ch.nid,ch.issystem FROM `#@__arctiny` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $row = $dsql->GetOne($query);
@@ -102,11 +102,11 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
     if (empty($arcRow['ismake'])) $arcRow['ismake'] = 1;
     if (empty($arcRow['arcrank'])) $arcRow['arcrank'] = 0;
     if (empty($arcRow['filename'])) $arcRow['filename'] = '';
-    //删除HTML
+    //删除网页
     if ($arcRow['ismake'] == -1 || $arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0 || $arcRow['money'] > 0) {
         return TRUE;
     }
-    //强制转换非多站点模式，以便统一方式获得实际HTML文件
+    //强制转换非多站点模式，以便统一方式获得实际网页文件
     $GLOBALS['cfg_multi_site'] = 'N';
     $arcurl = GetFileUrl(
         $arcRow['aid'],

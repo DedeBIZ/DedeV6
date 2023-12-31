@@ -39,16 +39,16 @@ if ($dopost != 'save') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     if (!isset($typeid2)) $typeid2 = 0;
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
     if (!isset($ddisfirst)) $ddisfirst = 0;
-    if (!isset($albums)) $albums = "";
+    if (!isset($albums)) $albums = '';
     if (!isset($delzip)) $delzip = 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     if (trim($title) == '') {
         ShowMsg("文档标题不能为空", "-1");
         exit();
@@ -121,7 +121,7 @@ if ($dopost != 'save') {
                 $ntime = time();
                 $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
                 CreateDir($savepath);
-                $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
+                $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
                 $fullUrl = $fullUrl.$ext;
                 file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
                 $info = '';
@@ -226,7 +226,7 @@ if ($dopost != 'save') {
     }
     //返回成功信息
     $msg = "<tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图片文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理图片文档</a>$backurl</td>
+        <td align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>返回文档列表</a></td>
     </tr>";
     $msg = "{$msg}".GetUpdateTest();
     $wintitle = "成功发布图片文档";

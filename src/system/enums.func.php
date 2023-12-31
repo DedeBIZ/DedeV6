@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 联动菜单
+ * 联动类型
  *
  * @version        $id:enums.func.php 2 13:19 2011-3-24 tianya $
  * @package        DedeBIZ.Libraries
@@ -138,7 +138,7 @@ function GetEnumsJs($egroup)
     foreach ($data as $key => $value) {
         ${'em_'.$egroup.'s'}[$key] = $value;
     }
-    $jsCode = "";
+    $jsCode = '';
     $jsCode .= "em_{$egroup}s=new Array();\r\n";
     foreach (${'em_'.$egroup.'s'} as $k => $v) {
         //js中3级栏目存放到第二个key中去

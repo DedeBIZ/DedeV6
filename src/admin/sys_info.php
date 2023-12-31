@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $configfile = DEDEDATA.'/config.cache.inc.php';
 //更新配置函数
 function ReWriteConfig()
@@ -99,11 +99,11 @@ else if ($dopost == 'search') {
     $keywords = isset($keywords) ? strip_tags($keywords) : '';
     $i = 1;
     $configstr = <<<EOT
-<table align="center" id="tdSearch" class="table maintable my-3">
+<table id="tdSearch" class="table shadow-sm my-3">
     <tr>
-        <td bgcolor="#f5f5f5" colspan="3">系统设置搜索</td>
+        <td colspan="3">系统设置搜索</td>
     </tr>
-    <tr bgcolor="#e9ecef" align="center">
+    <tr align="center">
         <td width="360">参数说明</td>
         <td>参数值</td>
         <td width="260">变量名</td>
@@ -124,9 +124,9 @@ EOT;
             if ($row['type'] == 'bool') {
                 $c1 = '';
                 $c2 = '';
-                $row['value'] == 'Y' ? $c1 = " checked" : $c2 = " checked";
-                echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是</label> ";
-                echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否</label> ";
+                $row['value'] == 'Y' ? $c1 = "checked" : $c2 = "checked";
+                echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
+                echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
             } else if ($row['type'] == 'bstring') {
                 echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
             } else if ($row['type'] == 'number') {
@@ -146,7 +146,7 @@ EOT;
 exit;
 }
 if ($i == 1) {
-    echo '<tr><td bgcolor="#f5f5f5" colspan="3" align="center">搜索不到参数</td></tr></table>';
+    echo '<tr><td colspan="3" align="center">搜索不到参数</td></tr></table>';
 }
 exit;
 } else if ($dopost == 'make_encode') {

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 模板主题
+ * 主题模板
  *
  * @version        $id:dedetag.class.php 10:33 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
@@ -12,12 +12,12 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 class DedeTag
 {
     var $IsReplace = FALSE; //标记是否已被替代，供解析器使用
-    var $TagName = "";      //标记名称
-    var $InnerText = "";    //标记之间的文本
+    var $TagName = '';      //标记名称
+    var $InnerText = '';    //标记之间的文本
     var $StartPos = 0;      //标记起始位置
     var $EndPos = 0;        //标记结束位置
     var $CAttribute = null;   //标记属性描述,即是class DedeAttribute
-    var $TagValue = "";     //标记的值
+    var $TagValue = '';     //标记的值
     var $TagID = 0;
     /**
      *  获取标记的名称和值
@@ -584,11 +584,11 @@ class DedeTagParse
         }
         $this->AssignSysTag();
         $nextTagEnd = 0;
-        $strok = "";
+        $strok = '';
         for ($i = 0; $i <= $this->Count; $i++) {
             if ($this->CTags[$i]->GetValue() != "") {
                 if ($this->CTags[$i]->GetValue() == '#@Delete@#') {
-                    $this->CTags[$i]->TagValue = "";
+                    $this->CTags[$i]->TagValue = '';
                 }
                 $ResultString .= substr($this->SourceString, $nextTagEnd, $this->CTags[$i]->StartPos - $nextTagEnd);
                 $ResultString .= $this->CTags[$i]->GetValue();
@@ -615,7 +615,7 @@ class DedeTagParse
         }
         $this->AssignSysTag();
         $nextTagEnd = 0;
-        $strok = "";
+        $strok = '';
         for ($i = 0; $i <= $this->Count; $i++) {
             $ResultString .= substr($this->SourceString, $nextTagEnd, $this->CTags[$i]->StartPos - $nextTagEnd);
             $ResultString .= $this->CTags[$i]->GetValue();
@@ -874,7 +874,7 @@ class DedeTagParse
 class DedeAttribute
 {
     var $Count = -1;
-    var $Items = ""; //属性元素的集合
+    var $Items = array(); //属性元素的集合
     //获得某个属性
     function GetAtt($str)
     {
@@ -912,7 +912,7 @@ class DedeAttribute
 //属性解析器
 class DedeAttributeParse
 {
-    var $sourceString = "";
+    var $sourceString = '';
     var $sourceMaxSize = 1024;
     var $cAttributes = null;
     var $charToLow = TRUE;

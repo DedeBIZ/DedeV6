@@ -160,7 +160,7 @@ class DedeCli
             $percent = intval(($thisStep / $totalSteps) * 100);
             $step    = (int)round($percent / 10);
             fwrite(STDOUT, "[\033[32m".str_repeat('#', $step).str_repeat('.', 10 - $step)."\033[0m]");
-            $addstr = "";
+            $addstr = '';
             if ($pos > 0 && $total > 0) {
                 $addstr .= " Pos:{$pos},Total:{$total}";
             }

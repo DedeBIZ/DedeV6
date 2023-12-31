@@ -2,106 +2,101 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>高级搜索-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
 	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<form name="form1" action="search.php" method="get">
-						<table class="table">
-							<tr>
-								<td width="160">网站栏目：</td>
-								<td>
-									<?php
-									$tl = new TypeLink(0);
-									$typeOptions = $tl->GetOptionArray(0,0,0);
-									echo "<select name='typeid' class='form-control'>";
-									echo "<option value='0' selected>不限栏目</option>";
-									echo $typeOptions;
-									echo "</select>";
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td>关键词：</td>
-								<td><input name="q" type="text" id="q" class="form-control"></td>
-							</tr>
-							<tr>
-								<td>发布时间：</td>
-								<td>
-									<select name="starttime" id="starttime">
-										<option value="-1" selected>不限</option>
-										<option value="7">一周以内</option>
-										<option value="30">一个月内</option>
-										<option value="90">三个月内</option>
-										<option value="180">半年以内</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>文档类型：</td>
-								<td>
-									<select name="channeltype" id="channeltype" class="form-control">
-										<option value="0" selected>不限</option>
-										<?php
-										$dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` ORDER BY id DESC");
-										$dsql->Execute();
-										while($row = $dsql->GetObject())
-										{
-											echo "<option value='".$row->id."'>".$row->typename."</option>";
-										}
-										?>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>排序方式：</td>
-								<td>
-									<select name="orderby" id="orderby" class="form-control">
-										<option value="sortrank" selected>默认</option>
-										<option value="senddate">收录时间</option>
-										<option value="pubdate">发布时间</option>
-										<option value="id">文档id</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>显示条数：</td>
-								<td><input name="pagesize" type="text" id="pagesize" value="10" size="4" class="form-control"></td>
-							</tr>
-							<tr>
-								<td>关键词模式：</td>
-								<td>
-									<label><input type="radio" name="kwtype" value="1" checked="checked"> 或</label>
-									<label><input type="radio" name="kwtype" value="0"> 与</label>
-								</td>
-							</tr>
-							<tr>
-								<td>搜索文档：</td>
-								<td>
-									<select name="searchtype" id="searchtype" class="form-control">
-										<option value="titlekeyword" selected>默认搜索</option>
-										<option value="title">仅搜索标题</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<button type="submit" class="btn btn-success btn-sm">搜索</button>
-									<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-								</td>
-							</tr>
-						</table>
-					</form>
-				</div>
-			</div>
+			<form name="form1" action="<?php echo $cfg_phpurl?>/search.php" method="get">
+				<table class="table mb-0">
+					<tr>
+						<td width="160">网站栏目：</td>
+						<td>
+							<?php
+							$tl = new TypeLink(0);
+							$typeOptions = $tl->GetOptionArray(0,0,0);
+							echo "<select name='typeid' class='form-control'>";
+							echo "<option value='0' selected>不限栏目</option>";
+							echo $typeOptions;
+							echo "</select>";
+							?>
+						</td>
+					</tr>
+					<tr>
+						<td>关键词：</td>
+						<td><input name="q" type="text" id="q" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>发布时间：</td>
+						<td>
+							<select name="starttime" id="starttime">
+								<option value="-1" selected>不限</option>
+								<option value="7">一周以内</option>
+								<option value="30">一个月内</option>
+								<option value="90">三个月内</option>
+								<option value="180">半年以内</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>文档类型：</td>
+						<td>
+							<select name="channeltype" id="channeltype" class="form-control">
+								<option value="0" selected>不限</option>
+								<?php
+								$dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` ORDER BY id DESC");
+								$dsql->Execute();
+								while($row = $dsql->GetObject())
+								{
+									echo "<option value='".$row->id."'>".$row->typename."</option>";
+								}
+								?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>排序方式：</td>
+						<td>
+							<select name="orderby" id="orderby" class="form-control">
+								<option value="sortrank" selected>默认</option>
+								<option value="senddate">收录时间</option>
+								<option value="pubdate">发布时间</option>
+								<option value="id">文档id</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>显示条数：</td>
+						<td><input name="pagesize" type="text" id="pagesize" value="10" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>关键词模式：</td>
+						<td>
+							<label><input type="radio" name="kwtype" value="1" checked> 或</label>
+							<label><input type="radio" name="kwtype" value="0"> 与</label>
+						</td>
+					</tr>
+					<tr>
+						<td>搜索文档：</td>
+						<td>
+							<select name="searchtype" id="searchtype" class="form-control">
+								<option value="titlekeyword" selected>默认搜索</option>
+								<option value="title">仅搜索标题</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<button type="submit" class="btn btn-success btn-sm">搜索</button>
+							<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+						</td>
+					</tr>
+				</table>
+			</form>
 		</main>
 		<?php obtaintheme('foot.htm');?>
 	</body>

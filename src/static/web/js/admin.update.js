@@ -107,7 +107,7 @@ $(document).ready(function() {
 				let fstr = '<ul class="list-group list-group-flush">';
 				let i = 1;
 				rs.result.Versions.forEach(ver => {
-					fstr += `<li class='list-group-item'>版本号：${ver.ver}，发布日期：${ver.r} <a href='https://www.zhelixie.com/DedeBIZ/DedeV6/commits/tag/${ver.ver}' class='btn btn-outline-success float-right' target='_blank'>更新记录</a></li>`;
+					fstr += `<li class='list-group-item'>版本号：${ver.ver}，发布日期：${ver.r} <a href='https://www.zhelixie.com/DedeBIZ/DedeV6/commits/tag/${ver.ver}' class='btn btn-outline-success btn-sm float-right' target='_blank'>更新记录</a></li>`;
 					i++;
 				});
 				fstr += '</ul>';

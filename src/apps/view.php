@@ -24,7 +24,7 @@ $needRank = $arc->Fields['arcrank'];
 require_once(DEDEINC.'/memberlogin.class.php');
 $cfg_ml = new MemberLogin();
 if ($needRank < 0 && $arc->Fields['mid'] != $cfg_ml->M_ID) {
-    ShowMsg('文档未审核，暂时无法浏览', 'javascript:;');
+    ShowMsg('文档待审核，暂时无法浏览', 'javascript:;');
     exit();
 }
 //设置了权限限制的文档
@@ -68,7 +68,7 @@ if ($needMoney > 0 || $needRank > 1) {
                             showmsg('购买失败, 请返回', -1);
                             exit;
                         }
-                        showmsg('购买成功，购买扣点不会重扣金币', $GLOBALS['cfg_cmsurl'].'/apps/view.php?aid='.$aid);
+                        showmsg('购买成功，购买扣点不会重扣金币', '/apps/view.php?aid='.$aid);
                         exit;
                     } else {
                         showmsg('购买失败，请返回', -1);

@@ -2,24 +2,24 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>文档回收站</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form name="form2">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="7">文档回收站</td>
+					<td colspan="7">文档回收站</td>
 				</tr>
-				<tr bgcolor="#e9ecef" align="center">
+				<tr align="center">
 					<td width="6%">id</td>
 					<td width="6%">选择</td>
 					<td width="26%">文档标题</td>
-					<td width="10%">更新时间</td>
 					<td width="10%">栏目</td>
+					<td width="10%">更新时间</td>
 					<td width="6%">点击</td>
 					<td>操作</td>
 				</tr>
@@ -28,25 +28,25 @@
 					<td>{dede:field.id/}</td>
 					<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
-					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 					<td>{dede:field.typename/}</td>
+					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 					<td>{dede:field.click/}</td>
 					<td>
-						<a href="javascript:moveArc({dede:field.id/})" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 还原</a>
-						<a href="javascript:delArc({dede:field.id/})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
+						<a href="javascript:moveArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 还原</a>
+						<a href="javascript:delArc({dede:field.id/});" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 					</td>
 				</tr>
 				{/dede:datalist}
 				<tr>
 					<td colspan="7">
-						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
-						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-						<a href="javascript:moveArc(0)" class="btn btn-success btn-sm">还原</a>
-						<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
+						<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+						<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
+						<a href="javascript:moveArc(0);" class="btn btn-success btn-sm">还原</a>
+						<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="7" bgcolor="#f5f5f5" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
@@ -63,7 +63,7 @@
 			}
 			//获得选中文件的文件名
 			function getCheckboxItem() {
-				var allSel = "";
+				var allSel = '';
 				if (document.form2.arcID.value) return document.form2.arcID.value;
 				for (i = 0; i < document.form2.arcID.length; i++) {
 					if (document.form2.arcID[i].checked) {
@@ -77,7 +77,7 @@
 			}
 			//获得选中其中一个的id
 			function getOneItem() {
-				var allSel = "";
+				var allSel = '';
 				if (document.form2.arcID.value) return document.form2.arcID.value;
 				for (i = 0; i < document.form2.arcID.length; i++) {
 					if (document.form2.arcID[i].checked) {

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 图像标签
+ * 图片标签
  *
  * @version        $id:img.lib.php 9:33 2010年7月8日 tianya $
  * @package        DedeBIZ.Taglib

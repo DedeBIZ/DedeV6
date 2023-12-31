@@ -37,7 +37,7 @@ function lib_jsonq(&$ctag, &$refObj)
             if (!empty($revalue)) {
                 return $revalue;
             }
-            $revalue = "";
+            $revalue = '';
             $ctp = new DedeTagParse();
             $ctp->SetNameSpace('field', '[', ']');
             $ctp->LoadSource($Innertext);
@@ -64,7 +64,7 @@ function lib_jsonq(&$ctag, &$refObj)
         $ctp->SetNameSpace('field', '[', ']');
         $ctp->LoadSource($Innertext);
         $GLOBALS['autoindex'] = 0;
-        $revalue = "";
+        $revalue = '';
         foreach ($row as $key => $value) {
             $GLOBALS['autoindex']++;
             foreach ($ctp->CTags as $tagid => $ctag) {

@@ -3,22 +3,22 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>友情链接管理</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form action="friendlink_main.php" name="form1" method="get">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5">
+					<td>
 						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" class="admin-input-lg mr-3">
-						<select name="ischeck" id="ischeck" class="admin-input-sm mr-3">
+						<select name="ischeck" id="ischeck" class="admin-input-sm">
 							<?php
 							foreach($selCheckArr as $k=>$v)
 							{
@@ -27,7 +27,7 @@
 							}
 							?>
 						</select>
-						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
 						<a href="friendlink_add.php" class="btn btn-success btn-sm">添加链接</a>
 						<a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
 						<a href="{dede:global name=' cfg_phpurl'/}/flink.php" target="_blank" class="btn btn-success btn-sm">友情链接预览</a>
@@ -37,12 +37,12 @@
 		</form>
 		<form name="form1" method="post" action="friendlink_edit.php" onSubmit="return checkSubmit();">
 			<input type="hidden" name="dopost" value="delall">
-			<input type="hidden" name="allid" value="">
-			<table align="center" class="table maintable mb-3">
+			<input type="hidden" name="allid">
+			<table class="table shadow-sm mb-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="9">友情链接管理</td>
+					<td colspan="9">友情链接管理</td>
 				</tr>
-				<tr bgcolor="#e9ecef" align="center">
+				<tr align="center">
 					<td width="6%">选择</td>
 					<td width="16%">名称</td>
 					<td width="16%">地址</td>
@@ -71,13 +71,13 @@
 				{/dede:datalist}
 				<tr>
 					<td colspan="9">
-						<a href="javascript:;" onclick="Sel('all')" class="btn btn-success btn-sm">全选</a>
-						<a href="javascript:;" onclick="Sel('none')" class="btn btn-success btn-sm">取消</a>
-						<a href="javascript:;" onclick="checkSubmit()" class="btn btn-success btn-sm">批量删除</a>
+						<a href="javascript:;" onclick="Sel('all');" class="btn btn-success btn-sm">全选</a>
+						<a href="javascript:;" onclick="Sel('none');" class="btn btn-success btn-sm">取消</a>
+						<a href="javascript:;" onclick="checkSubmit();" class="btn btn-success btn-sm">批量删除</a>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
@@ -92,11 +92,11 @@
 				var str = '';
 				for (var i = 0; i < document.getElementsByName('aids').length; i++) {
 					if (document.getElementsByName('aids')[i].checked) {
-						if (str == '') str += document.getElementsByName('aids')[i].value;
+						if (str == "") str += document.getElementsByName('aids')[i].value;
 						else str += ',' + document.getElementsByName('aids')[i].value;
 					}
 				}
-				if (str == '') {
+				if (str == "") {
 					ShowMsg('您没选择任何文档');
 					return false;
 				} else {

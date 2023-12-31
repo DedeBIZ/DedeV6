@@ -52,7 +52,7 @@ $actionSearch[0] = array(
         )
     )
 );
-$actionSearch[2] = array(
+$actionSearch[1] = array(
     'title' => '附件管理',
     'soniterm' => array(
         0  =>  array(
@@ -67,7 +67,7 @@ $actionSearch[2] = array(
         ),
     )
 );
-$actionSearch[3] = array(
+$actionSearch[2] = array(
     'title' => '文档模型',
     'soniterm' => array(
         0  => DEDEBIZ_SAFE_MODE? null : array(
@@ -90,19 +90,19 @@ $actionSearch[3] = array(
             'purview' => 'c_List',
             'linkurl' => 'freelist_main.php'
         ),
-        3  =>  array(
+        4  =>  array(
             'title' => '自定义文档属性',
             'purview' => 'sys_Att',
             'linkurl' => 'content_att.php'
         ),
-        4  =>  array(
+        5  =>  array(
             'title' => '自定义表单管理',
             'purview' => 'c_List',
             'linkurl' => 'diy_main.php'
         ),
     )
 );
-$actionSearch[4] = array(
+$actionSearch[3] = array(
     'title' => '批量维护',
     'soniterm' => array(
         0  =>  array(
@@ -115,29 +115,29 @@ $actionSearch[4] = array(
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'article_test_same.php'
         ),
-        3  =>  array(
+        2  =>  array(
             'title' => '文档关键词维护',
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_keywords_main.php'
         ),
-        4  =>  array(
+        3  =>  array(
             'title' => '搜索关键词维护',
             'purview' => 'sys_Keyword',
             'linkurl' => 'search_keywords_main.php?dopost=filemanager'
         ),
-        5  =>  array(
+        4  =>  array(
             'title' => '自动摘要分页',
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_description_main.php'
         ),
-        6  => DEDEBIZ_SAFE_MODE? null : array(
+        5  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => '数据库字段替换',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_data_replace.php'
         ),
     )
 );
-$actionSearch[5] = array(
+$actionSearch[4] = array(
     'title' => '会员管理',
     'soniterm' => array(
         0  =>  array(
@@ -162,7 +162,7 @@ $actionSearch[5] = array(
         ),
     )
 );
-$actionSearch[6] = array(
+$actionSearch[5] = array(
     'title' => '支付工具',
     'soniterm' => array(
         0  =>  array(
@@ -192,7 +192,7 @@ $actionSearch[6] = array(
         ),
     )
 );
-$actionSearch[7] = array(
+$actionSearch[6] = array(
     'title' => '更新任务',
     'soniterm' => array(
         0  =>  array(
@@ -227,7 +227,7 @@ $actionSearch[7] = array(
         ),
     )
 );
-$actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
+$actionSearch[7] = DEDEBIZ_SAFE_MODE? null : array(
     'title' => '模板管理',
     'soniterm' => array(
         0  => array(
@@ -257,7 +257,7 @@ $actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
         ),
     )
 );
-$actionSearch[9] = array(
+$actionSearch[8] = array(
     'title' => '系统设置',
     'soniterm' => array(
         0  =>  array(
@@ -280,32 +280,32 @@ $actionSearch[9] = array(
             'purview' => 'sys_Log',
             'linkurl' => 'log_list.php'
         ),
-        5  =>  array(
+        4  =>  array(
             'title' => '图片水印设置',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info_mark.php'
         ),
-        6  =>  array(
+        5  =>  array(
             'title' => '软件下载设置',
             'purview' => 'sys_SoftConfig',
             'linkurl' => 'soft_config.php'
         ),
-        7  => DEDEBIZ_SAFE_MODE? null : array(
+        6  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => '数据库备份还原',
             'purview' => 'sys_data',
             'linkurl' => 'sys_data.php'
         ),
-        8  => DEDEBIZ_SAFE_MODE? null : array(
+        7  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => 'SQL命令工具',
             'purview' => 'sys_data',
             'linkurl' => 'sys_sql_query.php'
         ),
-        9  =>  array(
+        8  =>  array(
             'title' => '文件扫描工具',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_safetest.php'
         ),
-        10  =>  array(
+        9  =>  array(
             'title' => '系统修复工具',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_repair.php'

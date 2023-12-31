@@ -2,43 +2,33 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>搜索{dede:global name='keyword' function='RemoveXSS(@me)'/}-{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12">	
-					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
-				</div>
-			</div>
+			<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
 		</div>
 		<main class="container">
 			<div class="row">
-				<div class="col-12 m-pb-2">
-					<div class="row">{dede:list pagesize='10'}
-						<div class="col-md-12 mb-3">
-							<article class="list-article mb-3">
-								<div class="list-article-body bg-white rounded shadow-sm p-3">
-									<h2 class="mb-3"><a href="[field:arcurl/]">[field:title/]</a></h2>
-									<div class="mb-3">
-										<a href="[field:userurl/]" target="_blank"><span class="mr-3"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</span></a>
-										<span><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
-									</div>
-									<p>[field:description function='cn_substr(Html2text("@me"),180)'/]...</p>
-								</div>
-							</article>
-						</div>{/dede:list}
-					</div>
+				<div class="col-12 pb-m-3">{dede:list pagesize='10' titlelen='230'}
+					<article class="list-article bg-white rounded shadow-sm mb-3 p-3">
+						<div class="list-article-body">
+							<h2 class="mb-3"><a href="[field:arcurl/]">[field:title/]</a></h2>
+							<p>[field:description function="cn_substr(@me,130)"/]...</p>
+							<div class="meta">
+								<span class="author mr-3"><a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a></span>
+								<span class="date"><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+							</div>
+						</div>
+					</article>{/dede:list}
 					<ul class="pagination">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}</ul>
 				</div>
 			</div>

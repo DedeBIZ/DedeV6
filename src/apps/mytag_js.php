@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义标签js调用
+ * 自定义标签js
  *
  * @version        $id:mytag_js.php$
  * @package        DedeBIZ.Site
@@ -18,7 +18,7 @@ if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile
     $pv = new PartView();
     $row = $pv->dsql->GetOne("SELECT * FROM `#@__mytag` WHERE aid='$aid' ");
     if (!is_array($row)) {
-        $myvalues = "<!--\r\ndocument.write('Not found input!');\r\n-->";
+        $myvalues = "<!--document.write('Not found input!');-->";
     } else {
         $tagbody = '';
         if ($row['timeset'] == 0) {
@@ -37,7 +37,7 @@ if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile
         $myvalues = str_replace("\r", "\\r", $myvalues);
         $myvalues = str_replace("\n", "\\n", $myvalues);
         $myvalues = str_replace("<?", "", $myvalues);
-        $myvalues =  "<!--\r\ndocument.write(\"{$myvalues}\");\r\n-->\r\n";
+        $myvalues =  "<!--document.write(\"{$myvalues}\");-->";
         file_put_contents($cacheFile, $myvalues);
     }
 }

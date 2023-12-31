@@ -1,6 +1,6 @@
 <?php
 /**
- * 错误提交
+ * 挑错
  *
  * @version        $id:erraddsave.php$
  * @package        DedeBIZ.Site

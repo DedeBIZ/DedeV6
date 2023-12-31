@@ -132,7 +132,7 @@ if ($dopost != 'save') {
             if (isset(${'keywords'.$i})) {
                 $keywords = str_replace("'", "", trim(${'keywords'.$i}));
             } else {
-                $keywords = "";
+                $keywords = '';
             }
             if (!empty(${'typeid'.$i})) {
                 $ttypeid = trim(${'typeid'.$i});
@@ -146,7 +146,7 @@ if ($dopost != 'save') {
             }
             $arcid = preg_replace("#[^0-9,]#", "", $arcid);
             $ids = explode(",", $arcid);
-            $okids = "";
+            $okids = '';
             if (is_array($ids)) {
                 foreach ($ids as $mid) {
                     $mid = trim($mid);
@@ -190,7 +190,7 @@ if ($dopost != 'save') {
     }
     //返回成功信息
     $msg = "<tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>管理专题</a></td>
+        <td align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>返回专题列表</a></td>
     </tr>";
     $wintitle = "成功修改专题";
     $wecome_info = "专题管理 - 修改专题";

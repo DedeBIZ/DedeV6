@@ -2,21 +2,21 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改分类模型</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-		<link rel="stylesheet" href="../static/web/css/cropper.min.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/daterangepicker.css">
+		<link rel="stylesheet" href="/static/web/css/cropper.min.css">
 		<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
-		<script src="../static/web/js/moment.min.js"></script>
-		<script src="../static/web/js/daterangepicker.js"></script>
-		<script src="../static/web/js/cropper.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/webajax.js"></script>
+		<script src="/static/web/js/moment.min.js"></script>
+		<script src="/static/web/js/daterangepicker.js"></script>
+		<script src="/static/web/js/cropper.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="archives_sg_edit.php" method="post" enctype="multipart/form-data" onSubmit="return checkSubmit();">
@@ -24,9 +24,9 @@
 			<input type="hidden" name="id" value="<?php echo $aid;?>">
 			<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate'];?>">
 			<input type="hidden" name="dopost" value="save">
-			<table width="98%" align="center" id="needset" class="admin-border my-3">
+			<table class="shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" class="admin-td">修改分类文档</td>
+					<td class="admin-td">修改分类文档</td>
 				</tr>
 				<tr>
 					<td class="admin-td">
@@ -50,9 +50,9 @@
 									while($trow = $dsql->GetObject())
 									{
 										if (preg_match("#".$trow->att."#", $addRow['flag']))
-											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked> {$trow->attname}[{$trow->att}]</label> ";
 										else
-											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
 									}
 									?>
 								</td>
@@ -65,14 +65,14 @@
 						<table>
 							<tr>
 								<td width="120">缩略图：</td>
-								<td width="630">
+								<td width="660">
 									<input type="text" name="picname" id="picname" class="admin-input-lg" value="<?php echo $addRow['litpic']?>">
-									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
-									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
-									<button type="button" name="Submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
+									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
+									<span class="btn btn-success btn-sm fileinput-button">上传<input type="file" name="files[]" id="iptAddImages"></span>
+									<button type="button" name="submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
 								</td>
-								<td><img src="<?php if ($addRow['litpic']!='') echo $addRow['litpic']; else echo '../static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
+								<td><img src="<?php if ($addRow['litpic']!='') echo $addRow['litpic']; else echo '/static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md"></td>
 							</tr>
 						</table>
 					</td>
@@ -95,12 +95,13 @@
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<a onclick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>')" title="选择主栏目" class="btn btn-success btn-sm"><i class="fa fa-search"></i></a>
+									<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>');" class="btn btn-success btn-sm">选择</a>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
+				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 				<tr>
 					<td class="admin-td">
 						<table>
@@ -118,16 +119,14 @@
 										}
 										?>
 									</select>
-									<span>（不支持静态）</span>
+									<span>（暂不支持静态）</span>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
-				<?php }?>
-				<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
 				<tr>
-					<td bgcolor="#f5f5f5" align="center" class="admin-td">
+					<td align="center" class="admin-td">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 					</td>
@@ -136,7 +135,7 @@
 		</form>
 		<script>
 			function checkSubmit() {
-				if (document.form1.title.value == '') {
+				if (document.form1.title.value == "") {
 					ShowMsg("文档标题不能为空");
 					document.form1.title.focus();
 					return false;

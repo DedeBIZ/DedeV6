@@ -2,18 +2,18 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>生成积分</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form action="cards_make.php" name="form1" target="stafrm">
 			<input type="hidden" name="dopost" value="make">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="4">生成积分</td>
+					<td colspan="4">生成积分</td>
 				</tr>
 				<tr>
 					<td width="260">积分类型：</td>
@@ -42,13 +42,13 @@
 					<td>密码类型：</td>
 					<td>
 						<label><input type="radio" name="ctype" value="1"> 纯数字</label>
-						<label><input type="radio" name="ctype" value="2" checked="checked"> 大写字母</label>
+						<label><input type="radio" name="ctype" value="2" checked> 大写字母</label>
 					</td>
 					<td>密码组数：</td>
 					<td><input name="pwdgr" type="text" id="pwdgr" class="admin-input-sm" value="3"></td>
 				</tr>
 				<tr>
-					<td colspan="4" bgcolor="#f5f5f5" align="center" align="py-2"><button type="submit" name="Submit" class="btn btn-success btn-sm">生成积分</button></td>
+					<td colspan="4" align="center" align="py-2"><button type="submit" name="submit" class="btn btn-success btn-sm">生成积分</button></td>
 				</tr>
 				<tr>
 					<td colspan="4" id="mtd">

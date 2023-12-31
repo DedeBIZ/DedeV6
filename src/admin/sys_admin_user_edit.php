@@ -17,11 +17,11 @@ if ($dopost == 'saveedit') {
     CheckCSRF();
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
-        ShowMsg('密码不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
+        ShowMsg('密码不合法，请使用数字0-9小写a-z大写A-Z符号_@!.-', '-1');
         exit();
     }
     if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
-        ShowMsg('账号不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
+        ShowMsg('账号不合法，请使用数字0-9小写a-z大写A-Z符号_@!.-', '-1');
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
@@ -47,7 +47,7 @@ if ($dopost == 'saveedit') {
     }
     $olduserid = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $olduserid);
     $userid = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userid);
-    $usql = "";
+    $usql = '';
     if ($olduserid !== $userid) {
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
@@ -72,7 +72,7 @@ if ($dopost == 'saveedit') {
     ShowMsg("成功修改一个账户", "sys_admin_user.php");
     exit();
 } else if ($dopost == 'delete') {
-    if (empty($userok)) $userok = "";
+    if (empty($userok)) $userok = '';
     if ($userok != "yes") {
         $randcode = mt_rand(10000, 99999);
         $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
@@ -80,7 +80,7 @@ if ($dopost == 'saveedit') {
         $wintitle = "删除指定管理员";
         $wecome_info = "<a href='sys_admin_user.php'>系统帐号管理</a> - 删除管理员";
         $win = new OxWindow();
-        $win->Init("sys_admin_user_edit.php", "js/blank.js", "POST");
+        $win->Init("sys_admin_user_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("userok", "yes");
         $win->AddHidden("randcode", $randcode);
@@ -104,7 +104,7 @@ if ($dopost == 'saveedit') {
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt='0' WHERE mid='$id' LIMIT 1");
         ShowMsg("成功删除一个帐户", "sys_admin_user.php");
     } else {
-        ShowMsg("不能删除id为1的创建人帐号，不能删除自己", "sys_admin_user.php", 0, 3000);
+        ShowMsg("不能删除id为1的创建人帐号，不能删除自己", "sys_admin_user.php");
     }
     exit();
 }

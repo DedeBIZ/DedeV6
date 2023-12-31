@@ -81,6 +81,6 @@ $dlist->Display();
 function GetSta($sta)
 {
     if ($sta == 1) return '';
-    else return 'checked="checked"';
+    else return 'checked';
 }
 ?>

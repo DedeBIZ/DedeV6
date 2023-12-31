@@ -1031,3 +1031,4 @@ class SplitWord
         return TRUE;
      }
 }
+?>

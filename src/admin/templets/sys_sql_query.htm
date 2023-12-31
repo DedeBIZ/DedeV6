@@ -2,19 +2,19 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>SQL命令工具</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="css/codemirror.css">
-		<script src="js/codemirror.js"></script>
-		<script src="js/mode/sql/sql.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/codemirror.css">
+		<script src="/static/web/js/codemirror.js"></script>
+		<script src="/static/web/js/mode/sql/sql.js"></script>
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
+		<table class="table shadow-sm my-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="2">SQL命令工具</td>
+				<td colspan="2">SQL命令工具</td>
 			</tr>
 			<form action="sys_sql_query.php" method="post" name="infoform" target="stafrm">
 				<input type="hidden" name="dopost" value="viewinfo">
@@ -42,11 +42,11 @@
 						</select>
 					</td>
 					<td>
-						<button type="Submit" name="Submit1" class="btn btn-success btn-sm" onclick="this.form.dopost.value='opimize';">优化选中表</button>
-						<button type="Submit" name="Submit2" class="btn btn-success btn-sm" onclick="this.form.dopost.value='repair';">修复选中表</button>
-						<button type="Submit" name="Submit3" class="btn btn-success btn-sm" onclick="this.form.dopost.value='viewinfo';">查看表结构</button>
-						<button type="Submit" name="Submit5" class="btn btn-success btn-sm" onclick="this.form.dopost.value='opimizeAll';">优化全部表</button>
-						<button type="Submit" name="Submit6" class="btn btn-success btn-sm" onclick="this.form.dopost.value='repairAll';">修复全部表</button>
+						<button type="Submit" name="submit1" class="btn btn-success btn-sm" onclick="this.form.dopost.value='opimize';">优化选中表</button>
+						<button type="Submit" name="submit2" class="btn btn-success btn-sm" onclick="this.form.dopost.value='repair';">修复选中表</button>
+						<button type="Submit" name="submit3" class="btn btn-success btn-sm" onclick="this.form.dopost.value='viewinfo';">查看表结构</button>
+						<button type="Submit" name="submit5" class="btn btn-success btn-sm" onclick="this.form.dopost.value='opimizeAll';">优化全部表</button>
+						<button type="Submit" name="submit6" class="btn btn-success btn-sm" onclick="this.form.dopost.value='repairAll';">修复全部表</button>
 					</td>
 				</tr>
 				<tr>
@@ -61,14 +61,14 @@
 					<td colspan="2">
 						<span>运行SQL命令行：</span>
 						<label><input type="radio" name="querytype" value="0"> 单行命令</label>
-						<label><input type="radio" name="querytype" value="2" checked="checked"> 多行命令</label>
+						<label><input type="radio" name="querytype" value="2" checked> 多行命令</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" class="p-0"><textarea name="sqlquery" id="sqlquery"></textarea></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">运行</button></td>
+					<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">运行</button></td>
 				</tr>
 			</form>
 		</table>

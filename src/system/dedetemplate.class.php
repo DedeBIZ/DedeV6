@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 模板主题引擎
+ * 主题模板引擎
  *
  * @version        $id:dedetemplate.class.php 3 15:44 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
@@ -85,12 +85,12 @@ function FillFields(&$atts, &$refObj, &$fields)
 class Tag
 {
     var $isCompiler = FALSE;   //标记是否已被替代，供解析器使用
-    var $tagName = "";         //标记名称
-    var $innerText = "";       //标记之间的文本
+    var $tagName = '';         //标记名称
+    var $innerText = '';       //标记之间的文本
     var $startPos = 0;         //标记起始位置
     var $endPos = 0;           //标记结束位置
     var $cAtt;            //标记属性描述,即是class TagAttribute
-    var $tagValue = "";        //标记的值
+    var $tagValue = '';        //标记的值
     var $tagID = 0;
     /**
      *  获取标记的名称和值
@@ -310,7 +310,7 @@ class DedeTemplate
             //echo ExecTime() - $t1;
         } else {
             //如果存在config文件，则载入此文件，该文件用于保存 $this->tpCfgs的文档，以供扩展用途
-            //模板中用“{tag:config name='' value=''/}”来设定该值
+            //模板中用“{tag:config name=''/}”来设定该值
             if (file_exists($this->configFile)) {
                 include($this->configFile);
             }
@@ -662,7 +662,7 @@ class DedeTemplate
         $cTag->isCompiler = TRUE;
         $tagname = $cTag->tagName;
         $varname = $cTag->GetAtt('name');
-        $rsvalue = "";
+        $rsvalue = '';
         //用于在模板中设置一个变量以提供作扩展用途
         //此变量直接提交到 this->tpCfgs 中，并会生成与模板对应的缓存文件 ***_config.php 文件
         if ($tagname == 'config') {
@@ -945,8 +945,8 @@ class DedeTemplate
             $okfile = $filename;
         } else if (@file_exists($this->refDir.$filename)) {
             $okfile = $this->refDir.$filename;
-        } else if (@file_exists($this->refDir."../".$filename)) {
-            $okfile = $this->refDir."../".$filename;
+        } else if (@file_exists($this->refDir."/".$filename)) {
+            $okfile = $this->refDir.'/'.$filename;
         }
         if ($okfile == '') return 0;
         if (!$isload) return 1;
@@ -1042,7 +1042,7 @@ class TagAttribute
  */
 class TagAttributeParse
 {
-    var $sourceString = "";
+    var $sourceString = '';
     var $sourceMaxSize = 1024;
     var $cAttributes;
     var $charToLow = TRUE;

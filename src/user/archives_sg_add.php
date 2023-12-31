@@ -20,7 +20,7 @@ $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("投稿失败，每日投稿次数{$cfg_ml->M_SendMax}次，剩余0次，需要增加次数，请联系网站管理员", "index.php", "0", 5000);
+    ShowMsg("投稿失败，每日投稿次数{$cfg_ml->M_SendMax}次，剩余0次，需要增加次数，请联系网站管理员", "index.php", "0", 3000);
     exit();
 }
 if (empty($dopost)) {
@@ -32,11 +32,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
-        ShowMsg("需要".$row['membername']."才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要".$row['membername']."才能在这个栏目发布文档", "-1", "0", 3000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("需要".$cInfos['usertype']."帐号才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要".$cInfos['usertype']."帐号才能在这个栏目发布文档", "-1", "0", 3000);
         exit();
     }
     include(DEDEMEMBER."/templets/archives_sg_add.htm");
@@ -72,11 +72,11 @@ if (empty($dopost)) {
     //检查栏目设定的投稿许可权限
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("Select membername From #@__arcrank where `rank`='".$cInfos['sendrank']."' ");
-        ShowMsg("需要".$row['membername']."才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要".$row['membername']."才能在这个栏目发布文档", "-1", "0", 3000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("需要".$cInfos['usertype']."才能在这个栏目发布文档", "-1", "0", 5000);
+        ShowMsg("需要".$cInfos['usertype']."才能在这个栏目发布文档", "-1", "0", 3000);
         exit();
     }
     //文档的默认状态
@@ -152,7 +152,7 @@ if (empty($dopost)) {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='archives_sg_add.php?channelid=$channelid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改分类文档</a><a href='content_sg_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>管理分类文档</a>";
+    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='archives_sg_add.php?channelid=$channelid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改文档</a><a href='content_sg_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>返回文档列表</a>";
     $wintitle = "成功发布分类文档";
     $wecome_info = "文档管理 - 发布分类文档";
     $win = new OxWindow();

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 图像处理相关函数
+ * 图像处理函数
  *
  * @version        $id:image.func.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
@@ -10,6 +10,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @link           https://www.dedebiz.com
  */
 include(DEDEDATA.'/mark/inc_photowatermark_config.php');
+helper('image');
 //检测会员系统支持的图片格式
 global $cfg_photo_type, $cfg_photo_typenames, $cfg_photo_support;
 $cfg_photo_type['gif'] = FALSE;
@@ -52,6 +53,4 @@ if (function_exists("imagecreatefromwebp") && function_exists("imagewebp")) {
     $cfg_photo_typenames[] = "image/webp";
     $cfg_photo_support .= "WEBP ";
 }
-//引入图像处理助手
-helper('image');
 ?>

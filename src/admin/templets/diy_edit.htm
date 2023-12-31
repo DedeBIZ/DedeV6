@@ -2,36 +2,36 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改自定义表单</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
 			<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 			<input type="hidden" name="dopost" value="save">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="diy_main.php">自定义表单管理</a> - 修改自定义表单</td>
+					<td colspan="2"><a href="diy_main.php">自定义表单管理</a> - 修改自定义表单</td>
 				</tr>
 				<tr>
-					<td width="260">自定义表单id：</td>
+					<td width="260">表单id：</td>
 					<td><?php echo $diyid;?>（创建后不可修改，具有唯一性）</td>
 				</tr>
 				<tr>
-					<td>自定义表单名称：</td>
+					<td>表单名称：</td>
 					<td>
 						<input type="text" name="name" id="name" class="admin-input-sm" value="<?php echo $row['name']?>">
 						<span>（后台管理和前台发布显示名称）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>数据表：</td>
+					<td>数据表名：</td>
 					<td>
 						<input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $row['table'];?>" disabled="1">
 						<span>（储存自定义表单数据，不能重复已有表名，创建后不可修改表名）</span>
@@ -53,18 +53,18 @@
 					<td>前台列表和文档页公开：</td>
 					<td>
 						<label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>> 完全公开</label>
-						<label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>> 公开审核过的</label>
+						<label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>> 审核公开</label>
 						<label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : '';?>> 不公开</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table align="center" class="table maintable">
-							<tr bgcolor="#e9ecef" align="center">
-								<td width="16%" class="border-top-0">表单提示文字</td>
-								<td width="16%" class="border-top-0">数据字段名</td>
+						<table class="table">
+							<tr align="center">
+								<td width="16%" class="border-top-0">字段名称</td>
+								<td width="16%" class="border-top-0">字段标识</td>
 								<td width="16%" class="border-top-0">数据类型</td>
-								<td width="16%" class="border-top-0">表单类型</td>
+								<td width="16%" class="border-top-0">字段类型</td>
 								<td class="border-top-0">操作</td>
 							</tr>
 							<?php 
@@ -117,7 +117,7 @@
 					<td colspan="2"><button type="button" name="fset" id="fset" class="btn btn-success btn-sm" onclick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'">添加新字段</button></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" name="button" id="button" class="btn btn-success btn-sm">保存</button>
 						<button type="button" id="button2" class="btn btn-outline-success btn-sm" onclick="location='diy_main.php';">返回</button>
 					</td>
@@ -126,7 +126,7 @@
 		</form>
 		<script>
 			function checkSubmit() {
-				if (document.form1.name.value == '') {
+				if (document.form1.name.value == "") {
 					ShowMsg("自定义表单名称不能为空");
 					return false;
 				}

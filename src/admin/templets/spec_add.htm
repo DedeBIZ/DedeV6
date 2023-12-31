@@ -2,24 +2,24 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>发布专题</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-		<link rel="stylesheet" href="../static/web/css/cropper.min.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/daterangepicker.css">
+		<link rel="stylesheet" href="/static/web/css/cropper.min.css">
 		<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
-		<script src="../static/web/js/moment.min.js"></script>
-		<script src="../static/web/js/daterangepicker.js"></script>
-		<script src="../static/web/js/cropper.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/webajax.js"></script>
+		<script src="/static/web/js/moment.min.js"></script>
+		<script src="/static/web/js/daterangepicker.js"></script>
+		<script src="/static/web/js/cropper.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 		<script>
 			function checkSubmit() {
-				if (document.form1.title.value == '') {
+				if (document.form1.title.value == "") {
 					ShowMsg("请输入专题标题");
 					return false;
 				}
@@ -33,7 +33,7 @@
 			function CheckVal(id) {
 				var notename = $DE('notename' + id);
 				var arcid = $DE('arcid' + id);
-				if (arcid.value != "") {
+				if (arcid.value != '') {
 					if (notename.value == "") {
 						$DE('notename' + id).focus();
 						ShowMsg('请输入' + id + '名称');
@@ -61,13 +61,13 @@
 			<input type="hidden" name="channelid" value="<?php echo $channelid?>">
 			<input type="hidden" name="arcrank" value="0">
 			<input type="hidden" name="source" value="本站">
-			<table width="98%" align="center" id="needset" class="admin-border my-3">
+			<table class="shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" class="admin-td">发布专题</td>
+					<td class="admin-td">发布专题</td>
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<div class="alert alert-info mb-0">文档列表用1,2,3英文逗号分开，系统会自动排除不同节点的相同文档。单条记录模板标签[field:fieldname/]调用，请参考关于系统帮助关于arclist标签</div>
+						<div class="alert alert-info mb-0">文档列表用1,2,3英文逗号隔开，系统会自动排除不同节点的相同文档。单条记录模板标签[field:fieldname/]调用，请参考关于系统帮助关于arclist标签</div>
 					</td>
 				</tr>
 				<tr>
@@ -75,7 +75,7 @@
 						<table>
 							<tr>
 								<td width="120">专题名称：</td>
-								<td width="400"><input type="text" name="title" id="title" value="" class="admin-input-lg"></td>
+								<td width="390"><input type="text" name="title" id="title" class="admin-input-lg"></td>
 								<td width="120">简略标题：</td>
 								<td><input type="text" name="shorttitle" id="shorttitle" class="admin-input-sm"></td>
 							</tr>
@@ -94,7 +94,7 @@
 									while($trow = $dsql->GetObject())
 									{
 										if ($trow->att!='j') {
-											echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
 										}
 									}
 									?>
@@ -108,11 +108,11 @@
 						<table>
 							<tr>
 								<td width="120">缩略图：</td>
-								<td width="630">
+								<td width="660">
 									<input type="text" name="picname" id="picname" class="admin-input-lg">
-									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
-									<span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
-									<button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
+									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
+									<span class="btn btn-success btn-sm fileinput-button">上传<input type="file" name="files[]" id="iptAddImages"></span>
+									<button type="button" name="submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
 								</td>
 								<td><img id="litPic" src="/static/web/img/thumbnail.jpg" id="litPic" class="thumbnail-md"></td>
@@ -143,7 +143,7 @@
 									echo $typeOptions;
 									echo "</select>";
 									?>
-									<span class="btn btn-success btn-sm"><i class="fa fa-search" onclick="ShowCatMap(event,this,0,'typeid')" title="选择主栏目"></i></span>
+									<a href="javascript:ShowCatMap(event,this,0,'typeid');" class="btn btn-success btn-sm">选择</a>
 								</td>
 							</tr>
 						</table>
@@ -154,11 +154,11 @@
 						<table>
 							<tr>
 								<td width="120">关键词：</td>
-								<td width="410">
-									<input type="text" name="keywords" id="keywords" value="" class="admin-input-lg">
-									<button type="button" name="Submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
+								<td>
+									<input type="text" name="keywords" id="keywords" class="admin-input-lg">
+									<label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked';?>> 自动获取</label>
+									<button type="button" name="submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
 								</td>
-								<td><label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="checked"';?>> 自动获取</label></td>
 							</tr>
 						</table>
 					</td>
@@ -176,7 +176,7 @@
 				<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
 				<tr>
 					<td class="admin-td p-0">
-						<table width="100%">
+						<table>
 							<?php
 							$speclisttmp = GetSysTemplets("spec_arclist.htm");
 							$nodename = $nodeid = '';
@@ -207,8 +207,8 @@
 								<td class="admin-td">文档来源：</td>
 								<td class="admin-td">
 									<label>栏目id：<input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" class="admin-input-sm"></label>
-									<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" value="" class="admin-input-lg">（英文逗号分开）</label>
-									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked="checked"> 按文档列表</label>
+									<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" class="admin-input-lg">（英文逗号隔开）</label>
+									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文档列表</label>
 									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
 								</td>
 							</tr>
@@ -244,12 +244,12 @@
 							<tr>
 								<td width="120">评论选项：</td>
 								<td width="360">
-									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='checked'";?>> 允许评论</label>
-									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='checked'";?>> 禁止评论</label>
+									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo 'checked';?>> 允许评论</label>
+									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo 'checked';?>> 禁止评论</label>
 								</td>
 								<td width="120">发布选项：</td>
 								<td>
-									<label><input type="radio" name="ishtml" value="1" checked="checked"> 生成网页</label>
+									<label><input type="radio" name="ishtml" value="1" checked> 生成网页</label>
 									<label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
 								</td>
 							</tr>
@@ -290,7 +290,10 @@
 									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
 								</td>
 								<td width="120">文件名称：</td>
-								<td><input type="text" name="filename" id="filename" class="admin-input-sm">（不包括后缀名如.html等）</td>
+								<td>
+									<input type="text" name="filename" id="filename" class="admin-input-sm">
+									<span>（不包括后缀名，如：.html）</span>
+								</td>
 							</tr>
 						</table>
 					</td>
@@ -307,13 +310,13 @@
 									?>
 								</td>
 								<td width="120">浏览次数：</td>
-								<td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(1000,6000):$cfg_arc_click);?>" class="admin-input-sm"></td>
+								<td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(1000, 6000):$cfg_arc_click);?>" class="admin-input-sm"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" align="center" class="admin-td">
+					<td align="center" class="admin-td">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
 					</td>

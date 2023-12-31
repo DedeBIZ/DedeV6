@@ -187,7 +187,7 @@ if ($action === 'is_need_check_code') {
             exit;
         }
         $nowtme = time();
-        $rnd = $nowtme.'-'.mt_rand(1000,9999);
+        $rnd = $nowtme.'-'.mt_rand(1000, 9999);
         $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
         $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."'; ");

@@ -2,17 +2,17 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>添加栏目</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
+		<form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="reid" id="reid" value="<?php echo $id;?>">
 			<input type="hidden" name="topid" id="topid" value="<?php echo $topid;?>">
@@ -22,20 +22,20 @@
 				echo " <input type='hidden' name='siteurl' value='{$myrow['siteurl']}'>";
 				echo " <input type='hidden' name='sitepath' value='{$myrow['sitepath']}'>";
 			}
-			?>		
-			<table align="center" class="table maintable my-3">
+			?>
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="4">添加栏目</td>
+					<td colspan="4">添加栏目</td>
 				</tr>
 				<tr>
 					<td width="10%">是否支持投稿：</td>
 					<td width="40%">
-						<label><input type="radio" name="issend" value="1" <?php if ($issend==1) echo " checked='checked' ";?>> 支持</label>
-						<label><input type="radio" name="issend" value="0" <?php if ($issend==0) echo " checked='checked' ";?>> 不支持</label>
+						<label><input type="radio" name="issend" value="1" <?php if ($issend==1) echo " checked ";?>> 支持</label>
+						<label><input type="radio" name="issend" value="0" <?php if ($issend==0) echo " checked ";?>> 不支持</label>
 					</td>
 					<td width="10%">是否隐藏栏目：</td>
 					<td width="40%">
-						<label><input type="radio" name="ishidden" value="0" checked="checked"> 显示</label>
+						<label><input type="radio" name="ishidden" value="0" checked> 显示</label>
 						<label><input type="radio" name="ishidden" value="1"> 隐藏</label>
 					</td>
 				</tr>
@@ -43,7 +43,7 @@
 					<td>文档模型：</td>
 					<td>
 						<input type="hidden" value="{style}" name="dfstyle">
-						<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
+						<select name="channeltype" id="channeltype" onChange="ParTemplet(this);" class="admin-input-sm">
 							<?php
 							foreach($channelArray as $k=>$arr)
 							{
@@ -103,12 +103,12 @@
 					<td>栏目大图：</td>
 					<td>
 						<input type="text" name="bigpic" class="admin-input-lg">
-						<input type="button" class="btn btn-success btn-sm" value="选择" onclick="SelectImage('form1.bigpic');">
+						<button type="button" class="btn btn-success btn-sm" onclick="SelectImage('form1.bigpic');">选择</button>
 					</td>
 					<td>栏目小图：</td>
 					<td>
 						<input type="text" name="litimg" class="admin-input-lg">
-						<input type="button" class="btn btn-success btn-sm" value="选择" onclick="SelectImage('form1.litimg');">
+						<button type="button" class="btn btn-success btn-sm" onclick="SelectImage('form1.litimg');">选择</button>
 					</td>
 				</tr>
 				<tr>
@@ -130,18 +130,18 @@
 							}
 							?>
 						</select>
-						<span>（不支持静态）</span>
+						<span>（暂不支持静态）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>文件保存目录：</td>
 					<td>
 						<input type="text" name="typedir" id="typedir" class="admin-input-lg">
-						<label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onclick="CheckTypeDir()"> 拼音</label>
+						<label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onclick="CheckTypeDir();"> 拼音</label>
 					</td>
 					<td>目录相对位置：</td>
 					<td>
-						<label><input type="radio" name="referpath" value="parent" checked="chekced"> 上级目录</label>
+						<label><input type="radio" name="referpath" value="parent" checked> 上级目录</label>
 						<?php if ($moresite==0) {?>
 						<label><input type="radio" name="referpath" value="cmspath"> 系统根目录</label>
 						<label><input type="radio" name="referpath" value="basepath"> 站点根目录</label>
@@ -151,7 +151,7 @@
 				<tr>
 					<td>栏目列表选项：</td>
 					<td>
-						<label><input type="radio" name="isdefault" value="1" checked="checked"> 静态浏览</label>
+						<label><input type="radio" name="isdefault" value="1" checked> 静态浏览</label>
 						<label><input type="radio" name="isdefault" value="-1"> 动态浏览</label>
 						<label><input type="radio" name="isdefault" value="0"> 浏览列表第一页</label>
 					</td>
@@ -161,16 +161,16 @@
 				<tr>
 					<td>栏目属性：</td>
 					<td>
-						<label><input type="radio" name="ispart" value="0" checked="checked"> 列表栏目（允许发布）</label>
+						<label><input type="radio" name="ispart" value="0" checked> 列表栏目（允许发布）</label>
 						<label><input type="radio" name="ispart" value="1"> 封面栏目（不允许发布）</label>
 						<label><input type="radio" name="ispart" id="ispart2" value="2"> 外部栏目（文件保存目录填写链接）</label>
 					</td>
 					<td>栏目交叉：</td>
 					<td>
-						<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross()" checked="checked"> 不交叉</label>
-						<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross()"> 自动获取同名栏目</label>
-						<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross()"> 指定交叉栏目id（英文逗号分开）</label>
-						<span onclick="ShowHide('helpvarco')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span><br>
+						<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross();" checked> 不交叉</label>
+						<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross();"> 自动获取同名栏目</label>
+						<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross();"> 指定交叉栏目id（英文逗号隔开）</label>
+						<a href="javascript:ShowHide('helpvarco');" class="btn btn-success btn-sm">说明</a><br>
 						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="display:none"></textarea>
 						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是大栏目与另一个非子栏目交叉的情况，相当于副栏目功能，需要在栏目里设置好</div>
 					</td>
@@ -180,7 +180,7 @@
 					<td>多站点支持：</td>
 					<td>
 						<label><input type="radio" name="moresite" value="1"> 启用</label>
-						<label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>（需要绑定二级域名，系统变量中开启支持多站点）
+						<label><input type="radio" name="moresite" value="0" checked> 不启用</label>（需要绑定二级域名，系统变量中开启支持多站点）
 					</td>
 					<td>绑定域名：</td>
 					<td><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="admin-input-lg">（请输入绑定域名http开头）</td>
@@ -196,7 +196,7 @@
 					<td>
 						<input type="text" name="tempindex" value="{style}/index_<?php echo $nid?>.htm" class="admin-input-lg">
 						<button type="button" name="set2" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.tempindex')">选择</button>
-						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar1');" class="btn btn-success btn-sm">说明</a>
 						<div id="helpvar1" class="alert alert-info my-2" style="display:none">
 							<p>{tid} 栏目id</p>
 							<span>{cid} 栏目模型名字id</span>
@@ -212,7 +212,7 @@
 					<td>列表命名规则：</td>
 					<td>
 						<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-lg">
-						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar2');" class="btn btn-success btn-sm">说明</a>
 						<div id="helpvar2" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{tid} 栏目id</p>
@@ -227,7 +227,7 @@
 					<td>文档命名规则：</td>
 					<td>
 						<input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule;?>" class="admin-input-lg">
-						<span onclick="ShowHide('helpvar3')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar3');" class="btn btn-success btn-sm">说明</a>
 						<div id="helpvar3" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{Y}{M}{D} 年月日</p>
@@ -267,15 +267,15 @@
 					<td>
 						<input type="text" name="apikey" id="apikey" class="admin-input-lg" placeholder="请输入跨站调用秘钥">
 						<label><input type="radio" name="apienabled" value="1"> 支持</label>
-						<label><input type="radio" name="apienabled" value="0" checked="checked"> 不支持</label>
-						<span class="btn btn-success btn-sm" title="更新秘钥" onclick="makeAPIKey()"><i class="fa fa-repeat"></i></span>
+						<label><input type="radio" name="apienabled" value="0" checked> 不支持</label>
+						<a href="javascript:makeAPIKey();" class="btn btn-success btn-sm">更新</i></a>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4"><?php GetEditor("content","","400","Default","print","false");?></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="4" align="center">
+					<td colspan="4" align="center">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<a href="catalog_main.php" class="btn btn-outline-success btn-sm">返回</a>
 					</td>
@@ -352,7 +352,7 @@
 				var surl = document.getElementById("siteurl");
 				var sreid = document.getElementById("reid");
 				var mysel = document.getElementById("truepath3");
-				if (surl.value != "") {
+				if (surl.value != '') {
 					if (sreid.value == "0" || sreid.value == "") {
 						mysel.checked = true;
 					}

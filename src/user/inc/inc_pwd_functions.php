@@ -84,7 +84,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
         if ($db->ExecuteNoneQuery($sql)) {
             if ($send == 'Y') {
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
-                return ShowMsg('验证码已经发送到原来的邮箱，请注意查收', 'login.php', '', '5000');
+                return ShowMsg('验证码已经发送到原来的邮箱，请注意查收', 'login.php', '', '3000');
             } else if ($send == 'N') {
                 return ShowMsg('正在前往密码修改', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid."&key=".$randval);
             }

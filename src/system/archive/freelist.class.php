@@ -193,7 +193,7 @@ class FreeList
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
         $this->LoadTemplet();
-        $murl = "";
+        $murl = '';
         if (empty($startpage)) {
             $startpage = 1;
         }
@@ -229,7 +229,7 @@ class FreeList
             $this->dtp->SaveTo($makeFile);
         }
         if ($this->FLInfos['nodefault'] == 0) {
-            $murl = '/'.str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $this->FLInfos['listdir']);
+            $murl = '/'.str_replace('{cmspath}', $this->FLInfos['listdir']);
             $murl .= '/'.$this->FLInfos['defaultpage'];
             $indexfile = $GLOBALS['cfg_basedir'].$murl;
             $murl = preg_replace("#\/{1,}#", "/", $murl);
@@ -275,7 +275,7 @@ class FreeList
             if (is_file($tmpdir."/".$tempfile)) {
                 $this->PartView->SetTemplet($tmpdir."/".$tempfile);
             } else {
-                $this->PartView->SetTemplet("这是没有使用模板的单独页", "string");
+                $this->PartView->SetTemplet("未使用单独页模板", "string");
                 $nmfa = 1;
             }
         }
@@ -355,7 +355,7 @@ class FreeList
         $okfile = '';
         $namerule = $this->FLInfos['namerule'];
         $listdir = $this->FLInfos['listdir'];
-        $listdir = str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $listdir);
+        $listdir = str_replace('{cmspath}', $listdir);
         $okfile = str_replace('{listid}', $this->FLInfos['aid'], $namerule);
         $okfile = str_replace('{listdir}', $listdir, $okfile);
         $okfile = str_replace("\\", "/", $okfile);
@@ -444,7 +444,7 @@ class FreeList
         $orderby = $this->ListObj->GetAtt('orderby');
         $orderWay = $this->ListObj->GetAtt('orderway');
         //排序方式
-        $ordersql = "";
+        $ordersql = '';
         if ($orderby == "senddate") {
             $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "pubdate") {
@@ -463,13 +463,13 @@ class FreeList
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }
         //获得附加表的相关信息
-        $addField = "";
-        $addJoin = "";
+        $addField = '';
+        $addJoin = '';
         if (is_object($this->ChannelUnit)) {
             $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
             if ($addtable != "") {
                 $addJoin = " LEFT JOIN $addtable ON arc.id = ".$addtable.".aid ";
-                $addField = "";
+                $addField = '';
                 $fields = explode(",", $this->ChannelUnit->ChannelInfos['listfields']);
                 foreach ($fields as $k => $v) {
                     $nfields[$v] = $k;
@@ -488,9 +488,9 @@ class FreeList
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid $addField FROM {$this->maintable} arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addJoin WHERE $orwhere $ordersql LIMIT $limitstart,".$this->pagesize;
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
-        $artlist = "";
+        $artlist = '';
         if ($col > 1) {
-            $artlist = "<table width='$tablewidth'>\r\n";
+            $artlist = "<table width='$tablewidth'>";
         }
         $indtp = new DedeTagParse();
         $indtp->SetNameSpace("field", "[", "]");
@@ -498,11 +498,11 @@ class FreeList
         $GLOBALS['autoindex'] = 0;
         for ($i = 0; $i < $this->pagesize; $i++) {
             if ($col > 1) {
-                $artlist .= "<tr>\r\n";
+                $artlist .= "<tr>";
             }
             for ($j = 0; $j < $col; $j++) {
                 if ($col > 1) {
-                    $artlist .= "<td width='$colWidth'>\r\n";
+                    $artlist .= "<td width='$colWidth'>";
                 }
                 if ($row = $this->dsql->GetArray("al")) {
                     $GLOBALS['autoindex']++;
@@ -540,11 +540,11 @@ class FreeList
                     }
                     $row['description'] = cn_substr($row['description'], $infolen);
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                        $row['litpic'] = '/static/web/img/thumbnail.jpg';
                     }
-                    if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                    /*if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
-                    }
+                    }*/
                     $row['picname'] = $row['litpic'];
                     $row['info'] = $row['description'];
                     $row['filename'] = $row['arcurl'];
@@ -597,21 +597,21 @@ class FreeList
                     $artlist .= $indtp->GetResult();
                 } //if hasRow
                 else {
-                    $artlist .= "";
+                    $artlist .= '';
                 }
                 if ($col > 1) {
-                    $artlist .= "</td>\r\n";
+                    $artlist .= "</td>";
                 }
             } //Loop Col
             if ($col > 1) {
                 $i += $col - 1;
             }
             if ($col > 1) {
-                $artlist .= "</tr>\r\n";
+                $artlist .= "</tr>";
             }
         } //Loop Line
         if ($col > 1) {
-            $artlist .= "</table>\r\n";
+            $artlist .= "</table>";
         }
         $this->dsql->FreeResult("al");
         return $artlist;
@@ -626,8 +626,8 @@ class FreeList
      */
     function GetPageListST($list_len, $listitem = "info,index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("#[^0-9]#", $list_len)) {
@@ -644,36 +644,36 @@ class FreeList
         $purl = $this->GetCurUrl();
         $tnamerule = $this->GetMakeFileRule();
         $tnamerule = preg_replace("#^(.*)\/#", '', $tnamerule);
-        //获得上一页和首页的链接
+        //获得上页和首页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".str_replace("{page}", $prepagenum, $tnamerule)."' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".str_replace("{page}", 1, $tnamerule)."' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
-        //下一页和未页的链接
+        //下页和未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".str_replace("{page}", $nextpagenum, $tnamerule)."' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".str_replace("{page}", $totalpage, $tnamerule)."' class='page-link'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
         //option链接
         $optionlen = strlen($totalpage);
         $optionlen = $optionlen * 12 + 18;
         if ($optionlen < 36) $optionlen = 36;
         if ($optionlen > 100) $optionlen = 100;
-        $optionlist = "<select name='sldd' style='width:$optionlen' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
+        $optionlist = "<select name='sldd' style='width:$optionlen' onchange='location.href=this.options[this.selectedIndex].value;'>";
         for ($fl = 1; $fl <= $totalpage; $fl++) {
             if ($fl == $this->PageNo) {
-                $optionlist .= "<option value='".str_replace("{page}", $fl, $tnamerule)."' selected>$fl</option>\r\n";
+                $optionlist .= "<option value='".str_replace("{page}", $fl, $tnamerule)."' selected>$fl</option>";
             } else {
-                $optionlist .= "<option value='".str_replace("{page}", $fl, $tnamerule)."'>$fl</option>\r\n";
+                $optionlist .= "<option value='".str_replace("{page}", $fl, $tnamerule)."'>$fl</option>";
             }
         }
         $optionlist .= "</select>";
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -689,12 +689,12 @@ class FreeList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class=\"page-item active\"><span class='page-link'>{$j}</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".str_replace("{page}", $j, $tnamerule)."' class='page-link'>$j</a></li>";
             }
         }
-        $plist = "";
+        $plist = '';
         if (preg_match('#info#i', $listitem)) {
             $plist .= $maininfo.' ';
         }
@@ -728,8 +728,8 @@ class FreeList
      */
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -745,24 +745,24 @@ class FreeList
         $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $purl = $this->GetCurUrl();
         $geturl = "lid=".$this->FreeID."&TotalResult=".$this->TotalResult."&";
-        $hidenform = "<input type='hidden' name='lid' value='".$this->FreeID."' />\r\n";
-        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."' />\r\n";
+        $hidenform = "<input type='hidden' name='lid' value='".$this->FreeID."'>";
+        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>";
         $purl .= "?".$geturl;
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1'>首页</a>\r\n";
+            $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1' class='page-link'>首页</a>";
         } else {
-            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$purl."PageNo=$totalpage' class='page-link'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -774,18 +774,18 @@ class FreeList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j' class='page-link'>$j</a></li>";
             }
         }
         $plist  = "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
         $plist .= $maininfo.$indexpage.$prepage.$listdd.$nextpage.$endpage;
         if ($totalpage > $total_list) {
-            $plist .= "<input type='text' name='PageNo' value='".$this->PageNo."'>\r\n";
-            $plist .= "<input type='submit' name='plistgo' value='GO'>\r\n";
+            $plist .= "<input type='text' name='PageNo' value='".$this->PageNo."'>";
+            $plist .= "<input type='submit' name='plistgo' value='GO'>";
         }
-        $plist .= "</form>\r\n";
+        $plist .= "</form>";
         return $plist;
     }
     /**

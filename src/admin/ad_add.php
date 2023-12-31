@@ -11,7 +11,7 @@
 require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_广告管理');
 require_once DEDEINC."/typelink/typelink.class.php";
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 if ($dopost == "save") {
     CheckCSRF();
     //timeset tagname typeid normbody expbody
@@ -30,24 +30,24 @@ if ($dopost == "save") {
         $normbody = "<a href=\"{$link}\" font-size=\"{$normbody['size']}\" color=\"{$normbody['color']}\">{$normbody['title']}</a>";
     } else if ($normbody['style'] == 'img') {
         if (empty($normbody['width'])) {
-            $width = "";
+            $width = '';
         } else {
             $width = " width=\"{$normbody['width']}\"";
         }
         if (empty($normbody['height'])) {
-            $height = "";
+            $height = '';
         } else {
             $height = "height=\"{$normbody['height']}\"";
         }
-        $normbody = "<a href=\"{$link}\"><img src=\"{$normbody['url']}\"$width $height border=\"0\" /></a>";
+        $normbody = "<a href=\"{$link}\"><img src=\"{$normbody['url']}\"$width $height></a>";
     } else {
         if (empty($normbody['width'])) {
-            $width = "";
+            $width = '';
         } else {
             $width = " width=\"{$normbody['width']}\"";
         }
         if (empty($normbody['height'])) {
-            $height = "";
+            $height = '';
         } else {
             $height = "height=\"{$normbody['height']}\"";
         }

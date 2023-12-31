@@ -297,7 +297,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     $dsql->SetQuery($query);
     $dsql->Execute('al');
     $artlist = '';
-    if ($pagesize > 0)  $artlist .= "<div id='{$tagid}'>\r\n";
+    if ($pagesize > 0) $artlist .= "<div id='{$tagid}'>\r\n";
     if ($col > 1) $artlist = "<table width='$tablewidth'>\r\n";
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');
@@ -344,7 +344,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                     $row['sitepath']
                 );
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                    $row['litpic'] = '/static/web/img/thumbnail.jpg';
                 }
                 if (!preg_match("#^(http|https):\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                     $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
@@ -382,7 +382,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                         $liststr = $dtp2->GetResult();
                         $artlist .= $liststr."\r\n";
                     } else {
-                        $artlist .= "";
+                        $artlist .= '';
                         $orderWeight[] = array(
                             'weight'  => $row['weight'],
                             'arclist' => ''

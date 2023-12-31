@@ -277,9 +277,9 @@ class SearchView
                 } else if ($row['count'] > 300) {
                     $fstyle = " style='color:green'";
                 } else {
-                    $style = "";
+                    $style = '';
                 }
-                $likeword .= "　<a href='search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'".$style.">".$row['keyword']."</a> ";
+                $likeword .= "<a href='search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'".$style.">".$row['keyword']."</a> ";
             }
             return $likeword;
         }
@@ -526,18 +526,18 @@ class SearchView
         $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath,mb.uname,mb.face,mb.userid FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
-        $artlist = "";
+        $artlist = '';
         if ($col > 1) {
-            $artlist = "<table width='$tablewidth'>\r\n";
+            $artlist = "<table width='$tablewidth'>";
         }
         $this->dtp2->LoadSource($innertext);
         for ($i = 0; $i < $row; $i++) {
             if ($col > 1) {
-                $artlist .= "<tr>\r\n";
+                $artlist .= "<tr>";
             }
             for ($j = 0; $j < $col; $j++) {
                 if ($col > 1) {
-                    $artlist .= "<td width='$colWidth'>\r\n";
+                    $artlist .= "<td width='$colWidth'>";
                 }
                 if ($row = $this->dsql->GetArray("al")) {
                     if ($this->ChannelType < 0 || $this->ChannelTypeid < 0) {
@@ -568,11 +568,11 @@ class SearchView
                     $row["title"] = $this->GetRedKeyWord(cn_substr($row["title"], $titlelen));
                     $row["id"] =  $row["id"];
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                        $row['litpic'] = '/static/web/img/thumbnail.jpg';
                     }
-                    if (!preg_match("/^(http|https):\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                    /*if (!preg_match("/^(http|https):\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
-                    }
+                    }*/
                     $row['picname'] = $row['litpic'];
                     $row["typeurl"] = GetTypeUrl($row["typeid"], $row["typedir"], $row["isdefault"], $row["defaultname"], $row["ispart"], $row["namerule2"], $row["moresite"], $row["siteurl"], $row["sitepath"]);
                     $row["info"] = $row["description"];
@@ -604,16 +604,16 @@ class SearchView
                     $artlist .= $this->dtp2->GetResult();
                 } //if hasRow
                 else {
-                    $artlist .= "";
+                    $artlist .= '';
                 }
-                if ($col > 1) $artlist .= "</td>\r\n";
+                if ($col > 1) $artlist .= "</td>";
             } //Loop Col
             if ($col > 1) {
-                $artlist .= "</tr>\r\n";
+                $artlist .= "</tr>";
             }
         } //Loop Line
         if ($col > 1) {
-            $artlist .= "</table>\r\n";
+            $artlist .= "</table>";
         }
         $this->dsql->FreeResult("al");
 
@@ -629,8 +629,8 @@ class SearchView
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
         global $oldkeyword;
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -649,34 +649,34 @@ class SearchView
         if ($this->TotalResult > $this->SearchMaxRc) {
             $totalpage = ceil($this->SearchMaxRc / $this->pagesize);
         }
-        $infos = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
+        $infos = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
-        $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>\r\n";
+        $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>";
         $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
-        $hidenform .= "<input type='hidden' name='channeltype' value='".$this->ChannelType."'>\r\n";
-        $hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>\r\n";
+        $hidenform .= "<input type='hidden' name='channeltype' value='".$this->ChannelType."'>";
+        $hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>";
         $geturl .= "&kwtype=".$this->KType."&pagesize=".$this->pagesize;
-        $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
-        $hidenform .= "<input type='hidden' name='pagesize' value='".$this->pagesize."'>\r\n";
+        $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>";
+        $hidenform .= "<input type='hidden' name='pagesize' value='".$this->pagesize."'>";
         $geturl .= "&typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
-        $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
-        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
+        $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>";
+        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>";
         $purl .= "?".$geturl;
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item disabled'><a class='page-link'>首页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a class='page-link'>首页</a></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$purl."PageNo=$totalpage' class='page-link'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -692,20 +692,20 @@ class SearchView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><a class='page-link'>$j</a></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j' class='page-link'>$j</a></li>";
             }
         }
-		$plist = "";
-        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."' class='d-flex'>$hidenform";
+		$plist = '';
+        $plist .= "<form action='".$this->GetCurUrl()."' name='pagelist' class='d-flex'>$hidenform";
         $plist .= preg_match('/info/i', $listitem)? $infos : "";
         $plist .= preg_match('/index/i', $listitem)? $indexpage : "";
         $plist .= preg_match('/pre/i', $listitem)? $prepage : "";
         $plist .= preg_match('/pageno/i', $listitem)? $listdd : "";
         $plist .= preg_match('/next/i', $listitem)? $nextpage : "";
         $plist .= preg_match('/end/i', $listitem)? $endpage : "";
-        $plist .= "</form>\r\n";
+        $plist .= "</form>";
         return $plist;
     }
     /**

@@ -20,14 +20,14 @@ if ($dopost == "show") {
     ShowMsg("隐藏一个插件", "plus_main.php");
     exit();
 } else if ($dopost == "delete") {
-    if (empty($job)) $job = "";
+    if (empty($job)) $job = '';
     if ($job == "") {
         //确认
         require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "删除指定插件";
         $wecome_info = "<a href='plus_main.php'>插件管理</a> - 删除插件";
         $win = new OxWindow();
-        $win->Init("plus_edit.php", "js/blank.js", "POST");
+        $win->Init("plus_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("aid", $aid);

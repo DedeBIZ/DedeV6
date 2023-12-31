@@ -45,7 +45,7 @@ function CheckUserID($uid, $msgtitle = '账号', $ckhas = TRUE)
             }
         } else {
             if (preg_match("/[^0-9a-z@\.-]/i", $ck_uid[$i])) {
-                return $msgtitle.'使用[0-9a-zA-Z_@!.-]范围以内字符';
+                return $msgtitle.'请使用数字0-9小写a-z大写A-Z符号_@!.-';
             }
         }
     }
@@ -68,10 +68,10 @@ function CheckNotAllow()
         ShowMsg("您已经被禁言，请与管理员联系", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta == -10) {
-        ShowMsg("系统开启了邮件审核机制，您的帐号需要审核后才能发信息", "-1");
+        ShowMsg("系统开启了邮件审核机制，帐号需要审核后才能发信息", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta < 0) {
-        ShowMsg('系统开启了审核机制，您的帐号需要管理员审核后才能发信息', '-1');
+        ShowMsg('系统开启了审核机制，帐号需要管理员审核后才能发信息', '-1');
         exit();
     }
 }
@@ -182,7 +182,7 @@ class MemberLogin
         $this->__construct($kptime);
     }
     /**
-     *  删除缓存,每次登录时和在修改会员资料的地方会清除
+     *  删除缓存，每次登录时和在修改会员资料的地方会清除
      *
      * @access    public
      * @param     string
@@ -293,10 +293,10 @@ class MemberLogin
         $this->M_ID = 0;
         $this->M_LoginID = '';
         $this->M_Rank = 0;
-        $this->M_Face = "";
+        $this->M_Face = '';
         $this->M_Money = 0;
         $this->M_UserMoney = 0;
-        $this->M_UserName = "";
+        $this->M_UserName = '';
         $this->M_LoginTime = 0;
         $this->M_MbType = '';
         $this->M_Scores = 0;
@@ -378,7 +378,7 @@ class MemberLogin
     {
         $arr = $this->dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__arctiny` WHERE mid='{$this->M_ID}'");
         if (is_array($arr)) {
-            if ($this->M_SendMax < 1) {
+            if ($this->M_SendMax < 0) {
                 return false;
             }
             if ($arr['dd'] >= $this->M_SendMax) {
@@ -497,7 +497,7 @@ class MemberLogin
     function PutLoginInfo($uid, $logintime = 0)
     {
         global $cfg_login_adds;
-        //登录添加积分(上一次登录时间必须大于两小时)
+        //登录添加积分，上一次登录时间必须大于两小时
         if (time() - $logintime > 7200 && $cfg_login_adds > 0) {
             $this->dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=`scores`+{$cfg_login_adds} WHERE mid='$uid' ");
         }

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档处理函数
+ * 文档操作函数
  * 
  * @version        $id:inc_archives_functions.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
@@ -213,7 +213,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($fieldset);
-    $dede_addonfields = "";
+    $dede_addonfields = '';
     if (is_array($dtp->CTags)) {
         foreach ($dtp->CTags as $tid => $ctag) {
             if (
@@ -326,7 +326,7 @@ function GetCurContent(&$body)
                 $itype = '.jpg';
             }
         }
-        $milliSecondN = dd2char($milliSecond.'-'.mt_rand(1000,8000));
+        $milliSecondN = dd2char($milliSecond.'-'.mt_rand(1000, 9999));
         $value = trim($value);
         $rndFileName = $imgPath."/".$milliSecondN.'-'.$key.$itype;
         $fileurl = $imgUrl."/".$milliSecondN.'-'.$key.$itype;

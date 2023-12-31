@@ -30,7 +30,7 @@ if (is_dir(dirname(__FILE__).'/../install')) {
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if (preg_match('/admin/', $cururl)) {
-    $redmsg = '<div class="alert alert-warning">后台管理目录名称中包含admin，强烈建议后台管理目录修改为其它名称</div>';
+    $redmsg = '<div class="alert alert-warning">检测到后台管理目录名称中包含admin，强烈建议后台管理目录修改为其它名称</div>';
 } else {
     $redmsg = '';
 }
@@ -46,7 +46,7 @@ if ($dopost == 'login') {
             $svali = strtolower(GetCkVdValue());
             if ($validate == '' || $validate != $svali) {
                 ResetVdValue();
-                ShowMsg('验证码不正确', 'login.php', 0, 1000);
+                ShowMsg('验证码不正确', 'login.php');
                 exit;
             }
         }
@@ -62,16 +62,16 @@ if ($dopost == 'login') {
             }
         } else if ($res == -1) {
             ResetVdValue();
-            ShowMsg('管理员账号错误', 'login.php', 0, 1000);
+            ShowMsg('管理员账号错误', 'login.php');
             exit;
         } else {
             ResetVdValue();
-            ShowMsg('管理员密码错误', 'login.php', 0, 1000);
+            ShowMsg('管理员密码错误', 'login.php');
             exit;
         }
     } else {
         ResetVdValue();
-        ShowMsg('管理员账号和密码没填完整', 'login.php', 0, 1000);
+        ShowMsg('管理员账号和密码没填完整', 'login.php');
         exit;
     }
 }

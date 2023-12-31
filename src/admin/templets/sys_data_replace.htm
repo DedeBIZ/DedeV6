@@ -2,69 +2,55 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>数据批量替换</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/webajax.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
+		<form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit();">
 			<input type="hidden" name="action" value="apply">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">数据库字段替换</td>
+					<td colspan="2">数据库字段替换</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-warning mb-0">数据库字段批量替换数据，操作不当会导致数据出错</div>
+						<div class="alert alert-warning mb-0">数据库字段批量替换，修改不当会导致数据出错</div>
 					</td>
 				</tr>
 				<tr>
-					<td width="260">选择数据表与字段：</td>
-					<td class="table-borderless p-0">
-						<table>
-							<tr>
-								<td id="tables">
-									<?php
-									$dsql->SetQuery("Show Tables");
-									$dsql->Execute('t');
-									if ($dsql->GetError()!=''){
-										echo "找不到您所指定的数据库".$dbname."";
-										echo $qbutton;
-									}
-									echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='admin-input-lg'>";
-									while($row = $dsql->GetArray('t',MYSQL_BOTH)){
-										echo "<option value='{$row[0]}'>{$row[0]}</option>";
-									}
-									echo "</select>";
-									$dsql->Close();
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td id="fields"></td>
-							</tr>
-							<tr>
-								<td>
-									<input type="text" name="rpfield" id="rpfield" class="admin-input-sm">
-									<span>（选择替换字段）</span>
-								</td>
-							</tr>
-						</table>
+					<td width="260">数据表与字段：</td>
+					<td>
+						<?php
+						$dsql->SetQuery("Show Tables");
+						$dsql->Execute('t');
+						if ($dsql->GetError()!=''){
+							echo "找不到您所指定的数据库".$dbname."";
+							echo $qbutton;
+						}
+						echo "<select name='exptable' multiple='yes' onchange='ShowFields();' id='exptable' class='admin-input-lg mb-3'>";
+						while($row = $dsql->GetArray('t',MYSQL_BOTH)){
+							echo "<option value='{$row[0]}'>{$row[0]}</option>";
+						}
+						echo "</select>";
+						$dsql->Close();
+						?>
+						<div id="fields"></div>
+						<input type="text" name="rpfield" id="rpfield" class="admin-input-sm">
 					</td>
 				</tr>
 				<tr>
 					<td>主键字段：</td>
 					<td>
 						<input type="text" name="keyfield" id="keyfield" class="admin-input-sm">
-						<label><input type="radio" name="rptype" id="ot1" value="replace" checked="checked"> 普通替换</label>
+						<label><input type="radio" name="rptype" id="ot1" value="replace" checked> 普通替换</label>
 						<label><input type="radio" name="rptype" id="ot2" value="regex"> 正则表达式</label>
-						<span>（正则模式必须指定）</span>
 					</td>
 				</tr>
 				<tr>
@@ -79,21 +65,21 @@
 					<td>替换条件：</td>
 					<td>
 						<input type="text" name="condition" id="condition" class="admin-input-sm">
-						<span>（空完全替换）</span>
+						<span>（不填写则完全替换）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>验证码：</td>
 					<td>
 						<input type="text" name="validate" class="admin-input-sm text-uppercase">
-						<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+						<img src="<?php echo $cfg_phpurl;?>/vdimgck.php" onclick="this.src='<?php echo $cfg_phpurl;?>/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#e9ecef" colspan="2" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">开始替换数据</button></td>
+					<td colspan="2" align="center"><button type="submit" name="submit" class="btn btn-success btn-sm">开始替换数据</button></td>
 				</tr>
 				<tr>
-					<td colspan="2" id="mtd">
+					<td colspan="2">
 						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 					</td>
 				</tr>

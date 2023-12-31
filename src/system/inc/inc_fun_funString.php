@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function SpHtml2Text($str)
 {
 	$str = preg_replace("/<sty(.*)\\/style>|<scr(.*)\\/script>|<!--(.*)-->/isU","",$str);
-	$alltext = "";
+	$alltext = '';
 	$start = 1;
 	for ($i=0;$i<strlen($str);$i++)
 	{

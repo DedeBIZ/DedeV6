@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Feedback');
 $id = isset($id) && is_numeric($id) ? $id : 0;
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "feedback_main.php" : $_COOKIE['ENV_GOBACK_URL'];
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 if ($dopost == 'edit') {
     $msg = cn_substrR($msg, 3500);
     $adminmsg = trim($adminmsg);

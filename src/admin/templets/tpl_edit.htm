@@ -2,27 +2,26 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>新建/修改模板</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="css/codemirror.css">
-		<script src="js/codemirror.js"></script>
-		<script src="js/mode/xml/xml.js"></script>
-		<script src="js/mode/javascript/javascript.js"></script>
-		<script src="js/mode/css/css.js"></script>
-		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
-		<style>.helpinfo{float:left;display:none;padding:10px;width:100%;background:#f5f5f5;border:1px solid #dee2e6;border-radius:0.5rem}</style>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/codemirror.css">
+		<script src="/static/web/js/codemirror.js"></script>
+		<script src="/static/web/js/mode/xml/xml.js"></script>
+		<script src="/static/web/js/mode/javascript/javascript.js"></script>
+		<script src="/static/web/js/mode/css/css.js"></script>
+		<script src="/static/web/js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
-		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
+		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post();">
 			<input type="hidden" name="action" value="saveedit">
 			<input type="hidden" name="acdir" value="<?php echo $acdir;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">新建/修改模板</td>
+					<td colspan="2">新建/修改模板</td>
 				</tr>
 				<tr>
 					<td width="260">文件名称</td>
@@ -35,7 +34,7 @@
 					<td colspan="2">
 					<?php
 					foreach ($helps as $key => $help) {
-						echo '<a href="javascript:;" onclick="showdiv(\''.$key.'\');" title="'.trim($help[0]).'" class="btn btn-light btn-sm">'.$key.'</a>'."";
+						echo '<a href="javascript:showdiv(\''.$key.'\');" title="'.trim($help[0]).'" class="btn btn-light btn-sm">'.$key.'</a>'."";
 					}
 					?>
 					</td>
@@ -44,12 +43,12 @@
 					<td colspan="2">
 						<?php
 						foreach ($helps as $key => $help) {
-							echo '<div id="'.$key.'" class="helpinfo"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></span><p>标签名称：'.$key.'</p><p>标签说明：'.trim($help[0]).'</p><p><textarea id="'.$key.'" class="admin-textarea-xl">'.trim($help[1]).'</textarea></p><span>'."";
+							echo '<div id="'.$key.'" class="helpinfo"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\');" class="btn btn-success btn-sm">关闭</a></span><p>标签名称：'.$key.'</p><p>标签说明：'.trim($help[0]).'</p><p><textarea id="'.$key.'" class="admin-textarea-xl">'.trim($help[1]).'</textarea></p><span>'."";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
 							{
 								$parameter = trim($parameter);
-								if ($parameter == '') continue;
+								if ($parameter == "") continue;
 								else echo $parameter,'<br>';
 							}
 							echo '</span></div>'."";
@@ -63,9 +62,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="B4" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
+						<button type="button" name="B4" class="btn btn-outline-success btn-sm" onclick="location='templets_main.php';">返回</button>
 					</td>
 				</tr>
 			</table>

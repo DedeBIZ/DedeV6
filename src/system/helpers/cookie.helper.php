@@ -22,9 +22,9 @@ if (!function_exists('PutCookie')) {
     function PutCookie($key, $value, $kptime = 0, $pa = "/")
     {
         global $cfg_cookie_encode, $cfg_domain_cookie;
-        if(version_compare(PHP_VERSION, '7.3.0', '>=')){
+        if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
             $options = array(
-                "expires"=>time() + $kptime,
+                "expires" => time() + $kptime,
                 'path' => $pa,
                 'domain' => $cfg_domain_cookie,
                 'samesite' => 'None',
@@ -48,9 +48,9 @@ if (!function_exists('DropCookie')) {
     function DropCookie($key)
     {
         global $cfg_domain_cookie;
-        if(version_compare(PHP_VERSION, '7.3.0', '>=')){
+        if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
             $options = array(
-                "expires"=>time() - 360000,
+                "expires" => time() - 360000,
                 'path' => "/",
                 'domain' => $cfg_domain_cookie,
                 'samesite' => 'None',

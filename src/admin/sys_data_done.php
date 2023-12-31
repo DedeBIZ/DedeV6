@@ -64,7 +64,7 @@ if ($dopost == 'bak') {
         $dh->close();
         $tmsg .= "完成备份目录旧数据清理";
         if ($isstruct == 1) {
-            $bkfile = $bkdir."/tables_struct_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
+            $bkfile = $bkdir."/tables_struct_".substr(md5(time().mt_rand(1000, 6000).$cfg_cookie_encode), 0, 16).".txt";
             $mysql_version = $dsql->GetVersion();
             $fp = fopen($bkfile, "w");
             foreach ($tables as $t) {
@@ -115,7 +115,7 @@ if ($dopost == 'bak') {
         $dsql->SetQuery("SELECT * FROM `$nowtable`");
         $dsql->Execute();
         $m = 0;
-        $bakfilename = "$bkdir/{$nowtable}_{$startpos}_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
+        $bakfilename = "$bkdir/{$nowtable}_{$startpos}_".substr(md5(time().mt_rand(1000, 6000).$cfg_cookie_encode), 0, 16).".txt";
         while ($row2 = $dsql->GetArray()) {
             if ($m < $startpos) {
                 $m++;
@@ -189,7 +189,7 @@ else if ($dopost == 'redat') {
     $bakfilesTmp = $bakfiles;
     $bakfiles = explode(',', $bakfiles);
     if (empty($structfile)) {
-        $structfile = "";
+        $structfile = '';
     }
     if (empty($delfile)) {
         $delfile = 0;
@@ -254,7 +254,7 @@ else if ($dopost == 'redat') {
 function PutInfo($msg1, $msg2)
 {
     global $cfg_soft_lang;
-    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='/static/web/css/bootstrap.min.css'><link rel='stylesheet' href='/static/web/css/admin.css'></head><base target='_self'><body class='body-bg'><div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div><div class='tips-body'>{$msg1}{$msg2}</div></div></div>";
+    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><meta name='viewport' content='width=device-width,initial-scale=1'><title>系统提示</title><link rel='stylesheet' href='/static/web/css/bootstrap.min.css'><link rel='stylesheet' href='/static/web/css/admin.css'></head><base target='_self'><body><div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div><div class='tips-body'>{$msg1}{$msg2}</div></div></div>";
     echo $msginfo."</body></html>";
 }
 function RpLine($str)

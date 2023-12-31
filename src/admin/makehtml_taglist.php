@@ -35,5 +35,5 @@ if ($action == "search") {
     echo json_encode($result);
     exit;
 }
-include DedeInclude('templets/makehtml_taglist.htm');
+include DedeInclude('templets/makehtml_tag_list.htm');
 ?>

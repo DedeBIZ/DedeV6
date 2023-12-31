@@ -15,14 +15,14 @@ if (DEDEBIZ_SAFE_MODE) {
 CheckPurview('c_Edit');
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $id = isset($id) && is_numeric($id) ? $id : 0;
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=1 WHERE id='$id' ");
     ShowMsg("启用一个文档模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "hide") {
-    $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id'");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id' ");
     ShowMsg("隐藏一个文档模型", "mychannel_main.php");
     exit();
 } else if ($dopost == "copystart") {
@@ -50,7 +50,7 @@ if ($dopost == "show") {
     $wintitle = "复制指定文档模型";
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 复制文档模型";
     $win = new OxWindow();
-    $win->Init("mychannel_edit.php", "js/blank.js", "post");
+    $win->Init("mychannel_edit.php", "/static/web/js/admin.blank.js", "post");
     $win->AddTitle("复制文档模型：".$row['typename']."");
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
@@ -74,7 +74,7 @@ if ($dopost == "show") {
     <tr>
         <td>复制模板：</td>
         <td>
-            <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked='checked'> 复制</label>
+            <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked> 复制</label>
             <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>
         </td>
     </tr>";
@@ -100,14 +100,14 @@ if ($dopost == "show") {
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("导出{$row['typename']}文档模型规则");
-    $winform = $win->GetWindow("hand", "<link rel='stylesheet' href='css/codemirror.css'><script src='js/codemirror.js'></script><script src='js/mode/xml/xml.js'></script><script src='js/mode/javascript/javascript.js'></script><script src='js/mode/css/css.js'></script><script src='js/mode/htmlmixed/htmlmixed.js'></script><textarea name='config' id='content' class='form-control'>$channelconfig</textarea><script>var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
+    $winform = $win->GetWindow("hand", "<link rel='stylesheet' href='/static/web/css/codemirror.css'><script src='/static/web/js/codemirror.js'></script><script src='/static/web/js/mode/xml/xml.js'></script><script src='/static/web/js/mode/javascript/javascript.js'></script><script src='/static/web/js/mode/css/css.js'></script><script src='/static/web/js/mode/htmlmixed/htmlmixed.js'></script><textarea name='config' id='content' class='form-control'>$channelconfig</textarea><script>var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
 } else if ($dopost == "exportin") {
     $wintitle = "导入指定文档模型规则";
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
     $win = new OxWindow();
-    $win->Init("mychannel_edit.php", "js/blank.js", "post");
+    $win->Init("mychannel_edit.php", "/static/web/js/admin.blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
     $win->AddMsgItem("<tr><td><textarea name='exconfig' class='admin-textarea-xl'></textarea></td></tr>");
     $winform = $win->GetWindow("ok");
@@ -136,7 +136,7 @@ if ($dopost == "show") {
         <td>文档模型规则出错</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        <td align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
     </tr>");
     $fields = array();
     foreach ($dtp->CTags as $ctag) {
@@ -148,7 +148,7 @@ if ($dopost == "show") {
             <td>文档模型规则出错</td>
         </tr>
         <tr>
-            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+            <td align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
         </tr>");
     }
     //正常的导入过程
@@ -159,19 +159,19 @@ if ($dopost == "show") {
             <td>已经存在相同的{$fields['nid']}模型</td>
         </tr>
         <tr>
-            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+            <td align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
         </tr>");
     }
     //创建表
     if ($fields['issystem'] != -1) {
-        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}` (`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`redirecturl` varchar(255) NOT NULL default '',`templet` varchar(30) NOT NULL default '',`userip` char(46) NOT NULL default '',";
+        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}` (`aid` int(11) NOT NULL DEFAULT '0',`typeid` int(11) NOT NULL DEFAULT '0',`redirecturl` varchar(255) NOT NULL DEFAULT '',`templet` varchar(30) NOT NULL DEFAULT '',`userip` char(46) NOT NULL DEFAULT '',";
     } else {
-        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}`(`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',`click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL default '',`senddate` int(11) NOT NULL default '0',`flag` set('c','h','p','f','s','j','a','b') default NULL,";
+        $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}` (`aid` int(11) NOT NULL DEFAULT '0',`typeid` int(11) NOT NULL DEFAULT '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',`click` INT(10) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL DEFAULT '',`senddate` int(11) NOT NULL DEFAULT '0',`flag` set('c','h','p','f','s','j','a','b') DEFAULT NULL,";
     }
     if ($mysql_version < 4.1) {
-        $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM;";
+        $tabsql .= " PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM; ";
     } else {
-        $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language.";";
+        $tabsql .= " PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
     }
     $rs = $dsql->ExecuteNoneQuery($tabsql);
     if (!$rs) {
@@ -179,7 +179,7 @@ if ($dopost == "show") {
             <td>创建数据表失败：{$dsql->GetError()}</td>
         </tr>
         <tr>
-            <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+            <td align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
         </tr>");
         exit();
     }
@@ -193,13 +193,13 @@ if ($dopost == "show") {
     }
     $fieldset = $fields['fieldset'];
     $fields['fieldset'] = addslashes($fields['fieldset']);
-    $inquery = "INSERT INTO `#@__channeltype` (`id`,`nid`,`typename`,`addtable`,`addcon`,`mancon`,`editcon`,`useraddcon`,`usermancon`,`usereditcon`,`fieldset`,`listfields`,`issystem`,`isshow`,`issend`,`arcsta`,`usertype`,`sendrank`) VALUES ('{$fields['newid']}','{$fields['nid']}','{$fields['typename']}','{$fields['addtable']}','{$fields['addcon']}','{$fields['mancon']}','{$fields['editcon']}','{$fields['useraddcon']}','{$fields['usermancon']}','{$fields['usereditcon']}','{$fields['fieldset']}','{$fields['listfields']}','{$fields['issystem']}','{$fields['isshow']}','{$fields['issend']}','{$fields['arcsta']}','{$fields['usertype']}','{$fields['sendrank']}' ); ";
+    $inquery = "INSERT INTO `#@__channeltype` (`id`,`nid`,`typename`,`addtable`,`addcon`,`mancon`,`editcon`,`useraddcon`,`usermancon`,`usereditcon`,`fieldset`,`listfields`,`issystem`,`isshow`,`issend`,`arcsta`,`usertype`,`sendrank`) VALUES ('{$fields['newid']}','{$fields['nid']}','{$fields['typename']}','{$fields['addtable']}','{$fields['addcon']}','{$fields['mancon']}','{$fields['editcon']}','{$fields['useraddcon']}','{$fields['usermancon']}','{$fields['usereditcon']}','{$fields['fieldset']}','{$fields['listfields']}','{$fields['issystem']}','{$fields['isshow']}','{$fields['issend']}','{$fields['arcsta']}','{$fields['usertype']}','{$fields['sendrank']}'); ";
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if (!$rs) GotoStaMsg("<tr>
         <td>导入文档模型时发生错误：{$dsql->GetError()}</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        <td align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
     </tr>");
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
@@ -219,7 +219,7 @@ if ($dopost == "show") {
             if ($islist != '') {
                 $allfields .= ($allfields == '' ? $fieldname : ','.$fieldname);
             }
-            $dsql->ExecuteNoneQuery(" ALTER TABLE `{$fields['addtable']}` ADD  $ntabsql ");
+            $dsql->ExecuteNoneQuery(" ALTER TABLE `{$fields['addtable']}` ADD $ntabsql ");
         }
     }
     if ($allfields != '') {
@@ -229,7 +229,7 @@ if ($dopost == "show") {
         <td>成功导入一个文档模型</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
+        <td align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='mychannel_main.php';\">文档模型管理</button></td>
     </tr>");
 } else if ($dopost == "copysave") {
     $cid = intval($cid);
@@ -289,7 +289,7 @@ if ($dopost == "show") {
     $wintitle = "查看模型应用模板";
     $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 模型应用模板";
     $win = new OxWindow();
-    $win->Init("", "js/blank.js", "");
+    $win->Init("", "/static/web/js/admin.blank.js", "");
     $win->AddTitle("栏目".$row['typename']."默认模板文件说明");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "<tr>
@@ -321,14 +321,14 @@ if ($dopost == "show") {
         ShowMsg("系统文档模型不允许删除", "mychannel_main.php");
         exit();
     }
-    if (empty($job)) $job = "";
+    if (empty($job)) $job = '';
     //确认提示
     if ($job == "") {
         require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "删除指定文档模型";
         $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 删除文档模型";
         $win = new OxWindow();
-        $win->Init("mychannel_edit.php", "js/blank.js", "POST");
+        $win->Init("mychannel_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
@@ -429,7 +429,7 @@ if ($dopost == "show") {
                 $label = $ctag->GetAtt('itemname');
                 if (in_array($datatype, $searchtype)) {
                     $checked = in_array($value, $addonfieldsarr) ? 'checked' : '';
-                    $addonfields .= "<label><input type='checkbox' name='addonfields[]' value='$value' $checked='checked'> $label</label> ";
+                    $addonfields .= "<label><input type='checkbox' name='addonfields[]' value='$value' $checked> $label</label> ";
                 }
             }
         }
@@ -441,7 +441,7 @@ if ($dopost == "show") {
             $addonfields = '';
         }
         $template = trim($template);
-        $forms = "<form action=\"$cfg_cmspath/apps/advancedsearch.php\" method=\"post\">";
+        $forms = "<form action=\"/apps/advancedsearch.php\" method=\"post\">";
         $forms .= "<input type=\"hidden\" name=\"mid\" value=\"$mid\">";
         $forms .= "<input type=\"hidden\" name=\"dopost\" value=\"search\">";
         $forms .= "<label>关键词：<input type=\"text\" name=\"q\"></label><br>";
@@ -531,7 +531,7 @@ if ($dopost == "show") {
                 } else if ($type == 'radio') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "$itemname：<label><input type=\"radio\" name=\"".$name."\" value=\"\" checked=\"checked\"> 不限</label><br>";
+                        $forms .= "$itemname：<label><input type=\"radio\" name=\"".$name."\" value=\"\" checked> 不限</label><br>";
                         foreach ($values as $value) {
                             $forms .= "<label><input type=\"radio\" name=\"".$name."\" value=\"$value\"> $value</label>";
                         }
@@ -558,14 +558,14 @@ if ($dopost == "show") {
         $query = "REPLACE INTO `#@__advancedsearch` (mid, maintable, mainfields, addontable, addonfields, forms, template) VALUES ('$mid','$maintable','$mainstring','$addontable','$addonstring','$formssql', '$template')";
         $dsql->ExecuteNoneQuery($query);
         $formshtml = dede_htmlspecialchars($forms);
-        echo '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../static/web/css/admin.css">
-        <link rel="stylesheet" href="css/codemirror.css">
-		<script src="js/codemirror.js"></script>
-		<script src="js/mode/xml/xml.js"></script>
-		<script src="js/mode/javascript/javascript.js"></script>
-		<script src="js/mode/css/css.js"></script>
-		<script src="js/mode/htmlmixed/htmlmixed.js"></script>';
+        echo '<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/web/css/admin.css">
+        <link rel="stylesheet" href="/static/web/css/codemirror.css">
+		<script src="/static/web/js/codemirror.js"></script>
+		<script src="/static/web/js/mode/xml/xml.js"></script>
+		<script src="/static/web/js/mode/javascript/javascript.js"></script>
+		<script src="/static/web/js/mode/css/css.js"></script>
+		<script src="/static/web/js/mode/htmlmixed/htmlmixed.js"></script>';
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$cfg_soft_lang\">";
         echo "<p>下面生成的网页表单，根据自己需求修改样式后粘贴到对应的模板中</p><textarea id='content' class='form-control'>$forms</textarea>";
         echo "<hr>";

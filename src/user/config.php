@@ -100,7 +100,7 @@ if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
 if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
     PutCookie('dede_csrf_token', $GLOBALS['csrf_token'], 7200, '/');
 }
-//获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行修改这个选项
+//获得当前脚本名称，如果系统被禁用了$_SERVER变量，请自行修改这个选项
 $dedeNowurl = $s_scriptName = '';
 $dedeNowurl = GetCurUrl();
 $dedeNowurls = explode('?', $dedeNowurl);
@@ -122,7 +122,7 @@ if ($cfg_mb_open == 'N') {
             die('');
         }
     } else {
-        ShowMsg("网站关闭了会员功能，您无法浏览此页面", "../index.php");
+        ShowMsg("网站关闭了会员功能，您无法浏览此页面", "/");
         exit();
     }
 }
@@ -173,16 +173,16 @@ function CheckRank($rank = 0, $money = 0)
             //如果启用注册邮件验证
             if ($cfg_ml->fields['spacesta'] == '-10' && !preg_match("#edit_baseinfo.php$#", GetCurUrl())) {
                 if (empty($cfg_ml->fields['email'])) {
-                    ShowMsg("邮箱地址为空，请设置一个邮箱地址", "edit_baseinfo.php", 0, 5000);
+                    ShowMsg("邮箱地址为空，请设置一个邮箱地址", "edit_baseinfo.php");
                     exit;
                 }
-                $msg = "您未进行邮件验证，发送验证邮件后请登录邮箱进行确认</br>发送验证邮件请点击<a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail' class='btn btn-success'>发送</a>，或者点击<a href='javascript:history.go(-1)'>返回</a>取消当前操作";
-                ShowMsg($msg, "javascript:;", 0, 5000);
+                $msg = "<p>您未进行邮件验证，发送验证邮件后请登录邮箱进行确认</p><a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail' class='btn btn-success btn-sm'>发送</a><a href='javascript:history.go(-1);' class='btn btn-outline-success btn-sm'>返回</a>";
+                ShowMsg($msg, "javascript:;");
                 exit;
             }
         }
         if ($cfg_ml->M_Rank < $rank) {
-            $needname = "";
+            $needname = '';
             if ($cfg_ml->M_Rank == 0) {
                 $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='$rank'");
                 $myname = "注册会员";
@@ -198,10 +198,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "注册会员";
                 }
             }
-            ShowMsg("需要".$needname."才能浏览本页面，您目前等级是".$myname."", "-1", 0, 5000);
+            ShowMsg("需要".$needname."才能浏览本页面，您目前等级是".$myname."", "-1");
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("需要".$money."金币才能浏览本页面，您目前金币".$cfg_ml->M_Money."个", "-1", 0, 5000);
+            ShowMsg("需要".$money."金币才能浏览本页面，您目前金币".$cfg_ml->M_Money."个", "-1");
             exit();
         }
     }

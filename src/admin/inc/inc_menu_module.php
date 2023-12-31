@@ -1,6 +1,6 @@
 <?php
 /**
- * 模块菜单
+ * 模块插件
  *
  * @version        $id:inc_menu_module.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
@@ -21,12 +21,12 @@ $plusset = '';
 $dsql->SetQuery("SELECT * FROM `#@__plus` WHERE isshow=1 ORDER BY aid ASC");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
-    $row->menustring = str_replace('plus_友情链接', 'plus_友情链接模块', $row->menustring);
+    $row->menustring = str_replace('', '', $row->menustring);
     $plusset .= $row->menustring."\r\n";
 }
 $adminMenu = '';
 if ($cuserLogin->getUserType() >= 10) {
-    $adminMenu = DEDEBIZ_SAFE_MODE? "" : "<m:top item='6_' name='模块管理' icon='fa fa-database'>
+    $adminMenu = DEDEBIZ_SAFE_MODE ? "" : "<m:top item='6_' name='模块管理' icon='fa fa-database'>
     <m:item name='模块管理' link='module_main.php' rank='sys_module' target='main' />
     <m:item name='模块打包' link='module_make.php' rank='sys_module' target='main' />
     </m:top>";

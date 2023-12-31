@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 动态分页
+ * 系统列表分页
  *
  * @version        $id:datalistcp.class.php 3 17:02 2010年7月9日 tianya $
  * @package        DedeBIZ.Libraries
@@ -253,7 +253,7 @@ class DataListCP
             }
         }
         $purl .= "?".$geturl;
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->pageNO != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."pageno=$prepagenum'>$lang_pre_page</a></li> \n";
             $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."pageno=1'>$lang_index_page</a></li> \n";
@@ -267,7 +267,7 @@ class DataListCP
             $endpage = " <li class='page-item disabled'><span class='page-link'>$lang_end_page</span></li> \n";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $atts['listsize'] * 2 + 1;
         if ($this->pageNO >= $total_list) {
             $j = $this->pageNO - $atts['listsize'];

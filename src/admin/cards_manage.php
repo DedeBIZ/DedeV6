@@ -13,7 +13,7 @@ require_once(DEDEINC.'/datalistcp.class.php');
 $dopost = empty($dopost) ? "" : $dopost;
 if ($dopost == "delete") {
     $ids = explode('`', $aids);
-    $dquery = "";
+    $dquery = '';
     foreach ($ids as $id) {
         if ($dquery == "") $dquery .= "aid='$id' ";
         else $dquery .= " OR aid='$id' ";

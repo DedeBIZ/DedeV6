@@ -2,26 +2,26 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改文档模型</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="css/codemirror.css">
-		<script src="js/codemirror.js"></script>
-		<script src="js/mode/xml/xml.js"></script>
-		<script src="js/mode/javascript/javascript.js"></script>
-		<script src="js/mode/css/css.js"></script>
-		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/codemirror.css">
+		<script src="/static/web/js/codemirror.js"></script>
+		<script src="/static/web/js/mode/xml/xml.js"></script>
+		<script src="/static/web/js/mode/javascript/javascript.js"></script>
+		<script src="/static/web/js/mode/css/css.js"></script>
+		<script src="/static/web/js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="mychannel_edit.php" method="post">
 			<input type="hidden" name="id" value="<?php echo $id?>">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="issystem" value="<?php echo $row['issystem'];?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">修改文档模型</td>
+					<td colspan="2">修改文档模型</td>
 				</tr>
 				<?php if ($row['issystem'] == 1) {?>
 				<tr>
@@ -59,8 +59,8 @@
 				<tr>
 					<td>是否支持会员投稿：</td>
 					<td>
-						<label><input type="radio" name="issend" value="0" <?php if ($row['issend']==0) echo "checked='checked'";?>> 不支持</label>
-						<label><input type="radio" name="issend" value="1" <?php if ($row['issend']==1) echo "checked='checked'";?>> 支持</label>
+						<label><input type="radio" name="issend" value="0" <?php if ($row['issend']==0) echo 'checked';?>> 不支持</label>
+						<label><input type="radio" name="issend" value="1" <?php if ($row['issend']==1) echo 'checked';?>> 支持</label>
 					</td>
 				</tr>
 				<tr>
@@ -93,22 +93,22 @@
 							echo "<label><input type='radio' name='usertype' value='".$row3->name."'".($row['usertype']==$row3->name? "checked" : "")."> ".$row3->name."</label> ";
 						}
 						?>
-						<label><input type="radio" name="usertype" value="" <?php if ($row['usertype']=='') echo "checked='checked'";?>> 不限</label>
+						<label><input type="radio" name="usertype" <?php if ($row['usertype']=='') echo 'checked';?>> 不限</label>
 					</td>
 				</tr>
 				<tr>
 					<td>会员投稿默认状态：</td>
 					<td>
-						<label><input type="radio" name="arcsta" value="-1" <?php if ($row['arcsta']==-1) echo "checked='checked'";?>> 未审核</label>
-						<label><input type="radio" name="arcsta" value="0" <?php if ($row['arcsta']==0) echo "checked='checked'";?>> 已审核（更新静态页）</label>
-						<label><input type="radio" name="arcsta" value="1" <?php if ($row['arcsta']==1) echo "checked='checked'";?>> 已审核（使用动态页）</label>
+						<label><input type="radio" name="arcsta" value="-1" <?php if ($row['arcsta']==-1) echo 'checked';?>> 待审核</label>
+						<label><input type="radio" name="arcsta" value="0" <?php if ($row['arcsta']==0) echo 'checked';?>> 已审核（更新静态页）</label>
+						<label><input type="radio" name="arcsta" value="1" <?php if ($row['arcsta']==1) echo 'checked';?>> 已审核（使用动态页）</label>
 					</td>
 				</tr>
 				<tr>
 					<td>列表附加字段：</td>
 					<td>
 						<input type="text" name="listfields" id="listfields" class="admin-input-lg" value="<?php echo $row['listfields'];?>" class="w-50">
-						<span>（用英文逗号分开，列表模板{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}中，标签[field:name/]调用）</span>
+						<span>（用英文逗号隔开，列表模板{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}中，标签[field:name/]调用）</span>
 					</td>
 				</tr>
 				<tr>
@@ -118,15 +118,15 @@
 				<tr>
 					<td>投稿是否使用摘要：</td>
 					<td>
-						<label><input type="radio" name="needdes" value="1" <?php if ($row['needdes']==1) echo "checked='checked'";?>> 使用</label>
-						<label><input type="radio" name="needdes" value="0" <?php if ($row['needdes']==0) echo "checked='checked'";?>> 不使用</label>
+						<label><input type="radio" name="needdes" value="1" <?php if ($row['needdes']==1) echo 'checked';?>> 使用</label>
+						<label><input type="radio" name="needdes" value="0" <?php if ($row['needdes']==0) echo 'checked';?>> 不使用</label>
 					</td>
 				</tr>
 				<tr>
 					<td>投稿是否使用缩图：</td>
 					<td>
-						<label><input type="radio" name="needpic" value="1" <?php if ($row['needpic']==1) echo "checked='checked'";?>> 使用</label>
-						<label><input type="radio" name="needpic" value="0" <?php if ($row['needpic']==0) echo "checked='checked'";?>> 不使用</label>
+						<label><input type="radio" name="needpic" value="1" <?php if ($row['needpic']==1) echo 'checked';?>> 使用</label>
+						<label><input type="radio" name="needpic" value="0" <?php if ($row['needpic']==0) echo 'checked';?>> 不使用</label>
 					</td>
 				</tr>
 				<tr>
@@ -136,8 +136,8 @@
 				<tr>
 					<td>投稿具有唯一性：</td>
 					<td>
-						<label><input type="radio" name="onlyone" value="1" <?php if ($row['onlyone']==1) echo "checked='checked'";?>> 是</label>
-						<label><input type="radio" name="onlyone" value="0" <?php if ($row['onlyone']==0) echo "checked='checked'";?>> 不是</label>
+						<label><input type="radio" name="onlyone" value="1" <?php if ($row['onlyone']==1) echo 'checked';?>> 是</label>
+						<label><input type="radio" name="onlyone" value="0" <?php if ($row['onlyone']==0) echo 'checked';?>> 不是</label>
 						<span>（与投稿唯一会员只能在该模型对应栏目中发布文档，其作用相当于自定义表单）</span>
 					</td>
 				</tr>
@@ -167,21 +167,21 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table align="center" class="table maintable">
-							<tr bgcolor="#e9ecef" align="center">
-								<td width="16%" class="border-top-0">提示文字</td>
+						<table class="table">
+							<tr align="center">
 								<td width="16%" class="border-top-0">字段名称</td>
+								<td width="16%" class="border-top-0">字段标识</td>
 								<td width="16%" class="border-top-0">数据类型</td>
-								<td width="16%" class="border-top-0">表单类型</td>
+								<td width="16%" class="border-top-0">字段类型</td>
 								<td class="border-top-0">操作</td>
 							</tr>
 							<?php if ($row['issystem']==-1){?>
 							<tr>
-								<td colspan='5'>aid和typeid是强制使用字段，这里不列出</td>
+								<td colspan='5'>不列出aid和typeid强制使用字段</td>
 							</tr>
 							<?php } else {?>
 							<tr>
-								<td colspan='5'>下面是附加表字段，还包含主表archives所有字段</td>
+								<td colspan='5'>下面是附加表字段，包含主表archives所有字段</td>
 							</tr>
 							<?php
 							}
@@ -228,7 +228,7 @@
 									<?php if ($ft==1) {?>
 									<a href="mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&issystem=<?php echo $row['issystem'];?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
 									<?php if ($row['issystem']!=1) {?>
-									<a href="javascript:;" onclick="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&action=delete');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
+									<a href="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&action=delete');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 									<?php }?>
 									<?php } else {echo "<span class='btn btn-danger btn-sm'><i class='fa fa-times'></i> 禁止</span>";}?>
 								</td>
@@ -248,7 +248,7 @@
 					<td colspan="2"><button type="button" name="fset" id="fset" onclick="location.href='mychannel_field_add.php?id=<?php echo $id;?>'" class="btn btn-success btn-sm">添加新字段</button></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" align="center" colspan="2">
+					<td align="center" colspan="2">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='mychannel_main.php';">返回</button>
 					</td>

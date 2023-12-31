@@ -2,16 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>文件修改</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
+		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post();">
 			<input type="hidden" name="action" value="savenewfile">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
 					<td width="260">工作目录：</td>
 					<td>
@@ -29,8 +29,8 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" name="B1" class="btn btn-success btn-sm" value="保存">
-						<input type="button" name="B4" class="btn btn-outline-success btn-sm" value="返回" onclick="javascript:history.go(-1)">
+						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
+						<button type="button" name="B4" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
 					</td>
 				</tr>
 			</table>

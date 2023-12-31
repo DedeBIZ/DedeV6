@@ -13,7 +13,7 @@ CheckPurview('plus_文件管理器');
 require_once(DEDEINC."/libraries/oxwindow.class.php");
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
-if ($activepath == "/") $activepath = "";
+if ($activepath == "/") $activepath = '';
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
 //修改文件名
@@ -23,7 +23,7 @@ if ($fmdo == "rename") {
     $wintitle = "修改指定文件名称";
     $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 修改文件名称";
     $win = new OxWindow();
-    $win->Init("file_manage_control.php", "js/blank.js", "POST");
+    $win->Init("file_manage_control.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
@@ -40,7 +40,7 @@ else if ($fmdo == "newdir") {
     $wintitle = "新建文件目录";
     $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 新建目录";
     $win = new OxWindow();
-    $win->Init("file_manage_control.php", "js/blank.js", "POST");
+    $win->Init("file_manage_control.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("token", make_hash());
@@ -54,11 +54,11 @@ else if ($fmdo == "move") {
     $wintitle = "移动指定文件";
     $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 移动文件</a>";
     $win = new OxWindow();
-    $win->Init("file_manage_control.php", "js/blank.js", "POST");
+    $win->Init("file_manage_control.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
-    $win->AddTitle("新位置前面不加'/'表示相对于当前位置，加'/'表示相对于根目录");
+    $win->AddTitle("新位置前面不加斜杆/表示相对于当前位置，加斜杆/表示相对于根目录");
     $win->AddItem("被移动文件：", $filename);
     $win->AddItem("当前位置：", $activepath);
     $win->AddItem("新位置：", "<input type='input' name='newpath' id='newpath' class='admin-input-md'>");
@@ -70,7 +70,7 @@ else if ($fmdo == "del") {
     $wintitle = "删除指定文件";
     $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 删除文件";
     $win = new OxWindow();
-    $win->Init("file_manage_control.php", "js/blank.js", "POST");
+    $win->Init("file_manage_control.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
@@ -87,12 +87,12 @@ else if ($fmdo == "del") {
 //修改文件
 else if ($fmdo == "edit") {
     if (!isset($backurl)) {
-        $backurl = "";
+        $backurl = '';
     }
     $activepath = str_replace("..", "", $activepath);
     $filename = str_replace("..", "", $filename);
     $file = "$cfg_basedir$activepath/$filename";
-    $content = "";
+    $content = '';
     if (is_file($file)) {
         $fp = fopen($file, "r");
         $content = fread($fp, filesize($file));
@@ -117,7 +117,7 @@ else if ($fmdo == "edit") {
 }
 //新建文件
 else if ($fmdo == "newfile") {
-    $content = "";
+    $content = '';
     $GLOBALS['filename'] = "newfile.txt";
     $GLOBALS['extension'] = 'text/html';
     $contentView = "<textarea id='str' name='str' class='admin-textarea-xl'></textarea>\r\n";

@@ -3,15 +3,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>联动类型管理</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/webajax.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 		<script>
 			function updateItem(aid) {
 				var upenumf = document.getElementById('upenumf');
@@ -123,7 +123,7 @@
 				}
 			}
 			function DelSel() {
-				DedeConfirm("您确实要删除这些分类吗").then((v) => {
+				DedeConfirm("确实要删除这些分类吗").then((v) => {
 					document.form1.submit();
 				}).catch((e) => {
 					console.log(e)
@@ -140,17 +140,17 @@
 		</script>
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
+		<table class="table shadow-sm my-3">
 			<tr>
-				<td bgcolor="#f5f5f5">
-					<select name="egroup1" id="egroup1" onChange="ChangePage(this)" class="admin-input-sm mr-3">
+				<td>
+					<select name="egroup1" onChange="ChangePage(this);" id="egroup1" class="admin-input-sm">
 						<option value="0">所有组</option>
 						<?php
 						$selgroup = '';
 						foreach($etypes as $arr)
 						{
-							$stylecolor = "";
-							if ($arr['issystem']==1) $stylecolor = " style='color:#999' ";
+							$stylecolor = '';
+							if ($arr['issystem']==1) $stylecolor = "class='text-black-50'";
 							if ($egroup==$arr['egroup']) {
 								$selgroup = $arr['itemname'];
 								echo "<option value='{$arr['id']}' $stylecolor selected='1'>{$arr['egroup']}|{$arr['itemname']}</option>";
@@ -160,10 +160,10 @@
 						}
 						?>
 					</select>
-					<button type="button" name="gedit" id="gedit" class="btn btn-success btn-sm" onclick="EditType()">修改</button>
-					<button type="button" name="gdel" id="gdel" class="btn btn-success btn-sm" onclick="DelType()">删除</button>
-					<button type="button" name="gview" id="gview" class="btn btn-success btn-sm" onclick="ViewType()">预览</button>
-					<button type="button" name="addnew" id="addnew" class="btn btn-success btn-sm" onclick="AddType()">新增联动组</button>
+					<button type="button" name="gedit" id="gedit" class="btn btn-success btn-sm" onclick="EditType();">修改</button>
+					<button type="button" name="gview" id="gview" class="btn btn-success btn-sm" onclick="ViewType();">预览</button>
+					<button type="button" name="gdel" id="gdel" class="btn btn-danger btn-sm" onclick="DelType();">删除</button>
+					<button type="button" name="addnew" id="addnew" class="btn btn-success btn-sm" onclick="AddType();">新增联动组</button>
 					<a href="stepselect_main.php?action=upallcache" class="btn btn-success btn-sm">更新所有缓存</a>
 				</td>
 			</tr>
@@ -175,28 +175,18 @@
 			$options = '';
 			while($row1 = $dsql->GetArray('out'))
 			{
-				if (!preg_match("#\.#", $row1['evalue']))
-				{
-					$row1['ename'] = ($row1['evalue'] % 500 == 0)? $row1['ename'] : '└─ '.$row1['ename'];
+				if (!preg_match("#\.#", $row1['evalue'])) {
+					$row1['ename'] = ($row1['evalue'] % 500 == 0) ? $row1['ename'] : '└─ '.$row1['ename'];
 					if ($topvalue != $row1['evalue']) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
 					else $options .= "<option value='{$row1['evalue']}' selected='selected'>{$row1['ename']}</option>";
 				}
 			}
-			//如果添加3级之类
+			//如果添加3级类別
 			if ($topvalue % 500 != 0) $arr['issign'] = 2;
 		?>
-		<table align="center" class="table maintable mb-3">
+		<table class="table shadow-sm mb-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="8">
-					<span class="float-left"><?php echo $selgroup;?> - 子分类管理</span>
-					<span class="float-right">
-					<?php
-					if ($egroup=='nativeplace') {
-						echo "<a href='stepselect_main.php?action=exarea' class='btn btn-success btn-sm'>导入默认省市地区表</a>";
-					}
-					?>
-					</span>
-				</td>
+				<td colspan="8"><?php echo $selgroup;?></td>
 			</tr>
 			<tr>
 				<td>
@@ -204,31 +194,30 @@
 						<input type="hidden" name="action" value="addenum_save">
 						<input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
 						<input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
-						<span>隶属分类：</span>
-						<select name="topvalue" onChange="ChangePage2(this)" class="admin-input-sm">
+						<select name="topvalue" onChange="ChangePage2(this);" class="admin-input-sm">
 							<option value="0"><?php echo $selgroup;?></option>
 							<?php echo $options;?>
 						</select>
-						<span>分类名称：</span>
-						<input type="text" name="ename" class="admin-input-lg"></span>
+						<input type="text" name="ename" class="admin-input-lg" placeholder="请填分类名称">
 						<button type="submit" name="sb2" class="btn btn-success btn-sm">添加分类</button>
+						<?php if ($egroup=='nativeplace') {echo "<a href='stepselect_main.php?action=exarea' class='btn btn-success btn-sm'>导入默认地区</a>";}?>
 					</form>
 				</td>
 			</tr>
 		</table>
 		<form action="stepselect_main.php" name="upenumf" method="post" id="upenumf">
 			<input type="hidden" name="action" value="upenum">
-			<input type="hidden" name="aid" value="">
-			<input type="hidden" name="ename" value="">
-			<input type="hidden" name="disorder" value="">
+			<input type="hidden" name="aid">
+			<input type="hidden" name="ename">
+			<input type="hidden" name="disorder">
 		</form>
 		<form name="form1" action="stepselect_main.php" method="post">
 			<input type="hidden" name="action" value="delenumAllSel">
-			<table align="center" class="table maintable">
+			<table class="table">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="8"><a href="stepselect_main.php">联动类型管理</a> - <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> - 子分类列表</td>
+					<td colspan="8"><a href="stepselect_main.php">联动类型管理</a> - <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a></td>
 				</tr>
-				<tr bgcolor="#e9ecef" align="center">
+				<tr align="center">
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
 					<td width="20%">枚举名</td>
@@ -245,7 +234,7 @@
 					<td>
 						<?php 
 						if (!preg_match("#\.#", $fields['evalue'])) {
-							if ($fields['evalue']>500 && $fields['evalue']%500 != 0)  $fields['ename'] = "└─ ".$fields['ename'];
+							if ($fields['evalue']>500 && $fields['evalue']%500 != 0) $fields['ename'] = "└─ ".$fields['ename'];
 						} else {
 							$fields['ename'] = "└── ".$fields['ename'];
 						}
@@ -256,7 +245,7 @@
 					<td>
 						<?php
 						if (!preg_match("#\.#", $fields['evalue'])) {
-							if ($fields['evalue']>500 && $fields['evalue']%500 != 0)  echo '二级选择';
+							if ($fields['evalue']>500 && $fields['evalue']%500 != 0) echo '二级选择';
 							else echo '一级选择';
 						} else {
 							echo "三级选择";
@@ -270,7 +259,7 @@
 						if (!empty($egroup)) {
 						?>
 						<a href='javascript:updateItem({dede:field.id/});' class='btn btn-success btn-sm'><i class='fa fa-repeat'></i> 更新</a>
-						<a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+						<a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
 						<?php
 						} else {
 							echo "<a href='stepselect_main.php?egroup={$fields['egroup']}'>".$egroups[$fields['egroup']]."</a>";
@@ -286,18 +275,18 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
 		<?php
 		} else {
 		?>
-		<table align="center" class="table maintable mb-3">
+		<table class="table shadow-sm mb-3">
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="7">联动类型管理</td>
+				<td colspan="7">联动类型管理</td>
 			</tr>
-			<tr bgcolor="#e9ecef" align="center">
+			<tr align="center">
 				<td width="6%">选择</td>
 				<td width="6%">id</td>
 				<td width="30%">类别名</td>
@@ -335,7 +324,7 @@
 			</tr>
 			{/dede:datalist}
 			<tr>
-				<td bgcolor="#f5f5f5" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
+				<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 		<?php }?>

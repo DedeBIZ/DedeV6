@@ -13,7 +13,7 @@ if (DEDEBIZ_SAFE_MODE) {
     die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
 CheckPurview('sys_Data');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 //查看表结构
 if ($dopost == "viewinfo") {
     CheckCSRF();
@@ -90,7 +90,7 @@ else if ($dopost == "query") {
         echo "删除数据表或数据库的语句不允许在这里执行";
         exit();
     }
-    echo '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">';
+    echo '<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">';
     //运行查询语句
     if (preg_match("#^select #i", $sqlquery)) {
         $dsql->SetQuery($sqlquery);
@@ -119,7 +119,7 @@ else if ($dopost == "query") {
         //普通的SQL语句
         $sqlquery = str_replace("\r", "", $sqlquery);
         $sqls = preg_split("#;[ \t]{0,}\n#", $sqlquery);
-        $nerrCode = "";
+        $nerrCode = '';
         $i = 0;
         foreach ($sqls as $q) {
             $q = trim($q);

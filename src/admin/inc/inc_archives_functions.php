@@ -1,6 +1,6 @@
 <?php
 /**
- * 文档操作相关函数
+ * 文档操作函数
  *
  * @version        $id:inc_archives_functions.php 9:56 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
@@ -11,8 +11,6 @@
 require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
 require_once(DEDEINC.'/image.func.php');
 require_once(DEDEINC.'/archive/partview.class.php');
-$backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '';
-$backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn btn-success btn-sm'>记忆的列表页</a>" : '';
 if (!isset($_NOT_ARCHIVES)) {
     require_once(DEDEINC.'/customfields.func.php');
 }
@@ -136,7 +134,7 @@ function GetCurContent($body)
         } else {
             continue;
         }
-        $milliSecondN = dd2char($milliSecond.mt_rand(1000,8000));
+        $milliSecondN = dd2char($milliSecond.mt_rand(1000, 9999));
         $value = trim($value);
         $rndFileName = $imgPath.'/'.$milliSecondN.'-'.$key.$itype;
         $fileurl = $imgUrl.'/'.$milliSecondN.'-'.$key.$itype;
@@ -198,7 +196,7 @@ function GetRemoteImage($url, $uid = 0)
         } else {
             $itype = '.jpg';
         }
-        $rndname = dd2char($uid.'_'.MyDate('mdHis', time()).mt_rand(1000,9999));
+        $rndname = dd2char($uid.'_'.MyDate('mdHis', time()).mt_rand(1000, 9999));
         $rndtrueName = $imgPath.'/'.$rndname.$itype;
         $fileurl = $imgUrl.'/'.$rndname.$itype;
         $ok = $htd->SaveToBin($rndtrueName);
@@ -357,7 +355,7 @@ function GetDDImage($litpic, $picname, $isremote)
         }
         $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         if (strtolower($_FILES[$litpic]['type']) == "image/gif") {
             $fullUrl = $fullUrl.".gif";
         } else if (strtolower($_FILES[$litpic]['type']) == "image/png") {
@@ -484,7 +482,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($fieldset);
-    $dede_addonfields = "";
+    $dede_addonfields = '';
     if (is_array($dtp->CTags)) {
         foreach ($dtp->CTags as $tid => $ctag) {
             if (
@@ -679,7 +677,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         } else {
             $savepath = $cfg_image_dir.'/'.date("%Y-%m", $ntime);
             CreateDir($savepath);
-            $fullUrl = $savepath.'/'.date("%d", $ntime).dd2char(date("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000,9999));
+            $fullUrl = $savepath.'/'.date("%d", $ntime).dd2char(date("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000, 9999));
         }
         if (strtolower($_FILES[$upname]['type']) == "image/gif") {
             $fullUrl = $fullUrl.".gif";
@@ -712,7 +710,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         if ($isremote == 1 && preg_match("#^http[s]?:\/\/#i", $handurl)) {
             $ddinfos = GetRemoteImage($handurl, $cuserLogin->getUserID());
             if (!is_array($ddinfos)) {
-                $litpic = "";
+                $litpic = '';
             } else {
                 $filename = $ddinfos[0];
             }
@@ -724,7 +722,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
     }
     $imgfile = $cfg_basedir.$filename;
     if (is_file($imgfile) && $isrm_up && $filename != '') {
-        $info = "";
+        $info = '';
         $imginfos = GetImageSize($imgfile, $info);
         //把新上传的图片信息保存到媒体文档管理文档中
         $inquery = "INSERT INTO `#@__uploads` (title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$title','$filename','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".time()."','".$cuserLogin->getUserID()."');";
@@ -748,9 +746,9 @@ function GetUpdateTest()
         if ($cfg_make_andcat == 'Y') $dolist .= empty($dolist) ? 'makeparenttype' : ',makeparenttype';
         $dolists = explode(',', $dolist);
         $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=".preg_replace("#".$dolists[0]."[,]{0,1}#", '', $dolist);
-        $revalue = "<table id='tgtable' class='maintable my-3'><tr><td bgcolor='#f8f8f8'>正在进行相关文档更新，未完成前不要执行其它操作：\r\n</td></tr>\r\n";
-        $revalue .= "<tr><td>\r\n<iframe name='stafrm' id='stafrm' frameborder='0' width='100%' height='360px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
-        $revalue .= "</table>";
+        $revalue = "<tr id='tgtable'><td>";
+        $revalue .= "<div class='admin-win-iframe'><iframe src='$jumpUrl' name='stafrm' frameborder='0' id='stafrm' width='100%' height='100%'></iframe></div>";
+        $revalue .= "</td></tr>";
     } else {
         $revalue = '';
     }

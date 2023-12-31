@@ -19,7 +19,7 @@ if (empty($action)) $action = '';
 $mdir = DEDEDATA.'/module';
 if ($action == 'upload') {
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("请选择上传的模块插件文件", "javascript:;");
+        ShowMsg("请选择上传的模块插件文件", "-1");
         exit();
     } else {
         include_once(DEDEINC."/libraries/zip.class.php");
@@ -30,7 +30,7 @@ if ($action == 'upload') {
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的插件不是正常模块格式文件", "javascript:;");
+            ShowMsg("您上传的插件不是正常模块格式文件", "-1");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -40,25 +40,25 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("您上传的模块已存在，请删除原模块文件或强制同名模块上传", "javascript:;");
+            ShowMsg("您上传的模块已存在，请删除原模块文件或强制同名模块上传", "-1");
             exit();
         }
         @unlink($okfile);
         copy($tmpfilename, $okfile);
         @unlink($tmpfilename);
         $dm->Clear();
-        ShowMsg("成功上传一个新的模块", "module_main.php?action=view&hash={$infos['hash']}");
+        ShowMsg("成功上传一个新模块", "module_main.php?action=view&hash={$infos['hash']}");
         exit();
     }
 } else {
     $win = new OxWindow();
-    $win->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data");
+    $win->Init("module_upload.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data");
     $wecome_info = "<a href='module_main.php'>模块管理</a> - 上传模块插件";
     $win->AddTitle('请选择上传的模块插件文件');
     $win->AddHidden("action", 'upload');
     $msg = "<tr>
         <td width='260'>文件格式：</td>
-        <td><label><input type='radio' name='filetype' value='0' checked='checked'> 正常模块插件格式</label></td>
+        <td><label><input type='radio' name='filetype' value='0' checked> 正常模块插件格式</label></td>
     </tr>
     <tr>
         <td>已有模块：</td>

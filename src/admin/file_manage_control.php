@@ -14,7 +14,7 @@ require(DEDEINC."/libraries/oxwindow.class.php");
 require_once(DEDEADMIN.'/file_class.php');
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
-if ($activepath == "/") $activepath = "";
+if ($activepath == "/") $activepath = '';
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
 $files = json_decode(file_get_contents(DEDEDATA.'/admin/files.txt'));
@@ -154,7 +154,7 @@ else if ($fmdo == "space") {
     $totalkb = $space->setkb($total);
     $totalmb = $space->setmb($total);
     $win = new OxWindow();
-    $win->Init("", "js/blank.js", "POST");
+    $win->Init("", "/static/web/js/admin.blank.js", "POST");
     $win->AddMsgItem("<tr>
         <td>
             <span>$totalkb</span>KB<br>
@@ -163,7 +163,7 @@ else if ($fmdo == "space") {
         </td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='file_manage_main.php';\">文件管理器</button></td>
+        <td align='center'><button type='button' class='btn btn-success btn-sm' onclick=\"location='file_manage_main.php';\">文件管理器</button></td>
     </tr>");
     $winform = $win->GetWindow("");
     $win->Display();

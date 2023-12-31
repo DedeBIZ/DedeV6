@@ -2,20 +2,20 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改自定义宏标记</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form action="mytag_edit.php" method="post" enctype="multipart/form-data" name="form1">
 			<input type="hidden" name="aid" value="<?php echo $aid?>">
 			<input type="hidden" name="dopost" value="saveedit">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="mytag_main.php">自定义宏标记</a> - 修改自定义宏标记</td>
+					<td colspan="2"><a href="mytag_main.php">自定义宏标记</a> - 修改自定义宏标记</td>
 				</tr>
 				<tr>
 					<td width="260">所属栏目：</td>
@@ -37,8 +37,8 @@
 				<tr>
 					<td>时间限制：</td>
 					<td>
-						<label><input name="timeset" type="radio" value="0" <?php if ($row['timeset']==0) echo "checked";?>> 永不过期</label>
-						<label><input type="radio" name="timeset" value="1" <?php if ($row['timeset']==1) echo "checked";?>> 在设内时间内有效</label>
+						<label><input name="timeset" type="radio" value="0" <?php if ($row['timeset']==0) echo 'checked';?>> 永不过期</label>
+						<label><input type="radio" name="timeset" value="1" <?php if ($row['timeset']==1) echo 'checked';?>> 在设内时间内有效</label>
 					</td>
 				</tr>
 				<tr>
@@ -58,7 +58,7 @@
 					<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"><?php echo $row['expbody']?></textarea> </td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+					<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
 			</table>
 		</form>

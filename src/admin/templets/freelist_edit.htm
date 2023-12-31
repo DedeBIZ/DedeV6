@@ -2,28 +2,28 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改自由列表</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="css/codemirror.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/codemirror.js"></script>
-		<script src="js/mode/xml/xml.js"></script>
-		<script src="js/mode/javascript/javascript.js"></script>
-		<script src="js/mode/css/css.js"></script>
-		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/codemirror.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/codemirror.js"></script>
+		<script src="/static/web/js/mode/xml/xml.js"></script>
+		<script src="/static/web/js/mode/javascript/javascript.js"></script>
+		<script src="/static/web/js/mode/css/css.js"></script>
+		<script src="/static/web/js/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="freelist_edit.php" method="post" onSubmit="return CheckSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="aid" value="<?php echo $row['aid']?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="freelist_main.php">自由列表管理</a> - 修改自由列表</td>
+					<td colspan="2"><a href="freelist_main.php">自由列表管理</a> - 修改自由列表</td>
 				</tr>
 
 				<tr>
@@ -43,7 +43,7 @@
 					<td>目录默认页名称：</td>
 					<td>
 						<input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" class="admin-input-lg">
-						<label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if ($row['nodefault']==1) echo "checked";?>> 不使用目录默认首页</label>
+						<label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if ($row['nodefault']==1) echo 'checked';?>> 不使用目录默认首页</label>
 					</td>
 				</tr>
 				<tr>
@@ -120,7 +120,7 @@
 						}
 						echo "</select>";
 						?>
-						<label>文档发布时间：<input type="text" name="subday" id="subday" size="6" value="<?php echo $ctag->GetAtt('subday')?>"> 天以内（0表示不限）</label>
+						<label>文档发布时间：<input type="text" name="subday" id="subday" class="admin-input-sm"> value="<?php echo $ctag->GetAtt('subday')?>"> 天以内（0表示不限）</label>
 					</td>
 				</tr>
 				<tr>
@@ -137,10 +137,10 @@
 						if ($setype=='') $setype = 'X';
 						?>
 						<span>高级筛选：</span>
-						<label><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo ' checked';?>> 带缩略图</label>
-						<label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo ' checked';?>> 推荐</label>
-						<label><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo ' checked';?>> 专题</label>
-						<label>关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号分开）</label>
+						<label><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo 'checked';?>> 带缩略图</label>
+						<label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo 'checked';?>> 推荐</label>
+						<label><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo 'checked';?>> 专题</label>
+						<label>关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号隔开）</label>
 					</td>
 				</tr>
 				<tr>
@@ -167,8 +167,8 @@
 							<option value="lastpost">最后评论时间</option>
 							<option value="postnum">评论总数</option>
 						</select>
-						<label><input type="radio" name="order" value="desc" <?php if ($ctag->GetAtt('orderway')=='desc') echo "checked";?>> 由高到低</label>
-						<label><input type="radio" name="order" value="asc" <?php if ($ctag->GetAtt('orderway')=='asc') echo "checked";?>> 由低到高</label>
+						<label><input type="radio" name="order" value="desc" <?php if ($ctag->GetAtt('orderway')=='desc') echo 'checked';?>> 由高到低</label>
+						<label><input type="radio" name="order" value="asc" <?php if ($ctag->GetAtt('orderway')=='asc') echo 'checked';?>> 由低到高</label>
 					</td>
 				</tr>
 				<tr>
@@ -178,13 +178,13 @@
 					<td colspan="2" class="p-0"><textarea name="innertext" id="myinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText()?></textarea></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center"><button name="Submit2" type="submit" id="Submit2" class="btn btn-success btn-sm">保存</button></td>
+					<td colspan="2" align="center"><button name="submit2" type="submit" id="Submit2" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
 			</table>
 		</form>
 		<script>
 			function CheckSubmit() {
-				if (document.form1.title.value == '') {
+				if (document.form1.title.value == "") {
 					ShowMsg("请输入自由列表标题");
 					document.form1.title.focus();
 					return false;

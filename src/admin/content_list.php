@@ -168,7 +168,7 @@ $dlist->SetParameter('orderby', $orderby);
 $dlist->SetParameter('arcrank', $arcrank);
 $dlist->SetParameter('channelid', $channelid);
 $dlist->SetParameter('f', $f);
-$strTimerange = "";
+$strTimerange = '';
 if ($stime > 0 && $etime > 0) {
     $strTimerange = implode(" - ",array(MyDate("Y-m-d H:i:s",$stime),MyDate("Y-m-d H:i:s",$etime)));
     $dlist->SetParameter('timerange', $strTimerange);

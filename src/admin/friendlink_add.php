@@ -9,8 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
-CheckPurview('plus_友情链接模块');
-if (empty($dopost)) $dopost = "";
+CheckPurview('plus_友情链接');
+if (empty($dopost)) $dopost = '';
 if ($dopost == "add") {
     $dtime = time();
     if (is_uploaded_file($logoimg)) {
@@ -19,7 +19,7 @@ if ($dopost == "add") {
         if (!preg_match("#(jpg|gif|png)$#", $shortname)) {
             $shortname = '.gif';
         }
-        $filename = MyDate("ymdHis", time()).mt_rand(1000,9999).$shortname;
+        $filename = MyDate("ymdHis", time()).mt_rand(1000, 9999).$shortname;
         $imgurl = $cfg_medias_dir."/flink";
         if (!is_dir($cfg_basedir.$imgurl)) {
             MkdirAll($cfg_basedir.$imgurl, $cfg_dir_purview);
@@ -56,7 +56,7 @@ if ($dopost == "add") {
     $rs = $dsql->ExecuteNoneQuery($query);
     $burl = empty($_COOKIE['ENV_GOBACK_URL']) ? "friendlink_main.php" : $_COOKIE['ENV_GOBACK_URL'];
     if ($rs) {
-        ShowMsg("成功添加一个链接", $burl, 0, 500);
+        ShowMsg("成功添加一个链接", $burl);
         exit();
     } else {
         ShowMsg("添加链接时出错，原因：".$dsql->GetError(), "javascript:;");

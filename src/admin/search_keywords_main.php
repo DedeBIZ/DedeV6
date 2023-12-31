@@ -63,18 +63,18 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $start = ($pageno - 1) * $pagesize;
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
-    <table align='center' class='table maintable my-3'>
+    <table class='table shadow-sm my-3'>
     <tr>
-        <td colspan='8' bgcolor='#f5f5f5'>搜索关键词维护</td>
+        <td colspan='8'>搜索关键词维护</td>
     </tr>
-    <tr align='center' bgcolor='#e9ecef'>
+    <tr align='center'>
         <td width='6%'>选择</td>
-        <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('aid')\">id</a></td>
+        <td width='6%'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
         <td width='20%'>关键词</td>
         <td width='20%'>分词结果</td>
-        <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('count')\">频率</a></td>
-        <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('result')\">结果</a></td>
-        <td width='12%'><a href='javascript:;' onclick=\"ReloadPage('lasttime')\">搜索时间</a></td>
+        <td width='6%'><a href=\"javascript:ReloadPage('count');\">频率</a></td>
+        <td width='6%'><a href=\"javascript:ReloadPage('result');\">结果</a></td>
+        <td width='12%'><a href=\"javascript:ReloadPage('lasttime');\">搜索时间</a></td>
         <td>操作</td>
     </tr>";
     echo $printhead;
@@ -92,17 +92,17 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
         <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
         <td><span>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</span></td>
         <td>
-            <a href='javascript:;' onclick='UpdateNote({$row['aid']})' class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
-            <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='javascript:UpdateNote({$row['aid']});' class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
+            <a href='javascript:DelNote({$row['aid']});' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
         </td>
     </tr>";
         echo $line;
     }
     echo "<tr>
             <td colspan='8'>
-            <a href='javascript:selAll()' class='btn btn-success btn-sm'>反选</a>
-            <a href='javascript:noselAll()' class='btn btn-success btn-sm'>取消</a>
-            <a href='javascript:delall()' class='btn btn-danger btn-sm'>删除</a>
+            <a href=\"javascript:selAll();\" class='btn btn-success btn-sm'>反选</a>
+            <a href=\"javascript:noselAll();\" class='btn btn-success btn-sm'>取消</a>
+            <a href=\"javascript:delall();\" class='btn btn-danger btn-sm'>删除</a>
            </td>
         </tr>";
     echo "</table></form>";

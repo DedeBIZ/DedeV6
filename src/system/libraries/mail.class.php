@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * SMTP邮件操作类
+ * SMTP邮件操作
  *
  * @version        $id:mail.class.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
@@ -24,7 +24,7 @@ class smtp
         $this->user       = $user;
         $this->pass       = $pass;
         $this->host_name  = "localhost";
-        $this->log_file   = "";
+        $this->log_file   = '';
         $this->sock       = FALSE;
     }
     /**

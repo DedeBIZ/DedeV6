@@ -22,7 +22,7 @@ function SelectFile(sform, stype) {
             $(frm).append(tmp);
         }
         $(`#${tmp.id}`).click();
-        $(`#${tmp.id}`).off('change').change(function (val) {
+        $(`#${tmp.id}`).off('change').change(function(val) {
             const f = val.target.files[0];
             var formData = new FormData();
             var fileData = f;
@@ -33,14 +33,14 @@ function SelectFile(sform, stype) {
                 data: formData,
                 processData: false,
                 contentType: false,
-                success: function (result) {
+                success: function(result) {
                     if (result.code === 0) {
                         $(ipt).val(result.data);
                     } else {
                         ShowMsg("文件上传失败，错误原因："+result.error.message);
                     }
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     ShowMsg("文件上传失败");//处理上传失败后的回调
                 }
             });

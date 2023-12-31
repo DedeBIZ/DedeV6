@@ -2,7 +2,7 @@
 if (!defined('DEDEINC')) exit ('dedebiz');
 require_once(DEDEINC."/libraries/agent.class.php");
 /**
- * 轻量级流量统计
+ * 流量统计操作
  *
  * @version        $id:statistics.class.php 11:42 2022年03月26日 tianya $
  * @package        DedeBIZ.Libraries
@@ -52,7 +52,7 @@ class DedeStatistics {
         ksort($pm);
         $pm['sign'] = sha1(http_build_query($pm).md5($cfg_cookie_encode));
         $pm['dopost'] = "stat";
-        $url = $GLOBALS['cfg_cmspath'].'/apps/statistics.php?'.http_build_query($pm);
+        $url = '/apps/statistics.php?'.http_build_query($pm);
         return "
         (function() {
             let u = '{$url}';

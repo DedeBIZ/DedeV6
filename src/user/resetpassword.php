@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEMEMBER."/inc/inc_pwd_functions.php");
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $id = isset($id) ? intval($id) : 0;
 if ($dopost == "") {
     include(dirname(__FILE__)."/templets/resetpassword.htm");
@@ -65,7 +65,7 @@ if ($dopost == "") {
         sn($mid, $row['userid'], $row['email'], 'N');
         exit();
     } else {
-        ShowMsg("您的安全问题或答案回答错误", "login.php");
+        ShowMsg("安全问题或答案回答错误", "login.php");
         exit();
     }
 } else if ($dopost == "getpasswd") {

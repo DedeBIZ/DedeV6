@@ -12,10 +12,10 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 require_once(DEDEINC."/dedetag.class.php");
 class OxWindow
 {
-    var $myWin = "";
-    var $myWinItem = "";
-    var $checkCode = "";
-    var $formName = "";
+    var $myWin = '';
+    var $myWinItem = '';
+    var $checkCode = '';
+    var $formName = '';
     var $tmpCode = "//checkcode";
     var $hasStart = false;
     /**
@@ -27,7 +27,7 @@ class OxWindow
      * @param     string  $formname  表单名称
      * @return    void
      */
-    function Init($formaction = "", $checkScript = "js/blank.js", $formmethod = "POST", $formname = "myform")
+    function Init($formaction = "", $checkScript = "/static/web/js/admin.blank.js", $formmethod = "POST", $formname = "myform")
     {
         $this->myWin .= "<script>";
         if ($checkScript != "" && file_exists($checkScript)) {
@@ -35,7 +35,7 @@ class OxWindow
             $this->myWin .= fread($fp, filesize($checkScript));
             fclose($fp);
         } else {
-            $this->myWin .= "<!--function CheckSubmit(){return true;}-->";
+            $this->myWin .= "function CheckSubmit(){return true;}";
         }
         $this->myWin .= "</script>";
         $this->formName = $formname;
@@ -59,7 +59,7 @@ class OxWindow
      */
     function StartWin()
     {
-        $this->myWin .= "<table width='100%'>";
+        $this->myWin .= "<table>";
     }
     /**
      *  添加单列标题
@@ -74,7 +74,7 @@ class OxWindow
         if ($col != "" && $col != "0") {
             $colspan = "colspan='$col'";
         } else {
-            $colspan = "";
+            $colspan = '';
         }
         $this->myWinItem .= "<tr>";
         $this->myWinItem .= "<td $colspan>$title</td>";
@@ -146,7 +146,7 @@ class OxWindow
         global $cfg_static_dir;
         $this->StartWin();
         $this->myWin .= $this->myWinItem;
-        $tt = "";
+        $tt = '';
         switch ($wintype) {
             case 'back':
                 $tt = "返回";
@@ -167,9 +167,9 @@ class OxWindow
         if ($wintype != "") {
             if ($wintype != "hand") {
                 $this->myWin .= "<tr>
-                    <td bgcolor='#f5f5f5' colspan='2' align='center'>
+                    <td colspan='2' align='center'>
                     <button type='submit' class='btn btn-success btn-sm'>$tt</button>
-                    <button type='button' class='btn btn-outline-success btn-sm' onclick='history.go(-1);'>返回</button>
+                    <button type='button' class='btn btn-outline-success btn-sm' onclick='javascript:history.go(-1);'>返回</button>
                     </td>
                 </tr>";
             } else {
@@ -178,7 +178,7 @@ class OxWindow
                         <td>$msg</td>
                     </tr>
                     <tr>
-                        <td bgcolor='#f5f5f5' colspan='2' align='center'><button type='button' class='btn btn-success btn-sm' onclick='history.go(-1);'>返回</button></td>
+                        <td colspan='2' align='center'><button type='button' class='btn btn-success btn-sm' onclick='javascript:history.go(-1);'>返回</button></td>
                     </tr>";
                 } else {
                     $this->myWin .= '';

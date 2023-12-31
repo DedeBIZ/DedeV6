@@ -138,7 +138,7 @@ class ChannelUnit
             if (empty($GLOBALS["stNowPage"])) $NowPage = 1;
             else $NowPage = intval($GLOBALS["stNowPage"]);
         }
-        $revalue = "";
+        $revalue = '';
         $dtp = new DedeTagParse();
         $dtp->LoadSource($fvalue);
         if (!is_array($dtp->CTags)) {

@@ -1,6 +1,6 @@
 <?php
 /**
- * 模型解析相关函数
+ * 模型解析函数
  *
  * @version        $id:inc_archives_all.php 9:56 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
@@ -18,10 +18,10 @@
 function GetFormItem($ctag)
 {
     $fieldname = $ctag->GetName();
-    $formitem = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+    $formitem = "<table>
        <tr>
-        <td width=\"80\">~name~</td>
-        <td width=\"720\">~form~</td>
+        <td width=\"120\">~name~</td>
+        <td>~form~</td>
        </tr>
     </table>\r\n";
     $innertext = trim($ctag->GetInnerText());
@@ -48,7 +48,7 @@ function GetFormItem($ctag)
                 $i = 0;
                 if ($v != '') {
                     if ($i == 0) {
-                        $myformItem .= "<label><input type='radio' name='$fieldname' value='$v' checked='checked'> $v</label>\r\n";
+                        $myformItem .= "<label><input type='radio' name='$fieldname' value='$v' checked> $v</label>\r\n";
                     } else {
                         $myformItem .= "<label><input type='radio' name='$fieldname' value='$v'> $v</label>\r\n";
                     }
@@ -65,8 +65,8 @@ function GetFormItem($ctag)
         }
     }
     if ($ctag->GetAtt("type") == "htmltext" || $ctag->GetAtt("type") == "textdata") {
-        $formitem = "";
-        $formitem .= "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td><td>";
+        $formitem = '';
+        $formitem .= "<table><tr><td width=\"120\">".$ctag->GetAtt('itemname')."</td><td>";
         $formitem .= GetEditor($fieldname, '', 350, 'Basic', 'string');
         $formitem .= "</td></tr></table>\r\n";
         return $formitem;
@@ -109,14 +109,13 @@ function GetFormItem($ctag)
         return $formitem;
     } else {
         if ($ctag->GetAtt('default') != "") $dfvalue = $ctag->GetAtt('default');
-        else $dfvalue = "";
+        else $dfvalue = '';
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='admin-input-lg' value='$dfvalue'>\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     }
 }
-
 /**
  * 处理不同类型的数据
  *
@@ -154,7 +153,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
             fclose($fp);
             return $addvar;
         } else {
-            $ipath = $GLOBALS['cfg_cmspath']."/data/textdata";
+            $ipath = '/data/textdata';
             $tpath = ceil($aid / 5000);
             if (!is_dir($GLOBALS['cfg_basedir'].$ipath)) {
                 MkdirAll($GLOBALS['cfg_basedir'].$ipath, $cfg_dir_purview);
@@ -178,7 +177,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
         $imgurl = "{dede:img text='' width='' height=''} ".$iurl." {/dede:img}";
         if (preg_match("#^(http|https):\/\/#i", $iurl) && $GLOBALS['isUrlOpen']) {
             //远程图片
-            $reimgs = "";
+            $reimgs = '';
             if ($isUrlOpen) {
                 $reimgs = GetRemoteImage($iurl, $GLOBALS['adminid']);
                 if (is_array($reimgs)) {
@@ -200,7 +199,6 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
         return $dvalue;
     }
 }
-
 /**
  * 获得带值的表单修改时用
  *
@@ -212,10 +210,10 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
 function GetFormItemValue($ctag, $fvalue)
 {
     $fieldname = $ctag->GetName();
-    $formitem = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+    $formitem = "<table>
        <tr>
-        <td width=\"80\">~name~</td>
-        <td width=\"720\">~form~</td>
+        <td width=\"120\">~name~</td>
+        <td>~form~</td>
        </tr>
     </table>\r\n";
     $innertext = trim($ctag->GetInnerText());
@@ -245,7 +243,7 @@ function GetFormItemValue($ctag, $fvalue)
                 $v = trim($v);
                 if ($v != '') {
                     if ($fvalue == $v) {
-                        $myformItem .= "<label><input type='radio' name='$fieldname' value='$v' checked='checked'> $v</label>\r\n";
+                        $myformItem .= "<label><input type='radio' name='$fieldname' value='$v' checked> $v</label>\r\n";
                     } else {
                         $myformItem .= "<label><input type='radio' name='$fieldname' value='$v'> $v</label>\r\n";
                     }
@@ -265,21 +263,21 @@ function GetFormItemValue($ctag, $fvalue)
     if ($ctag->GetAtt("type") == "textdata") {
         if (is_file($GLOBALS['cfg_basedir'].$fvalue)) {
             $fp = fopen($GLOBALS['cfg_basedir'].$fvalue, 'r');
-            $okfvalue = "";
+            $okfvalue = '';
             while (!feof($fp)) {
                 $okfvalue .= fgets($fp, 1024);
             }
             fclose($fp);
         } else {
-            $okfvalue = "";
+            $okfvalue = '';
         }
-        $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td>\r\n";
+        $formitem  = "<table><tr><td width=\"120\">".$ctag->GetAtt('itemname')."</td>\r\n";
         $formitem .= "<td>\r\n".GetEditor($fieldname, $okfvalue, 350, 'Basic', 'string')."</td>\r\n";
         $formitem .= "</tr></table>\r\n";
         $formitem .= "<input type='hidden' name='{$fieldname}_file' value='{$fvalue}'>\r\n";
         return $formitem;
     } else if ($ctag->GetAtt("type") == "htmltext") {
-        $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td>\r\n";
+        $formitem  = "<table><tr><td width=\"120\">".$ctag->GetAtt('itemname')."</td>\r\n";
         $formitem .= "<td>\r\n".GetEditor($fieldname, $fvalue, 350, 'Basic', 'string')."</td>\r\n";
         $formitem .= "</tr></table>\r\n";
         return $formitem;

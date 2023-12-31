@@ -10,15 +10,15 @@
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_文件管理器');
-if (!isset($activepath)) $activepath = DEDEBIZ_SAFE_MODE? $cfg_medias_dir : $cfg_cmspath;
-$inpath = "";
+if (!isset($activepath)) $activepath = DEDEBIZ_SAFE_MODE? $cfg_medias_dir : '/';
+$inpath = '';
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if (DEDEBIZ_SAFE_MODE && !preg_match("#^/static#",$activepath)) {
     ShowMsg("安全模式下仅允许查看修改static目录文档", -1);
     exit;
 }
-if ($activepath == "/") $activepath = "";
+if ($activepath == "/") $activepath = '';
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
 $activeurl = $activepath;

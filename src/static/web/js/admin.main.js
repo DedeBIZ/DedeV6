@@ -68,7 +68,7 @@ function ColorSel(c, oname) {
 	}
 }
 function ShowColor(e, o) {
-	LoadNewDiv(e, "../../static/web/img/colornew.htm", "colordlg");
+	LoadNewDiv(e, "../static/web/img/colornew.htm", "colordlg");
 }
 function ShowHide(objname) {
 	var obj = $Obj(objname);
@@ -171,7 +171,7 @@ function ShowUrlTrEdit() {
 	ShowUrlTr();
 	var jumpTest = $Obj("isjump");
 	var rurl = $Obj("redirecturl");
-	if (!jumpTest.checked) rurl.value = "";
+	if (!jumpTest.checked) rurl.value = '';
 }
 function LoadQuickDiv(e, surl, oname, w, h) {
 	var newobj = $Obj(oname);
@@ -273,8 +273,8 @@ function DedeConfirm(content = "", title = "确认提示") {
 //函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
-	size = "";
-	if (typeof content == "undefined") content = "";
+	size = '';
+	if (typeof content == "undefined") content = '';
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-primary btn-sm" onclick="CloseModal(\'GKModal${modalID}\')">确定</button>`;
 	var noClose = false;
@@ -320,9 +320,9 @@ function CloseModal(modalID) {
 	})
 }
 //获取缩略图
-var litpicImgSrc = "";
-var litpicImg = "";
-var mdlCropperID = "";
+var litpicImgSrc = '';
+var litpicImg = '';
+var mdlCropperID = '';
 var optCropper = {
 	preview: ".pv",
 	crop: function(e) {
@@ -399,11 +399,11 @@ function SetThumb(srcURL) {
 }
 $(document).ready(function() {
 	$("#togglemenu").click(function() {
-		if ($("body").attr("class") == "showmenu") {
-			$("body").attr("class", "hidemenu");
+		if ($("body").attr("class") == "menu-show") {
+			$("body").attr("class", "menu-hide");
 			$(this).html('<i class="fa fa-indent"></i>');
 		} else {
-			$("body").attr("class", "showmenu");
+			$("body").attr("class", "menu-show");
 			$(this).html('<i class="fa fa-dedent"></i>');
 		}
 	});
@@ -428,7 +428,7 @@ $(document).ready(function() {
 				$el.find(".submenu").not($next).slideUp().parent().removeClass("open");
 			}
 		}
-		var menu = new menu($('#menu'), false);
+		var menu = new menu($("#sidemenu"), false);
 		$(".submenu li a").click(function(e) {
 			$(".submenu li").removeClass("active");
 			$(this).parent().addClass("active");
@@ -438,7 +438,7 @@ $(document).ready(function() {
 		litpicImgSrc = '';
 		litpicImg = '';
 		$("#picname").val(litpicImg);
-		$("#litPic").attr("src", "/static/web/img/thumbnail.jpg");
+		$("#litPic").attr("src", "../static/web/img/thumbnail.jpg");
 	})
 	$("#iptAddImages").change(function(event) {
 		var files = event.target.files;

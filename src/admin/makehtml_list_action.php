@@ -97,7 +97,7 @@ $nextpage = $pageno + 1;
 if ($nextpage >= $totalpage && $finishType) {
     if ($gotype == '') {
         if (empty($reurl)) {
-            $reurl = '../apps/list.php?tid='.$tid;
+            $reurl = '/apps/list.php?tid='.$tid;
         }
         ShowMsg("完成所有栏目更新，<a href='$reurl' target='_blank'>点击浏览</a>", "javascript:;");
         exit();

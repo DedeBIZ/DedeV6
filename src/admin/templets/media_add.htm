@@ -2,27 +2,27 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>添加附件</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="media_add.php" method="post" enctype="multipart/form-data" onSubmit="return CheckSubmit();">
 			<input type="hidden" name="dopost" value="upload">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">添加附件</td>
+					<td colspan="2">添加附件</td>
 				</tr>
 				<tr>
 					<td width="260">附件类型：</td>
 					<td>
-						<label><input type="radio" name="mediatype" value="1" checked="checked"> 图片</label>
+						<label><input type="radio" name="mediatype" value="1" checked> 图片</label>
 						<label><input type="radio" name="mediatype" value="2"> FLASH</label>
 						<label><input type="radio" name="mediatype" value="3"> 视频音频</label>
 						<label><input type="radio" name="mediatype" value="4"> 附件其它</label>
@@ -44,28 +44,28 @@
 					<td>上传附件：</td>
 					<td>
 						<label>数量：<input type="text" name="picnum" id="picnum" value="5" class="admin-input-sm"></label>
-						<button type="button" name="Submit" class="btn btn-success btn-sm" onclick="MakeUpload()">添加</button>
-						<button type="button" name="Submit" class="btn btn-success btn-sm" onclick="ResetUpload()">恢复</button>
+						<button type="button" name="submit" class="btn btn-success btn-sm" onclick="MakeUpload();">添加</button>
+						<button type="button" name="submit" class="btn btn-success btn-sm" onclick="ResetUpload();">恢复</button>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="mb-3"><label>附件1：<input type="file" name="upfile1" id="upfile1" class="admin-input-lg"></label></div>
-						<div class="mb-3"><label>附件2：<input type="file" name="upfile2" id="upfile2" class="admin-input-lg"></label></div>
-						<div class="mb-3"><label>附件3：<input type="file" name="upfile3" id="upfile3" class="admin-input-lg"></label></div>
-						<div class="mb-3"><label>附件4：<input type="file" name="upfile4" id="upfile4" class="admin-input-lg"></label></div>
-						<div class="mb-3"><label>附件5：<input type="file" name="upfile5" id="upfile5" class="admin-input-lg"></label></div>
+						<p><label>附件1：<input type="file" name="upfile1" id="upfile1" class="admin-input-lg"></label></p>
+						<p><label>附件2：<input type="file" name="upfile2" id="upfile2" class="admin-input-lg"></label></p>
+						<p><label>附件3：<input type="file" name="upfile3" id="upfile3" class="admin-input-lg"></label></p>
+						<p><label>附件4：<input type="file" name="upfile4" id="upfile4" class="admin-input-lg"></label></p>
+						<p><label>附件5：<input type="file" name="upfile5" id="upfile5" class="admin-input-lg"></label></p>
 						<div id="uploadfield"></div>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">上传附件</button></td>
+					<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">上传附件</button></td>
 				</tr>
 			</table>
 		</form>
 		<script>
 			function CheckSubmit() {
-				if (document.form1.title.value == '') {
+				if (document.form1.title.value == "") {
 					ShowMsg("附件标题不能为空");
 					document.form1.title.focus();
 					return false;
@@ -84,7 +84,7 @@
 			}
 			function ResetUpload() {
 				var upfield = document.getElementById("uploadfield");
-				upfield.innerHTML = "";
+				upfield.innerHTML = '';
 				startNum = 2;
 			}
 		</script>

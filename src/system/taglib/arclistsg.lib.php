@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 自定义列表标签
+ * 自定义模型列表标签
  *
  * @version        $id:arclistsg.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
@@ -27,8 +27,8 @@ function lib_arclistsg(&$ctag, &$refObj)
     $line = $row;
     $orderby = strtolower($sort);
     if ($col == '') $col = 1;
-    if (empty($imgwidth)) $imgwidth = "";
-    if (empty($imgheight)) $imgheight = "";
+    if (empty($imgwidth)) $imgwidth = '';
+    if (empty($imgheight)) $imgheight = '';
     $innertext = trim($ctag->GetInnerText());
     if ($innertext == '') $innertext = GetSysTemplets("part_arclistsg.htm");
     if (empty($channelid) && isset($GLOBALS['envs']['channelid'])) {
@@ -141,7 +141,7 @@ function lib_arclistsg(&$ctag, &$refObj)
     }
     $dsql->SetQuery($query);
     $dsql->Execute("al");
-    $artlist = "";
+    $artlist = '';
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace("field", "[", "]");
     $dtp2->LoadString($innertext);
@@ -179,7 +179,7 @@ function lib_arclistsg(&$ctag, &$refObj)
                     $row['sitepath']
                 );
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                    $row['litpic'] = '/static/web/img/thumbnail.jpg';
                 }
                 if (!preg_match("#^(http|https):\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                     $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
