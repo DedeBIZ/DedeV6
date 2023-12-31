@@ -25,6 +25,7 @@ foreach(Array('_GET','_POST','_COOKIE') as $_request)
 {
     foreach($$_request as $_k => $_v) ${$_k} = RunMagicQuotes($_v);
 }
+require_once(DEDEINC.'/dedealert.func.php');
 require_once(DEDEINC.'/common.func.php');
 if (file_exists(INSLOCKFILE)) {
     die(DedeAlert("完成软件安装，如果您要重新安装，安装目录找到install文件夹，然后删除install_lock.txt文件",ALERT_DANGER));

@@ -28,7 +28,8 @@ foreach ($_FILES as $_key => $_value) {
         }
     }
     if (preg_match('#^(cfg_|GLOBALS)#', $_key)) {
-        exit('Request var not allow for uploadsafe!');
+        echo DedeAlert('危险的请求参数', ALERT_DANGER);
+        exit;
     }
     $$_key = $_FILES[$_key]['tmp_name'];
     ${$_key.'_name'} = $_FILES[$_key]['name'];
@@ -36,16 +37,20 @@ foreach ($_FILES as $_key => $_value) {
     ${$_key.'_size'} = $_FILES[$_key]['size'] = preg_replace('#[^0-9]#', '', $_FILES[$_key]['size']);
     if (is_array(${$_key.'_name'}) && count(${$_key.'_name'}) > 0) {
         foreach (${$_key.'_name'} as $key => $value) {
+            $value = trim($value);
             if (!empty($value) && (preg_match("#\.(".$cfg_not_allowall.")$#i", $value) || !preg_match("#\.#", $value))) {
                 if (!defined('DEDEADMIN')) {
-                    exit('Not Admin Upload filetype not allow !');
+                    echo DedeAlert('禁止上传当前格式的文件', ALERT_DANGER);
+                    exit;
                 }
             }
         }
     } else {
-        if (!empty(${$_key.'_name'}) && (preg_match("#\.(".$cfg_not_allowall.")$#i", ${$_key.'_name'}) || !preg_match("#\.#", ${$_key.'_name'}))) {
+        $fname = trim(${$_key.'_name'});
+        if (!empty($fname) && (preg_match("#\.(".$cfg_not_allowall.")$#i", $fname) || !preg_match("#\.#", $fname))) {
             if (!defined('DEDEADMIN')) {
-                exit('Not Admin Upload filetype not allow !');
+                echo DedeAlert('禁止上传当前格式的文件', ALERT_DANGER);
+                exit;
             }
         }
     }
@@ -61,7 +66,8 @@ foreach ($_FILES as $_key => $_value) {
                     continue;
                 }
                 if (!is_array($image_dd)) {
-                    exit('Upload filetype not allow !');
+                    echo DedeAlert('禁止上传当前格式的文件', ALERT_DANGER);
+                    exit;
                 }
             }
             $imtypes = array(
@@ -73,7 +79,8 @@ foreach ($_FILES as $_key => $_value) {
                     continue;
                 }
                 if (!is_array($image_dd)) {
-                    exit('Upload filetype not allow !');
+                    echo DedeAlert('禁止上传当前格式的文件', ALERT_DANGER);
+                    exit;
                 }
             }
         }
@@ -84,7 +91,8 @@ foreach ($_FILES as $_key => $_value) {
                 continue;
             }
             if (!is_array($image_dd)) {
-                exit('Upload filetype not allow !');
+                echo DedeAlert('禁止上传当前格式的文件', ALERT_DANGER);
+                exit;
             }
         }
         $imtypes = array(
@@ -96,7 +104,8 @@ foreach ($_FILES as $_key => $_value) {
                 continue;
             }
             if (!is_array($image_dd)) {
-                exit('Upload filetype not allow !');
+                echo DedeAlert('禁止上传当前格式的文件', ALERT_DANGER);
+                exit;
             }
         }
     }
