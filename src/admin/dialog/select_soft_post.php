@@ -58,7 +58,7 @@ if (!empty($newname)) {
     }
     $filename = $filename.'.'.$fs[count($fs) - 1];
 }
-if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
+if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($filename))) {
     ShowMsg("文件扩展名已被系统禁止", "javascript:;");
     exit();
 }

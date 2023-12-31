@@ -60,7 +60,7 @@ if ($dopost == "view") {
     }
     $remotepos = empty($remotepos) ? '../index.html' : $remotepos;
     $serviterm = empty($serviterm) ? "" : $serviterm;
-    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($position))) {
+    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($position))) {
         ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }

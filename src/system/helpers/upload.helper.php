@@ -136,7 +136,7 @@ if (!function_exists('MemberUploads')) {
                 exit();
             }
             //强制禁止的文件类型
-            if (preg_match("/(asp|php|pl|cgi|shtm|js)$/", $sname)) {
+            if (preg_match("/(asp|php|pl|cgi|shtm|js|htm)$/", $sname)) {
                 ShowMsg("您上传的文件已被系统禁止", '-1');
                 exit();
             }
@@ -177,7 +177,7 @@ if (!function_exists('MemberUploads')) {
             //强制禁止的文件类型
             if ($handname == '') {
                 return $handname;
-            } else if (preg_match("/\.(asp|php|pl|cgi|shtm|js)$/", $handname)) {
+            } else if (preg_match("/\.(asp|php|pl|cgi|shtm|js|htm)$/", $handname)) {
                 exit('Not allow filename for not safe!');
             } else if (!preg_match("/\.(".$allAllowType.")$/", $handname)) {
                 exit('Not allow filename for filetype!');

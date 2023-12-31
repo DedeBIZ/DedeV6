@@ -11,7 +11,7 @@ if (isset($_FILES['GLOBALS'])) exit ('Request not allow!');
  * @link           https://www.dedebiz.com
  */
 //为了防止会员通过注入，这里强制限定的某些文件类型禁止上传
-$cfg_not_allowall = "php|pl|cgi|asp|aspx|jsp|php3|shtm|shtml";
+$cfg_not_allowall = "php|pl|cgi|asp|aspx|jsp|php3|shtm|shtml|htm";
 $keyarr = array('name', 'type', 'tmp_name', 'size');
 if (
     ($GLOBALS['cfg_html_editor'] == 'ckeditor' ||

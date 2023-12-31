@@ -86,11 +86,15 @@ else if ($fmdo == "del") {
 else if ($fmdo == "edit") {
     CheckCSRF();
     $filename = str_replace("..", "", $filename);
-    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
+    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($filename))) {
         ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
     $file = "$cfg_basedir$activepath/$filename";
+    if (in_array($file,$realFiles)) {
+        ShowMsg("系统文件禁止编辑", "javascript:;");
+        exit();
+    }
     $str = stripslashes($str);
     $fp = fopen($file, "w");
     fputs($fp, $str);
@@ -113,7 +117,7 @@ else if ($fmdo == "upload") {
         }
         $upfile = ${$upfile};
         $upfile_name = ${$upfile_name};
-        if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($upfile_name))) {
+        if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($upfile_name))) {
             ShowMsg("文件扩展名已被系统禁止", "javascript:;");
             exit();
         }

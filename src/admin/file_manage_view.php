@@ -86,6 +86,9 @@ else if ($fmdo == "del") {
 }
 //修改文件
 else if ($fmdo == "edit") {
+    if (DEDEBIZ_SAFE_MODE) {
+        die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
+    }
     if (!isset($backurl)) {
         $backurl = '';
     }
