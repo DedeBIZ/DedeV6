@@ -9,6 +9,10 @@
  */
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
 require_once(DEDEADMIN.'/../system/common.inc.php');
+if (!file_exists(DEDEDATA.'/common.inc.php')) {
+    header('Location:../install/index.php');
+    exit();
+}
 require_once(DEDEINC.'/userlogin.class.php');
 header('Cache-Control:private');
 $dsql->safeCheck = FALSE;

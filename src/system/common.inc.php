@@ -127,7 +127,12 @@ if ($_FILES) {
     require_once(DEDEINC.'/uploadsafe.inc.php');
 }
 //数据库配置文件
-require_once(DEDEDATA.'/common.inc.php');
+if (file_exists(DEDEDATA.'/common.inc.php')) {
+    require_once(DEDEDATA.'/common.inc.php');
+} else {
+    $cfg_dbtype = $cfg_dbhost = $cfg_dbname= $cfg_dbuser = $cfg_dbpwd = $cfg_dbprefix = $cfg_db_language ='';      //数据库类型
+}
+
 if (!isset($cfg_dbtype)) {
     $cfg_dbtype = 'mysql';
 }
