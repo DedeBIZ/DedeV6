@@ -12,7 +12,7 @@ DedeV6.x是一个LTS版本，支持将到2025年10月截止，目前DedeV6已经
 
 访问[代码托管](https://www.dedebiz.com/git)，可以看到我们已经将代码托管在几个知名代码托管平台，可以通过提交Pull requests的方式来贡献您的力量
 
-## v6.2 Roadmap
+## v7.0 Roadmap
 
 我们将会收集、整理新的功能需求制定新的Roadmap
 
