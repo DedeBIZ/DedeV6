@@ -14,11 +14,11 @@ require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEADMIN."/inc/inc_batchup.php");
 @set_time_limit(0);
 //获取id条件
-if (empty($startid)) $startid = 0;
-if (empty($endid)) $endid = 0;
-if (empty($seltime)) $seltime = 0;
-if (empty($typeid)) $typeid = 0;
-if (empty($userid)) $userid = '';
+$startid = empty($startid)? 0 : intval($startid);
+$endid = empty($endid)? 0 : intval($endid);
+$seltime = empty($seltime)? 0 : intval($seltime);
+$typeid = empty($typeid)? 0 : intval($typeid);
+$userid = empty($userid)? '' : HtmlReplace($userid);
 //生成网页操作由其它页面处理
 if ($action == "makehtml") {
     $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
@@ -33,6 +33,7 @@ if ($endid > $startid) $gwhere .= " AND id<= $endid ";
 $idsql = '';
 if ($typeid != 0) {
     $ids = GetSonIds($typeid);
+    $ids = preg_replace("#[^\d|,]#","",$ids);
     $gwhere .= " AND typeid IN($ids) ";
 }
 if ($seltime == 1) {
