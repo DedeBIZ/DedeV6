@@ -480,6 +480,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			$dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
 			DedeCli::error("数据保存到数据库附加表时出错，请检查数据库字段".str_replace('"', '', $gerr));
 		}
+		InsertTags("天涯{$arcID},穆云智能", $arcID);
 	}
 	DedeCli::write("成功生成所有测试数据");
 }  else if(count($argv) > 1 && ($argv[1] =="pwd")){
@@ -504,6 +505,26 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     $query = "UPDATE `#@__member` SET $pwdm WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
 	DedeCli::write("成功修改密码");
+}  else if(count($argv) > 1 && ($argv[1] =="make_filehash")){
+	$gitFiles = shell_exec('git ls-files');
+	// 将输出的字符串按行拆分成数组
+	$fileList = explode("\n", trim($gitFiles));
+	// 输出文件列表
+	$hashs = array();
+	foreach ($fileList as $file) {
+		if (!file_exists($file)) {
+			continue;
+		}
+		$name = $file;
+		$size = filesize($file);
+		$hash = md5_file($file);
+		$f = array(
+			"filename" => $name,
+		);
+		$hashs[] = $f;
+	}
+	file_put_contents(DEDEDATA.'/admin/files.txt',json_encode($hashs));
+	DedeCli::write("成功生成文件哈希");
 } else {
 	DedeCli::write($helpStr);
 }

@@ -5,7 +5,7 @@
  * @version        $id:album_edit.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -26,7 +26,7 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 2;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $menutype = 'content';
 if ($cfg_ml->IsSendLimited()) {
-    ShowMsg("投稿失败，每日投稿次数{$cfg_ml->M_SendMax}次，剩余0次，需要增加次数，请联系网站管理员", "index.php", "0", 5000);
+    ShowMsg("投稿失败，每日投稿次数{$cfg_ml->M_SendMax}次，剩余0次，需要增加次数，请联系网站管理员", "index.php", "0", 3000);
     exit();
 }
 if (empty($dopost)) {
@@ -126,7 +126,7 @@ if (empty($dopost)) {
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览图片文档</a><a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布图片文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改图片文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理图片文档</a> ";
+    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>返回文档列表</a>";
     //提交后返回提交页面
     $wintitle = "成功修改图片文档";
     $wecome_info = "图片管理 - 修改图片文档";

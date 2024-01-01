@@ -2,57 +2,45 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:global.cfg_keywords/}">
 		<meta name="description" content="{dede:global.cfg_description/}">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
-			<div class="row">
-				<div class="col-md-12">	
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb mb-0">
-							<li class="breadcrumb-item">当前位置</li>
-							{dede:field name='position'/}
-						</ol>
-					</nav>
-				</div>
-			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb mb-0">
+					<li class="breadcrumb-item">当前位置</li>
+					{dede:field name='position'/}
+				</ol>
+			</nav>
 		</div>
-		<main class="container py-3">
+		<section class="container py-3">
 			<div class="row biz-mb">{dede:channelartlist}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
 						<h2>{dede:field.typename/}</h2>
 					</div>
-				</div>{dede:arclist row='3' orderby='rand'}
+				</div>{dede:arclist row='3' orderby='id'}
 				<div class="col-md-4">
-					<div class="item-news bg-white shadow-sm rounded">
-						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
-						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
-						<div class="mb-3">
-							<img src="[field:face/]" class="user-img-xs mr-1">
-							<span class="mr-1">[field:uname/]</span>
-							<i class="fa fa-calendar mr-1"></i>
-							<span>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+					<article class="item-news bg-white shadow-sm rounded">
+						<div class="item-news-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<div class="title"><h5><a href="[field:arcurl/]">[field:title/]</a></h5></div>
+						<p>[field:description function="cn_substr(@me,130)"/]...</p>
+						<div class="meta">
+							<span class="author mr-3"><a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a></span>
+							<span class="date"><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 						</div>
-						<p class="mb-3">[field:description function="cn_substr(@me,120)"/]...</p>
-						<div>
-							<span class="mr-2">下载次数：<script src="/apps/disdls.php?aid=[field:id/]"></script></span>
-						</div>
-					</div>
+					</article>
 				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
-		</main>
+		</section>
 		{dede:include filename='foot.htm'/}
 	</body>
 </html>

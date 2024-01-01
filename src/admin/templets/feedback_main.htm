@@ -2,36 +2,36 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>评论管理</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5">
+					<td>
 						<input type="text" name="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
-						<select name="typeid" class="admin-input-sm mr-3">
+						<select name="typeid" class="admin-input-sm">
 							<option value="0">请选择</option>
 							{dede:global.openarray/}
 						</select>
-						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
 				</tr>
 			</table>
 		</form>
 		<form name="feedback">
-			<table align="center" class="table maintable mb-3">
+			<table class="table shadow-sm mb-3">
 				<tr>
-					<td colspan="8" bgcolor="#f5f5f5">评论列表</td>
+					<td colspan="8">评论列表</td>
 				</tr>
-				<tr bgcolor="#e9ecef" align="center">
+				<tr align="center">
 					<td width="6%">选择</td>
 					<td width="10%">名称</td>
 					<td width="20%">文档</td>
@@ -62,23 +62,23 @@
 				{/dede:datalist}
 				<tr>
 					<td colspan="8">
-						<button type="button" name="kk1" onclick="selAll()" class="btn btn-success btn-sm">全选</button>
-						<button type="button" name="kk2" onclick="selNone()" class="btn btn-success btn-sm">取消</button>
-						<button type="button" name="kk3" onclick="selNor()" class="btn btn-success btn-sm">反选</button>
-						<button type="button" name="db2" onclick="checkFeedback()" class="btn btn-success btn-sm">审核评论</button>
-						<button type="button" name="db" onclick="delFeedback()" class="btn btn-danger btn-sm">删除评论</button>
-						<button type="button" name="db" onclick="delFeedbackIP()" class="btn btn-danger btn-sm">删除所有相同地址评论</button>
+						<button type="button" name="kk1" onclick="selAll();" class="btn btn-success btn-sm">全选</button>
+						<button type="button" name="kk2" onclick="selNone();" class="btn btn-success btn-sm">取消</button>
+						<button type="button" name="kk3" onclick="selNor();" class="btn btn-success btn-sm">反选</button>
+						<button type="button" name="db2" onclick="checkFeedback();" class="btn btn-success btn-sm">审核评论</button>
+						<button type="button" name="db" onclick="delFeedback();" class="btn btn-danger btn-sm">删除评论</button>
+						<button type="button" name="db" onclick="delFeedbackIP();" class="btn btn-danger btn-sm">删除所有相同地址评论</button>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="8" bgcolor="#f5f5f5" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
 		<script>
 			//获得选中文件的文件名
 			function getCheckboxItem() {
-				var allSel = "";
+				var allSel = '';
 				if (typeof document.feedback.fid === "undefined") {
 					return "";
 				}

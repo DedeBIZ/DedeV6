@@ -5,7 +5,7 @@
  * @version        $id:article_keywords_main.php 14:12 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -81,6 +81,6 @@ $dlist->Display();
 function GetSta($sta)
 {
     if ($sta == 1) return '';
-    else return 'checked="checked"';
+    else return 'checked';
 }
 ?>

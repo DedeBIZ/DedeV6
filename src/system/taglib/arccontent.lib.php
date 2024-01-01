@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:arccontent.lib.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.class.php");
@@ -16,9 +16,9 @@ function lib_arccontent(&$ctag, &$refObj)
     global $dsql;
     $aid = $ctag->GetAtt('aid');
     $type = $ctag->GetAtt('type');
-    $revalue = "";
+    $revalue = '';
     if (in_array($type, array("pre", "next")) &&  get_class($refObj) === "Archives") {
-        //在文档页面获取上一篇下一篇文档
+        //在文档页面获取上篇下篇文档
         $asql = "WHERE id<{$refObj->Fields['id']}";
         if ($type === "next") {
             $asql = "WHERE id>{$refObj->Fields['id']}";

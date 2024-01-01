@@ -5,10 +5,13 @@
  * @version        $id:mychannel_add.php 14:46 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+if (DEDEBIZ_SAFE_MODE) {
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
+}
 CheckPurview('c_New');
 require_once(DEDEINC."/dedetag.class.php");
 if (empty($ismake)) $ismake = 0;
@@ -44,15 +47,15 @@ if ($action == 'add') {
             //是否需要摘要字段
             $dsql->ExecuteNoneQuery("DROP TABLE IF EXISTS `{$trueTable2}`;");
             if ($issystem != -1) {
-                $tabsql = "CREATE TABLE `$trueTable2` (`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`redirecturl` varchar(255) NOT NULL default '',`templet` varchar(30) NOT NULL default '',`userip` char(48) NOT NULL default '',";
+                $tabsql = "CREATE TABLE `$trueTable2` (`aid` int(11) NOT NULL DEFAULT '0',`typeid` int(11) NOT NULL DEFAULT '0',`redirecturl` varchar(255) NOT NULL DEFAULT '',`templet` varchar(30) NOT NULL DEFAULT '',`userip` char(48) NOT NULL DEFAULT '',";
             } else {
-                $tabsql = "CREATE TABLE `$trueTable2` (`aid` int(11) NOT NULL default '0',`typeid` int(11) NOT NULL default '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',`click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL default '',`senddate` int(11) NOT NULL default '0',`flag` set('c','h','p','f','s','j','a','b') default NULL,`litpic` varchar(60) NOT NULL default '',`userip` char(48) NOT NULL default '',`lastpost` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`scores` MEDIUMINT( 8 ) NOT NULL DEFAULT '0',`goodpost` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',`badpost` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
+                $tabsql = "CREATE TABLE `$trueTable2` (`aid` int(11) NOT NULL DEFAULT '0',`typeid` int(11) NOT NULL DEFAULT '0',`channel` SMALLINT NOT NULL DEFAULT '0',`arcrank` SMALLINT NOT NULL DEFAULT '0',`mid` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',`click` INT(10) UNSIGNED NOT NULL DEFAULT '0',`title` varchar(255) NOT NULL DEFAULT '',`senddate` int(11) NOT NULL DEFAULT '0',`flag` set('c','h','p','f','s','j','a','b') DEFAULT NULL,`litpic` varchar(60) NOT NULL DEFAULT '',`userip` char(48) NOT NULL DEFAULT '',`lastpost` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',`scores` MEDIUMINT(8) NOT NULL DEFAULT '0',`goodpost` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',`badpost` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',
             ";
             }
             if ($mysql_version < 4.1) {
-                $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM;";
+                $tabsql .= " PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM; ";
             } else {
-                $tabsql .= "PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language.";";
+                $tabsql .= " PRIMARY KEY (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
             }
             $rs = $dsql->ExecuteNoneQuery($tabsql);
             if (!$rs) {
@@ -71,7 +74,7 @@ if ($action == 'add') {
 <field:senddate itemname=\"发布时间\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\" maxlength=\"10\" page=\"\"></field:senddate>
 <field:flag itemname=\"推荐属性\" autofield=\"0\" notsend=\"0\" type=\"checkbox\" isnull=\"true\" islist=\"1\" default=\"0\" maxlength=\"10\" page=\"\"></field:flag>
 <field:litpic itemname=\"缩略图\" autofield=\"0\" notsend=\"0\" type=\"text\" isnull=\"true\" islist=\"0\" default=\"\" maxlength=\"60\" page=\"\"></field:litpic>
-<field:userip itemname=\"会员IP\" autofield=\"0\" notsend=\"0\" type=\"text\" isnull=\"true\" islist=\"0\" default=\"0\" maxlength=\"15\" page=\"\"></field:userip>
+<field:userip itemname=\"会员ip\" autofield=\"0\" notsend=\"0\" type=\"text\" isnull=\"true\" islist=\"0\" default=\"0\" maxlength=\"15\" page=\"\"></field:userip>
 <field:lastpost itemname=\"最后评论时间\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\" maxlength=\"10\" page=\"\"></field:lastpost>
 <field:scores itemname=\"评论积分\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\" maxlength=\"8\" page=\"\"></field:scores>
 <field:goodpost itemname=\"好评数\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\" maxlength=\"8\" page=\"\"></field:goodpost>

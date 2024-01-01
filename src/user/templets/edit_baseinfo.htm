@@ -2,15 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>资料修改-会员中心-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
 			<div class="row">
@@ -21,75 +19,56 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<form name="form2" action="edit_baseinfo.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
+						<form name="form2" action="<?php echo $cfg_memberurl;?>/edit_baseinfo.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="save">
-							<input type="hidden" id="newface" name="newface" value="">
-							<div class="form-group row">
-								<div class="col-sm-12">
-									<div class="alert alert-info mb-0">会员资料修改需要验证密码才能修改</div>
-								</div>
+							<input type="hidden" id="newface" name="newface">
+							<div class="mb-5 text-center">
+								<input id="iptNewface" type="file" name="iptNewface" class="d-none">
+								<p class="mb-2"><img id="face" src="<?php echo empty($row['face'])? $cfg_staticurl.'/web/img/admin.png' : $row['face'];?>" class="user-img-md"></p>
+								<p class="mb-2"><?php echo $cfg_ml->M_LoginID;?></p>
+								<span class="btn btn-success btn-sm" id="btnChangeFace">修改</span>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">账号：</label>
-								<div class="col-sm-9 input-text"><?php echo $cfg_ml->M_LoginID;?></div>
+								<label class="col-sm-3 col-form-label" for="iptUname">昵称：</label>
+								<div class="col-sm-9"><input type="text" name="uname" id="iptUname" class="form-control" value="<?php echo $row['uname'];?>" placeholder="请输入昵称" required></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">昵称：</label>
-								<div class="col-sm-9"><input type="text" name="uname" id="iptUname" class="form-control w-75" value="<?php echo $row['uname'];?>" placeholder="企业会员为公司名，个人会员为昵称"></div>
+								<label class="col-sm-3 col-form-label" for="iptUserpwd">新密码：</label>
+								<div class="col-sm-9"><input type="password" name="userpwd" id="iptUserpwd"	class="form-control" autocomplete="off" placeholder="修改密码，无需修改忽略"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">头像：</label>
-								<div class="col-sm-9">
-									<input id="iptNewface" type="file" name="iptNewface" class="d-none">
-									<img id="face" src="<?php echo empty($row['face'])? $cfg_staticurl.'/web/img/admin.png' : $row['face'];?>" class="user-img-sm mr-3">
-									<span class="btn btn-success btn-sm" id="btnChangeFace">修改</span>
-								</div>
+								<label class="col-sm-3 col-form-label" for="iptUserpwdok">确认新密码：</label>
+								<div class="col-sm-9"><input type="password" name="userpwdok" id="iptUserpwdok"	class="form-control" autocomplete="off" placeholder="请再次输入修改密码，无需修改忽略"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">密码：</label>
-								<div class="col-sm-9"><input type="password" name="oldpwd" id="iptOldpwd" class="form-control w-75" placeholder="请输入密码"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">新密码：</label>
-								<div class="col-sm-9"><input type="password" name="userpwd" id="iptUserpwd"	class="form-control w-75" placeholder="不修改密码请保留此项为空"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">确认新密码：</label>
-								<div class="col-sm-9"><input type="password" name="userpwdok" id="iptUserpwdok"	class="form-control w-75" placeholder="不修改密码请保留此项为空"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">原安全问题：</label>
-								<div class="col-sm-9"><?php echo GetSafequestion($row['safequestion'],'safequestion');?></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">原问题答案：</label>
-								<div class="col-sm-9"><input type="text" name="safeanswer" id="iptSafeanswer" class="form-control"></div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">新安全问题：</label>
+								<label class="col-sm-3 col-form-label" for="newsafequestion">新安全问题：</label>
 								<div class="col-sm-9"><?php echo GetSafequestion(0,'newsafequestion');?></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">新问题答案：</label>
-								<div class="col-sm-9"><input type="text" name="newsafeanswer" id="iptNewsafeanswer" class="form-control"></div>
+								<label class="col-sm-3 col-form-label" for="iptNewsafeanswer">新问题答案：</label>
+								<div class="col-sm-9"><input type="text" name="newsafeanswer" id="iptNewsafeanswer" class="form-control" placeholder="请设置或回答安全问题，无需修改忽略"></div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">邮箱：</label>
+								<label class="col-sm-3 col-form-label" for="safequestion">修改安全问题：</label>
+								<div class="col-sm-9"><?php echo GetSafequestion($row['safequestion'],'safequestion');?></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="iptSafeanswer">修改问题答案：</label>
+								<div class="col-sm-9"><input type="text" name="safeanswer" id="iptSafeanswer" class="form-control" placeholder="请选择安全问题后设置新安全问题，无需修改忽略"></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="iptEmail">邮箱：</label>
 								<div class="col-sm-9">
-									<div id="spEmail">
-										<span class="input-text"><?php echo HideEmail($row['email']);?></span>
-										<span class="btn btn-success btn-sm ml-3" id="btnChangeEmail">修改</span>
-									</div>
-									<span id="iptEmail"></span>
+									<input type="email" name="email" id="iptEmail" autocomplete="off" class="form-control" value="<?php echo $row['email'];?>" placeholder="请输入邮箱，绑定会员账号" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="iptEmail" class="col-sm-3 col-form-label">性别：</label>
+								<span class="col-sm-3 col-form-label">性别：</span>
 								<div class="col-sm-9 input-text">
-									<label><input type="radio" name="sex" value="男" <?php if ($row['sex']=='男') echo "checked='checked'" ;?>> 男</label>
-									<label><input type="radio" name="sex" value="女" <?php if ($row['sex']=='女') echo "checked='checked'" ;?>> 女</label>
-									<label><input type="radio" name="sex" value="保密" <?php if ($row['sex']=='保密') echo "checked='checked'" ;?>> 保密</label>
+									<label><input type="radio" name="sex" value="男" <?php if ($row['sex']=='男') echo 'checked';?>> 男</label>
+									<label><input type="radio" name="sex" value="女" <?php if ($row['sex']=='女') echo 'checked';?>> 女</label>
+									<label><input type="radio" name="sex" value="保密" <?php if ($row['sex']=='保密') echo 'checked';?>> 保密</label>
 								</div>
 							</div>
 							<div class="text-center"><button type="submit" class="btn btn-success btn-sm">保存</button></div>
@@ -122,38 +101,21 @@
 					return false;
 				}
 			}
-		</script>
-		<script>
-			$(document).ready(function () {
-				$("#btnChangeEmail").click(function () {
-					if ($("#iptOldpwd").val() === "") {
-						ShowMsg("请您填写密码");
-						return false;
-					}
-					$.post("<?php echo $cfg_cmsurl;?>/user/api.php?action=get_old_email", { oldpwd: $("#iptOldpwd").val() }, function (result) {
-						if (result.code === 0) {
-							$("#spEmail").hide();
-							$("#iptEmail").html(`<input value="${result.data.email}" type="email" name="email" id="iptEmail" class="form-control">`);
-							$("#iptEmail").show();
-						} else {
-							ShowMsg(result.msg);
-						}
-					});
-				})
-				$("#btnChangeFace").click(function () {
+			$(document).ready(function() {
+				$("#btnChangeFace").click(function() {
 					$("#iptNewface").click();
-				})
-				$("#iptNewface").change(function (val) {
+				});
+				$("#iptNewface").change(function(val) {
 					var formData = new FormData();
 					var fileData = $('#iptNewface')[0].files[0];
 					formData.append('file', fileData);
 					$.ajax({
-						url: '<?php echo $cfg_cmsurl;?>/user/api.php?action=upload&type=face',
+						url: '<?php echo $cfg_memberurl;?>/api.php?action=upload&type=face',
 						type: 'POST',
 						data: formData,
 						processData: false,
 						contentType: false,
-						success: function (result) {
+						success: function(result) {
 							if (result.code === 0) {
 								$("#face").attr('src', result.data);
 								$("#newface").val(result.data);
@@ -161,7 +123,7 @@
 								ShowMsg(result.error.message);
 							}
 						},
-						error: function (xhr, status, error) {
+						error: function(xhr, status, error) {
 							alert(error); //处理上传失败后的回调
 						}
 					});

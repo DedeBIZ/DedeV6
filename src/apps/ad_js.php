@@ -1,11 +1,11 @@
 <?php
 /**
- * 广告js调用
+ * 广告js
  *
  * @version        $id:ad_js.php 20:30 2010年7月8日 tianya $
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
@@ -29,7 +29,7 @@ if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile
     $adbody = str_replace('"', '\"', $adbody);
     $adbody = str_replace("\r", "\\r", $adbody);
     $adbody = str_replace("\n", "\\n", $adbody);
-    $adbody = "<!--\r\ndocument.write(\"{$adbody}\");\r\n-->\r\n";
+    $adbody = "<!--document.write(\"{$adbody}\");-->";
     $fp = fopen($cacheFile, 'w');
     fwrite($fp, $adbody);
     fclose($fp);

@@ -1,16 +1,13 @@
 <?php
 /**
- * 文档统计
+ * 点击次数
  *
- * 如果想显示点击次数，请添加view参数，即把下面js调用放到文档模板适当位置
- * <script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}"></script>
- * 普通计数器为
- * <script src="{dede:field name='phpurl'/}/count.php?aid={dede:field name='id'/}&mid={dede:field name='mid'/}"></script>
+ * 显示点点击次数，添加view参数：<script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}"></script>普通计数器：<script src="{dede:field name='phpurl'/}/count.php?aid={dede:field name='id'/}&mid={dede:field name='mid'/}"></script>
  *
  * @version        $id:count.php$
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");

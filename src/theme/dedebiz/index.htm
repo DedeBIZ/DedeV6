@@ -2,30 +2,27 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>{dede:global.cfg_webname/}</title>
+		<title>{dede:global.cfg_indexseotitle/}{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:global.cfg_keywords/}">
 		<meta name="description" content="{dede:global.cfg_description/}">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
-		<div class="container py-3">
+		<section class="container py-3">
 			<div class="row">
-				<div class="col-md-3 m-pb-2">{dede:include comment='栏目列表' filename='widget_menu.htm'/}</div>
-				<div class="col-md-6 m-pb-2">
+				<div class="col-md-3 pb-m-3">{dede:include filename='widget_recommend.htm'/}</div>
+				<div class="col-md-6 pb-m-3">
 					<div class="row">
-						<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
+						<div id="carouselDede" class="col-12 carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">{dede:arclist row='5' flag='f' orderby='id'}
-								<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>{/dede:arclist}
+								<li data-target="#carouselDede" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>{/dede:arclist}
 							</ol>
-							<div class="carousel-inner">{dede:arclist row='5' orderby='id'}
+							<div class="carousel-inner">{dede:arclist row='5' flag='f' orderby='id'}
 								<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
 									<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" alt="[field:fulltitle/]" class="bannr-img"></a>
 									<div class="carousel-caption d-none d-md-block">
@@ -34,97 +31,108 @@
 									</div>
 								</div>{/dede:arclist}
 							</div>
-							<a href="#carouselIndex" class="carousel-control-prev" role="button" data-slide="prev">
+							<a href="#carouselDede" class="carousel-control-prev" role="button" data-slide="prev">
 								<span class="carousel-control-prev-icon"></span>
 								<span class="sr-only">上篇</span>
 							</a>
-							<a href="#carouselIndex" class="carousel-control-next" role="button" data-slide="next">
+							<a href="#carouselDede" class="carousel-control-next" role="button" data-slide="next">
 								<span class="carousel-control-next-icon"></span>
 								<span class="sr-only">下篇</span>
 							</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">{dede:include comment='推荐文档' filename='widget_recommend.htm'/}</div>
+				<div class="col-md-3">
+					<div id="loginWin" class="item-admin text-center bg-white shadow-sm rounded">
+						<div class="form-group">
+							<p><img src="/static/web/img/admin.png" alt="请先登录" title="请先登录" class="user-img-md"></p>
+							<h2>Hi，请先登录</h2>
+						</div>
+						<div class="form-group">
+							<a href="{dede:global.cfg_memberurl/}" class="btn btn-success btn-sm btn-block">登录</a>
+						</div>
+						<div class="form-group mb-0">
+							<a href="{dede:global.cfg_memberurl/}/index_do.php?fmdo=user&dopost=regnew" class="btn btn-success btn-sm btn-block">注册</a>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="container py-3">
+		</section>
+		<section class="container py-3">
 			<div class="row biz-mb">{dede:channelartlist typeid='1,1'}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
 						<h2>{dede:field.typename/}</h2>
 					</div>
-				</div>{dede:arclist row='3' orderby='rand'}
+				</div>{dede:arclist row='3' orderby='id'}
 				<div class="col-md-4">
-					<div class="item-theme bg-white shadow-sm rounded">
-						<div class="item-theme-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
+					<article class="item-theme bg-white shadow-sm rounded">
+						<div class="item-theme-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
 						<div class="item-theme-box">
-							<h4 class="mb-3"><a href="[field:arcurl/]" target="_blank">[field:flag runphp='yes']if (stristr(@me,"h")) @me="<span class='btn btn-success btn-sm mr-2'>头条</span>";else if(stristr(@me,"c")) @me="<span class='btn btn-success btn-sm mr-2'>推荐</span>";else @me="";[/field:flag][field:title/]</a></h4>
-							<div class="row">
-								<div class="col-4 text-left l-height-30 text-danger">
+							<h5 class="title mb-3"><a href="[field:arcurl/]">[field:flag runphp='yes']if (stristr(@me,"h")) @me="<span class='btn btn-success btn-sm mr-2'>头条</span>";else if(stristr(@me,"c")) @me="<span class='btn btn-success btn-sm mr-2'>推荐</span>";else @me="";[/field:flag][field:title/]</a></h5>
+							<div class="row align-items-center">
+								<div class="col-4 text-left text-danger">
 									<i class="fa fa-download mr-1"></i>
 									<span><script src="/apps/disdls.php?aid=[field:id/]"></script></span>
 								</div>
 								<div class="col-8 text-right">
-									<img src="[field:face/]" class="user-img-xs mr-1">
-									<span>[field:uname/]</span>
+									<a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1"></a>
+									<a href="[field:userurl/]"><span>[field:uname/]</span></a>
 								</div>
 							</div>
 						</div>
-					</div>
+					</article>
 				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
-		</div><!--该布局适用于软件模型-->
-		<div class="container py-3">
+		</section><!--该布局适用于软件模型-->
+		<section class="container py-3">
 			<div class="row biz-mb">{dede:channelartlist typeid='2,2'}
 				<div class="col-md-12 mb-3">
 					<div class="item-title text-left">
 						<h2>{dede:field.typename/}</h2>
 					</div>
-				</div>{dede:arclist row='3' orderby='rand'}
+				</div>{dede:arclist row='3' orderby='id'}
 				<div class="col-md-4">
-					<div class="item-news bg-white shadow-sm rounded">
-						<div class="item-news-img">[field:array runphp='yes']@me=(strpos(@me['litpic'],'thumbnail')?"":"<a href='{@me['arcurl']}'><img src='{@me['litpic']}' alt='{@me['title']}' title='{@me['title']}'></a>");[/field:array]</div>
-						<h4><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h4>
-						<div class="mb-3">
-							<img src="[field:face/]" class="user-img-xs mr-1">
-							<span class="mr-1">[field:uname/]</span>
-							<i class="fa fa-calendar mr-1"></i>
-							<span>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
+					<article class="item-news bg-white shadow-sm rounded">
+						<div class="item-news-img"><a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"></a></div>
+						<div class="title"><h5><a href="[field:arcurl/]">[field:title/]</a></h5></div>
+						<p>[field:description function="cn_substr(@me,130)"/]...</p>
+						<div class="meta">
+							<span class="author mr-3"><a href="[field:userurl/]"><img src="[field:face/]" class="user-img-xs mr-1">[field:uname/]</a></span>
+							<span class="date"><i class="fa fa-calendar mr-1"></i>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span>
 						</div>
-						<p>[field:description function="cn_substr(@me,180)"/]... </p>
-					</div>
+					</article>
 				</div>{/dede:arclist}{/dede:channelartlist}
 			</div>
-		</div><!--该布局适用于文档和图片模型-->
-		<div class="container py-3">
+		</section><!--该布局适用于文档和图片模型-->
+		<section class="container py-3">
 			<div class="row">{dede:channelartlist typeid='3,3'}
-				<div class="col-md-4 m-pb-2">
-					<div class="item-article bg-white shadow-sm rounded p-3">
+				<div class="col-md-4 pb-m-3">
+					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
+						<ul>{dede:arclist row='10' titlelen='110' orderby='id'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
-					</div>
+					</article>
 				</div>{/dede:channelartlist}{dede:channelartlist typeid='4,4'}
-				<div class="col-md-4">
-					<div class="item-article bg-white shadow-sm rounded p-3">
+				<div class="col-md-4 pb-m-3">
+					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
+						<ul>{dede:arclist row='10' titlelen='110' orderby='id'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
-					</div>
+					</article>
 				</div>{/dede:channelartlist}{dede:channelartlist typeid='5,5'}
 				<div class="col-md-4">
-					<div class="item-article bg-white shadow-sm rounded p-3">
+					<article class="item-article bg-white shadow-sm rounded p-3">
 						<h2 class="mb-3">{dede:field.typename/}</h2>
-						<ul>{dede:arclist row='10' titlelen='120' orderby='rand'}
+						<ul>{dede:arclist row='10' titlelen='110' orderby='id'}
 							<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclist}
 						</ul>
-					</div>
+					</article>
 				</div>{/dede:channelartlist}
 			</div>
-		</div><!--该布局适用于文档和图片模型-->
+		</section><!--该布局适用于文档和图片模型-->
 		{dede:include filename='foot.htm'/}
 	</body>
 </html>

@@ -1,12 +1,12 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 图像标签
+ * 图片标签
  *
  * @version        $id:img.lib.php 9:33 2010年7月8日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
@@ -16,7 +16,7 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
     $dtp->LoadSource($fvalue);
     if (!is_array($dtp->CTags)) {
         $dtp->Clear();
-        return "无图片信息";
+        return $fvalue;
     }
     $pagestyle = $cfg_album_style;
     $maxwidth = $cfg_album_width;

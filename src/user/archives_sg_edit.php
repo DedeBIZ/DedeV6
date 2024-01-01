@@ -5,7 +5,7 @@
  * @version        $id:archives_sg_add.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -106,7 +106,7 @@ if (empty($dopost)) {
     $artUrl = MakeArt($aid, true);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览分类文档</a><a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布分类文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改分类文档</a><a href='content_sg_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理分类文档</a>";
+    $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改文档</a><a href='content_sg_list.php?channelid=$channelid' class='btn btn-success btn-sm'>返回文档列表</a>";
     $wintitle = "成功修改分类文档";
     $wecome_info = "文档管理 - 修改分类文档";
     $win = new OxWindow();

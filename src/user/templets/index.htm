@@ -2,15 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>会员中心-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
 			<div class="row">
@@ -30,8 +28,8 @@
 										<span class="btn btn-outline-warning btn-sm"><?php echo $cfg_ml->M_Honor;?></span>
 									</div>
 									<p class="mb-0">
-										<span class="mr-2">积分：<?php echo $cfg_ml->M_Scores;?></span>
-										<span class="mr-2">金币：<?php echo $cfg_ml->M_Money;?></span>
+										<span>积分：<?php echo $cfg_ml->M_Scores;?></span>
+										<span>金币：<?php echo $cfg_ml->M_Money;?></span>
 										<span>余额：<?php echo $cfg_ml->M_UserMoney;?></span>
 									</p>
 								</div>
@@ -42,15 +40,15 @@
 						<div class="pannel-main-container shadow-sm rounded">
 							<div class="media-body">
 								<ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled text-center mb-0">
-									<li class="col m-pb-1">
+									<li class="col pb-m-3">
 										<div class="bg-light user-meter rounded mb-3 p-4"><a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox"><i class="fa fa-commenting"></i></a></div>
 										<a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">消息管理</a>
 									</li>
-									<li class="col m-pb-1">
+									<li class="col pb-m-3">
 										<div class="bg-light user-meter rounded mb-3 p-4"><a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1"><i class="fa fa-file-text"></i></a></div>
 										<a href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1">文档管理</a>
 									</li>
-									<li class="col m-pb-1">
+									<li class="col pb-m-3">
 										<div class="bg-light user-meter rounded mb-3 p-4"><a href="<?php echo $cfg_memberurl;?>/mystow.php"><i class="fa fa-star"></i></a></div>
 										<a href="<?php echo $cfg_memberurl;?>/mystow.php">我的收藏</a>
 									</li>

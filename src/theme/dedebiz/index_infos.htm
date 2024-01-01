@@ -2,52 +2,44 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:global.cfg_keywords/}">
 		<meta name="description" content="{dede:global.cfg_description/}">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		{dede:include filename='top.htm'/}
 		{dede:include filename='head.htm'/}
 		<div class="container py-3">
-			<div class="row">
-				<div class="col-md-12">	
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb mb-0">
-							<li class="breadcrumb-item">当前位置</li>
-							{dede:field name='position'/}
-						</ol>
-					</nav>
-				</div>
-			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb mb-0">
+					<li class="breadcrumb-item">当前位置</li>
+					{dede:field name='position'/}
+				</ol>
+			</nav>
 		</div>
 		<main class="container py-3">
 			<div class="row">
 				<div class="col-md-9">
-					<div class="row">
-						{dede:channelartlist}
-						<div class="col-md-6 mb-3">
-							<div class="item-article bg-white shadow-sm rounded mb-3 p-3">
+					<div class="row">{dede:channelartlist}
+						<div class="col-md-6">
+							<article class="item-article bg-white shadow-sm rounded mb-3 p-3">
 								<h2 class="mb-3">{dede:field.typename/}</h2>
-								<ul>{dede:arclistsg row='10' titlelen='120' orderby='rand'}
+								<ul>{dede:arclistsg row='10' titlelen='130' orderby='id'}
 									<li>[field:global.autoindex/].<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>{/dede:arclistsg}
 								</ul>
-							</div>
+							</article>
 						</div>{/dede:channelartlist}
 					</div>
 				</div>
-				<div class="col-md-3">
+				<aside class="col-md-3">
 					<div class="pb-3">{dede:include filename='widget_search.htm'/}</div>
-					<div class="py-3">{dede:include filename='widget_menu.htm'/}</div>
-					<div class="pt-3">{dede:include filename='widget_hot.htm'/}</div>
-				</div>
+					<div class="pb-3">{dede:include filename='widget_menu.htm'/}</div>
+					<div class="pb-3">{dede:include filename='widget_hot.htm'/}</div>
+				</aside>
 			</div>
 		</main>
 		{dede:include filename='foot.htm'/}

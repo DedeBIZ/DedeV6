@@ -2,22 +2,22 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>所有文档列表</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
-		<script src="../static/web/js/moment.min.js"></script>
-		<script src="../static/web/js/daterangepicker.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/list.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/daterangepicker.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/webajax.js"></script>
+		<script src="/static/web/js/moment.min.js"></script>
+		<script src="/static/web/js/daterangepicker.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
+		<script src="/static/web/js/admin.list.js"></script>
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
+		<table class="table shadow-sm my-3">
 			<tr>
 				<td>
 					<button type="button" class="btn btn-success btn-sm" onclick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
@@ -36,9 +36,9 @@
 		</table>
 		<form name="form3" action="content_list.php" method="get">
 			<input type="hidden" name="dopost" value="listArchives">
-			<table align="center" class="table maintable mb-3">
+			<table class="table shadow-sm mb-3">
 				<tr>
-					<td bgcolor="#f5f5f5">
+					<td>
 						<input type="text" name="keyword" class="admin-input-lg mr-3" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
 						<select name="cid" class="admin-input-sm mr-3">
 							<option value="0">选择栏目</option>
@@ -56,40 +56,40 @@
 							<option value="">选择属性</option>
 							{dede:global.flagsArr/}
 						</select>
-						<input type="text" name="timerange" autocomplete="off" id="timerange" class="admin-input-md mr-3" value="<?php echo $strTimerange;?>">
+						<input type="text" name="timerange" autocomplete="off" id="timerange" class="admin-input-md" value="<?php echo $strTimerange;?>" placeholder="请选择日期">
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
 				</tr>
 			</table>
 		</form>
 		<form name="form2">
-			<table align="center" class="table maintable mb-3">
+			<table class="table shadow-sm mb-3">
 				<tr>
-					<td colspan="10" bgcolor="#f5f5f5">{dede:global.positionname/}文档列表</td>
+					<td colspan="10">{dede:global.positionname/}文档列表</td>
 				</tr>
-				<tr bgcolor="#e9ecef" align="center">
+				<tr align="center">
 					<td width="6%">选择</td>
 					<td width="6%">id</td>
-					<td width="26%">文档标题</td>
-					<td width="10%">更新时间</td>
+					<td width="22%">文档标题</td>
 					<td width="12%">栏目</td>
-					<td width="6%">点击</td>
 					<td width="6%">网页</td>
-					<td width="6%">权限</td>
-					<td width="6%">发布人</td>
+					<td width="8%">权限</td>
+					<td width="6%">编辑</td>
+					<td width="10%">更新时间</td>
+					<td width="6%">点击</td>
 					<td>操作</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="10" align="center">暂无记录</td></tr>'}
 				<tr align="center">
-					<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
+					<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
 					<td>{dede:field.id/}</td>
-					<td align="left"><span id="arc{dede:field.id/}"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></span>{dede:field.flag function='IsCommendArchives(@me)'/}</td>
-					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
+					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a>{dede:field.flag function='IsCommendArchives(@me)'/}</td>
 					<td><a href="content_list.php?cid={dede:field.typeid/}">{dede:field.typeid function='GetTypename(@me)'/}</a></td>
+					<td>{dede:field.ismake function='IsHtmlArchives(@me)'/}</td>
+					<td>{dede:field.arcrank function='GetRankName(@me)'/}</td>
+					<td>{dede:field.mid function='GetMemberName(@me)'/}</td>
+					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 					<td>{dede:field.click/}</td>
-					<td>{dede:field.ismake function="IsHtmlArchives(@me)"/}</td>
-					<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
-					<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 					<td>
 						<a href="javascript:;" class="btn btn-light btn-sm" onclick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-sliders"></i> 属性</a>
 						<a href="javascript:;" class="btn btn-light btn-sm" onclick="editArc({dede:field.id/});"><i class="fa fa-pencil-square"></i> 修改</a>
@@ -99,20 +99,20 @@
 				{/dede:datalist}
 				<tr>
 					<td colspan="10">
-						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
-						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-						<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
-						<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
-						<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
-						<a href="javascript:;" onclick="moveArc(event,this,<?php echo (empty($channelid)?0:$channelid);?>)" class="btn btn-success btn-sm">移动</a>
-						<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
+						<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+						<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
+						<a href="javascript:updateArc(0);" class="btn btn-success btn-sm">更新</a>
+						<a href="javascript:checkArc(0);" class="btn btn-success btn-sm">审核</a>
+						<a href="javascript:adArc(0);" class="btn btn-success btn-sm">推荐</a>
+						<a href="javascript:moveArc(event,this,<?php echo (empty($channelid)?0:$channelid);?>);" class="btn btn-success btn-sm">移动</a>
+						<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
 						<?php if ($channelid==1) echo "<a href='javascript:kwArc(0)' class='btn btn-success btn-sm'>自动关键词</a>";?>
-						<a href="javascript:;" onclick="cAtts('attsAdd',event,this)" class="btn btn-success btn-sm">添加属性</a>
-						<a href="javascript:;" onclick="cAtts('attsDel',event,this)" class="btn btn-danger btn-sm">删除属性</a>
+						<a href="javascript:cAtts('attsAdd',event,this);" class="btn btn-success btn-sm">添加属性</a>
+						<a href="javascript:cAtts('attsDel',event,this);" class="btn btn-danger btn-sm">删除属性</a>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="10" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="10" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
@@ -136,7 +136,7 @@
 				$('#timerange').on('cancel.daterangepicker', function(ev, picker) {
 					$(this).val('');
 				});
-			})
+			});
 		</script>
 	</body>
 </html>

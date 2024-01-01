@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:typelink.class.php 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.func.php");
@@ -62,10 +62,10 @@ class TypeLink
     function SETtypeid($typeid)
     {
         $this->TypeID = $typeid;
-        $this->valuePosition = "";
-        $this->valuePositionName = "";
-        $this->typeDir = "";
-        $this->OptionArrayList = "";
+        $this->valuePosition = '';
+        $this->valuePositionName = '';
+        $this->typeDir = '';
+        $this->OptionArrayList = '';
         //载入栏目信息
         $query = "SELECT `#@__arctype`.*,`#@__channeltype`.typename as ctypename FROM `#@__arctype` LEFT JOIN `#@__channeltype` on `#@__channeltype`.id=`#@__arctype`.channeltype WHERE `#@__arctype`.id='$typeid'";
         $this->dsql->SetQuery($query);
@@ -75,7 +75,7 @@ class TypeLink
     function GetTypeDir()
     {
         if (empty($this->TypeInfos['typedir'])) {
-            return $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
+            return $GLOBALS['cfg_arcdir'];
         } else {
             return $this->TypeInfos['typedir'];
         }
@@ -283,7 +283,7 @@ class TypeLink
                 $reid = $dbrow['reid'];
             }
         }
-        $likeType = "";
+        $likeType = '';
         if ($typetype == "top") {
             $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         } else if ($typetype == "sun" || $typetype == "son") {

@@ -1,19 +1,19 @@
 <?php
 /**
- * 文档digg处理ajax文件
+ * 踩顶操作
  *
  * @version        $id:digg_ajax.php$
  * @package        DedeBIZ.Plus
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
+helper('cache');
 $action = isset($action) ? trim($action) : '';
 $format = isset($format) ? $format : '';
 $id = empty($id) ? 0 : intval($id);
 $cid = empty($cid) ? 1 : intval($cid);
-helper('cache');
 if ($id < 1) {
 	exit();
 }
@@ -63,7 +63,6 @@ if (!is_array($row) || $cfg_digg_update == 0) {
 }
 $digg = '';
 if (!is_array($row)) exit();
-
 if ($row['goodpost'] + $row['badpost'] == 0) {
 	$row['goodper'] = $row['badper'] = 0;
 } else {

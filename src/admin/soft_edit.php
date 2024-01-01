@@ -5,7 +5,7 @@
  * @version        $id:soft_edit.php 16:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -47,9 +47,9 @@ if ($dopost != 'save') {
             foreach ($dtp->CTags as $ctag) {
                 if ($ctag->GetName() == 'link') {
                     $islocal = $ctag->GetAtt('islocal');
-                    if ($islocal != 1) $needmsg = "<label class='ml-2'><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
-                    else $needmsg = '<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm ml-2" onclick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选择</button>';
-                    $nForm .= "<div class='py-2'><label>软件网址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-lg'></label><label class='ml-2'>下载名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'></label><input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'>$needmsg</div>\r\n";
+                    if ($islocal != 1) $needmsg = "<label><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
+                    else $needmsg = '<button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm" onclick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选择</button>';
+                    $nForm .= "<div class='py-2'><label>软件网址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' class='admin-input-lg'></label> <label>下载名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' class='admin-input-sm'></label><input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'> $needmsg</div>\r\n";
                     $newRowStart++;
                 }
             }
@@ -89,7 +89,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (!TestPurview('a_Edit')) {
-        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
+        CheckCatalog($typeid, "您没有操作栏目{$typeid}文档权限");
     }
     //对保存的文档进行处理
     $pubdate = GetMkTime($pubdate);
@@ -210,7 +210,7 @@ if ($dopost != 'save') {
     }
     //返回成功信息
     $msg = "<tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理软件文档</a></td>
+        <td align='center'><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>返回文档列表</a></td>
     </tr>";
     $wintitle = "成功修改软件文档";
     $wecome_info = "文档管理 - 修改软件文档";

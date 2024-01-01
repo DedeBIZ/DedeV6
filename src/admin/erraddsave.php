@@ -1,11 +1,11 @@
 <?php
 /**
- * 文档错误管理
+ * 挑错管理
  *
  * @version        $id:erraddsave.php 19:09 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -74,11 +74,11 @@ if ($dopost == "delete") {
         $wintitle = "删除文档错误";
         $wecome_info = "<a href='erraddsave.php'>错误管理</a> - 删除错误";
         $win = new OxWindow();
-        $win->Init("erraddsave.php", "js/blank.js", "POST");
+        $win->Init("erraddsave.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确定要删除<span class='text-primary'>$id</span>错误提示吗");
+        $win->AddTitle("您确定要删除".$id."错误提示吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

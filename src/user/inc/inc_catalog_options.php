@@ -1,12 +1,12 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 自定义模型发布
+ * 栏目选项函数
  * 
- * @version        $id:archives_sg_add.php 13:52 2010年7月9日 tianya $
+ * @version        $id:inc_catalog_options.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**
@@ -25,7 +25,7 @@ function GetOptionList($selid = 0, $channeltype = 0)
     while ($row = $dsql->GetObject('opt')) {
         $channels[$row->id] = $row->typename;
     }
-    $OptionArrayList = "";
+    $OptionArrayList = '';
     $query = "SELECT id,typename,ispart,channeltype,issend FROM `#@__arctype` WHERE ispart<2 AND reid=0 ORDER BY sortrank ASC";
     $dsql->SetQuery($query);
     $dsql->Execute('arr');

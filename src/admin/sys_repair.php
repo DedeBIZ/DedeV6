@@ -5,7 +5,7 @@
  * @version        $id:sys_repair.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -13,7 +13,7 @@ CheckPurview('sys_ArcBatch');
 require_once(DEDEINC.'/libraries/oxwindow.class.php');
 if (empty($dopost)) {
     $win = new OxWindow();
-    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
+    $win->Init("sys_repair.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data'");
     $wecome_info = "系统修复工具";
     $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
@@ -26,7 +26,7 @@ if (empty($dopost)) {
         </td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=1' class='btn btn-success btn-sm'>开始检测</a></td>
+        <td align='center'><a href='sys_repair.php?dopost=1' class='btn btn-success btn-sm'>开始检测</a></td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
@@ -36,7 +36,7 @@ if (empty($dopost)) {
 //数据结构常规检测
 else if ($dopost == 1) {
     $win = new OxWindow();
-    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
+    $win->Init("sys_repair.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data'");
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测数据结构";
     $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
@@ -47,7 +47,7 @@ else if ($dopost == 1) {
             3、列表显示数据目与实际文档数不一致
         </td>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='sys_repair.php?dopost=2' class='btn btn-success btn-sm'>下一步</a></td>
+        <td align='center'><a href='sys_repair.php?dopost=2' class='btn btn-success btn-sm'>下一步</a></td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
@@ -105,14 +105,14 @@ else if ($dopost == 2) {
     }
     UpDateCatCache();
     $win = new OxWindow();
-    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
+    $win->Init("sys_repair.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data'");
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测微表数据";
     $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>{$msg}</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'>{$errall}</td>
+        <td align='center'>{$errall}</td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
@@ -151,14 +151,14 @@ else if ($dopost == 3) {
         }
     }
     $win = new OxWindow();
-    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
+    $win->Init("sys_repair.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data'");
     $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 高级检测";
     $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>完成所有修复操作，移除错误记录{$errnum}条</td>
     </tr>
     <tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='index_body.php' class='btn btn-success btn-sm'>完成修复</a></td>
+        <td align='center'><a href='index_body.php' class='btn btn-success btn-sm'>完成修复</a></td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);

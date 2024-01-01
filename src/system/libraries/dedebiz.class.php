@@ -1,6 +1,14 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
-//DedeBIZ商业组件通信
+/**
+ * DedeBIZ商业组件通信
+ *
+ * @version        $id:dedebiz.class.php 11:42 2010年7月6日 tianya $
+ * @package        DedeBIZ.Libraries
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
+ * @link           https://www.dedebiz.com
+ */
 define("DEDEBIZ", true);
 class DedeBizClient
 {
@@ -13,7 +21,7 @@ class DedeBizClient
         global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
         $this->appid = $cfg_bizcore_appid;
         $this->key = $cfg_bizcore_key;
-        $this->err = "";
+        $this->err = '';
         if (!function_exists("socket_create")) {
             $this->err = (object)array(
                 "code" => -1,
@@ -50,7 +58,7 @@ class DedeBizClient
         if (!empty($this->err)) {
             return $this->err;
         }
-        $msg = "";
+        $msg = '';
         while (($str = socket_read($this->socket, 1024)) !== FALSE) {
             $msg .= $str;
             if (strlen($str) < 1024) {

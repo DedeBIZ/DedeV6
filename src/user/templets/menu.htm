@@ -5,7 +5,7 @@ while ($channel = $dsql->GetArray('addmod')) {
 	$channels[$channel['id']] = $channel;
 }
 ?>
-<div class="col-md-3 m-pb-2">
+<div class="col-md-3 pb-m-3">
 	<ul class="list-group list-group-flush shadow-sm rounded">
 		<li class="list-group-item justify-content-between align-items-center <?php echo (isset($_menu_home) && $_menu_home===true)? ' active' : '';?>"><a href="<?php echo $cfg_memberurl;?>/">会员面板</a></li>
 		 <li class="list-group-item justify-content-between align-items-center">

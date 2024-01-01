@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:extend.helper.php 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**
@@ -29,7 +29,7 @@ if (!function_exists('ParCv')) {
 if (!function_exists('ParamError')) {
     function ParamError()
     {
-        ShowMsg('当前网页不存在，系统自动返回首页', 'index.php');
+        ShowMsg('当前网页不存在，系统自动返回主页', '/');
         exit();
     }
 }

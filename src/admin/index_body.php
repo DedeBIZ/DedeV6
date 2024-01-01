@@ -5,7 +5,7 @@
  * @version        $id:index_body.php 11:06 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -38,7 +38,7 @@ if (empty($dopost)) {
         $admin_catalog = join(',', $admin_catalogs);
         $userCatalogSql = "AND arc.typeid IN($admin_catalog) ";
     }
-    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,13";
+    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,10";
     $arcArr = array();
     $dsql->Execute('m', $query);
     while($row = $dsql->GetArray('m'))
@@ -50,12 +50,13 @@ if (empty($dopost)) {
     if (count($arcArr) > 0) {
         foreach($arcArr as $row)
         {
-            if (trim($row['editcon'])=='') {
+            if (trim($row['editcon']) == '') {
                 $row['editcon'] = 'archives_edit.php';
             }
-            $rowarcrank = $row['arcrank']==-1? "<span class='btn btn-danger btn-xs ml-2'>未审核</span>":"";
+            $rowarcrank = $row['arcrank']==-1 ? '待审核' : '已审核';
             $pubdate = GetDateMk($row['pubdate']);
-            echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='100'>{$pubdate}</td></tr>";
+            $row['title'] = cn_substr($row['title'], 70);
+            echo "<tr class='no-wrap'><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a></td><td width='70'>{$rowarcrank}</td><td width='110'>{$pubdate}</td></tr>";
         }
     } else {
     ?>
@@ -66,7 +67,7 @@ if (empty($dopost)) {
     exit;
 } elseif ($dopost == "system_info") {
     if (empty(trim($cfg_auth_code))) {
-        $indexHTML = "";
+        $indexHTML = '';
         if (file_exists(DEDEROOT."/index.html")) {
             $indexHTML = file_get_contents(DEDEROOT."/index.html");
         } else {
@@ -90,10 +91,10 @@ if (empty($dopost)) {
                 $hasPowered = true;
             }
         }
-        $poweredStr = $hasPowered? "" : "请保留正确的<a href='https://www.dedebiz.com/powered_by_dedebiz' class='text-primary'>底部版权信息</a>，";
+        $poweredStr = $hasPowered? "" : "请保留正确的<a href='https://www.dedebiz.com/powered_by_dedebiz' class='text-success'>底部版权信息</a>，";
         echo json_encode(array(
             "code" => -1002,
-            "msg" => "当前站点已授权社区版，{$poweredStr}获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-primary'>商业版</a>",
+            "msg" => "当前站点已授权社区版，{$poweredStr}获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-success'>商业版</a>",
             "result" => null,
         ));
         exit;

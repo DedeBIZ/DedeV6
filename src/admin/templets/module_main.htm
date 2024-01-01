@@ -2,17 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>模块管理</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="../static/web/js/webajax.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/webajax.js"></script>
 		<script>
 			function getmodule(action, hash) {
-				$DE('status_' + hash).innerHTML = '<img src="../static/web/img/loadinglit.gif">';
 				fetch('module_main.php?action=download&hash=' + hash).then(resp => resp.text()).then((d) => {
 					$DE('status_' + hash).innerHTML = d;
 				});
@@ -23,7 +22,7 @@
 	<body>
 		<form name="form1" action="plus_add.php" method="post">
 			<input type="hidden" name="dopost" value="save">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
 					<td>
 						<a class="btn btn-success btn-sm" href="module_main.php">全部</a>
@@ -35,16 +34,11 @@
 					</td>
 				</tr>
 			</table>
-			<table align="center" class="table maintable mb-3">
+			<table class="table shadow-sm mb-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="6">模块管理</td>
+					<td colspan="6">模块管理</td>
 				</tr>
-				<tr>
-					<td colspan="6">
-						<div class="alert alert-info mb-0">为了模块插件开发者的利益和模块插件后续更新，添加了<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，模块插件认准DedeBIZ商业认证开发者</div>
-					</td>
-				</tr>
-				<tr bgcolor="#e9ecef" align="center">
+				<tr align="center">
 					<td width="26%">模块名称</td>
 					<td width="10%">发布时间</td>
 					<td width="10%">编码</td>
@@ -58,7 +52,7 @@
 					<td><?php echo $v['time'];?></td>
 					<td>
 						<?php
-						if ($cfg_soft_lang != $v['lang']) echo "<span class='text-primary'>".$v['lang']."</span>";
+						if ($cfg_soft_lang != $v['lang']) echo $v['lang'];
 						else  echo $v['lang'];
 						?>
 					</td>
@@ -70,7 +64,7 @@
 							if (file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
 								echo "<span class='btn btn-success btn-sm'>已安装</span><a href='module_main.php?action=uninstall&hash={$v['hash']}' class='btn btn-outline-danger btn-sm'>卸载</a>";
 							} else {
-								echo "<span class='btn btn-danger btn-sm'>未安装</span><a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
+								echo "<span class='btn btn-warning btn-sm'>未安装</span><a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
 							}
 						} else {
 							echo "<div id=\"status_{$v['hash']}\"><a href=\"javascript:getmodule('download','{$v['hash']}')\" class=\"btn btn-outline-warning btn-sm\">下载</a></div>";
@@ -79,7 +73,7 @@
 					</td>
 					<td>
 						<div id="manager_<?php echo $v['hash'];?>" <?php if (!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo "style='display:none'"?>>
-							<a class="btn btn-light btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>"><i class="fa fa-user-circle"></i> 开发者</a>
+							<a class="btn btn-light btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>"><i class="fa fa-user-circle"></i> 贡献者</a>
 							<a class="btn btn-light btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>"><i class="fa fa-eye"></i> 查看</a>
 							<a class="btn btn-light btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>"><i class="fa fa-pencil-square"></i> 修改</a>
 							<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash'];?>"><i class="fa fa-trash"></i> 删除</a>

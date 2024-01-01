@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:stepselect.lib.php 16:24 2010年7月26日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 function ch_stepselect($fvalue, &$arcTag, &$refObj, $fname = '')
@@ -45,6 +45,8 @@ function GetEnumsValue2($egroup, $evalue = 0)
                 : $GLOBALS['em_'.$egroup.'s'][$evalue];
             return $GLOBALS['em_'.$egroup.'s'][$erevalue].' -- '.$GLOBALS['em_'.$egroup.'s'][$evalue];
         }
+    } else {
+        return isset($GLOBALS['em_'.$egroup.'s'][$evalue])? $GLOBALS['em_'.$egroup.'s'][$evalue] : '';
     }
 }
 ?>

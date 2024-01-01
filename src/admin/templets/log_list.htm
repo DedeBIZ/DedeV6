@@ -2,40 +2,40 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>系统日志列表</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form name="formsearch">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5">
+					<td>
 						<input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="admin-input-lg mr-3">
 						<select name="adminid" id="adminid" class="admin-input-sm mr-3">
 							<option value="0" selected>全部</option>
 							<?php echo $adminlist?>
 						</select>
-						<select name="dtime" id="dtime" class="admin-input-sm mr-3">
+						<select name="dtime" id="dtime" class="admin-input-sm">
 							<option value="0" selected>全部</option>
 							<option value="7">一周内</option>
 							<option value="15">15天内</option>
 							<option value="30">30天以内</option>
 							<option value="60">60天以内</option>
 						</select>
-						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
 					</td>
 				</tr>
 			</table>
 		</form>
 		<form name="form1">
-			<table align="center" class="table maintable mb-3">
+			<table class="table shadow-sm mb-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="7">日志管理</td>
+					<td colspan="7">日志管理</td>
 				</tr>
-				<tr bgcolor="#e9ecef" align="center">
+				<tr align="center">
 					<td width="6%">选择</td>
 					<td width="12%">管理员</td>
 					<td width="30%">浏览文件</td>
@@ -63,14 +63,14 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
 		<script>
 			//获得选中文件的文件名
 			function getCheckboxItem() {
-				var allSel = "";
+				var allSel = '';
 				if (document.form1.logs.value) return document.form1.logs.value;
 				for (i = 0; i < document.form1.logs.length; i++) {
 					if (document.form1.logs[i].checked) {

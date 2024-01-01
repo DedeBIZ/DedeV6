@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:charset.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 $UC2GBTABLE = $CODETABLE = $BIG5_DATA = $GB_DATA = '';
@@ -25,7 +25,7 @@ if (!function_exists('utf82gb')) {
             return iconv('utf-8', 'gbk//ignore', $utfstr);
         }
         global $UC2GBTABLE;
-        $okstr = "";
+        $okstr = '';
         if (trim($utfstr) == "") {
             return $utfstr;
         }
@@ -37,7 +37,7 @@ if (!function_exists('utf82gb')) {
             }
             fclose($fp);
         }
-        $okstr = "";
+        $okstr = '';
         $ulen = strlen($utfstr);
         for ($i = 0; $i < $ulen; $i++) {
             $c = $utfstr[$i];
@@ -88,13 +88,13 @@ if (!function_exists('gb2utf8')) {
             }
             fclose($fp);
         }
-        $ret = "";
-        $utf8 = "";
+        $ret = '';
+        $utf8 = '';
         while ($gbstr != '') {
             if (ord(substr($gbstr, 0, 1)) > 0x80) {
                 $thisW = substr($gbstr, 0, 2);
                 $gbstr = substr($gbstr, 2, strlen($gbstr));
-                $utf8 = "";
+                $utf8 = '';
                 @$utf8 = u2utf8(hexdec($CODETABLE[hexdec(bin2hex($thisW)) - 0x8080]));
                 if ($utf8 != "") {
                     for ($i = 0; $i < strlen($utf8); $i += 3)
@@ -119,7 +119,7 @@ if (!function_exists('u2utf8')) {
     function u2utf8($c)
     {
         for ($i = 0; $i < count($c); $i++) {
-            $str = "";
+            $str = '';
         }
         if ($c < 0x80) {
             $str .= $c;
@@ -269,7 +269,7 @@ if (!function_exists('UnicodeUrl2Gbk')) {
         //处理字符串
         $str = str_replace('$#$', '+', $str);
         $glen = strlen($str);
-        $okstr = "";
+        $okstr = '';
         for ($i = 0; $i < $glen; $i++) {
             if ($glen - $i > 4) {
                 if ($str[$i] == '%' && $str[$i + 1] == 'u') {

@@ -5,7 +5,7 @@
  * @version        $id:catalog_add.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -137,7 +137,7 @@ if ($dopost == 'quick') {
         ShowMsg("跨站调用秘钥不能为空", "-1");
         exit();
     }
-    if ($ispart != 2) {
+    if ($ispart != 2 && $isdefault != -1) {
         //栏目的参照目录
         if ($referpath == 'cmspath') $nextdir = '{cmspath}';
         if ($referpath == 'basepath') $nextdir = '';
@@ -166,16 +166,16 @@ if ($dopost == 'quick') {
     }
     //创建目录
     if ($ispart != 2) {
-        $true_typedir = str_replace("{cmspath}", $cfg_cmspath, $typedir);
+        $true_typedir = str_replace("{cmspath}", "", $typedir);
         $true_typedir = preg_replace("#\/{1,}#", "/", $true_typedir);
         if (!CreateDir($true_typedir)) {
-            ShowMsg("创建目录<span class='text-primary'>{$true_typedir}</span>失败，请检查您的路径是否存在问题", "-1");
+            ShowMsg("创建目录{$true_typedir}失败，请检查路径是否存在问题", "-1");
             exit();
         }
     }
     $in_query = "INSERT INTO `#@__arctype` (reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`,`apienabled`,`apikey`) VALUES ('$reid','$topid','$sortrank','$typename','$cnoverview','$enname','$enoverview','$bigpic','$litimg','$typedir','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','$ispart','$corank','$description','$keywords','$seotitle','$moresite','$siteurl','$sitepath','$ishidden','$cross','$crossid','$content','$smalltypes','$apienabled','$apikey')";
     if (!$dsql->ExecuteNoneQuery($in_query)) {
-        ShowMsg("保存目录数据时失败，请检查您的输入资料是否存在问题", "-1");
+        ShowMsg("保存目录数据时失败，请检查输入资料是否存在问题", "-1");
         exit();
     }
     UpDateCatCache();

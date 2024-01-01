@@ -5,7 +5,7 @@
  * @version        $id:freelist_edit.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -28,10 +28,6 @@ if (empty($dopost)) {
     $edtime = time();
     if (trim($title) == '') {
         ShowMsg("请输入自由列表标题", "-1");
-        exit();
-    }
-    if (empty($channel)) {
-        showmsg("请选择一个限定模型", "-1");
         exit();
     }
     if (is_array($types)) {

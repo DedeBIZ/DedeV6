@@ -5,7 +5,7 @@
  * @version        $id:swfupload.php 16:22 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -21,7 +21,6 @@ if (empty($dopost)) {
     $tmpdir = DEDEDATA.'/uploadtmp';
     if (!is_dir($tmpdir)) {
         MkdirAll($tmpdir, $cfg_dir_purview);
-        CloseFtp();
         if (!is_dir($tmpdir)) {
             echo "ERROR: Create {$tmpdir} dir Error! ";
             exit(0);
@@ -75,7 +74,6 @@ if (empty($dopost)) {
     $filedir = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, time());
     if (!is_dir(DEDEROOT.$filedir)) {
         MkdirAll($cfg_basedir.$filedir, $cfg_dir_purview);
-        CloseFtp();
     }
     $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', time()));
     if (file_exists($cfg_basedir.$filedir.'/'.$filename.$sname)) {

@@ -5,7 +5,7 @@
  * @version        $id:dedeatt.class.php 13:50 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 class DedeAtt
@@ -77,7 +77,7 @@ class DedeAtt
  */
 class DedeAttParse
 {
-    var $SourceString = "";
+    var $SourceString = '';
     var $SourceMaxSize = 1024;
     var $CAtt; //属性的数据描述类
     var $CharToLow = TRUE;
@@ -106,11 +106,11 @@ class DedeAttParse
      */
     function ParseAtt()
     {
-        $d = "";
-        $tmpatt = "";
-        $tmpvalue = "";
+        $d = '';
+        $tmpatt = '';
+        $tmpvalue = '';
         $startdd = -1;
-        $ddtag = "";
+        $ddtag = '';
         $notAttribute = TRUE;
         $strLen = strlen($this->SourceString);
         //这里是获得Tag的名称,可视情况是否需要，如果不在这个里解析,则在解析整个Tag时解析，属性中不应该存在tagname这个名称
@@ -123,7 +123,7 @@ class DedeAttParse
                 } else {
                     $this->CAtt->Items["tagname"] = trim($tmpvalue);
                 }
-                $tmpvalue = "";
+                $tmpvalue = '';
                 $notAttribute = FALSE;
                 break;
             } else {
@@ -172,8 +172,8 @@ class DedeAttParse
                     if ($d == $ddtag) {
                         $this->CAtt->Count++;
                         $this->CAtt->Items[$tmpatt] = trim($tmpvalue);
-                        $tmpatt = "";
-                        $tmpvalue = "";
+                        $tmpatt = '';
+                        $tmpvalue = '';
                         $startdd = -1;
                     } else {
                         $tmpvalue .= $d;

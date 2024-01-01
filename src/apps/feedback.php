@@ -5,7 +5,7 @@
  * @version        $id:feedback.php$
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
@@ -65,7 +65,7 @@ if ($action == '' || $action == 'show') {
     $dsql->Execute('fb', $querystring." LIMIT 20 ");
     $data = array();
     while ($row = $dsql->GetArray('fb')) {
-        $row['face'] = empty($row['mface']) ? $GLOBALS['cfg_cmspath'].'/static/web/img/admin.png' : $row['mface'];
+        $row['face'] = empty($row['mface']) ? '/static/web/img/admin.png' : $row['mface'];
         $row['dtimestr'] = MyDate('Y-m-d', $row['dtime']);
         unset($row['ip']);
         $data[] = $row;

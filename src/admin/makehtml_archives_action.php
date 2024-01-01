@@ -5,7 +5,7 @@
  * @version        $id:makehtml_archives_action.php 9:11 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -79,8 +79,8 @@ $ttime = time() - $sstime;
 $ttime = number_format(($ttime / 60), 2);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
-$tjsta = "<div class='progress mb-3'><div class='progress-bar progress-bar-striped bg-success' role='progressbar' aria-valuenow='$tjlen%' aria-valuemin='0' aria-valuemax='100' style='width:$tjlen%'>$tjlen%</div></div>";
-$tjsta .= "更新文档[id：".($startdd + $pagesize)."]，用时<span class='text-primary'>{$ttime}</span>分钟，完成更新文档总数<span class='text-primary'>$tjlen%</span>";
+$tjsta = "<div class='progress mb-3'><div class='progress-bar progress-bar-striped bg-success' role='progressbar' aria-valuenow='".$tjlen."%' aria-valuemin='0' aria-valuemax='100' style='width:".$tjlen."%'>".$tjlen."%</div></div>";
+$tjsta .= "更新文档[id：".($startdd + $pagesize)."]，用时{$ttime}分钟，完成更新文档总数".$tjlen."%";
 //速度测试
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";
@@ -90,10 +90,10 @@ if ($tjnum < $totalnum) {
     exit();
 } else {
     if ($typeid != '') {
-        ShowMsg("更新文档<span class='text-primary'>$totalnum</span>，用时<span class='text-primary'>{$ttime}</span>分钟，开始更新栏目", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
+        ShowMsg("更新文档".$totalnum."，用时{$ttime}分钟，开始更新栏目", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
     } else {
         if ($uptype == '') {
-            ShowMsg("更新文档<span class='text-primary'>$totalnum</span>，用时<span class='text-primary'>{$ttime}</span>分钟，完成所有文档更新", "javascript:;");
+            ShowMsg("更新文档".$totalnum."，用时{$ttime}分钟，完成所有文档更新", "javascript:;");
         } else {
             ShowMsg("完成所有文档更新，开始更新首页", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
         }

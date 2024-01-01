@@ -2,18 +2,18 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>添加系统会员组</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form name="form1" action="sys_group_add.php" method="post">
 			<input type="hidden" name="dopost" value="save">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="sys_group.php">会员组管理</a> - 添加系统会员组</td>
+					<td colspan="2"><a href="sys_group.php">会员组管理</a> - 添加系统会员组</td>
 				</tr>
 				<tr>
 					<td width="120">组名称：</td>
@@ -23,7 +23,7 @@
 					<td>级别值：</td>
 					<td>
 						<input type="text" name="rankid" id="rankid" class="admin-input-sm">
-						<span>（系统已占用的级别值：<?php $dsql->SetQuery("Select `rank` From `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo '<span class="text-primary">'.$row->rank.'</span>';?>，级别值必须小于10，超过或等于10所有权限设置无效）</span>
+						<span>（系统已占用的级别值：<?php $dsql->SetQuery("SELECT `rank` FROM `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo $row->rank;?>，级别值必须小于10，超过或等于10所有权限设置无效）</span>
 					</td>
 				</tr>
 				<?php
@@ -38,7 +38,7 @@
 					{
 						if ($start>0) echo "</td></tr>";
 						$start++;
-						$lhead = "<tr> <td colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr><tr><td colspan='2'>"; 
+						$lhead = "<tr><td colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr><tr><td colspan='2'>"; 
 						echo $lhead;
 					}
 					else if (preg_match("#^>#", $line))
@@ -73,7 +73,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" onclick="DoSubmit('gettag')" class="btn btn-success btn-sm">保存</button></td>
+					<td colspan="2" align="center"><button type="submit" onclick="DoSubmit('gettag');" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
 			</table>
 		</form>

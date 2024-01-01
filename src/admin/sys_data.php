@@ -5,17 +5,17 @@
  * @version        $id:sys_data.php 17:19 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
     die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
-  }
+}
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
 if ($cfg_dbtype == 'sqlite') {
-    showMsg('备份系统根目录下/data/'.$cfg_dbname.'.db文件即可', 'javascript:;');
+    showMsg("备份系统根目录下/data/".$cfg_dbname.".db文件即可", "javascript:;");
     exit();
 }
 //查看表结构
@@ -41,9 +41,9 @@ else if ($dopost == "opimize") {
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
         if ($rs) {
-            echo "执行优化表<span class='text-primary'>$tablename</span>完成<br>";
+            echo "执行优化表".$tablename."完成<br>";
         } else {
-            echo "执行优化表<span class='text-primary'>$tablename</span>失败，原因是：".$dsql->GetError();
+            echo "执行优化表".$tablename."失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';
@@ -57,9 +57,9 @@ else if ($dopost == "repair") {
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
         if ($rs) {
-            echo "修复表<span class='text-primary'>$tablename</span>完成<br>";
+            echo "修复表".$tablename."完成<br>";
         } else {
-            echo "修复表<span class='text-primary'>$tablename</span>失败，原因是：".$dsql->GetError();
+            echo "修复表".$tablename."失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';

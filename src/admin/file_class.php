@@ -6,13 +6,13 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:file_class.php 19:09 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 class FileManagement
 {
-    var $baseDir = "";
-    var $activeDir = "";
+    var $baseDir = '';
+    var $activeDir = '';
     //是否允许文件管理器删除目录，默认为不允许0，如果希望管理整个目录，请把值设为1
     var $allowDeleteDir = 0;
     //初始化系统
@@ -30,7 +30,7 @@ class FileManagement
         $oldext = pathinfo($oldname)['extension'];
         $newext = pathinfo($newname)['extension'];
         if ($oldext != $newext) {
-            if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($newname))) {
+            if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|inc|htm)$#i', trim($newname))) {
                 ShowMsg("文件扩展名已被系统禁止", "javascript:;");
                 exit();
             }
@@ -48,7 +48,6 @@ class FileManagement
         $dirname = $this->baseDir.$this->activeDir."/".$dirname;
         if (is_writable($this->baseDir.$this->activeDir)) {
             MkdirAll($dirname, $GLOBALS['cfg_dir_purview']);
-            CloseFtp();
             ShowMsg("成功创建一个新目录", "file_manage_main.php?activepath=".$this->activeDir."/".$newdir);
             return 1;
         } else {
@@ -79,18 +78,17 @@ class FileManagement
                     copy($oldfile, $truepath."/$mfile");
                 } else {
                     MkdirAll($truepath, $GLOBALS['cfg_dir_purview']);
-                    CloseFtp();
                     copy($oldfile, $truepath."/$mfile");
                 }
                 unlink($oldfile);
-                ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath");
                 return 1;
             } else {
-                ShowMsg("移动文件<span class='text-primary'>$oldfile</span>&gt;<span class='text-primary'>$truepath/$mfile</span>失败，某个位置权限不足", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("移动文件".$oldfile." - ".$truepath."/".$mfile."失败", "file_manage_main.php?activepath=$mpath");
                 return 0;
             }
         } else {
-            ShowMsg("您移动的路径不合法", "-1", 0, 5000);
+            ShowMsg("您移动的路径不合法", "-1");
             return 0;
         }
     }
@@ -147,6 +145,7 @@ class FileManagement
      */
     function DeleteFile($filename)
     {
+        $filename = str_replace("..", "", $filename);
         $filename = $this->baseDir.$this->activeDir."/$filename";
         if (is_file($filename)) {
             @unlink($filename);

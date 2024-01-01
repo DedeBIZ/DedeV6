@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:dedesqlite.class.php 15:00 2011-1-21 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
@@ -267,7 +267,7 @@ class DedeSqlite
             //echo $this->queryString."--{$queryTime}<hr/>\r\n";
         }
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError($this->linkID->lastErrorMsg()."<br>Error sql:<span class='text-primary'>".$this->queryString."</span>");
+            $this->DisplayError($this->linkID->lastErrorMsg()."<br>Error sql:".$this->queryString."");
         }
     }
     function Query($id = "me", $sql = '')
@@ -494,6 +494,7 @@ class DedeSqlite
         $this->queryString = preg_replace("/Show Tables/i", "SELECT name FROM sqlite_master WHERE type = \"table\"", $this->queryString);
         $this->queryString = str_replace("\'", "\"", $this->queryString);
         $this->queryString = str_replace('\t\n', "", $this->queryString);
+        $this->queryString = str_ireplace('rand', 'RANDOM', $this->queryString);
         //var_dump($this->queryString);
     }
     function SetSql($sql)

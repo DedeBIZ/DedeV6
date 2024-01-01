@@ -5,7 +5,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:customfields.func.php 2 20:50 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**
@@ -38,20 +38,19 @@ function GetFormItem($ctag, $admintype = 'admin')
         $myformItem .= "</select>";
         $innertext = $myformItem;
     } else if ($fieldType == 'stepselect') {
-        global $hasSetEnumJs, $cfg_cmspath;
-        $cmspath = ((empty($cfg_cmspath) || !preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
+        global $hasSetEnumJs;
         $myformItem = '';
         $myformItem .= "<input type='hidden' id='hidden_{$fieldname}' name='{$fieldname}' value='0'>";
         $myformItem .= "<span id='span_{$fieldname}'></span>";
         $myformItem .= "<span id='span_{$fieldname}_son'></span>";
         $myformItem .= "<span id='span_{$fieldname}_sec'></span>";
         if ($hasSetEnumJs != 'hasset') {
-            $myformItem .= '<script src="'.$cmspath.'static/web/js/enums.js"></script>'."";
+            $myformItem .= '<script src="/static/web/js/enums.js"></script>'."";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
         $myformItem .= "<script>
         var em_{$fieldname}s = [];
-        fetch('{$cmspath}static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d)=>{
+        fetch('/static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d) => {
             Object.entries(d).forEach(v=>{
                 em_{$fieldname}s[parseFloat(v[0])]= v[1];
             });
@@ -68,7 +67,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         foreach ($items as $v) {
             $v = trim($v);
             if ($v != '') {
-                $myformItem .= ($i == 0 ? "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v' checked='checked'> $v</label></div>" : "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v'> $v</label></div>");
+                $myformItem .= ($i == 0 ? "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v' checked> $v</label></div>" : "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v'> $v</label></div>");
                 $i++;
             }
         }
@@ -157,7 +156,7 @@ EOT;
  */
 function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $admintype = 'admin', $fieldname = '')
 {
-    global $cfg_basedir, $cfg_cmspath, $adminid, $cfg_ml, $cfg_cookie_encode;
+    global $cfg_basedir, $adminid, $cfg_ml, $cfg_cookie_encode;
     if (!empty($adminid)) {
         $adminid = $adminid;
     } else {
@@ -201,7 +200,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         }
         return $dvalue;
     } else if ($dtype == "textdata") {
-        $ipath = $cfg_cmspath."/data/textdata";
+        $ipath = '/data/textdata';
         $tpath = ceil($aid / 5000);
         if (!is_dir($cfg_basedir.$ipath)) {
             MkdirAll($cfg_basedir.$ipath, $GLOBALS['cfg_dir_purview']);
@@ -218,7 +217,6 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         $fp = fopen($cfg_basedir.$filename, "w");
         fwrite($fp, stripslashes($dvalue));
         fclose($fp);
-        CloseFtp();
         return $filename;
     } else if ($dtype == 'img' || $dtype == 'imgfile') {
         return addslashes($dvalue);
@@ -273,20 +271,19 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         $myformItem .= "</select>";
         $innertext = $myformItem;
     } else if ($ctag->GetAtt("type") == 'stepselect') {
-        global $hasSetEnumJs, $cfg_cmspath;
-        $cmspath = ((empty($cfg_cmspath) || preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
+        global $hasSetEnumJs;
         $myformItem = '';
         $myformItem .= "<input type='hidden' id='hidden_{$fieldname}' name='{$fieldname}' value='{$fvalue}'>";
         $myformItem .= "<span id='span_{$fieldname}'></span>";
         $myformItem .= "<span id='span_{$fieldname}_son'></span>";
         $myformItem .= "<span id='span_{$fieldname}_sec'></span>";
         if ($hasSetEnumJs != 'hasset') {
-            $myformItem .= '<script src="'.$cmspath.'static/web/js/enums.js"></script>'."";
+            $myformItem .= '<script src="/static/web/js/enums.js"></script>'."";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
         $myformItem .= "<script>
         var em_{$fieldname}s = [];
-        fetch('{$cmspath}static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d)=>{
+        fetch('/static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d) => {
             Object.entries(d).forEach(v=>{
                 em_{$fieldname}s[parseFloat(v[0])]= v[1];
             });
@@ -301,7 +298,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             foreach ($items as $v) {
                 $v = trim($v);
                 if ($v == '') continue;
-                $myformItem .= ($fvalue == $v ? "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v' checked='checked'> $v</label></div>" : "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v'> $v</label></div>");
+                $myformItem .= ($fvalue == $v ? "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v' checked> $v</label></div>" : "<div class='form-check form-check-inline'><label class='form-check-label'><input type='radio' name='$fieldname' class='form-check-input' value='$v'> $v</label></div>");
             }
         }
         $innertext = $myformItem;
@@ -317,7 +314,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
                     continue;
                 }
                 if (in_array($v, $fvalues)) {
-                    $myformItem .= "<div class='form-check form-check-inline'><label class='form-check-label'><input type='checkbox' name='{$fieldname}[]' class='form-check-input' value='$v' checked='checked'> $v</label></div>";
+                    $myformItem .= "<div class='form-check form-check-inline'><label class='form-check-label'><input type='checkbox' name='{$fieldname}[]' class='form-check-input' value='$v' checked> $v</label></div>";
                 } else {
                     $myformItem .= "<div class='form-check form-check-inline'><label class='form-check-label'><input type='checkbox' name='{$fieldname}[]' class='form-check-input' value='$v'> $v</label></div>";
                 }

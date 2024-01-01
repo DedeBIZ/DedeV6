@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:dedehttpdown.class.php 11:42 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
@@ -83,18 +83,18 @@ class DedeHttpDown
      */
     function ResetAny()
     {
-        $this->m_ch = "";
-        $this->m_url = "";
-        $this->m_urlpath = "";
+        $this->m_ch = '';
+        $this->m_url = '';
+        $this->m_urlpath = '';
         $this->m_scheme = "http";
-        $this->m_host = "";
+        $this->m_host = '';
         $this->m_port = "80";
-        $this->m_user = "";
-        $this->m_pass = "";
+        $this->m_user = '';
+        $this->m_pass = '';
         $this->m_path = "/";
-        $this->m_query = "";
-        $this->m_cookies = "";
-        $this->m_error = "";
+        $this->m_query = '';
+        $this->m_cookies = '';
+        $this->m_error = '';
     }
     /**
      *  打开指定网址
@@ -128,7 +128,7 @@ class DedeHttpDown
         $this->ResetAny();
         $this->JumpCount++;
         $this->m_httphead = array();
-        $this->m_html = "";
+        $this->m_html = '';
         $this->Close();
 
         //初始化系统
@@ -417,7 +417,7 @@ class DedeHttpDown
         }
         fputs($this->m_fp, $headString);
         if ($requestType == "POST") {
-            $postdata = "";
+            $postdata = '';
             if (count($ps) > 1) {
                 for ($i = 1; $i < count($ps); $i++) {
                     $postdata .= $ps[$i];
@@ -443,7 +443,7 @@ class DedeHttpDown
         $httpstas = explode(" ", fgets($this->m_fp, 256));
         $this->m_httphead["http-edition"] = trim($httpstas[0]);
         $this->m_httphead["http-state"] = trim($httpstas[1]);
-        $this->m_httphead["http-describe"] = "";
+        $this->m_httphead["http-describe"] = '';
         for ($i = 2; $i < count($httpstas); $i++) {
             $this->m_httphead["http-describe"] .= " ".trim($httpstas[$i]);
         }
@@ -453,8 +453,8 @@ class DedeHttpDown
             if ($line == "") {
                 break;
             }
-            $hkey = "";
-            $hvalue = "";
+            $hkey = '';
+            $hvalue = '';
             $v = 0;
             for ($i = 0; $i < strlen($line); $i++) {
                 if ($v == 1) {
@@ -536,8 +536,8 @@ class DedeHttpDown
         if ($this->m_host == "") {
             return FALSE;
         }
-        $errno = "";
-        $errstr = "";
+        $errno = '';
+        $errstr = '';
         $this->m_fp = @fsockopen($this->m_host, $this->m_port, $errno, $errstr, 10);
         if (!$this->m_fp) {
             $this->m_error = $errstr;
@@ -571,9 +571,9 @@ class DedeHttpDown
     function FillUrl($surl)
     {
         $i = 0;
-        $dstr = "";
-        $pstr = "";
-        $okurl = "";
+        $dstr = '';
+        $pstr = '';
+        $okurl = '';
         $pathStep = 0;
         $surl = trim($surl);
         if ($surl == "") {

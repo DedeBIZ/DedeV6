@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:partview.class.php 14:17 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/channelunit.class.php');
@@ -217,6 +217,15 @@ class PartView
             require_once(dirname(__FILE__)."/inc/inc_fun_SpGetArcList.php");
         }
         return SpGetArcList($this->dsql,$templets,$typeid,$row,$col,$titlelen,$infolen,$imgwidth,$imgheight,$listtype,$orderby,$keyword,$innertext,$tablewidth,$arcid,$idlist,$channelid,$limit,$att,$order,$subday,$ismember,$maintable,$ctag);
+    }
+    function GetAutoChannelID($sortid, $topid)
+    {
+        global $dsql;
+        if (empty($sortid)) $sortid = 1;
+        $getstart = $sortid - 1;
+        $row = $dsql->GetOne("SELECT id,typename FROM `#@__arctype` WHERE reid='{$topid}' And ispart<2 And ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
+        if (!is_array($row)) return 0;
+        else return $row['id'];
     }
     //关闭所占用的资源
     function Close()

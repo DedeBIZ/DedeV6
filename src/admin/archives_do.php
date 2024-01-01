@@ -5,7 +5,7 @@
  * @version        $id:archives_do.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -33,7 +33,7 @@ if ($dopost == 'editArchives') {
         $ntime = time();
         $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000,9999));
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         $fullUrl = $fullUrl.".png";
         file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
         //加水印
@@ -149,7 +149,7 @@ else if ($dopost == "uploadLitpic") {
                 if (parent.document.getElementById('divpicview'))
                 {
                     parent.document.getElementById('divpicview').style.width = '150px';
-                    parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}?n' width='150'>\";
+                    parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}'>\";
                 }
             </script>";
         } else {
@@ -190,7 +190,7 @@ else if ($dopost == "commendArchives") {
             $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
-    ShowMsg("成功把所选文档设为推荐", $ENV_GOBACK_URL);
+    ShowMsg("成功把文档设为推荐", $ENV_GOBACK_URL);
     exit();
 }
 //生成网页
@@ -208,7 +208,7 @@ else if ($dopost == "makeArchives") {
         $i++;
         $pageurl = MakeArt($aid, false);
     }
-    ShowMsg("成功更新指定<span class='text-primary'>$i</span>个文件", $ENV_GOBACK_URL);
+    ShowMsg("成功更新指定".$i."个文档", $ENV_GOBACK_URL);
     exit();
 }
 //审核文档
@@ -268,7 +268,7 @@ else if ($dopost == "checkArchives") {
             <td class="admin-td"><input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"></td>
         </tr>
         <tr>
-            <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
+            <td colspan="2" align="center" class="admin-td">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
                 <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
             </td>
@@ -317,7 +317,7 @@ else if ($dopost == "checkArchives") {
             $arc = new Archives($aid);
             $arc->MakeHtml();
         }
-        ShowMsg("成功移动<span class='text-primary'>$j</span>个文档", $ENV_GOBACK_URL);
+        ShowMsg("成功移动".$j."个文档", $ENV_GOBACK_URL);
         exit();
     }
 }
@@ -368,12 +368,12 @@ else if ($dopost == "delArchives") {
         $wintitle = "删除指定文档";
         $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a> - 删除文档";
         $win = new OxWindow();
-        $win->Init("archives_do.php", "js/blank.js", "POST");
+        $win->Init("archives_do.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("您确定删除，序号<span class='text-primary'>$qstr</span>文档吗");
+        $win->AddTitle("您确定删除，序号".$qstr."文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -418,13 +418,13 @@ else if ($dopost == 'clear') {
         $wintitle = "清空回收站所有文档";
         $wecome_info = "<a href='recycling.php'>文档回收站</a> - 清空所有文档";
         $win = new OxWindow();
-        $win->Init("archives_do.php", "js/blank.js", "POST");
+        $win->Init("archives_do.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("清空回收站<span class='text-primary'>$num</span>篇文档<br>您确定删除，序号<span class='text-primary'>$qstr</span>文档吗");
+        $win->AddTitle("您确定删除".$num."篇文档，序号".$qstr."文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -456,13 +456,13 @@ else if ($dopost == 'del') {
         $wintitle = "删除指定文档";
         $wecome_info = "<a href='recycling.php'>文档管理</a> - 删除文档";
         $win = new OxWindow();
-        $win->Init("archives_do.php", "js/blank.js", "POST");
+        $win->Init("archives_do.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确要删除，序号<span class='text-primary'>$qstr</span>文档吗");
+        $win->AddTitle("您确要删除，序号".$qstr."文档吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -500,11 +500,11 @@ else if ($dopost == 'quickEdit') {
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
-                if ($trow->att == 'j' || $trow->att == 'p') continue;
+                if ($trow->att == 'j') continue;
                 if (preg_match("#".$trow->att."#", $arcRow['flag']))
-                echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}]</label>";
+                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked> {$trow->attname}{$trow->att}[{$trow->att}]</label> ";
                 else
-                echo "<label class='mr-2'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
             }
             ?>
         </td>
@@ -541,7 +541,7 @@ else if ($dopost == 'quickEdit') {
         <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
     </tr>
     <tr>
-        <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
+        <td colspan="2" align="center" class="admin-td">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>
@@ -556,7 +556,7 @@ else if ($dopost == 'quickEditSave') {
     require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
     //权限检测
     if (!TestPurview('a_Edit')) {
-        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
+        CheckCatalog($typeid, "您没有操作栏目{$typeid}文档权限");
     }
     $title = dede_htmlspecialchars(cn_substrR($title, $cfg_title_maxlen));
     $shorttitle = cn_substrR($shorttitle, 36);
@@ -584,7 +584,7 @@ else if ($dopost == 'quickEditSave') {
     //更新网页
     $artUrl = MakeArt($aid, TRUE, TRUE);
     $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '-1';
-    ShowMsg('成功更新一篇文档指定属性', $backurl);
+    ShowMsg('成功更新一篇文档属性', $backurl);
     exit();
 }
 //分析并自动获取文档关键词
@@ -608,7 +608,7 @@ else if ($dopost == "makekw") {
             $keywords = '';
             $title = $row['title'];
             $description = $row['description'];
-            $body = cn_substr($row['body'], 5000);
+            $body = cn_substr($row['body'], 3000);
             $data = $client->Spliteword($title.Html2Text($body));
             $keywords = $data->data;
             $description = str_replace('　', ' ', trim($description));
@@ -631,7 +631,7 @@ else if ($dopost == "makekw") {
             $keywords = '';
             $title = $row['title'];
             $description = $row['description'];
-            $body = cn_substr($row['body'], 5000);
+            $body = cn_substr($row['body'], 3000);
             $sp->SetSource($title, $cfg_soft_lang, $cfg_soft_lang);
             $sp->StartAnalysis();
             $titleindexs = preg_replace("/#p#|#e#/", '', $sp->GetFinallyIndex());
@@ -700,7 +700,7 @@ else if ($dopost == 'attsAdd') {
             $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
-    ShowMsg("成功对选中文档添加指定属性", $ENV_GOBACK_URL);
+    ShowMsg("成功添加文档指定属性", $ENV_GOBACK_URL);
     exit();
 }
 //批量删除属性
@@ -743,7 +743,7 @@ else if ($dopost == 'attsDel') {
         $flag = trim(join(',', $okflags));
         $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET `flag`='$flag' WHERE {$idname}='{$aid}' ");
     }
-    ShowMsg("成功对选中文档删除指定属性", $ENV_GOBACK_URL);
+    ShowMsg("成功删除文档指定属性", $ENV_GOBACK_URL);
     exit();
 }
 //获得批量属性处理Ajax窗体
@@ -767,8 +767,8 @@ else if ($dopost == 'attsDlg') {
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
-                if ($trow->att == 'j' || $trow->att == 'p') continue;
-                echo "<label class='mr-2'><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
+                if ($trow->att == 'j') continue;
+                echo "<label><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
             }
             ?>
         </td>
@@ -778,7 +778,7 @@ else if ($dopost == 'attsDlg') {
         <td class="admin-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
     </tr>
     <tr>
-        <td bgcolor="f5f5f5" colspan="2" align="center" class="py-2">
+        <td colspan="2" align="center" class="admin-td">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </td>

@@ -5,7 +5,7 @@
  * @version        $id:makehtml_freelist_action.php 9:11 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -54,10 +54,10 @@ if ($nextpage == $totalpage) {
 } else {
     if ($finishType) {
         $gourl = "makehtml_freelist_action.php?maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$nextpage";
-        ShowMsg("更新列表<span class='text-primary'>".$tid."</span>，继续更新列表", $gourl, 0, 100);
+        ShowMsg("更新列表".$tid."，继续更新列表", $gourl, 0, 100);
     } else {
         $gourl = "makehtml_freelist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$pageno";
-        ShowMsg("更新列表<span class='text-primary'>".$tid."</span>，继续更新列表", $gourl, 0, 100);
+        ShowMsg("更新列表".$tid."，继续更新列表", $gourl, 0, 100);
     }
 }
 $dsql->ExecuteNoneQuery("UPDATE `#@__freelist` SET nodefault='1' WHERE aid='$startid';");

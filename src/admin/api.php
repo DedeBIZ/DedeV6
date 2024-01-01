@@ -5,7 +5,7 @@
  * @version        $id:api.php 8:26 2022年11月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 define('AJAXLOGIN', TRUE);
@@ -384,7 +384,6 @@ if ($action === 'is_need_check_code') {
     $mdir = MyDate($cfg_addon_savetype, $nowtme);
     if (!is_dir($cfg_basedir.$activepath."/$mdir")) {
         MkdirAll($cfg_basedir.$activepath."/$mdir", $cfg_dir_purview);
-        CloseFtp();
     }
     $cuserLogin = new userLogin();
     $iseditor = isset($iseditor)? intval($iseditor) : 0;
@@ -394,6 +393,16 @@ if ($action === 'is_need_check_code') {
     $filename = $filename.'.'.$fs[count($fs) - 1];
     $filename_name = $filename_name.'.'.$fs[count($fs) - 1];
     $fullfilename = $cfg_basedir.$activepath."/".$filename;
+    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($fullfilename))) {
+        echo json_encode(array(
+            "code" => -1,
+            "uploaded" => 0,
+            "error" => array(
+                "message" => "文件扩展名已被系统禁止",
+            ),
+        ));
+        exit;
+    }
     move_uploaded_file($_FILES["file"]["tmp_name"], $fullfilename) or die(json_encode(array(
         "code" => -1,
         "uploaded" => 0,

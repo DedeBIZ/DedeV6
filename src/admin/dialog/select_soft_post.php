@@ -5,7 +5,7 @@
  * @version        $id:select_soft_post.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 if (!isset($cfg_basedir)) {
@@ -28,7 +28,7 @@ $cfg_softtype = $cfg_softtype;
 $cfg_softtype = str_replace('||', '|', $cfg_softtype);
 $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
 if (!preg_match("#\.(".$cfg_softtype.")#i", $uploadfile_name)) {
-    ShowMsg("您上传的<span class='text-primary'>{$uploadmbtype}</span>扩展名已被系统禁止", "-1");
+    ShowMsg("您上传的{$uploadmbtype}扩展名已被系统禁止", "-1");
     exit();
 }
 $nowtme = time();
@@ -37,7 +37,6 @@ if ($activepath == $cfg_soft_dir) {
     $activepath = $activepath.'/'.$newdir;
     if (!is_dir($cfg_basedir.$activepath)) {
         MkdirAll($cfg_basedir.$activepath, $cfg_dir_purview);
-        CloseFtp();
     }
 }
 //文件名前为手工指定，后者自动处理
@@ -59,7 +58,7 @@ if (!empty($newname)) {
     }
     $filename = $filename.'.'.$fs[count($fs) - 1];
 }
-if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
+if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($filename))) {
     ShowMsg("文件扩展名已被系统禁止", "javascript:;");
     exit();
 }
@@ -74,7 +73,7 @@ if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
     ShowMsg("仅支持媒体文件及应用程序上传", -1);
     exit;
 }
-move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到<span class='text-primary'>$fullfilename</span>失败");
+move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到".$fullfilename."失败");
 @unlink($uploadfile);
 if ($uploadfile_type == 'application/x-shockwave-flash') {
     $mediatype = 2;

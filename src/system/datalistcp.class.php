@@ -1,12 +1,12 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 动态分页
+ * 系统列表分页
  *
  * @version        $id:datalistcp.class.php 3 17:02 2010年7月9日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/dedetemplate.class.php');
@@ -17,7 +17,6 @@ $lang_index_page = '首页';
 $lang_end_page = '末页';
 $lang_record_number = '条';
 $lang_page = '页';
-$lang_total = '共';
 /**
  * DataListCP
  *
@@ -222,7 +221,7 @@ class DataListCP
     //获取分页导航列表
     function GetPageList($atts, $refObj = '', $fields = array())
     {
-        global $lang_pre_page, $lang_next_page, $lang_index_page, $lang_end_page, $lang_record_number, $lang_page, $lang_total;
+        global $lang_pre_page, $lang_next_page, $lang_index_page, $lang_end_page, $lang_record_number, $lang_page;
         $prepage = $nextpage = $geturl = $hidenform = '';
         $purl = $this->GetCurUrl();
         $prepagenum = $this->pageNO - 1;
@@ -237,12 +236,12 @@ class DataListCP
         //echo " {$totalpage}=={$this->totalResult}=={$this->pagesize}";
         //无结果或只有一页的情况
         if ($totalpage <= 1 && $this->totalResult > 0) {
-            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>{$lang_total}1{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
+            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>1{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
         if ($this->totalResult == 0) {
-            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>{$lang_total}0{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
+            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>0{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
-        $infos = "<li class='page-item disabled'><span class='page-link'>{$lang_total}{$totalpage}{$lang_page}/{$this->totalResult}{$lang_record_number}</span></li>";
+        $infos = "<li class='page-item disabled'><span class='page-link'>{$totalpage}{$lang_page}/{$this->totalResult}{$lang_record_number}</span></li>";
         if ($this->totalResult != 0) {
             $this->getValues['totalresult'] = $this->totalResult;
         }
@@ -254,7 +253,7 @@ class DataListCP
             }
         }
         $purl .= "?".$geturl;
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->pageNO != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."pageno=$prepagenum'>$lang_pre_page</a></li> \n";
             $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."pageno=1'>$lang_index_page</a></li> \n";
@@ -268,7 +267,7 @@ class DataListCP
             $endpage = " <li class='page-item disabled'><span class='page-link'>$lang_end_page</span></li> \n";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $atts['listsize'] * 2 + 1;
         if ($this->pageNO >= $total_list) {
             $j = $this->pageNO - $atts['listsize'];

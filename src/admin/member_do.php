@@ -5,7 +5,7 @@
  * @version        $id:member_do.php 13:47 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -48,7 +48,7 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE mid='$id' ");
                 $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET mid='0' WHERE mid='$id'");
             } else {
-                ShowMsg("无法删除此会员，如果这个会员是管理员，必须先删除这个管理员才能删除此帐号", $ENV_GOBACK_URL, 0, 5000);
+                ShowMsg("无法删除此会员，如果这个会员是管理员，必须先删除这个管理员才能删除此帐号", $ENV_GOBACK_URL);
                 exit();
             }
         }
@@ -60,14 +60,14 @@ if ($dopost == "delmember") {
     $wintitle = "删除指定会员";
     $wecome_info = "<a href='".$ENV_GOBACK_URL."'>会员管理</a> - 删除会员";
     $win = new OxWindow();
-    $win->Init("member_do.php", "js/blank.js", "POST");
+    $win->Init("member_do.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", "yes");
     $win->AddHidden("dopost", $dopost);
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("您确定要删除id<span class='text-primary'>".$id."</span>会员吗");
-    $win->AddMsgItem("<tr><td>验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-lg'>（安全码：<span class='text-primary'>$safecode</span>）</td></tr>");
+    $win->AddTitle("您确定要删除id".$id."会员吗");
+    $win->AddMsgItem("<tr><td>验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-lg'>（安全码：$safecode）</td></tr>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 } else if ($dopost == "delmembers") {
@@ -95,7 +95,7 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET mid='0' WHERE mid IN (".str_replace("`", ",", $id).")");
             } else {
-                ShowMsg("无法删除此会员，如果这个会员是管理员关连的id，必须先删除这个管理员才能删除此帐号", $ENV_GOBACK_URL, 0, 3000);
+                ShowMsg("无法删除此会员，如果这个会员是管理员关连的id，必须先删除这个管理员才能删除此帐号", $ENV_GOBACK_URL);
                 exit();
             }
         }
@@ -107,14 +107,14 @@ if ($dopost == "delmember") {
     $wintitle = "删除指定会员";
     $wecome_info = "<a href='".$ENV_GOBACK_URL."'>会员管理</a> - 删除会员";
     $win = new OxWindow();
-    $win->Init("member_do.php", "js/blank.js", "POST");
+    $win->Init("member_do.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", "yes");
     $win->AddHidden("dopost", $dopost);
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("您确定要删除id<span class='text-primary'>".$id."</span>会员吗");
-    $win->AddMsgItem("<tr><td>验证安全码：<input name='safecode' type='text' id='safecode' size='16' class='admin-input-lg' /> (安全码：<span class='text-primary'>$safecode</span>)</td></tr>");
+    $win->AddTitle("您确定要删除id".$id."会员吗");
+    $win->AddMsgItem("<tr><td>验证安全码：<input name='safecode' type='text' id='safecode' class='admin-input-lg'> (安全码：$safecode)</td></tr>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
@@ -177,7 +177,7 @@ else if ($dopost == "memberlogin") {
     CheckPurview('member_Edit');
     PutCookie('DedeUserID', $id, 1800);
     PutCookie('DedeLoginTime', time(), 1800);
-    if (empty($jumpurl)) header("location:../user/index.php");
+    if (empty($jumpurl)) header("location:$cfg_memberurl/index.php");
     else header("location:$jumpurl");
 } else if ($dopost == "deoperations") {
     $nid = preg_replace('#[^0-9,]#', '', preg_replace('#`#', ',', $nid));

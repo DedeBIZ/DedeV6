@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:taglist.class.php 18:17 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/channelunit.class.php');
@@ -61,7 +61,7 @@ class TagList
         if (!empty($this->Tag)) {
             $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` where id = '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
-                ShowMsg('当前标签不存在，系统自动返回标签首页', 'tags.php');
+                ShowMsg('当前标签不存在，系统自动返回主页', '/');
                 exit();
             }
             $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->TagInfos['tag'] : $this->TagInfos['title'];
@@ -150,8 +150,8 @@ class TagList
      */
     function Display()
     {
-        global $cfg_cmspath, $cfg_tags_dir;
-        $tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
+        global $cfg_tags_dir;
+        $tagsDir = str_replace("{cmspath}", "", $cfg_tags_dir);
         $makeDir = empty($this->Tag) ? $this->GetTruePath().$tagsDir."/index.html" : $this->GetTruePath().$tagsDir."/".$this->Tag."/index.html";
         if ($this->Tag != '') {
             $this->CountRecord();
@@ -295,7 +295,7 @@ class TagList
         } else {
             $ordersql = " ORDER BY se.id $orderWay";
         }
-        $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id LEFT JOIN `#@__member` mb on se.mid = mb.mid WHERE $orwhere $ordersql ";
+        $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id LEFT JOIN `#@__member` mb on se.mid = mb.mid WHERE $orwhere $ordersql ";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $row = $this->pagesize / $col;
@@ -304,7 +304,7 @@ class TagList
         $GLOBALS['autoindex'] = 0;
         for ($i = 0; $i < $row; $i++) {
             if ($col > 1) {
-                $artlist .= "<div>\r\n";
+                $artlist .= "<div>";
             }
             for ($j = 0; $j < $col; $j++) {
                 if ($row = $this->dsql->GetArray("al")) {
@@ -340,11 +340,11 @@ class TagList
                         $row['sitepath']
                     );
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                        $row['litpic'] = '/static/web/img/thumbnail.jpg';
                     }
-                    if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                    /*if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
-                    }
+                    }*/
                     $row['picname'] = $row['litpic'];
                     $row['stime'] = GetDateMK($row['pubdate']);
                     $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
@@ -361,6 +361,7 @@ class TagList
                     $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
+                    $row['userurl'] = $GLOBALS['cfg_memberurl'].'/index.php?uid='.$row['userid'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
                     $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                     if (is_array($this->dtp2->CTags)) {
@@ -382,7 +383,7 @@ class TagList
             }//Loop Col
             if ($col > 1) {
                 $i += $col - 1;
-                $artlist .= "</div>\r\n";
+                $artlist .= "</div>";
             }
         }//Loop Line
         $this->dsql->FreeResult('al');
@@ -398,8 +399,8 @@ class TagList
      */
     function GetPageListDM($list_len, $listitem = "info,index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -412,24 +413,24 @@ class TagList
         if ($this->TotalResult == 0) {
             return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
-        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
+        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $purl = $this->GetCurUrl();
         $purl .= "?/".urlencode($this->Tag);
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."/$prepagenum/'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."/1/'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".$purl."/$prepagenum/' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$purl."/1/' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."/$nextpagenum/'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."/$totalpage/'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".$purl."/$nextpagenum/' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$purl."/$totalpage/' class='page-link'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -445,9 +446,9 @@ class TagList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."/$j/'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".$purl."/$j/' class='page-link'>$j</a></li>";
             }
         }
         $plist = '';
@@ -473,8 +474,8 @@ class TagList
     }
     function GetPageListST($list_len, $listitem = "info,index,end,pre,next,pageno")
     {
-        $prepage = "";
-        $nextpage = "";
+        $prepage = '';
+        $nextpage = '';
         $prepagenum = intval($this->PageNo) - 1;
         $nextpagenum = intval($this->PageNo) + 1;
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
@@ -487,23 +488,23 @@ class TagList
         if ($this->TotalResult == 0) {
             return "<li class='page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
-        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
+        $maininfo = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $purl = $this->tagsDir.'/'.$this->TagInfos['id'];
-        //获得上一页和下一页的链接
+        //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a href='".$purl."/$prepagenum/' class='page-link'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a href='".$purl."/1/' class='page-link'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".$purl."/$prepagenum/' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$purl."/1/' class='page-link'>首页</a></li>";
         } else {
-            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a href='".$purl."/$nextpagenum/' class='page-link'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a href='".$purl."/$totalpage/' class='page-link'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".$purl."/$nextpagenum/' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$purl."/$totalpage/' class='page-link'>末页</a></li>";
         } else {
-            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
         //获得数字链接
-        $listdd = "";
+        $listdd = '';
         $total_list = $list_len * 2 + 1;
         if ($this->PageNo >= $total_list) {
             $j = $this->PageNo - $list_len;
@@ -519,12 +520,12 @@ class TagList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a href='".$purl."/$j/' class='page-link'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".$purl."/$j/' class='page-link'>$j</a></li>";
             }
         }
-        $plist = "";
+        $plist = '';
         if (preg_match('/info/i', $listitem)) {
             $plist .= $maininfo.' ';
         }
@@ -552,16 +553,16 @@ class TagList
     }
     function SetTagsDir($dir = '')
     {
-        global $cfg_tags_dir, $cfg_cmspath;
-        if ($dir == "") $dir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
+        global $cfg_tags_dir;
+        if ($dir == "") $dir = str_replace("{cmspath}", "", $cfg_tags_dir);
         $this->tagsDir = $dir;
     }
-    //生成静态Tag
+    //生成静态标签
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
-        global $cfg_dir_purview, $envs, $cfg_cmspath, $cfg_tags_dir, $cfg_cmsurl;
+        global $cfg_dir_purview, $envs, $cfg_tags_dir, $cfg_cmsurl;
         $envs['makeTag'] = 1;
-        $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
+        $tagsdir = str_replace("{cmspath}", "", $cfg_tags_dir);
         if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {
             $this->Fields['position'] = $cfg_cmsurl.$tagsdir."/";
         }
@@ -572,32 +573,34 @@ class TagList
             MkdirAll($this->GetTruePath().$this->tagsDir, $cfg_dir_purview);
             $this->dtp->SaveTo($this->GetTruePath().$this->tagsDir."/index.html");
         } else {
-            $totalpage = ceil($this->TotalResult / $this->pagesize);
-            if ($totalpage == 0) {
-                $totalpage = 1;
-            }
-            if ($makepagesize > 0) {
-                $endpage = $startpage + $makepagesize;
-            } else {
-                $endpage = ($totalpage + 1);
-            }
-            if ($endpage >= $totalpage + 1) {
-                $endpage = $totalpage + 1;
-            }
-            if ($endpage == 1) {
-                $endpage = 2;
-            }
-            $makeDir = $this->GetTruePath().$this->tagsDir.'/'.$this->TagInfos['id']."/";
-            MkdirAll($makeDir, $cfg_dir_purview);
-            for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
-                $this->ParseDMFields($this->PageNo, 1);
-                $fileDir = $makeDir."/".$this->PageNo;
-                MkdirAll($fileDir, $cfg_dir_purview);
-                $this->dtp->SaveTo($fileDir."/index.html");
-            }
-            if ($startpage == 1) {
-                $list_1 = $makeDir."/1/index.html";
-                copy($list_1, $makeDir."/index.html");
+            if ($this->TagInfos) {
+                $totalpage = ceil($this->TotalResult / $this->pagesize);
+                if ($totalpage == 0) {
+                    $totalpage = 1;
+                }
+                if ($makepagesize > 0) {
+                    $endpage = $startpage + $makepagesize;
+                } else {
+                    $endpage = ($totalpage + 1);
+                }
+                if ($endpage >= $totalpage + 1) {
+                    $endpage = $totalpage + 1;
+                }
+                if ($endpage == 1) {
+                    $endpage = 2;
+                }
+                $makeDir = $this->GetTruePath().$this->tagsDir.'/'.$this->TagInfos['id']."/";
+                MkdirAll($makeDir, $cfg_dir_purview);
+                for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
+                    $this->ParseDMFields($this->PageNo, 1);
+                    $fileDir = $makeDir."/".$this->PageNo;
+                    MkdirAll($fileDir, $cfg_dir_purview);
+                    $this->dtp->SaveTo($fileDir."/index.html");
+                }
+                if ($startpage == 1) {
+                    $list_1 = $makeDir."/1/index.html";
+                    copy($list_1, $makeDir."/index.html");
+                }
             }
         }
     }

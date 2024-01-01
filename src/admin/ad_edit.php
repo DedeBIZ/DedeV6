@@ -5,7 +5,7 @@
  * @version        $id:ad_edit.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
@@ -20,18 +20,13 @@ if ($dopost == 'delete') {
     exit();
 } else if ($dopost == "gettag") {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
-    $jscode = "<script src='{$cfg_phpurl}/ad_js.php?aid=$aid'></script>";
-    $showhtml = "<xmp>\r\n\r\n$jscode\r\n\r\n</xmp>";
-    $showhtml .= "<iframe name='testfrm' frameborder='0' src='ad_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='360'></iframe>";
     $row = $dsql->GetOne("SELECT tagname from `#@__myad` WHERE aid='$aid' ");
-    $showtag = '{'."dede:myad name='{$row['tagname']}'/".'}';
-    $wecome_info = "<a href='ad_main.php'>广告管理</a> - 获取标签";
+    $tagcode = "{dede:myad name='{$row['tagname']}'/} <script src='{$cfg_phpurl}/ad_js.php?aid=$aid'></script>";
+    $showhtml = "<p>2种方法调用</p><xmp>$tagcode</xmp>";
+    $showhtml .= "<p>前台调用效果</p><iframe name='testfrm' frameborder='0' src='ad_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='350'></iframe>";
+    $wecome_info = "<a href='ad_main.php'>广告管理</a> - 调用示例";
     $win = new OxWindow();
     $win->Init();
-    $win->AddTitle("标签调用代码");
-    $winform = $win->GetWindow("hand", $showtag);
-    $win->myWinItem = '';
-    $win->AddTitle("js调用代码");
     $winform = $win->GetWindow("hand", $showhtml);
     $win->Display();
     exit();

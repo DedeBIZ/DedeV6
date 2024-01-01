@@ -2,29 +2,60 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo $diy->name;?></title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title><?php echo $diy->name;?>列表</title>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
+        <form name="form1" action="diy_list.php">
+            <input type="hidden" name="action" value="list">
+            <input type="hidden" name="diyid" value="<?php echo $diy->diyid; ?>">
+			<table class="table shadow-sm my-3">
+				<tr>
+					<td>
+						<input type="text" name="keyword" class="admin-input-lg mr-3" value="<?php echo $keyword; ?>" placeholder="请输入关键词">
+			            <select name="field" class="admin-input-sm">
+			            <?php
+			            foreach($fieldlist as $k=>$fielddata)
+			            {
+			            	if ($k==$field) {
+			            		echo "<option value='{$k}' selected>{$fielddata[0]}</option>\r\n";
+			            	} else {
+			            		echo "<option value='{$k}'>{$fielddata[0]}</option>\r\n";
+			            	}
+			            }
+			            ?>
+			            </select>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<form action="diy_list.php" method="post">
 			<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm mb-3">
 				<tr>
-					<td colspan="3" bgcolor="#f5f5f5">自定义表单管理</a> - <?php echo $diy->name;?></td>
+					<td colspan="2">自定义表单管理</a> - <?php echo $diy->name;?>列表</td>
 				</tr>
 				{dede:datalist}
 				<?php 
 				if (!empty($fields)) {
 					$allowhtml = array('htmltext');
-					$fields['sta'] = $fields['ifcheck'] == 1 ? '<span class="btn btn-success btn-sm">已审核</span>':'<span class="btn btn-danger btn-sm">未审核</span>';
-					echo '<tr bgcolor="#e9ecef"><td width="16%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="ml-2">表单'.$fields['id'].'</a></td><td align="right">'.$fields['sta'].'<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i></a></td></tr>';
-					foreach($fieldlist as $field=>$fielddata)
+					$fields['sta'] = $fields['ifcheck']==1 ? '已审核' : '待审核';
+					echo '<tr>
+						<td width="16%">
+							<label><input type="checkbox" name="id[]" value="'.$fields['id'].'"> '.$fields['id'].'表单'.$fields['sta'].'</label>
+						</td>
+						<td align="right">
+							<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i></a>
+						</td>
+					</tr>';
+					foreach($fieldlist as $field => $fielddata)
 					{
-						if ($fields[$field]=='') continue;
-						if (!in_array($fielddata[1],$allowhtml)) {
+						if ($fields[$field] == '') continue;
+						if (!in_array($fielddata[1], $allowhtml)) {
 							$fields[$field] = dede_htmlspecialchars($fields[$field]);
 						}
 						echo '<tr><td>'.$fielddata[0].'</td><td>'.$fields[$field].'</td></tr>';
@@ -35,28 +66,28 @@
 				?>
 				{/dede:datalist}
 				<tr>
-					<td colspan="3">
-						<input type="button" name="select" onclick="selAll()" class="btn btn-success btn-sm" value="全选">
-						<input type="button" name="select" onclick="noSelAll()" class="btn btn-success btn-sm mr-2" value="取消">
-						<label class="l-height-30 mr-2"><input type="radio" name="action" value="check"> 审核</label>
-						<label class="l-height-30 mr-2"><input type="radio" name="action" value="delete"> 删除</label>
+					<td colspan="2">
+						<label><input type="radio" name="action" value="check"> 审核</label>
+						<label><input type="radio" name="action" value="delete"> 删除</label>
+						<button type="button" name="select" onclick="selAll();" class="btn btn-success btn-sm">全选</button>
+						<button type="button" name="select" onclick="noSelAll();" class="btn btn-success btn-sm">取消</button>
 						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
-						<a href="../apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
+						<a href="<?php echo $cfg_phpurl;?>/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" bgcolor="#f5f5f5">{dede:pagelist listsize='6'/}</td>
+					<td colspan="2">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
 		<script>
-		function selAll(){
+		function selAll() {
 			var a = document.getElementsByTagName("input");
 			for (var i = 0; i < a.length; i++){
 				if (a[i].type == "checkbox") a[i].checked = true;
 			}
 		}
-		function noSelAll(){
+		function noSelAll() {
 			var a = document.getElementsByTagName("input");
 			for (var i = 0; i < a.length; i++){
 				if (a[i].type == "checkbox") a[i].checked = false;

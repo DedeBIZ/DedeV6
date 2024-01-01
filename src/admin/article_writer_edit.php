@@ -5,7 +5,7 @@
  * @version        $id:article_writer_edit.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -31,9 +31,9 @@ if (empty($allwriter) && filesize($m_file) > 0) {
 }
 $wecome_info = "文档作者管理";
 $win = new OxWindow();
-$win->Init('article_writer_edit.php', 'js/blank.js', 'POST');
+$win->Init('article_writer_edit.php', '/static/web/js/admin.blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
-$win->AddTitle("作者姓名用英文逗号分开");
+$win->AddTitle("作者姓名用英文逗号隔开");
 $win->AddMsgItem("<tr><td><textarea name='allwriter' id='allwriter' class='admin-textarea-xl'>$allwriter</textarea></td></tr>");
 $winform = $win->GetWindow('ok');
 $win->Display();

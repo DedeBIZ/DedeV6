@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:relation.lib.php 9:29 2020年9月23日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 //关联文档
@@ -33,7 +33,7 @@ function lib_relation(&$ctag, &$refObj)
     $colWidth = $colWidth."%";
     $ids = array();
     $channelid = $refObj->ChannelUnit->ChannelFields[$name]["channel"];
-    $odb = "";
+    $odb = '';
     if ($channelid > 0) {
         $odb = " ORDER BY arc.sortrank DESC";
     } else {
@@ -69,7 +69,7 @@ function lib_relation(&$ctag, &$refObj)
             if ($col > 1) $artlist .= "<td width='$colWidth'>\r\n";
             if ($row = $dsql->GetArray("al")) {
                 if ($channelid > 0) {
-                    $row['id'] =  $row['id'];
+                    $row['aid'] =  $row['id'];
                 } else {
                     $row['id'] =  $row['aid'];
                 }
@@ -110,7 +110,7 @@ function lib_relation(&$ctag, &$refObj)
                     $row['sitepath']
                 );
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/defaultpic.gif';
+                    $row['litpic'] = '/static/web/img/thumbnail.jpg';
                 }
                 if (!preg_match("#^(http|https):\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                     $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];

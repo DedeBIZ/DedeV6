@@ -1,11 +1,11 @@
 <?php
 /**
- * 显示图片
+ * 图片操作
  *
  * @version        $id:showphoto.php$
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
@@ -41,7 +41,7 @@ if (is_array($arcRow)) {
     exit();
 }
 if (empty($mx)) $mx = $cfg_album_width;
-$pageGuide = "";
+$pageGuide = '';
 //获取上下幅图片链接
 $row = $dsql->GetOne("SELECT imgurls FROM `#@__addonimages` WHERE aid='{$aid}'");
 $i = 0;
@@ -62,17 +62,17 @@ if ($cfg_multi_site == 'Y') {
     if (!preg_match("/^(http|https):/i", $nextSrc) && !empty($nextSrc)) $nextSrc = $cfg_basehost.$nextSrc;
 }
 if ($preSrc != '') {
-    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($preSrc)."&npos=".($npos - 1)."'>&lt;&lt;上一幅图片</a> ";
+    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($preSrc)."&npos=".($npos - 1)."'>上一幅图片</a> ";
 } else {
-    $pageGuide .= "这是开始";
+    $pageGuide .= "开始";
 }
 $nextlink = 'javascript:;';
 if ($nextSrc != '') {
     $nextlink = "showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1);
     if ($pageGuide != "") $pageGuide .= " | ";
-    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1)."'>下一幅图片&gt;</a>";
+    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1)."'>下一幅图片</a> ";
 } else {
-    $pageGuide .= " | 没有了";
+    $pageGuide .= "结束";
 }
 require_once(DEDETEMPLATE.'/apps/showphoto.htm');
 exit();

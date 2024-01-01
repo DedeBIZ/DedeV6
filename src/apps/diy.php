@@ -5,7 +5,7 @@
  * @version        $id:diy.php$
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
@@ -13,7 +13,7 @@ $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'view')) ? $action : 'post';
 $id = isset($id) && is_numeric($id) ? $id : 0;
 if (empty($diyid)) {
-    showMsg('操作失败', 'javascript:;');
+    showMsg('操作失败', '/');
     exit();
 }
 require_once DEDEINC.'/diyform.class.php';
@@ -28,13 +28,13 @@ if ($action == 'post') {
         $dede_fieldshash = empty($dede_fieldshash) ? '' : trim($dede_fieldshash);
         if (!empty($dede_fields)) {
             if ($dede_fieldshash != md5($dede_fields.$cfg_cookie_encode)) {
-                showMsg('数据校验不对，程序返回', '-1');
+                showMsg('数据校验不对', '-1');
                 exit();
             }
         }
-        $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' ");
+        $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' ");
         if (!is_array($diyform)) {
-            showmsg('表单不存在，程序返回', '-1');
+            showmsg('表单不存在', '-1');
             exit();
         }
         $addvar = $addvalue = '';
@@ -47,14 +47,18 @@ if ($action == 'post') {
                     if ($fieldinfo[1] == 'textdata') {
                         ${$fieldinfo[0]} = FilterSearch(stripslashes(${$fieldinfo[0]}));
                         ${$fieldinfo[0]} = addslashes(${$fieldinfo[0]});
-                    } 
-                    //获取地址，表单添加text数据类型ip字段型后模板用<input type="hidden" name="ip" value="">
-                    if ($fieldinfo[0] == 'ip') {
-                        ${$fieldinfo[0]}=GetIP();
                     }
-                    //获取时间，表单添加text数据类型sj字段型后模板用<input type="hidden" name="sj" value="">
-                    if ($fieldinfo[0] == 'sj') {
-                        ${$fieldinfo[0]}=date("Y-m-d H:i:s");
+                    //获取提交链接，表单添加字段名称为链接，字段标识默认为link，数据类型为单行文本后模板里用<input type="hidden" name="link">使用
+                    if ($fieldinfo[0] == 'link') {
+                        ${$fieldinfo[0]} = $_SERVER['HTTP_REFERER'];
+                    }
+                    //获取提交地址，表单添加字段名称为地址，字段标识默认为ip，数据类型为单行文本后模板里用<input type="hidden" name="ip">使用
+                    if ($fieldinfo[0] == 'ip') {
+                        ${$fieldinfo[0]} = GetIP();
+                    }
+                    //获取提交日期，表单添加字段名称为日期，字段标识默认为date，数据类型为单行文本后模板里用<input type="hidden" name="date">使用
+                    if ($fieldinfo[0] == 'date') {
+                        ${$fieldinfo[0]} = date("Y-m-d H:i:s");
                     } else {
                         ${$fieldinfo[0]} = GetFieldValue(${$fieldinfo[0]}, $fieldinfo[1],0,'add','','diy', $fieldinfo[0]);
                     }
@@ -66,16 +70,12 @@ if ($action == 'post') {
         $query = "INSERT INTO `{$diy->table}` (`id`, `ifcheck` $addvar) VALUES (NULL, 0 $addvalue); ";
         if ($dsql->ExecuteNoneQuery($query)) {
             $id = $dsql->GetLastID();
-            if ($diy->public == 2)
-            {
+            if ($diy->public == 2) {
                 $goto = "diy.php?action=list&diyid={$diy->diyid}";
-                $bkmsg = '发布成功，正在前往表单列表';
+                $bkmsg = '提交成功，正在前往表单列表';
             } else {
-                $goto = !empty($cfg_cmspath) ? $cfg_cmspath : '/';
-                $bkmsg = '发布成功，请等待管理员处理';
-                //提交后返回提交页面
-                ShowMsg('提交成功', '-1');
-                exit;
+                $goto = '/';
+                $bkmsg = '提交成功，请等待管理员处理';
             }
             ShowMsg($bkmsg, $goto);
         }
@@ -100,11 +100,11 @@ if ($action == 'post') {
     $datalist->Display();
 } else if ($action == 'view') {
     if (empty($diy->public)) {
-        showMsg('表单已关闭前台浏览', 'javascript:;');
+        showMsg('表单已关闭前台浏览', '/');
         exit();
     }
     if (empty($id)) {
-        showMsg('操作失败，未指定id', 'javascript:;');
+        showMsg('操作失败，未指定id', '/');
         exit();
     }
     if ($diy->public == 2) {
@@ -113,9 +113,8 @@ if ($action == 'post') {
         $query = "SELECT * FROM `{$diy->table}` WHERE id='$id' AND ifcheck=1";
     }
     $row = $dsql->GetOne($query);
-
     if (!is_array($row)) {
-        showmsg('您浏览的记录不存在或未审核', '-1');
+        showmsg('您浏览的记录不存在或待审核', '-1');
         exit();
     }
     $fieldlist = $diy->getFieldList();

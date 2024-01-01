@@ -6,84 +6,10 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:file.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
-$g_ftpLink = false;
-/**
- *  使用FTP方法创建文件夹目录
- *
- * @param     string  $truepath  真实目标地址
- * @param     string  $mmode  创建模式
- * @param     string  $isMkdir  是否创建目录
- * @return    bool
- */
-if (!function_exists('FtpMkdir')) {
-    function FtpMkdir($truepath, $mmode, $isMkdir = true)
-    {
-        global $cfg_basedir, $cfg_ftp_root, $g_ftpLink;
-        OpenFtp();
-        $ftproot = preg_replace('/'.$cfg_ftp_root.'$/', '', $cfg_basedir);
-        $mdir = preg_replace('/^'.$ftproot.'/', '', $truepath);
-        if ($isMkdir) {
-            ftp_mkdir($g_ftpLink, $mdir);
-        }
-        return ftp_site($g_ftpLink, "chmod $mmode $mdir");
-    }
-}
-/**
- *  改变目录模式
- *
- * @param     string  $truepath  真实地址
- * @param     string  $mmode   模式
- * @return    bool
- */
-if (!function_exists('FtpChmod')) {
-    function FtpChmod($truepath, $mmode)
-    {
-        return FtpMkdir($truepath, $mmode, false);
-    }
-}
-/**
- *  打开FTP链接,打开之前确保已经设置好了FTP相关的配置信息
- *
- * @return    void
- */
-if (!function_exists('OpenFtp')) {
-    function OpenFtp()
-    {
-        global $cfg_basedir, $cfg_ftp_host, $cfg_ftp_port, $cfg_ftp_user, $cfg_ftp_pwd, $cfg_ftp_root, $g_ftpLink;
-        if (!$g_ftpLink) {
-            if ($cfg_ftp_host == '') {
-                echo "由于您的站点的PHP配置存在限制，程序尝试用FTP进行目录操作，您必须在后台指定FTP相关的变量";
-                exit();
-            }
-            $g_ftpLink = ftp_connect($cfg_ftp_host, $cfg_ftp_port);
-            if (!$g_ftpLink) {
-                echo "连接FTP失败";
-                exit();
-            }
-            if (!ftp_login($g_ftpLink, $cfg_ftp_user, $cfg_ftp_pwd)) {
-                echo "登录FTP失败";
-                exit();
-            }
-        }
-    }
-}
-/**
- *  关闭FTP链接
- *
- * @return    void
- */
-if (!function_exists('CloseFtp')) {
-    function CloseFtp()
-    {
-        global $g_ftpLink;
-        if ($g_ftpLink) {
-            @ftp_quit($g_ftpLink);
-        }
-    }
-}
+
 /**
  *  创建所有目录
  *
@@ -94,17 +20,12 @@ if (!function_exists('CloseFtp')) {
 if (!function_exists('MkdirAll')) {
     function MkdirAll($truepath, $mmode)
     {
-        global $cfg_ftp_mkdir, $isSafeMode, $cfg_dir_purview;
-        if ($isSafeMode || $cfg_ftp_mkdir == 'Y') {
-            return FtpMkdir($truepath, $mmode);
+        if (!file_exists($truepath)) {
+            mkdir($truepath, $mmode);
+            chmod($truepath, $mmode);
+            return true;
         } else {
-            if (!file_exists($truepath)) {
-                mkdir($truepath, $cfg_dir_purview);
-                chmod($truepath, $cfg_dir_purview);
-                return true;
-            } else {
-                return true;
-            }
+            return true;
         }
     }
 }
@@ -119,12 +40,7 @@ if (!function_exists('MkdirAll')) {
 if (!function_exists('ChmodAll')) {
     function ChmodAll($truepath, $mmode)
     {
-        global $cfg_ftp_mkdir, $isSafeMode;
-        if ($isSafeMode || $cfg_ftp_mkdir == 'Y') {
-            return FtpChmod($truepath, $mmode);
-        } else {
-            return chmod($truepath, '0'.$mmode);
-        }
+        return chmod($truepath, '0'.$mmode);
     }
 }
 /**

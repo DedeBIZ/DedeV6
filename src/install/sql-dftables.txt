@@ -804,11 +804,14 @@ CREATE TABLE `#@__search_limits` (
 	PRIMARY KEY (`ip`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__search_limits`;
-CREATE TABLE `#@__search_limits` (
-	`ip` VARCHAR(200) NOT NULL,
-	`searchtime` int(11) NULL DEFAULT NULL,
-	PRIMARY KEY (`ip`)
+DROP TABLE IF EXISTS `#@__search_sync`;
+CREATE TABLE `#@__search_sync`  (
+  `id` int unsigned NOT NULL auto_increment,
+  `aid` int NULL DEFAULT NULL,
+  `sync_status` tinyint NULL DEFAULT 0,
+  `add_at` int NULL DEFAULT NULL,
+  `update_at` int NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__sgpage`;

@@ -5,7 +5,7 @@
  * @version        $id:sys_safetest.php 2 9:25 2010-11-12 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -22,7 +22,7 @@ $offFiles = array();
 foreach ($filelist as $key => $ff) {
     $offFiles[$ff->filename] = $ff->hash;
 }
-$alter = "";
+$alter = '';
 if (count($offFiles) == 0) {
     $alter = DedeAlert('官方文件服务器通信失败，无法保证本地文件和同官方文件服务器是否一致', ALERT_DANGER);
 }
@@ -46,7 +46,7 @@ function TestOneFile($f)
         if ($localFilehash === $remoteFilehash) {
             return 0;
         }
-        $message .= "<div class='mb-3'><span class='d-inline-block w-75'>发现可疑文件：{$trfile}</span><a href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 查看</a><a href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a><a href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a></div>\r\n";
+        $message .= "<p><span class='d-inline-block w-75'>发现可疑文件：{$trfile}</span><a href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 查看</a><a href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a><a href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a></p>\r\n";
         return 1;
     }
     return 0;
@@ -83,7 +83,7 @@ if ($action == 'test') {
     $del->OpenUrl($baseFile);
     $base = $del->GetHTML();
     $file = "$cfg_basedir/$filename";
-    $new = "";
+    $new = '';
     if (is_file($file)) {
         $fp = fopen($file, "r");
         $new = fread($fp, filesize($file));

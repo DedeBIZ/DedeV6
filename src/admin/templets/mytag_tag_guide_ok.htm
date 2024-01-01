@@ -2,17 +2,17 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>智能标记向导预览</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form action="tag_test_action.php" method="post" name="f1" target="_blank">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<textarea name="partcode" id="partcode" class="admin-textarea-xl mb-3"><?php echo $fulltag?></textarea>
-			<input type="submit" name="Submit" value="预览">
+			<input type="submit" name="submit" value="预览">
 		</form>
 	</body>
 </html>

@@ -5,14 +5,14 @@
  * @version        $id:diy_add.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Edit');
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $diyid = (empty($diyid) ? 0 : intval($diyid));
 if ($dopost == "save") {
     $public = isset($public) && is_numeric($public) ? $public : 0;
@@ -25,17 +25,17 @@ if ($dopost == "save") {
     @set_time_limit(0);
     CheckPurview('c_Del');
     $row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid'");
-    if (empty($job)) $job = "";
+    if (empty($job)) $job = '';
     //确认提示
     if ($job == "") {
         $wintitle = "删除所有自定义表";
         $wecome_info = "<a href='diy_main.php'>自定义表单管理</a> - 删除自定义表单";
         $win = new OxWindow();
-        $win->Init("diy_edit.php", "js/blank.js", "POST");
+        $win->Init("diy_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("diyid", $diyid);
-        $win->AddTitle("删除自定义表单包括数据，您确定要删除<span class='text-primary'>".$row['name']."</span>自定义表单吗");
+        $win->AddTitle("删除自定义表单包括数据，您确定要删除".$row['name']."自定义表单吗");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

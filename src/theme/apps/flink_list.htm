@@ -2,49 +2,46 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>所有友链-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
 	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<nav class="navbar navbar-expand-lg p-0">
-						<ul class="breadcrumb mr-auto">
-							<li class="breadcrumb-item">友情链接</li>
-						</ul>
-						<span class="navbar-text"><a href="flink.php?dopost=add" class="btn btn-success btn-sm">申请链接</a></span>
-					</nav>
-					<ul class="list-group list-group-horizontal">
-					<?php
-					$row = 100;
-					$titlelen = 160;
-					$dsql->SetQuery("SELECT * FROM `#@__flink` WHERE ischeck>0 ORDER BY sortrank ASC");
-					$dsql->Execute();
-					$revalue = "";
-					for ($i=1;$i<=$row;$i++)
-					{
-						if ($dbrow=$dsql->GetObject())
-						{
-							$wtitle = cn_substr($dbrow->webname,$titlelen);
-							if ($dbrow->logo=="")
-							$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'>$wtitle</a></li>";
-						else
-							$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' alt='$wtitle' class='thumbnail-sm'></a></li>";
-						}
-						if (!$dbrow) break;
-					}
-					echo  $revalue;
-					?>
-					</ul>
-				</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">首页</a></li>
+					<li class="breadcrumb-item">友情链接</li>
+				</ol>
+			</nav>
+			<div class="mb-3">
+				<a href="<?php echo $cfg_phpurl;?>/flink.php?dopost=add" class="btn btn-success btn-sm">申请链接</a>
 			</div>
+			<ul class="list-group list-group-horizontal">
+			<?php
+			$row = 100;
+			$titlelen = 160;
+			$dsql->SetQuery("SELECT * FROM `#@__flink` WHERE ischeck>0 ORDER BY sortrank ASC");
+			$dsql->Execute();
+			$revalue = '';
+			for ($i=1;$i<=$row;$i++)
+			{
+				if ($dbrow=$dsql->GetObject())
+				{
+					$wtitle = cn_substr($dbrow->webname,$titlelen);
+					if ($dbrow->logo=="")
+					$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'>$wtitle</a></li>";
+				else
+					$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' alt='$wtitle' class='thumbnail-sm'></a></li>";
+				}
+				if (!$dbrow) break;
+			}
+			echo  $revalue;
+			?>
+			</ul>
 		</main>
 		<?php obtaintheme('foot.htm');?>
 	</body>

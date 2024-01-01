@@ -5,13 +5,13 @@
  * @version        $id:friendlink_edit.php 10:59 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('plus_友情链接模块');
+CheckPurview('plus_友情链接');
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'friendlink_main.php' : $_COOKIE['ENV_GOBACK_URL'];
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $id = isset($id)? intval($id) : 0;
 if (isset($allid)) {
     $aids = explode(',', $allid);
@@ -57,10 +57,10 @@ if ($dopost == "delete") {
             exit;
         }
         $logoimg_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $logoimg_name));
-        $fullfilename = DEDEROOT.'static/flink/'.$logoimg_name;
-        move_uploaded_file($logoimg, $fullfilename) or die("上传文件到<span class='text-primary'>$fullfilename</span>失败");
+        $fullfilename = DEDEROOT.'/static/flink/'.$logoimg_name;
+        move_uploaded_file($logoimg, $fullfilename) or die("上传文件到".$fullfilename."失败");
         @unlink($logoimg);
-        $logo = $cfg_cmspath.'/static/flink/'.$logoimg_name;
+        $logo = '/static/flink/'.$logoimg_name;
     }
     $sortrank = isset($sortrank)? intval($sortrank) : 1;
     $url = isset($url)? HtmlReplace($url, -1) : '';

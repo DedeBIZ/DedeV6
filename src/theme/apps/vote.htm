@@ -2,33 +2,26 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>投票结果-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
 	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<nav class="navbar navbar-expand-lg p-0">
-						<ul class="breadcrumb mr-auto">
-							<li class="breadcrumb-item"><?php echo $voname?></li>
-						</ul>
-					</nav>
-					<div class="mb-3">
-						<span>投票开始时间：<?php echo $starttime;?></span>
-						<span>投票结束时间：<?php echo $endtime;?></span>
-						<span>投票人数：<?php echo $totalcount;?></span>
-					</div>
-					<div class="mb-3"><?php echo $rsmsg;?></div>
-					<div><?php echo $votelist;?></div>
-				</div>
-			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">首页</a></li>
+					<li class="breadcrumb-item"><?php echo $voname?></li>
+				</ol>
+			</nav>
+			<p>投票开始时间：<?php echo $starttime;?></p>
+			<p>投票结束时间：<?php echo $endtime;?></p>
+			<p>投票人数：<?php echo $totalcount;?></p>
+			<p><?php echo $rsmsg;?></p>
+			<p><?php echo $votelist;?></p>
 		</main>
 		<?php obtaintheme('foot.htm');?>
 	</body>

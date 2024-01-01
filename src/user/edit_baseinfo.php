@@ -5,7 +5,7 @@
  * @version        $id:edit_baseinfo.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -19,17 +19,6 @@ $newface = isset($newface)? $newface : '';
 if ($dopost == 'save') {
     //校验CSRF
     CheckCSRF();
-    if (function_exists('password_hash') && !empty($row['pwd_new'])) {
-        if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
-            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', 'edit_baseinfo.php');
-            exit();
-        }
-    } else {
-        if (!is_array($row) || $row['pwd'] != md5($oldpwd)) {
-            ShowMsg('您输入的旧密码错误或没填写，修改资料失败', 'edit_baseinfo.php');
-            exit();
-        }
-    }
     if ($userpwd != $userpwdok) {
         ShowMsg('您两次输入的新密码不一致', 'edit_baseinfo.php');
         exit();
@@ -71,7 +60,7 @@ if ($dopost == 'save') {
     //修改安全问题或邮箱
     if ($email != $row['email'] || ($newsafequestion != 0 && $newsafeanswer != '')) {
         if ($row['safequestion'] != 0 && ($row['safequestion'] != $safequestion || $row['safeanswer'] != $safeanswer)) {
-            ShowMsg('您的旧安全问题及答案不正确，不能修改邮箱或安全问题', 'edit_baseinfo.php');
+            ShowMsg('旧安全问题及答案不正确，不能修改邮箱或安全问题', 'edit_baseinfo.php');
             exit();
         }
         //修改邮箱
@@ -88,7 +77,7 @@ if ($dopost == 'save') {
         //修改安全问题
         if ($newsafequestion != 0 && $newsafeanswer != '') {
             if (strlen($newsafeanswer) > 30) {
-                ShowMsg('您的新安全问题的答案太长了，请保持在30字节以内', 'edit_baseinfo.php');
+                ShowMsg('新安全问题的答案太长了，请保持在30字节以内', 'edit_baseinfo.php');
                 exit();
             } else {
                 $newsafequestion = HtmlReplace($newsafequestion, 1);
@@ -120,7 +109,7 @@ if ($dopost == 'save') {
     }
     //清除会员缓存
     $cfg_ml->DelCache($cfg_ml->M_ID);
-    ShowMsg('成功更新您的基本资料', 'edit_baseinfo.php', 0, 5000);
+    ShowMsg('成功更新账号基本资料', 'edit_baseinfo.php');
     exit();
 }
 include(DEDEMEMBER."/templets/edit_baseinfo.htm");

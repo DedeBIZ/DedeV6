@@ -5,7 +5,7 @@
  * @version        $id:article_allowurl_edit.php 11:36 2010年10月8日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -31,7 +31,7 @@ if (empty($allurls) && filesize($m_file) > 0) {
 }
 $wecome_info = "允许站内链接";
 $win = new OxWindow();
-$win->Init('article_allowurl_edit.php', 'js/blank.js', 'POST');
+$win->Init('article_allowurl_edit.php', '/static/web/js/admin.blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
 $win->AddTitle("每行保存一个超链接");
 $win->AddMsgItem("<tr><td><textarea name='allurls' id='allurls' class='admin-textarea-xl'>$allurls</textarea></td></tr>");

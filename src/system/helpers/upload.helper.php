@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:upload.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**
@@ -59,7 +59,6 @@ if (!function_exists('AdminUpload')) {
         }
         if (!is_dir(DEDEROOT.$filedir)) {
             MkdirAll($cfg_basedir.$filedir, $cfg_dir_purview);
-            CloseFtp();
         }
         $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', time())).$rnddd;
         if ($ftype == 'imagelit') $filename .= '-L';
@@ -99,7 +98,6 @@ if (!function_exists('MemberUploads')) {
         if (empty($userid)) $userid = 0;
         if (!is_dir($cfg_basedir.$cfg_user_dir."/$userid")) {
             MkdirAll($cfg_basedir.$cfg_user_dir."/$userid", $cfg_dir_purview);
-            CloseFtp();
         }
         //有上传文件
         $allAllowType = str_replace('||', '|', $cfg_imgtype.'|'.$cfg_mediatype.'|'.$cfg_mb_addontype);
@@ -138,12 +136,12 @@ if (!function_exists('MemberUploads')) {
                 exit();
             }
             //强制禁止的文件类型
-            if (preg_match("/(asp|php|pl|cgi|shtm|js)$/", $sname)) {
+            if (preg_match("/(asp|php|pl|cgi|shtm|js|htm)$/", $sname)) {
                 ShowMsg("您上传的文件已被系统禁止", '-1');
                 exit();
             }
             if ($exname == '') {
-                $filename = $cfg_user_dir."/$userid/".dd2char($nowtme.'-'.mt_rand(1000,9999)).'.'.$sname;
+                $filename = $cfg_user_dir."/$userid/".dd2char($nowtme.'-'.mt_rand(1000, 9999)).'.'.$sname;
             } else {
                 $filename = $cfg_user_dir."/{$userid}/{$exname}.".$sname;
             }
@@ -156,7 +154,7 @@ if (!function_exists('MemberUploads')) {
                 ShowMsg("仅支持媒体文件及应用程序上传", -1);
                 exit;
             }
-            move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到<span class='text-primary'>{$filename}</span>失败");
+            move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到{$filename}失败");
             @unlink($GLOBALS[$upname]);
             if (@filesize($cfg_basedir.$filename) > $GLOBALS['cfg_mb_upload_size'] * 1024) {
                 @unlink($cfg_basedir.$filename);
@@ -179,7 +177,7 @@ if (!function_exists('MemberUploads')) {
             //强制禁止的文件类型
             if ($handname == '') {
                 return $handname;
-            } else if (preg_match("/\.(asp|php|pl|cgi|shtm|js)$/", $handname)) {
+            } else if (preg_match("/\.(asp|php|pl|cgi|shtm|js|htm)$/", $handname)) {
                 exit('Not allow filename for not safe!');
             } else if (!preg_match("/\.(".$allAllowType.")$/", $handname)) {
                 exit('Not allow filename for filetype!');

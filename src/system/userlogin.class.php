@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:userlogin.class.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 session_start();
@@ -226,7 +226,7 @@ class userLogin
             $this->loginError($row->id);
             return -2;
         } else {
-            $upsql = "";
+            $upsql = '';
             if (empty($row->pwd_new) && function_exists('password_hash')) {
                 //升级密码
                 $newpwd = password_hash($this->userPwd, PASSWORD_BCRYPT);

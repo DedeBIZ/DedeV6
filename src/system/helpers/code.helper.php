@@ -437,7 +437,7 @@ function checkCode($code)
 function htmlErrors($errors = null)
 {
     if ($errors) {
-        $errorsHTML = "<div style='width:98%;margin:1rem auto;color:#842029;background:#f8d7da;border-color:#842029;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.5rem'>";
+        $errorsHTML = "<div style='width:98%;margin:1rem auto;color:#842029;background:#f8d7da;border-color:#842029;position:relative;padding:0.75rem 1.25rem;border:1px solid transparent;border-radius:0.5rem'>";
         $errorsHTML .= '内嵌脚本缺失，请添加该函数：';
         $errorsHTML .= '<dl>';
         foreach ($errors as $error) {

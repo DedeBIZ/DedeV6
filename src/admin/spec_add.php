@@ -5,7 +5,7 @@
  * @version        $id:spec_add.php 16:22 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -28,7 +28,7 @@ if ($dopost != 'save') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     $channelid = -1;
     $money = 0;
     if (!isset($tags)) $tags = '';
@@ -99,7 +99,7 @@ if ($dopost != 'save') {
             else $rownum = 0;
             $arcid = preg_replace("#[^0-9,]#", "", $arcid);
             $ids = explode(",", $arcid);
-            $okids = "";
+            $okids = '';
             if (is_array($ids)) {
                 foreach ($ids as $mid) {
                     $mid = trim($mid);
@@ -177,7 +177,7 @@ if ($dopost != 'save') {
     }
     //返回成功信息
     $msg = "<tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>管理专题</a></td>
+        <td align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>返回专题列表</a></td>
     </tr>";
     $wintitle = "成功发布专题";
     $wecome_info = "专题管理 - 发布专题";

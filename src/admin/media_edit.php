@@ -5,19 +5,19 @@
  * @version        $id:media_edit.php 11:17 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 //权限检查
 CheckPurview('sys_Upload,sys_MyUpload');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $backurl = isset($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : "javascript:history.go(-1);";
 //删除附件
 if ($dopost == 'del') {
     CheckPurview('sys_DelUpload');
     if (empty($ids)) {
-        $ids = "";
+        $ids = '';
     }
     if ($ids == "") {
         $myrow = $dsql->GetOne("SELECT url FROM `#@__uploads` WHERE aid='".$aid."'");
@@ -36,7 +36,7 @@ if ($dopost == 'del') {
         exit();
     } else {
         $ids = explode(',', $ids);
-        $idquery = "";
+        $idquery = '';
         foreach ($ids as $aid) {
             if ($idquery == "") {
                 $idquery .= " WHERE aid='$aid' ";
@@ -72,7 +72,7 @@ else if ($dopost == 'save') {
         CheckPurview('sys_Upload');
     }
     //检测文件类型
-    $addquery = "";
+    $addquery = '';
     if (is_uploaded_file($upfile)) {
         if ($mediatype == 1) {
             $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
@@ -109,7 +109,6 @@ else if ($dopost == 'save') {
         $oldfile_path = preg_replace("#".$oldfiles[count($oldfiles) - 1]."$#", "", $oldfile);
         if (!is_dir($cfg_basedir.$oldfile_path)) {
             MkdirAll($cfg_basedir.$oldfile_path, 777);
-            CloseFtp();
         }
         $mime = get_mime_type($upfile);
         if (preg_match("#^unknow#", $mime)) {
@@ -131,7 +130,7 @@ else if ($dopost == 'save') {
         $imgw = 0;
         $imgh = 0;
         if ($mediatype == 1) {
-            $info = "";
+            $info = '';
             $sizes[0] = 0;
             $sizes[1] = 0;
             $sizes = @getimagesize($fullfilename, $info);

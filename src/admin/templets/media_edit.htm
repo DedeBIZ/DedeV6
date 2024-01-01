@@ -2,31 +2,31 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改附件</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="media_edit.php" method="post" enctype="multipart/form-data" onSubmit="return CheckSubmit();">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="aid" value="<?php echo $aid?>">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">修改附件</td>
+					<td colspan="2">修改附件</td>
 				</tr>
 				<tr>
 					<td width="260">附件类型：</td>
 					<td>
-						<label><input type="radio" name="mediatype" value="1" <?php if ($myrow['mediatype']==1) echo "checked";?>> 图片</label>
-						<label><input type="radio" name="mediatype" value="2" <?php if ($myrow['mediatype']==2) echo "checked";?>> FLASH</label>
-						<label><input type="radio" name="mediatype" value="3" <?php if ($myrow['mediatype']==3) echo "checked";?>> 视频音频</label>
-						<label><input type="radio" name="mediatype" value="4" <?php if ($myrow['mediatype']==4) echo "checked";?>> 附件其它</label>
+						<label><input type="radio" name="mediatype" value="1" <?php if ($myrow['mediatype']==1) echo 'checked';?>> 图片</label>
+						<label><input type="radio" name="mediatype" value="2" <?php if ($myrow['mediatype']==2) echo 'checked';?>> FLASH</label>
+						<label><input type="radio" name="mediatype" value="3" <?php if ($myrow['mediatype']==3) echo 'checked';?>> 视频音频</label>
+						<label><input type="radio" name="mediatype" value="4" <?php if ($myrow['mediatype']==4) echo 'checked';?>> 附件其它</label>
 					</td>
 				</tr>
 				<tr>
@@ -52,7 +52,7 @@
 				if ($myrow['mediatype'] == 1) {
 					$fullfilename = $cfg_basedir.$myrow['url'];
 					if (file_exists($fullfilename)) {
-						$info = "";
+						$info = '';
 						$sizes = getimagesize($fullfilename,$info);
 						if (is_array($sizes)) {
 							if ($sizes[0]>200) $w=200;
@@ -68,13 +68,13 @@
 					<td><input type="file" name="upfile" id="upfile" class="admin-input-lg"></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+					<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 				</tr>
 			</table>
 		</form>
 		<script>
 			function CheckSubmit() {
-				if (document.form1.title.value == '') {
+				if (document.form1.title.value == "") {
 					ShowMsg("附件标题不能为空");
 					document.form1.title.focus();
 					return false;

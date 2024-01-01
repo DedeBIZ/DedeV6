@@ -2,13 +2,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>自定义搜索管理</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="mychannel_edit.php" method="post" target="stafrm">
@@ -17,9 +18,9 @@
 			<input type="hidden" name="addontable" value="<?php echo $channel['addtable'];?>">
 			<input type="hidden" name="step" value="<?php echo $step?>">
 			<input type="hidden" name="dopost" value="modifysearch">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="mychannel_main.php">文档模型管理</a> - 自定义搜索管理</td>
+					<td colspan="2"><a href="mychannel_main.php">文档模型管理</a> - 自定义搜索管理</td>
 				</tr>
 				<tr>
 					<td width="260">栏目id：</td>
@@ -47,13 +48,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="center" bgcolor="#e9ecef" colspan="2">
+					<td align="center" colspan="2">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='mychannel_main.php';">返回</button>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" id="mtd">
+					<td colspan="2">
 						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 					</td>
 				</tr>

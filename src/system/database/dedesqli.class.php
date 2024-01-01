@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:dedesqli.class.php 15:00 2011-1-21 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
@@ -306,7 +306,7 @@ class DedeSqli
             }
         }
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError(mysqli_error($this->linkID)." <br>Error sql:<span class='text-primary'>".$this->queryString."</span>");
+            $this->DisplayError(mysqli_error($this->linkID)." <br>Error sql:".$this->queryString."");
         }
     }
     function Query($id = "me", $sql = '')

@@ -5,7 +5,7 @@
  * @version        $id:module_make.php 14:17 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
@@ -24,14 +24,14 @@ if ($action == '') {
 //生成项目
 else if ($action == 'make') {
     require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
-    //校验私钥,确定开发者身份
+    //校验私钥，确定贡献者身份
     $devURL = DEDECDNURL."/developers/$dev_id.json";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($devURL);
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
     if (($devInfo['auth_at'] + 60 * 60 * 24 * 365) < time()) {
-        ShowMsg("您的开发者账号已经过期，登录DedeBIZ官网申请续费", "-1");
+        ShowMsg("您贡献者账号已经过期，登录DedeBIZ官网申请续费", "-1");
         exit();
     }
     $filelist = str_replace("\r", "\n", trim($filelist));
@@ -41,11 +41,11 @@ else if ($action == 'make') {
         exit();
     }
     if (empty($dev_id)) {
-        ShowMsg("开发者id不能为空", "-1");
+        ShowMsg("贡献者id不能为空", "-1");
         exit();
     }
     if (empty($priv)) {
-        ShowMsg("请填写开发者私钥信息", "-1");
+        ShowMsg("请填写贡献者私钥信息", "-1");
         exit();
     }
     if (strlen($modulname) > 150) {
@@ -63,7 +63,7 @@ else if ($action == 'make') {
     openssl_public_decrypt($encotent, $decontent, $devInfo['pub_key']);
     $minfo = (array)json_decode($decontent);
     if ($minfo['module_name'] != $modulname || $minfo['dev_id'] != $devInfo['dev_id']) {
-        ShowMsg("开发者私钥校验失败，请确保填写正确的开发者私钥", "-1");
+        ShowMsg("贡献者私钥校验失败，请确保填写正确的贡献者私钥", "-1");
         exit();
     }
     //去除转义
@@ -174,21 +174,21 @@ else if ($action == 'edit') {
         exit();
     }
     if (empty($dev_id)) {
-        ShowMsg("开发者id不能为空", "-1");
+        ShowMsg("贡献者id不能为空", "-1");
         exit();
     }
     if (empty($priv)) {
-        ShowMsg("请填写开发者私钥信息", "-1");
+        ShowMsg("请填写贡献者私钥信息", "-1");
         exit();
     }
-    //校验私钥,确定开发者身份
+    //校验私钥，确定贡献者身份
     $devURL = DEDECDNURL."/developers/$dev_id.json";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($devURL);
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
     if (($devInfo['auth_at'] + 60 * 60 * 24 * 365) < time()) {
-        ShowMsg("您的开发者账号已经过期，请登录www.dedebiz.com重新申请", "-1");
+        ShowMsg("您贡献者账号已经过期，请登录www.dedebiz.com重新申请", "-1");
         exit();
     }
     if (strlen($modulname) > 150) {
@@ -206,7 +206,7 @@ else if ($action == 'edit') {
     openssl_public_decrypt($encotent, $decontent, $devInfo['pub_key']);
     $minfo = (array)json_decode($decontent);
     if ($minfo['module_name'] != $modulname || $minfo['dev_id'] != $devInfo['dev_id']) {
-        ShowMsg("开发者私钥校验失败，请确保填写正确的开发者私钥", "-1");
+        ShowMsg("贡献者私钥校验失败，请确保填写正确的贡献者私钥", "-1");
         exit();
     }
     //已经去除转义

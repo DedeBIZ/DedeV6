@@ -24,7 +24,7 @@ list_soft.htm,软件列表模板
 list_spec.htm,专题列表模板
 search.htm,搜索模板
 tag.htm,标签首页模板
-taglist.htm,标签文档列表模板
+tag_list.htm,标签文档列表模板
 widget_article_feedback.htm,小部件评论模板
 widget_article_likes.htm,小部件点赞模板
 widget_hot.htm,小部件头条文档模板

@@ -2,46 +2,41 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>推荐<?php echo $title;?>-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
 	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<nav class="navbar navbar-expand-lg p-0">
-						<ul class="breadcrumb mr-auto">
-							<li class="breadcrumb-item">推荐：<?php echo $title;?></li>
-						</ul>
-					</nav>
-					<form name="form1" method="post" action="recommend.php">
-						<input type="hidden" name="arcurl" value="<?php echo $arcurl;?>">
-						<input type="hidden" name="action" value="send">
-						<input type="hidden" name="arcID" value="<?php echo $aid;?>">
-						<table class="table mb-0">
-							<tr>
-								<td width="160">好友邮箱：</td>
-								<td><input name="email" type="text" class="form-control" id="email"></td>
-							</tr>
-							<tr>
-								<td>您的留言：</td>
-								<td>
-									<textarea name="msg" id="msg" class="form-control">我在<?php echo $cfg_webname;?>发现一篇很好的文档：<?php echo $title;?>，网址：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?></textarea>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">发送</button></td>
-							</tr>
-						</table>
-					</form>
-				</div>
-			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">首页</a></li>
+					<li class="breadcrumb-item">推荐<?php echo $title;?></li>
+				</ol>
+			</nav>
+			<form name="form1" action="<?php echo $cfg_phpurl?>/recommend.php" method="post">
+				<input type="hidden" name="arcurl" value="<?php echo $arcurl;?>">
+				<input type="hidden" name="action" value="send">
+				<input type="hidden" name="arcID" value="<?php echo $aid;?>">
+				<table class="table mb-0">
+					<tr>
+						<td width="160">好友邮箱：</td>
+						<td><input name="email" type="text" autocomplete="off" id="email" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>您的留言：</td>
+						<td>
+							<textarea name="msg" id="msg" class="form-control">我在<?php echo $cfg_webname;?>发现一篇很好的文档：<?php echo $title;?>，网址：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">发送</button></td>
+					</tr>
+				</table>
+			</form>
 		</main>
 		<?php obtaintheme('foot.htm');?>
 	</body>

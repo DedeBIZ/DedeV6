@@ -5,7 +5,7 @@
  * @version        $id:catalog_del.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -29,10 +29,10 @@ $row = $dsql->GetOne();
 $wintitle = "删除栏目";
 $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 删除栏目";
 $win = new OxWindow();
-$win->Init('catalog_del.php', 'js/blank.js', 'POST');
+$win->Init('catalog_del.php', '/static/web/js/admin.blank.js', 'POST');
 $win->AddHidden('id', $id);
 $win->AddHidden('dopost', 'ok');
-$win->AddTitle("您要确定要删除<span class='text-primary'>{$row['typename']}</span>栏目吗");
+$win->AddTitle("您要确定要删除{$row['typename']}栏目吗");
 $win->AddItem('栏目的文件保存目录：', $row['typedir']);
 $winform = $win->GetWindow('ok');
 $win->Display();

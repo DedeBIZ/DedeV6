@@ -2,21 +2,21 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>自动摘要分页</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form action="article_description_main.php" name="form1" target="stafrm" method="post">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="4">自动摘要分页</td>
+					<td colspan="4">自动摘要分页</td>
 				</tr>
 				<tr>
 					<td width="120">栏目id：</td>
-					<td>
+					<td width="600">
 						<input type="text" name="channel" id="channel" value="1" class="admin-input-xs">
 						<span>（可在<a href="mychannel_main.php">栏目模型管理</a>处获得）</span>
 					</td>
@@ -53,14 +53,14 @@
 				<tr>
 					<td width="120">操作：</td>
 					<td>
-						<label><input type="radio" name="dojob" value="des" checked="checked"> 自动摘要</label>
+						<label><input type="radio" name="dojob" value="des" checked> 自动摘要</label>
 						<label><input type="radio" name="dojob" value="page"> 自动分页</label>
 					</td>
 					<td width="120">自动分页大小：</td>
 					<td><?php echo $cfg_arcautosp_size?>K</td>
 				</tr>
 				<tr>
-					<td bgcolor="#e9ecef" colspan="4" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">开始操作</button></td>
+					<td colspan="4" align="center"><button type="submit" name="submit" class="btn btn-success btn-sm">开始操作</button></td>
 				</tr>
 				<tr>
 					<td colspan="4" id="mtd">

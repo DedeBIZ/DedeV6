@@ -2,21 +2,21 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>添加友情链接</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="friendlink_add.php" method="post" enctype="multipart/form-data" onSubmit="return CheckSubmit();">
 			<input type="hidden" name="dopost" value="add">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="friendlink_main.php">友情链接管理</a> - 添加友情链接</td>
+					<td colspan="2"><a href="friendlink_main.php">友情链接管理</a> - 添加友情链接</td>
 				</tr>
 
 				<tr>
@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<td>邮箱：</td>
-					<td><input type="text" name="email" id="email" class="admin-input-lg"></td>
+					<td><input type="text" name="email" id="email" autocomplete="off" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>网站类型：</td>
@@ -65,21 +65,20 @@
 				<tr>
 					<td>链接位置：</td>
 					<td>
-						<label><input type="radio" name="ischeck" value="1" checked="checked"> 内页</label>
+						<label><input type="radio" name="ischeck" value="1" checked> 内页</label>
 						<label><input type="radio" name="ischeck" value="2"> 首页</label>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
-						<button type="reset" name="Submit" class="btn btn-outline-success btn-sm" onclick="location.href='<?php echo $ENV_GOBACK_URL?>';">返回</button>
+					<td colspan="2" align="center">
+						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
+						<button type="reset" name="submit" class="btn btn-outline-success btn-sm" onclick="location.href='<?php echo $ENV_GOBACK_URL?>';">返回</button>
 					</td>
 				</tr>
 			</table>
 		</form>
 		<script>
-			function CheckSubmit()
-			{
+			function CheckSubmit() {
 				if (document.form1.url.value=="http://"||document.form1.url.value=="") {
 					document.form1.url.focus();
 					ShowMsg("网址不能为空");

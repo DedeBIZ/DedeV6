@@ -5,7 +5,7 @@
  * @version        $id:article_test_same.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -71,13 +71,13 @@ else if ($dopost == 'delsel') {
         }
     }
     $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `$maintable`;");
-    ShowMsg("一共删除了<span class='text-primary'>{$totalarc}</span>篇重复的文档", "javascript:;");
+    ShowMsg("成功删除{$totalarc}篇重复文档", "javascript:;");
     exit();
 }
 //向导页
 $channelinfos = array();
-$dsql->setquery("SELECT id,typename,maintable,addtable FROM `#@__channeltype`");
-$dsql->execute();
-while ($row = $dsql->getarray()) $channelinfos[] = $row;
+$dsql->SetQuery("SELECT id,typename,maintable,addtable FROM `#@__channeltype`");
+$dsql->Execute();
+while ($row = $dsql->GetArray()) $channelinfos[] = $row;
 include DedeInclude('templets/article_test_same.htm');
 ?>

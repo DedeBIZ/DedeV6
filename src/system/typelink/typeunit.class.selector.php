@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:typeunit.class.selector.php 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
@@ -119,10 +119,10 @@ class TypeUnitSelector
                 continue;
             }
             if ($chackRadio != '') {
-                $soncat .= "<div class='item'><label>".$chackRadio .' '. $typeName."</label></div>\r\n";
+                $soncat .= "<div class='list'><label>".$chackRadio .' '. $typeName."</label></div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
             } else {
-                $soncat .= "<div class='item'>".$typeName."</div>\r\n";
+                $soncat .= "<div class='list'>".$typeName."</div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
             }
         }

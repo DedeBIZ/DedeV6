@@ -5,7 +5,7 @@
  * @version        $id:catalog_do.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -63,7 +63,7 @@ else if ($dopost == "listArchives") {
         $row = $dsql->GetOne("SELECT typename,id,mancon FROM `#@__channeltype` WHERE id='$channelid'");
         $gurl = $row["mancon"];
         $channelid = $row["id"];
-        $typename = "";
+        $typename = '';
         $channelname = $row["typename"];
     }
     if (empty($gurl)) $gurl = 'content_list.php';
@@ -98,7 +98,7 @@ else if ($dopost == "upRank") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET sortrank='$sortrank' WHERE id='$cid'");
     }
     UpDateCatCache();
-    ShowMsg("完成操作，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目排序", "catalog_main.php");
     exit();
 }
 //检查权限许可
@@ -114,7 +114,7 @@ else if ($dopost == "upRankAll") {
         }
     }
     UpDateCatCache();
-    ShowMsg("完成操作，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目排序", "catalog_main.php");
     exit();
 }
 //更新栏目缓存
@@ -135,11 +135,11 @@ else if ($dopost == "upcatcache") {
             continue;
         } else {
             $sql = "INSERT INTO `#@__arctiny` (id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid) SELECT aid, typeid, 0, arcrank, channel, senddate, 0, mid FROM `$tb` ";
-            $rs = $dsql->executenonequery($sql);
+            $rs = $dsql->ExecuteNoneQuery($sql);
             $doarray[$tb]  = 1;
         }
     }
-    ShowMsg("完成更新，正在返回栏目管理", "catalog_main.php");
+    ShowMsg("成功更新栏目缓存", "catalog_main.php");
     exit();
 }
 //获得子类的文档
@@ -156,7 +156,7 @@ else if ($dopost == "GetSunListsMenu") {
     PutCookie('lastCid', $cid, 3600 * 24, "/");
     $tu = new TypeUnit();
     $tu->dsql = $dsql;
-    echo "<table width='100%'>\r\n";
+    echo "<table>\r\n";
     $tu->LogicListAllSunType($cid, "　");
     echo "</table>\r\n";
     $tu->Close();
@@ -175,20 +175,20 @@ else if ($dopost == 'unitCatalog') {
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         if (!empty($row['dd'])) {
-            ShowMsg("栏目<span style='text-primary'>$typename（$typeid）</span>有子栏目，不能进行合并操作", '-1');
+            ShowMsg("栏目".$typename."有子栏目，不能进行合并操作", '-1');
             exit();
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
         $wintitle = "合并指定栏目";
         $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 合并栏目";
         $win = new OxWindow();
-        $win->Init('catalog_do.php', 'js/blank.js', 'POST');
+        $win->Init('catalog_do.php', '/static/web/js/admin.blank.js', 'POST');
         $win->AddHidden('dopost', 'unitCatalog');
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
         $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档网页和列表网页，栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况");
-        $win->AddItem('您选择的栏目是：', "<span class='text-primary'>$typename（$typeid）</span>");
+        $win->AddItem('您选择的栏目是：', "$typename");
         $win->AddItem('您希望合并到那个栏目', "<select name='unittype'>{$typeOptions}</select>");
         $winform = $win->GetWindow('ok');
         $win->Display();
@@ -231,13 +231,13 @@ else if ($dopost == 'moveCatalog') {
         $wintitle = "移动指定栏目";
         $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 移动栏目";
         $win = new OxWindow();
-        $win->Init('catalog_do.php', 'js/blank.js', 'POST');
+        $win->Init('catalog_do.php', '/static/web/js/admin.blank.js', 'POST');
         $win->AddHidden('dopost', 'moveCatalog');
         $win->AddHidden('typeid', $typeid);
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
         $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建网页，不允许从父级移动到子级目录，只允许子级到更高级或同级或不同父级的情况");
-        $win->AddItem('您选择的栏目是：', "$typename（$typeid）");
+        $win->AddItem('您选择的栏目是：', "$typename");
         $win->AddItem('您希望移动到那个栏目', "<select name='movetype'>\r\n<option value='0'>移动为顶级栏目</option>\r\n$typeOptions\r\n</select>");
         $winform = $win->GetWindow('ok');
         $win->Display();

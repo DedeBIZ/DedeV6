@@ -5,7 +5,7 @@
  * @version        $id:content_sg_list.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -80,7 +80,7 @@ $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);
 $dlist->SetParameter("channelid", $channelid);
-$strTimerange = "";
+$strTimerange = '';
 if ($stime > 0 && $etime > 0) {
     $strTimerange = implode(" - ",array(MyDate("Y-m-d H:i:s",$stime),MyDate("Y-m-d H:i:s",$etime)));
     $dlist->SetParameter('timerange', $strTimerange);

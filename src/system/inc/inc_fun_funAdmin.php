@@ -1,12 +1,12 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 管理员后台基本函数
+ * 后台管理函数
  *
  * @version        $id:inc_fun_funAdmin.php 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**
@@ -82,7 +82,7 @@ function SpGetPinyin($str, $ishead = 0, $isclose = 1)
  */
 function SpCreateDir($spath)
 {
-    global $cfg_dir_purview, $cfg_basedir, $cfg_ftp_mkdir, $isSafeMode;
+    global $cfg_dir_purview, $cfg_basedir;
     if ($spath == '') {
         return true;
     }
@@ -90,7 +90,7 @@ function SpCreateDir($spath)
     $truepath = $cfg_basedir;
     $truepath = str_replace("\\", "/", $truepath);
     $spaths = explode("/", $spath);
-    $spath = "";
+    $spath = '';
     foreach ($spaths as $spath) {
         if ($spath == "") {
             continue;
@@ -104,13 +104,11 @@ function SpCreateDir($spath)
                 $isok = ChmodAll($truepath, $cfg_dir_purview);
             }
             if (!$isok) {
-                echo "创建或修改目录<span class='text-primary'>".$truepath."</span>失败";
-                CloseFtp();
+                echo "创建或修改目录".$truepath."失败";
                 return false;
             }
         }
     }
-    CloseFtp();
     return true;
 }
 function jsScript($js)
@@ -137,17 +135,15 @@ function jsScript($js)
 function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype = "print", $isfullpage = "false", $bbcode = false)
 {
     global $cfg_ckeditor_initialized;
-    if (!isset($GLOBALS['cfg_html_editor'])) {
-        $GLOBALS['cfg_html_editor'] = 'fck';
-    }
     if ($gtype == "") {
         $gtype = "print";
     }
     if ($GLOBALS['cfg_html_editor'] == 'ckeditor') {
-        $addConfig = "";
+        $addConfig = '';
+        $fvalue = htmlspecialchars($fvalue);
         if (defined("DEDEADMIN")) {
-            $emoji = "";
-            if ($GLOBALS['cfg_db_language']=="utf8mb4") {
+            $emoji = '';
+            if ($GLOBALS['cfg_db_language'] == "utf8mb4") {
                 $emoji = ",emoji";
             }
             $addConfig = ",{allowedContent:true,pasteFilter:null,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,html5audio,dedepagebreak,ddfilebrowser,mimage,textindent,tabletools,tableresize,tableselection,codesnippet{$emoji}',codeSnippet_theme: 'default'}";
@@ -156,8 +152,8 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
             $addConfig = ",{filebrowserImageUploadUrl:'api.php?action=upload&type=litpic&ck=1',filebrowserUploadUrl:'api.php?action=upload&type=media&ck=1',extraPlugins:'html5video,html5audio,textindent',filebrowserImageBrowseDisabled:true}";
         }
         $code = <<<EOT
-<script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
 <textarea id="{$fname}" name="{$fname}">{$fvalue}</textarea>
+<script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
 <script>var editor = CKEDITOR.replace('{$fname}'{$addConfig});</script>
 EOT;
         if ($gtype == "print") {
@@ -170,7 +166,7 @@ EOT;
 /**
  *  获取更新信息
  *
- * @return    void
+ * @return    string
  */
 function SpGetNewInfo()
 {

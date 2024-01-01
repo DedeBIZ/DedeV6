@@ -5,7 +5,7 @@
  * @version        $id:sys_data_replace.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
@@ -22,10 +22,10 @@ if (empty($action)) {
 else if ($action == 'getfields') {
     AjaxHead();
     $dsql->GetTableFields($exptable);
-    echo "<div class='alert alert-info mb-0'>";
-    echo "<p>表<span class='text-primary'>".$exptable."</span>含有的字段：</p>";
+    echo "<div class='alert alert-info'>";
+    echo "<p>请选择".$exptable."表下面字段</p>";
     while ($row = $dsql->GetFieldObject()) {
-        echo "<a href=\"javascript:pf('{$row->name}')\">".$row->name."</a>\r\n";
+        echo "<a href=\"javascript:pf('{$row->name}')\">".$row->name."</a> ";
     }
     echo "</div>";
     exit();
@@ -79,7 +79,7 @@ else if ($action == 'apply') {
             }
         }
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
-        ShowMsg("共找到<span class='text-primary'>$tt</span>条记录，成功替换了<span class='text-primary'>$oo</span>条", "javascript:;");
+        ShowMsg("共找到".$tt."条记录，成功替换了".$oo."条", "javascript:;");
         exit();
     }
 }

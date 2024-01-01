@@ -5,7 +5,7 @@
  * @version        $id:tags.php 2010-06-30 11:43:09 tianya $
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
@@ -22,7 +22,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 $tag = FilterSearch(urldecode($tag));
 if ($tag != addslashes($tag)) $tag = '';
 if ($tag == '') $dlist = new TagList($tag, 'tag.htm');
-else $dlist = new TagList($tag, 'taglist.htm');
+else $dlist = new TagList($tag, 'tag_list.htm');
 $dlist->Display();
 exit();
 ?>

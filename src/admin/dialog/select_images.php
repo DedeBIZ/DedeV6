@@ -5,7 +5,7 @@
  * @version        $id:select_images.php 2022-07-01 tianya $
  * @package        DedeBIZ.Dialog
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -56,17 +56,14 @@ if (!empty($iseditor)) {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
         <title>选择图片</title>
-        <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../static/web/css/admin.css">
-        <script src="../js/float.js"></script>
+        <link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/web/css/admin.css">
+        <script src="/static/web/js/jquery.min.js"></script>
     </head>
-    <body class="body-bg">
-        <div class="upload-bg shadow-sm">
-            <div id="floater" class="napisdiv">
-                <a href="javascript:nullLink();" onclick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/icon_img.png" id="picview" title="关闭预览"></a>
-            </div>
-            <table align="center" class="table icon">
+    <body>
+        <div class="upload-box">
+            <table class="table shadow-sm icon">
                 <tr>
                     <td colspan="3">
                         <form name="myform" action="select_images_post.php" method="POST" enctype="multipart/form-data">
@@ -79,7 +76,7 @@ if (!empty($iseditor)) {
                             <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
                             <input type="hidden" name="job" value="upload">
                             <input type="file" name="imgfile" class="w-50">
-                            <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?>> 水印</label>
+                            <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo 'checked';?>> 水印</label>
                             <label><input type="checkbox" name="resize" value="1"> 缩小</label>
                             <label>宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" class="admin-input-xs"></label>
                             <label>高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" class="admin-input-xs"></label>
@@ -97,8 +94,8 @@ if (!empty($iseditor)) {
                 </tr>
                 <?php
                 $dh = scandir($inpath);
-                $ty1 = "";
-                $ty2 = "";
+                $ty1 = '';
+                $ty2 = '';
                 foreach ($dh as $file) {
                     //计算文件大小和创建时间
                     if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
@@ -120,7 +117,7 @@ if (!empty($iseditor)) {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                         $line = "<tr>
-                        <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/icon_dir2.png'>上级目录</a></td>
+                        <td colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
                         <td>当前目录：$activepath</td>
                         </tr>";
                         echo $line;
@@ -128,19 +125,18 @@ if (!empty($iseditor)) {
                         if (preg_match("#^_(.*)$#i", $file)) continue;
                         if (preg_match("#^\.(.*)$#i", $file)) continue;
                         $line = "<tr>
-                        <td colspan='3'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/icon_dir.png'>$file</a></td>
+                        <td colspan='3'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='/static/web/img/icon_dir.png'> $file</a></td>
                         </tr>";
                         echo "$line";
                     } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
-                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        if ($file == $comeback) $lstyle = "text-danger";
+                        else  $lstyle = '';
                         $line = "<tr>
                         <td>
-                            <a href=\"javascript:;\" onclick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
-                            <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+                            <a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg $lstyle\"><img src='$reurl' title='$file'> $file</a>
                         </td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
@@ -150,13 +146,10 @@ if (!empty($iseditor)) {
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
                         $reurl = $reurl;
-                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        if ($file == $comeback) $lstyle = "text-danger";
+                        else  $lstyle = '';
                         $line = "<tr>
-                        <td>
-                            <a href=\"javascript:;\" onclick=\"ChangeImage('$reurl');\"><img src='$reurl' title='$file'></a>
-                            <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
-                        </td>
+                        <td><a href='$reurl' onclick=\"ReturnImg('$reurl');\" class=\"tipsimg $lstyle\"><img src='$reurl' title='$file'> $file</a></td>
                         <td>$filesize KB</td>
                         <td>$filetime</td>
                         </tr>";
@@ -170,15 +163,6 @@ if (!empty($iseditor)) {
         <script>
         function nullLink() {
             return;
-        }
-        function ChangeImage(surl) {
-            document.getElementById('floater').style.display = 'block';
-            document.getElementById('picview').src = surl;
-        }
-        function TNav() {
-            if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-            else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-            else return "OT";
         }
         //获取地址参数
         function getUrlParam(paramName) {
@@ -200,14 +184,6 @@ if (!empty($iseditor)) {
                 if (window.opener.document.<?php echo $f ?> != null) {
                     window.opener.document.<?php echo $f ?>.value = reimg;
                     if (window.opener.document.getElementById('div<?php echo $v ?>')) {
-                        if (TNav() == 'IE') {
-                            //window.opener.document.getElementById('div<?php echo $v ?>').filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = reimg;
-                            window.opener.document.getElementById('div<?php echo $v ?>').src = reimg;
-                            window.opener.document.getElementById('div<?php echo $v ?>').style.width = '150px';
-                            window.opener.document.getElementById('div<?php echo $v ?>').style.height = '100px';
-                        } else
-                            window.opener.document.getElementById('div<?php echo $v ?>').style.backgroundImage = "url(" + reimg + ")";
-                        } else if (window.opener.document.getElementById('<?php echo $v ?>')) {
                         window.opener.document.getElementById('<?php echo $v ?>').src = reimg;
                     }
                     //适配新的缩略图
@@ -222,6 +198,25 @@ if (!empty($iseditor)) {
             }
             window.close();
         }
+        $(function() {
+            var x = 10;
+            var y = 10;
+            $(".tipsimg").mouseover(function(e) {
+                var toolimg = "<div id='toolimg'><img src='" + this.href + "'></div>";
+                $("body").append(toolimg);
+                $("#toolimg").css({
+                    "top": (e.pageY + y) + "px",
+                    "left": (e.pageX + x) + "px"
+                }).show("fast");
+            }).mouseout(function() {
+                $("#toolimg").remove();
+            }).mousemove(function(e) {
+                $("#toolimg").css({
+                    "top": (e.pageY + y) + "px",
+                    "left": (e.pageX + x) + "px"
+                });
+            });
+        });
         </script>
     </body>
 </html>

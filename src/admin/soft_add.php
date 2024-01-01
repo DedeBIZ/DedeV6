@@ -5,7 +5,7 @@
  * @version        $id:soft_add.php 16:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -40,7 +40,7 @@ if ($dopost != 'save') {
     require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     if (!isset($typeid2)) $typeid2 = 0;
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
@@ -63,7 +63,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (!TestPurview('a_New')) {
-        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>权限");
+        CheckCatalog($typeid, "您没有操作栏目{$typeid}权限");
     }
     //对保存的文档进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();
@@ -73,7 +73,7 @@ if ($dopost != 'save') {
     $sortrank = AddDay($pubdate, $sortup);
     if ($ishtml == 0) $ismake = -1;
     else $ismake = 0;
-    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000,6000) : $cfg_arc_click);
+    if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(1000, 6000) : $cfg_arc_click);
     $title = preg_replace('#"#', '＂', $title);
     $title = cn_substrR($title, $cfg_title_maxlen);
     $shorttitle = cn_substrR($shorttitle, 36);
@@ -198,7 +198,7 @@ if ($dopost != 'save') {
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到模型<span class='text-primary'>{$channelid}</span>主表信息，无法完成操作", "javascript:;");
+        ShowMsg("没找到模型{$channelid}主表信息，无法完成操作", "javascript:;");
         exit();
     }
     $daccess = isset($daccess) && is_numeric($daccess) ? $daccess : 0;
@@ -231,7 +231,7 @@ if ($dopost != 'save') {
     }
     //返回成功信息
     $msg = "<tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览软件文档</a><a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布软件文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理软件文档</a></td>
+        <td align='center'><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>返回文档列表</a></td>
     </tr>";
     $msg = "{$msg}".GetUpdateTest();
     $wintitle = "成功发布软件文档";

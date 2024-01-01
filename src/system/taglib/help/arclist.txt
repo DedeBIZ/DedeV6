@@ -4,8 +4,8 @@
 	<a href='[field:arcurl/]'>[field:title/]</a>
 {/dede:arclist}
 >>dede>>
-typeid='' 调用栏目id文档，用英文逗号分开表示多个栏目
-notypeid='' 不调用栏目id文档，用英文逗号分开表示多个栏目
+typeid='' 调用栏目id文档，用英文逗号隔开表示多个栏目
+notypeid='' 不调用栏目id文档，用英文逗号隔开表示多个栏目
 row='10' 调用文档列表总数
 col='2' 分多少列显示（默认为单列）
 titlelen='160' 标题长度
@@ -21,7 +21,7 @@ orderby='sortrank' 文档排序方式
 	orderby=='scores' 按得分排序
 	orderby='id' 按文档id排序
 	orderby='rand' 随机获得指定条件的文档列表
-keyword='关键词' 含有指定关键词的文档列表，多个关键词用英文逗号分开
+keyword='关键词' 含有指定关键词的文档列表，多个关键词用英文逗号隔开
 limit='' 限定的记录范围（如：limit='1,2'）
 innertext='' 单行记录样式
 aid='' 指定文档id

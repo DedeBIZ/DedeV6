@@ -2,31 +2,32 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>批量添加栏目</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="catalog_add.php" method="post">
 			<input type="hidden" name="dopost" value="savequick">
-			<input type="hidden" name="savetype" value="" id="savetype">
-			<table id="needset" align="center" class="table maintable my-3">
+			<input type="hidden" name="savetype" id="savetype">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="4">批量添加栏目</td>
+					<td colspan="4">批量添加栏目</td>
 				</tr>
 				<tr>
 					<td width="10%">是否支持投稿：</td>
 					<td width="40%">
-						<label><input type="radio" name="issend" value="1" checked="checked"> 支持</label>
+						<label><input type="radio" name="issend" value="1" checked> 支持</label>
 						<label><input type="radio" name="issend" value="0"> 不支持</label>
 					</td>
 					<td width="10%">目录保存位置：</td>
 					<td width="40%">
-						<label><input type="radio" name="referpath" value="parent" checked="checked"> 默认网页目录（
+						<label><input type="radio" name="referpath" value="parent" checked> 默认网页目录（
 							<?php
 							$pardir = '{cmspath}'.$cfg_arcdir;
 							if (!empty($typedir)) $pardir = $typedir.'/';
@@ -41,7 +42,7 @@
 				<tr>
 					<td>所属栏目：</td>
 					<td>
-						<select name="reid" onchange="showSeltype(this)" class="admin-input-sm">
+						<select name="reid" onchange="showSeltype(this);" class="admin-input-sm">
 							<option value="0">选择所属栏目</option>
 							<?php echo $typeOptions;?>
 						</select>
@@ -49,7 +50,7 @@
 					</td>
 					<td>文档模型：</td>
 					<td>
-						<select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="admin-input-sm">
+						<select name="channeltype" id="channeltype" onChange="ParTemplet(this);" class="admin-input-sm">
 							<?php
 							foreach($channelArray as $k=>$arr)
 							{
@@ -63,14 +64,14 @@
 				<tr>
 					<td>栏目列表选项：</td>
 					<td>
-						<label><input type="radio" name="isdefault" value="1" checked="checked"> 静态浏览</label>
+						<label><input type="radio" name="isdefault" value="1" checked> 静态浏览</label>
 						<label><input type="radio" name="isdefault" value="-1"> 动态浏览</label>
 						<label><input type="radio" name="isdefault" value="0"> 浏览列表第一页</label>
 					</td>
 					<td>列表命名规则：</td>
 					<td>
 						<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-lg">
-						<span onclick="ShowHide('helpvar1')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar1');" class="btn btn-success btn-sm">说明</a>
 						<div id="helpvar1" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{tid} 栏目id</p>
@@ -85,7 +86,7 @@
 					<td>文档命名规则：</td>
 					<td>
 						<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-lg">
-						<span onclick="ShowHide('helpvar2')" title="帮助" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i></span>
+						<a href="javascript:ShowHide('helpvar2');" class="btn btn-success btn-sm">说明</a>
 						<div id="helpvar2" class="alert alert-info my-2" style="display:none">
 							<p>静态规则</p>
 							<p>{Y}{M}{D} 年月日</p>
@@ -105,63 +106,63 @@
 				</tr>
 				<tr>
 					<td colspan="4">
-						<table id="addQuick" align="center" class="table maintable">
-							<tr bgcolor="#e9ecef" align="center">
+						<table id="addQuick" align="center" class="table">
+							<tr align="center">
 								<td width="6%" class="border-top-0">排序</td>
 								<td width="16%" class="border-top-0">顶级栏目名称</td>
-								<td width="60%" class="border-top-0">子栏目名称（名称1,名称2）</td>
-								<td class="border-top-0"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
+								<td width="60%" class="border-top-0">子栏目名称（英文逗号隔开，如：栏目一,栏目二）</td>
+								<td class="border-top-0"><button type="button" class="btn btn-success btn-sm add">添加</button></td>
 							</tr>
 							<tr align="center">
 								<td class="rank">
-									<input type="hidden" name="posttype" value="" class="pubinputs">
-									<input type="text" name="rank" id="rank" value="1" class="pubinputs admin-input-xs">
+									<input type="hidden" name="posttype" class="pubinputs">
+									<input type="text" name="rank" value="1" class="pubinputs admin-input-xs">
 								</td>
-								<td><input type="text" name="toptype" id="toptype" class="pubinputs admin-input-sm"></td>
-								<td><input type="text" name="sontype" id="sontype" class="pubinputs w-100"></td>
-								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="toptype" class="pubinputs admin-input-sm"></td>
+								<td><input type="text" name="sontype" class="pubinputs w-100"></td>
+								<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php for($i=2;$i<=10;$i++) {?>
 							<tr align="center" class="repeat">
 								<td class="rank">
 									<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-									<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
+									<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
 								</td>
-								<td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
-								<td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
-								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="toptype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
+								<td><input type="text" name="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
+								<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php }?>
 						</table>
-						<table id="addQuickRel" align="center" class="table maintable" style="display:none">
-							<tr bgcolor="#e9ecef" align="center">
+						<table id="addQuickRel" align="center" class="table" style="display:none">
+							<tr align="center">
 								<td width="6%">排序</td>
 								<td width="16%">栏目名称</td>
-								<td><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
+								<td><button type="button" class="btn btn-success btn-sm addrel">添加</button></td>
 							</tr>
 							<tr align="center">
 								<td class="rank">
-									<input type="hidden" name="posttype" value="" class="pubinputs">
-									<input type="text" name="rank" id="rank" value="1" class="pubinputs admin-input-xs">
+									<input type="hidden" name="posttype" class="pubinputs">
+									<input type="text" name="rank" value="1" class="pubinputs admin-input-xs">
 								</td>
-								<td><input type="text" name="reltype" id="reltype" class="pubinputs admin-input-sm"></td>
-								<td><button name="" type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="reltype" class="pubinputs admin-input-sm"></td>
+								<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php for($i=2;$i<=10;$i++) {?>
 							<tr align="center" class="repeat">
 								<td class="rank">
 									<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-									<input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
+									<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-xs">
 								</td>
-								<td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
-								<td><button type="button" id="add" class="btn btn-danger btn-sm del">删除</button></td>
+								<td><input type="text" name="reltype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
+								<td><button type="button" class="btn btn-danger btn-sm del">删除</button></td>
 							</tr>
 							<?php }?>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="4" align="center">
+					<td colspan="4" align="center">
 						<button type="submit" class="btn btn-success btn-sm">保存</button>
 						<a href="catalog_main.php" class="btn btn-outline-success btn-sm">返回</a>
 					</td>
@@ -170,42 +171,6 @@
 		</form>
 		<script>
 			var $ = jQuery;
-			$(document).ready(function () {
-				//删除按钮事件
-				$("#addQuick .del").click(function () {
-					$(this).parents(".repeat").remove();
-				});
-				//添加按钮事件
-				$("#add").click(function () {
-					var id = $("#addQuick tr").prevAll("tr").length + 1;
-					$("#addQuick tr:eq(1)").clone(true).addClass("repeat")
-					.find(".rank input")
-					.attr("value", function () { return id })
-					.end()
-					.find(".pubinputs")
-					.attr("name", function () { return this.name + id })
-					.attr("id", function () { return this.id + id })
-					.end()
-					.appendTo($("#addQuick"));
-				});
-				//删除按钮事件
-				$("#addQuickRel .del").click(function () {
-					$(this).parents(".repeat").remove();
-				});
-				//添加按钮事件
-				$("#addrel").click(function () {
-					var id = $("#addQuickRel tr").prevAll("tr").length + 1;
-					$("#addQuickRel tr:eq(1)").clone(true).addClass("repeat")
-					.find(".rank input")
-					.attr("value", function () { return id })
-					.end()
-					.find(".pubinputs")
-					.attr("name", function () { return this.name + id })
-					.attr("id", function () { return this.id + id })
-					.end()
-					.appendTo($("#addQuickRel"));
-				});
-			});
 			function ShowHide(objname) {
 				var obj = document.getElementById(objname);
 				if (obj.style.display == "block")
@@ -234,6 +199,35 @@
 					$("#savetype").val('');
 				}
 			};
+			$(document).ready(function() {
+				//添加按钮事件
+				$("#addQuick .add").click(function() {
+					var id = $("#addQuick tr").prevAll("tr").length + 1;
+					$("#addQuick tr:eq(1)").clone(true).addClass("repeat")
+					.find(".rank input").attr("value", function() {
+						return id;
+					}).end().find(".pubinputs").attr("name", function() {
+						return this.name + id;
+					}).end().appendTo($("#addQuick"));
+				});
+				//删除按钮事件
+				$("#addQuick .del").click(function() {
+					$(this).parents(".repeat").remove();
+				});
+				//删除按钮事件
+				$("#addQuickRel .del").click(function() {
+					$(this).parents(".repeat").remove();
+				});
+				//添加按钮事件
+				$("#addQuickRel .addrel").click(function() {
+					var id = $("#addQuickRel tr").prevAll("tr").length + 1;
+					$("#addQuickRel tr:eq(1)").clone(true).addClass("repeat").find(".rank input").attr("value", function() {
+						return id;
+					}).end().find(".pubinputs").attr("name", function() {
+						return this.name + id;
+					}).end().appendTo($("#addQuickRel"));
+				});
+			});
 		</script>
 	</body>
 </html>

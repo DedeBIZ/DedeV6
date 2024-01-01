@@ -4,11 +4,15 @@
  * @version        $id:config.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
 require_once(DEDEADMIN.'/../system/common.inc.php');
+if (!file_exists(DEDEDATA.'/common.inc.php')) {
+    header('Location:../install/index.php');
+    exit();
+}
 require_once(DEDEINC.'/userlogin.class.php');
 header('Cache-Control:private');
 $dsql->safeCheck = FALSE;
@@ -34,7 +38,7 @@ if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
 if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
     PutCookie('dede_csrf_token', $GLOBALS['csrf_token'], 7200, '/');
 }
-//获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行修改这个选项
+//获得当前脚本名称，如果系统被禁用了$_SERVER变量，请自行修改这个选项
 $dedeNowurl = $s_scriptName = '';
 $isUrlOpen = @ini_get('allow_url_fopen');
 $dedeNowurl = GetCurUrl();

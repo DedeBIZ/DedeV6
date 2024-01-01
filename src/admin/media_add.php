@@ -5,12 +5,12 @@
  * @version        $id:media_add.php 2 15:25 2011-6-2 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 //添加权限检查
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 //上传
 if ($dopost == "upload") {
     CheckCSRF();
@@ -50,9 +50,8 @@ if ($dopost == "upload") {
             $filename = $savePath."/".$filename;
             if (!is_dir($cfg_basedir.$savePath)) {
                 MkdirAll($cfg_basedir.$savePath, 777);
-                CloseFtp();
             }
-            if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($newname))) { 
+            if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($newname)) || preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) { 
                 ShowMsg("文件扩展名已被系统禁止", "javascript:;"); 
                 exit(); 
             }
@@ -86,7 +85,7 @@ if ($dopost == "upload") {
             $dsql->ExecuteNoneQuery($inquery);
         }
     }
-    ShowMsg("成功上传<span class='text-primary'>{$okdd}</span>个文件", "media_main.php");
+    ShowMsg("成功上传{$okdd}个文件", "media_main.php");
     exit();
 }
 include DedeInclude('templets/media_add.htm');

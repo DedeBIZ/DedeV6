@@ -5,7 +5,7 @@
  * @version        $id:reg_new.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -40,11 +40,15 @@ if ($step == 1) {
             exit();
         }
         if (strlen($userid) > 20 || strlen($uname) > 36) {
-            ShowMsg('您的账号或账号过长，不允许注册', '-1');
+            ShowMsg('账号或账号过长，不允许注册', '-1');
             exit();
         }
         if (strlen($userid) < $cfg_mb_idmin || strlen($pwd) < $cfg_mb_pwdmin) {
-            ShowMsg("您的账号或密码过短，不允许注册", "-1");
+            ShowMsg("账号或密码过短，不允许注册", "-1");
+            exit();
+        }
+        if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
+            ShowMsg('账号不合法，请使用数字0-9小写a-z大写A-Z符号_@!.-', '-1');
             exit();
         }
         if ($pwdc != $pwd) {
@@ -56,10 +60,10 @@ if ($step == 1) {
         //检测账号是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("您指定的账号<span class='text-primary'>{$userid}</span>已存在，请使用别的账号", "-1");
+            ShowMsg("您指定的账号{$userid}已存在，请使用别的账号", "-1");
             exit();
         }
-        //会员的默认金币
+        //会员默认金币
         $dfscores = 0;
         $dfmoney = 0;
         $dfrank = $dsql->GetOne("SELECT `money`,scores FROM `#@__arcrank` WHERE `rank`='10' ");
@@ -91,7 +95,7 @@ if ($step == 1) {
             $membertjquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('$mid','0','0','0','0','0','0','0','0'); ";
             $dsql->ExecuteNoneQuery($membertjquery);
             //写入默认空间配置数据
-            $spacequery = "INSERT INTO `#@__member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`) VALUES ('{$mid}','10','0','{$uname}的空间','','$space','',''); ";
+            $spacequery = "INSERT INTO `#@__member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`) VALUES ('{$mid}','10','0','{$uname}的个人主页','','$space','',''); ";
             $dsql->ExecuteNoneQuery($spacequery);
             //写入其它默认数据
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES ('$mid','DedeBIZ','https://www.dedebiz.com');");

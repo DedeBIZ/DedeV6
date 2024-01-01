@@ -5,7 +5,7 @@
  * @version        $id:jump.php$
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/../system/common.inc.php');
@@ -24,7 +24,7 @@ if (preg_match("#^http#", $url)) {
         $msg = "<code>$url</code><div class='mt-3'><a href='$url' class='btn btn-success btn-sm'>继续访问</a></div>";
         $wecome_info = "页面跳转提示";
         $win = new OxWindow();
-        $win->AddTitle("您将要访问的链接不属于当前站点，请关注您的账号安全。");
+        $win->AddTitle("您将要访问的链接不属于当前站点，请留意账号安全");
         $win->AddMsgItem($msg);
         $winform = $win->GetWindow("hand", false);
         $win->Display();
@@ -33,7 +33,7 @@ if (preg_match("#^http#", $url)) {
         header('Location:'.$url);
     }
 } else {
-    ShowMsg("地址错误","javascript:;");
+    ShowMsg("地址错误", "javascript:;");
     exit;
 }
 ?>

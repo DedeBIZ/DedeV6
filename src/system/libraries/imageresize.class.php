@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:imageresize.class.php 2022年1月16日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  * maintained by Gumlet.com
  */
@@ -264,7 +264,6 @@ class ImageResize
             imagecolortransparent($dest_image, $background);
             imagefill($dest_image, 0, 0, $background);
             break;
-
         case IMAGETYPE_BMP:
             if (version_compare(PHP_VERSION, '7.2.0', '<')) {
                 throw new ImageResizeException('For WebP support PHP >= 7.2.0 is required');
@@ -651,3 +650,4 @@ class ImageResize
         return $this;
     }
 }
+?>

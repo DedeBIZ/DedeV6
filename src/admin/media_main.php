@@ -5,7 +5,7 @@
  * @version        $id:media_main.php 11:17 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -23,7 +23,7 @@ if ($dopost == 'filemanager') {
     exit();
 }
 //数据库管理
-if (empty($keyword)) $keyword = "";
+if (empty($keyword)) $keyword = '';
 $addsql = " WHERE (u.title LIKE '%$keyword%' OR u.url LIKE '%$keyword%') ";
 if (empty($membertype)) {
     $membertype = 0;

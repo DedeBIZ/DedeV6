@@ -2,35 +2,33 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>积分钱包-会员中心-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container py-3">
 			<div class="row">
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<nav class="navbar navbar-expand-lg p-0">
-							<ul class="breadcrumb mr-auto">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">首页</a></li>
 								<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 								<li class="breadcrumb-item">积分钱包</li></li>
-							</ul>
-							<span class="navbar-text"><a href="javascript:history.back(-1);" class="btn btn-outline-success btn-sm">返回</a></span>
+							</ol>
 						</nav>
 						<div class="alert alert-success"><?php echo $cfg_ml->GetSta();?></div>
-						<?php if ($cfg_money_scores > 0) {?>							
+						<?php if ($cfg_money_scores > 0) {?>
 						<?php $canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);?>
-						<div class="pb-3">
+						<div class="change pb-3">
 							<h3 class="mb-3">积分换金币</h3>
 							<p><?php echo "兑换价格{$cfg_money_scores}积分/个，您目前可兑换金币{$canCav}";?></p>
-							<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
+							<form name="formrank" action="<?php echo $cfg_memberurl;?>/index_do.php?dopost=money2s&fmdo=user" method="post">
 								<table class="table">
 									<tbody>
 										<tr>
@@ -46,9 +44,9 @@
 							</form>
 						</div>
 						<?php }?>
-						<div class="pb-3">
+						<div class="pay pb-3">
 							<h3 class="mb-3">积分充值</h3>
-							<form name="formrank" action="check_card.php" method="post">
+							<form name="formrank" action="<?php echo $cfg_memberurl;?>/check_card.php" method="post">
 								<table class="table">
 									<tbody>
 										<tr>
@@ -59,7 +57,7 @@
 											<td>验证码</td>
 											<td>
 												<input type="text" name="vdcode" id="vdcode" class="form-control text-uppercase d-inline-block w-25">
-												<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+												<img src="<?php echo $cfg_phpurl;?>/vdimgck.php" onclick="this.src='<?php echo $cfg_phpurl;?>/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 											</td>
 										</tr>
 										<tr>
@@ -70,9 +68,9 @@
 								</table>
 							</form>
 						</div>
-						<div class="pb-3">
+						<div class="buy pb-3">
 							<h3 class="mb-3">购买金币</h3>
-							<form name="f1" action="buy_action.php" method="post">
+							<form name="f1" action="<?php echo $cfg_memberurl;?>/buy_action.php" method="post">
 								<input type="hidden" name="product" value="card">
 								<table class="table">
 									<tr>
@@ -88,9 +86,9 @@
 								<div class="text-center"><button type="submit" class="btn btn-success btn-sm">购买</button></div>
 							</form>
 						</div>
-						<div>
+						<div class="upgrade">
 							<h3 class="mb-3">账号升级</h3>
-							<form name="f1" action="buy_action.php" method="post">
+							<form name="f1" action="<?php echo $cfg_memberurl;?>/buy_action.php" method="post">
 								<input type="hidden" name="product" value="member">
 								<table class="table">
 									<tr>

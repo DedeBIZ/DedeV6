@@ -1,8 +1,9 @@
 ﻿/**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2022, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
-CKEDITOR.editorConfig = function (config) {
+CKEDITOR.editorConfig = function(config) {
+	config.language = 'zh-cn';
 	config.toolbarGroups = [
 		{ name: 'mode', groups: ['mode', 'document', 'doctools'] },
 		{ name: 'cleanup', groups: ['undo', 'cleanup'] },
@@ -15,8 +16,7 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'insert', groups: ['insert'] },
 		{ name: 'tools', groups: ['tools'] }
 	];
-	config.height = 360;
+	config.height = 350;
 	config.removePlugins = 'exportpdf,div,scayt';
-	config.extraPlugins = 'html5video,dedepagebreak,textindent';
 	config.removeButtons = 'Save,Styles,Font,NewPage,Print,Preview,Templates,Smiley,About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
 };

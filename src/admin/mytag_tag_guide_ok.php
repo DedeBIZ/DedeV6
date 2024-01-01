@@ -5,7 +5,7 @@
  * @version        $id:mytag_tag_guide_ok.php 15:39 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -14,7 +14,7 @@ if (DEDEBIZ_SAFE_MODE) {
 }
 CheckPurview('temp_Other');
 //根据生成条件标记
-$attlist = "";
+$attlist = '';
 $attlist .= " row='".$row."'";
 $attlist .= " titlelen='".$titlelen."'";
 if ($orderby != 'senddate') $attlist .= " orderby='".$orderby."'";

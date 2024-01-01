@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:sgpage.class.php 15:48 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/archive/partview.class.php");
@@ -80,7 +80,7 @@ class sgpage
      */
     function SaveToHtml()
     {
-        $filename = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_cmspath'].'/'.$this->Fields['filename'];
+        $filename = $GLOBALS['cfg_basedir'].'/'.$this->Fields['filename'];
         $filename = preg_replace("/\/{1,}/", '/', $filename);
         $this->dtp->SaveTo($filename);
     }

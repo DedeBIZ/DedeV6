@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:arclist.lib.php 3 9:19 2010年7月13日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**
@@ -271,7 +271,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             $addfieldsSqlJoin = " LEFT JOIN `$addtable` addf ON addf.aid = arc.id ";
         }
     }
-    $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face $addfieldsSql FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addfieldsSqlJoin $orwhere $ordersql $limitsql";
+    $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.userid,mb.uname,mb.face $addfieldsSql FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addfieldsSqlJoin $orwhere $ordersql $limitsql";
     //统一hash
     $taghash = md5(serialize($ctag).$typeid);
     $needSaveCache = true;
@@ -292,12 +292,12 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     }
     //指定了id或使用缓存中的id
     if ($idlist != '') {
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addfieldsSql FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id $addfieldsSqlJoin WHERE arc.id in($idlist) $ordersql ";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.userid,mb.uname,mb.face $addfieldsSql FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid $addfieldsSqlJoin WHERE arc.id in($idlist) $ordersql ";
     }
     $dsql->SetQuery($query);
     $dsql->Execute('al');
     $artlist = '';
-    if ($pagesize > 0)  $artlist .= "<div id='{$tagid}'>\r\n";
+    if ($pagesize > 0) $artlist .= "<div id='{$tagid}'>\r\n";
     if ($col > 1) $artlist = "<table width='$tablewidth'>\r\n";
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');
@@ -313,7 +313,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 $ids[] = $row['id'];
                 //处理一些特殊字段
                 $row['info'] = $row['infos'] = cn_substr($row['description'], $infolen);
-                $row['id'] =  $row['id'];
+                $row['aid'] =  $row['id'];
                 if ($row['corank'] > 0 && $row['arcrank'] == 0) {
                     $row['arcrank'] = $row['corank'];
                 }
@@ -344,7 +344,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                     $row['sitepath']
                 );
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                    $row['litpic'] = '/static/web/img/thumbnail.jpg';
                 }
                 if (!preg_match("#^(http|https):\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                     $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
@@ -362,6 +362,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
+                $row['userurl'] = $GLOBALS['cfg_memberurl'].'/index.php?uid='.$row['userid'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
                 $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
                 if (is_array($dtp2->CTags)) {
@@ -381,7 +382,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                         $liststr = $dtp2->GetResult();
                         $artlist .= $liststr."\r\n";
                     } else {
-                        $artlist .= "";
+                        $artlist .= '';
                         $orderWeight[] = array(
                             'weight'  => $row['weight'],
                             'arclist' => ''
@@ -476,7 +477,7 @@ function lib_GetAutoChannelID($sortid, $topid)
  * @param     array     $list 查询结果
  * @param     string    $field 排序的字段名
  * @param     array     $sortby 排序类型 asc正向排序 desc逆向排序 nat自然排序
- * @return    array
+ * @return    mixed
  */
 function list_sort_by($list, $field, $sortby = 'asc')
 {

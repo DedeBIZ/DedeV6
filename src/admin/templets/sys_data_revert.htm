@@ -2,14 +2,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>数据还原</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<table align="center" class="table maintable my-3">
+		<table class="table shadow-sm my-3">
 			<tr>
 				<td>
 					<a href="sys_data.php" class="btn btn-success btn-sm">数据备份</a>
@@ -17,25 +17,25 @@
 				</td>
 			</tr>
 		</table>
-		<form name="form1" onSubmit="checkSubmit()" action="sys_data_done.php" method="post" target="stafrm">
+		<form name="form1" onSubmit="checkSubmit();" action="sys_data_done.php" method="post" target="stafrm">
 			<input type="hidden" name="dopost" value="redat">
-			<input type="hidden" name="bakfiles" value="">
-			<table align="center" class="table maintable my-3">
+			<input type="hidden" name="bakfiles">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="4">数据还原</td>
+					<td colspan="4">数据还原</td>
 				</tr>
 				<tr>
-					<td colspan="4">发现的备份文件：<?php if (count($filelists)==0) echo " 没找到任何备份文件 ";?></td>
+					<td colspan="4">备份文件：<?php if (count($filelists)==0) echo "没找到任何备份文件";?></td>
 				</tr>
 				<?php
 				for ($i=0;$i<count($filelists);$i++)
 				{
 					echo "<tr align='center'>";
-					$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='checked'></td><td width='40%'>{$filelists[$i]}</td>";
+					$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked></td><td width='40%'>{$filelists[$i]}</td>";
 					echo $mtd;
 					if (isset($filelists[$i+1])) {
 						$i++;
-						$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='checked'></td><td width='40%'>{$filelists[$i]}</td>";
+						$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked></td><td width='40%'>{$filelists[$i]}</td>";
 						echo $mtd;
 					} else {
 						echo "<td></td><td></td>";
@@ -45,12 +45,12 @@
 				?>
 				<tr>
 					<td colspan="4">
-						<label><input name="structfile" type="checkbox" id="structfile" value="<?php echo $structfile?>" checked="checked"> 还原表结构信息（<?php echo $structfile?>）</label>
+						<label><input name="structfile" type="checkbox" id="structfile" value="<?php echo $structfile?>" checked> 还原数据表结构信息（<?php echo $structfile?>）</label>
 						<label><input name="delfile" type="checkbox" id="delfile" value="1"> 还原后删除备份文件</label>
-						<button name="b1" type="button" id="b1" onclick="SelAll()" class="btn btn-success btn-sm">全选</button>
-						<button name="b2" type="button" id="b2" onclick="ReSel()" class="btn btn-success btn-sm">反选</button>
-						<button name="b3" type="button" id="b3" onclick="NoneSel()" class="btn btn-success btn-sm">取消</button>
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">还原</button>
+						<button name="b1" type="button" id="b1" onclick="SelAll();" class="btn btn-success btn-sm">全选</button>
+						<button name="b2" type="button" id="b2" onclick="ReSel();" class="btn btn-success btn-sm">反选</button>
+						<button name="b3" type="button" id="b3" onclick="NoneSel();" class="btn btn-success btn-sm">取消</button>
+						<button type="submit" name="submit" class="btn btn-success btn-sm">还原</button>
 					</td>
 				</tr>
 				<tr>
@@ -64,7 +64,7 @@
 			//获得选中文件的数据表
 			function getCheckboxItem() {
 				var myform = document.form1;
-				var allSel = "";
+				var allSel = '';
 				if (myform.bakfile.value) return myform.bakfile.value;
 				for (i = 0; i < myform.bakfile.length; i++) {
 					if (myform.bakfile[i].checked) {

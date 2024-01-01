@@ -5,7 +5,7 @@
  * @version        $id:tag_test_action.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -21,12 +21,12 @@ if (empty($partcode)) {
 }
 $partcode = stripslashes($partcode);
 if (empty($typeid)) $typeid = 0;
-if (empty($showsource)) $showsource = "";
+if (empty($showsource)) $showsource = '';
 if ($typeid > 0) $pv = new PartView($typeid);
 else $pv = new PartView();
 $pv->SetTemplet($partcode, "string");
 if ($showsource == "" || $showsource == "yes") {
-    echo "<span class='text-primary'><pre>".dede_htmlspecialchars($partcode)."</pre></span>";
+    echo "<pre>".dede_htmlspecialchars($partcode)."</pre>";
     echo "<hr>";
 }
 $pv->Display();

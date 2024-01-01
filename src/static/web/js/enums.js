@@ -30,7 +30,7 @@ function selNext(oj, v) {
 }
 //子类改变事件
 function ChangeSon() {
-    //由于支持3级联动,所以这里需要对自己改变进行重构
+    //由于支持3级联动，所以这里需要对自己改变进行重构
     var emname = this.name.replace('_son', '');
     if (document.getElementById(emname + '_sec')) {
         var oj = document.getElementById(emname + '_sec');
@@ -52,13 +52,13 @@ function ChangeSon() {
     clear(oj);
     if (selv == 0) {
         aOption = document.createElement('OPTION');
-        aOption.text = '请选择..';
+        aOption.text = '请选择';
         aOption.value = '0';
         oj.options.add(aOption);
         return;
     } else {
         aOption = document.createElement('OPTION');
-        aOption.text = '请选择..';
+        aOption.text = '请选择';
         aOption.value = '0';
         oj.options.add(aOption);
     }
@@ -74,9 +74,9 @@ function ChangeSon() {
     }
     if (j > 0) {
         document.getElementById('span_' + emname + '_sec').appendChild(oj);
-        document.getElementById('span_' + emname + '_sec').style.display = "initial"
+        document.getElementById('span_' + emname + '_sec').style.display = "initial";
     } else {
-        document.getElementById('span_' + emname + '_sec').innerHTML = "";
+        document.getElementById('span_' + emname + '_sec').innerHTML = '';
     }
 }
 //改变第三级的事件
@@ -114,13 +114,13 @@ function selNextSon() {
     clear(oj);
     if (selv == 0) {
         aOption = document.createElement('OPTION');
-        aOption.text = '请选择..';
+        aOption.text = '请选择';
         aOption.value = '0';
         oj.options.add(aOption);
         return;
     } else {
         aOption = document.createElement('OPTION');
-        aOption.text = '请选择..';
+        aOption.text = '请选择';
         aOption.value = '0';
         oj.options.add(aOption);
     }
@@ -135,10 +135,10 @@ function selNextSon() {
         count = count + 1;
     }
     if (count > 0) {
-        document.getElementById('span_' + emname + '_son').style.display = "initial"
+        document.getElementById('span_' + emname + '_son').style.display = "initial";
         document.getElementById('span_' + emname + '_son').appendChild(oj);
     } else {
-        document.getElementById('span_' + emname + '_son').style.display = "none"
+        document.getElementById('span_' + emname + '_son').style.display = "none";
     }
     
 }
@@ -156,7 +156,7 @@ function MakeTopSelect(emname, selvalue) {
     var sonvalue = 0;
     var secvalue = 0;
     aOption = document.createElement('OPTION');
-    aOption.text = '请选择..';
+    aOption.text = '请选择';
     aOption.value = 0;
     selObj.options.add(aOption);
     var fkey = Object.keys(selarr)[0];
@@ -164,7 +164,7 @@ function MakeTopSelect(emname, selvalue) {
         if (selvalue % 500 == 0) {
             topvalue = selvalue;
         }
-        //如果是小数,则依次取出顶级数值,二级数值以及三级数值
+        //如果是小数,则依次取出顶级数值，二级数值以及三级数值
         else if (!!(selvalue % 1)) {
             secvalue = selvalue;
             sonvalue = Math.floor(selvalue);
@@ -190,7 +190,6 @@ function MakeTopSelect(emname, selvalue) {
                 selObj.options.add(aOption);
             }
         }
-
         document.getElementById('span_' + emname).appendChild(selObj);
         //如果子类存在值，创建子类
         selObj = document.createElement("select");
@@ -199,7 +198,7 @@ function MakeTopSelect(emname, selvalue) {
         selObj.className = "form-control admin-input-sm mr-2";
         selObj.onchange = ChangeSon;
         aOption = document.createElement('OPTION');
-        aOption.text = '请选择..';
+        aOption.text = '请选择';
         aOption.value = 0;
         selObj.options.add(aOption);
         //当大类有值输出子类
@@ -231,7 +230,6 @@ function MakeTopSelect(emname, selvalue) {
         } else {
             document.getElementById('span_' + emname + '_son').style.display = "none";
         }
-        
         //若存在第三级则创建
         if (secvalue > 0) {
             selObj = document.createElement("select");
@@ -239,7 +237,7 @@ function MakeTopSelect(emname, selvalue) {
             selObj.id = emname + '_sec';
             selObj.onchange = ChangeSec;
             aOption = document.createElement('OPTION');
-            aOption.text = '请选择..';
+            aOption.text = '请选择';
             selObj.className = "form-control admin-input-sm mr-2";
             aOption.value = 0;
             selObj.options.add(aOption);

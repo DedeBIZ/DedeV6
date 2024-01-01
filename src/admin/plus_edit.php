@@ -5,7 +5,7 @@
  * @version        $id:plus_edit.php 15:46 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -20,18 +20,18 @@ if ($dopost == "show") {
     ShowMsg("隐藏一个插件", "plus_main.php");
     exit();
 } else if ($dopost == "delete") {
-    if (empty($job)) $job = "";
+    if (empty($job)) $job = '';
     if ($job == "") {
         //确认
         require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "删除指定插件";
         $wecome_info = "<a href='plus_main.php'>插件管理</a> - 删除插件";
         $win = new OxWindow();
-        $win->Init("plus_edit.php", "js/blank.js", "POST");
+        $win->Init("plus_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("您确定要删除<span class='text-primary'>".$title."</span>插件吗");
+        $win->AddTitle("您确定要删除".$title."插件吗");
         $win->AddMsgItem("<tr><td>提示：仅删除插件导航，前往<a href='module_main.php?moduletype=plus'>模块管理</a>卸载删除</td></tr>");
         $winform = $win->GetWindow("ok");
         $win->Display();

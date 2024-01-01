@@ -5,7 +5,7 @@
  * @version        $id:makehtml_taglist_action.php 11:17 2020年8月19日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -20,7 +20,7 @@ if (empty($maxpagesize)) $maxpagesize = 30;
 $startid = isset($startid) ? intval($startid) : 0;
 $endid = isset($endid) ? intval($endid) : 0;
 $tagid = isset($tagid) ? intval($tagid) : 0;
-$tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
+$tagsdir = str_replace("{cmspath}", "", $cfg_tags_dir);
 //生成
 if ($tagid > 0) {
     $upall = 0; //更新单个模式
@@ -50,10 +50,10 @@ if ($ctagid == 0 && $allfinish) {
 }
 $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
 //创建TAGS目录
-$tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
+$tagsDir = str_replace("{cmspath}", "", $cfg_tags_dir);
 MkdirAll($cfg_basedir.$tagsDir, $cfg_dir_purview);
 if (is_array($tag) && count($tag) > 0) {
-    $dlist = new TagList($tag['id'], 'taglist.htm');
+    $dlist = new TagList($tag['id'], 'tag_list.htm');
     $dlist->CountRecord();
     $dlist->SetTagsDir($tagsdir);
     $ntotalpage = $dlist->TotalPage;
@@ -80,7 +80,7 @@ if (is_array($tag) && count($tag) > 0) {
             $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
             $dsql->ExecuteNoneQuery($query);
             $reurl .= '/'.$ctagid;
-            ShowMsg("更新标签<span class='text-primary'>".$tag['tag']."</span>，<a href='$reurl' target='_blank'>点击浏览</a>", "javascript:;");
+            ShowMsg("更新标签".$tag['tag']."，<a href='$reurl' target='_blank'>点击浏览</a>", "javascript:;");
         }
         exit();
     } else {
@@ -93,12 +93,12 @@ if (is_array($tag) && count($tag) > 0) {
                 $nextpage = 0;
             }
             $gourl = "makehtml_taglist_action.php?maxpagesize=$maxpagesize&tagid=$tagid&pageno=$nextpage&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
-            ShowMsg("更新标签<span class='text-primary'>".$tag['tag']."</span>，继续更新标签", $gourl, 0, 100);
+            ShowMsg("更新标签".$tag['tag']."，继续更新标签", $gourl, 0, 100);
             exit();
         } else {
             //继续当前这个
             $gourl = "makehtml_taglist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&tagid=$tagid&pageno=$pageno&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
-            ShowMsg("更新标签<span class='text-primary'>".$tag['tag']."</span>，继续更新标签", $gourl, 0, 100);
+            ShowMsg("更新标签".$tag['tag']."，继续更新标签", $gourl, 0, 100);
             exit();
         }
     }

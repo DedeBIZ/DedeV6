@@ -5,7 +5,7 @@
  * @version        $id:cards_make.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -50,6 +50,6 @@ elseif ($dopost == 'make') {
         $dsql->ExecuteNoneQuery($inquery);
         echo "成功生成积分：{$cardid}<br>";
     }
-    echo "成功生成<span class='text-primary'>{$mnum}</span>个积分";
+    echo "成功生成{$mnum}个积分";
 }
 ?>

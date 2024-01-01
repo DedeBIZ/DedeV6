@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:likearticle.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 function lib_likearticle(&$ctag, &$refObj)
@@ -125,7 +125,7 @@ function lib_likearticle(&$ctag, &$refObj)
                     $row['sitepath']
                 );
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
+                    $row['litpic'] = '/static/web/img/thumbnail.jpg';
                 }
                 if (!preg_match("#^(http|https):\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                     $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];

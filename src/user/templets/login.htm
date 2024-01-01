@@ -2,52 +2,46 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>会员登录-<?php echo $cfg_webname;?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/login.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/style.css">
 	</head>
-	<body class="body-bg">
+	<body>
 		<?php obtaintheme('top.htm');?>
 		<main class="container">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<div class="login-from d-inline-block">
-						<div class="login-box shadow-sm rounded text-left">
-							<h2 class="text-center mb-3">会员登录</h2>
-							<form name="form1" method="POST" action="<?php echo $cfg_memberurl;?>/index_do.php">
-								<input type="hidden" name="fmdo" value="login">
-								<input type="hidden" name="dopost" value="login">
-								<input type="hidden" name="keeptime" value="604800">
-								<input type="hidden" name="gourl" value="<?php if (!empty($gourl)) echo $gourl;?>">
-								<div class="form-group">
-									<label>账号</label>
-									<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入登录账号" required="required">
-								</div>
-								<div class="form-group">
-									<label>密码</label>
-									<input type="password" name="pwd" id="iptPwd" class="form-control" placeholder="请输入登录密码" required="required">
-								</div>
-								<div id="vdimgck" class="form-group" style="display:none">
-									<label>验证码</label>
-									<div class="input-group">
-										<input type="text" name="vdcode" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
-										<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
-									</div>
-								</div>
-								<div class="form-group"><a href="<?php echo $cfg_memberurl;?>/resetpassword.php">忘记密码？</a></div>
-								<div class="form-group"><button type="submit" class="btn btn-success btn-md btn-block">登录</button></div>
-								<div><a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success btn-md btn-block">注册</a></div>
-							</form>
+			<div class="login-from">
+				<div class="login-box shadow-sm rounded">
+					<h2 class="text-center mb-3">会员登录</h2>
+					<form name="form1" method="POST" action="<?php echo $cfg_memberurl;?>/index_do.php">
+						<input type="hidden" name="fmdo" value="login">
+						<input type="hidden" name="dopost" value="login">
+						<input type="hidden" name="keeptime" value="604800">
+						<input type="hidden" name="gourl" value="<?php if (!empty($gourl)) echo $gourl;?>">
+						<div class="form-group">
+							<label for="iptUserid">账号</label>
+							<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入登录账号" required>
 						</div>
-					</div>
+						<div class="form-group">
+							<label for="iptPwd">密码</label>
+							<input type="password" name="pwd" id="iptPwd" class="form-control" placeholder="请输入登录密码" autocomplete="off" required>
+						</div>
+						<div id="vdimgck" class="form-group" style="display:none">
+							<label for="iptValidate">验证码</label>
+							<div class="input-group">
+								<input type="text" name="vdcode" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
+								<img src="<?php echo $cfg_phpurl;?>/vdimgck.php" id="validateimg" onclick="this.src='<?php echo $cfg_phpurl;?>/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+							</div>
+						</div>
+						<div class="form-group"><a href="<?php echo $cfg_memberurl;?>/resetpassword.php">忘记密码？</a></div>
+						<div class="form-group"><button type="submit" class="btn btn-success btn-block">登录</button></div>
+						<div><a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success btn-block">注册</a></div>
+					</form>
 				</div>
 			</div>
 		</main>
 		<?php obtaintheme('foot.htm');?>
+		<script src="/static/web/js/login.js"></script>
 	</body>
 </html>

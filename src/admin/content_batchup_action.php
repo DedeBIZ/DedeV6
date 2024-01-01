@@ -5,7 +5,7 @@
  * @version        $id:content_batch_up.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -14,11 +14,11 @@ require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEADMIN."/inc/inc_batchup.php");
 @set_time_limit(0);
 //获取id条件
-if (empty($startid)) $startid = 0;
-if (empty($endid)) $endid = 0;
-if (empty($seltime)) $seltime = 0;
-if (empty($typeid)) $typeid = 0;
-if (empty($userid)) $userid = '';
+$startid = empty($startid)? 0 : intval($startid);
+$endid = empty($endid)? 0 : intval($endid);
+$seltime = empty($seltime)? 0 : intval($seltime);
+$typeid = empty($typeid)? 0 : intval($typeid);
+$userid = empty($userid)? '' : HtmlReplace($userid);
 //生成网页操作由其它页面处理
 if ($action == "makehtml") {
     $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
@@ -33,6 +33,7 @@ if ($endid > $startid) $gwhere .= " AND id<= $endid ";
 $idsql = '';
 if ($typeid != 0) {
     $ids = GetSonIds($typeid);
+    $ids = preg_replace("#[^\d|,]#","",$ids);
     $gwhere .= " AND typeid IN($ids) ";
 }
 if ($seltime == 1) {
@@ -80,7 +81,7 @@ else if ($action == 'del') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg("成功删除<span class='text-primary'>$tdd</span>条记录", "javascript:;");
+    ShowMsg("成功删除".$tdd."条记录", "javascript:;");
     exit();
 }
 //删除空标题文档
@@ -91,7 +92,7 @@ else if ($action == 'delnulltitle') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg("成功删除<span class='text-primary'>$tdd</span>条记录", "javascript:;");
+    ShowMsg("成功删除".$tdd."条记录", "javascript:;");
     exit();
 }
 //删除空文档
@@ -102,7 +103,7 @@ else if ($action == 'delnullbody') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->aid)) $tdd++;
     }
-    ShowMsg("成功删除<span class='text-primary'>$tdd</span>条记录", "javascript:;");
+    ShowMsg("成功删除".$tdd."条记录", "javascript:;");
     exit();
 }
 //修正缩略图错误
@@ -165,7 +166,7 @@ else if ($action == 'delnulltitle') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg("成功删除<span class='text-primary'>$tdd</span>条记录", "javascript:;");
+    ShowMsg("成功删除".$tdd."条记录", "javascript:;");
     exit();
 }
 //修正缩略图错误

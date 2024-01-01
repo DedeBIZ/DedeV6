@@ -5,12 +5,12 @@
  * @version        $id:templets_one_add.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_One');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 if ($dopost == "save") {
     require_once(DEDEINC."/archive/partview.class.php");
     $uptime = time();
@@ -18,6 +18,10 @@ if ($dopost == "save") {
     $filename = preg_replace("#^\/#", "", $nfilename);
     if (DEDEBIZ_SAFE_MODE) $ismake = 0; //安全模式不允许编译
     if (!preg_match('#\.htm$#i', trim($template))) {
+        ShowMsg("文件扩展名已被系统禁止", "javascript:;");
+        exit();
+    }
+    if (!preg_match('#\.html$#i', trim($filename))) {
         ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }

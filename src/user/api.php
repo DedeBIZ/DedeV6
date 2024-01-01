@@ -3,7 +3,7 @@
  * @version        $id:api.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 define('AJAXLOGIN', TRUE);
@@ -157,7 +157,6 @@ if ($action === 'is_need_check_code') {
     }
     if (!is_dir($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}")) {
         MkdirAll($cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}", $cfg_dir_purview);
-        CloseFtp();
     }
     //头像特殊处理
     $fsize = filesize($ff["tmp_name"]);
@@ -188,7 +187,7 @@ if ($action === 'is_need_check_code') {
             exit;
         }
         $nowtme = time();
-        $rnd = $nowtme.'-'.mt_rand(1000,9999);
+        $rnd = $nowtme.'-'.mt_rand(1000, 9999);
         $target_file = $cfg_basedir.$cfg_user_dir."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
         $target_url = $cfg_mediasurl.'/userup'."/{$cfg_ml->M_ID}/".$rnd.".".$exts;
         $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$target_url' AND mid='".$cfg_ml->M_ID."'; ");

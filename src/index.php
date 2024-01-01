@@ -5,7 +5,7 @@
  * @version        $id:index.php 9:23 2022-05-16 tianya $
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 define("DEDEINDEX", true);

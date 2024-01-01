@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:diyform.class.php 10:31 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once DEDEINC.'/dedetag.class.php';
@@ -75,7 +75,7 @@ class diyform
                     if ($type == 'post') {
                         $formstring .= $func($tag, $admintype);
                     } else {
-                        $formstring .= $func($tag, dede_htmlspecialchars($value[$tag->GetName()], ENT_QUOTES), $admintype);
+                        $formstring .= $func($tag, dede_htmlspecialchars($value[$tag->GetName()]), $admintype);
                     }
                     $formfields .= $formfields == '' ? $tag->GetName().','.$tag->GetAtt('type') : ';'.$tag->GetName().','.$tag->GetAtt('type');
                 }
@@ -89,7 +89,7 @@ class diyform
      *  获取字段列表
      *
      * @access    public
-     * @return    string
+     * @return    array
      */
     function getFieldList()
     {

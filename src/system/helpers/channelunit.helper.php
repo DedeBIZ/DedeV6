@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:channelunit.helper.php 16:49 2010年7月6日 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**
@@ -18,7 +18,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 if (!function_exists('GetRankStar')) {
     function GetRankStar($rank)
     {
-        $nstar = "";
+        $nstar = '';
         for ($i = 1; $i <= $rank; $i++) {
             $nstar .= "★";
         }
@@ -114,7 +114,7 @@ if (!function_exists('GetFileNewName')) {
             }
         }
         $okdir = substr($articlename, 0, $subpos);
-        CreateDir($okdir);
+        if ($ismake != -1 || $cfg_rewrite == 'N') CreateDir($okdir);
         return $articlename;
     }
 }
@@ -142,7 +142,7 @@ if (!function_exists('GetTypeUrl')) {
         if ($isdefault == -1) {
             if ($cfg_rewrite == 'Y') {
                 //开启伪静态栏目/list-1、/list-2，则分页/list-1-1、/list-1-2
-                return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
+                $reurl = "/list-".$typeid."";
             } else {
                 $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
             }
@@ -196,7 +196,7 @@ if (!function_exists('GetTypeUrl')) {
 if (!function_exists('GetFileName')) {
     function GetFileName($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '', $money = 0, $filename = '')
     {
-        global $cfg_cmspath, $cfg_arcdir, $cfg_special, $cfg_arc_dirname, $cfg_rewrite;
+        global $cfg_arcdir, $cfg_special, $cfg_arc_dirname, $cfg_rewrite;
         //没指定栏目时用固定专题规则
         if (empty($namerule)) {
             $namerule = $cfg_special.'/{aid}.html';
@@ -206,7 +206,7 @@ if (!function_exists('GetFileName')) {
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
             if ($cfg_rewrite == 'Y') {
                 //开启伪静态文档/doc-1.html、/doc-2.html，则分页/doc-1-1.html、/doc-1-2.html
-                return $GLOBALS['cfg_cmspath']."/doc-".$aid.".html";
+                return "/doc-".$aid.".html";
             } else {
                 return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
             }
@@ -217,7 +217,7 @@ if (!function_exists('GetFileName')) {
                 $articleRule = strtolower($GLOBALS['cfg_df_namerule']);
             }
             if ($typedir == '') {
-                $articleDir  = $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
+                $articleDir  = $GLOBALS['cfg_arcdir'];
             }
             $dtime = GetDateMk($timetag);
             list($y, $m, $d) = explode('-', $dtime);
@@ -339,7 +339,7 @@ function GetSonIds($id, $channel = 0, $addthis = true)
     }
     GetSonIdsLogic($id, $cfg_Cs, $channel, $addthis);
     $rquery = join(',', $GLOBALS['idArray']);
-    $rquery = preg_replace("/,$/", '', $rquery);
+    $rquery = preg_replace("/,$/", "", $rquery);
     return $rquery;
 }
 //递归逻辑
@@ -365,7 +365,7 @@ function GetSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
 function MfTypedir($typedir)
 {
     if (preg_match("/^(http|https|ftp):/i", $typedir)) return $typedir;
-    $typedir = str_replace("{cmspath}", $GLOBALS['cfg_cmspath'], $typedir);
+    $typedir = str_replace("{cmspath}", "", $typedir);
     $typedir = preg_replace("/\/{1,}/", "/", $typedir);
     return $typedir;
 }
@@ -395,8 +395,8 @@ function FormatScript($atme)
  *  给属性默认值
  *
  * @param     array  $atts  属性
- * @param     array  $attlist  属性列表
- * @return    string
+ * @param     string  $attlist  属性列表
+ * @return    void
  */
 function FillAttsDefault(&$atts, $attlist)
 {
@@ -526,20 +526,6 @@ function SetSysEnv($typeid = 0, $typename = '', $aid = 0, $title = '', $curfile 
     }
 }
 /**
- *  获得图书链接
- *
- * @param     string  $bid  书籍id
- * @param     string  $title  标题
- * @param     string  $gdir
- * @return    string
- */
-function GetBookUrl($bid, $title, $gdir = 0)
-{
-    global $cfg_cmspath;
-    $bookurl = $gdir == 1 ? "{$cfg_cmspath}/book/".DedeID2Dir($bid) : "{$cfg_cmspath}/book/".DedeID2Dir($bid).'/'.GetPinyin($title).'-'.$bid.'.html';
-    return $bookurl;
-}
-/**
  *  根据ID生成目录
  *
  * @param     string  $aid  文档id
@@ -562,7 +548,7 @@ function DedeID2Dir($aid)
  */
 function GetFreeListUrl($lid, $namerule, $listdir, $defaultpage, $nodefault)
 {
-    $listdir = str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $listdir);
+    $listdir = str_replace('{cmspath}', $listdir);
     if ($nodefault == 1) {
         $okfile = str_replace('{page}', '1', $namerule);
         $okfile = str_replace('{listid}', $lid, $okfile);
@@ -612,9 +598,9 @@ function GetHotKeywords(&$dsql, $num = 8, $nday = 365, $klen = 16, $orderby = 'c
     }
     $dsql->SetQuery("SELECT keyword FROM `#@__search_keywords` WHERE lasttime>$mintime AND length(keyword)<$klen ORDER BY $orderby DESC LIMIT 0,$num");
     $dsql->Execute('hw');
-    $hotword = "";
+    $hotword = '';
     while ($row = $dsql->GetArray('hw')) {
-        $hotword .= "　<a href='".$cfg_phpurl."/search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'>".$row['keyword']."</a> ";
+        $hotword .= "<a href='".$cfg_phpurl."/search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'>".$row['keyword']."</a> ";
     }
     return $hotword;
 }

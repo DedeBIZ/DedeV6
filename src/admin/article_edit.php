@@ -5,7 +5,7 @@
  * @version        $id:article_edit.php 14:12 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -71,7 +71,7 @@ if ($dopost != 'save') {
         exit();
     }
     if (!TestPurview('a_Edit')) {
-        CheckCatalog($typeid, "您没有操作栏目<span class='text-primary'>{$typeid}</span>文档权限");
+        CheckCatalog($typeid, "您没有操作栏目{$typeid}文档权限");
     }
     //对保存的文档进行处理
     $pubdate = GetMkTime($pubdate);
@@ -171,7 +171,7 @@ if ($dopost != 'save') {
     }
     //返回成功信息
     $msg = "<tr>
-        <td bgcolor='#f5f5f5' align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理文档</a>$backurl</td>
+        <td align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>返回文档列表</a></td>
     </tr>";
     $wintitle = "成功修改文档";
     $wecome_info = "文档管理 - 修改文档";

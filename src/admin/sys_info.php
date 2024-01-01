@@ -5,19 +5,19 @@
  * @version        $id:sys_info.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $configfile = DEDEDATA.'/config.cache.inc.php';
 //更新配置函数
 function ReWriteConfig()
 {
     global $dsql, $configfile;
     if (!is_writeable($configfile)) {
-        echo "配置文件<span class='text-primary'>{$configfile}</span>不支持写入，无法修改系统配置参数";
+        echo "配置文件{$configfile}不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
@@ -86,7 +86,7 @@ else if ($dopost == 'add') {
         exit();
     }
     if (!is_writeable($configfile)) {
-        ShowMsg("成功保存变量，但由于<span class='text-primary'>$configfile</span>无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功保存变量，但由于".$configfile."无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
         exit();
     } else {
         ReWriteConfig();
@@ -99,11 +99,11 @@ else if ($dopost == 'search') {
     $keywords = isset($keywords) ? strip_tags($keywords) : '';
     $i = 1;
     $configstr = <<<EOT
-<table align="center" id="tdSearch" class="table maintable my-3">
+<table id="tdSearch" class="table shadow-sm my-3">
     <tr>
-        <td bgcolor="#f5f5f5" colspan="3">系统设置搜索</td>
+        <td colspan="3">系统设置搜索</td>
     </tr>
-    <tr bgcolor="#e9ecef" align="center">
+    <tr align="center">
         <td width="360">参数说明</td>
         <td>参数值</td>
         <td width="260">变量名</td>
@@ -114,20 +114,19 @@ EOT;
         $dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE info LIKE '%$keywords%' OR varname LIKE '%$keywords%' ORDER BY aid ASC");
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
-            $bgcolor = ($i++ % 2 == 0) ? "#f5f5f5" : "#ffffff";
-            $row['info'] = preg_replace("#{$keywords}#", '<span class="text-primary">'.$keywords.'</span>', $row['info']);
-            $row['varname'] = preg_replace("#{$keywords}#", '<span class="text-primary">'.$keywords.'</span>', $row['varname']);
+            $row['info'] = preg_replace("#{$keywords}#", '<b class="text-danger">'.$keywords.'</b>', $row['info']);
+            $row['varname'] = preg_replace("#{$keywords}#", '<b class="text-danger">'.$keywords.'</b>', $row['varname']);
     ?>
-    <tr align="center" bgcolor="<?php echo $bgcolor ?>">
+    <tr align="center">
         <td width="300"><?php echo $row['info'];?>：</td>
         <td align="left">
             <?php
             if ($row['type'] == 'bool') {
                 $c1 = '';
                 $c2 = '';
-                $row['value'] == 'Y' ? $c1 = " checked" : $c2 = " checked";
-                echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是</label> ";
-                echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否</label> ";
+                $row['value'] == 'Y' ? $c1 = "checked" : $c2 = "checked";
+                echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
+                echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
             } else if ($row['type'] == 'bstring') {
                 echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
             } else if ($row['type'] == 'number') {
@@ -147,7 +146,7 @@ EOT;
 exit;
 }
 if ($i == 1) {
-    echo '<tr><td bgcolor="#f5f5f5" colspan="3" align="center">搜索不到参数</td></tr></table>';
+    echo '<tr><td colspan="3" align="center">搜索不到参数</td></tr></table>';
 }
 exit;
 } else if ($dopost == 'make_encode') {

@@ -5,7 +5,7 @@
  * @version        $id:makehtml_all.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -82,7 +82,7 @@ if ($action == '') {
                 }
             }
         }
-        $fp = fopen($mkcachefile, 'w') or die("无法写入缓存文件<span class='text-primary'>{$mkcachefile}</span>所以无法更新栏目");
+        $fp = fopen($mkcachefile, 'w') or die("无法写入缓存文件{$mkcachefile}所以无法更新栏目");
         if (count($typeidsok) > 0) {
             fwrite($fp, "<"."?php\r\n");
             $i = -1;

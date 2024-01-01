@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:memberlist.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 function lib_memberlist(&$ctag, &$refObj)
@@ -26,10 +26,8 @@ function lib_memberlist(&$ctag, &$refObj)
     $ctp->LoadSource($innerText);
     $dsql->Execute('mb', $sql);
     while ($row = $dsql->GetArray('mb')) {
-        $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/user/index.php?uid='.$row['userid'];
-        if (empty($row['face'])) {
-            $row['face'] = ($row['sex'] == '女') ? $GLOBALS['cfg_memberurl'].'/templets/images/dfgirl.png' : $GLOBALS['cfg_memberurl'].'/templets/images/dfboy.png';
-        }
+        $row['userurl'] = $row['spaceurl'] = $GLOBALS['cfg_basehost'].$GLOBALS['cfg_memberurl'].'/index.php?uid='.$row['userid'];
+        $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
         foreach ($ctp->CTags as $tagid => $ctag) {
             if (isset($row[$ctag->GetName()])) {
                 $ctp->Assign($tagid, $row[$ctag->GetName()]);

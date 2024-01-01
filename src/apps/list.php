@@ -5,7 +5,7 @@
  * @version        $id:list.php$
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
@@ -48,7 +48,7 @@ if (isset($lv->Fields['corank']) && $lv->Fields['corank'] > 0) {
         }
         $memberTypes[0] = "游客或没权限会员";
         $msgtitle = "您没有权限浏览栏目：{$lv->Fields['typename']}";
-        $moremsg = "该栏目需要等级<span class='text-primary'>".$memberTypes[$lv->Fields['corank']]."</span>才能浏览，您目前等级是<span class='text-primary'>".$memberTypes[$cfg_ml->M_Rank]."</span><a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm ml-2'>升级会员</a>";
+        $moremsg = "该栏目需要等级".$memberTypes[$lv->Fields['corank']]."才能浏览，您目前等级是".$memberTypes[$cfg_ml->M_Rank]." <a href='{$cfg_memberurl}/buy.php' class='btn btn-success btn-sm'>升级会员</a>";
         include_once(DEDETEMPLATE.'/apps/view_msg_catalog.htm');
         exit();
     }

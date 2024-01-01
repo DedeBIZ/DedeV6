@@ -5,7 +5,7 @@
  * @version        $id:cards_manage.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -13,7 +13,7 @@ require_once(DEDEINC.'/datalistcp.class.php');
 $dopost = empty($dopost) ? "" : $dopost;
 if ($dopost == "delete") {
     $ids = explode('`', $aids);
-    $dquery = "";
+    $dquery = '';
     foreach ($ids as $id) {
         if ($dquery == "") $dquery .= "aid='$id' ";
         else $dquery .= " OR aid='$id' ";

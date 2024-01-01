@@ -5,7 +5,7 @@
  * @version        $id:member_toadmin.php 14:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -18,7 +18,7 @@ $row = array();
 if ($dopost == "toadmin") {
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
-        ShowMsg('密码不合法，使用[0-9a-zA-Z_@!.-]范围以内字符', '-1', 0, 3000);
+        ShowMsg('密码不合法，请使用数字0-9小写a-z大写A-Z符号_@!.-', '-1');
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
@@ -71,7 +71,7 @@ if ($dopost == "toadmin") {
     $floginid = $cuserLogin->getUserName();
     $fromid = $cuserLogin->getUserID();
     $subject = "恭喜您已经成功提升管理员";
-    $message = "亲爱的会员<span class='text-primary'>{$userid}</span>，您已经成功提升为<span class='text-primary'>{$row['typename']}</span>，具体操作权限请同网站超级管理员联系";
+    $message = "尊敬的{$userid}会员，您已经成功提升为{$row['typename']}，具体操作权限请同网站超级管理员联系";
     $sendtime = $writetime = time();
     $inquery = "INSERT INTO `#@__member_pms` (`floginid`,`fromid`,`toid`,`tologinid`,`folder`,`subject`,`sendtime`,`writetime`,`hasview`,`isadmin`,`message`) VALUES ('$floginid','$fromid','$id','$userid','inbox','$subject','$sendtime','$writetime','0','0','$message'); ";
     $dsql->ExecuteNoneQuery($inquery);

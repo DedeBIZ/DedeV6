@@ -2,19 +2,19 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>友情链接修改</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
 		<form action="friendlink_edit.php" method="post" enctype="multipart/form-data" name="form1">
 			<input type="hidden" name="id" value="<?php echo $myLink['id']?>">
 			<input type="hidden" name="dopost" value="saveedit">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2"><a href="friendlink_main.php">友情链接管理</a> - 友情链接修改</td>
+					<td colspan="2"><a href="friendlink_main.php">友情链接管理</a> - 友情链接修改</td>
 				</tr>
 				<tr>
 					<td width="260">网址：</td>
@@ -42,14 +42,14 @@
 				</tr>
 				<tr>
 					<td>邮箱：</td>
-					<td><input type="text" name="email" id="email" value="<?php echo $myLink['email']?>" class="admin-input-lg"></td>
+					<td><input type="text" name="email" id="email" autocomplete="off" value="<?php echo $myLink['email']?>" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>链接位置：</td>
 					<td>
-						<label><input type="radio" name="ischeck" value="0" <?php if ($myLink['ischeck']==0) echo "checked='checked'"?>> 未审核</label>
-						<label><input type="radio" name="ischeck" value="1" <?php if ($myLink['ischeck']==1) echo "checked='checked'"?>> 内页</label>
-						<label><input type="radio" name="ischeck" value="2" <?php if ($myLink['ischeck']==2) echo "checked='checked'"?>> 首页</label>
+						<label><input type="radio" name="ischeck" value="0" <?php if ($myLink['ischeck']==0) echo 'checked'?>> 待审核</label>
+						<label><input type="radio" name="ischeck" value="1" <?php if ($myLink['ischeck']==1) echo 'checked'?>> 内页</label>
+						<label><input type="radio" name="ischeck" value="2" <?php if ($myLink['ischeck']==2) echo 'checked'?>> 首页</label>
 					</td>
 				</tr>
 				<tr>
@@ -68,9 +68,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
-						<button type="reset" name="Submit" class="btn btn-outline-success btn-sm" onclick="location.href='<?php echo $ENV_GOBACK_URL?>';">返回</button>
+					<td colspan="2" align="center">
+						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
+						<button type="reset" name="submit" class="btn btn-outline-success btn-sm" onclick="location.href='<?php echo $ENV_GOBACK_URL?>';">返回</button>
 					</td>
 				</tr>
 			</table>

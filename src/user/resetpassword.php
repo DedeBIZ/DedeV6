@@ -5,12 +5,12 @@
  * @version        $id:resetpassword.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEMEMBER."/inc/inc_pwd_functions.php");
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 $id = isset($id) ? intval($id) : 0;
 if ($dopost == "") {
     include(dirname(__FILE__)."/templets/resetpassword.htm");
@@ -33,7 +33,7 @@ if ($dopost == "") {
         showmsg('请输入正确的邮箱格式', '-1');
         exit;
     } else if (CheckUserID($userid, '', false) != 'ok') {
-        ShowMsg("您输入的账号<span class='text-primary'>{$userid}</span>不合法", "-1");
+        ShowMsg("您输入的账号{$userid}不合法", "-1");
         exit();
     }
     $member = member($mail, $userid);
@@ -65,7 +65,7 @@ if ($dopost == "") {
         sn($mid, $row['userid'], $row['email'], 'N');
         exit();
     } else {
-        ShowMsg("您的安全问题或答案回答错误", "login.php");
+        ShowMsg("安全问题或答案回答错误", "login.php");
         exit();
     }
 } else if ($dopost == "getpasswd") {
@@ -84,8 +84,8 @@ if ($dopost == "") {
         $tptim = (60 * 60 * 24 * 3);
         $dtime = time();
         if ($dtime - $tptim > $row['mailtime']) {
-            $db->executenonequery("DELETE FROM `#@__pwd_tmp` WHERE `md` = '$id';");
-            ShowMsg("临时密码修改期限已过期", "login.php");
+            $db->ExecuteNoneQuery("DELETE FROM `#@__pwd_tmp` WHERE `md` = '$id';");
+            ShowMsg("临时验证码修改期限已过期", "login.php");
             exit();
         }
         require_once(dirname(__FILE__)."/templets/resetpassword2.htm");
@@ -103,9 +103,9 @@ if ($dopost == "") {
                         $pwdok = md5($pwdok);
                     }
                     $sql = "DELETE FROM `#@__pwd_tmp` WHERE `mid` = '$id';";
-                    $db->executenonequery($sql);
+                    $db->ExecuteNoneQuery($sql);
                     $sql = "UPDATE `#@__member` SET `$pp` = '$pwdok' WHERE `mid` = '$id';";
-                    if ($db->executenonequery($sql)) {
+                    if ($db->ExecuteNoneQuery($sql)) {
                         ShowMsg('修改密码成功，请牢记新密码', 'login.php');
                         exit;
                     }
@@ -114,7 +114,7 @@ if ($dopost == "") {
             ShowMsg('新密码为空或填写不一致', '-1');
             exit;
         }
-        ShowMsg('临时密码错误', '-1');
+        ShowMsg('临时验证码错误', '-1');
         exit;
     }
 }

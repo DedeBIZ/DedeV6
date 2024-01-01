@@ -5,12 +5,12 @@
  * @version        $id:makehtml_spec.php 11:17 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-if (empty($dopost)) $dopost = "";
+if (empty($dopost)) $dopost = '';
 if ($dopost == "ok") {
     require_once(DEDEINC."/archive/specview.class.php");
     $sp = new SpecView();

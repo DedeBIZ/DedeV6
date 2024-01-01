@@ -2,15 +2,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>修改文档模型字段</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
-		<style>.nw{float:left;width:160px}.cls{clear:both}</style>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="mychannel_field_edit.php" method="post" onSubmit="return GetFields();">
@@ -18,41 +17,41 @@
 			<input type="hidden" name="id" value="<?php echo $id?>">
 			<input type="hidden" name="fname" value="<?php echo $fname?>">
 			<input type="hidden" name="issystem" value="<?php echo $issystem?>">
-			<input type="hidden" name="fieldstring" value="">
-			<table wcellpadding="1" align="center" class="table maintable my-3">
+			<input type="hidden" name="fieldstring">
+			<table wcellpadding="1" align="center" class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">文档模型管理</a> - 修改文档模型字段</td>
+					<td colspan="2">文档模型管理</a> - 修改文档模型字段</td>
 				</tr>
 				<?php if ($row['issystem'] == 1) {?>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-danger mb-0">系统模型字段参数配置，修改不当会导致模型出错</div>
+						<div class="alert alert-warning mb-0">系统模型字段参数配置，修改不当会导致模型出错</div>
 					</td>
 				</tr>
 				<?php }?>
 				<tr>
-					<td>字段文字：</td>
+					<td>字段名称：</td>
 					<td>
 						<input type="text" name="itemname" id="itemname" class="admin-input-sm" value="<?php echo $ctag->GetAtt('itemname')?>">
 						<span>（发布文档时显示的项名字）</span>
 					</td>
 				</tr>
 				<tr>
-					<td width="260">字段名称：</td>
+					<td width="260">字段标识：</td>
 					<td><?php echo $fname?>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型组名称）</td>
 				</tr>
 				<tr>
 					<td>字段类型：</td>
 					<td>
-						<label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");?>> 自动字段</label>
-						<label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");?>> 固化字段</label>
+						<label><input type="radio" name="autofield" value="1" checked <?php echo ($ctag->GetAtt('autofield')==1 ? "checked" : "");?>> 自动字段</label>
+						<label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? "checked" : "");?>> 固化字段</label>
 					</td>
 				</tr>
 				<tr>
 					<td>前台参数：</td>
 					<td>
-						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");?>> 投稿和采集禁用字段</label>
-						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 添加到列表附加字段</label>
+						<label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? "checked" : "");?>> 投稿和采集禁用字段</label>
+						<label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? "checked" : "");?>> 添加到列表附加字段</label>
 						<span>（列表模板{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}中，标签[field:name/]调用）</span>
 					</td>
 				</tr>
@@ -60,8 +59,8 @@
 					<td>是否使用分页符：</td>
 					<td>
 						<input name="isnull" type="hidden" value="1">
-						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='checked'";?>> 是</label>
-						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='checked'";?>> 否</label>
+						<label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo 'checked';?>> 是</label>
+						<label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo 'checked';?>> 否</label>
 						<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符实现文档分页，但仅允许一个字段）</span>
 					</td>
 				</tr>
@@ -117,13 +116,13 @@
 							}
 							?>
 						</select>
-						<label class="l-height-30"><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时自动更新关联文档</label>
+						<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1 ? "checked" : "";?>> 发布时自动更新关联文档</label>
 					</td>
 				</tr>
 				<tr>
 					<td>默认值：</td>
 					<td>
-						<p>（自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德）</p>
+						<p>（自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号隔开，如：DedeBIZ,得德）</p>
 						<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"><?php echo $ctag->GetAtt('default');?></textarea>
 					</td>
 				</tr>
@@ -139,7 +138,7 @@
 					<td><input type="text" name="maxlength" id="maxlength" class="admin-input-xs" value="<?php echo $ctag->GetAtt('maxlength')?>">（文本数据必须填写，大于255为text类型）</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
 						<button type="reset" name="button3" id="button3" class="btn btn-outline-success btn-sm">重置</button>
 					</td>
@@ -167,13 +166,13 @@
 					return false;
 				}
 				if ((dtype == "radio" || dtype == "select" || dtype == "checkbox") && vdefault == "") {
-					ShowMsg("自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号分开，如：DedeBIZ,得德");
+					ShowMsg("自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号隔开，如：DedeBIZ,得德");
 					return false;
 				}
-				if (spage == "no") spage = "";
-				relstr = "";
+				if (spage == "no") spage = '';
+				relstr = '';
 				if (dtype==="relation") {
-					relstr = " automake=\""+automake+"\" channel=\""+$("#channeltype").val()+"\"";
+					relstr = " automake=\"" + automake + "\" channel=\"" + $("#channeltype").val() + "\"";
 				}
 				revalue = "<field:" + fieldname + " itemname=\"" + itemname + "\" autofield=\"" + autofield + "\" notsend=\"" + notsend + "\" type=\"" + dtype + "\"";
 				revalue += relstr + " isnull=\"" + sisnull + "\" islist=\"" + islist + "\" default=\"" + vdefault + "\" ";
@@ -181,8 +180,8 @@
 				document.form1.fieldstring.value = revalue;
 				return true;
 			}
-			$(document).ready(function () {
-				$("#type").change(function (ele) {
+			$(document).ready(function() {
+				$("#type").change(function(ele) {
 					if ($(ele.currentTarget).val() === "relation") {
 						$("#_relation").show();
 					} else {

@@ -1,11 +1,11 @@
 <?php
 /**
- * 高级搜索
+ * 高级搜索操作
  *
  * @version        $id:advancedsearch.php 15:38 2010年7月8日 tianya $
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
@@ -43,7 +43,7 @@ if (empty($sql)) {
     $q = stripslashes($q);
     $q = preg_replace("#[\|\"\r\n\t%\*\?\(\)\$;,'%<>]#", " ", trim($q));
     if (($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $q)) || ($cfg_replacestr != '' && preg_match("#".$cfg_replacestr."#i", $q))) {
-        echo "您的信息中存在违规文档，被系统禁止";
+        echo "信息中存在违规文档，被系统禁止";
         exit();
     }
     $q = addslashes($q);

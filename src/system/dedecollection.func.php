@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:charset.helper.php 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/libraries/dedehttpdown.class.php");
@@ -44,8 +44,8 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
         $sessionQuery .= $gcookie."\r\n";
     }
     $sessionQuery .= "Connection: Keep-Alive\r\n\r\n";
-    $errno = "";
-    $errstr = "";
+    $errno = '';
+    $errstr = '';
     $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10);
     fwrite($m_fp, $sessionQuery);
     $lnum = 0;
@@ -59,8 +59,8 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
         if ($line == "" || $lnum > 100) {
             break;
         }
-        $hkey = "";
-        $hvalue = "";
+        $hkey = '';
+        $hvalue = '';
         $v = 0;
         for ($i = 0; $i < strlen($line); $i++) {
             if ($v == 1) {
@@ -97,7 +97,7 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
     //保存文件
     $fp = fopen($filename, "w") or die("写入文件：{$filename} 失败");
     $i = 0;
-    $okdata = "";
+    $okdata = '';
     $starttime = time();
     while (!feof($m_fp)) {
         $okdata .= fgetc($m_fp);
@@ -150,13 +150,13 @@ function RefurlCookie($gurl)
     $sessionQuery .= "Accept: */*\r\n";
     $sessionQuery .= "User-Agent: Mozilla/4.0 (compatible; MSIE 5.00; Windows 98)\r\n";
     $sessionQuery .= "Connection: Close\r\n\r\n";
-    $errno = "";
-    $errstr = "";
+    $errno = '';
+    $errstr = '';
     $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10) or die($ghost.'<br>');
     fwrite($m_fp, $sessionQuery);
     $lnum = 0;
     //获取详细应答头
-    $gcookie = "";
+    $gcookie = '';
     while (!feof($m_fp)) {
         $line = trim(fgets($m_fp, 256));
         if ($line == "" || $lnum > 100) {
@@ -316,7 +316,6 @@ function FillUrl($refurl, $surl)
     $surl = trim($surl);
     $urls = @parse_url($refurl);
     $basehost = ((!isset($urls['port']) || $urls['port'] == '80') ? $urls['host'] : $urls['host'].':'.$urls['port']);
-    //$basepath = $basehost.(!isset($urls['path']) ? '' : '/'.$urls['path']);
     //由于直接获得的path在处理 http://xxxx/nnn/aaa?fdsafd 这种情况时会有错误，因此用其它方式处理
     $basepath = $basehost;
     $paths = explode('/', preg_replace("/^http:\/\//i", "", $refurl));
@@ -413,8 +412,7 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                     }
                 }
             }
-            //匹配多个栏目
-            //规则表达式 [(#)=>(#)匹配的网址; (*)=>(*)的范围，如：1-20; typeid=>栏目id; addurl=>附加的网址(用|分开多个)]
+            //匹配多个栏目，规则表达式[(#)=>(#)匹配的网址; (*)=>(*)的范围，如：1-20;typeid=>栏目id;addurl=>附加的网址(用|分开多个)]
             else {
                 $nrules = explode(']', trim($batchrule));
                 foreach ($nrules as $nrule) {

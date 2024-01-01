@@ -5,7 +5,7 @@
  * @version        $id:inc_list_functions.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 if (!isset($registerGlobals)) {
@@ -70,18 +70,18 @@ function CheckPic($picname)
     if ($picname != "") {
         return $picname;
     } else {
-        return '../static/web/img/thumbnail.jpg';
+        return '/static/web/img/thumbnail.jpg';
     }
 }
 //判断文档是否生成网页
 function IsHtmlArchives($ismake)
 {
     if ($ismake == 1) {
-        return ' <span class="btn btn-warning btn-sm">已生成</span>';
+        return '已生成';
     } else if ($ismake == -1) {
-        return ' <span class="btn btn-warning btn-sm">仅动态</span>';
+        return '仅动态';
     } else {
-        return ' <span class="btn btn-danger btn-sm">未生成</span>';
+        return '未生成';
     }
 }
 //获得文档的限定级别名称

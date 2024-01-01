@@ -5,7 +5,7 @@
  * @version        $id:makehtml_homepage.php 2 9:30 2010-11-11 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -28,29 +28,29 @@ if ($dopost == "view") {
             if ($rs["admin_pwd_exists"] == "false") {
                 //设定dedebiz admin密码
                 if ($dedebiz_admin == "" || $dedebiz_admin !== $re_dedebiz_admin) {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
-                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空或两次指定的密码不符</div><br>";
+                    echo "<link rel=\"stylesheet\" href=\"/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
+                    echo "<div class=\"alert alert-warning\">密码不能为空或密码输入错误</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminPWDCreate($dedebiz_admin);
                 if ($data->data != "ok") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
-                    echo "<div class=\"alert alert-danger\">DedeBIZ设定操作密码失败：${$data}</div><br>";
+                    echo "<link rel=\"stylesheet\" href=\"/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
+                    echo "<div class=\"alert alert-warning\">密码失败：${$data}</div><br>";
                     $client->Close();
                     exit;
                 }
             } else {
                 if ($dedebiz_admin == "") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
-                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空</div><br>";
+                    echo "<link rel=\"stylesheet\" href=\"/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
+                    echo "<div class=\"alert alert-warning\">密码不能为空</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminSetIndexLockState($dedebiz_admin, $lockindex);
                 if ($data->data != "ok") {
-                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
-                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码失败，填写正确的操作密码</div><br>";
+                    echo "<link rel=\"stylesheet\" href=\"/static/web/css/bootstrap.min.css\"><style>.modal {position:static}</style>";
+                    echo "<div class=\"alert alert-warning\">密码输入错误，请填写正确密码</div><br>";
                     $client->Close();
                     exit;
                 }
@@ -58,9 +58,9 @@ if ($dopost == "view") {
         }
         $client->Close();
     }
-    $remotepos = empty($remotepos) ? '/index.html' : $remotepos;
+    $remotepos = empty($remotepos) ? '../index.html' : $remotepos;
     $serviterm = empty($serviterm) ? "" : $serviterm;
-    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($position))) {
+    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($position))) {
         ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
@@ -85,7 +85,7 @@ if ($dopost == "view") {
     } else {
         //动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);
-        ShowMsg("更新动态首页，<a href='../index.php' target='_blank'>点击浏览</a>", "javascript:;");
+        ShowMsg("更新动态首页，<a href='/index.php' target='_blank'>点击浏览</a>", "javascript:;");
     }
     $iquery = "UPDATE `#@__homepageset` SET showmod='$showmod'";
     $dsql->ExecuteNoneQuery($iquery);

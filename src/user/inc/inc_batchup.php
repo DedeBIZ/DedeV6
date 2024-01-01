@@ -1,12 +1,12 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 文档处理操作函数
+ * 文档操作
  * 
  * @version        $id:inc_batchup.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.func.php");
@@ -49,7 +49,7 @@ function DelArc($aid)
                     $nid = "body";
                     break;
                 default:
-                    $nid = "";
+                    $nid = '';
                     break;
             }
             if ($nid != "") {
@@ -79,7 +79,7 @@ function DelArc($aid)
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` WHERE aid='$aid'");
-    //删除HTML
+    //删除网页
     if ($arcRow['ismake'] == -1 || $arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0 || $arcRow['money'] > 0) {
         return TRUE;
     }
@@ -139,7 +139,7 @@ function DelArcSg($aid)
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` WHERE aid='$aid'");
-    //删除HTML
+    //删除网页
     if ($arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0) {
         return TRUE;
     }

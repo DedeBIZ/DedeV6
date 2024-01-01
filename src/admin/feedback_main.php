@@ -5,7 +5,7 @@
  * @version        $id:feedback_main.php 19:09 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -16,7 +16,7 @@ require_once(DEDEINC."/typelink/typelink.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 function IsCheck($st)
 {
-    return $st == 1 ? '<span class="btn btn-success btn-sm">已审核</span>' : '<span class="btn btn-danger btn-sm">未审核</span>';
+    return $st==1 ? '已审核' : '待审核';
 }
 function jsTrimjajx($str, $len)
 {
@@ -31,7 +31,7 @@ function jsTrimjajx($str, $len)
 if (!empty($job)) {
     $ids = preg_replace("#[^0-9,]#", '', $fid);
     if (empty($ids)) {
-        ShowMsg("您没选中任何选项", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+        ShowMsg("您没选中任何选项", $_COOKIE['ENV_GOBACK_URL']);
         exit;
     }
 } else {
@@ -48,7 +48,7 @@ function UpdateReplycount($id)
 if ($job == 'del') {
     $query = "DELETE FROM `#@__feedback` WHERE id IN($ids) ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功删除指定的评论", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg("成功删除指定的评论", $_COOKIE['ENV_GOBACK_URL']);
     exit();
 }
 //删除相同IP的所有评论
@@ -63,7 +63,7 @@ else if ($job == 'delall') {
         $query = "DELETE FROM `#@__feedback` WHERE $ips ";
         $dsql->ExecuteNoneQuery($query);
     }
-    ShowMsg("删除所有相同地址评论", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg("删除所有相同地址评论", $_COOKIE['ENV_GOBACK_URL']);
     exit();
 }
 //审核评论
@@ -76,7 +76,7 @@ else if ($job == 'check') {
     while ($row = $dsql->GetArray()) {
         UpdateReplycount($row['fid']);
     }
-    ShowMsg("成功审核指定评论", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg("成功审核指定评论", $_COOKIE['ENV_GOBACK_URL']);
     exit();
 }
 //浏览评论

@@ -1,12 +1,12 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 验证助手
+ * 报错助手
  *
- * @version        $id:validate.helper.php 2 13:56 2010年7月5日 tianya $
+ * @version        $id:debug.helper.php 2 13:56 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 /**
@@ -46,9 +46,7 @@ if (!function_exists('Dump')) {
     }
 }
 /**
- *  获取执行时间
- *  例如$t1 = ExecTime();在一段文档处理之后$t2 = ExecTime();
- *  我们可以2个时间的差值输出:echo $t2-$t1;
+ *  获取执行时间，例如$t1 = ExecTime();在一段文档处理之后$t2 = ExecTime();我们可以2个时间的差值输出echo $t2-$t1;
  *
  *  @return    int
  */

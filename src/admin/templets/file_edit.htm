@@ -2,31 +2,31 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>新建/修改文件</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="css/codemirror.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.min.js"></script>
-		<script src="js/codemirror.js"></script>
-		<script src="js/mode/xml/xml.js"></script>
-		<script src="js/mode/javascript/javascript.js"></script>
-		<script src="js/mode/css/css.js"></script>
-		<script src="js/mode/php/php.js"></script>
-		<script src="js/mode/clike/clike.js"></script>
-		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/codemirror.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/codemirror.js"></script>
+		<script src="/static/web/js/mode/xml/xml.js"></script>
+		<script src="/static/web/js/mode/javascript/javascript.js"></script>
+		<script src="/static/web/js/mode/css/css.js"></script>
+		<script src="/static/web/js/mode/php/php.js"></script>
+		<script src="/static/web/js/mode/clike/clike.js"></script>
+		<script src="/static/web/js/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form method="POST" action="file_manage_control.php" name=form1 onSubmit="return Post()">
+		<form method="POST" action="file_manage_control.php" name=form1 onSubmit="return Post();">
 			<input type="hidden" name="fmdo" value="edit">
 			<input type="hidden" name="backurl" value="{dede:global name='backurl' function='urlencode(@me)'/}">
 			<input type="hidden" name="_csrf_token" value="{dede:global name='csrf_token'/}">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td colspan="2" bgcolor="#f5f5f5">新建/修改文件</td>
+					<td colspan="2">新建/修改文件</td>
 				</tr>
 				<tr>
 					<td>工作目录</td>
@@ -42,13 +42,13 @@
 						<span>（不可以用小数点..表示路径）</span>
 					</td>
 				</tr>
-				<tr class="table">
+				<tr>
 					<td colspan="2" class="p-0">{dede:global name='contentView'/}</td>
 				</tr>
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2" align="center">
+					<td colspan="2" align="center">
 						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="B4" class="btn btn-outline-success btn-sm" onclick="javascript:history.go(-1);">返回</button>
+						<button type="button" name="B4" class="btn btn-outline-success btn-sm" onclick="location='file_manage_main.php?activepath=/static';">返回</button>
 					</td>
 				</tr>
 			</table>
@@ -61,11 +61,10 @@
 					return false;
 				}
 			}
-			var editor = CodeMirror.fromTextArea(document.getElementById('str'), {
+			var editor = CodeMirror.fromTextArea(document.getElementById("str"), {
 				lineNumbers: true,
 				lineWrapping: true,
-				mode: '{dede:global name='
-				extension '/}'
+				mode: '{dede:global name='extension'/}',
 			});
 		</script>
 	</body>

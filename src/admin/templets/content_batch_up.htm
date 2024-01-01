@@ -2,22 +2,22 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>文档批量维护</title>
-		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/moment.min.js"></script>
-		<script src="../static/web/js/daterangepicker.js"></script>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<link rel="stylesheet" href="/static/web/css/daterangepicker.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/moment.min.js"></script>
+		<script src="/static/web/js/daterangepicker.js"></script>
 	</head>
 	<body>
 		<form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
 			<input type="hidden" name="dopost" value="go">
-			<table align="center" class="table maintable my-3">
+			<table class="table shadow-sm my-3">
 				<tr>
-					<td bgcolor="#f5f5f5" colspan="2">文档批量维护</td>
+					<td colspan="2">文档批量维护</td>
 				</tr>
 				<tr>
 					<td width="260">选定栏目：</td>
@@ -40,7 +40,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>会员的登录id：</td>
+					<td>会员登录id：</td>
 					<td>
 						<input name="userid" type="text" id="userid" class="admin-input-xs">
 						<span>（网址uid=后面跟的id）</span>
@@ -49,20 +49,20 @@
 				<tr>
 					<td>文档发布时间：</td>
 					<td>
-						<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
+						<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime();"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
 						<div id="seltimeField" style="display:none">
-							<label>开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" class="admin-input-sm" value="<?php echo $nowtime;?>"></label>
-							<label>结束：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" class="admin-input-sm" value="<?php echo $nowtime;?>"></label>
+							<label>开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
+							<label>结束：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>文档操作：</td>
 					<td>
-						<label><input type="radio" name="action" value="check" onclick="ShowHideMove()" checked="checked"> 审核文档</label>
-						<label><input type="radio" name="action" value="makehtml" onclick="ShowHideMove()"> 更新网页</label>
-						<label><input type="radio" name="action" value="move" onclick="ShowHideMove()"> 移动文档</label>
-						<label><input type="radio" name="action" value="del" onclick="ShowHideMove()"> 删除文档</label>
+						<label><input type="radio" name="action" value="check" onclick="ShowHideMove();" checked> 审核文档</label>
+						<label><input type="radio" name="action" value="makehtml" onclick="ShowHideMove();"> 更新网页</label>
+						<label><input type="radio" name="action" value="move" onclick="ShowHideMove();"> 移动文档</label>
+						<label><input type="radio" name="action" value="del" onclick="ShowHideMove();"> 删除文档</label>
 					</td>
 				</tr>
 				<tr>
@@ -74,10 +74,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" bgcolor="#e9ecef" align="center"><button type="button" name="b112" onclick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button></td>
+					<td colspan="2" align="center"><button type="button" name="b112" onclick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button></td>
 				</tr>
 				<tr>
-					<td colspan="2" id="mtd">
+					<td colspan="2">
 						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 					</td>
 				</tr>
@@ -87,17 +87,17 @@
 			function ShowHideTime() {
 				var selBox = document.getElementById('seltime');
 				var obj = document.getElementById('seltimeField');
-				if (selBox.checked) obj.style.display = "block";
+				if (selBox.checked) obj.style.display = "inline-block";
 				else obj.style.display = "none";
 			}
 			function ShowHideMove() {
 				var selBox = document.getElementById('moveradio');
-				var obj = document.querySelectorAll('.moveField').forEach(v=>{
-					if (selBox.checked) v.style.display = "block";
+				var obj = document.querySelectorAll('.moveField').forEach(v => {
+					if (selBox.checked) v.style.display = "inline-block";
 					else v.style.display = "none";
 				})
 			}
-			$(document).ready(function () {
+			$(document).ready(function() {
 				$('.datepicker').daterangepicker({
 					"singleDatePicker": true,
 					"autoApply": true,
@@ -121,10 +121,10 @@
 						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
 						firstDay: 1
 					}
-				}, function (start) {
+				}, function(start) {
 					$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
 				});
-			})
+			});
 		</script>
 	</body>
 </html>

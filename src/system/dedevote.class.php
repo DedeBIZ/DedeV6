@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @version        $id:dedevote.class.php 10:31 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/dedetag.class.php");
@@ -67,7 +67,7 @@ class DedeVote
      *
      * @access    public
      * @param     int    $aid  投票ID
-     * @return    string
+     * @return    void
      */
     function AddVoteCount($aid)
     {

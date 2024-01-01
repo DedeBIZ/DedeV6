@@ -5,7 +5,7 @@
  * @version        $id:diy_list.php 18:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -13,7 +13,7 @@ CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete', 'excel')) ? $action : '';
 if (empty($diyid)) {
-    showMsg("操作失败", 'javascript:;');
+    showMsg('操作失败', '-1');
     exit();
 }
 require_once DEDEINC.'/diyform.class.php';
@@ -27,13 +27,13 @@ if ($action == 'post') {
         $dede_fieldshash = empty($dede_fieldshash) ? '' : trim($dede_fieldshash);
         if (!empty($dede_fields)) {
             if ($dede_fieldshash != md5($dede_fields.$cfg_cookie_encode)) {
-                showMsg("数据校验不对，程序返回", '-1');
+                showMsg('数据校验不对', '-1');
                 exit();
             }
         }
-        $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
+        $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         if (!is_array($diyform)) {
-            showmsg("表单不存在，程序返回", '-1');
+            showmsg('表单不存在', '-1');
             exit();
         }
         $addvar = $addvalue = '';
@@ -67,11 +67,19 @@ if ($action == 'post') {
     }
 } else if ($action == 'list') {
     include_once DEDEINC.'/datalistcp.class.php';
-    $query = "SELECT * FROM {$diy->table} ORDER BY id DESC";
+    if (empty($keyword)) {
+        $keyword = '';
+        $addquery = '';
+    } else {
+        $addquery = " WHERE {$field} LIKE '%".trim($keyword)."%' ";
+    }
+    $query = "SELECT * FROM {$diy->table} $addquery ORDER BY id DESC";
     $datalist = new DataListCP();
     $datalist->pagesize = 30;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
+    $datalist->SetParameter('keyword', $keyword);
+    $datalist->SetParameter('field', $field);
     $datalist->SetTemplate(DEDEADMIN.'/templets/diy_list.htm');
     $datalist->SetSource($query);
     $fieldlist = $diy->getFieldList();
@@ -80,13 +88,13 @@ if ($action == 'post') {
     if (empty($do)) {
         $id = isset($id) && is_numeric($id) ? $id : 0;
         if (empty($id)) {
-            showMsg('操作失败，未指定id', 'javascript:;');
+            showMsg('操作失败，未指定id', '-1');
             exit();
         }
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";
         $row = $dsql->GetOne($query);
         if (!is_array($row)) {
-            showmsg("您浏览的记录不存在或未审核", '-1');
+            showmsg('您浏览的记录不存在或待审核', '-1');
             exit();
         }
         $postform = $diy->getForm('edit', $row, 'admin');
@@ -99,7 +107,7 @@ if ($action == 'post') {
         $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         $diyco = $dsql->GetOne("SELECT * FROM `$diy->table` WHERE id='$id'");
         if (!is_array($diyform)) {
-            showmsg("表单不存在，程序返回", '-1');
+            showmsg("表单不存在", '-1');
             exit();
         }
         $addsql = '';
@@ -193,12 +201,12 @@ if ($action == 'post') {
         {
             echo "<td>".$arr[$key]."</td>";
         }
-    $status = $arr['ifcheck'] == 1 ? '已审核' : '未审核';
+    $status = $arr['ifcheck'] == 1 ? '已审核' : '待审核';
     echo "<td>".$status."</td>";
     echo "</tr>";
     }
     echo "</table>";
 } else {
-    showmsg('未定义操作', "-1");
+    showmsg('未定义操作', '-1');
 }
 ?>

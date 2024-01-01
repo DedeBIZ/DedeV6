@@ -3,7 +3,7 @@
  * @version        $id:common.inc.php 3 17:44 2010-11-23 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
 //系统默认运行模式为安全模式，模板管理、标签管理、数据库管理、模块管理等功能已暂停，如果您需要这些功能，DEDEBIZ_SAFE_MODE后面值`TRUE`改为`FALSE`恢复使用
@@ -106,10 +106,6 @@ if (!isset($needFilter)) {
 }
 $registerGlobals = @ini_get("register_globals");
 $isUrlOpen = @ini_get("allow_url_fopen");
-$isSafeMode = @ini_get("safe_mode");
-if (preg_match('/windows/i', @getenv('OS'))) {
-    $isSafeMode = false;
-}
 //系统配置参数
 if (!file_exists(DEDEDATA."/config.cache.inc.php")) {
     die('DedeBIZ初始化失败，确保系统正确被安装');
@@ -126,12 +122,18 @@ if (!is_dir($sessSavePath)) mkdir($sessSavePath);
 if (is_writeable($sessSavePath) && is_readable($sessSavePath)) {
     @session_save_path($sessSavePath);
 }
+require_once DEDEINC.'/dedealert.func.php';
 //转换上传的文件相关的变量及安全处理，并引用前台通用的上传函数
 if ($_FILES) {
     require_once(DEDEINC.'/uploadsafe.inc.php');
 }
 //数据库配置文件
-require_once(DEDEDATA.'/common.inc.php');
+if (file_exists(DEDEDATA.'/common.inc.php')) {
+    require_once(DEDEDATA.'/common.inc.php');
+} else {
+    $cfg_dbtype = $cfg_dbhost = $cfg_dbname= $cfg_dbuser = $cfg_dbpwd = $cfg_dbprefix = $cfg_db_language ='';      //数据库类型
+}
+
 if (!isset($cfg_dbtype)) {
     $cfg_dbtype = 'mysql';
 }
@@ -152,35 +154,35 @@ if (PHP_SAPI === 'cli') {
     $cfg_clihost = 'http://'.$_SERVER['HTTP_HOST'];
 }
 //站点根目录
-$cfg_basedir = preg_replace('#'.$cfg_cmspath.'\/system$#i', '', DEDEINC);
+$cfg_basedir = preg_replace('#'.'\/system$#i', '', DEDEINC);
 if ($cfg_multi_site == 'Y') {
     $cfg_mainsite = $cfg_basehost;
 } else {
     $cfg_mainsite = '';
 }
 //模板存放目录
-$cfg_templets_dir = $cfg_cmspath.'/theme';
+$cfg_templets_dir = '/theme';
 $cfg_templeturl = $cfg_mainsite.$cfg_templets_dir;
 $cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/templets" : $cfg_mainsite.$cfg_templets_dir."/$cfg_df_style";
 //安装目录网址
-$cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
+$cfg_cmsurl = $cfg_mainsite;
 //模块插件目录
-$cfg_plus_dir = $cfg_cmspath.'/apps';
+$cfg_plus_dir = '/apps';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
-$cfg_static_dir = $cfg_cmspath.'/static';
+$cfg_static_dir = '/static';
 $cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
-$cfg_mobile_dir = $cfg_cmspath.'/m';
+$cfg_mobile_dir = '/m';
 $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
-$cfg_data_dir = $cfg_cmspath.'/data';
+$cfg_data_dir = '/data';
 $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
 //会员会员目录
-$cfg_member_dir = $cfg_cmspath.'/user';
+$cfg_member_dir = '/user';
 $cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
 //专题存放目录
-$cfg_special = $cfg_cmspath.'/a/special';
+$cfg_special = '/a/special';
 $cfg_specialurl = $cfg_mainsite.$cfg_special;
 //附件目录
-$cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;
+$cfg_medias_dir = $cfg_medias_dir;
 $cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
 //上传图片存放目录，建议按默认
 $cfg_image_dir = $cfg_medias_dir.'/allimg';
@@ -192,7 +194,7 @@ $cfg_soft_dir = $cfg_medias_dir.'/soft';
 $cfg_other_medias = $cfg_medias_dir.'/media';
 //软件摘要信息，请不要删除，否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
-$cfg_version_detail = '6.2.10';//详细版本号
+$cfg_version_detail = '6.3.0';//详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 $cfg_softname = '得德系统';
@@ -202,11 +204,7 @@ $cfg_soft_devteam = 'DedeBIZ';
 $art_shortname = $cfg_df_ext = '.html';
 $cfg_df_namerule = '{typedir}/{aid}'.$cfg_df_ext;
 //新建目录的权限，如果您使用别的属性，本程不保证程序能顺利在Linux或Unix系统运行
-if (isset($cfg_ftp_mkdir) && $cfg_ftp_mkdir == 'Y') {
-    $cfg_dir_purview = '0755';
-} else {
-    $cfg_dir_purview = 0755;
-}
+$cfg_dir_purview = 0755;
 //会员是否使用精简模式
 $cfg_mb_lit = 'N';
 //特殊全局变量
