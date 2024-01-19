@@ -19,7 +19,7 @@
 						<li class="breadcrumb-item">修改<?php echo $row['title']?></li></li>
 					</ol>
 				</nav>
-				<form name="addcontent" action="<?php echo $cfg_memberurl;?>/album_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
+				<form name="addcontent" action="<?php echo $cfg_memberurl;?>/album_edit.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="dopost" value="save">
 					<input type="hidden" name="aid" value="<?php echo $row['id'];?>">
 					<input type="hidden" name="idhash" value="<?php echo hash('sha256', $row['id'].$cfg_cookie_encode);?>">

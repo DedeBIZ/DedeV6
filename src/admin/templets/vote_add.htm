@@ -32,7 +32,7 @@
 		</script>
 	</head>
 	<body>
-		<form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit();">
+		<form name="form1" method="post" action="vote_add.php">
 			<input type="hidden" name="dopost" value="save">
 			<input type="hidden" name="isarc" value="<?php echo $isarc;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">

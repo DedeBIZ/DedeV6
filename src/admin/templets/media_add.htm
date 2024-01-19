@@ -12,7 +12,7 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="media_add.php" method="post" enctype="multipart/form-data" onSubmit="return CheckSubmit();">
+		<form name="form1" action="media_add.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="dopost" value="upload">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<table class="table shadow-sm my-3">

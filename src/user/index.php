@@ -16,7 +16,7 @@ $menutype = 'mydede';
 if ($uid == '') {
     $iscontrol = 'yes';
     if (!$cfg_ml->IsLogin()) {
-        include_once(dirname(__FILE__)."/templets/index-notlogin.htm");
+        include_once(dirname(__FILE__)."/templets/index_notlogin.htm");
     } else {
         $minfos = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='".$cfg_ml->M_ID."';");
         $minfos['totaluse'] = $cfg_ml->GetUserSpace();
@@ -59,7 +59,7 @@ if ($uid == '') {
     $_vars['face'] = empty($_vars['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $_vars['face'];
     $_vars['userid_e'] = urlencode($_vars['userid']);
     $_vars['userurl'] = $cfg_memberurl."/index.php?uid=".$_vars['userid_e'];
-    if($_vars['membername']=='开放浏览') $_vars['membername'] = '限制会员';
+    if ($_vars['membername'] == '开放浏览') $_vars['membername'] = '限制会员';
     $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET homecount=homecount+1 WHERE mid='{$_vars['mid']}' ");
     $tpl = new DedeTemplate();
     $tpl->LoadTemplate(dirname(__FILE__)."/templets/space.htm");

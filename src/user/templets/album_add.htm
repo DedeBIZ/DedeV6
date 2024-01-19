@@ -19,7 +19,7 @@
 						<li class="breadcrumb-item">发布<?php echo $cInfos['typename'];?></li></li>
 					</ol>
 				</nav>
-				<form name="addcontent" action="<?php echo $cfg_memberurl;?>/album_add.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
+				<form name="addcontent" action="<?php echo $cfg_memberurl;?>/album_add.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="dopost" value="save">
 					<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 					<input type="hidden" name="imagebody" id="imagebody">

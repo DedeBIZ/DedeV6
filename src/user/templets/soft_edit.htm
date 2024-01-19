@@ -19,7 +19,7 @@
 						<li class="breadcrumb-item">修改<?php echo $row['title']?></li></li>
 					</ol>
 				</nav>
-				<form name="addcontent" action="<?php echo $cfg_memberurl;?>/soft_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
+				<form name="addcontent" action="<?php echo $cfg_memberurl;?>/soft_edit.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="dopost" value="save">
 					<input type="hidden" name="aid" value="<?php echo $row['id'];?>">
 					<input type="hidden" name="channelid" value="<?php echo $row['channel'];?>">
