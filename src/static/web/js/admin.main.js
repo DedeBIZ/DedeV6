@@ -230,6 +230,95 @@ function getSelCat(targetId) {
 	HideObj("getCatMap");
 	ChangeFullDiv("hide");
 }
+//生成一个随机id
+function guid() {
+	function S4() {
+		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+	}
+	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+var _DedeConfirmFuncs = {};
+var _DedeConfirmFuncsClose = {};
+function __DedeConfirmRun(modalID) {
+	_DedeConfirmFuncs[modalID]();
+}
+function __DedeConfirmRunClose(modalID) {
+	_DedeConfirmFuncsClose[modalID]();
+}
+function DedeConfirm(content = "", title = "确认提示") {
+	let modalID = guid();
+	return new Promise((resolve, reject) => {
+		_DedeConfirmFuncs[modalID] = ()=>{
+			resolve("success");
+			CloseModal(`DedeModal${modalID}`);
+		}
+		_DedeConfirmFuncsClose[modalID] = ()=>{
+			reject("cancel");
+			CloseModal(`DedeModal${modalID}`);
+		}
+		let footer = `<button type="button" class="btn btn-outline-success btn-sm" onclick="__DedeConfirmRunClose(\'${modalID}\')">取消</button><button type="button" class="btn btn-success btn-sm" onclick="__DedeConfirmRun(\'${modalID}\')">确定</button>`;
+		let modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
+		modal += `<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>`;
+		modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
+		$("body").append(modal)
+		$("#DedeModal" + modalID).modal({
+			backdrop: 'static',
+			show: true
+		});
+		$("#DedeModal" + modalID).on('hidden.bs.modal', function(e) {
+			$("#DedeModal" + modalID).remove();
+		})
+	})
+}
+//函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+function ShowMsg(content, ...args) {
+	title = "系统提示";
+	size = '';
+	if (typeof content == "undefined") content = '';
+	modalID = guid();
+	var footer = `<button type="button" class="btn btn-primary btn-sm" onclick="CloseModal(\'GKModal${modalID}\')">确定</button>`;
+	var noClose = false;
+	if (args.length == 1) {
+		//存在args参数
+		if (typeof args[0].title !== 'undefined' && args[0].title != "") {
+			title = args[0].title;
+		}
+		if (typeof args[0].footer !== 'undefined' && args[0].footer != "") {
+			footer = args[0].footer;
+		}
+		if (typeof args[0].size !== 'undefined' && args[0].size != "") {
+			size = args[0].size;
+		}
+		if (typeof args[0].noClose !== 'undefined' && args[0].noClose == true) {
+			noClose = true;
+		}
+	}
+	footer = footer.replaceAll("~modalID~", modalID);
+	content = content.replaceAll("~modalID~", modalID);
+	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}"><div class="modal-dialog ${size}" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="GKModalLabel${modalID}">${title}</h5>`;
+	if (!noClose) {
+		modal += `<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>`;
+	}
+	modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
+	$("body").append(modal)
+	$("#GKModal" + modalID).modal({
+		backdrop: 'static',
+		show: true
+	});
+	$("#GKModal" + modalID).on('hidden.bs.modal', function(e) {
+		$("#GKModal" + modalID).remove();
+	})
+	return modalID;
+}
+//隐藏并销毁modal
+function CloseModal(modalID) {
+	$("#" + modalID).modal('hide');
+	$("#" + modalID).on('hidden.bs.modal', function(e) {
+		if ($("#" + modalID).length > 0) {
+			$("#" + modalID).remove();
+		}
+	})
+}
 //获取缩略图
 var litpicImgSrc = '';
 var litpicImg = '';
