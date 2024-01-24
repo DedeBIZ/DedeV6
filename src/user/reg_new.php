@@ -51,8 +51,12 @@ if ($step == 1) {
             ShowMsg('账号不合法，请使用数字0-9小写a-z大写A-Z符号_@!.-', '-1');
             exit();
         }
+        if ($userpwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $userpwd)) {
+            ShowMsg('密码不合法，请使用数字0-9小写a-z大写A-Z符号_@!.-', '-1');
+            exit();
+        }
         if ($pwdc != $pwd) {
-            ShowMsg('您两次输入的密码不一致', '-1');
+            ShowMsg('您两次输入的密码不一致，请重新输入', '-1');
             exit();
         }
         $uname = HtmlReplace($uname, 1);

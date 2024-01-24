@@ -84,12 +84,12 @@
 						</div>
 						<div class="form-group">
 							<label for="adminuser" class="form-label">管理员账号</label>
-							<input type="text" name="adminuser" id="adminuser" class="form-control" placeholder="admin">
+							<input type="text" name="adminuser" id="adminuser" class="form-control" placeholder="admin" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');">
 							<div class="form-text">请使用数字0-9小写a-z大写A-Z符号_@!.-</div>
 						</div>
 						<div class="form-group">
 							<label for="adminpwd" class="form-label">管理员密码</label>
-							<input type="text" name="adminpwd" id="adminpwd" class="form-control" placeholder="admin">
+							<input type="text" name="adminpwd" id="adminpwd" class="form-control" placeholder="admin" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');">
 							<div class="form-text">请使用数字0-9小写a-z大写A-Z符号_@!.-</div>
 						</div>
 						<div class="text-right"><button type="submit" class="btn btn-success">安装</button></div>
