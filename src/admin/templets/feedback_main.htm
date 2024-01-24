@@ -76,12 +76,8 @@
 			</table>
 		</form>
 		<script>
-			//获得选中文件的文件名
 			function getCheckboxItem() {
-				var allSel = '';
-				if (typeof document.feedback.fid === "undefined") {
-					return "";
-				}
+				var allSel = "";
 				if (document.feedback.fid.value) return document.feedback.fid.value;
 				for (i = 0; i < document.feedback.fid.length; i++) {
 					if (document.feedback.fid[i].checked) {
@@ -94,79 +90,43 @@
 				return allSel;
 			}
 			function selAll() {
-				if (typeof document.feedback.fid === "undefined") {
-					return;
-				}
 				for (i = 0; i < document.feedback.fid.length; i++) {
 					document.feedback.fid[i].checked = true;
 				}
 			}
 			function selNone() {
-				if (typeof document.feedback.fid === "undefined") {
-					return;
-				}
 				for (i = 0; i < document.feedback.fid.length; i++) {
 					document.feedback.fid[i].checked = false;
 				}
 			}
 			function selNor() {
-				if (typeof document.feedback.fid === "undefined") {
-					return;
-				}
 				for (i = 0; i < document.feedback.fid.length; i++) {
 					if (document.feedback.fid[i].checked == false)
 						document.feedback.fid[i].checked = true;
 					else
 						document.feedback.fid[i].checked = false;
+
 				}
 			}
 			function delFeedback() {
 				var qstr = getCheckboxItem();
-				if (qstr == "") {
-					ShowMsg("您没选中任何文档");
-					return
-				};
-				DedeConfirm("您确定要删除这些评论吗").then((v)=>{
-					location.href = "feedback_main.php?job=del&fid=" + qstr
-				}).catch((e)=>{
-					console.log(e)
-				});
+				if (qstr == "") ShowMsg("您没选中任何内容");
+				else if (window.confirm('您确定要删除这些评论吗?')) location.href = "feedback_main.php?job=del&fid=" + qstr;
 			}
 			function delFeedbackIP() {
 				var qstr = getCheckboxItem();
-				if (qstr == "") {
-					ShowMsg("您没选中任何文档");
-					return;
-				};
-				DedeConfirm("您确定要删除这些评论吗").then((v)=>{
-					location.href = "feedback_main.php?job=delall&fid=" + qstr;
-				}).catch((e)=>{
-					console.log(e)
-				});
+				if (qstr == "") ShowMsg("您没选中任何内容");
+				else if (window.confirm('您确定要删除这些评论吗?')) location.href = "feedback_main.php?job=delall&fid=" + qstr;
 			}
 			function checkFeedback() {
 				var qstr = getCheckboxItem();
-				if (qstr == "") {
-					ShowMsg("您没选中任何文档");
-					return;
-				};
-				DedeConfirm("您确定要审核这些评论吗").then((v)=>{
-					location.href = "feedback_main.php?job=check&fid=" + qstr;
-				}).catch((e)=>{
-					console.log(e)
-				});
+				if (qstr == "") ShowMsg("您没选中任何内容");
+				else location.href = "feedback_main.php?job=check&fid=" + qstr;
 			}
 			function editFeedback() {
 				var qstr = getCheckboxItem();
-				if (qstr == "") {
-					ShowMsg("您没选中任何文档");
-					return;
-				}
-				DedeConfirm("您确定要删除这些评论吗").then((v)=>{
-					location.href = "feedback_edit.php?job=edit&fid=" + qstr;
-				}).catch((e)=>{
-					console.log(e)
-				});
+				if (qstr == "") ShowMsg("您没选中任何内容");
+				else location.href = "feedback_edit.php?job=edit&fid=" + qstr;
 			}
 		</script>
 	</body>
