@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * Cookie处理助手
  *
- * @version        $id:cookie.helper.php 2023年11月24日 tianya $
+ * @version        $id:cookie.helper.php 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)
@@ -22,20 +22,8 @@ if (!function_exists('PutCookie')) {
     function PutCookie($key, $value, $kptime = 0, $pa = "/")
     {
         global $cfg_cookie_encode, $cfg_domain_cookie;
-        if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
-            $options = array(
-                "expires" => time() + $kptime,
-                'path' => $pa,
-                'domain' => $cfg_domain_cookie,
-                'samesite' => 'None',
-                'secure' => true,
-            );
-            setcookie($key, $value, $options);
-            setcookie($key.'__ckMd5', substr(md5($cfg_cookie_encode.$value), 0, 16), $options);
-        } else {
-            setcookie($key, $value, time() + $kptime, $pa.'; SameSite=None; Secure', $cfg_domain_cookie);
-            setcookie($key.'__ckMd5', substr(md5($cfg_cookie_encode.$value), 0, 16), time() + $kptime, $pa.'; SameSite=None; Secure', $cfg_domain_cookie);
-        }
+        setcookie($key, $value, time() + $kptime, $pa, $cfg_domain_cookie);
+        setcookie($key.'__ckMd5', substr(md5($cfg_cookie_encode.$value), 0, 16), time() + $kptime, $pa, $cfg_domain_cookie);
     }
 }
 /**
@@ -48,20 +36,8 @@ if (!function_exists('DropCookie')) {
     function DropCookie($key)
     {
         global $cfg_domain_cookie;
-        if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
-            $options = array(
-                "expires" => time() - 360000,
-                'path' => "/",
-                'domain' => $cfg_domain_cookie,
-                'samesite' => 'None',
-                'secure' => true,
-            );
-            setcookie($key, "", $options);
-            setcookie($key.'__ckMd5', "", $options);
-        } else {
-            setcookie($key, '', time() - 360000, "/; SameSite=None; Secure", $cfg_domain_cookie);
-            setcookie($key.'__ckMd5', '', time() - 360000, "/; SameSite=None; Secure", $cfg_domain_cookie);
-        }
+        setcookie($key, '', time() - 360000, "/", $cfg_domain_cookie);
+        setcookie($key.'__ckMd5', '', time() - 360000, "/", $cfg_domain_cookie);
     }
 }
 /**
