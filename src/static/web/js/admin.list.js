@@ -1,3 +1,47 @@
+function getCheckboxItem() {
+	var allSel = '';
+	if (document.form2.arcID.value) return document.form2.arcID.value;
+	for (i = 0; i < document.form2.arcID.length; i++) {
+		if (document.form2.arcID[i].checked) {
+			if (allSel == '')
+				allSel = document.form2.arcID[i].value;
+			else
+				allSel = allSel + "`" + document.form2.arcID[i].value;
+		}
+	}
+	return allSel;
+}
+function getOneItem() {
+	var allSel = '';
+	if (document.form2.arcID.value) return document.form2.arcID.value;
+	for (i = 0; i < document.form2.arcID.length; i++) {
+		if (document.form2.arcID[i].checked) {
+			allSel = document.form2.arcID[i].value;
+			break;
+		}
+	}
+	return allSel;
+}
+function selAll() {
+	if (typeof document.form2.arcID.length === "undefined") {
+		document.form2.arcID.checked = true;
+	}
+	for (i = 0; i < document.form2.arcID.length; i++) {
+		if (!document.form2.arcID[i].checked) {
+			document.form2.arcID[i].checked = true;
+		}
+	}
+}
+function noSelAll() {
+	if (typeof document.form2.arcID.length === "undefined") {
+		document.form2.arcID.checked = false;
+	}
+	for (i = 0; i < document.form2.arcID.length; i++) {
+		if (document.form2.arcID[i].checked) {
+			document.form2.arcID[i].checked = false;
+		}
+	}
+}
 function viewArc(aid) {
 	if (aid == 0) aid = getOneItem();
 	window.open("archives_do.php?aid=" + aid + "&dopost=viewArchives");
@@ -57,48 +101,4 @@ function delArc(aid) {
 function QuickEdit(aid, e, obj) {
 	LoadQuickDiv(e, 'archives_do.php?dopost=quickEdit&aid=' + aid + '&rnd=' + Math.random(), 'quickEdit', 'auto', '300px');
 	ChangeFullDiv('show');
-}
-function getCheckboxItem() {
-	var allSel = '';
-	if (document.form2.arcID.value) return document.form2.arcID.value;
-	for (i = 0;i<document.form2.arcID.length;i++) {
-		if (document.form2.arcID[i].checked) {
-			if (allSel == '')
-				allSel = document.form2.arcID[i].value;
-			else
-				allSel = allSel + "`" + document.form2.arcID[i].value;
-		}
-	}
-	return allSel;
-}
-function getOneItem() {
-	var allSel = '';
-	if (document.form2.arcID.value) return document.form2.arcID.value;
-	for (i = 0;i<document.form2.arcID.length;i++) {
-		if (document.form2.arcID[i].checked) {
-			allSel = document.form2.arcID[i].value;
-			break;
-		}
-	}
-	return allSel;
-}
-function selAll() {
-	if (typeof document.form2.arcID.length === "undefined") {
-		document.form2.arcID.checked = true;
-	}
-	for (i = 0;i<document.form2.arcID.length;i++) {
-		if (!document.form2.arcID[i].checked) {
-			document.form2.arcID[i].checked = true;
-		}
-	}
-}
-function noSelAll() {
-	if (typeof document.form2.arcID.length === "undefined") {
-		document.form2.arcID.checked = false;
-	}
-	for (i = 0;i<document.form2.arcID.length;i++) {
-		if (document.form2.arcID[i].checked) {
-			document.form2.arcID[i].checked = false;
-		}
-	}
 }

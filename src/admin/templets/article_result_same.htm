@@ -51,7 +51,6 @@
 			</table>
 		</form>
 		<script>
-			//获得选中文件的文件名
 			function getCheckboxItem() {
 				var allSel = '';
 				if (document.form2.arcTitle.value) return document.form2.arcTitle.value;
@@ -65,7 +64,6 @@
 				}
 				return allSel;
 			}
-			//删除文档
 			function delArc() {
 				var qstr = getCheckboxItem();
 				document.form2.titles.value = qstr;

@@ -51,17 +51,6 @@
 			</table>
 		</form>
 		<script>
-			function moveArc(aid) {
-				var qstr = getCheckboxItem();
-				if (aid == 0) aid = getOneItem();
-				location = "archives_do.php?aid=" + aid + "&dopost=return&qstr=" + qstr;
-			}
-			function delArc(aid) {
-				var qstr = getCheckboxItem();
-				if (aid == 0) aid = getOneItem();
-				location = "archives_do.php?qstr=" + qstr + "&aid=" + aid + "&dopost=del&recycle=1";
-			}
-			//获得选中文件的文件名
 			function getCheckboxItem() {
 				var allSel = '';
 				if (document.form2.arcID.value) return document.form2.arcID.value;
@@ -75,7 +64,6 @@
 				}
 				return allSel;
 			}
-			//获得选中其中一个的id
 			function getOneItem() {
 				var allSel = '';
 				if (document.form2.arcID.value) return document.form2.arcID.value;
@@ -106,6 +94,16 @@
 						document.form2.arcID[i].checked = false;
 					}
 				}
+			}
+			function moveArc(aid) {
+				var qstr = getCheckboxItem();
+				if (aid == 0) aid = getOneItem();
+				location = "archives_do.php?aid=" + aid + "&dopost=return&qstr=" + qstr;
+			}
+			function delArc(aid) {
+				var qstr = getCheckboxItem();
+				if (aid == 0) aid = getOneItem();
+				location = "archives_do.php?qstr=" + qstr + "&aid=" + aid + "&dopost=del&recycle=1";
 			}
 		</script>
 	</body>
