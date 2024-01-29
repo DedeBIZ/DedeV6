@@ -17,7 +17,7 @@ function lib_demotag(&$ctag, &$refObj)
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';
     //您需编写的代码，不能用echo之类语法，把最终返回值传给$revalue
-    $revalue = '您好，欢迎使用DedeBIZ系统';
+    $revalue = '您好，欢迎使用DedeBIZ';
     return $revalue;
 }
 ?>
