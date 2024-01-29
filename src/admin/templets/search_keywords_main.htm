@@ -26,7 +26,7 @@
 					return resp.text()
 				}
 				throw new Error(errMsg);
-			}).then((d)=>{
+			}).then((d) => {
 				listArea.innerHTML = d;
 			}).catch((error) => {
 				listArea.innerHTML = errMsg;
@@ -87,7 +87,7 @@
 					return resp.text()
 				}
 				throw new Error(errMsg);
-			}).then((d)=>{
+			}).then((d) => {
 				listArea.innerHTML = d;
 			}).catch((error) => {
 				listArea.innerHTML = errMsg;
@@ -137,8 +137,7 @@
 		<div id="rslist"><?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?></div>
 		<table class="table shadow-sm mb-3">
 			<tr>
-				<td align="center">
-					<span id="pagelist"></span>
+				<td id="pagelist">
 					<script>ReloadPageNum(1);</script>
 				</td>
 			</tr>

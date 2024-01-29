@@ -269,9 +269,9 @@
 				else { obj.style.display = 'none'; }
 			}
 			function DelNote(gourl) {
-				DedeConfirm("您确认要删除这个字段吗").then((v)=>{
+				DedeConfirm("您确认要删除这个字段吗").then((v) => {
 					location.href = gourl;
-				}).catch((e)=>{
+				}).catch((e) => {
 					console.log(e)
 				});
 			}

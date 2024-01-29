@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
 		<script src="/static/web/js/webajax.js"></script>
 		<script src="/static/web/js/admin.main.js"></script>
 		<script>
@@ -21,7 +22,7 @@
 				orderby = ordertype;
 				var listArea = $Obj('rslist');
 				var errMsg = "<a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
-				fetch("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget).then(resp=>resp.text()).then((d)=>{
+				fetch("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget).then(resp=>resp.text()).then((d) => {
 					listArea.innerHTML = d;
 				}).catch((error) => {
 					listArea.innerHTML = errMsg;
@@ -43,27 +44,22 @@
 			}
 			//删除
 			function DelNote(nid) {
-				DedeConfirm("您确认要删除这条记录吗").then((v)=>{
-					var listArea = $Obj('rslist');
-					totalrow = totalrow - 1;
-					var pagenum = Math.ceil(totalrow / pagesize);
-					if (pagenum <= pageno) pageno = pagenum;
-					var errMsg = "<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
-					fetch("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno).then(resp=>{
-						if (resp.ok) {
-							return resp.text()
-						}
-						throw new Error(errMsg);
-					}).then((d)=>{
-						listArea.innerHTML = d;
-					}).catch((error) => {
-						listArea.innerHTML = errMsg;
-					});
-
-					ReloadPageNum(pageno);
-				}).catch((e)=>{
-					console.log(e)
+				var listArea = $Obj('rslist');
+				totalrow = totalrow - 1;
+				var pagenum = Math.ceil(totalrow / pagesize);
+				if (pagenum <= pageno) pageno = pagenum;
+				var errMsg = "<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
+				fetch("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno).then(resp=>{
+					if (resp.ok) {
+						return resp.text()
+					}
+					throw new Error(errMsg);
+				}).then((d) => {
+					listArea.innerHTML = d;
+				}).catch((error) => {
+					listArea.innerHTML = errMsg;
 				});
+				ReloadPageNum(pageno);
 			}
 			//重新加载分页列表
 			function ReloadPageNum(startnum) {
@@ -121,10 +117,8 @@
 		<div id="rslist"><?php GetTagList($dsql,$pageno,$pagesize,$orderby);?></div>
 		<table class="table shadow-sm mb-3">
 			<tr>
-				<td>
-					<div id="pagelist">
-						<script>ReloadPageNum(1);</script>
-					</div>
+				<td id="pagelist">
+					<script>ReloadPageNum(1);</script>
 				</td>
 			</tr>
 		</table>
