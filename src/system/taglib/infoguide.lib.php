@@ -12,8 +12,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_infoguide(&$ctag, &$refObj)
 {
     global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_mainsite;
-    //属性处理
-    //$attlist="row|12,titlelen|30";
+    //$attlist="row|10,titlelen|30";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
     if (empty($refObj->Fields['typeid'])) {

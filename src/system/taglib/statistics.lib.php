@@ -13,7 +13,6 @@ require_once(DEDEINC."/libraries/statistics.class.php");
 function lib_statistics(&$ctag, &$refObj)
 {
     global $envs;
-    //属性处理
     $attlist = '';
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);

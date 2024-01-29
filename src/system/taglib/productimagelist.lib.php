@@ -15,8 +15,8 @@ function lib_productimagelist(&$ctag, &$refObj)
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     if (!isset($refObj->addTableRow['imgurls'])) return;
     $revalue = '';
+    if (empty($innerText)) $innerText = GetSysTemplets('part_arclist.htm');
     $innerText = trim($ctag->GetInnerText());
-    if (empty($innerText)) $innerText = GetSysTemplets('productimagelist.htm');
     $dtp = new DedeTagParse();
     $dtp->LoadSource($refObj->addTableRow['imgurls']);
     $images = array();

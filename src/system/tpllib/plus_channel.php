@@ -82,7 +82,6 @@ function plus_channel(&$atts, &$refObj, &$fields)
         $reArray[] = $row;
         $GLOBALS['autoindex']++;
     }
-    //Loop for $i
     $dsql->FreeResult();
     return $reArray;
 }

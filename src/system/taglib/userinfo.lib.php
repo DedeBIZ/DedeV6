@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_userinfo(&$ctag, &$refObj)
 {
     global $dsql;
-    $attlist="mid|0";
+    $attlist = "mid|0";
     FillAttsDefault($ctag->CAttribute->Items,$attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $rmid = !empty($refObj->Fields['mid'])? intval($refObj->Fields['mid']) : 0;

@@ -13,8 +13,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_relation(&$ctag, &$refObj)
 {
     global $dsql;
-    //属性处理
-    $attlist = "row|12,titlelen|28,infolen|150,name|default,orderby|";
+    $attlist = "row|10,titlelen|30,infolen|160,name|default,orderby|";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     if (get_class($refObj) != "Archives") {

@@ -36,8 +36,7 @@ if ($dopost == 'save') {
             $pwd = $row['pwd'];
         }
     } else {
-        if (function_exists('password_hash')) 
-        {
+        if (function_exists('password_hash')) {
             $pp = "pwd_new";
             $pwd = password_hash($userpwd, PASSWORD_BCRYPT);
             $pwd2 = password_hash($userpwd, PASSWORD_BCRYPT);

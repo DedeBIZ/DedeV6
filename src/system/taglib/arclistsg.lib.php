@@ -20,7 +20,6 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_arclistsg(&$ctag, &$refObj)
 {
     global $dsql, $PubFields, $cfg_keyword_like, $cfg_index_cache, $_arclistEnv, $envs, $_sys_globals;
-    //属性处理
     $attlist = "typeid|0,row|10,col|1,flag|,titlelen|30,sort|default,keyword|,innertext|,arcid|0,idlist|,channelid|0,limit|,orderway|desc,subday|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);

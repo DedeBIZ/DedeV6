@@ -12,8 +12,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_likearticle(&$ctag, &$refObj)
 {
     global $dsql;
-    //属性处理
-    $attlist = "row|12,titlelen|28,infolen|150,col|1,tablewidth|100,mytypeid|0,byabs|0,imgwidth|120,imgheight|90";
+    $attlist = "row|10,titlelen|30,infolen|160,col|1,tablewidth|100,mytypeid|0,byabs|0,imgwidth|120,imgheight|90";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';

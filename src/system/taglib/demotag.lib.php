@@ -12,13 +12,12 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_demotag(&$ctag, &$refObj)
 {
     global $dsql, $envs;
-    //属性处理
-    $attlist = "row|12,titlelen|24";
+    $attlist = "row|10,titlelen|24";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';
     //您需编写的代码，不能用echo之类语法，把最终返回值传给$revalue
-    $revalue = 'Hello Word!';
+    $revalue = '您好，欢迎使用DedeBIZ系统';
     return $revalue;
 }
 ?>

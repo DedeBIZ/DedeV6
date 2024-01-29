@@ -501,7 +501,7 @@ class SearchView
         $colWidth = $colWidth."%";
         $innertext = trim($innertext);
         if ($innertext == '') {
-            $innertext = GetSysTemplets("search_list.htm");
+            $innertext = GetSysTemplets("list_fulllist.htm");
         }
         //排序方式
         $ordersql = '';

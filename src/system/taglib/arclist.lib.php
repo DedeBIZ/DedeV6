@@ -225,7 +225,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             }
         }
         $orwheres[] = 'arc.arcrank > -1';
-        //否定指定栏目
+        //否定栏目调用
         if (!empty($notypeid)) {
             $orwheres[] = "and arc.typeid NOT IN (".GetSonIds($notypeid).")";
         }

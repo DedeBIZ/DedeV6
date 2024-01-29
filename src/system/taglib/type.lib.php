@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_type(&$ctag, &$refObj)
 {
     global $dsql, $envs;
-    $attlist = 'typeid|0';
+    $attlist = "typeid|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = trim($ctag->GetInnerText());

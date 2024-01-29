@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_feedback(&$ctag, &$refObj)
 {
     global $dsql;
-    $attlist = "row|12,titlelen|30,infolen|100,orderby|";
+    $attlist = "row|10,titlelen|30,infolen|160,orderby|";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = trim($ctag->GetInnerText());
