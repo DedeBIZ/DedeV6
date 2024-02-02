@@ -26,11 +26,7 @@ function is_str_float($value){
 function lib_infolink(&$ctag, &$refObj)
 {
     global $dsql, $nativeplace, $infotype, $cfg_rewrite, $cfg_mainsite, $em_nativeplaces, $em_infotypes;
-<<<<<<< Updated upstream
     //$attlist="row|10,titlelen|30";
-=======
-    //$attlist="row|12,titlelen|30";
->>>>>>> Stashed changes
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
     $baseurl = preg_replace("#\/$#", '', $cfg_mainsite);
