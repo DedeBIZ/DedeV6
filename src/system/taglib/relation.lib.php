@@ -9,11 +9,14 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)
  * @link           https://www.dedebiz.com
  */
-//关联文档
 function lib_relation(&$ctag, &$refObj)
 {
     global $dsql;
+<<<<<<< Updated upstream
     $attlist = "row|10,titlelen|30,infolen|160,name|default,orderby|";
+=======
+    $attlist = "row|10,titlelen|30,infolen|150,name|default,orderby|";
+>>>>>>> Stashed changes
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     if (get_class($refObj) != "Archives") {

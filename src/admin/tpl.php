@@ -159,8 +159,7 @@ if (!defined('DEDEINC')) {
 function lib_demotag(\$ctag, \$refObj)
 {
     global \$dsql, \$envs;
-    //属性处理
-    \$attlist = \"row|12,titlelen|30\";
+    \$attlist = \"row|10,titlelen|30\";
     FillAttsDefault(\$ctag->CAttribute->Items,\$attlist);
     extract(\$ctag->CAttribute->Items, EXTR_SKIP);
     \$revalue = '';

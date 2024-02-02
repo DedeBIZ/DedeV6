@@ -12,7 +12,11 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_demotag(&$ctag, &$refObj)
 {
     global $dsql, $envs;
+<<<<<<< Updated upstream
     $attlist = "row|10,titlelen|24";
+=======
+    $attlist = "row|10,titlelen|30";
+>>>>>>> Stashed changes
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';

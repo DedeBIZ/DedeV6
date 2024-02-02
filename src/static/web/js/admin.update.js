@@ -19,7 +19,7 @@ function update() {
 			if (rs.data.finish === false) {
 				setTimeout(() => {
 					update();
-				}, 500);
+				}, 1000);
 			} else {
 				currentStep++
 				$("#_msgInfo").html('');
@@ -50,7 +50,6 @@ function hasNewVersion() {
 	});
 }
 $(document).ready(function() {
-	hasNewVersion();
 	$("#btnCancel").click(function() {
 		currentStep = 1;
 		$("#_fileList").html(``);

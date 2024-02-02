@@ -10,7 +10,11 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_cattree(&$ctag, &$refObj)
 {
     global $dsql;
+<<<<<<< Updated upstream
     $attlist = "showall|,catid|0"; //处理showall在空或不存在时，强制用产品模型id。如果是yes刚显示整个语言区栏目树，为其它数字则是这个数字的模型的id；typeid指定顶级树id，指定后的前一个属性无效
+=======
+    $attlist = "showall|,catid|0"; //showall在空或不存在时，强制用产品模型id；如果是yes刚显示整个语言区栏目树，为其它数字则是这个数字的模型的id；typeid指定顶级树id，指定后，前一个属性无效
+>>>>>>> Stashed changes
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';

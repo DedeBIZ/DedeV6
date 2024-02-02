@@ -128,8 +128,8 @@ if ($action === 'is_need_check_code') {
     $data = $dhd->GetHtml();
     if (empty($data)) {
         echo json_encode(array(
-            "code"=>-1,
-            "msg"=>'获取版本信息失败',
+            "code" => -1,
+            "msg" => '获取版本信息失败',
         ));
     } else {
         echo $data;
@@ -144,8 +144,8 @@ if ($action === 'is_need_check_code') {
     $data = $dhd->GetJSON();
     if (empty($data)) {
         echo json_encode(array(
-            "code"=>-1,
-            "msg"=>'获取版本信息失败',
+            "code" => -1,
+            "msg" => '获取版本信息失败',
         ));
         exit();
     }
@@ -175,8 +175,8 @@ if ($action === 'is_need_check_code') {
     $data = $dhd->GetJSON();
     if (empty($data)) {
         echo json_encode(array(
-            "code"=>-1,
-            "msg"=>'获取版本信息失败',
+            "code" => -1,
+            "msg" => '获取版本信息失败',
         ));
         exit;
     }
@@ -212,8 +212,8 @@ if ($action === 'is_need_check_code') {
     $data = $dhd->GetHtml();
     if (empty($data)) {
         echo json_encode(array(
-            "code"=>-1,
-            "msg"=>'获取版本信息失败',
+            "code" => -1,
+            "msg" => '获取版本信息失败',
         ));
         exit;
     }
@@ -426,6 +426,5 @@ if ($action === 'is_need_check_code') {
         "msg" => "上传成功",
         "data" => $activepath."/".$filename,
     ));
-
 }
 ?>

@@ -130,7 +130,6 @@ class DedeHttpDown
         $this->m_httphead = array();
         $this->m_html = '';
         $this->Close();
-
         //初始化系统
         $this->PrivateInit($url);
         $this->PrivateStartSession('GET');
@@ -429,8 +428,7 @@ class DedeHttpDown
             fputs($this->m_fp, "Content-Type: application/x-www-form-urlencoded\r\n");
             fputs($this->m_fp, "Content-Length: $plen\r\n");
         }
-        //发送固定的结束请求头
-        //HTTP1.1协议必须指定文档结束后关闭链接,否则读取文档时无法使用feof判断结束
+        //发送固定的结束请求头HTTP1.1协议必须指定文档结束后关闭链接，否则读取文档时无法使用feof判断结束
         if ($httpv == "HTTP/1.1") {
             fputs($this->m_fp, "Connection: Close\r\n\r\n");
         } else {
