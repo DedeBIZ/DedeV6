@@ -20,11 +20,11 @@
 				<div class="col-lg-4">
 					<div class="login-box">
 						<div class="logo">
-							<a href="/" target="_blank" class="logo"><img src="/favicon.ico" title="<?php echo $cfg_webname;?>"><?php echo $cfg_webname;?></a>
+							<a href="/" target="_blank"><img src="/favicon.ico" title="<?php echo $cfg_webname;?>"><?php echo $cfg_webname;?></a>
 						</div>
 						<div class="title">
 							<h1>后台登录</h1>
-							<p>DedeBIZ系统基于PHP7版本开发，具有很强的可扩展性，并且采用GPLv2协议完全开放源代码。DedeBIZ支持采用现流行的Go语言设计开发，拥有简单易用、灵活扩展特性之外更安全、高效。</p>
+							<span><?php echo $cfg_description;?></span>
 						</div>
 						<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?><div class="alert alert-danger">您使用的浏览器已过时，请<a href="https://www.dedebiz.com/browsehappy" target="_blank">更换浏览器</a>，提高后台操作体验</div><?php }?>
 						<?php echo $redmsg;?>

@@ -35,7 +35,8 @@ input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white
 .login-step{height:100vh;overflow-x:hidden}
 .login-step .login-bg{height:100%;background:url(../img/login_bg.png) no-repeat top center;background-size:cover}
 .login-box{padding:80px 100px}
-.login-box .logo{padding-bottom:60px;font-size:18px;font-weight:600;color:var(--gray-dark)}
+.login-box .logo{margin-bottom:60px}
+.login-box .logo a{font-size:18px;font-weight:600;color:var(--gray-dark)}
 .login-box .title,.login-box .alert{margin-bottom:20px}
 .login-box .title h1{margin-bottom:30px;font-size:24px;font-weight:600;color:var(--gray-dark)}
 .login-from{margin-bottom:40px}
