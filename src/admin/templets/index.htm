@@ -12,11 +12,6 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body class="menu-show">
-		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])) {?>
-		<div class="browsehappy">
-			<span>您使用的浏览器已过时，请<a href="https://www.dedebiz.com/browsehappy" target="_blank">更换浏览器</a>，提高后台操作体验</span>
-		</div>
-		<?php }?>
 		<div class="admin-head">
 			<div class="logo">
 				<a href="index_body.php" target="main" class="name"><?php echo cn_substr($cfg_webname, 12);?></a>
