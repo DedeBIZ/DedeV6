@@ -33,7 +33,7 @@ input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white
 .install-box label{margin-bottom:0.25rem}
 .install-box .form-control{height:36px}
 .login-step{height:100vh;overflow-x:hidden}
-.login-step .login-bg{height:100%;background:url(../img/login-bg.png) no-repeat top center;background-size:cover}
+.login-step .login-bg{height:100%;background:url(../img/login_bg.png) no-repeat top center;background-size:cover}
 .login-box{padding:80px 100px}
 .login-box .logo{padding-bottom:60px;font-size:18px;font-weight:600;color:var(--gray-dark)}
 .login-box .title,.login-box .alert{margin-bottom:20px}
