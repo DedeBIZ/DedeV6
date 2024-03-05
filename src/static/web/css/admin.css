@@ -167,7 +167,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .admin-input-sm{width:160px}
 .admin-input-xs{width:60px}
 span.page-link{color:var(--white);background:var(--green)}
-table,input,select,textarea,.login-box,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.web-info,.upload-box,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded,#edsta{border-radius:0.5rem!important}
+table,input,select,textarea,.web-info,.upload-box,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded,#edsta{border-radius:0.5rem!important}
 .coolbg,.pubdlg .title,.cke_top{border-radius:0.5rem 0.5rem 0 0!important}
 .submenu,.quickselfoot,.coolbg-box,.cke_bottom{border-radius:0 0 0.5rem 0.5rem!important}
 .page-item:first-child .page-link{border-top-left-radius:0.5rem!important;border-bottom-left-radius:0.5rem!important}
