@@ -17,7 +17,7 @@
 				</tr>
 				<tr>
 					<td colspan="6">
-						<div class="alert alert-info mb-0">会员级别说明：注册会员级别不能删除，删除会影响会员功能无法使用某些功能</div>
+						<div class="alert alert-info mb-0">注册会员级别不建议删除，否则会影响会员功能无法使用某些功能，会员级别值由低向高升级，因此添加组别时需注意此值，如果您添加会员组的级别值低于10，将自动被视为普通的注册会员</div>
 					</td>
 				</tr>
 				<tr align="center">
@@ -29,7 +29,7 @@
 					<td width="16%">状态</td>
 				</tr>
 				<?php
-				$k=0;
+				$k = 0;
 				while($row = $dsql->GetObject())
 				{
 					$k++;
@@ -47,11 +47,6 @@
 				</tr>
 				<?php }?>
 				<input type="hidden" name="idend" value="<?php echo $k;?>">
-				<tr>
-					<td colspan="6">
-						<div class="alert alert-info mb-0">会员级别说明：由于会员级别值由低向高升级，因此添加组别时需注意此值，如果您添加会员组的级别值低于10，将自动被视为普通的注册会员</div>
-					</td>
-				</tr>
 				<tr align="center">
 					<td>级别名称</td>
 					<td>级别值（待审为0、注册会员为10）</td>
