@@ -376,7 +376,8 @@ class MemberLogin
      */
     function IsSendLimited()
     {
-        $arr = $this->dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__arctiny` WHERE mid='{$this->M_ID}'");
+        $ttime = strtotime("today");
+        $arr = $this->dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__arctiny` WHERE mid='{$this->M_ID}' AND senddate >= $ttime");
         if (is_array($arr)) {
             if ($this->M_SendMax < 0) {
                 return false;
