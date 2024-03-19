@@ -91,10 +91,10 @@ if (empty($dopost)) {
                 $hasPowered = true;
             }
         }
-        $poweredStr = $hasPowered? "" : "请保留正确的<a href='https://www.dedebiz.com/powered_by_dedebiz' class='text-success'>底部版权信息</a>，";
+        $poweredStr = $hasPowered ? "" : "请保留<a href='https://www.dedebiz.com/powered_by_dedebiz' class='text-success'>底部版权信息</a>，";
         echo json_encode(array(
             "code" => -1002,
-            "msg" => "当前站点已授权社区版，{$poweredStr}获取更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-success'>商业版</a>",
+            "msg" => "站点已授权社区版，{$poweredStr}更多官方技术支持，请选择<a href='https://www.dedebiz.com/auth' class='text-success'>商业版</a>",
             "result" => null,
         ));
         exit;

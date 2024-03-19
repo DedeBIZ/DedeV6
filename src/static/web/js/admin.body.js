@@ -191,7 +191,7 @@ $(document).ready(function() {
 						<td>
 							<div class="web-info no-wrap">
 								<p>${rsp.msg}</p>
-								<span>您已购买了商业版授权，登录DedeBIZ官网会员中心可查看相关授权信息</span>
+								<span>前往DedeBIZ官网，查看版本相关授权信息</span>
 							</div>
 						</td>
 					</tr>
