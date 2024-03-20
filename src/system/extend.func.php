@@ -28,7 +28,7 @@ if (!function_exists('obtaintags')) {
         global $dsql;
         $tags = '';
         $query = "SELECT * FROM `#@__taglist` WHERE aid='$aid' LIMIT $num";
-        $dsql->Execute('tag',$query);
+        $dsql->Execute('tag', $query);
         while($row = $dsql->GetArray('tag')) {
             $link = "/apps/tags.php?/{$row['tid']}";
             $tags .= ($tags == '' ? "<a href='{$link}'>{$row['tag']}</a>" : "<a href='{$link}'>{$row['tag']}</a>");
@@ -56,17 +56,17 @@ if (!function_exists('obtainimgs')) {
 //文档图片注释自动为标题{dede:field.body function='obtainalt(@me)'/}
 function obtainalt($newalt)
 {
-    global $dsql, $id;
-    $row = $dsql->GetOne("SELECT title FROM `#@__archives` WHERE id='$id'");
+    global $dsql, $id, $aid;
+    $myid = isset($id) ? $id : $aid;
+    $row = $dsql->GetOne("SELECT title FROM `#@__archives` WHERE id='$myid'");
     //图片注释自动为标题
-    $newalt = str_ireplace(array('alt=""','alt=\'\''),'',$newalt);
-    $newalt = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$newalt);
+    $newalt = str_ireplace(array('alt=""', 'alt=\'\'', 'title=""', 'title=\'\''), "", $newalt);
     $newalt = str_ireplace("<img ", "<img alt=\"".$row['title']."\" title=\"".$row['title']."\"", $newalt);
     //去掉图片宽度和高度
-    $newalt = preg_replace("/style=\"width\:(.*)\"/","",$newalt);
-    //去掉结尾空格
-    $newalt = str_ireplace(" /","/", $newalt);
-    $newalt = str_ireplace(" />","/>", $newalt);
+    $newalt = preg_replace("/style=\"width\:(.*)\"/", "", $newalt);
+    //去掉结尾
+    $newalt = str_ireplace(" /", "/", $newalt);
+    $newalt = str_ireplace(" />", ">", $newalt);
     return $newalt;
 }
 //联动单筛选{dede:php}obtainfilter(模型id,类型,'字段1,字段2');{/dede:php}类型表示前台展现方式对应case值
