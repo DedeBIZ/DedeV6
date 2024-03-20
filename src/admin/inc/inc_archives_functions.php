@@ -535,7 +535,7 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
         $litpic = GetDDImgFromBody($body);
     }
     //自动获取关键词
-    if ($autokey == 2 && $keywords == '') {
+    if ($autokey == 1 && $keywords == '') {
         $subject = $title;
         $message = $body;
         //采用DedeBIZ Core分词组件分词
