@@ -61,12 +61,11 @@ function obtainalt($newalt)
     $row = $dsql->GetOne("SELECT title FROM `#@__archives` WHERE id='$myid'");
     //图片注释自动为标题
     $newalt = str_ireplace(array('alt=""', 'alt=\'\'', 'title=""', 'title=\'\''), "", $newalt);
-    $newalt = str_ireplace("<img ", "<img alt=\"".$row['title']."\" title=\"".$row['title']."\"", $newalt);
+    $newalt = str_ireplace("<img", "<img alt=\"".$row['title']."\" title=\"".$row['title']."\"", $newalt);
     //去掉图片宽度和高度
     $newalt = preg_replace("/style=\"width\:(.*)\"/", "", $newalt);
     //去掉结尾
-    $newalt = str_ireplace(" /", "/", $newalt);
-    $newalt = str_ireplace(" />", ">", $newalt);
+    $newalt = str_ireplace(" /", "", $newalt);
     return $newalt;
 }
 //联动单筛选{dede:php}obtainfilter(模型id,类型,'字段1,字段2');{/dede:php}类型表示前台展现方式对应case值
