@@ -43,7 +43,7 @@ if (empty($dopost)) {
     if (!empty($innertext)) $innertext = stripslashes($innertext);
     $listTag = "{dede:list $atts}$innertext{/dede:list}";
     $listTag = addslashes($listTag);
-    $inquery = "UPDATE `#@__freelist` SET title='$title',namerule='$namerule',listdir='$listdir', defaultpage='$defaultpage',nodefault='$nodefault',templet='$templet',edtime='$edtime',`maxpage`='$maxpage',listtag='$listTag',keywords='$keywords',description='$description' WHERE aid='$aid';";
+    $inquery = "UPDATE `#@__freelist` SET title='$title',namerule='$namerule',listdir='$listdir',defaultpage='$defaultpage',nodefault='$nodefault',templet='$templet',edtime='$edtime',`maxpage`='$maxpage',listtag='$listTag',keywords='$keywords',description='$description' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg("成功修改一个自由列表", "freelist_main.php");
     exit();

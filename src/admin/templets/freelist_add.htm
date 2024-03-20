@@ -30,7 +30,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">freelist功能基本等同于arclist标签，区别是freelist标签支持分页，按自定义排序规则的文档列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，不会影响系统生成网页或浏览速度</div>
+						<div class="alert alert-info mb-0">freelist标签基本等同于arclist标签，区别是freelist标签支持分页，按自定义排序规则的文档列表，且自由列是独立编译的，轻松的实现统一化管理</div>
 					</td>
 				</tr>
 				<tr>
@@ -41,13 +41,13 @@
 									<label><img src="/static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="1"></label>
 								</td>
 								<td width="25%">
-									<label><img src="/static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="2"></label>
+									<label><img src="/static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="2" checked></label>
 								</td>
 								<td width="25%">
 									<label><img src="/static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="3"></label>
 								</td>
 								<td>
-									<label><img src="/static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="4" checked></label>
+									<label><img src="/static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="4"></label>
 								</td>
 							</tr>
 						</table>
@@ -58,8 +58,8 @@
 					<td><input type="text" name="title" id="title" class="admin-input-lg"></td>
 				</tr>
 				<tr>
-					<td>列表网页存放目录：</td>
-					<td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" class="admin-input-lg"> {listdir}变量的值</td>
+					<td>列表存放目录：</td>
+					<td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>目录默认页名称：</td>
@@ -70,7 +70,10 @@
 				</tr>
 				<tr>
 					<td>命名规则：</td>
-					<td><input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" class="admin-input-lg"></td>
+					<td>
+						<input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" class="admin-input-lg">
+						<span>{listdir} 列表存放目录</span>
+					</td>
 				</tr>
 				<tr>
 					<td>列表模板：</td>
@@ -132,14 +135,14 @@
 						}
 						echo "</select>";
 						?>
-						<label>文档发布时间：<input type="text" name="subday" id="subday2" value="0" class="admin-input-sm"> 天以内（0表示不限）</label>
+						<label>发布天数：<input type="text" name="subday" id="subday2" value="0" class="admin-input-sm">（0表示不限）</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
 						<label>每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" class="admin-input-sm"></label>
 						<label>显示列数： <input type="text" name="col" id="col3" value="1" class="admin-input-sm"></label>
-						<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="admin-input-sm">（1字节 = 0.5个中文字）</label>
+						<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="admin-input-sm">（1字节=0.5个中文字）</label>
 					</td>
 				</tr>
 				<tr>
@@ -167,13 +170,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">循环内的单行记录样式支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,stime(pubdate的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示Pubdate发布时间的调用参数[field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</td>
-				</tr>
-				<tr>
 					<td colspan="2" class="p-0">
 						<textarea name="innertext" id="myinnertext" class="admin-textarea-xl"></textarea>
 						<script>
-							document.form1.innertext.value = document.getElementById("list4").innerHTML.toLowerCase();
+							document.form1.innertext.value = document.getElementById("list2").innerHTML.toLowerCase();
 						</script>
 					</td>
 				</tr>

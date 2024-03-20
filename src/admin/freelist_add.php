@@ -37,7 +37,7 @@ if (empty($dopost)) {
     if (!empty($innertext)) $innertext = stripslashes($innertext);
     $listTag = "{dede:list $atts}$innertext{/dede:list}";
     $listTag = addslashes($listTag);
-    $inquery = "INSERT INTO `#@__freelist` (`title`,`namerule`  , `listdir`,`defaultpage`,`nodefault`,`templet`,`edtime`, `maxpage`,`click`,`listtag`,`keywords`,`description`) VALUES ('$title','$namerule','$listdir','$defaultpage','$nodefault','$templet','$edtime','$maxpage','0','$listTag','$keywords','$description');";
+    $inquery = "INSERT INTO `#@__freelist` (`title`,`namerule`,`listdir`,`defaultpage`,`nodefault`,`templet`,`edtime`, `maxpage`,`click`,`listtag`,`keywords`,`description`) VALUES ('$title','$namerule','$listdir','$defaultpage','$nodefault','$templet','$edtime','$maxpage','0','$listTag','$keywords','$description');";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg("成功添加一个自由列表", "freelist_main.php");
     exit();

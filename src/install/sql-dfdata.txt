@@ -522,7 +522,7 @@ INSERT INTO `#@__flinktype` VALUES ('1','综合网站'),
 ('7','论坛类'),
 ('8','其它类型');
 
-INSERT INTO `#@__freelist` VALUES ('1','测试文档','{listdir}/index_{listid}_{page}.html','{cmspath}/freelist/','index.html','1','{style}/list_free.htm','1289712633','100','0','{dede:list pagesize="30" col="1" titlelen="60" orderby="pubdate" orderway="desc" typeid="1" channel="1" }<li>[field:imglink/] [field:textlink/] <span class=info><small>日期：</small>[field:pubdate function="getdatemk(@me)"/] <small>浏览：</small>[field:click/] <small>好评：</small>[field:scores/] </span>\t\n<p class=intro>[field:description/]</p></li>{/dede:list}','测试','测试文档');
+INSERT INTO `#@__freelist` VALUES ('1','测试文档','{listdir}/index_{listid}_{page}.html','{cmspath}/a/freelist/','index.html','1','{style}/list_free.htm','1289712633','100','0','{dede:list pagesize="30" col="1" titlelen="60" orderby="pubdate" orderway="desc" typeid="1" channel="1" }<li>[field:imglink/] [field:textlink/] <span class=info><small>日期：</small>[field:pubdate function="getdatemk(@me)"/] <small>浏览：</small>[field:click/] <small>好评：</small>[field:scores/] </span>\t\n<p class=intro>[field:description/]</p></li>{/dede:list}','测试','测试文档');
 
 INSERT INTO `#@__member_type` VALUES ('1','50','中级会员半年','100','30');
 

@@ -83,6 +83,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
         <td>
             <a href=\"javascript:CreateNote({$row['aid']});\" class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
             <a href=\"javascript:EditNote({$row['aid']});\" class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>
+            <a href='$listurl' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 预览</a>
             <a href=\"javascript:DelNote({$row['aid']});\" class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
         </td>
     </tr>";
