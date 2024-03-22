@@ -44,12 +44,12 @@ function lib_sonchannel(&$ctag, &$refObj)
             }
             if ($col > 1) $likeType .= "</dd>\r\n";
             $GLOBALS['autoindex']++;
-        } //Loop Col
+        }
         if ($col > 1) {
             $i += $col - 1;
             $likeType .= "</dl>\r\n";
         }
-    } //Loop for $i
+    }
     $dsql->FreeResult();
     return $likeType;
 }

@@ -396,12 +396,10 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                     'weight'  => $row['weight'],
                     'arclist' => $liststr
                 );
-            }//if hasRow
-            else {
+            } else {
                 $artlist .= '';
             }
-            //进行判断,如果启用排序则文档输出为重新排序后的文档
-            //var_dump($isweight=='y' && count($orderWeight) == $line);
+            //进行判断,如果启用排序则文档输出为重新排序后的文档var_dump($isweight=='y' && count($orderWeight) == $line);
             $isweight = strtolower($isweight);
             if ($isweight == 'y') {
                 $artlist = '';
@@ -412,14 +410,14 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 }
             }
             if ($col > 1) $artlist .= "</td>\r\n";
-        }//Loop Col
+        }
         if ($col > 1) $i += $col - 1;
         if ($col > 1) $artlist .= "</tr>\r\n";
-    }//loop line
+    }
     if ($col > 1) $artlist .= "</table>\r\n";
     $dsql->FreeResult("al");
     $idsstr = join(',', $ids);
-    //保存ID缓存
+    //保存id缓存
     if ($needSaveCache) {
         if ($idsstr == '') $idsstr = '0';
         if ($cfg_cache_type == 'content' && $idsstr != '0') {

@@ -47,10 +47,8 @@ function lib_likearticle(&$ctag, &$refObj)
         $n = 1;
         foreach ($keywords as $k) {
             if ($n > 3)  break;
-
             if (trim($k) == '') continue;
             else $k = addslashes($k);
-
             $keyword .= ($keyword == '' ? " CONCAT(arc.keywords,' ',arc.title) LIKE '%$k%' " : " OR CONCAT(arc.keywords,' ',arc.title) LIKE '%$k%' ");
             $n++;
         }
@@ -65,12 +63,12 @@ function lib_likearticle(&$ctag, &$refObj)
         if (!empty($typeid)) {
             $typeid = " AND arc.typeid IN($typeid) AND arc.id<>$arcid ";
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank>-1 AND ($keyword)  $typeid $orderquery limit 0, $row";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank>-1 AND ($keyword) $typeid $orderquery limit 0, $row";
     } else {
         if (!empty($typeid)) {
             $typeid = " arc.typeid IN($typeid) AND arc.id<>$arcid ";
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank>-1 AND  $typeid $orderquery limit 0, $row";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank>-1 AND $typeid $orderquery limit 0, $row";
     }
     $innertext = trim($ctag->GetInnerText());
     if ($innertext == '') $innertext = GetSysTemplets('part_arclist.htm');
@@ -154,18 +152,14 @@ function lib_likearticle(&$ctag, &$refObj)
                     $GLOBALS['autoindex']++;
                 }
                 $artlist .= $dtp2->GetResult()."\r\n";
-            }
-            //if hasRow
-            else {
+            } else {
                 $artlist .= '';
             }
             if ($col > 1) $artlist .= "</td>\r\n";
         }
-        //Loop Col
         if ($col > 1) $i += $col - 1;
         if ($col > 1) $artlist .= "</tr>\r\n";
     }
-    //loop line
     if ($col > 1) $artlist .= "</table>\r\n";
     $dsql->FreeResult("al");
     return $artlist;

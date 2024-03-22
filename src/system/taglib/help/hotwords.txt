@@ -1,4 +1,4 @@
-网站搜索热门关键词标签
+热搜标签
 >>dede>>
 {dede:hotwords/}
 >>dede>>

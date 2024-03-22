@@ -138,20 +138,15 @@ function lib_relation(&$ctag, &$refObj)
                     }
                     $GLOBALS['autoindex']++;
                 }
-
                 $artlist .= $dtp2->GetResult()."\r\n";
-            }
-            //if hasRow
-            else {
+            }  else {
                 $artlist .= '';
             }
             if ($col > 1) $artlist .= "</td>\r\n";
         }
-        //Loop Col
         if ($col > 1) $i += $col - 1;
         if ($col > 1) $artlist .= "</tr>\r\n";
     }
-    //loop line
     if ($col > 1) $artlist .= "</table>\r\n";
     $dsql->FreeResult("al");
     return $artlist;

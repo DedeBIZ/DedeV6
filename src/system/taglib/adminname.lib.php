@@ -10,7 +10,7 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  * @link           https://www.dedebiz.com
  */
 /**
- *  编辑标签
+ *  adminname解析标签
  *
  * @access    public
  * @param     object  $ctag  解析标签

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 当前栏目下级栏目文档列表标签
+ * 当前栏目列表标签
  *
  * @version        $id:channelartlist.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

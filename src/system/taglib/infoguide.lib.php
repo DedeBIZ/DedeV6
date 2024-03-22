@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 分类信息地区与小分类搜索标签
+ * 分类信息地区搜索标签
  *
  * @version        $id:infoguide.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
@@ -12,9 +12,6 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 function lib_infoguide(&$ctag, &$refObj)
 {
     global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_mainsite;
-    //$attlist="row|10,titlelen|30";
-    //FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    //extract($ctag->CAttribute->Items, EXTR_SKIP);
     if (empty($refObj->Fields['typeid'])) {
         $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE channeltype='-8' And reid = '0' ");
         $typeid = (is_array($row) ? $row['id'] : 0);

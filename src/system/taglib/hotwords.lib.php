@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 网站搜索热门关键词标签
+ * 热搜标签
  *
  * @version        $id:hotwords.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

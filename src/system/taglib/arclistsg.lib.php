@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 自定义模型列表标签
+ * 自定义文档列表标签
  *
  * @version        $id:arclistsg.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
@@ -207,16 +207,15 @@ function lib_arclistsg(&$ctag, &$refObj)
                     $GLOBALS['autoindex']++;
                 }
                 $artlist .= $dtp2->GetResult()."\r\n";
-            } //if hasRow
-            else {
+            } else {
                 $artlist .= '';
             }
             if ($col > 1) $artlist .= "</div>\r\n";
-        } //Loop Col
+        }
         if ($col > 1) $i += $col - 1;
-    } //loop line
+    }
     $dsql->FreeResult("al");
-    //保存ID缓存
+    //保存id缓存
     $idsstr = join(',', $ids);
     if ($idsstr != '' && $needcache && $cfg_index_cache > 0) {
         $mintime = time() - ($cfg_index_cache * 3600);

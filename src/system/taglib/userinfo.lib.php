@@ -33,7 +33,7 @@ function lib_userinfo(&$ctag, &$refObj)
         $row['face'] = empty($row['face'])? $GLOBALS['cfg_mainsite'].'/static/web/img/admin.png' : $row['face'];
         foreach($ctp->CTags as $tagid=>$ctag)
         {
-            if (isset($row[$ctag->GetName()])){
+            if (isset($row[$ctag->GetName()])) {
                 $ctp->Assign($tagid,$row[$ctag->GetName()]);
             }
         }

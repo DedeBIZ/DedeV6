@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 分类信息地区与类型快捷链接标签
+ * 分类信息地区链接标签
  *
  * @version        $id:infolink.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib

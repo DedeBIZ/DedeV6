@@ -1,4 +1,4 @@
-当前栏目下级栏目文档列表标签
+当前栏目列表标签
 >>dede>>
 {dede:channelartlist typeid='' notypeid='' row='6'}
 <ul>
