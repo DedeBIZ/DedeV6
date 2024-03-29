@@ -20,7 +20,7 @@ function lib_tag(&$ctag, &$refObj)
     $revalue = '';
     $ltype = $sort;
     $num = $row;
-    $addsql = "WHERE 1=1";
+    $addsql = '';
     $tagsdir = str_replace("{cmspath}", "", $cfg_tags_dir);
     if ($getall == 0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid'])) {
         $dsql->SetQuery("SELECT tid FROM `#@__taglist` WHERE aid = '{$refObj->Fields['aid']}' ");
@@ -30,12 +30,12 @@ function lib_tag(&$ctag, &$refObj)
             $ids .= ($ids == '' ? $row['tid'] : ','.$row['tid']);
         }
         if ($ids != '') {
-            $addsql .= " AND id IN($ids)";
+            $addsql .= " WHERE id IN($ids) ";
         }
         if ($addsql == '') return '';
     } else {
         if (!empty($typeid)) {
-            $addsql .= " AND typeid='$typeid'";
+            $addsql .= " WHERE typeid='$typeid' ";
         }
     }
     if ($ltype == 'rand') $orderby = 'rand() ';
@@ -43,7 +43,7 @@ function lib_tag(&$ctag, &$refObj)
     else if ($ltype == 'month') $orderby = ' monthcc DESC ';
     else if ($ltype == 'hot') $orderby = ' count DESC ';
     else if ($ltype == 'total') $orderby = ' total DESC ';
-    else $orderby = 'addtime DESC  ';
+    else $orderby = 'addtime DESC ';
     $dsql->SetQuery("SELECT * FROM `#@__tagindex` $addsql ORDER BY $orderby LIMIT 0,$num");
     $dsql->Execute();
     $ctp = new DedeTagParse();
