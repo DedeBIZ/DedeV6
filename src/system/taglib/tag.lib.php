@@ -38,12 +38,12 @@ function lib_tag(&$ctag, &$refObj)
             $addsql .= " WHERE typeid='$typeid' ";
         }
     }
-    if ($ltype == 'rand') $orderby = 'rand() ';
+    if ($ltype == 'rand') $orderby = ' rand() ';
     else if ($ltype == 'week') $orderby = ' weekcc DESC ';
     else if ($ltype == 'month') $orderby = ' monthcc DESC ';
     else if ($ltype == 'hot') $orderby = ' count DESC ';
     else if ($ltype == 'total') $orderby = ' total DESC ';
-    else $orderby = 'addtime DESC ';
+    else $orderby = ' addtime DESC ';
     $dsql->SetQuery("SELECT * FROM `#@__tagindex` $addsql ORDER BY $orderby LIMIT 0,$num");
     $dsql->Execute();
     $ctp = new DedeTagParse();
