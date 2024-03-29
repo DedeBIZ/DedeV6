@@ -13,7 +13,7 @@ helper('cache');
 function lib_flink(&$ctag, &$refObj)
 {
     global $dsql, $cfg_soft_lang;
-    $attlist = "type|textall,row|30,titlelen|30,linktype|,typeid|0";
+    $attlist = "type|textall,row|30,titlelen|30,linktype|1,typeid|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $totalrow = $row;
@@ -21,25 +21,16 @@ function lib_flink(&$ctag, &$refObj)
     if (isset($GLOBALS['envs']['flinkid'])) {
         $typeid = $GLOBALS['envs']['flinkid'];
     }
-    if (!empty($linktype)) {
-        $wsql = " where ischeck = '$linktype' ";
-    } else {
-        if (defined('DEDEINDEX')) {
-            $wsql = " where ischeck = 2 ";
-        } else {
-            $wsql = " where ischeck = 1 ";
-        }
-    }
-    
+    $wsql = " WHERE ischeck >= '$linktype' ";
     if ($typeid == 0) {
         $wsql .= '';
     } else {
-        $wsql .= "And typeid = '$typeid'";
+        $wsql .= " AND typeid = '$typeid'";
     }
     if ($type == 'image') {
-        $wsql .= " And logo<>'' ";
+        $wsql .= " AND logo<>'' ";
     } else if ($type == 'text') {
-        $wsql .= " And logo='' ";
+        $wsql .= " AND logo='' ";
     }
     $equery = "SELECT * FROM `#@__flink` $wsql order by sortrank asc limit 0,$totalrow";
     if (trim($ctag->GetInnerText()) == '') $innertext = "[field:link/] ";
