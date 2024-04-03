@@ -30,35 +30,29 @@ if ($dopost == "ok") {
     if (empty($uparc)) $uparc = 0;
     if ($step == -1) {
         if ($uparc == 0) sleep(1);
-        ShowMsg("全部缓存清理已完成", "javascript:;");
+        ShowMsg("全部缓存清理完成", "javascript:;");
         exit();
-    }
-    //更新栏目缓存
-    else if ($step == 1) {
+    } else if ($step == 1) {
         UpDateCatCache();
         ClearOptCache();
-        ShowMsg("开始清理栏目缓存，继续清理枚举缓存", "sys_cache_up.php?dopost=ok&step=2&uparc=$uparc");
+        ShowMsg("完成所有栏目缓存清理，开始清理枚举缓存", "sys_cache_up.php?dopost=ok&step=2&uparc=$uparc");
         exit();
-    }
-    //更新枚举缓存
-    else if ($step == 2) {
+    } else if ($step == 2) {
         include_once(DEDEINC."/enums.func.php");
         WriteEnumsCache();
-        ShowMsg("正在清理枚举缓存，继续清理调用缓存", "sys_cache_up.php?dopost=ok&step=3&uparc=$uparc");
+        ShowMsg("正在清理枚举缓存，继续清理文档调用缓存", "sys_cache_up.php?dopost=ok&step=3&uparc=$uparc");
         exit();
-    }
-    //清理arclist调用缓存、过期会员浏览历史、过期短信、之前15天流量统计
-    else if ($step == 3) {
+    } else if ($step == 3) {
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$cfg_soft_lang\">";
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
         $msg = array();
-        $msg[] = "继续清理arclist调用缓存，过期会员浏览历史";
+        $msg[] = "正在清理文档调用，过期会员浏览记录";
         $oldtime = time() - (90 * 24 * 3600);
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_pms` WHERE sendtime<'$oldtime' ");
-        $msg[] = "过期短信，错误文档";
+        $msg[] = "过期会员短信";
         $limit = date('Ymd', strtotime('-15 days'));
-        $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` WHERE created_date < '$limit'");
-        $msg[] = "之前15天流量统计";
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` WHERE created_date<'$limit' ");
+        $msg[] = "过期流量统计等缓存";
         $url = "sys_cache_up.php?dopost=ok&step=-1&uparc=$uparc";
         clean_cachefiles("../data/cache");
         clean_cachefiles("../data/tplcache");
@@ -69,10 +63,8 @@ if ($dopost == "ok") {
         }
         ShowMsg(implode("，", $msg), $url);
         exit();
-    }
-    //修正错误文档
-    else if ($step == 9) {
-        ShowMsg('清理错误文档已取消，建议用系统修复工具清理', 'sys_cache_up.php?dopost=ok&step=-1&uparc=1');
+    } else if ($step == 9) {
+        ShowMsg('已取消清理错误文档，建议用系统修复工具', 'sys_cache_up.php?dopost=ok&step=-1&uparc=1');
         exit();
     }
 }
