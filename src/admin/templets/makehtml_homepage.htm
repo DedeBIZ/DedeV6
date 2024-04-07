@@ -17,31 +17,6 @@
 				<tr>
 					<td colspan="2">更新首页</td>
 				</tr>
-				<tr>
-					<td width="260">选择首页模板：</td>
-					<td>
-						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-sm">
-						<button type="button" name="set4" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
-					</td>
-				</tr>
-				<tr>
-					<td>首页位置：</td>
-					<td><input type="text" name="position" id="position" value="<?php echo $row['position']?>" class="admin-input-sm"></td>
-				</tr>
-				<tr>
-					<td>相关选项：</td>
-					<td>
-						<label><input type="radio" name="saveset" value="0"> 不保存当前选项</label>
-						<label><input type="radio" name="saveset" value="1" checked> 保存当前选项</label>
-					</td>
-				</tr>
-				<tr>
-					<td>首页模式:</td>
-					<td>
-						<label><input type="radio" name="showmod" value="0" <?php echo ($row['showmod']==0)? "checked" : "";?>> 动态浏览</label>
-						<label><input type="radio" name="showmod" value="1" <?php echo ($row['showmod']==1)? "checked" : "";?>> 生成静态</label>
-					</td>
-				</tr>
 				<?php
 				if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
 					$client = new DedeBizClient();
@@ -49,7 +24,9 @@
 					if ($data->code == -1) {
 				?>
 				<tr>
-					<td colspan="2">启动商业组件失败 <a href="https://www.dedebiz.com/start?code=-1008" target="_blank" class="btn btn-warning btn-sm">如何启动组件</a></td>
+					<td colspan="2">
+						<div class="alert alert-info mb-0">启动商业组件失败，如何<a href="https://www.dedebiz.com/start?code=-1008" target="_blank">启动组件</a></div>
+					</td>
 				</tr>
 				<?php
 				} else {
@@ -79,9 +56,36 @@
 				</tr>
 				<?php }}} else {?>
 				<tr>
-					<td colspan="2">启动商业组件失败 <a href="https://www.dedebiz.com/start?code=-1008" target="_blank" class="btn btn-warning btn-sm">启动组件</a></td>
+					<td colspan="2">
+						<div class="alert alert-info mb-0">启动商业组件失败，如何<a href="https://www.dedebiz.com/start?code=-1008" target="_blank">启动组件</a></div>
+					</td>
 				</tr>
 				<?php }?>
+				<tr>
+					<td width="260">选择首页模板：</td>
+					<td>
+						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-sm">
+						<button type="button" name="set4" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
+					</td>
+				</tr>
+				<tr>
+					<td>首页位置：</td>
+					<td><input type="text" name="position" id="position" value="<?php echo $row['position']?>" class="admin-input-sm"></td>
+				</tr>
+				<tr>
+					<td>相关选项：</td>
+					<td>
+						<label><input type="radio" name="saveset" value="0"> 不保存当前选项</label>
+						<label><input type="radio" name="saveset" value="1" checked> 保存当前选项</label>
+					</td>
+				</tr>
+				<tr>
+					<td>首页模式:</td>
+					<td>
+						<label><input type="radio" name="showmod" value="0" <?php echo ($row['showmod']==0)? "checked" : "";?>> 动态浏览</label>
+						<label><input type="radio" name="showmod" value="1" <?php echo ($row['showmod']==1)? "checked" : "";?>> 生成静态</label>
+					</td>
+				</tr>
 				<tr>
 					<td colspan="2" align="center">
 						<button type="submit" name="submit" class="btn btn-success btn-sm">开始更新</button>
