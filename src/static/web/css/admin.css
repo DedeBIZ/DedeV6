@@ -82,7 +82,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 #_fileList,#_verList{height:350px;overflow-y:auto}
 #_msgInfo{display:none}
 .update-close{background:var(--white);border:0}
-.updates-dot{display:none;position:absolute;top:12px;right:6px;height:6px;width:6px;background:var(--danger);border-radius:50%}
+.updates-dot{display:none;position:absolute;top:10px;right:5px;height:8px;width:8px;background:var(--danger);border-radius:50%}
 .spinner-border{width:20px;height:20px;vertical-align:bottom}
 .sys-search{position:relative}
 .sys-search .sys-times{position:absolute;top:1px;right:20px}
@@ -143,7 +143,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .card,.modal-content{border:0}
 .card-header{padding:0.5rem 1rem;background-color:rgba(0,0,0,0)}
 .card-body{padding:0.5rem}
-.card-body canvas{height:346px!important}
+.card-body canvas{height:348px!important}
 .table{margin-bottom:0;color:var(--gray)}
 .table th,.table td{padding:0.5rem;vertical-align:middle}
 .icon img{width:20px;height:20px}
