@@ -140,7 +140,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .card,.modal-content{border:0}
 .card-header{padding:0.5rem 1rem;background-color:rgba(0,0,0,0)}
 .card-body{padding:0.5rem}
-.card-body canvas{height:360px!important}
+.card-body canvas{height:346px!important}
 .table{margin-bottom:0;color:var(--gray)}
 .table th,.table td{padding:0.5rem;vertical-align:middle}
 .icon img{width:20px;height:20px}
