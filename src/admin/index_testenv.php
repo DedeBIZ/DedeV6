@@ -154,7 +154,7 @@ if ($rs < 0) {
 <?php
 if (count($safeMsg) > 0) {
 ?>
-<div class="alert alert-warning mt-3">
+<div class="alert alert-warning shadow-sm mt-3 mb-0">
 	<ul>
 		<?php
 		$i = 1;
