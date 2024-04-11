@@ -16,7 +16,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">生成静态文件后，浏览动态文件则直接跳转静态文件，如果需要动态浏览，删除对应文件即可。标签首页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm 标签列表页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag_list.htm</div>
+						<div class="alert alert-info mb-0">更新静态文件后，浏览动态链接则跳转至静态链接，需要动态浏览则删除对应静态文件。标签首页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm 标签文档列表模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag_list.htm</div>
 					</td>
 				</tr>
 				<?php if ($tagid > 0) {$row = $dsql->GetOne("SELECT tag FROM `#@__tagindex` WHERE id = '$tagid' ");?>
@@ -65,7 +65,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div id="mdv" class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+						<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 					</td>
 				</tr>
 			</table>
