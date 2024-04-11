@@ -205,6 +205,10 @@ $cfg_df_namerule = '{typedir}/{aid}'.$cfg_df_ext;
 $cfg_dir_purview = 0755;
 //会员是否使用精简模式
 $cfg_mb_lit = 'N';
+//Cookie设置
+$cfg_cookie_samesite = 'Lax'; //samesite 属性 (Lax, Strict or None)
+$cfg_cookie_secure = false;   //仅当存在安全的 HTTPS 连接时才会设置 Cookie
+$cfg_cookie_httponly = false; //只能通过 HTTP(S) 访问（无法通过 JavaScript 访问）
 //特殊全局变量
 $_sys_globals['curfile'] = '';
 $_sys_globals['typeid'] = 0;
