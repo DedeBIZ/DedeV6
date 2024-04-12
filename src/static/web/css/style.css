@@ -1,4 +1,4 @@
-:root{--bg:#f8fafb;--gray-300:#dee2e6;--gray-500:#adb5bd}
+:root{--bg:#f8fafb;--gray-300:#dee2e6;--gray-500:#adb5bd;--b-radius:0.5rem}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--gray-300)}
@@ -6,7 +6,7 @@
 body{line-height:1.6;letter-spacing:0.5px;font-size:14px;font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:var(--gray);background:var(--bg)}
 a{color:var(--gray);text-decoration:none}
 a:hover{color:var(--blue);text-decoration:none}
-img{max-width:100%;border-radius:0.5rem}
+img{max-width:100%;border-radius:var(--b-radius)}
 ul,ol,li{margin:0;padding:0;list-style:none}
 h1,h2,h3,h4,h5,h6{margin:0;line-height:1.2;font-weight:600;color:var(--gray-dark)}
 h1{font-size:36px}
@@ -98,16 +98,16 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .admin-input-lg{width:60%}
 .admin-input-sm{width:160px}
 .admin-input-xs{width:60px}
-.navbar-toggler,.dropdown-menu,.breadcrumb,.cke_chrome,.cke_inner,.pagination,.form-control,.btn,.alert,.rounded{border-radius:0.5rem!important}
-.cke_top,.item-theme-img img,.list-article-img img,.article-hot-img img{border-radius:0.5rem 0.5rem 0 0!important}
-.cke_bottom,.list-article-radius{border-radius:0 0 0.5rem 0.5rem!important}
+.navbar-toggler,.dropdown-menu,.breadcrumb,.cke_chrome,.cke_inner,.pagination,.form-control,.btn,.alert,.rounded{border-radius:var(--b-radius)!important}
+.cke_top,.item-theme-img img,.list-article-img img,.article-hot-img img{border-radius:var(--b-radius) var(--b-radius) 0 0!important}
+.cke_bottom,.list-article-radius{border-radius:0 0 var(--b-radius) var(--b-radius)!important}
 .rounded-circle{border-radius:50%!important}
-.page-item:first-child .page-link{border-top-left-radius:0.5rem!important;border-bottom-left-radius:0.5rem!important}
-.page-item:last-child .page-link{border-top-right-radius:0.5rem!important;border-bottom-right-radius:0.5rem!important}
+.page-item:first-child .page-link{border-top-left-radius:var(--b-radius)!important;border-bottom-left-radius:var(--b-radius)!important}
+.page-item:last-child .page-link{border-top-right-radius:var(--b-radius)!important;border-bottom-right-radius:var(--b-radius)!important}
 .input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label,.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,.input-group:not(.has-validation)>.custom-select:not(:last-child),.input-group:not(.has-validation)>.form-control:not(:last-child){border-top-right-radius:0!important;border-bottom-right-radius:0!important}
 .input-group>.input-group-append>.btn,.input-group>.input-group-append>.input-group-text,.input-group>.input-group-prepend:first-child>.btn:not(:first-child),.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),.input-group>.input-group-prepend:not(:first-child)>.btn,.input-group>.input-group-prepend:not(:first-child)>.input-group-text{border-top-left-radius:0!important;border-bottom-left-radius:0!important}
-#validateimg,.btn-send{border-radius:0 0.5rem 0.5rem 0!important}
-#returntop{display:none;position:fixed;padding:10px 15px;right:1rem;bottom:1rem;color:var(--white);cursor:pointer;background:var(--orange);border-radius:0.5rem;border:0;z-index:9998}
+#validateimg,.btn-send{border-radius:0 var(--b-radius) var(--b-radius) 0!important}
+#returntop{display:none;position:fixed;padding:10px 15px;right:1rem;bottom:1rem;color:var(--white);cursor:pointer;background:var(--orange);border-radius:var(--b-radius);border:0;z-index:9998}
 #returntop:hover{background:var(--orange)}
 @media (max-width:768px){
 .pb-m-3{padding-bottom:1rem}
