@@ -179,14 +179,14 @@ table,input,select,textarea,.web-info,.upload-box,.colordlg,.pubdlg,.quickselite
 .btn-sm{padding:0.375rem 0.6rem;height:30px;font-size:12px}
 .btn-xs{padding:0.22rem;height:20px;line-height:1;font-size:12px;border-radius:var(--b-radius-300)!important}
 .btn+.btn{margin-left:10px}
-@media (min-width:1199px){.modal-dialog{
-max-width:500px}
+@media (min-width:1199px){
+.modal-dialog{max-width:500px}
 }
 @media screen and (max-width:1199px) and (min-width:992px){
 .login-box{padding:30px}
 }
-@media (max-width:768px){td{
-white-space:nowrap}
+@media (max-width:768px){
+td{white-space:nowrap}
 .install-box,.tips-box,.w-60,.w-40{width:100%}
 .tips{padding:0 1rem}
 .login-box{padding:30px}
