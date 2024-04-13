@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_List');
 require_once(DEDEINC."/datalistcp.class.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (!isset($sex)) $sex = '';
 if (!isset($mtype)) $mtype = '';
 if (!isset($spacesta)) $spacesta = -10;

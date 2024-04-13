@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/datalistcp.class.php');
-setcookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
+DedeSetCookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
 if (empty($keyword)) $keyword = '';
 if (empty($ischeck)) {
     $ischeck = 0;

@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_plus');
 require_once(DEDEINC."/datalistcp.class.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $sql = "SELECT aid,plusname,writer,isshow FROM `#@__plus` ORDER BY aid ASC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/plus_main.htm");

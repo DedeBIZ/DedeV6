@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($dopost)) $dopost = '';
 //文件管理器
 if ($dopost == 'filemanager') {

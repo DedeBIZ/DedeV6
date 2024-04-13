@@ -34,7 +34,7 @@ $maintable = '#@__archives';
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEADMIN."/inc/inc_list_functions.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $tl = new TypeLink($cid);
 $listtable = @trim($tl->TypeInfos['addtable']);
 if (!empty($channelid) && !empty($ucid) && $tl->TypeInfos['channeltype'] != $channelid) {

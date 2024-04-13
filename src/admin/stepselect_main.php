@@ -15,7 +15,7 @@ require_once(DEDEINC.'/enums.func.php');
 //前台视图
 $ENV_GOBACK_URL = (isset($ENV_GOBACK_URL) ? $ENV_GOBACK_URL : 'stepselect_main.php');
 if (empty($action)) {
-    setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+    DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
     if (!isset($egroup)) $egroup = '';
     if (!isset($topvalue)) $topvalue = 0;
     $etypes = array();

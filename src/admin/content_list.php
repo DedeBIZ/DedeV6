@@ -48,7 +48,7 @@ if ($stime > $etime) {
 }
 $adminid = $cuserLogin->getUserID();
 $maintable = '#@__archives';
-setcookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
+DedeSetCookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
 $tl = new TypeLink($cid);
 //在不指定排序条件和关键词的情况下直接统计微表
 if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {

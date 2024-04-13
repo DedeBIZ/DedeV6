@@ -157,10 +157,10 @@ class DedeVote
                 ShowMsg('您已投过票', $ENV_GOBACK_URL);
                 exit();
             } else {
-                setcookie('VOTE_MEMBER_IP', $_SERVER['REMOTE_ADDR'], time() * $row['spec'] * 3600, '/');
+                DedeSetCookie('VOTE_MEMBER_IP', $_SERVER['REMOTE_ADDR'], time() * $row['spec'] * 3600, '/');
             }
         } else {
-            setcookie('VOTE_MEMBER_IP', $_SERVER['REMOTE_ADDR'], time() * $row['spec'] * 3600, '/');
+            DedeSetCookie('VOTE_MEMBER_IP', $_SERVER['REMOTE_ADDR'], time() * $row['spec'] * 3600, '/');
         }
         //检查会员是否已投过票
         $nowtime = time();

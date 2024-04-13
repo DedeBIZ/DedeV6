@@ -13,7 +13,7 @@ CheckRank(0, 0);//禁止游客操作
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEMEMBER."/inc/inc_list_functions.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $cid = isset($cid) && is_numeric($cid) ? $cid : 0;
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;

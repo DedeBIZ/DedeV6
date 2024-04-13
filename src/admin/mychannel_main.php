@@ -14,7 +14,7 @@ if (DEDEBIZ_SAFE_MODE) {
 }
 CheckPurview('c_List');
 require_once(DEDEINC.'/datalistcp.class.php');
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $sql = "SELECT id,nid,typename,addtable,isshow,issystem FROM `#@__channeltype` ORDER BY id DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/mychannel_main.htm");

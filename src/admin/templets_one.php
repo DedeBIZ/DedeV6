@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('temp_One');
 require_once(DEDEINC."/datalistcp.class.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $addquery = '';
 $keyword = (!isset($keyword) ? '' : $keyword);
 $likeid = (!isset($likeid) ? '' : $likeid);

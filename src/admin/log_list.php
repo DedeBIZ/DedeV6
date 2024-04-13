@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Log');
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $sql = $where = '';
 if (empty($adminid)) $adminid = 0;
 if (empty($cip)) $cip = '';

@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Pm');
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 require_once(DEDEINC.'/datalistcp.class.php');
 if (!isset($folder)) $folder = '';
 if (!isset($username)) $username = '';

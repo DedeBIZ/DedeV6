@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/datalistcp.class.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $sql = "SELECT aid,votename,starttime,endtime,totalcount,isenable FROM `#@__vote` ORDER BY aid DESC";
 $dlist = new DataListCP();
 $issel = isset($issel) ? $issel : 0;

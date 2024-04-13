@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_User');
 require_once(DEDEINC."/datalistcp.class.php");
-setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($rank)) $rank = '';
 else $rank = " WHERE CONCAT(#@__admin.usertype)='$rank' ";
 $dsql->SetQuery("SELECT `rank`,typename FROM `#@__admintype`");

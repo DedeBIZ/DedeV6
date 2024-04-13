@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_FreeList');
 require_once DEDEINC.'/channelunit.func.php';
-setcookie("ENV_GOBACK_URL",$dedeNowurl,time()+3600,"/");
+DedeSetCookie("ENV_GOBACK_URL",$dedeNowurl,time()+3600,"/");
 if (empty($pagesize)) $pagesize = 30;
 if (empty($pageno)) $pageno = 1;
 if (empty($dopost)) $dopost = '';
