@@ -12,58 +12,60 @@
 		<form action="article_description_main.php" name="form1" target="stafrm" method="post">
 			<table class="table shadow-sm my-3">
 				<tr>
-					<td colspan="4">自动摘要分页</td>
+					<td colspan="2">自动摘要分页</td>
 				</tr>
 				<tr>
-					<td width="120">栏目id：</td>
-					<td width="600">
-						<input type="text" name="channel" id="channel" value="1" class="admin-input-xs">
-						<span>（可在<a href="mychannel_main.php">栏目模型管理</a>处获得）</span>
-					</td>
-					<td width="120">摘要大小：</td>
+					<td width="260">文档模型id：</td>
+					<td><input type="text" name="channel" id="channel" value="1" class="admin-input-xs"></td>
+				</tr>
+				<tr>
+					<td>描述字节：</td>
 					<td>
 						<input type="text" name="dsize" id="dsize" class="admin-input-xs" value="<?php echo $cfg_auot_description?>">
-						<span>（最大255字节）</span>
+						<span>（最大255字节，自动分页<?php echo $cfg_arcautosp_size?>K）</span>
 					</td>
 				</tr>
 				<tr>
-					<td width="120">数据表：</td>
+					<td>数据表：</td>
 					<td><input type="text" name="table" id="table2" value="<?php echo $cfg_dbprefix?>addonarticle" class="admin-input-sm"></td>
-					<td width="120">分析字段：</td>
+				</tr>
+				<tr>
+					<td>处理字段：</td>
 					<td><input type="text" name="field" id="field2" value="body" class="admin-input-sm"></td>
 				</tr>
 				<tr>
-					<td width="120">最小值：</td>
+					<td>最小值：</td>
 					<td>
 						<input type="text" name="msize" id="msize2" value="512" class="admin-input-xs">
-						<span>（字节，文档大于该值才分析）</span>
+						<span>（字节）</span>
 					</td>
-					<td width="120">每页更新：</td>
+				</tr>
+				<tr>
+					<td>每页更新：</td>
 					<td>
 						<input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-xs"></label>
 						<span>（网页）</span>
 					</td>
 				</tr>
 				<tr>
-					<td width="120">开始id：</td>
-					<td><input type="text" name="sid" id="sid" class="admin-input-xs"></td>
-					<td width="120">结束id：</td>
-					<td><input type="text" name="eid" id="eid" class="admin-input-xs"></td>
+					<td>文档id：</td>
+					<td>
+						<label>开始：<input type="text" name="sid" id="sid" class="admin-input-sm"></label>
+						<label>结束：<input type="text" name="eid" id="eid" class="admin-input-sm"></label>
+					</td>
 				</tr>
 				<tr>
-					<td width="120">操作：</td>
+					<td>文档操作：</td>
 					<td>
 						<label><input type="radio" name="dojob" value="des" checked> 自动摘要</label>
 						<label><input type="radio" name="dojob" value="page"> 自动分页</label>
 					</td>
-					<td width="120">自动分页大小：</td>
-					<td><?php echo $cfg_arcautosp_size?>K</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><button type="submit" name="submit" class="btn btn-success btn-sm">开始操作</button></td>
+					<td colspan="2" align="center"><button type="submit" name="submit" class="btn btn-success btn-sm">开始操作</button></td>
 				</tr>
 				<tr>
-					<td colspan="4">
+					<td colspan="2">
 						<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 					</td>
 				</tr>

@@ -88,7 +88,7 @@ if ($dojob == '') {
             ShowMsg('完成所有任务', 'javascript:;');
             exit();
         }
-    }//获取自动摘要代码结束
+    }
     //更新自动分页
     if ($dojob == 'page') {
         require_once(DEDEADMIN."/inc/inc_archives_functions.php");
@@ -131,7 +131,7 @@ if ($dojob == '') {
                     $dsql->ExecuteNoneQuery("UPDATE $table SET $field='$body' WHERE aid='$aid' ;");
                 }
             }
-        }//end if limit
+        }
         //返回进度提示
         if ($totalnum > 0) {
             $tjlen = ceil(($tjnum / $totalnum) * 100);
@@ -149,6 +149,6 @@ if ($dojob == '') {
             ShowMsg('完成所有任务', 'javascript:;');
             exit();
         }
-    }//更新自动分页处理代码结束
+    }
 }
 ?>
