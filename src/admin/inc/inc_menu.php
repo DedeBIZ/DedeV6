@@ -94,6 +94,7 @@ $adminMenu1
     <m:item name='文档关键词维护' link='article_keywords_main.php' rank='sys_Keyword' target='main' />
     <m:item name='搜索关键词维护' link='search_keywords_main.php' rank='sys_Keyword' target='main' />
     <m:item name='自动摘要分页' link='article_description_main.php' rank='sys_Keyword' target='main' />
+    <m:item name='流量统计列表' link='statchart.php' rank='sys_ArcBatch' target='main' />
     ".(DEDEBIZ_SAFE_MODE ? "" : "<m:item name='数据库字段替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
 </m:top>
 {$GLOBALS['menusMoudle']}
