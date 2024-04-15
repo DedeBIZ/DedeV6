@@ -32,7 +32,7 @@ $sql = "SELECT * FROM `#@__statistics_detail` $addsql ORDER BY id DESC";
 $dlist = new DataListCP();
 //文档列表数
 $dlist->pageSize = 30;
-$tplfile = DEDEADMIN."/templets/statchart.htm";
+$tplfile = DEDEADMIN."/templets/statchart_list.htm";
 $dlist->SetTemplate($tplfile);      //载入模板
 $dlist->SetSource($sql);            //设定查询SQL
 $dlist->Display();                  //显示

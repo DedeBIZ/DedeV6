@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form2" action="statchart.php" method="get">
+		<form name="form1" action="statchart.php" method="get">
 			<table class="table shadow-sm my-3">
 				<tr>
 					<td>
@@ -19,7 +19,7 @@
 				</tr>
 			</table>
 		</form>
-		<form name="form1">
+		<form name="form2">
 			<table class="table shadow-sm mb-3">
 				<tr>
 					<td colspan="9">流量统计列表</td>
@@ -64,21 +64,21 @@
 		<script>
 			function getCheckboxItem() {
 				var allSel = "";
-				if (document.form1.aids.value) return document.form1.aids.value;
-				for (i = 0; i < document.form1.aids.length; i++) {
-					if (document.form1.aids[i].checked) {
+				if (document.form2.aids.value) return document.form2.aids.value;
+				for (i = 0; i < document.form2.aids.length; i++) {
+					if (document.form2.aids[i].checked) {
 						if (allSel == "")
-						allSel = document.form1.aids[i].value;
+						allSel = document.form2.aids[i].value;
 						else
-						allSel = allSel + "`" + document.form1.aids[i].value;
+						allSel = allSel + "`" + document.form2.aids[i].value;
 					}
 				}
 				return allSel;
 			}
 			function ReSel() {
-				for (i = 0; i < document.form1.aids.length; i++) {
-					if (document.form1.aids[i].checked) document.form1.aids[i].checked = false;
-					else document.form1.aids[i].checked = true;
+				for (i = 0; i < document.form2.aids.length; i++) {
+					if (document.form2.aids[i].checked) document.form2.aids[i].checked = false;
+					else document.form2.aids[i].checked = true;
 				}
 			}
 			function DelSel() {
