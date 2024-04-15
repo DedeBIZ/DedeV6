@@ -33,13 +33,6 @@
 					</td>
 				</tr>
 				<tr>
-					<td>起始id：</td>
-					<td>
-						<label>开始：<input name="startid" type="text" id="startid" class="admin-input-xs"></label>
-						<label>结束：<input name="endid" type="text" id="endid" class="admin-input-xs"></label>
-					</td>
-				</tr>
-				<tr>
 					<td>会员登录id：</td>
 					<td>
 						<input name="userid" type="text" id="userid" class="admin-input-xs">
@@ -47,30 +40,30 @@
 					</td>
 				</tr>
 				<tr>
+					<td>文档id：</td>
+					<td>
+						<label>开始：<input name="startid" type="text" id="startid" class="admin-input-sm"></label>
+						<label>结束：<input name="endid" type="text" id="endid" class="admin-input-sm"></label>
+					</td>
+				</tr>
+				<tr>
 					<td>文档发布时间：</td>
 					<td>
-						<label><input type="checkbox" name="seltime" id="seltime" value="1" onclick="ShowHideTime();"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
-						<div id="seltimeField" style="display:none">
-							<label>开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
-							<label>结束：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
-						</div>
+						<label>开始<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?>：<input type="text" name="starttime" id="starttime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
+						<label>结束<?php $nowtime = GetDateTimeMk(time());?>：<input type="text" name="endtime" id="endtime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
+						<label><input type="checkbox" name="seltime" id="seltime" value="1"> 启用时间筛选（移动或删除文档可用该选项）</label>
 					</td>
 				</tr>
 				<tr>
 					<td>文档操作：</td>
 					<td>
-						<label><input type="radio" name="action" value="check" onclick="ShowHideMove();" checked> 审核文档</label>
-						<label><input type="radio" name="action" value="makehtml" onclick="ShowHideMove();"> 更新网页</label>
-						<label><input type="radio" name="action" value="move" onclick="ShowHideMove();"> 移动文档</label>
-						<label><input type="radio" name="action" value="del" onclick="ShowHideMove();"> 删除文档</label>
-					</td>
-				</tr>
-				<tr>
-					<td>批量操作：</td>
-					<td>
-						<label><input type="radio" value="delnulltitle" name="action"> 删除空标题的文档</label>
-						<label><input type="radio" value="delnullbody" name="action"> 删除文档为空的文档</label>
-						<label><input type="radio" value="modddpic" name="action"> 更正缩图错误</label>
+						<label><input type="radio" name="action" value="check" checked> 审核文档</label>
+						<label><input type="radio" name="action" value="makehtml"> 更新网页</label>
+						<label><input type="radio" name="action" value="move"> 移动文档</label>
+						<label><input type="radio" name="action" value="del"> 删除文档</label>
+						<label><input type="radio" name="action" value="delnulltitle"> 删除空标题文档</label>
+						<label><input type="radio" name="action" value="delnullbody"> 删除空内容文档</label>
+						<label><input type="radio" name="action" value="modddpic"> 更正缩图错误</label>
 					</td>
 				</tr>
 				<tr>
@@ -78,25 +71,12 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+						<div class="admin-win-iframe"><iframe name="stafrm" id="stafrm" frameborder="0" width="100%" height="100%"></iframe></div>
 					</td>
 				</tr>
 			</table>
 		</form>
 		<script>
-			function ShowHideTime() {
-				var selBox = document.getElementById('seltime');
-				var obj = document.getElementById('seltimeField');
-				if (selBox.checked) obj.style.display = "inline-block";
-				else obj.style.display = "none";
-			}
-			function ShowHideMove() {
-				var selBox = document.getElementById('moveradio');
-				var obj = document.querySelectorAll('.moveField').forEach(v => {
-					if (selBox.checked) v.style.display = "inline-block";
-					else v.style.display = "none";
-				})
-			}
 			$(document).ready(function() {
 				$('.datepicker').daterangepicker({
 					"singleDatePicker": true,
