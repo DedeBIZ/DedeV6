@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="statchart.php" method="get">
+		<form name="form1" action="statchart_list.php" method="get">
 			<table class="table shadow-sm my-3">
 				<tr>
 					<td>
@@ -87,7 +87,7 @@
 					alert("请选择要删除的信息");
 					return;
 				}
-				location.href = "statchart.php?dopost=delete&aids=" + nid;
+				location.href = "statchart_list.php?dopost=delete&aids=" + nid;
 			}
 		  </script>
 	</body>

@@ -2,7 +2,7 @@
 /**
  * 流量统计列表
  *
- * @version        $id:statchart.php 2024-04-15 xushubieli $
+ * @version        $id:statchart_list.php 2024-04-15 xushubieli $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)
@@ -24,7 +24,7 @@ if ($dopost=="delete") {
     }
     if($dquery!="") $dquery = " WHERE ".$dquery;
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` $dquery");
-    ShowMsg("成功删除指定的记录", "statchart.php");
+    ShowMsg("成功删除指定的记录", "statchart_list.php");
     exit();    
 } else {
 $addsql = " WHERE ip LIKE '%$ip%' ";
