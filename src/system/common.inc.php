@@ -101,7 +101,7 @@ foreach (array('_GET', '_POST', '_COOKIE') as $_req) {
 }
 //系统相关变量检测
 if (!isset($needFilter)) {
-    $needFilter = false;
+    $needFilter = FALSE;
 }
 $registerGlobals = @ini_get("register_globals");
 $isUrlOpen = @ini_get("allow_url_fopen");
@@ -205,8 +205,8 @@ $cfg_df_namerule = '{typedir}/{aid}'.$cfg_df_ext;
 $cfg_dir_purview = 0755;
 //Cookie设置
 $cfg_cookie_samesite = 'Lax'; //samesite属性（Lax, Strict or None）
-$cfg_cookie_secure = false;   //仅当存在安全的HTTPS连接时才会设置Cookie
-$cfg_cookie_httponly = false; //只能通过HTTP(S)访问（无法通过JavaScript访问）
+$cfg_cookie_secure = FALSE;   //仅当存在安全的HTTPS连接时才会设置Cookie
+$cfg_cookie_httponly = FALSE; //只能通过HTTP(S)访问（无法通过JavaScript访问）
 //特殊全局变量
 $_sys_globals['curfile'] = '';
 $_sys_globals['typeid'] = 0;
