@@ -1,6 +1,6 @@
 <?php
 /**
- * @version        $id:common.inc.php 3 17:44 2010-11-23 tianya $
+ * @version        $id:common.inc.php 2024-04-15 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)
@@ -49,7 +49,7 @@ PwAMpkTJJ9nwNOO6saH2eMGaQ3oxZIQ+SmminDB8miI/+hwIn2hNmaHFuur0OGlB
 NQabUzX9JoYtXqPcpZRT7ymHrppU0KFdUSEJiW0utTWJo0HrDOBIT5qWlM0MP9p/
 PwIDAQAB
 -----END PUBLIC KEY-----
-'); //DedeBIZ系统公钥
+');//DedeBIZ系统公钥
 define('DEDECDNURL', 'https://cdn.dedebiz.com');//默认静态资源地址
 if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
     if (!function_exists('session_register')) {
@@ -145,7 +145,7 @@ if (PHP_VERSION > '5.1') {
     @date_default_timezone_set('Etc/GMT'.$time51);
 }
 $cfg_isUrlOpen = @ini_get("allow_url_fopen");
-//会员浏览的网站host
+//会员浏览默认网址
 if (PHP_SAPI === 'cli') {
     $cfg_clihost = 'https://www.dedebiz.com';
 } else {
@@ -167,21 +167,18 @@ $cfg_cmsurl = $cfg_mainsite;
 //模块插件目录
 $cfg_plus_dir = '/apps';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
-$cfg_static_dir = '/static';
-$cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
-$cfg_mobile_dir = '/m';
-$cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
+//一些缓存配置数据存放目录
 $cfg_data_dir = '/data';
 $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
-//会员会员目录
-$cfg_member_dir = '/user';
-$cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
 //专题存放目录
 $cfg_special = '/a/special';
 $cfg_specialurl = $cfg_mainsite.$cfg_special;
-//附件目录
-$cfg_medias_dir = $cfg_medias_dir;
-$cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
+//会员会员目录
+$cfg_member_dir = '/user';
+$cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
+//静态文件存放目录
+$cfg_static_dir = '/static';
+$cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
 //上传图片存放目录，建议按默认
 $cfg_image_dir = $cfg_medias_dir.'/allimg';
 //会员投稿图片存放目录
@@ -190,7 +187,10 @@ $cfg_user_dir = $cfg_medias_dir.'/userup';
 $cfg_soft_dir = $cfg_medias_dir.'/soft';
 //上传多媒体文件存放目录
 $cfg_other_medias = $cfg_medias_dir.'/media';
-//软件摘要信息，请不要删除，否则系统无法正确接收系统漏洞或升级信息
+//附件目录
+$cfg_medias_dir = $cfg_medias_dir;
+$cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
+//程序信息摘要，请不要删除则系统无法接收升级信息
 $cfg_version = 'V6';
 $cfg_version_detail = '6.3.0';//详细版本号
 $cfg_soft_lang = 'utf-8';
@@ -203,12 +203,10 @@ $art_shortname = $cfg_df_ext = '.html';
 $cfg_df_namerule = '{typedir}/{aid}'.$cfg_df_ext;
 //新建目录的权限，如果您使用别的属性，本程不保证程序能顺利在Linux或Unix系统运行
 $cfg_dir_purview = 0755;
-//会员是否使用精简模式
-$cfg_mb_lit = 'N';
 //Cookie设置
-$cfg_cookie_samesite = 'Lax'; //samesite 属性 (Lax, Strict or None)
-$cfg_cookie_secure = false;   //仅当存在安全的 HTTPS 连接时才会设置 Cookie
-$cfg_cookie_httponly = false; //只能通过 HTTP(S) 访问（无法通过 JavaScript 访问）
+$cfg_cookie_samesite = 'Lax'; //samesite属性（Lax, Strict or None）
+$cfg_cookie_secure = false;   //仅当存在安全的HTTPS连接时才会设置Cookie
+$cfg_cookie_httponly = false; //只能通过HTTP(S)访问（无法通过JavaScript访问）
 //特殊全局变量
 $_sys_globals['curfile'] = '';
 $_sys_globals['typeid'] = 0;

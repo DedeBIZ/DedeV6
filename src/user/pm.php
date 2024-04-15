@@ -13,10 +13,6 @@ CheckRank(0, 0);//禁止游客操作
 $menutype = 'mydede';
 $menutype_son = 'pm';
 $id = isset($id) ? intval($id) : 0;
-if ($cfg_mb_lit == 'Y') {
-    ShowMsg('由于系统开启了会员空间精简版，您不能向其它会员发短信息，不过您可以向他留言', '-1');
-    exit();
-}
 if (!isset($dopost)) {
     $dopost = '';
 }

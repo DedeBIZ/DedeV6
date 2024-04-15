@@ -10,10 +10,6 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);//禁止游客操作
-if ($cfg_mb_lit == 'Y') {
-    ShowMsg("系统开启精简会员空间，您浏览的功能不可用", "-1");
-    exit();
-}
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/userlogin.class.php");
 require_once(DEDEINC."/customfields.func.php");
