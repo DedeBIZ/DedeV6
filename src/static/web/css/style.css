@@ -104,9 +104,9 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .rounded-circle{border-radius:50%!important}
 .page-item:first-child .page-link{border-top-left-radius:var(--b-radius)!important;border-bottom-left-radius:var(--b-radius)!important}
 .page-item:last-child .page-link{border-top-right-radius:var(--b-radius)!important;border-bottom-right-radius:var(--b-radius)!important}
-.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label,.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,.input-group:not(.has-validation)>.custom-select:not(:last-child),.input-group:not(.has-validation)>.form-control:not(:last-child){border-top-right-radius:0!important;border-bottom-right-radius:0!important}
-.input-group>.input-group-append>.btn,.input-group>.input-group-append>.input-group-text,.input-group>.input-group-prepend:first-child>.btn:not(:first-child),.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),.input-group>.input-group-prepend:not(:first-child)>.btn,.input-group>.input-group-prepend:not(:first-child)>.input-group-text{border-top-left-radius:0!important;border-bottom-left-radius:0!important}
-#validateimg,.btn-send{border-radius:0 var(--b-radius) var(--b-radius) 0!important}
+.input-group>.input-group-append>.btn{border-top-left-radius:0!important;border-bottom-left-radius:0!important}
+.input-group:not(.has-validation)>.form-control:not(:last-child){border-top-right-radius:0!important;border-bottom-right-radius:0!important}
+#validateimg,.btn-send{border-radius:0 var(--b-radius) var(--b-radius) 0;cursor:pointer}
 #returntop{display:none;position:fixed;padding:10px 15px;right:1rem;bottom:1rem;color:var(--white);cursor:pointer;background:var(--orange);border-radius:var(--b-radius);border:0;z-index:9998}
 #returntop:hover{background:var(--orange)}
 @media (max-width:768px){
