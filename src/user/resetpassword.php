@@ -25,7 +25,7 @@ if ($dopost == "") {
         ShowMsg("验证码输入错误", "-1");
         exit();
     }
-    //验证邮箱，账号
+    //验证邮箱
     if (empty($mail) && empty($userid)) {
         showmsg('请输入账号或邮箱', '-1');
         exit;
