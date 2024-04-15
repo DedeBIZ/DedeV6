@@ -26,28 +26,28 @@
 				</tr>
 				<tr align="center">
 					<td width="6%">选择</td>
-					<td width="6%">序号</td>
-					<td width="16%">用户</td>
+					<td width="10%">序号</td>
+					<td width="14%">用户</td>
 					<td width="10%">地址</td>
-					<td width="10%">浏览器</td>
-					<td width="10%">终端</td>
-					<td width="10%">创建时间</td>
-					<td width="16%">访问时间</td>
-					<td width="16%">访问日期</td>
+					<td width="10%">浏览器内核</td>
+					<td width="10%">操作系统</td>
+					<td width="10%">浏览钟点</td>
+					<td width="14%">浏览日期</td>
+					<td width="16%">浏览时间</td>
 				</tr>
 				{dede:datalist}
 				<tr align="center">
 					<td><input type="checkbox" name="aids" value="{dede:field.id/}"></td>
 					<td>{dede:field.id/}</td>
-		        	<td>{dede:field.dduuid/}</td>
+					<td>{dede:field.dduuid/}</td>
 					<td>{dede:field.ip/}</td>
-		        	<td>{dede:field.browser/}</td>
-		        	<td>{dede:field.os/}</a></td>
-		        	<td>{dede:field.created_hour/}</td>
-		        	<td>{dede:field.t function="MyDate('Y-m-d H:i:s',@me)"/}</td>
-		        	<td>{dede:field.created_date/}</td>
-		        </tr>
-		        {/dede:datalist}
+					<td>{dede:field.browser/}</td>
+					<td>{dede:field.os/}</a></td>
+					<td>{dede:field.created_hour/}点</td>
+					<td>{dede:field.created_date/}</td>
+					<td>{dede:field.t function="MyDate('Y-m-d H:i:s',@me)"/}</td>
+				</tr>
+				{/dede:datalist}
 				<tr>
 					<td colspan="9">
 						<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
