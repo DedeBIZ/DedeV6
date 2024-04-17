@@ -48,7 +48,6 @@
 									<option value="mysql" selected>MySQL</option>
 									<?php if (extension_loaded("sqlite3")) {;?><option value="sqlite">SQLite</option><?php }?>
 								</select>
-								<div class="form-text">数据库类型一般为MySQL，则SQLite用于开发调试</div>
 							</div>
 							<div class="form-group server">
 								<label for="dbhost" class="form-label">数据库地址</label>
@@ -65,7 +64,6 @@
 							<div class="form-group">
 								<label for="dbprefix" class="form-label">数据表前缀</label>
 								<input type="text" name="dbprefix" id="dbprefix" class="form-control" placeholder="biz_">
-								<div class="form-text text-danger">注意DedeV<?php echo $cfg_version_detail;?>数据表前缀默认为biz_</div>
 							</div>
 							<div class="form-group">
 								<label for="dbname" class="form-label">数据库名称</label>
@@ -76,22 +74,18 @@
 							</div>
 							<div id="alertConnect"></div>
 							<div class="form-group">
-								<label for="baseurl" class="form-label">网站地址</label>
-								<input type="text" name="baseurl" id="baseurl" class="form-control" placeholder="<?php echo $baseurl;?>">
-							</div>
-							<div class="form-group">
 								<label for="webname" class="form-label">网站名称</label>
 								<input type="text" name="webname" id="webname" class="form-control" placeholder="我的网站">
 							</div>
 							<div class="form-group">
 								<label for="adminuser" class="form-label">管理员账号</label>
 								<input type="text" name="adminuser" id="adminuser" class="form-control" placeholder="admin" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');">
-								<div class="form-text">请使用数字0-9小写a-z大写A-Z符号_@!.-</div>
+								<small class="form-text text-black-50">请使用数字0-9小写a-z大写A-Z符号_@!.-</small>
 							</div>
 							<div class="form-group">
 								<label for="adminpwd" class="form-label">管理员密码</label>
 								<input type="text" name="adminpwd" id="adminpwd" class="form-control" placeholder="admin" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');">
-								<div class="form-text">请使用数字0-9小写a-z大写A-Z符号_@!.-</div>
+								<small class="form-text text-black-50">请使用数字0-9小写a-z大写A-Z符号_@!.-</small>
 							</div>
 							<div class="text-right"><button type="submit" class="btn btn-success">安装</button></div>
 						</form>
