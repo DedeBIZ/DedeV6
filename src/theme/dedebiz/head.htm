@@ -1,23 +1,20 @@
 <header class="container py-3">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="navbar navbar-expand-md navbar-dark bg-success shadow-sm rounded">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<nav class="collapse navbar-collapse" id="navbars">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item"><a href="/" class="nav-link {dede:field name='typeid' runphp='yes'}(@me=='')?@me='active':@me='';{/dede:field}">首页</a></li>
-						{dede:channelartlist typeid='top' row='10'}
-						<li class="nav-item {dede:channel type='son' noself='yes' row='1'}dropdown{/dede:channel}">
-							<a class="nav-link {dede:channel type='son' noself='yes' row='1'}dropdown-toggle{/dede:channel}" href="{dede:field.typeurl/}" {dede:channel type='son' noself='yes' row='1'}data-toggle="dropdown"{/dede:channel}>{dede:field.typename/}</a>
-							{dede:channel type='son' noself='yes' row='1'}<div class="dropdown-menu" aria-labelledby="dropdown-auth">{/dede:channel}{dede:channel type='son'}
-								<a href="[field:typelink/]" class="dropdown-item">[field:typename/]</a>{/dede:channel}
-							{dede:channel type='son' noself='yes' row='1'}</div>{/dede:channel}
-						</li>{/dede:channelartlist}
-					</ul>
-				</nav>
-			</div>
-		</div>
+	<div class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm rounded">
+		<a href="/" class="navbar-brand d-lg-none">{dede:global.cfg_webname/}</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<nav class="collapse navbar-collapse" id="navbarMenu">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a href="/" class="nav-link {dede:field name='typeid' runphp='yes'}(@me=='')?@me='active':@me='';{/dede:field}">首页</a></li>
+				{dede:channelartlist typeid='top' row='10'}
+				<li class="nav-item {dede:channel type='son' noself='yes' row='1'}dropdown{/dede:channel}">
+					<a class="nav-link {dede:channel type='son' noself='yes' row='1'}dropdown-toggle{/dede:channel}" href="{dede:field.typeurl/}" {dede:channel type='son' noself='yes' row='1'}data-toggle="dropdown"{/dede:channel}>{dede:field.typename/}</a>
+					{dede:channel type='son' noself='yes' row='1'}<div class="dropdown-menu" aria-labelledby="dropdown-auth">{/dede:channel}{dede:channel type='son'}
+						<a href="[field:typelink/]" class="dropdown-item">[field:typename/]</a>{/dede:channel}
+					{dede:channel type='son' noself='yes' row='1'}</div>{/dede:channel}
+				</li>{/dede:channelartlist}
+			</ul>
+		</nav>
 	</div>
 </header>
