@@ -23,21 +23,17 @@
 			</nav>
 		</div>
 		<main class="container py-3">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="item-tag mb-3">
-						<h2 class="mb-3">最新标签</h2>
-						<div>{dede:tag row='120' sort='new'}<a href="[field:link/]" class="btn btn-outline-success btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
-					</div>
-					<div class="item-tag mb-3">
-						<h2 class="mb-3">当月热门标签</h2>
-						<div>{dede:tag row='120' sort='month'}<a href="[field:link/]" class="btn btn-outline-warning btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
-					</div>
-					<div class="item-tag">
-						<h2 class="mb-3">最新标签</h2>
-						<div>{dede:tag row='120' sort='rand'}<a href="[field:link/]" class="btn btn-outline-info btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
-					</div>
-				</div>
+			<div class="item-tag mb-3">
+				<h2 class="mb-3">最新标签</h2>
+				<div>{dede:tag row='120' sort='new'}<a href="[field:link/]" class="btn btn-outline-success btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
+			</div>
+			<div class="item-tag mb-3">
+				<h2 class="mb-3">当月热门标签</h2>
+				<div>{dede:tag row='120' sort='month'}<a href="[field:link/]" class="btn btn-outline-warning btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
+			</div>
+			<div class="item-tag">
+				<h2 class="mb-3">最新标签</h2>
+				<div>{dede:tag row='120' sort='rand'}<a href="[field:link/]" class="btn btn-outline-info btn-sm tagc[field:highlight/]">[field:tag/]</a>{/dede:tag}</div>
 			</div>
 		</main>
 		<script>const currentNavTypeID = '{dede:field.id/}';</script>
