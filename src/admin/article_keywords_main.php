@@ -17,7 +17,7 @@ if (empty($dopost)) $dopost = '';
 if ($dopost == 'saveall') {
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "article_keywords_main.php" : $_COOKIE['ENV_GOBACK_URL'];
     if (!isset($aids)) {
-        ShowMsg("您没有选择要修改的文档", $ENV_GOBACK_URL);
+        ShowMsg("请选择需要修改的关键词", $ENV_GOBACK_URL);
         exit();
     }
     foreach ($aids as $aid) {
@@ -43,7 +43,7 @@ if ($dopost == 'saveall') {
             $dsql->ExecuteNoneQuery($query1);
         }
     }
-    ShowMsg("完成指定的修改", $ENV_GOBACK_URL);
+    ShowMsg("成功修改一则关键词", $ENV_GOBACK_URL);
     exit();
 }
 //添加关键词
