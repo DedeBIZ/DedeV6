@@ -22,17 +22,16 @@
 		<form name="form2">
 			<table class="table shadow-sm mb-3">
 				<tr>
-					<td colspan="9">流量统计列表</td>
+					<td colspan="8">流量统计列表</td>
 				</tr>
 				<tr align="center">
 					<td width="6%">选择</td>
-					<td width="10%">序号</td>
-					<td width="14%">用户</td>
-					<td width="10%">地址</td>
-					<td width="10%">浏览器内核</td>
-					<td width="10%">操作系统</td>
-					<td width="10%">浏览钟点</td>
-					<td width="14%">浏览日期</td>
+					<td width="12%">序号</td>
+					<td width="16%">用户</td>
+					<td width="12%">地址</td>
+					<td width="12%">浏览器内核</td>
+					<td width="12%">操作系统</td>
+					<td width="10%">浏览特征</td>
 					<td>浏览时间</td>
 				</tr>
 				{dede:datalist}
@@ -44,18 +43,17 @@
 					<td>{dede:field.browser/}</td>
 					<td>{dede:field.os/}</a></td>
 					<td>{dede:field.created_hour/}点</td>
-					<td>{dede:field.created_date/}</td>
 					<td>{dede:field.t function="MyDate('Y-m-d H:i:s',@me)"/}</td>
 				</tr>
 				{/dede:datalist}
 				<tr>
-					<td colspan="9">
+					<td colspan="8">
 						<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
 						<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+					<td colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
 		</form>
