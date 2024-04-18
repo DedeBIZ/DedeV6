@@ -83,7 +83,7 @@
 			//获取顶踩数据
 			function GetDigg(aid,cid) {
 				let url = `{dede:global.cfg_phpurl/}/digg_ajax.php?id=${aid}&cid=${cid}&format=json`;
-				$.get(url, function (data) {
+				$.get(url, function(data) {
 					let reval = JSON.parse(data);
 					if (reval.code === 200) {
 						$("#goodpost").html(reval.data.goodpost);
@@ -113,12 +113,11 @@
 					if (hasid) { ShowMsg("您已经顶过该帖，请不要重复顶帖"); return; }
 					else saveid += ',' + aid;
 					SetCookie('diggid', saveid, 1);
-				}
-				else {
+				} else {
 					SetCookie('diggid', aid, 1);
 				}
 				let url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action=" + ftype + "&id=" + aid + "&format=json&cid={dede:field.channel/}";
-				$.get(url, function (data) {
+				$.get(url, function(data) {
 					let reval = JSON.parse(data);
 					if (reval.code === 200) {
 						$("#goodpost").html(reval.data.goodpost);
@@ -140,7 +139,7 @@
 					validate: $("#iptValidate").val(),
 					notuser: $("#iptAny").is(":checked") ? "1" : "",
 				};
-				$.post("{dede:global.cfg_phpurl/}/feedback.php", feedback, function (data) {
+				$.post("{dede:global.cfg_phpurl/}/feedback.php", feedback, function(data) {
 					let result = JSON.parse(data);
 					if (result.code === 200) {
 						ShowAlert("#feedback-alert", result.msg, "success");
@@ -164,7 +163,7 @@
 					aid : "{dede:field.id/}",
 					msg : content,
 				}
-				$.post("{dede:global.cfg_phpurl/}/feedback.php", reply, function (data) {
+				$.post("{dede:global.cfg_phpurl/}/feedback.php", reply, function(data) {
 					let result = JSON.parse(data);
 					if (result.code === 200) {
 						ShowAlert(`._feedback_reply[for="${fid}"]`, result.msg, "success");
@@ -199,7 +198,7 @@
 				$.get("{dede:global.cfg_phpurl/}/feedback.php", {
 					"aid" : "{dede:field.id/}",
 					"fid" : fid,
-				}, function (data) {
+				}, function(data) {
 					let result = JSON.parse(data);
 					let tpl = `<div class="media py-3">
 						<img src="~face~" class="face mr-3">
@@ -242,7 +241,7 @@
 					good : g,
 					fid : fid,
 				}
-				$.post("{dede:global.cfg_phpurl/}/feedback.php", good, function (data) {
+				$.post("{dede:global.cfg_phpurl/}/feedback.php", good, function(data) {
 					let result = JSON.parse(data);
 					$(`#feedbackGood${fid}`).html(result.data);
 				})
