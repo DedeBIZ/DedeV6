@@ -27,14 +27,14 @@ if ($dopost=="delete") {
     ShowMsg("成功删除指定的记录", "statchart_list.php");
     exit();    
 } else {
-$addsql = " WHERE ip LIKE '%$ip%' ";
-$sql = "SELECT * FROM `#@__statistics_detail` $addsql ORDER BY id DESC";
-$dlist = new DataListCP();
-//文档列表数
-$dlist->pageSize = 30;
-$tplfile = DEDEADMIN."/templets/statchart_list.htm";
-$dlist->SetTemplate($tplfile);      //载入模板
-$dlist->SetSource($sql);            //设定查询SQL
-$dlist->Display();                  //显示
+    $addsql = " WHERE ip LIKE '%$ip%' ";
+    $sql = "SELECT * FROM `#@__statistics_detail` $addsql ORDER BY id DESC";
+    $dlist = new DataListCP();
+    //流量列表数
+    $dlist->pageSize = 30;
+    $tplfile = DEDEADMIN."/templets/statchart_list.htm";
+    $dlist->SetTemplate($tplfile);
+    $dlist->SetSource($sql);
+    $dlist->Display();
 }
 ?>

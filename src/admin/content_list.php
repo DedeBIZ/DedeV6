@@ -173,12 +173,9 @@ if ($stime > 0 && $etime > 0) {
     $strTimerange = implode(" - ",array(MyDate("Y-m-d H:i:s",$stime),MyDate("Y-m-d H:i:s",$etime)));
     $dlist->SetParameter('timerange', $strTimerange);
 }
-//模板
 if (empty($s_tmplets)) $s_tmplets = 'templets/content_list.htm';
 $dlist->SetTemplate(DEDEADMIN.'/'.$s_tmplets);
-//查询
 $dlist->SetSource($query);
-//显示
 $dlist->Display();
 $dlist->Close();
 ?>
