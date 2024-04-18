@@ -214,7 +214,7 @@ class userLogin
         $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
         $this->userPwd = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userpwd);
         $pwd = substr(md5($this->userPwd), 5, 20);
-        $dsql->SetQuery("SELECT admin.*,atype.purviews,member.face FROM `#@__admin` admin LEFT JOIN `#@__admintype` atype ON atype.`rank`=admin.usertype LEFT JOIN `#@__member` member ON member.mid = admin.id  WHERE admin.userid LIKE '".$this->userName."' LIMIT 0,1");
+        $dsql->SetQuery("SELECT admin.*,atype.purviews,member.face FROM `#@__admin` admin LEFT JOIN `#@__admintype` atype ON atype.`rank`=admin.usertype LEFT JOIN `#@__member` member ON member.mid = admin.id WHERE admin.userid LIKE '".$this->userName."' LIMIT 0,1");
         $dsql->Execute();
         $row = $dsql->GetObject();
         if (!isset($row->pwd)) {

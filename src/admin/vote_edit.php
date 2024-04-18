@@ -28,17 +28,7 @@ if ($dopost == "delete") {
     CheckCSRF();
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
-    $query = "UPDATE `#@__vote` SET votename='$votename',
-        starttime='$starttime',
-        endtime='$endtime',
-        totalcount='$totalcount',
-        ismore='$ismore',
-        votenote='$votenote',
-        isallow='$isallow',
-        view='$view',
-        spec='$spec',
-        isenable='$isenable'
-      WHERE aid='$aid'";
+    $query = "UPDATE `#@__vote` SET votename='$votename',starttime='$starttime',endtime='$endtime',totalcount='$totalcount',ismore='$ismore',votenote='$votenote',isallow='$isallow',view='$view',spec='$spec',isenable='$isenable' WHERE aid='$aid'";
     if ($dsql->ExecuteNoneQuery($query)) {
         $vt = new DedeVote($aid);
         $vote_file = DEDEDATA."/vote/vote_".$aid.".js";

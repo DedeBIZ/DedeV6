@@ -21,7 +21,7 @@ function lib_userinfo(&$ctag, &$refObj)
     $revalue = '';
     $innerText = trim($ctag->GetInnerText());
     if (empty($innerText)) $innerText = GetSysTemplets('userinfo.htm');
-    $sql = "SELECT U.*,US.spacename,US.sign,AR.membername as rankname FROM `#@__member` U LEFT JOIN `#@__member_space` US ON US.mid = U.mid  LEFT JOIN `#@__arcrank` AR ON AR.`rank` = U.`rank`  WHERE U.mid='{$mid}' LIMIT 0,1 ";
+    $sql = "SELECT U.*,US.spacename,US.sign,AR.membername as rankname FROM `#@__member` U LEFT JOIN `#@__member_space` US ON US.mid = U.mid  LEFT JOIN `#@__arcrank` AR ON AR.`rank` = U.`rank` WHERE U.mid='{$mid}' LIMIT 0,1 ";
     $ctp = new DedeTagParse();
     $ctp->SetNameSpace('field','[',']');
     $ctp->LoadSource($innerText);

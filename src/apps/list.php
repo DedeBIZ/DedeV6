@@ -17,7 +17,7 @@ if ($tid == 0 && $channelid == 0) die("dedebiz");
 if (isset($TotalResult)) $TotalResult = intval(preg_replace("/[^\d]/", '', $TotalResult));
 //如果指定了文档模型id但没有指定栏目id，那么自动获得为这个文档模型的第一个顶级栏目作为栏目默认栏目
 if (!empty($channelid) && empty($tid)) {
-    $tinfos = $dsql->GetOne("SELECT tp.id,ch.issystem FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.channeltype='$channelid' And tp.reid=0 order by sortrank asc");
+    $tinfos = $dsql->GetOne("SELECT tp.id,ch.issystem FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.channeltype='$channelid' And tp.reid=0 ORDER BY sortrank ASC");
     if (!is_array($tinfos)) die(" No catalogs in the channel! ");
     $tid = $tinfos['id'];
 } else {
