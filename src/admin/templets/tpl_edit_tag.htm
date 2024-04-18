@@ -20,7 +20,7 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post();">
+		<form action="tpl.php" name="form1" method="POST" onSubmit="return Post();">
 			<input type="hidden" name="actiondo" value="<?php echo $action;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="action" value="savetagfile">
