@@ -178,7 +178,7 @@
 				let replyPannel = `<div class="form-group">
 					<div class="input-group">
 						<input type="text" class="form-control iptReplyContent">
-						<button type="button" class="btn btn-success btn-send" onclick='SendReplyFeedback(${fid})'>评论</button>
+						<div class="input-group-append"><button type="button" class="btn btn-success btn-send" onclick='SendReplyFeedback(${fid})'>评论</button></div>
 					</div>
 				</div>`;
 				$.get("{dede:global.cfg_memberurl/}/api.php?format=json", function(result) {
