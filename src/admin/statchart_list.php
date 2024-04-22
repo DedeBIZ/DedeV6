@@ -1,6 +1,6 @@
 <?php
 /**
- * 流量统计列表
+ * 流量统计表
  *
  * @version        $id:statchart_list.php 2024-04-15 xushubieli $
  * @package        DedeBIZ.Administrator

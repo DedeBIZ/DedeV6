@@ -53,7 +53,6 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='会员消费记录' link='member_operations.php' rank='sys_Data' target='main' />
     <m:item name='积分产品管理' link='cards_manage.php' rank='sys_Data' target='main' />
     <m:item name='积分产品分类' link='cards_type.php' rank='sys_Data' target='main' />
-    <m:item name='会员等级分类' link='member_type.php' rank='sys_Data' target='main' />
     <m:item name='支付接口设置' link='sys_payment.php' .php' rank='sys_Data' target='main' />
 </m:top>
 <m:top item='12_' name='系统设置' rank='sys_User,sys_Group,sys_Edit,sys_Log,sys_Data' icon='fa fa-cog'>
@@ -68,6 +67,7 @@ if ($cuserLogin->getUserType() >= 10) {
     ".(DEDEBIZ_SAFE_MODE ? "" : "<m:item name='SQL命令工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
     <m:item name='文件扫描工具' link='sys_safetest.php' rank='sys_verify' target='main' />
     <m:item name='系统修复工具' link='sys_repair.php' rank='sys_verify' target='main' />
+
 </m:top>";
 }
 $menusMain = "<m:top item='1_' name='常用功能' icon='fa fa-desktop'>
@@ -79,6 +79,7 @@ $menusMain = "<m:top item='1_' name='常用功能' icon='fa fa-desktop'>
     <m:item name='评论管理' link='feedback_main.php' rank='sys_Feedback' target='main' />
     <m:item name='专题管理' link='content_s_list.php' ischannel='1' channelid='-1' linkadd='spec_add.php' rank='spec_New' target='main' />
     <m:item name='文档回收站' link='recycling.php' ischannel='1' addico='fa fa-minus-circle' linkadd='archives_do.php?dopost=clear&aid=no&recycle=1' rank='a_List,a_AccList,a_MyList' target='main' />
+    <m:item name='流量统计表' link='statchart_list.php' rank='t_List,t_AccList' target='main' />
 </m:top>
 <m:top item='2_' name='文档管理' icon='fa fa-file-text'>
     $addset
@@ -94,7 +95,6 @@ $adminMenu1
     <m:item name='文档关键词维护' link='article_keywords_main.php' rank='sys_Keyword' target='main' />
     <m:item name='搜索关键词维护' link='search_keywords_main.php' rank='sys_Keyword' target='main' />
     <m:item name='自动摘要分页' link='article_description_main.php' rank='sys_Keyword' target='main' />
-    <m:item name='流量统计列表' link='statchart_list.php' rank='sys_ArcBatch' target='main' />
     ".(DEDEBIZ_SAFE_MODE ? "" : "<m:item name='数据库字段替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
 </m:top>
 {$GLOBALS['menusMoudle']}
@@ -112,6 +112,7 @@ $adminMenu1
     <m:item name='所有会员列表' link='member_main.php' rank='member_List' target='main' />
     <m:item name='会员短信管理' link='member_pm.php' rank='member_Type' target='main' />
     <m:item name='会员级别设置' link='member_rank.php' rank='member_Type' target='main' />
+    <m:item name='会员等级分类' link='member_type.php' rank='sys_Data' target='main' />
     <m:item name='积分头衔设置' link='member_scores.php' rank='member_Type' target='main' />
 </m:top>
 $adminMenu2

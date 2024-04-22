@@ -156,6 +156,11 @@ $actionSearch[4] = array(
             'linkurl' => 'member_rank.php'
         ),
         3  =>  array(
+            'title' => '会员等级分类',
+            'purview' => 'sys_Data',
+            'linkurl' => 'member_type.php'
+        ),
+        4  =>  array(
             'title' => '积分头衔设置',
             'purview' => 'member_Type',
             'linkurl' => 'member_scores.php'
@@ -163,7 +168,7 @@ $actionSearch[4] = array(
     )
 );
 $actionSearch[5] = array(
-    'title' => '支付工具',
+    'title' => '财务管理',
     'soniterm' => array(
         0  =>  array(
             'title' => '积分产品管理',
@@ -181,11 +186,6 @@ $actionSearch[5] = array(
             'linkurl' => 'member_operations.php'
         ),
         3  =>  array(
-            'title' => '会员等级分类',
-            'purview' => 'sys_Data',
-            'linkurl' => 'member_type.php'
-        ),
-        4  =>  array(
             'title' => '支付接口设置',
             'purview' => 'sys_Data',
             'linkurl' => 'sys_payment.php'
