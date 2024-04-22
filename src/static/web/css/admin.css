@@ -46,7 +46,7 @@ input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white
 .login-from .form-control{padding-left:45px;height:50px}
 .login-from .operate{margin-top:40px}
 .login-from .operate button{width:100%;height:50px}
-.admin-head{width:100%;height:60px;line-height:60px;background:linear-gradient(45deg,var(--green),var(--success-800) 100%)}
+.admin-head{width:100%;height:60px;line-height:60px;background:linear-gradient(to bottom,var(--green),var(--success-800))}
 .admin-head .logo{float:left;padding-left:1.5rem;width:220px}
 .admin-head .logo .name{font-size:18px;font-weight:600;color:var(--white);vertical-align:middle}
 .admin-head .logo .version{font-size:12px;color:var(--white);vertical-align:top}
