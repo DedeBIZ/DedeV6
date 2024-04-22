@@ -67,7 +67,6 @@ if ($cuserLogin->getUserType() >= 10) {
     ".(DEDEBIZ_SAFE_MODE ? "" : "<m:item name='SQL命令工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
     <m:item name='文件扫描工具' link='sys_safetest.php' rank='sys_verify' target='main' />
     <m:item name='系统修复工具' link='sys_repair.php' rank='sys_verify' target='main' />
-
 </m:top>";
 }
 $menusMain = "<m:top item='1_' name='常用功能' icon='fa fa-desktop'>
