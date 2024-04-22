@@ -48,7 +48,7 @@
 								<div id="vdimgck" class="form-group" style="display:none">
 									<div class="input-group">
 										<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase" placeholder="请输入验证码">
-										<img src="<?php echo $cfg_phpurl;?>/vdimgck.php" onclick="this.src='<?php echo $cfg_phpurl;?>/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
+										<div class="input-group-append"><img src="<?php echo $cfg_phpurl;?>/vdimgck.php" onclick="this.src='<?php echo $cfg_phpurl;?>/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg"></div>
 									</div>
 									<div class="form-icon">
 										<i class="fa fa-code"></i>
