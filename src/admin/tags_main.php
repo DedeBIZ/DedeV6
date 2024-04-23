@@ -30,9 +30,7 @@ if (empty($action)) {
     $dlist->SetSource($query);
     $dlist->Display();
     exit();
-}
-//function update()
-else if ($action == 'update') {
+} else if ($action == 'update') {
     $tid = (empty($tid) ? 0 : intval($tid));
     $count = (empty($count) ? 0 : intval($count));
     if (empty($tid)) {
@@ -43,9 +41,7 @@ else if ($action == 'update') {
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("成功保存标签点击信息", 'tags_main.php');
     exit();
-}
-//function delete()
-else if ($action == 'delete') {
+} else if ($action == 'delete') {
     if (@is_array($ids)) {
         $stringids = implode(',', $ids);
     } else if (!empty($ids)) {
@@ -76,9 +72,7 @@ else if ($action == 'delete') {
     $now = time();
     $dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET title='{$title}',keywords='{$kw}',`description`='{$des}',`uptime`='{$now}' WHERE id = {$tid}");
     echo json_encode(array('code' => 200, 'result' => true));
-}
-//function fetch()
-else if ($action == 'fetch') {
+} else if ($action == 'fetch') {
     $wheresql = '';
     $start = isset($start) && is_numeric($start) ? $start : 0;
     $where = array();
@@ -127,7 +121,7 @@ else if ($action == 'fetch') {
                     $dsql->ExecuteNoneQuery($query);
                     $tid = $dsql->GetLastID();
                 }
-                $query = "REPLACE INTO `#@__taglist` (`tid`,`aid`,`typeid`,`arcrank`,`tag`) VALUES ('$tid', '$aid', '$typeid','$arcrank','$keyword'); ";
+                $query = "REPLACE INTO `#@__taglist` (`tid`,`aid`,`typeid`,`arcrank`,`tag`) VALUES ('$tid','$aid','$typeid','$arcrank','$keyword'); ";
                 $dsql->ExecuteNoneQuery($query);
             }
         }
