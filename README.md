@@ -1,10 +1,10 @@
-## DedeV6
+## Dedev6
 
 DedeBIZ系统基于PHP7版本开发，具有很强的可扩展性，并且完全开放源代码。DedeBIZ支持采用现流行的Go语言设计开发，拥有简单易用、灵活扩展特性之外更安全、高效。模板设计制作简单，一直是系统一大特点，延续之前标签，同时采用响应式模板引擎Bootstrap作为系统模板渲染引擎，让搭建跨终端和移动端全媒体站点更简单。
 
 ## 版本说明
 
-DedeV6.x是一个LTS版本，支持将到2025年10月截止，目前DedeV6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取
+Dedev6.x是一个LTS版本，支持将到2025年10月截止，目前Dedev6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取
 
 ![DedeBIZ](docs/dedebiz.png)
 
