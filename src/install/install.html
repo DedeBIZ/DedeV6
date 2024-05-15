@@ -16,7 +16,7 @@
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-5">
-						<a href="/" target="_blank" class="logo"><img src="/static/web/img/logo.png" title="DedeBIZ"></a>
+						<a href="https://www.dedebiz.com" target="_blank" class="logo"><img src="/static/web/img/logo.png" title="DedeBIZ"></a>
 					</div>
 					<div class="col-7">
 						<div class="text-right">
@@ -34,11 +34,11 @@
 				<?php }}?>
 				<div class="alert alert-warning">请先阅读<a href="https://www.dedebiz.com/license?from=install" target="_blank">《站点授权协议》</a></div>
 				<div class="card shadow-sm mb-3">
-					<div class="card-header">
-						<h1 class="text-center">安装DedeV<?php echo $cfg_version_detail;?></h1>
+					<div class="card-header text-center">
+						<h1>安装DedeV<?php echo $cfg_version_detail;?></h1>
 					</div>
 					<div class="card-body">
-						<form action="/install/index.php" method="post" name="form1">
+						<form name="form1" action="/install/index.php" method="post">
 							<input type="hidden" name="step" value="2">
 							<input type="hidden" name="cookieencode" value="<?php echo $rnd_cookieEncode;?>">
 							<input type="hidden" name="adminmail" value="admin@dedebiz.com">
@@ -51,15 +51,15 @@
 							</div>
 							<div class="form-group server">
 								<label for="dbhost" class="form-label">数据库地址</label>
-								<input type="text" name="dbhost" id="dbhost" class="form-control" placeholder="localhost">
+								<input type="text" name="dbhost" id="dbhost" class="form-control" placeholder="localhost" required>
 							</div>
 							<div class="form-group server">
 								<label for="dbuser" class="form-label">数据库账号</label>
-								<input type="text" name="dbuser" id="dbuser" class="form-control" placeholder="root">
+								<input type="text" name="dbuser" id="dbuser" class="form-control" placeholder="root" required>
 							</div>
 							<div class="form-group server">
 								<label for="dbpwd" class="form-label">数据库密码</label>
-								<input type="text" name="dbpwd" id="dbpwd" class="form-control" placeholder="请输入数据库密码">
+								<input type="text" name="dbpwd" id="dbpwd" class="form-control" placeholder="请输入数据库密码" required>
 							</div>
 							<div class="form-group">
 								<label for="dbprefix" class="form-label">数据表前缀</label>
@@ -68,7 +68,7 @@
 							<div class="form-group">
 								<label for="dbname" class="form-label">数据库名称</label>
 								<div class="input-group">
-									<input id="dbname" name="dbname" type="text" class="form-control" placeholder="DedeBIZ">
+									<input type="text" name="dbname" id="dbname" class="form-control" placeholder="DedeBIZ">
 									<div class="input-group-append"><button type="button" id="btnCheckConnect" class="btn btn-success">检查</button></div>
 								</div>
 							</div>
@@ -87,7 +87,7 @@
 								<input type="text" name="adminpwd" id="adminpwd" class="form-control" placeholder="admin" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');">
 								<small class="form-text text-black-50">请使用数字0-9小写a-z大写A-Z符号_@!.-</small>
 							</div>
-							<div class="text-right"><button type="submit" class="btn btn-success">安装</button></div>
+							<div class="text-center"><button type="submit" class="btn btn-success">安装</button></div>
 						</form>
 					</div>
 				</div>
