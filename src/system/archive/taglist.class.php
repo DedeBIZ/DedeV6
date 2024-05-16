@@ -105,8 +105,14 @@ class TagList
         }
         if (isset($GLOBALS['PageNo'])) {
             $this->PageNo = intval($GLOBALS['PageNo']);
+            if ($this->PageNo == 0) {
+                $this->PageNo = 1;
+            }
         } else {
             $this->PageNo = 1;
+        }
+        if (stripos(GetCurUrl(), 'makehtml_taglist_action.php')) {
+            $this->TotalResult = 1;
         }
         if ($this->TotalResult == -1) {
             $cquery = "SELECT COUNT(*) AS dd FROM `#@__taglist` WHERE tid = '{$this->TagInfos['id']}' AND arcrank >-1 ";
@@ -115,16 +121,16 @@ class TagList
             //更新Tag信息
             $ntime = time();
             //更新浏览量和记录数
-            $upquery = "UPDATE `#@__tagindex` SET total='{$row['dd']}',count=count+1,weekcc=weekcc+1,monthcc=monthcc+1 WHERE tag LIKE '{$this->Tag}' ";
+            $upquery = "UPDATE `#@__tagindex` SET total='{$row['dd']}',count=count+1,weekcc=weekcc+1,monthcc=monthcc+1 WHERE tag LIKE '{$this->TagInfos['tag']}' ";
             $this->dsql->ExecuteNoneQuery($upquery);
             $oneday = 24 * 3600;
             //周统计
             if (ceil(($ntime - $this->TagInfos['weekup']) / $oneday) > 7) {
-                $this->dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET weekcc=0,weekup='{$ntime}' WHERE tag LIKE '{$this->Tag}' ");
+                $this->dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET weekcc=0,weekup='{$ntime}' WHERE tag LIKE '{$this->TagInfos['tag']}' ");
             }
             //月统计
             if (ceil(($ntime - $this->TagInfos['monthup']) / $oneday) > 30) {
-                $this->dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET monthcc=0,monthup='{$ntime}' WHERE tag LIKE '{$this->Tag}' ");
+                $this->dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET monthcc=0,monthup='{$ntime}' WHERE tag LIKE '{$this->TagInfos['tag']}' ");
             }
         }
         $ctag = $this->dtp->GetTag("page");

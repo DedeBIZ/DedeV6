@@ -12,9 +12,6 @@ require_once(dirname(__FILE__).'/config.php');
 CheckPurview('a_New,a_AccNew');
 require_once(DEDEINC.'/customfields.func.php');
 require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
-if (file_exists(DEDEDATA.'/template.rand.php')) {
-    require_once(DEDEDATA.'/template.rand.php');
-}
 if (empty($dopost)) $dopost = '';
 if ($dopost != 'save') {
     require_once(DEDEINC."/dedetag.class.php");

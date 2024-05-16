@@ -69,10 +69,10 @@
 								<label for="dbname" class="form-label">数据库名称</label>
 								<div class="input-group">
 									<input type="text" name="dbname" id="dbname" class="form-control" placeholder="DedeBIZ">
-									<div class="input-group-append"><button type="button" id="btnCheckConnect" class="btn btn-success">检查</button></div>
+									<div class="input-group-append"><button type="button" id="dbtip" class="btn btn-success">检查</button></div>
 								</div>
 							</div>
-							<div id="alertConnect"></div>
+							<div id="dbinfo"></div>
 							<div class="form-group">
 								<label for="webname" class="form-label">网站名称</label>
 								<input type="text" name="webname" id="webname" class="form-control" placeholder="我的网站">
@@ -94,7 +94,7 @@
 			</div>
 		</div>
 		<script>
-			$("#btnCheckConnect").click(function() {
+			$("#dbtip").click(function() {
 				let dbhost = $('#dbhost').val();
 				let dbuser = $('#dbuser').val();
 				let dbpwd = $('#dbpwd').val();
@@ -104,17 +104,17 @@
 					console.log(rs);
 					let result = JSON.parse(rs);
 					if (result.code === 200) {
-						ShowAlert("#alertConnect", result.data, "success", 3000);
+						ShowAlert("#dbinfo", result.data, "success", 3000);
 					} else {
-						ShowAlert("#alertConnect", result.data, "danger", 3000);
+						ShowAlert("#dbinfo", result.data, "danger", 3000);
 					}
 				})
 			});
 			$("#dbtype").change(function() {
 				if ($(this).val() === 'sqlite') {
-					$(".form-group.server").hide()
+					$(".form-group.server").hide();
 				} else {
-					$(".form-group.server").show()
+					$(".form-group.server").show();
 				}
 			});
 		</script>
