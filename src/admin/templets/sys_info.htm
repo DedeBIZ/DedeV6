@@ -62,7 +62,6 @@
 						<label><input type="radio" name="vartype" value="number"> 数字</label>
 						<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
 						<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
-						<label><input type="radio" name="vartype" value="img"> 图片</label>
 					</td>
 					<td width="120">变量所属：</td>
 					<td colspan="4">
@@ -101,7 +100,7 @@
 						<td colspan="3">系统设置</td>
 					</tr>
 					<tr align="center">
-						<td width="360">变量说明</td>
+						<td width="460">变量说明</td>
 						<td>变量值</td>
 						<td width="260">变量名称</td>
 					</tr>
@@ -112,9 +111,9 @@
 					while($row = $dsql->GetArray()) {
 					$i++;
 					?>
-					<tr align="center">
-						<td><?php echo $row['info'];?></td>
-						<td align="left">
+					<tr>
+						<td align="center"><?php echo $row['info'];?></td>
+						<td>
 							<?php
 							if ($row['type']=='bool') {
 								$c1 = '';
@@ -126,24 +125,17 @@
 								$row['value'] = stripslashes($row['value']);
 								echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
 							} else if ($row['type']=='number') {
-								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-75'>";
-							} else if ($row['type']=='img') {
-								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-50'> <input type='button' name='set9' class='btn btn-success btn-sm' onclick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." value='选择'>";
-									if ($row['value']) {
-										echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail-md'>";
-									} else {
-									echo " <img src='/static/web/img/thumbnail.jpg' id='idd_{$row['varname']}' class='thumbnail-md'>";
-								}
+								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-60'>";
 							} else {
 								$addstr='';
 								if ($row['varname']=='cfg_cookie_encode') {
 									$addstr='<a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">更新</a>';
 								}
-								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-75'> {$addstr}";
+								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-60'> {$addstr}";
 							}
 							?>
 						</td>
-						<td><?php echo $row['varname']?></td>
+						<td align="center"><?php echo $row['varname']?></td>
 					</tr>
 					<?php }?>
 				</table>

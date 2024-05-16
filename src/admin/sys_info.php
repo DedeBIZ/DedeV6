@@ -101,10 +101,10 @@ else if ($dopost == 'search') {
     $configstr = <<<EOT
 <table id="tdSearch" class="table shadow-sm my-3">
     <tr>
-        <td colspan="3">系统设置搜索</td>
+        <td colspan="3">搜索系统设置</td>
     </tr>
     <tr align="center">
-        <td width="360">参数说明</td>
+        <td width="460">参数说明</td>
         <td>参数值</td>
         <td width="260">变量名</td>
     </tr>
@@ -117,9 +117,9 @@ EOT;
             $row['info'] = preg_replace("#{$keywords}#", '<b class="text-danger">'.$keywords.'</b>', $row['info']);
             $row['varname'] = preg_replace("#{$keywords}#", '<b class="text-danger">'.$keywords.'</b>', $row['varname']);
     ?>
-    <tr align="center">
-        <td width="300"><?php echo $row['info'];?>：</td>
-        <td align="left">
+    <tr>
+        <td align="center"><?php echo $row['info'];?>：</td>
+        <td>
             <?php
             if ($row['type'] == 'bool') {
                 $c1 = '';
@@ -130,13 +130,13 @@ EOT;
             } else if ($row['type'] == 'bstring') {
                 echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
             } else if ($row['type'] == 'number') {
-                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-50'>";
+                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-60'>";
             } else {
-                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-75'>";
+                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-60'>";
             }
             ?>
         </td>
-        <td><?php echo $row['varname'] ?></td>
+        <td  align="center"><?php echo $row['varname'] ?></td>
     </tr>
 <?php
 }
