@@ -29,10 +29,10 @@
 		</div>
 		<div class="container">
 			<div class="install-box">
+				<div id="dbinfo"></div>
 				<?php if (count($arrMsg) > 0) {foreach($arrMsg as $msg){?>
 				<div class="alert alert-warning"><?php echo $msg ?></div>
 				<?php }}?>
-				<div class="alert alert-warning">请先阅读<a href="https://www.dedebiz.com/license?from=install" target="_blank">《站点授权协议》</a></div>
 				<div class="card shadow-sm mb-3">
 					<div class="card-header text-center">
 						<h1>安装Dedev<?php echo $cfg_version_detail;?></h1>
@@ -72,7 +72,6 @@
 									<div class="input-group-append"><button type="button" id="dbtip" class="btn btn-success">检查</button></div>
 								</div>
 							</div>
-							<div id="dbinfo"></div>
 							<div class="form-group">
 								<label for="webname" class="form-label">网站名称</label>
 								<input type="text" name="webname" id="webname" class="form-control" placeholder="我的网站">
@@ -91,13 +90,17 @@
 						</form>
 					</div>
 				</div>
+				<div class="mb-3">
+					<a href="https://www.dedebiz.com" target="_blank">© 2024 穆云智能科技 版权所有</a>
+					<a href="https://www.dedebiz.com/license?from=install" target="_blank">授权协议</a>
+				</div>
 			</div>
 		</div>
 		<script>
 			$("#dbtip").click(function() {
-				let dbhost = $('#dbhost').val();
-				let dbuser = $('#dbuser').val();
-				let dbpwd = $('#dbpwd').val();
+				let dbhost = $("#dbhost").val();
+				let dbuser = $("#dbuser").val();
+				let dbpwd = $("#dbpwd").val();
 				if (!dbhost) dbhost = "localhost";
 				if (!dbuser) dbuser = "root";
 				$.get('index.php?step=10&dbhost=' + dbhost + '&dbuser=' + dbuser + '&dbpwd=' + dbpwd,function(rs) {
