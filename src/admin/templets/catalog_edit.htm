@@ -138,7 +138,7 @@
 					<td>
 						<label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo 'checked';?>> 静态浏览</label>
 						<label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo 'checked';?>> 动态浏览</label>
-						<label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo 'checked';?>> 浏览列表第一页</label>
+						<label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo 'checked';?>> 列表第一页浏览</label>
 					</td>
 					<td>默认页的名称：</td>
 					<td><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="admin-input-lg"></td>
@@ -155,16 +155,17 @@
 						<label><input type="radio" name="cross" id="cross0" value="0" onclick="CheckCross();" <?php if ($myrow['cross']==0) echo 'checked';?>> 不交叉</label>
 						<label><input type="radio" name="cross" id="cross1" value="1" onclick="CheckCross();" <?php if ($myrow['cross']==1) echo 'checked';?>> 自动获取同名栏目</label>
 						<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross();" <?php if ($myrow['cross']==2) echo 'checked';?>> 指定交叉栏目id（英文逗号隔开）</label>
-						<a href="javascript:ShowHide('helpvarco');" class="btn btn-success btn-sm">说明</a><br>
-						<textarea name="crossid" id="crossid" class="admin-textarea-sm" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
-						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目是大栏目与另一个非子栏目交叉的情况，相当于副栏目功能，需要在栏目里设置好</div>
+						<a href="javascript:ShowHide('helpvarco');" class="btn btn-success btn-sm">说明</a>
+						<div id="crossid" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><textarea name="crossid" class="admin-textarea-sm"><?php echo $myrow['crossid'];?></textarea></div>
+						<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目该栏目与另一个非子栏目交叉的情况，相当于副栏目功能</div>
 					</td>
 				</tr>
 				<tr>
 					<td width="260">多站点支持：</td>
 					<td>
 						<label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo 'checked';?>> 启用</label>
-						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo 'checked';?>> 不启用</label>（仅顶级栏目启用，子类栏目无效）
+						<label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo 'checked';?>> 不启用</label>
+						<span>（仅顶级栏目启用，子类栏目无效）</span>
 					</td>
 					<td>绑定域名：</td>
 					<td><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="admin-input-lg">（请输入绑定域名http开头）</td>
