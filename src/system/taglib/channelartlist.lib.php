@@ -13,7 +13,7 @@ require_once(DEDEINC.'/archive/partview.class.php');
 function lib_channelartlist(&$ctag, &$refObj)
 {
     global $dsql, $envs, $_sys_globals;
-    $attlist = "typeid|0,row|10,cacheid|,notypeid|0,currentstyle|"; //后续添加否定栏目调用notypeid
+    $attlist = "typeid|0,row|10,cacheid|,type|,notypeid|0,currentstyle|"; //后续添加否定栏目调用notypeid
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = trim($ctag->GetInnerText());
@@ -32,8 +32,11 @@ function lib_channelartlist(&$ctag, &$refObj)
     if (empty($totalnum)) $totalnum = 20;
     //获得类别id总数的信息
     $typeids = array();
-    if ($typeid==0 || $typeid=='top') {
-        $tpsql = " reid=0 AND channeltype>0 AND ishidden<>1 ";
+    if ($type=='reid') {        
+        $reid = $refObj->TypeLink->TypeInfos['reid'];          
+        $tpsql = " reid='$reid' AND ispart<>2 AND ishidden<>1 ";
+    } else if ($typeid == 0 || $typeid == 'top') {
+        $tpsql = " reid=0 AND ispart<>2 AND ishidden<>1 AND channeltype>0 ";
     } else {
         if (!preg_match('#,#', $typeid)) {
             $tpsql = " reid='$typeid' AND ishidden<>1 ";
