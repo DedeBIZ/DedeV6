@@ -110,7 +110,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .nw{float:left;width:160px}
 .cls{clear:both}
 .helpinfo{float:left;display:none;padding:10px;width:100%;background:var(--bg);border:1px solid var(--gray-300);border-radius:var(--b-radius)}
-.tips-box{margin:70px auto 0;width:500px;height:auto;background:var(--white);border-radius:var(--b-radius);box-shadow:0 0.125rem 0.25rem rgba(0,0,0,0.075)}
+.tips-box{margin:70px auto 0;width:500px;height:auto;background:var(--white);border-radius:var(--b-radius)}
 .tips-head{margin:0 20px;padding:18px 0;border-bottom:1px solid var(--light)}
 .tips-head p{margin:0;padding-left:10px;line-height:16px;color:var(--gray-dark);text-align:left;border-left:3px solid var(--yellow)}
 .tips-body{padding:20px;min-height:160px;color:var(--gray);word-break:break-all;word-wrap:break-word}

@@ -338,7 +338,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         }
         $func .= "<script>var pgo=0;function JumpUrl(){if (pgo==0) {location='$gourl'; pgo=1;}}</script>";
         $rmsg = $func;
-        $rmsg .= "<div class='tips'><div class='tips-box'><div class='tips-head'><p>系统提示</p></div>";
+        $rmsg .= "<div class='tips'><div class='tips-box shadow-sm'><div class='tips-head'><p>系统提示</p></div>";
         $rmsg .= "<div class='tips-body'>";
         $rmsg .= "".str_replace("\"", "“", $msg)."";
         $rmsg .= "";
