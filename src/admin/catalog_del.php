@@ -33,7 +33,7 @@ $win->Init('catalog_del.php', '/static/web/js/admin.blank.js', 'POST');
 $win->AddHidden('id', $id);
 $win->AddHidden('dopost', 'ok');
 $win->AddTitle("您要确定要删除{$row['typename']}栏目吗");
-$win->AddItem('栏目的文件保存目录：', $row['typedir']);
+$win->AddItem('栏目生成目录：', $row['typedir']);
 $winform = $win->GetWindow('ok');
 $win->Display();
 ?>

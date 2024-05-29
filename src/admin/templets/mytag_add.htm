@@ -24,7 +24,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">{dede:mytag name='标记名称' ismake='是否含板块代码yes或no' typeid='栏目id'/}name标记名称，该项是必须的属性；ismake默认是no表示设定的纯网页代码，yes表示含板块标记的代码；typeid表示所属栏目的id，默认为0，表示所有栏目通用的显示文档，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</div>
+						<div class="alert alert-info mb-0">标签{dede:mytag name='标记名称' ismake='yes或no' typeid='栏目id'/}调用</div>
 					</td>
 				</tr>
 				<tr>
@@ -34,7 +34,7 @@
 						$tl = new TypeLink(0);
 						$typeOptions = $tl->GetOptionArray(0,0,0);
 						echo "<select name='typeid' class='admin-input-md'>";
-						echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
+						echo "<option value='0' selected>没有继承本标记所有栏目</option>";
 						echo $typeOptions;
 						echo "</select>";
 						?>
@@ -42,13 +42,16 @@
 				</tr>
 				<tr>
 					<td>标记名称：</td>
-					<td><input type="text" name="tagname" id="tagname" class="admin-input-md"></td>
+					<td>
+						<input type="text" name="tagname" id="tagname" class="admin-input-md">
+						<span>（使用英文或数字表示标识）</span>
+					</td>
 				</tr>
 				<tr>
 					<td>时间限制：</td>
 					<td>
-						<label><input type="radio" name="timeset" value="0" checked> 永不过期</label>
-						<label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
+						<label><input type="radio" name="timeset" value="0" checked> 不限时间</label>
+						<label><input type="radio" name="timeset" value="1"> 限制时间</label>
 					</td>
 				</tr>
 				<tr>
@@ -60,11 +63,11 @@
 					<td><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker admin-input-md"></td>
 				</tr>
 				<tr>
-					<td>正常显示文档：</td>
+					<td>标记内容：</td>
 					<td><textarea name="normbody" id="normbody" class="admin-textarea-xl"></textarea></td>
 				</tr>
 				<tr>
-					<td>过期显示文档：</td>
+					<td>过期内容：</td>
 					<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"></textarea></td>
 				</tr>
 				<tr>

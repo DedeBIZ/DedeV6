@@ -23,11 +23,11 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-info mb-0">广告代码标签{dede:myad name='广告位标识'/}调用</div>
+						<div class="alert alert-info mb-0">标签{dede:myad name='广告标记'/}调用</div>
 					</td>
 				</tr>
 				<tr>
-					<td width="260">广告位标识：</td>
+					<td width="260">广告标记：</td>
 					<td>
 						<input type="text" name="tagname" id="tagname" class="admin-input-lg">
 						<span>（使用英文或数字表示标识）</span>
@@ -43,28 +43,28 @@
 					</td>
 				</tr>
 				<tr>
-					<td>广告投放范围：</td>
+					<td>投放范围：</td>
 					<td>
 						<?php
 						$tl = new TypeLink(0);
 						$typeOptions = $tl->GetOptionArray(0,0,0);
 						echo "<select name='typeid' class='admin-input-sm'>";
-						echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>";
+						echo "<option value='0' selected>没有同名标记所有栏目</option>";
 						echo $typeOptions;
 						echo "</select>";
 						?>
-						<span>（如果在所选栏目找不到指定标识的广告文档，系统会自动搜索父栏目）</span>
+						<span>（如果所选栏目找不到指定标记广告内容，系统会自动搜索父栏目）</span>
 					</td>
 				</tr>
 				<tr>
-					<td>广告位名称：</td>
+					<td>广告名称：</td>
 					<td><input type="text" name="adname" id="adname" class="admin-input-lg"></td>
 				</tr>
 				<tr>
 					<td>时间限制：</td>
 					<td>
-						<label><input type="radio" name="timeset" value="0" checked> 永不过期</label>
-						<label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
+						<label><input type="radio" name="timeset" value="0" checked> 不限时间</label>
+						<label><input type="radio" name="timeset" value="1"> 限制时间</label>
 					</td>
 				</tr>
 				<tr>
@@ -75,7 +75,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>广告文档：</td>
+					<td>广告内容：</td>
 					<td>
 						<div class="add-tab">
 							<ul id="changeTab">
@@ -89,7 +89,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>过期显示：</td>
+					<td>过期内容：</td>
 					<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"></textarea></td>
 				</tr>
 				<tr>
@@ -101,7 +101,7 @@
 			<div class="content" id="code" style="display:none">
 				<table>
 					<tr>
-						<td width="260">广告代码：请填写广告代码，支持网页代码</td>
+						<td width="260">支持网页广告代码</td>
 						<td><textarea name="normbody[htmlcode]" class="admin-textarea-xl"></textarea></td>
 					</tr>
 				</table>
@@ -170,7 +170,7 @@
 		<script>
 			function checkSubmit() {
 				if (document.form1.tagname.value == "") {
-					alert("请输入广告位标识");
+					alert("请输入广告标记");
 					document.form1.tagname.focus();
 					return false;
 				}

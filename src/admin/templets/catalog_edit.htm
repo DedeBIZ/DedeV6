@@ -128,7 +128,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>文件保存目录：</td>
+					<td>栏目生成目录：</td>
 					<td><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="admin-input-lg">（标签{cmspath}必填）</td>
 					<td>是否继承选项：</td>
 					<td><label><input type="checkbox" name="upnext" id="upnext" value="1"> 子类栏目继承顶级栏目的浏览权限、文档类型、模板风格等属性</label></td>
@@ -148,7 +148,7 @@
 					<td>
 						<label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo 'checked';?>> 列表栏目（允许发布）</label>
 						<label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo 'checked';?>> 封面栏目（不允许发布）</label>
-						<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo 'checked';?>> 外部栏目（文件保存目录填写链接）</label>
+						<label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo 'checked';?>> 外部栏目（栏目生成目录填写链接）</label>
 					</td>
 					<td>栏目交叉：</td>
 					<td>
