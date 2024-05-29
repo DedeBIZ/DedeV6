@@ -27,7 +27,7 @@ input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white
 .install-head{padding:1rem 0;background:var(--white)}
 .install-head .logo{font-size:18px;font-weight:600;color:var(--gray-dark)}
 .install-head .logo img,.login-box .logo img{margin-right:0.5rem;height:36px}
-.install-box{margin:0 auto;width:750px}
+.install-box{margin:0 auto;padding:0 1rem;width:750px}
 .install-box .card-header,.install-box .card-body{padding:1.25rem}
 .install-box h1{margin:0;line-height:1.2;font-size:18px;font-weight:600;color:var(--gray-dark)}
 .install-box label{margin-bottom:0.25rem}
@@ -179,15 +179,6 @@ table,input,select,textarea,.web-info,.upload-box,.colordlg,.pubdlg,.quickselite
 .btn-sm{padding:0.375rem 0.6rem;height:30px;font-size:12px}
 .btn-xs{padding:0.22rem;height:20px;line-height:1;font-size:12px;border-radius:var(--b-radius-300)!important}
 .btn+.btn{margin-left:10px}
-@media (min-width:1199px){
-.modal-dialog{max-width:500px}
-}
-@media screen and (max-width:1199px) and (min-width:992px){
-.login-box{padding:30px}
-}
-@media (max-width:768px){
-td{white-space:nowrap}
-.install-box,.tips-box,.w-60,.w-40{width:100%}
-.tips{padding:0 1rem}
-.login-box{padding:30px}
-}
+.shadow-sm{box-shadow:0 .125rem 0.25rem rgba(0,0,0,.025)!important}
+@media (min-width:1199px){.modal-dialog{max-width:500px}}@media screen and (max-width:1199px) and (min-width:992px){.login-box{padding:30px}}
+@media (max-width:768px){td{white-space:nowrap}.install-box,.tips-box,.w-60,.w-40{width:100%}.tips{padding:0 1rem}.login-box{padding:30px}}

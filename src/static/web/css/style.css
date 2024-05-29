@@ -109,10 +109,4 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 #validateimg,.btn-send{border-radius:0 var(--b-radius) var(--b-radius) 0;cursor:pointer}
 #returntop{display:none;position:fixed;padding:10px 15px;right:1rem;bottom:1rem;color:var(--white);cursor:pointer;background:var(--orange);border-radius:var(--b-radius);border:0;z-index:9998}
 #returntop:hover{background:var(--orange)}
-@media (max-width:768px){
-.pb-m-3{padding-bottom:1rem}
-.login-from{width:100%}
-.bannr-img,.item-theme-img img,.list-article-img img{height:250px}
-.item-news-img img{height:210px}
-.feedbacks .feedback-action{float:none}
-}
+@media (max-width:768px){.pb-m-3{padding-bottom:1rem}.login-from{width:100%}.bannr-img,.item-theme-img img,.list-article-img img{height:250px}.item-news-img img{height:210px}.feedbacks .feedback-action{float:none}}

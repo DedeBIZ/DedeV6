@@ -80,7 +80,7 @@ ALTER TABLE `#@__dl_log` MODIFY COLUMN `ip` char(46) NOT NULL AFTER `id`;
 ALTER TABLE `#@__addoninfos` MODIFY COLUMN `nativeplace` char(20) NOT NULL DEFAULT 0 AFTER `badpost`;
 
 -- 6.1.8
-INSERT INTO `#@__sysconfig` VALUES ('151', 'cfg_tags_dir', '标签生成目录', 7, 'string', '{cmspath}/a/tags');
+INSERT INTO `#@__sysconfig` VALUES ('151', 'cfg_tags_dir', '标签更新目录', 7, 'string', '{cmspath}/a/tags');
 ALTER TABLE `#@__tagindex` DROP COLUMN `tag_pinyin`;
 
 -- 6.1.9
