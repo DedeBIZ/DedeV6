@@ -32,7 +32,7 @@ function lib_channelartlist(&$ctag, &$refObj)
     if (empty($totalnum)) $totalnum = 20;
     //获得类别id总数的信息
     $typeids = array();
-    if ($type=='reid') {        
+    if ($type == 'reid') {        
         $reid = $refObj->TypeLink->TypeInfos['reid'];          
         $tpsql = " reid='$reid' AND ispart<>2 AND ishidden<>1 ";
     } else if ($typeid == 0 || $typeid == 'top') {
