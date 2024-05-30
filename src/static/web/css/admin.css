@@ -59,9 +59,9 @@ input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white
 .admin-head .user li:last-child{padding-right:0}
 .admin-head .user li img{margin-right:0.5rem;width:30px;height:30px;border-radius:50%}
 body.menu-hide .menu-left{display:none}
-body.menu-hide .body-right{left:0;transition:all 0.5s}
+body.menu-hide .body-right{left:0}
 body.menu-show .menu-left{display:block}
-body.menu-show .body-right{left:220px;transition:all 0.5s}
+body.menu-show .body-right{left:220px}
 .menu-left{position:absolute;top:60px;left:0;bottom:0;width:220px;overflow-y:auto}
 .sidemenu{padding:1rem 0;min-height:100%;background:var(--white)}
 .sidemenu .link{display:block;position:relative;padding-left:45px;height:40px;line-height:40px;cursor:pointer}
@@ -72,7 +72,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .sidemenu li.open i.fa-angle-down{transform:rotate(180deg)}
 .sidemenu .submenu{display:none;padding:5px 0;background:var(--gray-500)}
 .sidemenu .submenu li{height:40px;line-height:40px}
-.sidemenu .submenu li:hover{background:var(--success-800);transition:all 0.5s}
+.sidemenu .submenu li:hover{background:var(--success-800)}
 .sidemenu .submenu a{display:block;float:left;padding:0 0 0 45px;color:var(--white)}
 .sidemenu .submenu .active{background:var(--green)}
 .sidemenu .submenu-right{float:right!important;padding:0 20px 0 0!important}
@@ -168,6 +168,7 @@ body.menu-show .body-right{left:220px;transition:all 0.5s}
 .admin-input-md{width:260px}
 .admin-input-sm{width:160px}
 .admin-input-xs{width:70px}
+a,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.btn{transition:all 0.5s}
 span.page-link{color:var(--white);background:var(--green)}
 table,input,select,textarea,.web-info,.upload-box,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded,#edsta{border-radius:var(--b-radius)!important}
 .coolbg,.pubdlg .title,.cke_top{border-radius:var(--b-radius) var(--b-radius) 0 0!important}
