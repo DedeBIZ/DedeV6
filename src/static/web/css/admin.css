@@ -27,7 +27,7 @@ input:focus,select:focus,textarea:focus{color:var(--gray);background:var(--white
 .install-head{padding:1rem 0;background:var(--white)}
 .install-head .logo{font-size:18px;font-weight:600;color:var(--gray-dark)}
 .install-head .logo img,.login-box .logo img{margin-right:0.5rem;height:36px}
-.install-box{margin:0 auto;padding:0 1rem;width:750px}
+.install-box{margin:0 auto;width:750px}
 .install-box .card-header,.install-box .card-body{padding:1.25rem}
 .install-box h1{margin:0;line-height:1.2;font-size:18px;font-weight:600;color:var(--gray-dark)}
 .install-box label{margin-bottom:0.25rem}
