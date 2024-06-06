@@ -168,7 +168,7 @@ body.menu-show .body-right{left:220px}
 .admin-input-md{width:260px}
 .admin-input-sm{width:160px}
 .admin-input-xs{width:70px}
-a,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.btn{transition:all 0.5s}
+a:hover,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover{transition:all 0.5s}
 span.page-link{color:var(--white);background:var(--green)}
 table,input,select,textarea,.web-info,.upload-box,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded,#edsta{border-radius:var(--b-radius)!important}
 .coolbg,.pubdlg .title,.cke_top{border-radius:var(--b-radius) var(--b-radius) 0 0!important}
