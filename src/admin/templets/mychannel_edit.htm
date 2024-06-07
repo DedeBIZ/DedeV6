@@ -26,7 +26,7 @@
 				<?php if ($row['issystem'] == 1) {?>
 				<tr>
 					<td colspan="2">
-						<div class="alert alert-warning mb-0">系统模型字段参数配置，修改不当会导致模型出错</div>
+						<div class="alert alert-warning mb-0">默认文档模型字段，请谨慎修改</div>
 					</td>
 				</tr>
 				<?php }?>
@@ -44,17 +44,11 @@
 				</tr>
 				<tr>
 					<td>模型名称：</td>
-					<td>
-						<input type="text" name="typename" id="typename" class="admin-input-sm" value="<?php echo $row['typename'];?>">
-						<span>（后台管理和会员发布显示名称）</span>
-					</td>
+					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="<?php echo $row['typename'];?>">（前后台显示模型的名称）</td>
 				</tr>
 				<tr>
 					<td>附加表：</td>
-					<td>
-						<input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $row['addtable'];?>">
-						<span>（#@__表示数据表前缀，文档模型主表外其它数据存放附加表）</span>
-					</td>
+					<td><input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $row['addtable'];?>">（#@__表示数据表前缀，文档模型主表外其它数据存放附加表）</td>
 				</tr>
 				<tr>
 					<td>是否支持会员投稿：</td>
@@ -106,10 +100,7 @@
 				</tr>
 				<tr>
 					<td>列表附加字段：</td>
-					<td>
-						<input type="text" name="listfields" id="listfields" class="admin-input-lg" value="<?php echo $row['listfields'];?>" class="w-50">
-						<span>（用英文逗号隔开，标签{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}，标记[field:name/]调用）</span>
-					</td>
+					<td><input type="text" name="listfields" id="listfields" class="admin-input-lg" value="<?php echo $row['listfields'];?>" class="w-50">（用英文逗号隔开，标签{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}，标记[field:name/]调用）</td>
 				</tr>
 				<tr>
 					<td>投稿标题使用名称：</td>
@@ -238,9 +229,7 @@
 					</td>
 				<tr>
 				<tr>
-					<td colspan="2">
-						<div class="alert alert-info mb-0">模型字段文本模式，修改调整字段顺序，但不会修改字段属性</div>
-					</td>
+					<td colspan="2">模型字段文本模式（调整字段顺序，但不会修改字段属性）</td>
 				</tr>
 				<tr>
 					<td colspan="2" class="p-0"><textarea name="fieldset" id="fieldset" class="admin-textarea-xl"><?php echo stripslashes($row['fieldset']);?></textarea></td>

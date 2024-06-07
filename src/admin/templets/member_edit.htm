@@ -19,7 +19,7 @@
 				<tr>
 					<td colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> - 修改会员</td>
 				</tr>
-				<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">该会员关连网站管理员，修改不当会导致无法登录</div></td></tr>';?>
+				<?php if ($row['matt']==10) echo '<tr><td colspan="2"><div class="alert alert-info mb-0">该会员关连网站管理员，请谨慎修改</div></td></tr>';?>
 				<tr>
 					<td colspan="2" align="center">
 						<?php if ($row['face']!='') {echo "<p><img src='{$row['face']}' class='user-img-md'></p>";};echo "<p>".$row['userid']."</p>";?>
@@ -35,10 +35,7 @@
 				</tr>
 				<tr>
 					<td>密码：</td>
-					<td>
-						<input type="text" name="pwd" id="pwd" class="admin-input-sm">
-						<span>（留空则不修改，请使用数字0-9小写a-z大写A-Z符号_@!.-）</span>
-					</td>
+					<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
 				</tr>
 				<tr>
 					<td>邮箱：</td>
@@ -84,17 +81,11 @@
 				</tr>
 				<tr>
 					<td>升级时间：</td>
-					<td>
-						<input type="text" name="uptime" id="uptime" class="admin-input-sm" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>">
-						<span>（如果您要升级会员，必须设置此时间为当前时间）</span>
-					</td>
+					<td><input type="text" name="uptime" id="uptime" class="admin-input-sm" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>">（如果您要升级会员，必须设置此时间为当前时间）</td>
 				</tr>
 				<tr>
 					<td>会员天数：</td>
-					<td>
-						<input type="text" name="exptime" id="exptime" class="admin-input-sm" value="<?php echo $row['exptime']?>">
-						<span>（如果您要升级会员，会员天数必须大于0）</span>
-					</td>
+					<td><input type="text" name="exptime" id="exptime" class="admin-input-sm" value="<?php echo $row['exptime']?>">（如果您要升级会员，会员天数必须大于0）</td>
 				</tr>
 				<?php if ($mhasDay!=0) {$mhasDay=($mhasDay>0)? $mhasDay : '<tr><td colspan="2"><span class="text-danger">会员已经到期</span></td></tr>';?>
 				<tr>
@@ -112,10 +103,7 @@
 				</tr>
 				<tr>
 					<td>投稿限制：</td>
-					<td>
-						<input type="text" name="send_max" class="admin-input-xs" value="<?php echo $row['send_max']?>">
-						<span>（0不能投稿、-1无限次）</span>
-					</td>
+					<td><input type="text" name="send_max" class="admin-input-xs" value="<?php echo $row['send_max']?>">（0不能投稿、-1无限次）</td>
 				</tr>
 				<tr>
 					<td>投稿剩余次数：</td>

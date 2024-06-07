@@ -65,11 +65,6 @@
 				</tr>
 				<tr>
 					<td class="admin-td">
-						<div class="alert alert-info mb-0">文档列表（英文逗号隔开，如：1,2,3）单条记录模板[field:fieldname/]标签，更多调用参考arclist标签</div>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
 						<table>
 							<tr>
 								<td width="120">专题名称：</td>
@@ -341,10 +336,7 @@
 									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
 								</td>
 								<td width="120">文件名称：</td>
-								<td>
-									<input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="admin-input-sm">
-									<span>（不包括文件扩展名）</span>
-								</td>
+								<td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="admin-input-sm">（不包括文件扩展名）</td>
 							</tr>
 						</table>
 					</td>

@@ -19,24 +19,15 @@
 				</tr>
 				<tr>
 					<td width="260">表单id：</td>
-					<td>
-						<input type="text" name="diyid" id="diyid" class="admin-input-sm" value="<?php echo $newdiyid?>">
-						<span>（创建后不可修改，具有唯一性）</span>
-					</td>
+					<td><input type="text" name="diyid" id="diyid" class="admin-input-sm" value="<?php echo $newdiyid?>">（创建后不可修改，具有唯一性）</td>
 				</tr>
 				<tr>
 					<td>表单名称：</td>
-					<td>
-						<input type="text" name="name" id="name" class="admin-input-sm" value="自定义表单<?php echo $newdiyid;?>">
-						<span>（后台管理和前台发布显示名称）</span>
-					</td>
+					<td><input type="text" name="name" id="name" class="admin-input-sm" value="自定义表单<?php echo $newdiyid;?>">（前后台显示表单的名称）</td>
 				</tr>
 				<tr>
 					<td>数据表名：</td>
-					<td>
-						<input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>">
-						<span>（储存自定义表单数据，不能重复已有表名，创建后不可修改表名）</span>
-					</td>
+					<td><input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>">（储存自定义表单数据，不能重复已有表名，创建后不可修改表名）</span></td>
 				</tr>
 				<tr>
 					<td>字段配置：</td>
