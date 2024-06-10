@@ -32,6 +32,7 @@ if (empty($dopost)) {
 } elseif ($dopost == 'get_articles') {
 ?>
 <table class="table table-borderless">
+    <tbody>
     <?php
     $userCatalogSql = '';
     if (count($admin_catalogs) > 0) {
@@ -55,13 +56,12 @@ if (empty($dopost)) {
             }
             $rowarcrank = $row['arcrank']==-1 ? '待审核' : '已审核';
             $pubdate = GetDateMk($row['pubdate']);
-            $row['title'] = cn_substr($row['title'], 70);
+            $row['title'] = cn_substr($row['title'], 50);
             echo "<tr class='no-wrap'><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a></td><td width='70'>{$rowarcrank}</td><td width='110'>{$pubdate}</td></tr>";
         }
-    } else {
     ?>
-    <tr><td colspan="2" align="center">暂无文档</td></tr>
-    <?php }?>
+    </tbody>
+<?php }?>
 </table>
 <?php
     exit;

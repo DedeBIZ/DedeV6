@@ -154,7 +154,7 @@ $(document).ready(function() {
 				} else {
 					dedebizInfo = false;
 				}
-				let infoStr = `<table class="table table-borderless">`;
+				let infoStr = `<table class="table table-borderless"><tbody>`;
 				if (typeof rsp.result.domain !== "undefined") {
 					infoStr += `<tr>
 						<td width="25%">
@@ -183,10 +183,11 @@ $(document).ready(function() {
 						</td>
 					</tr>`;
 				}
-				infoStr += "</table>";
+				infoStr += "</tbody></table>";
 				$("#system-info").html(infoStr);
 			} else {
 				$("#system-info").html(`<table class="table table-borderless">
+				<tbody>
 					<tr>
 						<td>
 							<div class="web-info">
@@ -195,7 +196,7 @@ $(document).ready(function() {
 							</div>
 						</td>
 					</tr>
-				</table>`);
+				</tbody></table>`);
 			}
 		});
 	});

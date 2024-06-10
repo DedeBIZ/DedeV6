@@ -26,34 +26,36 @@
 					</div>
 					<div class="card-body table-responsive">
 						<table class="table">
-							<tr>
-								<td width="20%" class="border-top-0"></td>
-								<td width="20%" class="border-top-0">浏览次数（PV）</td>
-								<td width="20%" class="border-top-0">独立访客（UV）</td>
-								<td width="20%" class="border-top-0">独立地址（IP）</td>
-								<td width="20%" class="border-top-0">访问次数（VV）</td>
-							</tr>
-							<tr>
-								<td>今日记录</td>
-								<td id="today_pv">0</td>
-								<td id="today_uv">0</td>
-								<td id="today_ip">0</td>
-								<td id="today_vv">0</td>
-							</tr>
-							<tr>
-								<td>昨日记录</td>
-								<td id="yestoday_pv">0</td>
-								<td id="yestoday_uv">0</td>
-								<td id="yestoday_ip">0</td>
-								<td id="yestoday_vv">0</td>
-							</tr>
-							<tr>
-								<td>历史峰值</td>
-								<td id="total_pv">0</td>
-								<td id="total_uv">0</td>
-								<td id="total_ip">0</td>
-								<td id="total_vv">0</td>
-							</tr>
+							<tbody>
+								<tr>
+									<td width="20%" class="border-top-0"></td>
+									<td width="20%" class="border-top-0">浏览次数（PV）</td>
+									<td width="20%" class="border-top-0">独立访客（UV）</td>
+									<td width="20%" class="border-top-0">独立地址（IP）</td>
+									<td width="20%" class="border-top-0">访问次数（VV）</td>
+								</tr>
+								<tr>
+									<td>今日记录</td>
+									<td id="today_pv">0</td>
+									<td id="today_uv">0</td>
+									<td id="today_ip">0</td>
+									<td id="today_vv">0</td>
+								</tr>
+								<tr>
+									<td>昨日记录</td>
+									<td id="yestoday_pv">0</td>
+									<td id="yestoday_uv">0</td>
+									<td id="yestoday_ip">0</td>
+									<td id="yestoday_vv">0</td>
+								</tr>
+								<tr>
+									<td>历史峰值</td>
+									<td id="total_pv">0</td>
+									<td id="total_uv">0</td>
+									<td id="total_ip">0</td>
+									<td id="total_vv">0</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>
@@ -65,44 +67,46 @@
 					</div>
 					<div class="card-body table-responsive">
 						<table class="table table-borderless">
-							<tr>
-								<td width="16%">
-									<div class="web-info">
-										<p>操作系统</p>
-										<span><?php echo PHP_OS;?></span>
-									</div>
-								</td>
-								<td width="16%">
-									<div class="web-info">
-										<p>WEB服务器</p>
-										<span><?php echo GetSimpleServerSoftware();?></span>
-									</div>
-								</td>
-								<td width="16%">
-									<div class="web-info">
-										<p>IP地址</p>
-										<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
-									</div>
-								</td>
-								<td width="16%">
-									<div class="web-info">
-										<p>PHP版本</p>
-										<span><?php echo @phpversion();?></span>
-									</div>
-								</td>
-								<td width="16%">
-									<div class="web-info">
-										<p>数据库版本</p>
-										<span><?php echo $dsql->GetVersion();?></span>
-									</div>
-								</td>
-								<td width="16%">
-									<div class="web-info">
-										<p>上传限制</p>
-										<span><?php echo ini_get("post_max_size")?></span>
-									</div>
-								</td>
-							</tr>
+							<tbody>
+								<tr>
+									<td width="16%">
+										<div class="web-info">
+											<p>操作系统</p>
+											<span><?php echo PHP_OS;?></span>
+										</div>
+									</td>
+									<td width="16%">
+										<div class="web-info">
+											<p>WEB服务器</p>
+											<span><?php echo GetSimpleServerSoftware();?></span>
+										</div>
+									</td>
+									<td width="16%">
+										<div class="web-info">
+											<p>IP地址</p>
+											<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
+										</div>
+									</td>
+									<td width="16%">
+										<div class="web-info">
+											<p>PHP版本</p>
+											<span><?php echo @phpversion();?></span>
+										</div>
+									</td>
+									<td width="16%">
+										<div class="web-info">
+											<p>数据库版本</p>
+											<span><?php echo $dsql->GetVersion();?></span>
+										</div>
+									</td>
+									<td width="16%">
+										<div class="web-info">
+											<p>上传限制</p>
+											<span><?php echo ini_get("post_max_size")?></span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>
