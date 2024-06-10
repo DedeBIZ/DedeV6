@@ -246,11 +246,6 @@ $actionSearch[7] = DEDEBIZ_SAFE_MODE? null : array(
             'linkurl' => 'mytag_main.php'
         ),
         3  =>  array(
-            'title' => '智能标记向导',
-            'purview' => 'temp_Other',
-            'linkurl' => 'mytag_tag_guide.php'
-        ),
-        4  =>  array(
             'title' => '全局标记测试',
             'purview' => 'temp_Test',
             'linkurl' => 'tag_test.php'

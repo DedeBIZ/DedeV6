@@ -1,6 +1,6 @@
 <?php
 /**
- * 智能标记向导预览
+ * 添加自定义宏标记预览
  *
  * @version        $id:mytag_tag_guide_ok.php 15:39 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator

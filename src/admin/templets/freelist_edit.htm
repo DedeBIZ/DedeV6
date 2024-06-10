@@ -33,21 +33,17 @@
 						<table class="table table-borderless">
 							<tbody>
 								<tr>
-									<td width="260">自由列表标题</td>
-									<td><input type="text" name="title" id="title" value="<?php echo $row['title']?>" class="admin-input-lg"></td>
-								</tr>
-								<tr>
-									<td>列表存放目录</td>
+									<td width="160">自由列表标题</td>
+									<td width="550"><input type="text" name="title" id="title" value="<?php echo $row['title']?>" class="admin-input-lg"></td>
+									<td width="160">列表生成目录</td>
 									<td><input type="text" name="listdir" id="listdir" value="<?php echo $row['listdir']?>" class="admin-input-lg"></td>
 								</tr>
 								<tr>
-									<td>目录默认页名称</td>
+									<td>默认页名称</td>
 									<td>
 										<input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" class="admin-input-lg">
-										<label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if ($row['nodefault']==1) echo 'checked';?>> 不使用目录默认首页</label>
+										<label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if ($row['nodefault']==1) echo 'checked';?>> 不使用默认首页</label>
 									</td>
-								</tr>
-								<tr>
 									<td>命名规则</td>
 									<td><input type="text" name="namerule" id="namerule" value="<?php echo $row['namerule']?>" class="admin-input-lg">（{listdir}列表存放目录）</td>
 								</tr>
@@ -57,22 +53,18 @@
 										<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-lg">
 										<button type="button" name="set4" onclick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">选择</button>
 									</td>
-								</tr>
-								<tr>
 									<td>最大列出页数</td>
 									<td><input type="text" name="maxpage" id="maxpage" value="<?php echo $row['maxpage'];?>" class="admin-input-sm"></td>
 								</tr>
 								<tr>
-									<td>关键词</td>
+									<td>列表关键词</td>
 									<td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="admin-input-lg"></td>
-								</tr>
-								<tr>
 									<td>列表描述</td>
 									<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $row['description']?></textarea></td>
 								</tr>
 								<tr>
-									<td colspan="2">
-										<span>调用栏目：</span>
+									<td>调用栏目</td>
+									<td>
 										<?php
 										$typeid = $ctag->GetAtt('typeid');
 										echo "<select name='typeid' class='admin-input-sm'>";
@@ -90,7 +82,9 @@
 										}
 										echo "</select>";
 										?>
-										<span>限定模型：</span>
+									</td>
+									<td>限定模型</td>
+									<td>
 										<?php
 										$channel  = $ctag->GetAtt('channel');
 										echo "<select name='channel' class='admin-input-sm'><option value='0'>不限模型</option>";
@@ -103,7 +97,11 @@
 										}
 										echo "</select>";
 										?>
-										<span>附加属性：</span>
+									</td>
+								</tr>
+								<tr>
+									<td>附加属性</td>
+									<td>
 										<?php
 										$att  = $ctag->GetAtt('att');
 										echo "<select name='att' class='admin-input-sm'>";
@@ -121,32 +119,40 @@
 										}
 										echo "</select>";
 										?>
-										<label>发布天数：<input type="text" name="subday" id="subday" class="admin-input-sm" value="<?php echo $ctag->GetAtt('subday')?>">（0表示不限）</label>
 									</td>
+									<td>发布天数</td>
+									<td><input type="text" name="subday" id="subday" class="admin-input-sm" value="<?php echo $ctag->GetAtt('subday')?>">（0表示不限）</td>
+									
+
 								</tr>
 								<tr>
-									<td colspan="2">
-										<label>每页记录数：<input type="text" name="pagesize" id="pagesize" value="<?php echo $ctag->GetAtt('pagesize')?>" class="admin-input-sm"></label>
-										<label>显示列数：<input type="text" name="col" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v;?>" class="admin-input-sm"></label>
-										<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="<?php echo $ctag->GetAtt('titlelen')?>" class="admin-input-sm">（1字节=0.5个中文字）</label>
-									</td>
+									<td>每页记录数</td>
+									<td><input type="text" name="pagesize" id="pagesize" value="<?php echo $ctag->GetAtt('pagesize')?>" class="admin-input-sm"></td>
+									<td>显示列数</td>
+									<td><input type="text" name="col" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v;?>" class="admin-input-sm"></td>
+
 								</tr>
 								<tr>
-									<td colspan="2">
+									<td>标题长度</td>
+									<td><input type="text" name="titlelen" id="titlelen" value="<?php echo $ctag->GetAtt('titlelen')?>" class="admin-input-sm">（1字节=0.5个中文字）</td>
+									<td>
 										<?php
 										$setype = $ctag->GetAtt('type');
 										if ($setype=='') $setype = 'X';
 										?>
-										<span>高级筛选：</span>
+										高级筛选
+									</td>
+									<td>
 										<label><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo 'checked';?>> 带缩略图</label>
 										<label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo 'checked';?>> 推荐</label>
 										<label><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo 'checked';?>> 专题</label>
-										<label>关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号隔开）</label>
 									</td>
 								</tr>
 								<tr>
-									<td colspan="2">
-										<span>排列顺序：</span>
+									<td>关键词</td>
+									<td><input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号隔开）</td>
+									<td>排列顺序</td>
+									<td>
 										<?php
 										$orderby = $ctag->GetAtt('orderby');
 										$sorta = "sortrank,置顶权限值;pubdate,发布时间;senddate,录入时间;click,点击量;id,文档id,lastpost,最后评论时间;postnum,评论总数;rand,随机获取";
@@ -173,10 +179,10 @@
 									</td>
 								</tr>
 								<tr>
-									<td colspan="2"><textarea name="innertext" id="myinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText()?></textarea></td>
+									<td colspan="4"><textarea name="innertext" id="myinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText()?></textarea></td>
 								</tr>
 								<tr>
-									<td colspan="2" align="center">
+									<td colspan="4" align="center">
 										<button type="submit" class="btn btn-success btn-sm">保存</button>
 										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
 									</td>

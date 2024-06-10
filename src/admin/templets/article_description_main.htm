@@ -16,17 +16,17 @@
 		<div class="card shadow-sm">
 			<div class="card-header">自动摘要分页</div>
 			<div class="card-body">
-				<form action="article_description_main.php" name="form1" target="stafrm" method="post">
+				<form name="form1" action="article_description_main.php" method="post" target="stafrm">
 					<div class="table-responsive">
 						<table class="table table-borderless">
 							<tbody>
 								<tr>
 									<td width="260">文档模型id</td>
-									<td><input type="text" name="channel" id="channel" value="1" class="admin-input-xs"></td>
+									<td><input type="text" name="channel" id="channel" value="1" class="admin-input-sm"></td>
 								</tr>
 								<tr>
 									<td>摘要字节</td>
-									<td><input type="text" name="dsize" id="dsize" class="admin-input-xs" value="<?php echo $cfg_auot_description?>">（最大255字节，自动分页<?php echo $cfg_arcautosp_size?>K）</td>
+									<td><input type="text" name="dsize" id="dsize" class="admin-input-sm" value="<?php echo $cfg_auot_description?>">（最大255字节，自动分页<?php echo $cfg_arcautosp_size?>K）</td>
 								</tr>
 								<tr>
 									<td>数据表</td>
@@ -38,11 +38,11 @@
 								</tr>
 								<tr>
 									<td>最小值</td>
-									<td><input type="text" name="msize" id="msize2" value="512" class="admin-input-xs">（字节）</td>
+									<td><input type="text" name="msize" id="msize2" value="512" class="admin-input-sm">（字节）</td>
 								</tr>
 								<tr>
 									<td>每页更新</td>
-									<td><input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-xs">（网页）</td>
+									<td><input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-sm">（网页）</td>
 								</tr>
 								<tr>
 									<td>文档id</td>

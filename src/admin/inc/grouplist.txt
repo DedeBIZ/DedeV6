@@ -67,7 +67,7 @@
 >sys_Edit>修改系统变量
 >sys_Log>管理日志
 >sys_plus>插件管理
->sys_Data>数据备份还原>unsafe
+>sys_Data>数据备份>unsafe
 >sys_Att>自定义文档属性
 >sys_ArcBatch>文档批量维护
 >sys_ArcTj>文档信息统计

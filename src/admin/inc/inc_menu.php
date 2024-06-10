@@ -39,7 +39,6 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='默认模板管理' link='templets_main.php' rank='temp_All' target='main' />
     <m:item name='标签源码管理' link='templets_tagsource.php' rank='temp_All' target='main' />
     <m:item name='自定义宏标记' link='mytag_main.php' rank='temp_MyTag' target='main' />
-    <m:item name='智能标记向导' link='mytag_tag_guide.php' rank='temp_Other' target='main' />
     <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main' />
 </m:top>")."
 <m:top item='4_' name='模型管理' rank='t_List,t_AccList,c_List,temp_One' icon='fa fa-area-chart'>
@@ -63,7 +62,7 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='图片水印设置' link='sys_info_mark.php' rank='sys_Edit' target='main' />
     <m:item name='自定义文档属性' link='content_att.php' rank='sys_Att' target='main' />
     <m:item name='软件下载设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
-    ".(DEDEBIZ_SAFE_MODE ? "" : "<m:item name='数据备份还原' link='sys_data.php' rank='sys_Data' target='main' />")."
+    ".(DEDEBIZ_SAFE_MODE ? "" : "<m:item name='数据备份' link='sys_data.php' rank='sys_Data' target='main' />")."
     ".(DEDEBIZ_SAFE_MODE ? "" : "<m:item name='SQL命令工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
     <m:item name='文件扫描工具' link='sys_safetest.php' rank='sys_verify' target='main' />
     <m:item name='系统修复工具' link='sys_repair.php' rank='sys_verify' target='main' />
