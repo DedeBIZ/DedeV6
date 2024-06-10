@@ -59,7 +59,7 @@ class OxWindow
      */
     function StartWin()
     {
-        $this->myWin .= "<div class='table-responsive'><table class='table table-borderless'>";
+        $this->myWin .= "<div class='table-responsive'><table class='table table-borderless'><tbody>";
     }
     /**
      *  添加单列标题
@@ -115,9 +115,9 @@ class OxWindow
     function CloseWin($isform = true)
     {
         if (!$isform) {
-            $this->myWin .= "</table></div>";
+            $this->myWin .= "</tbody></table></div>";
         } else {
-            $this->myWin .= "</table></div></form>";
+            $this->myWin .= "</tbody></table></div></form>";
         }
     }
     /**
