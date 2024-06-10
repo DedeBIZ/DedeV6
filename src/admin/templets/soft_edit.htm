@@ -147,6 +147,50 @@
 									</td>
 								</tr>
 								<tr>
+									<td>运行环境</td>
+									<td colspan="3"><input type="text" name="os" value="<?php echo $addRow['os']?>" class="admin-input-lg"></td>
+								</tr>
+								<tr>
+									<td>官方网址</td>
+									<td><input type="text" name="officialUrl" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" class="admin-input-lg" placeholder="请输入演示网址http开头"></td>
+									<td>演示网址</td>
+									<td>
+										<input type="text" name="officialDemo" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" class="admin-input-lg" placeholder="请填写演示网址">
+									</td>
+								</tr>
+								<tr>
+									<td>软件大小</td>
+									<td><input name="softsize" type="text" id="softsize" value="<?php echo $addRow['softsize']?>" class="admin-input-sm"></td>
+									<td>需会员权限</td>
+									<td>
+										<select name="daccess" id="daccess" class="admin-input-sm">
+											<?php
+											$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0 ");
+											$dsql->Execute();
+											while($row = $dsql->GetArray())
+											{
+												if ($row['rank']==0) $row['membername'] = "不限会员";
+												if ($row['rank'] == $daccess) echo "<option value='{$row['rank']}' selected>{$row['membername']}</option>";
+												else echo "<option value='{$row['rank']}'>{$row['membername']}</option>";
+											}
+											?>
+										</select>
+										<a href="soft_config.php" class="btn btn-success btn-sm">软件下载设置</a>
+									</td>
+								</tr>
+								<tr>
+									<td>链接上传</td>
+									<td colspan="3">
+										<input type="text" name="picnum" id="picnum" class="admin-input-sm" value="5">
+										<button type="button" name="kkkup" id="kkkup2" class="btn btn-success btn-sm" onclick="MakeUpload();">添加网址</button>
+										<button type="button" name="submit3" id="btsh3" class="btn btn-success btn-sm" onclick="ShowHideAddr();">隐藏网址</button>
+										<?php echo $nForm;?>
+										<div id="morelink" style="display:block">
+											<div id="uploadfield"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
 									<td colspan="4" class="p-0">
 										<table class="table">
 											<tbody>
@@ -208,50 +252,6 @@
 												</tr>
 											</tbody>
 										</table>
-									</td>
-								</tr>
-								<tr>
-									<td>运行环境</td>
-									<td colspan="3"><input type="text" name="os" value="<?php echo $addRow['os']?>" class="admin-input-lg"></td>
-								</tr>
-								<tr>
-									<td>官方网址</td>
-									<td><input type="text" name="officialUrl" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" class="admin-input-lg" placeholder="请输入演示网址http开头"></td>
-									<td>演示网址</td>
-									<td>
-										<input type="text" name="officialDemo" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" class="admin-input-lg" placeholder="请填写演示网址">
-									</td>
-								</tr>
-								<tr>
-									<td>软件大小</td>
-									<td><input name="softsize" type="text" id="softsize" value="<?php echo $addRow['softsize']?>" class="admin-input-sm"></td>
-									<td>需会员权限</td>
-									<td>
-										<select name="daccess" id="daccess" class="admin-input-sm">
-											<?php
-											$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0 ");
-											$dsql->Execute();
-											while($row = $dsql->GetArray())
-											{
-												if ($row['rank']==0) $row['membername'] = "不限会员";
-												if ($row['rank'] == $daccess) echo "<option value='{$row['rank']}' selected>{$row['membername']}</option>";
-												else echo "<option value='{$row['rank']}'>{$row['membername']}</option>";
-											}
-											?>
-										</select>
-										<a href="soft_config.php" class="btn btn-success btn-sm">软件下载设置</a>
-									</td>
-								</tr>
-								<tr>
-									<td>链接上传</td>
-									<td colspan="3">
-										<input type="text" name="picnum" id="picnum" class="admin-input-sm" value="5">
-										<button type="button" name="kkkup" id="kkkup2" class="btn btn-success btn-sm" onclick="MakeUpload();">添加网址</button>
-										<button type="button" name="submit3" id="btsh3" class="btn btn-success btn-sm" onclick="ShowHideAddr();">隐藏网址</button>
-										<?php echo $nForm;?>
-										<div id="morelink" style="display:block">
-											<div id="uploadfield"></div>
-										</div>
 									</td>
 								</tr>
 								<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>

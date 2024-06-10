@@ -153,65 +153,6 @@
 									</td>
 								</tr>
 								<tr>
-									<td colspan="4" class="p-0">
-										<table class="table">
-											<tbody>
-												<tr>
-													<td>文件类型</td>
-													<td>
-														<select name="filetype" id="filetype" class="admin-input-sm">
-															<option value=".exe" selected>.exe</option>
-															<option value=".zip">.zip</option>
-															<option value=".rar">.rar</option>
-															<option value=".iso">.iso</option>
-															<option value=".gz">.gz</option>
-															<option value="其它">其它</option>
-														</select>
-													</td>
-													<td>软件等级</td>
-													<td>
-														<select name="softrank" id="softrank" class="admin-input-sm">
-															<option value="1">一星</option>
-															<option value="2">二星</option>
-															<option value="3" selected>三星 </option>
-															<option value="4">四星</option>
-															<option value="5">五星</option>
-														</select>
-													</td>
-													<td>软件属性</td>
-													<td>
-														<select name="softtype" id="softtype" class="admin-input-sm">
-															<option value="国产软件" selected>国产软件</option>
-															<option value="国外软件">国外软件</option>
-															<option value="汉化补丁">汉化补丁</option>
-														</select>
-													</td>
-													<td>界面语言</td>
-													<td>
-														<select name="language" id="language" class="admin-input-sm">
-															<option value="简体中文" selected>简体中文</option>
-															<option value="英文软件">英文软件</option>
-															<option value="繁体中文">繁体中文</option>
-															<option value="其它类型">其它类型</option>
-														</select>
-													</td>
-													<td>授权方式</td>
-													<td>
-														<select name="accredit" id="accredit" class="admin-input-sm">
-															<option value="共享软件" selected>共享软件</option>
-															<option value="免费软件">免费软件</option>
-															<option value="开源软件">开源软件</option>
-															<option value="商业软件">商业软件</option>
-															<option value="破解软件">破解软件</option>
-															<option value="游戏外挂">游戏外挂</option>
-														</select>
-													</td>
-												</tr>
-											<tbody>
-										</table>
-									</td>
-								</tr>
-								<tr>
 									<td>运行环境</td>
 									<td colspan="3"><input type="text" name="os" value="win7,win10,win11" class="admin-input-lg"></td>
 								</tr>
@@ -299,6 +240,65 @@
 									</td>
 								</tr>
 								<?php }?>
+								<tr>
+									<td colspan="4" class="p-0">
+										<table class="table">
+											<tbody>
+												<tr>
+													<td>文件类型</td>
+													<td>
+														<select name="filetype" id="filetype" class="admin-input-sm">
+															<option value=".exe" selected>.exe</option>
+															<option value=".zip">.zip</option>
+															<option value=".rar">.rar</option>
+															<option value=".iso">.iso</option>
+															<option value=".gz">.gz</option>
+															<option value="其它">其它</option>
+														</select>
+													</td>
+													<td>软件等级</td>
+													<td>
+														<select name="softrank" id="softrank" class="admin-input-sm">
+															<option value="1">一星</option>
+															<option value="2">二星</option>
+															<option value="3" selected>三星 </option>
+															<option value="4">四星</option>
+															<option value="5">五星</option>
+														</select>
+													</td>
+													<td>软件属性</td>
+													<td>
+														<select name="softtype" id="softtype" class="admin-input-sm">
+															<option value="国产软件" selected>国产软件</option>
+															<option value="国外软件">国外软件</option>
+															<option value="汉化补丁">汉化补丁</option>
+														</select>
+													</td>
+													<td>界面语言</td>
+													<td>
+														<select name="language" id="language" class="admin-input-sm">
+															<option value="简体中文" selected>简体中文</option>
+															<option value="英文软件">英文软件</option>
+															<option value="繁体中文">繁体中文</option>
+															<option value="其它类型">其它类型</option>
+														</select>
+													</td>
+													<td>授权方式</td>
+													<td>
+														<select name="accredit" id="accredit" class="admin-input-sm">
+															<option value="共享软件" selected>共享软件</option>
+															<option value="免费软件">免费软件</option>
+															<option value="开源软件">开源软件</option>
+															<option value="商业软件">商业软件</option>
+															<option value="破解软件">破解软件</option>
+															<option value="游戏外挂">游戏外挂</option>
+														</select>
+													</td>
+												</tr>
+											<tbody>
+										</table>
+									</td>
+								</tr>
 								<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
 								<tr>
 									<td colspan="4"><?php GetEditor('body','',350,'Small');?></td>
