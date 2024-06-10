@@ -19,7 +19,7 @@
 			<li class="breadcrumb-item active">修改广告</li>
 		</ol>
 		<div class="card shadow-sm">
-			<div class="card-header"><a href="ad_main.php">修改广告</div>
+			<div class="card-header">修改广告</div>
 			<div class="card-body">
 				<form name="form1" action="ad_edit.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="aid" value="<?php echo $aid?>">
@@ -56,7 +56,7 @@
 										echo $typeOptions;
 										echo "</select>";
 										?>
-										<span>（如果所选栏目找不到指定标记广告内容，系统会自动搜索父栏目）</span>
+										<span>（栏目找不到指定广告标记，则自动搜索父栏目）</span>
 									</td>
 								</tr>
 								<tr>

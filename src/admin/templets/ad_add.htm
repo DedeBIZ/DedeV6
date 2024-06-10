@@ -57,7 +57,7 @@
 										echo $typeOptions;
 										echo "</select>";
 										?>
-										<span>（如果所选栏目找不到指定标记广告内容，系统会自动搜索父栏目）</span>
+										<span>（栏目找不到指定广告标记，则自动搜索父栏目）</span>
 									</td>
 								</tr>
 								<tr>
@@ -77,14 +77,12 @@
 								<tr>
 									<td>广告内容</td>
 									<td>
-										<div class="add-tab">
-											<ul id="changeTab">
-												<li id="t_code" class="active">代码</li>
-												<li id="t_txt">文字</li>
-												<li id="t_img">图片</li>
-												<li id="t_flash">Flash</li>
-											</ul>
-										</div>
+										<ul id="adTab" class="adtab">
+											<li id="t_code" class="active">代码</li>
+											<li id="t_txt">文字</li>
+											<li id="t_img">图片</li>
+											<li id="t_flash">Flash</li>
+										</ul>
 										<div id="advert"></div>
 									</td>
 								</tr>
@@ -103,73 +101,26 @@
 					</div>
 				</form>
 				<div id="formtxt" style="display:none">
-					<div class="content" id="code" style="display:none">
-						<table>
-							<tr>
-								<td width="260">支持网页广告代码</td>
-								<td><textarea name="normbody[htmlcode]" class="admin-textarea-xl"></textarea></td>
-							</tr>
-						</table>
+					<div id="code" class="content">
+						<textarea name="normbody[htmlcode]" class="admin-textarea-xl" placeholder="请输入广告，支持网页代码"></textarea>
 					</div>
-					<div id="txt" class="content" style="display:none">
-						<table>
-							<tr>
-								<td width="260">文字文档</td>
-								<td><input type="text" name="normbody[title]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>文字链接</td>
-								<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>文字颜色</td>
-								<td><input type="text" name="normbody[color]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>文字大小</td>
-								<td><input type="text" name="normbody[size]" class="admin-input-lg"></td>
-							</tr>
-						</table>
+					<div id="txt" class="content">
+						<p><input type="text" name="normbody[title]" class="admin-input-lg" placeholder="请输入文字标题"></p>
+						<p><input type="text" name="normbody[link]" class="admin-input-lg" placeholder="请输入文字链接"></p>
+						<p><input type="text" name="normbody[color]" class="admin-input-lg" placeholder="请输入文字颜色"></p>
+						<input type="text" name="normbody[size]" class="admin-input-lg" placeholder="请输入文字大小">
 					</div>
-					<div id="img" class="content" style="display:none">
-						<table>
-							<tr>
-								<td width="260">图片地址</td>
-								<td><input type="text" name="normbody[url]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>图片链接</td>
-								<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>图片宽度</td>
-								<td><input type="text" name="normbody[width]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>图片高度</td>
-								<td><input type="text" name="normbody[height]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>图片描述</td>
-								<td><input type="text" name="normbody[descrip]" class="admin-input-lg"></td>
-							</tr>
-						</table>
+					<div id="img" class="content">
+						<p><input type="text" name="normbody[url]" class="admin-input-lg" placeholder="请输入图片地址"></p>
+						<p><input type="text" name="normbody[link]" class="admin-input-lg" placeholder="请输入图片链接"></p>
+						<p><input type="text" name="normbody[width]" class="admin-input-lg" placeholder="请输入图片宽度"></p>
+						<p><input type="text" name="normbody[height]" class="admin-input-lg" placeholder="请输入图片高度"></p>
+						<input type="text" name="normbody[descrip]" class="admin-input-lg" placeholder="请输入图片描述">
 					</div>
-					<div id="flash" class="content" style="display:none">
-						<table>
-							<tr>
-								<td width="260">flash链接</td>
-								<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>flash宽度</td>
-								<td><input type="text" name="normbody[width]" class="admin-input-lg"></td>
-							</tr>
-							<tr>
-								<td>flash高度</td>
-								<td><input type="text" name="normbody[height]" class="admin-input-lg"></td>
-							</tr>
-						</table>
+					<div id="flash" class="content">
+						<p><input type="text" name="normbody[link]" class="admin-input-lg" placeholder="请输入flash链接"></p>
+						<p><input type="text" name="normbody[width]" class="admin-input-lg" placeholder="请输入flash宽度"></p>
+						<input type="text" name="normbody[height]" class="admin-input-lg" placeholder="请输入flash高度">
 					</div>
 				</div>
 			</div>
@@ -181,12 +132,12 @@
 			}
 			showcode('code');
 			$(document).ready(function() {
-				$("#changeTab>li").click(function() {
+				$("#adTab>li").click(function() {
 					var tabLi = $(this);
 					var thistab = tabLi[0].id;
 					$(".content").each(function() {
 						if ("t_" + $(this)[0].id == thistab) {
-							$("#changeTab>li").removeClass("active");
+							$("#adTab>li").removeClass("active");
 							$("#t_" + $(this)[0].id).addClass("active");
 							showcode($(this)[0].id);
 						}

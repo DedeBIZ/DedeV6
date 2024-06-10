@@ -25,16 +25,8 @@
 							<tbody>
 								<tr>
 									<td><textarea name="partcode" id="partcode" class="admin-textarea-xl">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
-									<td rowspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
-								</tr>
-								<tr>
-									<td align="center"><button type="submit"class="btn btn-success btn-sm">提交测试</button></td>
-								</tr>
-								<tr>
-									<td colspan="2"><textarea name="htmlf" id="htmlf" class="admin-textarea-xl"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
-								</tr>
-								<tr>
-									<td colspan="2">
+									<td><textarea name="htmlf" id="htmlf" class="admin-textarea-xl"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
+									<td>
 										<textarea name="htmlf" id="htmlf" class="admin-textarea-xl">
 										<?php
 										$vt = new DedeVote($aid);
@@ -43,6 +35,12 @@
 										?>
 										</textarea>
 									</td>
+								</tr>
+								<tr>
+									<td colspan="3" align="center"><button type="submit"class="btn btn-success btn-sm">提交测试</button></td>
+								</tr>
+								<tr>
+									<td colspan="3"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
 								</tr>
 							</tbody>
 						</table>
