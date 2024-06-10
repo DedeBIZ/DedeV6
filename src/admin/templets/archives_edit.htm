@@ -22,7 +22,7 @@
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
 			<li class="breadcrumb-item"><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a></li>
-			<li class="breadcrumb-item active">修改自定义文档</li>
+			<li class="breadcrumb-item active">修改文档</li>
 		</ol>
 		<div class="card shadow-sm">
 			<div class="card-header">修改<?php echo $arcRow['title'];?>文档</div>
@@ -136,7 +136,7 @@
 										<label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked';?>> 提取第一个图片为缩略图</label>
 									</td>
 								</tr>
-								<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow);?>
+								<?php PrintAutoFieldsEdit($cInfos['fieldset'],$addRow);?>
 								<tr>
 									<td>评论选项</td>
 									<td>

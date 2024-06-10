@@ -143,7 +143,7 @@
 										<label>大小：<input name="spsize" type="text" id="spsize" value="<?php echo $cfg_arcautosp_size?>" class="admin-input-xs"> K（分页符为：#p#分页标题#e#）</label>
 									</td>
 								</tr>
-								<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
+								<?php PrintAutoFieldsAdd($cInfos['fieldset'],'autofield'); ?>
 								<tr>
 									<td colspan="4"><?php GetEditor('body',$body,350);?></td>
 								</tr>

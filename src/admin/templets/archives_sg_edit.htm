@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>修改分类文档</title>
+		<title>修改单表文档</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
@@ -21,8 +21,8 @@
 	<body>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">分类列表</a></li>
-			<li class="breadcrumb-item active">修改分类文档</li>
+			<li class="breadcrumb-item"><a href="content_sg_list.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a></li>
+			<li class="breadcrumb-item active">修改文档</li>
 		</ol>
 		<div class="card shadow-sm">
 			<div class="card-header">修改<?php echo $addRow['title'];?>文档</div>
@@ -86,7 +86,8 @@
 										<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>');" class="btn btn-success btn-sm">选择</a>
 									</td>
 								</tr>
-								<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
+								<?php }?>
+								<?php PrintAutoFieldsEdit($cInfos['fieldset'],$addRow,'autofield');?>
 								<tr>
 									<td>浏览权限</td>
 									<td colspan="3">

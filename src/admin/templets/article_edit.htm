@@ -135,7 +135,7 @@
 										<label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked';?>> 提取第一个图片为缩略图</label>
 									</td>
 								</tr>
-								<?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?>
+								<?php PrintAutoFieldsEdit($cInfos['fieldset'],$addRow,'autofield');?>
 								<tr>
 									<td colspan="4"><?php GetEditor('body',stripcslashes($addRow['body']),350);?></td>
 								</tr>

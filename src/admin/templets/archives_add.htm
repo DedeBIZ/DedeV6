@@ -22,10 +22,10 @@
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
 			<li class="breadcrumb-item"><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a></li>
-			<li class="breadcrumb-item active">发布自定义文档</li>
+			<li class="breadcrumb-item active">发布文档</li>
 		</ol>
 		<div class="card shadow-sm">
-			<div class="card-header">发布自定义文档</div>
+			<div class="card-header">发布文档</div>
 			<div class="card-body">
 				<form name="form1" action="archives_add.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="channelid" value="<?php echo $channelid?>">
@@ -113,7 +113,6 @@
 									<td>需要金币</td>
 									<td><input type="text" name="money" id="money" value="0" class="admin-input-sm"></td>
 								</tr>
-								<?php }?>
 								<tr id="typeid2tr" style="display:none">
 									<td>副栏目</td>
 									<td colspan="3">
@@ -122,6 +121,7 @@
 										<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2');" class="btn btn-success btn-sm">选择</a>
 									</td>
 								</tr>
+								<?php }?>
 								<tr>
 									<td>关键词</td>
 									<td colspan="3">
@@ -143,7 +143,7 @@
 										<label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked';?>> 提取第一个图片为缩略图</label>
 									</td>
 								</tr>
-								<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']));?>
+								<?php PrintAutoFieldsAdd($cInfos['fieldset']); ?>
 								<tr>
 									<td>评论选项</td>
 									<td>
