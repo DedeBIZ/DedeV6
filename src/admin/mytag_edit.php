@@ -34,7 +34,7 @@ if ($dopost == 'delete') {
     $jscode = "<script src='{$cfg_phpurl}/mytag_js.php?aid=$aid'></script>";
     $showhtml = "<xmp>\r\n\r\n$jscode\r\n\r\n</xmp>";
     $showhtml .= "<iframe name='testfrm' frameborder='0' id='testfrm' src='mytag_edit.php?aid={$aid}&dopost=testjs'></iframe>";
-    $wecome_info = "<a href='mytag_main.php'>自定义宏标记</a> - 获取标签";
+    $wintitle = "获取自定义标记标签";
     $win = new OxWindow();
     $win->Init();
     $winform = $win->GetWindow("hand", $showhtml);

@@ -3,47 +3,42 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>关键词管理</title>
+		<title>文档关键词管理</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="article_keywords_main.php">
-			<input type="hidden" name="dopost" value="add">
-			<table id="addnew" class="table shadow-sm table-borderless mt-3" style="display:none">
-				<tr>
-					<td>
-						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
-						<input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="admin-input-sm mr-3">
-						<input type="text" name="rank" id="rank" placeholder="请输入频率" class="admin-input-sm">
-						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form name="form2">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td>
-						<input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" class="admin-input-lg mr-3">
-						<button type="button" name="submit" onclick="ReturnValue();" class="btn btn-success btn-sm">选用</button>
-						<button type="button" name="kwa" onclick="AddNewKw();" class="btn btn-success btn-sm">新增关键词</button>
-						<button type="button" name="kwm" onclick="location='article_keywords_main.php';" class="btn btn-success btn-sm">关键词管理</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						{dede:datalist empty='<div class="text-center py-2">暂无文档</div>'}
-						<a href="javascript:SelKw('{dede:field.keyword/}')">{dede:field.keyword/}</a>
-						{/dede:datalist}
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">{dede:pagelist listsize='6'/}</td>
-				</tr>
-			</table>
-		</form>
+		<div class="card shadow-sm">
+			<div class="card-header">文档关键词管理</div>
+			<div class="card-body">
+				<form name="form2">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td>
+										<input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" class="admin-input-lg mr-2">
+										<button type="button" name="submit" onclick="ReturnValue();" class="btn btn-success btn-sm">选用</button>
+										<button type="button" name="kwm" onclick="location='article_keywords_main.php';" class="btn btn-success btn-sm">关键词管理</button>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										{dede:datalist}
+										<a href="javascript:SelKw('{dede:field.keyword/}')">{dede:field.keyword/}</a>
+										{/dede:datalist}
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">{dede:pagelist listsize='6'/}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function SelKw(kw) {
 				if (document.form2.keywords.value) {
@@ -64,9 +59,6 @@
 				var obj = document.getElementById(objname);
 				if (obj.style.display=="none") obj.style.display = "block";
 				else obj.style.display="none";
-			}
-			function AddNewKw() {
-				showHide("addnew");
 			}
 		</script>
 	</body>

@@ -63,37 +63,38 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $start = ($pageno - 1) * $pagesize;
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
-    <table class='table shadow-sm my-3'>
-    <tr>
-        <td colspan='8'>搜索关键词维护</td>
-    </tr>
-    <tr align='center'>
-        <td width='6%'>选择</td>
-        <td width='6%'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
-        <td width='20%'>关键词</td>
-        <td width='20%'>分词结果</td>
-        <td width='6%'><a href=\"javascript:ReloadPage('count');\">频率</a></td>
-        <td width='6%'><a href=\"javascript:ReloadPage('result');\">结果</a></td>
-        <td width='12%'><a href=\"javascript:ReloadPage('lasttime');\">搜索时间</a></td>
-        <td>操作</td>
-    </tr>";
+    <div class='table-responsive'>
+    <table class='table table-borderless'>
+    <thead>
+        <tr>
+            <td scope='col'>选择</td>
+            <td scope='col'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
+            <td scope='col'>关键词</td>
+            <td scope='col'>分词结果</td>
+            <td scope='col'><a href=\"javascript:ReloadPage('count');\">频率</a></td>
+            <td scope='col'><a href=\"javascript:ReloadPage('result');\">结果</a></td>
+            <td scope='col'><a href=\"javascript:ReloadPage('lasttime');\">搜索时间</a></td>
+            <td scope='col'>操作</td>
+        </tr>
+    </thead>";
     echo $printhead;
     if ($orderby == 'result') $orderby = $orderby." ASC";
     else $orderby = $orderby." DESC";
     $dsql->SetQuery("SELECT * FROM `#@__search_keywords` ORDER BY $orderby LIMIT $start,$pagesize ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
-        $line = "<tr align='center'>
+        $line = "<tbody>
+    <tr>
         <td><input name=\"aids[]\" type=\"checkbox\" value=\"{$row['aid']}\"></td>
         <td>{$row['aid']}</td>
-        <td><input type='text' name='keyword' id='keyword{$row['aid']}' value='{$row['keyword']}' class='admin-input-md'></td>
+        <td><input type='text' name='keyword' id='keyword{$row['aid']}' value='{$row['keyword']}' class='admin-input-sm'></td>
         <td><input type='text' name='spwords' id='spwords{$row['aid']}' value='{$row['spwords']}' class='admin-input-md'></td>
         <td><input type='text' name='count' id='count{$row['aid']}' value='{$row['count']}' class='admin-input-sm'></td>
         <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
-        <td><span>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</span></td>
+        <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
         <td>
-            <a href='javascript:UpdateNote({$row['aid']});' class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
-            <a href='javascript:DelNote({$row['aid']});' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='javascript:UpdateNote({$row['aid']});' class='btn btn-light btn-sm'><i class='fa fa-repeat' title='更新'></i></a>
+            <a href='javascript:DelNote({$row['aid']});' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
         </td>
     </tr>";
         echo $line;
@@ -104,6 +105,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
             <a href=\"javascript:noselAll();\" class='btn btn-success btn-sm'>取消</a>
             <a href=\"javascript:delall();\" class='btn btn-danger btn-sm'>删除</a>
            </td>
-        </tr>";
-    echo "</table></form>";
+        </tr>
+    </tbody>";
+    echo "</table></div></form>";
 }

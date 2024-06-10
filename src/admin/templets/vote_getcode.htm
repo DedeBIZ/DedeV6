@@ -9,35 +9,46 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="tag_test_action.php" target="stafrm" method="post">
-			<input type="hidden" name="showsource" value="no">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="vote_main.php">投票管理</a> - 获取投票标签</td>
-				</tr>
-				<tr>
-					<td><textarea name="partcode" id="partcode" class="admin-textarea-xl">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
-					<td rowspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
-				</tr>
-				<tr>
-					<td align="center"><button type="submit" name="submit" class="btn btn-success btn-sm">提交测试</button></td>
-				</tr>
-				<tr>
-					<td colspan="2"><textarea name="htmlf" id="htmlf" class="admin-textarea-xl"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2" class="p-0">
-						<textarea name="htmlf" id="htmlf" class="admin-textarea-xl">
-						<?php
-						$vt = new DedeVote($aid);
-						echo $vt->GetVoteForm();
-						$vt->Close();
-						?>
-						</textarea>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="vote_main.php">投票管理</a></li>
+			<li class="breadcrumb-item active">获取投票标签</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">获取投票标签</div>
+			<div class="card-body">
+				<form name="form1" action="tag_test_action.php" target="stafrm" method="post">
+					<input type="hidden" name="showsource" value="no">
+					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td><textarea name="partcode" id="partcode" class="admin-textarea-xl">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
+									<td rowspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
+								</tr>
+								<tr>
+									<td align="center"><button type="submit"class="btn btn-success btn-sm">提交测试</button></td>
+								</tr>
+								<tr>
+									<td colspan="2"><textarea name="htmlf" id="htmlf" class="admin-textarea-xl"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<textarea name="htmlf" id="htmlf" class="admin-textarea-xl">
+										<?php
+										$vt = new DedeVote($aid);
+										echo $vt->GetVoteForm();
+										$vt->Close();
+										?>
+										</textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

@@ -14,7 +14,7 @@ require_once(DEDEINC.'/libraries/oxwindow.class.php');
 if (empty($dopost)) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data'");
-    $wecome_info = "系统修复工具";
+    $wintitle = "系统修复工具";
     $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>
@@ -37,7 +37,7 @@ if (empty($dopost)) {
 else if ($dopost == 1) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data'");
-    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测数据结构";
+    $wintitle = "检测数据结构";
     $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>
@@ -106,7 +106,7 @@ else if ($dopost == 2) {
     UpDateCatCache();
     $win = new OxWindow();
     $win->Init("sys_repair.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data'");
-    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 检测微表数据";
+    $wintitle = "检测微表数据";
     $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>{$msg}</td>
@@ -152,7 +152,7 @@ else if ($dopost == 3) {
     }
     $win = new OxWindow();
     $win->Init("sys_repair.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data'");
-    $wecome_info = "<a href='sys_repair.php'>系统修复工具</a> - 高级检测";
+    $wintitle = "高级检测";
     $win->AddTitle('系统修复工具用于检测和修复系统数据错误');
     $msg = "<tr>
         <td>完成所有修复操作，移除错误记录{$errnum}条</td>

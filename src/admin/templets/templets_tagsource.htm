@@ -9,40 +9,48 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<table class="table shadow-sm my-3">
-			<tr>
-				<td colspan="4">标签源码管理</td>
-			</tr>
-			<tr>
-				<td colspan="4">
-					<div class="alert alert-warning mb-0">默认标签源码文件，请谨慎修改</div>
-				</td>
-			</tr>
-			<tr align="center">
-				<td width="26%">标签文件名</td>
-				<td width="26%">标签说明</td>
-				<td width="26%">修改时间</td>
-				<td>操作</td>
-			</tr>
-			<?php
-			$dh = dir($libdir);
-			while($filename=$dh->read())
-			{
-				if (!preg_match("#\.php$#", $filename)) continue;
-				$filetime = filemtime($libdir.'/'.$filename);
-				$filetime = MyDate("Y-m-d H:i:s",$filetime);
-				$fileinfo = GetHelpInfo(str_replace('.lib.php','',$filename));
-			?>
-			<tr align="center">
-				<td align="left"><img src="/static/web/img/icon_php.png"> <?php echo $filename;?></td>
-				<td align="left"><?php echo $fileinfo;?></td>
-				<td><?php echo $filetime;?></td>
-				<td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a></td>
-			</tr>
-			<?php }?>
-			<tr>
-				<td colspan="4" align="center"><a href="tpl.php?action=addnewtag" class="btn btn-success btn-sm">添加标签</a></td>
-			</tr>
-		</table>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">标签源码管理</li>
+		</ol>
+		<div class="alert alert-warning">默认标签源码文件，请谨慎修改</div>
+		<div class="card shadow-sm">
+			<div class="card-header">标签源码管理</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-borderless">
+						<thead>
+							<tr>
+								<td scope="col">标签文件名</td>
+								<td scope="col">标签说明</td>
+								<td scope="col">修改时间</td>
+								<td scope="col">操作</td>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$dh = dir($libdir);
+							while($filename=$dh->read())
+							{
+								if (!preg_match("#\.php$#", $filename)) continue;
+								$filetime = filemtime($libdir.'/'.$filename);
+								$filetime = MyDate("Y-m-d H:i:s",$filetime);
+								$fileinfo = GetHelpInfo(str_replace('.lib.php','',$filename));
+							?>
+							<tr>
+								<td><img src="/static/web/img/icon_php.png"> <?php echo $filename;?></td>
+								<td><?php echo $fileinfo;?></td>
+								<td><?php echo $filetime;?></td>
+								<td><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a></td>
+							</tr>
+							<?php }?>
+							<tr>
+								<td colspan="4" align="center"><a href="tpl.php?action=addnewtag" class="btn btn-success btn-sm">添加标签</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

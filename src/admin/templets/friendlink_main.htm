@@ -13,74 +13,85 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form action="friendlink_main.php" name="form1" method="get">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td>
-						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" class="admin-input-lg mr-3">
-						<select name="ischeck" id="ischeck" class="admin-input-sm">
-							<?php
-							foreach($selCheckArr as $k=>$v)
-							{
-								if ($k==$ischeck) echo "<option value='$k' selected>$v</option>";
-								else echo "<option value='$k'>$v</option>";
-							}
-							?>
-						</select>
-						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
-						<a href="friendlink_add.php" class="btn btn-success btn-sm">添加链接</a>
-						<a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
-						<a href="{dede:global name=' cfg_phpurl'/}/flink.php" target="_blank" class="btn btn-success btn-sm">友情链接预览</a>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form name="form1" method="post" action="friendlink_edit.php">
-			<input type="hidden" name="dopost" value="delall">
-			<input type="hidden" name="allid">
-			<table class="table shadow-sm mb-3">
-				<tr>
-					<td colspan="9">友情链接管理</td>
-				</tr>
-				<tr align="center">
-					<td width="6%">选择</td>
-					<td width="16%">名称</td>
-					<td width="16%">地址</td>
-					<td width="10%">图标</td>
-					<td width="10%">邮箱</td>
-					<td width="10%">时间</td>
-					<td width="6%">状态</td>
-					<td width="6%">顺序</td>
-					<td>操作</td>
-				</tr>
-				{dede:datalist empty='<tr><td colspan="9" align="center">暂无记录</td></tr>'}
-				<tr align="center">
-					<td><input type='checkbox' name='aids' value='{dede:field.id/}'></td>
-					<td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}</td>
-					<td>{dede:field.url/}</td>
-					<td>{dede:field.logo function="GetPic(@me)"/}</td>
-					<td>{dede:field.email/}</td>
-					<td>{dede:field.dtime function="MyDate('Y-m-d',@me)"/}</td>
-					<td>{dede:field.ischeck function="GetSta(@me)"/}</td>
-					<td>{dede:field.sortrank/}</td>
-					<td>
-						<a href="friendlink_edit.php?id={dede:field.id/}&dopost=getedit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
-						<a href="friendlink_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-					</td>
-				</tr>
-				{/dede:datalist}
-				<tr>
-					<td colspan="9">
-						<a href="javascript:;" onclick="Sel('all');" class="btn btn-success btn-sm">全选</a>
-						<a href="javascript:;" onclick="Sel('none');" class="btn btn-success btn-sm">取消</a>
-						<a href="javascript:;" onclick="checkSubmit();" class="btn btn-success btn-sm">批量删除</a>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">友情链接管理</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<form action="friendlink_main.php" name="form1" method="get">
+					<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" class="admin-input-lg mr-2">
+					<select name="ischeck" id="ischeck" class="admin-input-sm">
+						<?php
+						foreach($selCheckArr as $k=>$v)
+						{
+							if ($k==$ischeck) echo "<option value='$k' selected>$v</option>";
+							else echo "<option value='$k'>$v</option>";
+						}
+						?>
+					</select>
+					<button type="submit"class="btn btn-success btn-sm">搜索</button>
+					<a href="friendlink_add.php" class="btn btn-success btn-sm">添加链接</a>
+					<a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
+					<a href="<?php echo $cfg_phpurl;?>/flink.php?dopost=add" target="_blank" class="btn btn-success btn-sm">申请链接</a>
+					<a href="{dede:global name=' cfg_phpurl'/}/flink.php" target="_blank" class="btn btn-success btn-sm">链接预览</a>
+				</form>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">友情链接管理</div>
+			<div class="card-body">
+				<form name="form1" method="post" action="friendlink_edit.php">
+					<input type="hidden" name="dopost" value="delall">
+					<input type="hidden" name="allid">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<thead>
+								<tr>
+									<td scope="col">选择</td>
+									<td scope="col">名称</td>
+									<td scope="col">地址</td>
+									<td scope="col">图标</td>
+									<td scope="col">邮箱</td>
+									<td scope="col">时间</td>
+									<td scope="col">状态</td>
+									<td scope="col">顺序</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td><input type='checkbox' name='aids' value='{dede:field.id/}'></td>
+									<td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}</td>
+									<td>{dede:field.url/}</td>
+									<td>{dede:field.logo function="GetPic(@me)"/}</td>
+									<td>{dede:field.email/}</td>
+									<td>{dede:field.dtime function="MyDate('Y-m-d',@me)"/}</td>
+									<td>{dede:field.ischeck function="GetSta(@me)"/}</td>
+									<td>{dede:field.sortrank/}</td>
+									<td>
+										<a href="friendlink_edit.php?id={dede:field.id/}&dopost=getedit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+										<a href="friendlink_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+									</td>
+								</tr>
+								{/dede:datalist}
+								<tr>
+									<td colspan="9">
+										<a href="javascript:Sel('all');" class="btn btn-success btn-sm">全选</a>
+										<a href="javascript:Sel('none');" class="btn btn-success btn-sm">取消</a>
+										<a href="javascript:checkSubmit();" class="btn btn-success btn-sm">批量删除</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function Sel(stype) {
 				for (var i = 0; i < document.getElementsByName('aids').length; i++) {

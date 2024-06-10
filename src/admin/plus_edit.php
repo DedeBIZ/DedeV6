@@ -25,7 +25,6 @@ if ($dopost == "show") {
         //确认
         require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "删除指定插件";
-        $wecome_info = "<a href='plus_main.php'>插件管理</a> - 删除插件";
         $win = new OxWindow();
         $win->Init("plus_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("job", "yes");

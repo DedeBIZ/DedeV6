@@ -9,37 +9,42 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form method="POST" enctype="multipart/form-data" action="file_manage_control.php" name="form1">
-			<input type="hidden" name="activepath" value="{dede:global name='activepath'/}">
-			<input type="hidden" name="fmdo" value="upload">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2">文件上传</td>
-				</tr>
-				<tr>
-					<td width="260">当前目录：</td>
-					<td>{dede:global name='activepath'/}</td>
-				</tr>
-				<tr>
-					<td>上传操作：</td>
-					<td>
-						<button type="button" class="btn btn-success btn-sm" name="bbb" onclick="make_upload();">添加上传框</button>
-						<a href="file_manage_main.php?activepath={dede:global name='activepath'/}" class="btn btn-success btn-sm">返回目录</a>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" id="upfield">
-						<p><label>文件1：<input type="file" name="upfile1" class="admin-input-lg"></label></p>
-					</td>
-				</tr>
-				<tr>
-					<td  colspan="2" align="center">
-						<button type="submit" class="btn btn-success btn-sm" name="B1">上传文件</button>
-						<button type="button" class="btn btn-success btn-sm" name="B12" onclick="reset_upload();">重新上传</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="file_manage_main.php">文件管理器</a></li>
+			<li class="breadcrumb-item active">文件上传</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">文件上传</div>
+			<div class="card-body">
+				<form method="POST" enctype="multipart/form-data" action="file_manage_control.php" name="form1">
+					<input type="hidden" name="activepath" value="{dede:global name='activepath'/}">
+					<input type="hidden" name="fmdo" value="upload">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">当前目录</td>
+									<td>{dede:global name='activepath'/}</td>
+								</tr>
+								<tr>
+									<td colspan="2" id="upfield">
+										<p><label>文件1：<input type="file" name="upfile1" class="admin-input-lg"></label></p>
+									</td>
+								</tr>
+								<tr>
+									<td  colspan="2" align="center">
+										<a class="btn btn-success btn-sm" href="javascript:make_upload();">添加上传</a>
+										<button type="submit" class="btn btn-success btn-sm">确定上传</button>
+										<a class="btn btn-success btn-sm" href="javascript:reset_upload();">重新上传</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			var i = 1;
 			function make_upload() {

@@ -102,58 +102,86 @@ class TypeUnit
             $id = $row->id;
             $rank = $row->sortrank;
             if ($row->ishidden == '1') {
-                $nss = "<span class='btn btn-secondary btn-xs'>隐藏</span>";
+                $nss = "<span class='btn btn-secondary btn-sm'>隐藏</span>";
             } else {
                 $nss = '';
             }
-            echo "<table>";
             if ($ispart == 0) {
                 //列表栏目
-                echo "<tr>";
-                echo "<td class='py-2'><table><tr><td><i id='icon".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mx-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mx-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
-                echo "</td>";
-                echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 预览</a>";
-                echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i> 文档</a>";
-                echo "<a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i> 添加</a>";
-                echo "<a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>";
-                echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>";
-                echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>";
-                echo "<input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'></td></tr></table></td></tr>";
+echo <<<tpl
+<div class='d-flex justify-content-between mb-3'>
+    <div class='left'>
+        <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
+        <span class='btn btn-success btn-sm'>列表</span>
+        {$nss}
+        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>id：{$id}</a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-sm'>{$typeName}</a>
+        <span class='btn btn-sm'>文档数：{$this->GetTotalArc($id)}</span>
+    </div>
+    <div class='right'>
+        <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-light btn-sm'><i class='fa fa-file-text' title='文档'></i></a>
+        <a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle' title='添加'></i></a>
+        <a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square' title='修改'></i></a>
+        <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square' title='移动'></i></a>
+        <a href='catalog_del.php?id={$id}&typeoldname=".urlencode({$typeName})."' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
+        <input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'>
+    </div>
+</div>
+tpl;
             } else if ($ispart == 1) {
                 //封面栏目
-                echo "<tr>";
-                echo "<td class='py-2'><table><tr><td><i id='icon".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mx-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mx-3'>".$typeName."</a>[id：".$id."]";
-                echo "</td>";
-                echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 预览</a>";
-                echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i> 文档</a>";
-                echo "<a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i> 添加</a>";
-                echo "<a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>";
-                echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>";
-                echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>";
-                echo "<input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'></td></tr></table></td></tr>";
+echo <<<tpl
+<div class='d-flex justify-content-between mb-3'>
+    <div class='left'>
+        <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
+        <span class='btn btn-warning btn-sm'>封面</span>
+        {$nss}
+        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>id：{$id}</a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-sm'>{$typeName}</a>
+    </div>
+    <div class='right'>
+        <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-light btn-sm'><i class='fa fa-file-text' title='文档'></i></a>
+        <a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle' title='添加'></i></a>
+        <a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square' title='修改'></i></a>
+        <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square' title='移动'></i></a>
+        <a href='catalog_del.php?id={$id}&typeoldname=".urlencode({$typeName})."' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
+        <input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'>
+    </div>
+</div>
+tpl;
             } else if ($ispart == 2) {
                 //外部栏目
-                echo "<tr>";
-                echo "<td class='py-2'><table><tr><td><i id='icon".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mx-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."' class='mx-3'>".$typeName."</a>[id：".$id."]";
-                echo "</td>";
-                echo "<td align='right'><a href='{$typeDir}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 预览</a>";
-                echo "<a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i> 添加</a>";
-                echo "<a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>";
-                echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>";
-                echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>";
-                echo "<input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'></td></tr></table></td></tr>";
+echo <<<tpl
+<div class='d-flex justify-content-between mb-3'>
+    <div class='left'>
+        <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
+        <span class='btn btn-primary btn-sm'>外部</span>
+        {$nss}
+        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>id：{$id}<a>
+        <a href='{$typeDir}' target='_blank' class='btn btn-sm'>{$typeName}</a>
+    </div>
+    <div class='right'>
+        <a href='{$typeDir}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
+        <a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle' title='添加'></i></a>
+        <a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square' title='修改'></i></a>
+        <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square' title='移动'></i></a>
+        <a href='catalog_del.php?id={$id}&typeoldname=".urlencode({$typeName})."' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
+        <input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'>
+    </div>
+</div>
+tpl;
             }
-            echo "<tr><td colspan='2' id='suns".$id."' class='p-0'>";
+            echo "<div id='suns".$id."'>";
             $lastid = GetCookie('lastCid');
             if ($channel == $id || $lastid == $id || isset($GLOBALS['exallct']) || $cfg_admin_channel == 'array') {
-                echo "<table>";
+                //echo "<table>";
                 $this->LogicListAllSunType($id, "　");
-                echo "</table>";
+                //echo "</table>";
             }
-            echo "</td></tr></table>";
+            echo "</div>";
             $i++;
-        } if ($i === 0) {
-            echo "<div class='text-center py-2'>暂无栏目</div>";
         }
     }
     /**
@@ -187,50 +215,81 @@ class TypeUnit
                 }
                 $rank = $row->sortrank;
                 if ($row->ishidden == '1') {
-                    $nss = "<span class='btn btn-secondary btn-xs'>隐藏</span>";
+                    $nss = "<span class='btn btn-secondary btn-sm'>隐藏</span>";
                 } else {
                     $nss = '';
                 } if ($ispart == 0) {
                     //列表栏目
-                    echo "<tr>";
-                    echo "<td class='py-2'><table><tr><td>";
-                    echo "$step<i id='icon".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mx-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mx-3'>".$typeName."</a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）";
-                    echo "</td>";
-                    echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 预览</a>";
-                    echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i> 文档</a>";
-                    echo "<a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i> 添加</a>";
-                    echo "<a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>";
-                    echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>";
-                    echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>";
-                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'></td></tr></table></td></tr>";
+echo <<<tpl
+<div class='d-flex justify-content-between mb-3'>
+    <div class='left'>
+        {$step}
+        <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
+        <span class='btn btn-success btn-sm'>列表</span>
+        {$nss}
+        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>id：{$id}</a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-sm'>{$typeName}</a>
+        <span class='btn btn-sm'>文档数：{$this->GetTotalArc($id)}</span>
+    </div>
+    <div class='right'>
+        <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-light btn-sm'><i class='fa fa-file-text' title='文档'></i></a>
+        <a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle' title='添加'></i></a>
+        <a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square' title='修改'></i></a>
+        <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square' title='移动'></i></a>
+        <a href='catalog_del.php?id={$id}&typeoldname=".urlencode({$typeName})."' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
+        <input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'>
+    </div>
+</div>
+tpl;
                 } else if ($ispart == 1) {
                     //封面栏目
-                    echo "<tr>";
-                    echo "<td class='py-2'><table><tr><td>";
-                    echo "$step<i id='icon".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mx-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mx-3'>".$typeName."</a>[id：".$id."]";
-                    echo "</td>";
-                    echo "<td align='right'><a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 预览</a>";
-                    echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-light btn-sm'><i class='fa fa-file-text'></i> 文档</a>";
-                    echo "<a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle'></i> 添加</a>";
-                    echo "<a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>";
-                    echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>";
-                    echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>";
-                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'></td></tr></table></td></tr>";
+echo <<<tpl
+<div class='d-flex justify-content-between mb-3'>
+    <div class='left'>
+        {$step}
+        <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
+        <span class='btn btn-warning btn-sm'>封面</span>
+        {$nss}
+        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>id：{$id}</a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-sm'>{$typeName}</a>
+    </div>
+    <div class='right'>
+        <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-light btn-sm'><i class='fa fa-file-text' title='文档'></i></a>
+        <a href='catalog_add.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-plus-circle' title='添加'></i></a>
+        <a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square' title='修改'></i></a>
+        <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square' title='移动'></i></a>
+        <a href='catalog_del.php?id={$id}&typeoldname=".urlencode({$typeName})."' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
+        <input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'>
+    </div>
+</div>
+tpl;
                 } else if ($ispart == 2) {
                     //外部栏目
-                    echo "<tr>";
-                    echo "<td class='py-2'><table><tr><td>";
-                    echo "$step<i id='icon".$id."' onclick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square'></i><input type='checkbox' name='tids[]' value='{$id}' class='mx-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives' class='mx-3'>".$typeName."</a>[id：".$id."]";
-                    echo "</td>";
-                    echo "<td align='right'><a href='{$typeDir}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 预览</a>";
-                    echo "<a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>";
-                    echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square'></i> 移动</a>";
-                    echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>";
-                    echo "<input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'></td></tr></table></td></tr>";
+echo <<<tpl
+<div class='d-flex justify-content-between mb-3'>
+    <div class='left'>
+        {$step}
+        <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
+        <span class='btn btn-primary btn-sm'>外部</span>
+        {$nss}
+        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>id：{$id}</a>
+        <a href='{$typeDir}' target='_blank' class='btn btn-sm'>{$typeName}</a>
+    </div>
+    <div class='right'>
+        <a href='{$typeDir}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
+        <a href='catalog_edit.php?id={$id}' class='btn btn-light btn-sm'><i class='fa fa-pencil-square' title='修改'></i></a>
+        <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-light btn-sm'><i class='fa fa-share-square' title='移动'></i></a>
+        <a href='catalog_del.php?id={$id}&typeoldname=".urlencode({$typeName})."' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
+        <input type='text' name='sortrank{$id}' value='{$rank}' class='admin-main-sort'>
+    </div>
+</div>
+tpl;
                 }
-                echo "<tr><td id='suns".$id."' style='".($GLOBALS['exallct']? "" : "display:none")."'><table>";
+                echo "<div id='suns".$id."' style='".($GLOBALS['exallct']? "" : "display:none")."'>";
                 $this->LogicListAllSunType($id, $step."　");
-                echo "</table></td></tr>";
+                echo "</div>";
             }
         }
     }

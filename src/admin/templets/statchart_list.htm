@@ -9,54 +9,64 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="statchart_list.php" method="get">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td>
-						<input type="text" name="ip" class="admin-input-lg mr-3" placeholder="请输入地址ip">
-						<button type="submit" class="btn btn-success btn-sm">搜索</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form name="form2">
-			<table class="table shadow-sm mb-3">
-				<tr>
-					<td colspan="8">流量统计表</td>
-				</tr>
-				<tr align="center">
-					<td width="6%">选择</td>
-					<td width="12%">序号</td>
-					<td width="12%">用户</td>
-					<td width="18%">地址</td>
-					<td width="12%">浏览器内核</td>
-					<td width="12%">操作系统</td>
-					<td width="10%">浏览特征</td>
-					<td>浏览时间</td>
-				</tr>
-				{dede:datalist}
-				<tr align="center">
-					<td><input type="checkbox" name="aids" value="{dede:field.id/}"></td>
-					<td>{dede:field.id/}</td>
-					<td>{dede:field.dduuid/}</td>
-					<td>{dede:field.ip/}</td>
-					<td>{dede:field.browser/}</td>
-					<td>{dede:field.os/}</a></td>
-					<td>{dede:field.created_hour/}点</td>
-					<td>{dede:field.t function="MyDate('Y-m-d H:i:s',@me)"/}</td>
-				</tr>
-				{/dede:datalist}
-				<tr>
-					<td colspan="8">
-						<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
-						<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">流量统计表</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<form name="form1" action="statchart_list.php" method="get">
+					<input type="text" name="ip" class="admin-input-lg mr-2" placeholder="请输入地址ip">
+					<button type="submit" class="btn btn-success btn-sm">搜索</button>
+				</form>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">流量统计表</div>
+			<div class="card-body">
+				<form name="form2">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<thead>
+								<tr>
+									<td scope="col">选择</td>
+									<td scope="col">序号</td>
+									<td scope="col">用户</td>
+									<td scope="col">地址</td>
+									<td scope="col">浏览器内核</td>
+									<td scope="col">操作系统</td>
+									<td scope="col">浏览特征</td>
+									<td scope="col">浏览时间</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td><input type="checkbox" name="aids" value="{dede:field.id/}"></td>
+									<td>{dede:field.id/}</td>
+									<td>{dede:field.dduuid/}</td>
+									<td>{dede:field.ip/}</td>
+									<td>{dede:field.browser/}</td>
+									<td>{dede:field.os/}</a></td>
+									<td>{dede:field.created_hour/}点</td>
+									<td>{dede:field.t function="MyDate('Y-m-d H:i:s',@me)"/}</td>
+								</tr>
+								{/dede:datalist}
+								<tr>
+									<td colspan="8">
+										<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
+										<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function getCheckboxItem() {
 				var allSel = "";

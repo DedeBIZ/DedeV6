@@ -13,66 +13,76 @@
 		<script src="/static/web/js/daterangepicker.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
-			<input type="hidden" name="dopost" value="go">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2">文档批量维护</td>
-				</tr>
-				<tr>
-					<td width="260">选定栏目：</td>
-					<td>
-						<?php
-						$tl = new TypeLink(0);
-						$typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-						echo "<select name='typeid' class='admin-input-sm'>";
-						echo "<option value='0' selected>不限栏目</option>";
-						echo $typeOptions;
-						echo "</select>";
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>会员登录id：</td>
-					<td><input name="userid" type="text" id="userid" class="admin-input-xs">（网址uid=后面跟的id）</td>
-				</tr>
-				<tr>
-					<td>文档id：</td>
-					<td>
-						<label>开始：<input name="startid" type="text" id="startid" class="admin-input-sm"></label>
-						<label>结束：<input name="endid" type="text" id="endid" class="admin-input-sm"></label>
-					</td>
-				</tr>
-				<tr>
-					<td>文档发布时间：</td>
-					<td>
-						<label>开始<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?>：<input type="text" name="starttime" id="starttime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
-						<label>结束<?php $nowtime = GetDateTimeMk(time());?>：<input type="text" name="endtime" id="endtime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
-						<label><input type="checkbox" name="seltime" id="seltime" value="1"> 启用时间筛选（移动或删除文档可用该选项）</label>
-					</td>
-				</tr>
-				<tr>
-					<td>文档操作：</td>
-					<td>
-						<label><input type="radio" name="action" value="check" checked> 审核文档</label>
-						<label><input type="radio" name="action" value="makehtml"> 更新网页</label>
-						<label><input type="radio" name="action" value="move"> 移动文档</label>
-						<label><input type="radio" name="action" value="del"> 删除文档</label>
-						<label><input type="radio" name="action" value="delnulltitle"> 删除空标题文档</label>
-						<label><input type="radio" name="action" value="delnullbody"> 删除空内容文档</label>
-						<label><input type="radio" name="action" value="modddpic"> 更正缩图错误</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><button type="button" name="b112" onclick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="admin-win-iframe"><iframe name="stafrm" id="stafrm" frameborder="0" width="100%" height="100%"></iframe></div>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">文档批量维护</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">文档批量维护</div>
+			<div class="card-body">
+				<form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
+					<input type="hidden" name="dopost" value="go">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">选定栏目</td>
+									<td>
+										<?php
+										$tl = new TypeLink(0);
+										$typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
+										echo "<select name='typeid' class='admin-input-sm'>";
+										echo "<option value='0' selected>不限栏目</option>";
+										echo $typeOptions;
+										echo "</select>";
+										?>
+									</td>
+								</tr>
+								<tr>
+									<td>会员登录id</td>
+									<td><input name="userid" type="text" id="userid" class="admin-input-xs">（网址uid=后面跟的id）</td>
+								</tr>
+								<tr>
+									<td>文档id</td>
+									<td>
+										<label>开始：<input name="startid" type="text" id="startid" class="admin-input-sm"></label>
+										<label>结束：<input name="endid" type="text" id="endid" class="admin-input-sm"></label>
+									</td>
+								</tr>
+								<tr>
+									<td>文档发布时间</td>
+									<td>
+										<label>开始<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?>：<input type="text" name="starttime" id="starttime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
+										<label>结束<?php $nowtime = GetDateTimeMk(time());?>：<input type="text" name="endtime" id="endtime" class="datepicker admin-input-sm" value="<?php echo $nowtime;?>"></label>
+										<label><input type="checkbox" name="seltime" id="seltime" value="1"> 启用时间筛选（移动或删除文档可用该选项）</label>
+									</td>
+								</tr>
+								<tr>
+									<td>文档操作</td>
+									<td>
+										<label><input type="radio" name="action" value="check" checked> 审核文档</label>
+										<label><input type="radio" name="action" value="makehtml"> 更新网页</label>
+										<label><input type="radio" name="action" value="move"> 移动文档</label>
+										<label><input type="radio" name="action" value="del"> 删除文档</label>
+										<label><input type="radio" name="action" value="delnulltitle"> 删除空标题文档</label>
+										<label><input type="radio" name="action" value="delnullbody"> 删除空内容文档</label>
+										<label><input type="radio" name="action" value="modddpic"> 更正缩图错误</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="admin-win-iframe"><iframe name="stafrm" id="stafrm" frameborder="0" width="100%" height="100%"></iframe></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			$(document).ready(function() {
 				$('.datepicker').daterangepicker({

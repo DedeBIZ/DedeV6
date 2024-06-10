@@ -111,7 +111,7 @@ else if ($action == 'upload') {
     $win = new OxWindow();
     make_hash();
     $win->Init("tpl.php", "/static/web/js/admin.blank.js", "POST' enctype='multipart/form-data' ");
-    $wecome_info = "<a href='templets_main.php'>模板管理</a> - 上传模板";
+    $wintitle = "上传模板";
     $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'uploadok');
     $msg = "<tr>
@@ -206,7 +206,7 @@ else if ($action == 'savetagfile') {
             <td align='center'><button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button></td>
         </tr>
     </form>";
-    $wecome_info = "<a href='templets_tagsource.php'>标签源码管理</a> - 新建修改标签";
+    $wintitle = "新建修改标签";
     $win = new OxWindow();
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);

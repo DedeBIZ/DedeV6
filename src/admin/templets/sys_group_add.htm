@@ -9,70 +9,84 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="sys_group_add.php" method="post">
-			<input type="hidden" name="dopost" value="save">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="sys_group.php">会员组管理</a> - 添加系统会员组</td>
-				</tr>
-				<tr>
-					<td width="120">组名称：</td>
-					<td><input type="text" name="groupname" id="groupname" class="admin-input-sm"></td>
-				</tr>
-				<tr>
-					<td>级别值：</td>
-					<td><input type="text" name="rankid" id="rankid" class="admin-input-sm">（系统已占用的级别值：<?php $dsql->SetQuery("SELECT `rank` FROM `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo $row->rank;?>，级别值必须小于10，超过或等于10所有权限设置无效）</td>
-				</tr>
-				<?php
-				$start = 0;
-				$k = 0;
-				$gouplists = file(dirname(__FILE__).'/../inc/grouplist.txt');
-				foreach($gouplists as $line)
-				{
-					$line = trim($line);
-					if ($line=="") continue;
-					if (preg_match("#^>>#", $line))
-					{
-						if ($start>0) echo "</td></tr>";
-						$start++;
-						$lhead = "<tr><td colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr><tr><td colspan='2'>"; 
-						echo $lhead;
-					}
-					else if (preg_match("#^>#", $line))
-					{
-						$ls = explode('>',$line);
-						$tag = $ls[1];
-						$tagname = str_replace('[br]', '<br>', $ls[2]);
-						if (!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
-						else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
-						echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'> $tagname</label> ";
-					  $k++;
-					}
-				}
-				$start++;
-				?>
-				<tr>
-					<td colspan="2"><?php echo $start?>、插件权限</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<?php
-						$l = 0;
-						$dsql->SetQuery('Select plusname From `#@__plus`');
-						$dsql->Execute();
-						while($row=$dsql->GetObject()){
-							echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label> ";
-							$k++;
-							$l++;
-							if ($l%6==0) echo "<br>";
-						}
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><button type="submit" onclick="DoSubmit('gettag');" class="btn btn-success btn-sm">保存</button></td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="sys_group.php">会员组管理</a></li>
+			<li class="breadcrumb-item active">添加系统会员组</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">会员组管理</div>
+			<div class="card-body">
+				<form name="form1" action="sys_group_add.php" method="post">
+					<input type="hidden" name="dopost" value="save">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="160">组名称</td>
+									<td><input type="text" name="groupname" id="groupname" class="admin-input-sm" required></td>
+								</tr>
+								<tr>
+									<td>级别值</td>
+									<td><input type="text" name="rankid" id="rankid" class="admin-input-sm" required>（系统已占用的级别值：<?php $dsql->SetQuery("SELECT `rank` FROM `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo $row->rank;?>，级别值必须小于10，超过或等于10所有权限设置无效）</td>
+								</tr>
+								<?php
+								$start = 0;
+								$k = 0;
+								$gouplists = file(dirname(__FILE__).'/../inc/grouplist.txt');
+								foreach($gouplists as $line)
+								{
+									$line = trim($line);
+									if ($line=="") continue;
+									if (preg_match("#^>>#", $line))
+									{
+										if ($start>0) echo "</td></tr>";
+										$start++;
+										$lhead = "<tr><td colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr><tr><td colspan='2'>"; 
+										echo $lhead;
+									}
+									else if (preg_match("#^>#", $line))
+									{
+										$ls = explode('>',$line);
+										$tag = $ls[1];
+										$tagname = str_replace('[br]', '<br>', $ls[2]);
+										if (!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
+										else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
+										echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'> $tagname</label> ";
+									  $k++;
+									}
+								}
+								$start++;
+								?>
+								<tr>
+									<td colspan="2"><?php echo $start?>、插件权限</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<?php
+										$l = 0;
+										$dsql->SetQuery('Select plusname From `#@__plus`');
+										$dsql->Execute();
+										while($row=$dsql->GetObject()){
+											echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label> ";
+											$k++;
+											$l++;
+											if ($l%6==0) echo "<br>";
+										}
+										?>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

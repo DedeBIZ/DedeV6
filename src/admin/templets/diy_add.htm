@@ -12,63 +12,65 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="diy_add.php?action=add" method="post">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="diy_main.php">自定义表单管理</a> - 添加自定义表单</td>
-				</tr>
-				<tr>
-					<td width="260">表单id：</td>
-					<td><input type="text" name="diyid" id="diyid" class="admin-input-sm" value="<?php echo $newdiyid?>">（创建后不可修改，具有唯一性）</td>
-				</tr>
-				<tr>
-					<td>表单名称：</td>
-					<td><input type="text" name="name" id="name" class="admin-input-sm" value="自定义表单<?php echo $newdiyid;?>">（前后台显示表单的名称）</td>
-				</tr>
-				<tr>
-					<td>数据表名：</td>
-					<td><input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>">（储存自定义表单数据，不能重复已有表名，创建后不可修改表名）</span></td>
-				</tr>
-				<tr>
-					<td>字段配置：</td>
-					<td>创建完后，请添加字段配置</td>
-				</tr>
-				<tr>
-					<td>列表模板：</td>
-					<td><input type="text" name="listtemplate" id="listtemplate" class="admin-input-sm" value="list_diyform<?php echo $newdiyid;?>.htm"></td>
-				</tr>
-				<tr>
-					<td>文档模板：</td>
-					<td><input type="text" name="viewtemplate" id="viewtemplate" class="admin-input-sm" value="view_diyform<?php echo $newdiyid;?>.htm"></td>
-				</tr>
-				<tr>
-					<td>发布模板：</td>
-					<td><input type="text" name="posttemplate" id="posttemplate" class="admin-input-sm" value="post_diyform<?php echo $newdiyid;?>.htm"></td>
-				</tr>
-				<tr>
-					<td>前台列表和文档页公开：</td>
-					<td>
-						<label><input type="radio" name="public" value="2"> 完全公开</label>
-						<label><input type="radio" name="public" value="1" checked> 审核公开</label>
-						<label><input type="radio" name="public" value="0"> 不公开</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="submit" name="button" id="button" class="btn btn-success btn-sm">保存</button>
-						<button type="button" id="button2" class="btn btn-outline-success btn-sm" onclick="location='diy_main.php';">返回</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<script>
-			function checkSubmit() {
-				if (document.form1.name.value == "") {
-					ShowMsg("自定义表单名称不能为空");
-					return false;
-				}
-				return true;
-			}
-		</script>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="diy_main.php">自定义表单管理</a></li>
+			<li class="breadcrumb-item active">添加自定义表单</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">添加自定义表单</div>
+			<div class="card-body">
+				<form name="form1" action="diy_add.php?action=add" method="post">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">表单id</td>
+									<td><input type="text" name="diyid" id="diyid" class="admin-input-sm" value="<?php echo $newdiyid?>">（创建后不可修改，具有唯一性）</td>
+								</tr>
+								<tr>
+									<td>表单名称</td>
+									<td><input type="text" name="name" id="name" class="admin-input-sm" value="自定义表单<?php echo $newdiyid;?>" required>（前后台显示表单的名称）</td>
+								</tr>
+								<tr>
+									<td>数据表名</td>
+									<td><input type="text" name="table" id="table" class="admin-input-sm" value="<?php echo $cfg_dbprefix;?>diyform<?php echo $newdiyid;?>">（储存自定义表单数据，不能重复已有表名，创建后不可修改表名）</span></td>
+								</tr>
+								<tr>
+									<td>字段配置</td>
+									<td>创建完后，请添加字段配置</td>
+								</tr>
+								<tr>
+									<td>列表模板</td>
+									<td><input type="text" name="listtemplate" id="listtemplate" class="admin-input-sm" value="list_diyform<?php echo $newdiyid;?>.htm"></td>
+								</tr>
+								<tr>
+									<td>文档模板</td>
+									<td><input type="text" name="viewtemplate" id="viewtemplate" class="admin-input-sm" value="view_diyform<?php echo $newdiyid;?>.htm"></td>
+								</tr>
+								<tr>
+									<td>发布模板</td>
+									<td><input type="text" name="posttemplate" id="posttemplate" class="admin-input-sm" value="post_diyform<?php echo $newdiyid;?>.htm"></td>
+								</tr>
+								<tr>
+									<td>前台列表和文档页公开</td>
+									<td>
+										<label><input type="radio" name="public" value="2"> 完全公开</label>
+										<label><input type="radio" name="public" value="1" checked> 审核公开</label>
+										<label><input type="radio" name="public" value="0"> 不公开</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

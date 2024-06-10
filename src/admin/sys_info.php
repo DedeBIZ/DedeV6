@@ -99,15 +99,15 @@ else if ($dopost == 'search') {
     $keywords = isset($keywords) ? strip_tags($keywords) : '';
     $i = 1;
     $configstr = <<<EOT
-<table id="tdSearch" class="table shadow-sm my-3">
+<table id="tdSearch" class="table table-borderless">
+<thead>
     <tr>
-        <td colspan="3">搜索系统设置</td>
+        <td width="370">变量说明</td>
+        <td width="850">变量值</td>
+        <td scope="col">变量名称</td>
     </tr>
-    <tr align="center">
-        <td width="460">参数说明</td>
-        <td>参数值</td>
-        <td width="260">变量名</td>
-    </tr>
+</thead>
+<tbody>
 EOT;
     echo $configstr;
     if ($keywords) {
@@ -117,36 +117,37 @@ EOT;
             $row['info'] = preg_replace("#{$keywords}#", '<b class="text-danger">'.$keywords.'</b>', $row['info']);
             $row['varname'] = preg_replace("#{$keywords}#", '<b class="text-danger">'.$keywords.'</b>', $row['varname']);
     ?>
-    <tr>
-        <td align="center"><?php echo $row['info'];?>：</td>
-        <td>
-            <?php
-            if ($row['type'] == 'bool') {
-                $c1 = '';
-                $c2 = '';
-                $row['value'] == 'Y' ? $c1 = "checked" : $c2 = "checked";
-                echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
-                echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
-            } else if ($row['type'] == 'bstring') {
-                echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
-            } else if ($row['type'] == 'number') {
-                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-60'>";
-            } else {
-                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-60'>";
-            }
-            ?>
-        </td>
-        <td  align="center"><?php echo $row['varname'] ?></td>
-    </tr>
+<tr>
+    <td><?php echo $row['info'];?></td>
+    <td>
+        <?php
+        if ($row['type'] == 'bool') {
+            $c1 = '';
+            $c2 = '';
+            $row['value'] == 'Y' ? $c1 = "checked" : $c2 = "checked";
+            echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
+            echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
+        } else if ($row['type'] == 'bstring') {
+            echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
+        } else if ($row['type'] == 'number') {
+            echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-65'>";
+        } else {
+            echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-65'>";
+        }
+        ?>
+    </td>
+    <td><?php echo $row['varname'] ?></td>
+</tr>
 <?php
 }
 ?>
+</tbody>
 </table>
 <?php
 exit;
 }
 if ($i == 1) {
-    echo '<tr><td colspan="3" align="center">搜索不到参数</td></tr></table>';
+    echo '</tbody></table>';
 }
 exit;
 } else if ($dopost == 'make_encode') {

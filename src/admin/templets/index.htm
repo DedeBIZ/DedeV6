@@ -12,7 +12,7 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body class="menu-show">
-		<div class="admin-head">
+		<header class="admin-head">
 			<div class="logo">
 				<a href="index_body.php" target="main" class="name"><?php echo cn_substr($cfg_webname, 12);?></a>
 				<span class="version"><?php echo $cfg_version_detail;?></span>
@@ -56,17 +56,17 @@
 					<li><a href="exit.php" title="退出后台"><i class="fa fa-power-off"></i></a></li>
 				</ul>
 			</div>
-		</div>
-		<div class="menu-left">
+		</header>
+		<aside class="menu-left">
 			<ul id="sidemenu" class="sidemenu">
 				<?php 
 				$openitem = 100;
 				GetMenus($cuserLogin->getUserRank(), 'main'); 
 				?>
 			</ul>
-		</div>
-		<div class="body-right">
+		</aside>
+		<section class="body-right">
 			<iframe src="index_body.php" name="main" id="main" frameborder="0"></iframe>
-		</div>
+		</section>
 	</body>
 </html>

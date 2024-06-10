@@ -9,52 +9,61 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" method="post" action="feedback_edit.php">
-			<input type="hidden" name="dopost" value="edit">
-			<input type="hidden" name="id" value="<?php echo $row['id'];?>">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">评论管理</a> - 修改评论</td>
-				</tr>
-				<tr>
-					<td width="260">评论所属文档：</td>
-					<td><?php echo RemoveXSS($row['arctitle']);?></td>
-				</tr>
-				<tr>
-					<td>评论人：</td>
-					<td><input type="text" name="username" id="username" class="admin-input-md"> value="<?php echo $row['username'];?>"></td>
-				</tr>
-				<tr>
-					<td>评论发布时间：</td>
-					<td><?php echo GetDateTimeMK($row['dtime']);?></td>
-				</tr>
-				<tr>
-					<td>ip地址：</td>
-					<td><?php echo $row['ip'];?></td>
-				</tr>
-				<tr>
-					<td>评论文档：</td>
-					<td>修改的评论文档网页代码不会被屏蔽，可用语法修改</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><textarea name="msg" id="msg" class="form-control"><?php echo cn_substr(Text2Html($row['msg']), 255);?></textarea></td>
-				</tr>
-				<tr>
-					<td>管理员回复：</td>
-					<td>回复文档的网页代码会被屏蔽</td>
-				</tr>
-				<tr>
-					<td align="center"></td>
-					<td><textarea name="adminmsg" cols="60" rows="5" id="adminmsg"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='<?php echo $ENV_GOBACK_URL;?>';">返回</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="<?php echo $ENV_GOBACK_URL;?>">评论管理</a></li>
+			<li class="breadcrumb-item active">修改评论</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">修改评论</div>
+			<div class="card-body">
+				<form name="form1" method="post" action="feedback_edit.php">
+					<input type="hidden" name="dopost" value="edit">
+					<input type="hidden" name="id" value="<?php echo $row['id'];?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">评论所属文档</td>
+									<td><?php echo RemoveXSS($row['arctitle']);?></td>
+								</tr>
+								<tr>
+									<td>评论人</td>
+									<td><input type="text" name="username" id="username" class="admin-input-md" value="<?php echo $row['username'];?>"></td>
+								</tr>
+								<tr>
+									<td>评论发布时间</td>
+									<td><?php echo GetDateTimeMK($row['dtime']);?></td>
+								</tr>
+								<tr>
+									<td>ip地址</td>
+									<td><?php echo $row['ip'];?></td>
+								</tr>
+								<tr>
+									<td>评论文档</td>
+									<td>
+										<p>（修改的评论文档网页代码不会被屏蔽，可用语法修改）</p>
+										<textarea name="msg" id="msg" class="form-control"><?php echo cn_substr(Text2Html($row['msg']), 255);?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>管理员回复</td>
+									<td>
+										<p>（回复文档的网页代码会被屏蔽）</p>
+										<textarea name="adminmsg" id="adminmsg" class="admin-textarea-xl"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

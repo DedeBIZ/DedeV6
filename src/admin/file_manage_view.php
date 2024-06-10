@@ -21,7 +21,6 @@ if ($fmdo == "rename") {
     if ($activepath == "") $ndirstring = "根目录";
     $ndirstring = $activepath;
     $wintitle = "修改指定文件名称";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 修改文件名称";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
@@ -38,7 +37,6 @@ else if ($fmdo == "newdir") {
     if ($activepath == "") $activepathname = "根目录";
     else $activepathname = $activepath;
     $wintitle = "新建文件目录";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 新建目录";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
@@ -52,7 +50,6 @@ else if ($fmdo == "newdir") {
 //移动文件
 else if ($fmdo == "move") {
     $wintitle = "移动指定文件";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 移动文件</a>";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
@@ -68,7 +65,6 @@ else if ($fmdo == "move") {
 //删除文件
 else if ($fmdo == "del") {
     $wintitle = "删除指定文件";
-    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a> - 删除文件";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);

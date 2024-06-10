@@ -180,9 +180,7 @@ if ($dopost != 'save') {
         <td align='center'><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览专题</a><a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>返回专题列表</a></td>
     </tr>";
     $wintitle = "成功发布专题";
-    $wecome_info = "专题管理 - 发布专题";
     $win = new OxWindow();
-    $win->AddTitle("成功发布专题");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", FALSE);
     $win->Display();

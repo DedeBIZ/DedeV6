@@ -47,8 +47,7 @@ if ($dopost == "show") {
         $idname = 'w'.($newid * -1);
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
-    $wintitle = "复制指定文档模型";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 复制文档模型";
+    $wintitle = "复制文档模型";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "/static/web/js/admin.blank.js", "post");
     $win->AddTitle("复制文档模型：".$row['typename']."");

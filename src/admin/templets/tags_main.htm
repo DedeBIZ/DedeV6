@@ -12,73 +12,81 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<table class="table shadow-sm my-3">
-			<tr>
-				<td width="460">
-					<form name="form2" action="tags_main.php">
-						<input type="text" name="tag" value="<?php echo $tag;?>" placeholder="请输入标签" class="admin-input-lg">
-						<button type="submit" name="sb" class="btn btn-success btn-sm">搜索</button>
-					</form>
-				</td>
-				<td>
-					<form name="form1" action="tags_main.php?action=fetch" method="post">
-						<input type="text" name="startaid" placeholder="请输入标签id开始" class="admin-input-sm mr-3">
-						<input type="text" name="endaid" placeholder="请输入标签id结束" class="admin-input-sm">
-						<button name="submit" type="submit" class="btn btn-success btn-sm">获取标签</button>
-						<a href="makehtml_taglist.php" name="sb" class="btn btn-success btn-sm">更新标签</a>
-					</form>
-				</td>
-			</tr>
-		</table>
-		<form name="form3" action="tags_main.php?action=delete" method="post">
-			<table class="table shadow-sm mb-3">
-				<tr>
-					<td colspan="8">标签管理</td>
-				</tr>
-				<tr align="center">
-					<td width="6%">选择</td>
-					<td width="6%">id</td>
-					<td width="20%">标签</td>
-					<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=count&orderway=<?php echo $neworderway;?>">点击</a></td>
-					<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=total&orderway=<?php echo $neworderway;?>">文档数</a></td>
-					<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=addtime&orderway=<?php echo $neworderway;?>">添加时间</a></td>
-					<td width="10%">更新时间</td>
-					<td>操作</td>
-				</tr>
-				{dede:datalist empty='<tr><td colspan="8" align="center">暂无标签</td></tr>'}
-				<?php
-				$fields['addtime'] = GetDateMk($fields['addtime']);
-				$fields['uptime'] = GetDateMk($fields['uptime']);
-				$fields['tag'] = dede_htmlspecialchars($fields['tag']);
-				?>
-				<tr align="center">
-					<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id'];?>"></td>
-					<td>{dede:field.id/}</td>
-					<td><a href="<?php echo $cfg_phpurl;?>/tags.php?/<?php echo $fields['id'];?>/" target="_blank">{dede:field.tag/}</a></td>
-					<td><input type="text" value="<?php echo $fields['count'];?>" id="count<?php echo $fields['id'];?>" class="admin-input-sm"></td>
-					<td><?php echo $fields['total'];?></td>
-					<td><?php echo $fields['addtime'];?></td>
-					<td><?php echo $fields['uptime'];?></td>
-					<td>
-						<a href='javascript:UpdateKwDes(<?php echo $fields['id'];?>,"<?php echo $fields['tag'];?>");' class="btn btn-light btn-sm"><i class="fa fa-cog"></i> 设置</a>
-						<a href="javascript:UpdateOne(<?php echo $fields['id'];?>);" class="btn btn-light btn-sm"><i class="fa fa-refresh"></i> 刷新</a>
-						<a href="makehtml_taglist.php?tagid=<?php echo $fields['id'];?>" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 更新</a>
-						<a href="javascript:DeleteOne(<?php echo $fields['id'];?>);" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-					</td>
-				</tr>
-				{/dede:datalist}
-				<tr>
-					<td colspan="8">
-						<button type="button" name="select" onclick="selAll();" class="btn btn-success btn-sm">全选</button>
-						<button type="button" name="select" onclick="noSelAll();" class="btn btn-success btn-sm">取消</button>
-						<button type="button" onclick="document.form3.submit();" class="btn btn-danger btn-sm">删除</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="8" align="center">{dede:pagelist/}</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">标签管理</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body d-flex justify-content-between">
+				<form name="form1" action="tags_main.php?action=fetch" method="post">
+					<input type="text" name="startaid" placeholder="请输入标签id开始" class="admin-input-sm mr-2">
+					<input type="text" name="endaid" placeholder="请输入标签id结束" class="admin-input-sm">
+					<button name="submit" type="submit" class="btn btn-success btn-sm">获取标签</button>
+					<a href="makehtml_taglist.php" name="sb" class="btn btn-success btn-sm">更新标签</a>
+				</form>
+				<form name="form2" action="tags_main.php">
+					<input type="text" name="tag" value="<?php echo $tag;?>" placeholder="请输入标签" class="admin-input-lg">
+					<button type="submit" name="sb" class="btn btn-success btn-sm">搜索</button>
+				</form>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">标签管理</div>
+			<div class="card-body">
+				<form name="form3" action="tags_main.php?action=delete" method="post">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<thead>
+								<tr>
+									<td scope="col">选择</td>
+									<td scope="col">id</td>
+									<td scope="col">标签</td>
+									<td scope="col"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=count&orderway=<?php echo $neworderway;?>">点击</a></td>
+									<td scope="col"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=total&orderway=<?php echo $neworderway;?>">文档数</a></td>
+									<td scope="col"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=addtime&orderway=<?php echo $neworderway;?>">添加时间</a></td>
+									<td scope="col">更新时间</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<?php
+								$fields['addtime'] = GetDateMk($fields['addtime']);
+								$fields['uptime'] = GetDateMk($fields['uptime']);
+								$fields['tag'] = dede_htmlspecialchars($fields['tag']);
+								?>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id'];?>"></td>
+									<td>{dede:field.id/}</td>
+									<td><a href="<?php echo $cfg_phpurl;?>/tags.php?/<?php echo $fields['id'];?>/" target="_blank">{dede:field.tag/}</a></td>
+									<td><input type="text" value="<?php echo $fields['count'];?>" id="count<?php echo $fields['id'];?>" class="admin-input-sm"></td>
+									<td><?php echo $fields['total'];?></td>
+									<td><?php echo $fields['addtime'];?></td>
+									<td><?php echo $fields['uptime'];?></td>
+									<td>
+										<a href='javascript:UpdateKwDes(<?php echo $fields['id'];?>,"<?php echo $fields['tag'];?>");' class="btn btn-light btn-sm"><i class="fa fa-cog" title="设置"></i></a>
+										<a href="javascript:UpdateOne(<?php echo $fields['id'];?>);" class="btn btn-light btn-sm"><i class="fa fa-refresh" title="刷新"></i></a>
+										<a href="makehtml_taglist.php?tagid=<?php echo $fields['id'];?>" class="btn btn-light btn-sm"><i class="fa fa-repeat" title="更新"></i></a>
+										<a href="javascript:DeleteOne(<?php echo $fields['id'];?>);" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+									</td>
+								</tr>
+								{/dede:datalist}
+								<tr>
+									<td colspan="8">
+										<a href="javascript:selAll();" class="btn btn-light btn-sm">全选</a>
+										<a href="javascript:noSelAll();" class="btn btn-light btn-sm">取消</a>
+										<button type="button" onclick="document.form3.submit();" class="btn btn-danger btn-sm">删除</button>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="8" align="center">{dede:pagelist/}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function selAll() {
 				var a = document.getElementsByTagName("input");

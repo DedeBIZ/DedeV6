@@ -9,47 +9,59 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form2">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="7">文档回收站</td>
-				</tr>
-				<tr align="center">
-					<td width="6%">id</td>
-					<td width="6%">选择</td>
-					<td width="26%">文档标题</td>
-					<td width="10%">栏目</td>
-					<td width="10%">更新时间</td>
-					<td width="6%">点击</td>
-					<td>操作</td>
-				</tr>
-				{dede:datalist empty='<tr><td colspan="7" align="center">暂无记录</td></tr>'}
-				<tr align="center">
-					<td>{dede:field.id/}</td>
-					<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
-					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
-					<td>{dede:field.typename/}</td>
-					<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
-					<td>{dede:field.click/}</td>
-					<td>
-						<a href="javascript:moveArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 还原</a>
-						<a href="javascript:delArc({dede:field.id/});" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-					</td>
-				</tr>
-				{/dede:datalist}
-				<tr>
-					<td colspan="7">
-						<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
-						<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
-						<a href="javascript:moveArc(0);" class="btn btn-success btn-sm">还原</a>
-						<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">文档回收站</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">文档回收站</div>
+			<div class="card-body">
+				<form name="form2">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<thead>
+								<tr>
+									<td scope="col">id</td>
+									<td scope="col">选择</td>
+									<td scope="col">文档标题</td>
+									<td scope="col">栏目</td>
+									<td scope="col">更新时间</td>
+									<td scope="col">点击</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr align="center">
+									<td>{dede:field.id/}</td>
+									<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
+									<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
+									<td>{dede:field.typename/}</td>
+									<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
+									<td>{dede:field.click/}</td>
+									<td>
+										<a href="javascript:moveArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-repeat" title="还原"></i></a>
+										<a href="javascript:delArc({dede:field.id/});" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+									</td>
+								</tr>
+								{/dede:datalist}
+								<tr>
+									<td colspan="7">
+										<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+										<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
+										<a href="javascript:moveArc(0);" class="btn btn-success btn-sm">还原</a>
+										<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function getCheckboxItem() {
 				var allSel = '';

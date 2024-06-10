@@ -139,7 +139,7 @@ if ($action == '') {
     $prvdir .= "</table>";
     $win = new OxWindow();
     $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
-    $wecome_info = "<a href='module_main.php'>模块管理</a> - 安装{$infos['name']}";
+    $wintitle = "安装{$infos['name']}";
     $devURL = DEDECDNURL."/developers/{$infos['dev_id']}.json";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($devURL);
@@ -264,7 +264,7 @@ if ($action == '') {
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
-    $wecome_info = "<a href='module_main.php'>模块管理</a> - 删除{$infos['name']}";
+    $wintitle = "删除{$infos['name']}";
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", "delok");
     $msg = "<tr>
@@ -321,7 +321,7 @@ if ($action == '') {
     $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-warning btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
-    $wecome_info = "<a href='module_main.php'>模块管理</a> - 卸载{$infos['name']}";
+    $wintitle = "卸载{$infos['name']}";
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<tr>
@@ -405,7 +405,7 @@ if ($action == '') {
     $dm->Clear();
     $win = new OxWindow();
     $win->Init("module_main.php", "/static/web/js/admin.blank.js", "post");
-    $wecome_info = "<a href='module_main.php'>模块管理</a> - 使用说明";
+    $wintitle = "使用说明";
     $win->AddMsgItem("<tr><td>$msg</td></tr>");
     $winform = $win->GetWindow("hand");
     $win->Display();
@@ -441,7 +441,7 @@ if ($action == '') {
     $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-outline-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='module_main.php?action=setup&hash={$hash}' class='btn btn-outline-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a>";
     $win = new OxWindow();
     $win->Init("", "/static/web/js/admin.blank.js", "");
-    $wecome_info = "<a href='module_main.php'>模块管理</a> - {$infos['name']}";
+    $wintitle = "{$infos['name']}";
     $msg = "<tr>
         <td width='260'>模块名称：</td>
         <td>{$infos['name']}</td>

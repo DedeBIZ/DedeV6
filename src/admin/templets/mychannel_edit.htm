@@ -15,235 +15,241 @@
 		<script src="/static/web/js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="mychannel_edit.php" method="post">
-			<input type="hidden" name="id" value="<?php echo $id?>">
-			<input type="hidden" name="dopost" value="save">
-			<input type="hidden" name="issystem" value="<?php echo $row['issystem'];?>">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2">修改文档模型</td>
-				</tr>
-				<?php if ($row['issystem'] == 1) {?>
-				<tr>
-					<td colspan="2">
-						<div class="alert alert-warning mb-0">默认文档模型字段，请谨慎修改</div>
-					</td>
-				</tr>
-				<?php }?>
-				<tr>
-					<td width="260">模型性质：</td>
-					<td><?php if ($row['issystem']==0) echo "自动模型";else if ($row['issystem']==1) echo "系统模型";else if ($row['issystem']==-1) echo "独立模型";?>（系统模型禁止删除，独立模型具有单独主表，自动创建字段aid、栏目id、文档标题等，文档必须点击栏目进入列表管理）</td>
-				</tr>
-				<tr>
-					<td>模型id：</td>
-					<td><?php echo $row['id'];?>（创建后不可修改，具有唯一性）</td>
-				</tr>
-				<tr>
-					<td>模型标识：</td>
-					<td><?php echo $row['nid'];?>（建议由英文、数字或下划线组成，示例article_名字标识.htm，列表和封面模板类推）</td>
-				</tr>
-				<tr>
-					<td>模型名称：</td>
-					<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="<?php echo $row['typename'];?>">（前后台显示模型的名称）</td>
-				</tr>
-				<tr>
-					<td>附加表：</td>
-					<td><input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $row['addtable'];?>">（#@__表示数据表前缀，文档模型主表外其它数据存放附加表）</td>
-				</tr>
-				<tr>
-					<td>是否支持会员投稿：</td>
-					<td>
-						<label><input type="radio" name="issend" value="0" <?php if ($row['issend']==0) echo 'checked';?>> 不支持</label>
-						<label><input type="radio" name="issend" value="1" <?php if ($row['issend']==1) echo 'checked';?>> 支持</label>
-					</td>
-				</tr>
-				<tr>
-					<td>会员投稿级别：</td>
-					<td>
-						<select name="sendrank" id="sendrank" class="admin-input-sm">
-							<option value="0">游客</option>
-							<?php
-							$urank = $cuserLogin->getUserRank();
-							$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' And `rank` >= 10");
-							$dsql->Execute();
-							while($row2 = $dsql->GetObject())
-							{
-								if ($row2->rank==$row['sendrank']) echo "<option value='".$row2->rank."' selected>".$row2->membername."</option>";
-								else echo "<option value='".$row2->rank."'>".$row2->membername."</option>";
-							}
-							?>
-						</select>
-						<span>（为了系统安全，游客投稿已禁止，开启游客投稿功能，到会员发布文件删除禁止游客操作）</span>
-					</td>
-				</tr>
-				<tr>
-					<td>会员投稿组：</td>
-					<td>
-						<?php
-						$dsql->SetQuery("SELECT * FROM `#@__member_model`");
-						$dsql->Execute();
-						while($row3 = $dsql->GetObject())
-						{
-							echo "<label><input type='radio' name='usertype' value='".$row3->name."'".($row['usertype']==$row3->name? "checked" : "")."> ".$row3->name."</label> ";
-						}
-						?>
-						<label><input type="radio" name="usertype" <?php if ($row['usertype']=='') echo 'checked';?>> 不限</label>
-					</td>
-				</tr>
-				<tr>
-					<td>会员投稿默认状态：</td>
-					<td>
-						<label><input type="radio" name="arcsta" value="-1" <?php if ($row['arcsta']==-1) echo 'checked';?>> 待审核</label>
-						<label><input type="radio" name="arcsta" value="0" <?php if ($row['arcsta']==0) echo 'checked';?>> 已审核（更新静态页）</label>
-						<label><input type="radio" name="arcsta" value="1" <?php if ($row['arcsta']==1) echo 'checked';?>> 已审核（使用动态页）</label>
-					</td>
-				</tr>
-				<tr>
-					<td>列表附加字段：</td>
-					<td><input type="text" name="listfields" id="listfields" class="admin-input-lg" value="<?php echo $row['listfields'];?>" class="w-50">（用英文逗号隔开，标签{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}，标记[field:name/]调用）</td>
-				</tr>
-				<tr>
-					<td>投稿标题使用名称：</td>
-					<td><input type="text" name="titlename" id="titlename" class="admin-input-sm" value="<?php echo $row['titlename'];?>"></td>
-				</tr>
-				<tr>
-					<td>投稿是否使用摘要：</td>
-					<td>
-						<label><input type="radio" name="needdes" value="1" <?php if ($row['needdes']==1) echo 'checked';?>> 使用</label>
-						<label><input type="radio" name="needdes" value="0" <?php if ($row['needdes']==0) echo 'checked';?>> 不使用</label>
-					</td>
-				</tr>
-				<tr>
-					<td>投稿是否使用缩图：</td>
-					<td>
-						<label><input type="radio" name="needpic" value="1" <?php if ($row['needpic']==1) echo 'checked';?>> 使用</label>
-						<label><input type="radio" name="needpic" value="0" <?php if ($row['needpic']==0) echo 'checked';?>> 不使用</label>
-					</td>
-				</tr>
-				<tr>
-					<td>默认栏目id：</td>
-					<td><input type="text" name="dfcid" id="dfcid" class="admin-input-xs" value="<?php echo $row['dfcid'];?>">（与投稿唯一性结合可以用自定义模型）</td>
-				</tr>
-				<tr>
-					<td>投稿具有唯一性：</td>
-					<td>
-						<label><input type="radio" name="onlyone" value="1" <?php if ($row['onlyone']==1) echo 'checked';?>> 是</label>
-						<label><input type="radio" name="onlyone" value="0" <?php if ($row['onlyone']==0) echo 'checked';?>> 不是</label>
-						<span>（与投稿唯一会员只能在该模型对应栏目中发布文档，其作用相当于自定义表单）</span>
-					</td>
-				</tr>
-				<tr>
-					<td>文档发布程序：</td>
-					<td><input type="text" name="addcon" id="addcon" class="admin-input-sm" value="<?php echo $row['addcon'];?>"></td>
-				</tr>
-				<tr>
-					<td>文档修改程序：</td>
-					<td><input type="text" name="editcon" id="editcon" class="admin-input-sm" value="<?php echo $row['editcon'];?>"></td>
-				</tr>
-				<tr>
-					<td>文档管理程序：</td>
-					<td><input type="text" name="mancon" id="mancon" class="admin-input-sm" value="<?php echo $row['mancon'];?>"></td>
-				</tr>
-				<tr>
-					<td>前台会员发布程序：</td>
-					<td><input type="text" name="useraddcon" id="useraddcon" class="admin-input-sm" value="<?php echo $row['useraddcon'];?>"></td>
-				</tr>
-				<tr>
-					<td>前台会员修改程序：</td>
-					<td><input type="text" name="usereditcon" id="usereditcon" class="admin-input-sm" value="<?php echo $row['usereditcon'];?>"></td>
-				</tr>
-				<tr>
-					<td>前台会员管理程序：</td>
-					<td><input type="text" name="usermancon" id="usermancon" class="admin-input-sm" value="<?php echo $row['usermancon'];?>"></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<table class="table">
-							<tr align="center">
-								<td width="16%" class="border-top-0">字段名称</td>
-								<td width="16%" class="border-top-0">字段标识</td>
-								<td width="16%" class="border-top-0">数据类型</td>
-								<td width="16%" class="border-top-0">字段类型</td>
-								<td class="border-top-0">操作</td>
-							</tr>
-							<?php if ($row['issystem']==-1){?>
-							<tr>
-								<td colspan='5'>不列出aid和typeid强制使用字段</td>
-							</tr>
-							<?php } else {?>
-							<tr>
-								<td colspan='5'>下面是附加表字段，包含主表archives所有字段</td>
-							</tr>
-							<?php
-							}
-							$ds = file(DEDEADMIN."/inc/fieldtype.txt");
-							foreach($ds as $d){
-								$dds = explode(',',trim($d));
-								$fieldtypes[$dds[0]] = $dds[1];
-							}
-							$fieldset = stripslashes($row['fieldset']);
-							$dtp = new DedeTagParse();
-							$dtp->SetNameSpace("field","<",">");
-							$dtp->LoadSource($fieldset);
-							if (is_array($dtp->CTags)){
-								foreach($dtp->CTags as $ctag)
-								{
-							?>
-							<tr align="center">
-								<td>
-									<?php
-									$itname = $ctag->GetAtt('itemname');
-									if ($itname=='') echo "没指定";
-									else echo $itname;
-									?>
-								</td>
-								<td><?php echo $ctag->GetTagName();?></td>
-								<td>
-									<?php
-									$ft = $ctag->GetAtt('type');
-									if (isset($fieldtypes[$ft])) echo $fieldtypes[$ft];
-									else  echo "系统专用类型";
-									?>
-								</td>
-								<td>
-									<?php
-									$ft = $ctag->GetAtt('autofield');
-									if ($ft=='' || $ft==0) {
-										echo "固化字段";
-									} else {
-										echo "自动字段";
-									}
-									?>
-								</td>
-								<td>
-									<?php if ($ft==1) {?>
-									<a href="mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&issystem=<?php echo $row['issystem'];?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
-									<?php if ($row['issystem']!=1) {?>
-									<a href="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&action=delete');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-									<?php }?>
-									<?php } else {echo "<span class='btn btn-danger btn-sm'><i class='fa fa-times'></i> 禁止</span>";}?>
-								</td>
-							</tr>
-							<?php }}?>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="mychannel_main.php">文档模型管理</a></li>
+			<li class="breadcrumb-item active">新增文档模型</li>
+		</ol>
+		<?php if ($row['issystem'] == 1) {?><div class="alert alert-warning">默认文档模型字段，请谨慎修改</div><?php }?>
+		<div class="card shadow-sm">
+			<div class="card-header">修改文档模型</div>
+			<div class="card-body">
+				<form name="form1" action="mychannel_edit.php" method="post">
+					<input type="hidden" name="id" value="<?php echo $id?>">
+					<input type="hidden" name="dopost" value="save">
+					<input type="hidden" name="issystem" value="<?php echo $row['issystem'];?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">模型性质</td>
+									<td><?php if ($row['issystem']==0) echo "自动模型";else if ($row['issystem']==1) echo "系统模型";else if ($row['issystem']==-1) echo "独立模型";?>（系统模型禁止删除，独立模型具有单独主表，自动创建字段aid、栏目id、文档标题等，文档必须点击栏目进入列表管理）</td>
+								</tr>
+								<tr>
+									<td>模型id</td>
+									<td><?php echo $row['id'];?>（创建后不可修改，具有唯一性）</td>
+								</tr>
+								<tr>
+									<td>模型标识</td>
+									<td><?php echo $row['nid'];?>（建议由英文、数字或下划线组成，示例article_名字标识.htm，列表和封面模板类推）</td>
+								</tr>
+								<tr>
+									<td>模型名称</td>
+									<td><input type="text" name="typename" id="typename" class="admin-input-sm" value="<?php echo $row['typename'];?>">（前后台显示模型的名称）</td>
+								</tr>
+								<tr>
+									<td>附加表</td>
+									<td><input type="text" name="addtable" id="addtable" class="admin-input-sm" value="<?php echo $row['addtable'];?>">（#@__表示数据表前缀，文档模型主表外其它数据存放附加表）</td>
+								</tr>
+								<tr>
+									<td>是否支持会员投稿</td>
+									<td>
+										<label><input type="radio" name="issend" value="0" <?php if ($row['issend']==0) echo 'checked';?>> 不支持</label>
+										<label><input type="radio" name="issend" value="1" <?php if ($row['issend']==1) echo 'checked';?>> 支持</label>
+									</td>
+								</tr>
+								<tr>
+									<td>会员投稿级别</td>
+									<td>
+										<select name="sendrank" id="sendrank" class="admin-input-sm">
+											<option value="0">游客</option>
+											<?php
+											$urank = $cuserLogin->getUserRank();
+											$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' And `rank` >= 10");
+											$dsql->Execute();
+											while($row2 = $dsql->GetObject())
+											{
+												if ($row2->rank==$row['sendrank']) echo "<option value='".$row2->rank."' selected>".$row2->membername."</option>";
+												else echo "<option value='".$row2->rank."'>".$row2->membername."</option>";
+											}
+											?>
+										</select>
+										<span>（为了系统安全，游客投稿已禁止，开启游客投稿功能，到会员发布文件删除禁止游客操作）</span>
+									</td>
+								</tr>
+								<tr>
+									<td>会员投稿组</td>
+									<td>
+										<?php
+										$dsql->SetQuery("SELECT * FROM `#@__member_model`");
+										$dsql->Execute();
+										while($row3 = $dsql->GetObject())
+										{
+											echo "<label><input type='radio' name='usertype' value='".$row3->name."'".($row['usertype']==$row3->name? "checked" : "")."> ".$row3->name."</label> ";
+										}
+										?>
+										<label><input type="radio" name="usertype" <?php if ($row['usertype']=='') echo 'checked';?>> 不限</label>
+									</td>
+								</tr>
+								<tr>
+									<td>会员投稿默认状态</td>
+									<td>
+										<label><input type="radio" name="arcsta" value="-1" <?php if ($row['arcsta']==-1) echo 'checked';?>> 待审核</label>
+										<label><input type="radio" name="arcsta" value="0" <?php if ($row['arcsta']==0) echo 'checked';?>> 已审核（更新静态页）</label>
+										<label><input type="radio" name="arcsta" value="1" <?php if ($row['arcsta']==1) echo 'checked';?>> 已审核（使用动态页）</label>
+									</td>
+								</tr>
+								<tr>
+									<td>列表附加字段</td>
+									<td><input type="text" name="listfields" id="listfields" class="admin-input-lg" value="<?php echo $row['listfields'];?>" class="w-50">（用英文逗号隔开，标签{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}，标记[field:name/]调用）</td>
+								</tr>
+								<tr>
+									<td>投稿标题使用名称</td>
+									<td><input type="text" name="titlename" id="titlename" class="admin-input-sm" value="<?php echo $row['titlename'];?>"></td>
+								</tr>
+								<tr>
+									<td>投稿是否使用摘要</td>
+									<td>
+										<label><input type="radio" name="needdes" value="1" <?php if ($row['needdes']==1) echo 'checked';?>> 使用</label>
+										<label><input type="radio" name="needdes" value="0" <?php if ($row['needdes']==0) echo 'checked';?>> 不使用</label>
+									</td>
+								</tr>
+								<tr>
+									<td>投稿是否使用缩图</td>
+									<td>
+										<label><input type="radio" name="needpic" value="1" <?php if ($row['needpic']==1) echo 'checked';?>> 使用</label>
+										<label><input type="radio" name="needpic" value="0" <?php if ($row['needpic']==0) echo 'checked';?>> 不使用</label>
+									</td>
+								</tr>
+								<tr>
+									<td>默认栏目id</td>
+									<td><input type="text" name="dfcid" id="dfcid" class="admin-input-xs" value="<?php echo $row['dfcid'];?>">（与投稿唯一性结合可以用自定义模型）</td>
+								</tr>
+								<tr>
+									<td>投稿具有唯一性</td>
+									<td>
+										<label><input type="radio" name="onlyone" value="1" <?php if ($row['onlyone']==1) echo 'checked';?>> 是</label>
+										<label><input type="radio" name="onlyone" value="0" <?php if ($row['onlyone']==0) echo 'checked';?>> 不是</label>
+										<span>（与投稿唯一会员只能在该模型对应栏目中发布文档，其作用相当于自定义表单）</span>
+									</td>
+								</tr>
+								<tr>
+									<td>文档发布程序</td>
+									<td><input type="text" name="addcon" id="addcon" class="admin-input-sm" value="<?php echo $row['addcon'];?>"></td>
+								</tr>
+								<tr>
+									<td>文档修改程序</td>
+									<td><input type="text" name="editcon" id="editcon" class="admin-input-sm" value="<?php echo $row['editcon'];?>"></td>
+								</tr>
+								<tr>
+									<td>文档管理程序</td>
+									<td><input type="text" name="mancon" id="mancon" class="admin-input-sm" value="<?php echo $row['mancon'];?>"></td>
+								</tr>
+								<tr>
+									<td>前台会员发布程序</td>
+									<td><input type="text" name="useraddcon" id="useraddcon" class="admin-input-sm" value="<?php echo $row['useraddcon'];?>"></td>
+								</tr>
+								<tr>
+									<td>前台会员修改程序</td>
+									<td><input type="text" name="usereditcon" id="usereditcon" class="admin-input-sm" value="<?php echo $row['usereditcon'];?>"></td>
+								</tr>
+								<tr>
+									<td>前台会员管理程序</td>
+									<td><input type="text" name="usermancon" id="usermancon" class="admin-input-sm" value="<?php echo $row['usermancon'];?>"></td>
+								</tr>
+								<tr>
+									<td colspan="2" class="p-0">
+										<table class="table">
+											<thead>
+												<tr>
+													<td scope="col">字段名称</td>
+													<td scope="col">字段标识</td>
+													<td scope="col">数据类型</td>
+													<td scope="col">字段类型</td>
+													<td scope="col">操作</td>
+												</tr>
+											</thead>
+											<tbody>
+											<?php if ($row['issystem']==-1) {?>
+												<tr>
+													<td colspan='5'>不列出aid和typeid强制使用字段</td>
+												</tr>
+												<?php } else {?>
+												<?php
+												}
+												$ds = file(DEDEADMIN."/inc/fieldtype.txt");
+												foreach($ds as $d){
+													$dds = explode(',',trim($d));
+													$fieldtypes[$dds[0]] = $dds[1];
+												}
+												$fieldset = stripslashes($row['fieldset']);
+												$dtp = new DedeTagParse();
+												$dtp->SetNameSpace("field","<",">");
+												$dtp->LoadSource($fieldset);
+												if (is_array($dtp->CTags)){
+													foreach($dtp->CTags as $ctag)
+													{
+												?>
+												<tr>
+													<td>
+														<?php
+														$itname = $ctag->GetAtt('itemname');
+														if ($itname=='') echo "未指定";
+														else echo $itname;
+														?>
+													</td>
+													<td><?php echo $ctag->GetTagName();?></td>
+													<td>
+														<?php
+														$ft = $ctag->GetAtt('type');
+														if (isset($fieldtypes[$ft])) echo $fieldtypes[$ft];
+														else  echo "系统类型";
+														?>
+													</td>
+													<td>
+														<?php
+														$ft = $ctag->GetAtt('autofield');
+														if ($ft=='' || $ft==0) {
+															echo "固化字段";
+														} else {
+															echo "自动字段";
+														}
+														?>
+													</td>
+													<td>
+														<?php if ($ft==1) {?>
+														<a href="mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&issystem=<?php echo $row['issystem'];?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+														<?php if ($row['issystem']!=1) {?>
+														<a href="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id;?>&fname=<?php echo $ctag->GetTagName();?>&action=delete');" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+														<?php }?>
+														<?php } else {echo "<span class='btn btn-danger btn-sm'><i class='fa fa-times' title='禁止'></i></span>";}?>
+													</td>
+												</tr>
+												<?php }}?>
+											</tbody>
+										</table>
+									</td>
+								<tr>
+								<tr>
+									<td colspan="2">模型字段文本模式（调整字段顺序，但不会修改字段属性）</td>
+								</tr>
+								<tr>
+									<td colspan="2"><textarea name="fieldset" id="fieldset" class="admin-textarea-xl"><?php echo stripslashes($row['fieldset']);?></textarea></td>
+								</tr>
+									<td colspan="2"><a href="mychannel_field_add.php?id=<?php echo $id;?>" class="btn btn-success btn-sm">添加新字段</button></td>
+								</tr>
+								<tr>
+									<td align="center" colspan="2">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
 						</table>
-					</td>
-				<tr>
-				<tr>
-					<td colspan="2">模型字段文本模式（调整字段顺序，但不会修改字段属性）</td>
-				</tr>
-				<tr>
-					<td colspan="2" class="p-0"><textarea name="fieldset" id="fieldset" class="admin-textarea-xl"><?php echo stripslashes($row['fieldset']);?></textarea></td>
-				</tr>
-					<td colspan="2"><button type="button" name="fset" id="fset" onclick="location.href='mychannel_field_add.php?id=<?php echo $id;?>'" class="btn btn-success btn-sm">添加新字段</button></td>
-				</tr>
-				<tr>
-					<td align="center" colspan="2">
-						<button type="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='mychannel_main.php';">返回</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function Nav() {
 				if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';

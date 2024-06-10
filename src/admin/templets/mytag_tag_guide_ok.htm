@@ -9,10 +9,14 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form action="tag_test_action.php" method="post" name="f1" target="_blank">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<textarea name="partcode" id="partcode" class="admin-textarea-xl mb-3"><?php echo $fulltag?></textarea>
-			<input type="submit" name="submit" value="预览">
-		</form>
+		<div class="card shadow-sm">
+			<div class="card-body">
+				<form name="f1" action="tag_test_action.php" method="post" target="_blank">
+					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+					<textarea name="partcode" id="partcode" class="admin-textarea-xl mb-3"><?php echo $fulltag?></textarea>
+					<button type="submit" class="btn btn-success btn-sm">预览</button>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

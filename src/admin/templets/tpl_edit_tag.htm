@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>标签源码管理</title>
+		<title>新建/修改标签源码</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
@@ -20,42 +20,42 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="tpl.php" method="POST" onSubmit="return Post();">
-			<input type="hidden" name="actiondo" value="<?php echo $action;?>">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<input type="hidden" name="action" value="savetagfile">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><?php echo $title;?></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="alert alert-warning mb-0">默认标签源码文件，请谨慎修改</div>
-					</td>
-				</tr>
-				<tr>
-					<td width="260">文件名称</td>
-					<td><input name="filename" value="<?php echo $filename;?>" class="admin-input-lg">（不可以用小数点..表示路径）</td>
-				</tr>
-				<tr>
-					<td colspan="2" class="p-0"><textarea name="content" id="content"><?php echo $democode;?></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="B4" class="btn btn-outline-success btn-sm" onclick="location='templets_tagsource.php';">返回</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="templets_tagsource.php">标签源码管理</a></li>
+			<li class="breadcrumb-item active">新建/修改标签源码</li>
+		</ol>
+		<div class="alert alert-warning">默认标签源码文件，请谨慎修改</div>
+		<div class="card shadow-sm">
+			<div class="card-header">新建/修改标签源码</div>
+			<div class="card-body">
+				<form name="form1" action="tpl.php" method="post">
+					<input type="hidden" name="actiondo" value="<?php echo $action;?>">
+					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+					<input type="hidden" name="action" value="savetagfile">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">文件名称</td>
+									<td><input name="filename" value="<?php echo $filename;?>" class="admin-input-lg" required>（不可以用小数点..表示路径）</td>
+								</tr>
+								<tr>
+									<td colspan="2"><textarea name="content" id="content"><?php echo $democode;?></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
-			function Post() {
-				if (document.form1.filename.value == "") {
-					ShowMsg("文件名不能为空");
-					document.form1.filename.focus();
-					return false;
-				}
-			}
 			var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
 				lineNumbers: true,
 				lineWrapping: true,

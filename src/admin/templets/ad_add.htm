@@ -13,165 +13,168 @@
 		<script src="/static/web/js/daterangepicker.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="ad_add.php" method="post">
-			<input type="hidden" name="normbody[style]" value="code" id="adstyle">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<input type="hidden" name="dopost" value="save">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="ad_main.php">广告管理</a> - 添加广告</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="alert alert-info mb-0">标签{dede:myad name='广告标记'/}调用</div>
-					</td>
-				</tr>
-				<tr>
-					<td width="260">广告标记：</td>
-					<td><input type="text" name="tagname" id="tagname" class="admin-input-lg">（使用英文或数字表示标识）</td>
-				</tr>
-				<tr>
-					<td>广告分类：</td>
-					<td>
-						<select name="clsid" id="clsid" class="admin-input-sm">
-							<option value="0">默认分类</option>
-							<?php echo $option;?>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>投放范围：</td>
-					<td>
-						<?php
-						$tl = new TypeLink(0);
-						$typeOptions = $tl->GetOptionArray(0,0,0);
-						echo "<select name='typeid' class='admin-input-sm'>";
-						echo "<option value='0' selected>没有同名标记所有栏目</option>";
-						echo $typeOptions;
-						echo "</select>";
-						?>
-						<span>（如果所选栏目找不到指定标记广告内容，系统会自动搜索父栏目）</span>
-					</td>
-				</tr>
-				<tr>
-					<td>广告名称：</td>
-					<td><input type="text" name="adname" id="adname" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>时间限制：</td>
-					<td>
-						<label><input type="radio" name="timeset" value="0" checked> 不限时间</label>
-						<label><input type="radio" name="timeset" value="1"> 限制时间</label>
-					</td>
-				</tr>
-				<tr>
-					<td>投放时间：</td>
-					<td>
-						<label>从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker admin-input-sm"></label>
-						<label>到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker admin-input-sm"></label>
-					</td>
-				</tr>
-				<tr>
-					<td>广告内容：</td>
-					<td>
-						<div class="add-tab">
-							<ul id="changeTab">
-								<li id="t_code" class="active">代码</li>
-								<li id="t_txt">文字</li>
-								<li id="t_img">图片</li>
-								<li id="t_flash">Flash</li>
-							</ul>
-						</div>
-						<div id="advert"></div>
-					</td>
-				</tr>
-				<tr>
-					<td>过期内容：</td>
-					<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="3" align="center"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-				</tr>
-			</table>
-		</form>
-		<div id="formtxt" style="display:none">
-			<div class="content" id="code" style="display:none">
-				<table>
-					<tr>
-						<td width="260">支持网页广告代码</td>
-						<td><textarea name="normbody[htmlcode]" class="admin-textarea-xl"></textarea></td>
-					</tr>
-				</table>
-			</div>
-			<div id="txt" class="content" style="display:none">
-				<table>
-					<tr>
-						<td width="260">文字文档</td>
-						<td><input type="text" name="normbody[title]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>文字链接</td>
-						<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>文字颜色</td>
-						<td><input type="text" name="normbody[color]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>文字大小</td>
-						<td><input type="text" name="normbody[size]" class="admin-input-lg"></td>
-					</tr>
-				</table>
-			</div>
-			<div id="img" class="content" style="display:none">
-				<table>
-					<tr>
-						<td width="260">图片地址</td>
-						<td><input type="text" name="normbody[url]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>图片链接</td>
-						<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>图片宽度</td>
-						<td><input type="text" name="normbody[width]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>图片高度</td>
-						<td><input type="text" name="normbody[height]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>图片描述</td>
-						<td><input type="text" name="normbody[descrip]" class="admin-input-lg"></td>
-					</tr>
-				</table>
-			</div>
-			<div id="flash" class="content" style="display:none">
-				<table>
-					<tr>
-						<td width="260">flash链接</td>
-						<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>flash宽度</td>
-						<td><input type="text" name="normbody[width]" class="admin-input-lg"></td>
-					</tr>
-					<tr>
-						<td>flash高度</td>
-						<td><input type="text" name="normbody[height]" class="admin-input-lg"></td>
-					</tr>
-				</table>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="ad_main.php">广告管理</a></li>
+			<li class="breadcrumb-item active">添加广告</li>
+		</ol>
+		<div class="alert alert-info">标签{dede:myad name='广告标记'/}调用</div>
+		<div class="card shadow-sm">
+			<div class="card-header">添加广告</div>
+			<div class="card-body">
+				<form name="form1" action="ad_add.php" method="post">
+					<input type="hidden" name="normbody[style]" value="code" id="adstyle">
+					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+					<input type="hidden" name="dopost" value="save">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">广告名称</td>
+									<td><input type="text" name="adname" id="adname" class="admin-input-lg" required></td>
+								</tr>
+								<tr>
+									<td>广告标记</td>
+									<td><input type="text" name="tagname" id="tagname" class="admin-input-lg" required>（使用英文或数字表示标识）</td>
+								</tr>
+								<tr>
+									<td>广告分类</td>
+									<td>
+										<select name="clsid" id="clsid" class="admin-input-sm">
+											<option value="0">默认分类</option>
+											<?php echo $option;?>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>投放范围</td>
+									<td>
+										<?php
+										$tl = new TypeLink(0);
+										$typeOptions = $tl->GetOptionArray(0,0,0);
+										echo "<select name='typeid' class='admin-input-sm'>";
+										echo "<option value='0' selected>没有同名标记所有栏目</option>";
+										echo $typeOptions;
+										echo "</select>";
+										?>
+										<span>（如果所选栏目找不到指定标记广告内容，系统会自动搜索父栏目）</span>
+									</td>
+								</tr>
+								<tr>
+									<td>时间限制</td>
+									<td>
+										<label><input type="radio" name="timeset" value="0" checked> 不限时间</label>
+										<label><input type="radio" name="timeset" value="1"> 限制时间</label>
+									</td>
+								</tr>
+								<tr>
+									<td>投放时间</td>
+									<td>
+										<label>从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker admin-input-sm"></label>
+										<label>到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker admin-input-sm"></label>
+									</td>
+								</tr>
+								<tr>
+									<td>广告内容</td>
+									<td>
+										<div class="add-tab">
+											<ul id="changeTab">
+												<li id="t_code" class="active">代码</li>
+												<li id="t_txt">文字</li>
+												<li id="t_img">图片</li>
+												<li id="t_flash">Flash</li>
+											</ul>
+										</div>
+										<div id="advert"></div>
+									</td>
+								</tr>
+								<tr>
+									<td>过期内容</td>
+									<td><textarea name="expbody" id="expbody" class="admin-textarea-xl"></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="3" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+				<div id="formtxt" style="display:none">
+					<div class="content" id="code" style="display:none">
+						<table>
+							<tr>
+								<td width="260">支持网页广告代码</td>
+								<td><textarea name="normbody[htmlcode]" class="admin-textarea-xl"></textarea></td>
+							</tr>
+						</table>
+					</div>
+					<div id="txt" class="content" style="display:none">
+						<table>
+							<tr>
+								<td width="260">文字文档</td>
+								<td><input type="text" name="normbody[title]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>文字链接</td>
+								<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>文字颜色</td>
+								<td><input type="text" name="normbody[color]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>文字大小</td>
+								<td><input type="text" name="normbody[size]" class="admin-input-lg"></td>
+							</tr>
+						</table>
+					</div>
+					<div id="img" class="content" style="display:none">
+						<table>
+							<tr>
+								<td width="260">图片地址</td>
+								<td><input type="text" name="normbody[url]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>图片链接</td>
+								<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>图片宽度</td>
+								<td><input type="text" name="normbody[width]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>图片高度</td>
+								<td><input type="text" name="normbody[height]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>图片描述</td>
+								<td><input type="text" name="normbody[descrip]" class="admin-input-lg"></td>
+							</tr>
+						</table>
+					</div>
+					<div id="flash" class="content" style="display:none">
+						<table>
+							<tr>
+								<td width="260">flash链接</td>
+								<td><input type="text" name="normbody[link]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>flash宽度</td>
+								<td><input type="text" name="normbody[width]" class="admin-input-lg"></td>
+							</tr>
+							<tr>
+								<td>flash高度</td>
+								<td><input type="text" name="normbody[height]" class="admin-input-lg"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 		<script>
-			function checkSubmit() {
-				if (document.form1.tagname.value == "") {
-					alert("请输入广告标记");
-					document.form1.tagname.focus();
-					return false;
-				}
-			}
 			function showcode(idName) {
 				$("#advert").html("").html($("#formtxt>#" + idName).html());
 				$("#adstyle").val(idName);

@@ -58,7 +58,6 @@ if ($dopost == "delmember") {
     $randcode = mt_rand(10000, 99999);
     $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     $wintitle = "删除指定会员";
-    $wecome_info = "<a href='".$ENV_GOBACK_URL."'>会员管理</a> - 删除会员";
     $win = new OxWindow();
     $win->Init("member_do.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", "yes");
@@ -105,7 +104,6 @@ if ($dopost == "delmember") {
     $randcode = mt_rand(10000, 99999);
     $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     $wintitle = "删除指定会员";
-    $wecome_info = "<a href='".$ENV_GOBACK_URL."'>会员管理</a> - 删除会员";
     $win = new OxWindow();
     $win->Init("member_do.php", "/static/web/js/admin.blank.js", "POST");
     $win->AddHidden("fmdo", "yes");

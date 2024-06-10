@@ -9,33 +9,47 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="plus_edit.php" method="post">
-			<input type="hidden" name="dopost" value="saveedit">
-			<input type="hidden" name="aid" value="<?php echo $aid?>">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="plus_main.php">插件管理</a> - 修改插件</td>
-				</tr>
-				<tr>
-					<td width="260">插件名称</td>
-					<td><input type="text" name="plusname" class="admin-input-sm" value="<?php echo $row['plusname']?>"></td>
-				</tr>
-				<tr>
-					<td>作者</td>
-					<td><?php echo $row['writer']?></td>
-				</tr>
-				<tr>
-					<td>菜单配置</td>
-					<td><textarea name="menustring" id="menustring" class="admin-textarea-xl"><?php echo $row['menustring']?></textarea></td>
-				</tr>
-				<tr>
-					<td>文件列表</td>
-					<td><textarea name="filelist" id="filelist" class="admin-textarea-xl"><?php echo $row['filelist']?></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">确定</button></td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="plus_main.php">插件管理</a></li>
+			<li class="breadcrumb-item active">修改插件</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">修改插件</div>
+			<div class="card-body">
+				<form name="form1" action="plus_edit.php" method="post">
+					<input type="hidden" name="dopost" value="saveedit">
+					<input type="hidden" name="aid" value="<?php echo $aid?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">插件名称</td>
+									<td><input type="text" name="plusname" class="admin-input-sm" value="<?php echo $row['plusname']?>" required></td>
+								</tr>
+								<tr>
+									<td>作者</td>
+									<td><?php echo $row['writer']?></td>
+								</tr>
+								<tr>
+									<td>菜单配置</td>
+									<td><textarea name="menustring" id="menustring" class="admin-textarea-xl"><?php echo $row['menustring']?></textarea></td>
+								</tr>
+								<tr>
+									<td>文件列表</td>
+									<td><textarea name="filelist" id="filelist" class="admin-textarea-xl"><?php echo $row['filelist']?></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

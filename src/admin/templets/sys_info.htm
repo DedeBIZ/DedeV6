@@ -12,144 +12,156 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<table class="table shadow-sm my-3">
-			<tr>
-				<td>
-					<span class="sys-search d-inline-block">
-						<input type="text" name="keywds" id="keywds" class="admin-input-lg" placeholder="请输入变量说明">
-						<button type="button" id="btnClear" class="btn btn-sm d-none sys-times"><i class="fa fa-times"></i></button>
-					</span>
-					<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a>
-					<?php
-					$ds = file(DEDEADMIN.'/inc/configgroup.txt');
-					$totalGroup = count($ds);
-					$i = 0;
-					foreach($ds as $dl)
-					{
-						$dl = trim($dl);
-						if (empty($dl)) continue;
-						$dls = explode(',',$dl);
-						$i++;
-						if ($i>1) echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
-						else {
-							echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
-						}
-					}
-					?>
-					<a href="javascript:ShowHide('addvar');" class="btn btn-success btn-sm">添加变量</a>
-				</td>
-			</tr>
-		</table>
-		<form name="fadd" action="sys_info.php" method="post" id="addvar" style="display:none">
-			<input type="hidden" name="dopost" value="add">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table class="table shadow-sm mb-3">
-				<tr>
-					<td colspan="6">添加变量</td>
-				</tr>
-				<tr>
-					<td width="120">变量说明：</td>
-					<td width="370"><input type="text" name="varmsg" id="varmsg" class="admin-input-lg"></td>
-					<td width="120">变量值：</td>
-					<td width="370"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-lg"></td>
-					<td width="120">变量名称：</td>
-					<td><input type="text" name="nvarname" id="nvarname" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td width="120">变量类型：</td>
-					<td width="370">
-						<label><input type="radio" name="vartype" value="string" checked> 文本</label>
-						<label><input type="radio" name="vartype" value="number"> 数字</label>
-						<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
-						<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
-					</td>
-					<td width="120">变量所属：</td>
-					<td colspan="4">
-						<?php
-						echo "<select name='vargroup' class='admin-input-sm'>";
-						foreach($ds as $dl){
-							$dl = trim($dl);
-							if (empty($dl)) continue;
-							$dls = explode(',',$dl);
-							echo "<option value='{$dls[0]}'>{$dls[1]}</option>";
-						}
-						echo "</select>";
-						?>
-						<button type="submit" class="btn btn-success btn-sm">保存变量</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form action="sys_info.php" method="post" name="form1">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<input type="hidden" name="dopost" value="save">
-			<div id="_search"></div>
-			<div id="_mainsearch">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">系统设置</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<span class="sys-search d-inline-block">
+					<input type="text" name="keywds" id="keywds" class="admin-input-lg" placeholder="请输入变量说明">
+					<button type="button" id="btnClear" class="btn btn-sm d-none sys-times"><i class="fa fa-times"></i></button>
+				</span>
+				<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a>
 				<?php
-				$n = 0;
-				if (!isset($gp)) $gp = 1;
+				$ds = file(DEDEADMIN.'/inc/configgroup.txt');
+				$totalGroup = count($ds);
+				$i = 0;
 				foreach($ds as $dl)
 				{
 					$dl = trim($dl);
 					if (empty($dl)) continue;
 					$dls = explode(',',$dl);
-					$n++;
-				?>
-				<table id="td<?php echo $n?>" class="table shadow-sm mb-3" style="<?php if ($n!=$gp) echo 'display:none';?>">
-					<tr>
-						<td colspan="3">系统设置</td>
-					</tr>
-					<tr align="center">
-						<td width="460">变量说明</td>
-						<td>变量值</td>
-						<td width="260">变量名称</td>
-					</tr>
-					<?php
-					$dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE groupid='{$dls[0]}' ORDER BY aid ASC");
-					$dsql->Execute();
-					$i = 1;
-					while($row = $dsql->GetArray()) {
 					$i++;
-					?>
-					<tr>
-						<td align="center"><?php echo $row['info'];?></td>
-						<td>
-							<?php
-							if ($row['type']=='bool') {
-								$c1 = '';
-								$c2 = '';
-								$row['value']=='Y' ? $c1="checked" : $c2="checked";
-								echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
-								echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
-							} else if ($row['type']=='bstring') {
-								$row['value'] = stripslashes($row['value']);
-								echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
-							} else if ($row['type']=='number') {
-								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-60'>";
-							} else {
-								$addstr='';
-								if ($row['varname']=='cfg_cookie_encode') {
-									$addstr='<a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">更新</a>';
-								}
-								echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-60'> {$addstr}";
-							}
-							?>
-						</td>
-						<td align="center"><?php echo $row['varname']?></td>
-					</tr>
-					<?php }?>
-				</table>
-				<?php }?>
+					if ($i>1) echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
+					else {
+						echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
+					}
+				}
+				?>
+				<a href="javascript:ShowHide('addvar');" class="btn btn-success btn-sm">添加变量</a>
 			</div>
-			<table class="table shadow-sm mb-3">
-				<tr>
-					<td align="center" colspan="3">
-						<button type="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset();">重置</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+		</div>
+		<div id="addvar" class="card shadow-sm mb-3" style="display:none">
+			<div class="card-header">添加变量</div>
+			<div class="card-body">
+			<form name="fadd" action="sys_info.php" method="post" >
+				<input type="hidden" name="dopost" value="add">
+				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="160">变量说明</td>
+									<td width="370"><input type="text" name="varmsg" id="varmsg" class="admin-input-lg"></td>
+									<td width="160">变量值</td>
+									<td width="370"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-lg"></td>
+									<td width="160">变量名称</td>
+									<td><input type="text" name="nvarname" id="nvarname" class="admin-input-lg"></td>
+								</tr>
+								<tr>
+									<td>变量类型</td>
+									<td>
+										<label><input type="radio" name="vartype" value="string" checked> 文本</label>
+										<label><input type="radio" name="vartype" value="number"> 数字</label>
+										<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
+										<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
+									</td>
+									<td>变量所属</td>
+									<td colspan="4">
+										<?php
+										echo "<select name='vargroup' class='admin-input-sm'>";
+										foreach($ds as $dl){
+											$dl = trim($dl);
+											if (empty($dl)) continue;
+											$dls = explode(',',$dl);
+											echo "<option value='{$dls[0]}'>{$dls[1]}</option>";
+										}
+										echo "</select>";
+										?>
+										<button type="submit" class="btn btn-success btn-sm">保存变量</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">系统设置</div>
+			<div class="card-body">
+				<form action="sys_info.php" method="post" name="form1">
+					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+					<input type="hidden" name="dopost" value="save">
+					<div class="table-responsive">
+						<div id="_search"></div>
+						<div id="_mainsearch">
+							<?php
+							$n = 0;
+							if (!isset($gp)) $gp = 1;
+							foreach($ds as $dl)
+							{
+								$dl = trim($dl);
+								if (empty($dl)) continue;
+								$dls = explode(',',$dl);
+								$n++;
+							?>
+							<table id="td<?php echo $n?>" class="table table-borderless" style="<?php if ($n!=$gp) echo 'display:none';?>">
+								<thead>
+									<tr>
+										<td width="370">变量说明</td>
+										<td width="850">变量值</td>
+										<td scope="col">变量名称</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE groupid='{$dls[0]}' ORDER BY aid ASC");
+									$dsql->Execute();
+									$i = 1;
+									while($row = $dsql->GetArray()) {
+									$i++;
+									?>
+									<tr>
+										<td><?php echo $row['info'];?></td>
+										<td>
+											<?php
+											if ($row['type']=='bool') {
+												$c1 = '';
+												$c2 = '';
+												$row['value']=='Y' ? $c1="checked" : $c2="checked";
+												echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
+												echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
+											} else if ($row['type']=='bstring') {
+												$row['value'] = stripslashes($row['value']);
+												echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
+											} else if ($row['type']=='number') {
+												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-65'>";
+											} else {
+												$addstr='';
+												if ($row['varname']=='cfg_cookie_encode') {
+													$addstr='<a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">更新</a>';
+												}
+												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" class='w-65'> {$addstr}";
+											}
+											?>
+										</td>
+										<td><?php echo $row['varname']?></td>
+									</tr>
+									<?php }?>
+								</tbody>
+							</table>
+							<?php }?>
+						</div>
+						<div class="text-center py-2">
+							<button type="submit" class="btn btn-success btn-sm">保存</button>
+							<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset();">重置</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			var searchconfig = false;
 			function Nav() {

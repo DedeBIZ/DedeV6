@@ -29,7 +29,7 @@ if (empty($allsource) && filesize($m_file) > 0) {
     $allsource = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wecome_info = "文档来源管理";
+$wintitle = "文档来源管理";
 $win = new OxWindow();
 $win->Init('article_source_edit.php', '/static/web/js/admin.blank.js', 'POST');
 $win->AddHidden('dopost', 'save');

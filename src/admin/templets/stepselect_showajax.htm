@@ -4,34 +4,60 @@ if ($action=='edit') {
 	$sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); return false;\" ";
 	if ($arr['issystem']==0) $sbjs = '';
 ?>
-<form action="stepselect_main.php" method="post" <?php echo $sbjs;?>>
-	<input type="hidden" name="action" value="edit_save">
-	<input type="hidden" name="id" value="<?php echo $arr['id'];?>">
-	<div class="pb-3"><label>类别名：<input type="text" name="itemname" class="admin-input-lg" value="<?php echo $arr['itemname'];?>"></label></div>
-	<div class="pb-3">
-		<label>缓存名：<input type="text" name="egroup" value="<?php echo $arr['egroup'];?>" class="admin-input-lg"></label>
-		<span>（缓存名必须用英文或数字）</span>
+<div class="card shadow-sm">
+	<div class="card-body">
+		<form action="stepselect_main.php" method="post" <?php echo $sbjs;?>>
+			<input type="hidden" name="action" value="edit_save">
+			<input type="hidden" name="id" value="<?php echo $arr['id'];?>">
+			<table class="table table-borderless">
+				<tbody>
+					<tr>
+						<td width="160">类别名</td>
+						<td><input type="text" name="itemname" class="admin-input-lg" value="<?php echo $arr['itemname'];?>" required></td>
+					</tr>
+					<tr>
+						<td>缓存名</td>
+						<td><input type="text" name="egroup" value="<?php echo $arr['egroup'];?>" class="admin-input-lg" required>（缓存名必须用英文或数字）</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="javascript:CloseTWin();" class="btn btn-success btn-sm">关闭</a>
+							<button type="submit" class="btn btn-success btn-sm">保存</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</div>
-	<div>
-		<a href="javascript:CloseTWin();" class="btn btn-success btn-sm">关闭</a>
-		<button type="submit" class="btn btn-success btn-sm">保存</button>
-	</div>
-</form>
+</div>
 <?php
 } else if ($action=='addnew') {
 ?>
-<form action="stepselect_main.php" method="post">
-	<input type="hidden" name="action" value="addnew_save">
-	<div class="pb-3"><label>类别名：<input type="text" name="itemname" class="admin-input-lg" required></label></div>
-	<div class="pb-3">
-		<label>缓存名：<input type="text" name="egroup" class="admin-input-lg" required></label>
-		<span>（缓存名必须用英文或数字）</span>
+<div class="card shadow-sm">
+	<div class="card-body">
+		<form action="stepselect_main.php" method="post">
+			<input type="hidden" name="action" value="addnew_save">
+			<table class="table table-borderless">
+				<tbody>
+					<tr>
+						<td width="160">类别名</td>
+						<td><input type="text" name="itemname" class="admin-input-lg" required></td>
+					</tr>
+					<tr>
+						<td>缓存名</td>
+						<td><input type="text" name="egroup" class="admin-input-lg" required>（缓存名必须用英文或数字）</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="javascript:CloseTWin();" class="btn btn-success btn-sm">关闭</a>
+							<button type="submit" class="btn btn-success btn-sm">保存</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</div>
-	<div class="text-center">
-		<a href="javascript:CloseTWin();" class="btn btn-success btn-sm">关闭</a>
-		<button type="submit" class="btn btn-success btn-sm">保存</button>
-	</div>
-</form>
+</div>
 <?php
 } else if ($action=='addenum') {
 	$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
@@ -42,27 +68,42 @@ if ($action=='edit') {
 		while($row1 = $dsql->GetArray('out')) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
 	}
 ?>
-<form action="stepselect_main.php" method="post">
-	<input type="hidden" name="action" value="addenum_save">
-	<input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
-	<input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
-	<div class="pb-3">
-		<span>所属枚举：</span>
-		<select name="topvalue" class="admin-input-lg">
-			<option value="0">保存一级枚举</option>
-			<?php echo $options;?>
-		</select>
+<div class="card shadow-sm">
+	<div class="card-body">
+		<form action="stepselect_main.php" method="post">
+			<input type="hidden" name="action" value="addenum_save">
+			<input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
+			<input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
+			<table class="table table-borderless">
+				<tbody>
+					<tr>
+						<td width="160">所属枚举</td>
+						<td>
+							<select name="topvalue" class="admin-input-lg">
+								<option value="0">保存一级枚举</option>
+								<?php echo $options;?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>枚举名</td>
+						<td><input type="text" name="ename" class="admin-input-lg" required></td>
+					</tr>
+					<tr>
+						<td>排序值</td>
+						<td><input type="text" name="disorder" class="admin-input-lg" required></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="javascript:CloseTWin();" class="btn btn-success btn-sm">关闭</a>
+							<button type="submit" class="btn btn-success btn-sm">保存</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</div>
-	<div class="pb-3"><label>枚举名：<input type="text" name="ename" class="admin-input-lg" required></label></div>
-	<div class="pb-3">
-		<label>排序值：<input type="text" name="disorder" class="admin-input-lg"></label>
-		<span>（如果不指定，默认以枚举添加先后来排序）</span>
-	</div>
-	<div class="text-center">
-		<a href="javascript:CloseTWin();" class="btn btn-success btn-sm">关闭</a>
-		<button type="submit" class="btn btn-success btn-sm">保存</button>
-	</div>
-</form>
+</div>
 <?php
 } else if ($action=='view') {
 		$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
@@ -78,13 +119,28 @@ if ($action=='edit') {
 		}
 	}
 ?>
-<div class="pb-3">
-	<span>类别关系：</span>
-	<select name="topvalue" class="admin-input-lg">
-		<option value="0">请选择</option>
-		<?php echo $options;?>
-	</select>
-	<span>（这里仅显示数据关系，实际应用中，二级联动生成的表单是支持级连的，并非全部列出）</span>
+<div class="card shadow-sm">
+	<div class="card-body">
+		<table class="table table-borderless">
+			<tbody>
+				<tr>
+					<td width="160">类别关系</td>
+					<td>
+						<select name="topvalue" class="admin-input-lg">
+							<option value="0">请选择</option>
+							<?php echo $options;?>
+						</select>
+						<span>（这里仅显示数据关系，实际应用中，二级联动生成的表单是支持级连的，并非全部列出）</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<a href="javascript:CloseTWin();" class="btn btn-success btn-sm">关闭</a>
+						<button type="submit" class="btn btn-success btn-sm">保存</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
-<div class="text-center"><a href="javascript:CloseTWin();" class="btn btn-success btn-sm">关闭</a></div>
 <?php }?>

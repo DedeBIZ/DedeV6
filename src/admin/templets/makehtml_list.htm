@@ -9,48 +9,55 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="makehtml_list_action.php" method="get" target="stafrm">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2">更新栏目</td>
-				</tr>
-				<tr>
-					<td width="260">选择栏目：</td>
-					<td>
-						<?php
-						if (empty($cid)) $cid=0;
-						$tl = new TypeLink($cid);
-						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0,1);
-						echo "<select name='typeid' class='admin-input-sm'>";
-						if ($cid=='0') echo "<option value='0' selected='1'>更新所有栏目</option>";
-						echo $typeOptions;
-						echo "</select>";
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>每页更新：</td>
-					<td><input name="maxpagesize" type="text" id="maxpagesize" value="50" class="admin-input-sm">（网页）</td>
-				</tr>
-				<tr>
-					<td>是否更新子栏目：</td>
-					<td>
-						<label><input type="radio" name="upnext" value="1" checked> 更新子类栏目</label>
-						<label><input type="radio" name="upnext" value="0"> 仅更新所选栏目</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="submit" name="b112" class="btn btn-success btn-sm">开始更新</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='catalog_main.php';">栏目管理</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">更新栏目</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">更新栏目</div>
+			<div class="card-body">
+				<form name="form1" action="makehtml_list_action.php" method="get" target="stafrm">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">选择栏目</td>
+									<td>
+										<?php
+										if (empty($cid)) $cid=0;
+										$tl = new TypeLink($cid);
+										$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0,1);
+										echo "<select name='typeid' class='admin-input-sm'>";
+										if ($cid=='0') echo "<option value='0' selected='1'>更新所有栏目</option>";
+										echo $typeOptions;
+										echo "</select>";
+										?>
+									</td>
+								</tr>
+								<tr>
+									<td>每页更新</td>
+									<td><input name="maxpagesize" type="text" id="maxpagesize" value="50" class="admin-input-sm">（网页）</td>
+								</tr>
+								<tr>
+									<td>是否更新子栏目</td>
+									<td>
+										<label><input type="radio" name="upnext" value="1" checked> 更新子类栏目</label>
+										<label><input type="radio" name="upnext" value="0"> 仅更新所选栏目</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

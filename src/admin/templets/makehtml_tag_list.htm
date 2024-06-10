@@ -9,55 +9,58 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="makehtml_tag_action_list.php" method="get" target="stafrm">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2">更新标签</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="alert alert-info mb-0">更新静态文件后，浏览动态链接则跳转至静态链接，需要动态浏览则删除对应静态文件。标签首页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm 标签文档列表模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag_list.htm</div>
-					</td>
-				</tr>
-				<?php if ($tagid > 0) {$row = $dsql->GetOne("SELECT tag FROM `#@__tagindex` WHERE id = '$tagid' ");?>
-				<tr>
-					<td width="260">输入标签：</td>
-					<td>
-						<input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?>
-						<a href="makehtml_taglist.php" class="btn btn-success btn-sm">重新选择</a>
-					</td>
-				</tr>
-				<?php } else {?>
-				<tr>
-					<td width="260">起始id：</td>
-					<td><input type="text" name="startid" id="startid" class="admin-input-sm">（空或0表示从头开始）</td>
-				</tr>
-				<tr>
-					<td>结束id：</td>
-					<td><input type="text" name="endid" id="endid" class="admin-input-sm">（空或0表示直到结束id）</td>
-				</tr>
-				<?php }?>
-				<tr>
-					<td>更新位置：</td>
-					<td><input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" class="admin-input-sm" disabled>（系统设置中其他选项标签生成目录进行调整）</td>
-				</tr>
-				<tr>
-					<td>每页更新：</td>
-					<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" class="admin-input-sm">（网页）</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="button" name="b112" class="btn btn-success btn-sm" onclick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">开始更新</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='tags_main.php';">标签管理</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">更新专题</li>
+		</ol>
+		<div class="alert alert-info">更新静态文件后，浏览动态链接则跳转至静态链接，需要动态浏览则删除对应静态文件。标签首页模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm 标签文档列表模板：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag_list.htm</div>
+		<div class="card shadow-sm">
+			<div class="card-header">更新专题</div>
+			<div class="card-body">
+				<form name="form1" action="makehtml_tag_action_list.php" method="get" target="stafrm">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<?php if ($tagid > 0) {$row = $dsql->GetOne("SELECT tag FROM `#@__tagindex` WHERE id = '$tagid' ");?>
+								<tr>
+									<td width="260">输入标签</td>
+									<td>
+										<input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?>
+										<a href="makehtml_taglist.php" class="btn btn-success btn-sm">重新选择</a>
+									</td>
+								</tr>
+								<?php } else {?>
+								<tr>
+									<td width="260">起始id</td>
+									<td><input type="text" name="startid" id="startid" class="admin-input-sm">（空或0表示从头开始）</td>
+								</tr>
+								<tr>
+									<td>结束id</td>
+									<td><input type="text" name="endid" id="endid" class="admin-input-sm">（空或0表示直到结束id）</td>
+								</tr>
+								<?php }?>
+								<tr>
+									<td>更新位置</td>
+									<td><input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" class="admin-input-sm" disabled>（系统设置中其他选项标签生成目录进行调整）</td>
+								</tr>
+								<tr>
+									<td>每页更新</td>
+									<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" class="admin-input-sm">（网页）</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><button type="button" class="btn btn-success btn-sm" onclick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">开始执行</button></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function onTagSubmit() {
 				document.form1.submit();

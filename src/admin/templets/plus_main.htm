@@ -4,36 +4,48 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>插件管理</title>
+		<title>插件列表</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<table class="table shadow-sm my-3">
-			<tr>
-				<td colspan="4">插件管理</td>
-			</tr>
-			<tr align="center">
-				<td width="6%">id</td>
-				<td width="26%">插件名称</td>
-				<td width="26%">插件作者</td>
-				<td>操作</td>
-			</tr>
-			{dede:datalist empty='<tr><td colspan="4" align="center">暂无记录</td></tr>'}
-			<tr align="center">
-				<td>{dede:field.aid/}</td>
-				<td>{dede:field.plusname/}</td>
-				<td>{dede:field.writer/}</td>
-				<td>{dede:field.isshow function="GetSta(@me,$fields['aid'],$fields['plusname'])"/}</td>
-			</tr>
-			{/dede:datalist}
-			<tr>
-				<td colspan="4"><a href="module_upload.php" class="btn btn-success btn-sm">上传模块插件</a></td>
-			</tr>
-			<tr>
-				<td colspan="4" align="center">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">插件列表</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">插件列表</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-borderless">
+						<thead>
+							<tr>
+								<td scope="col">id</td>
+								<td scope="col">插件名称</td>
+								<td scope="col">插件作者</td>
+								<td scope="col">操作</td>
+							</tr>
+						</thead>
+						<tbody>
+							{dede:datalist}
+							<tr>
+								<td>{dede:field.aid/}</td>
+								<td>{dede:field.plusname/}</td>
+								<td>{dede:field.writer/}</td>
+								<td>{dede:field.isshow function="GetSta(@me,$fields['aid'],$fields['plusname'])"/}</td>
+							</tr>
+							{/dede:datalist}
+							<tr>
+								<td colspan="4"><a href="module_upload.php" class="btn btn-success btn-sm">上传模块插件</a></td>
+							</tr>
+							<tr>
+								<td colspan="4" align="center">{dede:pagelist listsize='6'/}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

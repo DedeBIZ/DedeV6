@@ -12,85 +12,80 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="friendlink_add.php" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="dopost" value="add">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="friendlink_main.php">友情链接管理</a> - 添加友情链接</td>
-				</tr>
-
-				<tr>
-					<td width="260">网址：</td>
-					<td><input type="text" name="url" id="url" value="http://" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>网站名称：</td>
-					<td><input type="text" name="webname" id="webname" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>排列位置：</td>
-					<td><input type="text" name="sortrank" id="sortrank" value="1" class="admin-input-xs">（由小到大排列）</td>
-				</tr>
-				<tr>
-					<td>网站Logo：</td>
-					<td><input type="text" name="logo" id="logo" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>上传Logo：</td>
-					<td><input type="file" name="logoimg" id="logoimg" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>网站简况：</td>
-					<td><textarea name="msg" id="msg" class="admin-textarea-sm"></textarea></td>
-				</tr>
-				<tr>
-					<td>邮箱：</td>
-					<td><input type="text" name="email" id="email" autocomplete="off" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>网站类型：</td>
-					<td>
-						<select name="typeid" id="typeid" class="admin-input-sm">
-							<?php
-							$dsql->SetQuery("SELECT * FROM `#@__flinktype`");
-							$dsql->Execute();
-							while($row=$dsql->GetObject())
-							{
-								echo " <option value='".$row->id."'>".$row->typename."</option>";
-							}
-							?>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>链接位置：</td>
-					<td>
-						<label><input type="radio" name="ischeck" value="1" checked> 内页</label>
-						<label><input type="radio" name="ischeck" value="2"> 首页</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
-						<button type="reset" name="submit" class="btn btn-outline-success btn-sm" onclick="location.href='<?php echo $ENV_GOBACK_URL?>';">返回</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<script>
-			function CheckSubmit() {
-				if (document.form1.url.value=="http://"||document.form1.url.value=="") {
-					document.form1.url.focus();
-					ShowMsg("网址不能为空");
-					return false;
-				}
-				if (document.form1.webname.value=="") {
-					document.form1.webname.focus();
-					ShowMsg("网站名称不能为空");
-					return false;
-				}
-				return true;
-			}
-		</script>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="friendlink_main.php">友情链接管理</a></li>
+			<li class="breadcrumb-item active">添加友情链接</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">添加友情链接</div>
+			<div class="card-body">
+				<form name="form1" action="friendlink_add.php" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="dopost" value="add">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">网址</td>
+									<td><input type="text" name="url" id="url" value="http://" class="admin-input-lg" required></td>
+								</tr>
+								<tr>
+									<td>网站名称</td>
+									<td><input type="text" name="webname" id="webname" class="admin-input-lg" required></td>
+								</tr>
+								<tr>
+									<td>排列位置</td>
+									<td><input type="text" name="sortrank" id="sortrank" value="1" class="admin-input-xs">（由小到大排列）</td>
+								</tr>
+								<tr>
+									<td>网站Logo</td>
+									<td><input type="text" name="logo" id="logo" class="admin-input-lg"></td>
+								</tr>
+								<tr>
+									<td>上传Logo</td>
+									<td><input type="file" name="logoimg" id="logoimg" class="admin-input-lg"></td>
+								</tr>
+								<tr>
+									<td>网站简况</td>
+									<td><textarea name="msg" id="msg" class="admin-textarea-sm"></textarea></td>
+								</tr>
+								<tr>
+									<td>邮箱</td>
+									<td><input type="text" name="email" id="email" autocomplete="off" class="admin-input-lg"></td>
+								</tr>
+								<tr>
+									<td>网站类型</td>
+									<td>
+										<select name="typeid" id="typeid" class="admin-input-sm">
+											<?php
+											$dsql->SetQuery("SELECT * FROM `#@__flinktype`");
+											$dsql->Execute();
+											while($row=$dsql->GetObject())
+											{
+												echo " <option value='".$row->id."'>".$row->typename."</option>";
+											}
+											?>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>链接位置</td>
+									<td>
+										<label><input type="radio" name="ischeck" value="1" checked> 内页</label>
+										<label><input type="radio" name="ischeck" value="2"> 首页</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

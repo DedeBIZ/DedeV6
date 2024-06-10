@@ -150,7 +150,6 @@ else if ($fmdo == "space") {
         $ecpath = $activepath;
     }
     $wintitle = "指定空间检查大小";
-    $wecome_info = "文件管理器 - <a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>空间检查大小";
     $activepath = $cfg_basedir.$activepath;
     $space = new SpaceUse;
     $space->checksize($activepath);

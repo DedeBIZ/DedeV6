@@ -156,9 +156,7 @@ else if ($dopost == "GetSunListsMenu") {
     PutCookie('lastCid', $cid, 3600 * 24, "/");
     $tu = new TypeUnit();
     $tu->dsql = $dsql;
-    echo "<table>\r\n";
     $tu->LogicListAllSunType($cid, "　");
-    echo "</table>\r\n";
     $tu->Close();
 }
 //合并栏目
@@ -180,7 +178,6 @@ else if ($dopost == 'unitCatalog') {
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
         $wintitle = "合并指定栏目";
-        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 合并栏目";
         $win = new OxWindow();
         $win->Init('catalog_do.php', '/static/web/js/admin.blank.js', 'POST');
         $win->AddHidden('dopost', 'unitCatalog');
@@ -229,7 +226,6 @@ else if ($dopost == 'moveCatalog') {
         $channelid = $tl->TypeInfos['channeltype'];
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
         $wintitle = "移动指定栏目";
-        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> - 移动栏目";
         $win = new OxWindow();
         $win->Init('catalog_do.php', '/static/web/js/admin.blank.js', 'POST');
         $win->AddHidden('dopost', 'moveCatalog');

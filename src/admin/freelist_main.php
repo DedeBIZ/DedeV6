@@ -56,38 +56,40 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
 {
     global $cfg_phpurl, $addsql;
     $start = ($pageno-1) * $pagesize;
-    $printhead ="<table class='table shadow-sm my-3'>
+    $printhead ="<div class='table-responsive'>
+    <table class='table table-borderless'>
+        <thead>
         <tr>
-            <td colspan='6'>自由列表管理</td>
+            <td scope='col'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
+            <td scope='col'>列表名称</td>
+            <td scope='col'>模板文件</td>
+            <td scope='col'><a href=\"javascript:ReloadPage('click');\">点击</a></td>
+            <td scope='col'>创建时间</td>
+            <td scope='col'>操作</td>
         </tr>
-        <tr align='center'>
-            <td width='6%'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
-            <td width='20%'>列表名称</td>
-            <td width='20%'>模板文件</td>
-            <td width='6%'><a href=\"javascript:ReloadPage('click');\">点击</a></td>
-            <td width='12%'>创建时间</td>
-            <td>操作</td>
-        </tr>";
+    </thead>";
     echo $printhead;
     $dsql->SetQuery("SELECT aid,title,templet,click,edtime,namerule,listdir,defaultpage,nodefault FROM `#@__freelist` $addsql ORDER BY $orderby DESC LIMIT $start,$pagesize");
     $dsql->Execute();
     while($row = $dsql->GetArray())
     {
         $listurl = GetFreeListUrl($row['aid'],$row['namerule'],$row['listdir'],$row['defaultpage'],$row['nodefault']);
-        $line = "<tr align='center'>
-        <td>{$row['aid']}</td>
-        <td><a href='$listurl' target='_blank'>{$row['title']}</a></td>
-        <td>{$row['templet']}</td>
-        <td>{$row['click']}</td>
-        <td>".MyDate("y-m-d",$row['edtime'])."</td>
-        <td>
-            <a href=\"javascript:CreateNote({$row['aid']});\" class='btn btn-light btn-sm'><i class='fa fa-repeat'></i> 更新</a>
-            <a href=\"javascript:EditNote({$row['aid']});\" class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a>
-            <a href='$listurl' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 预览</a>
-            <a href=\"javascript:DelNote({$row['aid']});\" class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
-        </td>
-    </tr>";
+        $line = "<tbody>
+            <tr>
+            <td>{$row['aid']}</td>
+            <td><a href='$listurl' target='_blank'>{$row['title']}</a></td>
+            <td>{$row['templet']}</td>
+            <td>{$row['click']}</td>
+            <td>".MyDate("y-m-d",$row['edtime'])."</td>
+            <td>
+                <a href=\"javascript:CreateNote({$row['aid']});\" class='btn btn-light btn-sm'><i class='fa fa-repeat' title='更新'></i></a>
+                <a href=\"javascript:EditNote({$row['aid']});\" class='btn btn-light btn-sm'><i class='fa fa-pencil-square' title='修改'></i></a>
+                <a href='$listurl' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
+                <a href=\"javascript:DelNote({$row['aid']});\" class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
+            </td>
+        </tr>
+    </tbody>";
         echo $line;
     }
-    echo "</table>";
+    echo "</table></div>";
 }

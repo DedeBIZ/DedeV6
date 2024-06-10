@@ -253,28 +253,32 @@ else if ($dopost == "checkArchives") {
         </select>";
         //输出Ajax可移动窗体
         $divname = 'moveArchives';
-        echo "<div class='title'>移动文档</div>";
+        echo "<div class='card shadow-sm'><div class='card-header'>移动文档</div><div class='card-body'>";
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-        echo "<table>";
+        echo "<table class='table table-borderless'>";
         ?>
-        <tr>
-            <td width="120" class="admin-td">目标栏目：</td>
-            <td class="admin-td"><?php echo $typeOptions;?></td>
-        </tr>
-        <tr>
-            <td width="120" class="admin-td">文档id：</td>
-            <td class="admin-td"><input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center" class="admin-td">
-                <button type="submit" class="btn btn-success btn-sm">保存</button>
-                <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
-            </td>
-        </tr>
+        <tbody>
+            <tr>
+                <td width="160">目标栏目</td>
+                <td><?php echo $typeOptions;?></td>
+            </tr>
+            <tr>
+                <td width="160">文档id</td>
+                <td><input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" class="btn btn-success btn-sm">保存</button>
+                    <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
+                </td>
+            </tr>
+        </tbody>
         </table>
         </form>
+        </div>
+        </div>
         <?php
         //Ajax窗体结束
         } else {
@@ -366,7 +370,6 @@ else if ($dopost == "delArchives") {
         exit();
     } else {
         $wintitle = "删除指定文档";
-        $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a> - 删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -416,7 +419,6 @@ else if ($dopost == 'clear') {
             exit();
         }
         $wintitle = "清空回收站所有文档";
-        $wecome_info = "<a href='recycling.php'>文档回收站</a> - 清空所有文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -454,7 +456,6 @@ else if ($dopost == 'del') {
         exit();
     } else {
         $wintitle = "删除指定文档";
-        $wecome_info = "<a href='recycling.php'>文档管理</a> - 删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -474,80 +475,84 @@ else if ($dopost == 'quickEdit') {
     $query = "SELECT ch.typename as channelname,ch.addtable,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($query);
     $divname = 'quickEdit';
-    echo "<div class='title'>文档属性修改</div>";
+    echo "<div class='card shadow-sm'><div class='card-header'>文档属性修改</div><div class='card-body'>";
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
-    echo "<table>";
+    echo "<table class='table table-borderless'>";
     ?>
-    <tr>
-        <td width="120" class="admin-td">所属栏目：</td>
-        <td class="admin-td">
-            <?php
-            $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
-            echo "<select name='typeid' class='admin-input-sm'>";
-            if ($arcRow["typeid"] == "0") echo "<option value='0' selected>请选择文档栏目</option>";
-            echo $typeOptions;
-            echo "</select>";
-            ?>
-        </td>
-    </tr>
-    <tr>
-        <td width="120" class="admin-td">属性：</td>
-        <td class="admin-td">
-            <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
-            <?php
-            $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
-            $dsql->Execute();
-            while ($trow = $dsql->GetObject()) {
-                if ($trow->att == 'j') continue;
-                if (preg_match("#".$trow->att."#", $arcRow['flag']))
-                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked> {$trow->attname}{$trow->att}[{$trow->att}]</label> ";
-                else
-                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
-            }
-            ?>
-        </td>
-    </tr>
-    <tr>
-        <td width="120" class="admin-td">标题：</td>
-        <td class="admin-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
-    </tr>
-    <tr>
-        <td width="120" class="admin-td">简略标题：</td>
-        <td class="admin-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-lg"></td>
-    </tr>
-    <tr>
-        <td width="120" class="admin-td">浏览权限：</td>
-        <td class="admin-td">
-            <select name="arcrank" id="arcrank" class="admin-input-sm">
-                <option value='<?php echo $arcRow["arcrank"] ?>'>
-                <?php echo $arcRow["rankname"] ?> </option>
+    <tbody>
+        <tr>
+            <td width="160">所属栏目</td>
+            <td>
                 <?php
-                $urank = $cuserLogin->getUserRank();
-                $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank' ORDER BY `rank` ASC");
+                $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
+                echo "<select name='typeid' class='admin-input-sm'>";
+                if ($arcRow["typeid"] == "0") echo "<option value='0' selected>请选择文档栏目</option>";
+                echo $typeOptions;
+                echo "</select>";
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <td width="160">属性</td>
+            <td>
+                <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
+                <?php
+                $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
                 $dsql->Execute();
-                while ($row = $dsql->GetObject()) {
-                    $selected = $row->rank == 0 ? ' selected' : '';
-                    echo "<option value='".$row->rank."'{$selected}>".$row->membername."</option>";
+                while ($trow = $dsql->GetObject()) {
+                    if ($trow->att == 'j') continue;
+                    if (preg_match("#".$trow->att."#", $arcRow['flag']))
+                    echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked> {$trow->attname}{$trow->att}[{$trow->att}]</label> ";
+                    else
+                    echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
                 }
                 ?>
-            </select>
-            <label>需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-xs"></label>
-        </td>
-    </tr>
-    <tr>
-        <td width="120" class="admin-td">关键词：</td>
-        <td class="admin-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center" class="admin-td">
-            <button type="submit" class="btn btn-success btn-sm">保存</button>
-            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
-        </td>
-    </tr>
-    </table>
-    </form>
+            </td>
+        </tr>
+        <tr>
+            <td width="160">标题</td>
+            <td><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
+        </tr>
+        <tr>
+            <td width="160">简略标题</td>
+            <td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-lg"></td>
+        </tr>
+        <tr>
+            <td width="160">浏览权限</td>
+            <td>
+                <select name="arcrank" id="arcrank" class="admin-input-sm">
+                    <option value='<?php echo $arcRow["arcrank"] ?>'>
+                    <?php echo $arcRow["rankname"] ?> </option>
+                    <?php
+                    $urank = $cuserLogin->getUserRank();
+                    $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank' ORDER BY `rank` ASC");
+                    $dsql->Execute();
+                    while ($row = $dsql->GetObject()) {
+                        $selected = $row->rank == 0 ? ' selected' : '';
+                        echo "<option value='".$row->rank."'{$selected}>".$row->membername."</option>";
+                    }
+                    ?>
+                </select>
+                <label>需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-xs"></label>
+            </td>
+        </tr>
+        <tr>
+            <td width="160">关键词</td>
+            <td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button type="submit" class="btn btn-success btn-sm">保存</button>
+                <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</form>
+</div>
+</div>
 <?php
 //Ajax窗体结束
 }
@@ -753,38 +758,42 @@ else if ($dopost == 'attsDlg') {
     AjaxHead();
     //输出Ajax可移动窗体
     $divname = 'attsDlg';
-    echo "<div class='title'>{$dojobname}</div>";
+    echo "<div class='card shadow-sm'><div class='card-header'>{$dojobname}</div><div class='card-body'>";
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-    echo "<table>";
+    echo "<table class='table table-borderless'>";
     ?>
-    <tr>
-        <td width="120" class="admin-td">属性：</td>
-        <td class="admin-td">
-            <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
-            <?php
-            $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
-            $dsql->Execute();
-            while ($trow = $dsql->GetObject()) {
-                if ($trow->att == 'j') continue;
-                echo "<label><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
-            }
-            ?>
-        </td>
-    </tr>
-    <tr>
-        <td width="120" class="admin-td">文档id：</td>
-        <td class="admin-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center" class="admin-td">
-            <button type="submit" class="btn btn-success btn-sm">保存</button>
-            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
-        </td>
-    </tr>
-    </table>
-    </form>
+    <tbody>
+        <tr>
+            <td width="160">属性</td>
+            <td>
+                <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
+                <?php
+                $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
+                $dsql->Execute();
+                while ($trow = $dsql->GetObject()) {
+                    if ($trow->att == 'j') continue;
+                    echo "<label><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
+                }
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <td width="160">文档id</td>
+            <td><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button type="submit" class="btn btn-success btn-sm">保存</button>
+                <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</form>
+</div>
+</div>
 <?php
 //Ajax窗体结束
 } else if ($dopost == 'getCatMap') {
@@ -792,16 +801,18 @@ else if ($dopost == 'attsDlg') {
     AjaxHead();
     //输出Ajax可移动窗体
     $divname = 'getCatMap';
-    echo "<div class='title'>选择副栏目</div>";
+    echo "<div class='card shadow-sm'><div class='card-header'>选择副栏目</div><div class='card-body'>";
     $tus = new TypeUnitSelector();
-    ?>
+    ?>    
     <form name="quicksel" action="javascript:;" method="get">
         <div class="quicksel"><?php $tus->ListAllType($channelid);?></div>
-        <div align="center" class="quickselfoot">
+        <div class="text-center py-2">
             <button onclick="getSelCat('<?php echo $targetid;?>');" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </div>
     </form>
+</div>
+</div>
 <?php
 //Ajax窗体结束
 }

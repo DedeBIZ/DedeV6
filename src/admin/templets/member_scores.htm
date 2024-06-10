@@ -12,55 +12,67 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form action="member_scores.php" method="post">
-			<input name="action" type="hidden" value="save">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="5">积分头衔设置</td>
-				</tr>
-				<tr align="center">
-					<td width="6%">选择</td>
-					<td width="26%">积分大于</td>
-					<td width="26%">星星数</td>
-					<td width="26%">级别头衔</td>
-					<td>是否默认</td>
-				</tr>
-				<?php foreach($Scores as $v) {?>
-				<tr align="center">
-					<td><input type="checkbox" name="Ids-<?php echo $v['id']?>" id="Ids-<?php echo $v['id']?>" value="1"></td>
-					<td><input type="text" name="integral-<?php echo $v['id']?>" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" class="admin-input-sm"></td>
-					<td><input type="text" name="icon-<?php echo $v['id']?>" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" class="admin-input-sm"></td>
-					<td><input type="text" name="titles-<?php echo $v['id']?>" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" class="admin-input-sm">
-					</td>
-					<td>
-						<select name="isdefault-<?php echo $v['id']?>" id="isdefault-<?php echo $v['id']?>">
-							<option value="1" <?php if ($v['isdefault']) echo " selected='selected'";?>>是</option>
-							<option value="0" <?php if (!$v['isdefault']) echo " selected='selected'";?>>否</option>
-						</select>
-					</td>
-				</tr>
-				<?php }?>
-				<tr align="center">
-					<td></td>
-					<td><input type="text" name="add_integral" id="add_integral" class="admin-input-sm"></td>
-					<td><input type="text" name="add_icon" id="add_icon" class="admin-input-sm"></td>
-					<td><input type="text" name="add_titles" id="add_titles" class="admin-input-sm"></td>
-					<td>
-						<select name="add_isdefault" id="add_isdefault">
-							<option value="1">是</option>
-							<option value="0">否</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="5" align="center">
-						<button type="button" name="select" onclick="selAll();" class="btn btn-success btn-sm">全选</button>
-						<button type="button" name="select" onclick="noSelAll();" class="btn btn-success btn-sm">取消</button>
-						<button type="submit" class="btn btn-success btn-sm">提交</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">积分头衔设置</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">积分头衔设置</div>
+			<div class="card-body">
+				<form action="member_scores.php" method="post">
+					<input name="action" type="hidden" value="save">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<thead>
+								<tr>
+									<td scope="col">选择</td>
+									<td scope="col">积分大于</td>
+									<td scope="col">星星数</td>
+									<td scope="col">级别头衔</td>
+									<td scope="col">是否默认</td>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach($Scores as $v) {?>
+								<tr>
+									<td><input type="checkbox" name="Ids-<?php echo $v['id']?>" id="Ids-<?php echo $v['id']?>" value="1"></td>
+									<td><input type="text" name="integral-<?php echo $v['id']?>" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" class="admin-input-sm"></td>
+									<td><input type="text" name="icon-<?php echo $v['id']?>" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" class="admin-input-sm"></td>
+									<td><input type="text" name="titles-<?php echo $v['id']?>" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" class="admin-input-sm">
+									</td>
+									<td>
+										<select name="isdefault-<?php echo $v['id']?>" id="isdefault-<?php echo $v['id']?>">
+											<option value="1" <?php if ($v['isdefault']) echo " selected='selected'";?>>是</option>
+											<option value="0" <?php if (!$v['isdefault']) echo " selected='selected'";?>>否</option>
+										</select>
+									</td>
+								</tr>
+								<?php }?>
+								<tr>
+									<td></td>
+									<td><input type="text" name="add_integral" id="add_integral" class="admin-input-sm"></td>
+									<td><input type="text" name="add_icon" id="add_icon" class="admin-input-sm"></td>
+									<td><input type="text" name="add_titles" id="add_titles" class="admin-input-sm"></td>
+									<td>
+										<select name="add_isdefault" id="add_isdefault">
+											<option value="1">是</option>
+											<option value="0">否</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="5" align="center">
+										<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+										<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function selAll() {
 				var a = document.getElementsByTagName("input");

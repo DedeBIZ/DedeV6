@@ -3,48 +3,59 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>会员短信管理</title>
+		<title>会员群发短信</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form action="member_pm.php" name="form1" method="get">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td>
-						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-3">
-						<input type="text" name="username" id="username" placeholder="请输入账号" autocomplete="off" class="admin-input-lg mr-3">
-						<select name="folder" id="folder" class="admin-input-sm">
-							<option value="inbox">收件箱</option>
-							<option value="outbox">发件箱</option>
-						</select>
-						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
-						<a href="member_pm.php" class="btn btn-outline-success btn-sm">短信列表</a>
-						<span id="cate_1" class="btn btn-success btn-sm">群发短信</span>
-						<a href="member_pmone.php" class="btn btn-outline-success btn-sm">单独短信</a>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form id="postall" method="post" action="member_pmall.php">
-			<input type="hidden" name="action" value="post">
-			<table class="table shadow-sm mb-3">
-				<tr>
-					<td colspan="2">群发短信</td>
-				</tr>
-				<tr>
-					<td width="260">标题：</td>
-					<td><input type="text" name="subject" id="subject" class="admin-input-lg" placeholder="标题少于70个字符内"></td>
-				</tr>
-				<tr>
-					<td><label for="pm_textarea">内容：</label></td>
-					<td><textarea name="message" id="message" class="admin-textarea-xl" placeholder="内容少于1000个字符"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit" value="提交" class="btn btn-success btn-sm"></td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">会员群发短信</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<form action="member_pm.php" name="form1" method="get">
+					<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-2">
+					<input type="text" name="username" id="username" placeholder="请输入账号" autocomplete="off" class="admin-input-lg mr-2">
+					<select name="folder" id="folder" class="admin-input-sm">
+						<option value="inbox">收件箱</option>
+						<option value="outbox">发件箱</option>
+					</select>
+					<button type="submit"class="btn btn-success btn-sm">搜索</button>
+					<a href="member_pm.php" class="btn btn-outline-success btn-sm">短信列表</a>
+					<span class="btn btn-success btn-sm">群发短信</span>
+					<a href="member_pmone.php" class="btn btn-outline-success btn-sm">单独短信</a>
+				</form>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">会员群发短信</div>
+			<div class="card-body">
+				<form id="postall" action="member_pmall.php" method="post">
+					<input type="hidden" name="action" value="post">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">标题</td>
+									<td><input type="text" name="subject" id="subject" class="admin-input-lg" placeholder="标题少于70个字符内" required></td>
+								</tr>
+								<tr>
+									<td>内容</td>
+									<td><textarea name="message" id="message" class="admin-textarea-xl" placeholder="内容少于1000个字符" required></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

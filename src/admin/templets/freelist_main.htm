@@ -102,25 +102,28 @@
 		</script>
 	</head>
 	<body>
-		<form action="freelist_main.php" name="form1" id="form1">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td>
-						<input type="text" name="keyword" id="keyword" value="<?php echo $keyword?>" class="admin-input-lg" placeholder="请输入关键词">
-						<button type="submit" name="submit2" class="btn btn-success btn-sm">搜索</button>
-						<button type="button" name="bt1" onclick="location='freelist_add.php';" class="btn btn-success btn-sm">添加自由列表</button>
-						<button type="button" name="bt2" onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm">更新所有列表</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<div id="rslist"><?php GetTagList($dsql,$pageno,$pagesize,$orderby);?></div>
-		<table class="table shadow-sm mb-3">
-			<tr>
-				<td id="pagelist">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">自由列表管理</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<form action="freelist_main.php" name="form1" id="form1">
+					<input type="text" name="keyword" id="keyword" value="<?php echo $keyword?>" class="admin-input-lg" placeholder="请输入关键词">
+					<button type="submit" name="submit2" class="btn btn-success btn-sm">搜索</button>
+					<a href="freelist_add.php" class="btn btn-success btn-sm">添加自由列表</a>
+					<a href="makehtml_freelist.php" class="btn btn-success btn-sm">更新所有列表</a>
+				</form>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">自由列表管理</div>
+			<div id="rslist" class="card-body">
+				<?php GetTagList($dsql,$pageno,$pagesize,$orderby);?>
+				<div id="pagelist" class="my-2">
 					<script>ReloadPageNum(1);</script>
-				</td>
-			</tr>
-		</table>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

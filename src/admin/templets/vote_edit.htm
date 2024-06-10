@@ -15,74 +15,85 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" method="post" action="vote_edit.php">
-			<input type="hidden" name="dopost" value="saveedit">
-			<input type="hidden" name="aid" value="<?php echo $aid?>">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="vote_main.php">投票管理</a> - 修改投票</td>
-				</tr>
-				<tr>
-					<td width="260">投票名称：</td>
-					<td><input type="text" name="votename" id="votename" value="<?php echo $row['votename']?>"></td>
-				</tr>
-				<tr>
-					<td>投票总人数：</td>
-					<td><input type="text" name="totalcount" id="totalcount" value="<?php echo $row['totalcount']?>"></td>
-				</tr>
-				<tr>
-					<td>开始时间：</td>
-					<td><input type="text" name="starttime" id="starttime" class="datepicker1" value="<?php echo GetDateMk($row['starttime'])?>"></td>
-				</tr>
-				<tr>
-					<td>结束时间：</td>
-					<td><input type="text" name="endtime" id="endtime" class="datepicker1" value="<?php echo GetDateMk($row['endtime'])?>"></td>
-				</tr>
-				<tr>
-					<td>是否允许游客投票：</td>
-					<td>
-						<label><input type="radio" name="isallow" value="0" <?php if ($row['isallow']==0) echo 'checked';?>> 是</label> 　
-						<label><input type="radio" name="isallow" value="1" <?php if ($row['isallow']==1) echo 'checked';?>> 否</label>
-					</td>
-				</tr>
-				<tr>
-					<td>是否允许查看投票：</td>
-					<td>
-						<label><input type="radio" name="view" value="0" <?php if ($row['view']==0) echo 'checked';?>> 是</label> 　
-						<label><input type="radio" name="view" value="1" <?php if ($row['view']==1) echo 'checked';?>> 否</label>
-					</td>
-				</tr>
-				<tr>
-					<td>投票时间间隔：</td>
-					<td><input type="text" name="spec" value="<?php echo $row['spec'] ?>">（N天后可再次投票，0表示此ip地址只能投一次）</td>
-				</tr>
-				<tr>
-					<td>是否多选：</td>
-					<td>
-						<label><input type="radio" name="ismore" value="0" <?php if ($row['ismore']==0) echo 'checked';?>> 单选</label>
-						<label><input type="radio" name="ismore" value="1" <?php if ($row['ismore']==1) echo 'checked';?>> 多选</label>
-					</td>
-				</tr>
-				<tr>
-					<td>投票项</td>
-					<td><textarea name="votenote" id="votenote" class="admin-textarea-xl"><?php echo $row['votenote']?></textarea></td>
-				</tr>
-				<tr>
-					<td>是否启用：</td>
-					<td>
-						<label><input type="radio" name="isenable" value="0" <?php if ($row['isenable']==0) echo 'checked';?>> 是</label> 　
-						<label><input type="radio" name="isenable" value="1" <?php if ($row['isenable']==1) echo 'checked';?>> 否</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="submit" name="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="submit" class="btn btn-outline-success btn-sm" onclick="history.back();">返回</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="vote_main.php">投票管理</a></li>
+			<li class="breadcrumb-item active">修改投票</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">修改投票</div>
+			<div class="card-body">
+				<form name="form1" action="vote_edit.php" method="post">
+					<input type="hidden" name="dopost" value="saveedit">
+					<input type="hidden" name="aid" value="<?php echo $aid?>">
+					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">投票名称</td>
+									<td><input type="text" name="votename" id="votename" value="<?php echo $row['votename']?>"></td>
+								</tr>
+								<tr>
+									<td>投票总人数</td>
+									<td><input type="text" name="totalcount" id="totalcount" value="<?php echo $row['totalcount']?>"></td>
+								</tr>
+								<tr>
+									<td>开始时间</td>
+									<td><input type="text" name="starttime" id="starttime" class="datepicker1" value="<?php echo GetDateMk($row['starttime'])?>"></td>
+								</tr>
+								<tr>
+									<td>结束时间</td>
+									<td><input type="text" name="endtime" id="endtime" class="datepicker1" value="<?php echo GetDateMk($row['endtime'])?>"></td>
+								</tr>
+								<tr>
+									<td>是否允许游客投票</td>
+									<td>
+										<label><input type="radio" name="isallow" value="0" <?php if ($row['isallow']==0) echo 'checked';?>> 是</label> 　
+										<label><input type="radio" name="isallow" value="1" <?php if ($row['isallow']==1) echo 'checked';?>> 否</label>
+									</td>
+								</tr>
+								<tr>
+									<td>是否允许查看投票</td>
+									<td>
+										<label><input type="radio" name="view" value="0" <?php if ($row['view']==0) echo 'checked';?>> 是</label> 　
+										<label><input type="radio" name="view" value="1" <?php if ($row['view']==1) echo 'checked';?>> 否</label>
+									</td>
+								</tr>
+								<tr>
+									<td>投票时间间隔</td>
+									<td><input type="text" name="spec" value="<?php echo $row['spec'] ?>">（N天后可再次投票，0表示此ip地址只能投一次）</td>
+								</tr>
+								<tr>
+									<td>是否多选</td>
+									<td>
+										<label><input type="radio" name="ismore" value="0" <?php if ($row['ismore']==0) echo 'checked';?>> 单选</label>
+										<label><input type="radio" name="ismore" value="1" <?php if ($row['ismore']==1) echo 'checked';?>> 多选</label>
+									</td>
+								</tr>
+								<tr>
+									<td>投票项</td>
+									<td><textarea name="votenote" id="votenote" class="admin-textarea-xl"><?php echo $row['votenote']?></textarea></td>
+								</tr>
+								<tr>
+									<td>是否启用</td>
+									<td>
+										<label><input type="radio" name="isenable" value="0" <?php if ($row['isenable']==0) echo 'checked';?>> 是</label> 　
+										<label><input type="radio" name="isenable" value="1" <?php if ($row['isenable']==1) echo 'checked';?>> 否</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			$(document).ready(function() {
 				$('.datepicker1').daterangepicker({

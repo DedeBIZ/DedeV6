@@ -161,7 +161,7 @@ function ShowUrlTr() {
 	var jumpTest = $Obj("flagsj");
 	var jtr = $Obj("redirecturltr");
 	var jf = $Obj("redirecturl");
-	if (jumpTest.checked) jtr.style.display = "block";
+	if (jumpTest.checked) jtr.style.display = "table-row";
 	else {
 		jf.value = '';
 		jtr.style.display = "none";

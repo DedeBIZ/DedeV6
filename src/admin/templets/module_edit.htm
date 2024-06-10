@@ -10,125 +10,136 @@
 		<script src="/static/web/js/webajax.js"></script>
 	</head>
 	<body>
-		<form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
-			<input type="hidden" name="action" value="edit">
-			<input type="hidden" name="dev_id" value="<?php echo $dev_id;?>">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="module_main.php">模块管理</a> - 模块修改</td>
-				</tr>
-				<tr>
-					<td width="260">模块名称：</td>
-					<td><input type="text" name="modulname" id="modulname" class="admin-input-sm" value="<?php echo $name;?>"></td>
-				</tr>
-				<tr>
-					<td>贡献者id：</td>
-					<td>
-						<input type="text" name="dev_id2" id="dev_id2" class="admin-input-sm" value="<?php echo $dev_id;?>" disabled>
-						<a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="btn btn-success btn-sm">如何获取贡献者id</a>
-					</td>
-				</tr>
-				<tr>
-					<td>语言编码：</td>
-					<td><?php echo $lang;?></td>
-				</tr>
-				<tr>
-					<td>封装类型：</td>
-					<td>
-						<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if ($moduletype=='soft') echo 'checked';?>> 模块</label>
-						<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if ($moduletype=='templets') echo 'checked';?>> 模板</label>
-						<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if ($moduletype=='plus') echo 'checked';?>> 小插件</label>
-						<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if ($moduletype=='patch') echo 'checked';?>> 补丁</label>
-					</td>
-				</tr>
-				<tr>
-					<td>模块识别码：</td>
-					<td>
-						<input type="hidden" name="hash" value="<?php echo $hash;?>">
-						<input type="text" name="hashv" value="<?php echo $hash;?>" class="admin-input-lg" disabled>（不可改）
-					</td>
-				</tr>
-				<tr>
-					<td>发布时间：</td>
-					<td><input type="text" name="mtime" id="mtime" class="admin-input-sm" value="<?php echo $time;?>"></td>
-				</tr>
-				<tr>
-					<td>是否涉及会员系统：</td>
-					<td>
-						<label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='1') echo 'checked';?>> 涉及</label>
-						<label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='0') echo 'checked';?>> 不涉及</label>
-						<div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block');?>">
-							<label>导航使用名称：<input type="text" name="indexname" id="indexname" class="admin-input-sm" value="<?php echo $indexname;?>"></label><br>
-							<label>导航使用网址：<input type="text" name="indexurl" id="indexurl" class="admin-input-sm" value="<?php echo $indexurl;?>"></label>
-							<span>（用相对于会员中心的网址，如：/ask）</span>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>后台管理菜单：</td>
-					<td>
-						<p>（普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php）</p>
-						<textarea name="menustring" id="menustring" class="admin-textarea-xl"><?php echo $menustring;?></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>使用说明文件：</td>
-					<td>
-						<p>（使用协议或说明：如果需要带网页格式，请编译后点击修改时使用网页）</p>
-						<textarea name="readmetxt" id="readmetxt" class="admin-textarea-xl"><?php echo $readmetxt;?></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>程序安装：</td>
-					<td>
-						<label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" <?php if (isset($autosetup) && $autosetup==1) echo 'checked';?>> 自动生成</label><br>
-						<div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input type="file" name="setup" id="setup" class="admin-input-lg"></div>
-						<div style="display:<?php if (isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
-							<p>（由系统自动处理安装，请使用MySQL4.0版本格式的SQL语句：MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=*，改为TYPE=MyISAM，SQL语句允许换行，但必须用;表示一条SQL语句结束，如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php）</p>
-							<textarea name="setupsql40" id="setupsql40" class="admin-textarea-xl"><?php echo $setupsql40;?></textarea>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>删除程序：</td>
-					<td>
-						<label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if (isset($autodel) && $autodel==1) echo 'checked';?>> 自动生成</label><br>
-						<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input type="file" name="uninstall" id="uninstall" class="admin-input-lg"></div>
-						<div style="display:<?php if (isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>" id="autodelct">
-							<p>（由系统自动处理卸载，卸载时执行SQL允许换行，但必须用;表示一条SQL语句结束）</p>
-							<textarea name="delsql" id="delsql" class="admin-textarea-xl"><?php echo $delsql;?></textarea>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>模块文件选项：</td>
-					<td>
-						<label><input type="radio" name="rebuild" value="yes" checked> 重新编译所有文件</label>
-						<label><input type="radio" name="rebuild" value="no"> 不对[文件列表]内文件重编译</label>
-					</td>
-				</tr>
-				<tr>
-					<td>文件列表：</td>
-					<td>
-						<p>（每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件，如：如果已经指定了/book则不需要再指定目录里的/book/index.php 等文件或目录，系统会自动索引整个目录，对于不需要索引整个目录的，请不要指定这个目录，否则会把不必要的文件也放进模块中）</p>
-						<textarea name="filelist" id="filelist" class="admin-textarea-xl"><?php echo $filelist;?></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>贡献者私钥：</td>
-					<td>
-						<p>（贡献者认证后获取的私钥）</p>
-						<textarea name="priv" id="priv" class="admin-textarea-xl"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="submit" name="imageField" class="btn btn-success btn-sm">提交</button>
-						<button type="button" id="button" class="btn btn-outline-success btn-sm" onclick="location='module_main.php';">返回</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="module_main.php">模块管理</a></li>
+			<li class="breadcrumb-item active">模块修改</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">模块修改</div>
+			<div class="card-body">
+				<form name="form1" action="module_make.php" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="action" value="edit">
+					<input type="hidden" name="dev_id" value="<?php echo $dev_id;?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">模块名称</td>
+									<td><input type="text" name="modulname" id="modulname" class="admin-input-sm" value="<?php echo $name;?>" required></td>
+								</tr>
+								<tr>
+									<td>贡献者id</td>
+									<td>
+										<input type="text" name="dev_id2" id="dev_id2" class="admin-input-sm" value="<?php echo $dev_id;?>" disabled>
+										<a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="btn btn-success btn-sm">如何获取贡献者id</a>
+									</td>
+								</tr>
+								<tr>
+									<td>语言编码</td>
+									<td><?php echo $lang;?></td>
+								</tr>
+								<tr>
+									<td>封装类型</td>
+									<td>
+										<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if ($moduletype=='soft') echo 'checked';?>> 模块</label>
+										<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if ($moduletype=='templets') echo 'checked';?>> 模板</label>
+										<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if ($moduletype=='plus') echo 'checked';?>> 小插件</label>
+										<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if ($moduletype=='patch') echo 'checked';?>> 补丁</label>
+									</td>
+								</tr>
+								<tr>
+									<td>模块识别码</td>
+									<td>
+										<input type="hidden" name="hash" value="<?php echo $hash;?>">
+										<input type="text" name="hashv" value="<?php echo $hash;?>" class="admin-input-lg" disabled>（不可改）
+									</td>
+								</tr>
+								<tr>
+									<td>发布时间</td>
+									<td><input type="text" name="mtime" id="mtime" class="admin-input-sm" value="<?php echo $time;?>"></td>
+								</tr>
+								<tr>
+									<td>是否涉及会员系统</td>
+									<td>
+										<label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='1') echo 'checked';?>> 涉及</label>
+										<label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='0') echo 'checked';?>> 不涉及</label>
+										<div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block');?>">
+											<label>导航使用名称：<input type="text" name="indexname" id="indexname" class="admin-input-sm" value="<?php echo $indexname;?>"></label>
+											<label>导航使用网址：<input type="text" name="indexurl" id="indexurl" class="admin-input-sm" value="<?php echo $indexurl;?>"></label>
+											<span>（用相对于会员中心的网址，如：/ask）</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>后台管理菜单</td>
+									<td>
+										<p>（普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php）</p>
+										<textarea name="menustring" id="menustring" class="admin-textarea-xl"><?php echo $menustring;?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>使用说明文件</td>
+									<td>
+										<p>（使用协议或说明：如果需要带网页格式，请编译后点击修改时使用网页）</p>
+										<textarea name="readmetxt" id="readmetxt" class="admin-textarea-xl"><?php echo $readmetxt;?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>程序安装</td>
+									<td>
+										<label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" <?php if (isset($autosetup) && $autosetup==1) echo 'checked';?>> 自动生成</label><br>
+										<div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input type="file" name="setup" id="setup" class="admin-input-lg"></div>
+										<div style="display:<?php if (isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
+											<p>（由系统自动处理安装，请使用MySQL4.0版本格式的SQL语句：MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=*，改为TYPE=MyISAM，SQL语句允许换行，但必须用;表示一条SQL语句结束，如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php）</p>
+											<textarea name="setupsql40" id="setupsql40" class="admin-textarea-xl"><?php echo $setupsql40;?></textarea>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>删除程序</td>
+									<td>
+										<label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if (isset($autodel) && $autodel==1) echo 'checked';?>> 自动生成</label>
+										<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input type="file" name="uninstall" id="uninstall" class="admin-input-lg"></div>
+										<div style="display:<?php if (isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>" id="autodelct">
+											<p>（由系统自动处理卸载，卸载时执行SQL允许换行，但必须用;表示一条SQL语句结束）</p>
+											<textarea name="delsql" id="delsql" class="admin-textarea-xl"><?php echo $delsql;?></textarea>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>模块文件选项</td>
+									<td>
+										<label><input type="radio" name="rebuild" value="yes" checked> 重新编译所有文件</label>
+										<label><input type="radio" name="rebuild" value="no"> 不对[文件列表]内文件重编译</label>
+									</td>
+								</tr>
+								<tr>
+									<td>文件列表</td>
+									<td>
+										<p>（每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件，如：如果已经指定了/book则不需要再指定目录里的/book/index.php 等文件或目录，系统会自动索引整个目录，对于不需要索引整个目录的，请不要指定这个目录，否则会把不必要的文件也放进模块中）</p>
+										<textarea name="filelist" id="filelist" class="admin-textarea-xl"><?php echo $filelist;?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>贡献者私钥</td>
+									<td>
+										<p>（贡献者认证后获取的私钥）</p>
+										<textarea name="priv" id="priv" class="admin-textarea-xl"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function ShowHideField(cbox,vid,nid) {
 				var cboxobj = document.getElementById(cbox);

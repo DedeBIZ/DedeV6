@@ -235,9 +235,7 @@ if ($dopost != 'save') {
     </tr>";
     $msg = "{$msg}".GetUpdateTest();
     $wintitle = "成功发布软件文档";
-    $wecome_info = "文档管理 - 发布软件文档";
     $win = new OxWindow();
-    $win->AddTitle("成功发布软件文档");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", FALSE);
     $win->Display();

@@ -3,53 +3,61 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>文档重复检测</title>
+		<title>文档重复检测记录</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form2" method="POST" action="article_test_same.php">
-			<input type="hidden" name="deltype" value="<?php echo $deltype;?>">
-			<input type="hidden" name="dopost" value="delsel">
-			<input type="hidden" name="pagesize" value="<?php echo $pagesize;?>">
-			<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
-			<input type="hidden" name="maintable" value="<?php echo $maintable;?>">
-			<input type="hidden" name="titles">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="3">重复文档列表</td>
-				</tr>
-				<tr align="center">
-					<td width="6%">选择</td>
-					<td width="16%">重复数量</td>
-					<td>文档标题</td>
-				</tr>
-				<?php
-				while($row = $dsql->GetArray())
-				{
-				   if ($row['dd']==1 ) break;
-				?>
-				<tr align="center">
-					<td><input type="checkbox" name="arcTitles" id="arcTitle" value="<?php echo urlencode($row['title'])?>"></td>
-					<td>
-						<?php
-						$allarc += $row['dd'];
-						echo $row['dd'];
-						?>
-					</td>
-					<td><?php echo $row['title'];?></td>
-				</tr>
-				<?php }?>
-				<tr>
-					<td colspan="3">
-						<input type="button" name="bt1" onclick="selAll();" value="全选" class="btn btn-success btn-sm">
-						<input type="button" name="bt2" onclick="noSelAll();" value="反选" class="btn btn-success btn-sm">
-						<input type="button" name="bt3" onclick="delArc();" value="删除" class="btn btn-success btn-sm">
-					</td>
-				</tr>
-			</table>
-		</form>
+		<div class="card shadow-sm">
+			<div class="card-header">文档重复检测记录</div>
+			<div class="card-body">
+				<form name="form2" method="POST" action="article_test_same.php">
+					<input type="hidden" name="deltype" value="<?php echo $deltype;?>">
+					<input type="hidden" name="dopost" value="delsel">
+					<input type="hidden" name="pagesize" value="<?php echo $pagesize;?>">
+					<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
+					<input type="hidden" name="maintable" value="<?php echo $maintable;?>">
+					<input type="hidden" name="titles">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<thead>
+								<tr>
+									<td scope="col">选择</td>
+									<td scope="col">重复数量</td>
+									<td scope="col">文档标题</td>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								while($row = $dsql->GetArray())
+								{
+								   if ($row['dd']==1 ) break;
+								?>
+								<tr>
+									<td><input type="checkbox" name="arcTitles" id="arcTitle" value="<?php echo urlencode($row['title'])?>"></td>
+									<td>
+										<?php
+										$allarc += $row['dd'];
+										echo $row['dd'];
+										?>
+									</td>
+									<td><?php echo $row['title'];?></td>
+								</tr>
+								<?php }?>
+								<tr>
+									<td colspan="3">
+										<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+										<a href="javascript:noSelAll();" class="btn btn-success btn-sm">反选</a>
+										<a href="javascript:delArc();" class="btn btn-danger btn-sm">删除</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function getCheckboxItem() {
 				var allSel = '';

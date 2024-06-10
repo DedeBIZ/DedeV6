@@ -18,164 +18,175 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<form name="form1" action="freelist_edit.php" method="post">
-			<input type="hidden" name="dopost" value="save">
-			<input type="hidden" name="aid" value="<?php echo $row['aid']?>">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2"><a href="freelist_main.php">自由列表管理</a> - 修改自由列表</td>
-				</tr>
-				<tr>
-					<td width="260">自由列表标题：</td>
-					<td><input type="text" name="title" id="title" value="<?php echo $row['title']?>" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>列表存放目录：</td>
-					<td><input type="text" name="listdir" id="listdir" value="<?php echo $row['listdir']?>" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>目录默认页名称：</td>
-					<td>
-						<input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" class="admin-input-lg">
-						<label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if ($row['nodefault']==1) echo 'checked';?>> 不使用目录默认首页</label>
-					</td>
-				</tr>
-				<tr>
-					<td>命名规则：</td>
-					<td>
-						<input type="text" name="namerule" id="namerule" value="<?php echo $row['namerule']?>" class="admin-input-lg">
-						<span>{listdir} 列表存放目录</span>
-					</td>
-				</tr>
-				<tr>
-					<td>列表模板：</td>
-					<td>
-						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-lg">
-						<button type="button" name="set4" onclick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">选择</button>
-					</td>
-				</tr>
-				<tr>
-					<td>最大列出页数：</td>
-					<td><input type="text" name="maxpage" id="maxpage" value="<?php echo $row['maxpage'];?>" class="admin-input-sm"></td>
-				</tr>
-				<tr>
-					<td>关键词：</td>
-					<td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="admin-input-lg"></td>
-				</tr>
-				<tr>
-					<td>列表描述：</td>
-					<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $row['description']?></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<span>调用栏目：</span>
-						<?php
-						$typeid = $ctag->GetAtt('typeid');
-						echo "<select name='typeid' class='admin-input-sm'>";
-						echo "<option value='0'>不限栏目</option>";
-						$dsql->SetQuery("SELECT id,typename, channeltype FROM `#@__arctype`");
-						$dsql->Execute();
-						while($lrow = $dsql->GetObject()){
-							$disable = '';
-							if ($lrow->channeltype < -1)
-							{
-								$disable = 'disabled';
-							}
-							if ($lrow->id==$typeid) echo "<option value='{$lrow->id}' selected $disable>{$lrow->typename}</option>";
-							else echo "<option value='{$lrow->id}' $disable>{$lrow->typename}</option>";
-						}
-						echo "</select>";
-						?>
-						<span>限定模型：</span>
-						<?php
-						$channel  = $ctag->GetAtt('channel');
-						echo "<select name='channel' class='admin-input-sm'><option value='0'>不限模型</option>";
-						$dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` WHERE id > 0");
-						$dsql->Execute();
-						while($nrow = $dsql->GetObject())
-						{
-							if ($nrow->id==$channel) echo "<option value='{$nrow->id}' selected>{$nrow->typename}</option>";
-							else echo "<option value='{$nrow->id}'>{$nrow->typename}</option>";
-						}
-						echo "</select>";
-						?>
-						<span>附加属性：</span>
-						<?php
-						$att  = $ctag->GetAtt('att');
-						echo "<select name='att' class='admin-input-sm'>";
-						echo "<option value='0'>不限</option>";
-						$dsql->SetQuery("SELECT * FROM `#@__arcatt`");
-						$dsql->Execute();
-						while($nrow = $dsql->GetObject())
-						{
-							if ($att==$nrow->att)
-							{
-								echo "<option value='{$nrow->att}' selected>{$nrow->attname}</option>";
-							} else {
-								echo "<option value='{$nrow->att}'>{$nrow->attname}</option>";
-							}
-						}
-						echo "</select>";
-						?>
-						<label>发布天数：<input type="text" name="subday" id="subday" class="admin-input-sm" value="<?php echo $ctag->GetAtt('subday')?>">（0表示不限）</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<label>每页记录数：<input type="text" name="pagesize" id="pagesize" value="<?php echo $ctag->GetAtt('pagesize')?>" class="admin-input-sm"></label>
-						<label>显示列数：<input type="text" name="col" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v;?>" class="admin-input-sm"></label>
-						<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="<?php echo $ctag->GetAtt('titlelen')?>" class="admin-input-sm">（1字节=0.5个中文字）</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<?php
-						$setype = $ctag->GetAtt('type');
-						if ($setype=='') $setype = 'X';
-						?>
-						<span>高级筛选：</span>
-						<label><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo 'checked';?>> 带缩略图</label>
-						<label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo 'checked';?>> 推荐</label>
-						<label><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo 'checked';?>> 专题</label>
-						<label>关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号隔开）</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<span>排列顺序：</span>
-						<?php
-						$orderby = $ctag->GetAtt('orderby');
-						$sorta = "sortrank,置顶权限值;pubdate,发布时间;senddate,录入时间;click,点击量;id,文档id,lastpost,最后评论时间;postnum,评论总数;rand,随机获取";
-						$sortas = explode(';',$sorta);
-						foreach($sortas as $v)
-						{
-							$vs = explode(',',$v);
-							$vs[0] = trim($vs[0]);
-							$sortarrs[$vs[0]] = $vs[1];
-						}
-						?>
-						<select name="orderby" id="orderby" class="admin-input-sm">
-							<?php echo "<option value=\"$orderby\" selected>{$sortarrs[$orderby]}</option>";?>
-							<option value="sortrank">置顶权限值</option>
-							<option value="pubdate">发布时间</option>
-							<option value="senddate">录入时间</option>
-							<option value="click">点击量</option>
-							<option value="id">文档id</option>
-							<option value="lastpost">最后评论时间</option>
-							<option value="postnum">评论总数</option>
-						</select>
-						<label><input type="radio" name="order" value="desc" <?php if ($ctag->GetAtt('orderway')=='desc') echo 'checked';?>> 由高到低</label>
-						<label><input type="radio" name="order" value="asc" <?php if ($ctag->GetAtt('orderway')=='asc') echo 'checked';?>> 由低到高</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" class="p-0"><textarea name="innertext" id="myinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText()?></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><button name="submit2" type="submit" id="Submit2" class="btn btn-success btn-sm">保存</button></td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="freelist_main.php">自由列表管理</a></li>
+			<li class="breadcrumb-item active">修改自由列表</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">修改自由列表</div>
+			<div class="card-body">
+				<form name="form1" action="freelist_edit.php" method="post">
+					<input type="hidden" name="dopost" value="save">
+					<input type="hidden" name="aid" value="<?php echo $row['aid']?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">自由列表标题</td>
+									<td><input type="text" name="title" id="title" value="<?php echo $row['title']?>" class="admin-input-lg"></td>
+								</tr>
+								<tr>
+									<td>列表存放目录</td>
+									<td><input type="text" name="listdir" id="listdir" value="<?php echo $row['listdir']?>" class="admin-input-lg"></td>
+								</tr>
+								<tr>
+									<td>目录默认页名称</td>
+									<td>
+										<input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" class="admin-input-lg">
+										<label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if ($row['nodefault']==1) echo 'checked';?>> 不使用目录默认首页</label>
+									</td>
+								</tr>
+								<tr>
+									<td>命名规则</td>
+									<td><input type="text" name="namerule" id="namerule" value="<?php echo $row['namerule']?>" class="admin-input-lg">（{listdir}列表存放目录）</td>
+								</tr>
+								<tr>
+									<td>列表模板</td>
+									<td>
+										<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-lg">
+										<button type="button" name="set4" onclick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">选择</button>
+									</td>
+								</tr>
+								<tr>
+									<td>最大列出页数</td>
+									<td><input type="text" name="maxpage" id="maxpage" value="<?php echo $row['maxpage'];?>" class="admin-input-sm"></td>
+								</tr>
+								<tr>
+									<td>关键词</td>
+									<td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="admin-input-lg"></td>
+								</tr>
+								<tr>
+									<td>列表描述</td>
+									<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $row['description']?></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<span>调用栏目：</span>
+										<?php
+										$typeid = $ctag->GetAtt('typeid');
+										echo "<select name='typeid' class='admin-input-sm'>";
+										echo "<option value='0'>不限栏目</option>";
+										$dsql->SetQuery("SELECT id,typename, channeltype FROM `#@__arctype`");
+										$dsql->Execute();
+										while($lrow = $dsql->GetObject()){
+											$disable = '';
+											if ($lrow->channeltype < -1)
+											{
+												$disable = 'disabled';
+											}
+											if ($lrow->id==$typeid) echo "<option value='{$lrow->id}' selected $disable>{$lrow->typename}</option>";
+											else echo "<option value='{$lrow->id}' $disable>{$lrow->typename}</option>";
+										}
+										echo "</select>";
+										?>
+										<span>限定模型：</span>
+										<?php
+										$channel  = $ctag->GetAtt('channel');
+										echo "<select name='channel' class='admin-input-sm'><option value='0'>不限模型</option>";
+										$dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` WHERE id > 0");
+										$dsql->Execute();
+										while($nrow = $dsql->GetObject())
+										{
+											if ($nrow->id==$channel) echo "<option value='{$nrow->id}' selected>{$nrow->typename}</option>";
+											else echo "<option value='{$nrow->id}'>{$nrow->typename}</option>";
+										}
+										echo "</select>";
+										?>
+										<span>附加属性：</span>
+										<?php
+										$att  = $ctag->GetAtt('att');
+										echo "<select name='att' class='admin-input-sm'>";
+										echo "<option value='0'>不限</option>";
+										$dsql->SetQuery("SELECT * FROM `#@__arcatt`");
+										$dsql->Execute();
+										while($nrow = $dsql->GetObject())
+										{
+											if ($att==$nrow->att)
+											{
+												echo "<option value='{$nrow->att}' selected>{$nrow->attname}</option>";
+											} else {
+												echo "<option value='{$nrow->att}'>{$nrow->attname}</option>";
+											}
+										}
+										echo "</select>";
+										?>
+										<label>发布天数：<input type="text" name="subday" id="subday" class="admin-input-sm" value="<?php echo $ctag->GetAtt('subday')?>">（0表示不限）</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<label>每页记录数：<input type="text" name="pagesize" id="pagesize" value="<?php echo $ctag->GetAtt('pagesize')?>" class="admin-input-sm"></label>
+										<label>显示列数：<input type="text" name="col" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v;?>" class="admin-input-sm"></label>
+										<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="<?php echo $ctag->GetAtt('titlelen')?>" class="admin-input-sm">（1字节=0.5个中文字）</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<?php
+										$setype = $ctag->GetAtt('type');
+										if ($setype=='') $setype = 'X';
+										?>
+										<span>高级筛选：</span>
+										<label><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo 'checked';?>> 带缩略图</label>
+										<label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo 'checked';?>> 推荐</label>
+										<label><input type="checkbox" name="types[]" id="type3" value="spec" <?php if (preg_match("#spec#i", $setype)) echo 'checked';?>> 专题</label>
+										<label>关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号隔开）</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<span>排列顺序：</span>
+										<?php
+										$orderby = $ctag->GetAtt('orderby');
+										$sorta = "sortrank,置顶权限值;pubdate,发布时间;senddate,录入时间;click,点击量;id,文档id,lastpost,最后评论时间;postnum,评论总数;rand,随机获取";
+										$sortas = explode(';',$sorta);
+										foreach($sortas as $v)
+										{
+											$vs = explode(',',$v);
+											$vs[0] = trim($vs[0]);
+											$sortarrs[$vs[0]] = $vs[1];
+										}
+										?>
+										<select name="orderby" id="orderby" class="admin-input-sm">
+											<?php echo "<option value=\"$orderby\" selected>{$sortarrs[$orderby]}</option>";?>
+											<option value="sortrank">置顶权限值</option>
+											<option value="pubdate">发布时间</option>
+											<option value="senddate">录入时间</option>
+											<option value="click">点击量</option>
+											<option value="id">文档id</option>
+											<option value="lastpost">最后评论时间</option>
+											<option value="postnum">评论总数</option>
+										</select>
+										<label><input type="radio" name="order" value="desc" <?php if ($ctag->GetAtt('orderway')=='desc') echo 'checked';?>> 由高到低</label>
+										<label><input type="radio" name="order" value="asc" <?php if ($ctag->GetAtt('orderway')=='asc') echo 'checked';?>> 由低到高</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"><textarea name="innertext" id="myinnertext" class="admin-textarea-xl"><?php echo $ctag->GetInnerText()?></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function CheckSubmit() {
 				if (document.form1.title.value == "") {

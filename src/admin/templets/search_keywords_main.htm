@@ -134,14 +134,19 @@
 		</script>
 	</head>
 	<body>
-		<div id="rslist"><?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?></div>
-		<table class="table shadow-sm mb-3">
-			<tr>
-				<td id="pagelist">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">搜索关键词管理</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">搜索关键词管理</div>
+			<div id="rslist" class="card-body">
+				<?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?>
+				<div id="pagelist" class="py-2">
 					<script>ReloadPageNum(1);</script>
-				</td>
-			</tr>
-		</table>
+				</div>
+			</div>
+		</div>
 		<script>
 			function selAll() {
 				var celements = document.getElementsByName('aids[]');

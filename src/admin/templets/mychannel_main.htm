@@ -10,49 +10,58 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<table class="table shadow-sm my-3">
-			<tr>
-				<td>
-					<a href="mychannel_add.php" class="btn btn-success btn-sm">添加新模型</a>
-					<a href="mychannel_edit.php?dopost=exportin" class="btn btn-success btn-sm">导入文档模型</a>
-					<a href="stepselect_main.php" class="btn btn-success btn-sm">联动类型管理</a>
-				</td>
-			</tr>
-		</table>
-		<table class="table shadow-sm mb-3">
-			<tr>
-				<td colspan="7">文档模型管理</td>
-			</tr>
-			<tr align="center">
-				<td width="6%">id</td>
-				<td width="16%">模型名称</td>
-				<td width="10%">识别标记</td>
-				<td width="16%">附加表</td>
-				<td width="10%">状态</td>
-				<td width="10%">模型</td>
-				<td>操作</td>
-			</tr>
-			{dede:datalist empty='<tr><td colspan="7" align="center">暂无记录</td></tr>'}
-			<tr align="center">
-				<td>{dede:field.id/}</td>
-				<td><a href="mychannel_edit.php?id={dede:field.id/}&dopost=edit">{dede:field.typename/}</a></td>
-				<td>{dede:field.nid/}</td>
-				<td>{dede:field.addtable function="str_replace('#@__',$cfg_dbprefix,@me)"/}</td>
-				<td align="left">{dede:field.isshow function="GetSta(@me,$fields['id'])"/}</td>
-				<td>{dede:field.issystem function='IsSystem(@me)'/}</td>
-				<td>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=gettemplets" class="btn btn-light btn-sm"><i class="fa fa-cube"></i> 模板</a>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=copystart" class="btn btn-light btn-sm"><i class="fa fa-clone"></i> 复制</a>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=export" class="btn btn-light btn-sm"><i class="fa fa-share-square-o"></i> 导出</a>
-					<a href="mychannel_edit.php?mid={dede:field.id/}&dopost=modifysearch" class="btn btn-light btn-sm"><i class="fa fa-search"></i> 搜索</a>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
-					<a href="mychannel_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-				</td>
-			</tr>
-			{/dede:datalist}
-			<tr>
-				<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">文档模型管理</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<a href="mychannel_add.php" class="btn btn-success btn-sm">添加新模型</a>
+				<a href="mychannel_edit.php?dopost=exportin" class="btn btn-success btn-sm">导入文档模型</a>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">文档模型管理</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-borderless">
+						<thead>
+							<tr>
+								<td scope="col">id</td>
+								<td scope="col">模型名称</td>
+								<td scope="col">识别标记</td>
+								<td scope="col">附加表</td>
+								<td scope="col">状态</td>
+								<td scope="col">模型</td>
+								<td scope="col">操作</td>
+							</tr>
+						</thead>
+						<tbody>
+							{dede:datalist}
+							<tr>
+								<td>{dede:field.id/}</td>
+								<td><a href="mychannel_edit.php?id={dede:field.id/}&dopost=edit">{dede:field.typename/}</a></td>
+								<td>{dede:field.nid/}</td>
+								<td>{dede:field.addtable function="str_replace('#@__',$cfg_dbprefix,@me)"/}</td>
+								<td>{dede:field.isshow function="GetSta(@me,$fields['id'])"/}</td>
+								<td>{dede:field.issystem function='IsSystem(@me)'/}</td>
+								<td>
+									<a href="mychannel_edit.php?id={dede:field.id/}&dopost=gettemplets" class="btn btn-light btn-sm"><i class="fa fa-cube" title="模板"></i></a>
+									<a href="mychannel_edit.php?id={dede:field.id/}&dopost=copystart" class="btn btn-light btn-sm"><i class="fa fa-clone" title="复制"></i></a>
+									<a href="mychannel_edit.php?id={dede:field.id/}&dopost=export" class="btn btn-light btn-sm"><i class="fa fa-share-square-o" title="导出"></i></a>
+									<a href="mychannel_edit.php?mid={dede:field.id/}&dopost=modifysearch" class="btn btn-light btn-sm"><i class="fa fa-search" title="搜索"></i></a>
+									<a href="mychannel_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+									<a href="mychannel_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+								</td>
+							</tr>
+							{/dede:datalist}
+							<tr>
+								<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

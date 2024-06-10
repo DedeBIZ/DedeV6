@@ -3,62 +3,68 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>主题模板管理</title>
+		<title>默认模板管理</title>
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<table class="table shadow-sm my-3">
-			<tr>
-				<td colspan="4">
-					<?php
-					if ($acdir=='plus') echo '插件模板';
-					else if ($acdir=='system') echo '系统模板';
-					else echo '模板管理 - '.$acdir;
-					?>
-				</td>
-			</tr>
-			<tr align="center">
-				<td width="26%">模板名</td>
-				<td width="26%">模板描述</td>
-				<td width="26%">修改时间</td>
-				<td>操作</td>
-			</tr>
-			<?php
-			$files = scandir($templetdird);
-			foreach ($files as $filename){
-				if (!preg_match("#\.htm#", $filename)) continue;
-				$filetime = filemtime($templetdird.'/'.$filename);
-				$filetime = MyDate("Y-m-d H:i:s",$filetime);
-				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
-			?>
-			<tr align="center">
-				<td align="left"><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="/static/web/img/icon_htm.png"> <?php echo $filename;?></a></td>
-				<td align="left"><?php echo $fileinfo;?></td>
-				<td><?php echo $filetime;?></td>
-				<td align="center">
-					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
-					<?php if (!isset($fileinfos[$filename])) {?>
-					<a href="javascript:DelTpl('<?php echo $filename;?>');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-					<?php }?>
-				</td>
-			</tr>
-			<?php }?>
-			<tr>
-				<td colspan="4" align="center">
-					<a class="btn btn-success btn-sm" href="templets_main.php">默认模板</a>
-					<a class="btn btn-success btn-sm" href="templets_main.php?acdir=apps">插件模板</a>
-					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir;?>">新建模板</a>
-					<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir;?>">上传模板</a>
-				</td>
-			</tr>
-		</table>
-		<script>
-			function DelTpl(filename) {
-				if (window.confirm('您确实要删除这个模板吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=' + filename;
-				else return false;
-			}
-		</script>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">默认模板管理</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">
+				<?php
+				if ($acdir=='plus') echo '插件模板';
+				else if ($acdir=='system') echo '系统模板';
+				else echo $acdir;
+				?>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-borderless">
+						<thead>
+							<tr>
+								<td scope="col">模板名</td>
+								<td scope="col">模板描述</td>
+								<td scope="col">修改时间</td>
+								<td scope="col">操作</td>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$files = scandir($templetdird);
+							foreach ($files as $filename){
+								if (!preg_match("#\.htm#", $filename)) continue;
+								$filetime = filemtime($templetdird.'/'.$filename);
+								$filetime = MyDate("Y-m-d H:i:s",$filetime);
+								$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
+							?>
+							<tr>
+								<td><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="/static/web/img/icon_htm.png"> <?php echo $filename;?></a></td>
+								<td><?php echo $fileinfo;?></td>
+								<td><?php echo $filetime;?></td>
+								<td>
+									<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+									<?php if (!isset($fileinfos[$filename])) {?>
+									<a href="tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+									<?php }?>
+								</td>
+							</tr>
+							<?php }?>
+							<tr>
+								<td colspan="4" align="center">
+									<a class="btn btn-success btn-sm" href="templets_main.php">默认模板</a>
+									<a class="btn btn-success btn-sm" href="templets_main.php?acdir=apps">插件模板</a>
+									<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir;?>">新建模板</a>
+									<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir;?>">上传模板</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

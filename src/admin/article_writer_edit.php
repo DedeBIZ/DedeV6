@@ -29,7 +29,7 @@ if (empty($allwriter) && filesize($m_file) > 0) {
     $allwriter = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wecome_info = "文档作者管理";
+$wintitle = "文档作者管理";
 $win = new OxWindow();
 $win->Init('article_writer_edit.php', '/static/web/js/admin.blank.js', 'POST');
 $win->AddHidden('dopost', 'save');

@@ -15,65 +15,69 @@
 		<script src="/static/web/js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
-		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post();">
-			<input type="hidden" name="action" value="saveedit">
-			<input type="hidden" name="acdir" value="<?php echo $acdir;?>">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td colspan="2">新建/修改模板</td>
-				</tr>
-				<tr>
-					<td width="260">文件名称</td>
-					<td><input name="filename" value="<?php echo $filename;?>" class="admin-input-lg">（不可以用小数点..表示路径）</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-					<?php
-					foreach ($helps as $key => $help) {
-						echo '<a href="javascript:showdiv(\''.$key.'\');" title="'.trim($help[0]).'" class="btn btn-light btn-sm">'.$key.'</a>'."";
-					}
-					?>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<?php
-						foreach ($helps as $key => $help) {
-							echo '<div id="'.$key.'" class="helpinfo"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\');" class="btn btn-success btn-sm">关闭</a></span><p>标签名称：'.$key.'</p><p>标签说明：'.trim($help[0]).'</p><p><textarea id="'.$key.'" class="admin-textarea-xl">'.trim($help[1]).'</textarea></p><span>'."";
-							$parameters = explode("\n", $help[2]);
-							foreach($parameters as $parameter)
-							{
-								$parameter = trim($parameter);
-								if ($parameter == "") continue;
-								else echo $parameter,'<br>';
-							}
-							echo '</span></div>'."";
-						}
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" class="p-0">
-						<textarea name="content" id="content"><?php echo $content;?></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="B4" class="btn btn-outline-success btn-sm" onclick="location='templets_main.php';">返回</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="templets_main.php">默认模板管理</a></li>
+			<li class="breadcrumb-item active">新建/修改模板</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">新建/修改模板</div>
+			<div class="card-body">
+				<form name="form1" action="tpl.php" method="post">
+					<input type="hidden" name="action" value="saveedit">
+					<input type="hidden" name="acdir" value="<?php echo $acdir;?>">
+					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">文件名称</td>
+									<td><input name="filename" value="<?php echo $filename;?>" class="admin-input-lg" required>（不可以用小数点..表示路径）</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+									<?php
+									foreach ($helps as $key => $help) {
+										echo '<a href="javascript:showdiv(\''.$key.'\');" title="'.trim($help[0]).'" class="btn btn-light btn-sm">'.$key.'</a>'."";
+									}
+									?>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<?php
+										foreach ($helps as $key => $help) {
+											echo '<div id="'.$key.'" class="helpinfo"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\');" class="btn btn-success btn-sm">关闭</a></span><p>标签名称：'.$key.'</p><p>标签说明：'.trim($help[0]).'</p><p><textarea id="'.$key.'" class="admin-textarea-xl">'.trim($help[1]).'</textarea></p><span>'."";
+											$parameters = explode("\n", $help[2]);
+											foreach($parameters as $parameter)
+											{
+												$parameter = trim($parameter);
+												if ($parameter == "") continue;
+												else echo $parameter,'<br>';
+											}
+											echo '</span></div>'."";
+										}
+										?>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<textarea name="content" id="content"><?php echo $content;?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
-			function Post() {
-				if (document.form1.filename.value == "") {
-					alert("文件名不能为空");
-					document.form1.filename.focus();
-					return false;
-				}
-			}
 			function showdiv(id) {
 				hideobj = GETNAMES("helpinfo");
 				for (i = 0; i < hideobj.length; i++) {

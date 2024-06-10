@@ -9,70 +9,79 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="forms" method="post" action="media_main.php">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td>
-						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" class="admin-input-lg mr-3">
-						<select name="mediatype" class="admin-input-sm mr-3">
-							<option value="0">文件类型</option>
-							<option value="1" <?php if ($mediatype==1) echo "selected"?>>图片</option>
-							<option value="2" <?php if ($mediatype==2) echo "selected"?>>FLASH</option>
-							<option value="3" <?php if ($mediatype==3) echo "selected"?>>视频音频</option>
-							<option value="4" <?php if ($mediatype==4) echo "selected"?>>其它附件</option>
-						</select>
-						<select name="membertype" class="admin-input-sm">
-							<option value="0">会员组</option>
-							<option value="1" <?php if ($membertype==1) echo "selected"?>>管理员</option>
-							<option value="2" <?php if ($membertype==2) echo "selected"?>>外部会员</option>
-						</select>
-						<button type="submit" name="submit" class="btn btn-success btn-sm">搜索</button>
-						<a href="media_add.php" class="btn btn-success btn-sm">添加附件</a>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form name="form1">
-			<table class="table shadow-sm mb-3">
-				<tr>
-					<td colspan="7">附件管理</td>
-				</tr>
-				<tr align="center">
-					<td width="6%">选择</td>
-					<td width="26%">文件标题</td>
-					<td width="10%">文件大小</td>
-					<td width="16%">上传会员</td>
-					<td width="16%">上传时间</td>
-					<td width="10%">文件类型</td>
-					<td>操作</td>
-				</tr>
-				{dede:datalist empty='<tr><td colspan="7" align="center">暂无记录</td></tr>'}
-				<tr align="center">
-					<td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}"></td>
-					<td><a href="{dede:field.url/}" title="{dede:field.url/}" target="_blank">{dede:field.title/}</a>
-					</td>
-					<td>{dede:field.filesize function='GetFileSize(@me)'/}</td>
-					<td>{dede:field.adminname function="UploadAdmin(@me,$fields['membername'])"/}</td>
-					<td>{dede:field.uptime function="MyDate('Y-m-d H:i:s',@me)"/}</td>
-					<td>{dede:field.mediatype function="MediaType(@me,$fields['url'])"/}</td>
-					<td>
-						<a href="media_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
-						<a href="media_edit.php?aid={dede:field.aid/}&dopost=del" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-					</td>
-				</tr>
-				{/dede:datalist}
-				<tr>
-					<td colspan="7">
-						<button type="button" name="b4" onclick="AllSel();" class="btn btn-success btn-sm">全选</button>
-						<button type="button" name="b5" onclick="NoneSel();" class="btn btn-success btn-sm">取消</button>
-						<button type="button" name="b6" onclick="DelSel();" class="btn btn-danger btn-sm">删除</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">附件管理</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<form name="forms" action="media_main.php" method="post">
+					<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" class="admin-input-lg mr-2">
+					<select name="mediatype" class="admin-input-sm mr-2">
+						<option value="0">文件类型</option>
+						<option value="1" <?php if ($mediatype==1) echo "selected"?>>图片</option>
+						<option value="2" <?php if ($mediatype==2) echo "selected"?>>FLASH</option>
+						<option value="3" <?php if ($mediatype==3) echo "selected"?>>视频音频</option>
+						<option value="4" <?php if ($mediatype==4) echo "selected"?>>其它附件</option>
+					</select>
+					<select name="membertype" class="admin-input-sm">
+						<option value="0">会员组</option>
+						<option value="1" <?php if ($membertype==1) echo "selected"?>>管理员</option>
+						<option value="2" <?php if ($membertype==2) echo "selected"?>>外部会员</option>
+					</select>
+					<button type="submit"class="btn btn-success btn-sm">搜索</button>
+					<a href="media_add.php" class="btn btn-success btn-sm">添加附件</a>
+				</form>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">附件管理</div>
+			<div class="card-body">
+				<form name="form1">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<thead>
+								<tr>
+									<td scope="col">选择</td>
+									<td scope="col">文件标题</td>
+									<td scope="col">文件大小</td>
+									<td scope="col">上传会员</td>
+									<td scope="col">上传时间</td>
+									<td scope="col">文件类型</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}"></td>
+									<td><a href="{dede:field.url/}" title="{dede:field.url/}" target="_blank">{dede:field.title/}</a></td>
+									<td>{dede:field.filesize function='GetFileSize(@me)'/}</td>
+									<td>{dede:field.adminname function="UploadAdmin(@me,$fields['membername'])"/}</td>
+									<td>{dede:field.uptime function="MyDate('Y-m-d H:i:s',@me)"/}</td>
+									<td>{dede:field.mediatype function="MediaType(@me,$fields['url'])"/}</td>
+									<td>
+										<a href="media_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+										<a href="media_edit.php?aid={dede:field.aid/}&dopost=del" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+									</td>
+								</tr>
+								{/dede:datalist}
+								<tr>
+									<td colspan="7">
+										<a href="javascript:AllSel();" class="btn btn-success btn-sm">全选</a>
+										<a href="javascript:NoneSel();" class="btn btn-success btn-sm">取消</a>
+										<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function getCheckboxItem() {
 				var allSel = '';

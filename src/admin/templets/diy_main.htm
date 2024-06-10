@@ -10,36 +10,48 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<table class="table shadow-sm my-3">
-			<tr>
-				<td colspan="4">自定义表单管理</td>
-			</tr>
-			<tr align="center">
-				<td width="6%">id</td>
-				<td width="26%">表单名称</td>
-				<td width="26%">数据表名</td>
-				<td>操作</td>
-			</tr>
-			{dede:datalist empty='<tr><td colspan="4" align="center">暂无记录</td></tr>'}
-			<tr align="center">
-				<td>{dede:field.diyid/}</td>
-				<td><a href="diy_list.php?action=list&diyid={dede:field.diyid/}">{dede:field.name/}</a></td>
-				<td>{dede:field.table/}</td>
-				<td>
-					<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
-					<a href="diy_list.php?action=list&diyid={dede:field.diyid/}" class="btn btn-light btn-sm"><i class="fa fa-file-text"></i> 列表</a>
-					<a href="diy_list.php?action=excel&diyid={dede:field.diyid/}" target="_blank" class="btn btn-light btn-sm"><i class="fa fa-share-square"></i> 导出</a>
-					<a href="{dede:global.cfg_phpurl/}/diy.php?action=list&diyid={dede:field.diyid/}" class="btn btn-light btn-sm" target="_blank"><i class="fa fa-eye"></i> 预览</a>
-					<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-				</td>
-			</tr>
-			{/dede:datalist}
-			<tr>
-				<td colspan="4"><a href="diy_add.php" class="btn btn-success btn-sm">添加自定义表单</a></td>
-			</tr>
-			<tr>
-				<td colspan="4" align="center">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">自定义表单管理</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">自定义表单管理</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-borderless">
+						<thead>
+							<tr>
+								<td scope="col">id</td>
+								<td scope="col">表单名称</td>
+								<td scope="col">数据表名</td>
+								<td scope="col">操作</td>
+							</tr>
+						</thead>
+						<tbody>
+							{dede:datalist}
+							<tr>
+								<td>{dede:field.diyid/}</td>
+								<td><a href="diy_list.php?action=list&diyid={dede:field.diyid/}">{dede:field.name/}</a></td>
+								<td>{dede:field.table/}</td>
+								<td>
+									<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+									<a href="diy_list.php?action=list&diyid={dede:field.diyid/}" class="btn btn-light btn-sm"><i class="fa fa-file-text" title="列表"></i></a>
+									<a href="diy_list.php?action=excel&diyid={dede:field.diyid/}" target="_blank" class="btn btn-light btn-sm"><i class="fa fa-share-square" title="导出"></i></a>
+									<a href="{dede:global.cfg_phpurl/}/diy.php?action=list&diyid={dede:field.diyid/}" class="btn btn-light btn-sm" target="_blank"><i class="fa fa-eye" title="预览"></i></a>
+									<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+								</td>
+							</tr>
+							{/dede:datalist}
+							<tr>
+								<td colspan="4"><a href="diy_add.php" class="btn btn-success btn-sm">添加自定义表单</a></td>
+							</tr>
+							<tr>
+								<td colspan="4" align="center">{dede:pagelist listsize='6'/}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

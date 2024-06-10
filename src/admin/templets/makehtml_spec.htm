@@ -9,29 +9,32 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="makehtml_spec.php" method="get" target="stafrm">
-			<input type="hidden" name="dopost" value="ok">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td>更新专题</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="alert alert-info mb-0">发布专题后需要手动更新，建议专题目录设置仅可读写权限，存放目录：<?php echo $cfg_special.'/index.html';?></div>
-					</td>
-				</tr>
-				<tr>
-					<td align="center">
-						<button type="submit" name="b112" class="btn btn-success btn-sm">开始更新</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='content_s_list.php';">专题管理</button>
-					</td>
-				</tr>
-				<tr>
-					<td id="mtd">
-						<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">更新专题</li>
+		</ol>
+		<div class="alert alert-info">发布专题后需要手动更新，建议专题目录设置仅可读写权限，存放目录：<?php echo $cfg_special.'/index.html';?></div>
+		<div class="card shadow-sm">
+			<div class="card-header">更新专题</div>
+			<div class="card-body">
+				<form name="form1" action="makehtml_spec.php" method="get" target="stafrm">
+					<input type="hidden" name="dopost" value="ok">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
+								</tr>
+								<tr>
+									<td id="mtd">
+										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

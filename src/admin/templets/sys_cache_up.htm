@@ -9,32 +9,35 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<form name="form1" action="sys_cache_up.php" method="get" target='stafrm'>
-			<input type="hidden" name="dopost" value="ok">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td>更新缓存</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="alert alert-info mb-0">更新栏目、枚举、文档调用、过期会员浏览记录、过期会员短信、过期流量统计等缓存</div>
-					</td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" name="uparc" value="1"> 页码不正确和无法解析文档等情况，自动清理错误文档</label></td>
-				</tr>
-				<tr>
-					<td align="center">
-						<button type="button" name="b112" class="btn btn-success btn-sm" onclick="document.form1.submit();">开始更新</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="location='makehtml_all.php';">更新整站</button>
-					</td>
-				</tr>
-				<tr>
-					<td id="mtd">
-						<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">更新缓存</li>
+		</ol>
+		<div class="alert alert-info">更新栏目、枚举、文档调用、过期会员浏览记录、过期会员短信、过期流量统计等缓存</div>
+		<div class="card shadow-sm">
+			<div class="card-header">更新缓存</div>
+			<div class="card-body">
+				<form name="form1" action="sys_cache_up.php" method="get" target='stafrm'>
+					<input type="hidden" name="dopost" value="ok">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td><label><input type="checkbox" name="uparc" value="1"> 页码不正确和无法解析文档等情况，自动清理错误文档</label></td>
+								</tr>
+								<tr>
+									<td align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
+								</tr>
+								<tr>
+									<td id="mtd">
+										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

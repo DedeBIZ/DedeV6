@@ -29,7 +29,7 @@ if (empty($allurls) && filesize($m_file) > 0) {
     $allurls = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wecome_info = "允许站内链接";
+$wintitle = "允许站内链接";
 $win = new OxWindow();
 $win->Init('article_allowurl_edit.php', '/static/web/js/admin.blank.js', 'POST');
 $win->AddHidden('dopost', 'save');

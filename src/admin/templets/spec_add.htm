@@ -56,270 +56,213 @@
 		</script>
 	</head>
 	<body>
-		<form name="form1" action="spec_add.php" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="dopost" value="save">
-			<input type="hidden" name="channelid" value="<?php echo $channelid?>">
-			<input type="hidden" name="arcrank" value="0">
-			<input type="hidden" name="source" value="本站">
-			<table class="shadow-sm my-3">
-				<tr>
-					<td class="admin-td">发布专题</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<div class="alert alert-info mb-0">文档列表（英文逗号隔开，如：1,2,3）单条记录模板[field:fieldname/]标签，更多调用参考arclist标签</div>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">专题名称：</td>
-								<td width="390"><input type="text" name="title" id="title" class="admin-input-lg"></td>
-								<td width="120">简略标题：</td>
-								<td><input type="text" name="shorttitle" id="shorttitle" class="admin-input-sm"></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">自定义属性：</td>
-								<td>
-									<?php
-									$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
-									$dsql->Execute();
-									while($trow = $dsql->GetObject())
-									{
-										if ($trow->att!='j') {
-											echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="content_s_list.php">专题列表</a></li>
+			<li class="breadcrumb-item active">发布专题</li>
+		</ol>
+		<div class="alert alert-info">文档列表（英文逗号隔开，如：1,2,3）单条记录模板[field:fieldname/]标签，更多调用参考arclist标签</div>
+		<div class="card shadow-sm">
+			<div class="card-header">发布专题</div>
+			<div class="card-body">
+				<form name="form1" action="spec_add.php" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="dopost" value="save">
+					<input type="hidden" name="channelid" value="<?php echo $channelid?>">
+					<input type="hidden" name="arcrank" value="0">
+					<input type="hidden" name="source" value="本站">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="160">专题名称</td>
+									<td width="650"><input type="text" name="title" id="title" class="admin-input-lg" required></td>
+									<td width="160">简略标题</td>
+									<td><input type="text" name="shorttitle" id="shorttitle" class="admin-input-sm"></td>
+								</tr>
+								<tr>
+									<td>自定义属性</td>
+									<td colspan="3">
+										<?php
+										$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
+										$dsql->Execute();
+										while($trow = $dsql->GetObject())
+										{
+											if ($trow->att!='j') {
+												echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
+											}
 										}
-									}
-									?>
-								</td>
-							</tr>
+										?>
+									</td>
+								</tr>
+								<tr id="pictable">
+									<td>缩略图</td>
+									<td colspan="3">
+										<input type="text" name="picname" id="picname" class="admin-input-lg">
+										<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
+										<span class="btn btn-success btn-sm fileinput-button">上传<input type="file" name="files[]" id="iptAddImages"></span>
+										<button type="button" name="submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
+										<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
+										<img id="litPic" src="/static/web/img/thumbnail.jpg" id="litPic" class="thumbnail-md ml-3">
+									</td>
+								</tr>
+								<tr>
+									<td>作者</td>
+									<td colspan="3"><input type="text" name="writer" id="writer" class="admin-input-sm"></td>
+								</tr>
+								<tr>
+									<td>主分类</td>
+									<td colspan="3">
+										<?php
+										$typeOptions = GetOptionList($cid, $cuserLogin->getUserChannel(), 0);
+										echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
+										echo "<option value='0'>请选择主分类</option>";
+										echo $typeOptions;
+										echo "</select>";
+										?>
+										<a href="javascript:ShowCatMap(event,this,0,'typeid');" class="btn btn-success btn-sm">选择</a>
+									</td>
+								</tr>
+								<tr>
+									<td>关键词</td>
+									<td colspan="3">
+										<input type="text" name="keywords" id="keywords" class="admin-input-lg">
+										<label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked';?>> 自动获取</label>
+										<button type="button" name="submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
+									</td>
+								</tr>
+								<tr>
+									<td>专题简介</td>
+									<td colspan="3"><textarea name="description" id="description" class="admin-textarea-sm"></textarea></td>
+								</tr>
+								<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
+								<tr>
+									<td colspan="4" class="p-0">
+										<table class="table">
+											<tbody>
+												<?php
+												$speclisttmp = GetSysTemplets("spec_arclist.htm");
+												$nodename = $nodeid = '';
+												for ($i=1;$i<=$cfg_specnote;$i++)
+												{
+												if ($i==1) {
+													$nodename = '默认节点';
+													$nodeid = 'default';
+												} else {
+													$nodename = $nodeid = '';
+												}
+												?>
+												<tr>
+													<td>节点<?php echo $i?>名称</td>
+													<td>
+														<input type="text" name="notename<?php echo $i?>" value="<?php echo $nodename;?>" id="notename<?php echo $i?>" class="admin-input-lg">
+														<label>节点标识：<input type="text" name="noteid<?php echo $i?>" alue="<?php echo $nodeid;?>" id="noteid<?php echo $i?>" class="admin-input-sm"></label>
+													</td>
+												</tr>
+												<tr>
+													<td>文档列表</td>
+													<td>
+														<textarea name="arcid<?php echo $i?>" onblur='CheckVal(<?php echo $i ?>)' id="arcid<?php echo $i?>" class="admin-textarea-sm"></textarea>
+														<button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onclick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button>
+													</td>
+												</tr>
+												<tr>
+													<td>文档来源</td>
+													<td>
+														<label>栏目id：<input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" class="admin-input-sm"></label>
+														<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" class="admin-input-lg">（英文逗号隔开）</label>
+														<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文档列表</label>
+														<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
+													</td>
+												</tr>
+												<tr>
+													<td>节点布局</td>
+													<td>
+														<label>列数：<input type="text" name="col<?php echo $i?>" id="col<?php echo $i?>" value="1" class="admin-input-sm"></label>
+														<label>图片宽：<input type="text" name="imgwidth<?php echo $i?>" id="imgwidth<?php echo $i?>" value="120" class="admin-input-sm"></label>
+														<label>图片高：<input type="text" name="imgheight<?php echo $i?>" id="imgheight<?php echo $i?>" value="90" class="admin-input-sm"></label>
+														<label>标题长：<input type="text" name="titlelen<?php echo $i?>" id="titlelen<?php echo $i?>" value="60" class="admin-input-sm"></label>
+														<label>简介长：<input type="text" name="infolen<?php echo $i?>" id="infolen<?php echo $i?>" value="160" class="admin-input-sm"></label>
+														<label>文档数：<input type="text" name="rownum<?php echo $i?>" id="rownum<?php echo $i?>" value="10" class="admin-input-sm"></label>
+													</td>
+												</tr>
+												<tr>
+													<td>应用样式</td>
+													<td><textarea name="listtmp<?php echo $i?>" id="listtmp<?php echo $i?>" class="admin-textarea-xl"><?php echo $speclisttmp?></textarea></td>
+												</tr>
+												<tr>
+													<td>应用模板</td>
+													<td>
+														<input type="text" name="notetemplet<?php echo $i?>" id="notetemplet<?php echo $i?>" value="system/channel_spec_note.htm" class="admin-input-lg">
+														<button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.notetemplet<?php echo $i?>');">选择</button>
+													</td>
+												</tr>
+												<?php }?>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td>评论选项</td>
+									<td>
+										<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo 'checked';?>> 允许评论</label>
+										<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo 'checked';?>> 禁止评论</label>
+									</td>
+									<td>发布选项</td>
+									<td>
+										<label><input type="radio" name="ishtml" value="1" checked> 静态浏览</label>
+										<label><input type="radio" name="ishtml" value="0"> 动态浏览</label>
+									</td>
+								</tr>
+								<tr>
+									<td>文档排序</td>
+									<td>
+										<select name="sortup" id="sortup" class="admin-input-sm">
+											<option value="0" selected>默认排序</option>
+											<option value="7">置顶一周</option>
+											<option value="30">置顶一个月</option>
+											<option value="90">置顶三个月</option>
+											<option value="180">置顶半年</option>
+											<option value="360">置顶一年</option>
+										</select>
+									</td>
+									<td>标题颜色</td>
+									<td>
+										<input type="text" name="color" id="color" class="admin-input-sm">
+										<button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onclick="ShowColor(event,this)">选择</button>
+									</td>
+								</tr>
+								<tr>
+									<td>专题模板</td>
+									<td>
+										<input type="text" name="templet" id="templet" value="<?php echo $cfg_df_style?>/article_spec.htm" class="admin-input-sm">
+										<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
+									</td>
+									<td>文件名称</td>
+									<td><input type="text" name="filename" id="filename" class="admin-input-sm">（不包括文件扩展名）</td>
+								</tr>
+								<tr>
+									<td>发布时间</td>
+									<td>
+										<?php
+										$nowtime = GetDateTimeMk(time());
+										echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker admin-input-sm'>";
+										?>
+									</td>
+									<td>浏览次数</td>
+									<td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(1000, 6000):$cfg_arc_click);?>" class="admin-input-sm"></td>
+								</tr>
+								<tr>
+									<td colspan="4" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+									</td>
+								</tr>
+							</tbody>
 						</table>
-					</td>
-				</tr>
-				<tr id="pictable">
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">缩略图：</td>
-								<td width="660">
-									<input type="text" name="picname" id="picname" class="admin-input-lg">
-									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
-									<span class="btn btn-success btn-sm fileinput-button">上传<input type="file" name="files[]" id="iptAddImages"></span>
-									<button type="button" name="submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
-									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
-								</td>
-								<td><img id="litPic" src="/static/web/img/thumbnail.jpg" id="litPic" class="thumbnail-md"></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">作者：</td>
-								<td><input type="text" name="writer" id="writer" class="admin-input-sm"></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">主分类：</td>
-								<td>
-									<?php
-									$typeOptions = GetOptionList($cid, $cuserLogin->getUserChannel(), 0);
-									echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
-									echo "<option value='0'>请选择主分类</option>";
-									echo $typeOptions;
-									echo "</select>";
-									?>
-									<a href="javascript:ShowCatMap(event,this,0,'typeid');" class="btn btn-success btn-sm">选择</a>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">关键词：</td>
-								<td>
-									<input type="text" name="keywords" id="keywords" class="admin-input-lg">
-									<label><input type="checkbox" name="autokey" onclick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked';?>> 自动获取</label>
-									<button type="button" name="submit" class="btn btn-success btn-sm" onclick="SelectKeywords('form1.keywords');">选择</button>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">专题简介：</td>
-								<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?>
-				<tr>
-					<td class="admin-td p-0">
-						<table>
-							<?php
-							$speclisttmp = GetSysTemplets("spec_arclist.htm");
-							$nodename = $nodeid = '';
-							for ($i=1;$i<=$cfg_specnote;$i++)
-							{
-								if ($i==1) {
-									$nodename = '默认节点';
-									$nodeid = 'default';
-								} else {
-									$nodename = $nodeid = '';
-								}
-							?>
-							<tr>
-								<td width="120" class="admin-td">节点<?php echo $i?>名称：</td>
-								<td class="admin-td">
-									<input type="text" name="notename<?php echo $i?>" value="<?php echo $nodename;?>" id="notename<?php echo $i?>" class="admin-input-lg">
-									<label>节点标识：<input type="text" name="noteid<?php echo $i?>" alue="<?php echo $nodeid;?>" id="noteid<?php echo $i?>" class="admin-input-sm"></label>
-								</td>
-							</tr>
-							<tr>
-								<td class="admin-td">文档列表：</td>
-								<td class="admin-td">
-									<textarea name="arcid<?php echo $i?>" onblur='CheckVal(<?php echo $i ?>)' id="arcid<?php echo $i?>" class="admin-textarea-sm"></textarea>
-									<button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onclick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button>
-								</td>
-							</tr>
-							<tr>
-								<td class="admin-td">文档来源：</td>
-								<td class="admin-td">
-									<label>栏目id：<input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" class="admin-input-sm"></label>
-									<label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" class="admin-input-lg">（英文逗号隔开）</label>
-									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文档列表</label>
-									<label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
-								</td>
-							</tr>
-							<tr>
-								<td class="admin-td">节点布局：</td>
-								<td class="admin-td">
-									<label>列数：<input type="text" name="col<?php echo $i?>" id="col<?php echo $i?>" value="1" class="admin-input-sm"></label>
-									<label>图片宽：<input type="text" name="imgwidth<?php echo $i?>" id="imgwidth<?php echo $i?>" value="120" class="admin-input-sm"></label>
-									<label>图片高：<input type="text" name="imgheight<?php echo $i?>" id="imgheight<?php echo $i?>" value="90" class="admin-input-sm"></label>
-									<label>标题长：<input type="text" name="titlelen<?php echo $i?>" id="titlelen<?php echo $i?>" value="60" class="admin-input-sm"></label>
-									<label>简介长：<input type="text" name="infolen<?php echo $i?>" id="infolen<?php echo $i?>" value="160" class="admin-input-sm"></label>
-									<label>文档数：<input type="text" name="rownum<?php echo $i?>" id="rownum<?php echo $i?>" value="10" class="admin-input-sm"></label>
-								</td>
-							</tr>
-							<tr>
-								<td class="admin-td">应用样式：</td>
-								<td class="admin-td"><textarea name="listtmp<?php echo $i?>" id="listtmp<?php echo $i?>" class="admin-textarea-xl"><?php echo $speclisttmp?></textarea></td>
-							</tr>
-							<tr>
-								<td class="admin-td">应用模板：</td>
-								<td class="admin-td">
-									<input type="text" name="notetemplet<?php echo $i?>" id="notetemplet<?php echo $i?>" value="system/channel_spec_note.htm" class="admin-input-lg">
-									<button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.notetemplet<?php echo $i?>');">选择</button>
-								</td>
-							</tr>
-							<?php }?>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">评论选项：</td>
-								<td width="360">
-									<label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo 'checked';?>> 允许评论</label>
-									<label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo 'checked';?>> 禁止评论</label>
-								</td>
-								<td width="120">发布选项：</td>
-								<td>
-									<label><input type="radio" name="ishtml" value="1" checked> 静态浏览</label>
-									<label><input type="radio" name="ishtml" value="0"> 动态浏览</label>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">文档排序：</td>
-								<td width="360">
-									<select name="sortup" id="sortup" class="admin-input-sm">
-										<option value="0" selected>默认排序</option>
-										<option value="7">置顶一周</option>
-										<option value="30">置顶一个月</option>
-										<option value="90">置顶三个月</option>
-										<option value="180">置顶半年</option>
-										<option value="360">置顶一年</option>
-									</select>
-								</td>
-								<td width="120">标题颜色：</td>
-								<td>
-									<input type="text" name="color" id="color" class="admin-input-sm">
-									<button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onclick="ShowColor(event,this)">选择</button>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">专题模板：</td>
-								<td width="360">
-									<input type="text" name="templet" id="templet" value="<?php echo $cfg_df_style?>/article_spec.htm" class="admin-input-sm">
-									<button type="button" name="set3" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
-								</td>
-								<td width="120">文件名称：</td>
-								<td><input type="text" name="filename" id="filename" class="admin-input-sm">（不包括文件扩展名）</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="admin-td">
-						<table>
-							<tr>
-								<td width="120">发布时间：</td>
-								<td width="360">
-									<?php
-									$nowtime = GetDateTimeMk(time());
-									echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker admin-input-sm'>";
-									?>
-								</td>
-								<td width="120">浏览次数：</td>
-								<td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(1000, 6000):$cfg_arc_click);?>" class="admin-input-sm"></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td align="center" class="admin-td">
-						<button type="submit" class="btn btn-success btn-sm">保存</button>
-						<button type="button" class="btn btn-outline-success btn-sm" onclick="location.reload();">重置</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>InitPage();</script>
 	</body>
 </html>

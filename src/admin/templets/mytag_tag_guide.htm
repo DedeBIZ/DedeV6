@@ -17,139 +17,132 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<span id="list1" style="display:none">[field:textlink/]（[field:pubdate function=MyDate('m-d',@me)/]）</span>
-		<span id="list2" style="display:none">[field:typelink/] [field:textlink/]</span>
-		<div id="list3" style="display:none"><p>[field:imglink/]</p><p>[field:textlink/]</p></div>
-		<div id="list4" style="display:none"><p>[field:imglink/] - <a href="[field:filename/]">[field:title/]</a></p><p>[field:info/]</p></div>
-		<form action="mytag_tag_guide_ok.php" method="post" target="stafrm" name="form1">
-			<input type="hidden" name="dopost" value="gettag">
-			<table class="table shadow-sm my-3">
-				<tr>
-					<td><a href="mytag_main.php">自定义宏标记</a> - 智能标记向导</td>
-				</tr>
-				<tr>
-					<td>
-						<table class="w-100 table-borderless">
-							<tr>
-								<td width="25%">
-									<label><img src="/static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="1" checked></label>
-								</td>
-								<td width="25%">
-									<label><img src="/static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="2"></label>
-								</td>
-								<td width="25%">
-									<label><img src="/static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="3"></label>
-								</td>
-								<td>
-									<label><img src="/static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="4"></label>
-								</td>
-							</tr>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="mytag_main.php">自定义宏标记</a></li>
+			<li class="breadcrumb-item active">智能标记向导</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">智能标记向导</div>
+			<div class="card-body">
+				<span id="list1" style="display:none">[field:textlink/]（[field:pubdate function=MyDate('m-d',@me)/]）</span>
+				<span id="list2" style="display:none">[field:typelink/] [field:textlink/]</span>
+				<div id="list3" style="display:none"><p>[field:imglink/]</p><p>[field:textlink/]</p></div>
+				<div id="list4" style="display:none"><p>[field:imglink/] - <a href="[field:filename/]">[field:title/]</a></p><p>[field:info/]</p></div>
+				<form action="mytag_tag_guide_ok.php" method="post" target="stafrm" name="form1">
+					<input type="hidden" name="dopost" value="gettag">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td>
+										<label><img src="/static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="1" checked></label>
+										<label><img src="/static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="2"></label>
+										<label><img src="/static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="3"></label>
+										<label><img src="/static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onclick="ChangeListStyle();" value="4"></label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>调用栏目：</span>
+										<?php
+										$tl = new TypeLink(0);
+										$typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
+										echo "<select name='typeid' class='admin-input-sm'>";
+										echo "<option value='0' selected>不限栏目</option>";
+										echo $typeOptions;
+										echo "</select>";
+										?>
+										<span>限定模型：</span>
+										<?php
+										echo "<select name='channel' class='admin-input-sm'>";
+										echo "<option value='0' selected>不限模型</option>";
+										$tl->dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` WHERE id > 0");
+										$tl->dsql->Execute();
+										while($row = $tl->dsql->GetObject())
+										{
+											echo "<option value='{$row->id}'>{$row->typename}</option>";
+										}
+										echo "</select>";
+										?>
+										<span>附加属性：</span>
+										<?php
+										echo "<select name='att' class='admin-input-sm'>";
+										echo "<option value='0' selected>不限</option>";
+										$tl->dsql->SetQuery("SELECT * FROM `#@__arcatt`");
+										$tl->dsql->Execute();
+										while($row = $tl->dsql->GetObject())
+										{
+											echo "<option value='{$row->att}'>{$row->attname}</option>";
+										}
+										echo "</select>";
+										?>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label>调用记录条数：<input type="text" name="row" id="row" value="10" class="admin-input-xs"></label>
+										<label>显示列数：<input type="text" name="col" id="col" value="1" class="admin-input-xs"></label>
+										<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="24" class="admin-input-xs"></label>
+										<span>（1字节=0.5个中文字）</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label>关键词：<input type="text" name="keyword" id="keyword" class="admin-input-sm"></label>
+										<span>（英文逗号隔开）</span>
+										<span>高级筛选：</span>
+										<label><input type="checkbox" name="types[]" value="image"> 带缩略图</label>
+										<label><input type="checkbox" name="types[]" value="commend"> 推荐</label>
+										<label><input type="checkbox" name="types[]" value="spec"> 专题</label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label>文档发布时间：<input type="text" name="subday" value="0" id="subday" class="admin-input-xs"> 天以内</label>
+										<span>（0表示不限）</span>
+										<span>排列顺序：</span>
+										<select name="orderby" id="orderby" class="admin-input-sm">
+											<option value="sortrank">置顶权限值</option>
+											<option value="pubdate" selected>发布时间</option>
+											<option value="senddate">录入时间</option>
+											<option value="click">点击量</option>
+											<option value="id">文档id</option>
+											<option value="lastpost">最后评论时间</option>
+											<option value="scores">评论积分</option>
+											<option value="rand">随机获取</option>
+										</select>
+										<label><input type="radio" name="order" value="desc" checked> 由高到低</label>
+										<label><input type="radio" name="order" value="asc"> 由低到高</label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>提取特定文档：</span>
+										<textarea name="arcid" class="admin-textarea-sm"></textarea>
+										<button type="button" id="selarc" class="btn btn-success btn-sm" onclick="SelectArcList('form1.arcid');">选择节点文档</button>
+									</td>
+								</tr>
+								<tr>
+									<td><textarea name="innertext" id="myinnertext" class="admin-textarea-xl">[field:textlink/]（[field:pubdate function=MyDate('m-d',@me)/]）<br></textarea></td>
+								</tr>
+								<tr>
+									<td align="center">
+										<a href="javascript:DoSubmit('gettag');" class="btn btn-success btn-sm">模板调用标记</a>
+										<a href="javascript:DoSubmit('savetag');" class="btn btn-success btn-sm">模板调用标签</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" width="100%" height="100%" id="stafrm"></iframe></div>
+									</td>
+								</tr>
+							</tbody>
 						</table>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<span>调用栏目：</span>
-						<?php
-						$tl = new TypeLink(0);
-						$typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-						echo "<select name='typeid' class='admin-input-sm'>";
-						echo "<option value='0' selected>不限栏目</option>";
-						echo $typeOptions;
-						echo "</select>";
-						?>
-						<span>限定模型：</span>
-						<?php
-						echo "<select name='channel' class='admin-input-sm'>";
-						echo "<option value='0' selected>不限模型</option>";
-						$tl->dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` WHERE id > 0");
-						$tl->dsql->Execute();
-						while($row = $tl->dsql->GetObject())
-						{
-							echo "<option value='{$row->id}'>{$row->typename}</option>";
-						}
-						echo "</select>";
-						?>
-						<span>附加属性：</span>
-						<?php
-						echo "<select name='att' class='admin-input-sm'>";
-						echo "<option value='0' selected>不限</option>";
-						$tl->dsql->SetQuery("SELECT * FROM `#@__arcatt`");
-						$tl->dsql->Execute();
-						while($row = $tl->dsql->GetObject())
-						{
-							echo "<option value='{$row->att}'>{$row->attname}</option>";
-						}
-						echo "</select>";
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>调用记录条数：<input type="text" name="row" id="row" value="10" class="admin-input-xs"></label>
-						<label>显示列数：<input type="text" name="col" id="col" value="1" class="admin-input-xs"></label>
-						<label>标题长度：<input type="text" name="titlelen" id="titlelen" value="24" class="admin-input-xs"></label>
-						<span>（1字节=0.5个中文字）</span>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>关键词：<input type="text" name="keyword" id="keyword" class="admin-input-sm"></label>
-						<span>（英文逗号隔开）</span>
-						<span>高级筛选：</span>
-						<label><input type="checkbox" name="types[]" value="image"> 带缩略图</label>
-						<label><input type="checkbox" name="types[]" value="commend"> 推荐</label>
-						<label><input type="checkbox" name="types[]" value="spec"> 专题</label>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>文档发布时间：<input type="text" name="subday" value="0" id="subday" class="admin-input-xs"> 天以内</label>
-						<span>（0表示不限）</span>
-						<span>排列顺序：</span>
-						<select name="orderby" id="orderby" class="admin-input-sm">
-							<option value="sortrank">置顶权限值</option>
-							<option value="pubdate" selected>发布时间</option>
-							<option value="senddate">录入时间</option>
-							<option value="click">点击量</option>
-							<option value="id">文档id</option>
-							<option value="lastpost">最后评论时间</option>
-							<option value="scores">评论积分</option>
-							<option value="rand">随机获取</option>
-						</select>
-						<label><input type="radio" name="order" value="desc" checked> 由高到低</label>
-						<label><input type="radio" name="order" value="asc"> 由低到高</label>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<span>提取特定文档：</span>
-						<textarea name="arcid" class="admin-textarea-sm"></textarea>
-						<button type="button" id="selarc" class="btn btn-success btn-sm" onclick="SelectArcList('form1.arcid');">选择节点文档</button>
-					</td>
-				</tr>
-				<tr>
-					<td>单行记录样式：</td>
-				</tr>
-				<tr>
-					<td class="p-0"><textarea name="innertext" id="myinnertext" class="admin-textarea-xl">[field:textlink/]（[field:pubdate function=MyDate('m-d',@me)/]）<br></textarea></td>
-				</tr>
-				<tr>
-					<td>循环内的单行记录样式支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,stime(pubdate的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示Pubdate发布时间的调用参数[field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</td>
-				</tr>
-				<tr>
-					<td align="center">
-						<button type="button" name="submit1" id="Submit1" class="btn btn-success btn-sm" onclick="DoSubmit('gettag')">生成模板调用标记</button>
-						<button type="button" name="submit2" id="Submit2" class="btn btn-success btn-sm" onclick="DoSubmit('savetag')">生成模板调用标签</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" width="100%" height="100%" id="stafrm"></iframe></div>
-					</td>
-				</tr>
-			</table>
-		</form>
+					</div>
+				</form>
+			</div>
+		</div>
 		<script>
 			function ChangeListStyle() {
 				var itxt = document.getElementById("myinnertext");
