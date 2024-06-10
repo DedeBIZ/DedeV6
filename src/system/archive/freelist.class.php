@@ -800,7 +800,7 @@ class FreeList
      * @param     int  $rank  阅读权限
      * @param     string  $namerule  名称规则
      * @param     string  $typedir  栏目dir
-     * @param     string  $money  需要金币
+     * @param     string  $money  金币
      * @param     string  $filename  文件名称
      * @param     string  $moresite  多站点
      * @param     string  $siteurl  站点地址

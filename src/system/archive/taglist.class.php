@@ -639,7 +639,7 @@ class TagList
      * @param     int  $rank  浏览权限
      * @param     string  $namerule  命名规则
      * @param     string  $artdir  文档路径
-     * @param     int  $money  需要金币
+     * @param     int  $money  金币
      * @param     string  $filename  文件名称
      * @return    string
      */

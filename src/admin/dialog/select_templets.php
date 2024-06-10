@@ -42,7 +42,7 @@ if (empty($comeback)) {
         <link rel="stylesheet" href="/static/web/css/admin.css">
     </head>
     <body >
-        <div class="upload-box">
+        <div class="upload-bg">
             <div class="card shadow-sm">
                 <div class="card-header">选择模板</div>
                 <div class="card-body">

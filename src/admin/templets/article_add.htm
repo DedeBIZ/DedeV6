@@ -103,7 +103,7 @@
 										<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid');" class="btn btn-success btn-sm">选择</a>
 										<?php if ($cfg_need_typeid2=='Y') {echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>副栏目</a>";}?>
 									</td>
-									<td>需要金币</td>
+									<td>金币</td>
 									<td><input type="text" name="money" id="money" value="0" class="admin-input-sm"></td>
 								</tr>
 								<tr id="typeid2tr" style="display:none">
@@ -140,7 +140,7 @@
 									<td colspan="3">
 										<label><input type="radio" name="sptype" value="hand" <?php if ($cfg_arcautosp=='N') echo 'checked'?>> 手动</label>
 										<label><input type="radio" name="sptype" value="auto" <?php if ($cfg_arcautosp=='Y') echo 'checked'?>> 自动</label>
-										<label>大小：<input name="spsize" type="text" id="spsize" value="<?php echo $cfg_arcautosp_size?>" class="admin-input-xs"> K（分页符为：#p#分页标题#e#）</label>
+										<label>大小：<input name="spsize" type="text" id="spsize" value="<?php echo $cfg_arcautosp_size?>" class="admin-input-sm"> K（分页符为：#p#分页标题#e#）</label>
 									</td>
 								</tr>
 								<?php PrintAutoFieldsAdd($cInfos['fieldset'],'autofield'); ?>

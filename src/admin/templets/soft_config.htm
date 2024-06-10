@@ -79,8 +79,7 @@
 								</tr>
 								<tr>
 									<td>下载默认金币</td>
-									<td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy'];?>" class="admin-input-xs">
-									</td>
+									<td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy'];?>" class="admin-input-sm"></td>
 								</tr>
 								<tr>
 									<td>参数限制方式</td>
@@ -92,9 +91,9 @@
 								<tr>
 									<td>镜像服务器列表</td>
 									<td>
-										<label>镜像网站：<input type="text" name="serverurl" id="serverurl"></label>
-										<label>镜像目录：<input type="text" name="servername" id="servername"></label>
-										<label>镜像名称：<input type="text" name="servertype" id="servertype" value="默认下载地址"></label>
+										<input type="text" name="serverurl" id="serverurl" placeholder="请输入镜像网站">
+										<input type="text" name="servername" id="servername" placeholder="请输入镜像目录">
+										<input type="text" name="servertype" id="servertype" value="默认下载地址">
 										<button type="button" name="submit" onclick="AddServer();" class="btn btn-success btn-sm">添加一项</button>
 									</td>
 								</tr>

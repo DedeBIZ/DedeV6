@@ -390,13 +390,16 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	width:100%
 }
 .admin-input-lg {
-	width:60%
+	width:350px
+}
+.admin-input-md {
+	width:230px
 }
 .admin-input-sm {
-	width:160px
+	width:180px
 }
 .admin-input-xs {
-	width:60px
+	width:70px
 }
 a:hover,.item-theme:hover,.item-news:hover {
 	transition:all 0.5s
@@ -451,18 +454,18 @@ a:hover,.item-theme:hover,.item-news:hover {
 }
 @media (max-width:768px) {
 	.pb-m-3 {
-	padding-bottom:1rem
-}
-.login-from {
-	width:100%
-}
-.bannr-img,.item-theme-img img,.list-article-img img {
-	height:250px
-}
-.item-news-img img {
-	height:210px
-}
-.feedbacks .feedback-action {
-	float:none
-}
+		padding-bottom:1rem
+	}
+	.login-from {
+		width:100%
+	}
+	.bannr-img,.item-theme-img img,.list-article-img img {
+		height:250px
+	}
+	.item-news-img img {
+		height:210px
+	}
+	.feedbacks .feedback-action {
+		float:none
+	}
 }

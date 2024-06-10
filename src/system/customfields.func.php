@@ -113,7 +113,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-lg' placeholder='请选择附件上传或填写附件地址'> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onclick=\"SelectSoft('$fname.$fieldname')\">";
     } else if ($fieldType == 'int' || $fieldType == 'float') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '0');
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-xs' value='$dfvalue'>";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-sm' value='$dfvalue'>";
     } else if ($fieldType == 'relation') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '');
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
@@ -380,7 +380,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         $selectStr = "<input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='选择' onclick=\"SelectSoft('$fname.$fieldname')\">";
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control admin-input-lg'> $selectStr";
     } else if ($ftype == "int" || $ftype == "float") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-xs' value='$fvalue'>";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control admin-input-sm' value='$fvalue'>";
     } else if ($ftype == "relation") {
         $fname = defined('DEDEADMIN')? 'form1' : 'addcontent';
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');

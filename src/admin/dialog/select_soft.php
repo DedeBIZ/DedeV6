@@ -51,7 +51,7 @@ if (!empty($noeditor)) {
         <link rel="stylesheet" href="/static/web/css/admin.css">
     </head>
     <body>
-        <div class="upload-box">
+        <div class="upload-bg">
             <div class="card shadow-sm">
                 <div class="card-header">选择软件</div>
                 <div class="card-body">

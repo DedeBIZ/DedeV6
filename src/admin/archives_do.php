@@ -535,9 +535,12 @@ else if ($dopost == 'quickEdit') {
                     }
                     ?>
                 </select>
-                <label>需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-xs"></label>
             </td>
         </tr>
+        </tr>
+            <td>金币</td>
+            <td><input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-sm"></td>
+        <tr>
         <tr>
             <td width="160">关键词</td>
             <td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>

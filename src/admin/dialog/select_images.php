@@ -62,7 +62,7 @@ if (!empty($iseditor)) {
         <script src="/static/web/js/jquery.min.js"></script>
     </head>
     <body>
-        <div class="upload-box">
+        <div class="upload-bg">
             <div class="card shadow-sm">
                 <div class="card-header">选择图片</div>
                 <div class="card-body">

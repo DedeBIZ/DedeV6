@@ -47,7 +47,7 @@ if ($needMoney > 0 || $needRank > 1) {
         include_once(DEDETEMPLATE.'/apps/view_msg.htm');
         exit();
     }
-    //需要金币的情况
+    //金币处理
     if ($needMoney > 0  && $arc->Fields['mid'] != $cfg_ml->M_ID) {
         $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE".$aid."' AND mid='".$cfg_ml->M_ID."'";
         $row = $dsql->GetOne($sql);
@@ -82,7 +82,7 @@ if ($needMoney > 0 || $needRank > 1) {
                 exit();
             }
         }
-    } //金币处理付处理
+    }
 }
 $arc->Display();
 if (DEBUG_LEVEL === TRUE) {

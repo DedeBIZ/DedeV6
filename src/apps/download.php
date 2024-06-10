@@ -169,7 +169,7 @@ else if ($open == 2) {
             include_once(DEDETEMPLATE.'/apps/view_msg.htm');
             exit();
         }
-        //以下为正常情况，自动扣点数，如果文档需要金币，检查会员是否浏览过本文档
+        //以下为正常情况，自动扣点数，如果文档金币，检查会员是否浏览过本文档
         if ($needMoney > 0  && $mid != $cfg_ml->M_ID) {
             $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE".$id."' AND mid='".$cfg_ml->M_ID."'";
             $row = $dsql->GetOne($sql);

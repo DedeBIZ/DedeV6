@@ -5,7 +5,7 @@
 	--blue-300:#80bdff;
 	--success-800:#009688;
 	--b-radius:0.5rem;
-	--b-radius-300:0.35rem
+	--b-radius-300:0.25rem
 }
 ::-webkit-scrollbar {
 	display:none
@@ -71,7 +71,7 @@ input[type=file] {
 input[type=button],input[type=submit],input[type=reset] {
 	padding:0.375rem 0.75rem;
 	height:30px;
-	line-height:1.5;
+	line-height:1.6;
 	font-size:12px;
 	color:var(--white);
 	background:var(--green);
@@ -188,7 +188,7 @@ input:focus,select:focus,textarea:focus {
 	position:absolute;
 	top:16px;
 	left:16px;
-	z-index:998
+	z-index:1998
 }
 .login-from .form-icon i {
 	font-size:18px!important;
@@ -393,41 +393,20 @@ body.menu-show .body-right {
 	top:0;
 	right:0
 }
-.coolbg {
-	padding:0.5rem;
-	background:var(--white);
-	border-bottom:1px solid var(--gray-300);
-	text-align:right
-}
-.coolbg-box {
-	padding:0.5rem;
-	background:var(--white);
-	overflow-y:auto
-}
 .colordlg {
 	padding:0.5rem;
 	background:var(--white);
 	border:1px solid var(--gray-300);
-	z-index:10005
+	z-index:19991
 }
 .pubdlg {
-	z-index:8888
-}
-.fullpagediv {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background:var(--bg);
-	opacity:0.6;
-	z-index:1999
+	z-index:19992
 }
 .quicksel {
 	padding:0.5rem;
 	height:350px;
 	overflow-y:auto;
-	z-index:10005
+	z-index:19993
 }
 .quickselitem .topcat {
 	margin-bottom:1rem;
@@ -444,7 +423,17 @@ body.menu-show .body-right {
 }
 .mysource,.mywriter {
 	width:500px;
-	z-index:10001
+	z-index:19994
+}
+.fullpagediv {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:var(--bg);
+	opacity:0.6;
+	z-index:19995
 }
 .atlas {
 	float:left;
@@ -600,14 +589,14 @@ body.menu-show .body-right {
 	font-size:18px;
 	color:var(--green);
 	content:'\f058';
-	z-index:9
+	z-index:1991
 }
 #file_list li .tools {
 	display:none;
 	position:absolute;
 	bottom:12px;
 	right:10px;
-	z-index:99
+	z-index:1992
 }
 #file_list li:hover .tools {
 	display:block
@@ -633,24 +622,24 @@ body.menu-show .body-right {
 	width:500px;
 	height:auto
 }
+.browsehappy {
+	padding:1rem 30px;
+	color:var(--orange);
+	background:var(--yellow)
+}
 .body-row {
 	display:flex;
 	flex-wrap:wrap
+}
+.upload-bg {
+	margin:1rem;
+	background:var(--white)
 }
 .w-65 {
 	width:65%
 }
 .w-35 {
 	width:35%
-}
-.browsehappy {
-	padding:1rem 30px;
-	color:var(--orange);
-	background:var(--yellow)
-}
-.upload-box {
-	margin:1rem;
-	background:var(--white)
 }
 .breadcrumb {
 	padding:0;
@@ -681,16 +670,16 @@ body.menu-show .body-right {
 	padding:0.5rem;
 	vertical-align:middle
 }
-.icon img {
-	width:20px;
-	height:20px
-}
 .form-control {
 	display:inline-block
 }
 .fa {
 	font-size:14px!important;
 	color:inherit
+}
+.icon img {
+	width:20px;
+	height:20px
 }
 .fileinput-button {
 	display:inline-block;
@@ -754,52 +743,20 @@ body.menu-show .body-right {
 	height:90px
 }
 .admin-textarea-sm {
-	width:360px;
+	width:350px;
 	height:60px
 }
 .admin-input-lg {
-	width:360px
+	width:350px
 }
 .admin-input-md {
-	width:260px
+	width:230px
 }
 .admin-input-sm {
-	width:160px
+	width:180px
 }
 .admin-input-xs {
 	width:70px
-}
-a:hover,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.table-hover tbody tr:hover {
-	transition:all 0.5s
-}
-span.page-link {
-	color:var(--white);
-	background:var(--green)
-}
-input,select,textarea,.web-info,.upload-box,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded,#edsta {
-	border-radius:var(--b-radius)!important
-}
-.coolbg,.cke_top {
-	border-radius:var(--b-radius) var(--b-radius) 0 0!important
-}
-.submenu,.coolbg-box,.cke_bottom {
-	border-radius:0 0 var(--b-radius) var(--b-radius)!important
-}
-.page-item:first-child .page-link {
-	border-top-left-radius:var(--b-radius)!important;
-	border-bottom-left-radius:var(--b-radius)!important
-}
-.page-item:last-child .page-link {
-	border-top-right-radius:var(--b-radius)!important;
-	border-bottom-right-radius:var(--b-radius)!important
-}
-.input-group>.input-group-append>.btn {
-	border-top-left-radius:0!important;
-	border-bottom-left-radius:0!important
-}
-.input-group:not(.has-validation)>.form-control:not(:last-child) {
-	border-top-right-radius:0!important;
-	border-bottom-right-radius:0!important
 }
 .btn-sm {
 	padding:0.375rem 0.6rem;
@@ -819,27 +776,59 @@ input,select,textarea,.web-info,.upload-box,.colordlg,.pubdlg,.quickselitem .top
 .shadow-sm {
 	box-shadow:0 .125rem 0.25rem rgba(0,0,0,.025)!important
 }
+a:hover,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.table-hover tbody tr:hover {
+	transition:all 0.5s
+}
+span.page-link {
+	color:var(--white);
+	background:var(--green)
+}
+input,select,textarea,.web-info,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
+	border-radius:var(--b-radius)!important
+}
+.cke_top {
+	border-radius:var(--b-radius) var(--b-radius) 0 0!important
+}
+.submenu,.cke_bottom {
+	border-radius:0 0 var(--b-radius) var(--b-radius)!important
+}
+.page-item:first-child .page-link {
+	border-top-left-radius:var(--b-radius)!important;
+	border-bottom-left-radius:var(--b-radius)!important
+}
+.page-item:last-child .page-link {
+	border-top-right-radius:var(--b-radius)!important;
+	border-bottom-right-radius:var(--b-radius)!important
+}
+.input-group>.input-group-append>.btn {
+	border-top-left-radius:0!important;
+	border-bottom-left-radius:0!important
+}
+.input-group:not(.has-validation)>.form-control:not(:last-child) {
+	border-top-right-radius:0!important;
+	border-bottom-right-radius:0!important
+}
 @media (min-width:1199px) {
 	.modal-dialog {
-	max-width:500px
-}
+		max-width:500px
+	}
 }
 @media screen and (max-width:1199px) and (min-width:992px) {
 	.login-box {
-	padding:30px
-}
+		padding:30px
+	}
 }
 @media (max-width:768px) {
 	td {
-	white-space:nowrap
-}
-.install-box,.tips-box,.w-65,.w-35,.admin-textarea-sm,.admin-input-lg,.admin-input-md,.admin-input-sm,.admin-input-xs {
-	width:100%
-}
-.tips {
-	padding:0 1rem
-}
-.login-box {
-	padding:30px
-}
+		white-space:nowrap
+	}
+	.install-box,.tips-box,.w-65,.w-35,.admin-textarea-sm,.admin-input-lg,.admin-input-md,.admin-input-sm {
+		width:100%
+	}
+	.tips {
+		padding:0 1rem
+	}
+	.login-box {
+		padding:30px
+	}
 }
