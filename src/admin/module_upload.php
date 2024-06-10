@@ -57,15 +57,15 @@ if ($action == 'upload') {
     $win->AddTitle('请选择上传的模块插件文件');
     $win->AddHidden("action", 'upload');
     $msg = "<tr>
-        <td width='260'>文件格式：</td>
+        <td width='260'>文件格式</td>
         <td><label><input type='radio' name='filetype' value='0' checked> 正常模块插件格式</label></td>
     </tr>
     <tr>
-        <td>已有模块：</td>
+        <td>已有模块</td>
         <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 是否删除同名模块会导致已经安装模块卸载失败</label></td>
     </tr>
     <tr>
-        <td>选择文件：</td>
+        <td>选择文件</td>
         <td><input type='file' name='upfile' id='upfile' class='admin-input-lg'></td>
     </tr>";
     $win->AddMsgItem($msg);

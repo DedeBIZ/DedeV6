@@ -55,23 +55,23 @@ if ($dopost == "show") {
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
     $msg = "<tr>
-        <td width='260'>新模型id：</td>
+        <td width='260'>新模型id</td>
         <td><input name='newid' type='text' id='newid' value='{$newid}' class='admin-input-sm'></td>
     </tr>
     <tr>
-        <td>新模型名称：</td>
+        <td>新模型名称</td>
         <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' class='admin-input-lg'></td>
     </tr>
     <tr>
-        <td>新模型标识：</td>
+        <td>新模型标识</td>
         <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' class='admin-input-lg'></td>
     </tr>
     <tr>
-        <td>新附加表：</td>
+        <td>新附加表</td>
         <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' class='admin-input-lg'></td>
     </tr>
     <tr>
-        <td>复制模板：</td>
+        <td>复制模板</td>
         <td>
             <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked> 复制</label>
             <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>

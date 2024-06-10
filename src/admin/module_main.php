@@ -157,27 +157,27 @@ if ($action == '') {
         </td>
     </tr>
     <tr>
-        <td width='260'>模块名称：</td>
+        <td width='260'>模块名称</td>
         <td>{$infos['name']}</td>
     </tr>
     <tr>
-        <td>语言：</td>
+        <td>语言</td>
         <td>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-        <td>文件大小：</td>
+        <td>文件大小</td>
         <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td>贡献者id：</td>
+        <td>贡献者id</td>
         <td>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a></td>
     </tr>
     <tr>
-        <td>发布时间：</td>
+        <td>发布时间</td>
         <td>{$infos['time']}</td>
     </tr>
     <tr>
-        <td>使用协议：</td>
+        <td>使用协议</td>
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
@@ -185,11 +185,11 @@ if ($action == '') {
         <td>$prvdir</td>
     </tr>
     <tr>
-        <td>模块包含的所有文件列表：</td>
+        <td>模块包含的所有文件列表</td>
         <td><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
     </tr>
     <tr>
-        <td>对于已存在文件处理方法：</td>
+        <td>对于已存在文件处理方法</td>
         <td>
             <label><input type='radio' name='isreplace' value='1' checked> 覆盖</label>
             <label><input type='radio' name='isreplace' value='3'> 覆盖，保留副本</label>
@@ -268,27 +268,27 @@ if ($action == '') {
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", "delok");
     $msg = "<tr>
-        <td width='260'>模块名称：</td>
+        <td width='260'>模块名称</td>
         <td>{$infos['name']}</td>
     </tr>
     <tr>
-        <td>语言：</td>
+        <td>语言</td>
         <td>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-        <td>文件大小：</td>
+        <td>文件大小</td>
         <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td>贡献者id：</td>
+        <td>贡献者id</td>
         <td>{$dev_id}</td>
     </tr>
     <tr>
-        <td>发布时间：</td>
+        <td>发布时间</td>
         <td>{$infos['time']}</td>
     </tr>
     <tr>
-        <td>使用协议：</td>
+        <td>使用协议</td>
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
@@ -325,35 +325,35 @@ if ($action == '') {
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<tr>
-        <td width='260'>模块名称：</td>
+        <td width='260'>模块名称</td>
         <td>{$infos['name']}</td>
     </tr>
     <tr>
-        <td>语言：</td>
+        <td>语言</td>
         <td>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-        <td>文件大小：</td>
+        <td>文件大小</td>
         <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td>贡献者id：</td>
+        <td>贡献者id</td>
         <td>{$dev_id}</td>
     </tr>
     <tr>
-        <td>发布时间：</td>
+        <td>发布时间</td>
         <td>{$infos['time']}</td>
     </tr>
     <tr>
-        <td>使用协议：</td>
+        <td>使用协议</td>
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-        <td>模块文件：</td>
+        <td>模块文件</td>
         <td><textarea name='filelists' id='filelists' class='admin-textarea-xl'>{$filelist}</textarea></td>
     </tr>
     <tr>
-        <td>对于模块的文件处理方法：</td>
+        <td>对于模块的文件处理方法</td>
         <td>
             <label><input type='radio' name='isreplace' value='0' checked> 手工删除文件，仅运行卸载程序</label>
             <label><input type='radio' name='isreplace' value='2'> 删除模块的所有文件</label>
@@ -443,27 +443,27 @@ if ($action == '') {
     $win->Init("", "/static/web/js/admin.blank.js", "");
     $wintitle = "{$infos['name']}";
     $msg = "<tr>
-        <td width='260'>模块名称：</td>
+        <td width='260'>模块名称</td>
         <td>{$infos['name']}</td>
     </tr>
     <tr>
-        <td>语言：</td>
+        <td>语言</td>
         <td>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-        <td>文件大小：</td>
+        <td>文件大小</td>
         <td>{$infos['filesize']}</td>
     </tr>
     <tr>
-        <td>贡献者id：</td>
+        <td>贡献者id</td>
         <td>{$dev_id}</td>
     </tr>
     <tr>
-        <td>发布时间：</td>
+        <td>发布时间</td>
         <td>{$infos['time']}</td>
     </tr>
     <tr>
-        <td>使用协议：</td>
+        <td>使用协议</td>
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>

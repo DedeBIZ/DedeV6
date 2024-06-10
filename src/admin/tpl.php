@@ -115,7 +115,7 @@ else if ($action == 'upload') {
     $win->AddTitle('请选择要上传的模块文件');
     $win->AddHidden("action", 'uploadok');
     $msg = "<tr>
-            <td width='260'>选择文件：</td>
+            <td width='260'>选择文件</td>
             <td>
                 <input name='acdir' type='hidden' value='$acdir'>
                 <input name='token' type='hidden' value='{$_SESSION['token']}'>

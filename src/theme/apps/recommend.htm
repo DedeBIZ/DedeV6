@@ -23,11 +23,11 @@
 				<input type="hidden" name="arcID" value="<?php echo $aid;?>">
 				<table class="table mb-0">
 					<tr>
-						<td width="160">好友邮箱：</td>
+						<td width="160">好友邮箱</td>
 						<td><input name="email" type="text" autocomplete="off" id="email" class="form-control"></td>
 					</tr>
 					<tr>
-						<td>您的留言：</td>
+						<td>您的留言</td>
 						<td>
 							<textarea name="msg" id="msg" class="form-control">我在<?php echo $cfg_webname;?>发现一篇很好的文档：<?php echo $title;?>，网址：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?></textarea>
 						</td>
