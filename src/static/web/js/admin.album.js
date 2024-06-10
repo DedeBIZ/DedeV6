@@ -43,7 +43,7 @@ function addImage(src, pid) {
 	atlasimg++;
 	if (pid != 0) {
 		atlasimg = 'ok' + pid;
-		delstr = '<div class="atlas-box"><a href="javascript:delAlbPic(' + pid + ');" class="btn btn-danger btn-sm">删除</a></p>';
+		delstr = '<div class="atlas-body"><a href="javascript:delAlbPic(' + pid + ');" class="btn btn-danger btn-sm">删除</a></p>';
 	} else {
 		atlasimg = 'err' + atlasimg;
 	}

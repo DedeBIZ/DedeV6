@@ -28,7 +28,7 @@
 		<div class="card shadow-sm">
 			<div class="card-header">修改<?php echo $arcRow['title'];?>文档</div>
 			<div class="card-body">
-				<form name="form1" action="album_edit.php" method="post" enctype="multipart/form-data">
+				<form name="form1" action="album_edit.php" method="post" enctype="multipart/form-data" onSubmit="return checkSubmitAlb();">
 					<input type="hidden" name="channelid" value="<?php echo $channelid?>">
 					<input type="hidden" name="id" value="<?php echo $aid?>">
 					<input type="hidden" name="imagebody">
@@ -181,7 +181,7 @@
 														$fhtml .= "<input type='hidden' name='imgurl{$j}' value='{$bigimg}'>";
 														$fhtml .= "<input type='hidden' name='imgddurl{$j}' value='{$litimg}'>";
 														$fhtml .= "<div class='atlas-head'><img src='{$litimg}' id='lit{$j}'></div>";
-														$fhtml .= "<div class='atlas-box'><span class='btn btn-success btn-sm fileinput-button'>更换<input type='file' name='imgfile{$j}' for='item{$j}' class='atlasedit'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-danger btn-sm\">删除</a></div>";
+														$fhtml .= "<div class='atlas-body'><span class='btn btn-success btn-sm fileinput-button'>更换<input type='file' name='imgfile{$j}' for='item{$j}' class='atlasedit'></span><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-danger btn-sm\">删除</a></div>";
 														$fhtml .= "<div class='atlas-foot'><input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' class='atlas-input' placeholder='请输入图片注释'></div>";
 														$fhtml .= "</div>";
 														echo $fhtml;
