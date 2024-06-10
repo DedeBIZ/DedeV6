@@ -152,9 +152,6 @@ if ($action == '') {
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
     $msg = "<tr>
-        <td colspan='2'>
-            <div class='alert alert-warning mb-0'>文件列表中涉及的目录权限可写入，后台管理目录和主题目录也权限可写入</div>
-        </td>
     </tr>
     <tr>
         <td width='260'>模块名称</td>
@@ -181,7 +178,7 @@ if ($action == '') {
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-        <td>目录权限说明：<br>/为根目录<br>./表示当前目录</td>
+        <td>目录权限说明<br>/为根目录<br>./表示当前目录</td>
         <td>$prvdir</td>
     </tr>
     <tr>
