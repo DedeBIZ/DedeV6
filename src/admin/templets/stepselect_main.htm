@@ -259,8 +259,8 @@
 										<?php
 										if (!empty($egroup)) {
 										?>
-										<a href='javascript:updateItem({dede:field.id/});' class='btn btn-success btn-sm'><i class='fa fa-repeat'></i> 更新</a>
-										<a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a>
+										<a href='javascript:updateItem({dede:field.id/});' class='btn btn-light btn-sm'><i class='fa fa-repeat' title='更新'></i></a>
+										<a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a>
 										<?php
 										} else {
 											echo "<a href='stepselect_main.php?egroup={$fields['egroup']}'>".$egroups[$fields['egroup']]."</a>";
@@ -327,8 +327,8 @@
 								<td> {dede:field.issystem function="@me==1 ? '是' : '否'"/} </td>
 								<td>{dede:field.egroup/}</td>
 								<td>
-									<a href="stepselect_main.php?action=upallcache&egroup={dede:field.egroup/}" class="btn btn-light btn-sm"><i class="fa fa-repeat"></i> 更新</a>
-									<a href="stepselect_main.php?egroup={dede:field.egroup/}" class="btn btn-light btn-sm"><i class="fa fa-eye"></i> 查看</a>
+									<a href="stepselect_main.php?action=upallcache&egroup={dede:field.egroup/}" class="btn btn-light btn-sm"><i class="fa fa-repeat" title="更新"></i></a>
+									<a href="stepselect_main.php?egroup={dede:field.egroup/}" class="btn btn-light btn-sm"><i class="fa fa-eye" title="查看"></i></a>
 								</td>
 							</tr>
 							{/dede:datalist}

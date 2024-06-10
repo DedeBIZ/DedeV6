@@ -46,7 +46,7 @@ function TestOneFile($f)
         if ($localFilehash === $remoteFilehash) {
             return 0;
         }
-        $message .= "<p><span class='d-inline-block w-75'>发现可疑文件：{$trfile}</span><a href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye'></i> 查看</a><a href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-pencil-square'></i> 修改</a><a href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> 删除</a></p>\r\n";
+        $message .= "<p><span class='d-inline-block w-65'>发现可疑文件：{$trfile}</span><a href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='查看'></i></a><a href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-pencil-square' title='修改'></i></a><a href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank' class='btn btn-danger btn-sm'><i class='fa fa-trash' title='删除'></i></a></p>\r\n";
         return 1;
     }
     return 0;

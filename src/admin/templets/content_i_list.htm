@@ -69,7 +69,7 @@
 								<tr>
 									<td scope="col">选择</td>
 									<td scope="col">id</td>
-									<td scope="col">文档标题</td>
+									<td width="570">文档标题</td>
 									<td scope="col">栏目</td>
 									<td scope="col">网页</td>
 									<td scope="col">权限</td>
@@ -85,7 +85,10 @@
 									<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
 									<td>{dede:field.id/}</td>
 									<td>
-										<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives"><img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm"> {dede:field.title/}</a>
+										<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">
+											<img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm">
+											<span>{dede:field.title/}</span>
+										</a>
 										{dede:field.flag function='IsCommendArchives(@me)'/}
 									</td>
 									<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
