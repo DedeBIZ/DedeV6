@@ -62,9 +62,9 @@ if (empty($dopost)) {
             }
         ?>
         </tbody>
-    <?php }?>
     </table>
 </div>
+<?php }?>
 <?php
     exit;
 } elseif ($dopost == "system_info") {

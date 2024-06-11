@@ -368,10 +368,10 @@ body.menu-show .body-right {
 .updates-dot {
 	display:none;
 	position:absolute;
-	top:10px;
-	right:5px;
-	height:8px;
+	top:1rem;
+	right:0.35rem;
 	width:8px;
+	height:8px;
 	background:var(--danger);
 	border-radius:50%
 }
