@@ -14,7 +14,7 @@ if (!isset($cfg_basedir)) {
 if (empty($uploadfile)) $uploadfile = '';
 if (empty($uploadmbtype)) $uploadmbtype = '软件类型';
 if (empty($bkurl)) $bkurl = 'select_soft.php';
-define("DEDE_DIALOG_UPLOAD", true);
+//define("DEDE_DIALOG_UPLOAD", true);
 $CKEditorFuncNum = (isset($CKEditorFuncNum)) ? $CKEditorFuncNum : 1;
 $newname = (empty($newname) ? '' : preg_replace("#[\\ \"\*\?\t\r\n<>':\/|]#", "", $newname));
 $uploadfile = isset($imgfile) && empty($uploadfile) ? $imgfile : $uploadfile;

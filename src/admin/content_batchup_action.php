@@ -147,7 +147,6 @@ else if ($action == 'move') {
             $dsql->ExecuteNoneQuery("UPDATE `$addtable` SET typeid='$newtypeid' WHERE aid='{$row->id}' ");
         }
         if ($rs) $tdd++;
-        //DelArc($row->id,true);
     }
     if ($tdd > 0) {
         $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";

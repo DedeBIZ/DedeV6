@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/image.func.php");
-define("DEDE_DIALOG_UPLOAD", true);
+//define("DEDE_DIALOG_UPLOAD", true);
 if (empty($activepath)) {
     $activepath = '';
     $activepath = str_replace('.', '', $activepath);
