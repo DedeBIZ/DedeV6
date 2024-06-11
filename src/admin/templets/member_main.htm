@@ -84,10 +84,10 @@
 									<td>{dede:field.loginip/}/{dede:field.logintime function="MyDate('Y-m-d H:i:s',@me)"/}</td>
 									<td>{dede:field.send_max/}</td>
 									<td>
-										<a href="member_toadmin.php?id={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-user-plus" title="提升"></i></a>
-										<a href="content_list.php?mid={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-file-text" title="文档"></i></a>
-										<a href="member_edit.php?id={dede:field.mid/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
-										<a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+										<a href="member_toadmin.php?id={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-user-plus" title="提升{dede:field.uname/}"></i></a>
+										<a href="content_list.php?mid={dede:field.mid/}" target="_self" class="btn btn-light btn-sm"><i class="fa fa-file-text" title="{dede:field.uname/}文档"></i></a>
+										<a href="member_edit.php?id={dede:field.mid/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改{dede:field.uname/}"></i></a>
+										<a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除{dede:field.uname/}"></i></a>
 									</td>
 								</tr>
 								{/dede:datalist}
