@@ -44,11 +44,6 @@ li {
 form,label {
 	margin-bottom:0
 }
-table {
-	width:100%;
-	background:var(--white);
-	border-spacing:0
-}
 td {
 	word-break:break-all;
 	word-wrap:break-word
@@ -354,13 +349,6 @@ body.menu-show .body-right {
 	height:99%;
 	border:0
 }
-#_fileList,#_verList {
-	height:350px;
-	overflow-y:auto
-}
-#_msgInfo {
-	display:none
-}
 .update-close {
 	background:var(--white);
 	border:0
@@ -375,6 +363,18 @@ body.menu-show .body-right {
 	background:var(--danger);
 	border-radius:50%
 }
+.spinner-border {
+	width:20px;
+	height:20px;
+	vertical-align:bottom
+}
+#_fileList,#_verList {
+	height:350px;
+	overflow-y:auto
+}
+#_msgInfo {
+	display:none
+}
 .fullpagediv {
 	position:absolute;
 	top:0;
@@ -384,11 +384,6 @@ body.menu-show .body-right {
 	background:var(--bg);
 	opacity:0.6;
 	z-index:1980
-}
-.spinner-border {
-	width:20px;
-	height:20px;
-	vertical-align:bottom
 }
 .sys-search {
 	position:relative
@@ -468,7 +463,7 @@ body.menu-show .body-right {
 }
 .nw {
 	float:left;
-	width:160px
+	width:180px
 }
 .cls {
 	clear:both
@@ -662,7 +657,7 @@ body.menu-show .body-right {
 	color:var(--gray)
 }
 .table th,.table td {
-	padding:0.5rem 0;
+	padding:0.5rem 1rem 0.5rem 0;
 	vertical-align:middle
 }
 .form-control {
@@ -675,6 +670,15 @@ body.menu-show .body-right {
 .icon img {
 	width:20px;
 	height:20px
+}
+.option1 {
+	background:var(--gray-300)
+}
+.option2 {
+	background:var(--gray-500)
+}
+.option3 {
+	background:var(--white)
 }
 .fileinput-button {
 	display:inline-block;
@@ -689,15 +693,6 @@ body.menu-show .body-right {
 	opacity:0;
 	direction:ltr;
 	cursor:pointer
-}
-.option1 {
-	background:var(--gray-300)
-}
-.option2 {
-	background:var(--gray-500)
-}
-.option3 {
-	background:var(--white)
 }
 .user-img-md {
 	width:60px;
