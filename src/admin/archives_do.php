@@ -261,11 +261,11 @@ else if ($dopost == "checkArchives") {
         ?>
         <tbody>
             <tr>
-                <td width="160">目标栏目</td>
+                <td width="160">指定栏目</td>
                 <td><?php echo $typeOptions;?></td>
             </tr>
             <tr>
-                <td width="160">文档id</td>
+                <td>文档id</td>
                 <td><input type="text" name="tmpids" class="admin-input-lg" value="<?php echo $qstr;?>"></td>
             </tr>
             <tr>
@@ -495,7 +495,7 @@ else if ($dopost == 'quickEdit') {
             </td>
         </tr>
         <tr>
-            <td width="160">属性</td>
+            <td>文档属性</td>
             <td>
                 <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
                 <?php
@@ -512,15 +512,15 @@ else if ($dopost == 'quickEdit') {
             </td>
         </tr>
         <tr>
-            <td width="160">标题</td>
+            <td>标题</td>
             <td><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="admin-input-lg"></td>
         </tr>
         <tr>
-            <td width="160">简略标题</td>
+            <td>简略标题</td>
             <td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="admin-input-lg"></td>
         </tr>
         <tr>
-            <td width="160">浏览权限</td>
+            <td>浏览权限</td>
             <td>
                 <select name="arcrank" id="arcrank" class="admin-input-sm">
                     <option value='<?php echo $arcRow["arcrank"] ?>'>
@@ -542,7 +542,7 @@ else if ($dopost == 'quickEdit') {
             <td><input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="admin-input-sm"></td>
         <tr>
         <tr>
-            <td width="160">关键词</td>
+            <td>关键词</td>
             <td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="admin-input-lg"></td>
         </tr>
         <tr>
@@ -769,7 +769,7 @@ else if ($dopost == 'attsDlg') {
     ?>
     <tbody>
         <tr>
-            <td width="160">属性</td>
+            <td width="160">文档属性</td>
             <td>
                 <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
                 <?php
@@ -783,7 +783,7 @@ else if ($dopost == 'attsDlg') {
             </td>
         </tr>
         <tr>
-            <td width="160">文档id</td>
+            <td>文档id</td>
             <td><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
         </tr>
         <tr>
