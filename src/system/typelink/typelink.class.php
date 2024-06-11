@@ -75,7 +75,7 @@ class TypeLink
     function GetTypeDir()
     {
         if (empty($this->TypeInfos['typedir'])) {
-            return $GLOBALS['cfg_arcdir'];
+            return $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
         } else {
             return $this->TypeInfos['typedir'];
         }

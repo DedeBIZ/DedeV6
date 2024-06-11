@@ -219,7 +219,7 @@ class Archives
         //处理默认缩略图等
         if (isset($this->Fields['litpic'])) {
             if ($this->Fields['litpic'] == '-' || $this->Fields['litpic'] == '') {
-                $this->Fields['litpic'] = '/static/web/img/thumbnail.jpg';
+                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
             }
             if (!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                 $this->Fields['litpic'] = $GLOBALS['cfg_mainsite'].$this->Fields['litpic'];
@@ -232,7 +232,7 @@ class Archives
         if (isset($this->Fields['voteid']) && !empty($this->Fields['voteid'])) {
             $this->Fields['vote'] = '';
             $voteid = $this->Fields['voteid'];
-            $this->Fields['vote'] = "<script src='/data/vote/vote_{$voteid}.js'></script>";
+            $this->Fields['vote'] = "<script src='{$GLOBALS['cfg_cmspath']}/data/vote/vote_{$voteid}.js'></script>";
             if ($GLOBALS['cfg_multi_site'] == 'Y') {
                 $this->Fields['vote'] = "<script src='{$GLOBALS['cfg_mainsite']}/data/vote/vote_{$voteid}.js'></script>";
             }
@@ -681,7 +681,7 @@ class Archives
                     $preRow['siteurl'],
                     $preRow['sitepath']
                 );
-                $preRow['litpic'] = (empty($preRow['litpic'])) ? '/static/web/img/thumbnail.jpg' : $preRow['litpic'];
+                $preRow['litpic'] = (empty($preRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg' : $preRow['litpic'];
                 $this->PreNext['diy']['pre']['id'] = $preRow['id'];
                 $this->PreNext['diy']['pre']['arcurl'] = $mlink;
                 $this->PreNext['diy']['pre']['title'] = $preRow['title'];
@@ -709,7 +709,7 @@ class Archives
                     $nextRow['siteurl'],
                     $nextRow['sitepath']
                 );
-                $nextRow['litpic'] = (empty($nextRow['litpic'])) ? '/static/web/img/thumbnail.jpg' : $nextRow['litpic'];
+                $nextRow['litpic'] = (empty($nextRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg' : $nextRow['litpic'];
                 $this->PreNext['diy']['next']['id'] = $nextRow['id'];
                 $this->PreNext['diy']['next']['arcurl'] = $mlink;
                 $this->PreNext['diy']['next']['title'] = $nextRow['title'];

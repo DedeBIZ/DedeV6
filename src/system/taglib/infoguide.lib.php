@@ -11,7 +11,8 @@ if (!defined('DEDEINC')) exit ('dedebiz');
  */
 function lib_infoguide(&$ctag, &$refObj)
 {
-    global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_mainsite;
+    global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite;
+    $cmspath = ((empty($cfg_cmspath) || preg_match('#[/$]#', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
     if (empty($refObj->Fields['typeid'])) {
         $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE channeltype='-8' And reid = '0' ");
         $typeid = (is_array($row) ? $row['id'] : 0);
@@ -29,7 +30,7 @@ function lib_infoguide(&$ctag, &$refObj)
     $revalue = $seli = '';
     $fields = array('nativeplace' => '', 'infotype' => '', 'typeid' => $typeid);
     if ($hasSetEnumJs != 'has') {
-        $revalue .= '<script src="'.$cfg_mainsite.'/static/web/js/enums.js"></script>'."\r\n";
+        $revalue .= '<script src="'.$cfg_mainsite.$cmspath.'static/web/js/enums.js"></script>'."\r\n";
         $GLOBALS['hasSetEnumJs'] = 'hasset';
     }
     $fields['nativeplace'] = $fields['infotype'] = '';
@@ -40,7 +41,7 @@ function lib_infoguide(&$ctag, &$refObj)
     $fields['nativeplace'] .= "<span id='span_nativeplace_son'></span>\r\n<span id='span_nativeplace_sec'></span>\r\n";
     $fields['nativeplace'] .= "<script>
         var em_nativeplaces = [];
-        fetch('/static/enums/nativeplace.json').then((resp)=>resp.json()).then((d)=>{
+        fetch('{$cmspath}static/enums/nativeplace.json').then((resp)=>resp.json()).then((d)=>{
             Object.entries(d).forEach(v=>{
                 em_nativeplaces[parseFloat(v[0])]= v[1];
             });
@@ -52,7 +53,7 @@ function lib_infoguide(&$ctag, &$refObj)
     $fields['infotype'] .= "<span id='span_infotype_son'></span><span id='span_infotype_sec'></span>\r\n";
     $fields['infotype'] .= "<script>
         var em_infotypes = [];
-        fetch('/static/enums/infotype.json').then((resp)=>resp.json()).then((d)=>{
+        fetch('{$cmspath}static/enums/infotype.json').then((resp)=>resp.json()).then((d)=>{
             Object.entries(d).forEach(v=>{
                 em_infotypes[parseFloat(v[0])]= v[1];
             });

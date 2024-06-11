@@ -38,19 +38,20 @@ function GetFormItem($ctag, $admintype = 'admin')
         $myformItem .= "</select>";
         $innertext = $myformItem;
     } else if ($fieldType == 'stepselect') {
-        global $hasSetEnumJs;
+        global $hasSetEnumJs, $cfg_cmspath;
+        $cmspath = ((empty($cfg_cmspath) || !preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
         $myformItem = '';
         $myformItem .= "<input type='hidden' id='hidden_{$fieldname}' name='{$fieldname}' value='0'>";
         $myformItem .= "<span id='span_{$fieldname}'></span>";
         $myformItem .= "<span id='span_{$fieldname}_son'></span>";
         $myformItem .= "<span id='span_{$fieldname}_sec'></span>";
         if ($hasSetEnumJs != 'hasset') {
-            $myformItem .= '<script src="/static/web/js/enums.js"></script>'."";
+            $myformItem .= '<script src="'.$cmspath.'static/web/js/enums.js"></script>'."";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
         $myformItem .= "<script>
         var em_{$fieldname}s = [];
-        fetch('/static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d) => {
+        fetch('{$cmspath}static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d)=>{
             Object.entries(d).forEach(v=>{
                 em_{$fieldname}s[parseFloat(v[0])]= v[1];
             });
@@ -156,7 +157,7 @@ EOT;
  */
 function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $admintype = 'admin', $fieldname = '')
 {
-    global $cfg_basedir, $adminid, $cfg_ml, $cfg_cookie_encode;
+    global $cfg_basedir, $cfg_cmspath, $adminid, $cfg_ml, $cfg_cookie_encode;
     if (!empty($adminid)) {
         $adminid = $adminid;
     } else {
@@ -200,7 +201,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         }
         return $dvalue;
     } else if ($dtype == "textdata") {
-        $ipath = '/data/textdata';
+        $ipath = $cfg_cmspath."/data/textdata";
         $tpath = ceil($aid / 5000);
         if (!is_dir($cfg_basedir.$ipath)) {
             MkdirAll($cfg_basedir.$ipath, $GLOBALS['cfg_dir_purview']);
@@ -271,19 +272,20 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         $myformItem .= "</select>";
         $innertext = $myformItem;
     } else if ($ctag->GetAtt("type") == 'stepselect') {
-        global $hasSetEnumJs;
+        global $hasSetEnumJs, $cfg_cmspath;
+        $cmspath = ((empty($cfg_cmspath) || preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
         $myformItem = '';
         $myformItem .= "<input type='hidden' id='hidden_{$fieldname}' name='{$fieldname}' value='{$fvalue}'>";
         $myformItem .= "<span id='span_{$fieldname}'></span>";
         $myformItem .= "<span id='span_{$fieldname}_son'></span>";
         $myformItem .= "<span id='span_{$fieldname}_sec'></span>";
         if ($hasSetEnumJs != 'hasset') {
-            $myformItem .= '<script src="/static/web/js/enums.js"></script>'."";
+            $myformItem .= '<script src="'.$cmspath.'static/web/js/enums.js"></script>'."";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
         $myformItem .= "<script>
         var em_{$fieldname}s = [];
-        fetch('/static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d) => {
+        fetch('{$cmspath}static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d)=>{
             Object.entries(d).forEach(v=>{
                 em_{$fieldname}s[parseFloat(v[0])]= v[1];
             });

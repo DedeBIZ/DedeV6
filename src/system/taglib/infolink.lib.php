@@ -25,11 +25,12 @@ function is_str_float($value){
 }
 function lib_infolink(&$ctag, &$refObj)
 {
-    global $dsql, $nativeplace, $infotype, $cfg_rewrite, $cfg_mainsite, $em_nativeplaces, $em_infotypes;
+    global $dsql, $nativeplace, $infotype, $cfg_rewrite, $cfg_cmspath, $cfg_mainsite, $em_nativeplaces, $em_infotypes;
     //$attlist="row|10,titlelen|30";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
-    $baseurl = preg_replace("#\/$#", '', $cfg_mainsite);
+    $cmspath = ((empty($cfg_cmspath) || !preg_match("#\/$#", $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
+    $baseurl = preg_replace("#\/$#", '', $cfg_mainsite).$cmspath;
     $smalltypes = '';
     if (!empty($refObj->TypeLink->TypeInfos['smalltypes'])) {
         $smalltypes = explode(',', $refObj->TypeLink->TypeInfos['smalltypes']);

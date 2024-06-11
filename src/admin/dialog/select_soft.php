@@ -157,7 +157,7 @@ if (!empty($noeditor)) {
                 window.opener.CKEDITOR.tools.callFunction(funcNum, reimg);
             }
             if (typeof window.opener.CKEDITOR.instances["<?php echo $f ?>"] !== "undefined") {
-                let addonHTML = `<a href='${reimg}' target='_blank'><img src='/static/web/img/icon_addon.png'> 附件：${reimg}</a>`;
+                let addonHTML = `<a href='${reimg}' target='_blank'><img src='<?php echo $cfg_cmspath ?>/static/web/img/icon_addon.png'>附件：${reimg}</a>`;
                 window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
             }
             if (window.opener.document.<?php echo $f ?> != null) {

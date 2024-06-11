@@ -156,8 +156,8 @@ class TagList
      */
     function Display()
     {
-        global $cfg_tags_dir;
-        $tagsDir = str_replace("{cmspath}", "", $cfg_tags_dir);
+        global $cfg_cmspath, $cfg_tags_dir;
+        $tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
         $makeDir = empty($this->Tag) ? $this->GetTruePath().$tagsDir."/index.html" : $this->GetTruePath().$tagsDir."/".$this->Tag."/index.html";
         if ($this->Tag != '') {
             $this->CountRecord();
@@ -346,7 +346,7 @@ class TagList
                         $row['sitepath']
                     );
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = '/static/web/img/thumbnail.jpg';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
                     }
                     /*if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
@@ -559,16 +559,16 @@ class TagList
     }
     function SetTagsDir($dir = '')
     {
-        global $cfg_tags_dir;
-        if ($dir == "") $dir = str_replace("{cmspath}", "", $cfg_tags_dir);
+        global $cfg_tags_dir, $cfg_cmspath;
+        if ($dir == "") $dir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
         $this->tagsDir = $dir;
     }
     //生成静态标签
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
-        global $cfg_dir_purview, $envs, $cfg_tags_dir, $cfg_cmsurl;
+        global $cfg_dir_purview, $envs, $cfg_cmspath, $cfg_tags_dir, $cfg_cmsurl;
         $envs['makeTag'] = 1;
-        $tagsdir = str_replace("{cmspath}", "", $cfg_tags_dir);
+        $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
         if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {
             $this->Fields['position'] = $cfg_cmsurl.$tagsdir."/";
         }

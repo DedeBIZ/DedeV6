@@ -142,7 +142,7 @@ if (!function_exists('GetTypeUrl')) {
         if ($isdefault == -1) {
             if ($cfg_rewrite == 'Y') {
                 //开启伪静态栏目/list-1、/list-2，则分页/list-1-1、/list-1-2
-                $reurl = "/list-".$typeid."";
+                return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
             } else {
                 $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
             }
@@ -196,7 +196,7 @@ if (!function_exists('GetTypeUrl')) {
 if (!function_exists('GetFileName')) {
     function GetFileName($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '', $money = 0, $filename = '')
     {
-        global $cfg_arcdir, $cfg_special, $cfg_arc_dirname, $cfg_rewrite;
+        global $cfg_cmspath, $cfg_arcdir, $cfg_special, $cfg_arc_dirname, $cfg_rewrite;
         //没指定栏目时用固定专题规则
         if (empty($namerule)) {
             $namerule = $cfg_special.'/{aid}.html';
@@ -206,7 +206,7 @@ if (!function_exists('GetFileName')) {
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
             if ($cfg_rewrite == 'Y') {
                 //开启伪静态文档/doc-1.html、/doc-2.html，则分页/doc-1-1.html、/doc-1-2.html
-                return "/doc-".$aid.".html";
+                return $GLOBALS['cfg_cmspath']."/doc-".$aid.".html";
             } else {
                 return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
             }
@@ -217,7 +217,7 @@ if (!function_exists('GetFileName')) {
                 $articleRule = strtolower($GLOBALS['cfg_df_namerule']);
             }
             if ($typedir == '') {
-                $articleDir  = $GLOBALS['cfg_arcdir'];
+                $articleDir  = $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
             }
             $dtime = GetDateMk($timetag);
             list($y, $m, $d) = explode('-', $dtime);
@@ -365,7 +365,7 @@ function GetSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
 function MfTypedir($typedir)
 {
     if (preg_match("/^(http|https|ftp):/i", $typedir)) return $typedir;
-    $typedir = str_replace("{cmspath}", "", $typedir);
+    $typedir = str_replace("{cmspath}", $GLOBALS['cfg_cmspath'], $typedir);
     $typedir = preg_replace("/\/{1,}/", "/", $typedir);
     return $typedir;
 }
@@ -526,7 +526,7 @@ function SetSysEnv($typeid = 0, $typename = '', $aid = 0, $title = '', $curfile 
     }
 }
 /**
- *  根据ID生成目录
+ *  根据id生成目录
  *
  * @param     string  $aid  文档id
  * @return    int
@@ -548,7 +548,7 @@ function DedeID2Dir($aid)
  */
 function GetFreeListUrl($lid, $namerule, $listdir, $defaultpage, $nodefault)
 {
-    $listdir = str_replace('{cmspath}', $listdir);
+    $listdir = str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $listdir);
     if ($nodefault == 1) {
         $okfile = str_replace('{page}', '1', $namerule);
         $okfile = str_replace('{listid}', $lid, $okfile);

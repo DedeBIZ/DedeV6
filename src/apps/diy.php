@@ -74,7 +74,7 @@ if ($action == 'post') {
                 $goto = "diy.php?action=list&diyid={$diy->diyid}";
                 $bkmsg = '提交成功，正在前往表单列表';
             } else {
-                $goto = '/';
+                $goto = !empty($cfg_cmspath) ? $cfg_cmspath : '/';
                 $bkmsg = '提交成功，请等待管理员处理';
             }
             ShowMsg($bkmsg, $goto);

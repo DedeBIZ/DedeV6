@@ -23,7 +23,7 @@ class TypeUnit
     function __construct()
     {
         $this->idCounter = 0;
-        $this->artDir = $GLOBALS['cfg_arcdir'];
+        $this->artDir = $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
         $this->baseDir = $GLOBALS['cfg_basedir'];
         $this->shortName = $GLOBALS['art_shortname'];
         $this->idArray = array();

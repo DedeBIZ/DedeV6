@@ -21,7 +21,7 @@ if ($fmdo == 'sendMail') {
         exit();
     }
     $userhash = md5($cfg_cookie_encode.'--'.$cfg_ml->fields['mid'].'--'.$cfg_ml->fields['email']);
-    $url = $cfg_basehost.$cfg_memberurl."/index_do.php?fmdo=checkMail&mid={$cfg_ml->fields['mid']}&userhash={$userhash}&do=1";
+    $url = $cfg_basehost.(empty($cfg_cmspath) ? '/' : $cfg_cmspath)."/user/index_do.php?fmdo=checkMail&mid={$cfg_ml->fields['mid']}&userhash={$userhash}&do=1";
     $url = preg_replace("#http:\/\/#i", '', $url);
     $proto = IsSSL()? "https://" : "http://";
     $url = $proto.preg_replace("#\/\/#i", '/', $url);

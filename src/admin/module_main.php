@@ -237,7 +237,8 @@ if ($action == '') {
             $setupsql = preg_replace("#TYPE=MyISAM#i", $sql41tmp, $setupsql);
         }
         //_ROOTURL_
-        $rooturl = $cfg_basehost;
+        if ($cfg_cmspath == '/') $cfg_cmspath = '';
+        $rooturl = $cfg_basehost.$cfg_cmspath;
         $setupsql = preg_replace("#_ROOTURL_#i", $rooturl, $setupsql);
         $setupsql = preg_replace("#[\r\n]{1,}#", "\n", $setupsql);
         $sqls = preg_split('/;[ \t]{0,}\n/', $setupsql);

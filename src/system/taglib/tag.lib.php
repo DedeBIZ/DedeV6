@@ -21,7 +21,7 @@ function lib_tag(&$ctag, &$refObj)
     $ltype = $sort;
     $num = $row;
     $addsql = '';
-    $tagsdir = str_replace("{cmspath}", "", $cfg_tags_dir);
+    $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
     if ($getall == 0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid'])) {
         $dsql->SetQuery("SELECT tid FROM `#@__taglist` WHERE aid = '{$refObj->Fields['aid']}' ");
         $dsql->Execute();

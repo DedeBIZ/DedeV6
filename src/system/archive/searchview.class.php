@@ -568,7 +568,7 @@ class SearchView
                     $row["title"] = $this->GetRedKeyWord(cn_substr($row["title"], $titlelen));
                     $row["id"] =  $row["id"];
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = '/static/web/img/thumbnail.jpg';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
                     }
                     /*if (!preg_match("/^(http|https):\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];

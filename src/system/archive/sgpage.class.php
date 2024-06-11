@@ -80,7 +80,7 @@ class sgpage
      */
     function SaveToHtml()
     {
-        $filename = $GLOBALS['cfg_basedir'].'/'.$this->Fields['filename'];
+        $filename = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_cmspath'].'/'.$this->Fields['filename'];
         $filename = preg_replace("/\/{1,}/", '/', $filename);
         $this->dtp->SaveTo($filename);
     }

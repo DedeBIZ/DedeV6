@@ -20,7 +20,7 @@ if (empty($maxpagesize)) $maxpagesize = 30;
 $startid = isset($startid) ? intval($startid) : 0;
 $endid = isset($endid) ? intval($endid) : 0;
 $tagid = isset($tagid) ? intval($tagid) : 0;
-$tagsdir = str_replace("{cmspath}", "", $cfg_tags_dir);
+$tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
 //生成
 if ($tagid > 0) {
     $upall = 0; //更新单个模式
@@ -50,7 +50,7 @@ if ($ctagid == 0 && $allfinish) {
 }
 $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
 //创建TAGS目录
-$tagsDir = str_replace("{cmspath}", "", $cfg_tags_dir);
+$tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
 MkdirAll($cfg_basedir.$tagsDir, $cfg_dir_purview);
 if (is_array($tag) && count($tag) > 0) {
     $dlist = new TagList($tag['id'], 'tag_list.htm');

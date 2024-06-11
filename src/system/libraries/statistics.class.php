@@ -52,7 +52,7 @@ class DedeStatistics {
         ksort($pm);
         $pm['sign'] = sha1(http_build_query($pm).md5($cfg_cookie_encode));
         $pm['dopost'] = "stat";
-        $url = '/apps/statistics.php?'.http_build_query($pm);
+        $url = $GLOBALS['cfg_cmspath'].'/apps/statistics.php?'.http_build_query($pm);
         return "
         (function() {
             let u = '{$url}';

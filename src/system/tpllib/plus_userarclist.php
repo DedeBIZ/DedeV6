@@ -28,7 +28,7 @@ function plus_userarclist(&$atts, &$refObj, &$fields)
         $row['arcrank'],$row['namerule'],$row['typedir'],$row['money'],$row['filename'],$row['moresite'],$row['siteurl'],$row['sitepath']);
         $row['typeurl'] = GetTypeUrl($row['typeid'],$row['typedir'],$row['isdefault'],$row['defaultname'],$row['ispart'],
         $row['namerule2'],$row['moresite'],$row['siteurl'],$row['sitepath']);
-        if ($row['litpic']=='') $row['litpic'] = '/static/web/img/thumbnail.jpg';
+        if ($row['litpic']=='') $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
         if (!preg_match("#^(http|https):\/\/#i", $row['litpic'])) {
             $row['picname'] = $row['litpic'] = $GLOBALS['cfg_cmsurl'].$row['litpic'];
         } else {

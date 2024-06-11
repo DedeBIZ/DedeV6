@@ -153,7 +153,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
             fclose($fp);
             return $addvar;
         } else {
-            $ipath = '/data/textdata';
+            $ipath = $GLOBALS['cfg_cmspath']."/data/textdata";
             $tpath = ceil($aid / 5000);
             if (!is_dir($GLOBALS['cfg_basedir'].$ipath)) {
                 MkdirAll($GLOBALS['cfg_basedir'].$ipath, $cfg_dir_purview);

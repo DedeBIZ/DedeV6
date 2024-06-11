@@ -25,12 +25,12 @@ if (!function_exists('obtaintheme')) {
 if (!function_exists('obtaintags')) {
     function obtaintags($aid, $num = 3)
     {
-        global $dsql;
+        global $dsql, $cfg_cmspath;
         $tags = '';
         $query = "SELECT * FROM `#@__taglist` WHERE aid='$aid' LIMIT $num";
         $dsql->Execute('tag', $query);
         while($row = $dsql->GetArray('tag')) {
-            $link = "/apps/tags.php?/{$row['tid']}";
+            $link = $cfg_cmspath."/apps/tags.php?/{$row['tid']}";
             $tags .= ($tags == '' ? "<a href='{$link}'>{$row['tag']}</a>" : "<a href='{$link}'>{$row['tag']}</a>");
         }
         return $tags;
