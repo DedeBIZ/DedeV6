@@ -20,10 +20,10 @@
 			<li class="breadcrumb-item"><a href="mychannel_main.php">文档模型管理</a></li>
 			<li class="breadcrumb-item active">新增文档模型</li>
 		</ol>
-		<?php if ($row['issystem'] == 1) {?><div class="alert alert-warning">默认文档模型字段，请谨慎修改</div><?php }?>
 		<div class="card shadow-sm">
 			<div class="card-header">修改文档模型</div>
 			<div class="card-body">
+				<?php if ($row['issystem'] == 1) {?><div class="alert alert-warning">默认文档模型字段，请谨慎修改</div><?php }?>
 				<form name="form1" action="mychannel_edit.php" method="post">
 					<input type="hidden" name="id" value="<?php echo $id?>">
 					<input type="hidden" name="dopost" value="save">

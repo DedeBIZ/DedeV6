@@ -61,10 +61,10 @@
 			<li class="breadcrumb-item"><a href="content_s_list.php">专题列表</a></li>
 			<li class="breadcrumb-item active">发布专题</li>
 		</ol>
-		<div class="alert alert-info">文档列表（英文逗号隔开，如：1,2,3）单条记录模板[field:fieldname/]标签，更多调用参考arclist标签</div>
 		<div class="card shadow-sm">
 			<div class="card-header">发布专题</div>
 			<div class="card-body">
+				<div class="alert alert-info">文档列表（英文逗号隔开，如：1,2,3）单条记录模板[field:fieldname/]标签，更多调用参考arclist标签</div>
 				<form name="form1" action="spec_add.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="dopost" value="save">
 					<input type="hidden" name="channelid" value="<?php echo $channelid?>">

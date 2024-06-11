@@ -13,10 +13,10 @@
 			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
 			<li class="breadcrumb-item active">更新专题</li>
 		</ol>
-		<div class="alert alert-info">发布专题后需要手动更新，建议专题目录设置仅可读写权限，存放目录：<?php echo $cfg_special.'/index.html';?></div>
 		<div class="card shadow-sm">
 			<div class="card-header">更新专题</div>
 			<div class="card-body">
+				<div class="alert alert-info">发布专题后需要手动更新，建议专题目录设置仅可读写权限，存放目录：<?php echo $cfg_special.'/index.html';?></div>
 				<form name="form1" action="makehtml_spec.php" method="get" target="stafrm">
 					<input type="hidden" name="dopost" value="ok">
 					<div class="table-responsive">

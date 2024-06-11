@@ -31,38 +31,40 @@ if (empty($dopost)) {
     exit;
 } elseif ($dopost == 'get_articles') {
 ?>
-<table class="table table-borderless">
-    <tbody>
-    <?php
-    $userCatalogSql = '';
-    if (count($admin_catalogs) > 0) {
-        $admin_catalog = join(',', $admin_catalogs);
-        $userCatalogSql = "AND arc.typeid IN($admin_catalog) ";
-    }
-    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,10";
-    $arcArr = array();
-    $dsql->Execute('m', $query);
-    while($row = $dsql->GetArray('m'))
-    {
-        $arcArr[] = $row;
-    }
-    ?>
-    <?php
-    if (count($arcArr) > 0) {
-        foreach($arcArr as $row)
-        {
-            if (trim($row['editcon']) == '') {
-                $row['editcon'] = 'archives_edit.php';
-            }
-            $rowarcrank = $row['arcrank']==-1 ? '待审核' : '已审核';
-            $pubdate = GetDateMk($row['pubdate']);
-            $row['title'] = cn_substr($row['title'], 50);
-            echo "<tr class='no-wrap'><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a></td><td width='70'>{$rowarcrank}</td><td width='110'>{$pubdate}</td></tr>";
+<div class="table-responsive">
+    <table class="table table-borderless">
+        <tbody>
+        <?php
+        $userCatalogSql = '';
+        if (count($admin_catalogs) > 0) {
+            $admin_catalog = join(',', $admin_catalogs);
+            $userCatalogSql = "AND arc.typeid IN($admin_catalog) ";
         }
-    ?>
-    </tbody>
-<?php }?>
-</table>
+        $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.mid, arc.pubdate, arc.channel, ch.editcon, tp.typename FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 {$userCatalogSql} AND arc.mid={$cuserLogin->getUserID()} ORDER BY arc.id DESC LIMIT 0,10";
+        $arcArr = array();
+        $dsql->Execute('m', $query);
+        while($row = $dsql->GetArray('m'))
+        {
+            $arcArr[] = $row;
+        }
+        ?>
+        <?php
+        if (count($arcArr) > 0) {
+            foreach($arcArr as $row)
+            {
+                if (trim($row['editcon']) == '') {
+                    $row['editcon'] = 'archives_edit.php';
+                }
+                $rowarcrank = $row['arcrank']==-1 ? '待审核' : '已审核';
+                $pubdate = GetDateMk($row['pubdate']);
+                $row['title'] = cn_substr($row['title'], 50);
+                echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a></td><td width='70'>{$rowarcrank}</td><td width='110'>{$pubdate}</td></tr>";
+            }
+        ?>
+        </tbody>
+    <?php }?>
+    </table>
+</div>
 <?php
     exit;
 } elseif ($dopost == "system_info") {

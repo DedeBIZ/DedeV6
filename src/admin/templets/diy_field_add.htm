@@ -17,10 +17,10 @@
 			<li class="breadcrumb-item"><a href="diy_main.php">自定义表单管理</a></li>
 			<li class="breadcrumb-item active">添加自定义表单字段</li>
 		</ol>
-		<div class="alert alert-warning">不支持字段输入单引号和双引号</div>
 		<div class="card shadow-sm">
 			<div class="card-header">添加自定义表单字段</div>
 			<div class="card-body">
+				<div class="alert alert-warning">不支持字段输入单引号和双引号</div>
 				<form name="form1" action="diy_field_add.php" method="post" onSubmit="return GetFields();">
 					<input type="hidden" name="action" value="save">
 					<input type="hidden" name="diyid" value="<?php echo $diyid?>">

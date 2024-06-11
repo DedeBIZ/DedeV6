@@ -25,10 +25,10 @@
 			<li class="breadcrumb-item"><a href="templets_tagsource.php">标签源码管理</a></li>
 			<li class="breadcrumb-item active">新建/修改标签源码</li>
 		</ol>
-		<div class="alert alert-warning">默认标签源码文件，请谨慎修改</div>
 		<div class="card shadow-sm">
 			<div class="card-header">新建/修改标签源码</div>
 			<div class="card-body">
+				<div class="alert alert-warning">默认标签源码文件，请谨慎修改</div>
 				<form name="form1" action="tpl.php" method="post">
 					<input type="hidden" name="actiondo" value="<?php echo $action;?>">
 					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">

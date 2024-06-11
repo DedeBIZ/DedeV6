@@ -154,49 +154,39 @@ $(document).ready(function() {
 				} else {
 					dedebizInfo = false;
 				}
-				let infoStr = `<table class="table table-borderless"><tbody>`;
+				let infoStr = `<div class="table-responsive"><table class="table table-borderless"><tbody>`;
 				if (typeof rsp.result.domain !== "undefined") {
 					infoStr += `<tr>
 						<td width="25%">
-							<div class="web-info">
-								<p>授权域名</p>
-								<span>${rsp.result.domain}</span>
-							</div>
+							<p>授权域名</p>
+							<span>${rsp.result.domain}</span>
 						</td>
 						<td width="25%">
-							<div class="web-info">
-								<p>站点名称</p>
-								<span>${rsp.result.title}</span>
-							</div>
+							<p>站点名称</p>
+							<span>${rsp.result.title}</span>
 						</td>
 						<td width="25%">
-							<div class="web-info">
-								<p>授权证书</p>
-								<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
-							</div>
+							<p>授权证书</p>
+							<span><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" target="_blank">查看证书</a></span>
 						</td>
 						<td width="25%">
-							<div class="web-info">
-								<p>授权时间</p>
-								<span>${rsp.result.auth_at}</span>
-							</div>
+							<p>授权时间</p>
+							<span>${rsp.result.auth_at}</span>
 						</td>
 					</tr>`;
 				}
-				infoStr += "</tbody></table>";
+				infoStr += "</tbody></table></div>";
 				$("#system-info").html(infoStr);
 			} else {
-				$("#system-info").html(`<table class="table table-borderless">
+				$("#system-info").html(`<div class="table-responsive"><table class="table table-borderless">
 				<tbody>
 					<tr>
 						<td>
-							<div class="web-info">
-								<p>${rsp.msg}</p>
-								<span>前往DedeBIZ官网，查看版本相关授权信息</span>
-							</div>
+							<p>${rsp.msg}</p>
+							<span>前往DedeBIZ官网，查看版本相关授权信息</span>
 						</td>
 					</tr>
-				</tbody></table>`);
+				</tbody></table></div>`);
 			}
 		});
 	});

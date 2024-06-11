@@ -20,10 +20,10 @@
 			<li class="breadcrumb-item"><a href="mytag_main.php">自定义宏标记</a></li>
 			<li class="breadcrumb-item active">添加自定义宏标记</li>
 		</ol>
-		<div class="alert alert-info">标签{dede:mytag name='标记名称' ismake='yes或no' typeid='栏目id'/}调用</div>
 		<div class="card shadow-sm">
 			<div class="card-header">添加自定义宏标记</div>
 			<div class="card-body">
+				<div class="alert alert-info">标签{dede:mytag name='标记名称' ismake='yes或no' typeid='栏目id'/}调用</div>
 				<form name="form1" action="mytag_add.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="dopost" value="save">
 					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">

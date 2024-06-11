@@ -24,39 +24,43 @@
 					<div class="card-header">
 						<span><i class="fa fa-bar-chart"></i> 流量统计表</span>
 					</div>
-					<div class="card-body table-responsive">
-						<table class="table">
-							<tbody>
-								<tr>
-									<td width="20%" class="border-top-0"></td>
-									<td width="20%" class="border-top-0">浏览次数（PV）</td>
-									<td width="20%" class="border-top-0">独立访客（UV）</td>
-									<td width="20%" class="border-top-0">独立地址（IP）</td>
-									<td width="20%" class="border-top-0">访问次数（VV）</td>
-								</tr>
-								<tr>
-									<td>今日记录</td>
-									<td id="today_pv">0</td>
-									<td id="today_uv">0</td>
-									<td id="today_ip">0</td>
-									<td id="today_vv">0</td>
-								</tr>
-								<tr>
-									<td>昨日记录</td>
-									<td id="yestoday_pv">0</td>
-									<td id="yestoday_uv">0</td>
-									<td id="yestoday_ip">0</td>
-									<td id="yestoday_vv">0</td>
-								</tr>
-								<tr>
-									<td>历史峰值</td>
-									<td id="total_pv">0</td>
-									<td id="total_uv">0</td>
-									<td id="total_ip">0</td>
-									<td id="total_vv">0</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<td scope="col"></td>
+										<td scope="col">浏览次数（PV）</td>
+										<td scope="col">独立访客（UV）</td>
+										<td scope="col">独立地址（IP）</td>
+										<td scope="col">访问次数（VV）</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>今日记录</td>
+										<td id="today_pv">0</td>
+										<td id="today_uv">0</td>
+										<td id="today_ip">0</td>
+										<td id="today_vv">0</td>
+									</tr>
+									<tr>
+										<td>昨日记录</td>
+										<td id="yestoday_pv">0</td>
+										<td id="yestoday_uv">0</td>
+										<td id="yestoday_ip">0</td>
+										<td id="yestoday_vv">0</td>
+									</tr>
+									<tr>
+										<td>历史峰值</td>
+										<td id="total_pv">0</td>
+										<td id="total_uv">0</td>
+										<td id="total_ip">0</td>
+										<td id="total_vv">0</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -65,49 +69,39 @@
 					<div class="card-header">
 						<span><i class="fa fa-cogs"></i> 软件信息</span>
 					</div>
-					<div class="card-body table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="16%">
-										<div class="web-info">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="16%">
 											<p>操作系统</p>
 											<span><?php echo PHP_OS;?></span>
-										</div>
-									</td>
-									<td width="16%">
-										<div class="web-info">
+										</td>
+										<td width="16%">
 											<p>WEB服务器</p>
 											<span><?php echo GetSimpleServerSoftware();?></span>
-										</div>
-									</td>
-									<td width="16%">
-										<div class="web-info">
+										</td>
+										<td width="16%">
 											<p>IP地址</p>
 											<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
-										</div>
-									</td>
-									<td width="16%">
-										<div class="web-info">
+										</td>
+										<td width="16%">
 											<p>PHP版本</p>
 											<span><?php echo @phpversion();?></span>
-										</div>
-									</td>
-									<td width="16%">
-										<div class="web-info">
+										</td>
+										<td width="16%">
 											<p>数据库版本</p>
 											<span><?php echo $dsql->GetVersion();?></span>
-										</div>
-									</td>
-									<td width="16%">
-										<div class="web-info">
+										</td>
+										<td width="16%">
 											<p>上传限制</p>
 											<span><?php echo ini_get("post_max_size")?></span>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -117,7 +111,7 @@
 						<span><i class="fa fa-copyright"></i> 版本授权</span>
 						<a href="javascript:;" id="systemUpdate" class="float-right">软件更新<span class="updates-dot"></span></a>
 					</div>
-					<div class="card-body table-responsive" id="system-info">正在加载</div>
+					<div class="card-body" id="system-info">正在加载</div>
 				</div>
 			</div>
 			<div class="w-65 pr-md-3">
@@ -135,7 +129,7 @@
 					<div class="card-header">
 						<span><i class="fa fa-list"></i> 最新文档</span>
 					</div>
-					<div class="card-body table-responsive" id="system-word">正在加载</div>
+					<div class="card-body" id="system-word">正在加载</div>
 				</div>
 			</div>
 		</div>

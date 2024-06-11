@@ -17,10 +17,10 @@
 			<li class="breadcrumb-item"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a></li>
 			<li class="breadcrumb-item active">修改会员</li>
 		</ol>
-		<?php if ($row['matt']==10) echo '<div class="alert alert-info">该会员关连网站管理员，请谨慎修改</div>';?>
 		<div class="card shadow-sm">
 			<div class="card-header">修改会员</div>
 			<div class="card-body">
+				<?php if ($row['matt']==10) echo '<div class="alert alert-info">该会员关连网站管理员，请谨慎修改</div>';?>
 				<form name="form2" action="member_do.php" method="post">
 					<input type="hidden" name="dopost" value="edituser">
 					<input type="hidden" name="id" value="<?php echo $id?>">

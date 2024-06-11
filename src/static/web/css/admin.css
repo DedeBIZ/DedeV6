@@ -354,11 +354,6 @@ body.menu-show .body-right {
 	height:99%;
 	border:0
 }
-.web-info {
-	padding:10px;
-	background:var(--light);
-	white-space:nowrap
-}
 #_fileList,#_verList {
 	height:350px;
 	overflow-y:auto
@@ -652,22 +647,22 @@ body.menu-show .body-right {
 	border:0
 }
 .card-header {
-	padding:0.5rem 1rem;
+	padding:1rem;
 	background-color:rgba(0,0,0,0);
 	border-bottom:1px solid rgba(0,0,0,0.05)
 }
 .card-body {
-	padding:0.5rem
+	padding:1rem
 }
 .card-body canvas {
-	height:348px!important
+	height:365px!important
 }
 .table {
 	margin-bottom:0;
 	color:var(--gray)
 }
 .table th,.table td {
-	padding:0.5rem;
+	padding:0.5rem 0;
 	vertical-align:middle
 }
 .form-control {
@@ -783,7 +778,7 @@ span.page-link {
 	color:var(--white);
 	background:var(--green)
 }
-input,select,textarea,.web-info,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
+input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
 	border-radius:var(--b-radius)!important
 }
 .cke_top {

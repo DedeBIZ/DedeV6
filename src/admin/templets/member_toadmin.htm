@@ -17,11 +17,10 @@
 			<li class="breadcrumb-item"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a></li>
 			<li class="breadcrumb-item active">提升会员</li>
 		</ol>
-		<?php if ($row['matt']==10) {echo '<div class="alert alert-info">您已经是管理员，不要提升了</div>';} else {?>
 		<div class="card shadow-sm">
 			<div class="card-header">提升会员</div>
 			<div class="card-body">
-				
+				<?php if ($row['matt']==10) {echo '<div class="alert alert-info">您已经是管理员，不要提升了</div>';} else {?>
 				<form name="form2" action="member_toadmin.php" method="post">
 					<input type="hidden" name="dopost" value="toadmin">
 					<input type="hidden" name="userid" value="<?php echo $row['userid']?>">
@@ -93,8 +92,8 @@
 						</table>
 					</div>
 				</form>
+				<?php }?>
 			</div>
 		</div>
-		<?php }?>
 	</body>
 </html>
