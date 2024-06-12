@@ -68,7 +68,7 @@ function ColorSel(c, oname) {
 	}
 }
 function ShowColor(e, o) {
-	LoadNewDiv(e, "../static/web/img/colornew.htm", "colordlg");
+	LoadNewDiv(e, "../theme/system/colornew.htm", "colordlg");
 }
 function ShowHide(objname) {
 	var obj = $Obj(objname);
