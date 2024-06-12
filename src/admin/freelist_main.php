@@ -57,7 +57,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     global $cfg_phpurl, $addsql;
     $start = ($pageno-1) * $pagesize;
     $printhead ="<div class='table-responsive'>
-    <table class='table table-borderless'>
+    <table class='table table-borderless table-hover'>
         <thead>
         <tr>
             <td scope='col'><a href=\"javascript:ReloadPage('aid');\">id</a></td>

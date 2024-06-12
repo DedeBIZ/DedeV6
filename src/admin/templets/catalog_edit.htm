@@ -164,7 +164,7 @@
 										<label><input type="radio" name="cross" id="cross2" value="2" onclick="CheckCross();" <?php if ($myrow['cross']==2) echo 'checked';?>> 指定交叉栏目id（英文逗号隔开）</label>
 										<a href="javascript:ShowHide('helpvarco');" class="btn btn-success btn-sm">说明</a>
 										<div id="crossid" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><textarea name="crossid" class="admin-textarea-sm"><?php echo $myrow['crossid'];?></textarea></div>
-										<div id="helpvarco" class="alert alert-info my-2" style="display:none">交叉栏目该栏目与另一个非子栏目交叉的情况，相当于副栏目功能</div>
+										<div id="helpvarco" class="alert alert-secondary my-2" style="display:none">交叉栏目该栏目与另一个非子栏目交叉的情况，相当于副栏目功能</div>
 									</td>
 								</tr>
 								<tr>
@@ -188,7 +188,7 @@
 										<input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="admin-input-lg">
 										<button type="button" name="set2" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.tempindex')">选择</button>
 										<a href="javascript:ShowHide('helpvar1');" class="btn btn-success btn-sm">说明</a>
-										<div id="helpvar1" class="alert alert-info my-2" style="display:none">
+										<div id="helpvar1" class="alert alert-secondary my-2" style="display:none">
 											<p>{tid} 栏目id</p>
 											<span>{cid} 栏目模型名字id</span>
 										</div>
@@ -204,7 +204,7 @@
 									<td>
 										<input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="admin-input-lg">
 										<a href="javascript:ShowHide('helpvar2');" class="btn btn-success btn-sm">说明</a>
-										<div id="helpvar2" class="alert alert-info my-2" style="display:none">
+										<div id="helpvar2" class="alert alert-secondary my-2" style="display:none">
 											<p>静态规则</p>
 											<p>{tid} 栏目id</p>
 											<p>{page} 栏目页码数</p>
@@ -219,7 +219,7 @@
 									<td>
 										<input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="admin-input-lg">
 										<a href="javascript:ShowHide('helpvar3');" class="btn btn-success btn-sm">说明</a>
-										<div id="helpvar3" class="alert alert-info my-2" style="display:none">
+										<div id="helpvar3" class="alert alert-secondary my-2" style="display:none">
 											<p>静态规则</p>
 											<p>{Y}{M}{D} 年月日</p>
 											<p>{timestamp} INT类型的UNIX时间戳</p>

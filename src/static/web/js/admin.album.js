@@ -56,5 +56,5 @@ function addImage(src, pid) {
 			newImgDiv.innerHTML = '<div class="atlas-head"><img src="' + src + '" onclick="addtoEdit(' + pid + ')"></div>' + delstr;
 		}
 	}
-	newImgDiv.innerHTML += '<div class="atlas-foot"><input type="text" name="picinfo' + atlasimg+ '" class="atlas-input" placeholder="请输入图片注释"></div>';
+	newImgDiv.innerHTML += '<div class="atlas-body"><input type="text" name="picinfo' + atlasimg+ '" class="atlas-input" placeholder="请输入图片注释"></div>';
 }

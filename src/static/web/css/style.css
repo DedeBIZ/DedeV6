@@ -210,7 +210,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	cursor:pointer
 }
 .likes .comment-container:hover {
-	background:var(--white)ce0
+	background:var(--white)
 }
 .likes .comment-top {
 	display:flex;

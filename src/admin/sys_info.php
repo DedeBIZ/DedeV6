@@ -102,8 +102,8 @@ else if ($dopost == 'search') {
 <table id="tdSearch" class="table table-borderless">
 <thead>
     <tr>
-        <td width="370">变量说明</td>
-        <td width="850">变量值</td>
+        <td width="25%">变量说明</td>
+        <td width="50%">变量值</td>
         <td scope="col">变量名称</td>
     </tr>
 </thead>

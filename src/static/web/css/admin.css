@@ -256,8 +256,8 @@ input:focus,select:focus,textarea:focus {
 }
 .admin-head .user li img {
 	margin-right:0.5rem;
-	width:30px;
-	height:30px;
+	width:25px;
+	height:25px;
 	border-radius:50%
 }
 body.menu-hide .menu-left {
@@ -394,7 +394,6 @@ body.menu-show .body-right {
 	right:0
 }
 .colordlg {
-	padding:0.5rem;
 	background:var(--white);
 	border:1px solid var(--gray-300);
 	z-index:19991
@@ -403,23 +402,22 @@ body.menu-show .body-right {
 	z-index:19992
 }
 .quicksel {
-	padding:0.5rem;
 	height:350px;
 	overflow-y:auto;
 	z-index:19993
 }
 .quickselitem .topcat {
 	margin-bottom:1rem;
-	padding:0 10px;
+	padding:0 1rem;
 	background:var(--light)
 }
 .quickselitem .soncat {
 	margin-bottom:1rem;
-	padding:0 10px
+	padding:0 1rem
 }
 .quickselitem .list {
 	display:inline-block;
-	padding-right:0.25rem
+	padding-right:0.5rem
 }
 .mysource,.mywriter {
 	width:500px;
@@ -427,8 +425,8 @@ body.menu-show .body-right {
 }
 .atlas {
 	float:left;
-	margin-right:10px;
-	margin-bottom:10px;
+	margin-right:1rem;
+	margin-bottom:1rem;
 	width:220px;
 	height:auto;
 	background:var(--bg);
@@ -439,19 +437,14 @@ body.menu-show .body-right {
 	height:120px
 }
 .atlas-head img {
-	margin:0;
 	max-width:220px;
-	max-height:120px;
-	border-radius:var(--b-radius) var(--b-radius) 0 0!important
+	max-height:120px
+}
+.atlas-head,.atlas-body,.atlas-foot {
+	margin-bottom:0.5rem
 }
 .atlas-input {
-	width:220px
-}
-.atlas-body {
-	margin:0.5rem 0
-}
-.atlas-foot input[type=text] {
-	border-radius:0 0 var(--b-radius) var(--b-radius)!important
+	width:200px
 }
 .adtab li {
 	display:inline-block;
@@ -471,7 +464,7 @@ body.menu-show .body-right {
 .helpinfo {
 	float:left;
 	display:none;
-	padding:10px;
+	padding:1rem;
 	width:100%;
 	background:var(--bg);
 	border:1px solid var(--gray-300);
@@ -485,20 +478,20 @@ body.menu-show .body-right {
 	border-radius:var(--b-radius)
 }
 .tips-head {
-	margin:0 20px;
-	padding:18px 0;
+	margin:0 1rem;
+	padding:1rem 0;
 	border-bottom:1px solid var(--light)
 }
 .tips-head p {
 	margin:0;
-	padding-left:10px;
+	padding-left:1rem;
 	line-height:16px;
 	color:var(--gray-dark);
 	text-align:left;
 	border-left:3px solid var(--yellow)
 }
 .tips-body {
-	padding:20px;
+	padding:1rem;
 	min-height:160px;
 	color:var(--gray);
 	word-break:break-all;
@@ -519,18 +512,18 @@ body.menu-show .body-right {
 	cursor:pointer
 }
 #wrap {
-	padding:10px
+	padding:1rem
 }
 #topbar {
-	padding:10px 0;
+	padding:1rem 0;
 	border-bottom:1px solid var(--light);
 	text-align:right
 }
 #file_list {
 	display:grid;
-	grid-gap:10px;
+	grid-gap:1rem;
 	grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-	padding-top:10px
+	padding-top:1rem
 }
 #file_list:empty:after {
 	content:'拖拽图片到此处上传'
@@ -538,7 +531,7 @@ body.menu-show .body-right {
 #file_list li {
 	display:block;
 	position:relative;
-	padding:10px;
+	padding:1rem;
 	vertical-align:top;
 	border-radius:var(--b-radius)
 }
@@ -567,7 +560,7 @@ body.menu-show .body-right {
 }
 #file_list li .namebox {
 	display:flex;
-	padding:10px;
+	padding:1rem;
 	justify-content:center;
 	align-items:flex-start
 }
@@ -601,7 +594,7 @@ body.menu-show .body-right {
 	content:'\f1f8'
 }
 #selColor {
-	padding:0.22rem;
+	padding:0.2rem;
 	width:45px
 }
 #edsta {

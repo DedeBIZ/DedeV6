@@ -21,13 +21,13 @@
 				ShowMsg("最多添加15个选项");
 					return;
 				}
-				var htmldata = "<div class='py-2'>选项" + i + "：<input type='text' name='voteitem" + i + "' class='admin-input-lg'></div>";
+				var htmldata = "<div class='my-2'>选项" + i + "：<input type='text' name='voteitem" + i + "' class='admin-input-lg'></div>";
 				jQuery("#voteitem").append(htmldata);
 			}
 			function ResetItem() {
 				i = 1;
 				var obj = document.getElementById("voteitem");
-				obj.innerHTML = "<div class='py-2'>选项1：<input type='text' name='voteitem1' class='admin-input-lg'></div>";
+				obj.innerHTML = "<div class='my-2'>选项1：<input type='text' name='voteitem1' class='admin-input-lg'></div>";
 			}
 		</script>
 	</head>

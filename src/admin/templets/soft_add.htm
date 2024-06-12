@@ -24,7 +24,7 @@
 				var endNum = parseInt(document.form1.picnum.value) + startNum - 1;
 				if (endNum > 30) endNum = 30;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<div class='py-2'><label>软件网址" + startNum + "：<input type='text' name='softurl" + startNum + "' class='admin-input-lg'></label> <label>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='admin-input-sm'></label> <button type='button' name='sel1' id='sel1' onclick=\"SelectSoft('form1.softurl"+startNum+"')\" class='btn btn-success btn-sm'>选择</button></div>";
+					upfield.innerHTML += "<div class='my-2'><label>软件网址" + startNum + "：<input type='text' name='softurl" + startNum + "' class='admin-input-lg'></label> <label>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='admin-input-sm'></label> <button type='button' name='sel1' id='sel1' onclick=\"SelectSoft('form1.softurl"+startNum+"')\" class='btn btn-success btn-sm'>选择</button></div>";
 				}
 			}
 			function ShowHideAddr() {
@@ -278,7 +278,7 @@
 											$siteurl = trim($siteurl);
 											$sitename = trim($sitename);
 										?>
-										<div class="py-2">
+										<div class="my-2">
 											<input type="hidden" name="forconfig<?php echo $startNum;?>" value="1">
 											<label>镜像域名：<input type="text" name="softurlfirst<?php echo $startNum;?>" class="admin-input-lg" value="<?php echo $siteurl;?>"></label>
 											<label>镜像目录：<input type="text" name="softurl<?php echo $startNum;?>" class="admin-input-sm"></label>

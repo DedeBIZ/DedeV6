@@ -809,7 +809,7 @@ else if ($dopost == 'attsDlg') {
     ?>    
     <form name="quicksel" action="javascript:;" method="get">
         <div class="quicksel"><?php $tus->ListAllType($channelid);?></div>
-        <div class="text-center py-2">
+        <div class="text-center">
             <button onclick="getSelCat('<?php echo $targetid;?>');" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-outline-success btn-sm">关闭</button>
         </div>

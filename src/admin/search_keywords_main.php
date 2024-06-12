@@ -64,7 +64,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
     <div class='table-responsive'>
-    <table class='table table-borderless'>
+    <table class='table table-borderless table-hover'>
     <thead>
         <tr>
             <td scope='col'>选择</td>
