@@ -113,58 +113,66 @@
 								</tr>
 								<tr>
 									<td colspan="4">
-										<table id="addQuick" align="center" class="table">
-											<tr align="center">
-												<td width="6%" class="border-top-0">排序</td>
-												<td width="16%" class="border-top-0">顶级栏目名称</td>
-												<td width="60%" class="border-top-0">子栏目名称（英文逗号隔开，如：栏目一,栏目二）</td>
-												<td class="border-top-0"><button type="button" class="btn btn-success btn-sm add">添加</button></td>
-											</tr>
-											<tr align="center">
-												<td class="rank">
-													<input type="hidden" name="posttype" class="pubinputs">
-													<input type="text" name="rank" value="1" class="pubinputs admin-input-sm">
-												</td>
-												<td><input type="text" name="toptype" class="pubinputs admin-input-sm"></td>
-												<td><input type="text" name="sontype" class="pubinputs w-100"></td>
-												<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
-											</tr>
-											<?php for($i=2;$i<=10;$i++) {?>
-											<tr align="center" class="repeat">
-												<td class="rank">
-													<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-													<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-sm">
-												</td>
-												<td><input type="text" name="toptype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
-												<td><input type="text" name="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
-												<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
-											</tr>
-											<?php }?>
+										<table id="addQuick" class="table">
+											<thead>
+												<tr>
+													<td scope="col">排序</td>
+													<td scope="col">顶级栏目名称</td>
+													<td scope="col">子栏目名称（英文逗号隔开，如：栏目一,栏目二）</td>
+													<td scope="col"><button type="button" class="btn btn-success btn-sm add">添加</button></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="rank">
+														<input type="hidden" name="posttype" class="pubinputs">
+														<input type="text" name="rank" value="1" class="pubinputs admin-input-sm">
+													</td>
+													<td><input type="text" name="toptype" class="pubinputs admin-input-lg"></td>
+													<td><input type="text" name="sontype" class="pubinputs w-100"></td>
+													<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
+												</tr>
+												<?php for($i=2;$i<=10;$i++) {?>
+												<tr class="repeat">
+													<td class="rank">
+														<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
+														<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-sm">
+													</td>
+													<td><input type="text" name="toptype<?php echo $i;?>" class="pubinputs admin-input-lg"></td>
+													<td><input type="text" name="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
+													<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
+												</tr>
+												<?php }?>
+											</tbody>
 										</table>
-										<table id="addQuickRel" align="center" class="table" style="display:none">
-											<tr align="center">
-												<td width="6%">排序</td>
-												<td width="16%">栏目名称</td>
-												<td><button type="button" class="btn btn-success btn-sm addrel">添加</button></td>
-											</tr>
-											<tr align="center">
-												<td class="rank">
-													<input type="hidden" name="posttype" class="pubinputs">
-													<input type="text" name="rank" value="1" class="pubinputs admin-input-sm">
-												</td>
-												<td><input type="text" name="reltype" class="pubinputs admin-input-sm"></td>
-												<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
-											</tr>
-											<?php for($i=2;$i<=10;$i++) {?>
-											<tr align="center" class="repeat">
-												<td class="rank">
-													<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-													<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-sm">
-												</td>
-												<td><input type="text" name="reltype<?php echo $i;?>" class="pubinputs admin-input-sm"></td>
-												<td><button type="button" class="btn btn-danger btn-sm del">删除</button></td>
-											</tr>
-											<?php }?>
+										<table id="addQuickRel" class="table" style="display:none">
+											</thead>
+												<tr>
+													<td scope="col">排序</td>
+													<td scope="col">栏目名称</td>
+													<td scope="col"><button type="button" class="btn btn-success btn-sm addrel">添加</button></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="rank">
+														<input type="hidden" name="posttype" class="pubinputs">
+														<input type="text" name="rank" value="1" class="pubinputs admin-input-sm">
+													</td>
+													<td><input type="text" name="reltype" class="pubinputs admin-input-lg"></td>
+													<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
+												</tr>
+												<?php for($i=2;$i<=10;$i++) {?>
+												<tr class="repeat">
+													<td class="rank">
+														<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
+														<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-sm">
+													</td>
+													<td><input type="text" name="reltype<?php echo $i;?>" class="pubinputs admin-input-lg"></td>
+													<td><button type="button" class="btn btn-danger btn-sm del">删除</button></td>
+												</tr>
+												<?php }?>
+											</tbody>
 										</table>
 									</td>
 								</tr>
