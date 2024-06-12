@@ -22,7 +22,7 @@
 				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs">开发</a>
 				<?php }?>
 			</div>
-			<nav class="collapse navbar-collapse pr-3">
+			<nav class="collapse navbar-collapse">
 				<ul class="navbar-nav mr-lg-auto">
 					<li class="nav-item"><a class="nav-link" href="javascript:;" id="togglemenu"><i class="fa fa-dedent" title="侧边伸缩"></i></a></li>
 						<?php if ($cuserLogin->getUserType() >= 5) {?>
@@ -45,7 +45,7 @@
 						</form>
 					</li>
 				</ul>
-				<div class="user d-none d-lg-block">
+				<div class="user pr-3 d-none d-lg-block">
 					<a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?></a>
 					<a href="exit.php" class="ml-3"><i class="fa fa-power-off" title="退出后台"></i></a>
 				</div>
