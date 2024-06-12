@@ -12,7 +12,7 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body class="menu-show">
-		<header class="admin-head">
+		<header class="admin-head navbar navbar-expand navbar-dark">
 			<div class="logo">
 				<a href="index_body.php" target="main" class="name"><?php echo cn_substr($cfg_webname, 12);?></a>
 				<span class="version"><?php echo $cfg_version_detail;?></span>
@@ -22,40 +22,34 @@
 				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs">开发</a>
 				<?php }?>
 			</div>
-			<nav class="item">
-				<ul>
-					<li><a href="javascript:;" id="togglemenu"><i class="fa fa-dedent" title="侧边伸缩"></i></a></li>
-					<?php if ($cuserLogin->getUserType() >= 5) {?>
-					<li class="d-none d-lg-block"><a href="catalog_main.php" target="main"><i class="fa fa-bars" title="栏目管理"></i></a></li>
-					<li class="d-none d-lg-block"><a href="tags_main.php" target="main"><i class="fa fa-tags" title="标签管理"></i></a></li>
-					<li class="d-none d-lg-block"><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE ? '?activepath='.$cfg_medias_dir:'';?>" target="main"><i class="fa fa-folder" title="文件管理"></i></a></li>
-					<li class="d-none d-lg-block"><a href="diy_main.php" target="main"><i class="fa fa-area-chart" title="自定义表单管理"></i></a></li>
+			<nav class="collapse navbar-collapse pr-3">
+				<ul class="navbar-nav mr-lg-auto">
+					<li class="nav-item"><a class="nav-link" href="javascript:;" id="togglemenu"><i class="fa fa-dedent" title="侧边伸缩"></i></a></li>
+						<?php if ($cuserLogin->getUserType() >= 5) {?>
+					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="catalog_main.php" target="main"><i class="fa fa-bars" title="栏目管理"></i></a></li>
+					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="tags_main.php" target="main"><i class="fa fa-tags" title="标签管理"></i></a></li>
+					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE ? '?activepath='.$cfg_medias_dir:'';?>" target="main"><i class="fa fa-folder" title="文件管理"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="diy_main.php" target="main"><i class="fa fa-area-chart" title="自定义表单管理"></i></a></li>
 					<?php }?>
 					<?php if (!DEDEBIZ_SAFE_MODE) {?>
-					<li class="d-none d-lg-block"><a href="templets_main.php" target="main"><i class="fa fa-cube" title="主题模板"></i></a></li>
+					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="templets_main.php" target="main"><i class="fa fa-cube" title="主题模板"></i></a></li>
 					<?php }?>
-					<li class="d-none d-lg-block"><a href="makehtml_all.php" target="main"><i class="fa fa-repeat" title="更新整站"></i></a></li>
-					<li class="d-none d-lg-block"><a href="sys_info.php" target="main"><i class="fa fa-cog" title="系统设置"></i></a></li>
-					<li class="d-none d-lg-block">
+					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="makehtml_all.php" target="main"><i class="fa fa-repeat" title="更新整站"></i></a></li>
+					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="sys_info.php" target="main"><i class="fa fa-cog" title="系统设置"></i></a></li>
+					<?php echo ($cfg_mb_open == 'Y') ? '<li class="nav-item"><a class="nav-link" href="/user/" target="_blank"><i class="fa fa-user-circle" title="会员中心"></i></a></li>' : '';?>
+					<li class="nav-item"><a class="nav-link" href="/" target="_blank"><i class="fa fa-home" title="预览首页"></i></a></li>
+					<li class="nav-item d-none d-lg-block">
 						<form action="action_search.php" method="post" target="main">
 							<input type="text" name="keyword" placeholder="功能搜索" class="admin-input-sm">
 							<button type="submit" class="search"><i class="fa fa-search"></i></button>
 						</form>
 					</li>
 				</ul>
+				<div class="user d-none d-lg-block">
+					<a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?></a>
+					<a href="exit.php" class="ml-3"><i class="fa fa-power-off" title="退出后台"></i></a>
+				</div>
 			</nav>
-			<div class="user">
-				<ul>
-					<li><a href="/" target="_blank"><i class="fa fa-home" title="预览首页"></i></a></li>
-					<?php echo ($cfg_mb_open == 'Y') ? '<li><a href="/user/" target="_blank"><i class="fa fa-user-circle" title="会员中心"></i></a></li>' : '';?>
-					<li class="d-none d-lg-block"><a href="javascript:document.getElementById('main').contentWindow.location.reload(true);"><i class="fa fa-refresh" title="刷新页面"></i></a></li>
-					<li class="d-none d-lg-block">
-						<a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?></a>
-						<?php if ($cuserLogin->getUserType() == 10) {echo '<span class="btn btn-success btn-xs">管理员</span>';} else if ($cuserLogin->getUserType() == 5) {echo '<span class="btn btn-success btn-xs">栏目员</span>';} else {echo '<span class="btn btn-success btn-xs">文档员</span>';}?>
-					</li>
-					<li><a href="exit.php"><i class="fa fa-power-off" title="退出后台"></i></a></li>
-				</ul>
-			</div>
 		</header>
 		<aside class="menu-left">
 			<ul id="sidemenu" class="sidemenu">
@@ -65,8 +59,8 @@
 				?>
 			</ul>
 		</aside>
-		<section class="body-right">
+		<main class="body-right">
 			<iframe src="index_body.php" name="main" id="main" frameborder="0"></iframe>
-		</section>
+		</main>
 	</body>
 </html>

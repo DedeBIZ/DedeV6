@@ -201,17 +201,18 @@ input:focus,select:focus,textarea:focus {
 	height:50px
 }
 .admin-head {
+	padding:0;
 	width:100%;
 	height:60px;
 	line-height:60px;
 	background:linear-gradient(180deg,var(--green),var(--success-800))
 }
 .admin-head .logo {
-	float:left;
-	padding-left:1.5rem;
+	padding-left:20px;
 	width:220px
 }
 .admin-head .logo .name {
+	line-height:18px;
 	font-size:18px;
 	font-weight:700;
 	color:var(--white);
@@ -222,39 +223,28 @@ input:focus,select:focus,textarea:focus {
 	color:var(--white);
 	vertical-align:top
 }
-.admin-head .item li {
-	float:left;
-	position:relative;
-	padding:0 1rem
+.admin-head .nav-item {
+	position:relative
 }
-.admin-head .item li a,.admin-head .user li a {
-	color:var(--white)
-}
-.admin-head .item li a:hover,.admin-head .user li a:hover {
-	color:var(--gray-300)
-}
-.admin-head .item .search {
+.admin-head .nav-item .search {
 	position:absolute;
 	top:20px;
-	right:20px;
-	height:20px;
+	right:0;
 	line-height:20px;
 	color:var(--gray);
 	background:0;
 	border:0
 }
-.admin-head .user {
-	float:right;
-	padding-right:1.5rem
+.admin-head .nav-link {
+	padding:0 1rem!important
 }
-.admin-head .user li {
-	float:left;
-	padding:0 1rem
+.admin-head .nav-link,.admin-head .user a {
+	color:var(--white)!important
 }
-.admin-head .user li:last-child {
-	padding-right:0
+.admin-head .nav-link:hover,.admin-head .user a:hover {
+	color:var(--gray-300)!important
 }
-.admin-head .user li img {
+.admin-head .user img {
 	margin-right:0.5rem;
 	width:25px;
 	height:25px;
@@ -802,10 +792,26 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 }
 @media (max-width:768px) {
 	td {
-		white-space:nowrap
+		white-space:nowrap;
+		word-break:break-all
 	}
 	.install-box,.tips-box,.w-65,.w-35,.admin-textarea-sm,.admin-input-lg,.admin-input-md,.admin-input-sm {
 		width:100%
+	}
+	.admin-head .navbar-nav {
+		margin-left:auto
+	}
+	body.menu-hide .menu-left {
+		display:block
+	}
+	body.menu-hide .body-right {
+		left:220px
+	}
+	body.menu-show .menu-left {
+		display:none
+	}
+	body.menu-show .body-right {
+		left:0
 	}
 	.tips {
 		padding:0 1rem
