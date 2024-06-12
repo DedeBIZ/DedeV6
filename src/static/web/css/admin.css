@@ -813,4 +813,7 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 	.login-box {
 		padding:30px
 	}
+	.card-body canvas {
+		height:220px!important
+	}
 }
