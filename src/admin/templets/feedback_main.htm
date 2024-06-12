@@ -34,7 +34,7 @@
 			<div class="card-body">
 				<form name="feedback">
 					<div class="table-responsive">
-						<table class="table table-borderless">
+						<table class="table table-borderless table-hover">
 							<thead>
 								<tr>
 									<td scope="col">选择</td>
@@ -76,13 +76,11 @@
 										<a href="javascript:delFeedbackIP();" class="btn btn-danger btn-sm">删除相同地址评论</a>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 				</form>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<script>

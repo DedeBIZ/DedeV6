@@ -27,7 +27,7 @@
 			<div class="card-body">
 				<form name="form2">
 					<div class="table-responsive">
-						<table class="table table-borderless">
+						<table class="table table-borderless table-hover">
 							<thead>
 								<tr>
 									<td scope="col">选择</td>
@@ -62,13 +62,11 @@
 										<a href="javascript:ReturnValue();" class="btn btn-success btn-sm">选定值</a>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 				</form>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<script>

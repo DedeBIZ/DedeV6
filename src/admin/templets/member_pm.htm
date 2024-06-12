@@ -34,7 +34,7 @@
 			<div class="card-header">会员短信列表</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-borderless">
+					<table class="table table-borderless table-hover">
 						<thead>
 							<tr>
 								<td scope="col">发送时间</td>
@@ -58,12 +58,10 @@
 								<td><a href="member_pm.php?ID={dede:field.id/}&dopost=del" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a></td>
 							</tr>
 							{/dede:datalist}
-							<tr>
-								<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 	</body>

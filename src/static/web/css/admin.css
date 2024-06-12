@@ -748,24 +748,6 @@ body.menu-show .body-right {
 .admin-input-xs {
 	width:70px
 }
-.btn-sm {
-	padding:0.375rem 0.6rem;
-	height:30px;
-	font-size:12px
-}
-.btn-xs {
-	padding:0.22rem;
-	height:20px;
-	line-height:1;
-	font-size:12px;
-	border-radius:var(--b-radius-300)!important
-}
-.btn+.btn {
-	margin-left:0.5rem
-}
-.shadow-sm {
-	box-shadow:0 .125rem 0.25rem rgba(0,0,0,.025)!important
-}
 a:hover,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.table-hover tbody tr:hover {
 	transition:all 0.5s
 }
@@ -797,6 +779,23 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 .input-group:not(.has-validation)>.form-control:not(:last-child) {
 	border-top-right-radius:0!important;
 	border-bottom-right-radius:0!important
+}
+.btn-sm {
+	padding:0.375rem 0.5rem;
+	height:30px;
+	font-size:12px
+}
+.btn-xs {
+	padding:0.2rem;
+	line-height:1;
+	font-size:12px;
+	border-radius:var(--b-radius-300)!important
+}
+.btn+.btn {
+	margin-left:0.5rem
+}
+.shadow-sm {
+	box-shadow:0 .125rem 0.25rem rgba(0,0,0,.025)!important
 }
 @media (min-width:1199px) {
 	.modal-dialog {

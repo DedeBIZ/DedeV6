@@ -33,7 +33,7 @@
 			<div class="card-header">广告管理</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-borderless">
+					<table class="table table-borderless table-hover">
 						<thead>
 							<tr>
 								<td scope="col">id</td>
@@ -61,12 +61,10 @@
 								</td>
 							</tr>
 							{/dede:datalist}
-							<tr>
-								<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 	</body>

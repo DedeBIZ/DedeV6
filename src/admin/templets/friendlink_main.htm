@@ -45,7 +45,7 @@
 					<input type="hidden" name="dopost" value="delall">
 					<input type="hidden" name="allid">
 					<div class="table-responsive">
-						<table class="table table-borderless">
+						<table class="table table-borderless table-hover">
 							<thead>
 								<tr>
 									<td scope="col">选择</td>
@@ -83,13 +83,11 @@
 										<a href="javascript:checkSubmit();" class="btn btn-success btn-sm">批量删除</a>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 				</form>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<script>

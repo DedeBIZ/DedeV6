@@ -42,7 +42,7 @@
 				<form action="diy_list.php" method="post">
 					<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 					<div class="table-responsive">
-						<table class="table table-borderless">
+						<table class="table table-borderless table-hover">
 							<tbody>
 								{dede:datalist}
 								<?php 
@@ -80,13 +80,11 @@
 										<a href="<?php echo $cfg_phpurl;?>/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="2">{dede:pagelist listsize='6'/}</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 				</form>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<script>

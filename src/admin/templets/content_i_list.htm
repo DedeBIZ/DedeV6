@@ -64,7 +64,7 @@
 			<div class="card-body">
 				<form name="form2">
 					<div class="table-responsive">
-						<table class="table table-borderless">
+						<table class="table table-borderless table-hover">
 							<thead>
 								<tr>
 									<td scope="col">选择</td>
@@ -98,9 +98,9 @@
 									<td>{dede:field.senddate function='GetDateTimeMk(@me)'/}</td>
 									<td>{dede:field.click/}</td>
 									<td>
-										<a href="javascript:QuickEdit('{dede:field.id/}',event,this);" class="btn btn-light btn-sm"><i class="fa fa-sliders" title="修改{dede:field.title/}"></i></a>
-										<a href="javascript:editArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="编辑{dede:field.title/}"></i></a>
-										<a href="javascript:viewArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-eye" title="预览{dede:field.title/}"></i></a>
+										<a href="javascript:QuickEdit('{dede:field.id/}',event,this);" class="btn btn-light btn-sm"><i class="fa fa-sliders" title="修改"></i></a>
+										<a href="javascript:editArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="编辑"></i></a>
+										<a href="javascript:viewArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-eye" title="预览"></i></a>
 									</td>
 								</tr>
 								{/dede:datalist}
@@ -117,13 +117,11 @@
 										<a href="javascript:cAtts('attsDel',event,this);" class="btn btn-danger btn-sm">删除属性</a>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="10" align="center">{dede:pagelist listsize='6'/}</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 				</form>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<script>

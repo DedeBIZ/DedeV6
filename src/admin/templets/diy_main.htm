@@ -18,7 +18,7 @@
 			<div class="card-header">自定义表单管理</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-borderless">
+					<table class="table table-borderless table-hover">
 						<thead>
 							<tr>
 								<td scope="col">id</td>
@@ -45,12 +45,10 @@
 							<tr>
 								<td colspan="4"><a href="diy_add.php" class="btn btn-success btn-sm">添加自定义表单</a></td>
 							</tr>
-							<tr>
-								<td colspan="4" align="center">{dede:pagelist listsize='6'/}</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 	</body>

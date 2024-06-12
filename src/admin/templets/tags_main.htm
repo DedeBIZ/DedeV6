@@ -35,7 +35,7 @@
 			<div class="card-body">
 				<form name="form3" action="tags_main.php?action=delete" method="post">
 					<div class="table-responsive">
-						<table class="table table-borderless">
+						<table class="table table-borderless table-hover">
 							<thead>
 								<tr>
 									<td scope="col">选择</td>
@@ -78,13 +78,11 @@
 										<button type="button" onclick="document.form3.submit();" class="btn btn-danger btn-sm">删除</button>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="8" align="center">{dede:pagelist/}</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 				</form>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<script>

@@ -30,7 +30,7 @@
 				<form name="form3" action="article_keywords_main.php" method="post">
 					<input type="hidden" name="dopost" value="saveall">
 					<div class="table-responsive">
-						<table class="table table-borderless">
+						<table class="table table-borderless table-hover">
 							<thead>
 								<tr>
 									<td scope="col">选择</td>
@@ -63,13 +63,11 @@
 										<button type="submit" class="btn btn-success btn-sm">保存</button>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="5" align="center">{dede:pagelist listsize='6'/}</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 				</form>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<script>

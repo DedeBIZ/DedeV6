@@ -190,7 +190,7 @@
 			<div class="card-header"><?php echo $selgroup;?></div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-borderless">
+					<table class="table table-borderless table-hover">
 						<thead>
 							<tr>
 								<td colspan="8">
@@ -275,13 +275,11 @@
 										<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="8" align="center">{dede:pagelist listsize='6'/}</td>
-								</tr>
 							</tbody>
 						</form>
 					</table>
 				</div>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<?php
@@ -291,7 +289,7 @@
 			<div class="card-header">联动类型管理</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-borderless">
+					<table class="table table-borderless table-hover">
 						<thead>
 							<tr>
 								<td scope="col">选择</td>
@@ -332,12 +330,10 @@
 								</td>
 							</tr>
 							{/dede:datalist}
-							<tr>
-								<td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
+				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 		<?php }?>
