@@ -40,24 +40,24 @@
 					<li class="nav-item"><a class="nav-link" href="/" target="_blank"><i class="fa fa-home" title="预览首页"></i></a></li>
 					<li class="nav-item d-none d-lg-block">
 						<form action="action_search.php" method="post" target="main">
-							<input type="text" name="keyword" placeholder="功能搜索" class="admin-input-sm">
+							<input type="text" name="keyword" placeholder="功能搜索" class="admin-input-sm ml-3">
 							<button type="submit" class="search"><i class="fa fa-search"></i></button>
 						</form>
 					</li>
 				</ul>
 				<div class="user pr-3 d-none d-lg-block">
 					<a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="<?php echo $cuserLogin->getUserFace();?>"><?php echo $cuserLogin->getUserName();?></a>
-					<a href="exit.php" class="ml-3"><i class="fa fa-power-off" title="退出后台"></i></a>
+					<a href="exit.php" class="ml-3">退了</a>
 				</div>
 			</nav>
 		</header>
 		<aside class="menu-left">
-			<ul id="sidemenu" class="sidemenu">
+			<div class="side-menu">
 				<?php 
 				$openitem = 100;
 				GetMenus($cuserLogin->getUserRank(), 'main'); 
 				?>
-			</ul>
+			</div>
 		</aside>
 		<main class="body-right">
 			<iframe src="index_body.php" name="main" id="main" frameborder="0"></iframe>

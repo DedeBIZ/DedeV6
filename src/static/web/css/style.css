@@ -316,6 +316,22 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	padding:1.5rem;
 	background:var(--white)
 }
+#returntop {
+	display:none;
+	position:fixed;
+	padding:10px 15px;
+	right:1rem;
+	bottom:1rem;
+	color:var(--white);
+	cursor:pointer;
+	background:var(--orange);
+	border-radius:var(--b-radius);
+	border:0;
+	z-index:9998
+}
+#returntop:hover {
+	background:var(--orange)
+}
 .biz-mb {
 	margin-bottom:-2rem
 }
@@ -361,9 +377,6 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .input-group-append .btn-sm {
 	line-height:1.8
 }
-.table {
-	color:var(--gray)
-}
 .table td,.table th {
 	padding:0.5rem;
 	vertical-align:middle
@@ -374,9 +387,6 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 }
 .form-control,.fa,.btn,.dropdown-menu {
 	font-size:14px!important
-}
-.btn+.btn {
-	margin-left:0.5rem
 }
 .input-text {
 	height:36px;
@@ -432,25 +442,15 @@ a:hover,.item-theme:hover,.item-news:hover {
 	border-top-right-radius:0!important;
 	border-bottom-right-radius:0!important
 }
-#validateimg,.btn-send {
+.btn+.btn {
+	margin-left:0.5rem
+}
+.shadow-sm {
+	box-shadow:0 .125rem 0.25rem rgba(0,0,0,.025)!important
+}
+.btn-send,#validateimg {
 	border-radius:0 var(--b-radius) var(--b-radius) 0;
 	cursor:pointer
-}
-#returntop {
-	display:none;
-	position:fixed;
-	padding:10px 15px;
-	right:1rem;
-	bottom:1rem;
-	color:var(--white);
-	cursor:pointer;
-	background:var(--orange);
-	border-radius:var(--b-radius);
-	border:0;
-	z-index:9998
-}
-#returntop:hover {
-	background:var(--orange)
 }
 @media (max-width:768px) {
 	.pb-m-3 {

@@ -408,30 +408,18 @@ $(document).ready(function() {
 		}
 	});
 	$(function() {
-		var menu = function(el, multiple) {
-			this.el = el || {};
-			this.multiple = multiple || false;
-			var links = this.el.find(".link");
-			links.on("click", {
-				el: this.el,
-				multiple: this.multiple,
-			},
-			this.dropdown);
-		}
-		menu.prototype.dropdown = function(e) {
-			var $el = e.data.el;
-			$this = $(this),
-			$next = $this.next();
-			$next.slideToggle();
-			$this.parent().toggleClass("open");
-			if (!e.data.multiple) {
-				$el.find(".submenu").not($next).slideUp().parent().removeClass("open");
+		$(".menu-item").on("click",function() {
+			$(".menu-sub").stop();
+			$(this).siblings(".menu-item").removeAttr("id");
+			if ($(this).attr("id") == "open") {
+				$(this).removeAttr("id").siblings(".menu-sub").slideUp();
+			} else {
+				$(this).attr("id","open").next().slideDown().siblings(".menu-sub").slideUp();
 			}
-		}
-		var menu = new menu($("#sidemenu"), false);
-		$(".submenu li a").click(function(e) {
-			$(".submenu li").removeClass("active");
-			$(this).parent().addClass("active");
+		});
+		$(".sub-item").click(function() {
+			$(".sub-item").removeClass("active");
+			$(this).addClass("active");
 		});
 	});
 	$("#btnClearAll").click(function(event) {
