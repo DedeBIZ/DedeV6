@@ -77,7 +77,7 @@
 									<input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" class="admin-input-lg">
 									<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
 									<span class="btn btn-success btn-sm fileinput-button">上传<input type="file" name="files[]" id="iptAddImages"></span>
-									<button type="button" name="submit" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
+									<button type="button" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
 									<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
 									<img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '/static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md ml-3">
 								</td>

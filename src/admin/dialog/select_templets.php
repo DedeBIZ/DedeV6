@@ -57,7 +57,7 @@ if (empty($comeback)) {
                                             <input type="hidden" name="job" value="upload">
                                             <input type="file" name="uploadfile">
                                             <label>改名：<input type="text" name="filename" class="admin-input-sm"></label>
-                                            <button type="submit" name="sb1" class="btn btn-success btn-sm">保存</button>
+                                            <button type="submit" class="btn btn-success btn-sm">保存</button>
                                         </form>
                                     </td>
                                 </tr>
