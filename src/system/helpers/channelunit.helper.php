@@ -135,14 +135,14 @@ if (!function_exists('GetFileNewName')) {
 if (!function_exists('GetTypeUrl')) {
     function GetTypeUrl($typeid, $typedir, $isdefault, $defaultname, $ispart, $namerule2, $moresite = 0, $siteurl = '', $sitepath = '')
     {
-        global $cfg_typedir_df, $cfg_rewrite;
+        global $cfg_cmspath, $cfg_typedir_df, $cfg_rewrite;
         $typedir = MfTypedir($typedir);
         $sitepath = MfTypedir($sitepath);
         //动态栏目
         if ($isdefault == -1) {
             if ($cfg_rewrite == 'Y') {
                 //开启伪静态栏目/list-1、/list-2，则分页/list-1-1、/list-1-2
-                return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
+                $reurl = $GLOBALS['cfg_cmspath']."/list-".$typeid."";
             } else {
                 $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
             }
