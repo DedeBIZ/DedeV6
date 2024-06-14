@@ -64,7 +64,7 @@
 		<div class="card shadow-sm">
 			<div class="card-header">发布专题</div>
 			<div class="card-body">
-				<div class="alert alert-info">文档列表（英文逗号隔开，如：1,2,3）单条记录模板[field:fieldname/]标签，更多调用参考arclist标签</div>
+				<div class="alert alert-info">专题在主分类栏目显示，需要调用专题列表，标签{dede:arclist typeid='1,2,3' type='spec'}调用，请参考arclist标签</div>
 				<form name="form1" action="spec_add.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="dopost" value="save">
 					<input type="hidden" name="channelid" value="<?php echo $channelid?>">
