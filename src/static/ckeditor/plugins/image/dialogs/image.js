@@ -1106,7 +1106,7 @@
 							var systemZoom = width / window.screen.availWidth;
 							var posLeft = (width - w) / 2 / systemZoom + dualScreenLeft;
 							var posTop = (height - h) / 2 / systemZoom + dualScreenTop;
-                            window.open("./dialog/select_images.php?iseditor=1&f="+editor.name, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + posLeft + ", top=" + posTop);
+                            window.open("./dialog/select_images.php?noeditor=yes&iseditor=1&f="+editor.name, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + posLeft + ", top=" + posTop);
                             CKEDITOR.dialog.getCurrent().hide();
                         }
 					},
