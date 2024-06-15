@@ -7,6 +7,9 @@
 		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
 		<ol class="breadcrumb">
@@ -15,8 +18,8 @@
 		</ol>
 		<div class="card shadow-sm mb-3">
 			<div class="card-body">
-				<form name="form1" action="statchart_list.php" method="get">
-					<input type="text" name="ip" class="admin-input-lg" placeholder="请输入地址ip">
+				<form name="form1" action="statistics_list.php" method="get">
+					<input type="text" name="ip" class="admin-input-lg" placeholder="请输入地址ip" value="<?php echo !empty($ip)? $ip : '';?>">
 					<button type="submit" class="btn btn-success btn-sm">搜索</button>
 				</form>
 			</div>
@@ -35,7 +38,7 @@
 									<td scope="col">地址</td>
 									<td scope="col">浏览器内核</td>
 									<td scope="col">操作系统</td>
-									<td scope="col">浏览特征</td>
+									<td scope="col">浏览类型</td>
 									<td scope="col">浏览时间</td>
 								</tr>
 							</thead>
@@ -48,7 +51,7 @@
 									<td>{dede:field.ip/}</td>
 									<td>{dede:field.browser/}</td>
 									<td>{dede:field.os/}</a></td>
-									<td>{dede:field.created_hour/}点</td>
+									<td>{dede:field.url_type function="RenderUrlType(@me)"/}</td>
 									<td>{dede:field.t function="MyDate('Y-m-d H:i:s',@me)"/}</td>
 								</tr>
 								{/dede:datalist}
@@ -88,10 +91,10 @@
 			function DelSel() {
 				var nid = getCheckboxItem();
 				if (nid == "") {
-					alert("请选择要删除的信息");
+					ShowMsg("请选择要删除的信息");
 					return;
 				}
-				location.href = "statchart_list.php?dopost=delete&aids=" + nid;
+				location.href = "statistics_list.php?dopost=delete&aids=" + nid;
 			}
 		  </script>
 	</body>

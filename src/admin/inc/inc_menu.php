@@ -77,7 +77,7 @@ $menusMain = "<m:top item='1_' name='常用功能' icon='fa fa-desktop'>
     <m:item name='评论管理' link='feedback_main.php' rank='sys_Feedback' target='main' />
     <m:item name='专题管理' link='content_s_list.php' ischannel='1' channelid='-1' linkadd='spec_add.php' rank='spec_New' target='main' />
     <m:item name='文档回收站' link='recycling.php' ischannel='1' addico='fa fa-minus-circle' linkadd='archives_do.php?dopost=clear&aid=no&recycle=1' rank='a_List,a_AccList,a_MyList' target='main' />
-    <m:item name='流量统计表' link='statchart_list.php' rank='t_List,t_AccList' target='main' />
+    <m:item name='流量统计表' link='statistics_list.php' rank='t_List,t_AccList' target='main' />
 </m:top>
 <m:top item='2_' name='文档管理' icon='fa fa-file-text'>
     $addset
