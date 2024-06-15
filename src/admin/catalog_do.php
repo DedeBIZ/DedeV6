@@ -156,7 +156,7 @@ else if ($dopost == "GetSunListsMenu") {
     PutCookie('lastCid', $cid, 3600 * 24, "/");
     $tu = new TypeUnit();
     $tu->dsql = $dsql;
-    $tu->LogicListAllSunType($cid, "　");
+    $tu->LogicListAllSunType($cid, "");
     $tu->Close();
 }
 //合并栏目

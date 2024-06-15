@@ -176,9 +176,7 @@ tpl;
             echo "<div id='suns".$id."'>";
             $lastid = GetCookie('lastCid');
             if ($channel == $id || $lastid == $id || isset($GLOBALS['exallct']) || $cfg_admin_channel == 'array') {
-                //echo "<table>";
-                $this->LogicListAllSunType($id, "　");
-                //echo "</table>";
+                $this->LogicListAllSunType($id, "─");
             }
             echo "</div>";
             $i++;
@@ -223,7 +221,7 @@ tpl;
 echo <<<tpl
 <div class='d-flex justify-content-between mb-3'>
     <div class='left'>
-        {$step}
+        <span>└{$step}</span>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
         <span class='btn btn-success btn-sm'>列表</span>
         {$nss}
@@ -247,7 +245,7 @@ tpl;
 echo <<<tpl
 <div class='d-flex justify-content-between mb-3'>
     <div class='left'>
-        {$step}
+         <span>└{$step}</span>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
         <span class='btn btn-warning btn-sm'>封面</span>
         {$nss}
@@ -270,7 +268,7 @@ tpl;
 echo <<<tpl
 <div class='d-flex justify-content-between mb-3'>
     <div class='left'>
-        {$step}
+         <span>└{$step}</span>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
         <span class='btn btn-primary btn-sm'>外部</span>
         {$nss}
@@ -288,7 +286,7 @@ echo <<<tpl
 tpl;
                 }
                 echo "<div id='suns".$id."' style='".(isset($GLOBALS['exallct'])? "" : "display:none")."'>";
-                $this->LogicListAllSunType($id, $step."　");
+                $this->LogicListAllSunType($id, $step."──");
                 echo "</div>";
             }
         }
