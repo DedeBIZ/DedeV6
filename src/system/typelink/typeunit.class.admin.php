@@ -287,7 +287,7 @@ echo <<<tpl
 </div>
 tpl;
                 }
-                echo "<div id='suns".$id."' style='".($GLOBALS['exallct']? "" : "display:none")."'>";
+                echo "<div id='suns".$id."' style='".(isset($GLOBALS['exallct'])? "" : "display:none")."'>";
                 $this->LogicListAllSunType($id, $step."　");
                 echo "</div>";
             }
