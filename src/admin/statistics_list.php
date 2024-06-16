@@ -15,13 +15,13 @@ function RenderUrlType($t) {
         case 1:
             return "列表";
         case 2:
-            return "内容";
+            return "文档";
         case 3:
             return "搜索";
         case 4:
-            return "Tag";
+            return "标签";
         default:
-            return "其他";
+            return "综合";
     }
 }
 //检查权限
@@ -30,15 +30,16 @@ if ($id == 0 && $reid == 0) {
 }
 $ip = isset($ip) ? HtmlReplace(trim($ip)) : '';
 if (empty($mobile)) $mobile = '';
-if ($dopost=="delete") {
+if ($dopost == "delete") {
     $ids = explode('`',$aids);
     $dquery = "";
-    foreach ($ids as $id) {
+    foreach ($ids as $id)
+    {
         $id = intval($id);
-        if ($dquery=="") $dquery .= "id='$id' ";
+        if ($dquery == "") $dquery .= "id='$id' ";
         else $dquery .= " OR id='$id' ";
     }
-    if($dquery!="") $dquery = " WHERE ".$dquery;
+    if ($dquery != "") $dquery = " WHERE ".$dquery;
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` $dquery");
     ShowMsg("成功删除指定的记录", "statistics_list.php");
     exit();    
