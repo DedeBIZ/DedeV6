@@ -228,12 +228,9 @@ input:focus,select:focus,textarea:focus {
 }
 .admin-head .nav-item .search {
 	position:absolute;
-	top:20px;
-	right:0.25rem;
-	line-height:20px;
-	color:var(--gray);
-	background:0;
-	border:0
+	top:16px;
+	right:0;
+	color:var(--gray)
 }
 .admin-head .nav-link {
 	padding:0 1rem!important
