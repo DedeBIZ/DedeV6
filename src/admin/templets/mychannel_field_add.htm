@@ -48,7 +48,7 @@
 									<td>
 										<label><input type="checkbox" name="notsend" id="notsend" value="1"> 投稿和采集禁用字段</label>
 										<label><input type="checkbox" name="islist" id="islist" value="1"> 添加到列表附加字段</label>
-										<span>（标签{dede:list channelid='模型id' addfields='字段1,字段2'}{/dede:list}，标记[field:name/]调用）</span>
+										<span>（标签{dede:list channelid='模型id' addfields='字段1,字段2'}[field:name/]{/dede:list}调用）</span>
 									</td>
 								</tr>
 								<tr>
@@ -94,9 +94,9 @@
 											{
 												if ($k==$channelid) {
 													$nid = $arr['nid'];
-													echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
+													echo "<option value='{$k}' selected>{$arr['typename']} {$arr['nid']}</option>";
 												} else {
-													echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
+													echo "<option value='{$k}'>{$arr['typename']} {$arr['nid']}</option>";
 												}
 											}
 											?>
