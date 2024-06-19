@@ -19,22 +19,22 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-									<tr>
-										<th width="8%">#</th>
-										<th width="8%">选择</th>
-										<th width="16%">订单号</th>
-										<th>产品</th>
-										<th width="16%">信息</th>
-										<th width="12%">状态</th>
-										<th width="16%">时间</th>
-									</tr>
-								</thead>
-								<tbody>
-									<form name="form1" action="<?php echo $cfg_memberurl;?>/operation.php" method="post">
-										<input type="hidden" name="ftype" value="del">
+						<form name="form1" action="<?php echo $cfg_memberurl;?>/operation.php" method="post">
+							<input type="hidden" name="ftype" value="del">
+							<div class="table-responsive">
+								<table class="table table-borderless table-hover">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">选择</th>
+											<th scope="col">订单号</th>
+											<th scope="col">产品</th>
+											<th scope="col">信息</th>
+											<th scope="col">状态</th>
+											<th scope="col">时间</th>
+										</tr>
+									</thead>
+									<tbody>
 										{dede:datalist}
 										<tr>
 											<td>{dede:field.aid/}</td>
@@ -52,10 +52,10 @@
 												<button type="button" onclick="DoSubmit();" class="btn btn-danger btn-sm">删除</button>
 											</td>
 										</tr>
-									</form>
-								</tbody>
-							</table>
-						</div>
+									</tbody>
+								</table>
+							</div>
+						</form>
 						{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
 					</div>
 				</div>

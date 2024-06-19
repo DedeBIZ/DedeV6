@@ -36,7 +36,7 @@ if (empty($dopost)) {
     exit();
 } else if ($dopost == 'save') {
     require_once(DEDEINC."/image.func.php");
-    require_once(DEDEINC."/libraries/oxwindow.class.php");
+    require_once(DEDEINC."/libraries/webwindow.class.php");
     $flag = '';
     $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
     $userip = GetIP();
@@ -108,8 +108,7 @@ if (empty($dopost)) {
     //返回成功信息
     $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改文档</a><a href='content_sg_list.php?channelid=$channelid' class='btn btn-success btn-sm'>返回文档列表</a>";
     $wintitle = "成功修改分类文档";
-    $wecome_info = "文档管理 - 修改分类文档";
-    $win = new OxWindow();
+    $win = new WebWindow();
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

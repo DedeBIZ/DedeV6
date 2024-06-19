@@ -204,32 +204,32 @@ if ($fmdo == 'sendMail') {
         exit();
     }
 } else if ($fmdo == 'purl'){
-    require_once(DEDEINC.'/libraries/oxwindow.class.php');
+    require_once(DEDEINC.'/libraries/webwindow.class.php');
     CheckRank(0, 0);//禁止游客操作
     $row = $dsql->GetOne("SELECT count(*) as dd FROM `#@__member` WHERE `pmid`='{$cfg_ml->M_ID}' ");
     $msg = "<p>您已经邀请了{$row['dd']}人：</p>
     <div class='media mb-3'>
-        <span class='btn btn-primary btn-sm mr-2'>链</span>
+        <span class='btn btn-primary btn-sm mr-3'>链</span>
         <div class='media-body pb-3 border-bottom border-gray'>
-            <div class='d-flex justify-content-between align-items-center w-100'>
-                <h5>链接邀请</h5>
+            <div class='d-flex justify-content-between align-items-center'>
+                <h4>链接邀请</h4>
                 <a href='javascript:Copylink()' class='btn btn-outline-primary btn-sm'>复制链接</a>
             </div>
             <span class='d-block'>复制链接分享给其他人，对方通过链接注册后双方均可获得{$cfg_userad_adds}积分<span id='text' style='font-size:0'>{$cfg_basehost}{$cfg_memberurl}/index_do.php?fmdo=user&dopost=regnew&pid={$cfg_ml->M_LoginID}</span>
         </div>
     </div>
     <div class='media mb-3'>
-        <span class='btn btn-success btn-sm mr-2'>码</span>
+        <span class='btn btn-success btn-sm mr-3'>码</span>
         <div class='media-body pb-3 border-bottom border-gray'>
-            <div class='d-flex justify-content-between align-items-center w-100'>
-                <h5>二维码邀请</h5>
+            <div class='d-flex justify-content-between align-items-center'>
+                <h4>二维码邀请</h4>
                 <a href='javascript:ShowQrcode()' class='btn btn-outline-success btn-sm'>查看二维码</a>
             </div>
             <span class='d-block'>分享二维码到移动设备，通过二维码扫码注册，双方均可获得{$cfg_userad_adds}积分</span>
         </div>
     </div>
-    <div class='text-center'><a href='index.php' class='btn btn-success btn-sm'>返回</a></div>
     <div id='qrcode'></div>
+    <div class='text-center'><a href='index.php' class='btn btn-success btn-sm'>返回</a></div>
     <style>.modal-body img{margin:0 auto}#qrcode{display:none;margin:15px auto;width:200px;height:200px}</style>
     <script>
         var qrcode = new QRCode(document.getElementById(\"qrcode\"), {
@@ -250,9 +250,8 @@ if ($fmdo == 'sendMail') {
             ShowMsg(document.getElementById('qrcode').innerHTML);
         }
     </script>";
-    $wintitle = "快来邀请好友赚积分啦";
-    $wecome_info = "邀请好友赚积分";
-    $win = new OxWindow();
+    $wintitle = "邀请好友赚积分";
+    $win = new WebWindow();
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

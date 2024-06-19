@@ -19,19 +19,19 @@
 				<?php include(DEDEMEMBER."/templets/menu.htm");?>
 				<div class="col-md-9">
 					<div class="pannel-main-container shadow-sm rounded">
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-									<tr>
-										<th width="8%">#</th>
-										<th width="8%">选择</th>
-										<th>标题</th>
-										<th width="16%">需要金币</th>
-										<th width="16%">消费时间</th>
-									</tr>
-								</thead>
-								<form name="form1" action="<?php echo $cfg_memberurl;?>/mypay.php" method="post">
-									<input type="hidden" name="dopost" value="del">
+						<form name="form1" action="<?php echo $cfg_memberurl;?>/mypay.php" method="post">
+							<input type="hidden" name="dopost" value="del">
+							<div class="table-responsive">
+								<table class="table table-borderless table-hover">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">选择</th>
+											<th scope="col">标题</th>
+											<th scope="col">需要金币</th>
+											<th scope="col">消费时间</th>
+										</tr>
+									</thead>
 									<tbody>
 										{dede:datalist}
 										<tr>
@@ -49,9 +49,9 @@
 											</td>
 										</tr>
 									</tbody>
-								</form>
-							</table>
-						</div>
+								</table>
+							</div>
+						</form>
 						{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
 					</div>
 				</div>

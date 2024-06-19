@@ -178,7 +178,7 @@ if ($paytype === 0) {
     }
     if ($paytype === 1) {
         //微信支付
-        include_once(DEDEINC.'/libraries/oxwindow.class.php');
+        include_once(DEDEINC.'/libraries/webwindow.class.php');
         $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
         $pData = (array)json_decode($pInfo['config']);
         $config = array(
@@ -205,9 +205,8 @@ if ($paytype === 0) {
                 height : 300,
                 correctLevel : 3
             });qrcode.makeCode("'.$payurl.'");</script>';
-            $wintitle = "使用微信支付";
-            $wecome_info = "微信支付";//这个空格不要去
-            $win = new OxWindow();
+            $wintitle = "微信支付";//这个空格不要去
+            $win = new WebWindow();
             $win->AddMsgItem($msg);
             $winform = $win->GetWindow("hand", false);
             $win->Display(DEDEMEMBER."/templets/win_templet.htm");
@@ -216,7 +215,7 @@ if ($paytype === 0) {
             exit;
         }
     } elseif ($paytype === 2) {
-        include_once(DEDEINC.'/libraries/oxwindow.class.php');
+        include_once(DEDEINC.'/libraries/webwindow.class.php');
         $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
         $pData = (array)json_decode($pInfo['config']);
         $config = array(
@@ -243,14 +242,13 @@ if ($paytype === 0) {
             exit;
         }
     }  elseif ($paytype === 3) {
-        include_once(DEDEINC.'/libraries/oxwindow.class.php');
+        include_once(DEDEINC.'/libraries/webwindow.class.php');
         //银行转账
         $pInfo = $dsql->GetOne("SELECT * FROM `#@__sys_payment` WHERE id = $paytype");
         $pData = (array)json_decode($pInfo['config']);
         $msg = "<p>请汇款至如下账户：</p><p>账户名：{$pData['AccountName']}</p><p>账号：{$pData['AccountNO']}</p><p>开户行：{$pData['Name']}</p><p>备注：{$buyid}</p><p>如您已经完成转账，请点击下面按钮，等待管理员确认后即可完成充值</p><div><a href='buy_action.php?dopost=bank_ok&buyid={$buyid}' class='btn btn-success btn-sm'>已完成银行转账</a> <a href='operation.php' class='btn btn-outline-success btn-sm'>返回订单管理</a></div>";
-        $wintitle = "使用银行转账";
-        $wecome_info = "银行转账";//这个空格不要去
-        $win = new OxWindow();
+        $wintitle = "银行转账";//这个空格不要去
+        $win = new WebWindow();
         $win->AddMsgItem($msg);
         $winform = $win->GetWindow("hand", false);
         $win->Display(DEDEMEMBER."/templets/win_templet.htm");
