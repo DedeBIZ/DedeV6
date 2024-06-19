@@ -372,6 +372,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	color:var(--white)
 }
 .list-group-flush>.list-group-item {
+	border:0;
 	cursor:pointer
 }
 .input-group-append .btn-sm {
