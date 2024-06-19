@@ -446,7 +446,7 @@ a:hover,.item-theme:hover,.item-news:hover {
 	margin-left:0.5rem
 }
 .shadow-sm {
-	box-shadow:0 .125rem 0.25rem rgba(0,0,0,.025)!important
+	box-shadow:0 .125rem 0.25rem rgba(0,0,0,0.015)!important
 }
 .btn-send,#validateimg {
 	border-radius:0 var(--b-radius) var(--b-radius) 0;

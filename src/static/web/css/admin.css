@@ -761,7 +761,7 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 	margin-left:0.5rem
 }
 .shadow-sm {
-	box-shadow:0 .125rem 0.25rem rgba(0,0,0,.025)!important
+	box-shadow:0 .125rem 0.25rem rgba(0,0,0,0.015)!important
 }
 @media (min-width:1199px) {
 	.modal-dialog {
