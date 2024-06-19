@@ -411,7 +411,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .admin-input-xs {
 	width:70px
 }
-a:hover,.item-theme:hover,.item-news:hover {
+a:hover,.item-theme:hover,.item-news:hover,.table-hover tbody tr:hover {
 	transition:all 0.5s
 }
 .navbar-toggler,.dropdown-menu,.breadcrumb,.cke_chrome,.cke_inner,.pagination,.form-control,.btn,.alert,.rounded {
