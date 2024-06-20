@@ -192,12 +192,12 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         return $okvalue;
     } else if ($dtype == "htmltext") {
         if ($admintype == 'member' || $admintype == 'diy') {
-            $dvalue = HtmlReplace($dvalue, -1);
+            $dvalue = RemoveXSS(HtmlReplace($dvalue, -1));
         }
         return $dvalue;
     } else if ($dtype == "multitext") {
         if ($admintype == 'member' || $admintype == 'diy') {
-            $dvalue = HtmlReplace($dvalue, 0);
+            $dvalue = RemoveXSS(HtmlReplace($dvalue, 0));
         }
         return $dvalue;
     } else if ($dtype == "textdata") {
@@ -213,7 +213,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         $filename = "{$ipath}/{$aid}-".cn_substr(md5($cfg_cookie_encode), 0, 16).".txt";
         //会员投稿文档安全处理
         if ($admintype == 'member' || $admintype == 'diy') {
-            $dvalue = HtmlReplace($dvalue, -1);
+            $dvalue = RemoveXSS(HtmlReplace($dvalue, -1));
         }
         $fp = fopen($cfg_basedir.$filename, "w");
         fwrite($fp, stripslashes($dvalue));
@@ -229,7 +229,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         return $dvalue;
     } else {
         if ($admintype == 'member' || $admintype == 'diy') {
-            $dvalue = HtmlReplace($dvalue, 1);
+            $dvalue = RemoveXSS(HtmlReplace($dvalue, 1));
         }
         return $dvalue;
     }

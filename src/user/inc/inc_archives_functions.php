@@ -279,7 +279,7 @@ function AnalyseHtmlBody($body, &$description, $dtype = '')
         $description = trim(preg_replace('/#p#|#e#/', '', $description));
         $description = addslashes($description);
     }
-    $body = addslashes($body);
+    $body = addslashes(RemoveXSS($body));
     return $body;
 }
 /**
