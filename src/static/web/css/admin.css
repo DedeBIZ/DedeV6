@@ -597,6 +597,9 @@ body.menu-show .body-right {
 .w-35 {
 	width:35%
 }
+.column:hover {
+	background:rgba(0,0,0,0.075)
+}
 .breadcrumb {
 	padding:0;
 	background:none
@@ -714,7 +717,7 @@ body.menu-show .body-right {
 .admin-input-xs {
 	width:70px
 }
-a:hover,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.table-hover tbody tr:hover {
+a:hover,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.column:hover,.table-hover tbody tr:hover {
 	transition:all 0.5s
 }
 span.page-link {
