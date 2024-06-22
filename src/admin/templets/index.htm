@@ -28,8 +28,9 @@
 						<?php if ($cuserLogin->getUserType() >= 5) {?>
 					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="catalog_main.php" target="main"><i class="fa fa-bars" title="栏目管理"></i></a></li>
 					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="tags_main.php" target="main"><i class="fa fa-tags" title="标签管理"></i></a></li>
+					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="statistics_list.php" target="main"><i class="fa fa-bar-chart" title="流量统计"></i></a></li>
 					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE ? '?activepath='.$cfg_medias_dir:'';?>" target="main"><i class="fa fa-folder" title="文件管理"></i></a></li>
-					<li class="nav-item"><a class="nav-link" href="diy_main.php" target="main"><i class="fa fa-area-chart" title="自定义表单管理"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="diy_main.php" target="main"><i class="fa fa-wpforms" title="自定义表单管理"></i></a></li>
 					<?php }?>
 					<?php if (!DEDEBIZ_SAFE_MODE) {?>
 					<li class="nav-item d-none d-lg-block"><a class="nav-link" href="templets_main.php" target="main"><i class="fa fa-cube" title="主题模板"></i></a></li>

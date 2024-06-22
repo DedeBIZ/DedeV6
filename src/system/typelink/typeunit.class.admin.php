@@ -109,7 +109,7 @@ class TypeUnit
             if ($ispart == 0) {
 //列表栏目
 echo <<<tpl
-<div class='column d-flex justify-content-between mb-2 py-2'>
+<div class='column d-flex justify-content-between py-2'>
     <div class='left'>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
         <span class='btn btn-success btn-sm'>列表</span>
@@ -132,7 +132,7 @@ tpl;
             } else if ($ispart == 1) {
 //封面栏目
 echo <<<tpl
-<div class='column d-flex justify-content-between mb-2 py-2'>
+<div class='column d-flex justify-content-between py-2'>
     <div class='left'>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
         <span class='btn btn-warning btn-sm'>封面</span>
@@ -154,7 +154,7 @@ tpl;
             } else if ($ispart == 2) {
 //外部栏目
 echo <<<tpl
-<div class='column d-flex justify-content-between mb-2 py-2'>
+<div class='column d-flex justify-content-between py-2'>
     <div class='left'>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
         <span class='btn btn-primary btn-sm'>外部</span>
@@ -219,7 +219,7 @@ tpl;
                 } if ($ispart == 0) {
 //列表栏目
 echo <<<tpl
-<div class='column d-flex justify-content-between mb-2 py-2'>
+<div class='column d-flex justify-content-between py-2'>
     <div class='left'>
         <span>└─{$step}</span>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
@@ -243,7 +243,7 @@ tpl;
                 } else if ($ispart == 1) {
 //封面栏目
 echo <<<tpl
-<div class='column d-flex justify-content-between mb-2 py-2'>
+<div class='column d-flex justify-content-between py-2'>
     <div class='left'>
          <span>└─{$step}</span>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
@@ -266,7 +266,7 @@ tpl;
                 } else if ($ispart == 2) {
 //外部栏目
 echo <<<tpl
-<div class='column d-flex justify-content-between mb-2 py-2'>
+<div class='column d-flex justify-content-between py-2'>
     <div class='left'>
          <span>└─{$step}</span>
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
