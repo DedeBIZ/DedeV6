@@ -379,7 +379,7 @@ class DedeHttpDown
             return TRUE;
         }
         if (!$this->PrivateOpenHost()) {
-            $this->m_error .= "打开远程主机出错!";
+            $this->m_error .= "打开远程主机出错";
             return FALSE;
         }
         $this->reTry++;
