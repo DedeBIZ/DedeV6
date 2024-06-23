@@ -70,7 +70,7 @@ if ($action == 'post') {
         $query = "INSERT INTO `{$diy->table}` (`id`, `ifcheck` $addvar) VALUES (NULL, 0 $addvalue); ";
         if ($dsql->ExecuteNoneQuery($query)) {
             $id = $dsql->GetLastID();
-            $mailtitle = "{$diy->name}-留言通知";
+            $mailtitle = "{$diy->name}通知";
             $mailbody = '';
             foreach($diy->getFieldList() as $field=>$fieldvalue)
             {
