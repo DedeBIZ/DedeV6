@@ -37,7 +37,7 @@ if (is_array($arcRow)) {
         $arcRow['sitepath']
     );
 } else {
-    ShowMsg('无法浏览未知文档!', '-1');
+    ShowMsg('无法浏览未知文档', '-1');
     exit();
 }
 if (empty($mx)) $mx = $cfg_album_width;

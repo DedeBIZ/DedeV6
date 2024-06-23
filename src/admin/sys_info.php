@@ -68,12 +68,12 @@ else if ($dopost == 'add') {
         $nvarvalue = preg_replace("[^0-9.]","", $nvarvalue);
     }
     if (trim($nvarname) == '' || preg_match("#[^a-z_]#i", $nvarname)) {
-        ShowMsg("变量名不能为空并且必须为[a-z_]组成", "-1");
+        ShowMsg("变量名称不能为空并且必须为a-z_组成", "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT varname FROM `#@__sysconfig` WHERE varname LIKE '$nvarname' ");
     if (is_array($row)) {
-        ShowMsg("该变量名称已经存在", "-1");
+        ShowMsg("变量名称已经存在", "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT aid FROM `#@__sysconfig` ORDER BY aid DESC");
@@ -86,11 +86,11 @@ else if ($dopost == 'add') {
         exit();
     }
     if (!is_writeable($configfile)) {
-        ShowMsg("成功保存变量，但由于".$configfile."无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功保存变量，由于".$configfile."无法写入，更新配置文件失败", "sys_info.php?gp=$vargroup");
         exit();
     } else {
         ReWriteConfig();
-        ShowMsg("成功保存变量并更新配置文件", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功添加一则变量", "sys_info.php?gp=$vargroup");
         exit();
     }
 }

@@ -70,6 +70,21 @@ if ($action == 'post') {
         $query = "INSERT INTO `{$diy->table}` (`id`, `ifcheck` $addvar) VALUES (NULL, 0 $addvalue); ";
         if ($dsql->ExecuteNoneQuery($query)) {
             $id = $dsql->GetLastID();
+            $mailtitle = "{$diy->name}-留言通知";
+            $mailbody = '';
+            foreach($diy->getFieldList() as $field=>$fieldvalue)
+            {
+                $mailbody .= "{$fieldvalue[0]}：{${$field}}\r\n";
+            }
+            if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server)) {
+                $mailtype = 'TXT';
+                require_once(DEDEINC.'/libraries/mail.class.php');
+                $smtp = new smtp($cfg_smtp_server, $cfg_smtp_port, true, $cfg_smtp_usermail, $cfg_smtp_password);
+                $smtp->debug = false;
+                $smtp->sendmail($cfg_adminemail, $cfg_webname, $cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
+            } else {
+                @mail($cfg_adminemail, $mailtitle, $mailbody, $headers);
+            }
             if ($diy->public == 2) {
                 $goto = "diy.php?action=list&diyid={$diy->diyid}";
                 $bkmsg = '提交成功，正在前往表单列表';
