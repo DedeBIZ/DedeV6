@@ -76,6 +76,8 @@ if ($action == 'post') {
             {
                 $mailbody .= "{$fieldvalue[0]}：{${$field}}\r\n";
             }
+            $headers = "From: ".$cfg_adminemail."Reply-To: ".$cfg_adminemail;
+            $mailbody = mb_convert_encoding($mailbody, "GBK", "UTF-8");
             if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server)) {
                 $mailtype = 'TXT';
                 require_once(DEDEINC.'/libraries/mail.class.php');
