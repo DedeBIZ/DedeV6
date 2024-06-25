@@ -287,19 +287,10 @@ body.menu-show .body-right {
 	top:13px;
 	left:1rem
 }
-#open {
-	border-left:3px solid var(--green)
-}
 .side-menu .menu-item .fa,.side-menu .sub-item .fa {
 	position:absolute;
 	top:13px;
 	right:1rem
-}
-#open .menu-link,#open .fa-angle-down,.side-menu .sub-item.active a {
-	color:var(--green)
-}
-#open .fa-angle-down {
-	transform:rotate(180deg)
 }
 .side-menu .menu-sub {
 	display:none
@@ -309,6 +300,15 @@ body.menu-show .body-right {
 	padding-left:2.675rem;
 	height:40px;
 	line-height:40px
+}
+#open {
+	border-left:3px solid var(--green)
+}
+#open .menu-link,#open .fa-angle-down,.side-menu .sub-item.active a {
+	color:var(--green)
+}
+#open .fa-angle-down {
+	transform:rotate(180deg)
 }
 .body-right {
 	padding:1rem;
@@ -755,7 +755,7 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 	font-size:12px
 }
 .btn-xs {
-	padding:0.2rem;
+	padding:0.15rem;
 	line-height:1;
 	font-size:12px;
 	border-radius:var(--b-radius-sm)!important
