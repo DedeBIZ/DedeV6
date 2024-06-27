@@ -103,7 +103,7 @@ if (!empty($noeditor)) {
                                     if ($activepath == "") continue;
                                     $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                                     $line = "<tr>
-                                    <td><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
+                                    <td><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 返回上级</a></td>
                                     <td colspan='2'>当前目录：$activepath</td>
                                     </tr>";
                                     echo $line;

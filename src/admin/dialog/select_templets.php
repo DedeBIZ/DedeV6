@@ -93,7 +93,7 @@ if (empty($comeback)) {
                                     if ($activepath == "") continue;
                                     $tmp = preg_replace("#[\/][^\/]*$#", "", $activepath);
                                     $line = "<tr>
-                                    <td><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
+                                    <td><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='/static/web/img/icon_dir2.png'> 返回上级</a></td>
                                     <td colspan='2'>当前目录：$activepath</td>
                                     </tr>\r\n";
                                     echo $line;
