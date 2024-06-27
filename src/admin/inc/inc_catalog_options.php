@@ -28,7 +28,7 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
     //当前选中的栏目
     if ($selid > 0) {
         $row = $dsql->GetOne("SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE id='$selid'");
-        if ($row['ispart'] == 1) $OptionArrayList .= "<option value='".$row['id']."' class='option1' selected='selected'>".$row['typename']."(封面栏目)</option>";
+        if ($row['ispart'] == 1) $OptionArrayList .= "<option value='".$row['id']."' class='opt-ion1' selected='selected'>".$row['typename']."(封面栏目)</option>";
         else $OptionArrayList .= "<option value='".$row['id']."' selected='selected'>".$row['typename']."</option>";
     }
     //是否限定会员管理的栏目
@@ -60,16 +60,16 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
         $sonCats = '';
         LogicGetOptionArray($row->id, '─', $channeltype, $dsql, $sonCats);
         if ($sonCats != '') {
-            if ($row->ispart == 1) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename." - 封面栏目</option>";
-            else if ($row->ispart == 2) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename." - 外部栏目</option>";
-            else if (empty($channeltype) && $row->ispart != 0) $OptionArrayList .= "<option value='".$row->id."' class='option2'>".$row->typename."-".$channels[$row->channeltype]."</option>";
-            else $OptionArrayList .= "<option value='".$row->id."' class='option3'>".$row->typename."</option>";
+            if ($row->ispart == 1) $OptionArrayList .= "<option value='".$row->id."' class='opt-ion1'>".$row->typename." - 封面栏目</option>";
+            else if ($row->ispart == 2) $OptionArrayList .= "<option value='".$row->id."' class='opt-ion1'>".$row->typename." - 外部栏目</option>";
+            else if (empty($channeltype) && $row->ispart != 0) $OptionArrayList .= "<option value='".$row->id."' class='opt-ion2'>".$row->typename."-".$channels[$row->channeltype]."</option>";
+            else $OptionArrayList .= "<option value='".$row->id."' class='opt-ion3'>".$row->typename."</option>";
             $OptionArrayList .= $sonCats;
         } else {
             if ($row->ispart == 0 && (!empty($channeltype) && $row->channeltype == $channeltype)) {
-                $OptionArrayList .= "<option value='".$row->id."' class='option3'>".$row->typename."</option>";
+                $OptionArrayList .= "<option value='".$row->id."' class='opt-ion3'>".$row->typename."</option>";
             } else if ($row->ispart == 0 && empty($channeltype)) {
-                $OptionArrayList .= "<option value='".$row->id."' class='option3'>".$row->typename."</option>";
+                $OptionArrayList .= "<option value='".$row->id."' class='opt-ion3'>".$row->typename."</option>";
             }
         }
     }
@@ -85,9 +85,9 @@ function LogicGetOptionArray($id, $step, $channeltype, &$dsql, &$sonCats)
             continue;
         }
         if ($row->channeltype == $channeltype && $row->ispart == 1) {
-            $sonCats .= "<option value='".$row->id."' class='option1'>└$step ".$row->typename."</option>";
+            $sonCats .= "<option value='".$row->id."' class='opt-ion1'>└$step ".$row->typename."</option>";
         } else if (($row->channeltype == $channeltype && $row->ispart == 0) || empty($channeltype)) {
-            $sonCats .= "<option value='".$row->id."' class='option3'>└$step ".$row->typename."</option>";
+            $sonCats .= "<option value='".$row->id."' class='opt-ion3'>└$step ".$row->typename."</option>";
         }
         LogicGetOptionArray($row->id, $step.'─', $channeltype, $dsql, $sonCats);
     }

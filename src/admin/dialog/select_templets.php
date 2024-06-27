@@ -35,153 +35,151 @@ if (empty($comeback)) {
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
         <title>选择模板</title>
         <link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
         <link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
         <link rel="stylesheet" href="/static/web/css/admin.css">
     </head>
-    <body >
-        <div class="upload-bg">
-            <div class="card shadow-sm">
-                <div class="card-header">选择模板</div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-borderless icon">
-                            <thead>
-                                <tr>
-                                    <td colspan="3">
-                                        <form name="myform" action="select_templets_post.php" method="POST" enctype="multipart/form-data">
-                                            <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
-                                            <input type="hidden" name="f" value="<?php echo $f ?>">
-                                            <input type="hidden" name="job" value="upload">
-                                            <input type="file" name="uploadfile">
-                                            <label>改名：<input type="text" name="filename" class="admin-input-sm"></label>
-                                            <button type="submit" class="btn btn-success btn-sm">保存</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">文件名称</td>
-                                    <td scope="col">文件大小</td>
-                                    <td scope="col">修改时间</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $dh = scandir($inpath);
-                                $ty1 = '';
-                                $ty2 = '';
-                                foreach ($dh as $file) {
-                                    //计算文件大小和创建时间
-                                    if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
-                                        $filesize = filesize("$inpath/$file");
-                                        $filesize = $filesize / 1024;
-                                        if ($filesize != "")
-                                        if ($filesize < 0.1) {
-                                            @list($ty1, $ty2) = split("\.", $filesize);
-                                            $filesize = $ty1.".".substr($ty2, 0, 2);
-                                        } else {
-                                            @list($ty1, $ty2) = split("\.", $filesize);
-                                            $filesize = $ty1.".".substr($ty2, 0, 1);
-                                        }
-                                        $filetime = filemtime("$inpath/$file");
-                                        $filetime = MyDate("Y-m-d H:i:s", $filetime);
+    <body class="p-3">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <form name="myform" action="select_templets_post.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
+                    <input type="hidden" name="f" value="<?php echo $f ?>">
+                    <input type="hidden" name="job" value="upload">
+                    <input type="file" name="uploadfile">
+                    <label>重命名：<input type="text" name="filename" class="admin-input-sm"></label>
+                    <button type="submit" class="btn btn-success btn-sm">保存</button>
+                </form>
+            </div>
+        </div>
+        <div class="card shadow-sm">
+            <div class="card-header">选择模板</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-borderless icon">
+                        <thead>
+                            <tr>
+                                <td scope="col">文件名称</td>
+                                <td scope="col">文件大小</td>
+                                <td scope="col">修改时间</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $dh = scandir($inpath);
+                            $ty1 = '';
+                            $ty2 = '';
+                            foreach ($dh as $file) {
+                                //计算文件大小和创建时间
+                                if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
+                                    $filesize = filesize("$inpath/$file");
+                                    $filesize = $filesize / 1024;
+                                    if ($filesize != "")
+                                    if ($filesize < 0.1) {
+                                        @list($ty1, $ty2) = split("\.", $filesize);
+                                        $filesize = $ty1.".".substr($ty2, 0, 2);
+                                    } else {
+                                        @list($ty1, $ty2) = split("\.", $filesize);
+                                        $filesize = $ty1.".".substr($ty2, 0, 1);
                                     }
-                                    //判断文件类型并作处理
-                                    if ($file == ".") continue;
-                                    else if ($file == "..") {
-                                        if ($activepath == "") continue;
-                                        $tmp = preg_replace("#[\/][^\/]*$#", "", $activepath);
-                                        $line = "<tr>
-                                        <td><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
-                                        <td colspan='2'>当前目录：$activepath</td>
-                                        </tr>\r\n";
-                                        echo $line;
-                                    } else if (is_dir("$inpath/$file")) {
-                                        if (preg_match("#^_(.*)$#i", $file)) continue;
-                                        if (preg_match("#^\.(.*)$#i", $file)) continue;
-                                        $line = "<tr>
-                                        <td colspan='3'><a href=select_templets.php?f=$f&activepath=".urlencode("$activepath/$file")."><img src='/static/web/img/icon_dir.png'> $file</a></td>
-                                        </tr>";
-                                        echo "$line";
-                                    } else if (preg_match("#\.(htm|html)#i", $file)) {
-                                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                                        else  $lstyle = '';
-                                        $reurl = "$activeurl/$file";
-                                        $reurl = preg_replace("#\.\.#", "", $reurl);
-                                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
-                                        $line = "<tr>
-                                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_htm.png'> $file</a></td>
-                                        <td>$filesize KB</td>
-                                        <td>$filetime</td>
-                                        </tr>";
-                                        echo "$line";
-                                    } else if (preg_match("#\.(css)#i", $file)) {
-                                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                                        else  $lstyle = '';
-                                        $reurl = "$activeurl/$file";
-                                        $reurl = preg_replace("#\.\.#", "", $reurl);
-                                        $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
-                                        $line = "<tr>
-                                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_css.png'> $file</a></td>
-                                        <td>$filesize KB</td>
-                                        <td>$filetime</td>
-                                        </tr>";
-                                        echo "$line";
-                                    } else if (preg_match("#\.(js)#i", $file)) {
-                                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                                        else  $lstyle = '';
-                                        $reurl = "$activeurl/$file";
-                                        $reurl = preg_replace("#\.\.#", "", $reurl);
-                                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
-                                        $line = "<tr>
-                                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_js.png'> $file</a></td>
-                                        <td>$filesize KB</td>
-                                        <td>$filetime</td>
-                                        </tr>";
-                                        echo "$line";
-                                    } else if (preg_match("#\.(jpg)#i", $file)) {
-                                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                                        else  $lstyle = '';
-                                        $reurl = "$activeurl/$file";
-                                        $reurl = preg_replace("#\.\.#", "", $reurl);
-                                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
-                                        $line = "<tr>
-                                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='$reurl'> $file</a></td>
-                                        <td>$filesize KB</td>
-                                        <td>$filetime</td>
-                                        </tr>";
-                                        echo "$line";
-                                    } else if (preg_match("#\.(gif|png)#i", $file)) {
-                                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                                        else  $lstyle = '';
-                                        $reurl = "$activeurl/$file";
-                                        $reurl = preg_replace("#\.\.#", "", $reurl);
-                                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
-                                        $line = "<tr>
-                                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='$reurl'> $file</a></td>
-                                        <td>$filesize KB</td>
-                                        <td>$filetime</td>
-                                        </tr>";
-                                        echo "$line";
-                                    } else if (preg_match("#\.(txt)#i", $file)) {
-                                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                                        else  $lstyle = '';
-                                        $reurl = "$activeurl/$file";
-                                        $reurl = preg_replace("#\.\.#", "", $reurl);
-                                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
-                                        $line = "<tr>
-                                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_text.png'> $file</a></td>
-                                        <td>$filesize KB</td>
-                                        <td>$filetime</td></tr>";
-                                        echo "$line";
-                                    }
+                                    $filetime = filemtime("$inpath/$file");
+                                    $filetime = MyDate("Y-m-d H:i:s", $filetime);
                                 }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
+                                //判断文件类型并作处理
+                                if ($file == ".") continue;
+                                else if ($file == "..") {
+                                    if ($activepath == "") continue;
+                                    $tmp = preg_replace("#[\/][^\/]*$#", "", $activepath);
+                                    $line = "<tr>
+                                    <td><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='/static/web/img/icon_dir2.png'> 上级目录</a></td>
+                                    <td colspan='2'>当前目录：$activepath</td>
+                                    </tr>\r\n";
+                                    echo $line;
+                                } else if (is_dir("$inpath/$file")) {
+                                    if (preg_match("#^_(.*)$#i", $file)) continue;
+                                    if (preg_match("#^\.(.*)$#i", $file)) continue;
+                                    $line = "<tr>
+                                    <td colspan='3'><a href=select_templets.php?f=$f&activepath=".urlencode("$activepath/$file")."><img src='/static/web/img/icon_dir.png'> $file</a></td>
+                                    </tr>";
+                                    echo "$line";
+                                } else if (preg_match("#\.(htm|html)#i", $file)) {
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else  $lstyle = '';
+                                    $reurl = "$activeurl/$file";
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
+                                    $line = "<tr>
+                                    <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_htm.png'> $file</a></td>
+                                    <td>$filesize KB</td>
+                                    <td>$filetime</td>
+                                    </tr>";
+                                    echo "$line";
+                                } else if (preg_match("#\.(css)#i", $file)) {
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else  $lstyle = '';
+                                    $reurl = "$activeurl/$file";
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
+                                    $line = "<tr>
+                                    <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_css.png'> $file</a></td>
+                                    <td>$filesize KB</td>
+                                    <td>$filetime</td>
+                                    </tr>";
+                                    echo "$line";
+                                } else if (preg_match("#\.(js)#i", $file)) {
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else  $lstyle = '';
+                                    $reurl = "$activeurl/$file";
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
+                                    $line = "<tr>
+                                    <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_js.png'> $file</a></td>
+                                    <td>$filesize KB</td>
+                                    <td>$filetime</td>
+                                    </tr>";
+                                    echo "$line";
+                                } else if (preg_match("#\.(jpg)#i", $file)) {
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else  $lstyle = '';
+                                    $reurl = "$activeurl/$file";
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
+                                    $line = "<tr>
+                                    <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='$reurl'> $file</a></td>
+                                    <td>$filesize KB</td>
+                                    <td>$filetime</td>
+                                    </tr>";
+                                    echo "$line";
+                                } else if (preg_match("#\.(gif|png)#i", $file)) {
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else  $lstyle = '';
+                                    $reurl = "$activeurl/$file";
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
+                                    $line = "<tr>
+                                    <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='$reurl'> $file</a></td>
+                                    <td>$filesize KB</td>
+                                    <td>$filetime</td>
+                                    </tr>";
+                                    echo "$line";
+                                } else if (preg_match("#\.(txt)#i", $file)) {
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else  $lstyle = '';
+                                    $reurl = "$activeurl/$file";
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
+                                    $line = "<tr>
+                                    <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_text.png'> $file</a></td>
+                                    <td>$filesize KB</td>
+                                    <td>$filetime</td></tr>";
+                                    echo "$line";
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

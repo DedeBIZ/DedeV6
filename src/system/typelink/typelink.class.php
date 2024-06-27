@@ -171,7 +171,7 @@ class TypeLink
             $row = $this->dsql->GetOne("SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE id='$hid'");
             $channeltype = $row['channeltype'];
             if ($row['ispart'] == 1) {
-                $this->OptionArrayList .= "<option value='".$row['id']."' class='option1' selected>".$row['typename']."</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row['id']."' class='opt-ion1' selected>".$row['typename']."</option>\r\n";
             } else {
                 $this->OptionArrayList .= "<option value='".$row['id']."' selected>".$row['typename']."</option>\r\n";
             }
@@ -205,7 +205,7 @@ class TypeLink
         while ($row = $this->dsql->GetObject()) {
             if ($row->id != $hid) {
                 if ($row->ispart == 1) {
-                    $this->OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."</option>\r\n";
+                    $this->OptionArrayList .= "<option value='".$row->id."' class='opt-ion1'>".$row->typename."</option>\r\n";
                 } else {
                     $this->OptionArrayList .= "<option value='".$row->id."'>".$row->typename."</option>\r\n";
                 }
@@ -234,7 +234,7 @@ class TypeLink
                 if (!in_array($row->id, $oper)) continue;
             }
             if ($row->ispart == 1) {
-                $this->OptionArrayList .= "<option value='".$row->id."' class='option1'>└$step ".$row->typename."</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row->id."' class='opt-ion1'>└$step ".$row->typename."</option>\r\n";
             } else {
                 $this->OptionArrayList .= "<option value='".$row->id."'>└$step ".$row->typename."</option>\r\n";
             }

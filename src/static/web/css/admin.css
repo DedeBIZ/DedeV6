@@ -587,10 +587,6 @@ body.menu-show .body-right {
 	display:flex;
 	flex-wrap:wrap
 }
-.upload-bg {
-	margin:1rem;
-	background:var(--white)
-}
 .w-65 {
 	width:65%
 }
@@ -625,6 +621,10 @@ body.menu-show .body-right {
 	margin-bottom:0;
 	color:var(--gray)
 }
+.table.icon img {
+	width:20px;
+	height:20px
+}
 .table th,.table td {
 	padding:0.5rem 1rem 0.5rem 0;
 	vertical-align:middle
@@ -636,25 +636,42 @@ body.menu-show .body-right {
 	font-size:14px!important;
 	color:inherit
 }
-.icon img {
-	width:20px;
-	height:20px
+.opt .list {
+	display:inline-block;
+	margin-right:1rem;
+	margin-bottom:1rem;
+	padding:1rem;
+	width:134px;
+	background:var(--light);
+	text-align:center
 }
-.option1 {
+.opt .list img {
+	display:block;
+	margin:0 auto 1rem;
+	max-width:89px;
+	max-height:50px
+}
+.opt .list span {
+	display:block;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap
+}
+.opt-ion1 {
 	background:var(--gray-300)
 }
-.option2 {
+.opt-ion2 {
 	background:var(--gray-500)
 }
-.option3 {
+.opt-ion3 {
 	background:var(--white)
 }
-.fileinput-button {
+.opt-button {
 	display:inline-block;
 	position:relative;
 	overflow:hidden
 }
-.fileinput-button input {
+.opt-button input {
 	position:absolute;
 	top:0;
 	right:0;
@@ -724,7 +741,7 @@ span.page-link {
 	color:var(--white);
 	background:var(--green)
 }
-input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
+input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.opt .list,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
 	border-radius:var(--b-radius)!important
 }
 .cke_top {
