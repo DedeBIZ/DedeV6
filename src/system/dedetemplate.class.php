@@ -710,7 +710,13 @@ class DedeTemplate
                 $cTag->tagValue = $this->CompilerFunction($cTag->GetAtt('function'), $cTag->tagValue);
             }
             $cTag->tagValue = '<'.'?php echo '.$cTag->tagValue.'; ?'.'>';
-        } else if (preg_match("/^key[0-9]{0,}/", $tagname) || preg_match("/^value[0-9]{0,}/", $tagname)) {
+        } else if ($tagname == 'sfield') {
+            $cTag->tagValue = '$fields[\'__safe\'][\''.$varname.'\']';
+            if ($cTag->GetAtt('function') != '') {
+                $cTag->tagValue = $this->CompilerFunction($cTag->GetAtt('function'), $cTag->tagValue);
+            }
+            $cTag->tagValue = '<'.'?php echo '.$cTag->tagValue.'; ?'.'>';
+        }  else if (preg_match("/^key[0-9]{0,}/", $tagname) || preg_match("/^value[0-9]{0,}/", $tagname)) {
             if (preg_match("/^value[0-9]{0,}/", $tagname) && $varname != '') {
                 $cTag->tagValue = '<'.'?php echo '.$this->CompilerArrayVar($tagname, $varname).'; ?'.'>';
             } else {
