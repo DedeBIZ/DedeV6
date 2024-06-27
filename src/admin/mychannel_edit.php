@@ -95,7 +95,6 @@ if ($dopost == "show") {
         $channelconfig .= "<channel:{$k}>$v</channel:{$k}>\r\n";
     }
     $wintitle = "导出指定文档模型规则";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导出文档模型规则";
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("导出{$row['typename']}文档模型规则");
@@ -104,7 +103,6 @@ if ($dopost == "show") {
     exit();
 } else if ($dopost == "exportin") {
     $wintitle = "导入指定文档模型规则";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "/static/web/js/admin.blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
@@ -116,9 +114,8 @@ if ($dopost == "show") {
     require_once(DEDEADMIN."/inc/inc_admin_channel.php");
     function GotoStaMsg($msg)
     {
-        global $wintitle, $wecome_info, $winform;
+        global $wintitle, $winform;
         $wintitle = "导入指定文档模型规则";
-        $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 导入文档模型规则";
         $win = new OxWindow();
         $win->Init();
         $win->AddMsgItem($msg);
@@ -286,7 +283,6 @@ if ($dopost == "show") {
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     $wintitle = "查看模型应用模板";
-    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 模型应用模板";
     $win = new OxWindow();
     $win->Init("", "/static/web/js/admin.blank.js", "");
     $win->AddTitle("栏目".$row['typename']."默认模板文件说明");
@@ -325,7 +321,6 @@ if ($dopost == "show") {
     if ($job == "") {
         require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "删除指定文档模型";
-        $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a> - 删除文档模型";
         $win = new OxWindow();
         $win->Init("mychannel_edit.php", "/static/web/js/admin.blank.js", "POST");
         $win->AddHidden("job", "yes");

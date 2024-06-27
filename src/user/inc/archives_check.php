@@ -10,7 +10,7 @@ if (!defined('DEDEMEMBER')) exit ('dedebiz');
  * @link           https://www.dedebiz.com
  */
 include_once(DEDEINC.'/image.func.php');
-include_once(DEDEINC.'/libraries/oxwindow.class.php');
+include_once(DEDEINC.'/libraries/webwindow.class.php');
 //校验CSRF
 CheckCSRF();
 $flag = '';

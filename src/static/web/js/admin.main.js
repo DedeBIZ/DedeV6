@@ -382,7 +382,7 @@ function uploadImage(litpicImgSrc) {
 			$("#picname").val(d.data.image_url);
 		}
 	}).catch((error) => {
-		alert("上传缩略图错误");
+		alert("上传缩略图失败，请重新修改图片上传");
 	});
 }
 function SetThumb(srcURL) {

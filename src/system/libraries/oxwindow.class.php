@@ -1,13 +1,13 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
 /**
- * 提示对话框
+ * 后台提示对话框
  *
  * @version        $id:oxwindow.class.php 2 13:53 2010-11-11 tianya $
- * @package        .Libraries
- * @copyright      Copyright (c) 2022, .COM
- * @license        https://www..com/license
- * @link           https://www..com
+ * @package        DedeBIZ.Libraries
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
+ * @license        GNU GPL v2 (https://www.dedebiz.com/license)
+ * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/dedetag.class.php");
 class OxWindow
@@ -197,9 +197,9 @@ class OxWindow
      */
     function Display($modfile = "")
     {
-        global $cfg_templets_dir, $wecome_info, $cfg_basedir;
-        if (empty($wecome_info)) {
-            $wecome_info = "提示对话框";
+        global $cfg_templets_dir, $wintitle, $cfg_basedir;
+        if (empty($wintitle)) {
+            $wintitle = "提示对话框";
         }
         $ctp = new DedeTagParse();
         if ($modfile == '') {

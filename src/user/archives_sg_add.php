@@ -43,7 +43,7 @@ if (empty($dopost)) {
     exit();
 } else if ($dopost == 'save') {
     include_once(DEDEINC."/image.func.php");
-    include_once(DEDEINC."/libraries/oxwindow.class.php");
+    include_once(DEDEINC."/libraries/webwindow.class.php");
     //游客需要校验验证码
     if ($cfg_ml->M_ID === 0) {
         $svali = GetCkVdValue();
@@ -154,8 +154,7 @@ if (empty($dopost)) {
     //返回成功信息
     $msg = "<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>浏览文档</a><a href='archives_sg_add.php?channelid=$channelid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改文档</a><a href='content_sg_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>返回文档列表</a>";
     $wintitle = "成功发布分类文档";
-    $wecome_info = "文档管理 - 发布分类文档";
-    $win = new OxWindow();
+    $win = new WebWindow();
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

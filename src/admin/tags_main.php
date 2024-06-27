@@ -16,7 +16,7 @@ if (empty($tag)) $tag = '';
 if (empty($action)) {
     $orderby = empty($orderby) ? 'id' : preg_replace("#[^a-z]#i", '', $orderby);
     $orderway = isset($orderway) && $orderway == 'asc' ? 'asc' : 'desc';
-    if (!empty($tag)) $where = " where tag like '%$tag%'";
+    if (!empty($tag)) $where = " WHERE tag like '%$tag%'";
     else $where = '';
     $neworderway = ($orderway == 'desc' ? 'asc' : 'desc');
     $query = "SELECT * FROM `#@__tagindex` $where ORDER BY $orderby $orderway";

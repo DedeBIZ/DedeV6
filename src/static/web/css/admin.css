@@ -18,7 +18,7 @@ body {
 	line-height:1.6;
 	letter-spacing:0.5px;
 	font-size:14px;
-	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
+	font-family:"Poppins","Helvetica Neue",Arial,"Microsoft JhengHei",sans-serif;
 	color:var(--gray);
 	background:var(--bg)
 }
@@ -80,7 +80,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	vertical-align:middle
 }
 select {
-	padding:0.375rem 0.75rem;
+	padding:0.25rem 0.75rem;
 	height:30px;
 	color:var(--gray);
 	background:var(--white);
@@ -228,12 +228,9 @@ input:focus,select:focus,textarea:focus {
 }
 .admin-head .nav-item .search {
 	position:absolute;
-	top:20px;
-	right:0.25rem;
-	line-height:20px;
-	color:var(--gray);
-	background:0;
-	border:0
+	top:16px;
+	right:0;
+	color:var(--gray)
 }
 .admin-head .nav-link {
 	padding:0 1rem!important
@@ -290,19 +287,10 @@ body.menu-show .body-right {
 	top:13px;
 	left:1rem
 }
-#open {
-	border-left:3px solid var(--green)
-}
 .side-menu .menu-item .fa,.side-menu .sub-item .fa {
 	position:absolute;
 	top:13px;
 	right:1rem
-}
-#open .menu-link,#open .fa-angle-down,.side-menu .sub-item.active a {
-	color:var(--green)
-}
-#open .fa-angle-down {
-	transform:rotate(180deg)
 }
 .side-menu .menu-sub {
 	display:none
@@ -312,6 +300,15 @@ body.menu-show .body-right {
 	padding-left:2.675rem;
 	height:40px;
 	line-height:40px
+}
+#open {
+	border-left:3px solid var(--green)
+}
+#open .menu-link,#open .fa-angle-down,.side-menu .sub-item.active a {
+	color:var(--green)
+}
+#open .fa-angle-down {
+	transform:rotate(180deg)
 }
 .body-right {
 	padding:1rem;
@@ -397,6 +394,7 @@ body.menu-show .body-right {
 }
 .mysource,.mywriter {
 	width:500px;
+	border:1px solid var(--gray-300);
 	z-index:19994
 }
 .atlas {
@@ -590,15 +588,14 @@ body.menu-show .body-right {
 	display:flex;
 	flex-wrap:wrap
 }
-.upload-bg {
-	margin:1rem;
-	background:var(--white)
-}
 .w-65 {
 	width:65%
 }
 .w-35 {
 	width:35%
+}
+.column:hover {
+	background:rgba(0,0,0,0.075)
 }
 .breadcrumb {
 	padding:0;
@@ -625,6 +622,10 @@ body.menu-show .body-right {
 	margin-bottom:0;
 	color:var(--gray)
 }
+.table.icon img {
+	width:20px;
+	height:20px
+}
 .table th,.table td {
 	padding:0.5rem 1rem 0.5rem 0;
 	vertical-align:middle
@@ -636,25 +637,42 @@ body.menu-show .body-right {
 	font-size:14px!important;
 	color:inherit
 }
-.icon img {
-	width:20px;
-	height:20px
+.opt .list {
+	display:inline-block;
+	margin-right:1rem;
+	margin-bottom:1rem;
+	padding:1rem;
+	width:134px;
+	background:var(--light);
+	text-align:center
 }
-.option1 {
+.opt .list img {
+	display:block;
+	margin:0 auto 1rem;
+	max-width:89px;
+	max-height:50px
+}
+.opt .list span {
+	display:block;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap
+}
+.opt-ion1 {
 	background:var(--gray-300)
 }
-.option2 {
+.opt-ion2 {
 	background:var(--gray-500)
 }
-.option3 {
+.opt-ion3 {
 	background:var(--white)
 }
-.fileinput-button {
+.opt-button {
 	display:inline-block;
 	position:relative;
 	overflow:hidden
 }
-.fileinput-button input {
+.opt-button input {
 	position:absolute;
 	top:0;
 	right:0;
@@ -717,14 +735,14 @@ body.menu-show .body-right {
 .admin-input-xs {
 	width:70px
 }
-a:hover,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.table-hover tbody tr:hover {
+a:hover,body.menu-hide .body-right,body.menu-show .body-right,.sidemenu .submenu li:hover,.column:hover,.table-hover tbody tr:hover {
 	transition:all 0.5s
 }
 span.page-link {
 	color:var(--white);
 	background:var(--green)
 }
-input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
+input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.opt .list,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
 	border-radius:var(--b-radius)!important
 }
 .cke_top {
@@ -755,7 +773,7 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 	font-size:12px
 }
 .btn-xs {
-	padding:0.2rem;
+	padding:0.15rem;
 	line-height:1;
 	font-size:12px;
 	border-radius:var(--b-radius-sm)!important
@@ -764,7 +782,7 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 	margin-left:0.5rem
 }
 .shadow-sm {
-	box-shadow:0 .125rem 0.25rem rgba(0,0,0,.025)!important
+	box-shadow:0 .125rem 0.25rem rgba(0,0,0,0.015)!important
 }
 @media (min-width:1199px) {
 	.modal-dialog {

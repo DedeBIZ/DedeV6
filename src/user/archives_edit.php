@@ -92,8 +92,7 @@ if (empty($dopost)) {
     //返回成功信息
     $msg = "<a class='btn btn-success btn-sm' href='$artUrl' target='_blank'>浏览文档</a><a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success btn-sm'>发布文档</a><a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success btn-sm'>修改文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>返回文档列表</a>";
     $wintitle = "成功修改自定义文档";
-    $wecome_info = "文档管理 - 修改自定义文档";
-    $win = new OxWindow();
+    $win = new WebWindow();
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

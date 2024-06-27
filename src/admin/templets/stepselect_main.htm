@@ -187,27 +187,27 @@
 			if ($topvalue % 500 != 0) $arr['issign'] = 2;
 		?>
 		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<form action="stepselect_main.php" method="post">
+					<input type="hidden" name="action" value="addenum_save">
+					<input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
+					<input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
+					<select name="topvalue" onChange="ChangePage2(this);" class="admin-input-sm mr-2">
+						<option value="0"><?php echo $selgroup;?></option>
+						<?php echo $options;?>
+					</select>
+					<input type="text" name="ename" class="admin-input-lg" placeholder="请填分类名称">
+					<button type="submit" class="btn btn-success btn-sm">添加分类</button>
+					<?php if ($egroup=='nativeplace') {echo "<a href='stepselect_main.php?action=exarea' class='btn btn-success btn-sm'>导入默认地区</a>";}?>
+				</form>
+			</div>
+		</div>
+		<div class="card shadow-sm">
 			<div class="card-header"><?php echo $selgroup;?></div>
 			<div class="card-body">
 				<div class="table-responsive">
 					<table class="table table-borderless table-hover">
 						<thead>
-							<tr>
-								<td colspan="8">
-									<form action="stepselect_main.php" method="post">
-										<input type="hidden" name="action" value="addenum_save">
-										<input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
-										<input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
-										<select name="topvalue" onChange="ChangePage2(this);" class="admin-input-sm mr-2">
-											<option value="0"><?php echo $selgroup;?></option>
-											<?php echo $options;?>
-										</select>
-										<input type="text" name="ename" class="admin-input-lg" placeholder="请填分类名称">
-										<button type="submit" class="btn btn-success btn-sm">添加分类</button>
-										<?php if ($egroup=='nativeplace') {echo "<a href='stepselect_main.php?action=exarea' class='btn btn-success btn-sm'>导入默认地区</a>";}?>
-									</form>
-								</td>
-							</tr>
 							<tr>
 								<td scope="col">选择</td>
 								<td scope="col">id</td>

@@ -22,16 +22,16 @@
 							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/mystow.php" class="nav-link <?php echo $rank==='' ? 'active' : '';?>">我的收藏</a></li>
 							<li class="nav-item"><a href="<?php echo $cfg_memberurl;?>/mystow.php?rank=top" class="nav-link <?php echo $rank==='top' ? 'active' : '';?>">收藏排行</a></li>
 						</ul>
-						<table class="table">
+						<table class="table table-borderless table-hover">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">标题</th>
+									<th scope="col">收藏时间</th>
+									<th scope="col">操作</th>
+								</tr>
+							</thead>
 							<tbody>
-								<thead>
-									<tr>
-										<th width="8%">#</th>
-										<th>标题</th>
-										<th width="26%">收藏时间</th>
-										<th width="26%">操作</th>
-									</tr>
-								</thead>
 								{dede:datalist}
 								<tr>
 									<td>{dede:field.aid/}</td>

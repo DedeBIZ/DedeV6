@@ -10,7 +10,7 @@ if (!defined('DEDEMEMBER')) exit ('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/image.func.php");
-require_once(DEDEINC."/libraries/oxwindow.class.php");
+require_once(DEDEINC."/libraries/webwindow.class.php");
 $flag = '';
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $userip = GetIP();

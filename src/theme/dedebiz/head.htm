@@ -1,10 +1,10 @@
 <header class="container py-3">
 	<div class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm rounded">
 		<a href="/" class="navbar-brand d-lg-none">{dede:global.cfg_webname/}</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDede" aria-controls="navbarsDede" aria-expanded="false">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<nav class="collapse navbar-collapse" id="navbarMenu">
+		<nav class="collapse navbar-collapse" id="navbarsDede">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a href="/" class="nav-link {dede:field name='typeid' runphp='yes'}(@me=='')?@me='active':@me='';{/dede:field}">首页</a></li>
 				{dede:channelartlist typeid='top' row='10'}

@@ -69,7 +69,7 @@
 				var ahtml = "<ul class='pagination justify-content-center'>";
 				var startloop = 1;
 				var endnum = 0;
-				ahtml += "<li class='page-item disabled'><span class='page-link'>" + pagenum + "页" + totalrow + "篇</span></li>";
+				ahtml += "<li class='page-item disabled'><span class='page-link'>" + pagenum + "页" + totalrow + "条</span></li>";
 				if (pageno > 1 && pageno != 1) ahtml += "<li class='page-item disabled'><a href='javascript:;' class='page-link' onclick='LoadPage(1)'>首页</a></li>";
 				if (pageno > 1) ahtml += "<li class='page-item'><a href='javascript:;' class='page-link' onclick='LoadPage(" + (pageno - 1) + ")'>上页</a></li>";
 				if (startnum >= pagenum - listsize) {
