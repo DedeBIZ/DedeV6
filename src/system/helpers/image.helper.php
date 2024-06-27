@@ -138,7 +138,7 @@ if (!function_exists('ImageResizeNew')) {
     {
         try {
             $image = new ImageResize($srcFile);
-            $image->resizeToBestFit($toW, $toH);
+            $image->resize($toW, $toH);
             if ($issave) {
                 $image->save($toFile);
             } else {
