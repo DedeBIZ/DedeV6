@@ -189,7 +189,7 @@ class DataListCP
                     $pattern .= $ra[$i][$j];
                 }
                 $pattern .= '/i';
-                $replacement = substr($ra[$i], 0, 2).substr($ra[$i], 2);
+                $replacement = substr($ra[$i], 0, 2).'<x>'.substr($ra[$i], 2);
                 $val = preg_replace($pattern, $replacement, $val);
                 if ($val_before == $val) {
                     $found = false;

@@ -394,6 +394,7 @@ body.menu-show .body-right {
 }
 .mysource,.mywriter {
 	width:500px;
+	border:1px solid var(--gray-300);
 	z-index:19994
 }
 .atlas {
