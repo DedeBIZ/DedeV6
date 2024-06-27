@@ -78,6 +78,10 @@ if ($action == 'test') {
         ShowMsg("请选择对应的文件", "-1");
         exit;
     }
+    if (!isset($offFiles[$filename])) {
+        ShowMsg("仅支持系统文件", "-1");
+        exit;
+    }
     $baseFile = "https://cdn.dedebiz.com/release/{$cfg_version_detail}$filename";
     $del = new DedeHttpDown();
     $del->OpenUrl($baseFile);
