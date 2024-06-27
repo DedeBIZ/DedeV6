@@ -353,7 +353,15 @@ if ($action === 'is_need_check_code') {
     ));
     exit;
 } else if($action === 'upload_image') {
-    checkLogin();
+    $cuserLogin = new userLogin();
+    if ($cuserLogin->getUserID() <= 0) {
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "登录系统后才能上传图片",
+            "data" => null,
+        ));
+        exit;
+    }
     $imgfile_name = $_FILES["file"]['name'];
     $activepath = $cfg_image_dir;
     $allowedTypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
