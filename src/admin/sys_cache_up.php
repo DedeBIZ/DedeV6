@@ -10,20 +10,6 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_ArcBatch');
-function clean_cachefiles($path) {
-    $list = array();
-    foreach (glob($path.'/*') as $item) {
-        if(is_dir($item)) {
-            $list = array_merge($list, clean_cachefiles($item));
-        } else {
-            $list[] = $item;
-        }
-    }
-    foreach ($list as $tmpfile) {
-        @unlink($tmpfile);
-    }
-    return true;
-}
 if (empty($dopost)) $dopost = '';
 if (empty($step)) $step = 1;
 if ($dopost == "ok") {
@@ -54,10 +40,6 @@ if ($dopost == "ok") {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__statistics_detail` WHERE created_date<'$limit' ");
         $msg[] = "过期流量统计等缓存";
         $url = "sys_cache_up.php?dopost=ok&step=-1&uparc=$uparc";
-        clean_cachefiles("../data/cache");
-        clean_cachefiles("../data/tplcache");
-        clean_cachefiles("../data/sessions");
-        clean_cachefiles("../static/enums");
         if ($uparc == 1) {
             $url = "sys_cache_up.php?dopost=ok&step=9";
         }
