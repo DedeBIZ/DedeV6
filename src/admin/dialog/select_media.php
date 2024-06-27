@@ -117,7 +117,6 @@ if (!empty($noeditor)) {
                                 } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {
                                     $reurl = "$activeurl/$file";
                                     $reurl = preg_replace("#^\.\.#", "", $reurl);
-                                    $reurl = $reurl;
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
                                     else  $lstyle = '';
                                     $line = "<tr>
@@ -129,7 +128,6 @@ if (!empty($noeditor)) {
                                 } else if (preg_match("#\.(wmv|avi)#i", $file)) {
                                     $reurl = "$activeurl/$file";
                                     $reurl = preg_replace("#^\.\.#", "", $reurl);
-                                    $reurl = $reurl;
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
                                     else  $lstyle = '';
                                     $line = "<tr>
@@ -141,7 +139,6 @@ if (!empty($noeditor)) {
                                 } else if (preg_match("#\.(rm|rmvb|mp3|mp4)#i", $file)) {
                                     $reurl = "$activeurl/$file";
                                     $reurl = preg_replace("#^\.\.#", "", $reurl);
-                                    $reurl = $reurl;
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
                                     else  $lstyle = '';
                                     $line = "<tr>
@@ -153,7 +150,6 @@ if (!empty($noeditor)) {
                                 } else if (preg_match("#\.(mp3|wma)#", $file)) {
                                     $reurl = "$activeurl/$file";
                                     $reurl = preg_replace("#^\.\.#", "", $reurl);
-                                    $reurl = $reurl;
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
                                     else  $lstyle = '';
                                     $line = "<tr>
