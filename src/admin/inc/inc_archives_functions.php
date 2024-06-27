@@ -99,7 +99,7 @@ function GetCurContent($body)
     $img_array = array_unique($img_array[1]);
     $imgUrl = $cfg_uploaddir.'/'.MyDate("ymd", time());
     $imgPath = $cfg_basedir.$imgUrl;
-    if (!is_dir($imgPath.'/')) {
+    if (!is_dir($imgPath.'/') && count($img_array) > 0) {
         MkdirAll($imgPath, $GLOBALS['cfg_dir_purview']);
     }
     $milliSecond = MyDate('His', time());
