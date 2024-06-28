@@ -93,7 +93,7 @@ if (!empty($iseditor)) {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                         $line = "<div class='d-flex justify-content-between mb-3'>
-                            <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 返回上级</a>
+                            <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."' class='btn btn-success btn-sm'>返回上级</a>
                             <span>当前目录：$activepath</span>
                         </div>";
                         echo $line;
