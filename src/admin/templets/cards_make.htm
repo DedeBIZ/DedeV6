@@ -9,63 +9,65 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="cards_manage.php">积分产品管理</a></li>
-			<li class="breadcrumb-item active">生成积分</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">生成积分</div>
-			<div class="card-body">
-				<form name="form1" action="cards_make.php" target="stafrm">
-					<input type="hidden" name="dopost" value="make">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">积分类型</td>
-									<td>
-										<select name="cardtype" class="admin-input-sm">
-											<?php
-											$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
-											$dsql->Execute();
-											while($row=$dsql->GetArray()){
-												echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";
-											}
-											$dsql->Close();
-											?>
-										</select>
-									</td>
-									<td width="160">生成数量</td>
-									<td><input name="mnum" type="text" id="mnum" class="admin-input-sm" value="100"></td>
-								</tr>
-								<tr>
-									<td>积分前缀</td>
-									<td><input name="snprefix" type="text" id="snprefix" class="admin-input-sm" value="TY"></td>
-									<td>密码长度</td>
-									<td><input name="pwdlen" type="text" id="pwdlen" class="admin-input-sm" value="4"></td>
-								</tr>
-								<tr>
-									<td>密码类型</td>
-									<td>
-										<label><input type="radio" name="ctype" value="1"> 纯数字</label>
-										<label><input type="radio" name="ctype" value="2" checked> 大写字母</label>
-									</td>
-									<td>密码组数</td>
-									<td><input name="pwdgr" type="text" id="pwdgr" class="admin-input-sm" value="3"></td>
-								</tr>
-								<tr>
-									<td colspan="4" align="center" align="py-2"><button type="submit"class="btn btn-success btn-sm">开始执行</button></td>
-								</tr>
-								<tr>
-									<td colspan="4">
-										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="cards_manage.php">积分产品管理</a></li>
+				<li class="breadcrumb-item active">生成积分</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">生成积分</div>
+				<div class="card-body">
+					<form name="form1" action="cards_make.php" target="stafrm">
+						<input type="hidden" name="dopost" value="make">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">积分类型</td>
+										<td>
+											<select name="cardtype" class="admin-input-sm">
+												<?php
+												$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
+												$dsql->Execute();
+												while($row=$dsql->GetArray()){
+													echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";
+												}
+												$dsql->Close();
+												?>
+											</select>
+										</td>
+										<td width="160">生成数量</td>
+										<td><input name="mnum" type="text" id="mnum" class="admin-input-sm" value="100"></td>
+									</tr>
+									<tr>
+										<td>积分前缀</td>
+										<td><input name="snprefix" type="text" id="snprefix" class="admin-input-sm" value="TY"></td>
+										<td>密码长度</td>
+										<td><input name="pwdlen" type="text" id="pwdlen" class="admin-input-sm" value="4"></td>
+									</tr>
+									<tr>
+										<td>密码类型</td>
+										<td>
+											<label><input type="radio" name="ctype" value="1"> 纯数字</label>
+											<label><input type="radio" name="ctype" value="2" checked> 大写字母</label>
+										</td>
+										<td>密码组数</td>
+										<td><input name="pwdgr" type="text" id="pwdgr" class="admin-input-sm" value="3"></td>
+									</tr>
+									<tr>
+										<td colspan="4" align="center" align="py-2"><button type="submit"class="btn btn-success btn-sm">开始执行</button></td>
+									</tr>
+									<tr>
+										<td colspan="4">
+											<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

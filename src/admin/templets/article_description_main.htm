@@ -9,67 +9,69 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">自动摘要分页</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">自动摘要分页</div>
-			<div class="card-body">
-				<form name="form1" action="article_description_main.php" method="post" target="stafrm">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">文档模型id</td>
-									<td><input type="text" name="channel" id="channel" value="1" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td>摘要字节</td>
-									<td><input type="text" name="dsize" id="dsize" class="admin-input-sm" value="<?php echo $cfg_auot_description?>">（最大255字节，自动分页<?php echo $cfg_arcautosp_size?>K）</td>
-								</tr>
-								<tr>
-									<td>数据表</td>
-									<td><input type="text" name="table" id="table2" value="<?php echo $cfg_dbprefix?>addonarticle" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td>处理字段</td>
-									<td><input type="text" name="field" id="field2" value="body" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td>最小值</td>
-									<td><input type="text" name="msize" id="msize2" value="512" class="admin-input-sm">（字节）</td>
-								</tr>
-								<tr>
-									<td>每页更新</td>
-									<td><input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-sm">（网页）</td>
-								</tr>
-								<tr>
-									<td>文档id</td>
-									<td>
-										<label>开始：<input type="text" name="sid" id="sid" class="admin-input-sm"></label>
-										<label>结束：<input type="text" name="eid" id="eid" class="admin-input-sm"></label>
-									</td>
-								</tr>
-								<tr>
-									<td>文档操作</td>
-									<td>
-										<label><input type="radio" name="dojob" value="des" checked> 自动摘要</label>
-										<label><input type="radio" name="dojob" value="page"> 自动分页</label>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center"><button type="submit"class="btn btn-success btn-sm">开始执行</button></td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">自动摘要分页</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">自动摘要分页</div>
+				<div class="card-body">
+					<form name="form1" action="article_description_main.php" method="post" target="stafrm">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">文档模型id</td>
+										<td><input type="text" name="channel" id="channel" value="1" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td>摘要字节</td>
+										<td><input type="text" name="dsize" id="dsize" class="admin-input-sm" value="<?php echo $cfg_auot_description?>">（最大255字节，自动分页<?php echo $cfg_arcautosp_size?>K）</td>
+									</tr>
+									<tr>
+										<td>数据表</td>
+										<td><input type="text" name="table" id="table2" value="<?php echo $cfg_dbprefix?>addonarticle" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td>处理字段</td>
+										<td><input type="text" name="field" id="field2" value="body" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td>最小值</td>
+										<td><input type="text" name="msize" id="msize2" value="512" class="admin-input-sm">（字节）</td>
+									</tr>
+									<tr>
+										<td>每页更新</td>
+										<td><input type="text" name="pagesize" id="pagesize" value="100" class="admin-input-sm">（网页）</td>
+									</tr>
+									<tr>
+										<td>文档id</td>
+										<td>
+											<label>开始：<input type="text" name="sid" id="sid" class="admin-input-sm"></label>
+											<label>结束：<input type="text" name="eid" id="eid" class="admin-input-sm"></label>
+										</td>
+									</tr>
+									<tr>
+										<td>文档操作</td>
+										<td>
+											<label><input type="radio" name="dojob" value="des" checked> 自动摘要</label>
+											<label><input type="radio" name="dojob" value="page"> 自动分页</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center"><button type="submit"class="btn btn-success btn-sm">开始执行</button></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

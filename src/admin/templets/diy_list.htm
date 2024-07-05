@@ -9,82 +9,84 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="diy_main.php">自定义表单管理</a></li>
-			<li class="breadcrumb-item active"><?php echo $diy->name;?>列表</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<form name="form1" action="diy_list.php">
-					<input type="hidden" name="action" value="list">
-					<input type="hidden" name="diyid" value="<?php echo $diy->diyid; ?>">
-					<input type="text" name="keyword" class="admin-input-lg mr-2" value="<?php echo $keyword; ?>" placeholder="请输入关键词">
-					<select name="field" class="admin-input-sm">
-					<?php
-					foreach($fieldlist as $k=>$fielddata)
-					{
-						if ($k==$field) {
-							echo "<option value='{$k}' selected>{$fielddata[0]}</option>\r\n";
-						} else {
-							echo "<option value='{$k}'>{$fielddata[0]}</option>\r\n";
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="diy_main.php">自定义表单管理</a></li>
+				<li class="breadcrumb-item active"><?php echo $diy->name;?>列表</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<form name="form1" action="diy_list.php">
+						<input type="hidden" name="action" value="list">
+						<input type="hidden" name="diyid" value="<?php echo $diy->diyid; ?>">
+						<input type="text" name="keyword" class="admin-input-lg mr-2" value="<?php echo $keyword; ?>" placeholder="请输入关键词">
+						<select name="field" class="admin-input-sm">
+						<?php
+						foreach($fieldlist as $k=>$fielddata)
+						{
+							if ($k==$field) {
+								echo "<option value='{$k}' selected>{$fielddata[0]}</option>\r\n";
+							} else {
+								echo "<option value='{$k}'>{$fielddata[0]}</option>\r\n";
+							}
 						}
-					}
-					?>
-					</select>
-					<button type="submit" class="btn btn-success btn-sm">搜索</button>
-				</form>
+						?>
+						</select>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header"><?php echo $diy->name;?>列表</div>
-			<div class="card-body">
-				<form action="diy_list.php" method="post">
-					<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
-					<div class="table-responsive">
-						<table class="table table-borderless table-hover">
-							<tbody>
-								{dede:datalist}
-								<?php 
-								if (!empty($fields)) {
-									$allowhtml = array('htmltext');
-									$fields['sta'] = $fields['ifcheck']==1 ? '已审核' : '待审核';
-									echo '<tr>
-										<td width="16%">
-											<label><input type="checkbox" name="id[]" value="'.$fields['id'].'"> '.$fields['id'].'表单'.$fields['sta'].'</label>
-										</td>
-										<td align="right">
-											<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
-										</td>
-									</tr>';
-									foreach($fieldlist as $field => $fielddata)
-									{
-										if ($fields[$field] == '') continue;
-										if (!in_array($fielddata[1], $allowhtml)) {
-											$fields[$field] = dede_htmlspecialchars($fields[$field]);
+			<div class="card shadow-sm">
+				<div class="card-header"><?php echo $diy->name;?>列表</div>
+				<div class="card-body">
+					<form action="diy_list.php" method="post">
+						<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
+						<div class="table-responsive">
+							<table class="table table-borderless table-hover">
+								<tbody>
+									{dede:datalist}
+									<?php 
+									if (!empty($fields)) {
+										$allowhtml = array('htmltext');
+										$fields['sta'] = $fields['ifcheck']==1 ? '已审核' : '待审核';
+										echo '<tr>
+											<td width="16%">
+												<label><input type="checkbox" name="id[]" value="'.$fields['id'].'"> '.$fields['id'].'表单'.$fields['sta'].'</label>
+											</td>
+											<td align="right">
+												<a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+											</td>
+										</tr>';
+										foreach($fieldlist as $field => $fielddata)
+										{
+											if ($fields[$field] == '') continue;
+											if (!in_array($fielddata[1], $allowhtml)) {
+												$fields[$field] = dede_htmlspecialchars($fields[$field]);
+											}
+											echo '<tr><td>'.$fielddata[0].'</td><td>'.$fields[$field].'</td></tr>';
 										}
-										echo '<tr><td>'.$fielddata[0].'</td><td>'.$fields[$field].'</td></tr>';
+									} else {
+										echo '<tr><td>暂无记录</td></tr>';
 									}
-								} else {
-									echo '<tr><td>暂无记录</td></tr>';
-								}
-								?>
-								{/dede:datalist}
-								<tr>
-									<td colspan="2">
-										<label><input type="radio" name="action" value="check"> 审核</label>
-										<label><input type="radio" name="action" value="delete"> 删除</label>
-										<button type="button" onclick="selAll();" class="btn btn-success btn-sm">全选</button>
-										<button type="button" onclick="noSelAll();" class="btn btn-success btn-sm">取消</button>
-										<button type="submit"class="btn btn-success btn-sm">提交</button>
-										<a href="<?php echo $cfg_phpurl;?>/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				{dede:pagelist listsize='6'/}
+									?>
+									{/dede:datalist}
+									<tr>
+										<td colspan="2">
+											<label><input type="radio" name="action" value="check"> 审核</label>
+											<label><input type="radio" name="action" value="delete"> 删除</label>
+											<button type="button" onclick="selAll();" class="btn btn-success btn-sm">全选</button>
+											<button type="button" onclick="noSelAll();" class="btn btn-success btn-sm">取消</button>
+											<button type="submit"class="btn btn-success btn-sm">提交</button>
+											<a href="<?php echo $cfg_phpurl;?>/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank" class="btn btn-success btn-sm">预览</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 		<script>

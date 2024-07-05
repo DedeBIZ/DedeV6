@@ -12,87 +12,89 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a></li>
-			<li class="breadcrumb-item active">提升会员</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">提升会员</div>
-			<div class="card-body">
-				<?php if ($row['matt']==10) {echo '<div class="alert alert-info">您已经是管理员，不要提升了</div>';} else {?>
-				<form name="form2" action="member_toadmin.php" method="post">
-					<input type="hidden" name="dopost" value="toadmin">
-					<input type="hidden" name="userid" value="<?php echo $row['userid']?>">
-					<input type="hidden" name="id" value="<?php echo $id?>">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">账号</td>
-									<td><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo " <span>".$row['userid']."</span>";?></td>
-								</tr>
-								<tr>
-									<td>昵称</td>
-									<td><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="admin-input-sm" required>（发布文档后显示作者的名字）</td>
-								</tr>
-								<tr>
-									<td>密码</td>
-									<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
-								</tr>
-								<tr>
-									<td>类型</td>
-									<td>
-										<select name="usertype" class="admin-input-sm">
-											<?php
-											$dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
-											$dsql->Execute("ut");
-											while($myrow = $dsql->GetObject("ut"))
-											{
-												if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
-												else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
-											}
-											?>
-										</select>
-									</td>
-								</tr>
-								<tr>
-									<td>授权栏目</td>
-									<td>
-										<select name="typeids[]" id="typeid" multiple="yes" class="admin-input-lg">
-											<option value="0" class='alltype'>所有栏目</option>
-											<?php echo $typeOptions?>
-										</select>
-										<span>（支持多选）</span>
-									</td>
-								</tr>
-								<tr>
-									<td>真实姓名</td>
-									<td><input type="text" name="tname" id="tname" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td>邮箱</td>
-									<td><input type="text" name="email" id="email" autocomplete="off" class="admin-input-sm" value="<?php echo $row['email']?>" required></td>
-								</tr>
-								<tr>
-									<td>验证安全码</td>
-									<td>
-										<input type="text" name="safecode" id="safecode" class="admin-input-sm">
-										<input type="hidden" name="randcode" value="<?php echo $randcode;?>">
-										<span>（安全码：<?php echo $safecode;?>）</span>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				<?php }?>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a></li>
+				<li class="breadcrumb-item active">提升会员</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">提升会员</div>
+				<div class="card-body">
+					<?php if ($row['matt']==10) {echo '<div class="alert alert-info">您已经是管理员，不要提升了</div>';} else {?>
+					<form name="form2" action="member_toadmin.php" method="post">
+						<input type="hidden" name="dopost" value="toadmin">
+						<input type="hidden" name="userid" value="<?php echo $row['userid']?>">
+						<input type="hidden" name="id" value="<?php echo $id?>">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">账号</td>
+										<td><?php if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img-sm'>";};echo " <span>".$row['userid']."</span>";?></td>
+									</tr>
+									<tr>
+										<td>昵称</td>
+										<td><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="admin-input-sm" required>（发布文档后显示作者的名字）</td>
+									</tr>
+									<tr>
+										<td>密码</td>
+										<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
+									</tr>
+									<tr>
+										<td>类型</td>
+										<td>
+											<select name="usertype" class="admin-input-sm">
+												<?php
+												$dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
+												$dsql->Execute("ut");
+												while($myrow = $dsql->GetObject("ut"))
+												{
+													if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+													else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
+												}
+												?>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>授权栏目</td>
+										<td>
+											<select name="typeids[]" id="typeid" multiple="yes" class="admin-input-lg">
+												<option value="0" class='alltype'>所有栏目</option>
+												<?php echo $typeOptions?>
+											</select>
+											<span>（支持多选）</span>
+										</td>
+									</tr>
+									<tr>
+										<td>真实姓名</td>
+										<td><input type="text" name="tname" id="tname" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td>邮箱</td>
+										<td><input type="text" name="email" id="email" autocomplete="off" class="admin-input-sm" value="<?php echo $row['email']?>" required></td>
+									</tr>
+									<tr>
+										<td>验证安全码</td>
+										<td>
+											<input type="text" name="safecode" id="safecode" class="admin-input-sm">
+											<input type="hidden" name="randcode" value="<?php echo $randcode;?>">
+											<span>（安全码：<?php echo $safecode;?>）</span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					<?php }?>
+				</div>
 			</div>
 		</div>
 	</body>

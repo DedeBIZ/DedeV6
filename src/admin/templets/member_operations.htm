@@ -9,66 +9,68 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">会员消费记录</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<form name="form2" method="get" action="member_operations.php">
-					<input type="text" name="buyid" id="buyid" placeholder="请输入订单号" class="admin-input-lg">
-					<button type="submit"class="btn btn-success btn-sm">搜索</button>
-					<a href="member_operations.php?sta=0" class="btn btn-success btn-sm">未付款</a>
-					<a href="member_operations.php?sta=1" class="btn btn-success btn-sm">已付款</a>
-					<a href="member_operations.php?sta=2" class="btn btn-success btn-sm">已完成</a>
-					<a href="member_operations.php" class="btn btn-success btn-sm">全部</a>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">会员消费记录</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<form name="form2" method="get" action="member_operations.php">
+						<input type="text" name="buyid" id="buyid" placeholder="请输入订单号" class="admin-input-lg">
+						<button type="submit"class="btn btn-success btn-sm">搜索</button>
+						<a href="member_operations.php?sta=0" class="btn btn-success btn-sm">未付款</a>
+						<a href="member_operations.php?sta=1" class="btn btn-success btn-sm">已付款</a>
+						<a href="member_operations.php?sta=2" class="btn btn-success btn-sm">已完成</a>
+						<a href="member_operations.php" class="btn btn-success btn-sm">全部</a>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">会员消费记录</div>
-			<div class="card-body">
-				<form name="form1">
-					<div class="table-responsive">
-						<table class="table table-borderless table-hover">
-							<thead>
-								<tr>
-									<td scope="col">选择</td>
-									<td scope="col">订单号</td>
-									<td scope="col">产品名称</td>
-									<td scope="col">产品类型</td>
-									<td scope="col">生成日期</td>
-									<td scope="col">金额</td>
-									<td scope="col">状态</td>
-									<td scope="col">会员</td>
-								</tr>
-							</thead>
-							<tbody>
-								{dede:datalist}
-								<tr>
-									<td><input type="checkbox" name="aids" value="<?php echo $fields['aid']?>"></td>
-									<td><?php echo $fields['buyid']?></td>
-									<td><?php echo $fields['pname'].'（'.$fields['oldinfo'].'）';?></td>
-									<td><?php echo GetPType($fields['product'])?></td>
-									<td><?php echo GetDateTimeMk($fields['mtime'])?>（{dede:field.mtime function="floorTime(time()-@me,@me)"/}）</td>
-									<td><?php echo $fields['money']?></td>
-									<td><?php echo GetSta($fields['sta'])?></td>
-									<td><?php echo GetMemberID($fields['mid'])?></td>
-								</tr>
-								{/dede:datalist}
-								<tr>
-									<td colspan="8">
-										<a href="javascript:ReSel();" class="btn btn-success btn-sm">全选</a>
-										<a href="javascript:UpSel();" class="btn btn-success btn-sm">已付款</a>
-										<a href="javascript:OkSel();" class="btn btn-success btn-sm">已完成</a>
-										<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				{dede:pagelist listsize='6'/}
+			<div class="card shadow-sm">
+				<div class="card-header">会员消费记录</div>
+				<div class="card-body">
+					<form name="form1">
+						<div class="table-responsive">
+							<table class="table table-borderless table-hover">
+								<thead>
+									<tr>
+										<td scope="col">选择</td>
+										<td scope="col">订单号</td>
+										<td scope="col">产品名称</td>
+										<td scope="col">产品类型</td>
+										<td scope="col">生成日期</td>
+										<td scope="col">金额</td>
+										<td scope="col">状态</td>
+										<td scope="col">会员</td>
+									</tr>
+								</thead>
+								<tbody>
+									{dede:datalist}
+									<tr>
+										<td><input type="checkbox" name="aids" value="<?php echo $fields['aid']?>"></td>
+										<td><?php echo $fields['buyid']?></td>
+										<td><?php echo $fields['pname'].'（'.$fields['oldinfo'].'）';?></td>
+										<td><?php echo GetPType($fields['product'])?></td>
+										<td><?php echo GetDateTimeMk($fields['mtime'])?>（{dede:field.mtime function="floorTime(time()-@me,@me)"/}）</td>
+										<td><?php echo $fields['money']?></td>
+										<td><?php echo GetSta($fields['sta'])?></td>
+										<td><?php echo GetMemberID($fields['mid'])?></td>
+									</tr>
+									{/dede:datalist}
+									<tr>
+										<td colspan="8">
+											<a href="javascript:ReSel();" class="btn btn-success btn-sm">全选</a>
+											<a href="javascript:UpSel();" class="btn btn-success btn-sm">已付款</a>
+											<a href="javascript:OkSel();" class="btn btn-success btn-sm">已完成</a>
+											<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 		<script>

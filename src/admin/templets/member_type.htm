@@ -9,96 +9,98 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">会员等级分类</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">会员等级分类</div>
-			<div class="card-body">
-				<form name="form1" action="member_type.php" method="post">
-					<input type="hidden" name="dopost" value="save">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<thead>
-								<tr>
-									<td scope="col">产品名称</td>
-									<td scope="col">会员级别</td>
-									<td scope="col">产品价格（元）</td>
-									<td scope="col">会员期限（天）</td>
-									<td scope="col">状态</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$dsql->SetQuery("SELECT * FROM `#@__member_type`");
-								$dsql->Execute();
-								$k=0;
-								while($row = $dsql->GetObject())
-								{
-								$k++;
-								?>
-								<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
-								<tr>
-									<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" class="admin-input-lg"></td>
-									<td>
-										<select name="rank_<?php echo $k?>" id="rank_<?php echo $k?>" class="admin-input-sm">
-											<?php
-											foreach($arcranks as $kkk=>$vvv){
-												if ($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
-												else echo "<option value='{$kkk}'>{$vvv}</option>";
-											}
-											?>
-										</select>
-									</td>
-									<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" class="admin-input-sm"></td>
-									<td>
-										<select name="exptime_<?php echo $k?>" id="exptime_<?php echo $k?>" class="admin-input-sm">
-											<?php
-											foreach($times as $kkk=>$vvv){
-												if ($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
-												else echo "<option value='{$kkk}'>{$vvv}</option>";
-											}
-											?>
-										</select>
-									</td>
-									<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</td>
-								</tr>
-								<?php }?>
-								<input type="hidden" name="idend" value="<?php echo $k?>">
-								<tr>
-									<td><input type="text" name="pname_new" id="pname_new" class="admin-input-lg"></td>
-									<td>
-										<select name="rank_new" id="rank_new" class="admin-input-sm">
-											<?php
-											foreach($arcranks as $kkk=>$vvv){
-												echo "<option value='{$kkk}'>{$vvv}</option>";
-											}
-											?>
-										</select>
-									</td>
-									<td><input type="text" name="money_new" id="money_new" class="admin-input-sm" value="100"></td>
-									<td>
-										<select name="exptime_new" id="exptime_new" class="admin-input-sm">
-											<?php
-											foreach($times as $kkk=>$vvv){
-												echo "<option value='{$kkk}'>{$vvv}</option>";
-											}
-											?>
-										</select>
-									</td>
-									<td><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</td>
-								</tr>
-								<tr>
-									<td colspan="5" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">会员等级分类</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">会员等级分类</div>
+				<div class="card-body">
+					<form name="form1" action="member_type.php" method="post">
+						<input type="hidden" name="dopost" value="save">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<td scope="col">产品名称</td>
+										<td scope="col">会员级别</td>
+										<td scope="col">产品价格（元）</td>
+										<td scope="col">会员期限（天）</td>
+										<td scope="col">状态</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$dsql->SetQuery("SELECT * FROM `#@__member_type`");
+									$dsql->Execute();
+									$k=0;
+									while($row = $dsql->GetObject())
+									{
+									$k++;
+									?>
+									<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
+									<tr>
+										<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" class="admin-input-lg"></td>
+										<td>
+											<select name="rank_<?php echo $k?>" id="rank_<?php echo $k?>" class="admin-input-sm">
+												<?php
+												foreach($arcranks as $kkk=>$vvv){
+													if ($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+													else echo "<option value='{$kkk}'>{$vvv}</option>";
+												}
+												?>
+											</select>
+										</td>
+										<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" class="admin-input-sm"></td>
+										<td>
+											<select name="exptime_<?php echo $k?>" id="exptime_<?php echo $k?>" class="admin-input-sm">
+												<?php
+												foreach($times as $kkk=>$vvv){
+													if ($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+													else echo "<option value='{$kkk}'>{$vvv}</option>";
+												}
+												?>
+											</select>
+										</td>
+										<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</td>
+									</tr>
+									<?php }?>
+									<input type="hidden" name="idend" value="<?php echo $k?>">
+									<tr>
+										<td><input type="text" name="pname_new" id="pname_new" class="admin-input-lg"></td>
+										<td>
+											<select name="rank_new" id="rank_new" class="admin-input-sm">
+												<?php
+												foreach($arcranks as $kkk=>$vvv){
+													echo "<option value='{$kkk}'>{$vvv}</option>";
+												}
+												?>
+											</select>
+										</td>
+										<td><input type="text" name="money_new" id="money_new" class="admin-input-sm" value="100"></td>
+										<td>
+											<select name="exptime_new" id="exptime_new" class="admin-input-sm">
+												<?php
+												foreach($times as $kkk=>$vvv){
+													echo "<option value='{$kkk}'>{$vvv}</option>";
+												}
+												?>
+											</select>
+										</td>
+										<td><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</td>
+									</tr>
+									<tr>
+										<td colspan="5" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

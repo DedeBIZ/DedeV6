@@ -20,77 +20,79 @@
 		</script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">模块管理</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<a class="btn btn-success btn-sm" href="module_main.php">全部</a>
-				<a class="btn btn-success btn-sm" href="module_main.php?moduletype=soft">模块</a>
-				<a class="btn btn-success btn-sm" href="module_main.php?moduletype=templets">模板</a>
-				<a class="btn btn-success btn-sm" href="module_main.php?moduletype=plus">小插件</a>
-				<a class="btn btn-success btn-sm" href="module_main.php?moduletype=patch">补丁</a>
-				<a class="btn btn-success btn-sm" href="module_upload.php">上传</a>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">模块管理</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<a class="btn btn-success btn-sm" href="module_main.php">全部</a>
+					<a class="btn btn-success btn-sm" href="module_main.php?moduletype=soft">模块</a>
+					<a class="btn btn-success btn-sm" href="module_main.php?moduletype=templets">模板</a>
+					<a class="btn btn-success btn-sm" href="module_main.php?moduletype=plus">小插件</a>
+					<a class="btn btn-success btn-sm" href="module_main.php?moduletype=patch">补丁</a>
+					<a class="btn btn-success btn-sm" href="module_upload.php">上传</a>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">模块管理</div>
-			<div class="card-body">
-				<form name="form1" action="plus_add.php" method="post">
-					<input type="hidden" name="dopost" value="save">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<thead>
-								<tr>
-									<td scope="col">模块名称</td>
-									<td scope="col">发布时间</td>
-									<td scope="col">编码</td>
-									<td scope="col">类型</td>
-									<td scope="col">模块状态</td>
-									<td scope="col">操作</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php if (count($modules) > 0) foreach($modules as $k => $v) {?>
-								<tr>
-									<td><?php echo $v['name'];?></td>
-									<td><?php echo $v['time'];?></td>
-									<td>
-										<?php
-										if ($cfg_soft_lang != $v['lang']) echo $v['lang'];
-										else  echo $v['lang'];
-										?>
-									</td>
-									<td><?php echo $types[$v['moduletype']];?></td>
-									<td>
-										<?php
-										$file = DEDEDATA."/module/{$v['hash']}.xml";
-										if (file_exists($file)) {
-											if (file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
-												echo "<span class='btn btn-success btn-sm'>已安装</span><a href='module_main.php?action=uninstall&hash={$v['hash']}' class='btn btn-outline-danger btn-sm'>卸载</a>";
+			<div class="card shadow-sm">
+				<div class="card-header">模块管理</div>
+				<div class="card-body">
+					<form name="form1" action="plus_add.php" method="post">
+						<input type="hidden" name="dopost" value="save">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<td scope="col">模块名称</td>
+										<td scope="col">发布时间</td>
+										<td scope="col">编码</td>
+										<td scope="col">类型</td>
+										<td scope="col">模块状态</td>
+										<td scope="col">操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if (count($modules) > 0) foreach($modules as $k => $v) {?>
+									<tr>
+										<td><?php echo $v['name'];?></td>
+										<td><?php echo $v['time'];?></td>
+										<td>
+											<?php
+											if ($cfg_soft_lang != $v['lang']) echo $v['lang'];
+											else  echo $v['lang'];
+											?>
+										</td>
+										<td><?php echo $types[$v['moduletype']];?></td>
+										<td>
+											<?php
+											$file = DEDEDATA."/module/{$v['hash']}.xml";
+											if (file_exists($file)) {
+												if (file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
+													echo "<span class='btn btn-success btn-sm'>已安装</span><a href='module_main.php?action=uninstall&hash={$v['hash']}' class='btn btn-outline-danger btn-sm'>卸载</a>";
+												} else {
+													echo "<span class='btn btn-warning btn-sm'>未安装</span><a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
+												}
 											} else {
-												echo "<span class='btn btn-warning btn-sm'>未安装</span><a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
+												echo "<div id=\"status_{$v['hash']}\"><a href=\"javascript:getmodule('download','{$v['hash']}')\" class=\"btn btn-outline-warning btn-sm\">下载</a></div>";
 											}
-										} else {
-											echo "<div id=\"status_{$v['hash']}\"><a href=\"javascript:getmodule('download','{$v['hash']}')\" class=\"btn btn-outline-warning btn-sm\">下载</a></div>";
-										}
-										?>
-									</td>
-									<td>
-										<div id="manager_<?php echo $v['hash'];?>" <?php if (!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo "style='display:none'"?>>
-											<a class="btn btn-light btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>"><i class="fa fa-user-circle" title="贡献者"></i></a>
-											<a class="btn btn-light btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>"><i class="fa fa-eye" title="查看"></i></a>
-											<a class="btn btn-light btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>"><i class="fa fa-pencil-square" title="修改"></i></a>
-											<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash'];?>"><i class="fa fa-trash" title="删除"></i></a>
-										</div>
-									</td>
-								</tr>
-								<?php }?>
-							</tbody>
-						</table>
-					</div>
-				</form>
+											?>
+										</td>
+										<td>
+											<div id="manager_<?php echo $v['hash'];?>" <?php if (!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo "style='display:none'"?>>
+												<a class="btn btn-light btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>"><i class="fa fa-user-circle" title="贡献者"></i></a>
+												<a class="btn btn-light btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>"><i class="fa fa-eye" title="查看"></i></a>
+												<a class="btn btn-light btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>"><i class="fa fa-pencil-square" title="修改"></i></a>
+												<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash'];?>"><i class="fa fa-trash" title="删除"></i></a>
+											</div>
+										</td>
+									</tr>
+									<?php }?>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

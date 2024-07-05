@@ -9,55 +9,57 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="friendlink_main.php">友情链接管理</a></li>
-			<li class="breadcrumb-item active">网站类型管理</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">网站类型管理</div>
-			<div class="card-body">
-				<form name="form1" action="friendlink_type.php" method="post">
-					<input type="hidden" name="dopost" value="save">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<thead>
-								<tr>
-									<td scope="col">id</td>
-									<td scope="col">网站名称</td>
-									<td scope="col">状态</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$dsql->SetQuery("SELECT * FROM `#@__flinktype`");
-								$dsql->Execute();
-								$k=0;
-								while($row = $dsql->GetObject())
-								{
-								$k++;
-								?>
-								<tr>
-									<td><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"><?php echo $row->id;?></td>
-									<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" id="pname_<?php echo $k?>" style="width:90%"></td>
-									<td align="center"><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</label></td>
-								</tr>
-								<?php }?>
-								<tr>
-									<td><input type="hidden" name="idend" value="<?php echo $k?>"></td>
-									<td><input type="text" name="pname_new" id="pname_new" class="w-100"></td>
-									<td align="center"><label><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</label></td>
-								</tr>
-								<tr>
-									<td colspan="3" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="friendlink_main.php">友情链接管理</a></li>
+				<li class="breadcrumb-item active">网站类型管理</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">网站类型管理</div>
+				<div class="card-body">
+					<form name="form1" action="friendlink_type.php" method="post">
+						<input type="hidden" name="dopost" value="save">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<td scope="col">id</td>
+										<td scope="col">网站名称</td>
+										<td scope="col">状态</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$dsql->SetQuery("SELECT * FROM `#@__flinktype`");
+									$dsql->Execute();
+									$k=0;
+									while($row = $dsql->GetObject())
+									{
+									$k++;
+									?>
+									<tr>
+										<td><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"><?php echo $row->id;?></td>
+										<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" id="pname_<?php echo $k?>" style="width:90%"></td>
+										<td align="center"><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</label></td>
+									</tr>
+									<?php }?>
+									<tr>
+										<td><input type="hidden" name="idend" value="<?php echo $k?>"></td>
+										<td><input type="text" name="pname_new" id="pname_new" class="w-100"></td>
+										<td align="center"><label><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</label></td>
+									</tr>
+									<tr>
+										<td colspan="3" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

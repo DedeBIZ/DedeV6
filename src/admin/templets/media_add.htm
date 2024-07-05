@@ -12,73 +12,75 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="media_main.php">附件管理</a></li>
-			<li class="breadcrumb-item active">添加附件</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">添加附件</div>
-			<div class="card-body">
-				<form name="form1" action="media_add.php" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="dopost" value="upload">
-					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">附件类型</td>
-									<td>
-										<label><input type="radio" name="mediatype" value="1" checked> 图片</label>
-										<label><input type="radio" name="mediatype" value="2"> FLASH</label>
-										<label><input type="radio" name="mediatype" value="3"> 视频音频</label>
-										<label><input type="radio" name="mediatype" value="4"> 附件其它</label>
-									</td>
-								</tr>
-								<tr>
-									<td>附件标题</td>
-									<td><input type="text" name="title" id="title" class="admin-input-lg" required></td>
-								</tr>
-								<tr>
-									<td>附加参数</td>
-									<td>
-										<label>宽：<input type="text" name="mediawidth" id="mediawidth" class="admin-input-sm" placeholder="附件像素宽度"></label>
-										<label>高：<input type="text" name="mediaheight" id="mediaheight" class="admin-input-sm" placeholder="附件像高宽度"></label>
-										<label>播放时间：<input type="text" name="playtime" id="mediawidth3" class="admin-input-sm" placeholder="附件播放分钟"></label>
-									</td>
-								</tr>
-								<tr>
-									<td>上传附件</td>
-									<td>
-										<label>数量：<input type="text" name="picnum" id="picnum" value="5" class="admin-input-sm"></label>
-										<a href="javascript:MakeUpload();" class="btn btn-success btn-sm">添加</a>
-										<a href="javascript:ResetUpload();" class="btn btn-success btn-sm">恢复</a>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<p><label>附件1：<input type="file" name="upfile1" id="upfile1" class="admin-input-lg"></label></p>
-										<p><label>附件2：<input type="file" name="upfile2" id="upfile2" class="admin-input-lg"></label></p>
-										<p><label>附件3：<input type="file" name="upfile3" id="upfile3" class="admin-input-lg"></label></p>
-										<p><label>附件4：<input type="file" name="upfile4" id="upfile4" class="admin-input-lg"></label></p>
-										<p><label>附件5：<input type="file" name="upfile5" id="upfile5" class="admin-input-lg"></label></p>
-										<div id="uploadfield"></div>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="media_main.php">附件管理</a></li>
+				<li class="breadcrumb-item active">添加附件</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">添加附件</div>
+				<div class="card-body">
+					<form name="form1" action="media_add.php" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="dopost" value="upload">
+						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">附件类型</td>
+										<td>
+											<label><input type="radio" name="mediatype" value="1" checked> 图片</label>
+											<label><input type="radio" name="mediatype" value="2"> FLASH</label>
+											<label><input type="radio" name="mediatype" value="3"> 视频音频</label>
+											<label><input type="radio" name="mediatype" value="4"> 附件其它</label>
+										</td>
+									</tr>
+									<tr>
+										<td>附件标题</td>
+										<td><input type="text" name="title" id="title" class="admin-input-lg" required></td>
+									</tr>
+									<tr>
+										<td>附加参数</td>
+										<td>
+											<label>宽：<input type="text" name="mediawidth" id="mediawidth" class="admin-input-sm" placeholder="附件像素宽度"></label>
+											<label>高：<input type="text" name="mediaheight" id="mediaheight" class="admin-input-sm" placeholder="附件像高宽度"></label>
+											<label>播放时间：<input type="text" name="playtime" id="mediawidth3" class="admin-input-sm" placeholder="附件播放分钟"></label>
+										</td>
+									</tr>
+									<tr>
+										<td>上传附件</td>
+										<td>
+											<label>数量：<input type="text" name="picnum" id="picnum" value="5" class="admin-input-sm"></label>
+											<a href="javascript:MakeUpload();" class="btn btn-success btn-sm">添加</a>
+											<a href="javascript:ResetUpload();" class="btn btn-success btn-sm">恢复</a>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<p><label>附件1：<input type="file" name="upfile1" id="upfile1" class="admin-input-lg"></label></p>
+											<p><label>附件2：<input type="file" name="upfile2" id="upfile2" class="admin-input-lg"></label></p>
+											<p><label>附件3：<input type="file" name="upfile3" id="upfile3" class="admin-input-lg"></label></p>
+											<p><label>附件4：<input type="file" name="upfile4" id="upfile4" class="admin-input-lg"></label></p>
+											<p><label>附件5：<input type="file" name="upfile5" id="upfile5" class="admin-input-lg"></label></p>
+											<div id="uploadfield"></div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script>
-			var startNum = 6;
+			var startNum = 5;
 			function MakeUpload() {
 				var upfield = document.getElementById("uploadfield");
 				var endNum = Number(document.form1.picnum.value) + startNum;

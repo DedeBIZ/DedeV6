@@ -17,111 +17,113 @@
 		<script src="/static/web/js/admin.list.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">文档列表</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<a class="btn btn-success btn-sm" href="catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives">添加文档</a>
-				{dede:if $adminid==$mid}
-				<a class="btn btn-success btn-sm" href="content_i_list.php?cid={dede:global.cid/}&mid=0">全部文档</a>
-				{else}
-				<a class="btn btn-success btn-sm" href="content_i_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID();?>">我的文档</a>
-				{/dede:if}
-				{dede:global.CheckUserSend/}
-				<a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a>
-				<a class="btn btn-success btn-sm" href="makehtml_list.php?cid={dede:global.cid/}">更新列表</a>
-				<a class="btn btn-success btn-sm" href="makehtml_archives.php?cid={dede:global.cid/}">更新文档</a>
-				<a class="btn btn-success btn-sm" href="recycling.php?cid={dede:global.cid/}">文档回收站</a>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">文档列表</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<a class="btn btn-success btn-sm" href="catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives">添加文档</a>
+					{dede:if $adminid==$mid}
+					<a class="btn btn-success btn-sm" href="content_i_list.php?cid={dede:global.cid/}&mid=0">全部文档</a>
+					{else}
+					<a class="btn btn-success btn-sm" href="content_i_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID();?>">我的文档</a>
+					{/dede:if}
+					{dede:global.CheckUserSend/}
+					<a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a>
+					<a class="btn btn-success btn-sm" href="makehtml_list.php?cid={dede:global.cid/}">更新列表</a>
+					<a class="btn btn-success btn-sm" href="makehtml_archives.php?cid={dede:global.cid/}">更新文档</a>
+					<a class="btn btn-success btn-sm" href="recycling.php?cid={dede:global.cid/}">文档回收站</a>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<form name="form3" action="content_i_list.php" method="get">
-					<input type="hidden" name="dopost" value="listArchives">
-					<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
-					<input type="text" name="keyword" class="admin-input-lg mr-2" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
-					<select name="cid" class="admin-input-sm mr-2">
-						<option value="0">选择栏目</option>
-						{dede:global.optionarr/}
-					</select>
-					<select name="orderby" class="admin-input-sm mr-2">
-						<option value="id">排序</option>
-						<option value="pubdate">更新时间</option>
-						<option value="sortrank">置顶权值</option>
-						<option value="click">点击量</option>
-						<option value="scores">评论积分</option>
-						<option value="lastpost">最后评论</option>
-					</select>
-					<input type="text" name="timerange" autocomplete="off" id="timerange" class="admin-input-md" value="<?php echo $strTimerange;?>" placeholder="请选择日期">
-					<button type="submit" class="btn btn-success btn-sm">搜索</button>
-				</form>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<form name="form3" action="content_i_list.php" method="get">
+						<input type="hidden" name="dopost" value="listArchives">
+						<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
+						<input type="text" name="keyword" class="admin-input-lg mr-2" value="{dede:global.keyword/}" placeholder="请输入文档标题或文档id">
+						<select name="cid" class="admin-input-sm mr-2">
+							<option value="0">选择栏目</option>
+							{dede:global.optionarr/}
+						</select>
+						<select name="orderby" class="admin-input-sm mr-2">
+							<option value="id">排序</option>
+							<option value="pubdate">更新时间</option>
+							<option value="sortrank">置顶权值</option>
+							<option value="click">点击量</option>
+							<option value="scores">评论积分</option>
+							<option value="lastpost">最后评论</option>
+						</select>
+						<input type="text" name="timerange" autocomplete="off" id="timerange" class="admin-input-md" value="<?php echo $strTimerange;?>" placeholder="请选择日期">
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">{dede:global.positionname/}文档列表</div>
-			<div class="card-body">
-				<form name="form2">
-					<div class="table-responsive">
-						<table class="table table-borderless table-hover">
-							<thead>
-								<tr>
-									<td scope="col">选择</td>
-									<td scope="col">id</td>
-									<td width="30%">文档标题</td>
-									<td scope="col">栏目</td>
-									<td scope="col">网页</td>
-									<td scope="col">权限</td>
-									<td scope="col">编辑</td>
-									<td scope="col">更新时间</td>
-									<td scope="col">点击</td>
-									<td>操作</td>
-								</tr>
-							</thead>
-							<tbody>
-								{dede:datalist}
-								<tr>
-									<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
-									<td>{dede:field.id/}</td>
-									<td>
-										<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">
-											<img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm">
-											<span>{dede:field.title/}</span>
-										</a>
-										{dede:field.flag function='IsCommendArchives(@me)'/}
-									</td>
-									<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
-									<td>{dede:field.ismake function='IsHtmlArchives(@me)'/}</td>
-									<td>{dede:field.arcrank function='GetRankName(@me)'/}</td>
-									<td>{dede:field.mid function='GetMemberName(@me)'/}</td>
-									<td>{dede:field.senddate function='GetDateTimeMk(@me)'/}</td>
-									<td>{dede:field.click/}</td>
-									<td>
-										<a href="javascript:QuickEdit('{dede:field.id/}',event,this);" class="btn btn-light btn-sm"><i class="fa fa-sliders" title="修改"></i></a>
-										<a href="javascript:editArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="编辑"></i></a>
-										<a href="javascript:viewArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-eye" title="预览"></i></a>
-									</td>
-								</tr>
-								{/dede:datalist}
-								<tr>
-									<td colspan="10">
-										<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
-										<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
-										<a href="javascript:updateArc(0);" class="btn btn-success btn-sm">更新</a>
-										<a href="javascript:checkArc(0);" class="btn btn-success btn-sm">审核</a>
-										<a href="javascript:adArc(0);" class="btn btn-success btn-sm">推荐</a>
-										<a href="javascript:moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>);" class="btn btn-success btn-sm">移动</a>
-										<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
-										<a href="javascript:cAtts('attsAdd',event,this);" class="btn btn-success btn-sm">添加属性</a>
-										<a href="javascript:cAtts('attsDel',event,this);" class="btn btn-danger btn-sm">删除属性</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				{dede:pagelist listsize='6'/}
+			<div class="card shadow-sm">
+				<div class="card-header">{dede:global.positionname/}文档列表</div>
+				<div class="card-body">
+					<form name="form2">
+						<div class="table-responsive">
+							<table class="table table-borderless table-hover">
+								<thead>
+									<tr>
+										<td scope="col">选择</td>
+										<td scope="col">id</td>
+										<td width="30%">文档标题</td>
+										<td scope="col">栏目</td>
+										<td scope="col">网页</td>
+										<td scope="col">权限</td>
+										<td scope="col">编辑</td>
+										<td scope="col">更新时间</td>
+										<td scope="col">点击</td>
+										<td>操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									{dede:datalist}
+									<tr>
+										<td><input type="checkbox" name="arcID" value="{dede:field.id/}"></td>
+										<td>{dede:field.id/}</td>
+										<td>
+											<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">
+												<img src="{dede:field.litpic function='CheckPic(@me)'/}" class="thumbnail-sm">
+												<span>{dede:field.title/}</span>
+											</a>
+											{dede:field.flag function='IsCommendArchives(@me)'/}
+										</td>
+										<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
+										<td>{dede:field.ismake function='IsHtmlArchives(@me)'/}</td>
+										<td>{dede:field.arcrank function='GetRankName(@me)'/}</td>
+										<td>{dede:field.mid function='GetMemberName(@me)'/}</td>
+										<td>{dede:field.senddate function='GetDateTimeMk(@me)'/}</td>
+										<td>{dede:field.click/}</td>
+										<td>
+											<a href="javascript:QuickEdit('{dede:field.id/}',event,this);" class="btn btn-light btn-sm"><i class="fa fa-sliders" title="修改"></i></a>
+											<a href="javascript:editArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="编辑"></i></a>
+											<a href="javascript:viewArc({dede:field.id/});" class="btn btn-light btn-sm"><i class="fa fa-eye" title="预览"></i></a>
+										</td>
+									</tr>
+									{/dede:datalist}
+									<tr>
+										<td colspan="10">
+											<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+											<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
+											<a href="javascript:updateArc(0);" class="btn btn-success btn-sm">更新</a>
+											<a href="javascript:checkArc(0);" class="btn btn-success btn-sm">审核</a>
+											<a href="javascript:adArc(0);" class="btn btn-success btn-sm">推荐</a>
+											<a href="javascript:moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>);" class="btn btn-success btn-sm">移动</a>
+											<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
+											<a href="javascript:cAtts('attsAdd',event,this);" class="btn btn-success btn-sm">添加属性</a>
+											<a href="javascript:cAtts('attsDel',event,this);" class="btn btn-danger btn-sm">删除属性</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 		<script>

@@ -12,80 +12,82 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="templets_one.php">文档单页管理</a></li>
-			<li class="breadcrumb-item active">修改自定义页面</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">修改自定义页面</div>
-			<div class="card-body">
-				<form action="templets_one_edit.php" method="post" name="form1">
-					<input type="hidden" name="dopost" value="saveedit">
-					<input type="hidden" name="aid" value="<?php echo $aid?>">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">页面标题</td>
-									<td><input type="text" name="title" id="title" value="<?php echo $row['title'];?>" class="admin-input-lg" required></td>
-								</tr>
-								<tr>
-									<td>页面关键词</td>
-									<td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="admin-input-lg"></td>
-								</tr>
-								<tr>
-									<td>页面摘要信息</td>
-									<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $row['description'];?></textarea></td>
-								</tr>
-								<tr>
-									<td>关联标识</td>
-									<td>
-										<input type="text" name="likeid" id="likeid" value="<?php echo $row['likeid'];?>" class="admin-input-lg">
-										<input type="hidden" name="oldlikeid" id="oldlikeid" value="<?php echo $row['likeid'];?>">
-										<?php
-										echo "<select name='likeidsel' id='likeidsel' class='admin-input-sm'>";
-										$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
-										echo "<option value='{$row['likeid']}' selected>{$row['likeid']}</option>";
-										while($arr = $dsql->GetArray('s'))
-										{
-											if ($arr['likeid']!=$row['likeid']) echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
-										}
-										echo "</select>";
-										?>
-									</td>
-								</tr>
-								<tr>
-									<td>保存位置</td>
-									<td>
-										<input type="hidden" name="oldfilename" id="oldfilename" value="<?php echo $row['filename'];?>" class="admin-input-lg">
-										<input type="text" name="nfilename" id="nfilename" value="<?php echo $row['filename'];?>" class="admin-input-lg">（填写路径文件夹）
-									</td>
-								</tr>
-								<tr>
-									<td>模板文件名</td>
-									<td><input type="text" name="template" id="template" value="<?php echo $row['template'];?>" class="admin-input-lg">（填写模板名称）</td>
-								</tr>
-								<tr>
-									<td>是否编译文档</td>
-									<td>
-										<?php if (!DEDEBIZ_SAFE_MODE) {?> <label><input type="radio" name="ismake" value="1" <?php if ($row['ismake']==1) echo 'checked';?>> 含模板标记，要编译</label> <?php }?>
-										<label><input type="radio" name="ismake" value="0" <?php if ($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo 'checked';?>> 不含模板标记，不需要编译</label>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2"><?php GetEditor("body",$row['body'],"400","Default","print","false");?></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset();">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="templets_one.php">文档单页管理</a></li>
+				<li class="breadcrumb-item active">修改自定义页面</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">修改自定义页面</div>
+				<div class="card-body">
+					<form action="templets_one_edit.php" method="post" name="form1">
+						<input type="hidden" name="dopost" value="saveedit">
+						<input type="hidden" name="aid" value="<?php echo $aid?>">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">页面标题</td>
+										<td><input type="text" name="title" id="title" value="<?php echo $row['title'];?>" class="admin-input-lg" required></td>
+									</tr>
+									<tr>
+										<td>页面关键词</td>
+										<td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="admin-input-lg"></td>
+									</tr>
+									<tr>
+										<td>页面摘要信息</td>
+										<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $row['description'];?></textarea></td>
+									</tr>
+									<tr>
+										<td>关联标识</td>
+										<td>
+											<input type="text" name="likeid" id="likeid" value="<?php echo $row['likeid'];?>" class="admin-input-lg">
+											<input type="hidden" name="oldlikeid" id="oldlikeid" value="<?php echo $row['likeid'];?>">
+											<?php
+											echo "<select name='likeidsel' id='likeidsel' class='admin-input-sm'>";
+											$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
+											echo "<option value='{$row['likeid']}' selected>{$row['likeid']}</option>";
+											while($arr = $dsql->GetArray('s'))
+											{
+												if ($arr['likeid']!=$row['likeid']) echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+											}
+											echo "</select>";
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>保存位置</td>
+										<td>
+											<input type="hidden" name="oldfilename" id="oldfilename" value="<?php echo $row['filename'];?>" class="admin-input-lg">
+											<input type="text" name="nfilename" id="nfilename" value="<?php echo $row['filename'];?>" class="admin-input-lg">（填写路径文件夹）
+										</td>
+									</tr>
+									<tr>
+										<td>模板文件名</td>
+										<td><input type="text" name="template" id="template" value="<?php echo $row['template'];?>" class="admin-input-lg">（填写模板名称）</td>
+									</tr>
+									<tr>
+										<td>是否编译文档</td>
+										<td>
+											<?php if (!DEDEBIZ_SAFE_MODE) {?> <label><input type="radio" name="ismake" value="1" <?php if ($row['ismake']==1) echo 'checked';?>> 含模板标记，要编译</label> <?php }?>
+											<label><input type="radio" name="ismake" value="0" <?php if ($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo 'checked';?>> 不含模板标记，不需要编译</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><?php GetEditor("body",$row['body'],"400","Default","print","false");?></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset();">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

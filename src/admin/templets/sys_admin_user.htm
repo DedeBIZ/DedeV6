@@ -10,53 +10,55 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">管理员管理</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<a href="sys_admin_user_add.php" class="btn btn-success btn-sm">添加管理员</a>
-				<a href="sys_group.php" class="btn btn-success btn-sm">会员组管理</a>
-			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">管理员管理</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-borderless table-hover">
-						<thead>
-							<tr>
-								<td scope="col">账号</td>
-								<td scope="col">昵称</td>
-								<td scope="col">等级</td>
-								<td scope="col">地址时间</td>
-								<td scope="col">栏目</td>
-								<td scope="col">操作</td>
-							</tr>
-						</thead>
-						<tbody>
-							{dede:datalist}
-							<tr>
-								<td>{dede:field.userid/}</td>
-								<td>{dede:field.uname/}</td>
-								<td>{dede:field.usertype function="GetUserType(@me)"/}</td>
-								<td>
-									<span>{dede:field.loginip/}</span>
-									<span>{dede:field.logintime function="GetDateTimeMk(@me)"/}</span>
-								</td>
-								<td>{dede:field.typename function="GetChannel(@me)"/}</td>
-								<td>
-									<a href="content_list.php?mid={dede:field.id/}" class="btn btn-light btn-sm"><i class="fa fa-file-text"></i> 文档</a>
-									<a href="sys_admin_user_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
-									<a href="sys_admin_user_edit.php?id={dede:field.id/}&userid={dede:field.userid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
-								</td>
-							</tr>
-							{/dede:datalist}
-						</tbody>
-					</table>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">管理员管理</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<a href="sys_admin_user_add.php" class="btn btn-success btn-sm">添加管理员</a>
+					<a href="sys_group.php" class="btn btn-success btn-sm">会员组管理</a>
 				</div>
-				{dede:pagelist listsize='6'/}
+			</div>
+			<div class="card shadow-sm">
+				<div class="card-header">管理员管理</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-borderless table-hover">
+							<thead>
+								<tr>
+									<td scope="col">账号</td>
+									<td scope="col">昵称</td>
+									<td scope="col">等级</td>
+									<td scope="col">地址时间</td>
+									<td scope="col">栏目</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td>{dede:field.userid/}</td>
+									<td>{dede:field.uname/}</td>
+									<td>{dede:field.usertype function="GetUserType(@me)"/}</td>
+									<td>
+										<span>{dede:field.loginip/}</span>
+										<span>{dede:field.logintime function="GetDateTimeMk(@me)"/}</span>
+									</td>
+									<td>{dede:field.typename function="GetChannel(@me)"/}</td>
+									<td>
+										<a href="content_list.php?mid={dede:field.id/}" class="btn btn-light btn-sm"><i class="fa fa-file-text"></i> 文档</a>
+										<a href="sys_admin_user_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square"></i> 修改</a>
+										<a href="sys_admin_user_edit.php?id={dede:field.id/}&userid={dede:field.userid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
+									</td>
+								</tr>
+								{/dede:datalist}
+							</tbody>
+						</table>
+					</div>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 	</body>

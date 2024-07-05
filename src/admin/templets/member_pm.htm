@@ -10,58 +10,60 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">会员短信管理</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<form action="member_pm.php" name="form1" method="get">
-					<input type="text" name="keyword" id="keyword" value="{dede:global name='keyword'/}" placeholder="请输入关键词" class="admin-input-lg mr-2">
-					<input type="text" name="username" id="username" value="{dede:global name='username'/}" placeholder="请输入账号" autocomplete="off" class="admin-input-lg mr-2">
-					<select name="folder" id="folder" class="admin-input-sm">
-						<option value="inbox">收件箱</option>
-						<option value="outbox">发件箱</option>
-					</select>
-					<button type="submit"class="btn btn-success btn-sm">搜索</button>
-					<span class="btn btn-success btn-sm">短信列表</span>
-					<a href="member_pmall.php" class="btn btn-outline-success btn-sm">群发短信</a>
-					<a href="member_pmone.php" class="btn btn-outline-success btn-sm">单独短信</a>
-				</form>
-			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">会员短信列表</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-borderless table-hover">
-						<thead>
-							<tr>
-								<td scope="col">发送时间</td>
-								<td scope="col">标题</td>
-								<td scope="col">已读</td>
-								<td scope="col">{dede:global name='postuser'/}</td>
-								<td scope="col">文档</td>
-								<td scope="col">文件夹</td>
-								<td scope="col">操作</td>
-							</tr>
-						</thead>
-						<tbody>
-							{dede:datalist}
-							<tr>
-								<td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
-								<td>{dede:field.subject function='dede_htmlspecialchars(@me)'/}</td>
-								<td>{dede:field.hasview function='IsReader(@me)'/}</td>
-								<td>{dede:field.floginid/}</td>
-								<td>{dede:field.message function='cn_substr(HtmlReplace(@me),60)'/}</td>
-								<td>{dede:field.folder function='GetFolders(@me)'/}</td>
-								<td><a href="member_pm.php?ID={dede:field.id/}&dopost=del" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a></td>
-							</tr>
-							{/dede:datalist}
-						</tbody>
-					</table>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">会员短信管理</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<form action="member_pm.php" name="form1" method="get">
+						<input type="text" name="keyword" id="keyword" value="{dede:global name='keyword'/}" placeholder="请输入关键词" class="admin-input-lg mr-2">
+						<input type="text" name="username" id="username" value="{dede:global name='username'/}" placeholder="请输入账号" autocomplete="off" class="admin-input-lg mr-2">
+						<select name="folder" id="folder" class="admin-input-sm">
+							<option value="inbox">收件箱</option>
+							<option value="outbox">发件箱</option>
+						</select>
+						<button type="submit"class="btn btn-success btn-sm">搜索</button>
+						<span class="btn btn-success btn-sm">短信列表</span>
+						<a href="member_pmall.php" class="btn btn-outline-success btn-sm">群发短信</a>
+						<a href="member_pmone.php" class="btn btn-outline-success btn-sm">单独短信</a>
+					</form>
 				</div>
-				{dede:pagelist listsize='6'/}
+			</div>
+			<div class="card shadow-sm">
+				<div class="card-header">会员短信列表</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-borderless table-hover">
+							<thead>
+								<tr>
+									<td scope="col">发送时间</td>
+									<td scope="col">标题</td>
+									<td scope="col">已读</td>
+									<td scope="col">{dede:global name='postuser'/}</td>
+									<td scope="col">文档</td>
+									<td scope="col">文件夹</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
+									<td>{dede:field.subject function='dede_htmlspecialchars(@me)'/}</td>
+									<td>{dede:field.hasview function='IsReader(@me)'/}</td>
+									<td>{dede:field.floginid/}</td>
+									<td>{dede:field.message function='cn_substr(HtmlReplace(@me),60)'/}</td>
+									<td>{dede:field.folder function='GetFolders(@me)'/}</td>
+									<td><a href="member_pm.php?ID={dede:field.id/}&dopost=del" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a></td>
+								</tr>
+								{/dede:datalist}
+							</tbody>
+						</table>
+					</div>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 	</body>

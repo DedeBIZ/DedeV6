@@ -9,60 +9,62 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="cards_manage.php">积分产品管理</a></li>
-			<li class="breadcrumb-item active">积分产品分类</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">积分产品管理</div>
-			<div class="card-body">
-				<form name="form1" action="cards_type.php" method="post">
-					<input type="hidden" name="dopost" value="save">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<thead>
-								<tr>
-									<td scope="col">产品名称</td>
-									<td scope="col">金币点数</td>
-									<td scope="col">价格</td>
-									<td scope="col">状态</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
-								$dsql->Execute();
-								$k=0;
-								while($row = $dsql->GetObject())
-								{
-									$k++;
-								?>
-								<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
-								<tr>
-									<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" class="w-100" id="pname_<?php echo $k?>"></td>
-									<td><input type="text" name="num_<?php echo $k?>" value="<?php echo $row->num?>" class="w-100" id="num_<?php echo $k?>"></td>
-									<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" class="w-75" id="money_<?php echo $k?>">（元）</td>
-									<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</td>
-								</tr>
-								<?php }?>
-								<input type="hidden" name="idend" value="<?php echo $k?>">
-								<tr>
-									<td><input type="text" name="pname_new" class="w-100" id="pname_new"></td>
-									<td><input type="text" name="num_new" class="w-100" id="num_new" value="100"></td>
-									<td><input type="text" name="money_new" class="w-75" id="money_new" value="30">（元）</td>
-									<td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</td>
-								</tr>
-								<tr>
-									<td colspan="4" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<a href="cards_manage.php" class="btn btn-outline-success btn-sm">返回</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="cards_manage.php">积分产品管理</a></li>
+				<li class="breadcrumb-item active">积分产品分类</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">积分产品管理</div>
+				<div class="card-body">
+					<form name="form1" action="cards_type.php" method="post">
+						<input type="hidden" name="dopost" value="save">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<td scope="col">产品名称</td>
+										<td scope="col">金币点数</td>
+										<td scope="col">价格</td>
+										<td scope="col">状态</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
+									$dsql->Execute();
+									$k=0;
+									while($row = $dsql->GetObject())
+									{
+										$k++;
+									?>
+									<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
+									<tr>
+										<td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" class="w-100" id="pname_<?php echo $k?>"></td>
+										<td><input type="text" name="num_<?php echo $k?>" value="<?php echo $row->num?>" class="w-100" id="num_<?php echo $k?>"></td>
+										<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" class="w-75" id="money_<?php echo $k?>">（元）</td>
+										<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked> 保留</td>
+									</tr>
+									<?php }?>
+									<input type="hidden" name="idend" value="<?php echo $k?>">
+									<tr>
+										<td><input type="text" name="pname_new" class="w-100" id="pname_new"></td>
+										<td><input type="text" name="num_new" class="w-100" id="num_new" value="100"></td>
+										<td><input type="text" name="money_new" class="w-75" id="money_new" value="30">（元）</td>
+										<td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked> 新增</td>
+									</tr>
+									<tr>
+										<td colspan="4" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<a href="cards_manage.php" class="btn btn-outline-success btn-sm">返回</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

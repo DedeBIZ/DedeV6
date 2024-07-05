@@ -10,53 +10,55 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">挑错管理</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">挑错管理</div>
-			<div class="card-body">
-				<form name="form2">
-					<div class="table-responsive">
-						<table class="table table-borderless table-hover">
-							<thead>
-								<tr>
-									<td scope="col">选择</td>
-									<td scope="col">id</td>
-									<td scope="col">挑错人</td>
-									<td scope="col">文档名称</td>
-									<td scope="col">出错类型</td>
-									<td scope="col">挑错时间</td>
-									<td scope="col">错误文档</td>
-									<td scope="col">修改建议</td>
-								</tr>
-							</thead>
-							<tbody>
-								{dede:datalist}
-								<tr>
-									<td><input type="checkbox" name="id" id="id" value="{dede:field.id/}"></td>
-									<td>{dede:field.id/}</td>
-									<td>{dede:field.mid function='username(@me)'/}</td>
-									<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title/}</a></td>
-									<td>{dede:field.type function='typename(@me)'/}</td>
-									<td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
-									<td>{dede:field.errtxt/}</td>
-									<td>{dede:field.oktxt/}</td>
-								</tr>
-								{/dede:datalist}
-								<tr>
-									<td colspan="8">
-										<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
-										<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
-										<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				{dede:pagelist listsize='6'/}
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">挑错管理</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">挑错管理</div>
+				<div class="card-body">
+					<form name="form2">
+						<div class="table-responsive">
+							<table class="table table-borderless table-hover">
+								<thead>
+									<tr>
+										<td scope="col">选择</td>
+										<td scope="col">id</td>
+										<td scope="col">挑错人</td>
+										<td scope="col">文档名称</td>
+										<td scope="col">出错类型</td>
+										<td scope="col">挑错时间</td>
+										<td scope="col">错误文档</td>
+										<td scope="col">修改建议</td>
+									</tr>
+								</thead>
+								<tbody>
+									{dede:datalist}
+									<tr>
+										<td><input type="checkbox" name="id" id="id" value="{dede:field.id/}"></td>
+										<td>{dede:field.id/}</td>
+										<td>{dede:field.mid function='username(@me)'/}</td>
+										<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title/}</a></td>
+										<td>{dede:field.type function='typename(@me)'/}</td>
+										<td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
+										<td>{dede:field.errtxt/}</td>
+										<td>{dede:field.oktxt/}</td>
+									</tr>
+									{/dede:datalist}
+									<tr>
+										<td colspan="8">
+											<a href="javascript:selAll();" class="btn btn-success btn-sm">全选</a>
+											<a href="javascript:noSelAll();" class="btn btn-success btn-sm">取消</a>
+											<a href="javascript:delArc(0);" class="btn btn-danger btn-sm">删除</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 		<script>

@@ -10,49 +10,51 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">投票管理</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">投票管理</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-borderless table-hover">
-						<thead>
-							<tr>
-								<td scope="col">id</td>
-								<td scope="col">投票名称</td>
-								<td scope="col">开始时间</td>
-								<td scope="col">结束时间</td>
-								<td scope="col">投票总数</td>
-								<td scope="col">状态</td>
-								<td scope="col">操作</td>
-							</tr>
-						</thead>
-						<tbody>
-							{dede:datalist}
-							<tr>
-								<td>{dede:field.aid/}</td>
-								<td><a href="{dede:global name='cfg_phpurl'/}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank"> {dede:field.votename/}</a></td>
-								<td>{dede:field.starttime function="GetDateMk(@me)"/}</td>
-								<td>{dede:field.endtime function="GetDateMk(@me)"/}</td>
-								<td>{dede:field.totalcount/}</td>
-								<td><?php if ($fields['isenable'] == 1){echo "未启用";} else {echo "启用";} ?></td>
-								<td>
-									<a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
-									<a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-light btn-sm"><i class="fa fa-code" title="代码"></i></a>
-									<a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
-								</td>
-							</tr>
-							{/dede:datalist}
-							<tr>
-								<td colspan="7"><a href="vote_add.php" class="btn btn-success btn-sm">添加一组投票</a></td>
-							</tr>
-						</tbody>
-					</table>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">投票管理</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">投票管理</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-borderless table-hover">
+							<thead>
+								<tr>
+									<td scope="col">id</td>
+									<td scope="col">投票名称</td>
+									<td scope="col">开始时间</td>
+									<td scope="col">结束时间</td>
+									<td scope="col">投票总数</td>
+									<td scope="col">状态</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td>{dede:field.aid/}</td>
+									<td><a href="{dede:global name='cfg_phpurl'/}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank"> {dede:field.votename/}</a></td>
+									<td>{dede:field.starttime function="GetDateMk(@me)"/}</td>
+									<td>{dede:field.endtime function="GetDateMk(@me)"/}</td>
+									<td>{dede:field.totalcount/}</td>
+									<td><?php if ($fields['isenable'] == 1){echo "未启用";} else {echo "启用";} ?></td>
+									<td>
+										<a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+										<a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-light btn-sm"><i class="fa fa-code" title="代码"></i></a>
+										<a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+									</td>
+								</tr>
+								{/dede:datalist}
+								<tr>
+									<td colspan="7"><a href="vote_add.php" class="btn btn-success btn-sm">添加一组投票</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					{dede:pagelist listsize='6'/}
 				</div>
-				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 	</body>

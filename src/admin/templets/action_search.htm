@@ -9,28 +9,30 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active"><?php echo $keyword;?>搜索结果</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header"><?php echo $keyword;?>搜索结果</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-borderless">
-						<tbody>
-							<?php foreach ($asresult as $row) {?>
-							<tr>
-								<td><?php echo $row['title'] ?></td>
-							</tr>
-							<?php foreach ($row['soniterm'] as $rows) {?>
-							<tr>
-								<td><a href="<?php echo $rows['linkurl'] ?>" target="main"><?php echo $rows['title'] ?></a></td>
-							</tr>
-							<?php }?>
-							<?php }?>
-						</tbody>
-					</table>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active"><?php echo $keyword;?>搜索结果</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header"><?php echo $keyword;?>搜索结果</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<?php foreach ($asresult as $row) {?>
+								<tr>
+									<td><?php echo $row['title'] ?></td>
+								</tr>
+								<?php foreach ($row['soniterm'] as $rows) {?>
+								<tr>
+									<td><a href="<?php echo $rows['linkurl'] ?>" target="main"><?php echo $rows['title'] ?></a></td>
+								</tr>
+								<?php }?>
+								<?php }?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

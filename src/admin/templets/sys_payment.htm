@@ -12,125 +12,127 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">支付接口设置</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-header">支付接口设置</div>
-			<div class="card-body">
-				<ul class="nav nav-tabs" id="myTab" role="tablist">
-					<li class="nav-item" role="presentation"><button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab"	data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button></li>
-					<li class="nav-item" role="presentation"><button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay" role="tab" aria-controls="alipay" aria-selected="false">支付宝</button></li>
-					<li class="nav-item" role="presentation"><button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank" role="tab" aria-controls="bank" aria-selected="false">银行转帐</button></li>
-					<li class="nav-item" role="presentation"><button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance" role="tab" aria-controls="balance" aria-selected="false">积分支付</button></li>
-					<li class="nav-item" role="presentation"><button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod" role="tab" aria-controls="cod" aria-selected="false">货到付款</button></li>
-				</ul>
-				<div class="tab-content pt-3" id="myTabContent">
-					<div class="tab-pane fade show active" id="wechat" role="tabpanel" aria-labelledby="wechat-tab">
-						<form>
-							<div class="form-group form-check">
-								<input type="checkbox" id="iptWechatEnabled" class="form-check-input">
-								<label class="form-check-label ml-2" for="iptWechatEnabled">是否启用</label>
-							</div>
-							<div class="form-group">
-								<label for="iptWechatAppID">AppID</label>
-								<input type="text" id="iptWechatAppID" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptWechatAPIv2Secret">APIv2Secret</label>
-								<input type="text" id="iptWechatAPIv2Secret" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptWechatMchID">商户号</label>
-								<input type="text" id="iptWechatMchID" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptWechatSortrank">排序（越小越靠前）</label>
-								<input type="text" id="iptWechatSortrank" class="form-control" value="0">
-							</div>
-						</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">支付接口设置</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-header">支付接口设置</div>
+				<div class="card-body">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation"><button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab"	data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button></li>
+						<li class="nav-item" role="presentation"><button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay" role="tab" aria-controls="alipay" aria-selected="false">支付宝</button></li>
+						<li class="nav-item" role="presentation"><button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank" role="tab" aria-controls="bank" aria-selected="false">银行转帐</button></li>
+						<li class="nav-item" role="presentation"><button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance" role="tab" aria-controls="balance" aria-selected="false">积分支付</button></li>
+						<li class="nav-item" role="presentation"><button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod" role="tab" aria-controls="cod" aria-selected="false">货到付款</button></li>
+					</ul>
+					<div class="tab-content pt-3" id="myTabContent">
+						<div class="tab-pane fade show active" id="wechat" role="tabpanel" aria-labelledby="wechat-tab">
+							<form>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptWechatEnabled" class="form-check-input">
+									<label class="form-check-label ml-2" for="iptWechatEnabled">是否启用</label>
+								</div>
+								<div class="form-group">
+									<label for="iptWechatAppID">AppID</label>
+									<input type="text" id="iptWechatAppID" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptWechatAPIv2Secret">APIv2Secret</label>
+									<input type="text" id="iptWechatAPIv2Secret" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptWechatMchID">商户号</label>
+									<input type="text" id="iptWechatMchID" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptWechatSortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptWechatSortrank" class="form-control" value="0">
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="alipay" role="tabpanel" aria-labelledby="alipay-tab">
+							<form>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptAlipayEnabled" class="form-check-input">
+									<label class="form-check-label ml-2" for="iptAlipayEnabled">是否启用</label>
+								</div>
+								<div class="form-group">
+									<label for="iptAlipayAPPID">APPID</label>
+									<input type="text" id="iptAlipayAPPID" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptAlipayPrivateKey">应用私钥</label>
+									<input type="text" id="iptAlipayPrivateKey" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptAlipayCertPublicKey">支付宝公钥证书</label>
+									<input type="text" id="iptAlipayCertPublicKey" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptAlipaySignType">签名类型</label>
+									<input type="text" id="iptAlipaySignType" class="form-control" value="RSA2" disabled>
+								</div>
+								<div class="form-group">
+									<label for="iptAlipaySortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptAlipaySortrank" class="form-control" value="0">
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="bank-tab">
+							<form>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptBankEnabled" class="form-check-input">
+									<label class="form-check-label ml-2" for="iptBankEnabled">是否启用</label>
+									<span>（会员支付到指定银行卡，手动确认订单收款）</span>
+								</div>
+								<div class="form-group">
+									<label for="iptBankAccountName">账户名</label>
+									<input type="text" id="iptBankAccountName" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptBankAccountNO">账号</label>
+									<input type="text" id="iptBankAccountNO" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptBankName">开户行</label>
+									<input type="text" id="iptBankName" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptBankSortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptBankSortrank" class="form-control" value="0">
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
+							<form>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptBalanceEnabled" class="form-check-input">
+									<label class="form-check-label ml-2" for="iptBalanceEnabled">是否启用</label>
+									<span>（采用积分进行支付）</span>
+								</div>
+								<div class="form-group">
+									<label for="iptBalanceSortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptBalanceSortrank" class="form-control" value="0">
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
+							<form>
+								<div class="form-group form-check">
+									<input type="checkbox" id="iptCodEnabled" class="form-check-input">
+									<label class="form-check-label ml-2" for="iptCodEnabled">是否启用</label>
+									<span>（购买直接发货，到货后支付）</span>
+								</div>
+								<div class="form-group">
+									<label for="iptCodSortrank">排序（越小越靠前）</label>
+									<input type="text" id="iptCodSortrank" class="form-control" value="0">
+								</div>
+							</form>
+						</div>
+						<div class="text-center"><button type="submit" id="btnSave" class="btn btn-success btn-sm">保存</button></div>
 					</div>
-					<div class="tab-pane fade" id="alipay" role="tabpanel" aria-labelledby="alipay-tab">
-						<form>
-							<div class="form-group form-check">
-								<input type="checkbox" id="iptAlipayEnabled" class="form-check-input">
-								<label class="form-check-label ml-2" for="iptAlipayEnabled">是否启用</label>
-							</div>
-							<div class="form-group">
-								<label for="iptAlipayAPPID">APPID</label>
-								<input type="text" id="iptAlipayAPPID" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptAlipayPrivateKey">应用私钥</label>
-								<input type="text" id="iptAlipayPrivateKey" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptAlipayCertPublicKey">支付宝公钥证书</label>
-								<input type="text" id="iptAlipayCertPublicKey" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptAlipaySignType">签名类型</label>
-								<input type="text" id="iptAlipaySignType" class="form-control" value="RSA2" disabled>
-							</div>
-							<div class="form-group">
-								<label for="iptAlipaySortrank">排序（越小越靠前）</label>
-								<input type="text" id="iptAlipaySortrank" class="form-control" value="0">
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="bank-tab">
-						<form>
-							<div class="form-group form-check">
-								<input type="checkbox" id="iptBankEnabled" class="form-check-input">
-								<label class="form-check-label ml-2" for="iptBankEnabled">是否启用</label>
-								<span>（会员支付到指定银行卡，手动确认订单收款）</span>
-							</div>
-							<div class="form-group">
-								<label for="iptBankAccountName">账户名</label>
-								<input type="text" id="iptBankAccountName" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptBankAccountNO">账号</label>
-								<input type="text" id="iptBankAccountNO" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptBankName">开户行</label>
-								<input type="text" id="iptBankName" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="iptBankSortrank">排序（越小越靠前）</label>
-								<input type="text" id="iptBankSortrank" class="form-control" value="0">
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
-						<form>
-							<div class="form-group form-check">
-								<input type="checkbox" id="iptBalanceEnabled" class="form-check-input">
-								<label class="form-check-label ml-2" for="iptBalanceEnabled">是否启用</label>
-								<span>（采用积分进行支付）</span>
-							</div>
-							<div class="form-group">
-								<label for="iptBalanceSortrank">排序（越小越靠前）</label>
-								<input type="text" id="iptBalanceSortrank" class="form-control" value="0">
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
-						<form>
-							<div class="form-group form-check">
-								<input type="checkbox" id="iptCodEnabled" class="form-check-input">
-								<label class="form-check-label ml-2" for="iptCodEnabled">是否启用</label>
-								<span>（购买直接发货，到货后支付）</span>
-							</div>
-							<div class="form-group">
-								<label for="iptCodSortrank">排序（越小越靠前）</label>
-								<input type="text" id="iptCodSortrank" class="form-control" value="0">
-							</div>
-						</form>
-					</div>
-					<div class="text-center"><button type="submit" id="btnSave" class="btn btn-success btn-sm">保存</button></div>
 				</div>
 			</div>
 		</div>

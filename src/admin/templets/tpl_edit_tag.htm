@@ -20,39 +20,41 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="templets_tagsource.php">标签源码管理</a></li>
-			<li class="breadcrumb-item active">新建/修改标签源码</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">新建/修改标签源码</div>
-			<div class="card-body">
-				<div class="alert alert-warning">默认标签源码文件，请谨慎修改</div>
-				<form name="form1" action="tpl.php" method="post">
-					<input type="hidden" name="actiondo" value="<?php echo $action;?>">
-					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-					<input type="hidden" name="action" value="savetagfile">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">文件名称</td>
-									<td><input name="filename" value="<?php echo $filename;?>" class="admin-input-lg" required>（不可以用小数点..表示路径）</td>
-								</tr>
-								<tr>
-									<td colspan="2"><textarea name="content" id="content"><?php echo $democode;?></textarea></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="templets_tagsource.php">标签源码管理</a></li>
+				<li class="breadcrumb-item active">新建/修改标签源码</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">新建/修改标签源码</div>
+				<div class="card-body">
+					<div class="alert alert-warning">默认标签源码文件，请谨慎修改</div>
+					<form name="form1" action="tpl.php" method="post">
+						<input type="hidden" name="actiondo" value="<?php echo $action;?>">
+						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+						<input type="hidden" name="action" value="savetagfile">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">文件名称</td>
+										<td><input name="filename" value="<?php echo $filename;?>" class="admin-input-lg" required>（不可以用小数点..表示路径）</td>
+									</tr>
+									<tr>
+										<td colspan="2"><textarea name="content" id="content"><?php echo $democode;?></textarea></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script>

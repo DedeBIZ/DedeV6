@@ -4,17 +4,8 @@
 	--gray-500:#adb5bd;
 	--b-radius:0.5rem
 }
-::-webkit-scrollbar {
-	width:10px;
-	height:10px
-}
-::-webkit-scrollbar-track {
-	background:var(--bg)
-}
-::-webkit-scrollbar-thumb {
-	background:var(--gray-300)
-}
 * {
+	font-size:14px;
 	scrollbar-width:thin
 }
 body {

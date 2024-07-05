@@ -9,70 +9,72 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">系统日志列表</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<form name="formsearch">
-					<input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="admin-input-lg mr-2">
-					<select name="adminid" id="adminid" class="admin-input-sm mr-2">
-						<option value="0" selected>全部</option>
-						<?php echo $adminlist?>
-					</select>
-					<select name="dtime" id="dtime" class="admin-input-sm">
-						<option value="0" selected>全部</option>
-						<option value="7">一周内</option>
-						<option value="15">15天内</option>
-						<option value="30">30天以内</option>
-						<option value="60">60天以内</option>
-					</select>
-					<button type="submit"class="btn btn-success btn-sm">搜索</button>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">系统日志列表</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<form name="formsearch">
+						<input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="admin-input-lg mr-2">
+						<select name="adminid" id="adminid" class="admin-input-sm mr-2">
+							<option value="0" selected>全部</option>
+							<?php echo $adminlist?>
+						</select>
+						<select name="dtime" id="dtime" class="admin-input-sm">
+							<option value="0" selected>全部</option>
+							<option value="7">一周内</option>
+							<option value="15">15天内</option>
+							<option value="30">30天以内</option>
+							<option value="60">60天以内</option>
+						</select>
+						<button type="submit"class="btn btn-success btn-sm">搜索</button>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">系统日志列表</div>
-			<div class="card-body">
-				<form name="form1">
-					<div class="table-responsive">
-						<table class="table table-borderless table-hover">
-							<thead>
-								<tr>
-									<td scope="col">选择</td>
-									<td scope="col">管理员</td>
-									<td scope="col">浏览文件</td>
-									<td scope="col">访问方式</td>
-									<td scope="col">地址</td>
-									<td scope="col">时间</td>
-									<td scope="col">参数</td>
-								</tr>
-							<thead>
-							<tbody>
-								{dede:datalist}
-								<tr>
-									<td><input type="checkbox" name="logs" id="logs" value="{dede:field.lid/}"></td>
-									<td>{dede:field.userid/}</td>
-									<td><input type="text" name="t0" value="{dede:field.filename/}" class="admin-input-lg"></td>
-									<td>{dede:field.method/}</td>
-									<td>{dede:field.cip/}</td>
-									<td>{dede:field.dtime function="MyDate('y/m/d H:i:s',@me)"/}</td>
-									<td><input type="text" name="t1" value="{dede:field.query/}" class="admin-input-lg"></td>
-								</tr>
-								{/dede:datalist}
-								<tr>
-									<td colspan="7">
-										<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
-										<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
-										<a href="javascript:ClearLog();" class="btn btn-danger btn-sm">清空</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				{dede:pagelist listsize='6'/}
+			<div class="card shadow-sm">
+				<div class="card-header">系统日志列表</div>
+				<div class="card-body">
+					<form name="form1">
+						<div class="table-responsive">
+							<table class="table table-borderless table-hover">
+								<thead>
+									<tr>
+										<td scope="col">选择</td>
+										<td scope="col">管理员</td>
+										<td scope="col">浏览文件</td>
+										<td scope="col">访问方式</td>
+										<td scope="col">地址</td>
+										<td scope="col">时间</td>
+										<td scope="col">参数</td>
+									</tr>
+								<thead>
+								<tbody>
+									{dede:datalist}
+									<tr>
+										<td><input type="checkbox" name="logs" id="logs" value="{dede:field.lid/}"></td>
+										<td>{dede:field.userid/}</td>
+										<td><input type="text" name="t0" value="{dede:field.filename/}" class="admin-input-lg"></td>
+										<td>{dede:field.method/}</td>
+										<td>{dede:field.cip/}</td>
+										<td>{dede:field.dtime function="MyDate('y/m/d H:i:s',@me)"/}</td>
+										<td><input type="text" name="t1" value="{dede:field.query/}" class="admin-input-lg"></td>
+									</tr>
+									{/dede:datalist}
+									<tr>
+										<td colspan="7">
+											<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
+											<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
+											<a href="javascript:ClearLog();" class="btn btn-danger btn-sm">清空</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 		<script>

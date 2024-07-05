@@ -9,65 +9,67 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">文档关键词维护</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<form name="form2" action="article_keywords_main.php">
-					<input type="hidden" name="dopost" value="add">
-					<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-2">
-					<input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="admin-input-lg mr-2">
-					<input type="text" name="rank" id="rank" value="30" class="admin-input-sm">
-					<button type="submit"class="btn btn-success btn-sm">添加</button>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">文档关键词维护</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<form name="form2" action="article_keywords_main.php">
+						<input type="hidden" name="dopost" value="add">
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-2">
+						<input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" class="admin-input-lg mr-2">
+						<input type="text" name="rank" id="rank" value="30" class="admin-input-sm">
+						<button type="submit"class="btn btn-success btn-sm">添加</button>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">文档关键词维护</div>
-			<div class="card-body">
-				<form name="form3" action="article_keywords_main.php" method="post">
-					<input type="hidden" name="dopost" value="saveall">
-					<div class="table-responsive">
-						<table class="table table-borderless table-hover">
-							<thead>
-								<tr>
-									<td scope="col">选择</td>
-									<td scope="col">关键词</td>
-									<td scope="col">链接网址</td>
-									<td scope="col">频率</td>
-									<td scope="col">操作</td>
-								</tr>
-							</thead>
-							<tbody>
-								{dede:datalist}
-								<tr>
-									<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked></td>
-									<td><input type="hidden" name="keyword_{dede:field.aid/}" value="{dede:field.keyword/}">{dede:field.keyword/}</td>
-									<td>
-										<input type="hidden" name="rpurlold_{dede:field.aid/}" value="{dede:field.rpurl/}">
-										<input type="text" name="rpurl_{dede:field.aid/}" class="w-100" value="{dede:field.rpurl/}">
-									</td>
-									<td><input type="text" name="rank_{dede:field.aid/}" class="admin-input-sm" value="{dede:field.rank/}"></td>
-									<td>
-										<input type="hidden" name="staold_{dede:field.aid/}" value="{dede:field.sta/}">
-										<label><input type="checkbox" name="isnouse_{dede:field.aid/}" value="1" {dede:field.sta function="GetSta(@me)"/}> 禁用</label>
-										<label><input type="checkbox" name="isdel_{dede:field.aid/}" value="1"> 删除</label>
-									</td>
-								</tr>
-								{/dede:datalist}
-								<tr>
-									<td colspan="5">
-										<a href="javascript:selAll();" class="btn btn-success btn-sm">反选</a>
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				{dede:pagelist listsize='6'/}
+			<div class="card shadow-sm">
+				<div class="card-header">文档关键词维护</div>
+				<div class="card-body">
+					<form name="form3" action="article_keywords_main.php" method="post">
+						<input type="hidden" name="dopost" value="saveall">
+						<div class="table-responsive">
+							<table class="table table-borderless table-hover">
+								<thead>
+									<tr>
+										<td scope="col">选择</td>
+										<td scope="col">关键词</td>
+										<td scope="col">链接网址</td>
+										<td scope="col">频率</td>
+										<td scope="col">操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									{dede:datalist}
+									<tr>
+										<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked></td>
+										<td><input type="hidden" name="keyword_{dede:field.aid/}" value="{dede:field.keyword/}">{dede:field.keyword/}</td>
+										<td>
+											<input type="hidden" name="rpurlold_{dede:field.aid/}" value="{dede:field.rpurl/}">
+											<input type="text" name="rpurl_{dede:field.aid/}" class="w-100" value="{dede:field.rpurl/}">
+										</td>
+										<td><input type="text" name="rank_{dede:field.aid/}" class="admin-input-sm" value="{dede:field.rank/}"></td>
+										<td>
+											<input type="hidden" name="staold_{dede:field.aid/}" value="{dede:field.sta/}">
+											<label><input type="checkbox" name="isnouse_{dede:field.aid/}" value="1" {dede:field.sta function="GetSta(@me)"/}> 禁用</label>
+											<label><input type="checkbox" name="isdel_{dede:field.aid/}" value="1"> 删除</label>
+										</td>
+									</tr>
+									{/dede:datalist}
+									<tr>
+										<td colspan="5">
+											<a href="javascript:selAll();" class="btn btn-success btn-sm">反选</a>
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 		<script>

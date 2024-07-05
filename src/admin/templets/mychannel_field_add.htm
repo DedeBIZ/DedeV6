@@ -12,126 +12,128 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="mychannel_main.php">文档模型管理</a></li>
-			<li class="breadcrumb-item active">添加文档模型字段</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">添加文档模型字段</div>
-			<div class="card-body">
-				<div class="alert alert-warning">不支持字段输入单引号和双引号</div>
-				<form name="form1" action="mychannel_field_add.php" method="post" onSubmit="return GetFields();">
-					<input type="hidden" name="action" value="save">
-					<input type="hidden" name="id" value="<?php echo $id?>">
-					<input type="hidden" name="fieldstring">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">字段名称</td>
-									<td><input type="text" name="itemname" id="itemname" class="admin-input-sm" required>（前后台显示字段的名称）</td>
-								</tr>
-								<tr>
-									<td>字段标识</td>
-									<td><input type="text" name="fieldname" id="fieldname" class="admin-input-sm" required>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型组名称）</td>
-								</tr>
-								<tr>
-									<td>字段类型</td>
-									<td>
-										<label><input type="radio" name="autofield" value="1" checked> 自动字段</label>
-										<label><input type="radio" name="autofield" value="0"> 固化字段</label>
-									</td>
-								</tr>
-								<tr>
-									<td>前台参数</td>
-									<td>
-										<label><input type="checkbox" name="notsend" id="notsend" value="1"> 投稿和采集禁用字段</label>
-										<label><input type="checkbox" name="islist" id="islist" value="1"> 添加到列表附加字段</label>
-										<span>（标签{dede:list channelid='模型id' addfields='字段1,字段2'}[field:name/]{/dede:list}调用）</span>
-									</td>
-								</tr>
-								<tr>
-									<td>是否使用分页符</td>
-									<td>
-										<input type="hidden" name="isnull" value="1">
-										<label><input type="radio" name="spage" value="split"> 是</label>
-										<label><input type="radio" name="spage" value="no" checked> 否</label>
-										<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符实现文档分页，但仅允许一个字段）</span>
-									</td>
-								</tr>
-								<tr>
-									<td>数据类型</td>
-									<td id="dataType">
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype1" value="text" checked> 单行文本(varchar)</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype2" value="textchar"> 单行文本(char)</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype3" value="multitext"> 多行文本</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype4" value="htmltext"> 网页文本</label></div>
-										<br class="cls">
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype5" value="textdata"> 文本保存网页数据</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype6" value="int"> 整数类型</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype7" value="float"> 小数类型</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype8" value="datetime"> 时间类型</label></div>
-										<br class="cls">
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype9" value="img"> 图片类型</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype10" value="media"> 多媒体文件</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype11" value="addon"> 附件类型</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype12" value="relation"> 关联文档</label></div>
-										<br class="cls">
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype13" value="select"> option下拉框</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype14" value="radio"> radio选项卡</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype15" value="checkbox"> checkbox多选框</label></div>
-										<div class="nw"><label><input type="radio" name="dtype" id="dtype16" value="stepselect"> 联动类型</label></div>
-									</td>
-								</tr>
-								<tr id="_relation" style="display:none">
-									<td>文档模型</td>
-									<td>
-										<select name="channeltype" id="channeltype" class="admin-input-sm">
-											<?php
-											$channelid = 1;
-											foreach($channelArray as $k=>$arr)
-											{
-												if ($k==$channelid) {
-													$nid = $arr['nid'];
-													echo "<option value='{$k}' selected>{$arr['typename']} {$arr['nid']}</option>";
-												} else {
-													echo "<option value='{$k}'>{$arr['typename']} {$arr['nid']}</option>";
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="mychannel_main.php">文档模型管理</a></li>
+				<li class="breadcrumb-item active">添加文档模型字段</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">添加文档模型字段</div>
+				<div class="card-body">
+					<div class="alert alert-warning">不支持字段输入单引号和双引号</div>
+					<form name="form1" action="mychannel_field_add.php" method="post" onSubmit="return GetFields();">
+						<input type="hidden" name="action" value="save">
+						<input type="hidden" name="id" value="<?php echo $id?>">
+						<input type="hidden" name="fieldstring">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">字段名称</td>
+										<td><input type="text" name="itemname" id="itemname" class="admin-input-sm" required>（前后台显示字段的名称）</td>
+									</tr>
+									<tr>
+										<td>字段标识</td>
+										<td><input type="text" name="fieldname" id="fieldname" class="admin-input-sm" required>（只能用英文字母或数字，如果数据类型是联动类型，请填写联动类型组名称）</td>
+									</tr>
+									<tr>
+										<td>字段类型</td>
+										<td>
+											<label><input type="radio" name="autofield" value="1" checked> 自动字段</label>
+											<label><input type="radio" name="autofield" value="0"> 固化字段</label>
+										</td>
+									</tr>
+									<tr>
+										<td>前台参数</td>
+										<td>
+											<label><input type="checkbox" name="notsend" id="notsend" value="1"> 投稿和采集禁用字段</label>
+											<label><input type="checkbox" name="islist" id="islist" value="1"> 添加到列表附加字段</label>
+											<span>（标签{dede:list channelid='模型id' addfields='字段1,字段2'}[field:name/]{/dede:list}调用）</span>
+										</td>
+									</tr>
+									<tr>
+										<td>是否使用分页符</td>
+										<td>
+											<input type="hidden" name="isnull" value="1">
+											<label><input type="radio" name="spage" value="split"> 是</label>
+											<label><input type="radio" name="spage" value="no" checked> 否</label>
+											<span>（如果文档使用分页符，文档用#p#副标题#e#作为分页符实现文档分页，但仅允许一个字段）</span>
+										</td>
+									</tr>
+									<tr>
+										<td>数据类型</td>
+										<td id="dataType">
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype1" value="text" checked> 单行文本(varchar)</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype2" value="textchar"> 单行文本(char)</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype3" value="multitext"> 多行文本</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype4" value="htmltext"> 网页文本</label></div>
+											<br class="cls">
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype5" value="textdata"> 文本保存网页数据</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype6" value="int"> 整数类型</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype7" value="float"> 小数类型</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype8" value="datetime"> 时间类型</label></div>
+											<br class="cls">
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype9" value="img"> 图片类型</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype10" value="media"> 多媒体文件</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype11" value="addon"> 附件类型</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype12" value="relation"> 关联文档</label></div>
+											<br class="cls">
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype13" value="select"> option下拉框</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype14" value="radio"> radio选项卡</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype15" value="checkbox"> checkbox多选框</label></div>
+											<div class="nw"><label><input type="radio" name="dtype" id="dtype16" value="stepselect"> 联动类型</label></div>
+										</td>
+									</tr>
+									<tr id="_relation" style="display:none">
+										<td>文档模型</td>
+										<td>
+											<select name="channeltype" id="channeltype" class="admin-input-sm">
+												<?php
+												$channelid = 1;
+												foreach($channelArray as $k=>$arr)
+												{
+													if ($k==$channelid) {
+														$nid = $arr['nid'];
+														echo "<option value='{$k}' selected>{$arr['typename']} {$arr['nid']}</option>";
+													} else {
+														echo "<option value='{$k}'>{$arr['typename']} {$arr['nid']}</option>";
+													}
 												}
-											}
-											?>
-										</select>
-										<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1"> 发布时自动更新关联文档</label>
-									</td>
-								</tr>
-								<tr>
-									<td>默认值</td>
-									<td>
-										<p>（自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号隔开，如：DedeBIZ,得德）</p>
-										<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"></textarea>
-									</td>
-								</tr>
-								<tr>
-									<td>自定义网页表单</td>
-									<td>
-										<p>（自定义网页表单用~name~表示提示文字，~form~表示表单元素）</p>
-										<textarea name="vinnertext" id="vinnertext" class="admin-textarea-xl"></textarea>
-									</td>
-								</tr>
-								<tr>
-									<td>最大长度</td>
-									<td><input type="text" name="maxlength" id="maxlength" class="admin-input-sm" value="255">（文本数据必须填写，大于255为text类型）</td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+												?>
+											</select>
+											<label><input type="checkbox" name="relation_automake" id="relation_automake" value="1"> 发布时自动更新关联文档</label>
+										</td>
+									</tr>
+									<tr>
+										<td>默认值</td>
+										<td>
+											<p>（自定义字段数据类型为select、radio、checkbox时，下面填写数据，英文逗号隔开，如：DedeBIZ,得德）</p>
+											<textarea name="vdefault" id="vdefault" class="admin-textarea-xl"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>自定义网页表单</td>
+										<td>
+											<p>（自定义网页表单用~name~表示提示文字，~form~表示表单元素）</p>
+											<textarea name="vinnertext" id="vinnertext" class="admin-textarea-xl"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>最大长度</td>
+										<td><input type="text" name="maxlength" id="maxlength" class="admin-input-sm" value="255">（文本数据必须填写，大于255为text类型）</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script>

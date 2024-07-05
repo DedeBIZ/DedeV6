@@ -12,72 +12,74 @@
 		<script src="/static/web/js/mode/sql/sql.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">SQL命令工具</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-header">SQL命令工具</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-borderless">
-						<tbody>
-							<form name="infoform" action="sys_sql_query.php" method="post" target="stafrm">
-								<input type="hidden" name="dopost" value="viewinfo">
-								<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-								<tr>
-									<td width="370">
-										<select name="tablename" id="tablename" class="admin-input-lg">
-											<?php
-											if ($cfg_dbtype=="sqlite") {
-												$query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
-											} else {
-												$query = "SHOW TABLES FROM {$GLOBALS['cfg_dbname']} ";
-											}
-											$dsql->SetQuery($query);
-											$dsql->Execute('t');
-											while($row = $dsql->GetArray('t',MYSQL_BOTH))
-											{
-												$dsql->SetQuery("SELECT count(*) FROM ".$row[0]);
-												$dsql->Execute('n');
-												$row2 = $dsql->GetArray('n',MYSQL_BOTH);
-												$dd = $row2[0];
-												echo "<option value='".$row[0]."'>".$row[0]."(".$dd.")</option>\r\n";
-											}
-											?>
-										</select>
-									</td>
-									<td>
-										<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='opimize';">优化选中表</button>
-										<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='repair';">修复选中表</button>
-										<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='viewinfo';">查看表结构</button>
-										<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='opimizeAll';">优化全部表</button>
-										<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='repairAll';">修复全部表</button>
-									</td>
-								</tr>
-							</form>
-							<form name="form1" action="sys_sql_query.php" method="post" target="stafrm">
-								<input type="hidden" name="dopost" value="query">
-								<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-								<tr>
-									<td>运行SQL命令行</td>
-									<td>
-										<label><input type="radio" name="querytype" value="0"> 单行命令</label>
-										<label><input type="radio" name="querytype" value="2" checked> 多行命令</label>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2"><textarea name="sqlquery" id="sqlquery"></textarea></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">运行</button></td>
-								</tr>
-								<tr>
-									<td colspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
-								</tr>
-							</form>
-						</tbody>
-					</table>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">SQL命令工具</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-header">SQL命令工具</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<form name="infoform" action="sys_sql_query.php" method="post" target="stafrm">
+									<input type="hidden" name="dopost" value="viewinfo">
+									<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+									<tr>
+										<td width="370">
+											<select name="tablename" id="tablename" class="admin-input-lg">
+												<?php
+												if ($cfg_dbtype=="sqlite") {
+													$query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
+												} else {
+													$query = "SHOW TABLES FROM {$GLOBALS['cfg_dbname']} ";
+												}
+												$dsql->SetQuery($query);
+												$dsql->Execute('t');
+												while($row = $dsql->GetArray('t',MYSQL_BOTH))
+												{
+													$dsql->SetQuery("SELECT count(*) FROM ".$row[0]);
+													$dsql->Execute('n');
+													$row2 = $dsql->GetArray('n',MYSQL_BOTH);
+													$dd = $row2[0];
+													echo "<option value='".$row[0]."'>".$row[0]."(".$dd.")</option>\r\n";
+												}
+												?>
+											</select>
+										</td>
+										<td>
+											<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='opimize';">优化选中表</button>
+											<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='repair';">修复选中表</button>
+											<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='viewinfo';">查看表结构</button>
+											<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='opimizeAll';">优化全部表</button>
+											<button type="Submit" class="btn btn-success btn-sm" onclick="this.form.dopost.value='repairAll';">修复全部表</button>
+										</td>
+									</tr>
+								</form>
+								<form name="form1" action="sys_sql_query.php" method="post" target="stafrm">
+									<input type="hidden" name="dopost" value="query">
+									<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+									<tr>
+										<td>运行SQL命令行</td>
+										<td>
+											<label><input type="radio" name="querytype" value="0"> 单行命令</label>
+											<label><input type="radio" name="querytype" value="2" checked> 多行命令</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><textarea name="sqlquery" id="sqlquery"></textarea></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">运行</button></td>
+									</tr>
+									<tr>
+										<td colspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
+									</tr>
+								</form>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -9,66 +9,68 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">会员级别设置</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">会员级别设置</div>
-			<div class="card-body">
-				<div class="alert alert-info">注册会员级别不建议删除，否则会影响会员功能无法使用某些功能，会员级别值由低向高升级，因此添加组别时需注意此值，如果您添加会员组的级别值低于10，将自动被视为普通的注册会员</div>
-				<form name="form1" action="member_rank.php" method="post">
-					<input type="hidden" name="dopost" value="save">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<thead>
-								<tr>
-									<td scope="col">级别名称</td>
-									<td scope="col">级别值（待审为0、注册会员为10）</td>
-									<td scope="col">默认金币</td>
-									<td scope="col">默认积分</td>
-									<td scope="col">类型</td>
-									<td scope="col">状态</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$k = 0;
-								while($row = $dsql->GetObject())
-								{
-									$k++;
-								?>
-								<tr>
-									<td>
-										<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id;?>">
-										<input type="text" name="name_<?php echo $k?>" value="<?php echo $row->membername;?>" id="name_<?php echo $k?>">
-									</td>
-									<td><input type="text" name="rank_<?php echo $k?>" value="<?php echo $row->rank;?>" id="rank_<?php echo $k?>"></td>
-									<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money;?>" id="money_<?php echo $k?>"></td>
-									<td><input type="text" name="scores_<?php echo $k?>" value="<?php echo $row->scores;?>" id="scores_<?php echo $k?>"></td>
-									<td><?php if ($row->id<=5) {echo "系统";} else {echo "会员";}?></td>
-									<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if ($row->id == 3) echo 'disabled="disabled"';?> value="1" checked> 正在使用</td>
-								</tr>
-								<?php }?>
-								<input type="hidden" name="idend" value="<?php echo $k;?>">
-								<tr>
-									<td><input type="text" name="name_new" id="name_new"></td>
-									<td><input type="text" name="rank_new" id="rank_new" value="20"></td>
-									<td><input type="text" name="money_new" id="money_new" value="0"></td>
-									<td><input type="text" name="scores_new" id="scores_new" value="100"></td>
-									<td></td>
-									<td><input type="checkbox" name="check_new" id="check_new" value="1" checked> 添加等级</td>
-								</tr>
-								<tr>
-									<td colspan="6" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">会员级别设置</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">会员级别设置</div>
+				<div class="card-body">
+					<div class="alert alert-info">注册会员级别不建议删除，否则会影响会员功能无法使用某些功能，会员级别值由低向高升级，因此添加组别时需注意此值，如果您添加会员组的级别值低于10，将自动被视为普通的注册会员</div>
+					<form name="form1" action="member_rank.php" method="post">
+						<input type="hidden" name="dopost" value="save">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<td scope="col">级别名称</td>
+										<td scope="col">级别值（待审为0、注册会员为10）</td>
+										<td scope="col">默认金币</td>
+										<td scope="col">默认积分</td>
+										<td scope="col">类型</td>
+										<td scope="col">状态</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$k = 0;
+									while($row = $dsql->GetObject())
+									{
+										$k++;
+									?>
+									<tr>
+										<td>
+											<input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id;?>">
+											<input type="text" name="name_<?php echo $k?>" value="<?php echo $row->membername;?>" id="name_<?php echo $k?>">
+										</td>
+										<td><input type="text" name="rank_<?php echo $k?>" value="<?php echo $row->rank;?>" id="rank_<?php echo $k?>"></td>
+										<td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money;?>" id="money_<?php echo $k?>"></td>
+										<td><input type="text" name="scores_<?php echo $k?>" value="<?php echo $row->scores;?>" id="scores_<?php echo $k?>"></td>
+										<td><?php if ($row->id<=5) {echo "系统";} else {echo "会员";}?></td>
+										<td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if ($row->id == 3) echo 'disabled="disabled"';?> value="1" checked> 正在使用</td>
+									</tr>
+									<?php }?>
+									<input type="hidden" name="idend" value="<?php echo $k;?>">
+									<tr>
+										<td><input type="text" name="name_new" id="name_new"></td>
+										<td><input type="text" name="rank_new" id="rank_new" value="20"></td>
+										<td><input type="text" name="money_new" id="money_new" value="0"></td>
+										<td><input type="text" name="scores_new" id="scores_new" value="100"></td>
+										<td></td>
+										<td><input type="checkbox" name="check_new" id="check_new" value="1" checked> 添加等级</td>
+									</tr>
+									<tr>
+										<td colspan="6" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

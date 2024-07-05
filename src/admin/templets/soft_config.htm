@@ -12,110 +12,112 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">软件下载设置</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">软件下载设置</div>
-			<div class="card-body">
-				<form name="form1" action="soft_config.php" method="post">
-					<input type="hidden" name="dopost" value="save">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">链接显示方式</td>
-									<td>
-										<label><input type="radio" name="gotojump" value="0" <?php if ($row['gotojump']==0) echo " checked ";?>> 真实软件链接地址</label>
-										<label><input type="radio" name="gotojump" value="1" <?php if ($row['gotojump']==1) echo " checked ";?>> 字符软件链接地址</label>
-									</td>
-								</tr>
-								<tr>
-									<td>软件下载方式</td>
-									<td>
-										<label><input type="radio" name="downtype" value="0" <?php if ($row['downtype']==0) echo " checked ";?>> 当前软件发布页</label>
-										<label><input type="radio" name="downtype" value="1" <?php if ($row['downtype']==1) echo " checked ";?>> 链接到地址列表页</label>
-									</td>
-								</tr>
-								<tr>
-									<td>是否启用镜像站点</td>
-									<td>
-										<label><input type="radio" name="ismoresite" value="1" <?php if ($row['ismoresite']==1) echo " checked ";?>> 启用</label>
-										<label><input type="radio" name="ismoresite" value="0" <?php if ($row['ismoresite']==0) echo " checked ";?>> 不启用</label>
-									</td>
-								</tr>
-								<tr>
-									<td>启用镜像站点后是否保留本地下载</td>
-									<td>
-										<label><input type="radio" name="islocal" value="1" <?php if ($row['islocal']==1) echo " checked ";?>> 保留</label>
-										<label><input type="radio" name="islocal" value="0" <?php if ($row['islocal']==0) echo " checked ";?>> 不保留</label>
-									</td>
-								</tr>
-								<tr>
-									<td>镜像处理方式</td>
-									<td>
-										<label><input type="radio" name="moresitedo" value="1" <?php if ($row['moresitedo']==1) echo " checked ";?>> 本地地址和服务器列表自动生成</label>
-										<label><input type="radio" name="moresitedo" value="0" <?php if ($row['moresitedo']==0) echo " checked ";?>> 按服务器生成列表由我手工填写</label>
-									</td>
-								</tr>
-								<tr>
-									<td>下载默认等级</td>
-									<td>
-										<select name="dfrank" id="dfrank" class="admin-input-sm">
-											<?php
-											$urank = $cuserLogin->getUserRank();
-											$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0 ");
-											$dsql->Execute();
-											while($nrow = $dsql->GetArray())
-											{
-												if ($nrow['rank']==0) $nrow['membername'] = "开放下载";
-												if ($nrow['rank']==$row['dfrank']) echo "<option value='{$nrow['rank']}' selected>{$nrow['membername']}</option>";
-												else echo "<option value='{$nrow['rank']}'>{$nrow['membername']}</option>";
-											}
-											?>
-										</select>
-									</td>
-								</tr>
-								<tr>
-									<td>下载默认金币</td>
-									<td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy'];?>" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td>参数限制方式</td>
-									<td>
-										<label><input type="radio" name="argrange" value="0" <?php if ($row['argrange']==0) echo " checked ";?>> 所有软件重新选择权限</label>
-										<label><input type="radio" name="argrange" value="1" <?php if ($row['argrange']==1) echo " checked ";?>> 所有软件均使用此权限</label>
-									</td>
-								</tr>
-								<tr>
-									<td>镜像服务器列表</td>
-									<td>
-										<input type="text" name="serverurl" id="serverurl" placeholder="请输入镜像网站">
-										<input type="text" name="servername" id="servername" placeholder="请输入镜像目录">
-										<input type="text" name="servertype" id="servertype" value="默认下载地址">
-										<button type="button" onclick="AddServer();" class="btn btn-success btn-sm">添加一项</button>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2"><textarea name="sites" id="sites" class="admin-textarea-xl"><?php echo $row['sites'];?></textarea></td>
-								</tr>
-								<tr>
-									<td colspan="2">下载说明</td>
-								</tr>
-								<tr>
-									<td colspan="2"><?php GetEditor('downmsg',$row['downmsg'],400);?></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">软件下载设置</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">软件下载设置</div>
+				<div class="card-body">
+					<form name="form1" action="soft_config.php" method="post">
+						<input type="hidden" name="dopost" value="save">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">链接显示方式</td>
+										<td>
+											<label><input type="radio" name="gotojump" value="0" <?php if ($row['gotojump']==0) echo " checked ";?>> 真实软件链接地址</label>
+											<label><input type="radio" name="gotojump" value="1" <?php if ($row['gotojump']==1) echo " checked ";?>> 字符软件链接地址</label>
+										</td>
+									</tr>
+									<tr>
+										<td>软件下载方式</td>
+										<td>
+											<label><input type="radio" name="downtype" value="0" <?php if ($row['downtype']==0) echo " checked ";?>> 当前软件发布页</label>
+											<label><input type="radio" name="downtype" value="1" <?php if ($row['downtype']==1) echo " checked ";?>> 链接到地址列表页</label>
+										</td>
+									</tr>
+									<tr>
+										<td>是否启用镜像站点</td>
+										<td>
+											<label><input type="radio" name="ismoresite" value="1" <?php if ($row['ismoresite']==1) echo " checked ";?>> 启用</label>
+											<label><input type="radio" name="ismoresite" value="0" <?php if ($row['ismoresite']==0) echo " checked ";?>> 不启用</label>
+										</td>
+									</tr>
+									<tr>
+										<td>启用镜像站点后是否保留本地下载</td>
+										<td>
+											<label><input type="radio" name="islocal" value="1" <?php if ($row['islocal']==1) echo " checked ";?>> 保留</label>
+											<label><input type="radio" name="islocal" value="0" <?php if ($row['islocal']==0) echo " checked ";?>> 不保留</label>
+										</td>
+									</tr>
+									<tr>
+										<td>镜像处理方式</td>
+										<td>
+											<label><input type="radio" name="moresitedo" value="1" <?php if ($row['moresitedo']==1) echo " checked ";?>> 本地地址和服务器列表自动生成</label>
+											<label><input type="radio" name="moresitedo" value="0" <?php if ($row['moresitedo']==0) echo " checked ";?>> 按服务器生成列表由我手工填写</label>
+										</td>
+									</tr>
+									<tr>
+										<td>下载默认等级</td>
+										<td>
+											<select name="dfrank" id="dfrank" class="admin-input-sm">
+												<?php
+												$urank = $cuserLogin->getUserRank();
+												$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0 ");
+												$dsql->Execute();
+												while($nrow = $dsql->GetArray())
+												{
+													if ($nrow['rank']==0) $nrow['membername'] = "开放下载";
+													if ($nrow['rank']==$row['dfrank']) echo "<option value='{$nrow['rank']}' selected>{$nrow['membername']}</option>";
+													else echo "<option value='{$nrow['rank']}'>{$nrow['membername']}</option>";
+												}
+												?>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>下载默认金币</td>
+										<td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy'];?>" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td>参数限制方式</td>
+										<td>
+											<label><input type="radio" name="argrange" value="0" <?php if ($row['argrange']==0) echo " checked ";?>> 所有软件重新选择权限</label>
+											<label><input type="radio" name="argrange" value="1" <?php if ($row['argrange']==1) echo " checked ";?>> 所有软件均使用此权限</label>
+										</td>
+									</tr>
+									<tr>
+										<td>镜像服务器列表</td>
+										<td>
+											<input type="text" name="serverurl" id="serverurl" placeholder="请输入镜像网站">
+											<input type="text" name="servername" id="servername" placeholder="请输入镜像目录">
+											<input type="text" name="servertype" id="servertype" value="默认下载地址">
+											<button type="button" onclick="AddServer();" class="btn btn-success btn-sm">添加一项</button>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><textarea name="sites" id="sites" class="admin-textarea-xl"><?php echo $row['sites'];?></textarea></td>
+									</tr>
+									<tr>
+										<td colspan="2">下载说明</td>
+									</tr>
+									<tr>
+										<td colspan="2"><?php GetEditor('downmsg',$row['downmsg'],400);?></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script>

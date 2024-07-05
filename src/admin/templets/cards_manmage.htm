@@ -9,61 +9,62 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">积分产品管理</li>
-		</ol>
-
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<a href="cards_manage.php" class="btn btn-success btn-sm">全部</a>
-				<a href="cards_manage.php?isexp=0" class="btn btn-success btn-sm">未使用</a>
-				<a href="cards_manage.php?isexp=1" class="btn btn-success btn-sm">已售出</a>
-				<a href="cards_manage.php?isexp=-1" class="btn btn-success btn-sm">已使用</a>
-				<a href="cards_make.php" class="btn btn-success btn-sm">生成积分</a>
-				<a href="cards_type.php" class="btn btn-success btn-sm">积分产品分类</a>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">积分产品管理</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<a href="cards_manage.php" class="btn btn-success btn-sm">全部</a>
+					<a href="cards_manage.php?isexp=0" class="btn btn-success btn-sm">未使用</a>
+					<a href="cards_manage.php?isexp=1" class="btn btn-success btn-sm">已售出</a>
+					<a href="cards_manage.php?isexp=-1" class="btn btn-success btn-sm">已使用</a>
+					<a href="cards_make.php" class="btn btn-success btn-sm">生成积分</a>
+					<a href="cards_type.php" class="btn btn-success btn-sm">积分产品分类</a>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">积分产品管理</div>
-			<div class="card-body">
-				<form name="form1">
-					<div class="table-responsive">
-						<table class="table table-borderless table-hover">
-							<thead>
-								<tr>
-									<td scope="col">选择</td>
-									<td scope="col">卡号</td>
-									<td scope="col">积分类型</td>
-									<td scope="col">生成日期</td>
-									<td scope="col">使用日期</td>
-									<td scope="col">状态</td>
-									<td scope="col">使用会员</td>
-								</tr>
-							</thead>
-							<tbody>
-								{dede:datalist}
-								<tr>
-									<td><input type="checkbox" name="aids" value="{dede:field.aid/}"></td>
-									<td>{dede:field.cardid/}</td>
-									<td><?php echo $TypeNames[$fields['ctid']]?></td>
-									<td>{dede:field.mtime function='GetDateMk(@me)'/}</td>
-									<td>{dede:field.utime function='GetUseDate(@me)'/}</td>
-									<td>{dede:field.isexp function='GetSta(@me)'/}</td>
-									<td>{dede:field.uid function='GetMemberID(@me)'/}</td>
-								</tr>
-								{/dede:datalist}
-								<tr>
-									<td colspan="7">
-										<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
-										<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				{dede:pagelist listsize='6'/}
+			<div class="card shadow-sm">
+				<div class="card-header">积分产品管理</div>
+				<div class="card-body">
+					<form name="form1">
+						<div class="table-responsive">
+							<table class="table table-borderless table-hover">
+								<thead>
+									<tr>
+										<td scope="col">选择</td>
+										<td scope="col">卡号</td>
+										<td scope="col">积分类型</td>
+										<td scope="col">生成日期</td>
+										<td scope="col">使用日期</td>
+										<td scope="col">状态</td>
+										<td scope="col">使用会员</td>
+									</tr>
+								</thead>
+								<tbody>
+									{dede:datalist}
+									<tr>
+										<td><input type="checkbox" name="aids" value="{dede:field.aid/}"></td>
+										<td>{dede:field.cardid/}</td>
+										<td><?php echo $TypeNames[$fields['ctid']]?></td>
+										<td>{dede:field.mtime function='GetDateMk(@me)'/}</td>
+										<td>{dede:field.utime function='GetUseDate(@me)'/}</td>
+										<td>{dede:field.isexp function='GetSta(@me)'/}</td>
+										<td>{dede:field.uid function='GetMemberID(@me)'/}</td>
+									</tr>
+									{/dede:datalist}
+									<tr>
+										<td colspan="7">
+											<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
+											<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					{dede:pagelist listsize='6'/}
+				</div>
 			</div>
 		</div>
 		<script>

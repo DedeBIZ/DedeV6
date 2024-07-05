@@ -11,99 +11,101 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">更新首页</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">更新首页</div>
-			<div class="card-body">
-				<form name="form1" action="makehtml_homepage.php" method="post" target="stafrm">
-					<input type="hidden" name="dopost" value="make">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<?php
-								if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-									$client = new DedeBizClient();
-									$data = $client->AdminPWDExists();
-									if ($data->code == -1) {
-								?>
-								<tr>
-									<td colspan="2">
-										<div class="alert alert-info mb-0">启动商业组件失败，立即<a href="https://www.dedebiz.com/start?code=-1008" target="_blank">启动组件</a></div>
-									</td>
-								</tr>
-								<?php
-								} else {
-									$data = json_decode($data->data);
-									$rs = (array)($data->result);
-									if ($rs["admin_pwd_exists"] == "false") {
-								?>
-								<tr>
-									<td>设置密码</td>
-									<td><input type="password" name="dedebiz_admin" autocomplete="off" id="dedebiz_admin" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td>重复密码</td>
-									<td><input type="password" name="re_dedebiz_admin" autocomplete="off" id="re_dedebiz_admin" class="admin-input-sm"></td>
-								</tr>
-								<?php } else {?>
-								<tr>
-									<td>输入密码</td>
-									<td><input type="password" name="dedebiz_admin" autocomplete="off" id="dedebiz_admin" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td>首页状态</td>
-									<td>
-										<label><input type="radio" name="lockindex" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked" : "";?>> 解锁</label>
-										<label><input type="radio" name="lockindex" value="lock" <?php echo ($row['index_lock_state']==false)? "checked" : "";?>> 锁定</label>
-									</td>
-								</tr>
-								<?php }}} else {?>
-								<tr>
-									<td colspan="2">
-										<div class="alert alert-info mb-0">启动商业组件失败，立即<a href="https://www.dedebiz.com/start?code=-1008" target="_blank">启动组件</a></div>
-									</td>
-								</tr>
-								<?php }?>
-								<tr>
-									<td width="260">选择首页模板</td>
-									<td>
-										<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-sm">
-										<button type="button" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
-									</td>
-								</tr>
-								<tr>
-									<td>首页位置</td>
-									<td><input type="text" name="position" id="position" value="<?php echo $row['position']?>" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td>相关选项</td>
-									<td>
-										<label><input type="radio" name="saveset" value="0"> 不保存当前选项</label>
-										<label><input type="radio" name="saveset" value="1" checked> 保存当前选项</label>
-									</td>
-								</tr>
-								<tr>
-									<td>首页模式:</td>
-									<td>
-										<label><input type="radio" name="showmod" value="0" <?php echo ($row['showmod']==0)? "checked" : "";?>> 动态浏览</label>
-										<label><input type="radio" name="showmod" value="1" <?php echo ($row['showmod']==1)? "checked" : "";?>> 生成静态</label>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">更新首页</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">更新首页</div>
+				<div class="card-body">
+					<form name="form1" action="makehtml_homepage.php" method="post" target="stafrm">
+						<input type="hidden" name="dopost" value="make">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<?php
+									if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+										$client = new DedeBizClient();
+										$data = $client->AdminPWDExists();
+										if ($data->code == -1) {
+									?>
+									<tr>
+										<td colspan="2">
+											<div class="alert alert-info mb-0">启动商业组件失败，立即<a href="https://www.dedebiz.com/start?code=-1008" target="_blank">启动组件</a></div>
+										</td>
+									</tr>
+									<?php
+									} else {
+										$data = json_decode($data->data);
+										$rs = (array)($data->result);
+										if ($rs["admin_pwd_exists"] == "false") {
+									?>
+									<tr>
+										<td>设置密码</td>
+										<td><input type="password" name="dedebiz_admin" autocomplete="off" id="dedebiz_admin" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td>重复密码</td>
+										<td><input type="password" name="re_dedebiz_admin" autocomplete="off" id="re_dedebiz_admin" class="admin-input-sm"></td>
+									</tr>
+									<?php } else {?>
+									<tr>
+										<td>输入密码</td>
+										<td><input type="password" name="dedebiz_admin" autocomplete="off" id="dedebiz_admin" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td>首页状态</td>
+										<td>
+											<label><input type="radio" name="lockindex" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked" : "";?>> 解锁</label>
+											<label><input type="radio" name="lockindex" value="lock" <?php echo ($row['index_lock_state']==false)? "checked" : "";?>> 锁定</label>
+										</td>
+									</tr>
+									<?php }}} else {?>
+									<tr>
+										<td colspan="2">
+											<div class="alert alert-info mb-0">启动商业组件失败，立即<a href="https://www.dedebiz.com/start?code=-1008" target="_blank">启动组件</a></div>
+										</td>
+									</tr>
+									<?php }?>
+									<tr>
+										<td width="260">选择首页模板</td>
+										<td>
+											<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="admin-input-sm">
+											<button type="button" class="btn btn-success btn-sm" onclick="SelectTemplets('form1.templet');">选择</button>
+										</td>
+									</tr>
+									<tr>
+										<td>首页位置</td>
+										<td><input type="text" name="position" id="position" value="<?php echo $row['position']?>" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td>相关选项</td>
+										<td>
+											<label><input type="radio" name="saveset" value="0"> 不保存当前选项</label>
+											<label><input type="radio" name="saveset" value="1" checked> 保存当前选项</label>
+										</td>
+									</tr>
+									<tr>
+										<td>首页模式:</td>
+										<td>
+											<label><input type="radio" name="showmod" value="0" <?php echo ($row['showmod']==0)? "checked" : "";?>> 动态浏览</label>
+											<label><input type="radio" name="showmod" value="1" <?php echo ($row['showmod']==1)? "checked" : "";?>> 生成静态</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script>

@@ -1,3 +1,6 @@
+* {
+	scrollbar-width:thin
+}
 body {
 	line-height:1.6;
 	letter-spacing:0.5px;
@@ -7,10 +10,10 @@ body {
 	background:#fff
 }
 blockquote {
-	padding:10px 0;
+	padding:1rem 0;
 	font-style:italic;
 	border-style:solid;
-	border-color:#ccc;
+	border-color:#6c757d;
 	border-width:0
 }
 a {
@@ -26,7 +29,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 hr {
 	border:0px;
-	border-top:1px solid #ccc
+	border-top:1px solid #6c757d
 }
 pre {
 	white-space:pre-wrap;
@@ -39,8 +42,8 @@ span[lang] {
 }
 figure {
 	display:inline-block;
-	margin:10px 20px;
-	padding:10px;
+	margin:1rem;
+	padding:1rem;
 	background:rgba(0,0,0,0.05);
 	outline:solid 1px #ccc;
 	text-align:center
@@ -57,58 +60,56 @@ a>img {
 	margin:1px;
 	padding:1px;
 	border:none;
-	outline:1px solid #0782C1
+	outline:1px solid #1eb867
 }
 img.right {
 	float:right;
-	margin-left:15px;
-	padding:5px;
-	border:1px solid #ccc
+	margin-left:1rem;
+	padding:1rem;
+	border:1px solid #6c757d
 }
 img.left {
 	float:left;
-	margin-right:15px;
-	padding:5px;
-	border:1px solid #ccc
+	margin-right:1rem;
+	padding:1rem;
+	border:1px solid #6c757d
 }
 .marker {
 	background-color:Yellow
 }
 .cke_editable {
-	font-size:14px;
 	word-wrap:break-word
 }
 .cke_contents_ltr blockquote {
-	padding-left:20px;
-	padding-right:8px;
+	padding-left:1rem;
+	padding-right:0.75rem;
 	border-left-width:5px
 }
 .cke_contents_rtl blockquote {
-	padding-left:8px;
-	padding-right:20px;
+	padding-left:0.75rem;
+	padding-right:1rem;
 	border-right-width:5px
 }
 .code-featured {
 	border:5px solid red
 }
 .math-featured {
-	padding:20px;
+	padding:1rem;
 	box-shadow:0 0 2px rgba(200,0,0,1);
 	background-color:rgba(255,0,0,0.05);
 	margin:10px
 }
 .image-clean {
-	border:0;
+	padding:0;
 	background:none;
-	padding:0
+	border:0
 }
 .image-clean > figcaption {
-	font-size:.9em;
 	text-align:right
 }
 .image-grayscale {
 	background-color:white;
-	color:#666
+	color:#6c757d
 }
 .image-grayscale img,img.image-grayscale {
 	filter:grayscale(100%)

@@ -13,46 +13,48 @@
 		<script src="/static/web/js/daterangepicker.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">更新整站</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">更新整站</div>
-			<div class="card-body">
-				<form name="form1" action="makehtml_all.php" method="post" target="stafrm">
-					<input type="hidden" name="action" value="make">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">更新选项</td>
-									<td>
-										<label><input type="radio" name="uptype" id="uptype1" onclick="SelUp();" value="time" checked> 指定时间的所有更新</label>
-										<label><input type="radio" name="uptype" id="uptype2" onclick="SelUp();" value="id"> 指定文档的所有更新</label>
-										<label><input type="radio" name="uptype" id="uptype3" onclick="SelUp();" value="mkall"> 更新所有</label>
-									</td>
-								</tr>
-								<tr id="seltime">
-									<td>起始时间</td>
-									<td><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time());?>" class="datepicker admin-input-sm"></td>
-								</tr>
-								<tr id="selid" style="display:none">
-									<td>起始id</td>
-									<td><input type="text" name="startid" id="startid" value="0" class="admin-input-sm"></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">更新整站</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">更新整站</div>
+				<div class="card-body">
+					<form name="form1" action="makehtml_all.php" method="post" target="stafrm">
+						<input type="hidden" name="action" value="make">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">更新选项</td>
+										<td>
+											<label><input type="radio" name="uptype" id="uptype1" onclick="SelUp();" value="time" checked> 指定时间的所有更新</label>
+											<label><input type="radio" name="uptype" id="uptype2" onclick="SelUp();" value="id"> 指定文档的所有更新</label>
+											<label><input type="radio" name="uptype" id="uptype3" onclick="SelUp();" value="mkall"> 更新所有</label>
+										</td>
+									</tr>
+									<tr id="seltime">
+										<td>起始时间</td>
+										<td><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time());?>" class="datepicker admin-input-sm"></td>
+									</tr>
+									<tr id="selid" style="display:none">
+										<td>起始id</td>
+										<td><input type="text" name="startid" id="startid" value="0" class="admin-input-sm"></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script>

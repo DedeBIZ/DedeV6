@@ -17,166 +17,168 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<div class="body-row">
-			<div id="body-tips" class="w-100"></div>
-			<div class="w-100 pb-3">
-				<div class="card shadow-sm">
-					<div class="card-header d-flex justify-content-between">
-						<span><i class="fa fa-bar-chart"></i> 流量统计表</span>
-						<a href="statistics_list.php" target="main">查看列表</a>
-					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<table class="table table-borderless table-hover">
-								<thead>
-									<tr>
-										<td scope="col"></td>
-										<td scope="col">浏览次数（PV）</td>
-										<td scope="col">独立访客（UV）</td>
-										<td scope="col">独立地址（IP）</td>
-										<td scope="col">访问次数（VV）</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>今日记录</td>
-										<td id="today_pv">0</td>
-										<td id="today_uv">0</td>
-										<td id="today_ip">0</td>
-										<td id="today_vv">0</td>
-									</tr>
-									<tr>
-										<td>昨日记录</td>
-										<td id="yestoday_pv">0</td>
-										<td id="yestoday_uv">0</td>
-										<td id="yestoday_ip">0</td>
-										<td id="yestoday_vv">0</td>
-									</tr>
-									<tr>
-										<td>历史峰值</td>
-										<td id="total_pv">0</td>
-										<td id="total_uv">0</td>
-										<td id="total_ip">0</td>
-										<td id="total_vv">0</td>
-									</tr>
-								</tbody>
-							</table>
+		<div class="container-fluid">
+			<div class="body-row">
+				<div id="body-tips" class="w-100"></div>
+				<div class="w-100 pb-3">
+					<div class="card shadow-sm">
+						<div class="card-header d-flex justify-content-between">
+							<span><i class="fa fa-bar-chart"></i> 流量统计表</span>
+							<a href="statistics_list.php" target="main">查看列表</a>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-borderless table-hover">
+									<thead>
+										<tr>
+											<td scope="col"></td>
+											<td scope="col">浏览次数（PV）</td>
+											<td scope="col">独立访客（UV）</td>
+											<td scope="col">独立地址（IP）</td>
+											<td scope="col">访问次数（VV）</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>今日记录</td>
+											<td id="today_pv">0</td>
+											<td id="today_uv">0</td>
+											<td id="today_ip">0</td>
+											<td id="today_vv">0</td>
+										</tr>
+										<tr>
+											<td>昨日记录</td>
+											<td id="yestoday_pv">0</td>
+											<td id="yestoday_uv">0</td>
+											<td id="yestoday_ip">0</td>
+											<td id="yestoday_vv">0</td>
+										</tr>
+										<tr>
+											<td>历史峰值</td>
+											<td id="total_pv">0</td>
+											<td id="total_uv">0</td>
+											<td id="total_ip">0</td>
+											<td id="total_vv">0</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="w-65 pr-md-3 pb-3">
-				<div class="card shadow-sm">
-					<div class="card-header"><i class="fa fa-cogs"></i> 软件信息</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<table class="table table-borderless">
-								<tbody>
-									<tr>
-										<td width="16%">
-											<p>操作系统</p>
-											<span><?php echo PHP_OS;?></span>
-										</td>
-										<td width="16%">
-											<p>WEB服务器</p>
-											<span><?php echo GetSimpleServerSoftware();?></span>
-										</td>
-										<td width="16%">
-											<p>IP地址</p>
-											<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
-										</td>
-										<td width="16%">
-											<p>PHP版本</p>
-											<span><?php echo @phpversion();?></span>
-										</td>
-										<td width="16%">
-											<p>数据库版本</p>
-											<span><?php echo $dsql->GetVersion();?></span>
-										</td>
-										<td width="16%">
-											<p>上传限制</p>
-											<span><?php echo ini_get("post_max_size")?></span>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+				<div class="w-65 pr-md-3 pb-3">
+					<div class="card shadow-sm">
+						<div class="card-header"><i class="fa fa-cogs"></i> 软件信息</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-borderless">
+									<tbody>
+										<tr>
+											<td width="16%">
+												<p>操作系统</p>
+												<span><?php echo PHP_OS;?></span>
+											</td>
+											<td width="16%">
+												<p>WEB服务器</p>
+												<span><?php echo GetSimpleServerSoftware();?></span>
+											</td>
+											<td width="16%">
+												<p>IP地址</p>
+												<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
+											</td>
+											<td width="16%">
+												<p>PHP版本</p>
+												<span><?php echo @phpversion();?></span>
+											</td>
+											<td width="16%">
+												<p>数据库版本</p>
+												<span><?php echo $dsql->GetVersion();?></span>
+											</td>
+											<td width="16%">
+												<p>上传限制</p>
+												<span><?php echo ini_get("post_max_size")?></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="w-35 pb-3">
-				<div class="card shadow-sm">
-					<div class="card-header d-flex justify-content-between">
-						<span><i class="fa fa-copyright"></i> 版本授权</span>
-						<a href="javascript:;" id="systemUpdate">软件更新<span class="updates-dot"></span></a>
-					</div>
-					<div class="card-body" id="system-info">正在加载</div>
-				</div>
-			</div>
-			<div class="w-65 pr-md-3 pb-3">
-				<div class="card shadow-sm">
-					<div class="card-header"><i class="fa fa-line-chart"></i> 流量统计图</div>
-					<div class="card-body p-3">
-						<canvas id="statChart"></canvas>
+				<div class="w-35 pb-3">
+					<div class="card shadow-sm">
+						<div class="card-header d-flex justify-content-between">
+							<span><i class="fa fa-copyright"></i> 版本授权</span>
+							<a href="javascript:;" id="systemUpdate">软件更新<span class="updates-dot"></span></a>
+						</div>
+						<div class="card-body" id="system-info">正在加载</div>
 					</div>
 				</div>
-			</div>
-			<div class="w-35">
-				<div class="card shadow-sm">
-					<div class="card-header"><i class="fa fa-list"></i> 最新文档</div>
-					<div class="card-body" id="system-word">正在加载</div>
+				<div class="w-65 pr-md-3 pb-3">
+					<div class="card shadow-sm">
+						<div class="card-header"><i class="fa fa-line-chart"></i> 流量统计图</div>
+						<div class="card-body p-3">
+							<canvas id="statChart"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="w-35">
+					<div class="card shadow-sm">
+						<div class="card-header"><i class="fa fa-list"></i> 最新文档</div>
+						<div class="card-body" id="system-word">正在加载</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div id="mdlUpdate" class="modal fade" tabindex="-1" aria-hidden="true">
-			<div class="modal-dialog modal-xl">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">软件更新</h5>
-						<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
-					</div>
-					<div class="modal-body">
-						<div id="stepArea0" class="stepArea">
-							<span>获取服务器版本资源失败，无法正常升级，请联系DedeBIZ官方团队</span>
+			<div id="mdlUpdate" class="modal fade" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">软件更新</h5>
+							<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
 						</div>
-						<div id="stepArea1" class="stepArea">
-							<span class="spinner-border text-success" role="status"></span>
-							<span id="step1Msg">对比版本更改的文件</span>
-						</div>
-						<div id="stepArea2" class="stepArea">
-							<p>本更新提供了重要的安全性更新，建议所有会员升级，软件更新覆盖以下文件，请做好备份</p>
-							<div id="_fileList">正在加载</div>
-						</div>
-						<div id="stepArea3" class="stepArea">
-							<p>发下以下版本的更新文件</p>
-							<div id="_verList">正在加载</div>
-						</div>
-						<div id="stepArea4" class="stepArea">
-							<p>
+						<div class="modal-body">
+							<div id="stepArea0" class="stepArea">
+								<span>获取服务器版本资源失败，无法正常升级，请联系DedeBIZ官方团队</span>
+							</div>
+							<div id="stepArea1" class="stepArea">
 								<span class="spinner-border text-success" role="status"></span>
-								<span>正在进行以下操作，耐心等待...</span>
-							</p>
-							<div id="_updateMsg">正在加载</div>
+								<span id="step1Msg">对比版本更改的文件</span>
+							</div>
+							<div id="stepArea2" class="stepArea">
+								<p>本更新提供了重要的安全性更新，建议所有会员升级，软件更新覆盖以下文件，请做好备份</p>
+								<div id="_fileList">正在加载</div>
+							</div>
+							<div id="stepArea3" class="stepArea">
+								<p>发下以下版本的更新文件</p>
+								<div id="_verList">正在加载</div>
+							</div>
+							<div id="stepArea4" class="stepArea">
+								<p>
+									<span class="spinner-border text-success" role="status"></span>
+									<span>正在进行以下操作，耐心等待...</span>
+								</p>
+								<div id="_updateMsg">正在加载</div>
+							</div>
+							<div id="stepArea5" class="stepArea">已是最新软件版本</div>
+							<div id="_msgInfo" class="mt-2"></div>
 						</div>
-						<div id="stepArea5" class="stepArea">已是最新软件版本</div>
-						<div id="_msgInfo" class="mt-2"></div>
-					</div>
-					<div class="modal-footer">
-						<div id="btnStep0" class="btnStep">
-							<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">知道了</button>
-						</div>
-						<div id="btnStep1" class="btnStep"></div>
-						<div id="btnStep2" class="btnStep">
-							<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">取消</button>
-							<button id="btnBackup" type="button" class="btn btn-outline-success btn-sm">备份</button>
-							<button id="btnGoStep3" type="button" class="btn btn-success btn-sm">下一步</button>
-						</div>
-						<div id="btnStep3" class="btnStep">
-							<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">取消</button>
-							<button id="btnGoStep4" type="button" class="btn btn-success btn-sm">下载</button>
-						</div>
-						<div id="btnStep5" class="btnStep">
-							<button id="btnOK" type="button" class="btn btn-success btn-sm" data-dismiss="modal">完成</button>
+						<div class="modal-footer">
+							<div id="btnStep0" class="btnStep">
+								<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">知道了</button>
+							</div>
+							<div id="btnStep1" class="btnStep"></div>
+							<div id="btnStep2" class="btnStep">
+								<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">取消</button>
+								<button id="btnBackup" type="button" class="btn btn-outline-success btn-sm">备份</button>
+								<button id="btnGoStep3" type="button" class="btn btn-success btn-sm">下一步</button>
+							</div>
+							<div id="btnStep3" class="btnStep">
+								<button id="btnCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">取消</button>
+								<button id="btnGoStep4" type="button" class="btn btn-success btn-sm">下载</button>
+							</div>
+							<div id="btnStep5" class="btnStep">
+								<button id="btnOK" type="button" class="btn btn-success btn-sm" data-dismiss="modal">完成</button>
+							</div>
 						</div>
 					</div>
 				</div>

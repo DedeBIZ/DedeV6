@@ -10,39 +10,41 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">插件列表</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">插件列表</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-borderless table-hover">
-						<thead>
-							<tr>
-								<td scope="col">id</td>
-								<td scope="col">插件名称</td>
-								<td scope="col">插件作者</td>
-								<td scope="col">操作</td>
-							</tr>
-						</thead>
-						<tbody>
-							{dede:datalist}
-							<tr>
-								<td>{dede:field.aid/}</td>
-								<td>{dede:field.plusname/}</td>
-								<td>{dede:field.writer/}</td>
-								<td>{dede:field.isshow function="GetSta(@me,$fields['aid'],$fields['plusname'])"/}</td>
-							</tr>
-							{/dede:datalist}
-							<tr>
-								<td colspan="4"><a href="module_upload.php" class="btn btn-success btn-sm">上传模块插件</a></td>
-							</tr>
-						</tbody>
-					</table>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">插件列表</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">插件列表</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-borderless table-hover">
+							<thead>
+								<tr>
+									<td scope="col">id</td>
+									<td scope="col">插件名称</td>
+									<td scope="col">插件作者</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td>{dede:field.aid/}</td>
+									<td>{dede:field.plusname/}</td>
+									<td>{dede:field.writer/}</td>
+									<td>{dede:field.isshow function="GetSta(@me,$fields['aid'],$fields['plusname'])"/}</td>
+								</tr>
+								{/dede:datalist}
+								<tr>
+									<td colspan="4"><a href="module_upload.php" class="btn btn-success btn-sm">上传模块插件</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					{dede:pagelist listsize='6'/}
 				</div>
-				{dede:pagelist listsize='6'/}
 			</div>
 		</div>
 	</body>

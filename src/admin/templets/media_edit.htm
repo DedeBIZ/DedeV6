@@ -12,78 +12,80 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="media_main.php">附件管理</a></li>
-			<li class="breadcrumb-item active">修改附件</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">修改附件</div>
-			<div class="card-body">
-				<form name="form1" action="media_edit.php" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="dopost" value="save">
-					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-					<input type="hidden" name="aid" value="<?php echo $aid?>">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">附件类型</td>
-									<td>
-										<label><input type="radio" name="mediatype" value="1" <?php if ($myrow['mediatype']==1) echo 'checked';?>> 图片</label>
-										<label><input type="radio" name="mediatype" value="2" <?php if ($myrow['mediatype']==2) echo 'checked';?>> FLASH</label>
-										<label><input type="radio" name="mediatype" value="3" <?php if ($myrow['mediatype']==3) echo 'checked';?>> 视频音频</label>
-										<label><input type="radio" name="mediatype" value="4" <?php if ($myrow['mediatype']==4) echo 'checked';?>> 附件其它</label>
-									</td>
-								</tr>
-								<tr>
-									<td>附件标题</td>
-									<td><input type="text" name="title" id="title" value="<?php echo $myrow['title']?>" class="admin-input-lg" required></td>
-								</tr>
-								<tr>
-									<td>附加参数</td>
-									<td>
-										<label>宽：<input type="text" name="mediawidth" id="mediawidth" value="<?php echo $myrow['width']?>" class="admin-input-sm" placeholder="附件像素宽度"></label>
-										<label>高：<input type="text" name="mediaheight" id="mediaheight" value="<?php echo $myrow['height']?>" class="admin-input-sm" placeholder="附件像高宽度"></label>
-										<label>播放时间：<input type="text" name="playtime" id="playtime" value="<?php echo $myrow['playtime']?>" class="admin-input-sm"  placeholder="附件播放分钟"></label>
-									</td>
-								</tr>
-								<tr>
-									<td>源文件</td>
-									<td>
-										<input type="text" name="filename" id="filename" value="<?php echo $myrow['url']?>" class="admin-input-lg">
-										<a href="<?php echo $myrow['url']?>" target="_blank" class="btn btn-success btn-sm">查看</a>
-									</td>
-								</tr>
-								<?php
-								if ($myrow['mediatype'] == 1) {
-									$fullfilename = $cfg_basedir.$myrow['url'];
-									if (file_exists($fullfilename)) {
-										$info = '';
-										$sizes = getimagesize($fullfilename,$info);
-										if (is_array($sizes)) {
-											if ($sizes[0]>200) $w=200;
-											else $w = $sizes[0];
-								?>
-								<tr>
-									<td>预览</td>
-									<td><a href="<?php echo $myrow['url']?>" target="_blank"><img src="<?php echo $myrow['url'].'?q='.time()?>" width="<?php echo $w?>" id="picview"></a></td>
-								</tr>
-								<?php }}}?>
-								<tr>
-									<td>修改附件</td>
-									<td><input type="file" name="upfile" id="upfile" class="admin-input-lg"></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="media_main.php">附件管理</a></li>
+				<li class="breadcrumb-item active">修改附件</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">修改附件</div>
+				<div class="card-body">
+					<form name="form1" action="media_edit.php" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="dopost" value="save">
+						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+						<input type="hidden" name="aid" value="<?php echo $aid?>">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">附件类型</td>
+										<td>
+											<label><input type="radio" name="mediatype" value="1" <?php if ($myrow['mediatype']==1) echo 'checked';?>> 图片</label>
+											<label><input type="radio" name="mediatype" value="2" <?php if ($myrow['mediatype']==2) echo 'checked';?>> FLASH</label>
+											<label><input type="radio" name="mediatype" value="3" <?php if ($myrow['mediatype']==3) echo 'checked';?>> 视频音频</label>
+											<label><input type="radio" name="mediatype" value="4" <?php if ($myrow['mediatype']==4) echo 'checked';?>> 附件其它</label>
+										</td>
+									</tr>
+									<tr>
+										<td>附件标题</td>
+										<td><input type="text" name="title" id="title" value="<?php echo $myrow['title']?>" class="admin-input-lg" required></td>
+									</tr>
+									<tr>
+										<td>附加参数</td>
+										<td>
+											<label>宽：<input type="text" name="mediawidth" id="mediawidth" value="<?php echo $myrow['width']?>" class="admin-input-sm" placeholder="附件像素宽度"></label>
+											<label>高：<input type="text" name="mediaheight" id="mediaheight" value="<?php echo $myrow['height']?>" class="admin-input-sm" placeholder="附件像高宽度"></label>
+											<label>播放时间：<input type="text" name="playtime" id="playtime" value="<?php echo $myrow['playtime']?>" class="admin-input-sm"  placeholder="附件播放分钟"></label>
+										</td>
+									</tr>
+									<tr>
+										<td>源文件</td>
+										<td>
+											<input type="text" name="filename" id="filename" value="<?php echo $myrow['url']?>" class="admin-input-lg">
+											<a href="<?php echo $myrow['url']?>" target="_blank" class="btn btn-success btn-sm">查看</a>
+										</td>
+									</tr>
+									<?php
+									if ($myrow['mediatype'] == 1) {
+										$fullfilename = $cfg_basedir.$myrow['url'];
+										if (file_exists($fullfilename)) {
+											$info = '';
+											$sizes = getimagesize($fullfilename,$info);
+											if (is_array($sizes)) {
+												if ($sizes[0]>200) $w=200;
+												else $w = $sizes[0];
+									?>
+									<tr>
+										<td>预览</td>
+										<td><a href="<?php echo $myrow['url']?>" target="_blank"><img src="<?php echo $myrow['url'].'?q='.time()?>" width="<?php echo $w?>" id="picview"></a></td>
+									</tr>
+									<?php }}}?>
+									<tr>
+										<td>修改附件</td>
+										<td><input type="file" name="upfile" id="upfile" class="admin-input-lg"></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

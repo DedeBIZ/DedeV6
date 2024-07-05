@@ -9,31 +9,33 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">更新专题</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">更新专题</div>
-			<div class="card-body">
-				<div class="alert alert-info">发布专题后需要手动更新，存放目录：<?php echo $cfg_cmspath.$cfg_special."/index.html"?></div>
-				<form name="form1" action="makehtml_spec.php" method="get" target="stafrm">
-					<input type="hidden" name="dopost" value="ok">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
-								</tr>
-								<tr>
-									<td>
-										<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">更新专题</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">更新专题</div>
+				<div class="card-body">
+					<div class="alert alert-info">发布专题后需要手动更新，存放目录：<?php echo $cfg_cmspath.$cfg_special."/index.html"?></div>
+					<form name="form1" action="makehtml_spec.php" method="get" target="stafrm">
+						<input type="hidden" name="dopost" value="ok">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td align="center"><button type="submit" class="btn btn-success btn-sm">开始执行</button></td>
+									</tr>
+									<tr>
+										<td>
+											<div class="admin-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

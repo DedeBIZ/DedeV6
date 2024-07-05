@@ -9,51 +9,53 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">会员组管理</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<a href="sys_group_add.php" class="btn btn-success btn-sm">添加会员组</a>
-				<a href="sys_admin_user.php" class="btn btn-success btn-sm">管理员管理</a>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">会员组管理</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<a href="sys_group_add.php" class="btn btn-success btn-sm">添加会员组</a>
+					<a href="sys_admin_user.php" class="btn btn-success btn-sm">管理员管理</a>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">会员组管理</div>
-			<div class="card-body">
-				<form name="form1" action="content_att.php" method="post">
-					<input type="hidden" name="dopost" value="save">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<thead>
-								<tr>
-									<td scope="col">等级</td>
-									<td scope="col">组名称</td>
-									<td scope="col">管理</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$dsql->SetQuery("Select `rank`,typename,`system` From `#@__admintype`");
-								$dsql->Execute();
-								while($row = $dsql->GetObject())
-								{
-								?>
-								<tr>
-									<td><?php echo $row->rank?></td>
-									<td><?php echo $row->typename?></td>
-									<td>
-										<a href="sys_group_edit.php?rank=<?php echo $row->rank?>" class="btn btn-success btn-sm">权限设定</a>
-										<a href="sys_admin_user.php?rank=<?php echo $row->rank?>" class="btn btn-success btn-sm">组会员</a>
-										<?php if ($row->system==0) {?><a href='sys_group_edit.php?dopost=del&rank=<?php echo $row->rank;?>' class='btn btn-danger btn-sm'>删除组</a><?php }?>
-									</td>
-								</tr>
-								<?php }?>
-							</tbody>
-						</table>
-					</div>
-				</form>
+			<div class="card shadow-sm">
+				<div class="card-header">会员组管理</div>
+				<div class="card-body">
+					<form name="form1" action="content_att.php" method="post">
+						<input type="hidden" name="dopost" value="save">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<td scope="col">等级</td>
+										<td scope="col">组名称</td>
+										<td scope="col">管理</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$dsql->SetQuery("Select `rank`,typename,`system` From `#@__admintype`");
+									$dsql->Execute();
+									while($row = $dsql->GetObject())
+									{
+									?>
+									<tr>
+										<td><?php echo $row->rank?></td>
+										<td><?php echo $row->typename?></td>
+										<td>
+											<a href="sys_group_edit.php?rank=<?php echo $row->rank?>" class="btn btn-success btn-sm">权限设定</a>
+											<a href="sys_admin_user.php?rank=<?php echo $row->rank?>" class="btn btn-success btn-sm">组会员</a>
+											<?php if ($row->system==0) {?><a href='sys_group_edit.php?dopost=del&rank=<?php echo $row->rank;?>' class='btn btn-danger btn-sm'>删除组</a><?php }?>
+										</td>
+									</tr>
+									<?php }?>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

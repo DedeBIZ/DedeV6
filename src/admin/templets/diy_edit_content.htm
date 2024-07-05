@@ -9,45 +9,47 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="diy_main.php">自定义表单管理</a></li>
-			<li class="breadcrumb-item active">修改<?php echo $diy->name;?></li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">修改<?php echo $diy->name;?></div>
-			<div class="card-body">
-				<form name="form1" method="post" enctype="multipart/form-data" action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
-					<input type="hidden" name="dopost" value="edit">
-					<input type="hidden" name="id" value="<?php echo $row['id'];?>">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<?php
-								$formfields = '';
-								foreach($fieldlist as $field=>$fielddata)
-								{
-								   $allowhtml = array('htmltext');
-									if ($row[$field]=='') continue;
-									if (!in_array($fielddata[1],$allowhtml)) {
-										$row[$field] = dede_htmlspecialchars($row[$field]);
-										$row[$field] = "<textarea name='".$field."' class='admin-textarea-xl'>$row[$field]</textarea>";
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="diy_main.php">自定义表单管理</a></li>
+				<li class="breadcrumb-item active">修改<?php echo $diy->name;?></li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">修改<?php echo $diy->name;?></div>
+				<div class="card-body">
+					<form name="form1" method="post" enctype="multipart/form-data" action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
+						<input type="hidden" name="dopost" value="edit">
+						<input type="hidden" name="id" value="<?php echo $row['id'];?>">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<?php
+									$formfields = '';
+									foreach($fieldlist as $field=>$fielddata)
+									{
+									   $allowhtml = array('htmltext');
+										if ($row[$field]=='') continue;
+										if (!in_array($fielddata[1],$allowhtml)) {
+											$row[$field] = dede_htmlspecialchars($row[$field]);
+											$row[$field] = "<textarea name='".$field."' class='admin-textarea-xl'>$row[$field]</textarea>";
+										}
+										echo '<tr><td width="260">'.$fielddata[0].'：'.'</td><td>'.$row[$field].'</td></tr>';
+										$formfields .= 	$formfields == ''? $field.','.$fielddata[1] : ';'.$field.','.$fielddata[1];	
 									}
-									echo '<tr><td width="260">'.$fielddata[0].'：'.'</td><td>'.$row[$field].'</td></tr>';
-									$formfields .= 	$formfields == ''? $field.','.$fielddata[1] : ';'.$field.','.$fielddata[1];	
-								}
-								echo "<input type='hidden' name='dede_fields' value='".$formfields."'>";
-								?>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+									echo "<input type='hidden' name='dede_fields' value='".$formfields."'>";
+									?>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

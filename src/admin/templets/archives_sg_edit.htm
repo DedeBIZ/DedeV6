@@ -19,102 +19,104 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="content_sg_list.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a></li>
-			<li class="breadcrumb-item active">修改文档</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">修改<?php echo $addRow['title'];?>文档</div>
-			<div class="card-body">
-				<form name="form1" action="archives_sg_edit.php" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
-					<input type="hidden" name="id" value="<?php echo $aid;?>">
-					<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate'];?>">
-					<input type="hidden" name="dopost" value="save">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="160"><?php echo $cInfos['titlename'];?></td>
-									<td width="650"><input type="text" name="title" id="title" value="<?php echo $addRow['title'];?>" class="admin-input-lg" required></td>
-									<td width="160"></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>自定义属性</td>
-									<td colspan="3">
-										<?php
-										$dsql->SetQuery("SELECT * FROM `#@__arcatt` WHERE att<>'j' AND att<>'p' ORDER BY sortid ASC");
-										$dsql->Execute();
-										while($trow = $dsql->GetObject())
-										{
-											if (preg_match("#".$trow->att."#", $addRow['flag']))
-												echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked> {$trow->attname}[{$trow->att}]</label> ";
-											else
-												echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
-										}
-										?>
-									</td>
-								</tr>
-								<tr id="pictable" style="<?php if ($cInfos['needpic']==0) echo 'display:none';?>">
-									<td>缩略图</td>
-									<td colspan="3">
-										<input type="text" name="picname" id="picname" class="admin-input-lg" value="<?php echo $addRow['litpic']?>">
-										<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
-										<span class="btn btn-success btn-sm opt-button">上传<input type="file" name="files[]" id="iptAddImages"></span>
-										<button type="button" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
-										<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
-										<img src="<?php if ($addRow['litpic']!='') echo $addRow['litpic']; else echo '/static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md ml-3">
-									</td>
-								</tr>
-								<?php
-								if ($cInfos['dfcid'] > 0) {
-									echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}'>";
-								} else {
-								?>
-								<tr>
-									<td>发布栏目</td>
-									<td colspan="3">
-										<?php
-										$typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
-										echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
-										if ($addRow["typeid"]=="0") echo "<option value='0' selected>请选择文档栏目</option>";
-										echo $typeOptions;
-										echo "</select>";
-										?>
-										<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>');" class="btn btn-success btn-sm">选择</a>
-									</td>
-								</tr>
-								<?php }?>
-								<?php PrintAutoFieldsEdit($cInfos['fieldset'],$addRow,'autofield');?>
-								<tr>
-									<td>浏览权限</td>
-									<td colspan="3">
-										<select name="arcrank" id="arcrank" class="admin-input-sm">
-											<option value='<?php echo $addRow["arcrank"];?>'><?php echo $addRow["rankname"];?></option>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="content_sg_list.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a></li>
+				<li class="breadcrumb-item active">修改文档</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">修改<?php echo $addRow['title'];?>文档</div>
+				<div class="card-body">
+					<form name="form1" action="archives_sg_edit.php" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
+						<input type="hidden" name="id" value="<?php echo $aid;?>">
+						<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate'];?>">
+						<input type="hidden" name="dopost" value="save">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="160"><?php echo $cInfos['titlename'];?></td>
+										<td width="650"><input type="text" name="title" id="title" value="<?php echo $addRow['title'];?>" class="admin-input-lg" required></td>
+										<td width="160"></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>自定义属性</td>
+										<td colspan="3">
 											<?php
-											$urank = $cuserLogin->getUserRank();
-											$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' And `rank`<>'{$addRow["arcrank"]}' ");
+											$dsql->SetQuery("SELECT * FROM `#@__arcatt` WHERE att<>'j' AND att<>'p' ORDER BY sortid ASC");
 											$dsql->Execute();
-											while($row = $dsql->GetObject()) {
-												echo "<option value='".$row->rank."'>".$row->membername."</option>";
+											while($trow = $dsql->GetObject())
+											{
+												if (preg_match("#".$trow->att."#", $addRow['flag']))
+													echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked> {$trow->attname}[{$trow->att}]</label> ";
+												else
+													echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
 											}
 											?>
-										</select>
-										<span>（暂不支持静态）</span>
-									</td>
-								</tr>
-								<tr>
-									<td align="center" colspan="4">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+										</td>
+									</tr>
+									<tr id="pictable" style="<?php if ($cInfos['needpic']==0) echo 'display:none';?>">
+										<td>缩略图</td>
+										<td colspan="3">
+											<input type="text" name="picname" id="picname" class="admin-input-lg" value="<?php echo $addRow['litpic']?>">
+											<label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程图片</label>
+											<span class="btn btn-success btn-sm opt-button">上传<input type="file" name="files[]" id="iptAddImages"></span>
+											<button type="button" onclick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择</button>
+											<button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
+											<img src="<?php if ($addRow['litpic']!='') echo $addRow['litpic']; else echo '/static/web/img/thumbnail.jpg';?>" id="litPic" class="thumbnail-md ml-3">
+										</td>
+									</tr>
+									<?php
+									if ($cInfos['dfcid'] > 0) {
+										echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}'>";
+									} else {
+									?>
+									<tr>
+										<td>发布栏目</td>
+										<td colspan="3">
+											<?php
+											$typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
+											echo "<select name='typeid' id='typeid' class='admin-input-sm'>";
+											if ($addRow["typeid"]=="0") echo "<option value='0' selected>请选择文档栏目</option>";
+											echo $typeOptions;
+											echo "</select>";
+											?>
+											<a href="javascript:ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>');" class="btn btn-success btn-sm">选择</a>
+										</td>
+									</tr>
+									<?php }?>
+									<?php PrintAutoFieldsEdit($cInfos['fieldset'],$addRow,'autofield');?>
+									<tr>
+										<td>浏览权限</td>
+										<td colspan="3">
+											<select name="arcrank" id="arcrank" class="admin-input-sm">
+												<option value='<?php echo $addRow["arcrank"];?>'><?php echo $addRow["rankname"];?></option>
+												<?php
+												$urank = $cuserLogin->getUserRank();
+												$dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' And `rank`<>'{$addRow["arcrank"]}' ");
+												$dsql->Execute();
+												while($row = $dsql->GetObject()) {
+													echo "<option value='".$row->rank."'>".$row->membername."</option>";
+												}
+												?>
+											</select>
+											<span>（暂不支持静态）</span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" colspan="4">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

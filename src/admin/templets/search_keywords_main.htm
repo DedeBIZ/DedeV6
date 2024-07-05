@@ -134,16 +134,18 @@
 		</script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">搜索关键词管理</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">搜索关键词管理</div>
-			<div id="rslist" class="card-body">
-				<?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?>
-				<div id="pagelist">
-					<script>ReloadPageNum(1);</script>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">搜索关键词管理</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">搜索关键词管理</div>
+				<div id="rslist" class="card-body">
+					<?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?>
+					<div id="pagelist">
+						<script>ReloadPageNum(1);</script>
+					</div>
 				</div>
 			</div>
 		</div>

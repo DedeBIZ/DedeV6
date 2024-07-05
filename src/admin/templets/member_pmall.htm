@@ -9,52 +9,54 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">会员群发短信</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<form action="member_pm.php" name="form1" method="get">
-					<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-2">
-					<input type="text" name="username" id="username" placeholder="请输入账号" autocomplete="off" class="admin-input-lg mr-2">
-					<select name="folder" id="folder" class="admin-input-sm">
-						<option value="inbox">收件箱</option>
-						<option value="outbox">发件箱</option>
-					</select>
-					<button type="submit"class="btn btn-success btn-sm">搜索</button>
-					<a href="member_pm.php" class="btn btn-outline-success btn-sm">短信列表</a>
-					<span class="btn btn-success btn-sm">群发短信</span>
-					<a href="member_pmone.php" class="btn btn-outline-success btn-sm">单独短信</a>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">会员群发短信</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<form action="member_pm.php" name="form1" method="get">
+						<input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="admin-input-lg mr-2">
+						<input type="text" name="username" id="username" placeholder="请输入账号" autocomplete="off" class="admin-input-lg mr-2">
+						<select name="folder" id="folder" class="admin-input-sm">
+							<option value="inbox">收件箱</option>
+							<option value="outbox">发件箱</option>
+						</select>
+						<button type="submit"class="btn btn-success btn-sm">搜索</button>
+						<a href="member_pm.php" class="btn btn-outline-success btn-sm">短信列表</a>
+						<span class="btn btn-success btn-sm">群发短信</span>
+						<a href="member_pmone.php" class="btn btn-outline-success btn-sm">单独短信</a>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">会员群发短信</div>
-			<div class="card-body">
-				<form id="postall" action="member_pmall.php" method="post">
-					<input type="hidden" name="action" value="post">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">标题</td>
-									<td><input type="text" name="subject" id="subject" class="admin-input-lg" placeholder="标题少于70个字符内" required></td>
-								</tr>
-								<tr>
-									<td>内容</td>
-									<td><textarea name="message" id="message" class="admin-textarea-xl" placeholder="内容少于1000个字符" required></textarea></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+			<div class="card shadow-sm">
+				<div class="card-header">会员群发短信</div>
+				<div class="card-body">
+					<form id="postall" action="member_pmall.php" method="post">
+						<input type="hidden" name="action" value="post">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">标题</td>
+										<td><input type="text" name="subject" id="subject" class="admin-input-lg" placeholder="标题少于70个字符内" required></td>
+									</tr>
+									<tr>
+										<td>内容</td>
+										<td><textarea name="message" id="message" class="admin-textarea-xl" placeholder="内容少于1000个字符" required></textarea></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

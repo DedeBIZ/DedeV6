@@ -12,42 +12,44 @@
 		<script src="/static/web/js/admin.catalog.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item active">网站栏目管理</li>
-		</ol>
-		<div class="card shadow-sm mb-3">
-			<div class="card-body">
-				<?php if (!isset($exallct)) {?>
-				<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
-				<?php } else {?>
-				<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
-				<?php }?>
-				<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">添加栏目</a>
-				<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量添加</a>
-				<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新缓存</a>
-				<button type="button" class="btn btn-success btn-sm" onclick="document.form1.submit();">更新排序</button>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">网站栏目管理</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<?php if (!isset($exallct)) {?>
+					<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
+					<?php } else {?>
+					<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
+					<?php }?>
+					<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">添加栏目</a>
+					<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量添加</a>
+					<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新缓存</a>
+					<button type="button" class="btn btn-success btn-sm" onclick="document.form1.submit();">更新排序</button>
+				</div>
 			</div>
-		</div>
-		<div class="card shadow-sm">
-			<div class="card-header">网站栏目管理</div>
-			<div class="card-body">
-				<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tr>
-								<td>
-									<?php
-									if (empty($opendir)) $opendir=-1;
-									if ($userChannel > 0) $opendir=$userChannel;
-									$tu = new TypeUnit();
-									$tu->ListAllType($userChannel,$opendir);
-									?>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</form>
+			<div class="card shadow-sm">
+				<div class="card-header">网站栏目管理</div>
+				<div class="card-body">
+					<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tr>
+									<td>
+										<?php
+										if (empty($opendir)) $opendir=-1;
+										if ($userChannel > 0) $opendir=$userChannel;
+										$tu = new TypeUnit();
+										$tu->ListAllType($userChannel,$opendir);
+										?>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

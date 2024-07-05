@@ -9,43 +9,45 @@
 		<link rel="stylesheet" href="/static/web/css/admin.css">
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="vote_main.php">投票管理</a></li>
-			<li class="breadcrumb-item active">获取投票标签</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">获取投票标签</div>
-			<div class="card-body">
-				<form name="form1" action="tag_test_action.php" method="post" target="stafrm">
-					<input type="hidden" name="showsource" value="no">
-					<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td><textarea name="partcode" id="partcode" class="admin-textarea-xl">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
-									<td><textarea name="htmlf" id="htmlf" class="admin-textarea-xl"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
-									<td>
-										<textarea name="htmlf" id="htmlf" class="admin-textarea-xl">
-										<?php
-										$vt = new DedeVote($aid);
-										echo $vt->GetVoteForm();
-										$vt->Close();
-										?>
-										</textarea>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="3" align="center"><button type="submit"class="btn btn-success btn-sm">提交测试</button></td>
-								</tr>
-								<tr>
-									<td colspan="3"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="vote_main.php">投票管理</a></li>
+				<li class="breadcrumb-item active">获取投票标签</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">获取投票标签</div>
+				<div class="card-body">
+					<form name="form1" action="tag_test_action.php" method="post" target="stafrm">
+						<input type="hidden" name="showsource" value="no">
+						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td><textarea name="partcode" id="partcode" class="admin-textarea-xl">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
+										<td><textarea name="htmlf" id="htmlf" class="admin-textarea-xl"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
+										<td>
+											<textarea name="htmlf" id="htmlf" class="admin-textarea-xl">
+											<?php
+											$vt = new DedeVote($aid);
+											echo $vt->GetVoteForm();
+											$vt->Close();
+											?>
+											</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3" align="center"><button type="submit"class="btn btn-success btn-sm">提交测试</button></td>
+									</tr>
+									<tr>
+										<td colspan="3"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

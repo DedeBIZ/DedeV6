@@ -20,42 +20,44 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="file_manage_main.php">文件管理器</a></li>
-			<li class="breadcrumb-item active">新建/修改文件</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">新建/修改文件</div>
-			<div class="card-body">
-				<form name="form1" action="file_manage_control.php" method="post">
-					<input type="hidden" name="fmdo" value="edit">
-					<input type="hidden" name="backurl" value="{dede:global name='backurl' function='urlencode(@me)'/}">
-					<input type="hidden" name="_csrf_token" value="{dede:global name='csrf_token'/}">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="260">文件目录</td>
-									<td><input name="activepath" value="{dede:global name='activepath'/}" class="admin-input-lg" required>（空白表示根目录，不可以用小数点..表示路径）</td>
-								</tr>
-								<tr>
-									<td>文件名称</td>
-									<td><input name="filename" value="{dede:global name='filename'/}" class="admin-input-lg">（不可以用小数点..表示路径）</td>
-								</tr>
-								<tr>
-									<td colspan="2">{dede:global name='contentView'/}</td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="file_manage_main.php">文件管理器</a></li>
+				<li class="breadcrumb-item active">新建/修改文件</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">新建/修改文件</div>
+				<div class="card-body">
+					<form name="form1" action="file_manage_control.php" method="post">
+						<input type="hidden" name="fmdo" value="edit">
+						<input type="hidden" name="backurl" value="{dede:global name='backurl' function='urlencode(@me)'/}">
+						<input type="hidden" name="_csrf_token" value="{dede:global name='csrf_token'/}">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">文件目录</td>
+										<td><input name="activepath" value="{dede:global name='activepath'/}" class="admin-input-lg" required>（空白表示根目录，不可以用小数点..表示路径）</td>
+									</tr>
+									<tr>
+										<td>文件名称</td>
+										<td><input name="filename" value="{dede:global name='filename'/}" class="admin-input-lg">（不可以用小数点..表示路径）</td>
+									</tr>
+									<tr>
+										<td colspan="2">{dede:global name='contentView'/}</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script>

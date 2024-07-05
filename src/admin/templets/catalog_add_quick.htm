@@ -12,180 +12,182 @@
 		<script src="/static/web/js/admin.main.js"></script>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-			<li class="breadcrumb-item"><a href="catalog_main.php">网站栏目管理</a></li>
-			<li class="breadcrumb-item active">批量添加栏目</li>
-		</ol>
-		<div class="card shadow-sm">
-			<div class="card-header">批量添加栏目</div>
-			<div class="card-body">
-				<form name="form1" action="catalog_add.php" method="post">
-					<input type="hidden" name="dopost" value="savequick">
-					<input type="hidden" name="savetype" id="savetype">
-					<div class="table-responsive">
-						<table class="table table-borderless">
-							<tbody>
-								<tr>
-									<td width="10%">是否支持投稿</td>
-									<td width="40%">
-										<label><input type="radio" name="issend" value="1" checked> 支持</label>
-										<label><input type="radio" name="issend" value="0"> 不支持</label>
-									</td>
-									<td width="10%">目录保存位置</td>
-									<td width="40%">
-										<label><input type="radio" name="referpath" value="parent" checked> 默认网页目录（
-											<?php
-											$pardir = '{cmspath}'.$cfg_arcdir;
-											if (!empty($typedir)) $pardir = $typedir.'/';
-											$pardir = preg_replace("#\/{1,}#", '/', $pardir);
-											echo $pardir;
-											?>）</label>
-										<label><input type="radio" name="referpath" value="cmspath"> 系统根目录</label>
-										<input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir;?>">
-										<span id="pathtype" style="display:none"><input type="radio" name="referpath" id="truepath3" value="typepath">所属栏目所属目录</span>
-									</td>
-								</tr>
-								<tr>
-									<td>所属栏目</td>
-									<td>
-										<select name="reid" onchange="showSeltype(this);" class="admin-input-sm">
-											<option value="0">选择所属栏目</option>
-											<?php echo $typeOptions;?>
-										</select>
-										<span>（默认为顶级栏目）</span>
-									</td>
-									<td>文档模型</td>
-									<td>
-										<select name="channeltype" id="channeltype" onChange="ParTemplet(this);" class="admin-input-sm">
-											<?php
-											foreach($channelArray as $k=>$arr)
-											{
-												if ($k==$channelid) echo "<option value='{$k}' selected>{$arr['typename']} {$arr['nid']}</option>";
-												else  echo "<option value='{$k}'>{$arr['typename']} {$arr['nid']}</option>";
-											}
-											?>
-										</select>
-									</td>
-								</tr>
-								<tr>
-									<td>栏目列表选项</td>
-									<td>
-										<label><input type="radio" name="isdefault" value="1" checked> 静态浏览</label>
-										<label><input type="radio" name="isdefault" value="-1"> 动态浏览</label>
-										<label><input type="radio" name="isdefault" value="0"> 列表第一页浏览</label>
-									</td>
-									<td>列表命名规则</td>
-									<td>
-										<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-lg">
-										<a href="javascript:ShowHide('helpvar1');" class="btn btn-success btn-sm">说明</a>
-										<div id="helpvar1" class="alert alert-secondary my-2" style="display:none">
-											<p>静态规则</p>
-											<p>{tid} 栏目id</p>
-											<p>{page} 栏目页码数</p>
-											<p>伪静态规则（Nginx）</p>
-											<p>rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;</p>
-											<span>rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>文档命名规则</td>
-									<td>
-										<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-lg">
-										<a href="javascript:ShowHide('helpvar2');" class="btn btn-success btn-sm">说明</a>
-										<div id="helpvar2" class="alert alert-secondary my-2" style="display:none">
-											<p>静态规则</p>
-											<p>{Y}{M}{D} 年月日</p>
-											<p>{timestamp} INT类型的UNIX时间戳</p>
-											<p>{aid} 文档id</p>
-											<p>{pinyin} 拼音加文档id</p>
-											<p>{py} 拼音部首加文档id</p>
-											<p>{typedir} 栏目保存目录</p>
-											<p>{cc} 日期加混编id后用转换为适合字母</p>
-											<p>伪静态规则（Nginx）</p>
-											<p>rewrite ^/doc-([0-9]+).html$ /apps/view.php?arcID=$1;</p>
-											<span>rewrite ^/doc-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
-										</div>
-									</td>
-									<td>默认页的名称</td>
-									<td><input type="text" name="defaultname" value="index.html" class="admin-input-lg"></td>
-								</tr>
-								<tr>
-									<td colspan="4">
-										<table id="addQuick" class="table">
-											<thead>
-												<tr>
-													<td scope="col">排序</td>
-													<td scope="col">顶级栏目名称</td>
-													<td scope="col">子栏目名称（英文逗号隔开，如：栏目一,栏目二）</td>
-													<td scope="col"><button type="button" class="btn btn-success btn-sm add">添加</button></td>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td class="rank">
-														<input type="hidden" name="posttype" class="pubinputs">
-														<input type="text" name="rank" value="1" class="pubinputs admin-input-sm">
-													</td>
-													<td><input type="text" name="toptype" class="pubinputs admin-input-lg"></td>
-													<td><input type="text" name="sontype" class="pubinputs w-100"></td>
-													<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
-												</tr>
-												<?php for($i=2;$i<=10;$i++) {?>
-												<tr class="repeat">
-													<td class="rank">
-														<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-														<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-sm">
-													</td>
-													<td><input type="text" name="toptype<?php echo $i;?>" class="pubinputs admin-input-lg"></td>
-													<td><input type="text" name="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
-													<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
-												</tr>
-												<?php }?>
-											</tbody>
-										</table>
-										<table id="addQuickRel" class="table" style="display:none">
-											</thead>
-												<tr>
-													<td scope="col">排序</td>
-													<td scope="col">栏目名称</td>
-													<td scope="col"><button type="button" class="btn btn-success btn-sm addrel">添加</button></td>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td class="rank">
-														<input type="hidden" name="posttype" class="pubinputs">
-														<input type="text" name="rank" value="1" class="pubinputs admin-input-sm">
-													</td>
-													<td><input type="text" name="reltype" class="pubinputs admin-input-lg"></td>
-													<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
-												</tr>
-												<?php for($i=2;$i<=10;$i++) {?>
-												<tr class="repeat">
-													<td class="rank">
-														<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-														<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-sm">
-													</td>
-													<td><input type="text" name="reltype<?php echo $i;?>" class="pubinputs admin-input-lg"></td>
-													<td><button type="button" class="btn btn-danger btn-sm del">删除</button></td>
-												</tr>
-												<?php }?>
-											</tbody>
-										</table>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="4" align="center">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<a href="catalog_main.php" class="btn btn-outline-success btn-sm">返回</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="catalog_main.php">网站栏目管理</a></li>
+				<li class="breadcrumb-item active">批量添加栏目</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">批量添加栏目</div>
+				<div class="card-body">
+					<form name="form1" action="catalog_add.php" method="post">
+						<input type="hidden" name="dopost" value="savequick">
+						<input type="hidden" name="savetype" id="savetype">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="10%">是否支持投稿</td>
+										<td width="40%">
+											<label><input type="radio" name="issend" value="1" checked> 支持</label>
+											<label><input type="radio" name="issend" value="0"> 不支持</label>
+										</td>
+										<td width="10%">目录保存位置</td>
+										<td width="40%">
+											<label><input type="radio" name="referpath" value="parent" checked> 默认网页目录（
+												<?php
+												$pardir = '{cmspath}'.$cfg_arcdir;
+												if (!empty($typedir)) $pardir = $typedir.'/';
+												$pardir = preg_replace("#\/{1,}#", '/', $pardir);
+												echo $pardir;
+												?>）</label>
+											<label><input type="radio" name="referpath" value="cmspath"> 系统根目录</label>
+											<input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir;?>">
+											<span id="pathtype" style="display:none"><input type="radio" name="referpath" id="truepath3" value="typepath">所属栏目所属目录</span>
+										</td>
+									</tr>
+									<tr>
+										<td>所属栏目</td>
+										<td>
+											<select name="reid" onchange="showSeltype(this);" class="admin-input-sm">
+												<option value="0">选择所属栏目</option>
+												<?php echo $typeOptions;?>
+											</select>
+											<span>（默认为顶级栏目）</span>
+										</td>
+										<td>文档模型</td>
+										<td>
+											<select name="channeltype" id="channeltype" onChange="ParTemplet(this);" class="admin-input-sm">
+												<?php
+												foreach($channelArray as $k=>$arr)
+												{
+													if ($k==$channelid) echo "<option value='{$k}' selected>{$arr['typename']} {$arr['nid']}</option>";
+													else  echo "<option value='{$k}'>{$arr['typename']} {$arr['nid']}</option>";
+												}
+												?>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>栏目列表选项</td>
+										<td>
+											<label><input type="radio" name="isdefault" value="1" checked> 静态浏览</label>
+											<label><input type="radio" name="isdefault" value="-1"> 动态浏览</label>
+											<label><input type="radio" name="isdefault" value="0"> 列表第一页浏览</label>
+										</td>
+										<td>列表命名规则</td>
+										<td>
+											<input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="admin-input-lg">
+											<a href="javascript:ShowHide('helpvar1');" class="btn btn-success btn-sm">说明</a>
+											<div id="helpvar1" class="alert alert-secondary my-2" style="display:none">
+												<p>静态规则</p>
+												<p>{tid} 栏目id</p>
+												<p>{page} 栏目页码数</p>
+												<p>伪静态规则（Nginx）</p>
+												<p>rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;</p>
+												<span>rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;</span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>文档命名规则</td>
+										<td>
+											<input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="admin-input-lg">
+											<a href="javascript:ShowHide('helpvar2');" class="btn btn-success btn-sm">说明</a>
+											<div id="helpvar2" class="alert alert-secondary my-2" style="display:none">
+												<p>静态规则</p>
+												<p>{Y}{M}{D} 年月日</p>
+												<p>{timestamp} INT类型的UNIX时间戳</p>
+												<p>{aid} 文档id</p>
+												<p>{pinyin} 拼音加文档id</p>
+												<p>{py} 拼音部首加文档id</p>
+												<p>{typedir} 栏目保存目录</p>
+												<p>{cc} 日期加混编id后用转换为适合字母</p>
+												<p>伪静态规则（Nginx）</p>
+												<p>rewrite ^/doc-([0-9]+).html$ /apps/view.php?arcID=$1;</p>
+												<span>rewrite ^/doc-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
+											</div>
+										</td>
+										<td>默认页的名称</td>
+										<td><input type="text" name="defaultname" value="index.html" class="admin-input-lg"></td>
+									</tr>
+									<tr>
+										<td colspan="4">
+											<table id="addQuick" class="table">
+												<thead>
+													<tr>
+														<td scope="col">排序</td>
+														<td scope="col">顶级栏目名称</td>
+														<td scope="col">子栏目名称（英文逗号隔开，如：栏目一,栏目二）</td>
+														<td scope="col"><button type="button" class="btn btn-success btn-sm add">添加</button></td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td class="rank">
+															<input type="hidden" name="posttype" class="pubinputs">
+															<input type="text" name="rank" value="1" class="pubinputs admin-input-sm">
+														</td>
+														<td><input type="text" name="toptype" class="pubinputs admin-input-lg"></td>
+														<td><input type="text" name="sontype" class="pubinputs w-100"></td>
+														<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
+													</tr>
+													<?php for($i=2;$i<=10;$i++) {?>
+													<tr class="repeat">
+														<td class="rank">
+															<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
+															<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-sm">
+														</td>
+														<td><input type="text" name="toptype<?php echo $i;?>" class="pubinputs admin-input-lg"></td>
+														<td><input type="text" name="sontype<?php echo $i;?>" class="pubinputs w-100"></td>
+														<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
+													</tr>
+													<?php }?>
+												</tbody>
+											</table>
+											<table id="addQuickRel" class="table" style="display:none">
+												</thead>
+													<tr>
+														<td scope="col">排序</td>
+														<td scope="col">栏目名称</td>
+														<td scope="col"><button type="button" class="btn btn-success btn-sm addrel">添加</button></td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td class="rank">
+															<input type="hidden" name="posttype" class="pubinputs">
+															<input type="text" name="rank" value="1" class="pubinputs admin-input-sm">
+														</td>
+														<td><input type="text" name="reltype" class="pubinputs admin-input-lg"></td>
+														<td><button name="" type="button" class="btn btn-danger btn-sm del">删除</button></td>
+													</tr>
+													<?php for($i=2;$i<=10;$i++) {?>
+													<tr class="repeat">
+														<td class="rank">
+															<input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
+															<input type="text" name="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs admin-input-sm">
+														</td>
+														<td><input type="text" name="reltype<?php echo $i;?>" class="pubinputs admin-input-lg"></td>
+														<td><button type="button" class="btn btn-danger btn-sm del">删除</button></td>
+													</tr>
+													<?php }?>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="4" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<a href="catalog_main.php" class="btn btn-outline-success btn-sm">返回</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script>
