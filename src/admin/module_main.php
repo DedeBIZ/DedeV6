@@ -266,6 +266,11 @@ if ($action == '') {
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", "delok");
     $msg = "<tr>
+        <td colspan='2'>
+            <div class='alert alert-warning'>删除模块仅删除模块安装后文件，用<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</div>
+        </td>
+    </tr>
+    <tr>
         <td width='260'>模块名称</td>
         <td>{$infos['name']}</td>
     </tr>
@@ -288,9 +293,6 @@ if ($action == '') {
     <tr>
         <td>使用协议</td>
         <td><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
-    </tr>
-    <tr>
-        <td colspan='2'>删除模块仅删除模块安装后文件，用<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
     </tr>";
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("ok", "");

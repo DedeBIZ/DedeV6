@@ -86,9 +86,7 @@ else if ($action == 'make') {
         move_uploaded_file($readme, $mdir."/{$hashcode}-r.html") or die("您没填写说明或上传说明文件");
         $readmef = $dm->GetEncodeFile($mdir."/{$hashcode}-r.html", TRUE);
     } else {
-        $readmetxt = "<p>".$readmetxt;
         $readmetxt = preg_replace("#[\r\n]{1,}#", "<br>\r\n", $readmetxt);
-        $readmetxt .= "</p>";
         $readmef = base64_encode(trim($readmetxt));
     }
     if ($autosetup == 0) {
@@ -188,7 +186,7 @@ else if ($action == 'edit') {
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
     if (($devInfo['auth_at'] + 60 * 60 * 24 * 365) < time()) {
-        ShowMsg("您贡献者账号已经过期，请登录www.dedebiz.com重新申请", "-1");
+        ShowMsg("修改模块失败，您贡献者账号已经过期", "-1");
         exit();
     }
     if (strlen($modulname) > 150) {
