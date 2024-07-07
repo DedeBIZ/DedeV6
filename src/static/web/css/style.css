@@ -389,7 +389,12 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	max-height:168px
 }
 .admin-textarea-xl {
-	width:100%
+	width:100%;
+	height:90px
+}
+.admin-textarea-sm {
+	width:350px;
+	height:60px
 }
 .admin-input-lg {
 	width:350px
@@ -418,14 +423,6 @@ a:hover,.item-theme:hover,.item-news:hover,.table-hover tbody tr:hover {
 .rounded-circle {
 	border-radius:50%!important
 }
-.page-item:first-child .page-link {
-	border-top-left-radius:var(--b-radius)!important;
-	border-bottom-left-radius:var(--b-radius)!important
-}
-.page-item:last-child .page-link {
-	border-top-right-radius:var(--b-radius)!important;
-	border-bottom-right-radius:var(--b-radius)!important
-}
 .input-group>.input-group-append>.btn {
 	border-top-left-radius:0!important;
 	border-bottom-left-radius:0!important
@@ -438,7 +435,7 @@ a:hover,.item-theme:hover,.item-news:hover,.table-hover tbody tr:hover {
 	margin-left:0.5rem
 }
 .shadow-sm {
-	box-shadow:0 .125rem 0.25rem rgba(0,0,0,0.015)!important
+	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,0.015)!important
 }
 .btn-send,#validateimg {
 	border-radius:0 var(--b-radius) var(--b-radius) 0;

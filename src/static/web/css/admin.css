@@ -644,7 +644,7 @@ body.menu-show .admin-content {
 	margin-right:1rem;
 	margin-bottom:1rem;
 	padding:1rem;
-	width:134px;
+	width:130px;
 	background:var(--light);
 	text-align:center
 }
@@ -670,17 +670,13 @@ body.menu-show .admin-content {
 	background:var(--white)
 }
 .opt-button {
-	display:inline-block;
-	position:relative;
-	overflow:hidden
+	position:relative
 }
 .opt-button input {
 	position:absolute;
 	top:0;
 	right:0;
-	margin:0;
 	opacity:0;
-	direction:ltr;
 	cursor:pointer
 }
 .user-img-md {
@@ -750,16 +746,8 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 .cke_top {
 	border-radius:var(--b-radius) var(--b-radius) 0 0!important
 }
-.submenu,.cke_bottom {
+.cke_bottom {
 	border-radius:0 0 var(--b-radius) var(--b-radius)!important
-}
-.page-item:first-child .page-link {
-	border-top-left-radius:var(--b-radius)!important;
-	border-bottom-left-radius:var(--b-radius)!important
-}
-.page-item:last-child .page-link {
-	border-top-right-radius:var(--b-radius)!important;
-	border-bottom-right-radius:var(--b-radius)!important
 }
 .input-group>.input-group-append>.btn {
 	border-top-left-radius:0!important;
@@ -784,7 +772,7 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 	margin-left:0.5rem
 }
 .shadow-sm {
-	box-shadow:0 .125rem 0.25rem rgba(0,0,0,0.015)!important
+	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,0.015)!important
 }
 @media (min-width:1199px) {
 	.modal-dialog {
@@ -826,5 +814,8 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 	}
 	.card-body canvas {
 		height:220px!important
+	}
+	.pagination,.page-item {
+		display:inline-table
 	}
 }
