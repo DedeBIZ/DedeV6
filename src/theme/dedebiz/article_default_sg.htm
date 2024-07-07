@@ -81,7 +81,7 @@
 		<script src="/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 		<script>
-			//获取顶踩数据
+			//顶踩功能
 			function GetDigg(aid,cid) {
 				let url = `{dede:global.cfg_phpurl/}/digg_ajax.php?id=${aid}&cid=${cid}&format=json`;
 				$.get(url, function(data) {
@@ -154,7 +154,7 @@
 					}
 				});
 			}
-			//进行回复，回复必须登录
+			//回复评论，回复必须登录
 			function SendReplyFeedback(fid) {
 				let content = $(`._feedback_reply[for="${fid}"]`).find(".iptReplyContent").val();
 				let reply = {
@@ -234,7 +234,7 @@
 					}
 				})
 			}
-			//赞
+			//评论点赞
 			function GoodFeedback(fid, g) {
 				let good = {
 					action : "send",
