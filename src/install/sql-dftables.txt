@@ -262,7 +262,7 @@ CREATE TABLE `#@__arctype` (
 	`modname` char(20) NOT NULL default '',
 	`description` char(255) NOT NULL default '',
 	`keywords` varchar(60) NOT NULL default '',
-	`seotitle` varchar(80) NOT NULL default '',
+	`seotitle` varchar(255) NOT NULL default '',
 	`moresite` tinyint(1) unsigned NOT NULL default '0',
 	`sitepath` char(60) NOT NULL default '',
 	`siteurl` char(50) NOT NULL default '',
