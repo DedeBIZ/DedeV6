@@ -32,6 +32,7 @@ function lib_channelartlist(&$ctag, &$refObj)
     if (empty($totalnum)) $totalnum = 20;
     //获得类别id总数的信息
     $typeids = array();
+    $order = " ORDER BY sortrank ASC ";
     if ($type == 'reid') {        
         $reid = $refObj->TypeLink->TypeInfos['reid'];          
         $tpsql = " reid='$reid' AND ispart<>2 AND ishidden<>1 ";
@@ -42,13 +43,14 @@ function lib_channelartlist(&$ctag, &$refObj)
             $tpsql = " reid='$typeid' AND ishidden<>1 ";
         } else {
             $tpsql = " id IN($typeid) AND ishidden<>1 ";
+            $order = " ORDER BY FIELD(id,$typeid) ";
         }
     }
     //否定栏目调用
-    if ($notypeid!=0) {
-        $tpsql = $tpsql."and not(id in($notypeid))";
+    if ($notypeid != 0) {
+        $tpsql = $tpsql." and not(id in($notypeid)) ";
     }
-    $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
+    $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql $order LIMIT $totalnum");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $typeids[] = $row;
