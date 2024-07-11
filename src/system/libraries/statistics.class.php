@@ -54,34 +54,34 @@ class DedeStatistics {
         $pm['dopost'] = "stat";
         $url = $GLOBALS['cfg_cmspath'].'/apps/statistics.php?'.http_build_query($pm);
         return "
-        (function() {
-            let u = '{$url}';
-            var ms_ie = false;
-            var ua = window.navigator.userAgent;
-            if ((ua.indexOf('MSIE ') > -1) || (ua.indexOf('Trident/') > -1)) {
-                ms_ie = true;
+(function() {
+    let u = '{$url}';
+    var ms_ie = false;
+    var ua = window.navigator.userAgent;
+    if ((ua.indexOf('MSIE ') > -1) || (ua.indexOf('Trident/') > -1)) {
+        ms_ie = true;
+    }
+    if (ms_ie) {
+        var xhr;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { //IE
+            try {
+                xhr = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
             }
-            if (ms_ie) {
-                var xhr;
-                if (window.XMLHttpRequest) {
-                  xhr = new XMLHttpRequest();
-                } else if (window.ActiveXObject) { //IE
-                  try {
-                    xhr = new ActiveXObject('Msxml2.XMLHTTP');
-                  } catch (e) {
-                    try {
-                      xhr = new ActiveXObject('Microsoft.XMLHTTP');
-                    } catch (e) {}
-                  }
-                }
-                if (xhr) {
-                  xhr.open('GET', u, true);
-                  xhr.send(null);
-                }
-            } else {
-                fetch(u);
-            }
-        })();";
+        }
+        if (xhr) {
+            xhr.open('GET', u, true);
+            xhr.send(null);
+        }
+    } else {
+        fetch(u);
+    }
+})();";
     }
     //统计
     function Record()
