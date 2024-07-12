@@ -13,7 +13,9 @@ require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/libraries/splitword.class.php");
 require_once(DEDEINC."/taglib/hotwords.lib.php");
+require_once(DEDEINC."/taglib/channelartlist.lib.php");
 require_once(DEDEINC."/taglib/channel.lib.php");
+require_once(DEDEINC."/taglib/arclist.lib.php");
 @set_time_limit(0);
 @ini_set('memory_limit', '512M');
 class SearchView
@@ -424,10 +426,10 @@ class SearchView
                     $list_len = 3;
                 }
                 $this->dtp->Assign($tagid, $this->GetPageListDM($list_len, $listitem));
-            } else if ($tagname == "likewords") {
-                $this->dtp->Assign($tagid, $this->GetLikeWords($ctag->GetAtt('num')));
             } else if ($tagname == "hotwords") {
                 $this->dtp->Assign($tagid, lib_hotwords($ctag, $this));
+            } else if ($tagname == "channelartlist") {
+                $this->dtp->Assign($tagid,lib_channelartlist($ctag,$this));
             } else if ($tagname == "field") {
                 //类别的指定字段
                 if (isset($this->Fields[$ctag->GetAtt('name')])) {
@@ -447,8 +449,11 @@ class SearchView
                 $GLOBALS['envs']['typeid'] = $typeid;
                 $GLOBALS['envs']['reid'] = $typeid;
                 $this->dtp->Assign($tagid, lib_channel($ctag, $this));
-            } //End if
-
+            } else if ($tagname == "arclist") {
+                $this->dtp->Assign($tagid,lib_arclist($ctag,$this));
+            } else if ($tagname == "likewords") {
+                $this->dtp->Assign($tagid, $this->GetLikeWords($ctag->GetAtt('num')));
+            }
         }
         global $keyword, $oldkeyword;
         if (!empty($oldkeyword)) $keyword = $oldkeyword;
