@@ -429,7 +429,7 @@ class SearchView
             } else if ($tagname == "hotwords") {
                 $this->dtp->Assign($tagid, lib_hotwords($ctag, $this));
             } else if ($tagname == "channelartlist") {
-                $this->dtp->Assign($tagid,lib_channelartlist($ctag,$this));
+                $this->dtp->Assign($tagid,lib_channelartlist($ctag, $this));
             } else if ($tagname == "field") {
                 //类别的指定字段
                 if (isset($this->Fields[$ctag->GetAtt('name')])) {
@@ -450,7 +450,7 @@ class SearchView
                 $GLOBALS['envs']['reid'] = $typeid;
                 $this->dtp->Assign($tagid, lib_channel($ctag, $this));
             } else if ($tagname == "arclist") {
-                $this->dtp->Assign($tagid,lib_arclist($ctag,$this));
+                $this->dtp->Assign($tagid,lib_arclist($ctag, $this));
             } else if ($tagname == "likewords") {
                 $this->dtp->Assign($tagid, $this->GetLikeWords($ctag->GetAtt('num')));
             }
