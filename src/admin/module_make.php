@@ -31,7 +31,7 @@ else if ($action == 'make') {
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
     if (($devInfo['auth_at'] + 60 * 60 * 24 * 365) < time()) {
-        ShowMsg("您贡献者账号已经过期，登录DedeBIZ官网申请续费", "-1");
+        ShowMsg("操作失败，登录DedeBIZ官网查看献者账号是否过期", "-1");
         exit();
     }
     $filelist = str_replace("\r", "\n", trim($filelist));
@@ -186,7 +186,7 @@ else if ($action == 'edit') {
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
     if (($devInfo['auth_at'] + 60 * 60 * 24 * 365) < time()) {
-        ShowMsg("修改模块失败，您贡献者账号已经过期", "-1");
+        ShowMsg("操作失败，登录DedeBIZ官网查看献者账号是否过期", "-1");
         exit();
     }
     if (strlen($modulname) > 150) {
