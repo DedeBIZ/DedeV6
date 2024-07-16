@@ -54,19 +54,9 @@ input {
 }
 input[type=file] {
 	padding:0;
-	height:auto;
 	border:0;
 	border-radius:0!important;
 	vertical-align:middle
-}
-input[type=button],input[type=submit],input[type=reset] {
-	padding:0.25rem 0.5rem;
-	height:30px;
-	line-height:1.6;
-	font-size:12px;
-	color:var(--white);
-	background:var(--green);
-	border:0
 }
 input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkbox]:focus {
 	width:14px;
@@ -599,16 +589,16 @@ body.menu-show .admin-content {
 	display:inline-block;
 	margin-right:1rem;
 	margin-bottom:1rem;
-	padding:1rem;
-	width:130px;
+	padding:0.5rem;
+	width:165px;
 	background:var(--light);
 	text-align:center
 }
 .opt .list img {
 	display:block;
 	margin:0 auto 1rem;
-	max-width:89px;
-	max-height:50px
+	max-width:149px;
+	max-height:84px
 }
 .opt .list span {
 	display:block;
@@ -738,7 +728,7 @@ span.page-link {
 	color:var(--white);
 	background:var(--green)
 }
-input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.opt .list,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
+input,select,textarea,button,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.opt .list,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
 	border-radius:var(--b-radius)!important
 }
 .cke_top {
