@@ -761,7 +761,7 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 .btn-xs {
 	padding:0.15rem;
 	line-height:1;
-	font-size:12px;
+	font-size:12px!important;
 	border-radius:var(--b-radius-sm)!important
 }
 .btn+.btn {
