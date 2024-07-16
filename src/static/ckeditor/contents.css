@@ -1,9 +1,9 @@
 * {
-	scrollbar-width:thin
+	scrollbar-width:thin;
+	letter-spacing:0.5px
 }
 body {
 	line-height:1.6;
-	letter-spacing:0.5px;
 	font-size:14px;
 	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
 	color:#6c757d;

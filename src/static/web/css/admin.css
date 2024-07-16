@@ -8,12 +8,11 @@
 	--b-radius-sm:0.25rem
 }
 * {
-	font-size:14px;
-	scrollbar-width:thin
+	scrollbar-width:thin;
+	letter-spacing:0.5px
 }
 body {
 	line-height:1.6;
-	letter-spacing:0.5px;
 	font-size:14px;
 	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
 	color:var(--gray);
@@ -46,7 +45,7 @@ td {
 	word-wrap:break-word
 }
 input {
-	padding:0.375rem 0.75rem;
+	padding:0.25rem 0.5rem;
 	height:30px;
 	color:var(--gray);
 	background:var(--white);
@@ -61,7 +60,7 @@ input[type=file] {
 	vertical-align:middle
 }
 input[type=button],input[type=submit],input[type=reset] {
-	padding:0.375rem 0.75rem;
+	padding:0.25rem 0.5rem;
 	height:30px;
 	line-height:1.6;
 	font-size:12px;
@@ -77,7 +76,7 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	vertical-align:middle
 }
 select {
-	padding:0.25rem 0.75rem;
+	padding:0.25rem 0.5rem;
 	height:30px;
 	color:var(--gray);
 	background:var(--white);
@@ -94,7 +93,7 @@ option:checked {
 	color:var(--blue)
 }
 textarea {
-	padding:0.375rem 0.75rem;
+	padding:0.25rem 0.5rem;
 	color:var(--gray);
 	background:var(--white);
 	border:1px solid var(--gray-300);
@@ -596,49 +595,6 @@ body.menu-show .admin-content {
 .column:hover {
 	background:rgba(0,0,0,0.075)
 }
-.container-fluid {
-	padding:1rem
-}
-.breadcrumb {
-	padding:0;
-	background:none
-}
-.modal-title {
-	font-size:16px
-}
-.card,.modal-content {
-	border:0
-}
-.card-header {
-	padding:1rem;
-	background-color:rgba(0,0,0,0);
-	border-bottom:1px solid rgba(0,0,0,0.05)
-}
-.card-body {
-	padding:1rem
-}
-.card-body canvas {
-	height:365px!important
-}
-.table {
-	margin-bottom:0;
-	color:var(--gray)
-}
-.table.icon img {
-	width:20px;
-	height:20px
-}
-.table th,.table td {
-	padding:0.5rem 1rem 0.5rem 0;
-	vertical-align:middle
-}
-.form-control {
-	display:inline-block
-}
-.fa {
-	font-size:14px!important;
-	color:inherit
-}
 .opt .list {
 	display:inline-block;
 	margin-right:1rem;
@@ -733,6 +689,48 @@ body.menu-show .admin-content {
 .admin-input-xs {
 	width:70px
 }
+.container-fluid {
+	padding:1rem
+}
+.breadcrumb {
+	padding:0;
+	background:none
+}
+.modal-title {
+	font-size:16px
+}
+.card,.modal-content {
+	border:0
+}
+.card-header {
+	padding:1rem;
+	background-color:rgba(0,0,0,0);
+	border-bottom:1px solid rgba(0,0,0,0.05)
+}
+.card-body {
+	padding:1rem
+}
+.card-body canvas {
+	height:365px!important
+}
+.table {
+	margin-bottom:0;
+	color:var(--gray)
+}
+.table.icon img {
+	width:20px;
+	height:20px
+}
+.table th,.table td {
+	padding:0.5rem 1rem 0.5rem 0;
+	vertical-align:middle
+}
+.form-control {
+	display:inline-block
+}
+.form-control,.fa,.btn {
+	font-size:14px!important
+}
 a:hover,body.menu-hide .admin-content,body.menu-show .admin-content,.sidemenu .submenu li:hover,.column:hover,.table-hover tbody tr:hover {
 	transition:all 0.5s
 }
@@ -758,9 +756,7 @@ input,select,textarea,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysour
 	border-bottom-right-radius:0!important
 }
 .btn-sm {
-	padding:0.375rem 0.5rem;
-	height:30px;
-	font-size:12px
+	height:30px
 }
 .btn-xs {
 	padding:0.15rem;

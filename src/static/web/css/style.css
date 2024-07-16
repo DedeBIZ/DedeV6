@@ -5,12 +5,11 @@
 	--b-radius:0.5rem
 }
 * {
-	font-size:14px;
-	scrollbar-width:thin
+	scrollbar-width:thin;
+	letter-spacing:0.5px
 }
 body {
 	line-height:1.6;
-	letter-spacing:0.5px;
 	font-size:14px;
 	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
 	color:var(--gray);
@@ -369,17 +368,6 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .input-group-append .btn-sm {
 	line-height:1.8
 }
-.table td,.table th {
-	padding:0.5rem;
-	vertical-align:middle
-}
-.form-control {
-	display:inline-block;
-	height:36px
-}
-.form-control,.fa,.btn,.dropdown-menu {
-	font-size:14px!important
-}
 .input-text {
 	height:36px;
 	line-height:36px
@@ -407,6 +395,17 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 }
 .admin-input-xs {
 	width:70px
+}
+.table td,.table th {
+	padding:0.5rem;
+	vertical-align:middle
+}
+.form-control {
+	display:inline-block;
+	height:36px
+}
+.form-control,.fa,.btn,.dropdown-menu {
+	font-size:14px!important
 }
 a:hover,.item-theme:hover,.item-news:hover,.table-hover tbody tr:hover {
 	transition:all 0.5s
