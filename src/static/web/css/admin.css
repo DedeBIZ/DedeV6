@@ -55,15 +55,19 @@ input {
 input[type=file] {
 	padding:0;
 	border:0;
-	border-radius:0!important;
-	vertical-align:middle
+	border-radius:0!important
+}
+input:focus,select:focus,textarea:focus {
+	color:var(--gray);
+	background:var(--white);
+	border-color:var(--blue-300);
+	box-shadow:0 0 0 0.25rem rgba(0,123,255,0.25);
+	outline:0
 }
 input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkbox]:focus {
 	width:14px;
 	height:14px;
-	outline:none;
-	box-shadow:none;
-	vertical-align:middle
+	box-shadow:none
 }
 select {
 	padding:0.25rem 0.5rem;
@@ -74,7 +78,7 @@ select {
 	vertical-align:middle
 }
 select[multiple=yes] {
-	height:180px
+	height:160px
 }
 option {
 	padding:0.25rem 0
@@ -88,13 +92,6 @@ textarea {
 	background:var(--white);
 	border:1px solid var(--gray-300);
 	vertical-align:middle
-}
-input:focus,select:focus,textarea:focus {
-	color:var(--gray);
-	background:var(--white);
-	border-color:var(--blue-300);
-	box-shadow:0 0 0 0.2rem rgba(0,123,255,0.25);
-	outline:0
 }
 .install-head {
 	padding:1rem 0;
@@ -138,7 +135,7 @@ input:focus,select:focus,textarea:focus {
 	background-size:cover
 }
 .login-box {
-	padding:70px 80px
+	padding:100px 80px 0
 }
 .login-box .logo {
 	margin-bottom:60px
@@ -346,14 +343,6 @@ body.menu-show .admin-content {
 	opacity:0.6;
 	z-index:1980
 }
-.sys-search {
-	position:relative
-}
-.sys-search .sys-times {
-	position:absolute;
-	top:0;
-	right:0
-}
 .colordlg {
 	background:var(--white);
 	border:1px solid var(--gray-300);
@@ -385,29 +374,6 @@ body.menu-show .admin-content {
 	border:1px solid var(--gray-300);
 	z-index:19994
 }
-.atlas {
-	float:left;
-	margin-right:1rem;
-	margin-bottom:1rem;
-	width:220px;
-	height:auto;
-	background:var(--bg);
-	text-align:center;
-	border-radius:var(--b-radius)
-}
-.atlas-head {
-	height:120px
-}
-.atlas-head img {
-	max-width:220px;
-	max-height:120px
-}
-.atlas-head,.atlas-body,.atlas-foot {
-	margin-bottom:0.5rem
-}
-.atlas-input {
-	width:200px
-}
 .adtab li {
 	display:inline-block;
 	padding:0.5rem;
@@ -422,6 +388,14 @@ body.menu-show .admin-content {
 }
 .cls {
 	clear:both
+}
+.sys-search {
+	position:relative
+}
+.sys-search .sys-times {
+	position:absolute;
+	top:0;
+	right:0
 }
 .helpinfo {
 	float:left;
@@ -459,6 +433,29 @@ body.menu-show .admin-content {
 	word-break:break-all;
 	word-wrap:break-word
 }
+.atlas {
+	float:left;
+	margin-right:1rem;
+	margin-bottom:1rem;
+	width:220px;
+	height:auto;
+	background:var(--bg);
+	text-align:center;
+	border-radius:var(--b-radius)
+}
+.atlas-head {
+	height:120px
+}
+.atlas-head img {
+	max-width:220px;
+	max-height:120px
+}
+.atlas-head,.atlas-body,.atlas-foot {
+	margin-bottom:0.5rem
+}
+.atlas-input {
+	width:200px
+}
 #toolimg {
 	position:absolute;
 	display:none
@@ -488,7 +485,7 @@ body.menu-show .admin-content {
 	padding-top:1rem
 }
 #file_list:empty:after {
-	content:'拖拽图片到此处上传'
+	content:'支持拖拽图片上传'
 }
 #file_list li {
 	display:block;
@@ -718,7 +715,7 @@ body.menu-show .admin-content {
 .form-control {
 	display:inline-block
 }
-.form-control,.fa,.btn {
+.form-control,.btn,.fa {
 	font-size:14px!important
 }
 a:hover,body.menu-hide .admin-content,body.menu-show .admin-content,.sidemenu .submenu li:hover,.column:hover,.table-hover tbody tr:hover {
@@ -728,7 +725,7 @@ span.page-link {
 	color:var(--white);
 	background:var(--green)
 }
-input,select,textarea,button,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.opt .list,#edsta,.cke_chrome,.cke_inner,.pagination,.card,.form-control,.btn,.alert,.rounded {
+input,select,textarea,button,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,.opt .list,#edsta,.cke_chrome,.cke_inner,.card,.form-control,.btn,.alert,.rounded {
 	border-radius:var(--b-radius)!important
 }
 .cke_top {
@@ -746,7 +743,10 @@ input,select,textarea,button,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,
 	border-bottom-right-radius:0!important
 }
 .btn-sm {
-	height:30px
+	padding:0 0.5rem;
+	height:30px;
+	line-height:30px;
+	font-size:12px!important
 }
 .btn-xs {
 	padding:0.15rem;
@@ -799,7 +799,7 @@ input,select,textarea,button,.upload-bg,.colordlg,.pubdlg,.quickselitem .topcat,
 		padding:30px
 	}
 	.card-body canvas {
-		height:220px!important
+		height:210px!important
 	}
 	.pagination,.page-item {
 		display:inline-table
