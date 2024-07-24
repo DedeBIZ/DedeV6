@@ -698,7 +698,7 @@ body.menu-show .admin-content {
 	padding:1rem
 }
 .card-body canvas {
-	height:365px!important
+	height:382px!important
 }
 .table {
 	margin-bottom:0;
@@ -799,7 +799,7 @@ input,select,textarea,button,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.
 		padding:30px
 	}
 	.card-body canvas {
-		height:210px!important
+		height:230px!important
 	}
 	.pagination,.page-item {
 		display:inline-table

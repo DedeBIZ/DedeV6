@@ -28,7 +28,7 @@ if ($action == 'post') {
         $dede_fieldshash = empty($dede_fieldshash) ? '' : trim($dede_fieldshash);
         if (!empty($dede_fields)) {
             if ($dede_fieldshash != md5($dede_fields.$cfg_cookie_encode)) {
-                showMsg('数据校验不对', '-1');
+                showMsg('表单校验失败', '-1');
                 exit();
             }
         }
@@ -39,6 +39,9 @@ if ($action == 'post') {
         }
         $addvar = $addvalue = '';
         if (!empty($dede_fields)) {
+            $link = $_SERVER['HTTP_REFERER'];
+            $date = GetDateTimeMk(time());
+            $ip = GetIP();
             $fieldarr = explode(';', $dede_fields);
             if (is_array($fieldarr)) {
                 foreach ($fieldarr as $field) {
@@ -47,18 +50,6 @@ if ($action == 'post') {
                     if ($fieldinfo[1] == 'textdata') {
                         ${$fieldinfo[0]} = FilterSearch(stripslashes(${$fieldinfo[0]}));
                         ${$fieldinfo[0]} = addslashes(${$fieldinfo[0]});
-                    }
-                    //获取提交链接，表单添加字段名称为链接，字段标识默认为link，数据类型为单行文本后模板里用<input type="hidden" name="link">使用
-                    if ($fieldinfo[0] == 'link') {
-                        ${$fieldinfo[0]} = $_SERVER['HTTP_REFERER'];
-                    }
-                    //获取提交地址，表单添加字段名称为地址，字段标识默认为ip，数据类型为单行文本后模板里用<input type="hidden" name="ip">使用
-                    if ($fieldinfo[0] == 'ip') {
-                        ${$fieldinfo[0]} = GetIP();
-                    }
-                    //获取提交日期，表单添加字段名称为日期，字段标识默认为date，数据类型为单行文本后模板里用<input type="hidden" name="date">使用
-                    if ($fieldinfo[0] == 'date') {
-                        ${$fieldinfo[0]} = date("Y-m-d H:i:s");
                     } else {
                         ${$fieldinfo[0]} = GetFieldValue(${$fieldinfo[0]}, $fieldinfo[1],0,'add','','diy', $fieldinfo[0]);
                     }
@@ -67,6 +58,12 @@ if ($action == 'post') {
                 }
             }
         }
+        //获取表单提交的链接、时间、ip，字段标识默认为link、date、ip，前台表单可以不用出现该输入框，但是biz_fields和biz_fieldshash的值要最新，下面是重复提交表单限制，恢复注释代码使用
+        /*$result = $dsql->getOne("SELECT count(*) AS dd FROM `{$diy->table}` WHERE ip='$ip' AND date_format(date,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')");
+        if ($result['dd'] >= 3) {
+            showmsg('您已经重复提交啦，请等待平台处理', '-1');
+            exit();
+        }*/
         $query = "INSERT INTO `{$diy->table}` (`id`, `ifcheck` $addvar) VALUES (NULL, 0 $addvalue); ";
         if ($dsql->ExecuteNoneQuery($query)) {
             $id = $dsql->GetLastID();
@@ -91,8 +88,8 @@ if ($action == 'post') {
                 $goto = "diy.php?action=list&diyid={$diy->diyid}";
                 $bkmsg = '提交成功，正在前往表单列表';
             } else {
-                $goto = !empty($cfg_cmspath) ? $cfg_cmspath : '/';
-                $bkmsg = '提交成功，请等待管理员处理';
+                $goto = 'javascript:history.go(-1);';
+                $bkmsg = '提交成功，请等待平台处理';
             }
             ShowMsg($bkmsg, $goto);
         }
@@ -131,7 +128,7 @@ if ($action == 'post') {
     }
     $row = $dsql->GetOne($query);
     if (!is_array($row)) {
-        showmsg('您浏览的记录不存在或待审核', '-1');
+        showmsg('您浏览的记录不存在或未审核', '-1');
         exit();
     }
     $fieldlist = $diy->getFieldList();
