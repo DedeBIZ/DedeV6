@@ -19,10 +19,10 @@
 			</ol>
 			<div class="card shadow-sm mb-3">
 				<div class="card-body">
-					<span class="sys-search d-inline-block">
+					<div class="sys-search d-inline-block">
 						<input type="text" name="keywds" id="keywds" class="admin-input-lg" placeholder="请输入变量说明">
 						<button type="button" id="btnClear" class="btn btn-sm d-none sys-times"><i class="fa fa-times"></i></button>
-					</span>
+					</div>
 					<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a>
 					<?php
 					$ds = file(DEDEADMIN.'/inc/configgroup.txt');
@@ -92,7 +92,7 @@
 			<div class="card shadow-sm">
 				<div class="card-header">系统设置</div>
 				<div class="card-body">
-					<form action="sys_info.php" method="post" name="form1">
+					<form name="form1" action="sys_info.php" method="post">
 						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 						<input type="hidden" name="dopost" value="save">
 						<div class="table-responsive">
@@ -108,7 +108,7 @@
 									$dls = explode(',',$dl);
 									$n++;
 								?>
-								<table id="td<?php echo $n?>" class="table table-borderless" style="<?php if ($n!=$gp) echo 'display:none';?>">
+								<table id="tables<?php echo $n?>" class="table table-borderless" style="<?php if ($n!=$gp) echo 'display:none';?>">
 									<thead>
 										<tr>
 											<td width="25%">变量说明</td>
@@ -155,10 +155,10 @@
 								</table>
 								<?php }?>
 							</div>
-							<div class="text-center">
-								<button type="submit" class="btn btn-success btn-sm">保存</button>
-								<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset();">重置</button>
-							</div>
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn btn-success btn-sm">保存</button>
+							<button type="button" class="btn btn-outline-success btn-sm" onclick="document.form1.reset();">重置</button>
 						</div>
 					</form>
 				</div>
@@ -176,9 +176,9 @@
 			function ShowConfig(em, allgr) {
 				if (searchconfig) location.reload();
 				for (var i = 1; i <= allgr; i++) {
-					if ($Obj("td" + i)) {
-						if (i == em) $Obj("td" + i).style.display = "table";
-						else $Obj("td" + i).style.display = "none";
+					if ($Obj("tables" + i)) {
+						if (i == em) $Obj("tables" + i).style.display = "table";
+						else $Obj("tables" + i).style.display = "none";
 					}
 				}
 				$Obj("addvar").style.display = "none";
