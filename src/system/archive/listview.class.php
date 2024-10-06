@@ -269,7 +269,7 @@ class ListView
             }
         } else {
             $this->pagesize = isset($GLOBALS['PageSize'])? intval($GLOBALS['PageSize']) : 10;
-            $this->pagesize = $this->pagesize > 20? 20 : $this->pagesize;
+            $this->pagesize = $this->pagesize > 20 ? 20 : $this->pagesize;
         }
         $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
     }
