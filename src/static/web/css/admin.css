@@ -617,8 +617,9 @@ body.menu-show .admin-content {
 }
 .opt-button input {
 	position:absolute;
+	width:42px;
 	top:0;
-	right:0;
+	left:0;
 	opacity:0;
 	cursor:pointer
 }
