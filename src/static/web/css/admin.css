@@ -12,7 +12,7 @@
 	letter-spacing:0.5px
 }
 body {
-	line-height:1.6;
+	line-height:1.5;
 	font-size:14px;
 	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
 	color:var(--gray);
@@ -617,7 +617,7 @@ body.menu-show .admin-content {
 }
 .opt-button input {
 	position:absolute;
-	width:42px;
+	width:43px;
 	top:0;
 	left:0;
 	opacity:0;
@@ -699,7 +699,7 @@ body.menu-show .admin-content {
 	padding:1rem
 }
 .card-body canvas {
-	height:382px!important
+	height:370px!important
 }
 .table {
 	margin-bottom:0;
