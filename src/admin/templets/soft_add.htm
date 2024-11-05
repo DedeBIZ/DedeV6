@@ -18,13 +18,13 @@
 		<script src="/static/web/js/cropper.min.js"></script>
 		<script src="/static/web/js/admin.main.js"></script>
 		<script>
-			var startNum = 0;
+			var startNum = 2;
 			function MakeUpload() {
 				var upfield = document.getElementById("uploadfield");
-				var endNum = parseInt(document.form1.picnum.value) + startNum - 1;
+				var endNum = parseInt(document.form1.picnum.value) + startNum;
 				if (endNum > 30) endNum = 30;
 				for (startNum; startNum <= endNum; startNum++) {
-					upfield.innerHTML += "<div class='my-2'><label>软件网址" + startNum + "：<input type='text' name='softurl" + startNum + "' class='admin-input-lg'></label> <label>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='admin-input-sm'></label> <button type='button' name='sel1' id='sel1' onclick=\"SelectSoft('form1.softurl"+startNum+"')\" class='btn btn-success btn-sm'>选择</button></div>";
+					upfield.innerHTML += "<div class='my-2'><label>软件网址" + startNum + "：<input type='text' name='softurl" + startNum + "' class='admin-input-lg'></label> <label>下载名称" + startNum + "：<input type='text' name='servermsg" + startNum + "' value='服务器" + startNum + "' class='admin-input-sm'></label> <button type='button' name='sel1' id='sel1' onclick=\"SelectSoft('form1.softurl" + startNum + "')\" class='btn btn-success btn-sm'>选择</button></div>";
 				}
 			}
 			function ShowHideAddr() {

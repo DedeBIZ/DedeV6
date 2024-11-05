@@ -703,6 +703,7 @@ body.menu-show .admin-content {
 }
 .table {
 	margin-bottom:0;
+	font-size:14px;
 	color:var(--gray)
 }
 .table.icon img {
