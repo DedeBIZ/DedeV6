@@ -35,12 +35,10 @@
 									$start = 0;
 									$k = 0;
 									$gouplists = file(DEDEADMIN.'/inc/grouplist.txt');
-									foreach($gouplists as $line)
-									{
+									foreach($gouplists as $line) {
 										$line = trim($line);
 										if ($line=="") continue;
-										if (preg_match("#^>>#", $line))
-										{
+										if (preg_match("#^>>#", $line)) {
 											if ($start>0) echo "</td></tr>";
 											$line = str_replace('>>','',$line);
 											$ls = explode('>',$line);
@@ -50,9 +48,7 @@
 											$start++;
 											$lhead = "<tr> <td colspan='2'>{$start}、".$ls[0]."</td></tr><tr><td colspan='2'>";
 											echo  $lhead;
-										}
-										else if (preg_match("#^>#", $line))
-										{
+										} else if (preg_match("#^>#", $line)) {
 											$ls = explode('>',$line);
 											if (DEDEBIZ_SAFE_MODE && $ls[3]==="unsafe") {
 												continue;

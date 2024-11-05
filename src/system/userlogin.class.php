@@ -58,7 +58,7 @@ function CheckPurview($n)
     }
 }
 /**
- *  是否没权限限制(超级管理员)
+ *  是否没权限限制，超级管理员
  *
  * @access    public
  * @param     string
@@ -95,11 +95,10 @@ function CheckCatalog($cid, $msg)
     return TRUE;
 }
 /**
- *  发布文档临时附件信息缓存、发文档前先清空附件信息
- *  发布文档时涉及的附件保存到缓存里，完成后把它与文档关连
+ *  发布文档临时附件信息缓存，前先清空附件信息，完成后把它与文档关连
  *
  * @access    public
- * @param     string   $fid  文件ID
+ * @param     string   $fid  文件id
  * @param     string   $filename  文件名称
  * @return    void
  */
@@ -246,8 +245,6 @@ class userLogin
             return 1;
         }
     }
-
-    
     /**
      * 是否需要验证码
      *
@@ -259,7 +256,6 @@ class userLogin
         $num = $this->getLoginError($username);
         return $num >= 3 ? true : false;
     }
-    
     /**
      * 1分钟以内登录错误的次数
      *
@@ -281,7 +277,6 @@ class userLogin
             return -1;
         }
     }
-
     /**
      * 记录登录错误
      *
