@@ -155,7 +155,7 @@ else if ($dopost == 'edituser') {
     if (empty($sex)) $sex = '男';
     $uptime = GetMkTime($uptime);
     if ($matt == 10 && $oldmatt != 10) {
-        ShowMsg("不支持直接把前台会员转为管理的操作", "-1");
+        ShowMsg("不支持前台会员转为管理员", "-1");
         exit();
     }
     $query = "UPDATE `#@__member` SET send_max='$send_max',email='$email',uname='$uname',sex='$sex',matt='$matt',user_money='$user_money',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' AND matt<>10 ";

@@ -36,7 +36,7 @@
 									</tr>
 									<tr>
 										<td>密码</td>
-										<td><input type="text" name="pwd" id="pwd" class="admin-input-sm">（留空则不修改，请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
+										<td><input type="text" name="pwd" id="pwd" class="admin-input-sm" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');">（留空则不修改，请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
 									</tr>
 									<tr>
 										<td>类型</td>
@@ -70,7 +70,7 @@
 									</tr>
 									<tr>
 										<td>邮箱</td>
-										<td><input type="text" name="email" id="email" autocomplete="off" value="<?php echo $row['email']?>" class="admin-input-sm" required></td>
+										<td><input type="text" name="email" id="email" autocomplete="off" value="<?php echo $row['email']?>" class="admin-input-sm"></td>
 									</tr>
 									<tr>
 										<td>验证安全码</td>

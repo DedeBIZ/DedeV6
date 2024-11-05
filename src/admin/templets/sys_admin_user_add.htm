@@ -29,7 +29,7 @@
 								<tbody>
 									<tr>
 										<td width="260">账号</td>
-										<td><input type="text" name="userid" id="userid" class="admin-input-sm" required>（请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
+										<td><input type="text" name="userid" id="userid" class="admin-input-sm" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');" required>（请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
 									</tr>
 									<tr>
 										<td>昵称</td>
@@ -37,7 +37,7 @@
 									</tr>
 									<tr>
 										<td>密码</td>
-										<td><input type="text" name="pwd" id="pwd" class="admin-input-sm" required>（请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
+										<td><input type="text" name="pwd" id="pwd" class="admin-input-sm" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');" required>（请使用数字0-9小写a-z大写A-Z符号_@!.-）</td>
 									</tr>
 									<tr>
 										<td>会员组</td>
@@ -71,7 +71,7 @@
 									</tr>
 									<tr>
 										<td>邮箱</td>
-										<td><input type="text" name="email" id="email" autocomplete="off" class="admin-input-sm" required></td>
+										<td><input type="text" name="email" id="email" autocomplete="off" class="admin-input-sm"></td>
 									</tr>
 									<tr>
 										<td>验证安全码</td>

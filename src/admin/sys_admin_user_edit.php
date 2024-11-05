@@ -67,7 +67,7 @@ if ($dopost == 'saveedit') {
         $query = "UPDATE `#@__admin` SET uname='$uname',tname='$tname',email='$email',typeid='$typeid' $pwd $usql WHERE id='$id'";
     }
     $dsql->ExecuteNoneQuery($query);
-    $query = "UPDATE `#@__member` SET uname='$uname',email='$email'$pwdm $usql WHERE mid='$id'";
+    $query = "UPDATE `#@__member` SET uname='$uname',email='$email' $pwdm $usql WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("成功修改一个账户", "sys_admin_user.php");
     exit();

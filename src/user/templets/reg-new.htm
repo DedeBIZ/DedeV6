@@ -21,7 +21,7 @@
 						<input type="hidden" name="pid" value="<?php echo $pid;?>">
 						<div class="form-group">
 							<label for="iptUserid">账号</label>
-							<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入账号" required>
+							<input type="text" name="userid" id="iptUserid" class="form-control" placeholder="请输入账号" onkeyup="this.value=this.value.replace(/[^0-9a-zA-Z_@!\.-]/g,'');" required>
 						</div>
 						<div class="form-group">
 							<label for="iptUserpwd">密码</label>

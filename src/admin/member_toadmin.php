@@ -65,7 +65,7 @@ if ($dopost == "toadmin") {
         $query = "INSERT INTO `#@__admin` (id,userid$inputpwd,uname,typeid,tname,email) VALUES ('$id','$userid'$inputpwdv,'$uname','$typeid','$tname','$email')";
     }
     $dsql->ExecuteNoneQuery($query);
-    $query = "UPDATE `#@__member` SET `rank`='100',uname='$uname',matt='10',email='$email'$pwdm WHERE mid='$id'";
+    $query = "UPDATE `#@__member` SET `rank`='100',uname='$uname',matt='10',email='$email' $pwdm WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
     $row = $dsql->GetOne("SELECT * FROM `#@__admintype` WHERE `rank`='$usertype'");
     $floginid = $cuserLogin->getUserName();
