@@ -87,7 +87,25 @@ if (!empty($iseditor)) {
             <div class="card-body opt">
                 <?php
                 $dh = scandir($inpath);
+                $ty1 = "";
+                $ty2 = "";
                 foreach ($dh as $file) {
+                    //计算文件大小和创建时间
+                    if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
+                        $filesize = filesize("$inpath/$file");
+                        $filesize = $filesize / 1024;
+                        if ($filesize != "")
+                        if ($filesize < 0.1) {
+                            @list($ty1, $ty2) = split("\.", $filesize);
+                            $filesize = $ty1.".".substr($ty2, 0, 2);
+                        } else {
+                            @list($ty1, $ty2) = split("\.", $filesize);
+                            $filesize = $ty1.".".substr($ty2, 0, 1);
+                        }
+                        $filetime = filemtime("$inpath/$file");
+                        $filetime = MyDate("Y-m-d H:i:s", $filetime);
+                    }
+                    //判断文件类型并作处理
                     if ($file == ".") continue;
                     else if ($file == "..") {
                         if ($activepath == "") continue;
@@ -108,11 +126,11 @@ if (!empty($iseditor)) {
                         </div>";
                         echo "$line";
                     } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
-                        $reurl = "$activeurl/$file";
-                        $reurl = preg_replace("#^\.\.#", "", $reurl);
-                        $reurl = $reurl;
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else  $lstyle = '';
+                        $reurl = "$activeurl/$file";
+                        $reurl = preg_replace("#\.\.#", "", $reurl);
+                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                         $line = "<div class='list'>
                             <a href='$reurl' onclick=\"ReturnImg('$reurl');\" $lstyle>
                                 <img src='$reurl' title='$file'>
@@ -121,11 +139,11 @@ if (!empty($iseditor)) {
                         </div>";
                         echo "$line";
                     } else if (preg_match("#\.(jpg)#i", $file)) {
-                        $reurl = "$activeurl/$file";
-                        $reurl = preg_replace("#^\.\.#", "", $reurl);
-                        $reurl = $reurl;
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else  $lstyle = '';
+                        $reurl = "$activeurl/$file";
+                        $reurl = preg_replace("#\.\.#", "", $reurl);
+                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                         $line = "<div class='list'>
                             <a href='$reurl' onclick=\"ReturnImg('$reurl');\" $lstyle>
                                 <img src='$reurl' title='$file'>

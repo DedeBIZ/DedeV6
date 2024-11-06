@@ -53,7 +53,7 @@ if (!empty($noeditor)) {
     <body class="p-3">
         <div class="card shadow-sm mb-3">
             <div class="card-body">
-                <form name="myform"  action="select_soft_post.php" method="POST" enctype="multipart/form-data">
+                <form name="myform" action="select_soft_post.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
                     <input type="hidden" name="f" value="<?php echo $f ?>">
@@ -78,21 +78,22 @@ if (!empty($noeditor)) {
                         </thead>
                         <tbody>
                             <?php
-                    		$dh = scandir($inpath);
-                    		$ty1 = $ty2 = '';
-                    		foreach ($dh as $file) {
+                            $dh = scandir($inpath);
+                            $ty1 = "";
+                            $ty2 = "";
+                            foreach ($dh as $file) {
                                 //计算文件大小和创建时间
                                 if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
                                     $filesize = filesize("$inpath/$file");
                                     $filesize = $filesize / 1024;
                                     if ($filesize != "")
-                                        if ($filesize < 0.1) {
-                                            @list($ty1, $ty2) = split("\.", $filesize);
-                                            $filesize = $ty1.".".substr($ty2, 0, 2);
-                                        } else {
-                                            @list($ty1, $ty2) = split("\.", $filesize);
-                                            $filesize = $ty1.".".substr($ty2, 0, 1);
-                                        }
+                                    if ($filesize < 0.1) {
+                                        @list($ty1, $ty2) = split("\.", $filesize);
+                                        $filesize = $ty1.".".substr($ty2, 0, 2);
+                                    } else {
+                                        @list($ty1, $ty2) = split("\.", $filesize);
+                                        $filesize = $ty1.".".substr($ty2, 0, 1);
+                                    }
                                     $filetime = filemtime("$inpath/$file");
                                     $filetime = MyDate("Y-m-d H:i:s", $filetime);
                                 }
@@ -114,11 +115,10 @@ if (!empty($noeditor)) {
                                     </tr>";
                                     echo "$line";
                                 } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
-                                    if ($file == $comeback) $lstyle = "class='text-danger'";
-                                    else  $lstyle = '';
                                     $reurl = "$activeurl/$file";
                                     $reurl = preg_replace("#^\.\.#", "", $reurl);
-                                    $reurl = $reurl;
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else $lstyle = "";
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_zip.png'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -126,11 +126,10 @@ if (!empty($noeditor)) {
                                     </tr>";
                                     echo "$line";
                                 } else {
-                                    if ($file == $comeback) $lstyle = "class='text-danger'";
-                                    else  $lstyle = '';
                                     $reurl = "$activeurl/$file";
                                     $reurl = preg_replace("#^\.\.#", "", $reurl);
-                                    $reurl = $reurl;
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else $lstyle = "";
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_exe.png'> $file</a></td>
                                     <td>$filesize KB</td>
