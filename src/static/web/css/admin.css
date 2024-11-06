@@ -443,18 +443,24 @@ body.menu-show .admin-content {
 	text-align:center;
 	border-radius:var(--b-radius)
 }
-.atlas-head {
-	height:120px
+.atlas .atlas-head {
+	padding-bottom:75%;
+	position:relative
 }
-.atlas-head img {
-	max-width:220px;
-	max-height:120px
+.atlas .atlas-head img {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	object-fit:cover;
+	border-radius:var(--b-radius) var(--b-radius) 0 0
 }
-.atlas-head,.atlas-body,.atlas-foot {
+.atlas .atlas-head,.atlas .atlas-body,.atlas .atlas-foot {
 	margin-bottom:0.5rem
 }
-.atlas-input {
-	width:200px
+.atlas .atlas-input {
+	max-width:200px
 }
 #toolimg {
 	position:absolute;
@@ -474,7 +480,6 @@ body.menu-show .admin-content {
 	padding:1rem
 }
 #topbar {
-	padding:1rem 0;
 	border-bottom:1px solid var(--light);
 	text-align:right
 }
@@ -488,47 +493,29 @@ body.menu-show .admin-content {
 	content:'支持拖拽图片上传'
 }
 #file_list li {
-	display:block;
-	position:relative;
-	padding:1rem;
-	vertical-align:top;
-	border-radius:var(--b-radius)
-}
-#file_list li:hover {
-	background:var(--light)
+	position:relative
 }
 #file_list li .picbox {
-	display:flex;
-	flex:0 0 auto;
-	position:relative;
-	padding-top:90%;
-	width:100%;
-	align-items:center;
-	justify-content:center;
-	overflow:hidden
+	padding-bottom:75%;
+	position:relative
 }
 #file_list li .picbox img {
-	display:block;
-	max-width:100%;
-	max-height:100%;
 	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translateX(-50%) translateY(-50%);
-	border-radius:var(--b-radius)
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	object-fit:cover
 }
 #file_list li .namebox {
-	display:flex;
-	padding:1rem;
-	justify-content:center;
-	align-items:flex-start
+	padding-top:0.5rem
 }
 #file_list li.up-over .picbox:after {
 	position:absolute;
-	bottom:10px;
-	right:0;
+	top:0;
+	left:0;
 	font-family:'FontAwesome';
-	font-size:18px;
+	font-size:14px;
 	color:var(--green);
 	content:'\f058';
 	z-index:1991
@@ -536,8 +523,8 @@ body.menu-show .admin-content {
 #file_list li .tools {
 	display:none;
 	position:absolute;
-	bottom:12px;
-	right:10px;
+	bottom:0;
+	right:0;
 	z-index:1992
 }
 #file_list li:hover .tools {
@@ -548,7 +535,7 @@ body.menu-show .admin-content {
 }
 #file_list li .tools .remove:after {
 	font-family:'FontAwesome';
-	font-size:18px;
+	font-size:14px;
 	color:var(--danger);
 	content:'\f1f8'
 }
