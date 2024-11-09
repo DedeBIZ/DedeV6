@@ -69,7 +69,7 @@ if ($dopost == 'saveedit') {
     $dsql->ExecuteNoneQuery($query);
     $query = "UPDATE `#@__member` SET uname='$uname',email='$email' $pwdm $usql WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功修改一个账户", "sys_admin_user.php");
+    ShowMsg("成功修改一个账户", "sys_admin_user_edit.php?id=".$cuserLogin->getUserID()."&dopost=edit");
     exit();
 } else if ($dopost == 'delete') {
     if (empty($userok)) $userok = '';

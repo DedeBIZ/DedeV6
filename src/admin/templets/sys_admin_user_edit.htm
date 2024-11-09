@@ -12,7 +12,9 @@
 		<div class="container-fluid">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<?php if ($cuserLogin->getUserType() >= 10) {?>
 				<li class="breadcrumb-item"><a href="sys_admin_user.php">管理员管理</a></li>
+				<?php }?>
 				<li class="breadcrumb-item active">修改管理员</li>
 			</ol>
 			<div class="card shadow-sm">
@@ -63,6 +65,22 @@
 												<?php echo $typeOptions?>
 											</select>
 											<span>（支持多选）</span>
+										</td>
+									</tr>
+									<?php } else {?>
+									<tr>
+										<td>类型</td>
+										<td>
+											<select name="usertype" class="admin-input-sm">
+												<?php
+												$dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
+												$dsql->Execute("ut");
+												while($myrow = $dsql->GetObject("ut"))
+												{
+													if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+												}
+												?>
+											</select>
 										</td>
 									</tr>
 									<?php }?>
