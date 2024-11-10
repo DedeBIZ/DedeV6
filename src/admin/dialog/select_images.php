@@ -134,7 +134,7 @@ if (!empty($iseditor)) {
                             $reurl = $reurl;
                         }
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else $lstyle = '';
                         $line = "<div class='list'>
                             <a href='$reurl' onclick=\"ReturnImg('$reurl');\" $lstyle>
                                 <img src='$reurl' title='$file'>
@@ -151,7 +151,7 @@ if (!empty($iseditor)) {
                             $reurl = $reurl;
                         }
                         if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = "";
+                        else $lstyle = '';
                         $line = "<div class='list'>
                             <a href='$reurl' onclick=\"ReturnImg('$reurl');\" $lstyle>
                                 <img src='$reurl' title='$file'>

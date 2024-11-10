@@ -122,6 +122,8 @@ if (!empty($noeditor)) {
                                     } else {
                                         $reurl = $reurl;
                                     }
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_flash.png'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -136,6 +138,8 @@ if (!empty($noeditor)) {
                                     } else {
                                         $reurl = $reurl;
                                     }
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_video.png'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -150,6 +154,8 @@ if (!empty($noeditor)) {
                                     } else {
                                         $reurl = $reurl;
                                     }
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_rm.png'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -164,6 +170,8 @@ if (!empty($noeditor)) {
                                     } else {
                                         $reurl = $reurl;
                                     }
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_music.png'> $file</a></td>
                                     <td>$filesize KB</td>
