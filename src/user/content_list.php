@@ -42,7 +42,7 @@ if ($cid == 0) {
         $positionname = $row['typename'];
     }
 } else {
-    $positionname = str_replace($cfg_list_symbol, "", $tl->GetPositionName())." ";
+    $positionname = str_replace($cfg_list_symbol, " - ", $tl->GetPositionName())." ";
 }
 $whereSql = " where arc.channel = '$channelid' And arc.mid='$mid' ";
 if ($keyword != '') {

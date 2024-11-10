@@ -126,11 +126,15 @@ if (!empty($iseditor)) {
                         </div>";
                         echo "$line";
                     } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
-                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
-                        $reurl = preg_replace("#\.\.#", "", $reurl);
-                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
+                        $reurl = preg_replace("#^\.\.#", "", $reurl);
+                        if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
+                           $reurl = $remoteupUrl.$reurl;
+                        } else {
+                            $reurl = $reurl;
+                        }
+                        if ($file == $comeback) $lstyle = "class='text-danger'";
+                        else  $lstyle = "";
                         $line = "<div class='list'>
                             <a href='$reurl' onclick=\"ReturnImg('$reurl');\" $lstyle>
                                 <img src='$reurl' title='$file'>
@@ -139,11 +143,15 @@ if (!empty($iseditor)) {
                         </div>";
                         echo "$line";
                     } else if (preg_match("#\.(jpg)#i", $file)) {
-                        if ($file == $comeback) $lstyle = "class='text-danger'";
-                        else  $lstyle = '';
                         $reurl = "$activeurl/$file";
-                        $reurl = preg_replace("#\.\.#", "", $reurl);
-                        $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
+                        $reurl = preg_replace("#^\.\.#", "", $reurl);
+                        if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
+                           $reurl = $remoteupUrl.$reurl;
+                        } else {
+                            $reurl = $reurl;
+                        }
+                        if ($file == $comeback) $lstyle = "class='text-danger'";
+                        else  $lstyle = "";
                         $line = "<div class='list'>
                             <a href='$reurl' onclick=\"ReturnImg('$reurl');\" $lstyle>
                                 <img src='$reurl' title='$file'>

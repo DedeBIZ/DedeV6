@@ -106,9 +106,10 @@ if (empty($comeback)) {
                                     echo "$line";
                                 } else if (preg_match("#\.(htm|html)#i", $file)) {
                                     $reurl = "$activeurl/$file";
-                                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
-                                    else $lstyle = "";
+                                    else  $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_htm.png'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -116,11 +117,11 @@ if (empty($comeback)) {
                                     </tr>";
                                     echo "$line";
                                 } else if (preg_match("#\.(css)#i", $file)) {
-                                    if ($file == $comeback) $lstyle = "class='text-danger'";
-                                    else  $lstyle = '';
                                     $reurl = "$activeurl/$file";
                                     $reurl = preg_replace("#\.\.#", "", $reurl);
                                     $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
+                                    if ($file == $comeback) $lstyle = "class='text-danger'";
+                                    else  $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_css.png'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -129,9 +130,10 @@ if (empty($comeback)) {
                                     echo "$line";
                                 } else if (preg_match("#\.(js)#i", $file)) {
                                     $reurl = "$activeurl/$file";
-                                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
-                                    else $lstyle = "";
+                                    else  $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_js.png'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -140,9 +142,10 @@ if (empty($comeback)) {
                                     echo "$line";
                                 } else if (preg_match("#\.(jpg)#i", $file)) {
                                     $reurl = "$activeurl/$file";
-                                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
-                                    else $lstyle = "";
+                                    else  $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='$reurl'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -151,9 +154,10 @@ if (empty($comeback)) {
                                     echo "$line";
                                 } else if (preg_match("#\.(gif|png)#i", $file)) {
                                     $reurl = "$activeurl/$file";
-                                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
-                                    else $lstyle = "";
+                                    else  $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='$reurl'> $file</a></td>
                                     <td>$filesize KB</td>
@@ -162,9 +166,10 @@ if (empty($comeback)) {
                                     echo "$line";
                                 } else if (preg_match("#\.(txt)#i", $file)) {
                                     $reurl = "$activeurl/$file";
-                                    $reurl = preg_replace("#^\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#\.\.#", "", $reurl);
+                                    $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
-                                    else $lstyle = "";
+                                    else  $lstyle = '';
                                     $line = "<tr>
                                     <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_text.png'> $file</a></td>
                                     <td>$filesize KB</td>
