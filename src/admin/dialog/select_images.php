@@ -142,7 +142,6 @@ if (!empty($iseditor)) {
                             <span $lstyle>$file</span>
                         </div>";
                         echo "$line";
-                        
                     } else if (preg_match("#\.(jpg)#i", $file)) {
                         $reurl = "$activeurl/$file";
                         $reurl = preg_replace("#^\.\.#", "", $reurl);
