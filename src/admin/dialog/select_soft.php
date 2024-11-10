@@ -103,15 +103,15 @@ if (!empty($noeditor)) {
                                     if ($activepath == "") continue;
                                     $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                                     $line = "<tr>
-                                    <td><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 返回上级</a></td>
-                                    <td colspan='2'>当前目录：$activepath</td>
+                                        <td><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='/static/web/img/icon_dir2.png'> 返回上级</a></td>
+                                        <td colspan='2'>当前目录：$activepath</td>
                                     </tr>\r\n";
                                     echo $line;
                                 } else if (is_dir("$inpath/$file")) {
                                     if (preg_match("#^_(.*)$#i", $file)) continue;
                                     if (preg_match("#^\.(.*)$#i", $file)) continue;
                                     $line = "<tr>
-                                    <td colspan='3'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='/static/web/img/icon_dir.png'> $file</a></td>
+                                        <td colspan='3'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='/static/web/img/icon_dir.png'> $file</a></td>
                                     </tr>";
                                     echo "$line";
                                 } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
@@ -125,9 +125,9 @@ if (!empty($noeditor)) {
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
                                     else $lstyle = '';
                                     $line = "<tr>
-                                    <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_zip.png'> $file</a></td>
-                                    <td>$filesize KB</td>
-                                    <td>$filetime</td>
+                                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_zip.png'> $file</a></td>
+                                        <td>$filesize KB</td>
+                                        <td>$filetime</td>
                                     </tr>";
                                     echo "$line";
                                 } else {
@@ -141,9 +141,9 @@ if (!empty($noeditor)) {
                                     if ($file == $comeback) $lstyle = "class='text-danger'";
                                     else $lstyle = '';
                                     $line = "<tr>
-                                    <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_exe.png'> $file</a></td>
-                                    <td>$filesize KB</td>
-                                    <td>$filetime</td>
+                                        <td><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='/static/web/img/icon_exe.png'> $file</a></td>
+                                        <td>$filesize KB</td>
+                                        <td>$filetime</td>
                                     </tr>";
                                     echo "$line";
                                 }
