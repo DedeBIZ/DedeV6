@@ -84,7 +84,7 @@ if (!empty($iseditor)) {
         </div>
         <div class="card shadow-sm">
             <div class="card-header">选择图片</div>
-            <div class="card-body opt">
+            <div class="card-body opt-img">
                 <?php
                 $dh = scandir($inpath);
                 $ty1 = "";
@@ -110,7 +110,7 @@ if (!empty($iseditor)) {
                     else if ($file == "..") {
                         if ($activepath == "") continue;
                         $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                        $line = "<div class='d-flex justify-content-between mb-3'>
+                        $line = "<div class='d-flex justify-content-between align-items-center mb-3'>
                             <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."' class='btn btn-success btn-sm'>返回上级</a>
                             <span>当前目录：$activepath</span>
                         </div>";
@@ -118,11 +118,11 @@ if (!empty($iseditor)) {
                     } else if (is_dir("$inpath/$file")) {
                         if (preg_match("#^_(.*)$#i", $file)) continue;
                         if (preg_match("#^\.(.*)$#i", $file)) continue;
-                        $line = "<div class='list'>
+                        $line = "<div class='list dir'>
                             <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'>
                                 <img src='/static/web/img/icon_dir.png'>
-                                <span>$file</span>
                             </a>
+                            <span>$file</span>
                         </div>";
                         echo "$line";
                     } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
@@ -136,10 +136,10 @@ if (!empty($iseditor)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else $lstyle = '';
                         $line = "<div class='list'>
-                            <a href='$reurl' onclick=\"ReturnImg('$reurl');\" $lstyle>
+                            <a href='$reurl' onclick=\"ReturnImg('$reurl');\">
                                 <img src='$reurl' title='$file'>
-                                <span>$file</span>
                             </a>
+                            <span $lstyle>$file</span>
                         </div>";
                         echo "$line";
                     } else if (preg_match("#\.(jpg)#i", $file)) {
@@ -153,10 +153,10 @@ if (!empty($iseditor)) {
                         if ($file == $comeback) $lstyle = "class='text-danger'";
                         else $lstyle = '';
                         $line = "<div class='list'>
-                            <a href='$reurl' onclick=\"ReturnImg('$reurl');\" $lstyle>
+                            <a href='$reurl' onclick=\"ReturnImg('$reurl');\">
                                 <img src='$reurl' title='$file'>
-                                <span>$file</span>
                             </a>
+                            <span $lstyle>$file</span>
                         </div>";
                         echo "$line";
                     }
