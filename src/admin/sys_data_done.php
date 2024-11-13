@@ -68,15 +68,27 @@ if ($dopost == 'bak') {
             $mysql_version = $dsql->GetVersion();
             $fp = fopen($bkfile, "w");
             foreach ($tables as $t) {
-                fwrite($fp, "DROP TABLE IF EXISTS `$t`;\r\n\r\n");
+                fwrite($fp, "DROP TABLE IF EXISTS `$t`;\r\n");
                 $dsql->SetQuery("SHOW CREATE TABLE `".$dsql->dbName."`.".$t); //感谢：LandQ
                 $dsql->Execute('me');
                 $row = $dsql->GetArray('me', MYSQL_BOTH);
                 //去除AUTO_INCREMENT
                 $row[1] = preg_replace("#AUTO_INCREMENT=([0-9]{1,})[ \r\n\t]{1,}#i", "", $row[1]);
-                $eng1 = "#ENGINE=MyISAM[ \r\n\t]{1,}DEFAULT[ \r\n\t]{1,}CHARSET=".$cfg_db_language."#i";
-                $tableStruct = preg_replace($eng1, "TYPE=MyISAM", $row[1]);
-                fwrite($fp, ''.$tableStruct.";\r\n\r\n");
+                //4.1以下版本备份为低版本
+                if ($datatype == 4.0 && $mysql_version > 4.0) {
+                    $eng1 = "#ENGINE=MyISAM[ \r\n\t]{1,}DEFAULT[ \r\n\t]{1,}CHARSET=".$cfg_db_language."#i";
+                    $tableStruct = preg_replace($eng1, "TYPE=MyISAM", $row[1]);
+                }
+                //4.1以下版本备份为高版本
+                else if ($datatype == 4.1 && $mysql_version < 4.1) {
+                    $eng1 = "#ENGINE=MyISAM DEFAULT CHARSET={$cfg_db_language}#i";
+                    $tableStruct = preg_replace("TYPE=MyISAM", $eng1, $row[1]);
+                }
+                //普通备份
+                else {
+                    $tableStruct = $row[1];
+                }
+                fwrite($fp,''.$tableStruct.";\r\n");
             }
             fclose($fp);
             $tmsg .= "完成备份数据表结构信息";
