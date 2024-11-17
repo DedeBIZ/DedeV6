@@ -859,7 +859,7 @@ class Archives
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     if ($cfg_rewrite == 'Y') {
-                        $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>";
+                        $revalue .= "<a href='/article-$aid-$i.html'>$v</a>";
                     } else {
                         $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>";
                     }
@@ -868,7 +868,7 @@ class Archives
                         $revalue .= " $v ";
                     } else {
                         if ($cfg_rewrite == 'Y') {
-                            $revalue .= "<a href='/doc-$aid-$i.html'>$v</a>";
+                            $revalue .= "<a href='/article-$aid-$i.html'>$v</a>";
                         } else {
                             $revalue .= "<a href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>$v</a>";
                         }
@@ -882,20 +882,20 @@ class Archives
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
                     if ($cfg_rewrite == 'Y') {
-                        $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>";
+                        $revalue .= "<option value='/article-$aid-$i.html'>{$i}、{$v}</option>";
                     } else {
                         $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>";
                     }
                 } else {
                     if ($pageNo == $i) {
                         if ($cfg_rewrite == 'Y') {
-                            $revalue .= "<option value='/doc-$aid-$i.html' selected>{$i}、{$v}</option>";
+                            $revalue .= "<option value='/article-$aid-$i.html' selected>{$i}、{$v}</option>";
                         } else {
                             $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>";
                         }
                     } else {
                         if ($cfg_rewrite == 'Y') {
-                            $revalue .= "<option value='/doc-$aid-$i.html'>{$i}、{$v}</option>";
+                            $revalue .= "<option value='/article-$aid-$i.html'>{$i}、{$v}</option>";
                         } else {
                             $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>";
                         }
@@ -930,13 +930,13 @@ class Archives
         } else {
             if ($nPage == 1) {
                 if ($cfg_rewrite == 'Y') {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid.html'>上页</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/article-$aid.html'>上页</a></li>";
                 } else {
                     $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>上页</a></li>";
                 }
             } else {
                 if ($cfg_rewrite == 'Y') {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$nPage.html'>上页</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/article-$aid-$nPage.html'>上页</a></li>";
                 } else {
                     $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$nPage'>上页</a></li>";
                 }
@@ -946,7 +946,7 @@ class Archives
             if ($i == 1) {
                 if ($nowPage != 1) {
                     if ($cfg_rewrite == 'Y') {
-                        $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid.html'>1</a></li>";
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/article-$aid.html'>1</a></li>";
                     } else {
                         $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid'>1</a></li>";
                     }
@@ -957,7 +957,7 @@ class Archives
                 $n = $i;
                 if ($nowPage != $i) {
                     if ($cfg_rewrite == 'Y') {
-                        $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$i.html'>{$n}</a></li>";
+                        $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/article-$aid-$i.html'>{$n}</a></li>";
                     } else {
                         $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$n}</a></li>";
                     }
@@ -968,7 +968,7 @@ class Archives
         }
         if ($lPage <= $totalPage) {
             if ($cfg_rewrite == 'Y') {
-                $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/doc-$aid-$lPage.html'>下页</a></li>";
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$cfg_cmsurl."/article-$aid-$lPage.html'>下页</a></li>";
             } else {
                 $PageList .= "<li class='page-item'><a class='page-link' href='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$lPage'>下页</a></li>";
             }

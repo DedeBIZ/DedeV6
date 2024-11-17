@@ -205,8 +205,8 @@ if (!function_exists('GetFileName')) {
         //动态文档
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
             if ($cfg_rewrite == 'Y') {
-                //开启伪静态文档/doc-1.html、/doc-2.html，则分页/doc-1-1.html、/doc-1-2.html
-                return $GLOBALS['cfg_cmspath']."/doc-".$aid.".html";
+                //开启伪静态文档/article-1.html、/article-2.html，则分页/article-1-1.html、/article-1-2.html
+                return $GLOBALS['cfg_cmspath']."/article-".$aid.".html";
             } else {
                 return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
             }
