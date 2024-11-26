@@ -59,7 +59,7 @@ class TagList
         foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
         //读取Tag信息
         if (!empty($this->Tag)) {
-            $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` where id = '{$this->Tag}' ");
+            $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
                 ShowMsg('当前标签不存在，系统自动返回主页', '/');
                 exit();
@@ -287,7 +287,7 @@ class TagList
         $innertext = trim($innertext);
         if ($innertext == '') $innertext = GetSysTemplets("list_fulllist.htm");
         $idlists = $ordersql = '';
-        $this->dsql->SetQuery("SELECT aid FROM `#@__taglist` WHERE tid = '{$this->TagInfos['id']}' AND arcrank>-1 LIMIT $limitstart,$getrow");
+        $this->dsql->SetQuery("SELECT aid FROM `#@__taglist` WHERE tid='{$this->TagInfos['id']}' AND arcrank>-1 ORDER by aid DESC LIMIT $limitstart,$getrow");
         $this->dsql->Execute();
         while ($row = $this->dsql->GetArray()) {
             $idlists .= ($idlists == '' ? $row['aid'] : ','.$row['aid']);
