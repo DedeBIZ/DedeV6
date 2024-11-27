@@ -287,7 +287,7 @@ class TagList
         $innertext = trim($innertext);
         if ($innertext == '') $innertext = GetSysTemplets("list_fulllist.htm");
         $idlists = $ordersql = '';
-        $this->dsql->SetQuery("SELECT aid FROM `#@__taglist` WHERE tid='{$this->TagInfos['id']}' AND arcrank>-1 ORDER by aid DESC LIMIT $limitstart,$getrow");
+        $this->dsql->SetQuery("SELECT aid FROM `#@__taglist` WHERE tid='{$this->TagInfos['id']}' AND arcrank>-1 ORDER by aid DESC LIMIT $limitstart, $getrow");
         $this->dsql->Execute();
         while ($row = $this->dsql->GetArray()) {
             $idlists .= ($idlists == '' ? $row['aid'] : ','.$row['aid']);
