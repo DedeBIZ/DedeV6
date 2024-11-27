@@ -656,16 +656,9 @@ class SearchView
         }
         $infos = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
         $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
-        $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>";
         $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
-        $hidenform .= "<input type='hidden' name='channeltype' value='".$this->ChannelType."'>";
-        $hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>";
         $geturl .= "&kwtype=".$this->KType."&pagesize=".$this->pagesize;
-        $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>";
-        $hidenform .= "<input type='hidden' name='pagesize' value='".$this->pagesize."'>";
         $geturl .= "&typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
-        $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>";
-        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>";
         $purl .= "?".$geturl;
         //获得上页和下页的链接
         if ($this->PageNo != 1) {
@@ -703,14 +696,12 @@ class SearchView
             }
         }
 		$plist = '';
-        $plist .= "<form action='".$this->GetCurUrl()."' name='pagelist' class='d-flex'>$hidenform";
         $plist .= preg_match('/info/i', $listitem)? $infos : "";
         $plist .= preg_match('/index/i', $listitem)? $indexpage : "";
         $plist .= preg_match('/pre/i', $listitem)? $prepage : "";
         $plist .= preg_match('/pageno/i', $listitem)? $listdd : "";
         $plist .= preg_match('/next/i', $listitem)? $nextpage : "";
         $plist .= preg_match('/end/i', $listitem)? $endpage : "";
-        $plist .= "</form>";
         return $plist;
     }
     /**
