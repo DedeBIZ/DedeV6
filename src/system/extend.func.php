@@ -31,7 +31,7 @@ if (!function_exists('obtaintags')) {
         $dsql->Execute('tag', $query);
         while($row = $dsql->GetArray('tag')) {
             $link = $cfg_cmspath."/apps/tags.php?/{$row['tid']}";
-            $tags .= ($tags == '' ? "<a href='{$link}'>{$row['tag']}</a> " : "<a href='{$link}'>{$row['tag']}</a> ");
+            $tags .= ($tags == '' ? "<a href='{$link}'>{$row['tag']}</a>" : "、<a href='{$link}'>{$row['tag']}</a>");
         }
         return $tags;
     }

@@ -57,7 +57,7 @@ function lib_arclistsg(&$ctag, &$refObj)
     }
     $arclistquery = join(',', $listarcs);
     $arclistquery .= ",arc.aid AS id,arc.senddate AS pubdate";
-    //按不同情况设定SQL条件 排序方式
+    //按不同情况设定SQL条件排序方式
     if ($idlist == '') {
         if ($orderby == 'near' && $cfg_keyword_like == 'N') {
             $keyword = '';

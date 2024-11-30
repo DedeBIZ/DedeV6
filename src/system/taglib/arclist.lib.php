@@ -31,7 +31,7 @@ function lib_arclist(&$ctag, &$refObj)
     } else {
         $tagid = $ctag->GetAtt('tagid');
     }
-    //arclist是否需要weight排序,默认为"N",如果需要排序则设置为"Y"
+    //arclist是否需要weight排序，默认为"N"，如果需要排序则设置为"Y"
     $isweight = $ctag->GetAtt('isweight');
     if ($tagname == 'imglist' || $tagname == 'imginfolist') {
         $listtype = 'image';
@@ -130,7 +130,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     $colWidth = ceil(100 / $col);
     $tablewidth = $tablewidth."%";
     $colWidth = $colWidth."%";
-    //记录属性,以便分页样式统一调用
+    //记录属性，以便分页样式统一调用
     $attarray = compact('row', 'titlelen', 'infolen', 'imgwidth', 'imgheight', 'listtype', 'arcid', 'channelid', 'orderby', 'orderWay', 'subday', 'pagesize', 'orderby', 'keyword', 'tablewidth', 'col', 'colWidth');
     if ($innertext == '') $innertext = GetSysTemplets('part_arclist.htm');
     if (@$ctag->GetAtt('getall') == 1) $getall = 1;
@@ -140,7 +140,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     if ($att == '1') $att = 'h';
     $orwheres = array();
     $maintable = '#@__archives';
-    //按不同情况设定SQL条件 排序方式
+    //按不同情况设定SQL条件排序方式
     if ($idlist == '') {
         if ($orderby == 'near' && $cfg_keyword_like == 'N') {
             $keyword = '';

@@ -41,7 +41,7 @@ function IsCommendArchives($iscommend)
     global $arcatts;
     $sn = '';
     foreach ($arcatts as $k => $v) {
-        $v = cn_substr($v, 2);
+        $v = cn_substr($v, 8);
         $sn .= (preg_match("#".$k."#", $iscommend) ? ' '.$v : '');
     }
     $sn = trim($sn);

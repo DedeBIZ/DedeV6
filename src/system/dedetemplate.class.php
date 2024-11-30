@@ -309,8 +309,7 @@ class DedeTemplate
             //模板解析时间
             //echo ExecTime() - $t1;
         } else {
-            //如果存在config文件，则载入此文件，该文件用于保存 $this->tpCfgs的文档，以供扩展用途
-            //模板中用“{tag:config name=''/}”来设定该值
+            //如果存在config文件，则载入此文件，该文件用于保存 $this->tpCfgs的文档，以供扩展用途，模板中用“{tag:config name=''/}”来设定该值
             if (file_exists($this->configFile)) {
                 include($this->configFile);
             }
@@ -344,8 +343,7 @@ class DedeTemplate
         return $this->cacheFile;
     }
     /**
-     *  显示文档，由于函数中会重新解压一次$GLOBALS变量，所以在动态页中，应该尽量少用本方法，
-     *  取代之是直接在程序中 include $tpl->CacheFile()，不过include $tpl->CacheFile()这种方式不能在类或函数内使用
+     *  显示文档，由于函数中会重新解压一次$GLOBALS变量，所以在动态页中，应该尽量少用本方法，取代之是直接在程序中 include $tpl->CacheFile()，不过include $tpl->CacheFile()这种方式不能在类或函数内使用
      *
      * @access    public
      * @param     string
@@ -378,8 +376,6 @@ class DedeTemplate
         fclose($fp);
     }
     /**
-     * CheckDisabledFunctions
-     *
      * COMMENT : CheckDisabledFunctions : 检查是否存在禁止的函数
      *
      * @access    public
@@ -663,8 +659,7 @@ class DedeTemplate
         $tagname = $cTag->tagName;
         $varname = $cTag->GetAtt('name');
         $rsvalue = '';
-        //用于在模板中设置一个变量以提供作扩展用途
-        //此变量直接提交到 this->tpCfgs 中，并会生成与模板对应的缓存文件 ***_config.php 文件
+        //用于在模板中设置一个变量以提供作扩展用途，此变量直接提交到 this->tpCfgs 中，并会生成与模板对应的缓存文件 ***_config.php 文件
         if ($tagname == 'config') {
             $this->tpCfgs[$varname] = $cTag->GetAtt('value');
         } else if ($tagname == 'global') {
