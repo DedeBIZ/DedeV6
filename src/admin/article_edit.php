@@ -76,13 +76,13 @@ if ($dopost != 'save') {
     $ismake = $ishtml == 0 ? -1 : 0;
     $autokey = 1;
     $title = dede_htmlspecialchars(cn_substrR($title, $cfg_title_maxlen));
-    $shorttitle = cn_substrR($shorttitle, 36);
+    $shorttitle = cn_substrR($shorttitle, 255);
     $color =  cn_substrR($color, 7);
-    $writer =  cn_substrR($writer, 20);
-    $source = cn_substrR($source, 30);
+    $writer =  cn_substrR($writer, 255);
+    $source = cn_substrR($source, 255);
     $description = cn_substrR($description, 255);
-    $keywords = trim(cn_substrR($keywords, 60));
-    $filename = trim(cn_substrR($filename, 40));
+    $keywords = trim(cn_substrR($keywords, 255));
+    $filename = trim(cn_substrR($filename, 50));
     $isremote  = 0;
     $serviterm = empty($serviterm) ? "" : $serviterm;
     if (!TestPurview('a_Check,a_AccCheck,a_MyCheck')) {
