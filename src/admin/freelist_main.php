@@ -93,3 +93,4 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     }
     echo "</table></div>";
 }
+?>

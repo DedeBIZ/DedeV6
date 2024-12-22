@@ -22,7 +22,7 @@
 				orderby = ordertype;
 				var listArea = $Obj('rslist');
 				var errMsg = "<a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
-				fetch("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget).then(resp=>resp.text()).then((d) => {
+				fetch("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget).then(resp => resp.text()).then((d) => {
 					listArea.innerHTML = d;
 				}).catch((error) => {
 					listArea.innerHTML = errMsg;
@@ -79,8 +79,7 @@
 						if (i == pageno) ahtml += "<li class='page-item disabled'><span class='page-link'>" + i + "</span></li>";
 						else ahtml += "<li class='page-item'><a class='page-link' href='javascript:;' onclick='LoadPage(" + i + ")'>" + i + "</a></li>";
 					}
-				}
-				else if (pagenum < listsize) {
+				} else if (pagenum < listsize) {
 					for (i = 1; i <= pagenum; i++) {
 						if (i == pageno) ahtml += "<li class='page-item disabled'><span class='page-link'>" + i + "</span></li>";
 						else ahtml += "<li class='page-item'><a class='page-link' href='javascript:;' onclick='LoadPage(" + i + ")'>" + i + "</a></li>";
@@ -119,11 +118,10 @@
 			</div>
 			<div class="card shadow-sm">
 				<div class="card-header">自由列表管理</div>
-				<div id="rslist" class="card-body">
-					<?php GetTagList($dsql,$pageno,$pagesize,$orderby);?>
-					<div id="pagelist">
-						<script>ReloadPageNum(1);</script>
-					</div>
+				<div class="card-body">
+					<div id="rslist"><?php GetTagList($dsql,$pageno,$pagesize,$orderby);?></div>
+					<div id="pagelist"></div>
+					<script>ReloadPageNum(1);</script>
 				</div>
 			</div>
 		</div>

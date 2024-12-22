@@ -21,7 +21,7 @@
 			orderby = ordertype;
 			var listArea = $Obj('rslist');
 			var errMsg = "<a href=\"javascript:ReloadPage('" + ordertype + "')\">重新加载列表</a>";
-			fetch("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype).then(resp=>{
+			fetch("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype).then(resp => {
 				if (resp.ok) {
 					return resp.text()
 				}
@@ -45,9 +45,7 @@
 			var kws = $Obj('spwords' + nid).value;
 			var ct = $Obj('count' + nid).value;
 			var errMsg = "<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
-			<?php
-			if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {
-			?>
+			<?php if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {?>
 			const formData = new FormData()
 			formData.append('dopost', 'update');
 			formData.append('aid', nid);
@@ -82,7 +80,7 @@
 			var pagenum = Math.ceil(totalrow / pagesize);
 			if (pagenum <= pageno) pageno = pagenum;
 			var errMsg = "<a href=\"javascript:LoadPage('" + pageno + "')\">重新加载列表</a>";
-			fetch("search_keywords_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno + "&orderby=" + orderby).then(resp=>{
+			fetch("search_keywords_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno + "&orderby=" + orderby).then(resp => {
 				if (resp.ok) {
 					return resp.text()
 				}
@@ -111,8 +109,7 @@
 					if (i == pageno) ahtml += "<li class='page-item'><span class='page-link'>" + i + "</span></li>";
 					else ahtml += "<li class='page-item'><a href='javascript:LoadPage(" + i + ");' class='page-link'>" + i + "</a></li>";
 				}
-			}
-			else if (pagenum < listsize) {
+			} else if (pagenum < listsize) {
 				for (i = 1; i <= pagenum; i++) {
 					if (i == pageno) ahtml += "<li class='page-item'><span class='page-link'>" + i + "</span></li>";
 					else ahtml += "<li class='page-item'><a href='javascript:LoadPage(" + i + ");' class='page-link'>" + i + "</a></li>";
@@ -141,11 +138,10 @@
 			</ol>
 			<div class="card shadow-sm">
 				<div class="card-header">搜索关键词管理</div>
-				<div id="rslist" class="card-body">
-					<?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?>
-					<div id="pagelist">
-						<script>ReloadPageNum(1);</script>
-					</div>
+				<div class="card-body">
+					<div id="rslist" ><?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?></div>
+					<div id="pagelist"></div>
+					<script>ReloadPageNum(1);</script>
 				</div>
 			</div>
 		</div>

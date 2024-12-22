@@ -61,8 +61,8 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
 {
     global $cfg_phpurl;
     $start = ($pageno - 1) * $pagesize;
-    $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
-    <input name=\"dopost\" type=\"hidden\" value=\"\">
+    $printhead = "<form name='form3' action='search_keywords_main.php' method='post'>
+    <input name='dopost' type='hidden' value=''>
     <div class='table-responsive'>
     <table class='table table-borderless table-hover'>
     <thead>
@@ -85,7 +85,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     while ($row = $dsql->GetArray()) {
         $line = "<tbody>
     <tr>
-        <td><input name=\"aids[]\" type=\"checkbox\" value=\"{$row['aid']}\"></td>
+        <td><input name='aids[]' type='checkbox' value=\"{$row['aid']}\"></td>
         <td>{$row['aid']}</td>
         <td><input type='text' name='keyword' id='keyword{$row['aid']}' value='{$row['keyword']}' class='admin-input-sm'></td>
         <td><input type='text' name='spwords' id='spwords{$row['aid']}' value='{$row['spwords']}' class='admin-input-md'></td>
@@ -109,3 +109,4 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     </tbody>";
     echo "</table></div></form>";
 }
+?>
