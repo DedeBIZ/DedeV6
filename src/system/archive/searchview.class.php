@@ -655,10 +655,10 @@ class SearchView
             $totalpage = ceil($this->SearchMaxRc / $this->pagesize);
         }
         $infos = "<li class='page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>";
-        $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
-        $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
-        $geturl .= "&kwtype=".$this->KType."&pagesize=".$this->pagesize;
-        $geturl .= "&typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
+        //$geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
+        //$geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
+        //$geturl .= "&kwtype=".$this->KType."&pagesize=".$this->pagesize;
+        $geturl .= "typeid=".$this->TypeID."&keyword=".urlencode($oldkeyword)."&";
         $purl .= "?".$geturl;
         //获得上页和下页的链接
         if ($this->PageNo != 1) {
