@@ -88,7 +88,7 @@
 												echo "<label><input type='radio' name='usertype' value='".$row3->name."'".($row['usertype']==$row3->name? "checked" : "")."> ".$row3->name."</label> ";
 											}
 											?>
-											<label><input type="radio" name="usertype" value="" <?php if ($row['usertype']=='') echo 'checked';?>> 不限</label>
+											<label><input type="radio" name="usertype" value="0" <?php if ($row['usertype']=='') echo 'checked';?>> 不限</label>
 										</td>
 									</tr>
 									<tr>
