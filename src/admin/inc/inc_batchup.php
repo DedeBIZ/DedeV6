@@ -97,6 +97,9 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
         $intime = time();
         $insql = "INSERT INTO `#@__search_sync` (`aid`, `add_at`) VALUES ({$aid}, $intime)";
         $dsql->ExecuteNoneQuery($insql);
+        if (DEDEBIZSEARCH) {
+            DedeSearchDo("delete",array('id'=>$aid));
+        }
     }
     if (empty($arcRow['money'])) $arcRow['money'] = 0;
     if (empty($arcRow['ismake'])) $arcRow['ismake'] = 1;

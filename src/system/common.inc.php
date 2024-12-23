@@ -51,6 +51,9 @@ PwIDAQAB
 -----END PUBLIC KEY-----
 ');//DedeBIZ系统公钥
 define('DEDECDNURL', 'https://cdn.dedebiz.com');//默认静态资源地址
+define('DEDEBIZSEARCH', FALSE);//是否启用DedeBIZ全文检索服务
+define('DEDEBIZSEARCHHOST', 'http://127.0.0.1:8818');//搜索服务地址 
+define('DEDEBIZSEARCHKEY', '设置DedeSearch密钥');//用于进行加密验签
 if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
     if (!function_exists('session_register')) {
         function session_register()

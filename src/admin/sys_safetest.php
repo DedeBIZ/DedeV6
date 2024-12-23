@@ -19,7 +19,7 @@ $del = new DedeHttpDown();
 $del->OpenUrl($fileHashURL);
 $filelist = $del->GetJSON();
 $offFiles = array();
-foreach ($filelist as $key => $ff) {
+foreach ((array)$filelist as $key => $ff) {
     $offFiles[$ff->filename] = $ff->hash;
 }
 $alter = '';
