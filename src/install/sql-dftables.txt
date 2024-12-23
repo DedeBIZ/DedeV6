@@ -480,7 +480,7 @@ CREATE TABLE `#@__member` (
 	`loginip` char(46) NOT NULL default '',
 	`checkmail` smallint(6) NOT NULL default '-1',
 	`loginerr` tinyint NULL DEFAULT 0,
-	`send_max` int DEFAULT '1',
+	`send_max` int DEFAULT '0',
 	`user_money` decimal(10, 2) unsigned NULL default 0.00,
 	`pmid` int(8) UNSIGNED NULL DEFAULT 0,
 	PRIMARY KEY (`mid`),

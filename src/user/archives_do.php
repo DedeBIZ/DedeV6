@@ -14,7 +14,6 @@ $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 //删除收藏
 if ($dopost == "delStow") {
-    CheckRank(0, 0);//禁止游客操作
     $type = empty($type) ? '' : HtmlReplace(trim($type), -1);
     $tupdate = '';
     if (!empty($type)) {
@@ -30,7 +29,6 @@ if ($dopost == "delStow") {
 }
 //添加投稿
 else if ($dopost == "addArc") {
-    CheckRank(0, 0);//禁止游客操作
     if ($channelid == 1) {
         $addcon = 'article_add.php?channelid='.$channelid;
     } else if ($channelid == 2) {
@@ -54,7 +52,6 @@ else if ($dopost == "addArc") {
 }
 //修改投稿
 else if ($dopost == "edit") {
-    CheckRank(0, 0);//禁止游客操作
     if ($channelid == 1) {
         $edit = 'article_edit.php?channelid='.$channelid;
     } else if ($channelid == 2) {
@@ -134,7 +131,6 @@ else if ($dopost == "delArc") {
 }
 //查看文档
 else if ($dopost == "viewArchives") {
-    CheckRank(0, 0);//禁止游客操作
     if ($type == "") {
         header("location:".$cfg_phpurl."/view.php?aid=".$aid);
     } else {
