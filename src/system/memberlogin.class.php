@@ -112,7 +112,7 @@ class MemberLogin
     var $M_HasDay;
     var $M_JoinTime;
     var $M_Honor = '';
-    var $M_SendMax = 1;
+    var $M_SendMax = 1;//默认游客投稿数
     var $memberCache = 'memberlogin';
     var $dsql;
     //php5构造函数
