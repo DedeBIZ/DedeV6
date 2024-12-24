@@ -430,7 +430,7 @@ class ListView
         } else if ($orderby == "scores") {
             $ordersql = " ORDER BY arc.scores $orderWay";
         } else if ($orderby == "rand") {
-            $ordersql = " ORDER BY rand() DESC";
+            $ordersql = " ORDER BY rand()";
         } else {
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }
@@ -852,7 +852,7 @@ class ListView
         } else if ($orderby == "scores") {
             $ordersql = " ORDER BY arc.scores $orderWay";
         } else if ($orderby == "rand") {
-            $ordersql = " ORDER BY rand() DESC";
+            $ordersql = " ORDER BY rand()";
         } else {
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }
