@@ -623,6 +623,8 @@ function DedeSearchDo($action, $parms=array()) {
     curl_setopt($ch, CURLOPT_TIMEOUT, 10); // 设置超时时间（秒）
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5); // 设置连接超时（秒）
     curl_setopt($ch, CURLOPT_USERAGENT, 'DedeSearchAPI/1.0'); // 设置 User-Agent
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 支持https连接
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // 支持https连接
 
     // 执行请求
     $response = curl_exec($ch);
@@ -638,7 +640,7 @@ function DedeSearchDo($action, $parms=array()) {
     if ($response === false || $httpCode !== 200) {
         return array(
             'code' => -1,
-            'message' => $curlError ?: "HTTP Error: $httpCode",
+            'message' => !empty($curlError) ? $curlError : "HTTP Error: $httpCode",
             'data' => null,
         );
     }
@@ -656,8 +658,8 @@ function DedeSearchDo($action, $parms=array()) {
     // 检查返回的业务逻辑中的 code
     if (!isset($result['code']) || $result['code'] !== 0) {
         return array(
-            'code' => $result['code'] ?? -3,
-            'message' => $result['message'] ?? 'Unknown error',
+            'code' => isset($result['code'])? $result['code'] : -3,
+            'message' => isset($result['message'])? $result['message'] : 'Unknown error',
             'data' => null,
         );
     }
@@ -666,7 +668,7 @@ function DedeSearchDo($action, $parms=array()) {
     return array(
         'code' => 0,
         'message' => 'Success',
-        'data' => $result['data'] ?? null,
+        'data' => isset($result['data'])? $result['data'] : null,
     );
 }
 // 获取接口地址
