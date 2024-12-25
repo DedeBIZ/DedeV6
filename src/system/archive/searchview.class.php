@@ -512,19 +512,19 @@ class SearchView
         $ordersql = '';
         if ($this->ChannelType < 0 || $this->ChannelTypeid < 0) {
             if ($orderby == "id") {
-                $ordersql = "ORDER BY arc.aid desc";
+                $ordersql = "ORDER BY arc.aid DESC";
             } else {
-                $ordersql = "ORDER BY arc.senddate desc";
+                $ordersql = "ORDER BY arc.senddate DESC";
             }
         } else {
             if ($orderby == "senddate") {
-                $ordersql = " ORDER BY arc.senddate desc";
+                $ordersql = " ORDER BY arc.senddate DESC";
             } else if ($orderby == "pubdate") {
-                $ordersql = " ORDER BY arc.pubdate desc";
+                $ordersql = " ORDER BY arc.pubdate DESC";
             } else if ($orderby == "id") {
-                $ordersql = " ORDER BY arc.id desc";
+                $ordersql = " ORDER BY arc.id DESC";
             } else {
-                $ordersql = " ORDER BY arc.sortrank desc";
+                $ordersql = " ORDER BY arc.sortrank DESC";
             }
         }
         //搜索
