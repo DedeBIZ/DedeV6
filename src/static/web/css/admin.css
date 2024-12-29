@@ -203,8 +203,7 @@ textarea {
 .admin-head .logo .version {
 	padding:0 0.15rem;
 	font-size:12px;
-	color:var(--white);
-	vertical-align:top
+	color:var(--white)
 }
 .admin-head .nav-item {
 	position:relative
