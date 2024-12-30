@@ -24,6 +24,9 @@ if (!defined('DEDEINC')) exit ('dedebiz');
 if (!function_exists('HtmlReplace')) {
     function HtmlReplace($str, $rptype = 0)
     {
+        if (!is_string($str)) {
+            return '';
+        }
         $str = stripslashes($str);
         $str = preg_replace("/<[\/]{0,1}style([^>]*)>(.*)<\/style>/i", '', $str);
         if ($rptype == 0) {
@@ -39,7 +42,8 @@ if (!function_exists('HtmlReplace')) {
         } else {
             $str = preg_replace("/[\r\n\t ]{1,}/", ' ', $str);
             $str = preg_replace('/script/i', 'ｓｃｒｉｐｔ', $str);
-            $str = preg_replace("/<[\/]{0,1}(link|meta|ifr|fra)[^>]*>/i", '', $str);
+            $str = preg_replace("/<[\/]{0,1}(link|meta|iframe|frame|object|embed|form|input|button|textarea|select)[^>]*>/i", '', $str);
+            $str = preg_replace('/\son\w+\s*=\s*["\'][^"\']*["\']/i', '', $str);
         }
         return addslashes($str);
     }
