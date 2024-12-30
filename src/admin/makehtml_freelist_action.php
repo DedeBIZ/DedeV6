@@ -11,9 +11,10 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
 require_once(DEDEINC."/archive/freelist.class.php");
-if (empty($startid)) $startid = 0;
+$startid = empty($startid)? 0 : intval($startid);
+$endid = empty($endid)? 0 : intval($endid);
 $ci = " aid >= $startid ";
-if (!empty($endid) && $endid >= $startid) {
+if ($endid > 0 && $endid >= $startid) {
     $ci .= " And aid <= $endid ";
 }
 header("Content-Type:text/html; charset={$cfg_soft_lang}");
