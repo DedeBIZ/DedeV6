@@ -157,6 +157,7 @@ if ($action == 'post') {
 } elseif ($action == 'delete') {
     if (empty($do)) {
         if (is_array($id)) {
+            $ids = array_map('intval', $id);
             $ids = implode(',', $id);
         } else {
             showmsg('未选中要操作的表单', '-1');
