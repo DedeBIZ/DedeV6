@@ -318,13 +318,13 @@ class SpecView
         //排序方式
         $ordersql = '';
         if ($orderby == 'senddate') {
-            $ordersql = " ORDER BY arc.senddate desc";
+            $ordersql = " ORDER BY arc.senddate DESC";
         } else if ($orderby == 'pubdate') {
-            $ordersql = " ORDER BY arc.pubdate desc";
+            $ordersql = " ORDER BY arc.pubdate DESC";
         } else if ($orderby == 'id') {
-            $ordersql = " ORDER BY arc.id desc";
+            $ordersql = " ORDER BY arc.id DESC";
         } else {
-            $ordersql = " ORDER BY arc.sortrank desc";
+            $ordersql = " ORDER BY arc.sortrank DESC";
         }
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,arc.money,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb on arc.mid = mb.mid WHERE $orwhere $ordersql LIMIT $limitstart,$row ";
         $this->dsql->SetQuery($query);
