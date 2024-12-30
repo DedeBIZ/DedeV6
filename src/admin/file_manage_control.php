@@ -17,6 +17,10 @@ $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = '';
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
+if (DEDEBIZ_SAFE_MODE && !preg_match("#^/static#",$activepath)) {
+    ShowMsg("安全模式下仅允许查看修改static目录文档", -1);
+    exit;
+}
 $files = json_decode(file_get_contents(DEDEDATA.'/admin/files.txt'));
 $currentFolder = basename(__DIR__);
 $realFiles = array();
@@ -86,7 +90,7 @@ else if ($fmdo == "del") {
 else if ($fmdo == "edit") {
     CheckCSRF();
     $filename = str_replace("..", "", $filename);
-    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($filename))) {
+    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml|htm)$#i', trim($filename)) || preg_match('#\.[\x00-\x1F\x7F]*$#', trim($filename))) {
         ShowMsg("文件扩展名已被系统禁止", "javascript:;");
         exit();
     }
