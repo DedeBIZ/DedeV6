@@ -69,6 +69,9 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 .body-bg {
 	background:var(--bg)
 }
+.logo img {
+	height:36px
+}
 #carouselDede .carousel-caption h2 {
 	color:var(--white)
 }
@@ -298,9 +301,6 @@ input[type=radio],input[type=checkbox],input[type=radio]:focus,input[type=checkb
 	font-size:14px;
 	font-weight:300;
 	color:var(--gray)
-}
-.logo img {
-	height:36px
 }
 .pannel-main-container {
 	padding:1.5rem;

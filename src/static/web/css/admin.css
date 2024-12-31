@@ -201,10 +201,8 @@ textarea {
 	vertical-align:middle
 }
 .admin-head .logo .version {
-	padding:0 0.15rem;
 	font-size:12px;
-	color:var(--white);
-	vertical-align:top
+	color:var(--white)
 }
 .admin-head .nav-item {
 	position:relative
@@ -718,7 +716,7 @@ span.page-link {
 	color:var(--white);
 	background:var(--green)
 }
-input,select,textarea,button,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.card,.form-control,.btn,.alert,.rounded {
+input,select,textarea,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.card,.form-control,.btn,.alert,.rounded {
 	border-radius:var(--b-radius)!important
 }
 .cke_top {
@@ -748,7 +746,7 @@ input,select,textarea,button,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.
 	border-radius:var(--b-radius-sm)!important
 }
 .btn+.btn {
-	margin-left:0.5rem
+	margin-left:0.5rem!important
 }
 .shadow-sm {
 	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,0.015)!important
@@ -767,17 +765,22 @@ input,select,textarea,button,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.
 	td {
 		white-space:nowrap
 	}
-	.install-box,.tips-box,.w-65,.w-35,.admin-textarea-sm,.admin-input-lg,.admin-input-md,.admin-input-sm {
-		width:100%
+	.install-box,.tips-box,.w-65,.w-35 {
+		width:100%!important
+	}
+	.admin-textarea-sm,.admin-input-lg,.admin-input-md,.admin-input-sm {
+		width:auto!important;
+		min-width:35%
 	}
 	.admin-head .navbar-nav {
 		margin-left:auto
 	}
 	body.menu-hide .admin-aside {
-		display:block
+		display:block;
+		width:100%
 	}
 	body.menu-hide .admin-content {
-		left:220px
+		left:100%
 	}
 	body.menu-show .admin-aside {
 		display:none

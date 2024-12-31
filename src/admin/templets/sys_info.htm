@@ -55,10 +55,10 @@
 									<tr>
 										<td width="160">变量说明</td>
 										<td width="370"><input type="text" name="varmsg" id="varmsg" class="admin-input-lg"></td>
-										<td width="160">变量名称</td>
-										<td><input type="text" name="nvarname" id="nvarname" class="admin-input-lg"></td>
 										<td width="160">变量值</td>
 										<td width="370"><input type="text" name="nvarvalue" id="nvarvalue" class="admin-input-lg"></td>
+										<td width="160">变量名称</td>
+										<td><input type="text" name="nvarname" id="nvarname" class="admin-input-lg"></td>
 									</tr>
 									<tr>
 										<td>变量类型</td>
@@ -143,9 +143,9 @@
 												} else if ($row['type']=='img') {
 													echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-50'> <input type='button' name='set9' class='btn btn-success btn-sm' onclick="."SelectImage('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." value='选择'>";
 														if ($row['value']) {
-															echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail-md'>";
+															echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail-md ml-3'>";
 														} else {
-														echo " <img src='/static/web/img/thumbnail.jpg' id='idd_{$row['varname']}' class='thumbnail-md'>";
+														echo " <img src='/static/web/img/thumbnail.jpg' id='idd_{$row['varname']}' class='thumbnail-md ml-3'>";
 													}
 												} else {
 													$addstr='';

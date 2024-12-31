@@ -71,7 +71,7 @@ $randcode = mt_rand(10000, 99999);
 $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
 $typeOptions = '';
 //递归获取分类
-function getTypeOptions($id=0,$sep="└")
+function getTypeOptions($id=0,$sep="└─")
 {
     global $dsql,$typeOptions;
     $dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid={$id} AND (ispart=0 OR ispart=1 OR ispart=2) ORDER BY sortrank");
