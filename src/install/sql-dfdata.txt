@@ -3954,7 +3954,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('25','cfg_multi_site','是否支持多站点，开启后附件栏目连接文档启用绝对网址','2','bool','N'),
 ('26','cfg_rm_remote','下载远程图片和资源','7','bool','Y'),
 ('27','cfg_dede_log','是否开启管理日志','2','bool','N'),
-('28','cfg_powerby','网站版权信息','1','bstring','Copyright © 2024 DedeBIZ 版权所有'),
+('28','cfg_powerby','网站版权信息','1','bstring','Copyright © 2025 DedeBIZ 版权所有'),
 ('29','cfg_jump_once','跳转网址是否直接跳转否则显示中转页','7','bool','Y'),
 ('30','cfg_task_pwd','系统计划任务客户端密码','7','string',''),
 ('31','cfg_arcsptitle','是否开启分页标题，开启影响文档更新速度','6','bool','N'),
