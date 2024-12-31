@@ -67,6 +67,7 @@
 											<label><input type="radio" name="vartype" value="number"> 数字</label>
 											<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
 											<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
+											<label><input type="radio" name="vartype" value="img"> 图片</label>
 										</td>
 										<td>变量所属</td>
 										<td colspan="4">
@@ -139,6 +140,13 @@
 													echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' class='admin-textarea-xl'>".dede_htmlspecialchars($row['value'])."</textarea>";
 												} else if ($row['type']=='number') {
 													echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-65'>";
+												} else if ($row['type']=='img') {
+													echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' class='w-50'> <input type='button' name='set9' class='btn btn-success btn-sm' onclick="."SelectImage('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." value='选择'>";
+														if ($row['value']) {
+															echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail-md ml-3'>";
+														} else {
+														echo " <img src='/static/web/img/thumbnail.jpg' id='idd_{$row['varname']}' class='thumbnail-md ml-3'>";
+													}
 												} else {
 													$addstr='';
 													if ($row['varname']=='cfg_cookie_encode') {

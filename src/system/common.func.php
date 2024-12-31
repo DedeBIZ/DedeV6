@@ -607,6 +607,91 @@ function GetMimeTypeOrExtension($str, $t = 0) {
         return "dedebiz";
     }
 }
+//用于实际请求接口并返回处理结果
+function DedeSearchDo($action, $parms=array()) {
+    if ($action === 'update') {
+        DedeSearchDo('delete', $parms);
+        return DedeSearchDo('add', $parms);
+    }
+    //生成完整请求URL
+    $url = DedeSearchAPIURL($action, $parms);
+    //初始化cURL
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url); //设置请求URL
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //返回结果而不是直接输出
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10); //设置超时时间（秒）
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5); //设置连接超时（秒）
+    curl_setopt($ch, CURLOPT_USERAGENT, 'DedeSearchAPI/1.0'); //设置User-Agent
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); //支持https连接
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); //支持https连接
+    //执行请求
+    $response = curl_exec($ch);
+    //获取HTTP状态码和错误信息
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curlError = curl_error($ch);
+    //关闭cURL资源
+    curl_close($ch);
+    //处理HTTP错误
+    if ($response === false || $httpCode !== 200) {
+        return array(
+            'code' => -1,
+            'message' => !empty($curlError) ? $curlError : "HTTP Error: $httpCode",
+            'data' => null,
+        );
+    }
+    //解析返回的JSON数据
+    $result = json_decode($response, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return array(
+            'code' => -2,
+            'message' => 'Invalid JSON response',
+            'data' => null,
+        );
+    }
+    //检查返回的业务逻辑中的code
+    if (!isset($result['code']) || $result['code'] !== 0) {
+        return array(
+            'code' => isset($result['code'])? $result['code'] : -3,
+            'message' => isset($result['message'])? $result['message'] : 'Unknown error',
+            'data' => null,
+        );
+    }
+    //返回成功结果
+    return array(
+        'code' => 0,
+        'message' => 'Success',
+        'data' => isset($result['data'])? $result['data'] : null,
+    );
+}
+//获取接口地址
+function DedeSearchAPIURL($action, $parms=array())
+{
+    $baseUrl = DEDEBIZSEARCHHOST."/api/$action"; //替换为实际的API地址
+    //添加公共参数
+    $timestamp = time(); //当前时间戳
+    $parms['timestamp'] = $timestamp;
+    $parms['pageSize'] = isset($parms['pageSize'])? $parms['pageSize']:10;
+    $parms['page'] = isset($parms['page'])? $parms['page']:1;
+    $parms['q'] = isset($parms['q'])? $parms['q']:"";
+    if ($action == "delete" || $action == "add") {
+        $parms['pageSize'] = 0;
+        $parms['page'] = 0;
+        $parms['q'] = isset($parms['id'])? $parms['id']:"";
+    }
+    //生成签名字符串
+    $signBaseString = "key=" . DEDEBIZSEARCHKEY . "&q=".$parms['q']. "&pageSize=".$parms['pageSize']. "&page=".$parms['page']. "&timestamp=".$parms['timestamp']; 
+    $parms['sign'] = md5($signBaseString); //使用MD5生成签名
+    if ($action == "delete" || $action == "add") {
+        unset($parms['q']);
+        unset($parms['pageSize']);
+        unset($parms['page']);
+    }
+    //拼接完整URL
+    $finalQueryString = http_build_query($parms);
+    $finalUrl = $baseUrl . '?' . $finalQueryString;
+
+    return $finalUrl;
+}
 //自定义函数接口
 if (file_exists(DEDEINC.'/extend.func.php')) {
     require_once(DEDEINC.'/extend.func.php');

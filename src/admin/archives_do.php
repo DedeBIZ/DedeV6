@@ -227,7 +227,11 @@ else if ($dopost == "checkArchives") {
     while ($row = $dsql->GetArray('ckall')) {
         $aid = $row['id'];
         $maintable = (trim($row['maintable']) == '' ? '#@__archives' : trim($row['maintable']));
-        $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET arcrank='0' WHERE id='$aid' ");
+        $indexedsql = "";
+        if (TableHasField("#@__arctiny", "indexed")) {
+            $indexedsql = ", `indexed`=2 ";
+        }
+        $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET arcrank='0'{$indexedsql} WHERE id='$aid' ");
         if ($row['issystem'] == -1) {
             $dsql->ExecuteNoneQuery("UPDATE `".trim($row['addtable'])."` SET arcrank='0' WHERE aid='$aid' ");
         } else {
@@ -235,6 +239,7 @@ else if ($dopost == "checkArchives") {
         }
         $dsql->ExecuteNoneQuery("UPDATE `#@__taglist` SET arcrank='0' WHERE aid='$aid' ");
         $pageurl = MakeArt($aid, false);
+        DedeSearchDo("add", array("id" => $aid));
     }
     ShowMsg("成功审核指定文档", $ENV_GOBACK_URL);
     exit();
@@ -319,6 +324,7 @@ else if ($dopost == "checkArchives") {
         //更新网页
         foreach ($okids as $aid) {
             $arc = new Archives($aid);
+            DedeSearchDo("update", array("id" => $aid));
             $arc->MakeHtml();
         }
         ShowMsg("成功移动".$j."个文档", $ENV_GOBACK_URL);
@@ -340,6 +346,7 @@ else if ($dopost == 'return') {
     foreach ($qstrs as $aid) {
         $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET arcrank='-1',ismake='0' WHERE id='$aid'");
         $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET `arcrank` = '-1' WHERE id = '$aid';");
+        DedeSearchDo("add", array("id" => $aid));
     }
     ShowMsg("成功还原指定文档", "recycling.php");
     exit();

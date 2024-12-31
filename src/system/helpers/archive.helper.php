@@ -169,12 +169,23 @@ if (!function_exists('UpIndexKey')) {
         global $dsql, $typeid2;
         if (empty($typeid2)) $typeid2 = 0;
         $indexedsql = '';
-        //商业全文检索组件索引
-        if (TableHasField("#@__arctiny", "indexed")) {
-            $indexedsql = ",`indexed`=2 ";
+        if ($arcrank == -1) {
+            //如果内容被改为待审核状态，删除索引
+            if ($dsql->IsTable('#@__search_sync')) {
+                $intime = time();
+                $insql = "INSERT INTO `#@__search_sync` (`aid`, `add_at`) VALUES ({$id}, $intime)";
+                $dsql->ExecuteNoneQuery($insql);
+                DedeSearchDo("delete", array("id" => $id));
+            }
+        } else {
+            //商业全文检索组件索引，更新索引信息
+            if (TableHasField("#@__arctiny", "indexed")) {
+                $indexedsql = ",`indexed`=2 ";
+            }
+            $query = "UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank'{$indexedsql} WHERE id = '$id' ";
+            DedeSearchDo("add", array("id" => $id));
+            $dsql->ExecuteNoneQuery($query);
         }
-        $query = "UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank'{$indexedsql} WHERE id = '$id' ";
-        $dsql->ExecuteNoneQuery($query);
         //处理修改后的tag
         if ($tags != '') {
             $oldtags = GetTagsArray($id);
