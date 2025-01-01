@@ -440,7 +440,7 @@ a:hover,.item-theme:hover,.item-news:hover,.table-hover tbody tr:hover {
 	border-radius:0 var(--b-radius) var(--b-radius) 0;
 	cursor:pointer
 }
-@media (max-width:768px) {
+@media screen and (max-width:767px) {
 	.pb-m-3 {
 		padding-bottom:1rem
 	}

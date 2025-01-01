@@ -751,17 +751,17 @@ input,select,textarea,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywrite
 .shadow-sm {
 	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,0.015)!important
 }
-@media (min-width:1199px) {
+@media  screen and (min-width:1199px) {
 	.modal-dialog {
 		max-width:500px
 	}
 }
-@media screen and (max-width:1199px) and (min-width:992px) {
+@media screen and (min-width:992px) and (max-width:1199px) {
 	.login-box {
 		padding:1rem
 	}
 }
-@media (max-width:768px) {
+@media screen and (max-width:767px) {
 	td {
 		white-space:nowrap
 	}
