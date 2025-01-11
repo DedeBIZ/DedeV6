@@ -524,7 +524,7 @@ class DedeTagParse
                 $this->CTags[$i]->IsReplace = TRUE;
                 $this->CTags[$i]->TagValue = $str;
             }
-            //设置/获取变量值
+            //设置获取变量值
             else if ($CTag->TagName == 'var') {
                 $vname = $this->CTags[$i]->GetAtt('name');
                 if ($vname == '') {
@@ -625,7 +625,7 @@ class DedeTagParse
         return $ResultString;
     }
     /**
-     *  动态解析模板
+     *  直接解析模板
      *
      * @access    public
      * @return    void
@@ -635,7 +635,7 @@ class DedeTagParse
         echo $this->GetResult();
     }
     /**
-     *  静态解析模板
+     *  解析模板为文件
      *
      * @access    public
      * @param     string   $filename  要保存到的文件
@@ -690,7 +690,7 @@ class DedeTagParse
             if ($isTag === FALSE) {
                 break;
             }
-            //判断是否已经到倒数第三个字符(可能性几率极小，取消此逻辑)
+            //判断是否已经到倒数第三个字符可能性几率极小，取消此逻辑
             for ($j = ($sPos + $tsLen); $j < ($sPos + $tsLen + $this->TagMaxLen); $j++) {
                 if ($j > ($sourceLen - 1)) {
                     break;
@@ -707,26 +707,19 @@ class DedeTagParse
                 $e1 = strpos($this->SourceString, $eTagEndWord, $i);
                 $e2 = strpos($this->SourceString, $FullTagStartWord, $i);
                 $e3 = strpos($this->SourceString, $fullTagEndWordThis, $i);
-                //$eTagEndWord =/} $FullTagStartWord = {tag: $fullTagEndWordThis = {/tag:xxx]
                 $e1 = trim($e1);
                 $e2 = trim($e2);
                 $e3 = trim($e3);
                 $e1 = ($e1 == '' ? '-1' : $e1);
                 $e2 = ($e2 == '' ? '-1' : $e2);
                 $e3 = ($e3 == '' ? '-1' : $e3);
-                //not found '{/tag:'
                 if ($e3 == -1) {
                     $endPos = $e1;
                     $elen = $endPos + strlen($eTagEndWord);
-                }
-                //not found '/}'
-                else if ($e1 == -1) {
+                } else if ($e1 == -1) {
                     $endPos = $e3;
                     $elen = $endPos + strlen($fullTagEndWordThis);
-                }
-                //found '/}' and found '{/dede:'
-                else {
-                    //if '/}' more near '{dede:'、'{/dede:' , end tag is '/}', else is '{/dede:'
+                }  else {
                     if ($e1 < $e2 &&  $e1 < $e3) {
                         $endPos = $e1;
                         $elen = $endPos + strlen($eTagEndWord);
@@ -735,7 +728,6 @@ class DedeTagParse
                         $elen = $endPos + strlen($fullTagEndWordThis);
                     }
                 }
-                //not found end tag , error
                 if ($endPos == -1) {
                     echo "Tag Character postion $sPos, '$tTagName' Error<br>\r\n";
                     break;
@@ -775,7 +767,7 @@ class DedeTagParse
                 $i = $sPos + $tsLen;
                 break;
             }
-        } //结束遍历模板字符串
+        }//结束遍历模板字符串
         if ($this->IsCache) {
             $this->SaveCache();
         }
