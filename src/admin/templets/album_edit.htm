@@ -266,10 +266,19 @@
 									<td>发布时间</td>
 									<td>
 										<?php
-										$nowtime = GetDateTimeMk(time());
-										echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker admin-input-sm'>";
+										$notime = GetDateTimeMk($arcRow["pubdate"]); 
+										echo "<input type='text' name='pubdate' value='$notime' id='pubdate' class='datepicker admin-input-sm'>";
 										?>
 									</td>
+									<td>更新时间</td>
+									<td>
+										<?php
+										$nowtime = GetDateTimeMk(time());
+										echo "<input type='text' name='senddate' value='$nowtime' id='senddate' class='datepicker admin-input-sm'>";
+										?>
+									</td>
+								</tr>
+								<tr>
 									<td>浏览次数</td>
 									<td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" class="admin-input-sm"></td>
 								</tr>

@@ -301,13 +301,22 @@
 										<td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="admin-input-sm">（不包括文件扩展名）</td>
 									</tr>
 									<tr>
+										<td>发布时间</td>
+										<td>
+											<?php
+											$notime = GetDateTimeMk($arcRow["pubdate"]); 
+											echo "<input type='text' name='pubdate' value='$notime' id='pubdate' class='datepicker admin-input-sm'>";
+											?>
+										</td>
 										<td>更新时间</td>
 										<td>
 											<?php
-											$nowtime = GetDateTimeMk($arcRow["pubdate"]);
-											echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker admin-input-sm'>";
+											$nowtime = GetDateTimeMk(time());
+											echo "<input type='text' name='senddate' value='$nowtime' id='senddate' class='datepicker admin-input-sm'>";
 											?>
 										</td>
+									</tr>
+									<tr>
 										<td>浏览次数</td>
 										<td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" class="admin-input-sm"></td>
 									</tr>
