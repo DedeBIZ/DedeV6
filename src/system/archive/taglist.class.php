@@ -105,14 +105,8 @@ class TagList
         }
         if (isset($GLOBALS['PageNo'])) {
             $this->PageNo = intval($GLOBALS['PageNo']);
-            if ($this->PageNo == 0) {
-                $this->PageNo = 1;
-            }
         } else {
             $this->PageNo = 1;
-        }
-        if (stripos(GetCurUrl(), 'makehtml_taglist_action.php')) {
-            $this->TotalResult = 1;
         }
         if ($this->TotalResult == -1) {
             $cquery = "SELECT COUNT(*) AS dd FROM `#@__taglist` WHERE tid = '{$this->TagInfos['id']}' AND arcrank >-1 ";
@@ -478,6 +472,14 @@ class TagList
         }
         return $plist;
     }
+    /**
+     *  获取静态的分页列表
+     *
+     * @access    public
+     * @param     int  $list_len  列表宽度
+     * @param     string  $listitem  列表样式
+     * @return    string
+     */
     function GetPageListST($list_len, $listitem = "info,index,end,pre,next,pageno")
     {
         $prepage = '';
@@ -498,14 +500,14 @@ class TagList
         $purl = $this->tagsDir.'/'.$this->TagInfos['id'];
         //获得上页和下页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a href='".$purl."/$prepagenum/' class='page-link'>上页</a></li>";
-            $indexpage = "<li class='page-item'><a href='".$purl."/1/' class='page-link'>首页</a></li>";
+            $prepage .= "<li class='page-item'><a href='".$purl."/$prepagenum' class='page-link'>上页</a></li>";
+            $indexpage = "<li class='page-item'><a href='".$purl."/1' class='page-link'>首页</a></li>";
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a href='".$purl."/$nextpagenum/' class='page-link'>下页</a></li>";
-            $endpage = "<li class='page-item'><a href='".$purl."/$totalpage/' class='page-link'>末页</a></li>";
+            $nextpage .= "<li class='page-item'><a href='".$purl."/$nextpagenum' class='page-link'>下页</a></li>";
+            $endpage = "<li class='page-item'><a href='".$purl."/$totalpage' class='page-link'>末页</a></li>";
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>";
         }
@@ -528,7 +530,7 @@ class TagList
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>";
             } else {
-                $listdd .= "<li class='page-item'><a href='".$purl."/$j/' class='page-link'>$j</a></li>";
+                $listdd .= "<li class='page-item'><a href='".$purl."/$j' class='page-link'>$j</a></li>";
             }
         }
         $plist = '';
@@ -570,7 +572,7 @@ class TagList
         $envs['makeTag'] = 1;
         $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
         if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {
-            $this->Fields['position'] = $cfg_cmsurl.$tagsdir."/";
+            $this->Fields['position'] = $cfg_cmsurl.$tagsdir;
         }
         if (empty($this->TotalResult) && $this->Tag != "") $this->CountRecord();
         //初步给固定值的标记赋值
@@ -595,7 +597,7 @@ class TagList
                 if ($endpage == 1) {
                     $endpage = 2;
                 }
-                $makeDir = $this->GetTruePath().$this->tagsDir.'/'.$this->TagInfos['id']."/";
+                $makeDir = $this->GetTruePath().$this->tagsDir.'/'.$this->TagInfos['id'];
                 MkdirAll($makeDir, $cfg_dir_purview);
                 for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
                     $this->ParseDMFields($this->PageNo, 1);
