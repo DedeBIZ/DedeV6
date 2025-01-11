@@ -67,7 +67,7 @@ class DedeTag
     }
 }
 /**
- * DedeTagParse 模板类
+ * DedeTagParse模板类
  * function c____DedeTagParse();
  *
  * @package          DedeTagParse
@@ -164,9 +164,7 @@ class DedeTagParse
         $this->SetDefault();
     }
     /**
-     * CheckDisabledFunctions
-     *
-     * COMMENT : CheckDisabledFunctions : 检查是否存在禁止的函数
+     * CheckDisabledFunctions COMMENT : CheckDisabledFunctions检查是否存在禁止的函数
      *
      * @access    public
      * @param    string
@@ -570,8 +568,7 @@ class DedeTagParse
         $this->CTags[$i]->IsReplace = TRUE;
     }
     /**
-     *  把分析模板输出到一个字符串中
-     *  不替换没被处理的值
+     *  把分析模板输出到一个字符串中，不替换没被处理的值
      *
      * @access    public
      * @return    string
@@ -628,7 +625,7 @@ class DedeTagParse
         return $ResultString;
     }
     /**
-     *  直接输出解析模板
+     *  动态解析模板
      *
      * @access    public
      * @return    void
@@ -638,7 +635,7 @@ class DedeTagParse
         echo $this->GetResult();
     }
     /**
-     *  把解析模板输出为文件
+     *  静态解析模板
      *
      * @access    public
      * @param     string   $filename  要保存到的文件
