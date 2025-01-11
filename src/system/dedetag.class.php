@@ -16,7 +16,7 @@ class DedeTag
     var $InnerText = '';    //标记之间的文本
     var $StartPos = 0;      //标记起始位置
     var $EndPos = 0;        //标记结束位置
-    var $CAttribute = null; //标记属性描述,即是class DedeAttribute
+    var $CAttribute = null; //标记属性描述，即是class DedeAttribute
     var $TagValue = '';     //标记的值
     var $TagID = 0;
     /**
@@ -460,7 +460,6 @@ class DedeTagParse
         if (isset($this->CTags[$i])) {
             $this->CTags[$i]->IsReplace = TRUE;
             $this->CTags[$i]->TagValue = $str;
-
             if ($this->CTags[$i]->GetAtt('function') != '' && $runfunc) {
                 $this->CTags[$i]->TagValue = $this->EvalFunc($str, $this->CTags[$i]->GetAtt('function'), $this->CTags[$i]);
             }
@@ -767,7 +766,7 @@ class DedeTagParse
                 $i = $sPos + $tsLen;
                 break;
             }
-        }//结束遍历模板字符串
+        }
         if ($this->IsCache) {
             $this->SaveCache();
         }
