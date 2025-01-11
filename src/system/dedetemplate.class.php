@@ -190,7 +190,7 @@ class DedeTemplate
         $this->__construct($templatedir, $refDir);
     }
     /**
-     *  设定本类自身实例的类引用和使用本类的类实例(如果在类中使用本模板引擎，后一参数一般为$this)
+     *  设定本类自身实例的类引用和使用本类的类实例，如果在类中使用本模板引擎，后一参数一般为$this
      *
      * @access    public
      * @param     object    $refObj   实例对象
@@ -1032,7 +1032,7 @@ class TagAttribute
     {
         return $this->count + 1;
     }
-}//End Class
+}
 /**
  * 属性解析器
  * function C__TagAttributeParse();
@@ -1158,14 +1158,14 @@ class TagAttributeParse
                     $tmpvalue .= $d;
                 }
             }
-        } //for
+        }
         //最后一个属性的给值
         if ($tmpatt != '') {
             $this->cAttributes->count++;
             $this->cAttributes->items[$tmpatt] = trim($tmpvalue);
         } //print_r($this->cAttributes->items);
-    } //end func
-} //End Class
+    }
+}
 /**
  *  私有标签编译,主要用于if标签内的字符串解析
  *

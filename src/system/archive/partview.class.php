@@ -231,5 +231,5 @@ class PartView
     function Close()
     {
     }
-}//End Class
+}
 ?>

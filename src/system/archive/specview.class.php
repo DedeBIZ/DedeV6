@@ -219,7 +219,7 @@ class SpecView
                     }
                     $this->dtp->Assign($tagid, $this->GetPageListST($list_len));
                 }
-            } //End foreach
+            }
             $makeFile = $GLOBALS['cfg_special']."/spec_".$this->PageNo.$GLOBALS['art_shortname'];
             $murl = $makeFile;
             $makeFile = $GLOBALS['cfg_basedir'].$makeFile;
@@ -568,5 +568,5 @@ class SpecView
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

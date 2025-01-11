@@ -271,5 +271,5 @@ class DedeImage
             }
         }
     }
-}//End Class
+}
 ?>

@@ -1218,5 +1218,5 @@ class ListView
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

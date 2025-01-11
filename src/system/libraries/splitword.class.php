@@ -466,9 +466,9 @@ class SplitWord
                         $this->simpleResult[$s]['t'] = 5;
                         $s++;
                     }
-                }//2byte symbol
-            }//end 2byte char
-        }//end for
+                }
+            }
+        }
         //处理分词后的结果
         $this->_sort_finally_result();
     }
@@ -782,7 +782,7 @@ class SplitWord
                 }
                 $j++;
             }
-       }//end for
+       }
        $smarr =  $newarr;
     }
     /**

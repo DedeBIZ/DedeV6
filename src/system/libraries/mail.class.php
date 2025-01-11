@@ -258,5 +258,5 @@ class smtp
             echo $message;
         }
     }
-}//End Class
+}
 ?>

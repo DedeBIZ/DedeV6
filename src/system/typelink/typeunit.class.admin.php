@@ -405,5 +405,5 @@ tpl;
         $dh->close();
         return (1);
     }
-}//End Class
+}
 ?>

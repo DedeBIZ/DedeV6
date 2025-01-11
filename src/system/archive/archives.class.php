@@ -183,7 +183,7 @@ class Archives
                             $this->Fields[$nk] = $this->ReplaceKeyword($this->Fields['keywords'], $this->Fields[$nk]);
                         }
                     }
-                } //End foreach
+                }
             }
             //设置全局环境变量
             $this->Fields['typename'] = $this->TypeLink->TypeInfos['typename'];
@@ -631,8 +631,8 @@ class Archives
                         }
                     }
                     $this->dtp->Assign($i, $res);
-                } //end case
-            } //结束模板循环
+                }
+            }
         }
     }
     /**
@@ -1005,7 +1005,7 @@ class Archives
         $body = preg_replace("#(<a(.*))-\]-(.*)-\[-(\/a>)#isU", '\\1>\\3<\\4', $body);
         return $body;
     }
-}//End Archives
+}
 function _highlightkeywords($matches)
 {
     return _highlight($matches[2], $GLOBALS['_dd_karr'], $GLOBALS['_dd_kaarr'], $matches[1]);

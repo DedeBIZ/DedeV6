@@ -1046,5 +1046,5 @@ class SgListView
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

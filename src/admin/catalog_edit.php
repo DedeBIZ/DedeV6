@@ -56,8 +56,7 @@ if ($dopost == "save") {
     UpDateCatCache();
     ShowMsg("成功修改一个栏目", "catalog_main.php");
     exit();
-} //End Save Action
-else if ($dopost == "savetime") {
+} else if ($dopost == "savetime") {
     $uptopsql = '';
     $slinks = " id IN (".GetSonIds($id).")";
     //顶级栏目二级域名根目录处理

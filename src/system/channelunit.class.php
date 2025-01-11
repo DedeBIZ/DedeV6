@@ -198,5 +198,5 @@ class ChannelUnit
     function Close()
     {
     }
-}//End  class ChannelUnit
+}
 ?>

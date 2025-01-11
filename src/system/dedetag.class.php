@@ -16,7 +16,7 @@ class DedeTag
     var $InnerText = '';    //标记之间的文本
     var $StartPos = 0;      //标记起始位置
     var $EndPos = 0;        //标记结束位置
-    var $CAttribute = null;   //标记属性描述,即是class DedeAttribute
+    var $CAttribute = null; //标记属性描述,即是class DedeAttribute
     var $TagValue = '';     //标记的值
     var $TagID = 0;
     /**
@@ -85,7 +85,7 @@ class DedeTagParse
     var $TempMkTime = 0;
     var $CacheFile = '';
     var $SourceString = '';    //模板字符串
-    var $CTags = array();           //标记集合
+    var $CTags = array();      //标记集合
     var $Count = -1;           //$Tags标记个数
     var $refObj = '';          //引用当前模板类的对象
     var $taghashfile = '';
@@ -385,7 +385,7 @@ class DedeTagParse
         return -1;
     }
     /**
-     *  获得指定名称的CTag数据类(如果有多个同名的Tag,则取没有被分配文档的第一个Tag)
+     *  获得指定名称的CTag数据类，如果有多个同名的Tag，则取没有被分配文档的第一个Tag
      *
      * @access    public
      * @param     string  $str  字符串
@@ -602,7 +602,7 @@ class DedeTagParse
         return $ResultString;
     }
     /**
-     *  把分析模板输出到一个字符串中,并返回
+     *  把分析模板输出到一个字符串中并返回
      *
      * @access    public
      * @return    string
@@ -940,7 +940,7 @@ class DedeAttributeParse
         $hasAttribute = FALSE;
         $strLen = strlen($this->sourceString);
         $this->cAttributes->Items = array();
-        //获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
+        //获得Tag的名称，解析到cAtt->GetAtt('tagname')中
         for ($i = 0; $i < $strLen; $i++) {
             if ($this->sourceString[$i] == ' ') {
                 $this->cAttributes->Count++;
@@ -967,7 +967,7 @@ class DedeAttributeParse
             return;
         }
         $tmpvalue = '';
-        //如果字符串含有属性值，遍历源字符串,并获得各属性
+        //如果字符串含有属性值，遍历源字符串并获得各属性
         for ($i; $i < $strLen; $i++) {
             $d = $this->sourceString[$i];
             //查找属性名称
@@ -1013,13 +1013,13 @@ class DedeAttributeParse
                     $tmpvalue .= $d;
                 }
             }
-        }//for
+        }
         //最后一个属性给值
         if ($tmpatt != '') {
             $this->cAttributes->Count++;
             $this->cAttributes->Items[$tmpatt] = trim($tmpvalue);
         }
         //print_r($this->cAttributes->Items);
-    } //end func
+    }
 }
 ?>

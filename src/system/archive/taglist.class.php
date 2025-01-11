@@ -666,5 +666,5 @@ class TagList
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

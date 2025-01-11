@@ -721,5 +721,5 @@ class SearchView
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

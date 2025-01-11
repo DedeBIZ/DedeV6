@@ -855,5 +855,5 @@ class FreeList
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

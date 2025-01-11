@@ -164,5 +164,5 @@ class TypeUnit
             }
         }
     }
-}//End Class
+}
 ?>

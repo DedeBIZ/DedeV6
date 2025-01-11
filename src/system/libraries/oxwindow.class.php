@@ -216,7 +216,7 @@ class OxWindow
         $ctp->Display();
         $ctp->Clear();
     }
-}//End Class
+}
 /**
  *  显示一个不带表单的普通提示
  *
