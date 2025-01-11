@@ -20,19 +20,29 @@
 			<div class="card shadow-sm mb-3">
 				<div class="card-header">支付接口设置</div>
 				<div class="card-body">
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						<li class="nav-item" role="presentation"><button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab"	data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button></li>
-						<li class="nav-item" role="presentation"><button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay" role="tab" aria-controls="alipay" aria-selected="false">支付宝</button></li>
-						<li class="nav-item" role="presentation"><button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank" role="tab" aria-controls="bank" aria-selected="false">银行转帐</button></li>
-						<li class="nav-item" role="presentation"><button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance" role="tab" aria-controls="balance" aria-selected="false">积分支付</button></li>
-						<li class="nav-item" role="presentation"><button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod" role="tab" aria-controls="cod" aria-selected="false">货到付款</button></li>
+					<ul class="nav nav-pills mb-3" id="pay-tab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button type="button" id="wechat-tab" class="nav-link active" data-toggle="tab" data-target="#wechat" role="tab" aria-controls="wechat" aria-selected="true">微信支付</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button type="button" id="alipay-tab" class="nav-link" data-toggle="tab" data-target="#alipay" role="tab" aria-controls="alipay" aria-selected="false">支付宝</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button type="button" id="bank-tab" class="nav-link" data-toggle="tab" data-target="#bank" role="tab" aria-controls="bank" aria-selected="false">银行转帐</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button type="button" id="balance-tab" class="nav-link" data-toggle="tab" data-target="#balance" role="tab" aria-controls="balance" aria-selected="false">积分支付</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button type="button" id="cod-tab" class="nav-link" data-toggle="tab" data-target="#cod" role="tab" aria-controls="cod" aria-selected="false">货到付款</button>
+						</li>
 					</ul>
-					<div class="tab-content pt-3" id="myTabContent">
+					<div class="tab-content" id="pay-tabContent">
 						<div class="tab-pane fade show active" id="wechat" role="tabpanel" aria-labelledby="wechat-tab">
 							<form>
-								<div class="form-group form-check">
-									<input type="checkbox" id="iptWechatEnabled" class="form-check-input">
-									<label class="form-check-label ml-2" for="iptWechatEnabled">是否启用</label>
+								<div class="form-group">
+									<input type="checkbox" id="iptWechatEnabled">
+									<label for="iptWechatEnabled">是否启用</label>
 								</div>
 								<div class="form-group">
 									<label for="iptWechatAppID">AppID</label>
@@ -54,9 +64,9 @@
 						</div>
 						<div class="tab-pane fade" id="alipay" role="tabpanel" aria-labelledby="alipay-tab">
 							<form>
-								<div class="form-group form-check">
-									<input type="checkbox" id="iptAlipayEnabled" class="form-check-input">
-									<label class="form-check-label ml-2" for="iptAlipayEnabled">是否启用</label>
+								<div class="form-group">
+									<input type="checkbox" id="iptAlipayEnabled">
+									<label for="iptAlipayEnabled">是否启用</label>
 								</div>
 								<div class="form-group">
 									<label for="iptAlipayAPPID">APPID</label>
@@ -82,9 +92,9 @@
 						</div>
 						<div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="bank-tab">
 							<form>
-								<div class="form-group form-check">
-									<input type="checkbox" id="iptBankEnabled" class="form-check-input">
-									<label class="form-check-label ml-2" for="iptBankEnabled">是否启用</label>
+								<div class="form-group">
+									<input type="checkbox" id="iptBankEnabled">
+									<label for="iptBankEnabled">是否启用</label>
 									<span>（会员支付到指定银行卡，手动确认订单收款）</span>
 								</div>
 								<div class="form-group">
@@ -107,9 +117,9 @@
 						</div>
 						<div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
 							<form>
-								<div class="form-group form-check">
-									<input type="checkbox" id="iptBalanceEnabled" class="form-check-input">
-									<label class="form-check-label ml-2" for="iptBalanceEnabled">是否启用</label>
+								<div class="form-group">
+									<input type="checkbox" id="iptBalanceEnabled">
+									<label for="iptBalanceEnabled">是否启用</label>
 									<span>（采用积分进行支付）</span>
 								</div>
 								<div class="form-group">
@@ -120,9 +130,9 @@
 						</div>
 						<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
 							<form>
-								<div class="form-group form-check">
-									<input type="checkbox" id="iptCodEnabled" class="form-check-input">
-									<label class="form-check-label ml-2" for="iptCodEnabled">是否启用</label>
+								<div class="form-group">
+									<input type="checkbox" id="iptCodEnabled">
+									<label for="iptCodEnabled">是否启用</label>
 									<span>（购买直接发货，到货后支付）</span>
 								</div>
 								<div class="form-group">
@@ -244,9 +254,9 @@
 				dataType: "json",
 				success: function(data) {
 					if (data.code === 0) {
-						ShowMsg("保存支付配置成功");
+						ShowMsg("保存支付接口设置成功");
 					} else {
-						ShowMsg("保存失败");
+						ShowMsg("保存支付接口设置失败");
 					}
 				}
 			})
