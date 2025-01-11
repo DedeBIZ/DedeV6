@@ -49,6 +49,7 @@ if ($dopost != 'save') {
     if (!isset($autolitpic)) $autolitpic = 0;
     //对保存的文档进行处理
     $pubdate = GetMkTime($pubdate);
+    $senddate = GetMkTime($senddate);
     $sortrank = AddDay($pubdate, $sortup);
     if ($ishtml == 0) $ismake = -1;
     else $ismake = 0;
@@ -101,7 +102,7 @@ if ($dopost != 'save') {
     if ($litpic != '' && !preg_match('#p#', $flag)) {
         $flag = ($flag == '' ? 'p' : $flag.',p');
     }
-    $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',sortrank='$sortrank',flag='$flag',ismake='$ismake',arcrank='$arcrank',click='$click',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename' WHERE id='$id'; ";
+    $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',sortrank='$sortrank',flag='$flag',ismake='$ismake',arcrank='$arcrank',click='$click',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',senddate='$senddate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段", "-1");
         exit();
