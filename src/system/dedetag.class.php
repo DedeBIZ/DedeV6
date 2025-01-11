@@ -1008,7 +1008,6 @@ class DedeAttributeParse
             $this->cAttributes->Count++;
             $this->cAttributes->Items[$tmpatt] = trim($tmpvalue);
         }
-        //print_r($this->cAttributes->Items);
     }
 }
 ?>
