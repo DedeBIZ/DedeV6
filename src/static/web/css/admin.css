@@ -675,7 +675,8 @@ body.menu-show .admin-content {
 	background:none
 }
 .modal-title {
-	font-size:14px
+	font-size:14px;
+	line-height:1.6
 }
 .card,.modal-content {
 	border:0
