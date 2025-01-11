@@ -403,18 +403,17 @@ class SpecView
                         }
                     }
                     $artlist .= $this->dtp2->GetResult();
-                }//if hasRow
-                else {
+                } else {
                     $artlist .= '';
                 }
                 if ($col > 1) {
                     $artlist .= "</td>";
                 }
-            }//Loop Col
+            }
             if ($col > 1) {
                 $artlist .= "</tr>";
             }
-        }//Loop Line
+        }
         if ($col > 1) {
             $artlist .= "</table>";
         }

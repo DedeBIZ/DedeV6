@@ -842,13 +842,13 @@ class SgListView
                         }
                     }
                     $artlist .= $this->dtp2->GetResult();
-                } //if hasRow
-            }//Loop Col
+                }
+            }
             if ($col > 1) {
                 $i += $col - 1;
                 $artlist .= "</div>";
             }
-        }//Loop Line
+        }
         $t3 = ExecTime();
         $this->dsql->FreeResult('al');
         return $artlist;

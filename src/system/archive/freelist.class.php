@@ -595,21 +595,20 @@ class FreeList
                         }
                     }
                     $artlist .= $indtp->GetResult();
-                } //if hasRow
-                else {
+                }  else {
                     $artlist .= '';
                 }
                 if ($col > 1) {
                     $artlist .= "</td>";
                 }
-            } //Loop Col
+            }
             if ($col > 1) {
                 $i += $col - 1;
             }
             if ($col > 1) {
                 $artlist .= "</tr>";
             }
-        } //Loop Line
+        }
         if ($col > 1) {
             $artlist .= "</table>";
         }
