@@ -37,7 +37,7 @@
 		<div class="container-fluid">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-				<li class="breadcrumb-item"><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a></li>
+				<?php $cid=isset($cid) ? $cid : '';$channelid=isset($channelid) ? $channelid : '';?><li class="breadcrumb-item"><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a></li>
 				<li class="breadcrumb-item active">修改软件文档</li>
 			</ol>
 			<div class="card shadow-sm">

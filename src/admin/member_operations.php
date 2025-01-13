@@ -14,7 +14,8 @@ DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 require_once(DEDEINC.'/datalistcp.class.php');
 if (empty($buyid)) $buyid = '';
 $buyid = HtmlReplace($buyid , 1);
-$sta = HtmlReplace($sta , 1);
+$sta = ''; //初始化$sta变量，感谢：乖乖女
+$sta = HtmlReplace($sta, 1);
 $addsql = " WHERE buyid LIKE '%$buyid%' ";
 if (!empty($sta)) $addsql .= " AND sta='$sta' ";
 $sql = "SELECT * FROM `#@__member_operation` $addsql ORDER BY aid DESC";
