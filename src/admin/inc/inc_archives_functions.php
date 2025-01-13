@@ -508,8 +508,8 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
  */
 function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = '')
 {
-    global $autolitpic, $remote, $dellink, $autokey, $cfg_basehost, $cfg_auot_description, $id, $title, $cfg_soft_lang, $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
-    $autolitpic = (empty($autolitpic) ? '' : $autolitpic);
+    global $cfg_arc_autopic, $remote, $dellink, $cfg_arc_autokeyword, $cfg_basehost, $cfg_auot_description, $id, $title, $cfg_soft_lang, $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+    $cfg_arc_autopic = (empty($cfg_arc_autopic) ? '' : $cfg_arc_autopic);
     $body = stripslashes($body);
     //远程图片本地化
     if ($remote == 1) {
@@ -531,11 +531,11 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
         $description = addslashes($description);
     }
     //自动获取缩略图
-    if ($autolitpic == 1 && $litpic == '') {
+    if ($cfg_arc_autopic == Y) {
         $litpic = GetDDImgFromBody($body);
     }
     //自动获取关键词
-    if ($autokey == 1 && $keywords == '') {
+    if ($cfg_arc_autokeyword == Y) {
         $subject = $title;
         $message = $body;
         //采用DedeBIZ Core分词组件分词
