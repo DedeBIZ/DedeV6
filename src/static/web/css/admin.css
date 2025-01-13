@@ -18,6 +18,20 @@ body {
 	color:var(--gray);
 	background:var(--bg)
 }
+p {
+	margin-bottom:0.5rem;
+	word-wrap:break-word
+}
+p:last-child {
+	margin-bottom:0
+}
+ul,ol,li {
+	margin:0;
+	padding:0
+}
+li {
+	list-style:none
+}
 a {
 	color:var(--gray);
 	text-decoration:none
@@ -29,13 +43,6 @@ a:hover {
 img {
 	max-width:100%;
 	border-radius:var(--b-radius)
-}
-ul,ol,li {
-	margin:0;
-	padding:0
-}
-li {
-	list-style:none
 }
 form,label {
 	margin-bottom:0
