@@ -508,8 +508,8 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
  */
 function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = '')
 {
-    global $cfg_arc_autopic, $remote, $dellink, $cfg_arc_autokeyword, $cfg_basehost, $cfg_auot_description, $id, $title, $cfg_soft_lang, $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
-    $cfg_arc_autopic = (empty($cfg_arc_autopic) ? '' : $cfg_arc_autopic);
+    global $autolitpic, $remote, $dellink, $autokey, $cfg_basehost, $cfg_auot_description, $id, $title, $cfg_soft_lang, $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+    $autolitpic = (empty($autolitpic) ? '' : $autolitpic);
     $body = stripslashes($body);
     //远程图片本地化
     if ($remote == 1) {
@@ -525,17 +525,17 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
         $body = Replace_Links($body, $allow_urls);
     }
     //自动摘要
-    if ($description == '' && $cfg_auot_description > 0) {
+    if ($cfg_auot_description > 0 && $description == '') {
         $description = cn_substr(html2text($body), $cfg_auot_description);
         $description = trim(preg_replace('/#p#|#e#/', '', $description));
         $description = addslashes($description);
     }
     //自动获取缩略图
-    if ($cfg_arc_autopic == Y) {
+    if ($autolitpic == 1 && $litpic == '') {
         $litpic = GetDDImgFromBody($body);
     }
     //自动获取关键词
-    if ($cfg_arc_autokeyword == Y) {
+    if ($autokey == 1) {
         $subject = $title;
         $message = $body;
         //采用DedeBIZ Core分词组件分词
