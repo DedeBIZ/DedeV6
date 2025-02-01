@@ -71,7 +71,7 @@ class ListView
             $this->Fields = $this->TypeLink->TypeInfos;
             $this->Fields['id'] = $typeid;
             $this->Fields['position'] = $this->TypeLink->GetPositionLink(true);
-            $this->Fields['title'] = preg_replace("/[<>]/", " / ", $this->TypeLink->GetPositionLink(false));
+            $this->Fields['title'] = preg_replace("/[<>]/", "-", $this->TypeLink->GetPositionLink(false));
             //添加联动单筛选
             if (isset($_REQUEST['tid'])) {
                 foreach($_GET as $key => $value) {

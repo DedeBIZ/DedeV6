@@ -92,11 +92,11 @@ function GetFormItem($ctag, $admintype = 'admin')
         $dfvalue = str_replace('{{', '<', $dfvalue);
         $dfvalue = str_replace('}}', '>', $dfvalue);
         if ($admintype == 'admin') {
-            $innertext = GetEditor($fieldname, $dfvalue, 360, 'Basic', 'string');
+            $innertext = GetEditor($fieldname, $dfvalue, 350, 'Basic', 'string');
         } else if ($admintype == 'diy') {
-            $innertext = GetEditor($fieldname, $dfvalue, 360, 'Diy', 'string');
+            $innertext = GetEditor($fieldname, $dfvalue, 350, 'Diy', 'string');
         } else {
-            $innertext = GetEditor($fieldname, $dfvalue, 360, 'Member', 'string');
+            $innertext = GetEditor($fieldname, $dfvalue, 350, 'Member', 'string');
         }
     } else if ($fieldType == "multitext") {
         $innertext = "<textarea name='$fieldname' id='$fieldname' class='form-control admin-textarea-sm'></textarea>";
@@ -337,16 +337,16 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             $okfvalue = '';
         }
         if ($admintype == 'admin') {
-            $myformItem = GetEditor($fieldname, $okfvalue, 360, 'Basic', 'string')." <input type='hidden' name='{$fieldname}_file' value='{$fvalue}'> ";
+            $myformItem = GetEditor($fieldname, $okfvalue, 350, 'Basic', 'string')." <input type='hidden' name='{$fieldname}_file' value='{$fvalue}'> ";
         } else {
-            $myformItem = GetEditor($fieldname, $okfvalue, 360, 'Member', 'string')." <input type='hidden' name='{$fieldname}_file' value='{$fvalue}'> ";
+            $myformItem = GetEditor($fieldname, $okfvalue, 350, 'Member', 'string')." <input type='hidden' name='{$fieldname}_file' value='{$fvalue}'> ";
         }
         $innertext = $myformItem;
     } else if ($ftype == "htmltext") {
         if ($admintype == 'admin') {
-            $myformItem = GetEditor($fieldname, $fvalue, 360, 'Basic', 'string')." ";
+            $myformItem = GetEditor($fieldname, $fvalue, 350, 'Basic', 'string')." ";
         } else {
-            $myformItem = GetEditor($fieldname, $fvalue, 360, 'Member', 'string')." ";
+            $myformItem = GetEditor($fieldname, $fvalue, 350, 'Member', 'string')." ";
         }
         $innertext = $myformItem;
     } else if ($ftype == "multitext") {

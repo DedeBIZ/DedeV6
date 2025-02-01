@@ -70,7 +70,7 @@ class SgListView
             $this->Fields = $this->TypeLink->TypeInfos;
             $this->Fields['id'] = $typeid;
             $this->Fields['position'] = $this->TypeLink->GetPositionLink(true);
-            $this->Fields['title'] = preg_replace("/[<>]/", " / ", $this->TypeLink->GetPositionLink(false));
+            $this->Fields['title'] = preg_replace("/[<>]/", "-", $this->TypeLink->GetPositionLink(false));
             //获得附加表和列表字段信息
             $this->AddTable = $this->ChannelUnit->ChannelInfos['addtable'];
             $listfield = trim($this->ChannelUnit->ChannelInfos['listfields']);
