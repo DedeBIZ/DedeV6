@@ -60,12 +60,12 @@ if ($action == 'post') {
         }
         //判断$name是否输入中文包括繁体则提交失败，$name改成您表单字段标识，恢复注释代码使用
         /*if (!preg_match('/^[\x{4e00}-\x{9fa5}]+$/u', $name)) {
-            showMsg('您输入信息不符合，请重新输入', '-1');
+            showMsg('您输入信息不符合，请重新填写', '-1');
             exit();
         }*/
         //判断$message是否大于70字符则提交失败，$message改成您表单字段标识，恢复注释代码使用
         /*if (mb_strlen($message) > 70) {
-            showmsg('您输入信息太多了，请重新输入', '-1');
+            showmsg('您输入文字太多了，请重新填写', '-1');
             exit();
         }*/
         //获取表单提交的链接、时间、ip，字段标识默认为link、date、ip，前台表单可以不用出现该输入框，但是biz_fields和biz_fieldshash的值要最新，下面是重复提交表单限制，恢复注释代码使用
@@ -99,7 +99,7 @@ if ($action == 'post') {
                 $bkmsg = '提交成功，正在前往表单列表';
             } else {
                 $goto = 'javascript:history.go(-1);';
-                $bkmsg = '提交成功，请等待平台处理';
+                $bkmsg = '提交成功，请等待平台联系';
             }
             ShowMsg($bkmsg, $goto);
         }
