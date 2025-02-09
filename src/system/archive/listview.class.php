@@ -421,10 +421,14 @@ class ListView
             $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "pubdate") {
             $ordersql = " ORDER BY arc.pubdate $orderWay";
+        } else if ($orderby == "senddate") {
+            $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "id") {
             $ordersql = " ORDER BY arc.id $orderWay";
         } else if ($orderby == "hot" || $orderby == "click") {
             $ordersql = " ORDER BY arc.click $orderWay";
+        } else if($orderby == "weight") {
+            $ordersql = " ORDER BY arc.weight $orderWay";
         } else if ($orderby == "lastpost") {
             $ordersql = " ORDER BY arc.lastpost $orderWay";
         } else if ($orderby == "scores") {
@@ -471,7 +475,7 @@ class ListView
             $addJoin = '';
         }
         //如果不用默认的sortrank或id排序，使用联合查询数据量大时非常缓慢
-        if (preg_match('/senddate|pubdate|hot|click|lastpost|rand/', $orderby)) {
+        if (preg_match('/senddate|pubdate|senddate|hot|click|weight|lastpost|rand/', $orderby)) {
             $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb ON arc.mid=mb.mid $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
         }
         //普通情况先从arctiny表查出id，然后按id查询速度非常快
@@ -843,10 +847,14 @@ class ListView
             $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "pubdate") {
             $ordersql = " ORDER BY arc.pubdate $orderWay";
+        } else if ($orderby == "senddate") {
+            $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "id") {
             $ordersql = " ORDER BY arc.id $orderWay";
         } else if ($orderby == "hot" || $orderby == "click") {
             $ordersql = " ORDER BY arc.click $orderWay";
+        } else if($orderby == "weight") {
+            $ordersql = " ORDER BY arc.weight $orderWay";
         } else if ($orderby == "lastpost") {
             $ordersql = " ORDER BY arc.lastpost $orderWay";
         } else if ($orderby == "scores") {
@@ -893,7 +901,7 @@ class ListView
             $addJoin = '';
         }
         //如果不用默认的sortrank或id排序，使用联合查询数据量大时非常缓慢
-        if (preg_match('/senddate|pubdate|hot|click|lastpost|rand/', $orderby)) {
+        if (preg_match('/senddate|pubdate|senddate|hot|click|weight|lastpost|rand/', $orderby)) {
             $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,mb.uname,mb.face,mb.userid $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id LEFT JOIN `#@__member` mb ON arc.mid=mb.mid $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
         }
         //普通情况先从arctiny表查出id，然后按di查询速度非常快

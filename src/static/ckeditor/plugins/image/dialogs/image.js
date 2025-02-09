@@ -982,7 +982,7 @@
 								id: 'htmlPreview',
 								style: 'width:95%;',
 								html: '<div>' + CKEDITOR.tools.htmlEncode( editor.lang.common.preview ) + '<br>' +
-									'<div id="' + imagePreviewLoaderId + '" class="ImagePreviewLoader" style="display:none"><div class="loading">&nbsp;</div></div>' +
+									'<div id="' + imagePreviewLoaderId + '" class="ImagePreviewLoader" style="display:none"><div class="loading"></div></div>' +
 									'<div class="ImagePreviewBox"><table><tr><td>' +
 										'<a href="javascript:void(0)" target="_blank" onclick="return false;" id="' + previewLinkId + '">' +
 										'<img id="' + previewImageId + '" alt="" /></a>' +
@@ -1092,6 +1092,7 @@
 						type: 'button',
 						id: 'selectfile',
 						label: '选择服务器文件',
+						style: editor.config.filebrowserImageBrowseDisabled === true? 'display:none' : '',
 						size: 38,
                         onClick: function () {
 							var w = 800;
@@ -1105,7 +1106,7 @@
 							var systemZoom = width / window.screen.availWidth;
 							var posLeft = (width - w) / 2 / systemZoom + dualScreenLeft;
 							var posTop = (height - h) / 2 / systemZoom + dualScreenTop;
-                            window.open("./dialog/select_images.php?f=body", "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + posLeft + ", top=" + posTop);
+                            window.open("./dialog/select_images.php?noeditor=yes&iseditor=1&f="+editor.name, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + posLeft + ", top=" + posTop);
                             CKEDITOR.dialog.getCurrent().hide();
                         }
 					},

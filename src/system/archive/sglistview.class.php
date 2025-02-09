@@ -364,10 +364,14 @@ class SgListView
             $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "pubdate") {
             $ordersql = " ORDER BY arc.pubdate $orderWay";
+        } else if ($orderby == "senddate") {
+            $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "id") {
             $ordersql = " ORDER BY arc.id $orderWay";
         } else if ($orderby == "hot" || $orderby == "click") {
             $ordersql = " ORDER BY arc.click $orderWay";
+        } else if($orderby == "weight") {
+            $ordersql = " ORDER BY arc.weight $orderWay";
         } else if ($orderby == "lastpost") {
             $ordersql = " ORDER BY arc.lastpost $orderWay";
         } else if ($orderby == "scores") {
@@ -717,10 +721,14 @@ class SgListView
             $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "pubdate") {
             $ordersql = " ORDER BY arc.pubdate $orderWay";
+        } else if ($orderby == "senddate") {
+            $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "id") {
             $ordersql = " ORDER BY arc.id $orderWay";
         } else if ($orderby == "hot" || $orderby == "click") {
             $ordersql = " ORDER BY arc.click $orderWay";
+        } else if($orderby == "weight") {
+            $ordersql = " ORDER BY arc.weight $orderWay";
         } else if ($orderby == "lastpost") {
             $ordersql = " ORDER BY arc.lastpost $orderWay";
         } else if ($orderby == "scores") {
