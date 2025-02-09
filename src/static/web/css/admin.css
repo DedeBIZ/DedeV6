@@ -725,7 +725,7 @@ span.page-link {
 	color:var(--white);
 	background:var(--green)
 }
-input,select,textarea,button,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.alert,.card,.rounded,.form-control,.btn {
+input,select,textarea,.colordlg,.pubdlg,.quickselitem .topcat,.mysource,.mywriter,#edsta,.cke_chrome,.cke_inner,.alert,.card,.rounded,.form-control,.btn {
 	border-radius:var(--b-radius)!important
 }
 .cke_top {
