@@ -1,6 +1,6 @@
 <?php
-$photo_markup = '1';
-$photo_markdown = '1';
+$photo_markup = '0';
+$photo_markdown = '0';
 $photo_marktype = '1';
 $photo_wwidth = '120';
 $photo_wheight = '120';
