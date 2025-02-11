@@ -54,14 +54,18 @@ if (empty($typeid)) {
     }
 }
 $typeid = intval($typeid);
-$keyword = addslashes(cn_substr($keyword,30));
+$keyword = addslashes(cn_substr($keyword, 30));
 $typeid = intval($typeid);
 if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $keyword)) {
     ShowMsg("搜索关键词中存在非法文档，被系统禁止", "-1");
     exit();
 }
 if (($keyword != '' && strlen($keyword) < 2) && empty($typeid)) {
-    ShowMsg('关键词不能小于2个字节', '-1');
+    ShowMsg('您输入文字太少了，请重新填写', '-1');
+    exit();
+}
+if (!preg_match('/^[\x{4e00}-\x{9fa5}]+$/u', $keyword)) {
+    showMsg('您输入信息不符合，请重新填写', '-1');
     exit();
 }
 //检查搜索间隔时间
