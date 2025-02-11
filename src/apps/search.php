@@ -65,7 +65,7 @@ if (($keyword != '' && strlen($keyword) < 2) && empty($typeid)) {
     exit();
 }
 if (!preg_match('/^[\x{4e00}-\x{9fa5}]+$/u', $keyword)) {
-    showMsg('您输入信息不符合，请重新填写', '-1');
+    showMsg('您输入信息不符合，仅支持中文搜索，请重新填写', '-1');
     exit();
 }
 //检查搜索间隔时间
