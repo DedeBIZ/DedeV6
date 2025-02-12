@@ -805,25 +805,25 @@ CREATE TABLE `#@__search_limits` (
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__search_sync`;
-CREATE TABLE `#@__search_sync`  (
-  `id` int unsigned NOT NULL auto_increment,
-  `aid` int NULL DEFAULT NULL,
-  `sync_status` tinyint NULL DEFAULT 0,
-  `add_at` int NULL DEFAULT NULL,
-  `update_at` int NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `#@__search_sync`	(
+	`id` int unsigned NOT NULL auto_increment,
+	`aid` int NULL DEFAULT NULL,
+	`sync_status` tinyint NULL DEFAULT 0,
+	`add_at` int NULL DEFAULT NULL,
+	`update_at` int NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__sgpage`;
 CREATE TABLE `#@__sgpage` (
 	`aid` smallint(5) unsigned NOT NULL auto_increment,
-	`title` varchar(60) NOT NULL default '',
+	`title` char(255) NOT NULL default '',
 	`ismake` smallint(6) NOT NULL default '1',
 	`filename` varchar(60) NOT NULL default '',
-	`keywords` varchar(30) NOT NULL default '',
+	`keywords` varchar(255) NOT NULL default '',
+	`description` varchar(255) NOT NULL default '',
 	`template` varchar(30) NOT NULL default '',
 	`likeid` varchar(20) NOT NULL default '',
-	`description` varchar(255) NOT NULL default '',
 	`uptime` int(10) unsigned NOT NULL default '0',
 	`body` mediumtext,
 	PRIMARY KEY (`aid`),
