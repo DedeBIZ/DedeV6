@@ -75,16 +75,16 @@
 									<tbody>
 										<tr>
 											<td width="16%">
-												<p>操作系统</p>
-												<span><?php echo PHP_OS;?></span>
-											</td>
-											<td width="16%">
-												<p>WEB服务器</p>
-												<span><?php echo GetSimpleServerSoftware();?></span>
+												<p>软件版本</p>
+												<span><?php echo $cfg_version_detail;?></span>
 											</td>
 											<td width="16%">
 												<p>IP地址</p>
 												<span><?php echo gethostbyname($_SERVER['SERVER_NAME']);?></span>
+											</td>
+											<td width="16%">
+												<p>操作系统</p>
+												<span><?php echo PHP_OS;?> / <?php echo GetSimpleServerSoftware();?></span>
 											</td>
 											<td width="16%">
 												<p>PHP版本</p>

@@ -91,10 +91,13 @@ function lib_channel(&$ctag, &$refObj)
                     $row['typelink'] = GetOneTypeUrlA($row);
                     $linkOkstr = str_replace("~rel~", $row['rel'], $linkOkstr);
                     $linkOkstr = str_replace("~id~", $row['id'], $linkOkstr);
+                    $linkOkstr = str_replace("~typename~", $row['typename'], $linkOkstr);
+                    $linkOkstr = str_replace("~cnoverview~", $row['cnoverview'], $linkOkstr);
+                    $linkOkstr = str_replace("~enname~", $row['enname'], $linkOkstr);
+                    $linkOkstr = str_replace("~enoverview~", $row['enoverview'], $linkOkstr);
+                    $linkOkstr = str_replace("~typelink~", $row['typelink'], $linkOkstr);
                     $linkOkstr = str_replace("~bigpic~", $row['bigpic'], $linkOkstr);
                     $linkOkstr = str_replace("~litimg~", $row['litimg'], $linkOkstr);
-                    $linkOkstr = str_replace("~typelink~", $row['typelink'], $linkOkstr);
-                    $linkOkstr = str_replace("~typename~", $row['typename'], $linkOkstr);
                     $likeType .= $linkOkstr;
                 } else {
                     $row['typelink'] = $row['typeurl'] = GetOneTypeUrlA($row);
