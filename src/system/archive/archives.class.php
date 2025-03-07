@@ -221,7 +221,7 @@ class Archives
             if ($this->Fields['litpic'] == '-' || $this->Fields['litpic'] == '') {
                 $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
             }
-            if (!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+            if (!preg_match("/^(http|https):\/\//i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                 $this->Fields['litpic'] = $GLOBALS['cfg_mainsite'].$this->Fields['litpic'];
             }
             $this->Fields['picname'] = $this->Fields['litpic'];
