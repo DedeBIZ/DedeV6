@@ -24,13 +24,15 @@ function RenderUrlType($t) {
             return "综合";
     }
 }
-//检查权限
-if ($id == 0 && $reid == 0) {
-    CheckPurview('c_List');
+//检查权限，感谢：乖乖女
+if (isset($id) && isset($reid)) {
+    if ($id == 0 && $reid == 0) {
+        CheckPurview('c_List');
+    }
 }
 $ip = isset($ip) ? HtmlReplace(trim($ip)) : '';
 if (empty($mobile)) $mobile = '';
-if ($dopost == "delete") {
+if (isset($dopost) && $dopost == "delete") {
     $ids = explode('`',$aids);
     $dquery = "";
     foreach ($ids as $id)

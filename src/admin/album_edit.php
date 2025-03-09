@@ -83,6 +83,7 @@ if ($dopost != 'save') {
     }
     //对保存的文档进行处理
     $pubdate = GetMkTime($pubdate);
+    $senddate = GetMkTime($senddate);
     $sortrank = AddDay($pubdate, $sortup);
     $ismake = $ishtml == 0 ? -1 : 0;
     $title = cn_substrR($title, $cfg_title_maxlen);
@@ -117,7 +118,7 @@ if ($dopost != 'save') {
     if (preg_match("#j#", $flag)) $ismake = -1;
     //更新数据库的SQL语句
     $query = "
-    UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid' WHERE id='$id'; ";
+    UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',senddate='$senddate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($query)) {
         ShowMsg("数据保存到数据库文档主表出错，请检查数据库字段".$dsql->GetError(), "javascript:;");
         exit();

@@ -525,7 +525,7 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
         $body = Replace_Links($body, $allow_urls);
     }
     //自动摘要
-    if ($description == '' && $cfg_auot_description > 0) {
+    if ($cfg_auot_description > 0 && $description == '') {
         $description = cn_substr(html2text($body), $cfg_auot_description);
         $description = trim(preg_replace('/#p#|#e#/', '', $description));
         $description = addslashes($description);
@@ -535,7 +535,7 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
         $litpic = GetDDImgFromBody($body);
     }
     //自动获取关键词
-    if ($autokey == 1 && $keywords == '') {
+    if ($autokey == 1) {
         $subject = $title;
         $message = $body;
         //采用DedeBIZ Core分词组件分词

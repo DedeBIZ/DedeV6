@@ -99,5 +99,5 @@ class sgpage
     function Close()
     {
     }
-}//End Class
+}
 ?>

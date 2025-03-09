@@ -16,7 +16,7 @@ class DedeTag
     var $InnerText = '';    //标记之间的文本
     var $StartPos = 0;      //标记起始位置
     var $EndPos = 0;        //标记结束位置
-    var $CAttribute = null;   //标记属性描述,即是class DedeAttribute
+    var $CAttribute = null; //标记属性描述，即是class DedeAttribute
     var $TagValue = '';     //标记的值
     var $TagID = 0;
     /**
@@ -67,7 +67,7 @@ class DedeTag
     }
 }
 /**
- * DedeTagParse 模板类
+ * DedeTagParse模板类
  * function c____DedeTagParse();
  *
  * @package          DedeTagParse
@@ -85,7 +85,7 @@ class DedeTagParse
     var $TempMkTime = 0;
     var $CacheFile = '';
     var $SourceString = '';    //模板字符串
-    var $CTags = array();           //标记集合
+    var $CTags = array();      //标记集合
     var $Count = -1;           //$Tags标记个数
     var $refObj = '';          //引用当前模板类的对象
     var $taghashfile = '';
@@ -164,9 +164,7 @@ class DedeTagParse
         $this->SetDefault();
     }
     /**
-     * CheckDisabledFunctions
-     *
-     * COMMENT : CheckDisabledFunctions : 检查是否存在禁止的函数
+     * CheckDisabledFunctions COMMENT : CheckDisabledFunctions检查是否存在禁止的函数
      *
      * @access    public
      * @param    string
@@ -385,7 +383,7 @@ class DedeTagParse
         return -1;
     }
     /**
-     *  获得指定名称的CTag数据类(如果有多个同名的Tag,则取没有被分配文档的第一个Tag)
+     *  获得指定名称的CTag数据类，如果有多个同名的Tag，则取没有被分配文档的第一个Tag
      *
      * @access    public
      * @param     string  $str  字符串
@@ -462,7 +460,6 @@ class DedeTagParse
         if (isset($this->CTags[$i])) {
             $this->CTags[$i]->IsReplace = TRUE;
             $this->CTags[$i]->TagValue = $str;
-
             if ($this->CTags[$i]->GetAtt('function') != '' && $runfunc) {
                 $this->CTags[$i]->TagValue = $this->EvalFunc($str, $this->CTags[$i]->GetAtt('function'), $this->CTags[$i]);
             }
@@ -526,7 +523,7 @@ class DedeTagParse
                 $this->CTags[$i]->IsReplace = TRUE;
                 $this->CTags[$i]->TagValue = $str;
             }
-            //设置/获取变量值
+            //设置获取变量值
             else if ($CTag->TagName == 'var') {
                 $vname = $this->CTags[$i]->GetAtt('name');
                 if ($vname == '') {
@@ -570,8 +567,7 @@ class DedeTagParse
         $this->CTags[$i]->IsReplace = TRUE;
     }
     /**
-     *  把分析模板输出到一个字符串中
-     *  不替换没被处理的值
+     *  把分析模板输出到一个字符串中，不替换没被处理的值
      *
      * @access    public
      * @return    string
@@ -602,7 +598,7 @@ class DedeTagParse
         return $ResultString;
     }
     /**
-     *  把分析模板输出到一个字符串中,并返回
+     *  把分析模板输出到一个字符串中并返回
      *
      * @access    public
      * @return    string
@@ -628,7 +624,7 @@ class DedeTagParse
         return $ResultString;
     }
     /**
-     *  直接输出解析模板
+     *  直接解析模板
      *
      * @access    public
      * @return    void
@@ -638,7 +634,7 @@ class DedeTagParse
         echo $this->GetResult();
     }
     /**
-     *  把解析模板输出为文件
+     *  解析模板为文件
      *
      * @access    public
      * @param     string   $filename  要保存到的文件
@@ -693,7 +689,7 @@ class DedeTagParse
             if ($isTag === FALSE) {
                 break;
             }
-            //判断是否已经到倒数第三个字符(可能性几率极小，取消此逻辑)
+            //判断是否已经到倒数第三个字符可能性几率极小，取消此逻辑
             for ($j = ($sPos + $tsLen); $j < ($sPos + $tsLen + $this->TagMaxLen); $j++) {
                 if ($j > ($sourceLen - 1)) {
                     break;
@@ -710,26 +706,19 @@ class DedeTagParse
                 $e1 = strpos($this->SourceString, $eTagEndWord, $i);
                 $e2 = strpos($this->SourceString, $FullTagStartWord, $i);
                 $e3 = strpos($this->SourceString, $fullTagEndWordThis, $i);
-                //$eTagEndWord =/} $FullTagStartWord = {tag: $fullTagEndWordThis = {/tag:xxx]
                 $e1 = trim($e1);
                 $e2 = trim($e2);
                 $e3 = trim($e3);
                 $e1 = ($e1 == '' ? '-1' : $e1);
                 $e2 = ($e2 == '' ? '-1' : $e2);
                 $e3 = ($e3 == '' ? '-1' : $e3);
-                //not found '{/tag:'
                 if ($e3 == -1) {
                     $endPos = $e1;
                     $elen = $endPos + strlen($eTagEndWord);
-                }
-                //not found '/}'
-                else if ($e1 == -1) {
+                } else if ($e1 == -1) {
                     $endPos = $e3;
                     $elen = $endPos + strlen($fullTagEndWordThis);
-                }
-                //found '/}' and found '{/dede:'
-                else {
-                    //if '/}' more near '{dede:'、'{/dede:' , end tag is '/}', else is '{/dede:'
+                }  else {
                     if ($e1 < $e2 &&  $e1 < $e3) {
                         $endPos = $e1;
                         $elen = $endPos + strlen($eTagEndWord);
@@ -738,7 +727,6 @@ class DedeTagParse
                         $elen = $endPos + strlen($fullTagEndWordThis);
                     }
                 }
-                //not found end tag , error
                 if ($endPos == -1) {
                     echo "Tag Character postion $sPos, '$tTagName' Error<br>\r\n";
                     break;
@@ -778,7 +766,7 @@ class DedeTagParse
                 $i = $sPos + $tsLen;
                 break;
             }
-        } //结束遍历模板字符串
+        }
         if ($this->IsCache) {
             $this->SaveCache();
         }
@@ -940,7 +928,7 @@ class DedeAttributeParse
         $hasAttribute = FALSE;
         $strLen = strlen($this->sourceString);
         $this->cAttributes->Items = array();
-        //获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
+        //获得Tag的名称，解析到cAtt->GetAtt('tagname')中
         for ($i = 0; $i < $strLen; $i++) {
             if ($this->sourceString[$i] == ' ') {
                 $this->cAttributes->Count++;
@@ -967,7 +955,7 @@ class DedeAttributeParse
             return;
         }
         $tmpvalue = '';
-        //如果字符串含有属性值，遍历源字符串,并获得各属性
+        //如果字符串含有属性值，遍历源字符串并获得各属性
         for ($i; $i < $strLen; $i++) {
             $d = $this->sourceString[$i];
             //查找属性名称
@@ -1013,13 +1001,12 @@ class DedeAttributeParse
                     $tmpvalue .= $d;
                 }
             }
-        }//for
+        }
         //最后一个属性给值
         if ($tmpatt != '') {
             $this->cAttributes->Count++;
             $this->cAttributes->Items[$tmpatt] = trim($tmpvalue);
         }
-        //print_r($this->cAttributes->Items);
-    } //end func
+    }
 }
 ?>

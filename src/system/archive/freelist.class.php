@@ -542,9 +542,9 @@ class FreeList
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
                         $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
                     }
-                    /*if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                    if (!preg_match("/^(http|https):\/\//i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
-                    }*/
+                    }
                     $row['picname'] = $row['litpic'];
                     $row['info'] = $row['description'];
                     $row['filename'] = $row['arcurl'];
@@ -595,21 +595,20 @@ class FreeList
                         }
                     }
                     $artlist .= $indtp->GetResult();
-                } //if hasRow
-                else {
+                }  else {
                     $artlist .= '';
                 }
                 if ($col > 1) {
                     $artlist .= "</td>";
                 }
-            } //Loop Col
+            }
             if ($col > 1) {
                 $i += $col - 1;
             }
             if ($col > 1) {
                 $artlist .= "</tr>";
             }
-        } //Loop Line
+        }
         if ($col > 1) {
             $artlist .= "</table>";
         }
@@ -855,5 +854,5 @@ class FreeList
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

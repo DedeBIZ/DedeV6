@@ -191,7 +191,7 @@
 											<a href="javascript:ShowHide('helpvar1');" class="btn btn-success btn-sm">说明</a>
 											<div id="helpvar1" class="alert alert-secondary my-2" style="display:none">
 												<p>{tid} 栏目id</p>
-												<span>{cid} 栏目模型名字id</span>
+												<p>{cid} 栏目模型名字id</p>
 											</div>
 										</td>
 									</tr>
@@ -211,7 +211,7 @@
 												<p>{page} 栏目页码数</p>
 												<p>伪静态规则（Nginx）</p>
 												<p>rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;</p>
-												<span>rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;</span>
+												<p>rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;</p>
 											</div>
 										</td>
 									</tr>
@@ -231,7 +231,7 @@
 												<p>{cc} 日期加混编id后用转换为适合字母</p>
 												<p>伪静态规则（Nginx）</p>
 												<p>rewrite ^/article-([0-9]+).html$ /apps/view.php?arcID=$1;</p>
-												<span>rewrite ^/article-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
+												<p>rewrite ^/article-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</p>
 											</div>
 										</td>
 										<td>SEO标题</td>
@@ -287,32 +287,32 @@
 					<div class="modal-body">
 						<form>
 							<div class="form-group">
-								<span>本功能主要用于移动客户端或第三方系统调用栏目数据进行展现。</span>
+								<span>跨站调用功能用于同后台管理或其他网站之间调用栏目文档数据</span>
 							</div>
 							<div class="form-group">
-								<label for="iptAPICode" class="pb-3">代码调用</label>
-								<div class="nav nav-tabs" id="nav-tab" role="tablist">
-									<button class="nav-link active" id="nav-php-tab" data-toggle="tab" data-target="#nav-php" type="button" role="tab" aria-controls="nav-php" aria-selected="true">PHP</button>
-									<button class="nav-link" id="nav-js-tab" data-toggle="tab" data-target="#nav-js" type="button" role="tab" aria-controls="nav-js" aria-selected="true">Javasctipt</button>
-									<button class="nav-link" id="nav-go-tab" data-toggle="tab" data-target="#nav-go" type="button" role="tab" aria-controls="nav-go" aria-selected="false">Go</button>
-									<button class="nav-link" id="nav-python-tab" data-toggle="tab" data-target="#nav-python" type="button" role="tab" aria-controls="nav-python" aria-selected="false">Python3</button>
+								<label for="iptAPICode" class="mb-3">代码示例</label>
+								<div class="nav nav-pills mb-3" id="data-tab" role="tablist">
+									<button type="button" class="nav-link active" id="php-tab" data-toggle="tab" data-target="#nav-php" role="tab" aria-controls="nav-php" aria-selected="true">PHP</button>
+									<button type="button" class="nav-link" id="js-tab" data-toggle="tab" data-target="#nav-js" role="tab" aria-controls="nav-js" aria-selected="true">Javasctipt</button>
+									<button type="button" class="nav-link" id="go-tab" data-toggle="tab" data-target="#nav-go" role="tab" aria-controls="nav-go" aria-selected="false">Go</button>
+									<button type="button" class="nav-link" id="python-tab" data-toggle="tab" data-target="#nav-python" role="tab" aria-controls="nav-python" aria-selected="false">Python3</button>
 								</div>
-								<div class="tab-content" id="nav-tabContent">
-									<div class="tab-pane fade show active" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
+								<div class="tab-content" id="data-tabContent">
+									<div class="tab-pane fade show active" id="nav-php" role="tabpanel" aria-labelledby="php-tab">
 										<pre><code id="codephp"></code></pre></div>
-									<div class="tab-pane fade" id="nav-js" role="tabpanel" aria-labelledby="nav-js-tab">
+									<div class="tab-pane fade" id="nav-js" role="tabpanel" aria-labelledby="js-tab">
 										<pre><code id="codejs"></code></pre>
 									</div>
-									<div class="tab-pane fade" id="nav-go" role="tabpanel" aria-labelledby="nav-go-tab">
+									<div class="tab-pane fade" id="nav-go" role="tabpanel" aria-labelledby="go-tab">
 										<pre><code id="codego"></code></pre>
 									</div>
-									<div class="tab-pane fade" id="nav-python" role="tabpanel" aria-labelledby="nav-python-tab">
+									<div class="tab-pane fade" id="nav-python" role="tabpanel" aria-labelledby="python-tab">
 										<pre><code id="codepython"></code></pre>
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="iptAPITag" class="pb-3">标签调用</label>
+								<label for="iptAPITag" class="mb-3">标签示例</label>
 								<pre><code id="codetag"></code></pre>
 							</div>
 						</form>

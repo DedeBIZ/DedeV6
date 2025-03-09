@@ -66,7 +66,7 @@ class DedeAtt
     {
         return $this->Count + 1;
     }
-}//End DedeAtt
+}
 /**
  * 属性解析器
  * function c____DedeAttParse();

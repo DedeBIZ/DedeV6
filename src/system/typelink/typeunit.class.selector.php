@@ -127,5 +127,5 @@ class TypeUnitSelector
             }
         }
     }
-}//End Class
+}
 ?>

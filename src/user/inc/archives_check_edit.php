@@ -45,10 +45,10 @@ if ($cInfos['arcsta'] == 0) {
 }
 //对保存的文档进行处理
 $title = cn_substrR(HtmlReplace($title, 1), $cfg_title_maxlen);
-$writer =  cn_substrR(HtmlReplace($writer, 1), 20);
+$writer =  cn_substrR(HtmlReplace($writer, 1), 255);
 if (empty($description)) $description = '';
-$description = cn_substrR(HtmlReplace($description, 1), 250);
-$keywords = cn_substrR(HtmlReplace($tags, 1), 30);
+$description = cn_substrR(HtmlReplace($description, 1), 255);
+$keywords = cn_substrR(HtmlReplace($tags, 1), 255);
 $source = isset($source)? HtmlReplace($source, 1) : '';
 $mid = $cfg_ml->M_ID;
 $midQuery = "SELECT mid FROM `#@__arctiny` WHERE id='$aid'";

@@ -57,7 +57,7 @@ foreach ($_FILES as $_key => $_value) {
     if (empty(${$_key.'_size'})) {
         ${$_key.'_size'} = @filesize($$_key);
     }
-    $imtypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/bmp");
+    $imgtypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
     if (is_array(${$_key.'_type'}) && count(${$_key.'_type'}) > 0) {
         foreach (${$_key.'_type'} as $key => $value) {
             if (in_array(strtolower(trim($value)), $imtypes)) {
@@ -70,9 +70,7 @@ foreach ($_FILES as $_key => $_value) {
                     exit;
                 }
             }
-            $imtypes = array(
-                "image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/bmp"
-            );
+            $imgtypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
             if (in_array(strtolower(trim($value)), $imtypes)) {
                 $image_dd = @getimagesize($$_key);
                 if ($image_dd == false) {
@@ -95,9 +93,7 @@ foreach ($_FILES as $_key => $_value) {
                 exit;
             }
         }
-        $imtypes = array(
-            "image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/bmp"
-        );
+        $imgtypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
         if (in_array(strtolower(trim(${$_key.'_type'})), $imtypes)) {
             $image_dd = @getimagesize($$_key);
             if ($image_dd == false) {

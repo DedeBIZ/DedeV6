@@ -27,11 +27,11 @@
 							<h1>{dede:field.title/}</h1>
 						</div>
 						<div class="meta py-3">
-							<a href="{dede:field.userurl/}"><span><img src="{dede:field.face/}" class="user-img-xs mr-1">{dede:field.uname/}</span></a>
-							<span><i class="fa fa-calendar mr-1"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
-							<span><i class="fa fa-globe mr-1"></i>{dede:field.source/}</span>
-							<span><i class="fa fa-user mr-1"></i>{dede:field.writer/}</span>
-							<span><i class="fa fa-eye mr-1"></i><script src="{dede:global.cfg_phpurl/}/count.php?view=yes&aid={dede:field.id/}&mid={dede:field name='mid'/}"></script>次</span>
+							<a href="{dede:field.userurl/}"><span><img src="{dede:field.face/}" class="user-img-xs mr-2">{dede:field.uname/}</span></a>
+							<span><i class="fa fa-calendar mr-2"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
+							<span><i class="fa fa-globe mr-2"></i>{dede:field.source/}</span>
+							<span><i class="fa fa-user mr-2"></i>{dede:field.writer/}</span>
+							<span><i class="fa fa-eye mr-2"></i><script src="{dede:global.cfg_phpurl/}/count.php?view=yes&aid={dede:field.id/}&mid={dede:field name='mid'/}"></script>次</span>
 						</div>
 						<div class="img py-3">{dede:field name='image'/}</div>
 						<div class="info py-3">
@@ -44,7 +44,10 @@
 							<p>邮箱：{dede:field.email/}</p>
 							<p>地址：{dede:field.address/}</p>
 						</div>
-						<div class="body py-3">{dede:field.body/}</div>
+						<div class="body py-3">
+							{dede:field.body/}
+							<p>信息于 {dede:field.senddate function="MyDate('Y-m-d H:i',@me)"/} 修改</p>
+						</div>
 						<div class="edit py-3">责任编辑：{dede:adminname/}</div>
 						<nav class="column-page py-3">
 							<ul class="pagination justify-content-center">{dede:pagebreak/}</ul>

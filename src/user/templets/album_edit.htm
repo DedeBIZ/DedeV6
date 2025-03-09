@@ -59,7 +59,7 @@
 					<?php PrintAutoFieldsEdit($row['fieldset'],$addRow,'autofield');?>
 					<div class="form-group row">
 						<span class="col-sm-2 col-form-label">正文</span>
-						<div class="col-sm-10"><?php GetEditor("body",$addRow['body'],400,"Member");?></div>
+						<div class="col-sm-10"><?php GetEditor("body",$addRow['body'],350,"Member");?></div>
 					</div>
 					<input name="maxwidth" type="hidden" id="maxwidth" value="<?php echo $abinfo->GetAtt('maxwidth');?>">
 					<input name="prow" type="hidden" value="<?php echo $abinfo->GetAtt('row');?>">

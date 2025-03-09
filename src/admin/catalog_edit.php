@@ -30,7 +30,7 @@ if ($dopost == "save") {
         $uptopsql = " ,siteurl='$siteurl',sitepath='$sitepath',ishidden='$ishidden' ";
     }
     if ($ispart != 0) $cross = 0;
-    $upquery = "UPDATE `#@__arctype` SET issend='$issend',sortrank='$sortrank',typename='$typename',cnoverview='$cnoverview',enname='$enname',enoverview='$enoverview',bigpic='$bigpic',litimg='$litimg',typedir='$typedir',isdefault='$isdefault',defaultname='$defaultname',issend='$issend',ishidden='$ishidden',channeltype='$channeltype',tempindex='$tempindex',templist='$templist',temparticle='$temparticle',namerule='$namerule',namerule2='$namerule2',ispart='$ispart',corank='$corank',description='$description',keywords='$keywords',seotitle='$seotitle',moresite='$moresite',`cross`='$cross',`content`='$content',`crossid`='$crossid',`smalltypes`='$smalltypes',`apienabled`='$apienabled',`apikey`='$apikey'$uptopsql WHERE id='$id' ";
+    $upquery = "UPDATE `#@__arctype` SET issend='$issend',sortrank='$sortrank',typename='$typename',cnoverview='$cnoverview',enname='$enname',enoverview='$enoverview',bigpic='$bigpic',litimg='$litimg',typedir='$typedir',isdefault='$isdefault',defaultname='$defaultname',issend='$issend',ishidden='$ishidden',channeltype='$channeltype',tempindex='$tempindex',templist='$templist',temparticle='$temparticle',namerule='$namerule',namerule2='$namerule2',ispart='$ispart',corank='$corank',description='$description',keywords='$keywords',seotitle='$seotitle',moresite='$moresite',`cross`='$cross',`content`='$content',`crossid`='$crossid',`smalltypes`='$smalltypes',`apienabled`='$apienabled',`apikey`='$apikey' $uptopsql WHERE id='$id' ";
     if (!$dsql->ExecuteNoneQuery($upquery)) {
         ShowMsg("保存栏目失败，请您检查栏目字段是否存在问题", "-1");
         exit();
@@ -56,8 +56,7 @@ if ($dopost == "save") {
     UpDateCatCache();
     ShowMsg("成功修改一个栏目", "catalog_main.php");
     exit();
-} //End Save Action
-else if ($dopost == "savetime") {
+} else if ($dopost == "savetime") {
     $uptopsql = '';
     $slinks = " id IN (".GetSonIds($id).")";
     //顶级栏目二级域名根目录处理

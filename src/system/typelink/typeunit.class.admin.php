@@ -114,9 +114,9 @@ echo <<<tpl
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
         <span class='btn btn-success btn-sm'>列表</span>
         {$nss}
-        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>id：{$id}</a>
-        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-sm'>{$typeName}</a>
-        <span class='btn btn-sm'>文档数：{$this->GetTotalArc($id)}</span>
+        <span class='btn btn-sm'>id：{$id}</span>
+        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>{$typeName}</a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-sm'>文档数：{$this->GetTotalArc($id)}</a>
     </div>
     <div class='right'>
         <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
@@ -225,9 +225,9 @@ echo <<<tpl
         <span class='btn btn-light btn-sm'><i id='icon{$id}' onclick="LoadSuns('suns{$id}',{$id});" class='fa fa-plus-square'></i></span>
         <span class='btn btn-success btn-sm'>列表</span>
         {$nss}
-        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>id：{$id}</a>
-        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-sm'>{$typeName}</a>
-        <span class='btn btn-sm'>文档数：{$this->GetTotalArc($id)}</span>
+        <span class='btn btn-sm'>id：{$id}</span>
+        <a href='catalog_edit.php?id={$id}' class='btn btn-sm'>{$typeName}</a>
+        <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-sm'>文档数：{$this->GetTotalArc($id)}</a>
     </div>
     <div class='right'>
         <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-light btn-sm'><i class='fa fa-eye' title='预览'></i></a>
@@ -405,5 +405,5 @@ tpl;
         $dh->close();
         return (1);
     }
-}//End Class
+}
 ?>

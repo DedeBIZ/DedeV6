@@ -84,8 +84,8 @@ if (!function_exists('WaterImg')) {
         }
         $info = '';
         $srcInfo = @getimagesize($srcFile, $info);
-        $srcFile_w    = $srcInfo[0];
-        $srcFile_h    = $srcInfo[1];
+        $srcFile_w = $srcInfo[0];
+        $srcFile_h = $srcInfo[1];
         if ($srcFile_w < $photo_wwidth || $srcFile_h < $photo_wheight) {
             return;
         }
@@ -112,8 +112,8 @@ if (!function_exists('WaterImg')) {
         }
         $cfg_watermarktext['text'] = $photo_watertext;
         $cfg_watermarktext['size'] = $photo_fontsize;
+        $cfg_watermarktext['color'] = $photo_fontcolor;
         $cfg_watermarktext['angle'] = '0';
-        $cfg_watermarktext['color'] = '255,255,255';
         $cfg_watermarktext['shadowx'] = '0';
         $cfg_watermarktext['shadowy'] = '0';
         $cfg_watermarktext['shadowcolor'] = '0,0,0';
@@ -123,7 +123,7 @@ if (!function_exists('WaterImg')) {
     }
 }
 /**
- *  会对空白地方填充满
+ *  对空白地方填充满
  *
  * @access    public
  * @param     string  $srcFile  图片路径
@@ -138,7 +138,7 @@ if (!function_exists('ImageResizeNew')) {
     {
         try {
             $image = new ImageResize($srcFile);
-            $image->resize($toW, $toH);
+            $image->resizeToBestFit($toW, $toH);
             if ($issave) {
                 $image->save($toFile);
             } else {

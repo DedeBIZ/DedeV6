@@ -184,7 +184,7 @@ if ($dopost == 'quick') {
     }
     ShowMsg("成功创建一个栏目", "catalog_main.php");
     exit();
-}//End dopost==save
+}
 //获取从父目录继承的默认参数
 if ($dopost == '') {
     $channelid = 1;

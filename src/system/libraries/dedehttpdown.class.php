@@ -627,5 +627,5 @@ class DedeHttpDown
         $okurl = preg_replace("/\/{1,}/", "/", $okurl);
         return $proto.$okurl;
     }
-}//End Class
+}
 ?>

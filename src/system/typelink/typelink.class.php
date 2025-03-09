@@ -332,19 +332,19 @@ class TypeLink
                     $likeType .= "</td>\r\n";
                 }
                 $GLOBALS['autoindex']++;
-            }//Loop Col
+            }
             if ($col > 1) {
                 $i += $col - 1;
             }
             if ($col > 1) {
                 $likeType .= "</tr>\r\n";
             }
-        }//Loop for $i
+        }
         if ($col > 1) {
             $likeType .= "</table>\r\n";
         }
         $this->dsql->FreeResult();
         return $likeType;
-    }//GetChannel
-}//End Class
+    }
+}
 ?>

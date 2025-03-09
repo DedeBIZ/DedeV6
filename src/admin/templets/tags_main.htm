@@ -59,14 +59,14 @@
 									<tr>
 										<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id'];?>"></td>
 										<td>{dede:field.id/}</td>
-										<td><a href="<?php echo $cfg_phpurl;?>/tags.php?/<?php echo $fields['id'];?>/" target="_blank">{dede:sfield.tag/}</a></td>
+										<td><a href="<?php echo $cfg_phpurl;?>/tags.php?/<?php echo $fields['id'];?>" target="_blank">{dede:sfield.tag/}</a></td>
 										<td><input type="text" value="<?php echo $fields['count'];?>" id="count<?php echo $fields['id'];?>" class="admin-input-sm"></td>
 										<td><?php echo $fields['total'];?></td>
 										<td><?php echo $fields['addtime'];?></td>
 										<td><?php echo $fields['uptime'];?></td>
 										<td>
 											<a href='javascript:UpdateKwDes(<?php echo $fields['id'];?>,"<?php echo $fields['tag'];?>");' class="btn btn-light btn-sm"><i class="fa fa-cog" title="设置"></i></a>
-											<a href="javascript:UpdateOne(<?php echo $fields['id'];?>);" class="btn btn-light btn-sm"><i class="fa fa-refresh" title="刷新"></i></a>
+											<a href="javascript:UpdateOne(<?php echo $fields['id'];?>);" class="btn btn-light btn-sm"><i class="fa fa-check" title="保存"></i></a>
 											<a href="makehtml_taglist.php?tagid=<?php echo $fields['id'];?>" class="btn btn-light btn-sm"><i class="fa fa-repeat" title="更新"></i></a>
 											<a href="javascript:DeleteOne(<?php echo $fields['id'];?>);" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
 										</td>
@@ -117,16 +117,16 @@
 						<div class="col-sm-9"><input type="text" name="title" class="form-control" disabled value="${tag}"></div>
 					</div>
 					<div class="form-group row">
-						<label for="iptKw" class="col-sm-3 col-form-label">标题</label>
-						<div class="col-sm-9"><input type="text" name="title" id="iptTitle" class="form-control" placeholder="例如：DedeBIZ管理系统" value="${title}"></div>
+						<label for="iptKw" class="col-sm-3 col-form-label">SEO标题</label>
+						<div class="col-sm-9"><input type="text" name="title" id="iptTitle" class="form-control" value="${title}"></div>
 					</div>
 					<div class="form-group row">
 						<label for="iptKw" class="col-sm-3 col-form-label">关键词</label>
-						<div class="col-sm-9"><input type="text" name="kw" id="iptKw" class="form-control" placeholder="例如：dedebiz" value="${keywords}"></div>
+						<div class="col-sm-9"><input type="text" name="kw" id="iptKw" class="form-control" value="${keywords}"></div>
 					</div>
 					<div class="form-group row">
 						<label for="iptDes" class="col-sm-3 col-form-label">描述</label>
-						<div class="col-sm-9"><textarea name="des" id="iptDes" class="form-control" placeholder="例如：DedeBIZ系统基于PHP7版本开发，具有很强的可扩展性，并且采用GPLv2协议完全开放源代码。">${description}</textarea></div>
+						<div class="col-sm-9"><textarea name="des" id="iptDes" class="form-control">${description}</textarea></div>
 					</div>`, {
 						footer: `<button type="button" class="btn btn-success btn-sm" onclick="UpdateKwDesDo(${tid}, '~modalID~')">保存</button>`,
 					});

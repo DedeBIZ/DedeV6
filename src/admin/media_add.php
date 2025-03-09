@@ -15,7 +15,7 @@ if (empty($dopost)) $dopost = '';
 if ($dopost == "upload") {
     CheckCSRF();
     require_once(DEDEINC."/image.func.php");
-    $sparr_image = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/x-png", "image/wbmp");
+    $sparr_image = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
     $sparr_flash = array("application/xshockwaveflash");
     $okdd = 0;
     $uptime = time();

@@ -237,5 +237,5 @@ class DedeVote
         $res .= "</table>\r\n";
         return $res;
     }
-}//End Class
+}
 ?>

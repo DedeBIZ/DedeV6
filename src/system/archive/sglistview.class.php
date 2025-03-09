@@ -70,7 +70,7 @@ class SgListView
             $this->Fields = $this->TypeLink->TypeInfos;
             $this->Fields['id'] = $typeid;
             $this->Fields['position'] = $this->TypeLink->GetPositionLink(true);
-            $this->Fields['title'] = preg_replace("/[<>]/", " / ", $this->TypeLink->GetPositionLink(false));
+            $this->Fields['title'] = preg_replace("/[<>]/", "-", $this->TypeLink->GetPositionLink(false));
             //获得附加表和列表字段信息
             $this->AddTable = $this->ChannelUnit->ChannelInfos['addtable'];
             $listfield = trim($this->ChannelUnit->ChannelInfos['listfields']);
@@ -364,10 +364,14 @@ class SgListView
             $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "pubdate") {
             $ordersql = " ORDER BY arc.pubdate $orderWay";
+        } else if ($orderby == "senddate") {
+            $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "id") {
             $ordersql = " ORDER BY arc.id $orderWay";
         } else if ($orderby == "hot" || $orderby == "click") {
             $ordersql = " ORDER BY arc.click $orderWay";
+        } else if($orderby == "weight") {
+            $ordersql = " ORDER BY arc.weight $orderWay";
         } else if ($orderby == "lastpost") {
             $ordersql = " ORDER BY arc.lastpost $orderWay";
         } else if ($orderby == "scores") {
@@ -443,9 +447,9 @@ class SgListView
             if ($row['litpic'] == '-' || $row['litpic'] == '') {
                 $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
             }
-            /*if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+            if (!preg_match("/^(http|https):\/\//i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                 $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
-            }*/
+            }
             $row['picname'] = $row['litpic'];
             $row['pubdate'] = $row['senddate'];
             $row['stime'] = GetDateMK($row['pubdate']);
@@ -717,10 +721,14 @@ class SgListView
             $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "pubdate") {
             $ordersql = " ORDER BY arc.pubdate $orderWay";
+        } else if ($orderby == "senddate") {
+            $ordersql = " ORDER BY arc.senddate $orderWay";
         } else if ($orderby == "id") {
             $ordersql = " ORDER BY arc.id $orderWay";
         } else if ($orderby == "hot" || $orderby == "click") {
             $ordersql = " ORDER BY arc.click $orderWay";
+        } else if($orderby == "weight") {
+            $ordersql = " ORDER BY arc.weight $orderWay";
         } else if ($orderby == "lastpost") {
             $ordersql = " ORDER BY arc.lastpost $orderWay";
         } else if ($orderby == "scores") {
@@ -802,7 +810,7 @@ class SgListView
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
                         $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
                     }
-                    if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                    if (!preg_match("/^(http|https):\/\//i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                     }
                     $row['picname'] = $row['litpic'];
@@ -842,13 +850,13 @@ class SgListView
                         }
                     }
                     $artlist .= $this->dtp2->GetResult();
-                } //if hasRow
-            }//Loop Col
+                }
+            }
             if ($col > 1) {
                 $i += $col - 1;
                 $artlist .= "</div>";
             }
-        }//Loop Line
+        }
         $t3 = ExecTime();
         $this->dsql->FreeResult('al');
         return $artlist;
@@ -1046,5 +1054,5 @@ class SgListView
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

@@ -241,7 +241,7 @@ class DedeModule
         while (!feof($fp)) {
             $line = fgets($fp, 1024);
             if (!$start) {
-                //2011-6-7 修复模块打包程序中上传程序安装生成为空白文件
+                //2011-6-7修复模块打包程序中上传程序安装生成为空白文件
                 if (preg_match("#<{$ntype}>#i", $line)) $start = TRUE;
             } else {
                 if (preg_match("#<\/{$ntype}#i", $line)) break;
@@ -291,7 +291,7 @@ class DedeModule
      *
      * @access    public
      * @param     string  $hashcode  hash码
-     * @return    bool  如果存在则返回True,否则为False
+     * @return    bool  如果存在则返回True，否则为False
      */
     function HasModule($hashcode)
     {
@@ -582,5 +582,5 @@ class DedeModule
         unset($this->modules);
         unset($this->fileListNames);
     }
-}//End Class
+}
 ?>

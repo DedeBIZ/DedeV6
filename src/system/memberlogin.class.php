@@ -559,5 +559,5 @@ class MemberLogin
         }
         return $result;
     }
-}//End Class
+}
 ?>

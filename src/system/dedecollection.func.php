@@ -486,9 +486,9 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                         }
                     }
                 }
-            } //End 匹配多栏目
-        } //End使用规则匹配的情况
+            }
+        }
     }
     return $lists;
-}//End
+}
 ?>

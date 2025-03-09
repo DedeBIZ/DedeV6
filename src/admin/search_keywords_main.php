@@ -70,9 +70,10 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
             <td scope='col'>选择</td>
             <td scope='col'><a href=\"javascript:ReloadPage('aid');\">id</a></td>
             <td scope='col'>关键词</td>
-            <td scope='col'>分词结果</td>
-            <td scope='col'><a href=\"javascript:ReloadPage('count');\">频率</a></td>
-            <td scope='col'><a href=\"javascript:ReloadPage('result');\">结果</a></td>
+            <td scope='col'>关键词调整</td>
+            <td scope='col'>分词调整</td>
+            <td scope='col'><a href=\"javascript:ReloadPage('count');\">频率调整</a></td>
+            <td scope='col'><a href=\"javascript:ReloadPage('result');\">索引</a></td>
             <td scope='col'><a href=\"javascript:ReloadPage('lasttime');\">搜索时间</a></td>
             <td scope='col'>操作</td>
         </tr>
@@ -87,10 +88,11 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     <tr>
         <td><input name='aids[]' type='checkbox' value=\"{$row['aid']}\"></td>
         <td>{$row['aid']}</td>
+        <td><a href='{$cfg_phpurl}/search.php?keyword=".urlencode($row['keyword'])."' target='_blank'>{$row['keyword']}</a></td>
         <td><input type='text' name='keyword' id='keyword{$row['aid']}' value='{$row['keyword']}' class='admin-input-sm'></td>
         <td><input type='text' name='spwords' id='spwords{$row['aid']}' value='{$row['spwords']}' class='admin-input-md'></td>
         <td><input type='text' name='count' id='count{$row['aid']}' value='{$row['count']}' class='admin-input-sm'></td>
-        <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
+        <td>{$row['result']}</td>
         <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
         <td>
             <a href='javascript:UpdateNote({$row['aid']});' class='btn btn-light btn-sm'><i class='fa fa-repeat' title='更新'></i></a>
@@ -100,7 +102,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
         echo $line;
     }
     echo "<tr>
-            <td colspan='8'>
+            <td colspan='9'>
             <a href=\"javascript:selAll();\" class='btn btn-success btn-sm'>反选</a>
             <a href=\"javascript:noselAll();\" class='btn btn-success btn-sm'>取消</a>
             <a href=\"javascript:delall();\" class='btn btn-danger btn-sm'>删除</a>

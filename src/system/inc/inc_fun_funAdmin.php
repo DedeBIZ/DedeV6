@@ -59,12 +59,12 @@ function SpGetPinyin($str, $ishead = 0, $isclose = 1)
                         $restr .= $pinyins[$c][0];
                     }
                 } else {
-                    $restr .= "_";
+                    $restr .= "-";
                 }
             } else if (preg_match("/[a-z0-9]/i", $str[$i])) {
                 $restr .= $str[$i];
             } else {
-                $restr .= "_";
+                $restr .= "-";
             }
         }
         if ($isclose == 0) {

@@ -86,7 +86,7 @@
 												<p>{page} 栏目页码数</p>
 												<p>伪静态规则（Nginx）</p>
 												<p>rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;</p>
-												<span>rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;</span>
+												<p>rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;</p>
 											</div>
 										</td>
 									</tr>
@@ -106,7 +106,7 @@
 												<p>{cc} 日期加混编id后用转换为适合字母</p>
 												<p>伪静态规则（Nginx）</p>
 												<p>rewrite ^/article-([0-9]+).html$ /apps/view.php?arcID=$1;</p>
-												<span>rewrite ^/article-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</span>
+												<p>rewrite ^/article-([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;</p>
 											</div>
 										</td>
 										<td>默认页的名称</td>

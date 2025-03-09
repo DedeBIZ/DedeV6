@@ -28,11 +28,11 @@
 							<h1>{dede:field.title/}</h1>
 						</div>
 						<div class="meta py-3">
-							<a href="{dede:field.userurl/}"><span><img src="{dede:field.face/}" class="user-img-xs mr-1">{dede:field.uname/}</span></a>
-							<span><i class="fa fa-calendar mr-1"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
-							<span><i class="fa fa-globe mr-1"></i>{dede:field.source/}</span>
-							<span><i class="fa fa-user mr-1"></i>{dede:field.writer/}</span>
-							<span><i class="fa fa-eye mr-1"></i><script src="{dede:global.cfg_phpurl/}/count.php?view=yes&aid={dede:field.id/}&mid={dede:field name='mid'/}"></script>次</span>
+							<a href="{dede:field.userurl/}"><span><img src="{dede:field.face/}" class="user-img-xs mr-2">{dede:field.uname/}</span></a>
+							<span><i class="fa fa-calendar mr-2"></i>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
+							<span><i class="fa fa-globe mr-2"></i>{dede:field.source/}</span>
+							<span><i class="fa fa-user mr-2"></i>{dede:field.writer/}</span>
+							<span><i class="fa fa-eye mr-2"></i><script src="{dede:global.cfg_phpurl/}/count.php?view=yes&aid={dede:field.id/}&mid={dede:field name='mid'/}"></script>次</span>
 						</div>
 						<div class="alert alert-warning my-3">您会看到这个提示，因为某个栏目无法应用模板或您的模型没对应模板，不同模型的文档浏览页的模板为：article_模型名字标识.htm更多的信息，您可以在栏目修改查看</div>
 						{dede:fieldlist}
@@ -47,7 +47,10 @@
 							</tr>
 						</table>
 						{/dede:fieldlist}
-						<div class="body py-3">{dede:field.body/}</div>
+						<div class="body py-3">
+							{dede:field.body/}
+							<p>文档于 {dede:field.senddate function="MyDate('Y-m-d H:i',@me)"/} 修改</p>
+						</div>
 						<div class="edit py-3">责任编辑：{dede:adminname/}</div>
 						<div class="page py-3 row">
 							<div class="col-md-4 prenext">

@@ -60,5 +60,5 @@ function GetMenus($userrank, $topos = 'main')
             echo $footTemplet;
         }
     }
-}//End Function
+}
 ?>

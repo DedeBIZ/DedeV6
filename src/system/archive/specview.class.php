@@ -219,7 +219,7 @@ class SpecView
                     }
                     $this->dtp->Assign($tagid, $this->GetPageListST($list_len));
                 }
-            } //End foreach
+            }
             $makeFile = $GLOBALS['cfg_special']."/spec_".$this->PageNo.$GLOBALS['art_shortname'];
             $murl = $makeFile;
             $makeFile = $GLOBALS['cfg_basedir'].$makeFile;
@@ -350,7 +350,7 @@ class SpecView
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
                         $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
                     }
-                    if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                    if (!preg_match("/^(http|https):\/\//i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                     }
                     $row['picname'] = $row['litpic'];
@@ -403,18 +403,17 @@ class SpecView
                         }
                     }
                     $artlist .= $this->dtp2->GetResult();
-                }//if hasRow
-                else {
+                } else {
                     $artlist .= '';
                 }
                 if ($col > 1) {
                     $artlist .= "</td>";
                 }
-            }//Loop Col
+            }
             if ($col > 1) {
                 $artlist .= "</tr>";
             }
-        }//Loop Line
+        }
         if ($col > 1) {
             $artlist .= "</table>";
         }
@@ -568,5 +567,5 @@ class SpecView
         }
         return $nowurl;
     }
-}//End Class
+}
 ?>

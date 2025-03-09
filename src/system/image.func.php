@@ -14,7 +14,7 @@ helper('image');
 //检测会员系统支持的图片格式
 global $cfg_photo_type, $cfg_photo_typenames, $cfg_photo_support;
 $cfg_photo_type['gif'] = FALSE;
-$cfg_photo_type['jpeg'] = FALSE;
+$cfg_photo_type['jpg'] = FALSE;
 $cfg_photo_type['png'] = FALSE;
 $cfg_photo_type['wbmp'] = FALSE;
 $cfg_photo_type['bmp'] = FALSE;

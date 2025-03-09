@@ -31,8 +31,8 @@ function lib_arclist(&$ctag, &$refObj)
     } else {
         $tagid = $ctag->GetAtt('tagid');
     }
-    //arclist是否需要weight排序，默认为"N"，如果需要排序则设置为"Y"
-    $isweight = $ctag->GetAtt('isweight');
+    //arclist是否需要weight排序，默认为N，如果需要排序则设置为Y
+    $weight = $ctag->GetAtt('weight');
     if ($tagname == 'imglist' || $tagname == 'imginfolist') {
         $listtype = 'image';
     } else if ($tagname == 'specart') {
@@ -234,10 +234,12 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     $ordersql = '';
     if ($orderby == 'hot' || $orderby == 'click') $ordersql = " ORDER BY arc.click $orderWay";
     else if ($orderby == 'sortrank' || $orderby == 'pubdate') $ordersql = " ORDER BY arc.sortrank $orderWay";
+    else if ($orderby == 'senddate') $ordersql = " ORDER BY arc.senddate $orderWay";
     else if ($orderby == 'id') $ordersql = " ORDER BY arc.id $orderWay";
     else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - ".$arcid.")";
     else if ($orderby == 'lastpost') $ordersql = " ORDER BY arc.lastpost $orderWay";
     else if ($orderby == 'scores') $ordersql = " ORDER BY arc.scores $orderWay";
+    else if ($orderby == 'weight') $ordersql = " ORDER by arc.weight $orderWay";
     //添加按好评数和差评数调用
     else if ($orderby == 'goodpost') $ordersql = " ORDER BY arc.goodpost $orderWay";
     else if ($orderby == 'badpost') $ordersql = " ORDER BY arc.badpost $orderWay";
@@ -346,7 +348,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
                     $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
                 }
-                if (!preg_match("#^(http|https):\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                if (!preg_match("/^(http|https):\/\//i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                     $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                 }
                 $row['picname'] = $row['litpic'];

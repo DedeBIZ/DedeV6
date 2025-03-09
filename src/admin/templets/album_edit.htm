@@ -23,7 +23,7 @@
 		<div class="container-fluid">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
-				<li class="breadcrumb-item"><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">图片列表</a></li>
+				<?php $cid=isset($cid) ? $cid : '';$channelid=isset($channelid) ? $channelid : '';?><li class="breadcrumb-item"><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">图片列表</a></li>
 				<li class="breadcrumb-item active">修改图片文档</li>
 			</ol>
 			<div class="card shadow-sm">
@@ -266,10 +266,19 @@
 									<td>发布时间</td>
 									<td>
 										<?php
-										$nowtime = GetDateTimeMk(time());
-										echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker admin-input-sm'>";
+										$notime = GetDateTimeMk($arcRow["pubdate"]);
+										echo "<input type='text' name='pubdate' value='$notime' id='pubdate' class='datepicker admin-input-sm'>";
 										?>
 									</td>
+									<td>更新时间</td>
+									<td>
+										<?php
+										$nowtime = GetDateTimeMk(time());
+										echo "<input type='text' name='senddate' value='$nowtime' id='senddate' class='datepicker admin-input-sm'>";
+										?>
+									</td>
+								</tr>
+								<tr>
 									<td>浏览次数</td>
 									<td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" class="admin-input-sm"></td>
 								</tr>

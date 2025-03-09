@@ -22,9 +22,6 @@ if ($fmdo == 'sendMail') {
     }
     $userhash = md5($cfg_cookie_encode.'--'.$cfg_ml->fields['mid'].'--'.$cfg_ml->fields['email']);
     $url = $cfg_basehost.(empty($cfg_cmspath) ? '/' : $cfg_cmspath)."/user/index_do.php?fmdo=checkMail&mid={$cfg_ml->fields['mid']}&userhash={$userhash}&do=1";
-    $url = preg_replace("#http:\/\/#i", '', $url);
-    $proto = IsSSL()? "https://" : "http://";
-    $url = $proto.preg_replace("#\/\/#i", '/', $url);
     $mailtitle = "来自{$cfg_webname}：邮件验证通知";
     $mailbody = '';
     $mailbody .= "尊敬的{$cfg_ml->fields['uname']}会员，欢迎成为{$cfg_webname}会员！\r\n通过注册还须进行最后一步操作，请点击链接或复制链接到地址栏访问：{$url}";
