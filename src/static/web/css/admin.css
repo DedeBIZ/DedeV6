@@ -48,7 +48,7 @@ input {
 	padding:0.25rem 0.5rem;
 	height:30px;
 	color:var(--gray);
-	background:var(--white);
+	/* background:var(--white); */
 	border:1px solid var(--gray-300);
 	vertical-align:middle
 }
@@ -59,7 +59,7 @@ input[type=file] {
 }
 input:focus,select:focus,textarea:focus {
 	color:var(--gray);
-	background:var(--white);
+	/* background:var(--white); */
 	border-color:var(--blue-300);
 	box-shadow:0 0 0 0.25rem rgba(0,123,255,0.25);
 	outline:0
@@ -89,7 +89,7 @@ option:checked {
 textarea {
 	padding:0.25rem 0.5rem;
 	color:var(--gray);
-	background:var(--white);
+	/* background:var(--white); */
 	border:1px solid var(--gray-300);
 	vertical-align:middle
 }

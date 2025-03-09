@@ -1,0 +1,66 @@
+{dede:config.pagesize value='30'/}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title>模型版本管理</title>
+	<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/web/css/admin.css">
+	<script src="/static/web/js/jquery.min.js"></script>
+	<script src="/static/web/js/bootstrap.min.js"></script>
+	<script src="/static/web/js/admin.main.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="ai_main.php">大模型管理</a></li>
+			<li class="breadcrumb-item active">模型版本管理</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header d-flex justify-content-between align-items-center">模型版本管理 <a href="ai_model_add.php" class="btn btn-success btn-sm">添加模型版本</a></div>
+			<div class="card-body">
+				<form name="form1" method="post" action="ai_model_edit.php">
+					<input type="hidden" name="dopost" value="delall">
+					<input type="hidden" name="allid">
+					<div class="table-responsive">
+						<table class="table table-borderless table-hover">
+							<thead>
+								<tr>
+									<td scope="col">ID</td>
+									<td scope="col">Model</td>
+									<td scope="col">名称</td>
+									<td scope="col">大模型</td>
+									<td scope="col" width="30%">描述</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td>{dede:field.id/}</td>
+									<td>{dede:field.model function='dede_htmlspecialchars(@me)'/}</td>
+									<td>{dede:field.title function='dede_htmlspecialchars(@me)'/}</td>
+									<td>{dede:field.aititle/}</td>
+									<td>{dede:field.description/}</td>
+									<td>
+										<a href="ai_model_edit.php?id={dede:field.id/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+										<a href="ai_model_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+									</td>
+								</tr>
+								{/dede:datalist}
+							</tbody>
+						</table>
+					</div>
+				</form>
+				{dede:pagelist listsize='6'/}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

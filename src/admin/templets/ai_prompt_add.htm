@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title>添加提示词</title>
+	<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/web/css/admin.css">
+	<script src="/static/web/js/jquery.min.js"></script>
+	<script src="/static/web/js/bootstrap.min.js"></script>
+	<script src="/static/web/js/admin.main.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item"><a href="ai_prompt_main.php">提示词管理</a></li>
+			<li class="breadcrumb-item active">添加提示词</li>
+		</ol>
+		<div class="card shadow-sm">
+			<div class="card-header">添加提示词</div>
+			<div class="card-body">
+				<form name="form1" action="ai_prompt_add.php" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="dopost" value="add">
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="260">标识</td>
+									<td>
+										<input name="pname" id="pname" class="admin-input-lg"
+											required>（英文数字组成）
+									</td>
+								</tr>
+								<tr>
+									<td width="260">名称</td>
+									<td>
+										<input name="title" id="title" class="admin-input-lg"
+											required>
+									</td>
+								</tr>
+								<tr>
+									<td>描述</td>
+									<td><textarea name="description" id="description"
+											class="admin-textarea-sm"></textarea></td>
+								</tr>
+								<tr>
+									<td>提示词规则</td>
+									<td>
+										<textarea name="prompt" id="prompt" class="admin-textarea-sm" style="height: 200px;"></textarea>（AI系统提示词）
+									</td>
+								</tr>
+								<tr>
+									<td>默认提示词</td>
+									<td><textarea name="dfprompt" id="dfprompt" class="admin-textarea-sm"></textarea>（用户不提交内容，默认采用的提示词）</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-sm">保存</button>
+										<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										<a href="ai_prompt_main.php" class="btn btn-outline-success btn-sm">返回</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

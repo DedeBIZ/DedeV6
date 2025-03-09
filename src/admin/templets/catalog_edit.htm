@@ -19,7 +19,7 @@
 				<li class="breadcrumb-item active">修改栏目</li>
 			</ol>
 			<div class="card shadow-sm">
-				<div class="card-header">修改栏目</div>
+				<div class="card-header d-flex justify-content-between align-items-center">修改栏目 <button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">AI修改栏目</button></div>
 				<div class="card-body">
 					<form name="form1" action="catalog_edit.php" method="post">
 						<input type="hidden" name="dopost" value="save">
@@ -323,6 +323,38 @@
 				</div>
 			</div>
 		</div>
+		<div id="mdlAI" class="modal fade" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">AI修改栏目</h5>
+						<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<textarea class="admin-input-sm" style="width: 100%;height: 100px;" id="prompt" placeholder="填写您需要修改栏目的要求，例如：我需要栏目信息内容更丰富一些"></textarea><br/>
+								选择模型：<select id="modelid" class="admin-input-sm" style="width: 100%;">
+									<?php
+									$dsql->SetQuery("SELECT AM.*,A.title as aititle FROM `#@__ai_model` AM LEFT JOIN `#@__ai` A ON A.id = AM.aiid ORDER BY id");
+									$dsql->Execute();
+									while ($row = $dsql->GetObject()) {
+									?>
+										<option value="<?php echo $row->id;?>"<?php echo $row->isdefault==1?' selected' : '';?>><?php echo $row->model;?>(<?php echo $row->aititle;?>)</option>
+									<?php
+									}
+									?>
+								</select><br/>
+								
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button id="btnAIAction" class="btn btn-success">AI生成</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script>
 			var channelArray = new Array();
 			<?php	
@@ -408,6 +440,118 @@
 					}
 				});
 			}
+			function showAI() {
+				$("#mdlAI").modal('show');
+			}
+			let bodyHtml = "";
+			$("#btnAIAction").click(function() {
+				let prompt = document.getElementById("prompt").value;
+				let modelid = document.getElementById("modelid").value;
+				let eventSource = new EventSource(`<?php echo $cfg_ai_server;?>/ai/catalog_edit?tid=<?php echo $id;?>&modelid=${modelid}&prompt=${prompt}`);
+				
+				// 新增状态跟踪变量
+				let currentKey = null;
+				let tagBuffer = "";
+				let isClosingTag = false;
+
+				$("#mdlAI").modal('hide');
+				$("#btnAI").attr("disabled", "disabled");
+				prompt = "";
+				let lastChar = "";
+				eventSource.onmessage = (event) => {
+					const chars = event.data.split('');
+					chars.forEach(char => {
+						if (lastChar === '\\' && char === 'r') {
+							char = '<br>';  // 替换为 <br> 标签
+							lastChar = "";  // 清空追踪字符
+						} else {
+							lastChar = char;  // 记录当前字符
+						}
+						if (char === '\\') {
+							return; // 如果是反斜杠，跳过处理
+						}
+						if (currentKey) {
+							if (char === '{') {
+								isClosingTag = true;
+								tagBuffer = '{';
+								return;
+							}
+
+							if (isClosingTag) {
+								tagBuffer += char;
+								
+								if (tagBuffer === `{/${currentKey}}`) {
+									if (currentKey == "content") {
+										CKEDITOR.instances["content"].setReadOnly(false);
+										bodyHtml = "";
+									} else {
+										const input = document.querySelector(`[name="${currentKey}"]`);
+										if (input) $(input).prop("disabled", false).removeClass("disabled"); // 恢复输入状态
+									}
+									currentKey = null;
+									isClosingTag = false;
+									tagBuffer = "";
+									return;
+								}
+								
+								if (!`{/${currentKey}}`.startsWith(tagBuffer)) {
+									if (currentKey == "content") {
+										bodyHtml += tagBuffer;
+										console.log(bodyHtml);
+										CKEDITOR.instances["content"].setData(bodyHtml)
+									} else {
+										const input = document.querySelector(`[name="${currentKey}"]`);
+										if (input) input.value += tagBuffer;
+									}
+
+									isClosingTag = false;
+									tagBuffer = "";
+								}
+							} else {
+								if (currentKey == "content") {
+									bodyHtml += char;
+									CKEDITOR.instances["content"].setData(bodyHtml)
+								} else {
+									const input = document.querySelector(`[name="${currentKey}"]`);
+									if (input) {
+										input.value += char;
+										input.scrollTop = input.scrollHeight; // 滚动到底部
+									}
+								}
+
+							}
+						} else {
+							if (char === '{') {
+								tagBuffer = '{';
+							} else if (tagBuffer.startsWith('{')) {
+								tagBuffer += char;
+								if (char === '}') {
+									const match = tagBuffer.match(/{([^>]+)}/);
+									if (match) {
+										currentKey = match[1];
+										if (currentKey == "content") {
+											CKEDITOR.instances["content"].setReadOnly(true);
+										} else {
+											const input = document.querySelector(`[name="${currentKey}"]`);
+											if (input) {
+												$(input).prop("disabled", true).addClass("disabled"); // 仅禁用当前输入框
+												input.value = "";
+											}
+										}
+									}
+									tagBuffer = "";
+								}
+							}
+						}
+					});
+				};
+
+				eventSource.onerror = (error) => {
+					console.log("连接已关闭");
+					$("#btnAI").prop("disabled", false);
+					eventSource.close();
+				};
+			});
 		</script>
 	</body>
 </html>

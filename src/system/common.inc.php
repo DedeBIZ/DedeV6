@@ -1,6 +1,6 @@
 <?php
 /**
- * @version        $id:common.inc.php 2024-04-15 tianya $
+ * @version        $id:common.inc.php 2025 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        GNU GPL v2 (https://www.dedebiz.com/license)
@@ -195,7 +195,7 @@ $cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;
 $cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
 //程序信息摘要，请不要删除则系统无法接收升级信息
 $cfg_version = 'V6';
-$cfg_version_detail = '6.3.2';//详细版本号
+$cfg_version_detail = '6.5.0';//详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 $cfg_softname = '得德系统';

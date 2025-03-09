@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>添加大模型</title>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="ai_main.php">大模型管理</a></li>
+				<li class="breadcrumb-item active">添加大模型</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">添加大模型</div>
+				<div class="card-body">
+					<form name="form1" action="ai_add.php" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="dopost" value="add">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">名称</td>
+										<td><input type="text" name="title" id="title" value="" class="admin-input-lg" required></td>
+									</tr>
+									<tr>
+										<td>描述</td>
+										<td><textarea name="description" id="description" class="admin-textarea-sm"></textarea></td>
+									</tr>
+									<tr>
+										<td>公司名称</td>
+										<td><input type="text" name="company" id="company" class="admin-input-lg" required></td>
+									</tr>
+									<tr>
+										<td>官方网址</td>
+										<td><input type="text" name="website" id="website" class="admin-input-lg"></td>
+									</tr>
+									<tr>
+										<td>API Key</td>
+										<td><input type="text" name="apikey" id="apikey" class="admin-input-lg" required></td>
+									</tr>
+									<tr>
+										<td>接口地址</td>
+										<td><input type="text" name="baseurl" id="baseurl" class="admin-input-lg" required></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

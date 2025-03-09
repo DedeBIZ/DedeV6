@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>调用日志列表</title>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item active">调用日志列表</li>
+			</ol>
+			<div class="card shadow-sm mb-3">
+				<div class="card-body">
+					<form name="formsearch">
+						<input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="admin-input-lg mr-2">
+						<select name="adminid" id="adminid" class="admin-input-sm mr-2">
+							<option value="0" selected>全部</option>
+							<?php echo $adminlist?>
+						</select>
+						<select name="dtime" id="dtime" class="admin-input-sm">
+							<option value="0" selected>全部</option>
+							<option value="7">一周内</option>
+							<option value="15">15天内</option>
+							<option value="30">30天以内</option>
+							<option value="60">60天以内</option>
+						</select>
+						<button type="submit"class="btn btn-success btn-sm">搜索</button>
+					</form>
+				</div>
+			</div>
+			<div class="card shadow-sm">
+				<div class="card-header">调用日志列表</div>
+				<div class="card-body">
+					<form name="form1">
+						<div class="table-responsive">
+							<table class="table table-borderless table-hover">
+								<thead>
+									<tr>
+										<td scope="col">选择</td>
+										<td scope="col">管理员</td>
+										<td scope="col">标识</td>
+										<td scope="col">模型版本</td>
+										<td scope="col">提示词</td>
+										<td scope="col">地址</td>
+										<td scope="col">时间</td>
+										<td scope="col">消耗</td>
+									</tr>
+								<thead>
+								<tbody>
+									{dede:datalist}
+									<tr>
+										<td><input type="checkbox" name="logs" id="logs" value="{dede:field.lid/}"></td>
+										<td>{dede:field.userid/}</td>
+										<td>{dede:field.pname/}</td>
+										<td>{dede:field.model/}</td>
+										<td><input type="text" name="t0" value="{dede:field.prompt/}" class="admin-input-lg"></td>
+										<td>{dede:field.cip/}</td>
+										<td>{dede:field.dtime function="MyDate('y/m/d H:i:s',@me)"/}</td>
+										<td>
+											提示：{dede:field.prompt_tokens/} <br/>
+											对话：{dede:field.completion_tokens/}  <br/>
+											总计：{dede:field.total_tokens/} 
+										</td>
+									</tr>
+									{/dede:datalist}
+									<tr>
+										<td colspan="7">
+											<a href="javascript:ReSel();" class="btn btn-success btn-sm">反选</a>
+											<a href="javascript:DelSel();" class="btn btn-danger btn-sm">删除</a>
+											<a href="javascript:ClearLog();" class="btn btn-danger btn-sm">清空</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					{dede:pagelist listsize='6'/}
+				</div>
+			</div>
+		</div>
+		<script>
+			function getCheckboxItem() {
+				var allSel = '';
+				if (document.form1.logs.value) return document.form1.logs.value;
+				for (i = 0; i < document.form1.logs.length; i++) {
+					if (document.form1.logs[i].checked) {
+						if (allSel == "")
+							allSel = document.form1.logs[i].value;
+						else
+							allSel = allSel + "`" + document.form1.logs[i].value;
+					}
+				}
+				return allSel;
+			}
+			function ReSel() {
+				for (i = 0; i < document.form1.logs.length; i++) {
+					if (document.form1.logs[i].checked) document.form1.logs[i].checked = false;
+					else document.form1.logs[i].checked = true;
+				}
+			}
+			function DelSel() {
+				var nid = getCheckboxItem();
+				if (nid == "") {
+					alert("请选择项目");
+					return;
+				}
+				location.href = "log_edit.php?dopost=del&ids=" + nid;
+			}
+			function ClearLog() {
+				location.href = "log_edit.php?dopost=clear";
+			}
+		</script>
+	</body>
+</html>

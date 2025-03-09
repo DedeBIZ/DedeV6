@@ -1,0 +1,75 @@
+{dede:config.pagesize value='30'/}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title>提示词管理</title>
+	<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/web/css/admin.css">
+	<script src="/static/web/js/jquery.min.js"></script>
+	<script src="/static/web/js/bootstrap.min.js"></script>
+	<script src="/static/web/js/admin.main.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+			<li class="breadcrumb-item active">提示词管理</li>
+		</ol>
+		<div class="card shadow-sm mb-3">
+			<div class="card-body">
+				<a href="ai_prompt_add.php" class="btn btn-success btn-sm">添加提示词</a>
+			</div>
+		</div>
+		<div class="card shadow-sm">
+			<div class="card-header">提示词管理</div>
+			<div class="card-body">
+				<form name="form1" method="post" action="ai_edit.php">
+					<input type="hidden" name="dopost" value="delall">
+					<input type="hidden" name="allid">
+					<div class="table-responsive">
+						<table class="table table-borderless table-hover">
+							<thead>
+								<tr>
+									<td scope="col">ID</td>
+									<td scope="col">标识</td>
+									<td scope="col">名称</td>
+									<td scope="col">系统</td>
+									<td scope="col">描述</td>
+									<td scope="col">操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								{dede:datalist}
+								<tr>
+									<td>{dede:field.id/}</td>
+									<td>{dede:field.pname/}</td>
+									<td>{dede:field.title function='dede_htmlspecialchars(@me)'/}</td>
+									<td><?php echo $fields['issystem']==0?'否' : '是';?></td>
+									<td>{dede:field.description function='dede_htmlspecialchars(@me)'/}</td>
+									<td>
+										<a href="ai_prompt_edit.php?id={dede:field.id/}&dopost=getedit"
+											class="btn btn-light btn-sm"><i class="fa fa-pencil-square"
+												title="修改"></i></a>
+										<?php if($fields['issystem']==0) {?>
+										<a href="ai_prompt_edit.php?id={dede:field.id/}&dopost=delete"
+											class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+										<?php }?>
+									</td>
+								</tr>
+								{/dede:datalist}
+							</tbody>
+						</table>
+					</div>
+				</form>
+				{dede:pagelist listsize='6'/}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

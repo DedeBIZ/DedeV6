@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>修改友情链接</title>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="ai_main.php">大模型管理</a></li>
+				<li class="breadcrumb-item active">修改大模型</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">修改大模型</div>
+				<div class="card-body">
+					<form action="ai_edit.php" method="post" enctype="multipart/form-data" name="form1">
+						<input type="hidden" name="id" value="<?php echo $myAI['id']?>">
+						<input type="hidden" name="dopost" value="saveedit">
+						<div class="table-responsive">
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">名称</td>
+										<td><input type="text" name="title" id="title" value="<?php echo $myAI['title']?>" class="admin-input-lg" required></td>
+									</tr>
+									<tr>
+										<td>描述</td>
+										<td><textarea name="description" id="description" class="admin-textarea-sm"><?php echo $myAI['description']?></textarea></td>
+									</tr>
+									<tr>
+										<td>公司名称</td>
+										<td><input type="text" name="company" id="company" class="admin-input-lg" value="<?php echo $myAI['company']?>" required></td>
+									</tr>
+									<tr>
+										<td>官方网址</td>
+										<td><input type="text" name="website" id="website" class="admin-input-lg" value="<?php echo $myAI['website']?>"></td>
+									</tr>
+									<tr>
+										<td>API Key</td>
+										<td><input type="text" name="apikey" id="apikey" class="admin-input-lg" value="<?php echo $myAI['apikey']?>" required></td>
+									</tr>
+									<tr>
+										<td>接口地址</td>
+										<td><input type="text" name="baseurl" id="baseurl" class="admin-input-lg" value="<?php echo $myAI['baseurl']?>" required></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="table-responsive">
+												<p>
+													模型版本 <a href="ai_model_add.php?aiid=<?php echo $myAI['id']?>" class="btn btn-success btn-sm">添加模型版本</a>
+												</p><hr>
+												<table class="table table-borderless table-hover">
+													<thead>
+														<tr>
+															<td scope="col">ID</td>
+															<td scope="col">Model</td>
+															<td scope="col">名称</td>
+															<td scope="col" width="30%">描述</td>
+															<td scope="col">操作</td>
+														</tr>
+													</thead>
+													<tbody>
+														{dede:datalist}
+														<tr>
+															<td>{dede:field.id/}</td>
+															<td>{dede:field.model function='dede_htmlspecialchars(@me)'/}</td>
+															<td>{dede:field.title function='dede_htmlspecialchars(@me)'/}</td>
+															<td>{dede:field.description/}</td>
+															<td>
+																<a href="ai_model_edit.php?id={dede:field.id/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
+																<a href="ai_model_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
+															</td>
+														</tr>
+														{/dede:datalist}
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type="submit" class="btn btn-success btn-sm">保存</button>
+											<button type="reset" class="btn btn-outline-success btn-sm">重置</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
