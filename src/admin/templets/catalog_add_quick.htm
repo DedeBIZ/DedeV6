@@ -284,10 +284,16 @@
 			function showAI() {
 				$("#mdlAI").modal('show');
 			}
-			$("#btnAIAction").click(function() {
+			$("#btnAIAction").click(async function() {
 				let prompt = document.getElementById("prompt").value;
 				let modelid = document.getElementById("modelid").value;
-				let eventSource = new EventSource(`<?php echo $cfg_ai_server;?>/ai/catalog_add_quick?pname=catalog_add_quick&modelid=${modelid}&prompt=${prompt}`);
+				let req = await fetch(`api.php?action=get_ai_server&pname=catalog_add_quick&modelid=${modelid}&prompt=${prompt}`);
+				let resp = await req.json();
+				if (resp.code !== 0) {
+					ShowMsg("获取服务器地址失败");
+					return
+				}
+				let eventSource = new EventSource(resp.data);
 				
 				// 新增状态跟踪变量
 				let currentKey = null;
@@ -299,7 +305,6 @@
 				prompt = "";
 				let lastChar = "";
 				eventSource.onmessage = (event) => {
-					
 					const chars = event.data.split('');
 					chars.forEach(char => {
 						if (lastChar === '\\' && char === 'r') {
@@ -355,7 +360,6 @@
 										input.scrollTop = input.scrollHeight; // 滚动到底部
 									}
 								}
-
 							}
 						} else {
 							if (char === '{') {
@@ -385,6 +389,7 @@
 				};
 
 				eventSource.onerror = (error) => {
+					console.log(error);
 					console.log("连接已关闭");
 					$("#btnAI").prop("disabled", false);
 					eventSource.close();
