@@ -26,7 +26,7 @@
 				<li class="breadcrumb-item active">发布文档</li>
 			</ol>
 			<div class="card shadow-sm">
-				<div class="card-header d-flex justify-content-between align-items-center">发布文档 <button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">AI发布文档</button></div>
+				<div class="card-header d-flex justify-content-between align-items-center">发布文档 <?php if($cfg_ai_enabled == 'Y'){ ;?><button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">AI发布文档</button><?php } ;?></div>
 				<div class="card-body">
 					<form name="form1" action="article_add.php" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="channelid" value="<?php echo $channelid?>">
@@ -262,10 +262,16 @@
 			function showAI() {
 				$("#mdlAI").modal('show');
 			}
-			$("#btnAIAction").click(function() {
+			$("#btnAIAction").click(async function() {
 				let prompt = document.getElementById("prompt").value;
 				let modelid = document.getElementById("modelid").value;
-				let eventSource = new EventSource(`<?php echo $cfg_ai_server;?>/ai/article_add?modelid=${modelid}&prompt=${prompt}`);
+				let req = await fetch(`api.php?action=get_ai_server&pname=article_add&modelid=${modelid}&prompt=${prompt}`);
+				let resp = await req.json();
+				if (resp.code !== 0) {
+					ShowMsg("获取服务器地址失败");
+					return
+				}
+				let eventSource = new EventSource(resp.data);
 				
 				// 新增状态跟踪变量
 				let currentKey = null;

@@ -19,7 +19,7 @@
 				<li class="breadcrumb-item active">批量添加栏目</li>
 			</ol>
 			<div class="card shadow-sm">
-				<div class="card-header d-flex justify-content-between align-items-center">批量添加栏目<button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">AI批量创建</button></div>
+				<div class="card-header d-flex justify-content-between align-items-center">批量添加栏目 <?php if($cfg_ai_enabled == 'Y'){ ;?><button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">AI批量创建</button><?php } ;?></div>
 				<div class="card-body">
 					<form name="form1" action="catalog_add.php" method="post">
 						<input type="hidden" name="dopost" value="savequick">
@@ -287,7 +287,7 @@
 			$("#btnAIAction").click(function() {
 				let prompt = document.getElementById("prompt").value;
 				let modelid = document.getElementById("modelid").value;
-				let eventSource = new EventSource(`<?php echo $cfg_ai_server;?>/ai/catalog_add_quick?modelid=${modelid}&prompt=${prompt}`);
+				let eventSource = new EventSource(`<?php echo $cfg_ai_server;?>/ai/catalog_add_quick?pname=catalog_add_quick&modelid=${modelid}&prompt=${prompt}`);
 				
 				// 新增状态跟踪变量
 				let currentKey = null;

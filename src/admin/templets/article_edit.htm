@@ -26,7 +26,7 @@
 				<li class="breadcrumb-item active">修改文档</li>
 			</ol>
 			<div class="card shadow-sm">
-				<div class="card-header d-flex justify-content-between align-items-center">修改<?php echo $arcRow['title'];?>文档 <button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">AI修改文档</button></div>
+				<div class="card-header d-flex justify-content-between align-items-center">修改<?php echo $arcRow['title'];?>文档 <?php if($cfg_ai_enabled == 'Y'){ ;?><button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">AI修改文档</button><?php } ;?></div>
 				<div class="card-body">
 					<form name="form1" action="article_edit.php" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="dopost" value="save">
@@ -266,11 +266,17 @@
 			function showAI() {
 				$("#mdlAI").modal('show');
 			}
-			$("#btnAIAction").click(function() {
+			$("#btnAIAction").click(async function() {
 				let prompt = document.getElementById("prompt").value;
 				let modelid = document.getElementById("modelid").value;
-				let eventSource = new EventSource(`<?php echo $cfg_ai_server;?>/ai/article_edit?aid=<?php echo $aid?>&modelid=${modelid}&prompt=${prompt}`);
-				
+				let req = await fetch(`api.php?action=get_ai_server&pname=article_edit&aid=<?php echo $aid?>&modelid=${modelid}&prompt=${prompt}`);
+				let resp = await req.json();
+				if (resp.code !== 0) {
+					ShowMsg("获取服务器地址失败");
+					return
+				}
+				let eventSource = new EventSource(resp.data);
+
 				// 新增状态跟踪变量
 				let currentKey = null;
 				let tagBuffer = "";
@@ -308,10 +314,7 @@
 										CKEDITOR.instances["body"].setReadOnly(false);
 										bodyHtml = "";
 									} else if(currentKey == "typeid"){
-										typeid += tagBuffer;
-									}  else if(currentKey == "typeid"){
 										const input = document.querySelector(`[name="${currentKey}"]`);
-										console.log("typeid=",typeid);
 										if (input) {
 											$(input).val(typeid);
 											$(input).prop("disabled", false).removeClass("disabled"); // 恢复输入状态
@@ -345,6 +348,8 @@
 									// CKEDITOR.instances["body"].insertHtml(char);
 									bodyHtml += char;
 									CKEDITOR.instances["body"].setData(bodyHtml)
+								} else if(currentKey == "typeid"){
+									typeid += char;
 								} else {
 									const input = document.querySelector(`[name="${currentKey}"]`);
 									if (input) {

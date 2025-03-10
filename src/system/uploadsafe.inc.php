@@ -60,7 +60,7 @@ foreach ($_FILES as $_key => $_value) {
     $imgtypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
     if (is_array(${$_key.'_type'}) && count(${$_key.'_type'}) > 0) {
         foreach (${$_key.'_type'} as $key => $value) {
-            if (in_array(strtolower(trim($value)), $imtypes)) {
+            if (in_array(strtolower(trim($value)), $imgtypes)) {
                 $image_dd = @getimagesize($$_key);
                 if ($image_dd == false) {
                     continue;
@@ -71,7 +71,7 @@ foreach ($_FILES as $_key => $_value) {
                 }
             }
             $imgtypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
-            if (in_array(strtolower(trim($value)), $imtypes)) {
+            if (in_array(strtolower(trim($value)), $imgtypes)) {
                 $image_dd = @getimagesize($$_key);
                 if ($image_dd == false) {
                     continue;

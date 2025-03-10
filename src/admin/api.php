@@ -16,7 +16,7 @@ require_once(DEDEINC.'/userlogin.class.php');
 @set_time_limit(0);
 AjaxHead();
 helper('cache');
-$action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update', 'upload_image')) ? $action  : '';
+$action = isset($action) && in_array($action, array('is_need_check_code', 'has_new_version', 'get_changed_files', 'update_backup', 'get_update_versions', 'update', 'upload_image','get_ai_server')) ? $action  : '';
 $curDir = dirname(GetCurUrl());//当前目录
 /**
  * 登录鉴权
@@ -376,6 +376,14 @@ if ($action === 'is_need_check_code') {
         ));
         exit;
     }
+    if (empty($uploadedFile)) {
+        echo json_encode(array(
+            "code" => -1,
+            "msg" => "文件为空",
+            "data" => null,
+        ));
+        exit;
+    }
     $fileType = mime_content_type($uploadedFile);
     $imgSize = getimagesize($uploadedFile);
     if (!in_array($fileType, $allowedTypes) || !$imgSize) {
@@ -433,6 +441,23 @@ if ($action === 'is_need_check_code') {
         "code" => 0,
         "msg" => "上传成功",
         "data" => $activepath."/".$filename,
+    ));
+} else if($action === 'get_ai_server') {
+    $params = $_GET;
+    unset($params['action']);
+    checkLogin();
+    $params['timestamp'] = time(); // 加入时间戳
+    $cuserLogin = new userLogin();
+    $params['adminid'] = $cuserLogin->getUserID(); // 加入时间戳
+    $params['ip'] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1'; // 获取客户端IP
+
+    ksort($params); // 按字典序排序
+    $queryString = http_build_query($params); // 生成查询字符串
+    $params['sign'] = md5($queryString . $cfg_ai_apikey); // 计算MD5签名
+    $url = $cfg_ai_server . '/ai?' . http_build_query($params);
+    echo json_encode(array(
+        "code" => 0,
+        "data" => $url,
     ));
 }
 ?>
