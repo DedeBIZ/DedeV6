@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * @file
  * Defines a function wrapper for HTML Purifier for quick use.

@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * @file
  * Convenience stub file that adds HTML Purifier's library file to the path

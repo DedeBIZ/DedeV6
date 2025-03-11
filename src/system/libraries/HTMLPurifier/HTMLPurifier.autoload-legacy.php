@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * @file
  * Legacy autoloader for systems lacking spl_autoload_register

@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit ('dedebiz');
 /**
  * @file
  * Convenience file that registers autoload handler for HTML Purifier.
