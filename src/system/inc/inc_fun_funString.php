@@ -1,26 +1,30 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
-function SpHtml2Text($str)
+require_once DEDEINC."/libraries/HTMLPurifier/HTMLPurifier.auto.php";
+function SpHtml2Text($html)
 {
-	$str = preg_replace("/<sty(.*)\\/style>|<scr(.*)\\/script>|<!--(.*)-->/isU","",$str);
-	$alltext = '';
-	$start = 1;
-	for ($i = 0; $i < strlen($str); $i++)
-	{
-		if ($start == 0 && $str[$i] == ">") {
-			$start = 1;
-		} else if ($start==1) {
-			if ($str[$i]=="<") {
-				$start = 0;
-				$alltext .= " ";
-			} else if (ord($str[$i]) > 31) {
-				$alltext .= $str[$i];
-			}
-		}
-	}
-	$alltext = str_replace("　"," ",$alltext);
-	$alltext = preg_replace("/&([^;&]*)(;|&)/","",$alltext);
-	$alltext = preg_replace("/[ ]+/s"," ",$alltext);
-	return $alltext;
+   // 初始化 HTMLPurifier 配置
+   static $purifier = null;
+   if ($purifier === null) {
+	   $config = HTMLPurifier_Config::createDefault();
+
+	   // 禁止所有 HTML 标签，只允许文本
+	   $config->set('HTML.Allowed', '');
+
+	   // 配置缓存
+	   $cacheDir = DEDEDATA.'/cache';
+	   $config->set('Cache.SerializerPath', $cacheDir);
+
+	   $purifier = new HTMLPurifier($config);
+   }
+
+   // 过滤掉所有 HTML，只保留纯文本
+   $cleanText = $purifier->purify($html);
+
+   // 进一步去除可能的额外空格和换行符
+   $cleanText = trim($cleanText);
+   $cleanText = preg_replace("/[\r\n\t ]+/", ' ', $cleanText);
+
+   return $cleanText;
 }
 ?>

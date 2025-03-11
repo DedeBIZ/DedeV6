@@ -1,5 +1,6 @@
 <?php
 if (!defined('DEDEINC')) exit ('dedebiz');
+require_once DEDEINC."/libraries/HTMLPurifier/HTMLPurifier.auto.php";
 /**
  * 过滤助手
  *
@@ -27,24 +28,36 @@ if (!function_exists('HtmlReplace')) {
         if (!is_string($str)) {
             return '';
         }
-        $str = stripslashes($str);
-        $str = preg_replace("/<[\/]{0,1}style([^>]*)>(.*)<\/style>/i", '', $str);
-        if ($rptype == 0) {
-            $str = dede_htmlspecialchars($str);
-        } else if ($rptype == 1) {
-            $str = dede_htmlspecialchars($str);
-            $str = str_replace("　", ' ', $str);
-            $str = preg_replace("/[\r\n\t ]{1,}/", ' ', $str);
-        } else if ($rptype == 2) {
-            $str = dede_htmlspecialchars($str);
-            $str = str_replace("　", '', $str);
-            $str = preg_replace("/[\r\n\t ]/", '', $str);
-        } else {
-            $str = preg_replace("/[\r\n\t ]{1,}/", ' ', $str);
-            $str = preg_replace('/script/i', 'ｓｃｒｉｐｔ', $str);
-            $str = preg_replace("/<[\/]{0,1}(link|meta|iframe|frame|object|embed|form|input|button|textarea|select)[^>]*>/i", '', $str);
-            $str = preg_replace('/\son\w+\s*=\s*["\'][^"\']*["\']/i', '', $str);
+    
+        $str = stripslashes($str); // 取消转义
+    
+        // 初始化 HTMLPurifier 配置（静态变量优化性能）
+        static $purifier = null;
+        $config = HTMLPurifier_Config::createDefault();
+        $config->set('HTML.Allowed', ''); // 只保留文本
+        if ($purifier === null) {
+            $config->set('Cache.SerializerPath', DEDEDATA.'/cache');
+            $purifier = new HTMLPurifier($config);
         }
+    
+        // 处理不同模式
+        if ($rptype == 0) {
+            // 仅替换 HTML 标记
+            $str = $purifier->purify($str);
+        } elseif ($rptype == 1) {
+            // 替换 HTML 标记 + 去除连续空白字符
+            $str = $purifier->purify($str);
+            $str = preg_replace("/[\r\n\t ]+/", ' ', $str); // 合并多余空格
+        } elseif ($rptype == 2) {
+            // 替换 HTML 标记 + 去除所有空白字符
+            $str = $purifier->purify($str);
+            $str = preg_replace("/\s+/", '', $str);
+        } else {
+            // 仅替换 HTML 危险标记
+            $config->set('HTML.ForbiddenElements', ['script', 'iframe', 'object', 'embed', 'form', 'input', 'button', 'textarea', 'select', 'meta', 'link']);
+            $str = $purifier->purify($str);
+        }
+    
         return addslashes($str);
     }
 }
@@ -57,42 +70,25 @@ if (!function_exists('HtmlReplace')) {
 if (!function_exists('RemoveXSS')) {
     function RemoveXSS($val)
     {
-        $val = preg_replace('/([\x00-\x08|\x0b-\x0c|\x0e-\x19])/', '', $val);
-        $search = 'abcdefghijklmnopqrstuvwxyz';
-        $search .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $search .= '1234567890!@#$%^&*()';
-        $search .= '~`";:?+/={}[]-_|\'\\';
-        for ($i = 0; $i < strlen($search); $i++) {
-            $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); //with a ;
-            $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); //with a ;
+        static $purifier = null;
+        if ($purifier === null) {
+            $config = HTMLPurifier_Config::createDefault();
+            
+            // 启用缓存（提升性能）
+            $config->set('Cache.SerializerPath', DEDEDATA.'/cache'); // 生产环境建议设定缓存目录
+            
+            // 允许的 HTML 元素（可以根据需要调整）
+            $config->set('HTML.Allowed', 'p,b,strong,i,em,u,a[href|title],ul,ol,li,img[src|alt|width|height],br,span[class]');
+            
+            // 过滤 JavaScript、CSS 注入
+            $config->set('CSS.AllowedProperties', []);
+            $config->set('URI.DisableExternalResources', true);
+            $config->set('URI.DisableResources', true);
+            
+            $purifier = new HTMLPurifier($config);
         }
-        $ra1 = array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 'style', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base');
-        $ra2 = array('onabort', 'onactivate', 'onafterprint', 'onafterupdate', 'onbeforeactivate', 'onbeforecopy', 'onbeforecut', 'onbeforedeactivate', 'onbeforeeditfocus', 'onbeforepaste', 'onbeforeprint', 'onbeforeunload', 'onbeforeupdate', 'onblur', 'onbounce', 'oncellchange', 'onchange', 'onclick', 'oncontrolselect', 'oncopy', 'oncut', 'ondataavailable', 'ondatasetchanged', 'ondatasetcomplete', 'ondblclick', 'ondeactivate', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onerror', 'onerrorupdate', 'onfilterchange', 'onfinish', 'onfocus', 'onfocusin', 'onfocusout', 'onhelp', 'onkeydown', 'onkeypress', 'onkeyup', 'onlayoutcomplete', 'onload', 'onlosecapture', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onmove', 'onmoveend', 'onmovestart', 'onpaste', 'onpropertychange', 'onreadystatechange', 'onreset', 'onresize', 'onresizeend', 'onresizestart', 'onrowenter', 'onrowexit', 'onrowsdelete', 'onrowsinserted', 'onscroll', 'onselect', 'onselectionchange', 'onselectstart', 'onstart', 'onstop', 'onsubmit', 'onunload');
-        $ra = array_merge($ra1, $ra2);
-        $found = true;
-        while ($found == true) {
-            $val_before = $val;
-            for ($i = 0; $i < sizeof($ra); $i++) {
-                $pattern = '/';
-                for ($j = 0; $j < strlen($ra[$i]); $j++) {
-                    if ($j > 0) {
-                        $pattern .= '(';
-                        $pattern .= '(&#[xX]0{0,8}([9ab]);)';
-                        $pattern .= '|';
-                        $pattern .= '|(&#0{0,8}([9|10|13]);)';
-                        $pattern .= ')*';
-                    }
-                    $pattern .= $ra[$i][$j];
-                }
-                $pattern .= '/i';
-                $replacement = substr($ra[$i], 0, 2).'<x>'.substr($ra[$i], 2);
-                $val = preg_replace($pattern, $replacement, $val);
-                if ($val_before == $val) {
-                    $found = false;
-                }
-            }
-        }
-        return $val;
+        
+        return $purifier->purify($val);
     }
 }
 /**
