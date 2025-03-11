@@ -14,7 +14,7 @@ $id = isset($id)? intval($id) : 0;
 $myModel = $dsql->GetOne("SELECT * FROM `#@__ai_model` WHERE id=$id");
 if ($dopost == "delete") {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__ai_model` WHERE id='$id'");
-    ShowMsg("成功删除一个模型版本", "ai_edit.php?id={$myModel['aiid']}&dopost=getedit");
+    ShowMsg("成功删除一个模型版本", "ai_model_main.php");
     exit();
 } else if ($dopost == "saveedit") {
     $title = isset($title)? HtmlReplace($title, -1) : '';

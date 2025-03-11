@@ -138,4 +138,10 @@ $cfg_bizcore_hostname = '127.0.0.1';
 $cfg_bizcore_port = 8181;
 $cfg_bizcore_appid = '';
 $cfg_bizcore_key = '';
+$cfg_ai_enabled = 'N';
+$cfg_ai_server = 'http://localhost:8087';
+$cfg_ai_apikey = '~apiKey~';
+$cfg_ai_max_tokens = '';
+$cfg_ai_temperature = '';
+$cfg_ai_top_p = '';
 ?>

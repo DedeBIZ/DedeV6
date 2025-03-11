@@ -1065,3 +1065,57 @@ CREATE TABLE `#@__myadtype` (
 	`typename` varchar(50) NOT NULL default '',
 	PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__ai`;
+CREATE TABLE `#@__ai` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL COMMENT '名称',
+  `apikey` varchar(255) DEFAULT NULL COMMENT 'apikey',
+  `baseurl` varchar(255) DEFAULT NULL COMMENT '接口地址',
+  `description` varchar(255) DEFAULT NULL COMMENT '描述',
+  `company` varchar(255) DEFAULT NULL COMMENT '公司名称',
+  `website` varchar(255) DEFAULT NULL COMMENT '官方网址',
+  PRIMARY KEY (`id`)
+) TYPE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__ai_log`;
+CREATE TABLE `#@__ai_log` (
+  `lid` mediumint unsigned NOT NULL AUTO_INCREMENT,
+  `adminid` smallint unsigned NOT NULL DEFAULT '0' COMMENT '管理员ID',
+  `aimid` int DEFAULT NULL COMMENT '模型ID',
+  `model` varchar(100) DEFAULT NULL COMMENT '模型名称',
+  `pname` char(30) NOT NULL DEFAULT '' COMMENT '提示词标识',
+  `prompt` text NOT NULL COMMENT '提示词',
+  `cip` char(46) NOT NULL DEFAULT '' COMMENT '调用IP',
+  `dtime` int unsigned NOT NULL DEFAULT '0' COMMENT '调用时间',
+  `prompt_tokens` int unsigned NOT NULL DEFAULT '0' COMMENT '提示词token',
+  `completion_tokens` int unsigned NOT NULL DEFAULT '0' COMMENT '完成token',
+  `total_tokens` int unsigned NOT NULL DEFAULT '0' COMMENT 'token总计',
+  PRIMARY KEY (`lid`)
+) TYPE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__ai_model`;
+CREATE TABLE `#@__ai_model` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '模型',
+  `aiid` int DEFAULT NULL COMMENT '隶属ai',
+  `model` varchar(255) DEFAULT NULL COMMENT '模型ID',
+  `title` varchar(255) DEFAULT NULL COMMENT '模型标题',
+  `description` varchar(255) DEFAULT NULL COMMENT '模型描述',
+  `isdefault` tinyint DEFAULT '0' COMMENT '是否是默认',
+  `sortrank` int NOT NULL DEFAULT '50' COMMENT '排序',
+  PRIMARY KEY (`id`)
+) TYPE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__ai_prompt`;
+CREATE TABLE `#@__ai_prompt` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `pname` varchar(60) NOT NULL COMMENT '标识',
+  `title` varchar(255) DEFAULT NULL COMMENT '名称',
+  `issystem` tinyint unsigned DEFAULT '0' COMMENT '系统内置 0:否 1:是',
+  `description` text COMMENT '描述',
+  `info` text COMMENT '提示说明',
+  `prompt` mediumtext COMMENT '提示词规则',
+  `dfprompt` text COMMENT '默认提示词',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_pname` (`pname`) USING BTREE
+) TYPE=MyISAM;

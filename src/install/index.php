@@ -137,10 +137,18 @@ else if ($step==2) {
     if ($cmspath!='' && !preg_match("#^\/#", $cmspath)) $cmspath = '/'.$cmspath;
     if ($cmspath=='') $indexUrl = '/';
     else $indexUrl = $cmspath;
+    $chars='abcdefghigklmnopqrstuvwxwyABCDEFGHIGKLMNOPQRSTUVWXWY0123456789';
+    $rnd_apikey='';
+    $length = rand(28,32);
+    $max = strlen($chars) - 1;
+    for ($i = 0; $i < $length; $i++) {
+        $rnd_apikey .= $chars[mt_rand(0, $max)];
+    }
     $configStr2 = str_replace("~baseurl~", $baseurl, $configStr2);
     $configStr2 = str_replace("~basepath~", $cmspath, $configStr2);
     $configStr2 = str_replace("~indexurl~", $indexUrl, $configStr2);
     $configStr2 = str_replace("~cookieEncode~", $cookieencode, $configStr2);
+    $configStr2 = str_replace("~apiKey~", $rnd_apikey, $configStr2);
     $configStr2 = str_replace("~webname~", $webname, $configStr2);
     $configStr2 = str_replace("~adminmail~", $adminmail, $configStr2);
     $fp = fopen(DEDEDATA.'/config.cache.inc.php','w');
