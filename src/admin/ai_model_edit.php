@@ -20,7 +20,8 @@ if ($dopost == "delete") {
     $title = isset($title)? HtmlReplace($title, -1) : '';
     $description = isset($description)? HtmlReplace($description, -1) : '';
     $model = isset($model)? HtmlReplace($model, -1) : '';
-    $query = "UPDATE `#@__ai_model` SET title='$title',description='$description',model='$model' WHERE id='$id' ";
+    $sortrank = isset($sortrank)? intval($sortrank) : 50;
+    $query = "UPDATE `#@__ai_model` SET title='$title',description='$description',model='$model',sortrank='$sortrank' WHERE id='$id' ";
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("成功修改一个模型版本", "ai_edit.php?id={$myModel['aiid']}&dopost=getedit");
     exit();

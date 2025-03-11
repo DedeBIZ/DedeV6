@@ -17,12 +17,12 @@ $sql = $where = '';
 if (empty($adminid)) $adminid = 0;
 if (empty($cip)) $cip = '';
 if (empty($dtime)) $dtime = 0;
-if ($adminid > 0) $where .= " AND `#@__log`.adminid='$adminid' ";
-if ($cip != "") $where .= " AND `#@__log`.cip LIKE '%$cip%' ";
+if ($adminid > 0) $where .= " AND `#@__ai_log`.adminid='$adminid' ";
+if ($cip != "") $where .= " AND `#@__ai_log`.cip LIKE '%$cip%' ";
 if ($dtime > 0) {
     $nowtime = time();
     $starttime = $nowtime - ($dtime * 24 * 3600);
-    $where .= " AND `#@__log`.dtime>'$starttime' ";
+    $where .= " AND `#@__ai_log`.dtime>'$starttime' ";
 }
 $sql = "SELECT `#@__ai_log`.*,`#@__admin`.userid FROM `#@__ai_log` LEFT JOIN `#@__admin` ON `#@__admin`.id=`#@__ai_log`.adminid WHERE 1=1 $where ORDER BY `#@__ai_log`.lid DESC";
 $adminlist = '';

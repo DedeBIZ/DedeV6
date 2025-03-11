@@ -17,7 +17,7 @@
 			<div class="card shadow-sm mb-3">
 				<div class="card-body">
 					<form name="formsearch">
-						<input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="admin-input-lg mr-2">
+						<input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="admin-input-lg mr-2" value="<?php echo empty($cip)? '' : $cip?>">
 						<select name="adminid" id="adminid" class="admin-input-sm mr-2">
 							<option value="0" selected>全部</option>
 							<?php echo $adminlist?>
@@ -29,7 +29,8 @@
 							<option value="30">30天以内</option>
 							<option value="60">60天以内</option>
 						</select>
-						<button type="submit"class="btn btn-success btn-sm">搜索</button>
+						<button type="submit" class="btn btn-success btn-sm">搜索</button>
+						<a href="ai_log_main.php" class="btn btn-outline-success btn-sm">重置</a>
 					</form>
 				</div>
 			</div>
@@ -48,6 +49,8 @@
 										<td scope="col">提示词</td>
 										<td scope="col">地址</td>
 										<td scope="col">时间</td>
+										<td scope="col">提示</td>
+										<td scope="col">补全</td>
 										<td scope="col">消耗</td>
 									</tr>
 								<thead>
@@ -61,11 +64,9 @@
 										<td><input type="text" name="t0" value="{dede:field.prompt/}" class="admin-input-lg"></td>
 										<td>{dede:field.cip/}</td>
 										<td>{dede:field.dtime function="MyDate('y/m/d H:i:s',@me)"/}</td>
-										<td>
-											提示：{dede:field.prompt_tokens/} <br/>
-											对话：{dede:field.completion_tokens/}  <br/>
-											总计：{dede:field.total_tokens/} 
-										</td>
+										<td>{dede:field.prompt_tokens/}</td>
+										<td>{dede:field.completion_tokens/}</td>
+										<td>{dede:field.total_tokens/}</td>
 									</tr>
 									{/dede:datalist}
 									<tr>

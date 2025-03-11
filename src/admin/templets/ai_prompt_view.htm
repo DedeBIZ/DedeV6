@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>预览提示词</title>
+		<link rel="stylesheet" href="/static/web/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/web/css/admin.css">
+		<script src="/static/web/js/jquery.min.js"></script>
+		<script src="/static/web/js/bootstrap.min.js"></script>
+		<script src="/static/web/js/admin.main.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index_body.php">后台面板</a></li>
+				<li class="breadcrumb-item"><a href="ai_prompt_main.php">提示词管理</a></li>
+				<li class="breadcrumb-item active">预览提示词</li>
+			</ol>
+			<div class="card shadow-sm">
+				<div class="card-header">预览提示词</div>
+				<div class="card-body">
+						<div class="table-responsive">
+							<?php
+							if(!empty($myPrompt['info'])){
+							?>
+							<div class="alert alert-warning">
+								<?php echo $myPrompt['info']?>
+							</div>
+							<?php
+							}
+							?>
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td width="260">名称</td>
+										<td>
+											[<?php echo $myPrompt['pname']?>]<?php echo $myPrompt['title']?>
+										</td>
+									</tr>
+									<tr>
+										<td>提示词</td>
+										<td>
+											<textarea name="prompt" id="prompt" class="admin-textarea-sm" style="height: 100px;" placeholder="填写您的要求，默认：<?php echo $myPrompt['dfprompt']?>"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>选择模型</td>
+										<td>
+											<select id="modelid" class="admin-input-sm">
+												<?php
+												$dsql->SetQuery("SELECT AM.*,A.title as aititle FROM `#@__ai_model` AM LEFT JOIN `#@__ai` A ON A.id = AM.aiid ORDER BY id");
+												$dsql->Execute();
+												while ($row = $dsql->GetObject()) {
+												?>
+													<option value="<?php echo $row->id;?>"<?php echo $row->isdefault==1?' selected' : '';?>><?php echo $row->model;?>(<?php echo $row->aititle;?>)</option>
+												<?php
+												}
+												?>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>
+											<button type="button" id="btnAIAction" class="btn btn-success btn-sm">AI生成</button>
+											<a href="ai_prompt_main.php" class="btn btn-outline-success btn-sm">返回</a>
+										</td>
+									</tr>
+									<tr>
+										<td>结果</td>
+										<td><textarea name="result" id="result" class="admin-textarea-sm" style="height: 200px;"></textarea></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			let eventSource; // 保存 EventSource 实例
+			let modelid = 0;
+			$("#btnAIAction").click(async function() {
+				let prompt = document.getElementById("prompt").value;
+				let modelid = document.getElementById("modelid").value;
+				let req = await fetch(`api.php?action=get_ai_server&pname=<?php echo $myPrompt['pname']?>&modelid=${modelid}&prompt=${prompt}`);
+				let resp = await req.json();
+				if (resp.code !== 0) {
+					ShowMsg("获取服务器地址失败");
+					return
+				}
+				let eventSource = new EventSource(resp.data);
+				
+				// 新增状态跟踪变量
+				let currentKey = null;
+				let tagBuffer = "";
+				let isClosingTag = false;
+
+				$("#btnAI").attr("disabled", "disabled");
+				prompt = "";
+				let lastChar = "";
+				const input = document.querySelector(`[name="result"]`);
+				input.value = "";
+				eventSource.onmessage = (event) => {
+					$(input).prop("disabled", true).addClass("disabled"); 
+					const msg = event.data;
+					input.value += msg;
+				};
+
+				eventSource.onerror = (error) => {
+					if (error.target.readyState === EventSource.CONNECTING) {
+						ShowMsg("连接失败，请确保您已开启并正确配置了DedeBIZ智能助手服务器。 <a class='text-success' href='https://www.dedebiz.com/ai?from=dedebiz' target='_blank'>如何配置？</a>");
+					} else if (typeof error.data!=="undefined" && error.data !== "" && error.target.readyState !== EventSource.CLOSED) {
+						ShowMsg(error.data);
+					}
+					$("#btnAI").prop("disabled", false);
+					eventSource.close();
+				};
+
+				// 监听特定事件 "close"
+				eventSource.addEventListener('close', (event) => {
+					console.log('SSE connection closed:', event.data);
+					$("#btnAI").prop("disabled", false);
+					$(input).prop("disabled", false);
+					eventSource.close(); // 关闭连接
+				});
+			});
+		</script>
+	</body>
+</html>

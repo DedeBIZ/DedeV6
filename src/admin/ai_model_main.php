@@ -12,7 +12,7 @@ require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/datalistcp.class.php');
 DedeSetCookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
 
-$sql = "SELECT AM.*,A.title as aititle FROM `#@__ai_model` AM LEFT JOIN `#@__ai` A ON A.id = AM.aiid ORDER BY AM.id DESC";
+$sql = "SELECT AM.*,A.title as aititle FROM `#@__ai_model` AM LEFT JOIN `#@__ai` A ON A.id = AM.aiid WHERE 1=1 ORDER BY AM.sortrank ASC,AM.id DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN.'/templets/ai_model_main.htm');
 $dlist->SetSource($sql);

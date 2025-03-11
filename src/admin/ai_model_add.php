@@ -15,7 +15,8 @@ if ($dopost == "add") {
     $model = isset($model)? HtmlReplace($model, -1) : '';
     $title = isset($title)? HtmlReplace($title, -1) : '';
     $description = isset($description)? HtmlReplace($description, -1) : '';
-    $query = "INSERT INTO `#@__ai_model` (aiid,title,model,description) VALUES ('$aiid','$title','$model','$description'); ";
+    $sortrank = isset($sortrank)? intval($sortrank) : 50;
+    $query = "INSERT INTO `#@__ai_model` (aiid,title,model,description,sortrank) VALUES ('$aiid','$title','$model','$description','$sortrank'); ";
     $rs = $dsql->ExecuteNoneQuery($query);
     $burl =  "ai_edit.php?id=".$aiid;
     if ($rs) {

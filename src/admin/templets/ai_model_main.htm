@@ -36,6 +36,7 @@
 									<td scope="col">名称</td>
 									<td scope="col">大模型</td>
 									<td scope="col" width="30%">描述</td>
+									<td scope="col">排序</td>
 									<td scope="col">操作</td>
 								</tr>
 							</thead>
@@ -47,6 +48,7 @@
 									<td>{dede:field.title function='dede_htmlspecialchars(@me)'/}</td>
 									<td>{dede:field.aititle/}</td>
 									<td>{dede:field.description/}</td>
+									<td>{dede:field.sortrank/}</td>
 									<td>
 										<a href="ai_model_edit.php?id={dede:field.id/}" class="btn btn-light btn-sm"><i class="fa fa-pencil-square" title="修改"></i></a>
 										<a href="ai_model_edit.php?id={dede:field.id/}&dopost=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>

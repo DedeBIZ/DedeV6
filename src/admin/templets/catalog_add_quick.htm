@@ -19,7 +19,7 @@
 				<li class="breadcrumb-item active">批量添加栏目</li>
 			</ol>
 			<div class="card shadow-sm">
-				<div class="card-header d-flex justify-content-between align-items-center">批量添加栏目 <?php if($cfg_ai_enabled == 'Y'){ ;?><button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">AI批量创建</button><?php } ;?></div>
+				<div class="card-header d-flex justify-content-between align-items-center">批量添加栏目 <?php if($cfg_ai_enabled == 'Y'){ ;?><button type="button" id="btnAI" onclick="showAI();" class="btn btn-success btn-sm">智能助手</button><?php } ;?></div>
 				<div class="card-body">
 					<form name="form1" action="catalog_add.php" method="post">
 						<input type="hidden" name="dopost" value="savequick">
@@ -194,7 +194,7 @@
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">AI批量创建栏目</h5>
+						<h5 class="modal-title">智能助手-批量创建栏目</h5>
 						<button type="button" class="update-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
 					</div>
 					<div class="modal-body">
@@ -203,7 +203,7 @@
 								<textarea class="admin-input-sm" style="width: 100%;height: 100px;" id="prompt" placeholder="填写您站点规划，AI帮您自动规划栏目，例如：我需要创建一个企业信息展示类站点"></textarea><br/>
 								选择模型：<select id="modelid" class="admin-input-sm" style="width: 100%;">
 									<?php
-									$dsql->SetQuery("SELECT AM.*,A.title as aititle FROM `#@__ai_model` AM LEFT JOIN `#@__ai` A ON A.id = AM.aiid ORDER BY id");
+									$dsql->SetQuery("SELECT AM.*,A.title as aititle FROM `#@__ai_model` AM LEFT JOIN `#@__ai` A ON A.id = AM.aiid ORDER BY AM.sortrank ASC,AM.id DESC");
 									$dsql->Execute();
 									while ($row = $dsql->GetObject()) {
 									?>
@@ -389,11 +389,21 @@
 				};
 
 				eventSource.onerror = (error) => {
-					console.log(error);
-					console.log("连接已关闭");
+					if (error.target.readyState === EventSource.CONNECTING) {
+						ShowMsg("连接失败，请确保您已开启并正确配置了DedeBIZ智能助手服务器。 <a class='text-success' href='https://www.dedebiz.com/ai?from=dedebiz' target='_blank'>如何配置？</a>");
+					} else if (typeof error.data!=="undefined" && error.data !== "" && error.target.readyState !== EventSource.CLOSED) {
+						ShowMsg(error.data);
+					}
 					$("#btnAI").prop("disabled", false);
 					eventSource.close();
 				};
+
+				// 监听特定事件 "close"
+				eventSource.addEventListener('close', (event) => {
+					console.log('SSE connection closed:', event.data);
+					$("#btnAI").prop("disabled", false);
+					eventSource.close(); // 关闭连接
+				});
 			});
 		</script>
 	</body>

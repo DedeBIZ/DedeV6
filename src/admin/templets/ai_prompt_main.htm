@@ -56,6 +56,8 @@
 											class="btn btn-light btn-sm"><i class="fa fa-pencil-square"
 												title="修改"></i></a>
 										<?php if($fields['issystem']==0) {?>
+										<a href="ai_prompt_view.php?id={dede:field.id/}"
+											class="btn btn-success btn-sm"><i class="fa fa-eye" title="预览"></i></a>
 										<a href="ai_prompt_edit.php?id={dede:field.id/}&dopost=delete"
 											class="btn btn-danger btn-sm"><i class="fa fa-trash" title="删除"></i></a>
 										<?php }?>
