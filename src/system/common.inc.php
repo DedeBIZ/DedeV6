@@ -154,6 +154,9 @@ if (PHP_SAPI === 'cli') {
 } else {
     $cfg_clihost = 'http://'.$_SERVER['HTTP_HOST'];
 }
+if (!isset($cfg_cmspath)) {
+    $cfg_cmspath = "";
+}
 //站点根目录
 $cfg_basedir = preg_replace('#'.$cfg_cmspath.'\/system$#i', '', DEDEINC);
 if ($cfg_multi_site == 'Y') {
