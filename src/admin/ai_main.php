@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/datalistcp.class.php');
-DedeSetCookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
+CheckPurview('ai_List');
 
 $sql = "SELECT * FROM `#@__ai` ORDER BY id DESC";
 $dlist = new DataListCP();

@@ -9,10 +9,11 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('sys_Log');
+CheckPurview('ai_LogList');
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
 DedeSetCookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+CheckPurview('ai_Del');
 $sql = $where = '';
 if (empty($adminid)) $adminid = 0;
 if (empty($cip)) $cip = '';

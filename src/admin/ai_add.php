@@ -9,6 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
+CheckPurview('ai_New');
 if (empty($dopost)) $dopost = '';
 if ($dopost == "add") {
     $title = isset($title)? HtmlReplace($title, -1) : '';

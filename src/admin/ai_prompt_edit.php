@@ -13,10 +13,12 @@ if (empty($dopost)) $dopost = '';
 $id = isset($id)? intval($id) : 0;
 $myPrompt = $dsql->GetOne("SELECT * FROM `#@__ai_prompt` WHERE id=$id");
 if ($dopost == "delete") {
+    CheckPurview('ai_PromptDel');
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__ai_prompt` WHERE id='$id'");
     ShowMsg("成功删除一个提示词", "ai_prompt_main.php");
     exit();
 } else if ($dopost == "saveedit") {
+    CheckPurview('ai_PromptEdit');
     $title = isset($title)? HtmlReplace($title, -1) : '';
     $description = isset($description)? HtmlReplace($description, -1) : '';
     $prompt = isset($prompt)? $prompt : '';
@@ -26,5 +28,6 @@ if ($dopost == "delete") {
     ShowMsg("成功修改一个提示词", "ai_prompt_edit.php?id={$myPrompt['id']}");
     exit();
 }
+CheckPurview('ai_PromptEdit');
 include DedeInclude('templets/ai_prompt_edit.htm');
 ?>

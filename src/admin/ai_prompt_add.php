@@ -9,6 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
+CheckPurview('ai_PromptNew');
 if (empty($dopost)) $dopost = '';
 $id = isset($id) ? intval($id) : 0;
 if ($dopost == "add") {

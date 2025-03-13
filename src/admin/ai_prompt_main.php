@@ -10,8 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/datalistcp.class.php');
-DedeSetCookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
-
+CheckPurview('ai_PromptList');
 $sql = "SELECT * FROM `#@__ai_prompt` ORDER BY id DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN.'/templets/ai_prompt_main.htm');

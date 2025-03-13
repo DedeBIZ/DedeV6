@@ -160,6 +160,38 @@ exit;
     }
     echo $hash;
     exit();
+} else if($dopost == 'ping_ai_server'){
+    $server = isset($server) ? $server : '';
+    $apikey = isset($apikey) ? $apikey : '';
+    if (empty($server) || empty($apikey)) {
+        echo 'error';
+    } else {
+        require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
+        $params = $_GET;
+        unset($params['dopost']);
+        unset($params['apikey']);
+        unset($params['server']);
+        $params['timestamp'] = time(); // 加入时间戳
+        $cuserLogin = new userLogin();
+        $params['adminid'] = $cuserLogin->getUserID(); // 加入时间戳
+        $params['ip'] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1'; // 获取客户端IP
+    
+        ksort($params); // 按字典序排序
+        $queryString = http_build_query($params); // 生成查询字符串
+        $params['sign'] = md5($queryString . $apikey); // 计算MD5签名
+        $url = $server . '/api/ping?' . http_build_query($params);
+
+        $dhd = new DedeHttpDown();
+        $dhd->OpenUrl($url);
+        $data = $dhd->GetJSON();
+        if (isset($data->code) && $data->code == 0) {
+            echo 'ok';
+        } else {
+            echo 'error';
+        }
+    }
+
+    exit();
 }
 include DedeInclude('templets/sys_info.htm');
 ?>

@@ -9,22 +9,15 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-$ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'ai_main.php' : $_COOKIE['ENV_GOBACK_URL'];
 if (empty($dopost)) $dopost = '';
 $id = isset($id)? intval($id) : 0;
-if (isset($allid)) {
-    $aids = explode(',', $allid);
-    if (count($aids) == 1) {
-        $id = intval($aids[0]);
-        $dopost = "delete";
-    }
-}
 if ($dopost == "delete") {
+    CheckPurview('ai_Del');
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__ai` WHERE id='$id'");
     ShowMsg("成功删除一个大模型", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "saveedit") {
-
+    CheckPurview('ai_Edit');
     $title = isset($title)? HtmlReplace($title, -1) : '';
     $description = isset($description)? HtmlReplace($description, -1) : '';
     $company = isset($company)? HtmlReplace($company, -1) : '';
@@ -36,8 +29,8 @@ if ($dopost == "delete") {
     ShowMsg("成功修改一个大模型", $ENV_GOBACK_URL);
     exit();
 }
+CheckPurview('ai_Edit');
 $myAI = $dsql->GetOne("SELECT * FROM `#@__ai` WHERE id=$id");
-
 $sql = "SELECT * FROM `#@__ai_model` WHERE aiid=$id ORDER BY id DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN.'/templets/ai_edit.htm');
